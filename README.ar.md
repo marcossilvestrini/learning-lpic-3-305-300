@@ -563,7 +563,7 @@ Dockerfile
 **مجالات المعرفة الرئيسية:**
 
 -   فهم أهمية تنسيق الحاويات
--   فهم المفاهيم الأساسية لـ Docker Compose وDocker Swarm
+-   Understand the key concepts of Docker Compose and Docker Swarm
 -   فهم المفاهيم الأساسية لـ Kubernetes وHelm
 -   الوعي بأنظمة OpenShift وRancher وMesosphere DC/OS
 
