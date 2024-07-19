@@ -1,6 +1,6 @@
 <h1><a name="readme-top"></a></h1>
 
-[![Create Release](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/release.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/release.yml)[![Translate](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/readme.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/readme.yml)[![Deploy GitHub Pages](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/jekyll-gh-pages.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/jekyll-gh-pages.yml)[![Generate HTML and PDF](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/generate-html.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/generate-html.yml)[![PSScriptAnalyzer](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/powershell.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/powershell.yml)[![Slack Notification](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/slack.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/slack.yml)
+[![Create Release](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/release.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/release.yml)[![Translate](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/trsnlate.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/translate.yml)[![Deploy GitHub Pages](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/jekyll-gh-pages.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/jekyll-gh-pages.yml)[![Generate HTML and PDF](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/generate-html.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/generate-html.yml)[![PSScriptAnalyzer](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/powershell.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/powershell.yml)[![Slack Notification](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/slack.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/slack.yml)
 
 * * *
 
@@ -144,7 +144,7 @@ LPIC2 202-450 試験について学習するには、このリポジトリを使
 -   [ ] リポジトリの作成
 -   [ ] トピック 351 に関する例を作成する
 -   [ ] トピック 352 に関する例を作成する
--   [ ] Create examples about Topic 353
+-   [ ] トピック 353 に関する例を作成する
 -   [ ] シミュレートされた itexam をアップロードする
 
 * * *
@@ -199,7 +199,7 @@ man COMMAND
 -   物理マシンから仮想マシンへの移行の主な側面を理解する
 -   ホスト システム間での仮想マシンの移行の主な側面を理解する
 -   スナップショット、一時停止、クローン作成、リソース制限など、仮想マシンの仮想化の機能と影響を理解する
--   Awareness of oVirt, Proxmox, systemd-machined and VirtualBox
+-   oVirt、Proxmox、systemd-machined、VirtualBox の認識
 -   Open vSwitch の認識
 
 #### 351.1 引用オブジェクト
@@ -244,7 +244,7 @@ foo
 -   Xen インストールの基本的なトラブルシューティング
 -   錠剤の強さ
 -   XenStoreの認知度
--   Xenブートパラメータの認識
+-   Xen ブートパラメータの認識
 -   xm ユーティリティの認識
 
 #### 351.2 引用オブジェクト
@@ -368,7 +368,7 @@ foo
 
 **重さ：**３
 
-**Description:**受験者は、仮想マシンのディスク イメージを管理できる必要があります。これには、さまざまな形式とハイパーバイザー間でのディスク イメージの変換や、イメージ内に保存されているデータへのアクセスが含まれます。
+**説明：**受験者は、仮想マシンのディスク イメージを管理できる必要があります。これには、さまざまな形式とハイパーバイザー間でのディスク イメージの変換や、イメージ内に保存されているデータへのアクセスが含まれます。
 
 **主要な知識領域:**
 
@@ -482,7 +482,7 @@ foo
 **主要な知識領域:**
 
 -   LXC と LXD のアーキテクチャを理解する
--   LXD を使用して既存のイメージに基づいて LXC コンテナー (ネットワーキングやストレージを含む) を管理する
+-   LXD を使用して既存のイメージに基づいて LXC コンテナー (ネットワークやストレージを含む) を管理する
 -   LXCコンテナのプロパティを構成する
 -   LXC コンテナーのリソース使用量を制限する
 -   LXDプロファイルを使用する
@@ -658,7 +658,7 @@ packer
 
 **説明：**受験者は、cloud-init を使用して、標準化されたイメージから作成された仮想マシンを構成できる必要があります。これには、利用可能なハードウェア リソース、特にディスク領域とボリュームに合わせて仮想マシンを調整することが含まれます。  
 さらに、受験者は安全な SSH ログインを許可し、特定のソフトウェア パッケージのセットをインストールできるようにインスタンスを構成できる必要があります。  
-さらに、受験者は、cloud-init サポートを備えた新しいシステム イメージを作成できる必要があります。
+さらに、受験者は、cloud-init をサポートする新しいシステム イメージを作成できる必要があります。
 
 **主要な知識領域:**
 
@@ -695,7 +695,7 @@ user-data
 
 **重さ：**３
 
-**説明：**受験者は、仮想マシンのプロビジョニングなど、Vagrant を使用して仮想マシンを管理できる必要があります。
+**説明：**受験者は、仮想マシンのプロビジョニングを含め、Vagrant を使用して仮想マシンを管理できる必要があります。
 
 **主要な知識領域:**
 
@@ -764,7 +764,7 @@ Vagrantfile
 ## 謝辞
 
 -   [リチャード・ストールマンの](http://www.stallman.org/)
--   [Richard Stallman による GNU/Linux FAQ](https://www.gnu.org/gnu/gnu-linux-faq.html)
+-   [GNU/Linux FAQ by Richard Stallman](https://www.gnu.org/gnu/gnu-linux-faq.html)
 -   [GNU](https://www.gnu.org/)
 -   [GNU オペレーティング システム](https://www.gnu.org/gnu/thegnuproject.html)
 -   [GCC コンパイラ](https://gcc.gnu.org/wiki/History)
