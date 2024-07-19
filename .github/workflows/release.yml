@@ -1,12 +1,10 @@
-name: Create Release
-
 on:
   push:
+    # Sequence of patterns matched against refs/tags
     tags:
-      - 'v*'
+      - 'v*' # Push events to matching v*, i.e. v1.0, v20.15.10
 
-permissions:
-  contents: write  # Permissões necessárias para criar releases
+name: Create Release
 
 jobs:
   build:
@@ -15,13 +13,11 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
-      - name: Debug Token
-        run: echo "Token: ${{ secrets.GITHUB_TOKEN }}" | wc -c
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.PAT }} # This token is provided by Actions, you do not need to create your own token
         with:
           tag_name: ${{ github.ref }}
           release_name: Release ${{ github.ref }}
@@ -29,6 +25,6 @@ jobs:
             Changes in this Release
             - Add new features
             - Fix bugs
-            - Update documentation
+            - Update documentation            
           draft: false
           prerelease: false
