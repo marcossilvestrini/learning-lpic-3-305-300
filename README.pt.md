@@ -88,7 +88,7 @@
 > e software livre\\
 > Algumas distribuições GNULinux como Debian e RPM serão abordadas\\
 > A instalação e configuração de alguns pacotes também serão abordadas\\
-> Ao fazer isso, você pode dar a toda a comunidade a oportunidade de se beneficiar de suas alterações.\\
+> Ao fazer isso, você pode dar a toda a comunidade a chance de se beneficiar de suas alterações.\\
 > O acesso ao código-fonte é uma pré-condição para isso.\\
 > Use o vagrant para atualizar máquinas, executar laboratórios e praticar o conteúdo deste artigo.\\
 > Publiquei na pasta Vagrant um Vagrantfile com o que é necessário\\
@@ -197,7 +197,7 @@ man COMMAND
 -   Entenda os prós e os contras da virtualização
 -   Compreender as diversas variações de hipervisores e monitores de máquinas virtuais
 -   Entenda os principais aspectos da migração de máquinas físicas para virtuais
--   Compreenda os principais aspectos da migração de máquinas virtuais entre sistemas host
+-   Compreender os principais aspectos da migração de máquinas virtuais entre sistemas host
 -   Compreenda os recursos e as implicações da virtualização para uma máquina virtual, como captura instantânea, pausa, clonagem e limites de recursos
 -   Conhecimento de oVirt, Proxmox, systemd-machined e VirtualBox
 -   Conscientização do Open vSwitch
@@ -663,7 +663,7 @@ Além disso, os candidatos devem ser capazes de criar novas imagens de sistema c
 **Principais áreas de conhecimento:**
 
 -   Compreender os recursos e conceitos do cloud-init, incluindo dados do usuário, inicialização e configuração do cloud-init
--   Use cloud-init para criar, redimensionar e montar sistemas de arquivos, configurar contas de usuário, incluindo credenciais de login, como chaves SSH e instalar pacotes de software do repositório da distribuição
+-   Use o cloud-init para criar, redimensionar e montar sistemas de arquivos, configurar contas de usuário, incluindo credenciais de login, como chaves SSH, e instalar pacotes de software do repositório da distribuição
 -   Integre o cloud-init às imagens do sistema
 -   Use a fonte de dados da unidade de configuração para teste
 
@@ -781,7 +781,7 @@ Link do projeto:<https://github.com/marcossilvestrini/learning-lpic-3-305-300>
 -   [Padrão de hierarquia do sistema de arquivos](https://en.wikipedia.org/wiki/Filesystem_Hierarchy_Standard)
 -   [Estrutura de hierarquia de arquivos](https://refspecs.linuxfoundation.org/FHS_3.0/fhs-3.0.pdf)
 -   [FSF](https://www.fsf.org)
--   [Diretório de Software Gratuito](https://directory.fsf.org/wiki/Free_Software_Directory:Free_software_replacements)
+-   [Diretório de software gratuito](https://directory.fsf.org/wiki/Free_Software_Directory:Free_software_replacements)
 -   [Software grátis](https://www.gnu.org/philosophy/free-sw.html)
 -   [Copyleft](https://www.gnu.org/licenses/copyleft.en.html)
 -   [GPL](https://www.gnu.org/licenses/quick-guide-gplv3.html)
