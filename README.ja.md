@@ -244,7 +244,7 @@ foo
 -   Xen インストールの基本的なトラブルシューティング
 -   錠剤の強さ
 -   XenStoreの認知度
--   Xenブートパラメータの認識
+-   Xen ブートパラメータの認識
 -   xm ユーティリティの認識
 
 #### 351.2 引用オブジェクト
@@ -523,7 +523,7 @@ foo
 -   Docker のアーキテクチャとコンポーネントを理解する
 -   Docker レジストリのイメージを使用して Docker コンテナを管理する
 -   Dockerコンテナのイメージとボリュームを理解して管理する
--   Dockerコンテナのログを理解して管理する
+-   Docker コンテナのログを理解して管理する
 -   Docker のネットワークを理解して管理する
 -   Dockerfile を使用してコンテナー イメージを作成する
 -   レジストリ Docker イメージを使用して Docker レジストリを実行する
@@ -657,7 +657,7 @@ packer
 **重さ：**３
 
 **説明：**受験者は、cloud-init を使用して、標準化されたイメージから作成された仮想マシンを構成できる必要があります。これには、利用可能なハードウェア リソース、特にディスク領域とボリュームに合わせて仮想マシンを調整することが含まれます。  
-さらに、受験者は安全な SSH ログインを許可し、特定のソフトウェア パッケージのセットをインストールできるようにインスタンスを構成できる必要があります。  
+さらに、受験者は安全な SSH ログインを許可するようにインスタンスを構成し、特定のソフトウェア パッケージのセットをインストールできる必要があります。  
 さらに、受験者は、cloud-init サポートを備えた新しいシステム イメージを作成できる必要があります。
 
 **主要な知識領域:**
@@ -740,7 +740,7 @@ Vagrantfile
 1.  プロジェクトをフォークする
 2.  機能ブランチを作成します (`git checkout -b feature/AmazingFeature`）
 3.  変更をコミットします (`git commit -m 'Add some AmazingFeature'`）
-4.  ブランチにプッシュ (`git push origin feature/AmazingFeature`）
+4.  Push to the Branch (`git push origin feature/AmazingFeature`）
 5.  プルリクエストを開く
 
 * * *
@@ -764,7 +764,7 @@ Vagrantfile
 ## 謝辞
 
 -   [リチャード・ストールマンの](http://www.stallman.org/)
--   [Richard Stallman による GNU/Linux FAQ](https://www.gnu.org/gnu/gnu-linux-faq.html)
+-   [GNU/Linux FAQ by Richard Stallman](https://www.gnu.org/gnu/gnu-linux-faq.html)
 -   [GNU](https://www.gnu.org/)
 -   [GNU オペレーティング システム](https://www.gnu.org/gnu/thegnuproject.html)
 -   [GCC コンパイラ](https://gcc.gnu.org/wiki/History)
