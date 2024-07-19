@@ -424,7 +424,7 @@ foo
 
 <a name="topic-352.1"></a>
 
-### 352.1  Container Virtualization Concepts
+### 352.1 Conceptos de virtualización de contenedores
 
 **Peso:**7
 
