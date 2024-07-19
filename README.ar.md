@@ -521,7 +521,7 @@ foo
 **مجالات المعرفة الرئيسية:**
 
 -   فهم بنية ومكونات Docker
--   إدارة حاويات Docker باستخدام الصور من سجل Docker
+-   Manage Docker containers by using images from a Docker registry
 -   فهم وإدارة الصور ووحدات التخزين لحاويات Docker
 -   فهم وإدارة التسجيل لحاويات Docker
 -   فهم وإدارة الشبكات لـ Docker
