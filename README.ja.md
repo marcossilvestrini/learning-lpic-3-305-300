@@ -602,7 +602,7 @@ OpenStack
 Terraform
 ```
 
-#### 353.1 重要なコマンド
+#### 353.1 Important Commands
 
 ##### ふー
 
