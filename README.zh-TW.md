@@ -807,7 +807,7 @@ Vagrantfile
 -   [通配符](https://linuxhint.com/bash_globbing_tutorial/)
 -   [引用](https://www.gnu.org/software/bash/manual/html_node/Quoting.html)
 -   [常用表達](https://www.gnu.org/software/grep/manual/html_node/Regular-Expressions.html)
--   [List Linux Distribution](https://en.wikipedia.org/wiki/List_of_Linux_distributions)
+-   [列出 Linux 發行版](https://en.wikipedia.org/wiki/List_of_Linux_distributions)
 -   [發行表](https://distrowatch.com/)
 -   [Linux 發行版比較](https://en.wikipedia.org/wiki/Comparison_of_Linux_distributions)
 -   [下載包](https://pkgs.org/)
