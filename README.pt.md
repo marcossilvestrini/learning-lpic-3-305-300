@@ -232,7 +232,7 @@ foo
 
 ### 351.2 Xen
 
-**Peso:**3
+**Peso:** 3
 
 **Descrição:**Os candidatos devem ser capazes de instalar, configurar, manter, migrar e solucionar problemas de instalações do Xen. O foco está no Xen versão 4.x.
 
@@ -283,7 +283,7 @@ foo
 
 **Principais áreas de conhecimento:**
 
--   Compreenda a arquitetura do QEMU, incluindo KVM, rede e armazenamento
+-   Understand the architecture of QEMU, including KVM, networking and storage
 -   Inicie instâncias do QEMU na linha de comando
 -   Gerencie instantâneos usando o monitor QEMU
 -   Instale os drivers de dispositivo QEMU Guest Agent e VirtIO
@@ -418,7 +418,7 @@ foo
 
 <a name="topic-352"></a>
 
-## Tópico 352: Virtualização de contêineres
+## Topic 352: Container Virtualization
 
 * * *
 
