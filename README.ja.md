@@ -526,7 +526,7 @@ foo
 -   Dockerコンテナのログを理解して管理する
 -   Docker のネットワークを理解して管理する
 -   Dockerfile を使用してコンテナー イメージを作成する
--   レジストリ Docker イメージを使用して Docker レジストリを実行する
+-   Run a Docker registry using the registry Docker image
 
 #### 352.3 引用オブジェクト
 
@@ -604,7 +604,7 @@ Terraform
 
 #### 353.1 重要なコマンド
 
-##### foo
+##### ふー
 
 ```sh
 # examples
