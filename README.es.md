@@ -232,7 +232,7 @@ foo
 
 ### 351.2 Xen
 
-**Peso:**3
+**Peso:** 3
 
 **Descripción:**Los candidatos deben poder instalar, configurar, mantener, migrar y solucionar problemas de instalaciones de Xen. La atención se centra en Xen versión 4.x.
 
@@ -441,7 +441,7 @@ foo
 -   Comprender el principio de runc.
 -   Comprender el principio de CRI-O y contenedores.
 -   Conocimiento del tiempo de ejecución de OCI y de las especificaciones de imagen.
--   Conocimiento de la interfaz de ejecución de contenedores (CRI) de Kubernetes
+-   Awareness of the Kubernetes Container Runtime Interface (CRI)
 -   Conciencia de podman, buildah y skopeo.
 -   Conocimiento de otros enfoques de virtualización de contenedores en Linux y otros sistemas operativos libres, como rkt, OpenVZ, systemd-nspawn o BSD Jails.
 
@@ -457,7 +457,7 @@ capsh
 /proc/[0-9]+/status
 ```
 
-#### 352.1 Comandos importantes
+#### 352.1 Important Commands
 
 ##### foo
 
@@ -523,7 +523,7 @@ foo
 -   Comprender la arquitectura y los componentes de Docker.
 -   Administre contenedores Docker utilizando imágenes de un registro de Docker
 -   Comprender y administrar imágenes y volúmenes para contenedores Docker
--   Comprender y gestionar el registro de contenedores Docker
+-   Understand and manage logging for Docker containers
 -   Comprender y administrar redes para Docker
 -   Utilice Dockerfiles para crear imágenes de contenedores
 -   Ejecute un registro de Docker utilizando la imagen de Docker del registro
@@ -657,7 +657,7 @@ packer
 **Peso:**3
 
 **Descripción:**Los candidatos deberían poder utilizar cloud-init para configurar máquinas virtuales creadas a partir de imágenes estandarizadas. Esto incluye ajustar las máquinas virtuales para que coincidan con sus recursos de hardware disponibles, específicamente, espacio en disco y volúmenes.  
-Además, los candidatos deberían poder configurar instancias para permitir inicios de sesión SSH seguros e instalar un conjunto específico de paquetes de software.  
+Additionally, candidates should be able to configure instances to allow secure SSH logins and install a specific set of software packages.  
 Además, los candidatos deberían poder crear nuevas imágenes del sistema con soporte de inicio en la nube.
 
 **Áreas de conocimiento clave:**
