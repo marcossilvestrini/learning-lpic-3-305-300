@@ -194,7 +194,7 @@ man COMMAND
 **Áreas de conocimiento clave:**
 
 -   Comprender la terminología de virtualización
--   Understand the pros and cons of virtualization
+-   Comprender los pros y los contras de la virtualización
 -   Comprender las diversas variaciones de hipervisores y monitores de máquinas virtuales
 -   Comprender los aspectos principales de la migración de máquinas físicas a virtuales
 -   Comprender los aspectos principales de la migración de máquinas virtuales entre sistemas host
@@ -424,7 +424,7 @@ foo
 
 <a name="topic-352.1"></a>
 
-### 352.1 Conceptos de virtualización de contenedores
+### 352.1  Container Virtualization Concepts
 
 **Peso:**7
 
