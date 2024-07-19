@@ -197,7 +197,7 @@ man COMMAND
 -   Entenda os prós e os contras da virtualização
 -   Compreender as diversas variações de hipervisores e monitores de máquinas virtuais
 -   Entenda os principais aspectos da migração de máquinas físicas para virtuais
--   Compreenda os principais aspectos da migração de máquinas virtuais entre sistemas host
+-   Compreender os principais aspectos da migração de máquinas virtuais entre sistemas host
 -   Compreenda os recursos e as implicações da virtualização para uma máquina virtual, como captura instantânea, pausa, clonagem e limites de recursos
 -   Conhecimento de oVirt, Proxmox, systemd-machined e VirtualBox
 -   Conscientização do Open vSwitch
@@ -441,7 +441,7 @@ foo
 -   Entenda o princípio do runc
 -   Entenda o princípio do CRI-O e do containerd
 -   Conhecimento do tempo de execução do OCI e das especificações de imagem
--   Conhecimento da interface de tempo de execução de contêiner (CRI) do Kubernetes
+-   Conhecimento da Interface de Tempo de Execução de Contêiner (CRI) do Kubernetes
 -   Consciência de podman, buildah e skopeo
 -   Conhecimento de outras abordagens de virtualização de contêineres no Linux e outros sistemas operacionais livres, como rkt, OpenVZ, systemd-nspawn ou BSD Jails
 
@@ -516,7 +516,7 @@ foo
 
 **Peso:**9
 
-**Descrição:**O candidato deve ser capaz de gerenciar nós Docker e contêineres Docker. Isso inclui compreender a arquitetura do Docker, bem como compreender como o Docker interage com o sistema Linux do nó.
+**Description:**O candidato deve ser capaz de gerenciar nós Docker e contêineres Docker. Isso inclui compreender a arquitetura do Docker, bem como compreender como o Docker interage com o sistema Linux do nó.
 
 **Principais áreas de conhecimento:**
 
@@ -564,7 +564,7 @@ Dockerfile
 
 -   Entenda a relevância da orquestração de contêineres
 -   Entenda os principais conceitos do Docker Compose e do Docker Swarm
--   Compreender os principais conceitos de Kubernetes e Helm
+-   Compreenda os principais conceitos de Kubernetes e Helm
 -   Conscientização sobre OpenShift, Rancher e Mesosphere DC/OS
 
 <p align="right">(<a href="#topic-352.4">back to sub topic 352.4</a>)</p>
@@ -781,7 +781,7 @@ Link do projeto:<https://github.com/marcossilvestrini/learning-lpic-3-305-300>
 -   [Padrão de hierarquia do sistema de arquivos](https://en.wikipedia.org/wiki/Filesystem_Hierarchy_Standard)
 -   [Estrutura de hierarquia de arquivos](https://refspecs.linuxfoundation.org/FHS_3.0/fhs-3.0.pdf)
 -   [FSF](https://www.fsf.org)
--   [Diretório de Software Gratuito](https://directory.fsf.org/wiki/Free_Software_Directory:Free_software_replacements)
+-   [Diretório de software gratuito](https://directory.fsf.org/wiki/Free_Software_Directory:Free_software_replacements)
 -   [Software grátis](https://www.gnu.org/philosophy/free-sw.html)
 -   [Copyleft](https://www.gnu.org/licenses/copyleft.en.html)
 -   [GPL](https://www.gnu.org/licenses/quick-guide-gplv3.html)
