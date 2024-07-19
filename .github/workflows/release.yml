@@ -5,6 +5,9 @@ on:
     tags:
       - 'v*'
 
+permissions:
+  contents: write  # Permissões necessárias para criar releases
+
 jobs:
   build:
     name: Create Release
