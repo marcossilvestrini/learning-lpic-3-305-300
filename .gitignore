@@ -5,11 +5,13 @@
 **/*.vdi
 
 #security
-**/authorized_keys
-**/*.pub
-**/*.ppk
-**/*pk_centos
-**/*private*
+!security/README.md
+security/
+# **/authorized_keys
+# **/*.pub
+# **/*.ppk
+# **/*pk_centos
+# **/*private*
 
 #Linux kernel
 **/Kernel
