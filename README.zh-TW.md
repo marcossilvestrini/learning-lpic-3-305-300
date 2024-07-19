@@ -328,7 +328,7 @@ ip link show
 
 **關鍵知識領域：**
 
--   理解libvirt的架構
+-   了解libvirt的架構
 -   管理 libvirt 連線和節點
 -   建立和管理 QEMU 和 Xen 網域，包括快照
 -   管理和分析域的資源消耗
@@ -434,7 +434,7 @@ foo
 
 -   了解系統和應用程式容器的概念
 -   理解並分析內核命名空間
--   Understand and analyze control groups
+-   了解並分析對照組
 -   了解並分析能力
 -   了解 seccomp、SELinux 和 AppArmor 在容器虛擬化中的作用
 -   了解 LXC 和 Docker 如何利用命名空間、cgroup、功能、seccomp 和 MAC
@@ -809,7 +809,7 @@ Vagrantfile
 -   [常用表達](https://www.gnu.org/software/grep/manual/html_node/Regular-Expressions.html)
 -   [列出 Linux 發行版](https://en.wikipedia.org/wiki/List_of_Linux_distributions)
 -   [發行表](https://distrowatch.com/)
--   [比較 Linux 發行版](https://en.wikipedia.org/wiki/Comparison_of_Linux_distributions)
+-   [Linux 發行版比較](https://en.wikipedia.org/wiki/Comparison_of_Linux_distributions)
 -   [下載包](https://pkgs.org/)
 -   [安裝包](https://installati.one/)
 -   [指導安裝包](https://installati.one/)
