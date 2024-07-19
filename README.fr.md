@@ -418,7 +418,7 @@ foo
 
 <a name="topic-352"></a>
 
-## Sujet 352 : Virtualisation des conteneurs
+## Sujet 352 : Virtualisation des conteneurs
 
 * * *
 
@@ -521,7 +521,7 @@ foo
 **Domaines de connaissances clés :**
 
 -   Comprendre l'architecture et les composants de Docker
--   Gérer les conteneurs Docker à l'aide d'images provenant d'un registre Docker
+-   Gérer les conteneurs Docker à l'aide d'images d'un registre Docker
 -   Comprendre et gérer les images et les volumes pour les conteneurs Docker
 -   Comprendre et gérer la journalisation pour les conteneurs Docker
 -   Comprendre et gérer la mise en réseau pour Docker
@@ -583,7 +583,7 @@ Dockerfile
 
 ### 353.1 Outils de gestion du cloud
 
-**Poids:**2
+**Poids:** 2
 
 **Description:**Les candidats doivent comprendre les offres courantes dans les cloud publics et posséder une connaissance de base des fonctionnalités des outils de gestion cloud couramment disponibles.
 
@@ -770,7 +770,7 @@ Lien du projet :<https://github.com/marcossilvestrini/learning-lpic-3-305-300>
 -   [Compilateur GCC](https://gcc.gnu.org/wiki/History)
 -   [GNUTR](https://www.gnu.org/software/tar/)
 -   [Marque GNU](https://www.gnu.org/software/make/)
--   [GNU-Emacs](https://en.wikipedia.org/wiki/Emacs)
+-   [GNU Emacs](https://en.wikipedia.org/wiki/Emacs)
 -   [Paquets GNU](https://www.gnu.org/software/)
 -   [Collection GNU/Linux](https://directory.fsf.org/wiki/Collection:GNU/Linux)
 -   [Chargeur de démarrage GNU Grub](https://www.gnu.org/software/grub/)
@@ -803,7 +803,7 @@ Lien du projet :<https://github.com/marcossilvestrini/learning-lpic-3-305-300>
 -   [Bourne à nouveau Shell](https://www.gnu.org/software/bash/manual/)
 -   [Case](https://bash.cyberciti.biz/guide/Shebang)
 -   [Variables d'environnement](https://linuxize.com/post/how-to-set-and-list-environment-variables-in-linux/)
--   [GNU Globbing](https://man7.org/linux/man-pages/man7/glob.7.html)
+-   [Globulisation GNU](https://man7.org/linux/man-pages/man7/glob.7.html)
 -   [Globulation](https://linuxhint.com/bash_globbing_tutorial/)
 -   [Citation](https://www.gnu.org/software/bash/manual/html_node/Quoting.html)
 -   [Expressions régulières](https://www.gnu.org/software/grep/manual/html_node/Regular-Expressions.html)
