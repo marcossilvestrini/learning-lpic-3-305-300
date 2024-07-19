@@ -833,7 +833,7 @@ Lien du projet :<https://github.com/marcossilvestrini/learning-lpic-3-305-300>
 -   [Codes d'état HTTP](https://en.wikipedia.org/wiki/List_of_HTTP_status_codes)
 -   [Chiffres forts pour Apache, nginx et Lighttpd](https://cipherlist.eu/)
 -   [Tutoriels SSL](https://www.golinuxcloud.com/blog/)
--   [SSL Config Mozilla](https://ssl-config.mozilla.org/)
+-   [Configuration SSL Mozilla](https://ssl-config.mozilla.org/)
 -   [Objectifs LPIC-3 305-300](https://www.lpi.org/our-certifications/exam-305-objectives/)
 -   [Wiki LPIC-3 305-300](https://wiki.lpi.org/wiki/LPIC-305_Objectives_V3.0)
 -   [Matériel d'apprentissage LPIC-3 305-300](https://cursos.linuxsemfronteiras.com.br/courses/preparatorio-para-certificacao-lpic-3-305/)
