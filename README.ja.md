@@ -604,7 +604,7 @@ Terraform
 
 #### 353.1 重要なコマンド
 
-##### ふー
+##### foo
 
 ```sh
 # examples
