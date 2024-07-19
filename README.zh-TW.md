@@ -102,8 +102,7 @@
 
 ## 入門
 
-這是一個範例，說明如何在本地設定項目。
-若要啟動並執行本機副本，請按照以下簡單的範例步驟操作。
+要開始學習，請參閱上面的文件。
 
 <a name="prerequisites"></a>
 
@@ -526,7 +525,7 @@ foo
 -   了解和管理 Docker 容器的映像和磁碟區
 -   了解並管理 Docker 容器的日誌記錄
 -   了解並管理 Docker 網路
--   使用 Dockerfile 建立容器映像
+-   Use Dockerfiles to create container images
 -   使用註冊表 Docker 映像運行 Docker 註冊表
 
 #### 352.3 引用的對象
@@ -584,7 +583,7 @@ Dockerfile
 
 ### 353.1 雲端管理工具
 
-**重量：**2
+**重量：** 2
 
 **描述：**考生應了解公有雲中的常見產品，並具有常用雲端管理工具的基本功能知識。
 
@@ -789,7 +788,7 @@ Vagrantfile
 -   [GNU 較寬鬆的通用公共許可證](https://www.gnu.org/licenses/lgpl-3.0.html)
 -   [BSD](https://opensource.org/licenses/BSD-3-Clause)
 -   [開源倡議](https://opensource.org/)
--   [創作共用](https://creativecommons.org/)
+-   [Creative Commons](https://creativecommons.org/)
 -   [執照長期支持](https://en.wikipedia.org/wiki/Long-term_support)
 -   [Debian 自由軟體指南](https://www.debian.org/social_contract#guidelines)
 -   [X11組織](https://www.x.org/wiki/)
@@ -827,7 +826,7 @@ Vagrantfile
 -   [綁定](https://www.isc.org/bind/)
 -   [綁定日誌記錄](https://www.zytrax.com/books/dns/ch7/logging.html)
 -   [DNS 記錄類型列表](https://en.wikipedia.org/wiki/List_of_DNS_record_types)
--   [DNS 記錄類型列表](https://en.wikipedia.org/wiki/List_of_DNS_record_types)
+-   [List of DNS record types](https://en.wikipedia.org/wiki/List_of_DNS_record_types)
 -   [W3科技](https://w3techs.com/)
 -   [阿帕契](https://www.apache.org/)
 -   [阿帕契指令][def]
