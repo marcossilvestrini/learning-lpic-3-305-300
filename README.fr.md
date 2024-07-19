@@ -102,8 +102,7 @@
 
 ## Commencer
 
-Ceci est un exemple de la façon dont vous pouvez donner des instructions sur la mise en place de votre projet localement.
-Pour obtenir une copie locale opérationnelle, suivez ces exemples d’étapes simples.
+Pour commencer l'apprentissage, consultez la documentation ci-dessus.
 
 <a name="prerequisites"></a>
 
@@ -826,7 +825,7 @@ Lien du projet :<https://github.com/marcossilvestrini/learning-lpic-3-305-300>
 -   [Compilez votre noyau](https://wiki.linuxquestions.org/wiki/How_to_build_and_install_your_own_Linux_kernel)
 -   [Lier](https://www.isc.org/bind/)
 -   [Journalisation de liaison](https://www.zytrax.com/books/dns/ch7/logging.html)
--   [List of DNS record types](https://en.wikipedia.org/wiki/List_of_DNS_record_types)
+-   [Liste des types d'enregistrements DNS](https://en.wikipedia.org/wiki/List_of_DNS_record_types)
 -   [Liste des types d'enregistrements DNS](https://en.wikipedia.org/wiki/List_of_DNS_record_types)
 -   [W3Techs](https://w3techs.com/)
 -   [Apache](https://www.apache.org/)
