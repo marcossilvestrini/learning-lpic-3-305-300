@@ -834,7 +834,7 @@ Lien du projet :<https://github.com/marcossilvestrini/learning-lpic-3-305-300>
 -   [Chiffres forts pour Apache, nginx et Lighttpd](https://cipherlist.eu/)
 -   [Tutoriels SSL](https://www.golinuxcloud.com/blog/)
 -   [Configuration SSL Mozilla](https://ssl-config.mozilla.org/)
--   [Objectifs LPIC-3 305-300](https://www.lpi.org/our-certifications/exam-305-objectives/)
+-   [LPIC-3 305-300 Objectives](https://www.lpi.org/our-certifications/exam-305-objectives/)
 -   [Wiki LPIC-3 305-300](https://wiki.lpi.org/wiki/LPIC-305_Objectives_V3.0)
 -   [Matériel d'apprentissage LPIC-3 305-300](https://cursos.linuxsemfronteiras.com.br/courses/preparatorio-para-certificacao-lpic-3-305/)
 -   [Examen simulé LPIC-3 305-300 par ITexams](https://www.itexams.com/info/305-300)
