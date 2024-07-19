@@ -438,7 +438,7 @@ foo
 -   Comprendre et analyser les capacités
 -   Comprendre le rôle de seccomp, SELinux et AppArmor pour la virtualisation des conteneurs
 -   Comprendre comment LXC et Docker exploitent les espaces de noms, les groupes de contrôle, les capacités, seccomp et MAC
--   Comprendre le principe du runc
+-   Understand the principle of runc
 -   Comprendre le principe du CRI-O et de containersd
 -   Connaissance du runtime OCI et des spécifications des images
 -   Connaissance de l'interface d'exécution de conteneur Kubernetes (CRI)
