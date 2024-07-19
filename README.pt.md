@@ -197,7 +197,7 @@ man COMMAND
 -   Entenda os prós e os contras da virtualização
 -   Compreender as diversas variações de hipervisores e monitores de máquinas virtuais
 -   Entenda os principais aspectos da migração de máquinas físicas para virtuais
--   Compreenda os principais aspectos da migração de máquinas virtuais entre sistemas host
+-   Compreender os principais aspectos da migração de máquinas virtuais entre sistemas host
 -   Compreenda os recursos e as implicações da virtualização para uma máquina virtual, como captura instantânea, pausa, clonagem e limites de recursos
 -   Conhecimento de oVirt, Proxmox, systemd-machined e VirtualBox
 -   Conscientização do Open vSwitch
@@ -441,7 +441,7 @@ foo
 -   Entenda o princípio do runc
 -   Entenda o princípio do CRI-O e do containerd
 -   Conhecimento do tempo de execução do OCI e das especificações de imagem
--   Conhecimento da interface de tempo de execução de contêiner (CRI) do Kubernetes
+-   Conhecimento da Interface de Tempo de Execução de Contêiner (CRI) do Kubernetes
 -   Consciência de podman, buildah e skopeo
 -   Conhecimento de outras abordagens de virtualização de contêineres no Linux e outros sistemas operacionais livres, como rkt, OpenVZ, systemd-nspawn ou BSD Jails
 
@@ -564,7 +564,7 @@ Dockerfile
 
 -   Entenda a relevância da orquestração de contêineres
 -   Entenda os principais conceitos do Docker Compose e do Docker Swarm
--   Compreender os principais conceitos de Kubernetes e Helm
+-   Compreenda os principais conceitos de Kubernetes e Helm
 -   Conscientização sobre OpenShift, Rancher e Mesosphere DC/OS
 
 <p align="right">(<a href="#topic-352.4">back to sub topic 352.4</a>)</p>
@@ -658,7 +658,7 @@ packer
 
 **Descrição:**Os candidatos devem ser capazes de usar o cloud-init para configurar máquinas virtuais criadas a partir de imagens padronizadas. Isso inclui ajustar as máquinas virtuais para corresponder aos recursos de hardware disponíveis, especificamente espaço em disco e volumes.  
 Além disso, os candidatos devem ser capazes de configurar instâncias para permitir logins SSH seguros e instalar um conjunto específico de pacotes de software.  
-Furthermore, candidates should be able to create new system images with cloud-init support.
+Além disso, os candidatos devem ser capazes de criar novas imagens de sistema com suporte para cloud-init.
 
 **Principais áreas de conhecimento:**
 
@@ -693,7 +693,7 @@ user-data
 
 ### 353,4 Vagabundo
 
-**Peso:** 3
+**Peso:**3
 
 **Descrição:**O candidato deverá ser capaz de usar o Vagrant para gerenciar máquinas virtuais, incluindo o provisionamento da máquina virtual.
 
@@ -781,7 +781,7 @@ Link do projeto:<https://github.com/marcossilvestrini/learning-lpic-3-305-300>
 -   [Padrão de hierarquia do sistema de arquivos](https://en.wikipedia.org/wiki/Filesystem_Hierarchy_Standard)
 -   [Estrutura de hierarquia de arquivos](https://refspecs.linuxfoundation.org/FHS_3.0/fhs-3.0.pdf)
 -   [FSF](https://www.fsf.org)
--   [Diretório de Software Gratuito](https://directory.fsf.org/wiki/Free_Software_Directory:Free_software_replacements)
+-   [Diretório de software gratuito](https://directory.fsf.org/wiki/Free_Software_Directory:Free_software_replacements)
 -   [Software grátis](https://www.gnu.org/philosophy/free-sw.html)
 -   [Copyleft](https://www.gnu.org/licenses/copyleft.en.html)
 -   [GPL](https://www.gnu.org/licenses/quick-guide-gplv3.html)
