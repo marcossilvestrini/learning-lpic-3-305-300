@@ -8,7 +8,7 @@
 
 * * *
 
-# 學習 LPIC-3 305-300
+# LEARNING LPIC-3 305-300
 
 ![LPIC3-305-300](Images/lpic3-305-300.jpg)
 
@@ -89,7 +89,7 @@
 > 將涵蓋一些 GNULinux 發行版，例如 Debian 和 RPM\\
 > 也將涵蓋一些軟體包的安裝和配置\\
 > 透過這樣做，您可以讓整個社區有機會從您的更改中受益。
-> 存取原始碼是實現此目的的先決條件。
+> 獲得原始程式碼是實現此目的的先決條件。
 > 使用 vagrant for up 機器並執行本文的實驗和練習內容。
 > 我已經在 Vagrant 資料夾中發布了一個 Vagrantfile ，其中包含必要的內容\\
 > 供您上傳學習環境
@@ -154,9 +154,9 @@ git clone https://github.com/marcossilvestrini/learning-lpic-3-305-300.git
 ## 四項基本自由
 
 > 0.為任何目的隨意運行程序的自由（自由 0）。
-> 1.自由地研究程序如何運作並對其進行更改\\
+> 1.自由地研究程式如何運作並對其進行更改\\
 > 你可以隨心所欲地進行計算（自由 1）。
-> 存取原始碼是實現此目的的先決條件。
+> 獲得原始程式碼是實現此目的的先決條件。
 > 2.重新分發副本的自由，以便您可以幫助他人（自由2）。
 > 3.將修改版本的副本分發給其他人的自由（自由3）。
 
@@ -328,7 +328,7 @@ ip link show
 
 **關鍵知識領域：**
 
--   理解libvirt的架構
+-   了解libvirt的架構
 -   管理 libvirt 連線和節點
 -   建立和管理 QEMU 和 Xen 網域，包括快照
 -   管理和分析域的資源消耗
@@ -837,7 +837,7 @@ Vagrantfile
 -   [LPIC-3 305-300 目標](https://www.lpi.org/our-certifications/exam-305-objectives/)
 -   [LPIC-3 305-300 維基](https://wiki.lpi.org/wiki/LPIC-305_Objectives_V3.0)
 -   [LPIC-3 305-300 學習教材](https://cursos.linuxsemfronteiras.com.br/courses/preparatorio-para-certificacao-lpic-3-305/)
--   [ITexams 的 LPIC-3 305-300 模擬考試](https://www.itexams.com/info/305-300)
+-   [LPIC-3 305-300 ITexams 模擬考試](https://www.itexams.com/info/305-300)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
