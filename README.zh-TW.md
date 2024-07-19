@@ -1,6 +1,6 @@
 <h1><a name="readme-top"></a></h1>
 
-[![Create Release](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/release.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/release.yml)[![Translate](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/trsnlate.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/translate.yml)[![Deploy GitHub Pages](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/jekyll-gh-pages.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/jekyll-gh-pages.yml)[![Generate HTML and PDF](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/generate-html.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/generate-html.yml)[![PSScriptAnalyzer](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/powershell.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/powershell.yml)[![Slack Notification](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/slack.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/slack.yml)
+[![Create Release](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/release.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/release.yml)[![Translate README](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/translate.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/translate.yml)[![Deploy GitHub Pages](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/jekyll-gh-pages.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/jekyll-gh-pages.yml)[![Generate HTML and PDF](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/generate-html.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/generate-html.yml)[![PSScriptAnalyzer](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/powershell.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/powershell.yml)[![Slack Notification](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/slack.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/slack.yml)
 
 * * *
 
@@ -89,7 +89,7 @@
 > 將涵蓋一些 GNULinux 發行版，例如 Debian 和 RPM\\
 > 也將涵蓋一些軟體包的安裝和配置\\
 > 透過這樣做，您可以讓整個社區有機會從您的更改中受益。
-> 獲得原始程式碼是實現此目的的先決條件。
+> 存取原始碼是實現此目的的先決條件。
 > 使用 vagrant for up 機器並執行本文的實驗和練習內容。
 > 我已經在 Vagrant 資料夾中發布了一個 Vagrantfile ，其中包含必要的內容\\
 > 供您上傳學習環境
@@ -154,9 +154,9 @@ git clone https://github.com/marcossilvestrini/learning-lpic-3-305-300.git
 ## 四項基本自由
 
 > 0.為任何目的隨意運行程序的自由（自由 0）。
-> 1.自由地研究程式如何運作並對其進行更改\\
+> 1.自由地研究程序如何運作並對其進行更改\\
 > 你可以隨心所欲地進行計算（自由 1）。
-> 獲得原始程式碼是實現此目的的先決條件。
+> 存取原始碼是實現此目的的先決條件。
 > 2.重新分發副本的自由，以便您可以幫助他人（自由2）。
 > 3.將修改版本的副本分發給其他人的自由（自由3）。
 
@@ -741,7 +741,7 @@ Vagrantfile
 2.  建立您的功能分支（`git checkout -b feature/AmazingFeature`)
 3.  提交您的更改（`git commit -m 'Add some AmazingFeature'`)
 4.  推送到分支（`git push origin feature/AmazingFeature`)
-5.  Open a Pull Request
+5.  打開拉取請求
 
 * * *
 
@@ -809,7 +809,7 @@ Vagrantfile
 -   [常用表達](https://www.gnu.org/software/grep/manual/html_node/Regular-Expressions.html)
 -   [列出 Linux 發行版](https://en.wikipedia.org/wiki/List_of_Linux_distributions)
 -   [發行表](https://distrowatch.com/)
--   [比較 Linux 發行版](https://en.wikipedia.org/wiki/Comparison_of_Linux_distributions)
+-   [Linux 發行版比較](https://en.wikipedia.org/wiki/Comparison_of_Linux_distributions)
 -   [下載包](https://pkgs.org/)
 -   [安裝包](https://installati.one/)
 -   [指導安裝包](https://installati.one/)
@@ -837,7 +837,7 @@ Vagrantfile
 -   [LPIC-3 305-300 目標](https://www.lpi.org/our-certifications/exam-305-objectives/)
 -   [LPIC-3 305-300 維基](https://wiki.lpi.org/wiki/LPIC-305_Objectives_V3.0)
 -   [LPIC-3 305-300 學習教材](https://cursos.linuxsemfronteiras.com.br/courses/preparatorio-para-certificacao-lpic-3-305/)
--   [LPIC-3 305-300 ITexams 模擬考試](https://www.itexams.com/info/305-300)
+-   [ITexams 的 LPIC-3 305-300 模擬考試](https://www.itexams.com/info/305-300)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
