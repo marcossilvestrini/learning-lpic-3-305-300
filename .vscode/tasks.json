@@ -1,0 +1,39 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Git pull origin main",
+      "type": "shell",
+      "command": "git pull origin main",
+      "windows": {
+        "command": [
+          "git pull origin main"
+        ]
+      },
+      "presentation": {
+        "reveal": "always",
+        "panel": "new"
+      },
+      "runOptions": {
+        "runOn": "folderOpen"
+      }
+    },
+    {
+      "label": "Cleanup slack channel",
+      "type": "shell",
+      "command": "python -u ../slack/clean_app-github.py",
+      "windows": {
+        "command": [
+          "python -u slack/clean_app-github.py"          
+        ]
+      },
+      "presentation": {
+        "reveal": "always",
+        "panel": "new"
+      },
+      "runOptions": {
+        "runOn": "folderOpen"
+      }
+    }
+  ]
+}

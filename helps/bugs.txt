@@ -1,0 +1,27 @@
+Fix vagrant ssh vagrant@127.0.0.1: Permission denied (publickey) in windows powershell
+
+Option 1
+
+The problem can be that the sshClient windows feature intercepting the operation,
+try opening powershell as admin and run the following:
+
+Remove-WindowsCapability -Online -Name OpenSSH.Client0.0.1.0
+
+if that doesn't solve then install sshclient again:
+
+Get-WindowsCapability -Online | ? Name -like 'OpenSSH*'
+
+Option 2
+
+$Env:VAGRANT_PREFER_SYSTEM_BIN += 0
+
+------------------------------------------------
+Fix Error Vagrant with Kasperky Total Security:
+URL: ["https://vagrantcloud.com/debian/buster64"]
+Error: schannel: next InitializeSecurityContext failed: Unknown error (0x80092012)- The revocation function was unable to check revocation for the certificate.
+
+Fix
+run this command:
+vagrant box add --insecure debian/buster64
+After, run vagrant up
+------------------------------------------------

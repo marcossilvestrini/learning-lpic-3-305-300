@@ -1,0 +1,26 @@
+#ignore files general
+**/*.log
+**/*.vagrant
+*workspace.code-workspace
+**/*.vdi
+
+#security
+**/authorized_keys
+**/*.pub
+**/*.ppk
+**/*pk_centos
+**/*private*
+
+#Linux kernel
+**/Kernel
+
+#Apps
+*.exe
+
+#Bind
+Vagrant/Bind/test/*
+!Vagrant/Bind/test/.gitkeep
+
+#Slack
+Slack/silvestrini.py
+*__pycache__*
