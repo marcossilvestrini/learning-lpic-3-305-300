@@ -181,6 +181,8 @@ man COMMAND
 
 ## 主題 351：完全虛擬化
 
+![virtualization](images/virtualization-351.png)
+
 * * *
 
 <a name="topic-351.1"></a>
@@ -809,7 +811,7 @@ Vagrantfile
 -   [常用表達](https://www.gnu.org/software/grep/manual/html_node/Regular-Expressions.html)
 -   [列出 Linux 發行版](https://en.wikipedia.org/wiki/List_of_Linux_distributions)
 -   [發行表](https://distrowatch.com/)
--   [Linux 發行版比較](https://en.wikipedia.org/wiki/Comparison_of_Linux_distributions)
+-   [比較 Linux 發行版](https://en.wikipedia.org/wiki/Comparison_of_Linux_distributions)
 -   [下載包](https://pkgs.org/)
 -   [安裝包](https://installati.one/)
 -   [指導安裝包](https://installati.one/)
@@ -834,6 +836,13 @@ Vagrantfile
 -   [適用於 Apache、nginx 和 Lighttpd 的強密碼](https://cipherlist.eu/)
 -   [SSL 教程](https://www.golinuxcloud.com/blog/)
 -   [SSL 設定 Mozilla](https://ssl-config.mozilla.org/)
+-   虛擬化定義
+    -   [紅帽](https://www.redhat.com/pt-br/topics/virtualization/)
+    -   [AWS](https://aws.amazon.com/pt/what-is/virtualization/)
+    -   [國際商業機器公司](https://www.ibm.com/topics/virtualization)
+    -   [OpenSource.com](https://opensource.com/resources/virtualization)
+-   [維基 Xen 項目](https://wiki.xenproject.org/wiki/Book/HelloXenProject/1-Chapter)
+-   LPI 部落格：Xen 虛擬化與雲端運算 #01：簡介（<https://www.lpi.org/pt-br/blog/2020/10/01/xen-virtualization-and-cloud-computing-01-introduction/>)
 -   [LPIC-3 305-300 目標](https://www.lpi.org/our-certifications/exam-305-objectives/)
 -   [LPIC-3 305-300 維基](https://wiki.lpi.org/wiki/LPIC-305_Objectives_V3.0)
 -   [LPIC-3 305-300 學習教材](https://cursos.linuxsemfronteiras.com.br/courses/preparatorio-para-certificacao-lpic-3-305/)
