@@ -556,7 +556,7 @@ Dockerfile
 
 ### 352.4 Plateformes d'orchestration de conteneurs
 
-**Poids:**3
+**Poids:** 3
 
 **Description:**Les candidats doivent comprendre l'importance de l'orchestration des conteneurs et les concepts clés fournis par Docker Swarm et Kubernetes pour mettre en œuvre l'orchestration des conteneurs.
 
