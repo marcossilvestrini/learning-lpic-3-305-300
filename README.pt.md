@@ -1,8 +1,6 @@
 <h1><a name="readme-top"></a></h1>
 
-<!-- [![Create Release](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/release.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/release.yml) -->
-
-[![Translate README](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/translate.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/translate.yml)[![Deploy GitHub Pages](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/jekyll-gh-pages.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/jekyll-gh-pages.yml)[![Generate HTML and PDF](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/generate-html.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/generate-html.yml)[![PSScriptAnalyzer](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/powershell.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/powershell.yml)[![Slack Notification](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/slack.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/slack.yml)
+[![Create Release](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/release.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/release.yml)[![Translate README](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/translate.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/translate.yml)[![Deploy GitHub Pages](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/jekyll-gh-pages.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/jekyll-gh-pages.yml)[![Generate HTML and PDF](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/generate-html.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/generate-html.yml)[![PSScriptAnalyzer](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/powershell.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/powershell.yml)[![Slack Notification](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/slack.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/slack.yml)
 
 * * *
 
@@ -10,7 +8,7 @@
 
 * * *
 
-# LEARNING LPIC-3 305-300
+# APRENDIZAGEM LPIC-3 305-300
 
 ![LPIC3-305-300](Images/lpic3-305-300.jpg)
 
@@ -216,7 +214,7 @@ CPU flags
 Migration (P2V, V2V)
 ```
 
-#### 351.1 Important Commands
+#### 351.1 Comandos Importantes
 
 ##### foo
 
@@ -377,7 +375,7 @@ foo
 -   Compreenda os recursos de vários formatos de imagem de disco virtual, como imagens brutas, qcow2 e VMDK
 -   Gerencie imagens de disco de máquinas virtuais usando qemu-img
 -   Monte partições e acesse arquivos contidos em imagens de disco de máquinas virtuais usando libguestfish
--   Copie o conteúdo do disco físico para uma imagem de disco de máquina virtual
+-   Copy physical disk content to a virtual machine disk image
 -   Migrar conteúdo de disco entre vários formatos de imagem de disco de máquina virtual
 -   Conscientização do Formato de Virtualização Aberto (OVF)
 
@@ -440,7 +438,7 @@ foo
 -   Compreender e analisar capacidades
 -   Entenda a função do seccomp, SELinux e AppArmor para virtualização de contêineres
 -   Entenda como LXC e Docker aproveitam namespaces, cgroups, capacidades, seccomp e MAC
--   Understand the principle of runc
+-   Entenda o princípio do runc
 -   Entenda o princípio do CRI-O e do containerd
 -   Conhecimento do tempo de execução do OCI e das especificações de imagem
 -   Conhecimento da interface de tempo de execução de contêiner (CRI) do Kubernetes
@@ -526,7 +524,7 @@ foo
 -   Gerencie contêineres do Docker usando imagens de um registro do Docker
 -   Compreenda e gerencie imagens e volumes para contêineres Docker
 -   Compreenda e gerencie o registro em log para contêineres Docker
--   Understand and manage networking for Docker
+-   Compreenda e gerencie redes para Docker
 -   Use Dockerfiles para criar imagens de contêiner
 -   Execute um registro Docker usando a imagem Docker do registro
 
@@ -768,7 +766,7 @@ Link do projeto:<https://github.com/marcossilvestrini/learning-lpic-3-305-300>
 -   [Richard Stallman](http://www.stallman.org/)
 -   [Perguntas frequentes sobre GNU/Linux por Richard Stallman](https://www.gnu.org/gnu/gnu-linux-faq.html)
 -   [GNU](https://www.gnu.org/)
--   [GNU Operating System](https://www.gnu.org/gnu/thegnuproject.html)
+-   [Sistema operacional GNU](https://www.gnu.org/gnu/thegnuproject.html)
 -   [Compilador GCC](https://gcc.gnu.org/wiki/History)
 -   [GNUTR](https://www.gnu.org/software/tar/)
 -   [GNU Make](https://www.gnu.org/software/make/)
