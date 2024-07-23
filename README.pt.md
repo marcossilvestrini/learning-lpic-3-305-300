@@ -1,6 +1,8 @@
 <h1><a name="readme-top"></a></h1>
 
-[![Create Release](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/release.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/release.yml)[![Translate README](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/translate.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/translate.yml)[![Deploy GitHub Pages](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/jekyll-gh-pages.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/jekyll-gh-pages.yml)[![Generate HTML and PDF](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/generate-html.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/generate-html.yml)[![PSScriptAnalyzer](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/powershell.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/powershell.yml)[![Slack Notification](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/slack.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/slack.yml)
+<!-- [![Create Release](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/release.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/release.yml) -->
+
+[![Translate README](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/translate.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/translate.yml)[![Deploy GitHub Pages](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/jekyll-gh-pages.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/jekyll-gh-pages.yml)[![Generate HTML and PDF](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/generate-html.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/generate-html.yml)[![PSScriptAnalyzer](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/powershell.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/powershell.yml)[![Slack Notification](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/slack.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/slack.yml)
 
 * * *
 
@@ -8,7 +10,7 @@
 
 * * *
 
-# APRENDIZAGEM LPIC-3 305-300
+# LEARNING LPIC-3 305-300
 
 ![LPIC3-305-300](Images/lpic3-305-300.jpg)
 
@@ -88,7 +90,7 @@
 > e software livre\\
 > Algumas distribuições GNULinux como Debian e RPM serão abordadas\\
 > A instalação e configuração de alguns pacotes também serão abordadas\\
-> Ao fazer isso, você pode dar a toda a comunidade a chance de se beneficiar de suas alterações.\\
+> Ao fazer isso, você pode dar a toda a comunidade a oportunidade de se beneficiar de suas alterações.\\
 > O acesso ao código-fonte é uma pré-condição para isso.\\
 > Use o vagrant para atualizar máquinas, executar laboratórios e praticar o conteúdo deste artigo.\\
 > Publiquei na pasta Vagrant um Vagrantfile com o que é necessário\\
@@ -195,7 +197,7 @@ man COMMAND
 
 -   Entenda a terminologia de virtualização
 -   Entenda os prós e os contras da virtualização
--   Compreender as diversas variações de hipervisores e monitores de máquinas virtuais
+-   Compreenda as diversas variações de hipervisores e monitores de máquinas virtuais
 -   Entenda os principais aspectos da migração de máquinas físicas para virtuais
 -   Compreender os principais aspectos da migração de máquinas virtuais entre sistemas host
 -   Compreenda os recursos e as implicações da virtualização para uma máquina virtual, como captura instantânea, pausa, clonagem e limites de recursos
@@ -214,7 +216,7 @@ CPU flags
 Migration (P2V, V2V)
 ```
 
-#### 351.1 Comandos Importantes
+#### 351.1 Important Commands
 
 ##### foo
 
@@ -372,7 +374,7 @@ foo
 
 **Principais áreas de conhecimento:**
 
--   Compreenda os recursos de vários formatos de imagem de disco virtual, como imagens raw, qcow2 e VMDK
+-   Compreenda os recursos de vários formatos de imagem de disco virtual, como imagens brutas, qcow2 e VMDK
 -   Gerencie imagens de disco de máquinas virtuais usando qemu-img
 -   Monte partições e acesse arquivos contidos em imagens de disco de máquinas virtuais usando libguestfish
 -   Copie o conteúdo do disco físico para uma imagem de disco de máquina virtual
@@ -438,7 +440,7 @@ foo
 -   Compreender e analisar capacidades
 -   Entenda a função do seccomp, SELinux e AppArmor para virtualização de contêineres
 -   Entenda como LXC e Docker aproveitam namespaces, cgroups, capacidades, seccomp e MAC
--   Entenda o princípio do runc
+-   Understand the principle of runc
 -   Entenda o princípio do CRI-O e do containerd
 -   Conhecimento do tempo de execução do OCI e das especificações de imagem
 -   Conhecimento da interface de tempo de execução de contêiner (CRI) do Kubernetes
@@ -524,7 +526,7 @@ foo
 -   Gerencie contêineres do Docker usando imagens de um registro do Docker
 -   Compreenda e gerencie imagens e volumes para contêineres Docker
 -   Compreenda e gerencie o registro em log para contêineres Docker
--   Compreenda e gerencie redes para Docker
+-   Understand and manage networking for Docker
 -   Use Dockerfiles para criar imagens de contêiner
 -   Execute um registro Docker usando a imagem Docker do registro
 
@@ -663,7 +665,7 @@ Além disso, os candidatos devem ser capazes de criar novas imagens de sistema c
 **Principais áreas de conhecimento:**
 
 -   Compreender os recursos e conceitos do cloud-init, incluindo dados do usuário, inicialização e configuração do cloud-init
--   Use o cloud-init para criar, redimensionar e montar sistemas de arquivos, configurar contas de usuário, incluindo credenciais de login, como chaves SSH, e instalar pacotes de software do repositório da distribuição
+-   Use cloud-init para criar, redimensionar e montar sistemas de arquivos, configurar contas de usuário, incluindo credenciais de login, como chaves SSH e instalar pacotes de software do repositório da distribuição
 -   Integre o cloud-init às imagens do sistema
 -   Use a fonte de dados da unidade de configuração para teste
 
@@ -691,7 +693,7 @@ user-data
 
 <a name="topic-353.4"></a>
 
-### 353.4 Vagabundo
+### 353,4 Vagabundo
 
 **Peso:**3
 
@@ -766,7 +768,7 @@ Link do projeto:<https://github.com/marcossilvestrini/learning-lpic-3-305-300>
 -   [Richard Stallman](http://www.stallman.org/)
 -   [Perguntas frequentes sobre GNU/Linux por Richard Stallman](https://www.gnu.org/gnu/gnu-linux-faq.html)
 -   [GNU](https://www.gnu.org/)
--   [Sistema operacional GNU](https://www.gnu.org/gnu/thegnuproject.html)
+-   [GNU Operating System](https://www.gnu.org/gnu/thegnuproject.html)
 -   [Compilador GCC](https://gcc.gnu.org/wiki/History)
 -   [GNUTR](https://www.gnu.org/software/tar/)
 -   [GNU Make](https://www.gnu.org/software/make/)
