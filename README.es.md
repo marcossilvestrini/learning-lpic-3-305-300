@@ -181,6 +181,8 @@ man COMMAND
 
 ## Tema 351: Virtualización completa
 
+![virtualization](images/virtualization-351.png)
+
 * * *
 
 <a name="topic-351.1"></a>
@@ -197,7 +199,7 @@ man COMMAND
 -   Comprender los pros y los contras de la virtualización
 -   Comprender las diversas variaciones de hipervisores y monitores de máquinas virtuales
 -   Comprender los aspectos principales de la migración de máquinas físicas a virtuales
--   Comprender los aspectos principales de la migración de máquinas virtuales entre sistemas host
+-   Comprender los aspectos principales de la migración de máquinas virtuales entre sistemas host.
 -   Comprender las características y las implicaciones de la virtualización para una máquina virtual, como la creación de instantáneas, la pausa, la clonación y los límites de recursos.
 -   Conocimiento de oVirt, Proxmox, systemd-machined y VirtualBox
 -   Conocimiento de Open vSwitch
@@ -665,7 +667,7 @@ Además, los candidatos deberían poder crear nuevas imágenes del sistema con s
 -   Comprender las características y conceptos de cloud-init, incluidos los datos del usuario, la inicialización y la configuración de cloud-init.
 -   Utilice cloud-init para crear, cambiar el tamaño y montar sistemas de archivos, configurar cuentas de usuario, incluidas credenciales de inicio de sesión como claves SSH e instalar paquetes de software desde el repositorio de la distribución.
 -   Integre cloud-init en imágenes del sistema
--   Use config drive datasource for testing
+-   Utilice la fuente de datos de la unidad de configuración para realizar pruebas
 
 #### 353.3 Objetos citados
 
@@ -739,7 +741,7 @@ crear una solicitud de extracción. También puedes simplemente abrir un problem
 
 1.  Bifurcar el proyecto
 2.  Crea tu rama de funciones (`git checkout -b feature/AmazingFeature`)
-3.  Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+3.  Confirme sus cambios (`git commit -m 'Add some AmazingFeature'`)
 4.  Empujar a la rama (`git push origin feature/AmazingFeature`)
 5.  Abrir una solicitud de extracción
 
@@ -830,10 +832,17 @@ Enlace del proyecto:<https://github.com/marcossilvestrini/learning-lpic-3-305-30
 -   [W3Techs](https://w3techs.com/)
 -   [apache](https://www.apache.org/)
 -   [Directivas Apache][def]
--   [HTTP Status Codes](https://en.wikipedia.org/wiki/List_of_HTTP_status_codes)
+-   [Códigos de estado HTTP](https://en.wikipedia.org/wiki/List_of_HTTP_status_codes)
 -   [Cifrados fuertes para Apache, nginx y Lighttpd](https://cipherlist.eu/)
 -   [Tutoriales SSL](https://www.golinuxcloud.com/blog/)
 -   [Configuración SSL Mozilla](https://ssl-config.mozilla.org/)
+-   Definiciones de virtualización
+    -   [sombrero rojo](https://www.redhat.com/pt-br/topics/virtualization/)
+    -   [AWS](https://aws.amazon.com/pt/what-is/virtualization/)
+    -   [IBM](https://www.ibm.com/topics/virtualization)
+    -   [OpenSource.com](https://opensource.com/resources/virtualization)
+-   [Proyecto Wiki Xen](https://wiki.xenproject.org/wiki/Book/HelloXenProject/1-Chapter)
+-   Blog de LPI: Virtualización Xen y Computación en la Nube #01: Introducción(<https://www.lpi.org/pt-br/blog/2020/10/01/xen-virtualization-and-cloud-computing-01-introduction/>)
 -   [LPIC-3 305-300 Objetivos](https://www.lpi.org/our-certifications/exam-305-objectives/)
 -   [LPIC-3 305-300 Wiki](https://wiki.lpi.org/wiki/LPIC-305_Objectives_V3.0)
 -   [LPIC-3 305-300 Material de aprendizaje](https://cursos.linuxsemfronteiras.com.br/courses/preparatorio-para-certificacao-lpic-3-305/)
