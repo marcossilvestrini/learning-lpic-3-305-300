@@ -8,7 +8,7 @@
 
 * * *
 
-# LEARNING LPIC-3 305-300
+# APPRENTISSAGE LPIC-3 305-300
 
 ![LPIC3-305-300](Images/lpic3-305-300.jpg)
 
@@ -180,6 +180,8 @@ man COMMAND
 <a name="topic-351"></a>
 
 ## Sujet 351 : Virtualisation complète
+
+![virtualization](images/virtualization-351.png)
 
 * * *
 
@@ -516,7 +518,7 @@ foo
 
 **Poids:**9
 
-**Description:**Le candidat doit être capable de gérer les nœuds Docker et les conteneurs Docker. Cela inclut la compréhension de l’architecture de Docker ainsi que la compréhension de la manière dont Docker interagit avec le système Linux du nœud.
+**Description:**Le candidat doit être capable de gérer les nœuds Docker et les conteneurs Docker. Cela inclut la compréhension de l'architecture de Docker ainsi que la compréhension de la manière dont Docker interagit avec le système Linux du nœud.
 
 **Domaines de connaissances clés :**
 
@@ -793,7 +795,7 @@ Lien du projet :<https://github.com/marcossilvestrini/learning-lpic-3-305-300>
 -   [Directives du logiciel libre Debian](https://www.debian.org/social_contract#guidelines)
 -   [Organisation X11](https://www.x.org/wiki/)
 -   [Wayland](https://wayland.freedesktop.org/)
--   [GNU-GNOME](https://www.gnu.org/press/gnome-1.0.html)
+-   [GNU GNOME](https://www.gnu.org/press/gnome-1.0.html)
 -   [GNOME](https://www.gnome.org/)
 -   [XFCE](https://xfce.org/)
 -   [Plasma KDE](https://kde.org/plasma-desktop/)
@@ -834,9 +836,16 @@ Lien du projet :<https://github.com/marcossilvestrini/learning-lpic-3-305-300>
 -   [Chiffres forts pour Apache, nginx et Lighttpd](https://cipherlist.eu/)
 -   [Tutoriels SSL](https://www.golinuxcloud.com/blog/)
 -   [Configuration SSL Mozilla](https://ssl-config.mozilla.org/)
+-   Définitions de virtualisation
+    -   [chapeau rouge](https://www.redhat.com/pt-br/topics/virtualization/)
+    -   [AWS](https://aws.amazon.com/pt/what-is/virtualization/)
+    -   [IBM](https://www.ibm.com/topics/virtualization)
+    -   [OpenSource.com](https://opensource.com/resources/virtualization)
+-   [Wiki XenProjet](https://wiki.xenproject.org/wiki/Book/HelloXenProject/1-Chapter)
+-   Blog LPI : Virtualisation Xen et Cloud Computing #01 : Introduction (<https://www.lpi.org/pt-br/blog/2020/10/01/xen-virtualization-and-cloud-computing-01-introduction/>)
 -   [Objectifs LPIC-3 305-300](https://www.lpi.org/our-certifications/exam-305-objectives/)
 -   [Wiki LPIC-3 305-300](https://wiki.lpi.org/wiki/LPIC-305_Objectives_V3.0)
--   [Matériel d'apprentissage LPIC-3 305-300](https://cursos.linuxsemfronteiras.com.br/courses/preparatorio-para-certificacao-lpic-3-305/)
+-   [LPIC-3 305-300 Learning Material](https://cursos.linuxsemfronteiras.com.br/courses/preparatorio-para-certificacao-lpic-3-305/)
 -   [Examen simulé LPIC-3 305-300 par ITexams](https://www.itexams.com/info/305-300)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
