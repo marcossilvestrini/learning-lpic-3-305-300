@@ -113,7 +113,7 @@ y como instalarlos.
 
 -   git
 -   Caja virtual y extensión
--   Vagabundo
+-   Hashicorp Vagabundo
 
 <a name="installation"></a>
 
