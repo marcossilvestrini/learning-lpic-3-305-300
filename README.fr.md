@@ -113,7 +113,7 @@ et comment les installer.
 
 -   git
 -   Boîte virtuelle et extension
--   Vagabond
+-   Hashicorp Vagabond
 
 <a name="installation"></a>
 
@@ -428,7 +428,7 @@ foo
 
 ### 352.1 Concepts de virtualisation de conteneurs
 
-**Poids:**7
+**Poids :**7
 
 **Description:**Les candidats doivent comprendre le concept de virtualisation de conteneurs. Cela inclut la compréhension des composants Linux utilisés pour implémenter la virtualisation des conteneurs ainsi que l'utilisation des outils Linux standard pour dépanner ces composants.
 
@@ -845,7 +845,7 @@ Lien du projet :<https://github.com/marcossilvestrini/learning-lpic-3-305-300>
 -   Blog LPI : Virtualisation Xen et Cloud Computing #01 : Introduction (<https://www.lpi.org/pt-br/blog/2020/10/01/xen-virtualization-and-cloud-computing-01-introduction/>)
 -   [Objectifs LPIC-3 305-300](https://www.lpi.org/our-certifications/exam-305-objectives/)
 -   [Wiki LPIC-3 305-300](https://wiki.lpi.org/wiki/LPIC-305_Objectives_V3.0)
--   [LPIC-3 305-300 Learning Material](https://cursos.linuxsemfronteiras.com.br/courses/preparatorio-para-certificacao-lpic-3-305/)
+-   [Matériel d'apprentissage LPIC-3 305-300](https://cursos.linuxsemfronteiras.com.br/courses/preparatorio-para-certificacao-lpic-3-305/)
 -   [Examen simulé LPIC-3 305-300 par ITexams](https://www.itexams.com/info/305-300)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
