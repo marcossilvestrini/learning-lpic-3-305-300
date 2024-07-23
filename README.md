@@ -191,6 +191,8 @@ man COMMAND
 
 ## Topic 351: Full Virtualization
 
+![virtualization](images/virtualization-351.png)
+
 ---
 
 <a name="topic-351.1"></a>
@@ -846,6 +848,13 @@ Project Link: [https://github.com/marcossilvestrini/learning-lpic-3-305-300](htt
 * [Strong Ciphers for Apache, nginx and Lighttpd](https://cipherlist.eu/)
 * [SSL Tutorials](https://www.golinuxcloud.com/blog/)
 * [SSL Config Mozilla](https://ssl-config.mozilla.org/)
+* Virtualization Definitions
+  * [Red Hat](https://www.redhat.com/pt-br/topics/virtualization/)
+  * [AWS](https://aws.amazon.com/pt/what-is/virtualization/)
+  * [IBM](https://www.ibm.com/topics/virtualization)
+  * [OpenSource.com](https://opensource.com/resources/virtualization )
+* [Wiki XenProject](https://wiki.xenproject.org/wiki/Book/HelloXenProject/1-Chapter)
+* LPI Blog: Xen Virtualization and Cloud Computing #01: Introduction(https://www.lpi.org/pt-br/blog/2020/10/01/xen-virtualization-and-cloud-computing-01-introduction/)
 * [LPIC-3 305-300 Objectives](https://www.lpi.org/our-certifications/exam-305-objectives/)
 * [LPIC-3 305-300 Wiki](https://wiki.lpi.org/wiki/LPIC-305_Objectives_V3.0)
 * [LPIC-3 305-300 Learning Material](https://cursos.linuxsemfronteiras.com.br/courses/preparatorio-para-certificacao-lpic-3-305/)
