@@ -113,7 +113,7 @@
 
 -   ギット
 -   Virtual Box と拡張機能
--   浮浪者
+-   ハシコープ・ベイグラント
 
 <a name="installation"></a>
 
@@ -665,7 +665,7 @@ packer
 **主要な知識領域:**
 
 -   ユーザーデータ、cloud-init の初期化と構成など、cloud-init の機能と概念を理解する
--   Cloud-init を使用して、ファイル システムの作成、サイズ変更、マウントを行い、SSH キーなどのログイン資格情報を含むユーザー アカウントを構成し、ディストリビューションのリポジトリからソフトウェア パッケージをインストールします。
+-   Use cloud-init to create, resize and mount file systems, configure user accounts, including login credentials such as SSH keys and install software packages from the distribution’s repository
 -   Cloud-init をシステム イメージに統合する
 -   テストには構成ドライブ データソースを使用する
 
