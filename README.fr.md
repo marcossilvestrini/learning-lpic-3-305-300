@@ -199,7 +199,7 @@ man COMMAND
 -   Comprendre les principaux aspects de la migration des machines physiques vers les machines virtuelles
 -   Comprendre les principaux aspects de la migration des machines virtuelles entre les systèmes hôtes
 -   Comprendre les fonctionnalités et les implications de la virtualisation pour une machine virtuelle, telles que la prise d'instantanés, la pause, le clonage et les limites de ressources
--   Connaissance de oVirt, Proxmox, systemd-machined et VirtualBox
+-   Connaissance d'oVirt, Proxmox, systemd-machined et VirtualBox
 -   Connaissance d'Open vSwitch
 
 #### 351.1 Objets cités
@@ -556,7 +556,7 @@ Dockerfile
 
 ### 352.4 Plateformes d'orchestration de conteneurs
 
-**Poids:** 3
+**Poids:**3
 
 **Description:**Les candidats doivent comprendre l'importance de l'orchestration des conteneurs et les concepts clés fournis par Docker Swarm et Kubernetes pour mettre en œuvre l'orchestration des conteneurs.
 
@@ -770,7 +770,7 @@ Lien du projet :<https://github.com/marcossilvestrini/learning-lpic-3-305-300>
 -   [Compilateur GCC](https://gcc.gnu.org/wiki/History)
 -   [GNUTR](https://www.gnu.org/software/tar/)
 -   [Marque GNU](https://www.gnu.org/software/make/)
--   [GNU Emacs](https://en.wikipedia.org/wiki/Emacs)
+-   [GNU-Emacs](https://en.wikipedia.org/wiki/Emacs)
 -   [Paquets GNU](https://www.gnu.org/software/)
 -   [Collection GNU/Linux](https://directory.fsf.org/wiki/Collection:GNU/Linux)
 -   [Chargeur de démarrage GNU Grub](https://www.gnu.org/software/grub/)
@@ -793,7 +793,7 @@ Lien du projet :<https://github.com/marcossilvestrini/learning-lpic-3-305-300>
 -   [Directives du logiciel libre Debian](https://www.debian.org/social_contract#guidelines)
 -   [Organisation X11](https://www.x.org/wiki/)
 -   [Wayland](https://wayland.freedesktop.org/)
--   [GNU GNOME](https://www.gnu.org/press/gnome-1.0.html)
+-   [GNU-GNOME](https://www.gnu.org/press/gnome-1.0.html)
 -   [GNOME](https://www.gnome.org/)
 -   [XFCE](https://xfce.org/)
 -   [Plasma KDE](https://kde.org/plasma-desktop/)
