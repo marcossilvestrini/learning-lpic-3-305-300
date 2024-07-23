@@ -113,7 +113,7 @@ e como instalá-los.
 
 -   idiota
 -   Caixa Virtual e extensão
--   Vagabundo
+-   Vagabundo Hashicorp
 
 <a name="installation"></a>
 
