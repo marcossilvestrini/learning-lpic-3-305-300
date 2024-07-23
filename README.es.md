@@ -90,7 +90,7 @@
 > También se cubrirá la instalación y configuración de algunos paquetes\\
 > Al hacer esto, podrás darle a toda la comunidad la oportunidad de beneficiarse de tus cambios.\\
 > El acceso al código fuente es una condición previa para ello.\\
-> Utilice vagrant para máquinas y ejecute laboratorios y practique el contenido de este artículo.\\
+> Utilice vagrant para actualizar máquinas y ejecutar laboratorios y practicar el contenido de este artículo.\\
 > He publicado en la carpeta Vagrant un Vagrantfile con lo necesario\\
 > para que subas un ambiente para estudios
 
