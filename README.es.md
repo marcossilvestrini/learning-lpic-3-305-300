@@ -538,7 +538,7 @@ docker
 Dockerfile
 ```
 
-#### 352.3 Important Commands
+#### 352.3 Comandos importantes
 
 ##### estibador
 
