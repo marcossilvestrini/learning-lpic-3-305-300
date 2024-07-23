@@ -197,7 +197,7 @@ man COMMAND
 -   Comprender los pros y los contras de la virtualización
 -   Comprender las diversas variaciones de hipervisores y monitores de máquinas virtuales
 -   Comprender los aspectos principales de la migración de máquinas físicas a virtuales
--   Comprender los aspectos principales de la migración de máquinas virtuales entre sistemas host
+-   Comprender los aspectos principales de la migración de máquinas virtuales entre sistemas host.
 -   Comprender las características y las implicaciones de la virtualización para una máquina virtual, como la creación de instantáneas, la pausa, la clonación y los límites de recursos.
 -   Conocimiento de oVirt, Proxmox, systemd-machined y VirtualBox
 -   Conocimiento de Open vSwitch
@@ -538,7 +538,7 @@ docker
 Dockerfile
 ```
 
-#### 352.3 Comandos importantes
+#### 352.3 Important Commands
 
 ##### estibador
 
