@@ -366,7 +366,7 @@ foo
 
 ### 351.5 仮想マシンのディスクイメージの管理
 
-**重さ：**３
+**Weight:**３
 
 **説明：**受験者は、仮想マシンのディスク イメージを管理できる必要があります。これには、さまざまな形式とハイパーバイザー間でのディスク イメージの変換や、イメージ内に保存されているデータへのアクセスが含まれます。
 
@@ -803,7 +803,7 @@ Vagrantfile
 -   [ボーン・アゲイン シェル](https://www.gnu.org/software/bash/manual/)
 -   [シバン](https://bash.cyberciti.biz/guide/Shebang)
 -   [環境変数](https://linuxize.com/post/how-to-set-and-list-environment-variables-in-linux/)
--   [GNU グロビング](https://man7.org/linux/man-pages/man7/glob.7.html)
+-   [GNU Globbing](https://man7.org/linux/man-pages/man7/glob.7.html)
 -   [グロビング](https://linuxhint.com/bash_globbing_tutorial/)
 -   [引用](https://www.gnu.org/software/bash/manual/html_node/Quoting.html)
 -   [正規表現](https://www.gnu.org/software/grep/manual/html_node/Regular-Expressions.html)
@@ -837,7 +837,7 @@ Vagrantfile
 -   [LPIC-3 305-300 の目的](https://www.lpi.org/our-certifications/exam-305-objectives/)
 -   [LPIC-3 305-300 Wiki](https://wiki.lpi.org/wiki/LPIC-305_Objectives_V3.0)
 -   [LPIC-3 305-300 学習教材](https://cursos.linuxsemfronteiras.com.br/courses/preparatorio-para-certificacao-lpic-3-305/)
--   [ITexams による LPIC-3 305-300 模擬試験](https://www.itexams.com/info/305-300)
+-   [LPIC-3 305-300 Simulated Exam By ITexams](https://www.itexams.com/info/305-300)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 

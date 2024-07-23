@@ -375,7 +375,7 @@ foo
 -   فهم ميزات تنسيقات صور القرص الافتراضية المختلفة، مثل الصور الأولية وqcow2 وVMDK
 -   إدارة صور قرص الجهاز الظاهري باستخدام qemu-img
 -   قم بتثبيت الأقسام والوصول إلى الملفات الموجودة في صور قرص الجهاز الظاهري باستخدام libguestfish
--   Copy physical disk content to a virtual machine disk image
+-   انسخ محتوى القرص الفعلي إلى صورة قرص الجهاز الظاهري
 -   ترحيل محتوى القرص بين تنسيقات صور قرص الجهاز الظاهري المختلفة
 -   الوعي بتنسيق المحاكاة الافتراضية المفتوحة (OVF)
 
@@ -538,7 +538,7 @@ docker
 Dockerfile
 ```
 
-#### 352.3 Important Commands
+#### 352.3 الأوامر الهامة
 
 ##### عامل ميناء
 
@@ -834,7 +834,7 @@ Vagrantfile
 -   [شفرات قوية لـ Apache وnginx وLighttpd](https://cipherlist.eu/)
 -   [دروس SSL](https://www.golinuxcloud.com/blog/)
 -   [تكوين SSL موزيلا](https://ssl-config.mozilla.org/)
--   [LPIC-3 305-300 Objectives](https://www.lpi.org/our-certifications/exam-305-objectives/)
+-   [LPIC-3 305-300 الأهداف](https://www.lpi.org/our-certifications/exam-305-objectives/)
 -   [LPIC-3 305-300 ويكي](https://wiki.lpi.org/wiki/LPIC-305_Objectives_V3.0)
 -   [LPIC-3 305-300 المواد التعليمية](https://cursos.linuxsemfronteiras.com.br/courses/preparatorio-para-certificacao-lpic-3-305/)
 -   [LPIC-3 305-300 محاكاة الامتحان بواسطة ITexams](https://www.itexams.com/info/305-300)
