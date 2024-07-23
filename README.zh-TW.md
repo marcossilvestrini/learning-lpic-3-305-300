@@ -91,7 +91,7 @@
 > 透過這樣做，您可以讓整個社區有機會從您的更改中受益。
 > 存取原始碼是實現此目的的先決條件。
 > 使用 vagrant for up 機器並執行本文的實驗和練習內容。
-> 我已經在 Vagrant 資料夾中發布了一個 Vagrantfile ，其中包含必要的內容\\
+> 我已經在 Vagrant 資料夾中發布了一個 Vagrantfile 以及必要的內容\\
 > 供您上傳學習環境
 
 * * *
@@ -119,7 +119,7 @@
 
 ### 安裝
 
-Clone the repo
+克隆儲存庫
 
 ```sh
 git clone https://github.com/marcossilvestrini/learning-lpic-3-305-300.git
@@ -809,7 +809,7 @@ Vagrantfile
 -   [常用表達](https://www.gnu.org/software/grep/manual/html_node/Regular-Expressions.html)
 -   [列出 Linux 發行版](https://en.wikipedia.org/wiki/List_of_Linux_distributions)
 -   [發行表](https://distrowatch.com/)
--   [比較 Linux 發行版](https://en.wikipedia.org/wiki/Comparison_of_Linux_distributions)
+-   [Linux 發行版比較](https://en.wikipedia.org/wiki/Comparison_of_Linux_distributions)
 -   [下載包](https://pkgs.org/)
 -   [安裝包](https://installati.one/)
 -   [指導安裝包](https://installati.one/)
@@ -829,7 +829,7 @@ Vagrantfile
 -   [DNS 記錄類型列表](https://en.wikipedia.org/wiki/List_of_DNS_record_types)
 -   [W3科技](https://w3techs.com/)
 -   [阿帕契](https://www.apache.org/)
--   [Apache Directives][def]
+-   [阿帕契指令][def]
 -   [HTTP 狀態碼](https://en.wikipedia.org/wiki/List_of_HTTP_status_codes)
 -   [適用於 Apache、nginx 和 Lighttpd 的強密碼](https://cipherlist.eu/)
 -   [SSL 教程](https://www.golinuxcloud.com/blog/)
@@ -837,7 +837,7 @@ Vagrantfile
 -   [LPIC-3 305-300 目標](https://www.lpi.org/our-certifications/exam-305-objectives/)
 -   [LPIC-3 305-300 維基](https://wiki.lpi.org/wiki/LPIC-305_Objectives_V3.0)
 -   [LPIC-3 305-300 學習教材](https://cursos.linuxsemfronteiras.com.br/courses/preparatorio-para-certificacao-lpic-3-305/)
--   [LPIC-3 305-300 ITexams 模擬考試](https://www.itexams.com/info/305-300)
+-   [ITexams 的 LPIC-3 305-300 模擬考試](https://www.itexams.com/info/305-300)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
