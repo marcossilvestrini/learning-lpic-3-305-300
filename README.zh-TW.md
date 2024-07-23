@@ -91,7 +91,7 @@
 > 透過這樣做，您可以讓整個社區有機會從您的更改中受益。
 > 存取原始碼是實現此目的的先決條件。
 > 使用 vagrant for up 機器並執行本文的實驗和練習內容。
-> 我已經在 Vagrant 資料夾中發布了一個 Vagrantfile 以及必要的內容\\
+> 我已經在 Vagrant 資料夾中發布了一個 Vagrantfile ，其中包含必要的內容\\
 > 供您上傳學習環境
 
 * * *
@@ -141,7 +141,7 @@ git clone https://github.com/marcossilvestrini/learning-lpic-3-305-300.git
 
 ## 路線圖
 
--   [ ] 建立儲存庫
+-   [x] 建立儲存庫
 -   [ ] 建立有關主題 351 的範例
 -   [ ] 建立有關主題 352 的範例
 -   [ ] 建立有關主題 353 的範例
@@ -837,7 +837,7 @@ Vagrantfile
 -   [LPIC-3 305-300 目標](https://www.lpi.org/our-certifications/exam-305-objectives/)
 -   [LPIC-3 305-300 維基](https://wiki.lpi.org/wiki/LPIC-305_Objectives_V3.0)
 -   [LPIC-3 305-300 學習教材](https://cursos.linuxsemfronteiras.com.br/courses/preparatorio-para-certificacao-lpic-3-305/)
--   [ITexams 的 LPIC-3 305-300 模擬考試](https://www.itexams.com/info/305-300)
+-   [LPIC-3 305-300 ITexams 模擬考試](https://www.itexams.com/info/305-300)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
