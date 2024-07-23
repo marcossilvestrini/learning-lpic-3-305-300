@@ -113,7 +113,7 @@
 
 -   ギット
 -   Virtual Box と拡張機能
--   ハシコープ・ベイグラント
+-   V_a_g_r_a_n_t
 
 <a name="installation"></a>
 
@@ -500,7 +500,7 @@ lxc (including relevant subcommands)
 
 #### 352.2 重要なコマンド
 
-##### ふー
+##### foo
 
 ```sh
 foo
@@ -665,7 +665,7 @@ packer
 **主要な知識領域:**
 
 -   ユーザーデータ、cloud-init の初期化と構成など、cloud-init の機能と概念を理解する
--   Use cloud-init to create, resize and mount file systems, configure user accounts, including login credentials such as SSH keys and install software packages from the distribution’s repository
+-   Cloud-init を使用して、ファイル システムの作成、サイズ変更、マウントを行い、SSH キーなどのログイン資格情報を含むユーザー アカウントを構成し、ディストリビューションのリポジトリからソフトウェア パッケージをインストールします。
 -   Cloud-init をシステム イメージに統合する
 -   テストには構成ドライブ データソースを使用する
 
@@ -707,7 +707,7 @@ user-data
 -   Vagrant 仮想マシンにアクセスする
 -   Vagrant 仮想マシンとホスト システム間でフォルダーを共有および同期する
 -   Vagrant プロビジョニング、つまりファイル プロビジョナーとシェル プロビジョナーを理解する
--   マルチマシンのセットアップを理解する
+-   Understand multi-machine setup
 
 #### 353.4 引用オブジェクト
 
@@ -816,10 +816,10 @@ Vagrantfile
 -   [パッケージのインストール](https://installati.one/)
 -   [パッケージのインストールガイド](https://installati.one/)
 -   [バグジラ](https://bugzilla.kernel.org/)
--   [コマンドが見つかりません](https://command-not-found.com/)
+-   [Command Not Found](https://command-not-found.com/)
 -   [ディストロテスト](https://distrotest.net/index.php)
 -   [Bashrc ジェネレーター](http://bashrcgenerator.com/)
--   [エクスプレインシェル](https://explainshell.com/)
+-   [Explainshell](https://explainshell.com/)
 -   [Vim チュートリアル](https://www.openvim.com/)
 -   [Linux シェル スクリプトのチュートリアル](https://bash.cyberciti.biz/guide/Main_Page)
 -   [Github バッジ](https://github.com/alexandresanlim/Badges4-README.md-Profile)
