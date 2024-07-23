@@ -113,7 +113,7 @@
 
 -   شخص سخيف
 -   الصندوق الافتراضي والامتداد
--   المتشرد
+-   هاشيكورب المتشرد
 
 <a name="installation"></a>
 
@@ -518,7 +518,7 @@ foo
 
 **وزن:**ص
 
-**وصف:**يجب أن يكون المرشح قادرًا على إدارة عقد Docker وحاويات Docker. يتضمن ذلك فهم بنية Docker بالإضافة إلى فهم كيفية تفاعل Docker مع نظام Linux الخاص بالعقدة.
+**الوصف:**يجب أن يكون المرشح قادرًا على إدارة عقد Docker وحاويات Docker. يتضمن ذلك فهم بنية Docker بالإضافة إلى فهم كيفية تفاعل Docker مع نظام Linux الخاص بالعقدة.
 
 **مجالات المعرفة الرئيسية:**
 
@@ -837,7 +837,7 @@ Vagrantfile
 -   [دروس SSL](https://www.golinuxcloud.com/blog/)
 -   [تكوين SSL موزيلا](https://ssl-config.mozilla.org/)
 -   تعريفات المحاكاة الافتراضية
-    -   [قبعة حمراء](https://www.redhat.com/pt-br/topics/virtualization/)
+    -   [القبعة الحمراء](https://www.redhat.com/pt-br/topics/virtualization/)
     -   [أوس](https://aws.amazon.com/pt/what-is/virtualization/)
     -   [آي بي إم](https://www.ibm.com/topics/virtualization)
     -   [بنصرك.كوم](https://opensource.com/resources/virtualization)
