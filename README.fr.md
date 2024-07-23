@@ -111,9 +111,9 @@ Pour commencer l'apprentissage, consultez la documentation ci-dessus.
 Ceci est un exemple de la façon de lister les éléments dont vous avez besoin pour utiliser le logiciel.
 et comment les installer.
 
--   git
+-   Git
 -   Boîte virtuelle et extension
--   Hashicorp Vagabond
+-   Vagabond
 
 <a name="installation"></a>
 
@@ -428,7 +428,7 @@ foo
 
 ### 352.1 Concepts de virtualisation de conteneurs
 
-**Poids :**7
+**Poids:**7
 
 **Description:**Les candidats doivent comprendre le concept de virtualisation de conteneurs. Cela inclut la compréhension des composants Linux utilisés pour implémenter la virtualisation des conteneurs ainsi que l'utilisation des outils Linux standard pour dépanner ces composants.
 
