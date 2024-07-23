@@ -1,6 +1,7 @@
 <h1><a name="readme-top"></a></h1>
 
-[![Create Release](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/release.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/release.yml)[![Translate README](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/translate.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/translate.yml)[![Deploy GitHub Pages](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/jekyll-gh-pages.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/jekyll-gh-pages.yml)[![Generate HTML and PDF](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/generate-html.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/generate-html.yml)[![PSScriptAnalyzer](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/powershell.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/powershell.yml)[![Slack Notification](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/slack.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/slack.yml)
+[![Create Release](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/release.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/release.yml)[![Translate README](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/translate.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/translate.yml)
+[![Deploy GitHub Pages](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/jekyll-gh-pages.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/jekyll-gh-pages.yml)[![Generate HTML and PDF](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/generate-html.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/generate-html.yml)[![PSScriptAnalyzer](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/powershell.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/powershell.yml)[![Slack Notification](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/slack.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/slack.yml)
 
 * * *
 
@@ -141,7 +142,7 @@ LPIC2 202-450 試験について学習するには、このリポジトリを使
 
 ## ロードマップ
 
--   [ ] リポジトリの作成
+-   [x] リポジトリの作成
 -   [ ] トピック 351 に関する例を作成する
 -   [ ] トピック 352 に関する例を作成する
 -   [ ] トピック 353 に関する例を作成する
@@ -482,7 +483,7 @@ foo
 **主要な知識領域:**
 
 -   LXC と LXD のアーキテクチャを理解する
--   LXD を使用して既存のイメージに基づいて LXC コンテナー (ネットワークやストレージを含む) を管理する
+-   LXD を使用して既存のイメージに基づいて LXC コンテナー (ネットワーキングやストレージを含む) を管理する
 -   LXCコンテナのプロパティを構成する
 -   LXC コンテナーのリソース使用量を制限する
 -   LXDプロファイルを使用する
@@ -657,8 +658,8 @@ packer
 **重さ：**３
 
 **説明：**受験者は、cloud-init を使用して、標準化されたイメージから作成された仮想マシンを構成できる必要があります。これには、利用可能なハードウェア リソース、特にディスク領域とボリュームに合わせて仮想マシンを調整することが含まれます。  
-さらに、受験者は安全な SSH ログインを許可するようにインスタンスを構成し、特定のソフトウェア パッケージのセットをインストールできる必要があります。  
-さらに、受験者は、cloud-init をサポートする新しいシステム イメージを作成できる必要があります。
+さらに、受験者は安全な SSH ログインを許可し、特定のソフトウェア パッケージのセットをインストールできるようにインスタンスを構成できる必要があります。  
+さらに、受験者は、cloud-init サポートを備えた新しいシステム イメージを作成できる必要があります。
 
 **主要な知識領域:**
 
@@ -703,7 +704,7 @@ user-data
 -   アトラスからボックスを取得して使用する
 -   Vagrantfile を作成して実行する
 -   Vagrant 仮想マシンにアクセスする
--   Vagrant 仮想マシンとホスト システム間でフォルダーを共有および同期する
+-   Share and synchronize folder between a Vagrant virtual machine and the host system
 -   Vagrant プロビジョニング、つまりファイル プロビジョナーとシェル プロビジョナーを理解する
 -   マルチマシンのセットアップを理解する
 
