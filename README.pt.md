@@ -181,6 +181,8 @@ man COMMAND
 
 ## Tópico 351: Virtualização Completa
 
+![virtualization](images/virtualization-351.png)
+
 * * *
 
 <a name="topic-351.1"></a>
@@ -375,7 +377,7 @@ foo
 -   Compreenda os recursos de vários formatos de imagem de disco virtual, como imagens brutas, qcow2 e VMDK
 -   Gerencie imagens de disco de máquinas virtuais usando qemu-img
 -   Monte partições e acesse arquivos contidos em imagens de disco de máquinas virtuais usando libguestfish
--   Copy physical disk content to a virtual machine disk image
+-   Copie o conteúdo do disco físico para uma imagem de disco de máquina virtual
 -   Migrar conteúdo de disco entre vários formatos de imagem de disco de máquina virtual
 -   Conscientização do Formato de Virtualização Aberto (OVF)
 
@@ -834,6 +836,13 @@ Link do projeto:<https://github.com/marcossilvestrini/learning-lpic-3-305-300>
 -   [Cifras fortes para Apache, nginx e Lighttpd](https://cipherlist.eu/)
 -   [Tutoriais SSL](https://www.golinuxcloud.com/blog/)
 -   [Configuração SSL Mozilla](https://ssl-config.mozilla.org/)
+-   Definições de virtualização
+    -   [chapéu vermelho](https://www.redhat.com/pt-br/topics/virtualization/)
+    -   [AWS](https://aws.amazon.com/pt/what-is/virtualization/)
+    -   [IBM](https://www.ibm.com/topics/virtualization)
+    -   [OpenSource.com](https://opensource.com/resources/virtualization)
+-   [Wiki XenProject](https://wiki.xenproject.org/wiki/Book/HelloXenProject/1-Chapter)
+-   Blog LPI: Virtualização Xen e Computação em Nuvem #01: Introdução(<https://www.lpi.org/pt-br/blog/2020/10/01/xen-virtualization-and-cloud-computing-01-introduction/>)
 -   [Objetivos LPIC-3 305-300](https://www.lpi.org/our-certifications/exam-305-objectives/)
 -   [Wiki LPIC-3 305-300](https://wiki.lpi.org/wiki/LPIC-305_Objectives_V3.0)
 -   [Material de aprendizagem LPIC-3 305-300](https://cursos.linuxsemfronteiras.com.br/courses/preparatorio-para-certificacao-lpic-3-305/)
