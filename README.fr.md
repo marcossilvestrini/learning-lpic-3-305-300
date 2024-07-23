@@ -438,7 +438,7 @@ foo
 -   Comprendre et analyser les capacités
 -   Comprendre le rôle de seccomp, SELinux et AppArmor pour la virtualisation des conteneurs
 -   Comprendre comment LXC et Docker exploitent les espaces de noms, les groupes de contrôle, les capacités, seccomp et MAC
--   Understand the principle of runc
+-   Comprendre le principe du runc
 -   Comprendre le principe du CRI-O et de containersd
 -   Connaissance du runtime OCI et des spécifications des images
 -   Connaissance de l'interface d'exécution de conteneur Kubernetes (CRI)
@@ -521,7 +521,7 @@ foo
 **Domaines de connaissances clés :**
 
 -   Comprendre l'architecture et les composants de Docker
--   Gérer les conteneurs Docker à l'aide d'images provenant d'un registre Docker
+-   Gérer les conteneurs Docker à l'aide d'images d'un registre Docker
 -   Comprendre et gérer les images et les volumes pour les conteneurs Docker
 -   Comprendre et gérer la journalisation pour les conteneurs Docker
 -   Comprendre et gérer la mise en réseau pour Docker
@@ -793,7 +793,7 @@ Lien du projet :<https://github.com/marcossilvestrini/learning-lpic-3-305-300>
 -   [Directives du logiciel libre Debian](https://www.debian.org/social_contract#guidelines)
 -   [Organisation X11](https://www.x.org/wiki/)
 -   [Wayland](https://wayland.freedesktop.org/)
--   [GNU-GNOME](https://www.gnu.org/press/gnome-1.0.html)
+-   [GNU GNOME](https://www.gnu.org/press/gnome-1.0.html)
 -   [GNOME](https://www.gnome.org/)
 -   [XFCE](https://xfce.org/)
 -   [Plasma KDE](https://kde.org/plasma-desktop/)
