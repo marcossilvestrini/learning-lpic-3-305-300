@@ -113,7 +113,7 @@ y como instalarlos.
 
 -   git
 -   Caja virtual y extensión
--   Hashicorp Vagabundo
+-   Vagabundo
 
 <a name="installation"></a>
 
@@ -288,7 +288,7 @@ foo
 -   Comprender la arquitectura de QEMU, incluidos KVM, redes y almacenamiento.
 -   Inicie instancias de QEMU desde la línea de comando
 -   Administre instantáneas usando el monitor QEMU
--   Instale los controladores de dispositivo QEMU Guest Agent y VirtIO
+-   Install the QEMU Guest Agent and VirtIO device drivers
 -   Solucionar problemas de instalaciones de QEMU, incluidas las redes y el almacenamiento
 -   Conocimiento de parámetros de configuración importantes de QEMU
 
@@ -378,7 +378,7 @@ foo
 -   Administre imágenes de disco de máquinas virtuales usando qemu-img
 -   Monte particiones y acceda a archivos contenidos en imágenes de disco de máquinas virtuales usando libguestfish
 -   Copie el contenido del disco físico a una imagen de disco de máquina virtual
--   Migrar contenido de disco entre varios formatos de imagen de disco de máquina virtual
+-   Migrate disk content between various virtual machine disk image formats
 -   Conciencia del formato de virtualización abierta (OVF)
 
 #### 351.5 Objetos citados
