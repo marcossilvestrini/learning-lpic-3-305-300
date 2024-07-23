@@ -113,7 +113,7 @@
 
 -   git
 -   虛擬盒和擴展
--   流浪漢
+-   Hashicorp流浪者
 
 <a name="installation"></a>
 
