@@ -141,7 +141,7 @@ Use este repositório para aprender sobre o exame LPIC2 202-450
 
 ## Roteiro
 
--   [ ] Criar repositório
+-   [x] Criar repositório
 -   [ ] Crie exemplos sobre o Tópico 351
 -   [ ] Crie exemplos sobre o Tópico 352
 -   [ ] Crie exemplos sobre o Tópico 353
@@ -195,7 +195,7 @@ man COMMAND
 
 -   Entenda a terminologia de virtualização
 -   Entenda os prós e os contras da virtualização
--   Compreenda as diversas variações de hipervisores e monitores de máquinas virtuais
+-   Compreender as diversas variações de hipervisores e monitores de máquinas virtuais
 -   Entenda os principais aspectos da migração de máquinas físicas para virtuais
 -   Compreender os principais aspectos da migração de máquinas virtuais entre sistemas host
 -   Compreenda os recursos e as implicações da virtualização para uma máquina virtual, como captura instantânea, pausa, clonagem e limites de recursos
@@ -441,7 +441,7 @@ foo
 -   Entenda o princípio do runc
 -   Entenda o princípio do CRI-O e do containerd
 -   Conhecimento do tempo de execução do OCI e das especificações de imagem
--   Conhecimento da Interface de Tempo de Execução de Contêiner (CRI) do Kubernetes
+-   Conhecimento da interface de tempo de execução de contêiner (CRI) do Kubernetes
 -   Consciência de podman, buildah e skopeo
 -   Conhecimento de outras abordagens de virtualização de contêineres no Linux e outros sistemas operacionais livres, como rkt, OpenVZ, systemd-nspawn ou BSD Jails
 
@@ -564,7 +564,7 @@ Dockerfile
 
 -   Entenda a relevância da orquestração de contêineres
 -   Entenda os principais conceitos do Docker Compose e do Docker Swarm
--   Compreenda os principais conceitos do Kubernetes e Helm
+-   Compreenda os principais conceitos de Kubernetes e Helm
 -   Conscientização sobre OpenShift, Rancher e Mesosphere DC/OS
 
 <p align="right">(<a href="#topic-352.4">back to sub topic 352.4</a>)</p>
@@ -691,7 +691,7 @@ user-data
 
 <a name="topic-353.4"></a>
 
-### 353,4 Vagabundo
+### 353.4 Vagabundo
 
 **Peso:**3
 
