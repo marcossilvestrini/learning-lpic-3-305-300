@@ -181,6 +181,8 @@ man COMMAND
 
 ## موضوع 351: المحاكاة الافتراضية الكاملة
 
+![virtualization](images/virtualization-351.png)
+
 * * *
 
 <a name="topic-351.1"></a>
@@ -198,7 +200,7 @@ man COMMAND
 -   افهم الأشكال المختلفة لبرامج Hypervisor وشاشات الأجهزة الافتراضية
 -   فهم الجوانب الرئيسية للانتقال الفعلي إلى الأجهزة الافتراضية
 -   فهم الجوانب الرئيسية لترحيل الأجهزة الافتراضية بين الأنظمة المضيفة
--   فهم ميزات وتأثيرات المحاكاة الافتراضية على الأجهزة الافتراضية، مثل التقاط الصور والإيقاف المؤقت والاستنساخ وحدود الموارد
+-   فهم ميزات المحاكاة الافتراضية وآثارها على الأجهزة الافتراضية، مثل التقاط الصور والإيقاف المؤقت والاستنساخ وحدود الموارد
 -   الوعي بـ oVirt وProxmox وsystemd-machined وVirtualBox
 -   الوعي بـ Open vSwitch
 
@@ -402,7 +404,7 @@ virt-v2v
 virt-sysprep
 ```
 
-#### 351.5 أوامر هامة
+#### 351.5 الأوامر الهامة
 
 ##### foo
 
@@ -489,7 +491,7 @@ foo
 -   فهم صور LXC
 -   الوعي بأدوات LXC التقليدية
 
-#### 352.2 الكائنات المستشهد بها
+#### 352.2 الكائنات المذكورة
 
 ```sh
 lxd
@@ -562,7 +564,7 @@ Dockerfile
 
 **مجالات المعرفة الرئيسية:**
 
--   فهم أهمية تنسيق الحاويات
+-   فهم أهمية تنسيق الحاوية
 -   فهم المفاهيم الأساسية لـ Docker Compose وDocker Swarm
 -   فهم المفاهيم الأساسية لـ Kubernetes وHelm
 -   الوعي بأنظمة OpenShift وRancher وMesosphere DC/OS
@@ -699,7 +701,7 @@ user-data
 
 **مجالات المعرفة الرئيسية:**
 
--   فهم بنية Vagrant ومفاهيمها، بما في ذلك التخزين والشبكات
+-   فهم بنية ومفاهيم Vagrant، بما في ذلك التخزين والشبكات
 -   استرداد واستخدام الصناديق من أطلس
 -   إنشاء وتشغيل Vagrantfiles
 -   الوصول إلى الأجهزة الافتراضية Vagrant
@@ -714,7 +716,7 @@ vagrant
 Vagrantfile
 ```
 
-#### 353.4 الأوامر الهامة
+#### 353.4 أوامر هامة
 
 ##### المتشرد
 
@@ -735,7 +737,7 @@ Vagrantfile
 
 إذا كان لديك اقتراح من شأنه أن يجعل هذا أفضل، يرجى شوكة الريبو و
 إنشاء طلب سحب. يمكنك أيضًا ببساطة فتح مشكلة بالعلامة "التحسين".
-لا تنسى أن تعطي المشروع نجمة! شكرًا لك مرة أخرى!
+لا تنس أن تعطي المشروع نجمة! شكرًا لك مرة أخرى!
 
 1.  شوكة المشروع
 2.  قم بإنشاء فرع الميزات الخاص بك (`git checkout -b feature/AmazingFeature`)
@@ -834,6 +836,13 @@ Vagrantfile
 -   [شفرات قوية لـ Apache وnginx وLighttpd](https://cipherlist.eu/)
 -   [دروس SSL](https://www.golinuxcloud.com/blog/)
 -   [تكوين SSL موزيلا](https://ssl-config.mozilla.org/)
+-   تعريفات المحاكاة الافتراضية
+    -   [قبعة حمراء](https://www.redhat.com/pt-br/topics/virtualization/)
+    -   [أوس](https://aws.amazon.com/pt/what-is/virtualization/)
+    -   [آي بي إم](https://www.ibm.com/topics/virtualization)
+    -   [بنصرك.كوم](https://opensource.com/resources/virtualization)
+-   [مشروع ويكي زين](https://wiki.xenproject.org/wiki/Book/HelloXenProject/1-Chapter)
+-   مدونة LPI: المحاكاة الافتراضية لـ Xen والحوسبة السحابية #01: المقدمة([هتبص://وو.لبي.عرج/بتبر/بلغ/٢٠٢٠/١٠/٠١/كسين-فيرتواليزاتيون-اند-سلوود-سومبوتينج-٠١-ينترودوستيون/](https://www.lpi.org/pt-br/blog/2020/10/01/xen-virtualization-and-cloud-computing-01-introduction/))
 -   [LPIC-3 305-300 الأهداف](https://www.lpi.org/our-certifications/exam-305-objectives/)
 -   [LPIC-3 305-300 ويكي](https://wiki.lpi.org/wiki/LPIC-305_Objectives_V3.0)
 -   [LPIC-3 305-300 المواد التعليمية](https://cursos.linuxsemfronteiras.com.br/courses/preparatorio-para-certificacao-lpic-3-305/)
