@@ -90,7 +90,7 @@
 > 一部のパッケージのインストールと構成についても説明します\\
 > こうすることで、コミュニティ全体が変更から恩恵を受ける機会を得ることができます。\\
 > ソース コードへのアクセスがその前提条件です。\\
-> 稼働中のマシンに vagrant を使用し、ラボを実行して、この記事の内容を実践してください。\\
+> 稼働中のマシンには vagrant を使用し、ラボを実行して、この記事の内容を実践してください。\\
 > 必要なものを含む Vagrantfile をフォルダー Vagrant に公開しました\\
 > 学習環境をアップロードするため
 
@@ -366,7 +366,7 @@ foo
 
 ### 351.5 仮想マシンのディスクイメージの管理
 
-**Weight:**３
+**重さ：**３
 
 **説明：**受験者は、仮想マシンのディスク イメージを管理できる必要があります。これには、さまざまな形式とハイパーバイザー間でのディスク イメージの変換や、イメージ内に保存されているデータへのアクセスが含まれます。
 
@@ -482,7 +482,7 @@ foo
 **主要な知識領域:**
 
 -   LXC と LXD のアーキテクチャを理解する
--   LXD を使用して既存のイメージに基づいて LXC コンテナー (ネットワーキングやストレージを含む) を管理する
+-   LXD を使用して既存のイメージに基づいて LXC コンテナー (ネットワークやストレージを含む) を管理する
 -   LXCコンテナのプロパティを構成する
 -   LXC コンテナーのリソース使用量を制限する
 -   LXDプロファイルを使用する
@@ -657,13 +657,13 @@ packer
 **重さ：**３
 
 **説明：**受験者は、cloud-init を使用して、標準化されたイメージから作成された仮想マシンを構成できる必要があります。これには、利用可能なハードウェア リソース、特にディスク領域とボリュームに合わせて仮想マシンを調整することが含まれます。  
-さらに、受験者は安全な SSH ログインを許可し、特定のソフトウェア パッケージのセットをインストールできるようにインスタンスを構成できる必要があります。  
-さらに、受験者は、cloud-init サポートを備えた新しいシステム イメージを作成できる必要があります。
+さらに、受験者は安全な SSH ログインを許可するようにインスタンスを構成し、特定のソフトウェア パッケージのセットをインストールできる必要があります。  
+さらに、受験者は、cloud-init をサポートする新しいシステム イメージを作成できる必要があります。
 
 **主要な知識領域:**
 
 -   ユーザーデータ、cloud-init の初期化と構成など、cloud-init の機能と概念を理解する
--   Cloud-init を使用して、ファイル システムの作成、サイズ変更、マウントを行い、SSH キーなどのログイン資格情報を含むユーザー アカウントを構成し、ディストリビューションのリポジトリからソフトウェア パッケージをインストールします。
+-   Cloud-init を使用して、ファイル システムの作成、サイズ変更、マウントを行い、SSH キーなどのログイン認証情報を含むユーザー アカウントを構成し、ディストリビューションのリポジトリからソフトウェア パッケージをインストールします。
 -   Cloud-init をシステム イメージに統合する
 -   テストには構成ドライブ データソースを使用する
 
@@ -803,7 +803,7 @@ Vagrantfile
 -   [ボーン・アゲイン シェル](https://www.gnu.org/software/bash/manual/)
 -   [シバン](https://bash.cyberciti.biz/guide/Shebang)
 -   [環境変数](https://linuxize.com/post/how-to-set-and-list-environment-variables-in-linux/)
--   [GNU Globbing](https://man7.org/linux/man-pages/man7/glob.7.html)
+-   [GNU グロビング](https://man7.org/linux/man-pages/man7/glob.7.html)
 -   [グロビング](https://linuxhint.com/bash_globbing_tutorial/)
 -   [引用](https://www.gnu.org/software/bash/manual/html_node/Quoting.html)
 -   [正規表現](https://www.gnu.org/software/grep/manual/html_node/Regular-Expressions.html)
@@ -837,7 +837,7 @@ Vagrantfile
 -   [LPIC-3 305-300 の目的](https://www.lpi.org/our-certifications/exam-305-objectives/)
 -   [LPIC-3 305-300 Wiki](https://wiki.lpi.org/wiki/LPIC-305_Objectives_V3.0)
 -   [LPIC-3 305-300 学習教材](https://cursos.linuxsemfronteiras.com.br/courses/preparatorio-para-certificacao-lpic-3-305/)
--   [LPIC-3 305-300 Simulated Exam By ITexams](https://www.itexams.com/info/305-300)
+-   [ITexams による LPIC-3 305-300 模擬試験](https://www.itexams.com/info/305-300)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
