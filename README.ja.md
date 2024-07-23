@@ -1,7 +1,6 @@
 <h1><a name="readme-top"></a></h1>
 
-[![Create Release](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/release.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/release.yml)[![Translate README](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/translate.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/translate.yml)
-[![Deploy GitHub Pages](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/jekyll-gh-pages.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/jekyll-gh-pages.yml)[![Generate HTML and PDF](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/generate-html.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/generate-html.yml)[![PSScriptAnalyzer](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/powershell.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/powershell.yml)[![Slack Notification](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/slack.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/slack.yml)
+[![Create Release](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/release.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/release.yml)[![Translate README](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/translate.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/translate.yml)[![Deploy GitHub Pages](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/jekyll-gh-pages.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/jekyll-gh-pages.yml)[![Generate HTML and PDF](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/generate-html.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/generate-html.yml)[![PSScriptAnalyzer](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/powershell.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/powershell.yml)[![Slack Notification](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/slack.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/slack.yml)
 
 * * *
 
@@ -91,7 +90,7 @@
 > 一部のパッケージのインストールと構成についても説明します\\
 > こうすることで、コミュニティ全体が変更から恩恵を受ける機会を得ることができます。\\
 > ソース コードへのアクセスがその前提条件です。\\
-> 稼働中のマシンには vagrant を使用し、ラボを実行して、この記事の内容を実践してください。\\
+> 稼働中のマシンに vagrant を使用し、ラボを実行して、この記事の内容を実践してください。\\
 > 必要なものを含む Vagrantfile をフォルダー Vagrant に公開しました\\
 > 学習環境をアップロードするため
 
@@ -181,6 +180,8 @@ man COMMAND
 <a name="topic-351"></a>
 
 ## トピック 351: 完全仮想化
+
+![virtualization](images/virtualization-351.png)
 
 * * *
 
@@ -664,7 +665,7 @@ packer
 **主要な知識領域:**
 
 -   ユーザーデータ、cloud-init の初期化と構成など、cloud-init の機能と概念を理解する
--   Cloud-init を使用して、ファイル システムの作成、サイズ変更、マウントを行い、SSH キーなどのログイン認証情報を含むユーザー アカウントを構成し、ディストリビューションのリポジトリからソフトウェア パッケージをインストールします。
+-   Cloud-init を使用して、ファイル システムの作成、サイズ変更、マウントを行い、SSH キーなどのログイン資格情報を含むユーザー アカウントを構成し、ディストリビューションのリポジトリからソフトウェア パッケージをインストールします。
 -   Cloud-init をシステム イメージに統合する
 -   テストには構成ドライブ データソースを使用する
 
@@ -704,7 +705,7 @@ user-data
 -   アトラスからボックスを取得して使用する
 -   Vagrantfile を作成して実行する
 -   Vagrant 仮想マシンにアクセスする
--   Share and synchronize folder between a Vagrant virtual machine and the host system
+-   Vagrant 仮想マシンとホスト システム間でフォルダーを共有および同期する
 -   Vagrant プロビジョニング、つまりファイル プロビジョナーとシェル プロビジョナーを理解する
 -   マルチマシンのセットアップを理解する
 
@@ -835,6 +836,13 @@ Vagrantfile
 -   [Apache、nginx、Lighttpd の強力な暗号](https://cipherlist.eu/)
 -   [SSL チュートリアル](https://www.golinuxcloud.com/blog/)
 -   [SSL 構成 Mozilla](https://ssl-config.mozilla.org/)
+-   仮想化の定義
+    -   [レッドハット](https://www.redhat.com/pt-br/topics/virtualization/)
+    -   [AWS](https://aws.amazon.com/pt/what-is/virtualization/)
+    -   [IBM](https://www.ibm.com/topics/virtualization)
+    -   [おペン層ｒせ。小ｍ](https://opensource.com/resources/virtualization)
+-   [ウィキ Xenプロジェクト](https://wiki.xenproject.org/wiki/Book/HelloXenProject/1-Chapter)
+-   LPI ブログ: Xen 仮想化とクラウド コンピューティング #01: はじめに([ｈっｔｐｓ：／／ｗっｗ。ｌぴ。おｒｇ／ｐｔーｂｒ／ｂぉｇ／２０２０／１０／０１／ぇんーゔぃｒつあぃざちおんーあんｄーｃぉうｄーこｍぷちんｇー０１ーいんｔろづｃちおん／](https://www.lpi.org/pt-br/blog/2020/10/01/xen-virtualization-and-cloud-computing-01-introduction/)）
 -   [LPIC-3 305-300 の目的](https://www.lpi.org/our-certifications/exam-305-objectives/)
 -   [LPIC-3 305-300 Wiki](https://wiki.lpi.org/wiki/LPIC-305_Objectives_V3.0)
 -   [LPIC-3 305-300 学習教材](https://cursos.linuxsemfronteiras.com.br/courses/preparatorio-para-certificacao-lpic-3-305/)
