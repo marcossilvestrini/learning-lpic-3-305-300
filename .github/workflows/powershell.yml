@@ -5,33 +5,37 @@
 name: PSScriptAnalyzer Scan
 
 on:
+  # Triggers the workflow on push or pull request events but only for the main branch
   push:
     branches: [ main ]
   pull_request:
     branches: [ main ]
-    
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
+  # This workflow contains a single job called "build"
   build:
-    name: PSScriptAnalyzer Scan
-    runs-on: ubuntu-latest
+  
+    # The type of runner that the job will run on
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-        # Checkout the repository to the GitHub Actions runner
-      - name: Checkout code
-        uses: actions/checkout@v2
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
 
       - name: Run PSScriptAnalyzer
-        uses: ./
+        uses: ./ # Uses an action in the root directory
         with:
-          # Check https://github.com/microsoft/psscriptanalyzer-action for more info about the options.
-          # The below set up runs PSScriptAnalyzer to your entire repository and runs some basic security rules.
-          path: .\
-          recurse: true 
-          # Include your own basic security rules. Removing this option will run all the rules 
+          path: '.\'
+          recurse: true
           includeRule: '"PSAvoidGlobalAliases", "PSAvoidUsingConvertToSecureStringWithPlainText"'
-          output: results.sarif
-      
-      # Upload the SARIF file generated in the previous step
+          output: 'results.sarif'
       - name: Upload SARIF results file
         uses: github/codeql-action/upload-sarif@v1
         with:
-          sarif_file: results.sarif
