@@ -123,7 +123,7 @@ and how to install them.
 
 * git
 * Virtual Box and extension
-* Vagrant
+* HashcorpVagrant
 
 <a name="installation"></a>
 
