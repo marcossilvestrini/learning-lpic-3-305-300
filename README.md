@@ -121,9 +121,9 @@ For starting the learning, see the documentation above.
 This is an example of how to list things you need to use the software
 and how to install them.
 
-* git
+* Git
 * Virtual Box and extension
-* HashcorpVagrant
+* V_a_g_r_a_n_t
 
 <a name="installation"></a>
 
