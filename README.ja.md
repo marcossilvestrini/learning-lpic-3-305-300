@@ -90,7 +90,7 @@
 > 一部のパッケージのインストールと構成についても説明します\\
 > こうすることで、コミュニティ全体が変更から恩恵を受ける機会を得ることができます。\\
 > ソース コードへのアクセスがその前提条件です。\\
-> 稼働中のマシンには vagrant を使用し、ラボを実行して、この記事の内容を実践してください。\\
+> 稼働中のマシンに vagrant を使用し、ラボを実行して、この記事の内容を実践してください。\\
 > 必要なものを含む Vagrantfile をフォルダー Vagrant に公開しました\\
 > 学習環境をアップロードするため
 
@@ -141,7 +141,7 @@ LPIC2 202-450 試験について学習するには、このリポジトリを使
 
 ## ロードマップ
 
--   [ ] Create repository
+-   [ ] リポジトリの作成
 -   [ ] トピック 351 に関する例を作成する
 -   [ ] トピック 352 に関する例を作成する
 -   [ ] トピック 353 に関する例を作成する
@@ -197,7 +197,7 @@ man COMMAND
 -   仮想化の長所と短所を理解する
 -   ハイパーバイザーと仮想マシン モニターのさまざまなバリエーションを理解する
 -   物理マシンから仮想マシンへの移行の主な側面を理解する
--   Understand the major aspects of migrating virtual machines between host systems
+-   ホスト システム間での仮想マシンの移行の主な側面を理解する
 -   スナップショット、一時停止、クローン作成、リソース制限など、仮想マシンの仮想化の機能と影響を理解する
 -   oVirt、Proxmox、systemd-machined、VirtualBox の認識
 -   Open vSwitch の認識
@@ -232,7 +232,7 @@ foo
 
 ### 351.2ゼン
 
-**重さ：** 3
+**重さ：**３
 
 **説明：**受験者は、Xen インストールのインストール、構成、保守、移行、およびトラブルシューティングができる必要があります。 Xen バージョン 4.x に焦点を当てています。
 
@@ -364,7 +364,7 @@ foo
 
 <a name="topic-351.5"></a>
 
-### 351.5 Virtual Machine Disk Image Management
+### 351.5 仮想マシンのディスクイメージの管理
 
 **重さ：**３
 
@@ -663,7 +663,7 @@ packer
 **主要な知識領域:**
 
 -   ユーザーデータ、cloud-init の初期化と構成など、cloud-init の機能と概念を理解する
--   Cloud-init を使用して、ファイル システムの作成、サイズ変更、マウントを行い、SSH キーなどのログイン認証情報を含むユーザー アカウントを構成し、ディストリビューションのリポジトリからソフトウェア パッケージをインストールします。
+-   Cloud-init を使用して、ファイル システムの作成、サイズ変更、マウントを行い、SSH キーなどのログイン資格情報を含むユーザー アカウントを構成し、ディストリビューションのリポジトリからソフトウェア パッケージをインストールします。
 -   Cloud-init をシステム イメージに統合する
 -   テストには構成ドライブ データソースを使用する
 
@@ -775,7 +775,7 @@ Vagrantfile
 -   [GNU/Linux コレクション](https://directory.fsf.org/wiki/Collection:GNU/Linux)
 -   [GNU Grub ブートローダー](https://www.gnu.org/software/grub/)
 -   [GNU ハード](https://www.gnu.org/software/hurd/hurd/what_is_the_gnu_hurd.html)
--   [Kernel](https://www.kernel.org/)
+-   [カーネル](https://www.kernel.org/)
 -   [Linux カーネルのマニュアル ページ](https://www.kernel.org/doc/man-pages/)
 -   [Linux標準ベース](https://en.wikipedia.org/wiki/Linux_Standard_Base)
 -   [ファイルシステム階層の標準](https://en.wikipedia.org/wiki/Filesystem_Hierarchy_Standard)
@@ -833,7 +833,7 @@ Vagrantfile
 -   [HTTPステータスコード](https://en.wikipedia.org/wiki/List_of_HTTP_status_codes)
 -   [Apache、nginx、Lighttpd の強力な暗号](https://cipherlist.eu/)
 -   [SSL チュートリアル](https://www.golinuxcloud.com/blog/)
--   [SSL Config Mozilla](https://ssl-config.mozilla.org/)
+-   [SSL 構成 Mozilla](https://ssl-config.mozilla.org/)
 -   [LPIC-3 305-300 の目的](https://www.lpi.org/our-certifications/exam-305-objectives/)
 -   [LPIC-3 305-300 Wiki](https://wiki.lpi.org/wiki/LPIC-305_Objectives_V3.0)
 -   [LPIC-3 305-300 学習教材](https://cursos.linuxsemfronteiras.com.br/courses/preparatorio-para-certificacao-lpic-3-305/)
