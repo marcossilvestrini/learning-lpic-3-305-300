@@ -111,9 +111,9 @@ Para iniciar o aprendizado, consulte a documentação acima.
 Este é um exemplo de como listar coisas que você precisa para usar o software
 e como instalá-los.
 
--   idiota
+-   Git
 -   Caixa Virtual e extensão
--   Vagabundo Hashicorp
+-   Vagabundo
 
 <a name="installation"></a>
 
@@ -592,7 +592,7 @@ Dockerfile
 **Principais áreas de conhecimento:**
 
 -   Entenda as ofertas comuns em nuvens públicas
--   Conhecimento básico de recursos do OpenStack
+-   Basic feature knowledge of OpenStack
 -   Conhecimento básico de recursos do Terraform
 -   Conscientização sobre CloudStack, Eucalyptus e OpenNebula
 
