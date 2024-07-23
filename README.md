@@ -151,7 +151,7 @@ Use this repository for get learning about LPIC2 202-450 exam
 
 ## Roadmap
 
-* [ ] Create repository
+* [x] Create repository
 * [ ] Create examples about Topic 351
 * [ ] Create examples about Topic 352
 * [ ] Create examples about Topic 353
