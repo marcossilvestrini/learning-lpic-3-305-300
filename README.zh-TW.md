@@ -119,7 +119,7 @@
 
 ### 安裝
 
-克隆儲存庫
+Clone the repo
 
 ```sh
 git clone https://github.com/marcossilvestrini/learning-lpic-3-305-300.git
@@ -829,7 +829,7 @@ Vagrantfile
 -   [DNS 記錄類型列表](https://en.wikipedia.org/wiki/List_of_DNS_record_types)
 -   [W3科技](https://w3techs.com/)
 -   [阿帕契](https://www.apache.org/)
--   [阿帕契指令][def]
+-   [Apache Directives][def]
 -   [HTTP 狀態碼](https://en.wikipedia.org/wiki/List_of_HTTP_status_codes)
 -   [適用於 Apache、nginx 和 Lighttpd 的強密碼](https://cipherlist.eu/)
 -   [SSL 教程](https://www.golinuxcloud.com/blog/)
