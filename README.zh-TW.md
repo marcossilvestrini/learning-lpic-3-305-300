@@ -108,9 +108,6 @@
 
 ### 先決條件
 
-這是如何列出使用該軟體所需的物品的範例
-以及如何安裝它們。
-
 -   git
 -   虛擬盒和擴展
 -   流浪漢
@@ -216,13 +213,147 @@ CPU flags
 Migration (P2V, V2V)
 ```
 
-#### 351.1 重要命令
+#### 管理程式
 
-##### 富
+##### 類型 1 Hypervisor（裸機 Hypervisor）
 
-```sh
-foo
-```
+**定義：**直接在主機的實體硬體上運行，提供基礎層來管理虛擬機，而無需主機作業系統。
+
+**特徵：**
+
+-   高性能、高效率。
+-   更低的延遲和開銷。
+-   通常用於企業環境和資料中心。
+
+**例子：**
+
+-   VMware ESXi：企業環境中強大且廣泛使用的虛擬機器管理程式。
+-   Microsoft Hyper-V：與 Windows Server 集成，提供強大的效能和管理功能。
+-   Xen：許多雲端服務供應商使用的開源虛擬機器管理程式。
+-   KVM（基於核心的虛擬機器）：整合到Linux核心中，為基於Linux的系統提供高效能。
+
+##### 類型 2 虛擬機器管理程式（託管虛擬機器管理程式）
+
+**定義：**在傳統作業系統之上運行，依賴主機作業系統進行資源管理和設備支援。
+
+**特徵：**
+
+-   更容易設定和使用，尤其是在個人電腦上。
+-   更靈活地用於開發、測試和小規模部署。
+-   由於主機作業系統的額外開銷，效率通常低於類型 1 虛擬機器管理程式。
+
+**例子：**
+
+-   VMware Workstation：功能強大的虛擬機器管理程序，用於在單一桌面上執行多個作業系統。
+-   Oracle VirtualBox：一款開源虛擬機器管理程序，以其靈活性和易用性而聞名。
+-   Parallels Desktop：專為 Mac 使用者設計，可與 macOS 一起執行 Windows 和其他作業系統。
+-   QEMU（Quick EMUlator）：開源模擬器和虛擬器，通常與 KVM 結合使用。
+
+##### 類型 1 和類型 2 虛擬機器管理程序之間的主要區別
+
+-   部署環境：
+    -   由於 1 類虛擬機器管理程式與硬體直接互動且具有高效能，因此通常部署在資料中心和企業環境中。
+    -   2 類虛擬機器管理程式更適合個人使用、開發、測試和小規模虛擬化任務。
+-   表現：
+    -   類型 1 虛擬機器管理程式通常提供更好的效能和更低的延遲，因為它們不依賴主機作業系統。
+    -   由於在主機作業系統之上運行的開銷，2 類虛擬機器管理程式可能會遇到一些效能下降。
+-   管理和易用性：
+    -   1 類虛擬機器管理程式需要更複雜的設定和管理，但為大規模部署提供進階功能和可擴充性。
+    -   2 類虛擬機器管理程式更易於安裝和使用，非常適合個人使用者和小型專案。
+
+硬體輔助虛擬化 (HVM)
+定義：HVM 利用現代 CPU 提供的硬體擴充來虛擬化硬件，從而以最小的效能開銷建立和管理 VM。
+
+主要特點：
+
+硬體支援：需要 CPU 支援虛擬化擴展，例如 Intel VT-x 或 AMD-V。
+完全虛擬化：虛擬機器可以運行未經修改的來賓作業系統，因為虛擬機器管理程式提供了硬體環境的完整模擬。
+效能：由於在 CPU 上直接執行來賓程式碼，因此通常可提供接近本機的效能。
+隔離：在虛擬機器之間提供強大的隔離，因為每個虛擬機器都像擁有自己的專用硬體一樣運作。
+範例：VMware ESXi、Microsoft Hyper-V、KVM（基於核心的虛擬機器）。
+優點：
+
+相容性：無需修改即可運行任何作業系統。
+性能：高性能得益於硬體支援。
+安全性：硬體提供的增強隔離和安全功能。
+缺點：
+
+硬體依賴：需要特定的硬體功能，限制與舊系統的兼容性。
+複雜性：可能涉及更複雜的配置和管理。
+半虛擬化
+定義：半虛擬化涉及修改來賓作業系統以了解虛擬環境，使其能夠更有效地與虛擬機器管理程式互動。
+
+主要特點：
+
+來賓修改：需要更改來賓作業系統才能使用超級呼叫直接與虛擬機器管理程式進行通訊。
+效能：比傳統的完全虛擬化更有效率，因為它減少了與模擬硬體相關的開銷。
+相容性：僅限於針對半虛擬化進行修改的作業系統。
+範例：具有半虛擬化來賓的 Xen、某些配置中的 VMware 工具以及某些 KVM 配置。
+優點：
+
+效率：減少虛擬化硬件的開銷，有可能為某些工作負載提供更好的效能。
+資源利用：由於來賓作業系統和虛擬機器管理程式之間的直接通信，可以更有效地利用系統資源。
+缺點：
+
+來賓作業系統修改：需要對來賓作業系統進行修改，限制與支援的作業系統的相容性。
+複雜性：在來賓作業系統中需要額外的複雜性來實現超級呼叫。
+主要差異
+來賓作業系統需求：
+
+HVM：可以執行未修改的來賓作業系統。
+半虛擬化：需要修改來賓作業系統才能與虛擬機器管理程式搭配使用。
+表現：
+
+HVM：由於硬體輔助執行，通常可以提供接近本機的效能。
+半虛擬化：可以透過減少硬體模擬的開銷來提供高效率的效能，但依賴修改後的客戶作業系統。
+硬體依賴性：
+
+HVM：需要特定的 CPU 功能（Intel VT-x、AMD-V）。
+半虛擬化：不需要特定的 CPU 功能，但需要修改客戶作業系統。
+隔離:
+
+HVM：利用硬體功能提供強隔離。
+半虛擬化：依賴於基於軟體的隔離，它可能不如基於硬體的隔離那麼強大。
+複雜：
+
+HVM：通常部署起來更簡單，因為它支援未修改的作業系統。
+半虛擬化：需要對來賓作業系統進行額外的設定和修改，從而增加了複雜性。
+
+#### 虛擬化的類型
+
+##### 硬體虛擬化（伺服器虛擬化）
+
+**定義：**抽象化實體硬體以建立運行單獨作業系統和應用程式的虛擬機器 (VM)。  
+**用例：**資料中心、雲端運算、伺服器整合。**例子：**VMware ESXi、微軟 Hyper-V、KVM。
+
+##### 作業系統虛擬化（容器化）
+
+**定義：**允許多個隔離的使用者空間實例（容器）在單一作業系統核心上運行。**用例：**微服務架構、開發和測試環境。**例子：**Docker、Kubernetes、LXC。
+
+##### 網路虛擬化
+
+**定義：**將硬體和軟體網路資源合併到一個基於軟體的管理實體。**用例：**軟體定義網路（SDN）、網路功能虛擬化（NFV）。**例子：**VMware NSX、思科 ACI、OpenStack Neutron。
+
+##### 儲存虛擬化
+
+**定義：** Pools physical storage from multiple devices into a single virtual storage unit that can be managed centrally.
+**用例：**資料管理、儲存最佳化、災難復原。**例子：**IBM SAN 磁碟區控制器、VMware vSAN、NetApp ONTAP。
+
+##### 桌面虛擬化
+
+**定義：**允許桌面作業系統在伺服器託管的虛擬機器上運作。**用例：**虛擬桌面基礎架構 (VDI)、遠端工作解決方案。**例子：**Citrix 虛擬應用程式和桌面、VMware Horizo​​n、Microsoft 遠端桌面服務。
+
+##### 應用虛擬化
+
+**定義：**將應用程式與底層硬體和作業系統分開，允許它們在隔離的環境中運行。**用例：**簡化應用程式部署、相容性測試。**例子：**VMware ThinApp、Microsoft App-V、Citrix XenApp。
+
+##### 資料虛擬化
+
+**定義：**整合來自不同來源的數據，無需進行物理合併，為分析和報告提供統一的視圖。**用例：**商業智能，即時數據整合。**例子：**Denodo、紅帽 JBoss 資料虛擬化、IBM InfoSphere。
+
+##### 虛擬化的好處
+
+**資源效率：**更好地利用物理資源。**節約成本：**降低硬體和營運成本。**可擴充性：**易於根據需求擴大或縮小規模。**靈活性：**支援各種工作負載和應用程式。**災難復原：**簡化的備份和復原流程。**隔離:**透過隔離環境提高安全性。
 
 <p align="right">(<a href="#topic-351.1">back to sub Topic 351.1</a>)</p>
 <p align="right">(<a href="#topic-351">back to Topic 351</a>)</p>
@@ -837,12 +968,16 @@ Vagrantfile
 -   [SSL 教程](https://www.golinuxcloud.com/blog/)
 -   [SSL 設定 Mozilla](https://ssl-config.mozilla.org/)
 -   虛擬化定義
-    -   [紅帽](https://www.redhat.com/pt-br/topics/virtualization/)
+    -   [紅帽](https://www.redhat.com/pt-br/topics/virtualization/what-is-virtualization)
     -   [AWS](https://aws.amazon.com/pt/what-is/virtualization/)
     -   [國際商業機器公司](https://www.ibm.com/topics/virtualization)
     -   [OpenSource.com](https://opensource.com/resources/virtualization)
+-   [KVM（核心虛擬機器）](https://www.redhat.com/pt-br/topics/virtualization/what-is-KVM)
+-   [KVM管理工具](https://www.linux-kvm.org/page/Management_Tools)
 -   [維基 Xen 項目](https://wiki.xenproject.org/wiki/Book/HelloXenProject/1-Chapter)
--   LPI 部落格：Xen 虛擬化與雲端運算 #01：簡介（<https://www.lpi.org/pt-br/blog/2020/10/01/xen-virtualization-and-cloud-computing-01-introduction/>)
+-   [LPI 部落格：Xen 虛擬化與雲端運算 #01：簡介](https://www.lpi.org/pt-br/blog/2020/10/01/xen-virtualization-and-cloud-computing-01-introduction/)
+-   Openstack 文件
+    -   [紅帽](https://www.redhat.com/pt-br/topics/openstack)
 -   [LPIC-3 305-300 目標](https://www.lpi.org/our-certifications/exam-305-objectives/)
 -   [LPIC-3 305-300 維基](https://wiki.lpi.org/wiki/LPIC-305_Objectives_V3.0)
 -   [LPIC-3 305-300 學習教材](https://cursos.linuxsemfronteiras.com.br/courses/preparatorio-para-certificacao-lpic-3-305/)
