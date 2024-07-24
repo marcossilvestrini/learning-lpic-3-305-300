@@ -336,8 +336,7 @@ HVM：通常部署起來更簡單，因為它支援未修改的作業系統。
 
 ##### 儲存虛擬化
 
-**定義：** Pools physical storage from multiple devices into a single virtual storage unit that can be managed centrally.
-**用例：**資料管理、儲存最佳化、災難復原。**例子：**IBM SAN 磁碟區控制器、VMware vSAN、NetApp ONTAP。
+**定義：**將多個裝置的實體儲存池整合到可集中管理的單一虛擬儲存單元中。**用例：**資料管理、儲存最佳化、災難復原。**例子：**IBM SAN 磁碟區控制器、VMware vSAN、NetApp ONTAP。
 
 ##### 桌面虛擬化
 
@@ -608,7 +607,7 @@ foo
 
 ### 352.2 LXC
 
-**重量：**6
+**重量：** 6
 
 **描述：**考生應該能夠使用 LXC 和 LXD 的系統容器。所涵蓋的LXC版本為3.0或更高版本。
 
