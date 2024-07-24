@@ -140,7 +140,7 @@ Use este repositório para aprender sobre o exame LPIC2 202-450
 
 -   [x] Criar repositório
 -   [ ] Crie exemplos sobre o Tópico 351
--   [ ] Crie exemplos sobre o Tópico 352
+-   [ ] Create examples about Topic 352
 -   [ ] Crie exemplos sobre o Tópico 353
 -   [ ] Carregar itexam simulado
 
@@ -350,7 +350,7 @@ Paravirtualização: Requer configuração e modificações adicionais no sistem
 
 **Definição:**Integra dados de diversas fontes sem consolidá-los fisicamente, fornecendo uma visão unificada para análise e relatórios.**Casos de uso:**Inteligência de negócios, integração de dados em tempo real.**Exemplos:**Denodo, Red Hat JBoss Data Virtualization, IBM InfoSphere.
 
-##### Benefícios da virtualização
+##### Benefits of Virtualization
 
 **Eficiência de recursos:**Melhor utilização dos recursos físicos.**Poupança de custos:**Custos operacionais e de hardware reduzidos.**Escalabilidade:**Fácil de aumentar ou diminuir de acordo com a demanda.**Flexibilidade:**Suporta uma variedade de cargas de trabalho e aplicativos.**Recuperação de desastres:**Processos simplificados de backup e recuperação.**Isolamento:**Maior segurança através do isolamento de ambientes.
 
