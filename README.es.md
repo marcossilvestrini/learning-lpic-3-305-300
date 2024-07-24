@@ -108,9 +108,6 @@ Para comenzar el aprendizaje, consulte la documentación anterior.
 
 ### Requisitos previos
 
-Este es un ejemplo de cómo enumerar las cosas que necesita para usar el software.
-y como instalarlos.
-
 -   git
 -   Caja virtual y extensión
 -   Vagabundo
@@ -216,13 +213,146 @@ CPU flags
 Migration (P2V, V2V)
 ```
 
-#### 351.1 Comandos importantes
+#### Hipervisores
 
-##### foo
+##### Hipervisor tipo 1 (hipervisor bare-metal)
 
-```sh
-foo
-```
+**Definición:**Se ejecuta directamente en el hardware físico del host, proporcionando una capa base para administrar máquinas virtuales sin la necesidad de un sistema operativo host.
+
+**Características:**
+
+-   Alto rendimiento y eficiencia.
+-   Menor latencia y sobrecarga.
+-   A menudo se utiliza en entornos empresariales y centros de datos.
+
+**Ejemplos:**
+
+-   VMware ESXi: un hipervisor robusto y ampliamente utilizado en entornos empresariales.
+-   Microsoft Hyper-V: integrado con Windows Server, ofrece sólidas funciones de administración y rendimiento.
+-   Xen: un hipervisor de código abierto utilizado por muchos proveedores de servicios en la nube.
+-   KVM (Máquina virtual basada en kernel): Integrada en el kernel de Linux, proporciona un alto rendimiento para sistemas basados ​​en Linux.
+
+##### Hipervisor tipo 2 (hipervisor alojado)
+
+**Definición:**Se ejecuta sobre un sistema operativo convencional y depende del sistema operativo host para la administración de recursos y el soporte del dispositivo.
+
+**Características:**
+
+-   Más fácil de configurar y usar, especialmente en computadoras personales.
+-   Más flexible para desarrollo, pruebas e implementaciones a menor escala.
+-   Normalmente son menos eficientes que los hipervisores de tipo 1 debido a la sobrecarga adicional del sistema operativo host.
+
+**Ejemplos:**
+
+-   VMware Workstation: un potente hipervisor para ejecutar múltiples sistemas operativos en un solo escritorio.
+-   Oracle VirtualBox: un hipervisor de código abierto conocido por su flexibilidad y facilidad de uso.
+-   Parallels Desktop: Diseñado para que los usuarios de Mac ejecuten Windows y otros sistemas operativos junto con macOS.
+-   QEMU (Quick EMULator): un emulador y virtualizador de código abierto, que a menudo se usa junto con KVM.
+
+##### Diferencias clave entre los hipervisores tipo 1 y tipo 2
+
+-   Entorno de implementación:
+    -   Los hipervisores de tipo 1 se implementan comúnmente en centros de datos y entornos empresariales debido a su interacción directa con el hardware y su alto rendimiento.
+    -   Los hipervisores de tipo 2 son más adecuados para uso personal, desarrollo, pruebas y tareas de virtualización a pequeña escala.
+-   Actuación:
+    -   Los hipervisores de tipo 1 generalmente ofrecen mejor rendimiento y menor latencia porque no dependen de un sistema operativo host.
+    -   Los hipervisores de tipo 2 pueden experimentar cierta degradación del rendimiento debido a la sobrecarga de ejecutarse sobre un sistema operativo host.
+-   Gestión y facilidad de uso:
+    -   Los hipervisores de tipo 1 requieren una configuración y administración más complejas, pero brindan funciones avanzadas y escalabilidad para implementaciones a gran escala.
+    -   Los hipervisores tipo 2 son más fáciles de instalar y usar, lo que los hace ideales para usuarios individuales y proyectos más pequeños.
+
+Virtualización asistida por hardware (HVM)
+Definición: HVM aprovecha las extensiones de hardware proporcionadas por las CPU modernas para virtualizar el hardware, lo que permite la creación y gestión de máquinas virtuales con una sobrecarga de rendimiento mínima.
+
+Caracteristicas claves:
+
+Soporte de hardware: Requiere soporte de CPU para extensiones de virtualización como Intel VT-x o AMD-V.
+Virtualización completa: las máquinas virtuales pueden ejecutar sistemas operativos invitados sin modificar, ya que el hipervisor proporciona una emulación completa del entorno de hardware.
+Rendimiento: normalmente ofrece un rendimiento casi nativo debido a la ejecución directa del código invitado en la CPU.
+Aislamiento: proporciona un fuerte aislamiento entre las máquinas virtuales, ya que cada máquina virtual funciona como si tuviera su propio hardware dedicado.
+Ejemplos: VMware ESXi, Microsoft Hyper-V, KVM (máquina virtual basada en kernel).
+Ventajas:
+
+Compatibilidad: Puede ejecutar cualquier sistema operativo sin modificaciones.
+Rendimiento: Alto rendimiento gracias al soporte de hardware.
+Seguridad: funciones de seguridad y aislamiento mejoradas proporcionadas por el hardware.
+Desventajas:
+
+Dependencia de hardware: Requiere características de hardware específicas, lo que limita la compatibilidad con sistemas más antiguos.
+Complejidad: Puede implicar una configuración y gestión más complejas.
+Paravirtualización
+Definición: La paravirtualización implica modificar el sistema operativo invitado para que sea consciente del entorno virtual, lo que le permite interactuar de manera más eficiente con el hipervisor.
+
+Caracteristicas claves:
+
+Modificación del invitado: requiere cambios en el sistema operativo invitado para comunicarse directamente con el hipervisor mediante hiperllamadas.
+Rendimiento: puede ser más eficiente que la virtualización completa tradicional porque reduce la sobrecarga asociada con la emulación de hardware.
+Compatibilidad: Limitada a sistemas operativos que han sido modificados para la paravirtualización.
+Ejemplos: Xen con invitados paravirtualizados, herramientas VMware en determinadas configuraciones y algunas configuraciones KVM.
+Ventajas:
+
+Eficiencia: reduce la sobrecarga de virtualización de hardware, ofreciendo potencialmente un mejor rendimiento para determinadas cargas de trabajo.
+Utilización de recursos: uso más eficiente de los recursos del sistema debido a la comunicación directa entre el sistema operativo invitado y el hipervisor.
+Desventajas:
+
+Modificación del sistema operativo invitado: requiere modificaciones en el sistema operativo invitado, lo que limita la compatibilidad con los sistemas operativos compatibles.
+Complejidad: requiere complejidad adicional en el sistema operativo invitado para implementaciones de hiperllamadas.
+Diferencias clave
+Requisitos del sistema operativo invitado:
+
+HVM: puede ejecutar sistemas operativos invitados no modificados.
+Paravirtualización: requiere que los sistemas operativos invitados se modifiquen para que funcionen con el hipervisor.
+Actuación:
+
+HVM: normalmente proporciona un rendimiento casi nativo debido a la ejecución asistida por hardware.
+Paravirtualización: puede ofrecer un rendimiento eficiente al reducir la sobrecarga de la emulación de hardware, pero depende de un sistema operativo invitado modificado.
+Dependencia del hardware:
+
+HVM: Requiere características específicas de CPU (Intel VT-x, AMD-V).
+Paravirtualización: no requiere funciones específicas de la CPU, pero necesita un sistema operativo invitado modificado.
+Aislamiento:
+
+HVM: proporciona un fuerte aislamiento mediante funciones de hardware.
+Paravirtualización: se basa en un aislamiento basado en software, que puede no ser tan sólido como el aislamiento basado en hardware.
+Complejidad:
+
+HVM: generalmente es más sencillo de implementar ya que admite sistemas operativos no modificados.
+Paravirtualización: requiere configuración y modificaciones adicionales en el sistema operativo invitado, lo que aumenta la complejidad.
+
+#### Tipos de virtualización
+
+##### Virtualización de hardware (virtualización de servidores)
+
+**Definición:**Abstrae el hardware físico para crear máquinas virtuales (VM) que ejecutan sistemas operativos y aplicaciones independientes.  
+**Casos de uso:**Centros de datos, computación en la nube, consolidación de servidores.**Ejemplos:**VMware ESXi, Microsoft Hyper-V, KVM.
+
+##### Virtualización del sistema operativo (containerización)
+
+**Definición:**Permite que se ejecuten múltiples instancias aisladas de espacio de usuario (contenedores) en un único kernel del sistema operativo.**Casos de uso:**Arquitectura de microservicios, entornos de desarrollo y pruebas.**Ejemplos:**Docker, Kubernetes, LXC.
+
+##### Virtualización de red
+
+**Definición:**Combina recursos de red de hardware y software en una única entidad administrativa basada en software.**Casos de uso:**Redes definidas por software (SDN), virtualización de funciones de red (NFV).**Ejemplos:**VMware NSX, Cisco ACI, OpenStack Neutron.
+
+##### Virtualización del almacenamiento
+
+**Definición:**Agrupa el almacenamiento físico de varios dispositivos en una única unidad de almacenamiento virtual que se puede administrar de forma centralizada.**Casos de uso:**Gestión de datos, optimización del almacenamiento, recuperación ante desastres.**Ejemplos:**Controlador de volumen IBM SAN, VMware vSAN, NetApp ONTAP.
+
+##### Virtualización de escritorio
+
+**Definición:**Permite que un sistema operativo de escritorio se ejecute en una máquina virtual alojada en un servidor.**Casos de uso:**Infraestructura de escritorio virtual (VDI), soluciones de trabajo remoto.**Ejemplos:**Aplicaciones y escritorios virtuales Citrix, VMware Horizon, Servicios de escritorio remoto de Microsoft.
+
+##### Virtualización de aplicaciones
+
+**Definición:**Separa las aplicaciones del hardware y el sistema operativo subyacentes, permitiéndoles ejecutarse en entornos aislados.**Casos de uso:**Implementación de aplicaciones simplificada, pruebas de compatibilidad.**Ejemplos:**VMware ThinApp, Microsoft App-V, Citrix XenApp.
+
+##### Virtualización de datos
+
+**Definición:**Integra datos de varias fuentes sin consolidarlos físicamente, proporcionando una vista unificada para análisis e informes.**Casos de uso:**Inteligencia de negocios, integración de datos en tiempo real.**Ejemplos:**Denodo, Red Hat JBoss Virtualización de datos, IBM InfoSphere.
+
+##### Beneficios de la virtualización
+
+**Eficiencia de recursos:**Mejor utilización de los recursos físicos.**Ahorro de costes:**Reducción de costes operativos y de hardware.**Escalabilidad:**Fácil de ampliar o reducir según la demanda.**Flexibilidad:**Admite una variedad de cargas de trabajo y aplicaciones.**Recuperación de desastres:**Procesos de copia de seguridad y recuperación simplificados.**Aislamiento:**Seguridad mejorada mediante aislamiento de entornos.
 
 <p align="right">(<a href="#topic-351.1">back to sub Topic 351.1</a>)</p>
 <p align="right">(<a href="#topic-351">back to Topic 351</a>)</p>
@@ -288,7 +418,7 @@ foo
 -   Comprender la arquitectura de QEMU, incluidos KVM, redes y almacenamiento.
 -   Inicie instancias de QEMU desde la línea de comando
 -   Administre instantáneas usando el monitor QEMU
--   Install the QEMU Guest Agent and VirtIO device drivers
+-   Instale los controladores de dispositivo QEMU Guest Agent y VirtIO
 -   Solucionar problemas de instalaciones de QEMU, incluidas las redes y el almacenamiento
 -   Conocimiento de parámetros de configuración importantes de QEMU
 
@@ -378,7 +508,7 @@ foo
 -   Administre imágenes de disco de máquinas virtuales usando qemu-img
 -   Monte particiones y acceda a archivos contenidos en imágenes de disco de máquinas virtuales usando libguestfish
 -   Copie el contenido del disco físico a una imagen de disco de máquina virtual
--   Migrate disk content between various virtual machine disk image formats
+-   Migrar contenido de disco entre varios formatos de imagen de disco de máquina virtual
 -   Conciencia del formato de virtualización abierta (OVF)
 
 #### 351.5 Objetos citados
@@ -837,12 +967,16 @@ Enlace del proyecto:<https://github.com/marcossilvestrini/learning-lpic-3-305-30
 -   [Tutoriales SSL](https://www.golinuxcloud.com/blog/)
 -   [Configuración SSL Mozilla](https://ssl-config.mozilla.org/)
 -   Definiciones de virtualización
-    -   [sombrero rojo](https://www.redhat.com/pt-br/topics/virtualization/)
+    -   [sombrero rojo](https://www.redhat.com/pt-br/topics/virtualization/what-is-virtualization)
     -   [AWS](https://aws.amazon.com/pt/what-is/virtualization/)
     -   [IBM](https://www.ibm.com/topics/virtualization)
     -   [OpenSource.com](https://opensource.com/resources/virtualization)
+-   [KVM (máquinas virtuales del núcleo)](https://www.redhat.com/pt-br/topics/virtualization/what-is-KVM)
+-   [Herramientas de gestión KVM](https://www.linux-kvm.org/page/Management_Tools)
 -   [Proyecto Wiki Xen](https://wiki.xenproject.org/wiki/Book/HelloXenProject/1-Chapter)
--   Blog de LPI: Virtualización Xen y Computación en la Nube #01: Introducción(<https://www.lpi.org/pt-br/blog/2020/10/01/xen-virtualization-and-cloud-computing-01-introduction/>)
+-   [Blog de LPI: Virtualización Xen y Computación en la Nube #01: Introducción](https://www.lpi.org/pt-br/blog/2020/10/01/xen-virtualization-and-cloud-computing-01-introduction/)
+-   Documentos de Openstack
+    -   [Sombrero rojo](https://www.redhat.com/pt-br/topics/openstack)
 -   [LPIC-3 305-300 Objetivos](https://www.lpi.org/our-certifications/exam-305-objectives/)
 -   [LPIC-3 305-300 Wiki](https://wiki.lpi.org/wiki/LPIC-305_Objectives_V3.0)
 -   [LPIC-3 305-300 Material de aprendizaje](https://cursos.linuxsemfronteiras.com.br/courses/preparatorio-para-certificacao-lpic-3-305/)
