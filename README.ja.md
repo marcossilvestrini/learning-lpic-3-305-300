@@ -319,7 +319,7 @@ HVM: ハードウェア機能を使用して強力な分離を提供します。
 HVM: 変更されていない OS をサポートするため、一般に導入がより簡単です。
 準仮想化: ゲスト OS への追加のセットアップと変更が必要となり、複雑さが増します。
 
-#### Types of Virtualization
+#### 仮想化の種類
 
 ##### ハードウェア仮想化（サーバー仮想化）
 
@@ -411,7 +411,7 @@ foo
 
 **重さ：**４
 
-**説明：**受験者は、QEMU インストールのインストール、構成、保守、移行、およびトラブルシューティングを行うことができる必要があります。
+**説明：** Candidates should be able to install, configure, maintain, migrate and troubleshoot QEMU installations.
 
 **主要な知識領域:**
 
