@@ -118,9 +118,6 @@ For starting the learning, see the documentation above.
 
 ### Prerequisites
 
-This is an example of how to list things you need to use the software
-and how to install them.
-
 * Git
 * Virtual Box and extension
 * V_a_g_r_a_n_t
@@ -226,13 +223,168 @@ CPU flags
 Migration (P2V, V2V)
 ```
 
-#### 351.1 Important Commands
+#### Hypervisors
 
-##### foo
+##### Type 1 Hypervisor (Bare-Metal Hypervisor)
 
-```sh
-foo
-```
+**Definition:** Runs directly on the host's physical hardware, providing a base layer to manage VMs without the need for a host operating system.  
+
+**Characteristics:**
+
+* High performance and efficiency.
+* Lower latency and overhead.
+* Often used in enterprise environments and data centers.
+
+**Examples:**
+
+* VMware ESXi: A robust and widely used hypervisor in enterprise settings.
+* Microsoft Hyper-V: Integrated with Windows Server, offering strong performance and management features.
+* Xen: An open-source hypervisor used by many cloud service providers.
+* KVM (Kernel-based Virtual Machine): Integrated into the Linux kernel, providing high performance for Linux-based systems.
+
+##### Type 2 Hypervisor (Hosted Hypervisor)
+
+**Definition:** Runs on top of a conventional operating system, relying on the host OS for resource management and device support.
+
+**Characteristics:**
+
+* Easier to set up and use, especially on personal computers.
+* More flexible for development, testing, and smaller-scale deployments.
+* Typically less efficient than Type 1 hypervisors due to additional overhead from the host OS.
+
+**Examples:**
+
+* VMware Workstation: A powerful hypervisor for running multiple operating systems on a single desktop.
+* Oracle VirtualBox: An open-source hypervisor known for its flexibility and ease of use.
+* Parallels Desktop: Designed for Mac users to run Windows and other operating systems alongside macOS.
+* QEMU (Quick EMUlator): An open-source emulator and virtualizer, often used in conjunction with KVM.
+
+##### Key Differences Between Type 1 and Type 2 Hypervisors
+
+* Deployment Environment:
+  * Type 1 hypervisors are commonly deployed in data centers and enterprise environments due to their direct interaction with hardware and high performance.
+  * Type 2 hypervisors are more suitable for personal use, development, testing, and small-scale virtualization tasks.
+* Performance:
+  * Type 1 hypervisors generally offer better performance and lower latency because they do not rely on a host OS.
+  * Type 2 hypervisors may experience some performance degradation due to the overhead of running on top of a host OS.
+* Management and Ease of Use:
+  * Type 1 hypervisors require more complex setup and management but provide advanced features and scalability for large-scale deployments.
+  * Type 2 hypervisors are easier to install and use, making them ideal for individual users and smaller projects.
+
+
+
+Hardware-assisted Virtualization (HVM)
+Definition: HVM leverages hardware extensions provided by modern CPUs to virtualize hardware, enabling the creation and management of VMs with minimal performance overhead.
+
+Key Characteristics:
+
+Hardware Support: Requires CPU support for virtualization extensions such as Intel VT-x or AMD-V.
+Full Virtualization: VMs can run unmodified guest operating systems, as the hypervisor provides a complete emulation of the hardware environment.
+Performance: Typically offers near-native performance because of direct execution of guest code on the CPU.
+Isolation: Provides strong isolation between VMs since each VM operates as if it has its own dedicated hardware.
+Examples: VMware ESXi, Microsoft Hyper-V, KVM (Kernel-based Virtual Machine).
+Advantages:
+
+Compatibility: Can run any operating system without modification.
+Performance: High performance due to hardware support.
+Security: Enhanced isolation and security features provided by hardware.
+Disadvantages:
+
+Hardware Dependency: Requires specific hardware features, limiting compatibility with older systems.
+Complexity: May involve more complex configuration and management.
+Paravirtualization
+Definition: Paravirtualization involves modifying the guest operating system to be aware of the virtual environment, allowing it to interact more efficiently with the hypervisor.
+
+Key Characteristics:
+
+Guest Modification: Requires changes to the guest operating system to communicate directly with the hypervisor using hypercalls.
+Performance: Can be more efficient than traditional full virtualization because it reduces the overhead associated with emulating hardware.
+Compatibility: Limited to operating systems that have been modified for paravirtualization.
+Examples: Xen with paravirtualized guests, VMware tools in certain configurations, and some KVM configurations.
+Advantages:
+
+Efficiency: Reduces the overhead of virtualizing hardware, potentially offering better performance for certain workloads.
+Resource Utilization: More efficient use of system resources due to direct communication between the guest OS and hypervisor.
+Disadvantages:
+
+Guest OS Modification: Requires modifications to the guest OS, limiting compatibility to supported operating systems.
+Complexity: Requires additional complexity in the guest OS for hypercall implementations.
+Key Differences
+Guest OS Requirements:
+
+HVM: Can run unmodified guest operating systems.
+Paravirtualization: Requires guest operating systems to be modified to work with the hypervisor.
+Performance:
+
+HVM: Typically provides near-native performance due to hardware-assisted execution.
+Paravirtualization: Can offer efficient performance by reducing the overhead of hardware emulation, but relies on modified guest OS.
+Hardware Dependency:
+
+HVM: Requires specific CPU features (Intel VT-x, AMD-V).
+Paravirtualization: Does not require specific CPU features but needs modified guest OS.
+Isolation:
+
+HVM: Provides strong isolation using hardware features.
+Paravirtualization: Relies on software-based isolation, which may not be as robust as hardware-based isolation.
+Complexity:
+
+HVM: Generally more straightforward to deploy since it supports unmodified OS.
+Paravirtualization: Requires additional setup and modifications to the guest OS, increasing complexity.
+
+
+
+#### Types of Virtualization
+
+##### Hardware Virtualization (Server Virtualization)
+
+**Definition:** Abstracts physical hardware to create virtual machines (VMs) that run separate operating systems and applications.  
+**Use Cases:** Data centers, cloud computing, server consolidation.
+**Examples:** VMware ESXi, Microsoft Hyper-V, KVM.
+
+##### Operating System Virtualization (Containerization)
+
+**Definition:** Allows multiple isolated user-space instances (containers) to run on a single OS kernel.
+**Use Cases:** Microservices architecture, development and testing environments.
+**Examples:** Docker, Kubernetes, LXC.
+
+##### Network Virtualization
+
+**Definition:** Combines hardware and software network resources into a single, software-based administrative entity.
+**Use Cases:** Software-defined networking (SDN), network function virtualization (NFV).
+**Examples:** VMware NSX, Cisco ACI, OpenStack Neutron.
+
+##### Storage Virtualization
+
+**Definition:** Pools physical storage from multiple devices into a single virtual storage unit that can be managed centrally.
+**Use Cases:** Data management, storage optimization, disaster recovery.
+**Examples:** IBM SAN Volume Controller, VMware vSAN, NetApp ONTAP.
+
+##### Desktop Virtualization
+
+**Definition:** Allows a desktop operating system to run on a virtual machine hosted on a server.
+**Use Cases:** Virtual desktop infrastructure (VDI), remote work solutions.
+**Examples:** Citrix Virtual Apps and Desktops, VMware Horizon, Microsoft Remote Desktop Services.
+
+##### Application Virtualization
+
+**Definition:** Separates applications from the underlying hardware and operating system, allowing them to run in isolated environments.
+**Use Cases:** Simplified application deployment, compatibility testing.
+**Examples:** VMware ThinApp, Microsoft App-V, Citrix XenApp.
+
+##### Data Virtualization
+
+**Definition:** Integrates data from various sources without physically consolidating it, providing a unified view for analysis and reporting.
+**Use Cases:** Business intelligence, real-time data integration.
+**Examples:** Denodo, Red Hat JBoss Data Virtualization, IBM InfoSphere.
+
+##### Benefits of Virtualization
+
+**Resource Efficiency:** Better utilization of physical resources.
+**Cost Savings:** Reduced hardware and operational costs.
+**Scalability:** Easy to scale up or down according to demand.
+**Flexibility:** Supports a variety of workloads and applications.
+**Disaster Recovery:** Simplified backup and recovery processes.
+**Isolation:** Improved security through isolation of environments.
 
 <p align="right">(<a href="#topic-351.1">back to sub Topic 351.1</a>)</p>
 <p align="right">(<a href="#topic-351">back to Topic 351</a>)</p>
@@ -849,12 +1001,16 @@ Project Link: [https://github.com/marcossilvestrini/learning-lpic-3-305-300](htt
 * [SSL Tutorials](https://www.golinuxcloud.com/blog/)
 * [SSL Config Mozilla](https://ssl-config.mozilla.org/)
 * Virtualization Definitions
-  * [Red Hat](https://www.redhat.com/pt-br/topics/virtualization/)
+  * [Red Hat](https://www.redhat.com/pt-br/topics/virtualization/what-is-virtualization)
   * [AWS](https://aws.amazon.com/pt/what-is/virtualization/)
   * [IBM](https://www.ibm.com/topics/virtualization)
   * [OpenSource.com](https://opensource.com/resources/virtualization )
+* [KVM(Kernel Virtual Machines)](https://www.redhat.com/pt-br/topics/virtualization/what-is-KVM)
+* [KVM Management Tools](https://www.linux-kvm.org/page/Management_Tools)
 * [Wiki XenProject](https://wiki.xenproject.org/wiki/Book/HelloXenProject/1-Chapter)
-* LPI Blog: Xen Virtualization and Cloud Computing #01: Introduction(https://www.lpi.org/pt-br/blog/2020/10/01/xen-virtualization-and-cloud-computing-01-introduction/)
+* [LPI Blog: Xen Virtualization and Cloud Computing #01: Introduction](https://www.lpi.org/pt-br/blog/2020/10/01/xen-virtualization-and-cloud-computing-01-introduction/)
+* Openstack Docs
+  * [RedHat](https://www.redhat.com/pt-br/topics/openstack)
 * [LPIC-3 305-300 Objectives](https://www.lpi.org/our-certifications/exam-305-objectives/)
 * [LPIC-3 305-300 Wiki](https://wiki.lpi.org/wiki/LPIC-305_Objectives_V3.0)
 * [LPIC-3 305-300 Learning Material](https://cursos.linuxsemfronteiras.com.br/courses/preparatorio-para-certificacao-lpic-3-305/)
