@@ -344,7 +344,7 @@ Paravirtualisation : nécessite une configuration et des modifications supplém
 
 ##### Virtualisation des applications
 
-**Définition:**Sépare les applications du matériel et du système d'exploitation sous-jacents, leur permettant de s'exécuter dans des environnements isolés.**Cas d'utilisation :**Déploiement d'applications simplifié, tests de compatibilité.**Exemples:**VMware ThinApp, Microsoft App-V, Citrix XenApp.
+**Définition:**Sépare les applications du matériel et du système d'exploitation sous-jacents, leur permettant de s'exécuter dans des environnements isolés.**Cas d'utilisation :**Déploiement d'applications simplifié, tests de compatibilité.**Exemples:** VMware ThinApp, Microsoft App-V, Citrix XenApp.
 
 ##### Virtualisation des données
 
