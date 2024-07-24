@@ -244,7 +244,7 @@ Migration (P2V, V2V)
 
 **أمثلة:**
 
--   VMware Workstation: A powerful hypervisor for running multiple operating systems on a single desktop.
+-   VMware Workstation: برنامج Hypervisor قوي لتشغيل أنظمة تشغيل متعددة على سطح مكتب واحد.
 -   Oracle VirtualBox: برنامج Hypervisor مفتوح المصدر معروف بمرونته وسهولة استخدامه.
 -   Parallels Desktop: مصمم لمستخدمي Mac لتشغيل Windows وأنظمة التشغيل الأخرى جنبًا إلى جنب مع macOS.
 -   QEMU (Quick EMUlator): محاكي وأداة افتراضية مفتوحة المصدر، تُستخدم غالبًا مع KVM.
