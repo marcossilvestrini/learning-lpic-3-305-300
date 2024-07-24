@@ -1,0 +1,63 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+Vagrant.configure("2") do |config|
+
+  # BOX
+  config.vm.box = "CONFIG_VM_BOX_PLACEHOLDER"
+
+  ## GUEST CONFIG
+  config.vbguest.auto_update = false
+  config.vbguest.no_install = true
+  config.vbguest.no_remote = true
+  config.vm.box_download_insecure = true
+
+  # LOCAL VARIABLES
+  VM_NAME = "lpic3-topic-351"
+
+  ## MOUNTS
+  config.vm.synced_folder ".", "/vagrant", disabled: true
+  config.vm.synced_folder "../scripts/", "/home/vagrant/scripts"
+
+  # Define the VM
+  config.vm.define "#{VM_NAME}-1" do |vm_config|
+
+    # VMware Workstation configuration
+    vm_config.vm.provider "vmware_workstation" do |vm|
+      vm.linked_clone = true
+      vm.clone_directory = "E:\\Servers\\VMWare\\#{VM_NAME}-1"
+      vm.whitelist_verified = true
+      vm.vmx["virtualHW.version"] = "10"
+      vm.vmx["displayName"] = "#{VM_NAME}-1"
+      vm.vmx["memsize"] = "2048"
+      vm.vmx["numvcpus"] = "2"
+      vm.vmx["cpuid.coresPerSocket"] = "1"
+    end
+
+    # VirtualBox configuration
+    vm_config.vm.provider "virtualbox" do |vb|
+      vb.linked_clone = true
+      vb.name = "#{VM_NAME}-1"
+      vb.memory = "2048"
+      vb.cpus = 2
+      vb.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
+      vb.customize ["modifyvm", :id, "--vrde", "off"]  # Disable VRDE
+    end
+
+    # Network configuration
+    if Vagrant.has_plugin?("vagrant-vbguest") && Vagrant.has_plugin?("vagrant-vboxmanage")
+      vm_config.vm.network "public_network", ip: "192.168.0.130", netmask: "255.255.255.0", mode: "bridge", bridge: [
+                                               "Intel(R) I211 Gigabit Network Connection",
+                                               "MediaTek Wi-Fi 6 MT7921 Wireless LAN",
+                                             ]
+    else
+      vm_config.vm.network "public_network", ip: "192.168.0.130", netmask: "255.255.255.0", mode: "bridge", bridge: [
+                                               "Intel(R) I211 Gigabit Network Connection",
+                                               "MediaTek Wi-Fi 6 MT7921 Wireless LAN",
+                                             ], nic_type: "virtio"
+    end
+
+    # Uncomment the provision line if needed
+    # vm_config.vm.provision "shell", name: "[SCRIPT: prometheus/scripts/prometheus.sh]", path: "prometheus/scripts/prometheus.sh", privileged: false
+  end
+end
