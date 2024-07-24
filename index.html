@@ -247,10 +247,6 @@ customElements.define('markdown-style', MarkdownStyle);</script><markdown-style 
     <p>For starting the learning, see the documentation above.</p>
     <p><a name="prerequisites"></a></p>
     <h3 id="prerequisites"><a class="anchor" aria-hidden="true" tabindex="-1" href="#prerequisites"><span class="octicon octicon-link"></span></a>Prerequisites</h3>
-    <p>
-      This is an example of how to list things you need to use the software
-      and how to install them.
-    </p>
     <ul>
       <li>Git</li>
       <li>Virtual Box and extension</li>
@@ -337,11 +333,177 @@ CPU flags
 /proc/cpuinfo
 Migration (P2V, V2V)
 " class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
-    <h4 id="3511-important-commands"><a class="anchor" aria-hidden="true" tabindex="-1" href="#3511-important-commands"><span class="octicon octicon-link"></span></a>351.1 Important Commands</h4>
-    <h5 id="foo"><a class="anchor" aria-hidden="true" tabindex="-1" href="#foo"><span class="octicon octicon-link"></span></a>foo</h5>
-    <pre class="language-sh"><code class="language-sh code-highlight"><span class="code-line line-number" line="1">foo
-</span></code><div onclick="copied(this)" data-code="foo
-" class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+    <h4 id="hypervisors"><a class="anchor" aria-hidden="true" tabindex="-1" href="#hypervisors"><span class="octicon octicon-link"></span></a>Hypervisors</h4>
+    <h5 id="type-1-hypervisor-bare-metal-hypervisor"><a class="anchor" aria-hidden="true" tabindex="-1" href="#type-1-hypervisor-bare-metal-hypervisor"><span class="octicon octicon-link"></span></a>Type 1 Hypervisor (Bare-Metal Hypervisor)</h5>
+    <p><strong>Definition:</strong> Runs directly on the host's physical hardware, providing a base layer to manage VMs without the need for a host operating system.</p>
+    <p><strong>Characteristics:</strong></p>
+    <ul>
+      <li>High performance and efficiency.</li>
+      <li>Lower latency and overhead.</li>
+      <li>Often used in enterprise environments and data centers.</li>
+    </ul>
+    <p><strong>Examples:</strong></p>
+    <ul>
+      <li>VMware ESXi: A robust and widely used hypervisor in enterprise settings.</li>
+      <li>Microsoft Hyper-V: Integrated with Windows Server, offering strong performance and management features.</li>
+      <li>Xen: An open-source hypervisor used by many cloud service providers.</li>
+      <li>KVM (Kernel-based Virtual Machine): Integrated into the Linux kernel, providing high performance for Linux-based systems.</li>
+    </ul>
+    <h5 id="type-2-hypervisor-hosted-hypervisor"><a class="anchor" aria-hidden="true" tabindex="-1" href="#type-2-hypervisor-hosted-hypervisor"><span class="octicon octicon-link"></span></a>Type 2 Hypervisor (Hosted Hypervisor)</h5>
+    <p><strong>Definition:</strong> Runs on top of a conventional operating system, relying on the host OS for resource management and device support.</p>
+    <p><strong>Characteristics:</strong></p>
+    <ul>
+      <li>Easier to set up and use, especially on personal computers.</li>
+      <li>More flexible for development, testing, and smaller-scale deployments.</li>
+      <li>Typically less efficient than Type 1 hypervisors due to additional overhead from the host OS.</li>
+    </ul>
+    <p><strong>Examples:</strong></p>
+    <ul>
+      <li>VMware Workstation: A powerful hypervisor for running multiple operating systems on a single desktop.</li>
+      <li>Oracle VirtualBox: An open-source hypervisor known for its flexibility and ease of use.</li>
+      <li>Parallels Desktop: Designed for Mac users to run Windows and other operating systems alongside macOS.</li>
+      <li>QEMU (Quick EMUlator): An open-source emulator and virtualizer, often used in conjunction with KVM.</li>
+    </ul>
+    <h5 id="key-differences-between-type-1-and-type-2-hypervisors"><a class="anchor" aria-hidden="true" tabindex="-1" href="#key-differences-between-type-1-and-type-2-hypervisors"><span class="octicon octicon-link"></span></a>Key Differences Between Type 1 and Type 2 Hypervisors</h5>
+    <ul>
+      <li>Deployment Environment:
+        <ul>
+          <li>Type 1 hypervisors are commonly deployed in data centers and enterprise environments due to their direct interaction with hardware and high performance.</li>
+          <li>Type 2 hypervisors are more suitable for personal use, development, testing, and small-scale virtualization tasks.</li>
+        </ul>
+      </li>
+      <li>Performance:
+        <ul>
+          <li>Type 1 hypervisors generally offer better performance and lower latency because they do not rely on a host OS.</li>
+          <li>Type 2 hypervisors may experience some performance degradation due to the overhead of running on top of a host OS.</li>
+        </ul>
+      </li>
+      <li>Management and Ease of Use:
+        <ul>
+          <li>Type 1 hypervisors require more complex setup and management but provide advanced features and scalability for large-scale deployments.</li>
+          <li>Type 2 hypervisors are easier to install and use, making them ideal for individual users and smaller projects.</li>
+        </ul>
+      </li>
+    </ul>
+    <p>
+      Hardware-assisted Virtualization (HVM)
+      Definition: HVM leverages hardware extensions provided by modern CPUs to virtualize hardware, enabling the creation and management of VMs with minimal performance overhead.
+    </p>
+    <p>Key Characteristics:</p>
+    <p>
+      Hardware Support: Requires CPU support for virtualization extensions such as Intel VT-x or AMD-V.
+      Full Virtualization: VMs can run unmodified guest operating systems, as the hypervisor provides a complete emulation of the hardware environment.
+      Performance: Typically offers near-native performance because of direct execution of guest code on the CPU.
+      Isolation: Provides strong isolation between VMs since each VM operates as if it has its own dedicated hardware.
+      Examples: VMware ESXi, Microsoft Hyper-V, KVM (Kernel-based Virtual Machine).
+      Advantages:
+    </p>
+    <p>
+      Compatibility: Can run any operating system without modification.
+      Performance: High performance due to hardware support.
+      Security: Enhanced isolation and security features provided by hardware.
+      Disadvantages:
+    </p>
+    <p>
+      Hardware Dependency: Requires specific hardware features, limiting compatibility with older systems.
+      Complexity: May involve more complex configuration and management.
+      Paravirtualization
+      Definition: Paravirtualization involves modifying the guest operating system to be aware of the virtual environment, allowing it to interact more efficiently with the hypervisor.
+    </p>
+    <p>Key Characteristics:</p>
+    <p>
+      Guest Modification: Requires changes to the guest operating system to communicate directly with the hypervisor using hypercalls.
+      Performance: Can be more efficient than traditional full virtualization because it reduces the overhead associated with emulating hardware.
+      Compatibility: Limited to operating systems that have been modified for paravirtualization.
+      Examples: Xen with paravirtualized guests, VMware tools in certain configurations, and some KVM configurations.
+      Advantages:
+    </p>
+    <p>
+      Efficiency: Reduces the overhead of virtualizing hardware, potentially offering better performance for certain workloads.
+      Resource Utilization: More efficient use of system resources due to direct communication between the guest OS and hypervisor.
+      Disadvantages:
+    </p>
+    <p>
+      Guest OS Modification: Requires modifications to the guest OS, limiting compatibility to supported operating systems.
+      Complexity: Requires additional complexity in the guest OS for hypercall implementations.
+      Key Differences
+      Guest OS Requirements:
+    </p>
+    <p>
+      HVM: Can run unmodified guest operating systems.
+      Paravirtualization: Requires guest operating systems to be modified to work with the hypervisor.
+      Performance:
+    </p>
+    <p>
+      HVM: Typically provides near-native performance due to hardware-assisted execution.
+      Paravirtualization: Can offer efficient performance by reducing the overhead of hardware emulation, but relies on modified guest OS.
+      Hardware Dependency:
+    </p>
+    <p>
+      HVM: Requires specific CPU features (Intel VT-x, AMD-V).
+      Paravirtualization: Does not require specific CPU features but needs modified guest OS.
+      Isolation:
+    </p>
+    <p>
+      HVM: Provides strong isolation using hardware features.
+      Paravirtualization: Relies on software-based isolation, which may not be as robust as hardware-based isolation.
+      Complexity:
+    </p>
+    <p>
+      HVM: Generally more straightforward to deploy since it supports unmodified OS.
+      Paravirtualization: Requires additional setup and modifications to the guest OS, increasing complexity.
+    </p>
+    <h4 id="types-of-virtualization"><a class="anchor" aria-hidden="true" tabindex="-1" href="#types-of-virtualization"><span class="octicon octicon-link"></span></a>Types of Virtualization</h4>
+    <h5 id="hardware-virtualization-server-virtualization"><a class="anchor" aria-hidden="true" tabindex="-1" href="#hardware-virtualization-server-virtualization"><span class="octicon octicon-link"></span></a>Hardware Virtualization (Server Virtualization)</h5>
+    <p>
+      <strong>Definition:</strong> Abstracts physical hardware to create virtual machines (VMs) that run separate operating systems and applications.<br><strong>Use Cases:</strong> Data centers, cloud computing, server consolidation.
+      <strong>Examples:</strong> VMware ESXi, Microsoft Hyper-V, KVM.
+    </p>
+    <h5 id="operating-system-virtualization-containerization"><a class="anchor" aria-hidden="true" tabindex="-1" href="#operating-system-virtualization-containerization"><span class="octicon octicon-link"></span></a>Operating System Virtualization (Containerization)</h5>
+    <p>
+      <strong>Definition:</strong> Allows multiple isolated user-space instances (containers) to run on a single OS kernel.
+      <strong>Use Cases:</strong> Microservices architecture, development and testing environments.
+      <strong>Examples:</strong> Docker, Kubernetes, LXC.
+    </p>
+    <h5 id="network-virtualization"><a class="anchor" aria-hidden="true" tabindex="-1" href="#network-virtualization"><span class="octicon octicon-link"></span></a>Network Virtualization</h5>
+    <p>
+      <strong>Definition:</strong> Combines hardware and software network resources into a single, software-based administrative entity.
+      <strong>Use Cases:</strong> Software-defined networking (SDN), network function virtualization (NFV).
+      <strong>Examples:</strong> VMware NSX, Cisco ACI, OpenStack Neutron.
+    </p>
+    <h5 id="storage-virtualization"><a class="anchor" aria-hidden="true" tabindex="-1" href="#storage-virtualization"><span class="octicon octicon-link"></span></a>Storage Virtualization</h5>
+    <p>
+      <strong>Definition:</strong> Pools physical storage from multiple devices into a single virtual storage unit that can be managed centrally.
+      <strong>Use Cases:</strong> Data management, storage optimization, disaster recovery.
+      <strong>Examples:</strong> IBM SAN Volume Controller, VMware vSAN, NetApp ONTAP.
+    </p>
+    <h5 id="desktop-virtualization"><a class="anchor" aria-hidden="true" tabindex="-1" href="#desktop-virtualization"><span class="octicon octicon-link"></span></a>Desktop Virtualization</h5>
+    <p>
+      <strong>Definition:</strong> Allows a desktop operating system to run on a virtual machine hosted on a server.
+      <strong>Use Cases:</strong> Virtual desktop infrastructure (VDI), remote work solutions.
+      <strong>Examples:</strong> Citrix Virtual Apps and Desktops, VMware Horizon, Microsoft Remote Desktop Services.
+    </p>
+    <h5 id="application-virtualization"><a class="anchor" aria-hidden="true" tabindex="-1" href="#application-virtualization"><span class="octicon octicon-link"></span></a>Application Virtualization</h5>
+    <p>
+      <strong>Definition:</strong> Separates applications from the underlying hardware and operating system, allowing them to run in isolated environments.
+      <strong>Use Cases:</strong> Simplified application deployment, compatibility testing.
+      <strong>Examples:</strong> VMware ThinApp, Microsoft App-V, Citrix XenApp.
+    </p>
+    <h5 id="data-virtualization"><a class="anchor" aria-hidden="true" tabindex="-1" href="#data-virtualization"><span class="octicon octicon-link"></span></a>Data Virtualization</h5>
+    <p>
+      <strong>Definition:</strong> Integrates data from various sources without physically consolidating it, providing a unified view for analysis and reporting.
+      <strong>Use Cases:</strong> Business intelligence, real-time data integration.
+      <strong>Examples:</strong> Denodo, Red Hat JBoss Data Virtualization, IBM InfoSphere.
+    </p>
+    <h5 id="benefits-of-virtualization"><a class="anchor" aria-hidden="true" tabindex="-1" href="#benefits-of-virtualization"><span class="octicon octicon-link"></span></a>Benefits of Virtualization</h5>
+    <p>
+      <strong>Resource Efficiency:</strong> Better utilization of physical resources.
+      <strong>Cost Savings:</strong> Reduced hardware and operational costs.
+      <strong>Scalability:</strong> Easy to scale up or down according to demand.
+      <strong>Flexibility:</strong> Supports a variety of workloads and applications.
+      <strong>Disaster Recovery:</strong> Simplified backup and recovery processes.
+      <strong>Isolation:</strong> Improved security through isolation of environments.
+    </p>
     <p align="right">(<a href="#topic-351.1">back to sub Topic 351.1</a>)</p>
     <p align="right">(<a href="#topic-351">back to Topic 351</a>)</p>
     <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -378,7 +540,7 @@ xl.conf
 xentop
 " class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
     <h4 id="3512-important-commands"><a class="anchor" aria-hidden="true" tabindex="-1" href="#3512-important-commands"><span class="octicon octicon-link"></span></a>351.2 Important Commands</h4>
-    <h5 id="foo-1"><a class="anchor" aria-hidden="true" tabindex="-1" href="#foo-1"><span class="octicon octicon-link"></span></a>foo</h5>
+    <h5 id="foo"><a class="anchor" aria-hidden="true" tabindex="-1" href="#foo"><span class="octicon octicon-link"></span></a>foo</h5>
     <pre class="language-sh"><code class="language-sh code-highlight"><span class="code-line line-number" line="1">foo
 </span></code><div onclick="copied(this)" data-code="foo
 " class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
@@ -455,7 +617,7 @@ ip link show
 virsh (including relevant subcommands)
 " class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
     <h4 id="3514-important-commands"><a class="anchor" aria-hidden="true" tabindex="-1" href="#3514-important-commands"><span class="octicon octicon-link"></span></a>351.4 Important Commands</h4>
-    <h5 id="foo-2"><a class="anchor" aria-hidden="true" tabindex="-1" href="#foo-2"><span class="octicon octicon-link"></span></a>foo</h5>
+    <h5 id="foo-1"><a class="anchor" aria-hidden="true" tabindex="-1" href="#foo-1"><span class="octicon octicon-link"></span></a>foo</h5>
     <pre class="language-sh"><code class="language-sh code-highlight"><span class="code-line line-number" line="1">foo
 </span></code><div onclick="copied(this)" data-code="foo
 " class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
@@ -515,7 +677,7 @@ virt-v2v
 virt-sysprep
 " class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
     <h4 id="3515-important-commands"><a class="anchor" aria-hidden="true" tabindex="-1" href="#3515-important-commands"><span class="octicon octicon-link"></span></a>351.5 Important Commands</h4>
-    <h5 id="foo-3"><a class="anchor" aria-hidden="true" tabindex="-1" href="#foo-3"><span class="octicon octicon-link"></span></a>foo</h5>
+    <h5 id="foo-2"><a class="anchor" aria-hidden="true" tabindex="-1" href="#foo-2"><span class="octicon octicon-link"></span></a>foo</h5>
     <pre class="language-sh"><code class="language-sh code-highlight"><span class="code-line line-number" line="1">foo
 </span></code><div onclick="copied(this)" data-code="foo
 " class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
@@ -562,7 +724,7 @@ capsh
 /proc/[0-9]+/status
 " class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
     <h4 id="3521-important-commands"><a class="anchor" aria-hidden="true" tabindex="-1" href="#3521-important-commands"><span class="octicon octicon-link"></span></a>352.1 Important Commands</h4>
-    <h5 id="foo-4"><a class="anchor" aria-hidden="true" tabindex="-1" href="#foo-4"><span class="octicon octicon-link"></span></a>foo</h5>
+    <h5 id="foo-3"><a class="anchor" aria-hidden="true" tabindex="-1" href="#foo-3"><span class="octicon octicon-link"></span></a>foo</h5>
     <pre class="language-sh"><code class="language-sh code-highlight"><span class="code-line line-number" line="1">foo
 </span></code><div onclick="copied(this)" data-code="foo
 " class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
@@ -591,7 +753,7 @@ capsh
 lxc (including relevant subcommands)
 " class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
     <h4 id="3522-important-commands"><a class="anchor" aria-hidden="true" tabindex="-1" href="#3522-important-commands"><span class="octicon octicon-link"></span></a>352.2 Important Commands</h4>
-    <h5 id="foo-5"><a class="anchor" aria-hidden="true" tabindex="-1" href="#foo-5"><span class="octicon octicon-link"></span></a>foo</h5>
+    <h5 id="foo-4"><a class="anchor" aria-hidden="true" tabindex="-1" href="#foo-4"><span class="octicon octicon-link"></span></a>foo</h5>
     <pre class="language-sh"><code class="language-sh code-highlight"><span class="code-line line-number" line="1">foo
 </span></code><div onclick="copied(this)" data-code="foo
 " class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
@@ -672,7 +834,7 @@ OpenStack
 Terraform
 " class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
     <h4 id="3531-important-commands"><a class="anchor" aria-hidden="true" tabindex="-1" href="#3531-important-commands"><span class="octicon octicon-link"></span></a>353.1 Important Commands</h4>
-    <h5 id="foo-6"><a class="anchor" aria-hidden="true" tabindex="-1" href="#foo-6"><span class="octicon octicon-link"></span></a>foo</h5>
+    <h5 id="foo-5"><a class="anchor" aria-hidden="true" tabindex="-1" href="#foo-5"><span class="octicon octicon-link"></span></a>foo</h5>
     <pre class="language-sh"><code class="language-sh code-highlight"><span class="code-line line-number" line="1"><span class="token comment"># examples</span>
 </span></code><div onclick="copied(this)" data-code="# examples
 " class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
@@ -723,7 +885,7 @@ user-data
 /var/lib/cloud/
 " class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
     <h4 id="3533-important-commands"><a class="anchor" aria-hidden="true" tabindex="-1" href="#3533-important-commands"><span class="octicon octicon-link"></span></a>353.3 Important Commands</h4>
-    <h5 id="foo-7"><a class="anchor" aria-hidden="true" tabindex="-1" href="#foo-7"><span class="octicon octicon-link"></span></a>foo</h5>
+    <h5 id="foo-6"><a class="anchor" aria-hidden="true" tabindex="-1" href="#foo-6"><span class="octicon octicon-link"></span></a>foo</h5>
     <pre class="language-sh"><code class="language-sh code-highlight"><span class="code-line line-number" line="1"><span class="token comment"># examples</span>
 </span></code><div onclick="copied(this)" data-code="# examples
 " class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
@@ -863,14 +1025,21 @@ Vagrantfile
       <li><a href="https://ssl-config.mozilla.org/">SSL Config Mozilla</a></li>
       <li>Virtualization Definitions
         <ul>
-          <li><a href="https://www.redhat.com/pt-br/topics/virtualization/">Red Hat</a></li>
+          <li><a href="https://www.redhat.com/pt-br/topics/virtualization/what-is-virtualization">Red Hat</a></li>
           <li><a href="https://aws.amazon.com/pt/what-is/virtualization/">AWS</a></li>
           <li><a href="https://www.ibm.com/topics/virtualization">IBM</a></li>
           <li><a href="https://opensource.com/resources/virtualization">OpenSource.com</a></li>
         </ul>
       </li>
+      <li><a href="https://www.redhat.com/pt-br/topics/virtualization/what-is-KVM">KVM(Kernel Virtual Machines)</a></li>
+      <li><a href="https://www.linux-kvm.org/page/Management_Tools">KVM Management Tools</a></li>
       <li><a href="https://wiki.xenproject.org/wiki/Book/HelloXenProject/1-Chapter">Wiki XenProject</a></li>
-      <li>LPI Blog: Xen Virtualization and Cloud Computing #01: Introduction(<a href="https://www.lpi.org/pt-br/blog/2020/10/01/xen-virtualization-and-cloud-computing-01-introduction/">https://www.lpi.org/pt-br/blog/2020/10/01/xen-virtualization-and-cloud-computing-01-introduction/</a>)</li>
+      <li><a href="https://www.lpi.org/pt-br/blog/2020/10/01/xen-virtualization-and-cloud-computing-01-introduction/">LPI Blog: Xen Virtualization and Cloud Computing #01: Introduction</a></li>
+      <li>Openstack Docs
+        <ul>
+          <li><a href="https://www.redhat.com/pt-br/topics/openstack">RedHat</a></li>
+        </ul>
+      </li>
       <li><a href="https://www.lpi.org/our-certifications/exam-305-objectives/">LPIC-3 305-300 Objectives</a></li>
       <li><a href="https://wiki.lpi.org/wiki/LPIC-305_Objectives_V3.0">LPIC-3 305-300 Wiki</a></li>
       <li><a href="https://cursos.linuxsemfronteiras.com.br/courses/preparatorio-para-certificacao-lpic-3-305/">LPIC-3 305-300 Learning Material</a></li>
