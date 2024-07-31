@@ -88,7 +88,7 @@
 > e software livre\\
 > Algumas distribuições GNULinux como Debian e RPM serão abordadas\\
 > A instalação e configuração de alguns pacotes também serão abordadas\\
-> Ao fazer isso, você pode dar a toda a comunidade a oportunidade de se beneficiar de suas alterações.\\
+> Ao fazer isso, você pode dar a toda a comunidade a chance de se beneficiar de suas alterações.\\
 > O acesso ao código-fonte é uma pré-condição para isso.\\
 > Use o vagrant para atualizar máquinas, executar laboratórios e praticar o conteúdo deste artigo.\\
 > Publiquei na pasta Vagrant um Vagrantfile com o que é necessário\\
@@ -140,7 +140,7 @@ Use este repositório para aprender sobre o exame LPIC2 202-450
 
 -   [x] Criar repositório
 -   [ ] Crie exemplos sobre o Tópico 351
--   [ ] Create examples about Topic 352
+-   [ ] Crie exemplos sobre o Tópico 352
 -   [ ] Crie exemplos sobre o Tópico 353
 -   [ ] Carregar itexam simulado
 
@@ -286,7 +286,7 @@ Definição: A paravirtualização envolve a modificação do sistema operaciona
 Caracteristicas principais:
 
 Modificação de convidado: requer alterações no sistema operacional convidado para se comunicar diretamente com o hipervisor usando hiperchamadas.
-Desempenho: Pode ser mais eficiente que a virtualização completa tradicional porque reduz a sobrecarga associada à emulação de hardware.
+Desempenho: Pode ser mais eficiente do que a virtualização completa tradicional porque reduz a sobrecarga associada à emulação de hardware.
 Compatibilidade: Limitada a sistemas operacionais que foram modificados para paravirtualização.
 Exemplos: Xen com convidados paravirtualizados, ferramentas VMware em determinadas configurações e algumas configurações KVM.
 Vantagens:
@@ -350,7 +350,7 @@ Paravirtualização: Requer configuração e modificações adicionais no sistem
 
 **Definição:**Integra dados de diversas fontes sem consolidá-los fisicamente, fornecendo uma visão unificada para análise e relatórios.**Casos de uso:**Inteligência de negócios, integração de dados em tempo real.**Exemplos:**Denodo, Red Hat JBoss Data Virtualization, IBM InfoSphere.
 
-##### Benefits of Virtualization
+##### Benefícios da virtualização
 
 **Eficiência de recursos:**Melhor utilização dos recursos físicos.**Poupança de custos:**Custos operacionais e de hardware reduzidos.**Escalabilidade:**Fácil de aumentar ou diminuir de acordo com a demanda.**Flexibilidade:**Suporta uma variedade de cargas de trabalho e aplicativos.**Recuperação de desastres:**Processos simplificados de backup e recuperação.**Isolamento:**Maior segurança através do isolamento de ambientes.
 
@@ -504,7 +504,7 @@ foo
 
 **Principais áreas de conhecimento:**
 
--   Compreenda os recursos de vários formatos de imagem de disco virtual, como imagens brutas, qcow2 e VMDK
+-   Compreenda os recursos de vários formatos de imagem de disco virtual, como imagens raw, qcow2 e VMDK
 -   Gerencie imagens de disco de máquinas virtuais usando qemu-img
 -   Monte partições e acesse arquivos contidos em imagens de disco de máquinas virtuais usando libguestfish
 -   Copie o conteúdo do disco físico para uma imagem de disco de máquina virtual
@@ -696,7 +696,7 @@ Dockerfile
 
 -   Entenda a relevância da orquestração de contêineres
 -   Entenda os principais conceitos do Docker Compose e do Docker Swarm
--   Compreenda os principais conceitos de Kubernetes e Helm
+-   Compreenda os principais conceitos do Kubernetes e Helm
 -   Conscientização sobre OpenShift, Rancher e Mesosphere DC/OS
 
 <p align="right">(<a href="#topic-352.4">back to sub topic 352.4</a>)</p>
