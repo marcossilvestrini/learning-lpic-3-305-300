@@ -253,7 +253,7 @@ Migration (P2V, V2V)
 
 -   Environnement de déploiement :
     -   Les hyperviseurs de type 1 sont couramment déployés dans les centres de données et les environnements d'entreprise en raison de leur interaction directe avec le matériel et de leurs hautes performances.
-    -   Les hyperviseurs de type 2 sont plus adaptés à un usage personnel, au développement, aux tests et aux tâches de virtualisation à petite échelle.
+    -   Les hyperviseurs de type 2 sont plus adaptés aux tâches d'utilisation personnelle, de développement, de test et de virtualisation à petite échelle.
 -   Performance:
     -   Les hyperviseurs de type 1 offrent généralement de meilleures performances et une latence plus faible car ils ne s'appuient pas sur un système d'exploitation hôte.
     -   Les hyperviseurs de type 2 peuvent subir une certaine dégradation des performances en raison de la surcharge liée à l'exécution sur un système d'exploitation hôte.
@@ -332,11 +332,12 @@ Paravirtualisation : nécessite une configuration et des modifications supplém
 
 ##### Virtualisation du réseau
 
-**Définition:**Combine les ressources réseau matérielles et logicielles en une seule entité administrative logicielle.**Cas d'utilisation :**Réseau défini par logiciel (SDN), virtualisation des fonctions réseau (NFV).**Exemples:**VMware NSX, Cisco ACI, OpenStack Neutron.
+**Définition:**Combine les ressources réseau matérielles et logicielles en une seule entité administrative logicielle.**Cas d'utilisation :**Mise en réseau définie par logiciel (SDN), virtualisation des fonctions réseau (NFV).**Exemples:**VMware NSX, Cisco ACI, OpenStack Neutron.
 
 ##### Virtualisation du stockage
 
-**Définition:**Regroupe le stockage physique de plusieurs appareils dans une seule unité de stockage virtuelle qui peut être gérée de manière centralisée.**Cas d'utilisation :**Gestion des données, optimisation du stockage, reprise après sinistre.**Exemples:**Contrôleur de volume IBM SAN, VMware vSAN, NetApp ONTAP.
+**Définition:**Regroupe le stockage physique de plusieurs appareils dans une seule unité de stockage virtuelle qui peut être gérée de manière centralisée.**Cas d'utilisation :** Data management, storage optimization, disaster recovery.
+**Exemples:**Contrôleur de volume IBM SAN, VMware vSAN, NetApp ONTAP.
 
 ##### Virtualisation des postes de travail
 
@@ -374,7 +375,7 @@ Paravirtualisation : nécessite une configuration et des modifications supplém
 -   Configuration de base des nœuds et domaines Xen
 -   Gestion de base des nœuds et domaines Xen
 -   Dépannage de base des installations Xen
--   Avarité des pilules
+-   Avaricité des pilules
 -   Connaissance de XenStore
 -   Connaissance des paramètres de démarrage Xen
 -   Connaissance de l'utilitaire xm
@@ -902,7 +903,7 @@ Lien du projet :<https://github.com/marcossilvestrini/learning-lpic-3-305-300>
 -   [Compilateur GCC](https://gcc.gnu.org/wiki/History)
 -   [GNUTR](https://www.gnu.org/software/tar/)
 -   [Marque GNU](https://www.gnu.org/software/make/)
--   [GNU-Emacs](https://en.wikipedia.org/wiki/Emacs)
+-   [GNU Emacs](https://en.wikipedia.org/wiki/Emacs)
 -   [Paquets GNU](https://www.gnu.org/software/)
 -   [Collection GNU/Linux](https://directory.fsf.org/wiki/Collection:GNU/Linux)
 -   [Chargeur de démarrage GNU Grub](https://www.gnu.org/software/grub/)
@@ -944,7 +945,7 @@ Lien du projet :<https://github.com/marcossilvestrini/learning-lpic-3-305-300>
 -   [Comparaison des distributions Linux](https://en.wikipedia.org/wiki/Comparison_of_Linux_distributions)
 -   [Télécharger les forfaits](https://pkgs.org/)
 -   [Installer des packages](https://installati.one/)
--   [Guider l'installation des packages](https://installati.one/)
+-   [Guider les packages d'installation](https://installati.one/)
 -   [Bugzilla](https://bugzilla.kernel.org/)
 -   [Commande non trouvée](https://command-not-found.com/)
 -   [Test de distribution](https://distrotest.net/index.php)
