@@ -1,28 +1,7 @@
-# Function to display the menu with colors
-function Show-Menu {
-    param (
-        [string]$prompt = 'Select an option:'
-    )
-
-    Write-Host "`nLPIC3 305-300 Labs`n"
-    Write-Host "1. " -NoNewline; Write-Host "Up Lab Topic 351" -ForegroundColor Cyan
-    Write-Host "2. " -NoNewline; Write-Host "Up Lab Topic 352" -ForegroundColor Yellow
-    Write-Host "3. " -NoNewline; Write-Host "Up Lab Topic 353" -ForegroundColor Green
-    Write-Host "4. " -NoNewline; Write-Host "Exit" -ForegroundColor Red
-    Write-Host $prompt -NoNewline
-}
-
-# Function to display provider menu
-function Show-ProviderMenu {
-    param (
-        [string]$prompt = 'Select a provider:'
-    )
-
-    Write-Host "`nSelect a provider`n"
-    Write-Host "1. " -NoNewline; Write-Host "VMware Workstation" -ForegroundColor Cyan
-    Write-Host "2. " -NoNewline; Write-Host "VirtualBox" -ForegroundColor Yellow
-    Write-Host $prompt -NoNewline
-}
+# Fix scripts
+$scriptPath = $PSScriptRoot | Split-Path -Parent
+& "C:\Program Files\Git\mingw64\bin\dos2unix.exe" $scriptPath\scripts\commons\*
+Clear-Host
 
 # Function to copy the files
 function Copy-Vagrantfile {
@@ -62,6 +41,95 @@ function VagrantUp {
     }
 }
 
+# Function to destroy lab
+function DestroyLab {
+    param (
+        [string]$provider
+    )
+
+    Write-Host "`nDestroying lab for provider: $provider" -ForegroundColor Yellow
+    if ($provider -eq "vmware_workstation" -or $provider -eq "virtualbox") {
+        vagrant destroy -f
+    } else {
+        switch ($provider) {
+            "aws" { DestroyAWS }
+            "gcp" { DestroyGCP }
+            "azure" { DestroyAzure }
+            default {
+                Write-Host "`nInvalid provider option." -ForegroundColor Red
+                return
+            }
+        }
+    }
+    Write-Host "`nLab destroyed successfully!" -ForegroundColor Green
+}
+
+# Function to provision AWS instance
+function ProvisionAWS {
+    Write-Host "`nProvisioning AWS instance..." -ForegroundColor Green
+    # Add logic to provision AWS instance
+}
+
+# Function to provision GCP instance
+function ProvisionGCP {
+    Write-Host "`nProvisioning GCP instance..." -ForegroundColor Green
+    # Add logic to provision GCP instance
+}
+
+# Function to provision Azure instance
+function ProvisionAzure {
+    Write-Host "`nProvisioning Azure instance..." -ForegroundColor Green
+    # Add logic to provision Azure instance
+}
+
+# Function to destroy AWS instance
+function DestroyAWS {
+    Write-Host "`nDestroying AWS instance..." -ForegroundColor Green
+    # Add logic to destroy AWS instance
+}
+
+# Function to destroy GCP instance
+function DestroyGCP {
+    Write-Host "`nDestroying GCP instance..." -ForegroundColor Green
+    # Add logic to destroy GCP instance
+}
+
+# Function to destroy Azure instance
+function DestroyAzure {
+    Write-Host "`nDestroying Azure instance..." -ForegroundColor Green
+    # Add logic to destroy Azure instance
+}
+
+# Function to display the menu with colors
+function Show-Menu {
+    param (
+        [string]$prompt = 'Select an option:'
+    )
+
+    Write-Host "`nLPIC3 305-300 Labs`n"
+    Write-Host "1. " -NoNewline; Write-Host "Up Lab Topic 351" -ForegroundColor Cyan
+    Write-Host "2. " -NoNewline; Write-Host "Up Lab Topic 352" -ForegroundColor Yellow
+    Write-Host "3. " -NoNewline; Write-Host "Up Lab Topic 353" -ForegroundColor Green
+    Write-Host "4. " -NoNewline; Write-Host "Destroy Lab" -ForegroundColor Red
+    Write-Host "5. " -NoNewline; Write-Host "Exit" -ForegroundColor Magenta
+    Write-Host $prompt -NoNewline
+}
+
+# Function to display provider menu
+function Show-ProviderMenu {
+    param (
+        [string]$prompt = 'Select a provider:'
+    )
+
+    Write-Host "`nSelect a provider`n"
+    Write-Host "1. " -NoNewline; Write-Host "VMware Workstation" -ForegroundColor Cyan
+    Write-Host "2. " -NoNewline; Write-Host "VirtualBox" -ForegroundColor Yellow
+    Write-Host "3. " -NoNewline; Write-Host "AWS" -ForegroundColor Green
+    Write-Host "4. " -NoNewline; Write-Host "GCP" -ForegroundColor Blue
+    Write-Host "5. " -NoNewline; Write-Host "Azure" -ForegroundColor Magenta
+    Write-Host $prompt -NoNewline
+}
+
 # Menu loop
 do {
     Show-Menu
@@ -75,34 +143,44 @@ do {
             "1" { 
                 $provider = "vmware_workstation"
                 $box = "silvestrini-rocky9"            
+                Copy-Vagrantfile -source "Vagrantfile-topic-35$choice" -box $box
+                VagrantUp -provider $provider
             }
             "2" { 
                 $provider = "virtualbox"
                 $box = "silvestrini-ol9"
-                
-            }
-            default {
-                Write-Host "`nInvalid provider option. Defaulting to VMware Workstation." -ForegroundColor Red
-                $provider = "vmware_workstation"
-                $box = "silvestrini-rocky9"
-            }
-        }
-
-        switch ($choice) {
-            "1" {
-                Copy-Vagrantfile -source "Vagrantfile-topic-351" -box $box
-                VagrantUp -provider $provider
-            }
-            "2" {
-                Copy-Vagrantfile -source "Vagrantfile-topic-352" -box $box
+                Copy-Vagrantfile -source "Vagrantfile-topic-35$choice" -box $box
                 VagrantUp -provider $provider
             }
             "3" {
-                Copy-Vagrantfile -source "Vagrantfile-topic-353" -box $box
-                VagrantUp -provider $provider
+                ProvisionAWS
+            }
+            "4" {
+                ProvisionGCP
+            }
+            "5" {
+                ProvisionAzure
+            }
+            default {
+                Write-Host "`nInvalid provider option." -ForegroundColor Red
             }
         }
     } elseif ($choice -eq "4") {
+        Show-ProviderMenu
+        $providerChoice = Read-Host
+
+        switch ($providerChoice) {
+            "1" { DestroyLab -provider "vmware_workstation" }
+            "2" { DestroyLab -provider "virtualbox" }
+            "3" { DestroyLab -provider "aws" }
+            "4" { DestroyLab -provider "gcp" }
+            "5" { DestroyLab -provider "azure" }
+            default {
+                Write-Host "`nInvalid provider option." -ForegroundColor Red
+                continue
+            }
+        }
+    } elseif ($choice -eq "5") {
         Write-Host "`nExiting script..." -ForegroundColor Magenta
         $exit = $true
     } else {

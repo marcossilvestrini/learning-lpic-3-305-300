@@ -18,6 +18,8 @@ Vagrant.configure("2") do |config|
   ## MOUNTS
   config.vm.synced_folder ".", "/vagrant", disabled: true
   config.vm.synced_folder "../scripts/", "/home/vagrant/scripts"
+  config.vm.synced_folder "../configs/", "/home/vagrant/configs"
+  config.vm.synced_folder "../security/", "/home/vagrant/security"
 
   # Define the VM
   config.vm.define "#{VM_NAME}-1" do |vm_config|
@@ -27,11 +29,15 @@ Vagrant.configure("2") do |config|
       vm.linked_clone = true
       vm.clone_directory = "E:\\Servers\\VMWare\\#{VM_NAME}-1"
       vm.whitelist_verified = true
+      #vm.gui = true
       vm.vmx["virtualHW.version"] = "10"
       vm.vmx["displayName"] = "#{VM_NAME}-1"
       vm.vmx["memsize"] = "2048"
       vm.vmx["numvcpus"] = "2"
       vm.vmx["cpuid.coresPerSocket"] = "1"
+
+      # Provisioning scripts for VMware Workstation
+      vm_config.vm.provision "shell", name: "[SCRIPT: scripts/rocky/test.sh]", path: "../scripts/rocky/test.sh", privileged: false
     end
 
     # VirtualBox configuration
@@ -42,6 +48,11 @@ Vagrant.configure("2") do |config|
       vb.cpus = 2
       vb.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
       vb.customize ["modifyvm", :id, "--vrde", "off"]  # Disable VRDE
+      vb.customize ["modifyvm", :id, "--graphicscontroller", "vmsvga"]
+      vb.customize ["modifyvm", :id, "--accelerate3d", "on"]
+
+      # Provisioning scripts for VirtualBox
+      vm_config.vm.provision "shell", name: "[SCRIPT: scripts/ol9/test.sh]", path: "../scripts/ol9/test.sh", privileged: false
     end
 
     # Network configuration
@@ -56,8 +67,6 @@ Vagrant.configure("2") do |config|
                                                "MediaTek Wi-Fi 6 MT7921 Wireless LAN",
                                              ], nic_type: "virtio"
     end
-
-    # Uncomment the provision line if needed
-    # vm_config.vm.provision "shell", name: "[SCRIPT: prometheus/scripts/prometheus.sh]", path: "prometheus/scripts/prometheus.sh", privileged: false
+    vm_config.vm.provision "shell", name: "[SCRIPT: scripts/commons/cloud-init.sh]", path: "../scripts/commons/cloud-init.sh", privileged: false
   end
 end
