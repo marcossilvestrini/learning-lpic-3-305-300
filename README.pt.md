@@ -88,7 +88,7 @@
 > e software livre\\
 > Algumas distribuições GNULinux como Debian e RPM serão abordadas\\
 > A instalação e configuração de alguns pacotes também serão abordadas\\
-> Ao fazer isso, você pode dar a toda a comunidade a chance de se beneficiar de suas alterações.\\
+> Ao fazer isso, você pode dar a toda a comunidade a oportunidade de se beneficiar de suas alterações.\\
 > O acesso ao código-fonte é uma pré-condição para isso.\\
 > Use o vagrant para atualizar máquinas, executar laboratórios e praticar o conteúdo deste artigo.\\
 > Publiquei na pasta Vagrant um Vagrantfile com o que é necessário\\
@@ -296,7 +296,7 @@ Utilização de recursos: uso mais eficiente dos recursos do sistema devido à c
 Desvantagens:
 
 Modificação do sistema operacional convidado: requer modificações no sistema operacional convidado, limitando a compatibilidade aos sistemas operacionais suportados.
-Complexidade: Requer complexidade adicional no sistema operacional convidado para implementações de hiperchamadas.
+Complexidade: requer complexidade adicional no sistema operacional convidado para implementações de hiperchamadas.
 Principais diferenças
 Requisitos do sistema operacional convidado:
 
@@ -696,7 +696,7 @@ Dockerfile
 
 -   Entenda a relevância da orquestração de contêineres
 -   Entenda os principais conceitos do Docker Compose e do Docker Swarm
--   Compreenda os principais conceitos do Kubernetes e Helm
+-   Compreenda os principais conceitos de Kubernetes e Helm
 -   Conscientização sobre OpenShift, Rancher e Mesosphere DC/OS
 
 <p align="right">(<a href="#topic-352.4">back to sub topic 352.4</a>)</p>
