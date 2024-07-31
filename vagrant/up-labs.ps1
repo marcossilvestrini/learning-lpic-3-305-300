@@ -33,8 +33,8 @@ function VagrantUp {
 
     if (vagrant validate) {
         Write-Host "`nVagrantfile valid! Your instances are provisioning..." -ForegroundColor Green
-        Write-Host "`nProvider: $provider" -ForegroundColor Yellow
-        vagrant up --provider $provider        
+        Write-Host "`nProvider: $provider" -ForegroundColor Yellow        
+        vagrant up --provider $provider
         Copy-Item ".vagrant/machines/lpic3-topic-351-1/$provider/private_key" -Destination "f:\\Projetos\\vagrant-pk\\$provider-lpic3-topic-351-1"        
     } else {
         Write-Host "`nError: Vagrantfile not valid" -ForegroundColor Red
