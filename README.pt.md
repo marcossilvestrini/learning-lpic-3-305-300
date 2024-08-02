@@ -88,7 +88,7 @@
 > e software livre\\
 > Algumas distribuições GNULinux como Debian e RPM serão abordadas\\
 > A instalação e configuração de alguns pacotes também serão abordadas\\
-> Ao fazer isso, você pode dar a toda a comunidade a oportunidade de se beneficiar de suas alterações.\\
+> Ao fazer isso, você pode dar a toda a comunidade a chance de se beneficiar de suas alterações.\\
 > O acesso ao código-fonte é uma pré-condição para isso.\\
 > Use o vagrant para atualizar máquinas, executar laboratórios e praticar o conteúdo deste artigo.\\
 > Publiquei na pasta Vagrant um Vagrantfile com o que é necessário\\
@@ -194,7 +194,7 @@ man COMMAND
 
 -   Entenda a terminologia de virtualização
 -   Entenda os prós e os contras da virtualização
--   Compreenda as diversas variações de hipervisores e monitores de máquinas virtuais
+-   Compreender as diversas variações de hipervisores e monitores de máquinas virtuais
 -   Entenda os principais aspectos da migração de máquinas físicas para virtuais
 -   Compreender os principais aspectos da migração de máquinas virtuais entre sistemas host
 -   Compreenda os recursos e as implicações da virtualização para uma máquina virtual, como captura instantânea, pausa, clonagem e limites de recursos
@@ -296,7 +296,7 @@ Utilização de recursos: uso mais eficiente dos recursos do sistema devido à c
 Desvantagens:
 
 Modificação do sistema operacional convidado: requer modificações no sistema operacional convidado, limitando a compatibilidade aos sistemas operacionais suportados.
-Complexidade: requer complexidade adicional no sistema operacional convidado para implementações de hiperchamadas.
+Complexidade: Requer complexidade adicional no sistema operacional convidado para implementações de hiperchamadas.
 Principais diferenças
 Requisitos do sistema operacional convidado:
 
@@ -573,7 +573,7 @@ foo
 -   Entenda o princípio do runc
 -   Entenda o princípio do CRI-O e do containerd
 -   Conhecimento do tempo de execução do OCI e das especificações de imagem
--   Conhecimento da interface de tempo de execução de contêiner (CRI) do Kubernetes
+-   Conhecimento da Interface de Tempo de Execução de Contêiner (CRI) do Kubernetes
 -   Consciência de podman, buildah e skopeo
 -   Conhecimento de outras abordagens de virtualização de contêineres no Linux e outros sistemas operacionais livres, como rkt, OpenVZ, systemd-nspawn ou BSD Jails
 
@@ -724,7 +724,7 @@ Dockerfile
 -   Entenda as ofertas comuns em nuvens públicas
 -   Conhecimento básico de recursos do OpenStack
 -   Conhecimento básico de recursos do Terraform
--   Conscientização sobre CloudStack, Eucalyptus e OpenNebula
+-   Awareness of CloudStack, Eucalyptus and OpenNebula
 
 #### 353.1 Objetos Citados
 
@@ -795,7 +795,7 @@ Além disso, os candidatos devem ser capazes de criar novas imagens de sistema c
 **Principais áreas de conhecimento:**
 
 -   Compreender os recursos e conceitos do cloud-init, incluindo dados do usuário, inicialização e configuração do cloud-init
--   Use cloud-init para criar, redimensionar e montar sistemas de arquivos, configurar contas de usuário, incluindo credenciais de login, como chaves SSH e instalar pacotes de software do repositório da distribuição
+-   Use o cloud-init para criar, redimensionar e montar sistemas de arquivos, configurar contas de usuário, incluindo credenciais de login, como chaves SSH, e instalar pacotes de software do repositório da distribuição
 -   Integre o cloud-init às imagens do sistema
 -   Use a fonte de dados da unidade de configuração para teste
 
@@ -952,7 +952,7 @@ Link do projeto:<https://github.com/marcossilvestrini/learning-lpic-3-305-300>
 -   [Explique](https://explainshell.com/)
 -   [Tutorial Vim](https://www.openvim.com/)
 -   [Tutorial de script de shell do Linux](https://bash.cyberciti.biz/guide/Main_Page)
--   [Emblemas do GitHub](https://github.com/alexandresanlim/Badges4-README.md-Profile)
+-   [Emblemas do Github](https://github.com/alexandresanlim/Badges4-README.md-Profile)
 -   [Exemplos de comandos](https://www.geeksforgeeks.org/)
 -   [Compile seu kernel](https://wiki.linuxquestions.org/wiki/How_to_build_and_install_your_own_Linux_kernel)
 -   [Vincular](https://www.isc.org/bind/)
