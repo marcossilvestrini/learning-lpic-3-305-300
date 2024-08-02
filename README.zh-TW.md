@@ -411,7 +411,7 @@ foo
 
 **重量：**4
 
-**描述：**考生應該能夠安裝、配置、維護、遷移 QEMU 安裝並進行故障排除。
+**描述：**考生應該能夠安裝、配置、維護、遷移 QEMU 以及對其安裝進行故障排除。
 
 **關鍵知識領域：**
 
@@ -941,7 +941,7 @@ Vagrantfile
 -   [常用表達](https://www.gnu.org/software/grep/manual/html_node/Regular-Expressions.html)
 -   [列出 Linux 發行版](https://en.wikipedia.org/wiki/List_of_Linux_distributions)
 -   [發行表](https://distrowatch.com/)
--   [Linux 發行版比較](https://en.wikipedia.org/wiki/Comparison_of_Linux_distributions)
+-   [比較 Linux 發行版](https://en.wikipedia.org/wiki/Comparison_of_Linux_distributions)
 -   [下載包](https://pkgs.org/)
 -   [安裝包](https://installati.one/)
 -   [指導安裝包](https://installati.one/)
@@ -980,7 +980,7 @@ Vagrantfile
 -   [LPIC-3 305-300 目標](https://www.lpi.org/our-certifications/exam-305-objectives/)
 -   [LPIC-3 305-300 維基](https://wiki.lpi.org/wiki/LPIC-305_Objectives_V3.0)
 -   [LPIC-3 305-300 學習教材](https://cursos.linuxsemfronteiras.com.br/courses/preparatorio-para-certificacao-lpic-3-305/)
--   [ITexams 的 LPIC-3 305-300 模擬考試](https://www.itexams.com/info/305-300)
+-   [LPIC-3 305-300 ITexams 模擬考試](https://www.itexams.com/info/305-300)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
