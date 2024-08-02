@@ -223,7 +223,7 @@ Migration (P2V, V2V)
 
 -   Haute performance et efficacité.
 -   Latence et surcharge réduites.
--   Souvent utilisé dans les environnements d’entreprise et les centres de données.
+-   Often used in enterprise environments and data centers.
 
 **Exemples:**
 
@@ -332,12 +332,11 @@ Paravirtualisation : nécessite une configuration et des modifications supplém
 
 ##### Virtualisation du réseau
 
-**Définition:**Combine les ressources réseau matérielles et logicielles en une seule entité administrative logicielle.**Cas d'utilisation :**Mise en réseau définie par logiciel (SDN), virtualisation des fonctions réseau (NFV).**Exemples:**VMware NSX, Cisco ACI, OpenStack Neutron.
+**Définition:**Combine les ressources réseau matérielles et logicielles en une seule entité administrative logicielle.**Cas d'utilisation :**Réseau défini par logiciel (SDN), virtualisation des fonctions réseau (NFV).**Exemples:**VMware NSX, Cisco ACI, OpenStack Neutron.
 
 ##### Virtualisation du stockage
 
-**Définition:**Regroupe le stockage physique de plusieurs appareils dans une seule unité de stockage virtuelle qui peut être gérée de manière centralisée.**Cas d'utilisation :** Data management, storage optimization, disaster recovery.
-**Exemples:**Contrôleur de volume IBM SAN, VMware vSAN, NetApp ONTAP.
+**Définition:**Regroupe le stockage physique de plusieurs appareils dans une seule unité de stockage virtuelle qui peut être gérée de manière centralisée.**Cas d'utilisation :**Gestion des données, optimisation du stockage, reprise après sinistre.**Exemples:**Contrôleur de volume IBM SAN, VMware vSAN, NetApp ONTAP.
 
 ##### Virtualisation des postes de travail
 
@@ -551,7 +550,7 @@ foo
 
 <a name="topic-352"></a>
 
-## Sujet 352 : Virtualisation des conteneurs
+## Sujet 352 : Virtualisation des conteneurs
 
 * * *
 
@@ -878,7 +877,7 @@ N'oubliez pas de donner une étoile au projet ! Merci encore!
 
 * * *
 
-## Licence
+## License
 
 -   Ce projet est sous licence MIT \* voir le fichier LICENSE.md pour plus de détails
 
@@ -926,7 +925,7 @@ Lien du projet :<https://github.com/marcossilvestrini/learning-lpic-3-305-300>
 -   [Directives du logiciel libre Debian](https://www.debian.org/social_contract#guidelines)
 -   [Organisation X11](https://www.x.org/wiki/)
 -   [Wayland](https://wayland.freedesktop.org/)
--   [GNU-GNOME](https://www.gnu.org/press/gnome-1.0.html)
+-   [GNU GNOME](https://www.gnu.org/press/gnome-1.0.html)
 -   [GNOME](https://www.gnome.org/)
 -   [XFCE](https://xfce.org/)
 -   [Plasma KDE](https://kde.org/plasma-desktop/)
