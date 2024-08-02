@@ -223,7 +223,7 @@ Migration (P2V, V2V)
 
 -   Haute performance et efficacité.
 -   Latence et surcharge réduites.
--   Often used in enterprise environments and data centers.
+-   Souvent utilisé dans les environnements d’entreprise et les centres de données.
 
 **Exemples:**
 
@@ -239,7 +239,7 @@ Migration (P2V, V2V)
 **Caractéristiques:**
 
 -   Plus facile à configurer et à utiliser, en particulier sur les ordinateurs personnels.
--   Plus flexible pour le développement, les tests et les déploiements à plus petite échelle.
+-   More flexible for development, testing, and smaller-scale deployments.
 -   Généralement moins efficace que les hyperviseurs de type 1 en raison de la surcharge supplémentaire du système d'exploitation hôte.
 
 **Exemples:**
@@ -253,7 +253,7 @@ Migration (P2V, V2V)
 
 -   Environnement de déploiement :
     -   Les hyperviseurs de type 1 sont couramment déployés dans les centres de données et les environnements d'entreprise en raison de leur interaction directe avec le matériel et de leurs hautes performances.
-    -   Les hyperviseurs de type 2 sont plus adaptés aux tâches d'utilisation personnelle, de développement, de test et de virtualisation à petite échelle.
+    -   Les hyperviseurs de type 2 sont plus adaptés à un usage personnel, au développement, aux tests et aux tâches de virtualisation à petite échelle.
 -   Performance:
     -   Les hyperviseurs de type 1 offrent généralement de meilleures performances et une latence plus faible car ils ne s'appuient pas sur un système d'exploitation hôte.
     -   Les hyperviseurs de type 2 peuvent subir une certaine dégradation des performances en raison de la surcharge liée à l'exécution sur un système d'exploitation hôte.
@@ -374,7 +374,7 @@ Paravirtualisation : nécessite une configuration et des modifications supplém
 -   Configuration de base des nœuds et domaines Xen
 -   Gestion de base des nœuds et domaines Xen
 -   Dépannage de base des installations Xen
--   Avaricité des pilules
+-   Avarité des pilules
 -   Connaissance de XenStore
 -   Connaissance des paramètres de démarrage Xen
 -   Connaissance de l'utilitaire xm
@@ -550,7 +550,7 @@ foo
 
 <a name="topic-352"></a>
 
-## Sujet 352 : Virtualisation des conteneurs
+## Sujet 352 : Virtualisation des conteneurs
 
 * * *
 
@@ -877,7 +877,7 @@ N'oubliez pas de donner une étoile au projet ! Merci encore!
 
 * * *
 
-## License
+## Licence
 
 -   Ce projet est sous licence MIT \* voir le fichier LICENSE.md pour plus de détails
 
@@ -902,7 +902,7 @@ Lien du projet :<https://github.com/marcossilvestrini/learning-lpic-3-305-300>
 -   [Compilateur GCC](https://gcc.gnu.org/wiki/History)
 -   [GNUTR](https://www.gnu.org/software/tar/)
 -   [Marque GNU](https://www.gnu.org/software/make/)
--   [GNU Emacs](https://en.wikipedia.org/wiki/Emacs)
+-   [GNU-Emacs](https://en.wikipedia.org/wiki/Emacs)
 -   [Paquets GNU](https://www.gnu.org/software/)
 -   [Collection GNU/Linux](https://directory.fsf.org/wiki/Collection:GNU/Linux)
 -   [Chargeur de démarrage GNU Grub](https://www.gnu.org/software/grub/)
@@ -925,7 +925,7 @@ Lien du projet :<https://github.com/marcossilvestrini/learning-lpic-3-305-300>
 -   [Directives du logiciel libre Debian](https://www.debian.org/social_contract#guidelines)
 -   [Organisation X11](https://www.x.org/wiki/)
 -   [Wayland](https://wayland.freedesktop.org/)
--   [GNU GNOME](https://www.gnu.org/press/gnome-1.0.html)
+-   [GNU-GNOME](https://www.gnu.org/press/gnome-1.0.html)
 -   [GNOME](https://www.gnome.org/)
 -   [XFCE](https://xfce.org/)
 -   [Plasma KDE](https://kde.org/plasma-desktop/)
@@ -944,7 +944,7 @@ Lien du projet :<https://github.com/marcossilvestrini/learning-lpic-3-305-300>
 -   [Comparaison des distributions Linux](https://en.wikipedia.org/wiki/Comparison_of_Linux_distributions)
 -   [Télécharger les forfaits](https://pkgs.org/)
 -   [Installer des packages](https://installati.one/)
--   [Guider les packages d'installation](https://installati.one/)
+-   [Guider l'installation des packages](https://installati.one/)
 -   [Bugzilla](https://bugzilla.kernel.org/)
 -   [Commande non trouvée](https://command-not-found.com/)
 -   [Test de distribution](https://distrotest.net/index.php)
