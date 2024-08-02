@@ -109,7 +109,7 @@
 ### 前提条件
 
 -   ギット
--   Virtual Box と拡張機能
+-   Virtual Box and extension
 -   V_a_g_r_a_n_t
 
 <a name="installation"></a>
@@ -266,12 +266,12 @@ Migration (P2V, V2V)
 
 主な特徴:
 
-ハードウェア サポート: Intel VT-x や AMD-V などの仮想化拡張機能に対する CPU サポートが必要です。
-完全仮想化: ハイパーバイザーがハードウェア環境の完全なエミュレーションを提供するため、VM は変更されていないゲスト オペレーティング システムを実行できます。
-パフォーマンス: CPU 上でゲスト コードが直接実行されるため、通常はネイティブに近いパフォーマンスが提供されます。
-分離: 各 VM は独自の専用ハードウェアがあるかのように動作するため、VM 間に強力な分離が提供されます。
-例: VMware ESXi、Microsoft Hyper-V、KVM (カーネルベースの仮想マシン)。
-利点:
+Hardware Support: Requires CPU support for virtualization extensions such as Intel VT-x or AMD-V.
+Full Virtualization: VMs can run unmodified guest operating systems, as the hypervisor provides a complete emulation of the hardware environment.
+Performance: Typically offers near-native performance because of direct execution of guest code on the CPU.
+Isolation: Provides strong isolation between VMs since each VM operates as if it has its own dedicated hardware.
+Examples: VMware ESXi, Microsoft Hyper-V, KVM (Kernel-based Virtual Machine).
+Advantages:
 
 互換性: 変更を加えることなく、あらゆるオペレーティング システムを実行できます。
 パフォーマンス: ハードウェアのサポートによる高いパフォーマンス。
@@ -295,8 +295,8 @@ Migration (P2V, V2V)
 リソース使用率: ゲスト OS とハイパーバイザー間の直接通信により、システム リソースがより効率的に使用されます。
 短所:
 
-ゲスト OS の変更: ゲスト OS を変更する必要があり、サポートされているオペレーティング システムへの互換性が制限されます。
-複雑さ: ハイパーコールの実装にはゲスト OS に追加の複雑さが必要です。
+ゲスト OS の変更: ゲスト OS を変更する必要があり、サポートされているオペレーティング システムとの互換性が制限されます。
+複雑さ: ハイパーコール実装にはゲスト OS に追加の複雑さが必要です。
 主な違い
 ゲスト OS の要件:
 
@@ -350,7 +350,7 @@ HVM: 変更されていない OS をサポートするため、一般に導入�
 
 **意味：**さまざまなソースからのデータを物理的に統合することなく統合し、分析とレポートのための統一されたビューを提供します。**使用例:**ビジネス インテリジェンス、リアルタイム データ統合。**例:**Denodo、Red Hat JBoss Data Virtualization、IBM InfoSphere。
 
-##### 仮想化のメリット
+##### 仮想化の利点
 
 **リソース効率:**物理リソースの有効活用。**コスト削減:**ハードウェアおよび運用コストの削減。**スケーラビリティ:**需要に応じて簡単にスケールアップまたはスケールダウンできます。**柔軟性:**さまざまなワークロードとアプリケーションをサポートします。**災害からの回復：**バックアップとリカバリのプロセスが簡素化されました。**分離：**環境の分離によるセキュリティの向上。
 
@@ -615,9 +615,9 @@ foo
 
 -   LXC と LXD のアーキテクチャを理解する
 -   LXD を使用して既存のイメージに基づいて LXC コンテナー (ネットワーキングやストレージを含む) を管理する
--   LXCコンテナのプロパティを構成する
+-   LXC コンテナーのプロパティを構成する
 -   LXC コンテナーのリソース使用量を制限する
--   LXD プロファイルを使用する
+-   LXDプロファイルを使用する
 -   LXC イメージを理解する
 -   従来の LXC ツールの認識
 
@@ -655,7 +655,7 @@ foo
 -   Docker のアーキテクチャとコンポーネントを理解する
 -   Docker レジストリのイメージを使用して Docker コンテナを管理する
 -   Dockerコンテナのイメージとボリュームを理解して管理する
--   Docker コンテナのログを理解して管理する
+-   Dockerコンテナのログを理解して管理する
 -   Docker のネットワークを理解して管理する
 -   Dockerfile を使用してコンテナー イメージを作成する
 -   レジストリ Docker イメージを使用して Docker レジストリを実行する
@@ -726,7 +726,7 @@ Dockerfile
 -   Terraform の基本的な機能の知識
 -   CloudStack、Eucalyptus、OpenNebula の認識
 
-#### 353.1 引用オブジェクト
+#### 353.1 引用されたオブジェクト
 
 ```sh
 IaaS, PaaS, SaaS
@@ -947,10 +947,10 @@ Vagrantfile
 -   [パッケージのインストールガイド](https://installati.one/)
 -   [バグジラ](https://bugzilla.kernel.org/)
 -   [コマンドが見つかりません](https://command-not-found.com/)
--   [ディストリビューションテスト](https://distrotest.net/index.php)
+-   [ディストロテスト](https://distrotest.net/index.php)
 -   [Bashrc ジェネレーター](http://bashrcgenerator.com/)
 -   [エクスプレインシェル](https://explainshell.com/)
--   [Vim チュートリアル](https://www.openvim.com/)
+-   [Vim Tutorial](https://www.openvim.com/)
 -   [Linux シェル スクリプトのチュートリアル](https://bash.cyberciti.biz/guide/Main_Page)
 -   [Github バッジ](https://github.com/alexandresanlim/Badges4-README.md-Profile)
 -   [コマンドの例](https://www.geeksforgeeks.org/)
