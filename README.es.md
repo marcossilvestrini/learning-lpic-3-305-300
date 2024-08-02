@@ -228,7 +228,7 @@ Migration (P2V, V2V)
 **Ejemplos:**
 
 -   VMware ESXi: un hipervisor robusto y ampliamente utilizado en entornos empresariales.
--   Microsoft Hyper-V: integrado con Windows Server, ofrece sólidas funciones de administración y rendimiento.
+-   Microsoft Hyper-V: integrado con Windows Server, ofrece potentes funciones de gestión y rendimiento.
 -   Xen: un hipervisor de código abierto utilizado por muchos proveedores de servicios en la nube.
 -   KVM (Máquina virtual basada en kernel): Integrada en el kernel de Linux, proporciona un alto rendimiento para sistemas basados ​​en Linux.
 
@@ -262,7 +262,7 @@ Migration (P2V, V2V)
     -   Los hipervisores tipo 2 son más fáciles de instalar y usar, lo que los hace ideales para usuarios individuales y proyectos más pequeños.
 
 Virtualización asistida por hardware (HVM)
-Definición: HVM aprovecha las extensiones de hardware proporcionadas por las CPU modernas para virtualizar el hardware, lo que permite la creación y gestión de máquinas virtuales con una sobrecarga mínima de rendimiento.
+Definición: HVM aprovecha las extensiones de hardware proporcionadas por las CPU modernas para virtualizar el hardware, lo que permite la creación y gestión de máquinas virtuales con una sobrecarga de rendimiento mínima.
 
 Caracteristicas claves:
 
@@ -279,7 +279,7 @@ Seguridad: funciones de seguridad y aislamiento mejoradas proporcionadas por el 
 Desventajas:
 
 Dependencia de hardware: Requiere características de hardware específicas, lo que limita la compatibilidad con sistemas más antiguos.
-Complejidad: Puede implicar una configuración y gestión más complejas.
+Complejidad: puede implicar una configuración y gestión más complejas.
 Paravirtualización
 Definición: La paravirtualización implica modificar el sistema operativo invitado para que sea consciente del entorno virtual, lo que le permite interactuar de manera más eficiente con el hipervisor.
 
@@ -618,7 +618,7 @@ foo
 -   Configurar las propiedades del contenedor LXC
 -   Limitar el uso de recursos del contenedor LXC
 -   Utilice perfiles LXD
--   Understand LXC images
+-   Comprender las imágenes LXC
 -   Conocimiento de las herramientas tradicionales de LXC
 
 #### 352.2 Objetos citados
@@ -827,11 +827,11 @@ user-data
 
 **Peso:**3
 
-**Descripción:**El candidato debería poder utilizar Vagrant para administrar máquinas virtuales, incluido el aprovisionamiento de la máquina virtual.
+**Descripción:**El candidato debe poder utilizar Vagrant para administrar máquinas virtuales, incluido el aprovisionamiento de la máquina virtual.
 
 **Áreas clave de conocimiento:**
 
--   Understand Vagrant architecture and concepts, including storage and networking
+-   Comprender la arquitectura y los conceptos de Vagrant, incluidos el almacenamiento y las redes.
 -   Recuperar y utilizar cajas de Atlas
 -   Crear y ejecutar Vagrantfiles
 -   Acceder a máquinas virtuales Vagrant
