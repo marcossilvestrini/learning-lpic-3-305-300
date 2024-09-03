@@ -187,7 +187,7 @@ man COMMAND
 
 ## Topic 351: Full Virtualization
 
-![LPIC3-305-300](Images/lpic3-305-300.jpg)
+![LPIC3-305-300](Images/virtualization-351.png)
 
 ---
 
