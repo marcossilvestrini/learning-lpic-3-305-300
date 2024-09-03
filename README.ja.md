@@ -176,7 +176,7 @@ man COMMAND
 
 ## トピック 351: 完全仮想化
 
-![virtualization](images/virtualization-351.png)
+![LPIC3-305-300](Images/virtualization-351.png)
 
 * * *
 
@@ -192,7 +192,7 @@ man COMMAND
 
 -   仮想化用語を理解する
 -   仮想化の長所と短所を理解する
--   ハイパーバイザーと仮想マシン モニターのさまざまなバリエーションを理解する
+-   Understand the various variations of Hypervisors and Virtual Machine Monitors
 -   物理マシンから仮想マシンへの移行の主な側面を理解する
 -   ホスト システム間での仮想マシンの移行の主な側面を理解する
 -   スナップショット、一時停止、クローン作成、リソース制限など、仮想マシンの仮想化の機能と影響を理解する
@@ -861,7 +861,7 @@ vagrant
 Vagrantfile
 ```
 
-#### 353.4 Important Commands
+#### 353.4 重要なコマンド
 
 ##### 浮浪者
 
