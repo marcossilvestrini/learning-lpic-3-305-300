@@ -176,7 +176,7 @@ man COMMAND
 
 ## Tema 351: Virtualización completa
 
-![virtualization](images/virtualization-351.png)
+![LPIC3-305-300](Images/virtualization-351.png)
 
 * * *
 
@@ -799,7 +799,7 @@ packer
 
 <a name="topic-353.3"></a>
 
-### 353.3 inicio de nube
+### 353.3 cloud-init
 
 **Peso:**3
 
