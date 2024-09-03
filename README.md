@@ -120,8 +120,6 @@ For starting the learning, see the documentation above.
 ### Prerequisites
 
 * Git
-* Virtual Box and extension
-* V_a_g_r_a_n_t
 
 <a name="installation"></a>
 
@@ -272,67 +270,80 @@ Migration (P2V, V2V)
   * Type 1 hypervisors require more complex setup and management but provide advanced features and scalability for large-scale deployments.
   * Type 2 hypervisors are easier to install and use, making them ideal for individual users and smaller projects.
 
+#### HVM and Paravirtualization
 
+##### Hardware-assisted Virtualization (HVM)
 
-Hardware-assisted Virtualization (HVM)
-Definition: HVM leverages hardware extensions provided by modern CPUs to virtualize hardware, enabling the creation and management of VMs with minimal performance overhead.
+**Definition**: HVM leverages hardware extensions provided by modern CPUs to virtualize hardware, enabling the creation and management of VMs with minimal performance overhead.
 
-Key Characteristics:
+**Key Characteristics**:
 
-Hardware Support: Requires CPU support for virtualization extensions such as Intel VT-x or AMD-V.
-Full Virtualization: VMs can run unmodified guest operating systems, as the hypervisor provides a complete emulation of the hardware environment.
-Performance: Typically offers near-native performance because of direct execution of guest code on the CPU.
-Isolation: Provides strong isolation between VMs since each VM operates as if it has its own dedicated hardware.
-Examples: VMware ESXi, Microsoft Hyper-V, KVM (Kernel-based Virtual Machine).
-Advantages:
+* **Hardware Support**: Requires CPU support for virtualization extensions such as Intel VT-x or AMD-V.
+* **Full Virtualization:** VMs can run unmodified guest operating systems, as the hypervisor provides a complete emulation of the hardware environment.
+* **Performance:** Typically offers near-native performance because of direct execution of guest code on the CPU.
+* **Isolation:** Provides strong isolation between VMs since each VM operates as if it has its own dedicated hardware.
 
-Compatibility: Can run any operating system without modification.
-Performance: High performance due to hardware support.
-Security: Enhanced isolation and security features provided by hardware.
-Disadvantages:
+**Examples:** VMware ESXi, Microsoft Hyper-V, KVM (Kernel-based Virtual Machine).
 
-Hardware Dependency: Requires specific hardware features, limiting compatibility with older systems.
-Complexity: May involve more complex configuration and management.
-Paravirtualization
-Definition: Paravirtualization involves modifying the guest operating system to be aware of the virtual environment, allowing it to interact more efficiently with the hypervisor.
+**Advantages:**
 
-Key Characteristics:
+* **Compatibility:** Can run any operating system without modification.
+* **Performance:** High performance due to hardware support.
+* **Security:** Enhanced isolation and security features provided by hardware.
 
-Guest Modification: Requires changes to the guest operating system to communicate directly with the hypervisor using hypercalls.
-Performance: Can be more efficient than traditional full virtualization because it reduces the overhead associated with emulating hardware.
-Compatibility: Limited to operating systems that have been modified for paravirtualization.
-Examples: Xen with paravirtualized guests, VMware tools in certain configurations, and some KVM configurations.
-Advantages:
+**Disadvantages:**
 
-Efficiency: Reduces the overhead of virtualizing hardware, potentially offering better performance for certain workloads.
-Resource Utilization: More efficient use of system resources due to direct communication between the guest OS and hypervisor.
-Disadvantages:
+* **Hardware Dependency:** Requires specific hardware features, limiting compatibility with older systems.
+* **Complexity:** May involve more complex configuration and management.
 
-Guest OS Modification: Requires modifications to the guest OS, limiting compatibility to supported operating systems.
-Complexity: Requires additional complexity in the guest OS for hypercall implementations.
-Key Differences
-Guest OS Requirements:
+##### Paravirtualization
 
-HVM: Can run unmodified guest operating systems.
-Paravirtualization: Requires guest operating systems to be modified to work with the hypervisor.
-Performance:
+**Definition:** Paravirtualization involves modifying the guest operating system to be aware of the virtual environment, allowing it to interact more efficiently with the hypervisor.
 
-HVM: Typically provides near-native performance due to hardware-assisted execution.
-Paravirtualization: Can offer efficient performance by reducing the overhead of hardware emulation, but relies on modified guest OS.
-Hardware Dependency:
+**Key Characteristics:**
 
-HVM: Requires specific CPU features (Intel VT-x, AMD-V).
-Paravirtualization: Does not require specific CPU features but needs modified guest OS.
-Isolation:
+* **Guest Modification:** Requires changes to the guest operating system to communicate directly with the hypervisor using hypercalls.
+* **Performance:** Can be more efficient than traditional full virtualization because it reduces the overhead associated with emulating hardware.
+* **Compatibility:** Limited to operating systems that have been modified for paravirtualization.
 
-HVM: Provides strong isolation using hardware features.
-Paravirtualization: Relies on software-based isolation, which may not be as robust as hardware-based isolation.
-Complexity:
+**Examples:** Xen with paravirtualized guests, VMware tools in certain configurations, and some KVM configurations.
 
-HVM: Generally more straightforward to deploy since it supports unmodified OS.
-Paravirtualization: Requires additional setup and modifications to the guest OS, increasing complexity.
+**Advantages:**
 
+* **Efficiency:** Reduces the overhead of virtualizing hardware, potentially offering better performance for certain workloads.
+* **Resource Utilization:** More efficient use of system resources due to direct communication between the guest OS and hypervisor.
 
+**Disadvantages:**
+
+* **Guest OS Modification:** Requires modifications to the guest OS, limiting compatibility to supported operating systems.
+* **Complexity:** Requires additional complexity in the guest OS for hypercall implementations.
+
+##### Key Differences
+
+**Guest OS Requirements:**
+
+* **HVM:** Can run unmodified guest operating systems.
+* **Paravirtualization:** Requires guest operating systems to be modified to work with the hypervisor.
+
+**Performance:**
+
+* **HVM:** Typically provides near-native performance due to hardware-assisted execution.
+* **Paravirtualization:** Can offer efficient performance by reducing the overhead of hardware emulation, but relies on modified guest OS.
+
+**Hardware Dependency:**
+
+* **HVM:** Requires specific CPU features (Intel VT-x, AMD-V).
+* **Paravirtualization:** Does not require specific CPU features but needs modified guest OS.
+
+**Isolation:**
+
+* **HVM:** Provides strong isolation using hardware features.
+* **Paravirtualization:** Relies on software-based isolation, which may not be as robust as hardware-based isolation.
+
+**Complexity:**
+
+* **HVM:** Generally more straightforward to deploy since it supports unmodified OS.
+* **Paravirtualization:** Requires additional setup and modifications to the guest OS, increasing complexity.
 
 #### Types of Virtualization
 
