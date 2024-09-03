@@ -226,15 +226,17 @@ Migration (P2V, V2V)
 
 ##### Type 1 Hypervisor (Bare-Metal Hypervisor)
 
-**Definition:** Runs directly on the host's physical hardware, providing a base layer to manage VMs without the need for a host operating system.  
+###### Type 1 Definition
 
-**Characteristics:**
+Runs directly on the host's physical hardware, providing a base layer to manage VMs without the need for a host operating system.  
+
+###### Type 1 Characteristics
 
 * High performance and efficiency.
 * Lower latency and overhead.
 * Often used in enterprise environments and data centers.
 
-**Examples:**
+###### Type 1 Examples
 
 * VMware ESXi: A robust and widely used hypervisor in enterprise settings.
 * Microsoft Hyper-V: Integrated with Windows Server, offering strong performance and management features.
@@ -243,15 +245,17 @@ Migration (P2V, V2V)
 
 ##### Type 2 Hypervisor (Hosted Hypervisor)
 
-**Definition:** Runs on top of a conventional operating system, relying on the host OS for resource management and device support.
+###### Type 2 Definition
 
-**Characteristics:**
+Runs on top of a conventional operating system, relying on the host OS for resource management and device support.
+
+###### Type 2 Characteristics
 
 * Easier to set up and use, especially on personal computers.
 * More flexible for development, testing, and smaller-scale deployments.
 * Typically less efficient than Type 1 hypervisors due to additional overhead from the host OS.
 
-**Examples:**
+###### Type 2 Examples
 
 * VMware Workstation: A powerful hypervisor for running multiple operating systems on a single desktop.
 * Oracle VirtualBox: An open-source hypervisor known for its flexibility and ease of use.
@@ -274,73 +278,81 @@ Migration (P2V, V2V)
 
 ##### Hardware-assisted Virtualization (HVM)
 
-**Definition**: HVM leverages hardware extensions provided by modern CPUs to virtualize hardware, enabling the creation and management of VMs with minimal performance overhead.
+###### HVM Definition
 
-**Key Characteristics**:
+HVM leverages hardware extensions provided by modern CPUs to virtualize hardware, enabling the creation and management of VMs with minimal performance overhead.
+
+###### HVM Key Characteristics
 
 * **Hardware Support**: Requires CPU support for virtualization extensions such as Intel VT-x or AMD-V.
 * **Full Virtualization:** VMs can run unmodified guest operating systems, as the hypervisor provides a complete emulation of the hardware environment.
 * **Performance:** Typically offers near-native performance because of direct execution of guest code on the CPU.
 * **Isolation:** Provides strong isolation between VMs since each VM operates as if it has its own dedicated hardware.
 
-**Examples:** VMware ESXi, Microsoft Hyper-V, KVM (Kernel-based Virtual Machine).
+###### HVM Examples
 
-**Advantages:**
+VMware ESXi, Microsoft Hyper-V, KVM (Kernel-based Virtual Machine).
+
+###### HVM Advantages
 
 * **Compatibility:** Can run any operating system without modification.
 * **Performance:** High performance due to hardware support.
 * **Security:** Enhanced isolation and security features provided by hardware.
 
-**Disadvantages:**
+###### HVM Disadvantages
 
 * **Hardware Dependency:** Requires specific hardware features, limiting compatibility with older systems.
 * **Complexity:** May involve more complex configuration and management.
 
 ##### Paravirtualization
 
-**Definition:** Paravirtualization involves modifying the guest operating system to be aware of the virtual environment, allowing it to interact more efficiently with the hypervisor.
+###### Paravirtualization Definition
 
-**Key Characteristics:**
+Paravirtualization involves modifying the guest operating system to be aware of the virtual environment, allowing it to interact more efficiently with the hypervisor.
+
+###### Paravirtualization Key Characteristics
 
 * **Guest Modification:** Requires changes to the guest operating system to communicate directly with the hypervisor using hypercalls.
 * **Performance:** Can be more efficient than traditional full virtualization because it reduces the overhead associated with emulating hardware.
 * **Compatibility:** Limited to operating systems that have been modified for paravirtualization.
 
-**Examples:** Xen with paravirtualized guests, VMware tools in certain configurations, and some KVM configurations.
+###### Paravirtualization Examples
 
-**Advantages:**
+Xen with paravirtualized guests, VMware tools in certain configurations, and some KVM configurations.
+
+###### Paravirtualization Advantages
 
 * **Efficiency:** Reduces the overhead of virtualizing hardware, potentially offering better performance for certain workloads.
 * **Resource Utilization:** More efficient use of system resources due to direct communication between the guest OS and hypervisor.
 
-**Disadvantages:**
+###### Paravirtualization Disadvantages
 
 * **Guest OS Modification:** Requires modifications to the guest OS, limiting compatibility to supported operating systems.
 * **Complexity:** Requires additional complexity in the guest OS for hypercall implementations.
 
 ##### Key Differences
 
-**Guest OS Requirements:**
+###### Guest OS Requirements
 
 * **HVM:** Can run unmodified guest operating systems.
 * **Paravirtualization:** Requires guest operating systems to be modified to work with the hypervisor.
 
-**Performance:**
+###### Performance
 
 * **HVM:** Typically provides near-native performance due to hardware-assisted execution.
 * **Paravirtualization:** Can offer efficient performance by reducing the overhead of hardware emulation, but relies on modified guest OS.
 
-**Hardware Dependency:**
+###### Hardware Dependency
 
 * **HVM:** Requires specific CPU features (Intel VT-x, AMD-V).
 * **Paravirtualization:** Does not require specific CPU features but needs modified guest OS.
 
-**Isolation:**
+###### Isolation
 
 * **HVM:** Provides strong isolation using hardware features.
 * **Paravirtualization:** Relies on software-based isolation, which may not be as robust as hardware-based isolation.
 
-**Complexity:**
+###### Complexity
 
 * **HVM:** Generally more straightforward to deploy since it supports unmodified OS.
 * **Paravirtualization:** Requires additional setup and modifications to the guest OS, increasing complexity.
@@ -349,54 +361,110 @@ Migration (P2V, V2V)
 
 ##### Hardware Virtualization (Server Virtualization)
 
-**Definition:** Abstracts physical hardware to create virtual machines (VMs) that run separate operating systems and applications.  
-**Use Cases:** Data centers, cloud computing, server consolidation.
-**Examples:** VMware ESXi, Microsoft Hyper-V, KVM.
+###### HV Definition
+
+Abstracts physical hardware to create virtual machines (VMs) that run separate operating systems and applications.  
+
+###### HV Use Cases
+
+Data centers, cloud computing, server consolidation.
+
+###### HV Examples
+
+VMware ESXi, Microsoft Hyper-V, KVM.
 
 ##### Operating System Virtualization (Containerization)
 
-**Definition:** Allows multiple isolated user-space instances (containers) to run on a single OS kernel.
-**Use Cases:** Microservices architecture, development and testing environments.
-**Examples:** Docker, Kubernetes, LXC.
+###### Containerization Definition
+
+Allows multiple isolated user-space instances (containers) to run on a single OS kernel.
+
+###### Containerization Use Cases
+
+Microservices architecture, development and testing environments.
+
+###### Containerization Examples
+
+Docker, Kubernetes, LXC.
 
 ##### Network Virtualization
 
-**Definition:** Combines hardware and software network resources into a single, software-based administrative entity.
-**Use Cases:** Software-defined networking (SDN), network function virtualization (NFV).
-**Examples:** VMware NSX, Cisco ACI, OpenStack Neutron.
+###### Network Virtualization Definition
+
+Combines hardware and software network resources into a single, software-based administrative entity.
+
+###### Network Virtualization Use Cases
+
+Software-defined networking (SDN), network function virtualization (NFV).
+
+###### Network Virtualization Examples
+
+VMware NSX, Cisco ACI, OpenStack Neutron.
 
 ##### Storage Virtualization
 
-**Definition:** Pools physical storage from multiple devices into a single virtual storage unit that can be managed centrally.
-**Use Cases:** Data management, storage optimization, disaster recovery.
-**Examples:** IBM SAN Volume Controller, VMware vSAN, NetApp ONTAP.
+###### Storage VirtualizationDefinition
+
+Pools physical storage from multiple devices into a single virtual storage unit that can be managed centrally.
+
+###### Storage VirtualizationDefinition Use Cases
+
+Data management, storage optimization, disaster recovery.
+
+###### Storage VirtualizationDefinition Examples
+
+IBM SAN Volume Controller, VMware vSAN, NetApp ONTAP.
 
 ##### Desktop Virtualization
 
-**Definition:** Allows a desktop operating system to run on a virtual machine hosted on a server.
-**Use Cases:** Virtual desktop infrastructure (VDI), remote work solutions.
-**Examples:** Citrix Virtual Apps and Desktops, VMware Horizon, Microsoft Remote Desktop Services.
+###### Desktop Virtualization Definition
+
+Allows a desktop operating system to run on a virtual machine hosted on a server.
+
+###### Desktop Virtualization Definition Use Cases
+
+Virtual desktop infrastructure (VDI), remote work solutions.
+
+###### Desktop Virtualization Definition Examples
+
+Citrix Virtual Apps and Desktops, VMware Horizon, Microsoft Remote Desktop Services.
 
 ##### Application Virtualization
 
-**Definition:** Separates applications from the underlying hardware and operating system, allowing them to run in isolated environments.
-**Use Cases:** Simplified application deployment, compatibility testing.
-**Examples:** VMware ThinApp, Microsoft App-V, Citrix XenApp.
+###### Application VirtualizationDefinition
+
+Separates applications from the underlying hardware and operating system, allowing them to run in isolated environments.
+
+###### Application VirtualizationDefinition Use Cases
+
+Simplified application deployment, compatibility testing.
+
+###### Application VirtualizationDefinition Examples
+
+VMware ThinApp, Microsoft App-V, Citrix XenApp.
 
 ##### Data Virtualization
 
-**Definition:** Integrates data from various sources without physically consolidating it, providing a unified view for analysis and reporting.
-**Use Cases:** Business intelligence, real-time data integration.
-**Examples:** Denodo, Red Hat JBoss Data Virtualization, IBM InfoSphere.
+###### Data VirtualizationDefinition
+
+Integrates data from various sources without physically consolidating it, providing a unified view for analysis and reporting.
+
+###### Data VirtualizationDefinition Use Cases
+
+Business intelligence, real-time data integration.
+
+###### Data VirtualizationDefinition Examples
+
+Denodo, Red Hat JBoss Data Virtualization, IBM InfoSphere.
 
 ##### Benefits of Virtualization
 
-**Resource Efficiency:** Better utilization of physical resources.
-**Cost Savings:** Reduced hardware and operational costs.
-**Scalability:** Easy to scale up or down according to demand.
-**Flexibility:** Supports a variety of workloads and applications.
-**Disaster Recovery:** Simplified backup and recovery processes.
-**Isolation:** Improved security through isolation of environments.
+* Resource Efficiency: Better utilization of physical resources.
+* Cost Savings: Reduced hardware and operational costs.
+* Scalability: Easy to scale up or down according to demand.
+* Flexibility: Supports a variety of workloads and applications.
+* Disaster Recovery: Simplified backup and recovery processes.
+* Isolation: Improved security through isolation of environments.
 
 <p align="right">(<a href="#topic-351.1">back to sub Topic 351.1</a>)</p>
 <p align="right">(<a href="#topic-351">back to Topic 351</a>)</p>
