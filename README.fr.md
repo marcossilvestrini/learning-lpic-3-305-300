@@ -109,8 +109,6 @@ Pour commencer l'apprentissage, consultez la documentation ci-dessus.
 ### Conditions préalables
 
 -   Git
--   Boîte virtuelle et extension
--   Vagabond
 
 <a name="installation"></a>
 
@@ -178,7 +176,7 @@ man COMMAND
 
 ## Sujet 351 : Virtualisation complète
 
-![virtualization](images/virtualization-351.png)
+![LPIC3-305-300](Images/virtualization-351.png)
 
 * * *
 
@@ -198,7 +196,7 @@ man COMMAND
 -   Comprendre les principaux aspects de la migration des machines physiques vers les machines virtuelles
 -   Comprendre les principaux aspects de la migration des machines virtuelles entre les systèmes hôtes
 -   Comprendre les fonctionnalités et les implications de la virtualisation pour une machine virtuelle, telles que la prise d'instantanés, la pause, le clonage et les limites de ressources
--   Connaissance de oVirt, Proxmox, systemd-machined et VirtualBox
+-   Connaissance d'oVirt, Proxmox, systemd-machined et VirtualBox
 -   Connaissance d'Open vSwitch
 
 #### 351.1 Objets cités
@@ -225,7 +223,7 @@ Migration (P2V, V2V)
 -   Latence et surcharge réduites.
 -   Souvent utilisé dans les environnements d’entreprise et les centres de données.
 
-**Exemples:**
+**Exemples :**
 
 -   VMware ESXi : un hyperviseur robuste et largement utilisé dans les environnements d'entreprise.
 -   Microsoft Hyper-V : intégré à Windows Server, offrant de solides fonctionnalités de performances et de gestion.
@@ -239,10 +237,10 @@ Migration (P2V, V2V)
 **Caractéristiques:**
 
 -   Plus facile à configurer et à utiliser, en particulier sur les ordinateurs personnels.
--   More flexible for development, testing, and smaller-scale deployments.
+-   Plus flexible pour le développement, les tests et les déploiements à plus petite échelle.
 -   Généralement moins efficace que les hyperviseurs de type 1 en raison de la surcharge supplémentaire du système d'exploitation hôte.
 
-**Exemples:**
+**Exemples :**
 
 -   VMware Workstation : un hyperviseur puissant pour exécuter plusieurs systèmes d'exploitation sur un seul poste de travail.
 -   Oracle VirtualBox : Un hyperviseur open source connu pour sa flexibilité et sa facilité d'utilisation.
@@ -253,7 +251,7 @@ Migration (P2V, V2V)
 
 -   Environnement de déploiement :
     -   Les hyperviseurs de type 1 sont couramment déployés dans les centres de données et les environnements d'entreprise en raison de leur interaction directe avec le matériel et de leurs hautes performances.
-    -   Les hyperviseurs de type 2 sont plus adaptés à un usage personnel, au développement, aux tests et aux tâches de virtualisation à petite échelle.
+    -   Les hyperviseurs de type 2 sont plus adaptés aux tâches d'utilisation personnelle, de développement, de test et de virtualisation à petite échelle.
 -   Performance:
     -   Les hyperviseurs de type 1 offrent généralement de meilleures performances et une latence plus faible car ils ne s'appuient pas sur un système d'exploitation hôte.
     -   Les hyperviseurs de type 2 peuvent subir une certaine dégradation des performances en raison de la surcharge liée à l'exécution sur un système d'exploitation hôte.
@@ -261,98 +259,115 @@ Migration (P2V, V2V)
     -   Les hyperviseurs de type 1 nécessitent une configuration et une gestion plus complexes, mais offrent des fonctionnalités avancées et une évolutivité pour les déploiements à grande échelle.
     -   Les hyperviseurs de type 2 sont plus faciles à installer et à utiliser, ce qui les rend idéaux pour les utilisateurs individuels et les petits projets.
 
-Virtualisation assistée par matériel (HVM)
-Définition : HVM exploite les extensions matérielles fournies par les processeurs modernes pour virtualiser le matériel, permettant ainsi la création et la gestion de machines virtuelles avec une surcharge de performances minimale.
+#### HVM et paravirtualisation
 
-Principales caractéristiques:
+##### Virtualisation assistée par matériel (HVM)
 
-Prise en charge matérielle : nécessite la prise en charge du processeur pour les extensions de virtualisation telles qu'Intel VT-x ou AMD-V.
-Virtualisation complète : les machines virtuelles peuvent exécuter des systèmes d'exploitation invités non modifiés, car l'hyperviseur fournit une émulation complète de l'environnement matériel.
-Performances : offre généralement des performances quasi natives en raison de l’exécution directe du code invité sur le processeur.
-Isolation : fournit une forte isolation entre les machines virtuelles puisque chaque machine virtuelle fonctionne comme si elle disposait de son propre matériel dédié.
-Exemples : VMware ESXi, Microsoft Hyper-V, KVM (Kernel-based Virtual Machine).
-Avantages :
+**Définition**: HVM exploite les extensions matérielles fournies par les processeurs modernes pour virtualiser le matériel, permettant la création et la gestion de machines virtuelles avec une surcharge de performances minimale.
 
-Compatibilité : Peut exécuter n’importe quel système d’exploitation sans modification.
-Performances : Hautes performances grâce à la prise en charge matérielle.
-Sécurité : fonctionnalités d'isolation et de sécurité améliorées fournies par le matériel.
-Désavantages:
+**Caractéristiques clés**:
 
-Dépendance matérielle : nécessite des fonctionnalités matérielles spécifiques, limitant la compatibilité avec les anciens systèmes.
-Complexité : peut impliquer une configuration et une gestion plus complexes.
-Paravirtualisation
-Définition : La paravirtualisation consiste à modifier le système d'exploitation invité pour qu'il soit conscient de l'environnement virtuel, lui permettant d'interagir plus efficacement avec l'hyperviseur.
+-   **Prise en charge matérielle**: Nécessite la prise en charge du processeur pour les extensions de virtualisation telles qu'Intel VT-x ou AMD-V.
+-   **Virtualisation complète :**Les machines virtuelles peuvent exécuter des systèmes d'exploitation invités non modifiés, car l'hyperviseur fournit une émulation complète de l'environnement matériel.
+-   **Performance:**Offre généralement des performances quasi natives en raison de l’exécution directe du code invité sur le processeur.
+-   **Isolement:**Fournit une forte isolation entre les machines virtuelles puisque chaque machine virtuelle fonctionne comme si elle disposait de son propre matériel dédié.
 
-Principales caractéristiques:
+**Exemples :**VMware ESXi, Microsoft Hyper-V, KVM (machine virtuelle basée sur le noyau).
 
-Modification de l'invité : nécessite des modifications du système d'exploitation invité pour communiquer directement avec l'hyperviseur à l'aide d'hypercalls.
-Performances : peut être plus efficace que la virtualisation complète traditionnelle, car elle réduit la surcharge associée à l'émulation du matériel.
-Compatibilité : limitée aux systèmes d'exploitation modifiés pour la paravirtualisation.
-Exemples : Xen avec des invités paravirtualisés, les outils VMware dans certaines configurations et certaines configurations KVM.
-Avantages :
+**Avantages :**
 
-Efficacité : réduit la surcharge du matériel de virtualisation, offrant potentiellement de meilleures performances pour certaines charges de travail.
-Utilisation des ressources : utilisation plus efficace des ressources système grâce à la communication directe entre le système d'exploitation invité et l'hyperviseur.
-Désavantages:
+-   **Compatibilité:**Peut exécuter n’importe quel système d’exploitation sans modification.
+-   **Performance:**Hautes performances grâce au support matériel.
+-   **Sécurité:**Fonctionnalités d’isolation et de sécurité améliorées fournies par le matériel.
 
-Modification du système d'exploitation invité : nécessite des modifications du système d'exploitation invité, limitant la compatibilité aux systèmes d'exploitation pris en charge.
-Complexité : nécessite une complexité supplémentaire dans le système d'exploitation invité pour les implémentations d'hypercall.
-Différences clés
-Exigences du système d'exploitation invité :
+**Inconvénients :**
 
-HVM : peut exécuter des systèmes d'exploitation invités non modifiés.
-Paravirtualisation : nécessite que les systèmes d'exploitation invités soient modifiés pour fonctionner avec l'hyperviseur.
-Performance:
+-   **Dépendance matérielle :**Nécessite des fonctionnalités matérielles spécifiques, limitant la compatibilité avec les anciens systèmes.
+-   **Complexité:**Peut impliquer une configuration et une gestion plus complexes.
 
-HVM : fournit généralement des performances quasi natives grâce à l'exécution assistée par matériel.
-Paravirtualisation : peut offrir des performances efficaces en réduisant la surcharge de l'émulation matérielle, mais repose sur un système d'exploitation invité modifié.
-Dépendance matérielle :
+##### Paravirtualisation
 
-HVM : Nécessite des fonctionnalités CPU spécifiques (Intel VT-x, AMD-V).
-Paravirtualisation : ne nécessite pas de fonctionnalités de processeur spécifiques mais nécessite un système d'exploitation invité modifié.
-Isolement:
+**Définition:**La paravirtualisation implique de modifier le système d'exploitation invité pour qu'il soit conscient de l'environnement virtuel, lui permettant d'interagir plus efficacement avec l'hyperviseur.
 
-HVM : offre une forte isolation grâce aux fonctionnalités matérielles.
-Paravirtualisation : repose sur une isolation logicielle, qui peut ne pas être aussi robuste que l'isolation matérielle.
-Complexité:
+**Caractéristiques clés :**
 
-HVM : généralement plus simple à déployer car il prend en charge le système d'exploitation non modifié.
-Paravirtualisation : nécessite une configuration et des modifications supplémentaires du système d'exploitation invité, ce qui augmente la complexité.
+-   **Modification des invités :**Nécessite des modifications du système d’exploitation invité pour communiquer directement avec l’hyperviseur à l’aide d’hyperappels.
+-   **Performance:**Peut être plus efficace que la virtualisation complète traditionnelle, car elle réduit la surcharge associée à l'émulation du matériel.
+-   **Compatibilité:**Limité aux systèmes d'exploitation qui ont été modifiés pour la paravirtualisation.
+
+**Exemples :**Xen avec des invités paravirtualisés, des outils VMware dans certaines configurations et certaines configurations KVM.
+
+**Avantages :**
+
+-   **Efficacité:**Réduit la surcharge liée à la virtualisation du matériel, offrant potentiellement de meilleures performances pour certaines charges de travail.
+-   **Utilisation des ressources :**Utilisation plus efficace des ressources système grâce à la communication directe entre le système d'exploitation invité et l'hyperviseur.
+
+**Inconvénients :**
+
+-   **Modification du système d'exploitation invité :**Nécessite des modifications du système d'exploitation invité, limitant la compatibilité aux systèmes d'exploitation pris en charge.
+-   **Complexité:**Nécessite une complexité supplémentaire dans le système d’exploitation invité pour les implémentations d’hypercall.
+
+##### Différences clés
+
+**Exigences du système d'exploitation invité :**
+
+-   **HVM:**Peut exécuter des systèmes d’exploitation invités non modifiés.
+-   **Paravirtualisation :**Nécessite que les systèmes d’exploitation invités soient modifiés pour fonctionner avec l’hyperviseur.
+
+**Performance:**
+
+-   **HVM:**Fournit généralement des performances quasi natives grâce à l’exécution assistée par matériel.
+-   **Paravirtualisation :**Peut offrir des performances efficaces en réduisant la surcharge de l'émulation matérielle, mais repose sur un système d'exploitation invité modifié.
+
+**Dépendance matérielle :**
+
+-   **HVM:**Nécessite des fonctionnalités CPU spécifiques (Intel VT-x, AMD-V).
+-   **Paravirtualisation :**Ne nécessite pas de fonctionnalités de processeur spécifiques mais nécessite un système d'exploitation invité modifié.
+
+**Isolement:**
+
+-   **HVM:**Fournit une forte isolation grâce aux fonctionnalités matérielles.
+-   **Paravirtualisation :**Repose sur une isolation logicielle, qui n'est peut-être pas aussi robuste que l'isolation matérielle.
+
+**Complexité:**
+
+-   **HVM:**Généralement plus simple à déployer car il prend en charge le système d'exploitation non modifié.
+-   **Paravirtualisation :**Nécessite une configuration et des modifications supplémentaires du système d’exploitation invité, ce qui augmente la complexité.
 
 #### Types de virtualisation
 
 ##### Virtualisation matérielle (virtualisation de serveur)
 
 **Définition:**Extrait le matériel physique pour créer des machines virtuelles (VM) qui exécutent des systèmes d'exploitation et des applications distincts.  
-**Cas d'utilisation :**Centres de données, cloud computing, consolidation de serveurs.**Exemples:**VMware ESXi, Microsoft Hyper-V, KVM.
+**Cas d'utilisation :**Centres de données, cloud computing, consolidation de serveurs.**Exemples :**VMware ESXi, Microsoft Hyper-V, KVM.
 
 ##### Virtualisation du système d'exploitation (conteneurisation)
 
-**Définition:**Permet à plusieurs instances d'espace utilisateur isolées (conteneurs) de s'exécuter sur un seul noyau de système d'exploitation.**Cas d'utilisation :**Architecture de microservices, environnements de développement et de test.**Exemples:**Docker, Kubernetes, LXC.
+**Définition:**Permet à plusieurs instances d'espace utilisateur isolées (conteneurs) de s'exécuter sur un seul noyau de système d'exploitation.**Cas d'utilisation :**Architecture de microservices, environnements de développement et de test.**Exemples :**Docker, Kubernetes, LXC.
 
 ##### Virtualisation du réseau
 
-**Définition:**Combine les ressources réseau matérielles et logicielles en une seule entité administrative logicielle.**Cas d'utilisation :**Réseau défini par logiciel (SDN), virtualisation des fonctions réseau (NFV).**Exemples:**VMware NSX, Cisco ACI, OpenStack Neutron.
+**Définition:**Combine les ressources réseau matérielles et logicielles en une seule entité administrative logicielle.**Cas d'utilisation :**Réseau défini par logiciel (SDN), virtualisation des fonctions réseau (NFV).**Exemples :**VMware NSX, Cisco ACI, OpenStack Neutron.
 
 ##### Virtualisation du stockage
 
-**Définition:**Regroupe le stockage physique de plusieurs appareils dans une seule unité de stockage virtuelle qui peut être gérée de manière centralisée.**Cas d'utilisation :**Gestion des données, optimisation du stockage, reprise après sinistre.**Exemples:**Contrôleur de volume IBM SAN, VMware vSAN, NetApp ONTAP.
+**Définition:**Regroupe le stockage physique de plusieurs appareils dans une seule unité de stockage virtuelle qui peut être gérée de manière centralisée.**Cas d'utilisation :**Gestion des données, optimisation du stockage, reprise après sinistre.**Exemples :**Contrôleur de volume IBM SAN, VMware vSAN, NetApp ONTAP.
 
 ##### Virtualisation des postes de travail
 
-**Définition:**Permet à un système d'exploitation de bureau de s'exécuter sur une machine virtuelle hébergée sur un serveur.**Cas d'utilisation :**Infrastructure de bureau virtuel (VDI), solutions de travail à distance.**Exemples:**Citrix Virtual Apps and Desktops, VMware Horizon, Microsoft Remote Desktop Services.
+**Définition:**Permet à un système d'exploitation de bureau de s'exécuter sur une machine virtuelle hébergée sur un serveur.**Cas d'utilisation :**Infrastructure de bureau virtuel (VDI), solutions de travail à distance.**Exemples :**Citrix Virtual Apps and Desktops, VMware Horizon, Microsoft Remote Desktop Services.
 
 ##### Virtualisation des applications
 
-**Définition:**Sépare les applications du matériel et du système d'exploitation sous-jacents, leur permettant de s'exécuter dans des environnements isolés.**Cas d'utilisation :**Déploiement d'applications simplifié, tests de compatibilité.**Exemples:**VMware ThinApp, Microsoft App-V, Citrix XenApp.
+**Définition:**Sépare les applications du matériel et du système d'exploitation sous-jacents, leur permettant de s'exécuter dans des environnements isolés.**Cas d'utilisation :**Déploiement d'applications simplifié, tests de compatibilité.**Exemples :**VMware ThinApp, Microsoft App-V, Citrix XenApp.
 
 ##### Virtualisation des données
 
-**Définition:**Intègre les données provenant de diverses sources sans les consolider physiquement, offrant ainsi une vue unifiée pour l'analyse et le reporting.**Cas d'utilisation :**Business intelligence, intégration de données en temps réel.**Exemples:**Denodo, virtualisation des données Red Hat JBoss, IBM InfoSphere.
+**Définition:**Intègre les données provenant de diverses sources sans les consolider physiquement, offrant ainsi une vue unifiée pour l'analyse et le reporting.**Cas d'utilisation :**Business intelligence, intégration de données en temps réel.**Exemples :**Denodo, virtualisation des données Red Hat JBoss, IBM InfoSphere.
 
 ##### Avantages de la virtualisation
 
-**Efficacité des ressources :**Meilleure utilisation des ressources physiques.**Économies de coûts:**Réduction des coûts matériels et opérationnels.**Évolutivité :**Facile à augmenter ou à réduire en fonction de la demande.**La flexibilité:**Prend en charge une variété de charges de travail et d’applications.**Reprise après sinistre:**Processus de sauvegarde et de restauration simplifiés.**Isolement:**Sécurité améliorée grâce à l’isolation des environnements.
+**Efficacité des ressources :**Meilleure utilisation des ressources physiques.**Économies de coûts :**Réduction des coûts matériels et opérationnels.**Évolutivité :**Facile à augmenter ou à réduire en fonction de la demande.**Flexibilité:**Prend en charge une variété de charges de travail et d’applications.**Reprise après sinistre :**Processus de sauvegarde et de restauration simplifiés.**Isolement:**Sécurité améliorée grâce à l’isolation des environnements.
 
 <p align="right">(<a href="#topic-351.1">back to sub Topic 351.1</a>)</p>
 <p align="right">(<a href="#topic-351">back to Topic 351</a>)</p>
@@ -374,7 +389,7 @@ Paravirtualisation : nécessite une configuration et des modifications supplém
 -   Configuration de base des nœuds et domaines Xen
 -   Gestion de base des nœuds et domaines Xen
 -   Dépannage de base des installations Xen
--   Avarité des pilules
+-   Avaricité des pilules
 -   Connaissance de XenStore
 -   Connaissance des paramètres de démarrage Xen
 -   Connaissance de l'utilitaire xm
@@ -550,7 +565,7 @@ foo
 
 <a name="topic-352"></a>
 
-## Sujet 352 : Virtualisation des conteneurs
+## Sujet 352 : Virtualisation des conteneurs
 
 * * *
 
@@ -860,10 +875,10 @@ Vagrantfile
 
 * * *
 
-## Contribuant
+## Contribuer
 
 Les contributions sont ce qui fait de la communauté open source un endroit si formidable pour
-apprendre, inspirer et créer. Toutes les contributions que vous apportez sont**très appréciée**.
+apprendre, inspirer et créer. Toutes les contributions que vous apportez sont**grandement apprécié**.
 
 Si vous avez une suggestion pour améliorer les choses, veuillez créer le dépôt et
 créer une pull request. Vous pouvez aussi simplement ouvrir un ticket avec la balise « amélioration ».
@@ -902,7 +917,7 @@ Lien du projet :<https://github.com/marcossilvestrini/learning-lpic-3-305-300>
 -   [Compilateur GCC](https://gcc.gnu.org/wiki/History)
 -   [GNUTR](https://www.gnu.org/software/tar/)
 -   [Marque GNU](https://www.gnu.org/software/make/)
--   [GNU-Emacs](https://en.wikipedia.org/wiki/Emacs)
+-   [GNU Emacs](https://en.wikipedia.org/wiki/Emacs)
 -   [Paquets GNU](https://www.gnu.org/software/)
 -   [Collection GNU/Linux](https://directory.fsf.org/wiki/Collection:GNU/Linux)
 -   [Chargeur de démarrage GNU Grub](https://www.gnu.org/software/grub/)
@@ -944,9 +959,9 @@ Lien du projet :<https://github.com/marcossilvestrini/learning-lpic-3-305-300>
 -   [Comparaison des distributions Linux](https://en.wikipedia.org/wiki/Comparison_of_Linux_distributions)
 -   [Télécharger les forfaits](https://pkgs.org/)
 -   [Installer des packages](https://installati.one/)
--   [Guider l'installation des packages](https://installati.one/)
+-   [Guider les packages d'installation](https://installati.one/)
 -   [Bugzilla](https://bugzilla.kernel.org/)
--   [Commande non trouvée](https://command-not-found.com/)
+-   [Commande introuvable](https://command-not-found.com/)
 -   [Test de distribution](https://distrotest.net/index.php)
 -   [Générateur Bashrc](http://bashrcgenerator.com/)
 -   [Expliquer le shell](https://explainshell.com/)
@@ -967,7 +982,7 @@ Lien du projet :<https://github.com/marcossilvestrini/learning-lpic-3-305-300>
 -   [Tutoriels SSL](https://www.golinuxcloud.com/blog/)
 -   [Configuration SSL Mozilla](https://ssl-config.mozilla.org/)
 -   Définitions de virtualisation
-    -   [chapeau rouge](https://www.redhat.com/pt-br/topics/virtualization/what-is-virtualization)
+    -   [Chapeau rouge](https://www.redhat.com/pt-br/topics/virtualization/what-is-virtualization)
     -   [AWS](https://aws.amazon.com/pt/what-is/virtualization/)
     -   [IBM](https://www.ibm.com/topics/virtualization)
     -   [OpenSource.com](https://opensource.com/resources/virtualization)
@@ -976,7 +991,7 @@ Lien du projet :<https://github.com/marcossilvestrini/learning-lpic-3-305-300>
 -   [Wiki XenProjet](https://wiki.xenproject.org/wiki/Book/HelloXenProject/1-Chapter)
 -   [Blog LPI : Virtualisation Xen et Cloud Computing #01 : Introduction](https://www.lpi.org/pt-br/blog/2020/10/01/xen-virtualization-and-cloud-computing-01-introduction/)
 -   Documents Openstack
-    -   [Chapeau rouge](https://www.redhat.com/pt-br/topics/openstack)
+    -   [Chapeau Rouge](https://www.redhat.com/pt-br/topics/openstack)
 -   [Objectifs LPIC-3 305-300](https://www.lpi.org/our-certifications/exam-305-objectives/)
 -   [Wiki LPIC-3 305-300](https://wiki.lpi.org/wiki/LPIC-305_Objectives_V3.0)
 -   [Matériel d'apprentissage LPIC-3 305-300](https://cursos.linuxsemfronteiras.com.br/courses/preparatorio-para-certificacao-lpic-3-305/)
