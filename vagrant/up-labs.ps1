@@ -1,5 +1,10 @@
-# Fix scripts
+# Scriptpath
 $scriptPath = $PSScriptRoot | Split-Path -Parent
+
+# Machine folder
+$vmware_folder = "E:/Servers/VMware"
+
+# Fix scripts
 & "C:\Program Files\Git\mingw64\bin\dos2unix.exe" $scriptPath\scripts\commons\*
 Clear-Host
 
@@ -50,11 +55,14 @@ function DestroyLab {
     Write-Host "`nDestroying lab for provider: $provider" -ForegroundColor Yellow
     if ($provider -eq "vmware_workstation" -or $provider -eq "virtualbox") {
         vagrant destroy -f
+        # Delete vmware machines folder
+        If(Test-Path "$vmware_folder/lpic3-topic-351-1"){Remove-Item "$vmware_folder/lpic3-topic-351-1" -Recurse -Force}        
     } else {
         switch ($provider) {
             "aws" { DestroyAWS }
             "gcp" { DestroyGCP }
             "azure" { DestroyAzure }
+            "magalucloud" { DestroyMagalucloud }
             default {
                 Write-Host "`nInvalid provider option." -ForegroundColor Red
                 return
@@ -82,6 +90,12 @@ function ProvisionAzure {
     # Add logic to provision Azure instance
 }
 
+# Function to provision Magalucloud instance
+function ProvisionMagalucloud {
+    Write-Host "`nProvisioning Magalucloud instance..." -ForegroundColor Green
+    # Add logic to provision Magalucloud instance
+}
+
 # Function to destroy AWS instance
 function DestroyAWS {
     Write-Host "`nDestroying AWS instance..." -ForegroundColor Green
@@ -98,6 +112,12 @@ function DestroyGCP {
 function DestroyAzure {
     Write-Host "`nDestroying Azure instance..." -ForegroundColor Green
     # Add logic to destroy Azure instance
+}
+
+# Function to destroy Magalucloud instance
+function DestroyMagalucloud {
+    Write-Host "`nDestroying Magalucloud instance..." -ForegroundColor Green
+    # Add logic to destroy Magalucloud instance
 }
 
 # Function to display the menu with colors
@@ -127,6 +147,7 @@ function Show-ProviderMenu {
     Write-Host "3. " -NoNewline; Write-Host "AWS" -ForegroundColor Green
     Write-Host "4. " -NoNewline; Write-Host "GCP" -ForegroundColor Blue
     Write-Host "5. " -NoNewline; Write-Host "Azure" -ForegroundColor Magenta
+    Write-Host "6. " -NoNewline; Write-Host "Magalucloud" -ForegroundColor White
     Write-Host $prompt -NoNewline
 }
 
@@ -161,6 +182,9 @@ do {
             "5" {
                 ProvisionAzure
             }
+            "6" {
+                ProvisionMagalucloud
+            }
             default {
                 Write-Host "`nInvalid provider option." -ForegroundColor Red
             }
@@ -175,6 +199,7 @@ do {
             "3" { DestroyLab -provider "aws" }
             "4" { DestroyLab -provider "gcp" }
             "5" { DestroyLab -provider "azure" }
+            "6" { DestroyLab -provider "magalucloud" }
             default {
                 Write-Host "`nInvalid provider option." -ForegroundColor Red
                 continue
