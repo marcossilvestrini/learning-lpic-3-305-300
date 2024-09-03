@@ -333,14 +333,15 @@ Migration (P2V, V2V)
 " class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
     <h4 id="hypervisors"><a class="anchor" aria-hidden="true" tabindex="-1" href="#hypervisors"><span class="octicon octicon-link"></span></a>Hypervisors</h4>
     <h5 id="type-1-hypervisor-bare-metal-hypervisor"><a class="anchor" aria-hidden="true" tabindex="-1" href="#type-1-hypervisor-bare-metal-hypervisor"><span class="octicon octicon-link"></span></a>Type 1 Hypervisor (Bare-Metal Hypervisor)</h5>
-    <p><strong>Definition:</strong> Runs directly on the host's physical hardware, providing a base layer to manage VMs without the need for a host operating system.</p>
-    <p><strong>Characteristics:</strong></p>
+    <h6 id="type-1-definition"><a class="anchor" aria-hidden="true" tabindex="-1" href="#type-1-definition"><span class="octicon octicon-link"></span></a>Type 1 Definition</h6>
+    <p>Runs directly on the host's physical hardware, providing a base layer to manage VMs without the need for a host operating system.</p>
+    <h6 id="type-1-characteristics"><a class="anchor" aria-hidden="true" tabindex="-1" href="#type-1-characteristics"><span class="octicon octicon-link"></span></a>Type 1 Characteristics</h6>
     <ul>
       <li>High performance and efficiency.</li>
       <li>Lower latency and overhead.</li>
       <li>Often used in enterprise environments and data centers.</li>
     </ul>
-    <p><strong>Examples:</strong></p>
+    <h6 id="type-1-examples"><a class="anchor" aria-hidden="true" tabindex="-1" href="#type-1-examples"><span class="octicon octicon-link"></span></a>Type 1 Examples</h6>
     <ul>
       <li>VMware ESXi: A robust and widely used hypervisor in enterprise settings.</li>
       <li>Microsoft Hyper-V: Integrated with Windows Server, offering strong performance and management features.</li>
@@ -348,14 +349,15 @@ Migration (P2V, V2V)
       <li>KVM (Kernel-based Virtual Machine): Integrated into the Linux kernel, providing high performance for Linux-based systems.</li>
     </ul>
     <h5 id="type-2-hypervisor-hosted-hypervisor"><a class="anchor" aria-hidden="true" tabindex="-1" href="#type-2-hypervisor-hosted-hypervisor"><span class="octicon octicon-link"></span></a>Type 2 Hypervisor (Hosted Hypervisor)</h5>
-    <p><strong>Definition:</strong> Runs on top of a conventional operating system, relying on the host OS for resource management and device support.</p>
-    <p><strong>Characteristics:</strong></p>
+    <h6 id="type-2-definition"><a class="anchor" aria-hidden="true" tabindex="-1" href="#type-2-definition"><span class="octicon octicon-link"></span></a>Type 2 Definition</h6>
+    <p>Runs on top of a conventional operating system, relying on the host OS for resource management and device support.</p>
+    <h6 id="type-2-characteristics"><a class="anchor" aria-hidden="true" tabindex="-1" href="#type-2-characteristics"><span class="octicon octicon-link"></span></a>Type 2 Characteristics</h6>
     <ul>
       <li>Easier to set up and use, especially on personal computers.</li>
       <li>More flexible for development, testing, and smaller-scale deployments.</li>
       <li>Typically less efficient than Type 1 hypervisors due to additional overhead from the host OS.</li>
     </ul>
-    <p><strong>Examples:</strong></p>
+    <h6 id="type-2-examples"><a class="anchor" aria-hidden="true" tabindex="-1" href="#type-2-examples"><span class="octicon octicon-link"></span></a>Type 2 Examples</h6>
     <ul>
       <li>VMware Workstation: A powerful hypervisor for running multiple operating systems on a single desktop.</li>
       <li>Oracle VirtualBox: An open-source hypervisor known for its flexibility and ease of use.</li>
@@ -385,122 +387,134 @@ Migration (P2V, V2V)
     </ul>
     <h4 id="hvm-and-paravirtualization"><a class="anchor" aria-hidden="true" tabindex="-1" href="#hvm-and-paravirtualization"><span class="octicon octicon-link"></span></a>HVM and Paravirtualization</h4>
     <h5 id="hardware-assisted-virtualization-hvm"><a class="anchor" aria-hidden="true" tabindex="-1" href="#hardware-assisted-virtualization-hvm"><span class="octicon octicon-link"></span></a>Hardware-assisted Virtualization (HVM)</h5>
-    <p><strong>Definition</strong>: HVM leverages hardware extensions provided by modern CPUs to virtualize hardware, enabling the creation and management of VMs with minimal performance overhead.</p>
-    <p><strong>Key Characteristics</strong>:</p>
+    <h6 id="hvm-definition"><a class="anchor" aria-hidden="true" tabindex="-1" href="#hvm-definition"><span class="octicon octicon-link"></span></a>HVM Definition</h6>
+    <p>HVM leverages hardware extensions provided by modern CPUs to virtualize hardware, enabling the creation and management of VMs with minimal performance overhead.</p>
+    <h6 id="hvm-key-characteristics"><a class="anchor" aria-hidden="true" tabindex="-1" href="#hvm-key-characteristics"><span class="octicon octicon-link"></span></a>HVM Key Characteristics</h6>
     <ul>
       <li><strong>Hardware Support</strong>: Requires CPU support for virtualization extensions such as Intel VT-x or AMD-V.</li>
       <li><strong>Full Virtualization:</strong> VMs can run unmodified guest operating systems, as the hypervisor provides a complete emulation of the hardware environment.</li>
       <li><strong>Performance:</strong> Typically offers near-native performance because of direct execution of guest code on the CPU.</li>
       <li><strong>Isolation:</strong> Provides strong isolation between VMs since each VM operates as if it has its own dedicated hardware.</li>
     </ul>
-    <p><strong>Examples:</strong> VMware ESXi, Microsoft Hyper-V, KVM (Kernel-based Virtual Machine).</p>
-    <p><strong>Advantages:</strong></p>
+    <h6 id="hvm-examples"><a class="anchor" aria-hidden="true" tabindex="-1" href="#hvm-examples"><span class="octicon octicon-link"></span></a>HVM Examples</h6>
+    <p>VMware ESXi, Microsoft Hyper-V, KVM (Kernel-based Virtual Machine).</p>
+    <h6 id="hvm-advantages"><a class="anchor" aria-hidden="true" tabindex="-1" href="#hvm-advantages"><span class="octicon octicon-link"></span></a>HVM Advantages</h6>
     <ul>
       <li><strong>Compatibility:</strong> Can run any operating system without modification.</li>
       <li><strong>Performance:</strong> High performance due to hardware support.</li>
       <li><strong>Security:</strong> Enhanced isolation and security features provided by hardware.</li>
     </ul>
-    <p><strong>Disadvantages:</strong></p>
+    <h6 id="hvm-disadvantages"><a class="anchor" aria-hidden="true" tabindex="-1" href="#hvm-disadvantages"><span class="octicon octicon-link"></span></a>HVM Disadvantages</h6>
     <ul>
       <li><strong>Hardware Dependency:</strong> Requires specific hardware features, limiting compatibility with older systems.</li>
       <li><strong>Complexity:</strong> May involve more complex configuration and management.</li>
     </ul>
     <h5 id="paravirtualization"><a class="anchor" aria-hidden="true" tabindex="-1" href="#paravirtualization"><span class="octicon octicon-link"></span></a>Paravirtualization</h5>
-    <p><strong>Definition:</strong> Paravirtualization involves modifying the guest operating system to be aware of the virtual environment, allowing it to interact more efficiently with the hypervisor.</p>
-    <p><strong>Key Characteristics:</strong></p>
+    <h6 id="paravirtualization-definition"><a class="anchor" aria-hidden="true" tabindex="-1" href="#paravirtualization-definition"><span class="octicon octicon-link"></span></a>Paravirtualization Definition</h6>
+    <p>Paravirtualization involves modifying the guest operating system to be aware of the virtual environment, allowing it to interact more efficiently with the hypervisor.</p>
+    <h6 id="paravirtualization-key-characteristics"><a class="anchor" aria-hidden="true" tabindex="-1" href="#paravirtualization-key-characteristics"><span class="octicon octicon-link"></span></a>Paravirtualization Key Characteristics</h6>
     <ul>
       <li><strong>Guest Modification:</strong> Requires changes to the guest operating system to communicate directly with the hypervisor using hypercalls.</li>
       <li><strong>Performance:</strong> Can be more efficient than traditional full virtualization because it reduces the overhead associated with emulating hardware.</li>
       <li><strong>Compatibility:</strong> Limited to operating systems that have been modified for paravirtualization.</li>
     </ul>
-    <p><strong>Examples:</strong> Xen with paravirtualized guests, VMware tools in certain configurations, and some KVM configurations.</p>
-    <p><strong>Advantages:</strong></p>
+    <h6 id="paravirtualization-examples"><a class="anchor" aria-hidden="true" tabindex="-1" href="#paravirtualization-examples"><span class="octicon octicon-link"></span></a>Paravirtualization Examples</h6>
+    <p>Xen with paravirtualized guests, VMware tools in certain configurations, and some KVM configurations.</p>
+    <h6 id="paravirtualization-advantages"><a class="anchor" aria-hidden="true" tabindex="-1" href="#paravirtualization-advantages"><span class="octicon octicon-link"></span></a>Paravirtualization Advantages</h6>
     <ul>
       <li><strong>Efficiency:</strong> Reduces the overhead of virtualizing hardware, potentially offering better performance for certain workloads.</li>
       <li><strong>Resource Utilization:</strong> More efficient use of system resources due to direct communication between the guest OS and hypervisor.</li>
     </ul>
-    <p><strong>Disadvantages:</strong></p>
+    <h6 id="paravirtualization-disadvantages"><a class="anchor" aria-hidden="true" tabindex="-1" href="#paravirtualization-disadvantages"><span class="octicon octicon-link"></span></a>Paravirtualization Disadvantages</h6>
     <ul>
       <li><strong>Guest OS Modification:</strong> Requires modifications to the guest OS, limiting compatibility to supported operating systems.</li>
       <li><strong>Complexity:</strong> Requires additional complexity in the guest OS for hypercall implementations.</li>
     </ul>
     <h5 id="key-differences"><a class="anchor" aria-hidden="true" tabindex="-1" href="#key-differences"><span class="octicon octicon-link"></span></a>Key Differences</h5>
-    <p><strong>Guest OS Requirements:</strong></p>
+    <h6 id="guest-os-requirements"><a class="anchor" aria-hidden="true" tabindex="-1" href="#guest-os-requirements"><span class="octicon octicon-link"></span></a>Guest OS Requirements</h6>
     <ul>
       <li><strong>HVM:</strong> Can run unmodified guest operating systems.</li>
       <li><strong>Paravirtualization:</strong> Requires guest operating systems to be modified to work with the hypervisor.</li>
     </ul>
-    <p><strong>Performance:</strong></p>
+    <h6 id="performance"><a class="anchor" aria-hidden="true" tabindex="-1" href="#performance"><span class="octicon octicon-link"></span></a>Performance</h6>
     <ul>
       <li><strong>HVM:</strong> Typically provides near-native performance due to hardware-assisted execution.</li>
       <li><strong>Paravirtualization:</strong> Can offer efficient performance by reducing the overhead of hardware emulation, but relies on modified guest OS.</li>
     </ul>
-    <p><strong>Hardware Dependency:</strong></p>
+    <h6 id="hardware-dependency"><a class="anchor" aria-hidden="true" tabindex="-1" href="#hardware-dependency"><span class="octicon octicon-link"></span></a>Hardware Dependency</h6>
     <ul>
       <li><strong>HVM:</strong> Requires specific CPU features (Intel VT-x, AMD-V).</li>
       <li><strong>Paravirtualization:</strong> Does not require specific CPU features but needs modified guest OS.</li>
     </ul>
-    <p><strong>Isolation:</strong></p>
+    <h6 id="isolation"><a class="anchor" aria-hidden="true" tabindex="-1" href="#isolation"><span class="octicon octicon-link"></span></a>Isolation</h6>
     <ul>
       <li><strong>HVM:</strong> Provides strong isolation using hardware features.</li>
       <li><strong>Paravirtualization:</strong> Relies on software-based isolation, which may not be as robust as hardware-based isolation.</li>
     </ul>
-    <p><strong>Complexity:</strong></p>
+    <h6 id="complexity"><a class="anchor" aria-hidden="true" tabindex="-1" href="#complexity"><span class="octicon octicon-link"></span></a>Complexity</h6>
     <ul>
       <li><strong>HVM:</strong> Generally more straightforward to deploy since it supports unmodified OS.</li>
       <li><strong>Paravirtualization:</strong> Requires additional setup and modifications to the guest OS, increasing complexity.</li>
     </ul>
     <h4 id="types-of-virtualization"><a class="anchor" aria-hidden="true" tabindex="-1" href="#types-of-virtualization"><span class="octicon octicon-link"></span></a>Types of Virtualization</h4>
     <h5 id="hardware-virtualization-server-virtualization"><a class="anchor" aria-hidden="true" tabindex="-1" href="#hardware-virtualization-server-virtualization"><span class="octicon octicon-link"></span></a>Hardware Virtualization (Server Virtualization)</h5>
-    <p>
-      <strong>Definition:</strong> Abstracts physical hardware to create virtual machines (VMs) that run separate operating systems and applications.<br><strong>Use Cases:</strong> Data centers, cloud computing, server consolidation.
-      <strong>Examples:</strong> VMware ESXi, Microsoft Hyper-V, KVM.
-    </p>
+    <h6 id="hv-definition"><a class="anchor" aria-hidden="true" tabindex="-1" href="#hv-definition"><span class="octicon octicon-link"></span></a>HV Definition</h6>
+    <p>Abstracts physical hardware to create virtual machines (VMs) that run separate operating systems and applications.</p>
+    <h6 id="hv-use-cases"><a class="anchor" aria-hidden="true" tabindex="-1" href="#hv-use-cases"><span class="octicon octicon-link"></span></a>HV Use Cases</h6>
+    <p>Data centers, cloud computing, server consolidation.</p>
+    <h6 id="hv-examples"><a class="anchor" aria-hidden="true" tabindex="-1" href="#hv-examples"><span class="octicon octicon-link"></span></a>HV Examples</h6>
+    <p>VMware ESXi, Microsoft Hyper-V, KVM.</p>
     <h5 id="operating-system-virtualization-containerization"><a class="anchor" aria-hidden="true" tabindex="-1" href="#operating-system-virtualization-containerization"><span class="octicon octicon-link"></span></a>Operating System Virtualization (Containerization)</h5>
-    <p>
-      <strong>Definition:</strong> Allows multiple isolated user-space instances (containers) to run on a single OS kernel.
-      <strong>Use Cases:</strong> Microservices architecture, development and testing environments.
-      <strong>Examples:</strong> Docker, Kubernetes, LXC.
-    </p>
+    <h6 id="containerization-definition"><a class="anchor" aria-hidden="true" tabindex="-1" href="#containerization-definition"><span class="octicon octicon-link"></span></a>Containerization Definition</h6>
+    <p>Allows multiple isolated user-space instances (containers) to run on a single OS kernel.</p>
+    <h6 id="containerization-use-cases"><a class="anchor" aria-hidden="true" tabindex="-1" href="#containerization-use-cases"><span class="octicon octicon-link"></span></a>Containerization Use Cases</h6>
+    <p>Microservices architecture, development and testing environments.</p>
+    <h6 id="containerization-examples"><a class="anchor" aria-hidden="true" tabindex="-1" href="#containerization-examples"><span class="octicon octicon-link"></span></a>Containerization Examples</h6>
+    <p>Docker, Kubernetes, LXC.</p>
     <h5 id="network-virtualization"><a class="anchor" aria-hidden="true" tabindex="-1" href="#network-virtualization"><span class="octicon octicon-link"></span></a>Network Virtualization</h5>
-    <p>
-      <strong>Definition:</strong> Combines hardware and software network resources into a single, software-based administrative entity.
-      <strong>Use Cases:</strong> Software-defined networking (SDN), network function virtualization (NFV).
-      <strong>Examples:</strong> VMware NSX, Cisco ACI, OpenStack Neutron.
-    </p>
+    <h6 id="network-virtualization-definition"><a class="anchor" aria-hidden="true" tabindex="-1" href="#network-virtualization-definition"><span class="octicon octicon-link"></span></a>Network Virtualization Definition</h6>
+    <p>Combines hardware and software network resources into a single, software-based administrative entity.</p>
+    <h6 id="network-virtualization-use-cases"><a class="anchor" aria-hidden="true" tabindex="-1" href="#network-virtualization-use-cases"><span class="octicon octicon-link"></span></a>Network Virtualization Use Cases</h6>
+    <p>Software-defined networking (SDN), network function virtualization (NFV).</p>
+    <h6 id="network-virtualization-examples"><a class="anchor" aria-hidden="true" tabindex="-1" href="#network-virtualization-examples"><span class="octicon octicon-link"></span></a>Network Virtualization Examples</h6>
+    <p>VMware NSX, Cisco ACI, OpenStack Neutron.</p>
     <h5 id="storage-virtualization"><a class="anchor" aria-hidden="true" tabindex="-1" href="#storage-virtualization"><span class="octicon octicon-link"></span></a>Storage Virtualization</h5>
-    <p>
-      <strong>Definition:</strong> Pools physical storage from multiple devices into a single virtual storage unit that can be managed centrally.
-      <strong>Use Cases:</strong> Data management, storage optimization, disaster recovery.
-      <strong>Examples:</strong> IBM SAN Volume Controller, VMware vSAN, NetApp ONTAP.
-    </p>
+    <h6 id="storage-virtualizationdefinition"><a class="anchor" aria-hidden="true" tabindex="-1" href="#storage-virtualizationdefinition"><span class="octicon octicon-link"></span></a>Storage VirtualizationDefinition</h6>
+    <p>Pools physical storage from multiple devices into a single virtual storage unit that can be managed centrally.</p>
+    <h6 id="storage-virtualizationdefinition-use-cases"><a class="anchor" aria-hidden="true" tabindex="-1" href="#storage-virtualizationdefinition-use-cases"><span class="octicon octicon-link"></span></a>Storage VirtualizationDefinition Use Cases</h6>
+    <p>Data management, storage optimization, disaster recovery.</p>
+    <h6 id="storage-virtualizationdefinition-examples"><a class="anchor" aria-hidden="true" tabindex="-1" href="#storage-virtualizationdefinition-examples"><span class="octicon octicon-link"></span></a>Storage VirtualizationDefinition Examples</h6>
+    <p>IBM SAN Volume Controller, VMware vSAN, NetApp ONTAP.</p>
     <h5 id="desktop-virtualization"><a class="anchor" aria-hidden="true" tabindex="-1" href="#desktop-virtualization"><span class="octicon octicon-link"></span></a>Desktop Virtualization</h5>
-    <p>
-      <strong>Definition:</strong> Allows a desktop operating system to run on a virtual machine hosted on a server.
-      <strong>Use Cases:</strong> Virtual desktop infrastructure (VDI), remote work solutions.
-      <strong>Examples:</strong> Citrix Virtual Apps and Desktops, VMware Horizon, Microsoft Remote Desktop Services.
-    </p>
+    <h6 id="desktop-virtualization-definition"><a class="anchor" aria-hidden="true" tabindex="-1" href="#desktop-virtualization-definition"><span class="octicon octicon-link"></span></a>Desktop Virtualization Definition</h6>
+    <p>Allows a desktop operating system to run on a virtual machine hosted on a server.</p>
+    <h6 id="desktop-virtualization-definition-use-cases"><a class="anchor" aria-hidden="true" tabindex="-1" href="#desktop-virtualization-definition-use-cases"><span class="octicon octicon-link"></span></a>Desktop Virtualization Definition Use Cases</h6>
+    <p>Virtual desktop infrastructure (VDI), remote work solutions.</p>
+    <h6 id="desktop-virtualization-definition-examples"><a class="anchor" aria-hidden="true" tabindex="-1" href="#desktop-virtualization-definition-examples"><span class="octicon octicon-link"></span></a>Desktop Virtualization Definition Examples</h6>
+    <p>Citrix Virtual Apps and Desktops, VMware Horizon, Microsoft Remote Desktop Services.</p>
     <h5 id="application-virtualization"><a class="anchor" aria-hidden="true" tabindex="-1" href="#application-virtualization"><span class="octicon octicon-link"></span></a>Application Virtualization</h5>
-    <p>
-      <strong>Definition:</strong> Separates applications from the underlying hardware and operating system, allowing them to run in isolated environments.
-      <strong>Use Cases:</strong> Simplified application deployment, compatibility testing.
-      <strong>Examples:</strong> VMware ThinApp, Microsoft App-V, Citrix XenApp.
-    </p>
+    <h6 id="application-virtualizationdefinition"><a class="anchor" aria-hidden="true" tabindex="-1" href="#application-virtualizationdefinition"><span class="octicon octicon-link"></span></a>Application VirtualizationDefinition</h6>
+    <p>Separates applications from the underlying hardware and operating system, allowing them to run in isolated environments.</p>
+    <h6 id="application-virtualizationdefinition-use-cases"><a class="anchor" aria-hidden="true" tabindex="-1" href="#application-virtualizationdefinition-use-cases"><span class="octicon octicon-link"></span></a>Application VirtualizationDefinition Use Cases</h6>
+    <p>Simplified application deployment, compatibility testing.</p>
+    <h6 id="application-virtualizationdefinition-examples"><a class="anchor" aria-hidden="true" tabindex="-1" href="#application-virtualizationdefinition-examples"><span class="octicon octicon-link"></span></a>Application VirtualizationDefinition Examples</h6>
+    <p>VMware ThinApp, Microsoft App-V, Citrix XenApp.</p>
     <h5 id="data-virtualization"><a class="anchor" aria-hidden="true" tabindex="-1" href="#data-virtualization"><span class="octicon octicon-link"></span></a>Data Virtualization</h5>
-    <p>
-      <strong>Definition:</strong> Integrates data from various sources without physically consolidating it, providing a unified view for analysis and reporting.
-      <strong>Use Cases:</strong> Business intelligence, real-time data integration.
-      <strong>Examples:</strong> Denodo, Red Hat JBoss Data Virtualization, IBM InfoSphere.
-    </p>
+    <h6 id="data-virtualizationdefinition"><a class="anchor" aria-hidden="true" tabindex="-1" href="#data-virtualizationdefinition"><span class="octicon octicon-link"></span></a>Data VirtualizationDefinition</h6>
+    <p>Integrates data from various sources without physically consolidating it, providing a unified view for analysis and reporting.</p>
+    <h6 id="data-virtualizationdefinition-use-cases"><a class="anchor" aria-hidden="true" tabindex="-1" href="#data-virtualizationdefinition-use-cases"><span class="octicon octicon-link"></span></a>Data VirtualizationDefinition Use Cases</h6>
+    <p>Business intelligence, real-time data integration.</p>
+    <h6 id="data-virtualizationdefinition-examples"><a class="anchor" aria-hidden="true" tabindex="-1" href="#data-virtualizationdefinition-examples"><span class="octicon octicon-link"></span></a>Data VirtualizationDefinition Examples</h6>
+    <p>Denodo, Red Hat JBoss Data Virtualization, IBM InfoSphere.</p>
     <h5 id="benefits-of-virtualization"><a class="anchor" aria-hidden="true" tabindex="-1" href="#benefits-of-virtualization"><span class="octicon octicon-link"></span></a>Benefits of Virtualization</h5>
-    <p>
-      <strong>Resource Efficiency:</strong> Better utilization of physical resources.
-      <strong>Cost Savings:</strong> Reduced hardware and operational costs.
-      <strong>Scalability:</strong> Easy to scale up or down according to demand.
-      <strong>Flexibility:</strong> Supports a variety of workloads and applications.
-      <strong>Disaster Recovery:</strong> Simplified backup and recovery processes.
-      <strong>Isolation:</strong> Improved security through isolation of environments.
-    </p>
+    <ul>
+      <li>Resource Efficiency: Better utilization of physical resources.</li>
+      <li>Cost Savings: Reduced hardware and operational costs.</li>
+      <li>Scalability: Easy to scale up or down according to demand.</li>
+      <li>Flexibility: Supports a variety of workloads and applications.</li>
+      <li>Disaster Recovery: Simplified backup and recovery processes.</li>
+      <li>Isolation: Improved security through isolation of environments.</li>
+    </ul>
     <p align="right">(<a href="#topic-351.1">back to sub Topic 351.1</a>)</p>
     <p align="right">(<a href="#topic-351">back to Topic 351</a>)</p>
     <p align="right">(<a href="#readme-top">back to top</a>)</p>
