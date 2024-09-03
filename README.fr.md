@@ -196,7 +196,7 @@ man COMMAND
 -   Comprendre les principaux aspects de la migration des machines physiques vers les machines virtuelles
 -   Comprendre les principaux aspects de la migration des machines virtuelles entre les systèmes hôtes
 -   Comprendre les fonctionnalités et les implications de la virtualisation pour une machine virtuelle, telles que la prise d'instantanés, la pause, le clonage et les limites de ressources
--   Connaissance d'oVirt, Proxmox, systemd-machined et VirtualBox
+-   Connaissance de oVirt, Proxmox, systemd-machined et VirtualBox
 -   Connaissance d'Open vSwitch
 
 #### 351.1 Objets cités
@@ -215,15 +215,17 @@ Migration (P2V, V2V)
 
 ##### Hyperviseur de type 1 (hyperviseur Bare Metal)
 
-**Définition:**S'exécute directement sur le matériel physique de l'hôte, fournissant une couche de base pour gérer les machines virtuelles sans avoir besoin d'un système d'exploitation hôte.
+###### Définition de type 1
 
-**Caractéristiques:**
+S'exécute directement sur le matériel physique de l'hôte, fournissant une couche de base pour gérer les machines virtuelles sans avoir besoin d'un système d'exploitation hôte.
+
+###### Caractéristiques de type 1
 
 -   Haute performance et efficacité.
 -   Latence et surcharge réduites.
 -   Souvent utilisé dans les environnements d’entreprise et les centres de données.
 
-**Exemples :**
+###### Exemples de type 1
 
 -   VMware ESXi : un hyperviseur robuste et largement utilisé dans les environnements d'entreprise.
 -   Microsoft Hyper-V : intégré à Windows Server, offrant de solides fonctionnalités de performances et de gestion.
@@ -232,15 +234,17 @@ Migration (P2V, V2V)
 
 ##### Hyperviseur de type 2 (hyperviseur hébergé)
 
-**Définition:**Fonctionne sur un système d'exploitation conventionnel, s'appuyant sur le système d'exploitation hôte pour la gestion des ressources et la prise en charge des périphériques.
+###### Définition de type 2
 
-**Caractéristiques:**
+Fonctionne sur un système d'exploitation conventionnel, s'appuyant sur le système d'exploitation hôte pour la gestion des ressources et la prise en charge des périphériques.
+
+###### Caractéristiques du type 2
 
 -   Plus facile à configurer et à utiliser, en particulier sur les ordinateurs personnels.
 -   Plus flexible pour le développement, les tests et les déploiements à plus petite échelle.
 -   Généralement moins efficace que les hyperviseurs de type 1 en raison de la surcharge supplémentaire du système d'exploitation hôte.
 
-**Exemples :**
+###### Exemples de type 2
 
 -   VMware Workstation : un hyperviseur puissant pour exécuter plusieurs systèmes d'exploitation sur un seul poste de travail.
 -   Oracle VirtualBox : Un hyperviseur open source connu pour sa flexibilité et sa facilité d'utilisation.
@@ -263,73 +267,81 @@ Migration (P2V, V2V)
 
 ##### Virtualisation assistée par matériel (HVM)
 
-**Définition**: HVM exploite les extensions matérielles fournies par les processeurs modernes pour virtualiser le matériel, permettant la création et la gestion de machines virtuelles avec une surcharge de performances minimale.
+###### HVM Definition
 
-**Caractéristiques clés**:
+HVM exploite les extensions matérielles fournies par les processeurs modernes pour virtualiser le matériel, permettant ainsi la création et la gestion de machines virtuelles avec une surcharge de performances minimale.
+
+###### Caractéristiques clés du HVM
 
 -   **Prise en charge matérielle**: Nécessite la prise en charge du processeur pour les extensions de virtualisation telles qu'Intel VT-x ou AMD-V.
 -   **Virtualisation complète :**Les machines virtuelles peuvent exécuter des systèmes d'exploitation invités non modifiés, car l'hyperviseur fournit une émulation complète de l'environnement matériel.
 -   **Performance:**Offre généralement des performances quasi natives en raison de l’exécution directe du code invité sur le processeur.
 -   **Isolement:**Fournit une forte isolation entre les machines virtuelles puisque chaque machine virtuelle fonctionne comme si elle disposait de son propre matériel dédié.
 
-**Exemples :**VMware ESXi, Microsoft Hyper-V, KVM (machine virtuelle basée sur le noyau).
+###### HVM Examples
 
-**Avantages :**
+VMware ESXi, Microsoft Hyper-V, KVM (machine virtuelle basée sur le noyau).
+
+###### HVM Advantages
 
 -   **Compatibilité:**Peut exécuter n’importe quel système d’exploitation sans modification.
 -   **Performance:**Hautes performances grâce au support matériel.
 -   **Sécurité:**Fonctionnalités d’isolation et de sécurité améliorées fournies par le matériel.
 
-**Inconvénients :**
+###### HVM Disadvantages
 
 -   **Dépendance matérielle :**Nécessite des fonctionnalités matérielles spécifiques, limitant la compatibilité avec les anciens systèmes.
 -   **Complexité:**Peut impliquer une configuration et une gestion plus complexes.
 
 ##### Paravirtualisation
 
-**Définition:**La paravirtualisation implique de modifier le système d'exploitation invité pour qu'il soit conscient de l'environnement virtuel, lui permettant d'interagir plus efficacement avec l'hyperviseur.
+###### Définition de la paravirtualisation
 
-**Caractéristiques clés :**
+La paravirtualisation implique de modifier le système d'exploitation invité pour qu'il soit conscient de l'environnement virtuel, lui permettant d'interagir plus efficacement avec l'hyperviseur.
+
+###### Caractéristiques clés de la paravirtualisation
 
 -   **Modification des invités :**Nécessite des modifications du système d’exploitation invité pour communiquer directement avec l’hyperviseur à l’aide d’hyperappels.
 -   **Performance:**Peut être plus efficace que la virtualisation complète traditionnelle, car elle réduit la surcharge associée à l'émulation du matériel.
 -   **Compatibilité:**Limité aux systèmes d'exploitation qui ont été modifiés pour la paravirtualisation.
 
-**Exemples :**Xen avec des invités paravirtualisés, des outils VMware dans certaines configurations et certaines configurations KVM.
+###### Exemples de paravirtualisation
 
-**Avantages :**
+Xen avec des invités paravirtualisés, des outils VMware dans certaines configurations et certaines configurations KVM.
+
+###### Avantages de la paravirtualisation
 
 -   **Efficacité:**Réduit la surcharge liée à la virtualisation du matériel, offrant potentiellement de meilleures performances pour certaines charges de travail.
 -   **Utilisation des ressources :**Utilisation plus efficace des ressources système grâce à la communication directe entre le système d'exploitation invité et l'hyperviseur.
 
-**Inconvénients :**
+###### Inconvénients de la paravirtualisation
 
 -   **Modification du système d'exploitation invité :**Nécessite des modifications du système d'exploitation invité, limitant la compatibilité aux systèmes d'exploitation pris en charge.
 -   **Complexité:**Nécessite une complexité supplémentaire dans le système d’exploitation invité pour les implémentations d’hypercall.
 
 ##### Différences clés
 
-**Exigences du système d'exploitation invité :**
+###### Exigences du système d'exploitation invité
 
 -   **HVM:**Peut exécuter des systèmes d’exploitation invités non modifiés.
 -   **Paravirtualisation :**Nécessite que les systèmes d’exploitation invités soient modifiés pour fonctionner avec l’hyperviseur.
 
-**Performance:**
+###### Performance
 
 -   **HVM:**Fournit généralement des performances quasi natives grâce à l’exécution assistée par matériel.
 -   **Paravirtualisation :**Peut offrir des performances efficaces en réduisant la surcharge de l'émulation matérielle, mais repose sur un système d'exploitation invité modifié.
 
-**Dépendance matérielle :**
+###### Dépendance matérielle
 
 -   **HVM:**Nécessite des fonctionnalités CPU spécifiques (Intel VT-x, AMD-V).
 -   **Paravirtualisation :**Ne nécessite pas de fonctionnalités de processeur spécifiques mais nécessite un système d'exploitation invité modifié.
 
-**Isolement:**
+###### Isolement
 
 -   **HVM:**Fournit une forte isolation grâce aux fonctionnalités matérielles.
 -   **Paravirtualisation :**Repose sur une isolation logicielle, qui n'est peut-être pas aussi robuste que l'isolation matérielle.
 
-**Complexité:**
+###### Complexité
 
 -   **HVM:**Généralement plus simple à déployer car il prend en charge le système d'exploitation non modifié.
 -   **Paravirtualisation :**Nécessite une configuration et des modifications supplémentaires du système d’exploitation invité, ce qui augmente la complexité.
@@ -338,36 +350,110 @@ Migration (P2V, V2V)
 
 ##### Virtualisation matérielle (virtualisation de serveur)
 
-**Définition:**Extrait le matériel physique pour créer des machines virtuelles (VM) qui exécutent des systèmes d'exploitation et des applications distincts.  
-**Cas d'utilisation :**Centres de données, cloud computing, consolidation de serveurs.**Exemples :**VMware ESXi, Microsoft Hyper-V, KVM.
+###### Définition HT
+
+Extrait le matériel physique pour créer des machines virtuelles (VM) qui exécutent des systèmes d'exploitation et des applications distincts.
+
+###### Cas d'utilisation HT
+
+Centres de données, cloud computing, consolidation de serveurs.
+
+###### Exemples HT
+
+VMware ESXi, Microsoft Hyper-V, KVM.
 
 ##### Virtualisation du système d'exploitation (conteneurisation)
 
-**Définition:**Permet à plusieurs instances d'espace utilisateur isolées (conteneurs) de s'exécuter sur un seul noyau de système d'exploitation.**Cas d'utilisation :**Architecture de microservices, environnements de développement et de test.**Exemples :**Docker, Kubernetes, LXC.
+###### Définition de la conteneurisation
+
+Permet à plusieurs instances d'espace utilisateur isolées (conteneurs) de s'exécuter sur un seul noyau de système d'exploitation.
+
+###### Cas d'utilisation de la conteneurisation
+
+Architecture de microservices, environnements de développement et de test.
+
+###### Exemples de conteneurisation
+
+Docker, Kubernetes, LXC.
 
 ##### Virtualisation du réseau
 
-**Définition:**Combine les ressources réseau matérielles et logicielles en une seule entité administrative logicielle.**Cas d'utilisation :**Réseau défini par logiciel (SDN), virtualisation des fonctions réseau (NFV).**Exemples :**VMware NSX, Cisco ACI, OpenStack Neutron.
+###### Définition de la virtualisation du réseau
+
+Combine les ressources réseau matérielles et logicielles en une seule entité administrative logicielle.
+
+###### Cas d'utilisation de la virtualisation de réseau
+
+Réseau défini par logiciel (SDN), virtualisation des fonctions réseau (NFV).
+
+###### Exemples de virtualisation de réseau
+
+VMware NSX, Cisco ACI, OpenStack Neutron.
 
 ##### Virtualisation du stockage
 
-**Définition:**Regroupe le stockage physique de plusieurs appareils dans une seule unité de stockage virtuelle qui peut être gérée de manière centralisée.**Cas d'utilisation :**Gestion des données, optimisation du stockage, reprise après sinistre.**Exemples :**Contrôleur de volume IBM SAN, VMware vSAN, NetApp ONTAP.
+###### Définition de la virtualisation du stockage
+
+Regroupe le stockage physique de plusieurs appareils dans une seule unité de stockage virtuelle qui peut être gérée de manière centralisée.
+
+###### Cas d'utilisation de la définition de virtualisation du stockage
+
+Gestion des données, optimisation du stockage, reprise après sinistre.
+
+###### Exemples de définition de virtualisation du stockage
+
+Contrôleur de volume IBM SAN, VMware vSAN, NetApp ONTAP.
 
 ##### Virtualisation des postes de travail
 
-**Définition:**Permet à un système d'exploitation de bureau de s'exécuter sur une machine virtuelle hébergée sur un serveur.**Cas d'utilisation :**Infrastructure de bureau virtuel (VDI), solutions de travail à distance.**Exemples :**Citrix Virtual Apps and Desktops, VMware Horizon, Microsoft Remote Desktop Services.
+###### Définition de la virtualisation des postes de travail
+
+Permet à un système d'exploitation de bureau de s'exécuter sur une machine virtuelle hébergée sur un serveur.
+
+###### Cas d'utilisation de la définition de la virtualisation des postes de travail
+
+Infrastructure de bureau virtuel (VDI), solutions de travail à distance.
+
+###### Exemples de définition de virtualisation de bureau
+
+Citrix Virtual Apps and Desktops, VMware Horizon, Microsoft Remote Desktop Services.
 
 ##### Virtualisation des applications
 
-**Définition:**Sépare les applications du matériel et du système d'exploitation sous-jacents, leur permettant de s'exécuter dans des environnements isolés.**Cas d'utilisation :**Déploiement d'applications simplifié, tests de compatibilité.**Exemples :**VMware ThinApp, Microsoft App-V, Citrix XenApp.
+###### Définition de la virtualisation des applications
+
+Sépare les applications du matériel et du système d'exploitation sous-jacents, leur permettant de s'exécuter dans des environnements isolés.
+
+###### Cas d'utilisation de la définition de la virtualisation des applications
+
+Déploiement d'applications simplifié, tests de compatibilité.
+
+###### Exemples de définition de virtualisation d'applications
+
+VMware ThinApp, Microsoft App-V, Citrix XenApp.
 
 ##### Virtualisation des données
 
-**Définition:**Intègre les données provenant de diverses sources sans les consolider physiquement, offrant ainsi une vue unifiée pour l'analyse et le reporting.**Cas d'utilisation :**Business intelligence, intégration de données en temps réel.**Exemples :**Denodo, virtualisation des données Red Hat JBoss, IBM InfoSphere.
+###### Définition de la virtualisation des données
+
+Intègre les données provenant de diverses sources sans les consolider physiquement, offrant ainsi une vue unifiée pour l'analyse et le reporting.
+
+###### Cas d'utilisation de la définition de la virtualisation des données
+
+Business intelligence, intégration de données en temps réel.
+
+###### Exemples de définition de virtualisation des données
+
+Denodo, virtualisation des données Red Hat JBoss, IBM InfoSphere.
 
 ##### Avantages de la virtualisation
 
-**Efficacité des ressources :**Meilleure utilisation des ressources physiques.**Économies de coûts :**Réduction des coûts matériels et opérationnels.**Évolutivité :**Facile à augmenter ou à réduire en fonction de la demande.**Flexibilité:**Prend en charge une variété de charges de travail et d’applications.**Reprise après sinistre :**Processus de sauvegarde et de restauration simplifiés.**Isolement:**Sécurité améliorée grâce à l’isolation des environnements.
+-   Efficacité des ressources : meilleure utilisation des ressources physiques.
+-   Économies de coûts : réduction des coûts matériels et opérationnels.
+-   Évolutivité : facile à augmenter ou à réduire en fonction de la demande.
+-   Flexibilité : prend en charge une variété de charges de travail et d’applications.
+-   Reprise après sinistre : processus de sauvegarde et de récupération simplifiés.
+-   Isolation : sécurité améliorée grâce à l'isolation des environnements.
 
 <p align="right">(<a href="#topic-351.1">back to sub Topic 351.1</a>)</p>
 <p align="right">(<a href="#topic-351">back to Topic 351</a>)</p>
@@ -426,7 +512,7 @@ foo
 
 **Poids:**4
 
-**Description:**Les candidats doivent être capables d'installer, de configurer, de maintenir, de migrer et de dépanner les installations QEMU.
+**Description:** Candidates should be able to install, configure, maintain, migrate and troubleshoot QEMU installations.
 
 **Domaines de connaissances clés :**
 
@@ -668,7 +754,7 @@ foo
 **Domaines de connaissances clés :**
 
 -   Comprendre l'architecture et les composants de Docker
--   Gérer les conteneurs Docker à l'aide d'images d'un registre Docker
+-   Gérer les conteneurs Docker à l'aide d'images provenant d'un registre Docker
 -   Comprendre et gérer les images et les volumes pour les conteneurs Docker
 -   Comprendre et gérer la journalisation pour les conteneurs Docker
 -   Comprendre et gérer la mise en réseau pour Docker
@@ -917,7 +1003,7 @@ Lien du projet :<https://github.com/marcossilvestrini/learning-lpic-3-305-300>
 -   [Compilateur GCC](https://gcc.gnu.org/wiki/History)
 -   [GNUTR](https://www.gnu.org/software/tar/)
 -   [Marque GNU](https://www.gnu.org/software/make/)
--   [GNU Emacs](https://en.wikipedia.org/wiki/Emacs)
+-   [GNU-Emacs](https://en.wikipedia.org/wiki/Emacs)
 -   [Paquets GNU](https://www.gnu.org/software/)
 -   [Collection GNU/Linux](https://directory.fsf.org/wiki/Collection:GNU/Linux)
 -   [Chargeur de démarrage GNU Grub](https://www.gnu.org/software/grub/)
