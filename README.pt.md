@@ -109,8 +109,6 @@ Para iniciar o aprendizado, consulte a documentação acima.
 ### Pré-requisitos
 
 -   Git
--   Caixa Virtual e extensão
--   Vagabundo
 
 <a name="installation"></a>
 
@@ -194,7 +192,7 @@ man COMMAND
 
 -   Entenda a terminologia de virtualização
 -   Entenda os prós e os contras da virtualização
--   Compreenda as diversas variações de hipervisores e monitores de máquinas virtuais
+-   Compreender as diversas variações de hipervisores e monitores de máquinas virtuais
 -   Entenda os principais aspectos da migração de máquinas físicas para virtuais
 -   Compreender os principais aspectos da migração de máquinas virtuais entre sistemas host
 -   Compreenda os recursos e as implicações da virtualização para uma máquina virtual, como captura instantânea, pausa, clonagem e limites de recursos
@@ -261,63 +259,80 @@ Migration (P2V, V2V)
     -   Os hipervisores tipo 1 exigem configuração e gerenciamento mais complexos, mas fornecem recursos avançados e escalabilidade para implantações em larga escala.
     -   Os hipervisores tipo 2 são mais fáceis de instalar e usar, tornando-os ideais para usuários individuais e projetos menores.
 
-Virtualização assistida por hardware (HVM)
-Definição: HVM aproveita extensões de hardware fornecidas por CPUs modernas para virtualizar hardware, permitindo a criação e o gerenciamento de VMs com sobrecarga mínima de desempenho.
+#### HVM e Paravirtualização
 
-Caracteristicas principais:
+##### Virtualização assistida por hardware (HVM)
 
-Suporte de hardware: requer suporte de CPU para extensões de virtualização como Intel VT-x ou AMD-V.
-Virtualização total: as VMs podem executar sistemas operacionais convidados não modificados, pois o hipervisor fornece uma emulação completa do ambiente de hardware.
-Desempenho: normalmente oferece desempenho quase nativo devido à execução direta do código convidado na CPU.
-Isolamento: Fornece forte isolamento entre VMs, pois cada VM opera como se tivesse seu próprio hardware dedicado.
-Exemplos: VMware ESXi, Microsoft Hyper-V, KVM (máquina virtual baseada em kernel).
-Vantagens:
+**Definição**: HVM aproveita extensões de hardware fornecidas por CPUs modernas para virtualizar hardware, permitindo a criação e o gerenciamento de VMs com sobrecarga mínima de desempenho.
 
-Compatibilidade: Pode executar qualquer sistema operacional sem modificação.
-Desempenho: Alto desempenho devido ao suporte de hardware.
-Segurança: Recursos aprimorados de isolamento e segurança fornecidos pelo hardware.
-Desvantagens:
+**Características principais**:
 
-Dependência de Hardware: Requer recursos de hardware específicos, limitando a compatibilidade com sistemas mais antigos.
-Complexidade: Pode envolver configuração e gerenciamento mais complexos.
-Paravirtualização
-Definição: A paravirtualização envolve a modificação do sistema operacional convidado para estar ciente do ambiente virtual, permitindo que ele interaja de forma mais eficiente com o hipervisor.
+-   **Suporte de hardware**: requer suporte de CPU para extensões de virtualização como Intel VT-x ou AMD-V.
+-   **Virtualização completa:**As VMs podem executar sistemas operacionais convidados não modificados, pois o hipervisor fornece uma emulação completa do ambiente de hardware.
+-   **Desempenho:**Normalmente oferece desempenho quase nativo devido à execução direta do código convidado na CPU.
+-   **Isolamento:**Fornece forte isolamento entre VMs, pois cada VM opera como se tivesse seu próprio hardware dedicado.
 
-Caracteristicas principais:
+**Exemplos:**VMware ESXi, Microsoft Hyper-V, KVM (máquina virtual baseada em kernel).
 
-Modificação de convidado: requer alterações no sistema operacional convidado para se comunicar diretamente com o hipervisor usando hiperchamadas.
-Desempenho: Pode ser mais eficiente do que a virtualização completa tradicional porque reduz a sobrecarga associada à emulação de hardware.
-Compatibilidade: Limitada a sistemas operacionais que foram modificados para paravirtualização.
-Exemplos: Xen com convidados paravirtualizados, ferramentas VMware em determinadas configurações e algumas configurações KVM.
-Vantagens:
+**Vantagens:**
 
-Eficiência: Reduz a sobrecarga de virtualização de hardware, oferecendo potencialmente melhor desempenho para determinadas cargas de trabalho.
-Utilização de recursos: uso mais eficiente dos recursos do sistema devido à comunicação direta entre o sistema operacional convidado e o hipervisor.
-Desvantagens:
+-   **Compatibilidade:**Pode executar qualquer sistema operacional sem modificação.
+-   **Desempenho:**Alto desempenho devido ao suporte de hardware.
+-   **Segurança:**Recursos aprimorados de isolamento e segurança fornecidos pelo hardware.
 
-Modificação do sistema operacional convidado: requer modificações no sistema operacional convidado, limitando a compatibilidade aos sistemas operacionais suportados.
-Complexidade: Requer complexidade adicional no sistema operacional convidado para implementações de hiperchamadas.
-Principais diferenças
-Requisitos do sistema operacional convidado:
+**Desvantagens:**
 
-HVM: pode executar sistemas operacionais convidados não modificados.
-Paravirtualização: Requer que os sistemas operacionais convidados sejam modificados para funcionar com o hipervisor.
-Desempenho:
+-   **Dependência de Hardware:**Requer recursos de hardware específicos, limitando a compatibilidade com sistemas mais antigos.
+-   **Complexidade:**Pode envolver configuração e gerenciamento mais complexos.
 
-HVM: normalmente fornece desempenho quase nativo devido à execução assistida por hardware.
-Paravirtualização: Pode oferecer desempenho eficiente reduzindo a sobrecarga da emulação de hardware, mas depende de sistema operacional convidado modificado.
-Dependência de hardware:
+##### Paravirtualização
 
-HVM: Requer recursos específicos de CPU (Intel VT-x, AMD-V).
-Paravirtualização: Não requer recursos específicos de CPU, mas precisa de um sistema operacional convidado modificado.
-Isolamento:
+**Definição:**A paravirtualização envolve a modificação do sistema operacional convidado para estar ciente do ambiente virtual, permitindo que ele interaja de forma mais eficiente com o hipervisor.
 
-HVM: Fornece forte isolamento usando recursos de hardware.
-Paravirtualização: Baseia-se no isolamento baseado em software, que pode não ser tão robusto quanto o isolamento baseado em hardware.
-Complexidade:
+**Características principais:**
 
-HVM: Geralmente mais simples de implantar, pois suporta sistema operacional não modificado.
-Paravirtualização: Requer configuração e modificações adicionais no sistema operacional convidado, aumentando a complexidade.
+-   **Modificação de convidado:**Requer alterações no sistema operacional convidado para se comunicar diretamente com o hipervisor usando hiperchamadas.
+-   **Desempenho:**Pode ser mais eficiente do que a virtualização completa tradicional porque reduz a sobrecarga associada à emulação de hardware.
+-   **Compatibilidade:**Limitado a sistemas operacionais que foram modificados para paravirtualização.
+
+**Exemplos:**Xen com convidados paravirtualizados, ferramentas VMware em determinadas configurações e algumas configurações KVM.
+
+**Vantagens:**
+
+-   **Eficiência:**Reduz a sobrecarga de virtualização de hardware, oferecendo potencialmente melhor desempenho para determinadas cargas de trabalho.
+-   **Utilização de recursos:**Uso mais eficiente dos recursos do sistema devido à comunicação direta entre o sistema operacional convidado e o hipervisor.
+
+**Desvantagens:**
+
+-   **Modificação do sistema operacional convidado:**Requer modificações no sistema operacional convidado, limitando a compatibilidade aos sistemas operacionais suportados.
+-   **Complexidade:**Requer complexidade adicional no sistema operacional convidado para implementações de hiperchamada.
+
+##### Principais diferenças
+
+**Requisitos do sistema operacional convidado:**
+
+-   **HVM:**Pode executar sistemas operacionais convidados não modificados.
+-   **Paravirtualização:**Requer que os sistemas operacionais convidados sejam modificados para funcionar com o hipervisor.
+
+**Desempenho:**
+
+-   **HVM:**Normalmente fornece desempenho quase nativo devido à execução assistida por hardware.
+-   **Paravirtualização:**Pode oferecer desempenho eficiente reduzindo a sobrecarga da emulação de hardware, mas depende do sistema operacional convidado modificado.
+
+**Dependência de Hardware:**
+
+-   **HVM:**Requer recursos específicos de CPU (Intel VT-x, AMD-V).
+-   **Paravirtualização:**Não requer recursos específicos de CPU, mas precisa de um sistema operacional convidado modificado.
+
+**Isolamento:**
+
+-   **HVM:**Fornece forte isolamento usando recursos de hardware.
+-   **Paravirtualização:**Baseia-se no isolamento baseado em software, que pode não ser tão robusto quanto o isolamento baseado em hardware.
+
+**Complexidade:**
+
+-   **HVM:**Geralmente mais simples de implantar, pois oferece suporte a sistemas operacionais não modificados.
+-   **Paravirtualização:**Requer configuração e modificações adicionais no sistema operacional convidado, aumentando a complexidade.
 
 #### Tipos de virtualização
 
@@ -352,7 +367,7 @@ Paravirtualização: Requer configuração e modificações adicionais no sistem
 
 ##### Benefícios da virtualização
 
-**Eficiência de recursos:**Melhor utilização dos recursos físicos.**Poupança de custos:**Custos operacionais e de hardware reduzidos.**Escalabilidade:**Fácil de aumentar ou diminuir de acordo com a demanda.**Flexibilidade:**Suporta uma variedade de cargas de trabalho e aplicativos.**Recuperação de desastres:**Processos simplificados de backup e recuperação.**Isolamento:**Maior segurança através do isolamento de ambientes.
+**Eficiência de recursos:**Melhor utilização dos recursos físicos.**Economia de custos:**Custos operacionais e de hardware reduzidos.**Escalabilidade:**Fácil de aumentar ou diminuir de acordo com a demanda.**Flexibilidade:**Suporta uma variedade de cargas de trabalho e aplicativos.**Recuperação de desastres:**Processos simplificados de backup e recuperação.**Isolamento:**Maior segurança através do isolamento de ambientes.
 
 <p align="right">(<a href="#topic-351.1">back to sub Topic 351.1</a>)</p>
 <p align="right">(<a href="#topic-351">back to Topic 351</a>)</p>
@@ -696,7 +711,7 @@ Dockerfile
 
 -   Entenda a relevância da orquestração de contêineres
 -   Entenda os principais conceitos do Docker Compose e do Docker Swarm
--   Compreenda os principais conceitos do Kubernetes e Helm
+-   Compreenda os principais conceitos de Kubernetes e Helm
 -   Conscientização sobre OpenShift, Rancher e Mesosphere DC/OS
 
 <p align="right">(<a href="#topic-352.4">back to sub topic 352.4</a>)</p>
@@ -914,7 +929,7 @@ Link do projeto:<https://github.com/marcossilvestrini/learning-lpic-3-305-300>
 -   [Estrutura de hierarquia de arquivos](https://refspecs.linuxfoundation.org/FHS_3.0/fhs-3.0.pdf)
 -   [FSF](https://www.fsf.org)
 -   [Diretório de Software Gratuito](https://directory.fsf.org/wiki/Free_Software_Directory:Free_software_replacements)
--   [Software grátis](https://www.gnu.org/philosophy/free-sw.html)
+-   [Software Livre](https://www.gnu.org/philosophy/free-sw.html)
 -   [Copyleft](https://www.gnu.org/licenses/copyleft.en.html)
 -   [GPL](https://www.gnu.org/licenses/quick-guide-gplv3.html)
 -   [Licença Pública Geral Menor GNU](https://www.gnu.org/licenses/lgpl-3.0.html)
@@ -934,11 +949,11 @@ Link do projeto:<https://github.com/marcossilvestrini/learning-lpic-3-305-300>
 -   [NTP](https://www.ntppool.org/en/)
 -   [Bourne Novamente Concha](https://www.gnu.org/software/bash/manual/)
 -   [Shebang](https://bash.cyberciti.biz/guide/Shebang)
--   [variáveis ​​ambientais](https://linuxize.com/post/how-to-set-and-list-environment-variables-in-linux/)
+-   [Variáveis ​​de ambiente](https://linuxize.com/post/how-to-set-and-list-environment-variables-in-linux/)
 -   [Globulação GNU](https://man7.org/linux/man-pages/man7/glob.7.html)
 -   [Globulação](https://linuxhint.com/bash_globbing_tutorial/)
 -   [Citando](https://www.gnu.org/software/bash/manual/html_node/Quoting.html)
--   [Expressões regulares](https://www.gnu.org/software/grep/manual/html_node/Regular-Expressions.html)
+-   [Expressões Regulares](https://www.gnu.org/software/grep/manual/html_node/Regular-Expressions.html)
 -   [Listar distribuição Linux](https://en.wikipedia.org/wiki/List_of_Linux_distributions)
 -   [Distrowatch](https://distrowatch.com/)
 -   [Comparação de distribuições Linux](https://en.wikipedia.org/wiki/Comparison_of_Linux_distributions)
@@ -967,7 +982,7 @@ Link do projeto:<https://github.com/marcossilvestrini/learning-lpic-3-305-300>
 -   [Tutoriais SSL](https://www.golinuxcloud.com/blog/)
 -   [Configuração SSL Mozilla](https://ssl-config.mozilla.org/)
 -   Definições de virtualização
-    -   [chapéu vermelho](https://www.redhat.com/pt-br/topics/virtualization/what-is-virtualization)
+    -   [Chapéu Vermelho](https://www.redhat.com/pt-br/topics/virtualization/what-is-virtualization)
     -   [AWS](https://aws.amazon.com/pt/what-is/virtualization/)
     -   [IBM](https://www.ibm.com/topics/virtualization)
     -   [OpenSource.com](https://opensource.com/resources/virtualization)
@@ -976,7 +991,7 @@ Link do projeto:<https://github.com/marcossilvestrini/learning-lpic-3-305-300>
 -   [Wiki XenProject](https://wiki.xenproject.org/wiki/Book/HelloXenProject/1-Chapter)
 -   [Blog LPI: Virtualização Xen e Computação em Nuvem #01: Introdução](https://www.lpi.org/pt-br/blog/2020/10/01/xen-virtualization-and-cloud-computing-01-introduction/)
 -   Documentos Openstack
-    -   [Chapéu vermelho](https://www.redhat.com/pt-br/topics/openstack)
+    -   [Chapéu Vermelho](https://www.redhat.com/pt-br/topics/openstack)
 -   [Objetivos LPIC-3 305-300](https://www.lpi.org/our-certifications/exam-305-objectives/)
 -   [Wiki LPIC-3 305-300](https://wiki.lpi.org/wiki/LPIC-305_Objectives_V3.0)
 -   [Material de aprendizagem LPIC-3 305-300](https://cursos.linuxsemfronteiras.com.br/courses/preparatorio-para-certificacao-lpic-3-305/)
