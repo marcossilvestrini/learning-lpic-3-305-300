@@ -215,32 +215,36 @@ Migration (P2V, V2V)
 
 ##### Hipervisor tipo 1 (hipervisor bare-metal)
 
-**Definición:**Se ejecuta directamente en el hardware físico del host, proporcionando una capa base para administrar máquinas virtuales sin la necesidad de un sistema operativo host.
+###### Definición de tipo 1
 
-**Características:**
+Se ejecuta directamente en el hardware físico del host, proporcionando una capa base para administrar máquinas virtuales sin la necesidad de un sistema operativo host.
+
+###### Características tipo 1
 
 -   Alto rendimiento y eficiencia.
 -   Menor latencia y sobrecarga.
 -   A menudo se utiliza en entornos empresariales y centros de datos.
 
-**Ejemplos:**
+###### Ejemplos de tipo 1
 
 -   VMware ESXi: un hipervisor robusto y ampliamente utilizado en entornos empresariales.
--   Microsoft Hyper-V: integrado con Windows Server, ofrece potentes funciones de gestión y rendimiento.
+-   Microsoft Hyper-V: integrado con Windows Server, ofrece sólidas funciones de administración y rendimiento.
 -   Xen: un hipervisor de código abierto utilizado por muchos proveedores de servicios en la nube.
 -   KVM (Máquina virtual basada en kernel): Integrada en el kernel de Linux, proporciona un alto rendimiento para sistemas basados ​​en Linux.
 
 ##### Hipervisor tipo 2 (hipervisor alojado)
 
-**Definición:**Se ejecuta sobre un sistema operativo convencional y depende del sistema operativo host para la administración de recursos y el soporte del dispositivo.
+###### Definición de tipo 2
 
-**Características:**
+Se ejecuta sobre un sistema operativo convencional y depende del sistema operativo host para la administración de recursos y el soporte del dispositivo.
+
+###### Características tipo 2
 
 -   Más fácil de configurar y usar, especialmente en computadoras personales.
 -   Más flexible para desarrollo, pruebas e implementaciones a menor escala.
 -   Normalmente son menos eficientes que los hipervisores de tipo 1 debido a la sobrecarga adicional del sistema operativo host.
 
-**Ejemplos:**
+###### Ejemplos de tipo 2
 
 -   VMware Workstation: un potente hipervisor para ejecutar múltiples sistemas operativos en un solo escritorio.
 -   Oracle VirtualBox: un hipervisor de código abierto conocido por su flexibilidad y facilidad de uso.
@@ -263,73 +267,81 @@ Migration (P2V, V2V)
 
 ##### Virtualización asistida por hardware (HVM)
 
-**Definición**: HVM aprovecha las extensiones de hardware proporcionadas por las CPU modernas para virtualizar el hardware, lo que permite la creación y administración de máquinas virtuales con una sobrecarga mínima de rendimiento.
+###### Definición de HVM
 
-**Características clave**:
+HVM aprovecha las extensiones de hardware proporcionadas por las CPU modernas para virtualizar el hardware, lo que permite la creación y gestión de máquinas virtuales con una sobrecarga de rendimiento mínima.
+
+###### Características clave de HVM
 
 -   **Soporte de hardware**: Requiere soporte de CPU para extensiones de virtualización como Intel VT-x o AMD-V.
 -   **Virtualización completa:**Las máquinas virtuales pueden ejecutar sistemas operativos invitados no modificados, ya que el hipervisor proporciona una emulación completa del entorno de hardware.
 -   **Actuación:**Normalmente ofrece un rendimiento casi nativo debido a la ejecución directa del código invitado en la CPU.
 -   **Aislamiento:**Proporciona un fuerte aislamiento entre las máquinas virtuales, ya que cada máquina virtual funciona como si tuviera su propio hardware dedicado.
 
-**Ejemplos:**VMware ESXi, Microsoft Hyper-V, KVM (Máquina virtual basada en kernel).
+###### Ejemplos de HVM
 
-**Ventajas:**
+VMware ESXi, Microsoft Hyper-V, KVM (Máquina virtual basada en kernel).
+
+###### Ventajas de HVM
 
 -   **Compatibilidad:**Puede ejecutar cualquier sistema operativo sin modificaciones.
 -   **Actuación:**Alto rendimiento gracias al soporte de hardware.
 -   **Seguridad:**Funciones mejoradas de aislamiento y seguridad proporcionadas por hardware.
 
-**Desventajas:**
+###### Desventajas de HVM
 
 -   **Dependencia del hardware:**Requiere características de hardware específicas, lo que limita la compatibilidad con sistemas más antiguos.
 -   **Complejidad:**Puede implicar una configuración y gestión más complejas.
 
 ##### Paravirtualización
 
-**Definición:**La paravirtualización implica modificar el sistema operativo invitado para que sea consciente del entorno virtual, lo que le permite interactuar de manera más eficiente con el hipervisor.
+###### Definición de paravirtualización
 
-**Características clave:**
+La paravirtualización implica modificar el sistema operativo invitado para que sea consciente del entorno virtual, lo que le permite interactuar de manera más eficiente con el hipervisor.
+
+###### Características clave de la paravirtualización
 
 -   **Modificación de invitado:**Requiere cambios en el sistema operativo invitado para comunicarse directamente con el hipervisor mediante hiperllamadas.
 -   **Actuación:**Puede ser más eficiente que la virtualización completa tradicional porque reduce la sobrecarga asociada con la emulación de hardware.
 -   **Compatibilidad:**Limitado a sistemas operativos que han sido modificados para la paravirtualización.
 
-**Ejemplos:**Xen con invitados paravirtualizados, herramientas VMware en determinadas configuraciones y algunas configuraciones KVM.
+###### Ejemplos de paravirtualización
 
-**Ventajas:**
+Xen con invitados paravirtualizados, herramientas VMware en determinadas configuraciones y algunas configuraciones KVM.
+
+###### Ventajas de la paravirtualización
 
 -   **Eficiencia:**Reduce la sobrecarga de virtualizar hardware, ofreciendo potencialmente un mejor rendimiento para determinadas cargas de trabajo.
 -   **Utilización de recursos:**Uso más eficiente de los recursos del sistema debido a la comunicación directa entre el sistema operativo invitado y el hipervisor.
 
-**Desventajas:**
+###### Desventajas de la paravirtualización
 
 -   **Modificación del sistema operativo invitado:**Requiere modificaciones en el sistema operativo invitado, lo que limita la compatibilidad con los sistemas operativos compatibles.
 -   **Complejidad:**Requiere complejidad adicional en el sistema operativo invitado para implementaciones de hiperllamadas.
 
 ##### Diferencias clave
 
-**Requisitos del sistema operativo invitado:**
+###### Requisitos del sistema operativo invitado
 
 -   **HVM:**Puede ejecutar sistemas operativos invitados no modificados.
--   **Paravirtualización:**Requiere que los sistemas operativos invitados se modifiquen para que funcionen con el hipervisor.
+-   **Paravirtualización:**Requiere que se modifiquen los sistemas operativos invitados para que funcionen con el hipervisor.
 
-**Actuación:**
+###### Actuación
 
 -   **HVM:**Normalmente proporciona un rendimiento casi nativo debido a la ejecución asistida por hardware.
 -   **Paravirtualización:**Puede ofrecer un rendimiento eficiente al reducir la sobrecarga de la emulación de hardware, pero depende de un sistema operativo invitado modificado.
 
-**Dependencia del hardware:**
+###### Dependencia de hardware
 
 -   **HVM:**Requiere características específicas de CPU (Intel VT-x, AMD-V).
--   **Paravirtualización:**No requiere características específicas de la CPU, pero necesita un sistema operativo invitado modificado.
+-   **Paravirtualización:**No requiere funciones específicas de CPU, pero necesita un sistema operativo invitado modificado.
 
-**Aislamiento:**
+###### Aislamiento
 
 -   **HVM:**Proporciona un fuerte aislamiento mediante funciones de hardware.
 -   **Paravirtualización:**Se basa en un aislamiento basado en software, que puede no ser tan sólido como el aislamiento basado en hardware.
 
-**Complejidad:**
+###### Complejidad
 
 -   **HVM:**Generalmente es más sencillo de implementar ya que admite sistemas operativos no modificados.
 -   **Paravirtualización:**Requiere configuración y modificaciones adicionales en el sistema operativo invitado, lo que aumenta la complejidad.
@@ -338,36 +350,110 @@ Migration (P2V, V2V)
 
 ##### Virtualización de hardware (virtualización de servidores)
 
-**Definición:**Abstrae el hardware físico para crear máquinas virtuales (VM) que ejecutan sistemas operativos y aplicaciones independientes.  
-**Casos de uso:**Centros de datos, computación en la nube, consolidación de servidores.**Ejemplos:**VMware ESXi, Microsoft Hyper-V, KVM.
+###### Definición de alta tensión
+
+Abstrae el hardware físico para crear máquinas virtuales (VM) que ejecutan sistemas operativos y aplicaciones independientes.
+
+###### Casos de uso de alta tensión
+
+Centros de datos, computación en la nube, consolidación de servidores.
+
+###### Ejemplos de alta tensión
+
+VMware ESXi, Microsoft Hyper-V, KVM.
 
 ##### Virtualización del sistema operativo (containerización)
 
-**Definición:**Permite que se ejecuten múltiples instancias aisladas de espacio de usuario (contenedores) en un único kernel del sistema operativo.**Casos de uso:**Arquitectura de microservicios, entornos de desarrollo y pruebas.**Ejemplos:**Docker, Kubernetes, LXC.
+###### Definición de contenedorización
+
+Permite que se ejecuten múltiples instancias aisladas de espacio de usuario (contenedores) en un único kernel del sistema operativo.
+
+###### Casos de uso de contenedores
+
+Arquitectura de microservicios, entornos de desarrollo y pruebas.
+
+###### Ejemplos de contenedorización
+
+Docker, Kubernetes, LXC.
 
 ##### Virtualización de red
 
-**Definición:**Combina recursos de red de hardware y software en una única entidad administrativa basada en software.**Casos de uso:**Redes definidas por software (SDN), virtualización de funciones de red (NFV).**Ejemplos:**VMware NSX, Cisco ACI, OpenStack Neutron.
+###### Definición de virtualización de red
+
+Combina recursos de red de hardware y software en una única entidad administrativa basada en software.
+
+###### Casos de uso de virtualización de red
+
+Redes definidas por software (SDN), virtualización de funciones de red (NFV).
+
+###### Ejemplos de virtualización de red
+
+VMware NSX, Cisco ACI, OpenStack Neutron.
 
 ##### Virtualización del almacenamiento
 
-**Definición:**Agrupa el almacenamiento físico de varios dispositivos en una única unidad de almacenamiento virtual que se puede administrar de forma centralizada.**Casos de uso:**Gestión de datos, optimización del almacenamiento, recuperación ante desastres.**Ejemplos:**Controlador de volumen IBM SAN, VMware vSAN, NetApp ONTAP.
+###### Definición de virtualización de almacenamiento
+
+Agrupa el almacenamiento físico de varios dispositivos en una única unidad de almacenamiento virtual que se puede administrar de forma centralizada.
+
+###### Casos de uso de definición de virtualización de almacenamiento
+
+Gestión de datos, optimización del almacenamiento, recuperación ante desastres.
+
+###### Ejemplos de definición de virtualización de almacenamiento
+
+Controlador de volumen IBM SAN, VMware vSAN, NetApp ONTAP.
 
 ##### Virtualización de escritorio
 
-**Definición:**Permite que un sistema operativo de escritorio se ejecute en una máquina virtual alojada en un servidor.**Casos de uso:**Infraestructura de escritorio virtual (VDI), soluciones de trabajo remoto.**Ejemplos:**Aplicaciones y escritorios virtuales Citrix, VMware Horizon, Servicios de escritorio remoto de Microsoft.
+###### Definición de virtualización de escritorio
+
+Permite que un sistema operativo de escritorio se ejecute en una máquina virtual alojada en un servidor.
+
+###### Casos de uso de definición de virtualización de escritorio
+
+Infraestructura de escritorio virtual (VDI), soluciones de trabajo remoto.
+
+###### Ejemplos de definición de virtualización de escritorio
+
+Aplicaciones y escritorios virtuales Citrix, VMware Horizon, Servicios de escritorio remoto de Microsoft.
 
 ##### Virtualización de aplicaciones
 
-**Definición:**Separa las aplicaciones del hardware y el sistema operativo subyacentes, permitiéndoles ejecutarse en entornos aislados.**Casos de uso:**Implementación de aplicaciones simplificada, pruebas de compatibilidad.**Ejemplos:**VMware ThinApp, Microsoft App-V, Citrix XenApp.
+###### Definición de virtualización de aplicaciones
+
+Separa las aplicaciones del hardware y el sistema operativo subyacentes, permitiéndoles ejecutarse en entornos aislados.
+
+###### Casos de uso de definición de virtualización de aplicaciones
+
+Implementación de aplicaciones simplificada, pruebas de compatibilidad.
+
+###### Ejemplos de definición de virtualización de aplicaciones
+
+VMware ThinApp, Microsoft App-V, Citrix XenApp.
 
 ##### Virtualización de datos
 
-**Definición:**Integra datos de varias fuentes sin consolidarlos físicamente, proporcionando una vista unificada para análisis e informes.**Casos de uso:**Inteligencia de negocios, integración de datos en tiempo real.**Ejemplos:**Denodo, Red Hat JBoss Virtualización de datos, IBM InfoSphere.
+###### Definición de virtualización de datos
+
+Integra datos de varias fuentes sin consolidarlos físicamente, proporcionando una vista unificada para análisis e informes.
+
+###### Casos de uso de definición de virtualización de datos
+
+Inteligencia de negocios, integración de datos en tiempo real.
+
+###### Ejemplos de definición de virtualización de datos
+
+Denodo, Red Hat JBoss Virtualización de datos, IBM InfoSphere.
 
 ##### Beneficios de la virtualización
 
-**Eficiencia de recursos:**Mejor utilización de los recursos físicos.**Ahorro de costos:**Reducción de costes operativos y de hardware.**Escalabilidad:**Fácil de ampliar o reducir según la demanda.**Flexibilidad:**Admite una variedad de cargas de trabajo y aplicaciones.**Recuperación ante desastres:**Procesos de copia de seguridad y recuperación simplificados.**Aislamiento:**Seguridad mejorada mediante aislamiento de entornos.
+-   Eficiencia de recursos: Mejor utilización de los recursos físicos.
+-   Ahorro de costos: Reducción de costos operativos y de hardware.
+-   Escalabilidad: Fácil de ampliar o reducir según la demanda.
+-   Flexibilidad: admite una variedad de cargas de trabajo y aplicaciones.
+-   Recuperación ante desastres: procesos de copia de seguridad y recuperación simplificados.
+-   Aislamiento: Seguridad mejorada mediante el aislamiento de entornos.
 
 <p align="right">(<a href="#topic-351.1">back to sub Topic 351.1</a>)</p>
 <p align="right">(<a href="#topic-351">back to Topic 351</a>)</p>
@@ -663,7 +749,7 @@ foo
 
 **Peso:**9
 
-**Descripción:**El candidato debe poder gestionar nodos Docker y contenedores Docker. Esto incluye comprender la arquitectura de Docker y cómo interactúa Docker con el sistema Linux del nodo.
+**Description:**El candidato debe poder gestionar nodos Docker y contenedores Docker. Esto incluye comprender la arquitectura de Docker y cómo interactúa Docker con el sistema Linux del nodo.
 
 **Áreas de conocimiento clave:**
 
