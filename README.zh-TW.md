@@ -149,7 +149,7 @@ git clone https://github.com/marcossilvestrini/learning-lpic-3-305-300.git
 ## 四項基本自由
 
 > 0.為任何目的隨意運行程序的自由（自由 0）。
-> 1.自由地研究程式如何運作並對其進行更改\\
+> 1.自由地研究程序如何運作並對其進行更改\\
 > 你可以隨心所欲地進行計算（自由 1）。
 > 存取原始碼是實現此目的的先決條件。
 > 2.重新分發副本的自由，以便您可以幫助他人（自由2）。
@@ -221,7 +221,7 @@ Migration (P2V, V2V)
 
 ###### 1 型特徵
 
--   高性能、高效率。
+-   High performance and efficiency.
 -   更低的延遲和開銷。
 -   通常用於企業環境和資料中心。
 
@@ -262,6 +262,25 @@ Migration (P2V, V2V)
 -   管理和易用性：
     -   1 類虛擬機器管理程式需要更複雜的設定和管理，但為大規模部署提供進階功能和可擴充性。
     -   2 類虛擬機器管理程式更易於安裝和使用，非常適合個人使用者和小型專案。
+
+##### 遷移類型
+
+在虛擬機器管理程式（用於建立和管理虛擬機器的技術）的上下文中，術語「P2V 遷移」和「V2V 遷移」在虛擬化環境中很常見。  
+它們指的是不同類型的平台之間遷移系統的過程。
+
+##### P2V（實體到虛擬）- 實體到虛擬的遷移
+
+P2V遷移是指將實體伺服器遷移到虛擬機器的過程。  
+換句話說，運行在專用實體硬體上的作業系統及其應用程式被「轉換」並移動到運行在虛擬機器管理程式（例如 VMware、Hyper-V、KVM 等）上的虛擬機器。
+
+-   範例：您有一台運行 Windows 或 Linux 系統的實體伺服器，並且希望將其移至虛擬環境，例如雲端基礎架構或內部虛擬化伺服器。  
+    該過程涉及複製整個系統狀態，包括作業系統、驅動程式和數據，以建立可以像在實體硬體上一樣運行的等效虛擬機器。
+
+##### V2V（虛擬到虛擬）- 虛擬到虛擬的遷移
+
+V2V 遷移是指將虛擬機器從一個虛擬機器管理程式遷移到另一個虛擬機器管理程式的過程。在這種情況下，您已經有一個在虛擬化環境（例如 VMware）中運行的虛擬機，並且您希望將其移至另一個虛擬化環境（例如，Hyper-V 或新的 VMware 伺服器）。
+
+-   範例：您有一個在 VMware 虛擬化伺服器上執行的虛擬機，但您決定將其移轉到 Hyper-V 平台。在這種情況下，V2V 遷移將虛擬機器從一種格式或管理程序轉換為另一種格式或管理程序，確保其可以繼續正確運作。
 
 #### HVM 與半虛擬化
 
@@ -346,6 +365,38 @@ VMware ESXi、Microsoft Hyper-V、KVM（基於核心的虛擬機器）。
 -   **虛擬機器：**通常部署起來更簡單，因為它支援未修改的作業系統。
 -   **半虛擬化：**需要對來賓作業系統進行額外的設定和修改，從而增加了複雜性。
 
+#### NUMA（非統一記憶體訪問
+
+NUMA（非統一記憶體存取）是多處理器系統中使用的記憶體架構，用於最佳化處理器的記憶體存取。  
+在NUMA 系統中，內部存在處理器之間分佈不均勻，這意味著每個處理器對部分內存（其“本地內存”）的訪問速度比對物理上較遠的內存（稱為“遠端內存” ）和關聯記憶體的存取速度要快。
+
+##### NUMA 架構的主要特性
+
+1.  **本地和遠端記憶體**：每個處理器都有自己的本地內存，可以更快地存取該內存。然而，它也可以存取其他處理器的內存，儘管這需要更長的時間。
+2.  **差異化延遲**：記憶體存取的延遲取決於處理器是存取其本地記憶體還是另一個節點的記憶體。本地記憶體存取速度更快，而存取另一個節點（遠端）的記憶體速度較慢。
+3.  **可擴展性**：NUMA 架構旨在提高具有多個處理器的系統的可擴充性。隨著更多處理器的添加，記憶體也被分配，避免了統一記憶體存取 (UMA) 架構中可能出現的瓶頸。
+
+##### NUMA 的優點
+
+-   大型系統中的更好性能：由於每個處理器都有本地內存，因此它可以更有效率地工作，而無需與其他處理器競爭內存存取。
+-   可擴展性：與 UMA 架構相比，NUMA 允許具有許多處理器和大量記憶體的系統更有效地擴展。
+
+##### 缺點
+
+-   程式設計複雜性：程式設計師需要了解哪些記憶體區域是本地的或遠端的，優化本地記憶體的使用以獲得更好的效能。
+-   潛在的效能損失：如果處理器經常存取遠端內存，則效能可能會因較高的延遲而受到影響。
+    這種架構在高效能多處理器系統中很常見，例如伺服器和超級計算機，其中可擴展性和記憶體最佳化至關重要。
+
+#### 開源解決方案
+
+-   oVirt：<https://www.ovirt.org/>
+
+-   普羅克斯莫克斯：<https://www.proxmox.com/en/proxmox-virtual-environment/overview>
+
+-   甲骨文虛擬盒：<https://www.virtualbox.org/>
+
+-   打開vSwitch：<https://www.openvswitch.org/>
+
 #### 虛擬化的類型
 
 ##### 硬體虛擬化（伺服器虛擬化）
@@ -394,13 +445,13 @@ VMware NSX、思科 ACI、OpenStack Neutron。
 
 ###### 儲存虛擬化定義
 
-Pools physical storage from multiple devices into a single virtual storage unit that can be managed centrally.
+將多個裝置的實體儲存池整合到可集中管理的單一虛擬儲存單元中。
 
 ###### 儲存虛擬化定義用例
 
 資料管理、儲存最佳化、災難復原。
 
-###### 儲存虛擬化定義範例
+###### Storage VirtualizationDefinition Examples
 
 IBM SAN 磁碟區控制器、VMware vSAN、NetApp ONTAP。
 
@@ -986,7 +1037,7 @@ Vagrantfile
 
 ## 接觸
 
-Marcos Silvestrini - [marcos.silvestrini@gmail.com](mailto:marcos.silvestrini@gmail.com)\\[![Twitter](https://img.shields.io/twitter/url/https/twitter.com/mrsilvestrini.svg?style=social&label=Follow%20%40mrsilvestrini)](https://twitter.com/mrsilvestrini)
+馬科斯·西爾維斯特里尼 -[marcos.silvestrini@gmail.com](mailto:marcos.silvestrini@gmail.com)\\[![Twitter](https://img.shields.io/twitter/url/https/twitter.com/mrsilvestrini.svg?style=social&label=Follow%20%40mrsilvestrini)](https://twitter.com/mrsilvestrini)
 
 項目連結：<https://github.com/marcossilvestrini/learning-lpic-3-305-300>
 
@@ -1042,7 +1093,7 @@ Marcos Silvestrini - [marcos.silvestrini@gmail.com](mailto:marcos.silvestrini@gm
 -   [正規表示式](https://www.gnu.org/software/grep/manual/html_node/Regular-Expressions.html)
 -   [列出 Linux 發行版](https://en.wikipedia.org/wiki/List_of_Linux_distributions)
 -   [發行表](https://distrowatch.com/)
--   [Linux 發行版比較](https://en.wikipedia.org/wiki/Comparison_of_Linux_distributions)
+-   [比較 Linux 發行版](https://en.wikipedia.org/wiki/Comparison_of_Linux_distributions)
 -   [下載包](https://pkgs.org/)
 -   [安裝包](https://installati.one/)
 -   [指導安裝包](https://installati.one/)
@@ -1081,7 +1132,7 @@ Marcos Silvestrini - [marcos.silvestrini@gmail.com](mailto:marcos.silvestrini@gm
 -   [LPIC-3 305-300 目標](https://www.lpi.org/our-certifications/exam-305-objectives/)
 -   [LPIC-3 305-300 維基](https://wiki.lpi.org/wiki/LPIC-305_Objectives_V3.0)
 -   [LPIC-3 305-300 學習教材](https://cursos.linuxsemfronteiras.com.br/courses/preparatorio-para-certificacao-lpic-3-305/)
--   [ITexams 的 LPIC-3 305-300 模擬考試](https://www.itexams.com/info/305-300)
+-   [LPIC-3 305-300 ITexams 模擬考試](https://www.itexams.com/info/305-300)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
