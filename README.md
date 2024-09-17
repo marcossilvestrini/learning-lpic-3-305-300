@@ -273,6 +273,25 @@ Runs on top of a conventional operating system, relying on the host OS for resou
 * Management and Ease of Use:
   * Type 1 hypervisors require more complex setup and management but provide advanced features and scalability for large-scale deployments.
   * Type 2 hypervisors are easier to install and use, making them ideal for individual users and smaller projects.
+  
+##### Migration Types
+
+In the context of hypervisors, which are technologies used to create and manage virtual machines, the terms P2V migration and V2V migration are common in virtualization environments.  
+They refer to processes of migrating systems between different types of platforms.
+
+##### P2V (Physical to Virtual) - Physical to Virtual Migration
+
+P2V migration refers to the process of migrating a physical server to a virtual machine.  
+In other words, an operating system and its applications, running on dedicated physical hardware, are "converted" and moved to a virtual machine that runs on a hypervisor (such as VMware, Hyper-V, KVM, etc.).
+
+* Example: You have a physical server running a Windows or Linux system, and you want to move it to a virtual environment, like a cloud infrastructure or an internal virtualization server.  
+The process involves copying the entire system state, including the operating system, drivers, and data, to create an equivalent virtual machine that can run as if it were on the physical hardware.
+
+##### V2V (Virtual to Virtual) - Virtual to Virtual Migration
+
+V2V migration refers to the process of migrating a virtual machine from one hypervisor to another. In this case, you already have a virtual machine running in a virtualized environment (like VMware), and you want to move it to another virtualized environment (for example, to Hyper-V or to a new VMware server).
+
+* Example: You have a virtual machine running on a VMware virtualization server, but you decide to migrate it to a Hyper-V platform. In this case, the V2V migration converts the virtual machine from one format or hypervisor to another, ensuring it can continue running correctly.
 
 #### HVM and Paravirtualization
 
@@ -356,7 +375,39 @@ Xen with paravirtualized guests, VMware tools in certain configurations, and som
 
 * **HVM:** Generally more straightforward to deploy since it supports unmodified OS.
 * **Paravirtualization:** Requires additional setup and modifications to the guest OS, increasing complexity.
+  
+#### NUMA (Non-Uniform Memory Access
 
+NUMA (Non-Uniform Memory Access) is a memory architecture used in multiprocessor systems to optimize memory access by processors.  
+In a NUMA system, memory is distributed unevenly among processors, meaning that each processor has faster access to a portion of memory (its "local memory") than to memory that is physically further away (referred to as "remote memory") and associated with other processors.
+
+##### Key Features of NUMA Architecture
+
+1. **Local and Remote Memory**: Each processor has its own local memory, which it can access more quickly. However, it can also access the memory of other processors, although this takes longer.
+2. **Differentiated Latency**: The latency of memory access varies depending on whether the processor is accessing its local memory or the memory of another node. Local memory access is faster, while accessing another node’s memory (remote) is slower.
+3. **Scalability**: NUMA architecture is designed to improve scalability in systems with many processors. As more processors are added, memory is also distributed, avoiding the bottleneck that would occur in a uniform memory access (UMA) architecture.
+
+##### Advantages of NUMA
+
+* Better Performance in Large Systems: Since each processor has local memory, it can work more efficiently without competing as much with other processors for memory access.
+* Scalability: NUMA allows systems with many processors and large amounts of memory to scale more effectively compared to a UMA architecture.
+
+##### Disadvantages
+
+* Programming Complexity: Programmers need to be aware of which regions of memory are local or remote, optimizing the use of local memory to achieve better performance.
+* Potential Performance Penalties: If a processor frequently accesses remote memory, performance may suffer due to higher latency.
+This architecture is common in high-performance multiprocessor systems, such as servers and supercomputers, where scalability and memory optimization are critical.
+
+#### Opensource Solutions
+
+* oVirt: https://www.ovirt.org/
+
+* Proxmox: https://www.proxmox.com/en/proxmox-virtual-environment/overview
+
+* Oracle VirtualBox: https://www.virtualbox.org/
+
+* Open vSwitch: https://www.openvswitch.org/
+  
 #### Types of Virtualization
 
 ##### Hardware Virtualization (Server Virtualization)

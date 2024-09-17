@@ -37,9 +37,9 @@ Vagrant.configure("2") do |config|
       vm.vmx["numvcpus"] = "2"
       vm.vmx["cpuid.coresPerSocket"] = "1"
       vm.vmx["vhv.enable"] = "TRUE"  # Enable virtualization engine (nested virtualization)
-      vm.vmx["hypervisor.cpuid.v0"] = "FALSE"  # Ensure guest OS can see CPU features
-      vm.vmx["monitor.virtual_mmu"] = "hardware"  # Use hardware memory management unit
-      vm.vmx["monitor.virtual_exec"] = "hardware"  # Use hardware execution virtualization
+      #vm.vmx["hypervisor.cpuid.v0"] = "FALSE"  # Ensure guest OS can see CPU features
+      #vm.vmx["monitor.virtual_mmu"] = "hardware"  # Use hardware memory management unit
+      #vm.vmx["monitor.virtual_exec"] = "hardware"  # Use hardware execution virtualization
     end
 
     # VirtualBox configuration
