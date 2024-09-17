@@ -188,7 +188,7 @@ man COMMAND
 
 **Descripción:**Los candidatos deben conocer y comprender los conceptos generales, la teoría y la terminología de la virtualización. Esto incluye terminología de Xen, QEMU y libvirt.
 
-**Áreas de conocimiento clave:**
+**Áreas clave de conocimiento:**
 
 -   Comprender la terminología de virtualización
 -   Comprender los pros y los contras de la virtualización
@@ -263,6 +263,25 @@ Se ejecuta sobre un sistema operativo convencional y depende del sistema operati
     -   Los hipervisores de tipo 1 requieren una configuración y administración más complejas, pero brindan funciones avanzadas y escalabilidad para implementaciones a gran escala.
     -   Los hipervisores tipo 2 son más fáciles de instalar y usar, lo que los hace ideales para usuarios individuales y proyectos más pequeños.
 
+##### Tipos de migración
+
+En el contexto de los hipervisores, que son tecnologías utilizadas para crear y administrar máquinas virtuales, los términos migración P2V y migración V2V son comunes en entornos de virtualización.  
+Se refieren a procesos de migración de sistemas entre diferentes tipos de plataformas.
+
+##### P2V (físico a virtual): migración física a virtual
+
+La migración P2V se refiere al proceso de migrar un servidor físico a una máquina virtual.  
+En otras palabras, un sistema operativo y sus aplicaciones, que se ejecutan en hardware físico dedicado, se "convierten" y se trasladan a una máquina virtual que se ejecuta en un hipervisor (como VMware, Hyper-V, KVM, etc.).
+
+-   Ejemplo: tiene un servidor físico que ejecuta un sistema Windows o Linux y desea trasladarlo a un entorno virtual, como una infraestructura en la nube o un servidor de virtualización interno.  
+    El proceso implica copiar todo el estado del sistema, incluido el sistema operativo, los controladores y los datos, para crear una máquina virtual equivalente que pueda ejecutarse como si estuviera en el hardware físico.
+
+##### V2V (virtual a virtual): migración de virtual a virtual
+
+La migración V2V se refiere al proceso de migrar una máquina virtual de un hipervisor a otro. En este caso, ya tiene una máquina virtual ejecutándose en un entorno virtualizado (como VMware) y desea moverla a otro entorno virtualizado (por ejemplo, a Hyper-V o a un nuevo servidor VMware).
+
+-   Ejemplo: tiene una máquina virtual ejecutándose en un servidor de virtualización VMware, pero decide migrarla a una plataforma Hyper-V. En este caso, la migración V2V convierte la máquina virtual de un formato o hipervisor a otro, asegurando que pueda seguir funcionando correctamente.
+
 #### HVM y paravirtualización
 
 ##### Virtualización asistida por hardware (HVM)
@@ -286,7 +305,7 @@ VMware ESXi, Microsoft Hyper-V, KVM (Máquina virtual basada en kernel).
 
 -   **Compatibilidad:**Puede ejecutar cualquier sistema operativo sin modificaciones.
 -   **Actuación:**Alto rendimiento gracias al soporte de hardware.
--   **Seguridad:**Funciones mejoradas de aislamiento y seguridad proporcionadas por hardware.
+-   **Seguridad:**Funciones de aislamiento y seguridad mejoradas proporcionadas por hardware.
 
 ###### Desventajas de HVM
 
@@ -334,7 +353,7 @@ Xen con invitados paravirtualizados, herramientas VMware en determinadas configu
 ###### Dependencia de hardware
 
 -   **HVM:**Requiere características específicas de CPU (Intel VT-x, AMD-V).
--   **Paravirtualización:**No requiere funciones específicas de CPU, pero necesita un sistema operativo invitado modificado.
+-   **Paravirtualización:**No requiere funciones de CPU específicas, pero necesita un sistema operativo invitado modificado.
 
 ###### Aislamiento
 
@@ -345,6 +364,38 @@ Xen con invitados paravirtualizados, herramientas VMware en determinadas configu
 
 -   **HVM:**Generalmente es más sencillo de implementar ya que admite sistemas operativos no modificados.
 -   **Paravirtualización:**Requiere configuración y modificaciones adicionales en el sistema operativo invitado, lo que aumenta la complejidad.
+
+#### NUMA (Acceso a memoria no uniforme)
+
+NUMA (Acceso a memoria no uniforme) es una arquitectura de memoria utilizada en sistemas multiprocesador para optimizar el acceso a la memoria por parte de los procesadores.  
+En un sistema NUMA, la memoria se distribuye de manera desigual entre los procesadores, lo que significa que cada procesador tiene un acceso más rápido a una porción de la memoria (su "memoria local") que a la memoria que está físicamente más lejos (denominada "memoria remota") y asociada. con otros procesadores.
+
+##### Características clave de la arquitectura NUMA
+
+1.  **Memoria local y remota**: Cada procesador tiene su propia memoria local, a la que puede acceder más rápidamente. Sin embargo, también puede acceder a la memoria de otros procesadores, aunque esto lleva más tiempo.
+2.  **Latencia diferenciada**: La latencia del acceso a la memoria varía dependiendo de si el procesador accede a su memoria local o a la memoria de otro nodo. El acceso a la memoria local es más rápido, mientras que el acceso a la memoria de otro nodo (remoto) es más lento.
+3.  **Escalabilidad**: La arquitectura NUMA está diseñada para mejorar la escalabilidad en sistemas con muchos procesadores. A medida que se añaden más procesadores, la memoria también se distribuye, evitando el cuello de botella que se produciría en una arquitectura de acceso uniforme a memoria (UMA).
+
+##### Ventajas de NUMA
+
+-   Mejor rendimiento en sistemas grandes: dado que cada procesador tiene memoria local, puede funcionar de manera más eficiente sin competir tanto con otros procesadores por el acceso a la memoria.
+-   Escalabilidad: NUMA permite que los sistemas con muchos procesadores y grandes cantidades de memoria escale de manera más efectiva en comparación con una arquitectura UMA.
+
+##### Desventajas
+
+-   Complejidad de la programación: los programadores deben ser conscientes de qué regiones de la memoria son locales o remotas, optimizando el uso de la memoria local para lograr un mejor rendimiento.
+-   Posibles penalizaciones de rendimiento: si un procesador accede con frecuencia a la memoria remota, el rendimiento puede verse afectado debido a una mayor latencia.
+    Esta arquitectura es común en sistemas multiprocesador de alto rendimiento, como servidores y supercomputadoras, donde la escalabilidad y la optimización de la memoria son fundamentales.
+
+#### Soluciones de código abierto
+
+-   oVirt:<https://www.ovirt.org/>
+
+-   Proxmox:<https://www.proxmox.com/en/proxmox-virtual-environment/overview>
+
+-   Oracle VirtualBox:<https://www.virtualbox.org/>
+
+-   Abra vSwitch:<https://www.openvswitch.org/>
 
 #### Tipos de virtualización
 
@@ -469,7 +520,7 @@ Denodo, Red Hat JBoss Virtualización de datos, IBM InfoSphere.
 
 **Descripción:**Los candidatos deben poder instalar, configurar, mantener, migrar y solucionar problemas de instalaciones de Xen. La atención se centra en Xen versión 4.x.
 
-**Áreas de conocimiento clave:**
+**Áreas clave de conocimiento:**
 
 -   Comprender la arquitectura de Xen, incluidas las redes y el almacenamiento.
 -   Configuración básica de nodos y dominios Xen.
@@ -514,7 +565,7 @@ foo
 
 **Descripción:**Los candidatos deben poder instalar, configurar, mantener, migrar y solucionar problemas de instalaciones de QEMU.
 
-**Áreas de conocimiento clave:**
+**Áreas clave de conocimiento:**
 
 -   Comprender la arquitectura de QEMU, incluidos KVM, redes y almacenamiento.
 -   Inicie instancias de QEMU desde la línea de comando
@@ -559,7 +610,7 @@ ip link show
 
 **Descripción:**Los candidatos deben poder administrar hosts de virtualización y máquinas virtuales ("dominios libvirt") utilizando libvirt y herramientas relacionadas.
 
-**Áreas de conocimiento clave:**
+**Áreas clave de conocimiento:**
 
 -   Comprender la arquitectura de libvirt
 -   Administrar conexiones y nodos libvirt
@@ -603,7 +654,7 @@ foo
 
 **Descripción:**Los candidatos deberían poder administrar imágenes de disco de máquinas virtuales. Esto incluye convertir imágenes de disco entre varios formatos e hipervisores y acceder a los datos almacenados dentro de una imagen.
 
-**Áreas de conocimiento clave:**
+**Áreas clave de conocimiento:**
 
 -   Comprender las características de varios formatos de imágenes de discos virtuales, como imágenes sin formato, qcow2 y VMDK.
 -   Administre imágenes de disco de máquinas virtuales usando qemu-img
@@ -663,7 +714,7 @@ foo
 
 **Descripción:**Los candidatos deben comprender el concepto de virtualización de contenedores. Esto incluye comprender los componentes de Linux utilizados para implementar la virtualización de contenedores, así como el uso de herramientas estándar de Linux para solucionar problemas de estos componentes.
 
-**Áreas de conocimiento clave:**
+**Áreas clave de conocimiento:**
 
 -   Comprender los conceptos de sistema y contenedor de aplicaciones.
 -   Comprender y analizar los espacios de nombres del kernel
@@ -712,7 +763,7 @@ foo
 
 **Descripción:**Los candidatos deberían poder utilizar contenedores del sistema utilizando LXC y LXD. La versión de LXC cubierta es 3.0 o superior.
 
-**Áreas de conocimiento clave:**
+**Áreas clave de conocimiento:**
 
 -   Comprender la arquitectura de LXC y LXD
 -   Administre contenedores LXC basados ​​en imágenes existentes usando LXD, incluidas redes y almacenamiento.
@@ -749,16 +800,16 @@ foo
 
 **Peso:**9
 
-**Description:**El candidato debe poder gestionar nodos Docker y contenedores Docker. Esto incluye comprender la arquitectura de Docker y cómo interactúa Docker con el sistema Linux del nodo.
+**Descripción:**El candidato debe poder gestionar nodos Docker y contenedores Docker. Esto incluye comprender la arquitectura de Docker y cómo interactúa Docker con el sistema Linux del nodo.
 
-**Áreas de conocimiento clave:**
+**Áreas clave de conocimiento:**
 
 -   Comprender la arquitectura y los componentes de Docker.
 -   Administre contenedores Docker utilizando imágenes de un registro de Docker
 -   Comprender y administrar imágenes y volúmenes para contenedores Docker
 -   Comprender y gestionar el registro de contenedores Docker
 -   Comprender y administrar redes para Docker
--   Utilice Dockerfiles para crear imágenes de contenedores
+-   Use Dockerfiles to create container images
 -   Ejecute un registro de Docker utilizando la imagen de Docker del registro
 
 #### 352.3 Objetos citados
@@ -793,7 +844,7 @@ Dockerfile
 
 **Descripción:**Los candidatos deben comprender la importancia de la orquestación de contenedores y los conceptos clave que Docker Swarm y Kubernetes proporcionan para implementar la orquestación de contenedores.
 
-**Áreas de conocimiento clave:**
+**Áreas clave de conocimiento:**
 
 -   Comprender la relevancia de la orquestación de contenedores
 -   Comprender los conceptos clave de Docker Compose y Docker Swarm
@@ -820,7 +871,7 @@ Dockerfile
 
 **Descripción:**Los candidatos deben comprender las ofertas comunes en las nubes públicas y tener conocimientos básicos de las funciones de las herramientas de administración de la nube comúnmente disponibles.
 
-**Áreas de conocimiento clave:**
+**Áreas clave de conocimiento:**
 
 -   Comprender las ofertas comunes en las nubes públicas
 -   Conocimientos básicos de las funciones de OpenStack.
@@ -857,7 +908,7 @@ Terraform
 
 **Descripción:**Los candidatos deberían poder utilizar Packer para crear imágenes del sistema. Esto incluye ejecutar Packer en varios entornos de nube públicos y privados, así como crear imágenes de contenedores para LXC/LXD.
 
-**Áreas de conocimiento clave:**
+**Áreas clave de conocimiento:**
 
 -   Comprender la funcionalidad y características de Packer
 -   Crear y mantener archivos de plantilla
@@ -885,7 +936,7 @@ packer
 
 <a name="topic-353.3"></a>
 
-### 353.3 cloud-init
+### 353.3 inicio de nube
 
 **Peso:**3
 
@@ -893,7 +944,7 @@ packer
 Además, los candidatos deberían poder configurar instancias para permitir inicios de sesión SSH seguros e instalar un conjunto específico de paquetes de software.  
 Además, los candidatos deberían poder crear nuevas imágenes del sistema con soporte de inicio en la nube.
 
-**Áreas de conocimiento clave:**
+**Áreas clave de conocimiento:**
 
 -   Comprender las características y conceptos de cloud-init, incluidos los datos del usuario, la inicialización y la configuración de cloud-init.
 -   Utilice cloud-init para crear, cambiar el tamaño y montar sistemas de archivos, configurar cuentas de usuario, incluidas credenciales de inicio de sesión como claves SSH e instalar paquetes de software desde el repositorio de la distribución.
@@ -930,7 +981,7 @@ user-data
 
 **Descripción:**El candidato debe poder utilizar Vagrant para administrar máquinas virtuales, incluido el aprovisionamiento de la máquina virtual.
 
-**Áreas de conocimiento clave:**
+**Áreas clave de conocimiento:**
 
 -   Comprender la arquitectura y los conceptos de Vagrant, incluidos el almacenamiento y las redes.
 -   Recuperar y utilizar cajas de Atlas
