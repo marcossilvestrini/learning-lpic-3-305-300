@@ -234,7 +234,7 @@ Migration (P2V, V2V)
 
 ##### Hipervisor tipo 2 (hipervisor hospedado)
 
-###### Definição Tipo 2
+###### Definição de tipo 2
 
 É executado sobre um sistema operacional convencional, contando com o sistema operacional host para gerenciamento de recursos e suporte a dispositivos.
 
@@ -263,6 +263,25 @@ Migration (P2V, V2V)
     -   Os hipervisores tipo 1 exigem configuração e gerenciamento mais complexos, mas fornecem recursos avançados e escalabilidade para implantações em larga escala.
     -   Os hipervisores tipo 2 são mais fáceis de instalar e usar, tornando-os ideais para usuários individuais e projetos menores.
 
+##### Tipos de migração
+
+No contexto dos hipervisores, que são tecnologias utilizadas para criar e gerenciar máquinas virtuais, os termos migração P2V e migração V2V são comuns em ambientes de virtualização.  
+Referem-se a processos de migração de sistemas entre diferentes tipos de plataformas.
+
+##### P2V (Físico para Virtual) - Migração Física para Virtual
+
+A migração P2V refere-se ao processo de migração de um servidor físico para uma máquina virtual.  
+Em outras palavras, um sistema operacional e seus aplicativos, executados em hardware físico dedicado, são “convertidos” e movidos para uma máquina virtual que roda em um hipervisor (como VMware, Hyper-V, KVM, etc.).
+
+-   Exemplo: você tem um servidor físico executando um sistema Windows ou Linux e deseja movê-lo para um ambiente virtual, como uma infraestrutura em nuvem ou um servidor de virtualização interno.  
+    O processo envolve copiar todo o estado do sistema, incluindo sistema operacional, drivers e dados, para criar uma máquina virtual equivalente que possa ser executada como se estivesse no hardware físico.
+
+##### V2V (Virtual para Virtual) - Migração de Virtual para Virtual
+
+A migração V2V refere-se ao processo de migração de uma máquina virtual de um hipervisor para outro. Neste caso, você já possui uma máquina virtual em execução em um ambiente virtualizado (como VMware) e deseja movê-la para outro ambiente virtualizado (por exemplo, para Hyper-V ou para um novo servidor VMware).
+
+-   Exemplo: você tem uma máquina virtual rodando em um servidor de virtualização VMware, mas decide migrá-la para uma plataforma Hyper-V. Nesse caso, a migração V2V converte a máquina virtual de um formato ou hipervisor para outro, garantindo que ela continue funcionando corretamente.
+
 #### HVM e Paravirtualização
 
 ##### Virtualização assistida por hardware (HVM)
@@ -290,7 +309,7 @@ VMware ESXi, Microsoft Hyper-V, KVM (máquina virtual baseada em kernel).
 
 ###### Desvantagens do HVM
 
--   **Dependência de Hardware:**Requer recursos de hardware específicos, limitando a compatibilidade com sistemas mais antigos.
+-   **Dependência de hardware:**Requer recursos de hardware específicos, limitando a compatibilidade com sistemas mais antigos.
 -   **Complexidade:**Pode envolver configuração e gerenciamento mais complexos.
 
 ##### Paravirtualização
@@ -345,6 +364,38 @@ Xen com convidados paravirtualizados, ferramentas VMware em determinadas configu
 
 -   **HVM:**Geralmente mais simples de implantar, pois oferece suporte a sistemas operacionais não modificados.
 -   **Paravirtualização:**Requer configuração e modificações adicionais no sistema operacional convidado, aumentando a complexidade.
+
+#### NUMA (acesso não uniforme à memória
+
+NUMA (Non-Uniform Memory Access) é uma arquitetura de memória usada em sistemas multiprocessadores para otimizar o acesso à memória pelos processadores.  
+Num sistema NUMA, a memória é distribuída de forma desigual entre os processadores, o que significa que cada processador tem acesso mais rápido a uma parte da memória (sua "memória local") do que à memória que está fisicamente mais distante (referida como "memória remota") e associada. com outros processadores.
+
+##### Principais recursos da arquitetura NUMA
+
+1.  **Memória local e remota**: Cada processador possui sua própria memória local, que pode acessar mais rapidamente. No entanto, também pode acessar a memória de outros processadores, embora demore mais.
+2.  **Latência Diferenciada**: A latência de acesso à memória varia dependendo se o processador está acessando sua memória local ou a memória de outro nó. O acesso à memória local é mais rápido, enquanto o acesso à memória de outro nó (remoto) é mais lento.
+3.  **Escalabilidade**: A arquitetura NUMA foi projetada para melhorar a escalabilidade em sistemas com muitos processadores. À medida que mais processadores são adicionados, a memória também é distribuída, evitando o gargalo que ocorreria em uma arquitetura de acesso uniforme à memória (UMA).
+
+##### Advantages of NUMA
+
+-   Melhor Desempenho em Sistemas Grandes: Como cada processador possui memória local, ele pode funcionar com mais eficiência sem competir tanto com outros processadores pelo acesso à memória.
+-   Escalabilidade: NUMA permite que sistemas com muitos processadores e grandes quantidades de memória sejam dimensionados de forma mais eficaz em comparação com uma arquitetura UMA.
+
+##### Desvantagens
+
+-   Complexidade de programação: Os programadores precisam estar cientes de quais regiões da memória são locais ou remotas, otimizando o uso da memória local para obter melhor desempenho.
+-   Potenciais penalidades de desempenho: Se um processador acessa frequentemente a memória remota, o desempenho pode ser prejudicado devido à maior latência.
+    Essa arquitetura é comum em sistemas multiprocessadores de alto desempenho, como servidores e supercomputadores, onde a escalabilidade e a otimização da memória são críticas.
+
+#### Soluções de código aberto
+
+-   oVirt:<https://www.ovirt.org/>
+
+-   Proxmox:<https://www.proxmox.com/en/proxmox-virtual-environment/overview>
+
+-   Oracle VirtualBox:<https://www.virtualbox.org/>
+
+-   Abra o vSwitch:<https://www.openvswitch.org/>
 
 #### Tipos de virtualização
 
@@ -674,7 +725,7 @@ foo
 -   Entenda o princípio do runc
 -   Entenda o princípio do CRI-O e do containerd
 -   Conhecimento do tempo de execução do OCI e das especificações de imagem
--   Conhecimento da Interface de Tempo de Execução de Contêiner (CRI) do Kubernetes
+-   Conhecimento da interface de tempo de execução de contêiner (CRI) do Kubernetes
 -   Consciência de podman, buildah e skopeo
 -   Conhecimento de outras abordagens de virtualização de contêineres no Linux e outros sistemas operacionais livres, como rkt, OpenVZ, systemd-nspawn ou BSD Jails
 
