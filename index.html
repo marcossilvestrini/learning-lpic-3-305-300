@@ -385,6 +385,18 @@ Migration (P2V, V2V)
         </ul>
       </li>
     </ul>
+    <h5 id="migration-types"><a class="anchor" aria-hidden="true" tabindex="-1" href="#migration-types"><span class="octicon octicon-link"></span></a>Migration Types</h5>
+    <p>In the context of hypervisors, which are technologies used to create and manage virtual machines, the terms P2V migration and V2V migration are common in virtualization environments.<br>They refer to processes of migrating systems between different types of platforms.</p>
+    <h5 id="p2v-physical-to-virtual---physical-to-virtual-migration"><a class="anchor" aria-hidden="true" tabindex="-1" href="#p2v-physical-to-virtual---physical-to-virtual-migration"><span class="octicon octicon-link"></span></a>P2V (Physical to Virtual) - Physical to Virtual Migration</h5>
+    <p>P2V migration refers to the process of migrating a physical server to a virtual machine.<br>In other words, an operating system and its applications, running on dedicated physical hardware, are "converted" and moved to a virtual machine that runs on a hypervisor (such as VMware, Hyper-V, KVM, etc.).</p>
+    <ul>
+      <li>Example: You have a physical server running a Windows or Linux system, and you want to move it to a virtual environment, like a cloud infrastructure or an internal virtualization server.<br>The process involves copying the entire system state, including the operating system, drivers, and data, to create an equivalent virtual machine that can run as if it were on the physical hardware.</li>
+    </ul>
+    <h5 id="v2v-virtual-to-virtual---virtual-to-virtual-migration"><a class="anchor" aria-hidden="true" tabindex="-1" href="#v2v-virtual-to-virtual---virtual-to-virtual-migration"><span class="octicon octicon-link"></span></a>V2V (Virtual to Virtual) - Virtual to Virtual Migration</h5>
+    <p>V2V migration refers to the process of migrating a virtual machine from one hypervisor to another. In this case, you already have a virtual machine running in a virtualized environment (like VMware), and you want to move it to another virtualized environment (for example, to Hyper-V or to a new VMware server).</p>
+    <ul>
+      <li>Example: You have a virtual machine running on a VMware virtualization server, but you decide to migrate it to a Hyper-V platform. In this case, the V2V migration converts the virtual machine from one format or hypervisor to another, ensuring it can continue running correctly.</li>
+    </ul>
     <h4 id="hvm-and-paravirtualization"><a class="anchor" aria-hidden="true" tabindex="-1" href="#hvm-and-paravirtualization"><span class="octicon octicon-link"></span></a>HVM and Paravirtualization</h4>
     <h5 id="hardware-assisted-virtualization-hvm"><a class="anchor" aria-hidden="true" tabindex="-1" href="#hardware-assisted-virtualization-hvm"><span class="octicon octicon-link"></span></a>Hardware-assisted Virtualization (HVM)</h5>
     <h6 id="hvm-definition"><a class="anchor" aria-hidden="true" tabindex="-1" href="#hvm-definition"><span class="octicon octicon-link"></span></a>HVM Definition</h6>
@@ -455,6 +467,42 @@ Migration (P2V, V2V)
     <ul>
       <li><strong>HVM:</strong> Generally more straightforward to deploy since it supports unmodified OS.</li>
       <li><strong>Paravirtualization:</strong> Requires additional setup and modifications to the guest OS, increasing complexity.</li>
+    </ul>
+    <h4 id="numa-non-uniform-memory-access"><a class="anchor" aria-hidden="true" tabindex="-1" href="#numa-non-uniform-memory-access"><span class="octicon octicon-link"></span></a>NUMA (Non-Uniform Memory Access</h4>
+    <p>NUMA (Non-Uniform Memory Access) is a memory architecture used in multiprocessor systems to optimize memory access by processors.<br>In a NUMA system, memory is distributed unevenly among processors, meaning that each processor has faster access to a portion of memory (its "local memory") than to memory that is physically further away (referred to as "remote memory") and associated with other processors.</p>
+    <h5 id="key-features-of-numa-architecture"><a class="anchor" aria-hidden="true" tabindex="-1" href="#key-features-of-numa-architecture"><span class="octicon octicon-link"></span></a>Key Features of NUMA Architecture</h5>
+    <ol>
+      <li><strong>Local and Remote Memory</strong>: Each processor has its own local memory, which it can access more quickly. However, it can also access the memory of other processors, although this takes longer.</li>
+      <li><strong>Differentiated Latency</strong>: The latency of memory access varies depending on whether the processor is accessing its local memory or the memory of another node. Local memory access is faster, while accessing another node’s memory (remote) is slower.</li>
+      <li><strong>Scalability</strong>: NUMA architecture is designed to improve scalability in systems with many processors. As more processors are added, memory is also distributed, avoiding the bottleneck that would occur in a uniform memory access (UMA) architecture.</li>
+    </ol>
+    <h5 id="advantages-of-numa"><a class="anchor" aria-hidden="true" tabindex="-1" href="#advantages-of-numa"><span class="octicon octicon-link"></span></a>Advantages of NUMA</h5>
+    <ul>
+      <li>Better Performance in Large Systems: Since each processor has local memory, it can work more efficiently without competing as much with other processors for memory access.</li>
+      <li>Scalability: NUMA allows systems with many processors and large amounts of memory to scale more effectively compared to a UMA architecture.</li>
+    </ul>
+    <h5 id="disadvantages"><a class="anchor" aria-hidden="true" tabindex="-1" href="#disadvantages"><span class="octicon octicon-link"></span></a>Disadvantages</h5>
+    <ul>
+      <li>Programming Complexity: Programmers need to be aware of which regions of memory are local or remote, optimizing the use of local memory to achieve better performance.</li>
+      <li>
+        Potential Performance Penalties: If a processor frequently accesses remote memory, performance may suffer due to higher latency.
+        This architecture is common in high-performance multiprocessor systems, such as servers and supercomputers, where scalability and memory optimization are critical.
+      </li>
+    </ul>
+    <h4 id="opensource-solutions"><a class="anchor" aria-hidden="true" tabindex="-1" href="#opensource-solutions"><span class="octicon octicon-link"></span></a>Opensource Solutions</h4>
+    <ul>
+      <li>
+        <p>oVirt: <a href="https://www.ovirt.org/">https://www.ovirt.org/</a></p>
+      </li>
+      <li>
+        <p>Proxmox: <a href="https://www.proxmox.com/en/proxmox-virtual-environment/overview">https://www.proxmox.com/en/proxmox-virtual-environment/overview</a></p>
+      </li>
+      <li>
+        <p>Oracle VirtualBox: <a href="https://www.virtualbox.org/">https://www.virtualbox.org/</a></p>
+      </li>
+      <li>
+        <p>Open vSwitch: <a href="https://www.openvswitch.org/">https://www.openvswitch.org/</a></p>
+      </li>
     </ul>
     <h4 id="types-of-virtualization"><a class="anchor" aria-hidden="true" tabindex="-1" href="#types-of-virtualization"><span class="octicon octicon-link"></span></a>Types of Virtualization</h4>
     <h5 id="hardware-virtualization-server-virtualization"><a class="anchor" aria-hidden="true" tabindex="-1" href="#hardware-virtualization-server-virtualization"><span class="octicon octicon-link"></span></a>Hardware Virtualization (Server Virtualization)</h5>
