@@ -196,7 +196,7 @@ man COMMAND
 -   Comprendre les principaux aspects de la migration des machines physiques vers les machines virtuelles
 -   Comprendre les principaux aspects de la migration des machines virtuelles entre les systèmes hôtes
 -   Comprendre les fonctionnalités et les implications de la virtualisation pour une machine virtuelle, telles que la prise d'instantanés, la pause, le clonage et les limites de ressources
--   Connaissance de oVirt, Proxmox, systemd-machined et VirtualBox
+-   Awareness of oVirt, Proxmox, systemd-machined and VirtualBox
 -   Connaissance d'Open vSwitch
 
 #### 351.1 Objets cités
@@ -262,6 +262,25 @@ Fonctionne sur un système d'exploitation conventionnel, s'appuyant sur le syst�
 -   Gestion et facilité d'utilisation :
     -   Les hyperviseurs de type 1 nécessitent une configuration et une gestion plus complexes, mais offrent des fonctionnalités avancées et une évolutivité pour les déploiements à grande échelle.
     -   Les hyperviseurs de type 2 sont plus faciles à installer et à utiliser, ce qui les rend idéaux pour les utilisateurs individuels et les petits projets.
+
+##### Types de migration
+
+Dans le contexte des hyperviseurs, qui sont des technologies utilisées pour créer et gérer des machines virtuelles, les termes migration P2V et migration V2V sont courants dans les environnements de virtualisation.  
+Ils font référence à des processus de migration de systèmes entre différents types de plates-formes.
+
+##### P2V (physique vers virtuel) - Migration physique vers virtuel
+
+La migration P2V fait référence au processus de migration d'un serveur physique vers une machine virtuelle.  
+En d'autres termes, un système d'exploitation et ses applications, fonctionnant sur du matériel physique dédié, sont « convertis » et déplacés vers une machine virtuelle qui s'exécute sur un hyperviseur (comme VMware, Hyper-V, KVM, etc.).
+
+-   Exemple : Vous disposez d'un serveur physique exécutant un système Windows ou Linux et vous souhaitez le déplacer vers un environnement virtuel, comme une infrastructure cloud ou un serveur de virtualisation interne.  
+    Le processus consiste à copier l'intégralité de l'état du système, y compris le système d'exploitation, les pilotes et les données, pour créer une machine virtuelle équivalente pouvant s'exécuter comme si elle se trouvait sur le matériel physique.
+
+##### V2V (Virtuel vers Virtuel) - Migration Virtuel vers Virtuel
+
+La migration V2V fait référence au processus de migration d'une machine virtuelle d'un hyperviseur à un autre. Dans ce cas, vous disposez déjà d'une machine virtuelle exécutée dans un environnement virtualisé (comme VMware) et vous souhaitez la déplacer vers un autre environnement virtualisé (par exemple, vers Hyper-V ou vers un nouveau serveur VMware).
+
+-   Exemple : Vous disposez d'une machine virtuelle exécutée sur un serveur de virtualisation VMware, mais vous décidez de la migrer vers une plateforme Hyper-V. Dans ce cas, la migration V2V convertit la machine virtuelle d'un format ou d'un hyperviseur à un autre, garantissant ainsi son bon fonctionnement.
 
 #### HVM et paravirtualisation
 
@@ -345,6 +364,38 @@ Xen avec des invités paravirtualisés, des outils VMware dans certaines configu
 
 -   **HVM:**Généralement plus simple à déployer car il prend en charge le système d'exploitation non modifié.
 -   **Paravirtualisation :**Nécessite une configuration et des modifications supplémentaires du système d’exploitation invité, ce qui augmente la complexité.
+
+#### NUMA (accès à la mémoire non uniforme
+
+NUMA (Non-Uniform Memory Access) est une architecture de mémoire utilisée dans les systèmes multiprocesseurs pour optimiser l'accès à la mémoire par les processeurs.  
+Dans un système NUMA, la mémoire est inégalement répartie entre les processeurs, ce qui signifie que chaque processeur a un accès plus rapide à une partie de la mémoire (sa « mémoire locale ») qu'à une mémoire physiquement plus éloignée (appelée « mémoire distante ») et associée. avec d'autres processeurs.
+
+##### Principales fonctionnalités de l'architecture NUMA
+
+1.  **Mémoire locale et distante**: Chaque processeur possède sa propre mémoire locale, à laquelle il peut accéder plus rapidement. Cependant, il peut également accéder à la mémoire d'autres processeurs, même si cela prend plus de temps.
+2.  **Latence différenciée**: La latence d'accès mémoire varie selon que le processeur accède à sa mémoire locale ou à la mémoire d'un autre nœud. L’accès à la mémoire locale est plus rapide, tandis que l’accès à la mémoire d’un autre nœud (distant) est plus lent.
+3.  **Évolutivité**: L'architecture NUMA est conçue pour améliorer l'évolutivité des systèmes dotés de nombreux processeurs. À mesure que davantage de processeurs sont ajoutés, la mémoire est également distribuée, évitant ainsi le goulot d'étranglement qui se produirait dans une architecture d'accès uniforme à la mémoire (UMA).
+
+##### Avantages de NUMA
+
+-   Meilleures performances dans les grands systèmes : étant donné que chaque processeur dispose d'une mémoire locale, il peut fonctionner plus efficacement sans rivaliser autant avec les autres processeurs pour l'accès à la mémoire.
+-   Évolutivité : NUMA permet aux systèmes dotés de nombreux processeurs et de grandes quantités de mémoire d'évoluer plus efficacement par rapport à une architecture UMA.
+
+##### Inconvénients
+
+-   Complexité de la programmation : les programmeurs doivent savoir quelles régions de mémoire sont locales ou distantes, optimisant ainsi l'utilisation de la mémoire locale pour obtenir de meilleures performances.
+-   Pénalités potentielles en termes de performances : si un processeur accède fréquemment à la mémoire distante, les performances peuvent en souffrir en raison d'une latence plus élevée.
+    Cette architecture est courante dans les systèmes multiprocesseurs hautes performances, tels que les serveurs et les supercalculateurs, où l'évolutivité et l'optimisation de la mémoire sont essentielles.
+
+#### Opensource Solutions
+
+-   oVirté :<https://www.ovirt.org/>
+
+-   Proxmox :<https://www.proxmox.com/en/proxmox-virtual-environment/overview>
+
+-   Oracle VirtualBox :<https://www.virtualbox.org/>
+
+-   Ouvrez le vSwitch :<https://www.openvswitch.org/>
 
 #### Types de virtualisation
 
@@ -512,7 +563,7 @@ foo
 
 **Poids:**4
 
-**Description:** Candidates should be able to install, configure, maintain, migrate and troubleshoot QEMU installations.
+**Description:**Les candidats doivent être capables d'installer, de configurer, de maintenir, de migrer et de dépanner les installations QEMU.
 
 **Domaines de connaissances clés :**
 
@@ -754,7 +805,7 @@ foo
 **Domaines de connaissances clés :**
 
 -   Comprendre l'architecture et les composants de Docker
--   Gérer les conteneurs Docker à l'aide d'images provenant d'un registre Docker
+-   Gérer les conteneurs Docker à l'aide d'images d'un registre Docker
 -   Comprendre et gérer les images et les volumes pour les conteneurs Docker
 -   Comprendre et gérer la journalisation pour les conteneurs Docker
 -   Comprendre et gérer la mise en réseau pour Docker
@@ -1003,7 +1054,7 @@ Lien du projet :<https://github.com/marcossilvestrini/learning-lpic-3-305-300>
 -   [Compilateur GCC](https://gcc.gnu.org/wiki/History)
 -   [GNUTR](https://www.gnu.org/software/tar/)
 -   [Marque GNU](https://www.gnu.org/software/make/)
--   [GNU-Emacs](https://en.wikipedia.org/wiki/Emacs)
+-   [GNU Emacs](https://en.wikipedia.org/wiki/Emacs)
 -   [Paquets GNU](https://www.gnu.org/software/)
 -   [Collection GNU/Linux](https://directory.fsf.org/wiki/Collection:GNU/Linux)
 -   [Chargeur de démarrage GNU Grub](https://www.gnu.org/software/grub/)
@@ -1026,7 +1077,7 @@ Lien du projet :<https://github.com/marcossilvestrini/learning-lpic-3-305-300>
 -   [Directives du logiciel libre Debian](https://www.debian.org/social_contract#guidelines)
 -   [Organisation X11](https://www.x.org/wiki/)
 -   [Wayland](https://wayland.freedesktop.org/)
--   [GNU-GNOME](https://www.gnu.org/press/gnome-1.0.html)
+-   [GNU GNOME](https://www.gnu.org/press/gnome-1.0.html)
 -   [GNOME](https://www.gnome.org/)
 -   [XFCE](https://xfce.org/)
 -   [Plasma KDE](https://kde.org/plasma-desktop/)
