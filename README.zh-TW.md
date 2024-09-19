@@ -89,7 +89,7 @@
 > 將涵蓋一些 GNULinux 發行版，例如 Debian 和 RPM\\
 > 也將涵蓋一些軟體包的安裝和配置\\
 > 透過這樣做，您可以讓整個社區有機會從您的更改中受益。
-> 存取原始碼是實現此目的的先決條件。
+> 獲得原始程式碼是實現此目的的先決條件。
 > 使用 vagrant for up 機器並執行本文的實驗和練習內容。
 > 我已經在 Vagrant 資料夾中發布了一個 Vagrantfile ，其中包含必要的內容\\
 > 供您上傳學習環境
@@ -149,9 +149,9 @@ git clone https://github.com/marcossilvestrini/learning-lpic-3-305-300.git
 ## 四項基本自由
 
 > 0.為任何目的隨意運行程序的自由（自由 0）。
-> 1.自由地研究程序如何運作並對其進行更改\\
+> 1.自由地研究程式如何運作並對其進行更改\\
 > 你可以隨心所欲地進行計算（自由 1）。
-> 存取原始碼是實現此目的的先決條件。
+> 獲得原始程式碼是實現此目的的先決條件。
 > 2.重新分發副本的自由，以便您可以幫助他人（自由2）。
 > 3.將修改版本的副本分發給其他人的自由（自由3）。
 
@@ -221,7 +221,7 @@ Migration (P2V, V2V)
 
 ###### 1 型特徵
 
--   High performance and efficiency.
+-   高性能、高效率。
 -   更低的延遲和開銷。
 -   通常用於企業環境和資料中心。
 
@@ -335,7 +335,7 @@ VMware ESXi、Microsoft Hyper-V、KVM（基於核心的虛擬機器）。
 
 ###### 半虛擬化的缺點
 
--   **來賓作業系統修改：**需要對來賓作業系統進行修改，從而限制了對受支援作業系統的相容性。
+-   **來賓作業系統修改：**需要修改來賓作業系統，限制了對支援作業系統的相容性。
 -   **複雜：**需要在來賓作業系統中實作超級呼叫實作額外的複雜性。
 
 ##### 主要差異
@@ -451,7 +451,7 @@ VMware NSX、思科 ACI、OpenStack Neutron。
 
 資料管理、儲存最佳化、災難復原。
 
-###### Storage VirtualizationDefinition Examples
+###### 儲存虛擬化定義範例
 
 IBM SAN 磁碟區控制器、VMware vSAN、NetApp ONTAP。
 
@@ -530,6 +530,38 @@ Denodo、紅帽 JBoss 資料虛擬化、IBM InfoSphere。
 -   對 XenStore 的認知
 -   了解 Xen 啟動參數
 -   對 xm 實用程式的認識
+
+#### Xen
+
+Xen 是一個開源 type-1（裸機）虛擬機器管理程序，它允許多個作業系統在同一實體硬體上同時運行。  
+Xen 在實體硬體和虛擬機器 (VM) 之間提供了一個層，可實現高效的資源共享和隔離。
+
+-   **建築學：**Xen 使用兩層系統運行，其中 Domain 0 (Dom0) 是具有直接硬體存取權並管理虛擬機器管理程式的特權網域。其他虛擬機器稱為 Domain U (DomU)，運行來賓作業系統並由 Dom0 管理。
+-   **虛擬化類型：**Xen 支援半虛擬化 (PV)（需要修改的來賓作業系統）和硬體輔助虛擬化 (HVM)（使用硬體擴充（例如 Intel VT-x 或 AMD-V）來執行未修改的來賓作業系統）。
+    Xen 廣泛用於雲端環境，特別是 Amazon Web Services (AWS) 和其他大型雲端供應商。
+
+#### XenSource
+
+XenSource 是由劍橋大學 Xen 虛擬機器管理程式的原始開發人員創立的公司，旨在將 Xen 商業化。  
+該公司提供基於Xen的企業解決方案，並提供額外的工具和支援來增強Xen的企業使用能力。
+
+-   **由 Citrix 收購**：2007年，XenSource被Citrix Systems, Inc.收購。
+-   **過渡**：收購後，Xen 項目繼續作為開源項目，而 Citrix 則專注於利用 XenSource 技術的 XenServer 等商業產品。
+
+#### Xen項目
+
+Xen專案是指在Xen虛擬機器管理程序商業化後負責開發和維護的開源社群和倡議。  
+Xen 計畫在 Linux 基金會下運作，重點是建立、改進和支持 Xen，將其作為社群驅動的協作工作。
+
+-   **目標：**Xen 專案旨在透過提高虛擬機器管理程式的效能、安全性和適用於各種用例的功能集來推進虛擬機器管理程序，包括雲端運算、注重安全的虛擬化（例如 Qubes OS）和嵌入式系統。
+-   **貢獻者：**該專案包括來自不同組織的貢獻者，包括主要雲端供應商、硬體供應商和獨立開發人員。
+-   **XAPI 和 XenTools：**Xen 專案還包括用於管理 Xen 虛擬機器管理程式安裝的 XAPI (XenAPI) 等工具，以及用於系統管理和最佳化的各種其他實用程式。
+
+#### Xen總結
+
+-   **克森：**核心管理程式技術使虛擬機器能夠在實體硬體上運行。
+-   **Xen來源：**該公司將 Xen 商業化，後來被 Citrix 收購，導致了 Citrix XenServer 的開發。
+-   **Xen專案：**在 Linux 基金會下繼續開發和維護 Xen 虛擬機器管理程式的開源計畫和社群。
 
 #### 351.2 引用的對象
 
@@ -1119,20 +1151,22 @@ Vagrantfile
 -   [SSL 教程](https://www.golinuxcloud.com/blog/)
 -   [SSL 設定 Mozilla](https://ssl-config.mozilla.org/)
 -   虛擬化定義
-    -   [紅帽](https://www.redhat.com/pt-br/topics/virtualization/what-is-virtualization)
+    -   [Red Hat](https://www.redhat.com/pt-br/topics/virtualization/what-is-virtualization)
     -   [AWS](https://aws.amazon.com/pt/what-is/virtualization/)
     -   [國際商業機器公司](https://www.ibm.com/topics/virtualization)
     -   [OpenSource.com](https://opensource.com/resources/virtualization)
 -   [KVM（核心虛擬機器）](https://www.redhat.com/pt-br/topics/virtualization/what-is-KVM)
 -   [KVM管理工具](https://www.linux-kvm.org/page/Management_Tools)
--   [維基 Xen 項目](https://wiki.xenproject.org/wiki/Book/HelloXenProject/1-Chapter)
+-   Xen
+    -   [Xen伺服器](https://www.xenserver.com/)
+    -   [維基 Xen 項目](https://wiki.xenproject.org/wiki/Book/HelloXenProject/1-Chapter)
 -   [LPI 部落格：Xen 虛擬化與雲端運算 #01：簡介](https://www.lpi.org/pt-br/blog/2020/10/01/xen-virtualization-and-cloud-computing-01-introduction/)
 -   Openstack 文件
     -   [紅帽](https://www.redhat.com/pt-br/topics/openstack)
 -   [LPIC-3 305-300 目標](https://www.lpi.org/our-certifications/exam-305-objectives/)
 -   [LPIC-3 305-300 維基](https://wiki.lpi.org/wiki/LPIC-305_Objectives_V3.0)
 -   [LPIC-3 305-300 學習教材](https://cursos.linuxsemfronteiras.com.br/courses/preparatorio-para-certificacao-lpic-3-305/)
--   [LPIC-3 305-300 ITexams 模擬考試](https://www.itexams.com/info/305-300)
+-   [ITexams 的 LPIC-3 305-300 模擬考試](https://www.itexams.com/info/305-300)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
