@@ -328,7 +328,7 @@ A paravirtualização envolve a modificação do sistema operacional convidado p
 
 Xen com convidados paravirtualizados, ferramentas VMware em determinadas configurações e algumas configurações KVM.
 
-###### Vantagens da paravirtualização
+###### Vantagens da Paravirtualização
 
 -   **Eficiência:**Reduz a sobrecarga de virtualização de hardware, oferecendo potencialmente melhor desempenho para determinadas cargas de trabalho.
 -   **Utilização de recursos:**Uso mais eficiente dos recursos do sistema devido à comunicação direta entre o sistema operacional convidado e o hipervisor.
@@ -378,7 +378,7 @@ Num sistema NUMA, a memória é distribuída de forma desigual entre os processa
 
 ##### Advantages of NUMA
 
--   Melhor Desempenho em Sistemas Grandes: Como cada processador possui memória local, ele pode funcionar com mais eficiência sem competir tanto com outros processadores pelo acesso à memória.
+-   Melhor Desempenho em Sistemas Grandes: Como cada processador possui memória local, ele pode trabalhar com mais eficiência sem competir tanto com outros processadores pelo acesso à memória.
 -   Escalabilidade: NUMA permite que sistemas com muitos processadores e grandes quantidades de memória sejam dimensionados de forma mais eficaz em comparação com uma arquitetura UMA.
 
 ##### Desvantagens
@@ -503,7 +503,7 @@ Denodo, Red Hat JBoss Data Virtualization, IBM InfoSphere.
 -   Economia de custos: Redução de custos operacionais e de hardware.
 -   Escalabilidade: Fácil de aumentar ou diminuir de acordo com a demanda.
 -   Flexibilidade: oferece suporte a uma variedade de cargas de trabalho e aplicativos.
--   Recuperação de desastres: Processos simplificados de backup e recuperação.
+-   Disaster Recovery: Simplified backup and recovery processes.
 -   Isolamento: Maior segurança através do isolamento de ambientes.
 
 <p align="right">(<a href="#topic-351.1">back to sub Topic 351.1</a>)</p>
@@ -530,6 +530,38 @@ Denodo, Red Hat JBoss Data Virtualization, IBM InfoSphere.
 -   Conhecimento do XenStore
 -   Conhecimento dos parâmetros de inicialização do Xen
 -   Conscientização do utilitário xm
+
+#### Xen
+
+Xen é um hipervisor tipo 1 (bare metal) de código aberto, que permite que vários sistemas operacionais sejam executados simultaneamente no mesmo hardware físico.  
+O Xen fornece uma camada entre o hardware físico e as máquinas virtuais (VMs), permitindo o compartilhamento e o isolamento eficientes de recursos.
+
+-   **Arquitetura:**O Xen opera com um sistema de duas camadas onde o Domínio 0 (Dom0) é o domínio privilegiado com acesso direto ao hardware e gerencia o hipervisor. Outras máquinas virtuais, chamadas Domain U (DomU), executam sistemas operacionais convidados e são gerenciadas pelo Dom0.
+-   **Tipos de virtualização:**O Xen suporta paravirtualização (PV), que requer sistema operacional convidado modificado, e virtualização assistida por hardware (HVM), que usa extensões de hardware (por exemplo, Intel VT-x ou AMD-V) para executar sistemas operacionais convidados não modificados.
+    O Xen é amplamente utilizado em ambientes de nuvem, principalmente pela Amazon Web Services (AWS) e outros provedores de nuvem de grande escala.
+
+#### XenSource
+
+XenSource foi a empresa fundada pelos desenvolvedores originais do hipervisor Xen na Universidade de Cambridge para comercializar o Xen.  
+A empresa forneceu soluções empresariais baseadas no Xen e ofereceu ferramentas e suporte adicionais para aprimorar os recursos do Xen para uso empresarial.
+
+-   **Aquisição pela Citrix**: Em 2007, a XenSource foi adquirida pela Citrix Systems, Inc. A Citrix usou a tecnologia Xen como base para seu produto Citrix XenServer, que se tornou uma popular plataforma de virtualização de nível empresarial baseada em Xen.
+-   **Transição**: Após a aquisição, o projeto Xen continuou como um projeto de código aberto, enquanto a Citrix se concentrou em ofertas comerciais como o XenServer, aproveitando a tecnologia XenSource.
+
+#### Projeto Xen
+
+Projeto Xen refere-se à comunidade e iniciativa de código aberto responsável pelo desenvolvimento e manutenção do hipervisor Xen após sua comercialização.  
+O Projeto Xen opera sob a Linux Foundation, com foco na construção, melhoria e suporte do Xen como um esforço colaborativo e orientado pela comunidade.
+
+-   **Metas:**O Projeto Xen visa avançar o hipervisor melhorando seu desempenho, segurança e conjunto de recursos para uma ampla gama de casos de uso, incluindo computação em nuvem, virtualização focada em segurança (por exemplo, Qubes OS) e sistemas embarcados.
+-   **Colaboradores:**O projeto inclui colaboradores de diversas organizações, incluindo grandes provedores de nuvem, fornecedores de hardware e desenvolvedores independentes.
+-   **XAPI e XenTools:**O Projeto Xen também inclui ferramentas como XAPI (XenAPI), que é usado para gerenciar instalações de hipervisores Xen, e vários outros utilitários para gerenciamento e otimização do sistema.
+
+#### Resumo Xen
+
+-   **Xen:**A principal tecnologia de hipervisor que permite que máquinas virtuais sejam executadas em hardware físico.
+-   **XenFonte:**Empresa que comercializou o Xen, posteriormente adquirida pela Citrix, levando ao desenvolvimento do Citrix XenServer.
+-   **Projeto Xen:**A iniciativa e comunidade de código aberto que continua a desenvolver e manter o hipervisor Xen sob a Linux Foundation.
 
 #### 351.2 Objetos Citados
 
@@ -725,7 +757,7 @@ foo
 -   Entenda o princípio do runc
 -   Entenda o princípio do CRI-O e do containerd
 -   Conhecimento do tempo de execução do OCI e das especificações de imagem
--   Conhecimento da interface de tempo de execução de contêiner (CRI) do Kubernetes
+-   Conhecimento da Interface de Tempo de Execução de Contêiner (CRI) do Kubernetes
 -   Consciência de podman, buildah e skopeo
 -   Conhecimento de outras abordagens de virtualização de contêineres no Linux e outros sistemas operacionais livres, como rkt, OpenVZ, systemd-nspawn ou BSD Jails
 
@@ -1125,7 +1157,9 @@ Link do projeto:<https://github.com/marcossilvestrini/learning-lpic-3-305-300>
     -   [OpenSource.com](https://opensource.com/resources/virtualization)
 -   [KVM (máquinas virtuais de kernel)](https://www.redhat.com/pt-br/topics/virtualization/what-is-KVM)
 -   [Ferramentas de gerenciamento KVM](https://www.linux-kvm.org/page/Management_Tools)
--   [Wiki XenProject](https://wiki.xenproject.org/wiki/Book/HelloXenProject/1-Chapter)
+-   Xen
+    -   [XenServer](https://www.xenserver.com/)
+    -   [Wiki XenProject](https://wiki.xenproject.org/wiki/Book/HelloXenProject/1-Chapter)
 -   [Blog LPI: Virtualização Xen e Computação em Nuvem #01: Introdução](https://www.lpi.org/pt-br/blog/2020/10/01/xen-virtualization-and-cloud-computing-01-introduction/)
 -   Documentos Openstack
     -   [Chapéu Vermelho](https://www.redhat.com/pt-br/topics/openstack)
