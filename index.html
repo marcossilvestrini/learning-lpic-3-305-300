@@ -582,6 +582,34 @@ Migration (P2V, V2V)
       <li>Awareness of Xen Boot Parameters</li>
       <li>Awareness of the xm utility</li>
     </ul>
+    <h4 id="xen"><a class="anchor" aria-hidden="true" tabindex="-1" href="#xen"><span class="octicon octicon-link"></span></a>Xen</h4>
+    <p>Xen is an open-source type-1 (bare-metal) hypervisor, which allows multiple operating systems to run concurrently on the same physical hardware.<br>Xen provides a layer between the physical hardware and virtual machines (VMs), enabling efficient resource sharing and isolation.</p>
+    <ul>
+      <li><strong>Architecture:</strong> Xen operates with a two-tier system where Domain 0 (Dom0) is the privileged domain with direct hardware access and manages the hypervisor. Other virtual machines, called Domain U (DomU), run guest operating systems and are managed by Dom0.</li>
+      <li>
+        <strong>Types of Virtualization:</strong> Xen supports both paravirtualization (PV), which requires modified guest OS, and hardware-assisted virtualization (HVM), which uses hardware extensions (e.g., Intel VT-x or AMD-V) to run unmodified guest operating systems.
+        Xen is widely used in cloud environments, notably by Amazon Web Services (AWS) and other large-scale cloud providers.
+      </li>
+    </ul>
+    <h4 id="xensource"><a class="anchor" aria-hidden="true" tabindex="-1" href="#xensource"><span class="octicon octicon-link"></span></a>XenSource</h4>
+    <p>XenSource was the company founded by the original developers of the Xen hypervisor at the University of Cambridge to commercialize Xen.<br>The company provided enterprise solutions based on Xen and offered additional tools and support to enhance Xen’s capabilities for enterprise use.</p>
+    <ul>
+      <li><strong>Acquisition by Citrix</strong>: In 2007, XenSource was acquired by Citrix Systems, Inc. Citrix used Xen technology as the foundation for its Citrix XenServer product, which became a popular enterprise-grade virtualization platform based on Xen.</li>
+      <li><strong>Transition</strong>: After the acquisition, the Xen project continued as an open-source project, while Citrix focused on commercial offerings like XenServer, leveraging XenSource technology.</li>
+    </ul>
+    <h4 id="xen-project"><a class="anchor" aria-hidden="true" tabindex="-1" href="#xen-project"><span class="octicon octicon-link"></span></a>Xen Project</h4>
+    <p>Xen Project refers to the open-source community and initiative responsible for developing and maintaining the Xen hypervisor after its commercialization.<br>The Xen Project operates under the Linux Foundation, with a focus on building, improving, and supporting Xen as a collaborative, community-driven effort.</p>
+    <ul>
+      <li><strong>Goals:</strong> The Xen Project aims to advance the hypervisor by improving its performance, security, and feature set for a wide range of use cases, including cloud computing, security-focused virtualization (e.g., Qubes OS), and embedded systems.</li>
+      <li><strong>Contributors:</strong> The project includes contributors from various organizations, including major cloud providers, hardware vendors, and independent developers.</li>
+      <li><strong>XAPI and XenTools:</strong> The Xen Project also includes tools such as XAPI (XenAPI), which is used for managing Xen hypervisor installations, and various other utilities for system management and optimization.</li>
+    </ul>
+    <h4 id="xen-summary"><a class="anchor" aria-hidden="true" tabindex="-1" href="#xen-summary"><span class="octicon octicon-link"></span></a>Xen Summary</h4>
+    <ul>
+      <li><strong>Xen:</strong> The core hypervisor technology enabling virtual machines to run on physical hardware.</li>
+      <li><strong>XenSource:</strong> The company that commercialized Xen, later acquired by Citrix, leading to the development of Citrix XenServer.</li>
+      <li><strong>Xen Project:</strong> The open-source initiative and community that continues to develop and maintain the Xen hypervisor under the Linux Foundation.</li>
+    </ul>
     <h4 id="3512-cited-objects"><a class="anchor" aria-hidden="true" tabindex="-1" href="#3512-cited-objects"><span class="octicon octicon-link"></span></a>351.2 Cited Objects</h4>
     <pre class="language-sh"><code class="language-sh code-highlight"><span class="code-line line-number" line="1">Domain0 <span class="token punctuation">(</span>Dom0<span class="token punctuation">)</span>, DomainU <span class="token punctuation">(</span>DomU<span class="token punctuation">)</span>
 </span><span class="code-line line-number" line="2">PV-DomU, HVM-DomU
@@ -1092,7 +1120,12 @@ Vagrantfile
       </li>
       <li><a href="https://www.redhat.com/pt-br/topics/virtualization/what-is-KVM">KVM(Kernel Virtual Machines)</a></li>
       <li><a href="https://www.linux-kvm.org/page/Management_Tools">KVM Management Tools</a></li>
-      <li><a href="https://wiki.xenproject.org/wiki/Book/HelloXenProject/1-Chapter">Wiki XenProject</a></li>
+      <li>Xen
+        <ul>
+          <li><a href="https://www.xenserver.com/">XenServer</a></li>
+          <li><a href="https://wiki.xenproject.org/wiki/Book/HelloXenProject/1-Chapter">Wiki XenProject</a></li>
+        </ul>
+      </li>
       <li><a href="https://www.lpi.org/pt-br/blog/2020/10/01/xen-virtualization-and-cloud-computing-01-introduction/">LPI Blog: Xen Virtualization and Cloud Computing #01: Introduction</a></li>
       <li>Openstack Docs
         <ul>
