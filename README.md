@@ -542,6 +542,38 @@ Denodo, Red Hat JBoss Data Virtualization, IBM InfoSphere.
 * Awareness of Xen Boot Parameters
 * Awareness of the xm utility
 
+#### Xen
+
+Xen is an open-source type-1 (bare-metal) hypervisor, which allows multiple operating systems to run concurrently on the same physical hardware.  
+Xen provides a layer between the physical hardware and virtual machines (VMs), enabling efficient resource sharing and isolation.
+
+* **Architecture:** Xen operates with a two-tier system where Domain 0 (Dom0) is the privileged domain with direct hardware access and manages the hypervisor. Other virtual machines, called Domain U (DomU), run guest operating systems and are managed by Dom0.
+* **Types of Virtualization:** Xen supports both paravirtualization (PV), which requires modified guest OS, and hardware-assisted virtualization (HVM), which uses hardware extensions (e.g., Intel VT-x or AMD-V) to run unmodified guest operating systems.
+Xen is widely used in cloud environments, notably by Amazon Web Services (AWS) and other large-scale cloud providers.
+
+#### XenSource
+
+XenSource was the company founded by the original developers of the Xen hypervisor at the University of Cambridge to commercialize Xen.  
+The company provided enterprise solutions based on Xen and offered additional tools and support to enhance Xen’s capabilities for enterprise use.
+
+* **Acquisition by Citrix**: In 2007, XenSource was acquired by Citrix Systems, Inc. Citrix used Xen technology as the foundation for its Citrix XenServer product, which became a popular enterprise-grade virtualization platform based on Xen.
+* **Transition**: After the acquisition, the Xen project continued as an open-source project, while Citrix focused on commercial offerings like XenServer, leveraging XenSource technology.
+
+#### Xen Project
+
+Xen Project refers to the open-source community and initiative responsible for developing and maintaining the Xen hypervisor after its commercialization.  
+The Xen Project operates under the Linux Foundation, with a focus on building, improving, and supporting Xen as a collaborative, community-driven effort.
+
+* **Goals:** The Xen Project aims to advance the hypervisor by improving its performance, security, and feature set for a wide range of use cases, including cloud computing, security-focused virtualization (e.g., Qubes OS), and embedded systems.
+* **Contributors:** The project includes contributors from various organizations, including major cloud providers, hardware vendors, and independent developers.
+* **XAPI and XenTools:** The Xen Project also includes tools such as XAPI (XenAPI), which is used for managing Xen hypervisor installations, and various other utilities for system management and optimization.
+
+#### Xen Summary
+
+* **Xen:** The core hypervisor technology enabling virtual machines to run on physical hardware.
+* **XenSource:** The company that commercialized Xen, later acquired by Citrix, leading to the development of Citrix XenServer.
+* **Xen Project:** The open-source initiative and community that continues to develop and maintain the Xen hypervisor under the Linux Foundation.
+
 #### 351.2 Cited Objects
 
 ```sh
@@ -1138,7 +1170,9 @@ Project Link: [https://github.com/marcossilvestrini/learning-lpic-3-305-300](htt
   * [OpenSource.com](https://opensource.com/resources/virtualization )
 * [KVM(Kernel Virtual Machines)](https://www.redhat.com/pt-br/topics/virtualization/what-is-KVM)
 * [KVM Management Tools](https://www.linux-kvm.org/page/Management_Tools)
-* [Wiki XenProject](https://wiki.xenproject.org/wiki/Book/HelloXenProject/1-Chapter)
+* Xen
+  * [XenServer](https://www.xenserver.com/) 
+  * [Wiki XenProject](https://wiki.xenproject.org/wiki/Book/HelloXenProject/1-Chapter)
 * [LPI Blog: Xen Virtualization and Cloud Computing #01: Introduction](https://www.lpi.org/pt-br/blog/2020/10/01/xen-virtualization-and-cloud-computing-01-introduction/)
 * Openstack Docs
   * [RedHat](https://www.redhat.com/pt-br/topics/openstack)
