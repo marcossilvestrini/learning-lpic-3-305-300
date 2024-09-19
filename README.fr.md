@@ -196,7 +196,7 @@ man COMMAND
 -   Comprendre les principaux aspects de la migration des machines physiques vers les machines virtuelles
 -   Comprendre les principaux aspects de la migration des machines virtuelles entre les systèmes hôtes
 -   Comprendre les fonctionnalités et les implications de la virtualisation pour une machine virtuelle, telles que la prise d'instantanés, la pause, le clonage et les limites de ressources
--   Awareness of oVirt, Proxmox, systemd-machined and VirtualBox
+-   Connaissance d'oVirt, Proxmox, systemd-machined et VirtualBox
 -   Connaissance d'Open vSwitch
 
 #### 351.1 Objets cités
@@ -531,6 +531,38 @@ Denodo, virtualisation des données Red Hat JBoss, IBM InfoSphere.
 -   Connaissance des paramètres de démarrage Xen
 -   Connaissance de l'utilitaire xm
 
+#### Xén
+
+Xen est un hyperviseur open source de type 1 (bare metal), qui permet à plusieurs systèmes d'exploitation de s'exécuter simultanément sur le même matériel physique.  
+Xen fournit une couche entre le matériel physique et les machines virtuelles (VM), permettant un partage et une isolation efficaces des ressources.
+
+-   **Architecture:**Xen fonctionne avec un système à deux niveaux où le domaine 0 (Dom0) est le domaine privilégié avec un accès matériel direct et gère l'hyperviseur. D'autres machines virtuelles, appelées Domain U (DomU), exécutent des systèmes d'exploitation invités et sont gérées par Dom0.
+-   **Types de virtualisation :**Xen prend en charge à la fois la paravirtualisation (PV), qui nécessite un système d'exploitation invité modifié, et la virtualisation assistée par matériel (HVM), qui utilise des extensions matérielles (par exemple, Intel VT-x ou AMD-V) pour exécuter des systèmes d'exploitation invités non modifiés.
+    Xen est largement utilisé dans les environnements cloud, notamment par Amazon Web Services (AWS) et d'autres fournisseurs cloud à grande échelle.
+
+#### XenSource
+
+XenSource était la société fondée par les développeurs originaux de l'hyperviseur Xen de l'Université de Cambridge pour commercialiser Xen.  
+La société a fourni des solutions d'entreprise basées sur Xen et a proposé des outils et un support supplémentaires pour améliorer les capacités de Xen pour une utilisation en entreprise.
+
+-   **Rachat par Citrix**: En 2007, XenSource a été acquis par Citrix Systems, Inc. Citrix a utilisé la technologie Xen comme base pour son produit Citrix XenServer, qui est devenu une plate-forme de virtualisation d'entreprise populaire basée sur Xen.
+-   **Transition**: Après l'acquisition, le projet Xen s'est poursuivi en tant que projet open source, tandis que Citrix s'est concentré sur des offres commerciales comme XenServer, tirant parti de la technologie XenSource.
+
+#### Projet Xen
+
+Xen Project fait référence à la communauté et à l'initiative open source responsables du développement et de la maintenance de l'hyperviseur Xen après sa commercialisation.  
+Le projet Xen fonctionne sous la Fondation Linux et se concentre sur la création, l'amélioration et le support de Xen dans le cadre d'un effort collaboratif axé sur la communauté.
+
+-   **Objectifs:**Le projet Xen vise à faire progresser l'hyperviseur en améliorant ses performances, sa sécurité et ses fonctionnalités pour un large éventail de cas d'utilisation, notamment le cloud computing, la virtualisation axée sur la sécurité (par exemple, Qubes OS) et les systèmes embarqués.
+-   **Contributeurs :**Le projet inclut des contributeurs de diverses organisations, notamment des principaux fournisseurs de cloud, des fournisseurs de matériel et des développeurs indépendants.
+-   **XAPI et XenTools :**Le projet Xen comprend également des outils tels que XAPI (XenAPI), utilisé pour gérer les installations de l'hyperviseur Xen, ainsi que divers autres utilitaires pour la gestion et l'optimisation du système.
+
+#### Résumé Xen
+
+-   **Xen :**La technologie d'hyperviseur de base permettant aux machines virtuelles de s'exécuter sur du matériel physique.
+-   **XenSource :**La société qui a commercialisé Xen, acquise plus tard par Citrix, conduisant au développement de Citrix XenServer.
+-   **Projet Xen :**L'initiative et la communauté open source qui continuent de développer et de maintenir l'hyperviseur Xen sous la Fondation Linux.
+
 #### 351.2 Objets cités
 
 ```sh
@@ -702,7 +734,7 @@ foo
 
 <a name="topic-352"></a>
 
-## Sujet 352 : Virtualisation des conteneurs
+## Sujet 352 : Virtualisation des conteneurs
 
 * * *
 
@@ -1054,7 +1086,7 @@ Lien du projet :<https://github.com/marcossilvestrini/learning-lpic-3-305-300>
 -   [Compilateur GCC](https://gcc.gnu.org/wiki/History)
 -   [GNUTR](https://www.gnu.org/software/tar/)
 -   [Marque GNU](https://www.gnu.org/software/make/)
--   [GNU Emacs](https://en.wikipedia.org/wiki/Emacs)
+-   [GNU-Emacs](https://en.wikipedia.org/wiki/Emacs)
 -   [Paquets GNU](https://www.gnu.org/software/)
 -   [Collection GNU/Linux](https://directory.fsf.org/wiki/Collection:GNU/Linux)
 -   [Chargeur de démarrage GNU Grub](https://www.gnu.org/software/grub/)
@@ -1077,7 +1109,7 @@ Lien du projet :<https://github.com/marcossilvestrini/learning-lpic-3-305-300>
 -   [Directives du logiciel libre Debian](https://www.debian.org/social_contract#guidelines)
 -   [Organisation X11](https://www.x.org/wiki/)
 -   [Wayland](https://wayland.freedesktop.org/)
--   [GNU GNOME](https://www.gnu.org/press/gnome-1.0.html)
+-   [GNU-GNOME](https://www.gnu.org/press/gnome-1.0.html)
 -   [GNOME](https://www.gnome.org/)
 -   [XFCE](https://xfce.org/)
 -   [Plasma KDE](https://kde.org/plasma-desktop/)
@@ -1125,10 +1157,12 @@ Lien du projet :<https://github.com/marcossilvestrini/learning-lpic-3-305-300>
     -   [OpenSource.com](https://opensource.com/resources/virtualization)
 -   [KVM (machines virtuelles du noyau)](https://www.redhat.com/pt-br/topics/virtualization/what-is-KVM)
 -   [Outils de gestion KVM](https://www.linux-kvm.org/page/Management_Tools)
--   [Wiki XenProjet](https://wiki.xenproject.org/wiki/Book/HelloXenProject/1-Chapter)
+-   Xén
+    -   [XenServeur](https://www.xenserver.com/)
+    -   [Wiki XenProjet](https://wiki.xenproject.org/wiki/Book/HelloXenProject/1-Chapter)
 -   [Blog LPI : Virtualisation Xen et Cloud Computing #01 : Introduction](https://www.lpi.org/pt-br/blog/2020/10/01/xen-virtualization-and-cloud-computing-01-introduction/)
 -   Documents Openstack
-    -   [Chapeau Rouge](https://www.redhat.com/pt-br/topics/openstack)
+    -   [Chapeau rouge](https://www.redhat.com/pt-br/topics/openstack)
 -   [Objectifs LPIC-3 305-300](https://www.lpi.org/our-certifications/exam-305-objectives/)
 -   [Wiki LPIC-3 305-300](https://wiki.lpi.org/wiki/LPIC-305_Objectives_V3.0)
 -   [Matériel d'apprentissage LPIC-3 305-300](https://cursos.linuxsemfronteiras.com.br/courses/preparatorio-para-certificacao-lpic-3-305/)
