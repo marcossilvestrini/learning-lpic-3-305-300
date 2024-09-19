@@ -188,13 +188,13 @@ man COMMAND
 
 **Descripción:**Los candidatos deben conocer y comprender los conceptos generales, la teoría y la terminología de la virtualización. Esto incluye terminología de Xen, QEMU y libvirt.
 
-**Áreas clave de conocimiento:**
+**Áreas de conocimiento clave:**
 
 -   Comprender la terminología de virtualización
 -   Comprender los pros y los contras de la virtualización
 -   Comprender las diversas variaciones de hipervisores y monitores de máquinas virtuales
 -   Comprender los aspectos principales de la migración de máquinas físicas a virtuales
--   Comprender los aspectos principales de la migración de máquinas virtuales entre sistemas host
+-   Comprender los aspectos principales de la migración de máquinas virtuales entre sistemas host.
 -   Comprender las características y las implicaciones de la virtualización para una máquina virtual, como la creación de instantáneas, la pausa, la clonación y los límites de recursos.
 -   Conocimiento de oVirt, Proxmox, systemd-machined y VirtualBox
 -   Conocimiento de Open vSwitch
@@ -305,7 +305,7 @@ VMware ESXi, Microsoft Hyper-V, KVM (Máquina virtual basada en kernel).
 
 -   **Compatibilidad:**Puede ejecutar cualquier sistema operativo sin modificaciones.
 -   **Actuación:**Alto rendimiento gracias al soporte de hardware.
--   **Seguridad:**Funciones de aislamiento y seguridad mejoradas proporcionadas por hardware.
+-   **Seguridad:**Funciones mejoradas de aislamiento y seguridad proporcionadas por hardware.
 
 ###### Desventajas de HVM
 
@@ -343,7 +343,7 @@ Xen con invitados paravirtualizados, herramientas VMware en determinadas configu
 ###### Requisitos del sistema operativo invitado
 
 -   **HVM:**Puede ejecutar sistemas operativos invitados no modificados.
--   **Paravirtualización:**Requiere que se modifiquen los sistemas operativos invitados para que funcionen con el hipervisor.
+-   **Paravirtualización:**Requiere que los sistemas operativos invitados se modifiquen para que funcionen con el hipervisor.
 
 ###### Actuación
 
@@ -353,7 +353,7 @@ Xen con invitados paravirtualizados, herramientas VMware en determinadas configu
 ###### Dependencia de hardware
 
 -   **HVM:**Requiere características específicas de CPU (Intel VT-x, AMD-V).
--   **Paravirtualización:**No requiere funciones de CPU específicas, pero necesita un sistema operativo invitado modificado.
+-   **Paravirtualización:**No requiere funciones específicas de CPU, pero necesita un sistema operativo invitado modificado.
 
 ###### Aislamiento
 
@@ -373,7 +373,7 @@ En un sistema NUMA, la memoria se distribuye de manera desigual entre los proces
 ##### Características clave de la arquitectura NUMA
 
 1.  **Memoria local y remota**: Cada procesador tiene su propia memoria local, a la que puede acceder más rápidamente. Sin embargo, también puede acceder a la memoria de otros procesadores, aunque esto lleva más tiempo.
-2.  **Latencia diferenciada**: La latencia del acceso a la memoria varía dependiendo de si el procesador accede a su memoria local o a la memoria de otro nodo. El acceso a la memoria local es más rápido, mientras que el acceso a la memoria de otro nodo (remoto) es más lento.
+2.  **Latencia diferenciada**: La latencia de acceso a la memoria varía dependiendo de si el procesador accede a su memoria local o a la memoria de otro nodo. El acceso a la memoria local es más rápido, mientras que el acceso a la memoria de otro nodo (remoto) es más lento.
 3.  **Escalabilidad**: La arquitectura NUMA está diseñada para mejorar la escalabilidad en sistemas con muchos procesadores. A medida que se añaden más procesadores, la memoria también se distribuye, evitando el cuello de botella que se produciría en una arquitectura de acceso uniforme a memoria (UMA).
 
 ##### Ventajas de NUMA
@@ -520,7 +520,7 @@ Denodo, Red Hat JBoss Virtualización de datos, IBM InfoSphere.
 
 **Descripción:**Los candidatos deben poder instalar, configurar, mantener, migrar y solucionar problemas de instalaciones de Xen. La atención se centra en Xen versión 4.x.
 
-**Áreas clave de conocimiento:**
+**Áreas de conocimiento clave:**
 
 -   Comprender la arquitectura de Xen, incluidas las redes y el almacenamiento.
 -   Configuración básica de nodos y dominios Xen.
@@ -530,6 +530,38 @@ Denodo, Red Hat JBoss Virtualización de datos, IBM InfoSphere.
 -   Conocimiento de XenStore
 -   Conocimiento de los parámetros de arranque de Xen
 -   Conocimiento de la utilidad xm
+
+#### xén
+
+Xen es un hipervisor tipo 1 (bare-metal) de código abierto que permite ejecutar múltiples sistemas operativos simultáneamente en el mismo hardware físico.  
+Xen proporciona una capa entre el hardware físico y las máquinas virtuales (VM), lo que permite compartir y aislar recursos de manera eficiente.
+
+-   **Arquitectura:**Xen opera con un sistema de dos niveles donde el Dominio 0 (Dom0) es el dominio privilegiado con acceso directo al hardware y administra el hipervisor. Otras máquinas virtuales, llamadas Dominio U (DomU), ejecutan sistemas operativos invitados y son administradas por Dom0.
+-   **Tipos de virtualización:**Xen admite tanto la paravirtualización (PV), que requiere un sistema operativo invitado modificado, como la virtualización asistida por hardware (HVM), que utiliza extensiones de hardware (por ejemplo, Intel VT-x o AMD-V) para ejecutar sistemas operativos invitados no modificados.
+    Xen se utiliza ampliamente en entornos de nube, especialmente por Amazon Web Services (AWS) y otros proveedores de nube a gran escala.
+
+#### XenFuente
+
+XenSource fue la empresa fundada por los desarrolladores originales del hipervisor Xen en la Universidad de Cambridge para comercializar Xen.  
+La empresa proporcionó soluciones empresariales basadas en Xen y ofreció herramientas y soporte adicionales para mejorar las capacidades de Xen para uso empresarial.
+
+-   **Adquisición por Citrix**: En 2007, XenSource fue adquirida por Citrix Systems, Inc. Citrix utilizó la tecnología Xen como base para su producto Citrix XenServer, que se convirtió en una popular plataforma de virtualización de nivel empresarial basada en Xen.
+-   **Transición**: Después de la adquisición, el proyecto Xen continuó como un proyecto de código abierto, mientras que Citrix se centró en ofertas comerciales como XenServer, aprovechando la tecnología XenSource.
+
+#### Proyecto Xen
+
+Proyecto Xen se refiere a la comunidad e iniciativa de código abierto responsable de desarrollar y mantener el hipervisor Xen después de su comercialización.  
+El Proyecto Xen opera bajo la Fundación Linux, con un enfoque en construir, mejorar y respaldar a Xen como un esfuerzo colaborativo impulsado por la comunidad.
+
+-   **Objetivos:**El Proyecto Xen tiene como objetivo hacer avanzar el hipervisor mejorando su rendimiento, seguridad y conjunto de funciones para una amplia gama de casos de uso, incluida la computación en la nube, la virtualización centrada en la seguridad (por ejemplo, Qubes OS) y los sistemas integrados.
+-   **Colaboradores:**El proyecto incluye contribuyentes de varias organizaciones, incluidos los principales proveedores de nube, proveedores de hardware y desarrolladores independientes.
+-   **XAPI y XenTools:**El Proyecto Xen también incluye herramientas como XAPI (XenAPI), que se utiliza para administrar las instalaciones del hipervisor Xen, y varias otras utilidades para la administración y optimización del sistema.
+
+#### Resumen de Xen
+
+-   **Xen:**La tecnología central de hipervisor que permite que las máquinas virtuales se ejecuten en hardware físico.
+-   **Fuente Xen:**La empresa que comercializaba Xen, posteriormente adquirida por Citrix, dio lugar al desarrollo de Citrix XenServer.
+-   **Proyecto Xen:**La iniciativa y comunidad de código abierto que continúa desarrollando y manteniendo el hipervisor Xen bajo la Fundación Linux.
 
 #### 351.2 Objetos citados
 
@@ -565,7 +597,7 @@ foo
 
 **Descripción:**Los candidatos deben poder instalar, configurar, mantener, migrar y solucionar problemas de instalaciones de QEMU.
 
-**Áreas clave de conocimiento:**
+**Áreas de conocimiento clave:**
 
 -   Comprender la arquitectura de QEMU, incluidos KVM, redes y almacenamiento.
 -   Inicie instancias de QEMU desde la línea de comando
@@ -610,7 +642,7 @@ ip link show
 
 **Descripción:**Los candidatos deben poder administrar hosts de virtualización y máquinas virtuales ("dominios libvirt") utilizando libvirt y herramientas relacionadas.
 
-**Áreas clave de conocimiento:**
+**Áreas de conocimiento clave:**
 
 -   Comprender la arquitectura de libvirt
 -   Administrar conexiones y nodos libvirt
@@ -654,7 +686,7 @@ foo
 
 **Descripción:**Los candidatos deberían poder administrar imágenes de disco de máquinas virtuales. Esto incluye convertir imágenes de disco entre varios formatos e hipervisores y acceder a los datos almacenados dentro de una imagen.
 
-**Áreas clave de conocimiento:**
+**Áreas de conocimiento clave:**
 
 -   Comprender las características de varios formatos de imágenes de discos virtuales, como imágenes sin formato, qcow2 y VMDK.
 -   Administre imágenes de disco de máquinas virtuales usando qemu-img
@@ -714,7 +746,7 @@ foo
 
 **Descripción:**Los candidatos deben comprender el concepto de virtualización de contenedores. Esto incluye comprender los componentes de Linux utilizados para implementar la virtualización de contenedores, así como el uso de herramientas estándar de Linux para solucionar problemas de estos componentes.
 
-**Áreas clave de conocimiento:**
+**Áreas de conocimiento clave:**
 
 -   Comprender los conceptos de sistema y contenedor de aplicaciones.
 -   Comprender y analizar los espacios de nombres del kernel
@@ -763,7 +795,7 @@ foo
 
 **Descripción:**Los candidatos deberían poder utilizar contenedores del sistema utilizando LXC y LXD. La versión de LXC cubierta es 3.0 o superior.
 
-**Áreas clave de conocimiento:**
+**Áreas de conocimiento clave:**
 
 -   Comprender la arquitectura de LXC y LXD
 -   Administre contenedores LXC basados ​​en imágenes existentes usando LXD, incluidas redes y almacenamiento.
@@ -802,14 +834,14 @@ foo
 
 **Descripción:**El candidato debe poder gestionar nodos Docker y contenedores Docker. Esto incluye comprender la arquitectura de Docker y cómo interactúa Docker con el sistema Linux del nodo.
 
-**Áreas clave de conocimiento:**
+**Áreas de conocimiento clave:**
 
 -   Comprender la arquitectura y los componentes de Docker.
 -   Administre contenedores Docker utilizando imágenes de un registro de Docker
 -   Comprender y administrar imágenes y volúmenes para contenedores Docker
 -   Comprender y gestionar el registro de contenedores Docker
 -   Comprender y administrar redes para Docker
--   Use Dockerfiles to create container images
+-   Utilice Dockerfiles para crear imágenes de contenedores
 -   Ejecute un registro de Docker utilizando la imagen de Docker del registro
 
 #### 352.3 Objetos citados
@@ -844,7 +876,7 @@ Dockerfile
 
 **Descripción:**Los candidatos deben comprender la importancia de la orquestación de contenedores y los conceptos clave que Docker Swarm y Kubernetes proporcionan para implementar la orquestación de contenedores.
 
-**Áreas clave de conocimiento:**
+**Áreas de conocimiento clave:**
 
 -   Comprender la relevancia de la orquestación de contenedores
 -   Comprender los conceptos clave de Docker Compose y Docker Swarm
@@ -871,7 +903,7 @@ Dockerfile
 
 **Descripción:**Los candidatos deben comprender las ofertas comunes en las nubes públicas y tener conocimientos básicos de las funciones de las herramientas de administración de la nube comúnmente disponibles.
 
-**Áreas clave de conocimiento:**
+**Áreas de conocimiento clave:**
 
 -   Comprender las ofertas comunes en las nubes públicas
 -   Conocimientos básicos de las funciones de OpenStack.
@@ -908,7 +940,7 @@ Terraform
 
 **Descripción:**Los candidatos deberían poder utilizar Packer para crear imágenes del sistema. Esto incluye ejecutar Packer en varios entornos de nube públicos y privados, así como crear imágenes de contenedores para LXC/LXD.
 
-**Áreas clave de conocimiento:**
+**Áreas de conocimiento clave:**
 
 -   Comprender la funcionalidad y características de Packer
 -   Crear y mantener archivos de plantilla
@@ -944,7 +976,7 @@ packer
 Además, los candidatos deberían poder configurar instancias para permitir inicios de sesión SSH seguros e instalar un conjunto específico de paquetes de software.  
 Además, los candidatos deberían poder crear nuevas imágenes del sistema con soporte de inicio en la nube.
 
-**Áreas clave de conocimiento:**
+**Áreas de conocimiento clave:**
 
 -   Comprender las características y conceptos de cloud-init, incluidos los datos del usuario, la inicialización y la configuración de cloud-init.
 -   Utilice cloud-init para crear, cambiar el tamaño y montar sistemas de archivos, configurar cuentas de usuario, incluidas credenciales de inicio de sesión como claves SSH e instalar paquetes de software desde el repositorio de la distribución.
@@ -981,7 +1013,7 @@ user-data
 
 **Descripción:**El candidato debe poder utilizar Vagrant para administrar máquinas virtuales, incluido el aprovisionamiento de la máquina virtual.
 
-**Áreas clave de conocimiento:**
+**Áreas de conocimiento clave:**
 
 -   Comprender la arquitectura y los conceptos de Vagrant, incluidos el almacenamiento y las redes.
 -   Recuperar y utilizar cajas de Atlas
@@ -1125,7 +1157,9 @@ Enlace del proyecto:<https://github.com/marcossilvestrini/learning-lpic-3-305-30
     -   [OpenSource.com](https://opensource.com/resources/virtualization)
 -   [KVM (máquinas virtuales del núcleo)](https://www.redhat.com/pt-br/topics/virtualization/what-is-KVM)
 -   [Herramientas de gestión KVM](https://www.linux-kvm.org/page/Management_Tools)
--   [Proyecto Wiki Xen](https://wiki.xenproject.org/wiki/Book/HelloXenProject/1-Chapter)
+-   xén
+    -   [XenServer](https://www.xenserver.com/)
+    -   [Proyecto Wiki Xen](https://wiki.xenproject.org/wiki/Book/HelloXenProject/1-Chapter)
 -   [Blog de LPI: Virtualización Xen y Computación en la Nube #01: Introducción](https://www.lpi.org/pt-br/blog/2020/10/01/xen-virtualization-and-cloud-computing-01-introduction/)
 -   Documentos de Openstack
     -   [sombrero rojo](https://www.redhat.com/pt-br/topics/openstack)
