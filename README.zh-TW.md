@@ -149,7 +149,7 @@ git clone https://github.com/marcossilvestrini/learning-lpic-3-305-300.git
 ## 四項基本自由
 
 > 0.為任何目的隨意運行程序的自由（自由 0）。
-> 1.自由地研究程式如何運作並對其進行更改\\
+> 1.自由地研究程序如何運作並對其進行更改\\
 > 你可以隨心所欲地進行計算（自由 1）。
 > 獲得原始程式碼是實現此目的的先決條件。
 > 2.重新分發副本的自由，以便您可以幫助他人（自由2）。
@@ -278,7 +278,8 @@ P2V遷移是指將實體伺服器遷移到虛擬機器的過程。
 
 ##### V2V（虛擬到虛擬）- 虛擬到虛擬的遷移
 
-V2V 遷移是指將虛擬機器從一個虛擬機器管理程式遷移到另一個虛擬機器管理程式的過程。在這種情況下，您已經有一個在虛擬化環境（例如 VMware）中運行的虛擬機，並且您希望將其移至另一個虛擬化環境（例如，Hyper-V 或新的 VMware 伺服器）。
+V2V 遷移是指將虛擬機器從一個虛擬機器管理程式遷移到另一個虛擬機器管理程式的過程。  
+在這種情況下，您已經有一個在虛擬化環境（例如 VMware）中運行的虛擬機，並且您希望將其移至另一個虛擬化環境（例如，Hyper-V 或新的 VMware 伺服器）。
 
 -   範例：您有一個在 VMware 虛擬化伺服器上執行的虛擬機，但您決定將其移轉到 Hyper-V 平台。在這種情況下，V2V 遷移將虛擬機器從一種格式或管理程序轉換為另一種格式或管理程序，確保其可以繼續正確運作。
 
@@ -293,7 +294,7 @@ HVM 利用現代 CPU 提供的硬體擴充來虛擬化硬件，從而能夠以�
 ###### HVM 主要特性
 
 -   **硬體支援**：需要 CPU 支援虛擬化擴展，例如 Intel VT-x 或 AMD-V。
--   **完全虛擬化：**虛擬機器可以運行未經修改的來賓作業系統，因為虛擬機器管理程式提供了硬體環境的完整模擬。
+-   **全虛擬化：**虛擬機器可以運行未經修改的來賓作業系統，因為虛擬機器管理程式提供了硬體環境的完整模擬。
 -   **表現：**由於在 CPU 上直接執行來賓程式碼，因此通常可提供接近本機的效能。
 -   **隔離:**在虛擬機器之間提供強大的隔離，因為每個虛擬機器都像擁有自己的專用硬體一樣運作。
 
@@ -368,7 +369,7 @@ VMware ESXi、Microsoft Hyper-V、KVM（基於核心的虛擬機器）。
 #### NUMA（非統一記憶體訪問
 
 NUMA（非統一記憶體存取）是多處理器系統中使用的記憶體架構，用於最佳化處理器的記憶體存取。  
-在NUMA 系統中，內部存在處理器之間分佈不均勻，這意味著每個處理器對部分內存（其“本地內存”）的訪問速度比對物理上較遠的內存（稱為“遠端內存” ）和關聯記憶體的存取速度要快。
+在NUMA 系統中，內部存在處理器之間分佈不均勻，這意味著每個處理器對部分記憶體（其“本地記憶體”）的存取速度比對物理上較遠的記憶體（稱為“遠端記憶體” ）和關聯記憶體的存取速度要快。
 
 ##### NUMA 架構的主要特性
 
@@ -516,6 +517,8 @@ Denodo、紅帽 JBoss 資料虛擬化、IBM InfoSphere。
 
 ### 351.2 Xen
 
+![xen-architecture](images/xen-achitecture.png)
+
 **重量：**3
 
 **描述：**考生應該能夠安裝、配置、維護、遷移 Xen 安裝並排除故障。重點是 Xen 版本 4.x。
@@ -561,7 +564,7 @@ Xen 計畫在 Linux 基金會下運作，重點是建立、改進和支持 Xen�
 
 -   **克森：**核心管理程式技術使虛擬機器能夠在實體硬體上運行。
 -   **Xen來源：**該公司將 Xen 商業化，後來被 Citrix 收購，導致了 Citrix XenServer 的開發。
--   **Xen專案：**在 Linux 基金會下繼續開發和維護 Xen 虛擬機器管理程式的開源計畫和社群。
+-   **Xen專案：**在 Linux 基金會下繼續開發和維護 Xen 虛擬機器管理程式的開源倡議和社群。
 
 #### 351.2 引用的對象
 
@@ -1089,7 +1092,7 @@ Vagrantfile
 -   [GNU Emacs](https://en.wikipedia.org/wiki/Emacs)
 -   [GNU 軟體包](https://www.gnu.org/software/)
 -   [GNU/Linux 集合](https://directory.fsf.org/wiki/Collection:GNU/Linux)
--   [GNU Grub 引導程式](https://www.gnu.org/software/grub/)
+-   [GNU Grub Bootloader](https://www.gnu.org/software/grub/)
 -   [GNU赫德](https://www.gnu.org/software/hurd/hurd/what_is_the_gnu_hurd.html)
 -   [核心](https://www.kernel.org/)
 -   [Linux 核心手冊頁](https://www.kernel.org/doc/man-pages/)
@@ -1119,13 +1122,13 @@ Vagrantfile
 -   [諜影重重 外殼](https://www.gnu.org/software/bash/manual/)
 -   [舍邦](https://bash.cyberciti.biz/guide/Shebang)
 -   [環境變數](https://linuxize.com/post/how-to-set-and-list-environment-variables-in-linux/)
--   [GNU 通配符](https://man7.org/linux/man-pages/man7/glob.7.html)
+-   [GNU Globbing](https://man7.org/linux/man-pages/man7/glob.7.html)
 -   [通配符](https://linuxhint.com/bash_globbing_tutorial/)
 -   [引用](https://www.gnu.org/software/bash/manual/html_node/Quoting.html)
 -   [正規表示式](https://www.gnu.org/software/grep/manual/html_node/Regular-Expressions.html)
 -   [列出 Linux 發行版](https://en.wikipedia.org/wiki/List_of_Linux_distributions)
 -   [發行表](https://distrowatch.com/)
--   [比較 Linux 發行版](https://en.wikipedia.org/wiki/Comparison_of_Linux_distributions)
+-   [Linux 發行版比較](https://en.wikipedia.org/wiki/Comparison_of_Linux_distributions)
 -   [下載包](https://pkgs.org/)
 -   [安裝包](https://installati.one/)
 -   [指導安裝包](https://installati.one/)
@@ -1151,7 +1154,7 @@ Vagrantfile
 -   [SSL 教程](https://www.golinuxcloud.com/blog/)
 -   [SSL 設定 Mozilla](https://ssl-config.mozilla.org/)
 -   虛擬化定義
-    -   [Red Hat](https://www.redhat.com/pt-br/topics/virtualization/what-is-virtualization)
+    -   [紅帽](https://www.redhat.com/pt-br/topics/virtualization/what-is-virtualization)
     -   [AWS](https://aws.amazon.com/pt/what-is/virtualization/)
     -   [國際商業機器公司](https://www.ibm.com/topics/virtualization)
     -   [OpenSource.com](https://opensource.com/resources/virtualization)
@@ -1159,14 +1162,14 @@ Vagrantfile
 -   [KVM管理工具](https://www.linux-kvm.org/page/Management_Tools)
 -   Xen
     -   [Xen伺服器](https://www.xenserver.com/)
-    -   [維基 Xen 項目](https://wiki.xenproject.org/wiki/Book/HelloXenProject/1-Chapter)
+    -   [維基 Xen 項目](https://wiki.xenproject.org/wiki/Main_Page)
 -   [LPI 部落格：Xen 虛擬化與雲端運算 #01：簡介](https://www.lpi.org/pt-br/blog/2020/10/01/xen-virtualization-and-cloud-computing-01-introduction/)
 -   Openstack 文件
     -   [紅帽](https://www.redhat.com/pt-br/topics/openstack)
 -   [LPIC-3 305-300 目標](https://www.lpi.org/our-certifications/exam-305-objectives/)
 -   [LPIC-3 305-300 維基](https://wiki.lpi.org/wiki/LPIC-305_Objectives_V3.0)
 -   [LPIC-3 305-300 學習教材](https://cursos.linuxsemfronteiras.com.br/courses/preparatorio-para-certificacao-lpic-3-305/)
--   [ITexams 的 LPIC-3 305-300 模擬考試](https://www.itexams.com/info/305-300)
+-   [LPIC-3 305-300 ITexams 模擬考試](https://www.itexams.com/info/305-300)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
