@@ -393,7 +393,7 @@ Migration (P2V, V2V)
       <li>Example: You have a physical server running a Windows or Linux system, and you want to move it to a virtual environment, like a cloud infrastructure or an internal virtualization server.<br>The process involves copying the entire system state, including the operating system, drivers, and data, to create an equivalent virtual machine that can run as if it were on the physical hardware.</li>
     </ul>
     <h5 id="v2v-virtual-to-virtual---virtual-to-virtual-migration"><a class="anchor" aria-hidden="true" tabindex="-1" href="#v2v-virtual-to-virtual---virtual-to-virtual-migration"><span class="octicon octicon-link"></span></a>V2V (Virtual to Virtual) - Virtual to Virtual Migration</h5>
-    <p>V2V migration refers to the process of migrating a virtual machine from one hypervisor to another. In this case, you already have a virtual machine running in a virtualized environment (like VMware), and you want to move it to another virtualized environment (for example, to Hyper-V or to a new VMware server).</p>
+    <p>V2V migration refers to the process of migrating a virtual machine from one hypervisor to another.<br>In this case, you already have a virtual machine running in a virtualized environment (like VMware), and you want to move it to another virtualized environment (for example, to Hyper-V or to a new VMware server).</p>
     <ul>
       <li>Example: You have a virtual machine running on a VMware virtualization server, but you decide to migrate it to a Hyper-V platform. In this case, the V2V migration converts the virtual machine from one format or hypervisor to another, ensuring it can continue running correctly.</li>
     </ul>
@@ -569,6 +569,9 @@ Migration (P2V, V2V)
     <hr>
     <p><a name="topic-351.2"></a></p>
     <h3 id="3512-xen"><a class="anchor" aria-hidden="true" tabindex="-1" href="#3512-xen"><span class="octicon octicon-link"></span></a>351.2 Xen</h3>
+    <p>
+      <img src="images/xen-achitecture.png" alt="xen-architecture">
+    </p>
     <p><strong>Weight:</strong> 3</p>
     <p><strong>Description:</strong> Candidates should be able to install, configure, maintain, migrate and troubleshoot Xen installations. The focus is on Xen version 4.x.</p>
     <p><strong>Key Knowledge Areas:</strong></p>
@@ -1123,7 +1126,7 @@ Vagrantfile
       <li>Xen
         <ul>
           <li><a href="https://www.xenserver.com/">XenServer</a></li>
-          <li><a href="https://wiki.xenproject.org/wiki/Book/HelloXenProject/1-Chapter">Wiki XenProject</a></li>
+          <li><a href="https://wiki.xenproject.org/wiki/Main_Page">Wiki XenProject</a></li>
         </ul>
       </li>
       <li><a href="https://www.lpi.org/pt-br/blog/2020/10/01/xen-virtualization-and-cloud-computing-01-introduction/">LPI Blog: Xen Virtualization and Cloud Computing #01: Introduction</a></li>
