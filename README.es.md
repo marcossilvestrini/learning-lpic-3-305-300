@@ -249,7 +249,7 @@ Se ejecuta sobre un sistema operativo convencional y depende del sistema operati
 -   VMware Workstation: un potente hipervisor para ejecutar múltiples sistemas operativos en un solo escritorio.
 -   Oracle VirtualBox: un hipervisor de código abierto conocido por su flexibilidad y facilidad de uso.
 -   Parallels Desktop: Diseñado para que los usuarios de Mac ejecuten Windows y otros sistemas operativos junto con macOS.
--   QEMU (Quick EMULator): un emulador y virtualizador de código abierto, que a menudo se utiliza junto con KVM.
+-   QEMU (Quick EMULator): un emulador y virtualizador de código abierto, que a menudo se usa junto con KVM.
 
 ##### Diferencias clave entre los hipervisores tipo 1 y tipo 2
 
@@ -278,7 +278,8 @@ En otras palabras, un sistema operativo y sus aplicaciones, que se ejecutan en h
 
 ##### V2V (virtual a virtual): migración de virtual a virtual
 
-La migración V2V se refiere al proceso de migrar una máquina virtual de un hipervisor a otro. En este caso, ya tiene una máquina virtual ejecutándose en un entorno virtualizado (como VMware) y desea moverla a otro entorno virtualizado (por ejemplo, a Hyper-V o a un nuevo servidor VMware).
+La migración V2V se refiere al proceso de migrar una máquina virtual de un hipervisor a otro.  
+En este caso, ya tiene una máquina virtual ejecutándose en un entorno virtualizado (como VMware) y desea moverla a otro entorno virtualizado (por ejemplo, a Hyper-V o a un nuevo servidor VMware).
 
 -   Ejemplo: tiene una máquina virtual ejecutándose en un servidor de virtualización VMware, pero decide migrarla a una plataforma Hyper-V. En este caso, la migración V2V convierte la máquina virtual de un formato o hipervisor a otro, asegurando que pueda seguir funcionando correctamente.
 
@@ -353,7 +354,7 @@ Xen con invitados paravirtualizados, herramientas VMware en determinadas configu
 ###### Dependencia de hardware
 
 -   **HVM:**Requiere características específicas de CPU (Intel VT-x, AMD-V).
--   **Paravirtualización:**No requiere funciones específicas de CPU, pero necesita un sistema operativo invitado modificado.
+-   **Paravirtualización:**No requiere características específicas de la CPU, pero necesita un sistema operativo invitado modificado.
 
 ###### Aislamiento
 
@@ -373,7 +374,7 @@ En un sistema NUMA, la memoria se distribuye de manera desigual entre los proces
 ##### Características clave de la arquitectura NUMA
 
 1.  **Memoria local y remota**: Cada procesador tiene su propia memoria local, a la que puede acceder más rápidamente. Sin embargo, también puede acceder a la memoria de otros procesadores, aunque esto lleva más tiempo.
-2.  **Latencia diferenciada**: La latencia de acceso a la memoria varía dependiendo de si el procesador accede a su memoria local o a la memoria de otro nodo. El acceso a la memoria local es más rápido, mientras que el acceso a la memoria de otro nodo (remoto) es más lento.
+2.  **Latencia diferenciada**: La latencia del acceso a la memoria varía dependiendo de si el procesador accede a su memoria local o a la memoria de otro nodo. El acceso a la memoria local es más rápido, mientras que el acceso a la memoria de otro nodo (remoto) es más lento.
 3.  **Escalabilidad**: La arquitectura NUMA está diseñada para mejorar la escalabilidad en sistemas con muchos procesadores. A medida que se añaden más procesadores, la memoria también se distribuye, evitando el cuello de botella que se produciría en una arquitectura de acceso uniforme a memoria (UMA).
 
 ##### Ventajas de NUMA
@@ -516,6 +517,8 @@ Denodo, Red Hat JBoss Virtualización de datos, IBM InfoSphere.
 
 ### 351.2 Xen
 
+![xen-architecture](images/xen-achitecture.png)
+
 **Peso:**3
 
 **Descripción:**Los candidatos deben poder instalar, configurar, mantener, migrar y solucionar problemas de instalaciones de Xen. La atención se centra en Xen versión 4.x.
@@ -559,7 +562,7 @@ El Proyecto Xen opera bajo la Fundación Linux, con un enfoque en construir, mej
 
 #### Resumen de Xen
 
--   **Xen:**La tecnología central de hipervisor que permite que las máquinas virtuales se ejecuten en hardware físico.
+-   **Xén:**La tecnología central de hipervisor que permite que las máquinas virtuales se ejecuten en hardware físico.
 -   **Fuente Xen:**La empresa que comercializaba Xen, posteriormente adquirida por Citrix, dio lugar al desarrollo de Citrix XenServer.
 -   **Proyecto Xen:**La iniciativa y comunidad de código abierto que continúa desarrollando y manteniendo el hipervisor Xen bajo la Fundación Linux.
 
@@ -1159,7 +1162,7 @@ Enlace del proyecto:<https://github.com/marcossilvestrini/learning-lpic-3-305-30
 -   [Herramientas de gestión KVM](https://www.linux-kvm.org/page/Management_Tools)
 -   xén
     -   [XenServer](https://www.xenserver.com/)
-    -   [Proyecto Wiki Xen](https://wiki.xenproject.org/wiki/Book/HelloXenProject/1-Chapter)
+    -   [Proyecto Wiki Xen](https://wiki.xenproject.org/wiki/Main_Page)
 -   [Blog de LPI: Virtualización Xen y Computación en la Nube #01: Introducción](https://www.lpi.org/pt-br/blog/2020/10/01/xen-virtualization-and-cloud-computing-01-introduction/)
 -   Documentos de Openstack
     -   [sombrero rojo](https://www.redhat.com/pt-br/topics/openstack)
