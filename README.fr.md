@@ -196,7 +196,7 @@ man COMMAND
 -   Comprendre les principaux aspects de la migration des machines physiques vers les machines virtuelles
 -   Comprendre les principaux aspects de la migration des machines virtuelles entre les systèmes hôtes
 -   Comprendre les fonctionnalités et les implications de la virtualisation pour une machine virtuelle, telles que la prise d'instantanés, la pause, le clonage et les limites de ressources
--   Connaissance d'oVirt, Proxmox, systemd-machined et VirtualBox
+-   Connaissance de oVirt, Proxmox, systemd-machined et VirtualBox
 -   Connaissance d'Open vSwitch
 
 #### 351.1 Objets cités
@@ -255,7 +255,7 @@ Fonctionne sur un système d'exploitation conventionnel, s'appuyant sur le syst�
 
 -   Environnement de déploiement :
     -   Les hyperviseurs de type 1 sont couramment déployés dans les centres de données et les environnements d'entreprise en raison de leur interaction directe avec le matériel et de leurs hautes performances.
-    -   Les hyperviseurs de type 2 sont plus adaptés aux tâches d'utilisation personnelle, de développement, de test et de virtualisation à petite échelle.
+    -   Les hyperviseurs de type 2 sont plus adaptés à un usage personnel, au développement, aux tests et aux tâches de virtualisation à petite échelle.
 -   Performance:
     -   Les hyperviseurs de type 1 offrent généralement de meilleures performances et une latence plus faible car ils ne s'appuient pas sur un système d'exploitation hôte.
     -   Les hyperviseurs de type 2 peuvent subir une certaine dégradation des performances en raison de la surcharge liée à l'exécution sur un système d'exploitation hôte.
@@ -266,7 +266,7 @@ Fonctionne sur un système d'exploitation conventionnel, s'appuyant sur le syst�
 ##### Types de migration
 
 Dans le contexte des hyperviseurs, qui sont des technologies utilisées pour créer et gérer des machines virtuelles, les termes migration P2V et migration V2V sont courants dans les environnements de virtualisation.  
-Ils font référence à des processus de migration de systèmes entre différents types de plates-formes.
+Ils font référence à des processus de migration de systèmes entre différents types de plateformes.
 
 ##### P2V (physique vers virtuel) - Migration physique vers virtuel
 
@@ -278,7 +278,8 @@ En d'autres termes, un système d'exploitation et ses applications, fonctionnant
 
 ##### V2V (Virtuel vers Virtuel) - Migration Virtuel vers Virtuel
 
-La migration V2V fait référence au processus de migration d'une machine virtuelle d'un hyperviseur à un autre. Dans ce cas, vous disposez déjà d'une machine virtuelle exécutée dans un environnement virtualisé (comme VMware) et vous souhaitez la déplacer vers un autre environnement virtualisé (par exemple, vers Hyper-V ou vers un nouveau serveur VMware).
+La migration V2V fait référence au processus de migration d'une machine virtuelle d'un hyperviseur à un autre.  
+Dans ce cas, vous disposez déjà d'une machine virtuelle exécutée dans un environnement virtualisé (comme VMware) et vous souhaitez la déplacer vers un autre environnement virtualisé (par exemple, vers Hyper-V ou vers un nouveau serveur VMware).
 
 -   Exemple : Vous disposez d'une machine virtuelle exécutée sur un serveur de virtualisation VMware, mais vous décidez de la migrer vers une plateforme Hyper-V. Dans ce cas, la migration V2V convertit la machine virtuelle d'un format ou d'un hyperviseur à un autre, garantissant ainsi son bon fonctionnement.
 
@@ -435,7 +436,7 @@ Combine les ressources réseau matérielles et logicielles en une seule entité 
 
 ###### Cas d'utilisation de la virtualisation de réseau
 
-Réseau défini par logiciel (SDN), virtualisation des fonctions réseau (NFV).
+Mise en réseau définie par logiciel (SDN), virtualisation des fonctions réseau (NFV).
 
 ###### Exemples de virtualisation de réseau
 
@@ -516,6 +517,8 @@ Denodo, virtualisation des données Red Hat JBoss, IBM InfoSphere.
 
 ### 351.2 Xén
 
+![xen-architecture](images/xen-achitecture.png)
+
 **Poids:**3
 
 **Description:**Les candidats doivent être capables d'installer, de configurer, de maintenir, de migrer et de dépanner les installations Xen. L'accent est mis sur Xen version 4.x.
@@ -526,12 +529,12 @@ Denodo, virtualisation des données Red Hat JBoss, IBM InfoSphere.
 -   Configuration de base des nœuds et domaines Xen
 -   Gestion de base des nœuds et domaines Xen
 -   Dépannage de base des installations Xen
--   Avaricité des pilules
+-   Avarité des pilules
 -   Connaissance de XenStore
 -   Connaissance des paramètres de démarrage Xen
 -   Connaissance de l'utilitaire xm
 
-#### Xén
+#### Xen
 
 Xen est un hyperviseur open source de type 1 (bare metal), qui permet à plusieurs systèmes d'exploitation de s'exécuter simultanément sur le même matériel physique.  
 Xen fournit une couche entre le matériel physique et les machines virtuelles (VM), permettant un partage et une isolation efficaces des ressources.
@@ -559,7 +562,7 @@ Le projet Xen fonctionne sous la Fondation Linux et se concentre sur la créatio
 
 #### Résumé Xen
 
--   **Xen :**La technologie d'hyperviseur de base permettant aux machines virtuelles de s'exécuter sur du matériel physique.
+-   **Xén :**La technologie d'hyperviseur de base permettant aux machines virtuelles de s'exécuter sur du matériel physique.
 -   **XenSource :**La société qui a commercialisé Xen, acquise plus tard par Citrix, conduisant au développement de Citrix XenServer.
 -   **Projet Xen :**L'initiative et la communauté open source qui continuent de développer et de maintenir l'hyperviseur Xen sous la Fondation Linux.
 
@@ -837,7 +840,7 @@ foo
 **Domaines de connaissances clés :**
 
 -   Comprendre l'architecture et les composants de Docker
--   Gérer les conteneurs Docker à l'aide d'images d'un registre Docker
+-   Gérer les conteneurs Docker à l'aide d'images provenant d'un registre Docker
 -   Comprendre et gérer les images et les volumes pour les conteneurs Docker
 -   Comprendre et gérer la journalisation pour les conteneurs Docker
 -   Comprendre et gérer la mise en réseau pour Docker
@@ -1128,7 +1131,7 @@ Lien du projet :<https://github.com/marcossilvestrini/learning-lpic-3-305-300>
 -   [Comparaison des distributions Linux](https://en.wikipedia.org/wiki/Comparison_of_Linux_distributions)
 -   [Télécharger les forfaits](https://pkgs.org/)
 -   [Installer des packages](https://installati.one/)
--   [Guider les packages d'installation](https://installati.one/)
+-   [Guider l'installation des packages](https://installati.one/)
 -   [Bugzilla](https://bugzilla.kernel.org/)
 -   [Commande introuvable](https://command-not-found.com/)
 -   [Test de distribution](https://distrotest.net/index.php)
@@ -1157,9 +1160,9 @@ Lien du projet :<https://github.com/marcossilvestrini/learning-lpic-3-305-300>
     -   [OpenSource.com](https://opensource.com/resources/virtualization)
 -   [KVM (machines virtuelles du noyau)](https://www.redhat.com/pt-br/topics/virtualization/what-is-KVM)
 -   [Outils de gestion KVM](https://www.linux-kvm.org/page/Management_Tools)
--   Xén
+-   Xen
     -   [XenServeur](https://www.xenserver.com/)
-    -   [Wiki XenProjet](https://wiki.xenproject.org/wiki/Book/HelloXenProject/1-Chapter)
+    -   [Wiki XenProjet](https://wiki.xenproject.org/wiki/Main_Page)
 -   [Blog LPI : Virtualisation Xen et Cloud Computing #01 : Introduction](https://www.lpi.org/pt-br/blog/2020/10/01/xen-virtualization-and-cloud-computing-01-introduction/)
 -   Documents Openstack
     -   [Chapeau rouge](https://www.redhat.com/pt-br/topics/openstack)
