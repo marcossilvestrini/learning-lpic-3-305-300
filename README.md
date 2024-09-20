@@ -289,7 +289,8 @@ The process involves copying the entire system state, including the operating sy
 
 ##### V2V (Virtual to Virtual) - Virtual to Virtual Migration
 
-V2V migration refers to the process of migrating a virtual machine from one hypervisor to another. In this case, you already have a virtual machine running in a virtualized environment (like VMware), and you want to move it to another virtualized environment (for example, to Hyper-V or to a new VMware server).
+V2V migration refers to the process of migrating a virtual machine from one hypervisor to another.  
+In this case, you already have a virtual machine running in a virtualized environment (like VMware), and you want to move it to another virtualized environment (for example, to Hyper-V or to a new VMware server).
 
 * Example: You have a virtual machine running on a VMware virtualization server, but you decide to migrate it to a Hyper-V platform. In this case, the V2V migration converts the virtual machine from one format or hypervisor to another, ensuring it can continue running correctly.
 
@@ -526,6 +527,8 @@ Denodo, Red Hat JBoss Data Virtualization, IBM InfoSphere.
 <a name="topic-351.2"></a>
 
 ### 351.2 Xen
+
+![xen-architecture](images/xen-achitecture.png)
 
 **Weight:** 3
 
@@ -1171,8 +1174,8 @@ Project Link: [https://github.com/marcossilvestrini/learning-lpic-3-305-300](htt
 * [KVM(Kernel Virtual Machines)](https://www.redhat.com/pt-br/topics/virtualization/what-is-KVM)
 * [KVM Management Tools](https://www.linux-kvm.org/page/Management_Tools)
 * Xen
-  * [XenServer](https://www.xenserver.com/) 
-  * [Wiki XenProject](https://wiki.xenproject.org/wiki/Book/HelloXenProject/1-Chapter)
+  * [XenServer](https://www.xenserver.com/)
+  * [Wiki XenProject](https://wiki.xenproject.org/wiki/Main_Page)
 * [LPI Blog: Xen Virtualization and Cloud Computing #01: Introduction](https://www.lpi.org/pt-br/blog/2020/10/01/xen-virtualization-and-cloud-computing-01-introduction/)
 * Openstack Docs
   * [RedHat](https://www.redhat.com/pt-br/topics/openstack)
