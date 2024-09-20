@@ -88,7 +88,7 @@
 > e software livre\\
 > Algumas distribuições GNULinux como Debian e RPM serão abordadas\\
 > A instalação e configuração de alguns pacotes também serão abordadas\\
-> Ao fazer isso, você pode dar a toda a comunidade a chance de se beneficiar de suas alterações.\\
+> Ao fazer isso, você pode dar a toda a comunidade a oportunidade de se beneficiar de suas alterações.\\
 > O acesso ao código-fonte é uma pré-condição para isso.\\
 > Use o vagrant para atualizar máquinas, executar laboratórios e praticar o conteúdo deste artigo.\\
 > Publiquei na pasta Vagrant um Vagrantfile com o que é necessário\\
@@ -192,7 +192,7 @@ man COMMAND
 
 -   Entenda a terminologia de virtualização
 -   Entenda os prós e os contras da virtualização
--   Compreender as diversas variações de hipervisores e monitores de máquinas virtuais
+-   Compreenda as diversas variações de hipervisores e monitores de máquinas virtuais
 -   Entenda os principais aspectos da migração de máquinas físicas para virtuais
 -   Compreender os principais aspectos da migração de máquinas virtuais entre sistemas host
 -   Compreenda os recursos e as implicações da virtualização para uma máquina virtual, como captura instantânea, pausa, clonagem e limites de recursos
@@ -234,7 +234,7 @@ Migration (P2V, V2V)
 
 ##### Hipervisor tipo 2 (hipervisor hospedado)
 
-###### Definição de tipo 2
+###### Definição Tipo 2
 
 É executado sobre um sistema operacional convencional, contando com o sistema operacional host para gerenciamento de recursos e suporte a dispositivos.
 
@@ -278,7 +278,8 @@ Em outras palavras, um sistema operacional e seus aplicativos, executados em har
 
 ##### V2V (Virtual para Virtual) - Migração de Virtual para Virtual
 
-A migração V2V refere-se ao processo de migração de uma máquina virtual de um hipervisor para outro. Neste caso, você já possui uma máquina virtual em execução em um ambiente virtualizado (como VMware) e deseja movê-la para outro ambiente virtualizado (por exemplo, para Hyper-V ou para um novo servidor VMware).
+A migração V2V refere-se ao processo de migração de uma máquina virtual de um hipervisor para outro.  
+Neste caso, você já possui uma máquina virtual rodando em um ambiente virtualizado (como VMware) e deseja movê-la para outro ambiente virtualizado (por exemplo, para Hyper-V ou para um novo servidor VMware).
 
 -   Exemplo: você tem uma máquina virtual rodando em um servidor de virtualização VMware, mas decide migrá-la para uma plataforma Hyper-V. Nesse caso, a migração V2V converte a máquina virtual de um formato ou hipervisor para outro, garantindo que ela continue funcionando corretamente.
 
@@ -328,7 +329,7 @@ A paravirtualização envolve a modificação do sistema operacional convidado p
 
 Xen com convidados paravirtualizados, ferramentas VMware em determinadas configurações e algumas configurações KVM.
 
-###### Vantagens da Paravirtualização
+###### Vantagens da paravirtualização
 
 -   **Eficiência:**Reduz a sobrecarga de virtualização de hardware, oferecendo potencialmente melhor desempenho para determinadas cargas de trabalho.
 -   **Utilização de recursos:**Uso mais eficiente dos recursos do sistema devido à comunicação direta entre o sistema operacional convidado e o hipervisor.
@@ -503,7 +504,7 @@ Denodo, Red Hat JBoss Data Virtualization, IBM InfoSphere.
 -   Economia de custos: Redução de custos operacionais e de hardware.
 -   Escalabilidade: Fácil de aumentar ou diminuir de acordo com a demanda.
 -   Flexibilidade: oferece suporte a uma variedade de cargas de trabalho e aplicativos.
--   Disaster Recovery: Simplified backup and recovery processes.
+-   Recuperação de desastres: Processos simplificados de backup e recuperação.
 -   Isolamento: Maior segurança através do isolamento de ambientes.
 
 <p align="right">(<a href="#topic-351.1">back to sub Topic 351.1</a>)</p>
@@ -514,7 +515,9 @@ Denodo, Red Hat JBoss Data Virtualization, IBM InfoSphere.
 
 <a name="topic-351.2"></a>
 
-### 351.2 Xen
+### 351,2 alternado
+
+![xen-architecture](images/xen-achitecture.png)
 
 **Peso:**3
 
@@ -551,7 +554,7 @@ A empresa forneceu soluções empresariais baseadas no Xen e ofereceu ferramenta
 #### Projeto Xen
 
 Projeto Xen refere-se à comunidade e iniciativa de código aberto responsável pelo desenvolvimento e manutenção do hipervisor Xen após sua comercialização.  
-O Projeto Xen opera sob a Linux Foundation, com foco na construção, melhoria e suporte do Xen como um esforço colaborativo e orientado pela comunidade.
+O Projeto Xen opera sob a Linux Foundation, com foco na construção, melhoria e suporte do Xen como um esforço colaborativo e voltado para a comunidade.
 
 -   **Metas:**O Projeto Xen visa avançar o hipervisor melhorando seu desempenho, segurança e conjunto de recursos para uma ampla gama de casos de uso, incluindo computação em nuvem, virtualização focada em segurança (por exemplo, Qubes OS) e sistemas embarcados.
 -   **Colaboradores:**O projeto inclui colaboradores de diversas organizações, incluindo grandes provedores de nuvem, fornecedores de hardware e desenvolvedores independentes.
@@ -688,7 +691,7 @@ foo
 
 **Principais áreas de conhecimento:**
 
--   Compreenda os recursos de vários formatos de imagem de disco virtual, como imagens raw, qcow2 e VMDK
+-   Compreenda os recursos de vários formatos de imagem de disco virtual, como imagens brutas, qcow2 e VMDK
 -   Gerencie imagens de disco de máquinas virtuais usando qemu-img
 -   Monte partições e acesse arquivos contidos em imagens de disco de máquinas virtuais usando libguestfish
 -   Copie o conteúdo do disco físico para uma imagem de disco de máquina virtual
@@ -757,7 +760,7 @@ foo
 -   Entenda o princípio do runc
 -   Entenda o princípio do CRI-O e do containerd
 -   Conhecimento do tempo de execução do OCI e das especificações de imagem
--   Conhecimento da Interface de Tempo de Execução de Contêiner (CRI) do Kubernetes
+-   Conhecimento da interface de tempo de execução de contêiner (CRI) do Kubernetes
 -   Consciência de podman, buildah e skopeo
 -   Conhecimento de outras abordagens de virtualização de contêineres no Linux e outros sistemas operacionais livres, como rkt, OpenVZ, systemd-nspawn ou BSD Jails
 
@@ -789,7 +792,7 @@ foo
 
 <a name="topic-352.2"></a>
 
-### 352,2 LXC
+### 352.2 LXC
 
 **Peso:**6
 
@@ -880,7 +883,7 @@ Dockerfile
 
 -   Entenda a relevância da orquestração de contêineres
 -   Entenda os principais conceitos do Docker Compose e do Docker Swarm
--   Compreenda os principais conceitos de Kubernetes e Helm
+-   Compreenda os principais conceitos do Kubernetes e Helm
 -   Conscientização sobre OpenShift, Rancher e Mesosphere DC/OS
 
 <p align="right">(<a href="#topic-352.4">back to sub topic 352.4</a>)</p>
@@ -1007,7 +1010,7 @@ user-data
 
 <a name="topic-353.4"></a>
 
-### 353,4 Vagabundo
+### 353.4 Vagabundo
 
 **Peso:**3
 
@@ -1159,7 +1162,7 @@ Link do projeto:<https://github.com/marcossilvestrini/learning-lpic-3-305-300>
 -   [Ferramentas de gerenciamento KVM](https://www.linux-kvm.org/page/Management_Tools)
 -   Xen
     -   [XenServer](https://www.xenserver.com/)
-    -   [Wiki XenProject](https://wiki.xenproject.org/wiki/Book/HelloXenProject/1-Chapter)
+    -   [Wiki XenProject](https://wiki.xenproject.org/wiki/Main_Page)
 -   [Blog LPI: Virtualização Xen e Computação em Nuvem #01: Introdução](https://www.lpi.org/pt-br/blog/2020/10/01/xen-virtualization-and-cloud-computing-01-introduction/)
 -   Documentos Openstack
     -   [Chapéu Vermelho](https://www.redhat.com/pt-br/topics/openstack)
