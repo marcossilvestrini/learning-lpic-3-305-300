@@ -188,7 +188,7 @@ man COMMAND
 
 **Descripción:**Los candidatos deben conocer y comprender los conceptos generales, la teoría y la terminología de la virtualización. Esto incluye terminología de Xen, QEMU y libvirt.
 
-**Áreas de conocimiento clave:**
+**Áreas clave de conocimiento:**
 
 -   Comprender la terminología de virtualización
 -   Comprender los pros y los contras de la virtualización
@@ -268,7 +268,7 @@ Se ejecuta sobre un sistema operativo convencional y depende del sistema operati
 En el contexto de los hipervisores, que son tecnologías utilizadas para crear y administrar máquinas virtuales, los términos migración P2V y migración V2V son comunes en entornos de virtualización.  
 Se refieren a procesos de migración de sistemas entre diferentes tipos de plataformas.
 
-##### P2V (físico a virtual): migración física a virtual
+##### P2V: Migración física a virtual
 
 La migración P2V se refiere al proceso de migrar un servidor físico a una máquina virtual.  
 En otras palabras, un sistema operativo y sus aplicaciones, que se ejecutan en hardware físico dedicado, se "convierten" y se trasladan a una máquina virtual que se ejecuta en un hipervisor (como VMware, Hyper-V, KVM, etc.).
@@ -276,7 +276,7 @@ En otras palabras, un sistema operativo y sus aplicaciones, que se ejecutan en h
 -   Ejemplo: tiene un servidor físico que ejecuta un sistema Windows o Linux y desea trasladarlo a un entorno virtual, como una infraestructura en la nube o un servidor de virtualización interno.  
     El proceso implica copiar todo el estado del sistema, incluido el sistema operativo, los controladores y los datos, para crear una máquina virtual equivalente que pueda ejecutarse como si estuviera en el hardware físico.
 
-##### V2V (virtual a virtual): migración de virtual a virtual
+##### V2V: Migración de virtual a virtual
 
 La migración V2V se refiere al proceso de migrar una máquina virtual de un hipervisor a otro.  
 En este caso, ya tiene una máquina virtual ejecutándose en un entorno virtualizado (como VMware) y desea moverla a otro entorno virtualizado (por ejemplo, a Hyper-V o a un nuevo servidor VMware).
@@ -344,7 +344,7 @@ Xen con invitados paravirtualizados, herramientas VMware en determinadas configu
 ###### Requisitos del sistema operativo invitado
 
 -   **HVM:**Puede ejecutar sistemas operativos invitados no modificados.
--   **Paravirtualización:**Requiere que los sistemas operativos invitados se modifiquen para que funcionen con el hipervisor.
+-   **Paravirtualización:**Requiere que se modifiquen los sistemas operativos invitados para que funcionen con el hipervisor.
 
 ###### Actuación
 
@@ -354,7 +354,7 @@ Xen con invitados paravirtualizados, herramientas VMware en determinadas configu
 ###### Dependencia de hardware
 
 -   **HVM:**Requiere características específicas de CPU (Intel VT-x, AMD-V).
--   **Paravirtualización:**No requiere características específicas de la CPU, pero necesita un sistema operativo invitado modificado.
+-   **Paravirtualización:**No requiere funciones específicas de CPU, pero necesita un sistema operativo invitado modificado.
 
 ###### Aislamiento
 
@@ -523,7 +523,7 @@ Denodo, Red Hat JBoss Virtualización de datos, IBM InfoSphere.
 
 **Descripción:**Los candidatos deben poder instalar, configurar, mantener, migrar y solucionar problemas de instalaciones de Xen. La atención se centra en Xen versión 4.x.
 
-**Áreas de conocimiento clave:**
+**Áreas clave de conocimiento:**
 
 -   Comprender la arquitectura de Xen, incluidas las redes y el almacenamiento.
 -   Configuración básica de nodos y dominios Xen.
@@ -560,11 +560,64 @@ El Proyecto Xen opera bajo la Fundación Linux, con un enfoque en construir, mej
 -   **Colaboradores:**El proyecto incluye contribuyentes de varias organizaciones, incluidos los principales proveedores de nube, proveedores de hardware y desarrolladores independientes.
 -   **XAPI y XenTools:**El Proyecto Xen también incluye herramientas como XAPI (XenAPI), que se utiliza para administrar las instalaciones del hipervisor Xen, y varias otras utilidades para la administración y optimización del sistema.
 
+#### Tienda Xen
+
+Xen Store es un componente crítico del Xen Hypervisor.  
+Básicamente, Xen Store es una base de datos distribuida de valores clave que se utiliza para la comunicación y el intercambio de información entre el hipervisor Xen y las máquinas virtuales (también conocidas como dominios) que administra.
+
+Estos son algunos aspectos clave de Xen Store:
+
+-   **Comunicación entre dominios:**Xen Store permite la comunicación entre dominios, como Dom0 (el dominio privilegiado que controla los recursos de hardware) y DomUs (dominios de usuario, que son las máquinas virtuales). Esto se hace a través de entradas clave-valor, donde cada dominio puede leer o escribir información.
+
+-   **Gestión de configuración:**Se utiliza para almacenar y acceder a información de configuración, como dispositivos virtuales, redes y parámetros de arranque. Esto facilita la gestión dinámica y la configuración de las máquinas virtuales.
+
+-   **Eventos y Notificaciones:**Xen Store también admite notificaciones de eventos. Cuando se modifica una clave o valor particular en Xen Store, se puede notificar a los dominios interesados ​​para que reaccionen a estos cambios. Esto es útil para monitorear y administrar recursos.
+
+-   API simple: Xen Store proporciona una API simple para leer y escribir datos, lo que facilita a los desarrolladores la integración de sus aplicaciones con el sistema de virtualización Xen.
+
+#### Píldora
+
+XAPI, o XenAPI, es la interfaz de programación de aplicaciones (API) que se utiliza para administrar Xen Hypervisor y sus máquinas virtuales (VM).  
+XAPI es un componente clave de XenServer (ahora conocido como Citrix Hypervisor) y proporciona una forma estandarizada de interactuar con el hipervisor Xen para realizar operaciones como la creación, configuración, monitoreo y control de máquinas virtuales.
+
+Estos son algunos aspectos importantes de XAPI:
+
+-   **Gestión de máquinas virtuales:**XAPI permite a los administradores crear, eliminar, iniciar y detener máquinas virtuales mediante programación.
+
+-   **Automatización:**Con XAPI, es posible automatizar la gestión de recursos virtuales, incluidas las redes, el almacenamiento y la informática, lo cual es crucial para grandes entornos de nube.
+
+-   **Integración:**XAPI se puede integrar con otras herramientas y scripts para proporcionar una administración más eficiente y personalizada del entorno Xen.
+
+-   **Control de acceso:**XAPI también proporciona mecanismos de control de acceso para garantizar que solo los usuarios autorizados puedan realizar operaciones específicas en el entorno virtual.
+
+XAPI es la interfaz que permite el control y la automatización del Hipervisor Xen, facilitando la gestión de entornos virtualizados.
+
 #### Resumen de Xen
 
--   **Xén:**La tecnología central de hipervisor que permite que las máquinas virtuales se ejecuten en hardware físico.
+-   **Xen:**La tecnología central de hipervisor que permite que las máquinas virtuales se ejecuten en hardware físico.
 -   **Fuente Xen:**La empresa que comercializaba Xen, posteriormente adquirida por Citrix, dio lugar al desarrollo de Citrix XenServer.
 -   **Proyecto Xen:**La iniciativa y comunidad de código abierto que continúa desarrollando y manteniendo el hipervisor Xen bajo la Fundación Linux.
+-   **Tienda Xen:**Xen Store actúa como intermediario de comunicación y configuración entre el hipervisor Xen y las VM, agilizando la operación y gestión de entornos virtualizados.
+-   **Píldora**es la interfaz que permite el control y la automatización del Hipervisor Xen, facilitando la gestión de entornos virtualizados.
+
+#### Dominio0 (Dom0)
+
+Domain0, o Dom0, es el dominio de control en una arquitectura Xen. Gestiona otros dominios (DomUs) y tiene acceso directo al hardware.  
+Dom0 ejecuta controladores de dispositivos, lo que permite a los DomU, que carecen de acceso directo al hardware, comunicarse con los dispositivos. Normalmente, es una instancia completa de un sistema operativo, como Linux, y es esencial para el funcionamiento del hipervisor Xen.
+
+#### DominioU (DomU)
+
+Los DomU son dominios sin privilegios que ejecutan máquinas virtuales.  
+Están gestionados por Dom0 y no tienen acceso directo al hardware. Las DomU se pueden configurar para ejecutar diferentes sistemas operativos y se utilizan para diversos fines, como servidores de aplicaciones y entornos de desarrollo. Confían en Dom0 para la interacción con el hardware.
+
+#### PV-DomU (DominioU paravirtualizado)
+
+Los PV-DomU utilizan una técnica llamada paravirtualización. En este modelo, el sistema operativo DomU se modifica para que sea consciente de que se ejecuta en un entorno virtualizado, lo que le permite comunicarse directamente con el hipervisor para un rendimiento optimizado.  
+Esto da como resultado una menor sobrecarga y una mejor eficiencia en comparación con la virtualización completa.
+
+#### HVM-DomU (DominioU de máquina virtual de hardware)
+
+Los HVM-DomU son máquinas virtuales que utilizan virtualización completa, lo que permite ejecutar sistemas operativos sin modificaciones. El hipervisor Xen proporciona emulación de hardware para estas DomU, permitiéndoles ejecutar cualquier sistema operativo que admita la arquitectura de hardware subyacente. Si bien esto ofrece una mayor flexibilidad, puede generar mayores gastos generales en comparación con las PV-DomU.
 
 #### 351.2 Objetos citados
 
@@ -600,7 +653,7 @@ foo
 
 **Descripción:**Los candidatos deben poder instalar, configurar, mantener, migrar y solucionar problemas de instalaciones de QEMU.
 
-**Áreas de conocimiento clave:**
+**Áreas clave de conocimiento:**
 
 -   Comprender la arquitectura de QEMU, incluidos KVM, redes y almacenamiento.
 -   Inicie instancias de QEMU desde la línea de comando
@@ -645,7 +698,7 @@ ip link show
 
 **Descripción:**Los candidatos deben poder administrar hosts de virtualización y máquinas virtuales ("dominios libvirt") utilizando libvirt y herramientas relacionadas.
 
-**Áreas de conocimiento clave:**
+**Áreas clave de conocimiento:**
 
 -   Comprender la arquitectura de libvirt
 -   Administrar conexiones y nodos libvirt
@@ -657,7 +710,7 @@ ip link show
 -   Comprender cómo interactúa libvirt con Xen y QEMU
 -   Comprender cómo interactúa libvirt con servicios de red como dnsmasq y radvd
 -   Comprender los archivos de configuración XML de libvirt
--   Conciencia de virtlogd y virtlockd
+-   Awareness of virtlogd and virtlockd
 
 #### 351.4 Objetos citados
 
@@ -689,7 +742,7 @@ foo
 
 **Descripción:**Los candidatos deberían poder administrar imágenes de disco de máquinas virtuales. Esto incluye convertir imágenes de disco entre varios formatos e hipervisores y acceder a los datos almacenados dentro de una imagen.
 
-**Áreas de conocimiento clave:**
+**Áreas clave de conocimiento:**
 
 -   Comprender las características de varios formatos de imágenes de discos virtuales, como imágenes sin formato, qcow2 y VMDK.
 -   Administre imágenes de disco de máquinas virtuales usando qemu-img
@@ -749,7 +802,7 @@ foo
 
 **Descripción:**Los candidatos deben comprender el concepto de virtualización de contenedores. Esto incluye comprender los componentes de Linux utilizados para implementar la virtualización de contenedores, así como el uso de herramientas estándar de Linux para solucionar problemas de estos componentes.
 
-**Áreas de conocimiento clave:**
+**Áreas clave de conocimiento:**
 
 -   Comprender los conceptos de sistema y contenedor de aplicaciones.
 -   Comprender y analizar los espacios de nombres del kernel
@@ -798,7 +851,7 @@ foo
 
 **Descripción:**Los candidatos deberían poder utilizar contenedores del sistema utilizando LXC y LXD. La versión de LXC cubierta es 3.0 o superior.
 
-**Áreas de conocimiento clave:**
+**Áreas clave de conocimiento:**
 
 -   Comprender la arquitectura de LXC y LXD
 -   Administre contenedores LXC basados ​​en imágenes existentes usando LXD, incluidas redes y almacenamiento.
@@ -837,7 +890,7 @@ foo
 
 **Descripción:**El candidato debe poder gestionar nodos Docker y contenedores Docker. Esto incluye comprender la arquitectura de Docker y cómo interactúa Docker con el sistema Linux del nodo.
 
-**Áreas de conocimiento clave:**
+**Áreas clave de conocimiento:**
 
 -   Comprender la arquitectura y los componentes de Docker.
 -   Administre contenedores Docker utilizando imágenes de un registro de Docker
@@ -879,7 +932,7 @@ Dockerfile
 
 **Descripción:**Los candidatos deben comprender la importancia de la orquestación de contenedores y los conceptos clave que Docker Swarm y Kubernetes proporcionan para implementar la orquestación de contenedores.
 
-**Áreas de conocimiento clave:**
+**Áreas clave de conocimiento:**
 
 -   Comprender la relevancia de la orquestación de contenedores
 -   Comprender los conceptos clave de Docker Compose y Docker Swarm
@@ -906,7 +959,7 @@ Dockerfile
 
 **Descripción:**Los candidatos deben comprender las ofertas comunes en las nubes públicas y tener conocimientos básicos de las funciones de las herramientas de administración de la nube comúnmente disponibles.
 
-**Áreas de conocimiento clave:**
+**Áreas clave de conocimiento:**
 
 -   Comprender las ofertas comunes en las nubes públicas
 -   Conocimientos básicos de las funciones de OpenStack.
@@ -943,7 +996,7 @@ Terraform
 
 **Descripción:**Los candidatos deberían poder utilizar Packer para crear imágenes del sistema. Esto incluye ejecutar Packer en varios entornos de nube públicos y privados, así como crear imágenes de contenedores para LXC/LXD.
 
-**Áreas de conocimiento clave:**
+**Áreas clave de conocimiento:**
 
 -   Comprender la funcionalidad y características de Packer
 -   Crear y mantener archivos de plantilla
@@ -979,7 +1032,7 @@ packer
 Además, los candidatos deberían poder configurar instancias para permitir inicios de sesión SSH seguros e instalar un conjunto específico de paquetes de software.  
 Además, los candidatos deberían poder crear nuevas imágenes del sistema con soporte de inicio en la nube.
 
-**Áreas de conocimiento clave:**
+**Áreas clave de conocimiento:**
 
 -   Comprender las características y conceptos de cloud-init, incluidos los datos del usuario, la inicialización y la configuración de cloud-init.
 -   Utilice cloud-init para crear, cambiar el tamaño y montar sistemas de archivos, configurar cuentas de usuario, incluidas credenciales de inicio de sesión como claves SSH e instalar paquetes de software desde el repositorio de la distribución.
@@ -1016,7 +1069,7 @@ user-data
 
 **Descripción:**El candidato debe poder utilizar Vagrant para administrar máquinas virtuales, incluido el aprovisionamiento de la máquina virtual.
 
-**Áreas de conocimiento clave:**
+**Áreas clave de conocimiento:**
 
 -   Comprender la arquitectura y los conceptos de Vagrant, incluidos el almacenamiento y las redes.
 -   Recuperar y utilizar cajas de Atlas
@@ -1083,93 +1136,109 @@ Enlace del proyecto:<https://github.com/marcossilvestrini/learning-lpic-3-305-30
 ## Expresiones de gratitud
 
 -   [Richard Stallman](http://www.stallman.org/)
--   [Preguntas frecuentes sobre GNU/Linux por Richard Stallman](https://www.gnu.org/gnu/gnu-linux-faq.html)
--   [ÑU](https://www.gnu.org/)
--   [Sistema operativo GNU](https://www.gnu.org/gnu/thegnuproject.html)
--   [Compilador GCC](https://gcc.gnu.org/wiki/History)
--   [GNU-TR](https://www.gnu.org/software/tar/)
--   [Marca GNU](https://www.gnu.org/software/make/)
--   [Emacs GNU](https://en.wikipedia.org/wiki/Emacs)
--   [Paquetes GNU](https://www.gnu.org/software/)
--   [Colección GNU/Linux](https://directory.fsf.org/wiki/Collection:GNU/Linux)
--   [Cargador de arranque GNU Grub](https://www.gnu.org/software/grub/)
--   [GNU Hurd](https://www.gnu.org/software/hurd/hurd/what_is_the_gnu_hurd.html)
--   [Núcleo](https://www.kernel.org/)
--   [Páginas de manual del kernel de Linux](https://www.kernel.org/doc/man-pages/)
--   [Base estándar de Linux](https://en.wikipedia.org/wiki/Linux_Standard_Base)
--   [Estándar de jerarquía del sistema de archivos](https://en.wikipedia.org/wiki/Filesystem_Hierarchy_Standard)
--   [Estructura de jerarquía de archivos](https://refspecs.linuxfoundation.org/FHS_3.0/fhs-3.0.pdf)
--   [FSF](https://www.fsf.org)
--   [Directorio de software libre](https://directory.fsf.org/wiki/Free_Software_Directory:Free_software_replacements)
--   [Software libre](https://www.gnu.org/philosophy/free-sw.html)
--   [Copyleft](https://www.gnu.org/licenses/copyleft.en.html)
--   [GPL](https://www.gnu.org/licenses/quick-guide-gplv3.html)
--   [Licencia pública general reducida GNU](https://www.gnu.org/licenses/lgpl-3.0.html)
--   [BSD](https://opensource.org/licenses/BSD-3-Clause)
--   [Iniciativa de código abierto](https://opensource.org/)
--   [Bienes comunes creativos](https://creativecommons.org/)
--   [Licencia LTS](https://en.wikipedia.org/wiki/Long-term_support)
--   [Directrices para el software libre de Debian](https://www.debian.org/social_contract#guidelines)
--   [Organización X11](https://www.x.org/wiki/)
--   [wayland](https://wayland.freedesktop.org/)
--   [GNU GNOMO](https://www.gnu.org/press/gnome-1.0.html)
--   [GNOMO](https://www.gnome.org/)
--   [XFCE](https://xfce.org/)
--   [Plasma KDE](https://kde.org/plasma-desktop/)
--   [Armonía](https://en.wikipedia.org/wiki/Harmony_(toolkit))
--   [xRDP](https://bytexd.com/xrdp-centos/)
--   [NTP](https://www.ntppool.org/en/)
--   [Bourne otra vez Shell](https://www.gnu.org/software/bash/manual/)
--   [El asunto](https://bash.cyberciti.biz/guide/Shebang)
--   [Variables de entorno](https://linuxize.com/post/how-to-set-and-list-environment-variables-in-linux/)
--   [Globalización de GNU](https://man7.org/linux/man-pages/man7/glob.7.html)
--   [globalizar](https://linuxhint.com/bash_globbing_tutorial/)
--   [Citando](https://www.gnu.org/software/bash/manual/html_node/Quoting.html)
--   [Expresiones regulares](https://www.gnu.org/software/grep/manual/html_node/Regular-Expressions.html)
--   [Listar distribución de Linux](https://en.wikipedia.org/wiki/List_of_Linux_distributions)
--   [Distrowatch](https://distrowatch.com/)
--   [Comparación de distribuciones de Linux](https://en.wikipedia.org/wiki/Comparison_of_Linux_distributions)
--   [Descargar paquetes](https://pkgs.org/)
--   [Instalar paquetes](https://installati.one/)
--   [Guía de instalación de paquetes](https://installati.one/)
--   [Bugzilla](https://bugzilla.kernel.org/)
--   [Comando no encontrado](https://command-not-found.com/)
--   [Prueba de distribución](https://distrotest.net/index.php)
--   [Generador Bashrc](http://bashrcgenerator.com/)
--   [Explicar shell](https://explainshell.com/)
--   [tutorial de vim](https://www.openvim.com/)
--   [Tutorial de secuencias de comandos de shell de Linux](https://bash.cyberciti.biz/guide/Main_Page)
--   [Insignias de Github](https://github.com/alexandresanlim/Badges4-README.md-Profile)
--   [Ejemplos de comandos](https://www.geeksforgeeks.org/)
--   [Compila tu kernel](https://wiki.linuxquestions.org/wiki/How_to_build_and_install_your_own_Linux_kernel)
--   [Unir](https://www.isc.org/bind/)
--   [Vincular registro](https://www.zytrax.com/books/dns/ch7/logging.html)
--   [Lista de tipos de registros DNS](https://en.wikipedia.org/wiki/List_of_DNS_record_types)
--   [Lista de tipos de registros DNS](https://en.wikipedia.org/wiki/List_of_DNS_record_types)
--   [W3Techs](https://w3techs.com/)
--   [apache](https://www.apache.org/)
--   [Directivas Apache][def]
--   [Códigos de estado HTTP](https://en.wikipedia.org/wiki/List_of_HTTP_status_codes)
--   [Cifrados fuertes para Apache, nginx y Lighttpd](https://cipherlist.eu/)
--   [Tutoriales SSL](https://www.golinuxcloud.com/blog/)
--   [Configuración SSL Mozilla](https://ssl-config.mozilla.org/)
--   Definiciones de virtualización
+-   [ÑU](<>)
+    -   [Preguntas frecuentes sobre GNU/Linux por Richard Stallman](https://www.gnu.org/gnu/gnu-linux-faq.html)
+    -   [ÑU](https://www.gnu.org/)
+    -   [Sistema operativo GNU](https://www.gnu.org/gnu/thegnuproject.html)
+    -   [Compilador GCC](https://gcc.gnu.org/wiki/History)
+    -   [GNU-TR](https://www.gnu.org/software/tar/)
+    -   [Marca GNU](https://www.gnu.org/software/make/)
+    -   [Emacs GNU](https://en.wikipedia.org/wiki/Emacs)
+    -   [Paquetes GNU](https://www.gnu.org/software/)
+    -   [Colección GNU/Linux](https://directory.fsf.org/wiki/Collection:GNU/Linux)
+    -   [Cargador de arranque GNU Grub](https://www.gnu.org/software/grub/)
+    -   [GNU Hurd](https://www.gnu.org/software/hurd/hurd/what_is_the_gnu_hurd.html)
+-   [Núcleo](<>)
+    -   [Núcleo](https://www.kernel.org/)
+    -   [Páginas de manual del kernel de Linux](https://www.kernel.org/doc/man-pages/)
+    -   [Compila tu kernel](https://wiki.linuxquestions.org/wiki/How_to_build_and_install_your_own_Linux_kernel)
+-   [Base estándar de Linux](<>)
+    -   [Base estándar de Linux](https://en.wikipedia.org/wiki/Linux_Standard_Base)
+    -   [Estándar de jerarquía del sistema de archivos](https://en.wikipedia.org/wiki/Filesystem_Hierarchy_Standard)
+    -   [Estructura de jerarquía de archivos](https://refspecs.linuxfoundation.org/FHS_3.0/fhs-3.0.pdf)
+-   [Software libre](<>)
+    -   [FSF](https://www.fsf.org)
+    -   [Directorio de software libre](https://directory.fsf.org/wiki/Free_Software_Directory:Free_software_replacements)
+-   [Licencia](<>)
+    -   [Software libre](https://www.gnu.org/philosophy/free-sw.html)
+    -   [Copyleft](https://www.gnu.org/licenses/copyleft.en.html)
+    -   [GPL](https://www.gnu.org/licenses/quick-guide-gplv3.html)
+    -   [Licencia pública general reducida GNU](https://www.gnu.org/licenses/lgpl-3.0.html)
+    -   [BSD](https://opensource.org/licenses/BSD-3-Clause)
+    -   [Iniciativa de código abierto](https://opensource.org/)
+    -   [Bienes comunes creativos](https://creativecommons.org/)
+    -   [Licencia LTS](https://en.wikipedia.org/wiki/Long-term_support)
+-   [Distribuciones](<>)
+    -   [Directrices para el software libre de Debian](https://www.debian.org/social_contract#guidelines)
+    -   [Listar distribución de Linux](https://en.wikipedia.org/wiki/List_of_Linux_distributions)
+    -   [Distrowatch](https://distrowatch.com/)
+    -   [Comparación de distribuciones de Linux](https://en.wikipedia.org/wiki/Comparison_of_Linux_distributions)
+-   [Entornos de escritorio](<>)
+    -   [Organización X11](https://www.x.org/wiki/)
+    -   [wayland](https://wayland.freedesktop.org/)
+    -   [GNU GNOMO](https://www.gnu.org/press/gnome-1.0.html)
+    -   [GNOMO](https://www.gnome.org/)
+    -   [XFCE](https://xfce.org/)
+    -   [Plasma KDE](https://kde.org/plasma-desktop/)
+    -   [Armonía](https://en.wikipedia.org/wiki/Harmony_(toolkit))
+-   [Protocolos](<>)
+    -   [HTTP](<>)
+        -   [W3Techs](https://w3techs.com/)
+        -   [apache](https://www.apache.org/)
+        -   [Directivas Apache][def]
+        -   [Códigos de estado HTTP](https://en.wikipedia.org/wiki/List_of_HTTP_status_codes)
+        -   [Cifrados fuertes para Apache, nginx y Lighttpd](https://cipherlist.eu/)
+        -   [Tutoriales SSL](https://www.golinuxcloud.com/blog/)
+        -   [Configuración SSL Mozilla](https://ssl-config.mozilla.org/)
+    -   [xRDP](https://bytexd.com/xrdp-centos/)
+    -   [NTP](https://www.ntppool.org/en/)
+-   [DNS](<>)
+    -   [Unir](https://www.isc.org/bind/)
+    -   [Vincular registro](https://www.zytrax.com/books/dns/ch7/logging.html)
+    -   [Lista de tipos de registros DNS](https://en.wikipedia.org/wiki/List_of_DNS_record_types)
+    -   [Lista de tipos de registros DNS](https://en.wikipedia.org/wiki/List_of_DNS_record_types)
+-   [Administrador de paquetes](<>)
+    -   [Descargar paquetes](https://pkgs.org/)
+    -   [Instalar paquetes](https://installati.one/)
+    -   [Guía de instalación de paquetes](https://installati.one/)
+-   [Guión de shell](<>)
+    -   [Bourne otra vez Shell](https://www.gnu.org/software/bash/manual/)
+    -   [El asunto](https://bash.cyberciti.biz/guide/Shebang)
+    -   [Variables de entorno](https://linuxize.com/post/how-to-set-and-list-environment-variables-in-linux/)
+    -   [Globalización de GNU](https://man7.org/linux/man-pages/man7/glob.7.html)
+    -   [globalizar](https://linuxhint.com/bash_globbing_tutorial/)
+    -   [Citando](https://www.gnu.org/software/bash/manual/html_node/Quoting.html)
+    -   [Expresiones regulares](https://www.gnu.org/software/grep/manual/html_node/Regular-Expressions.html)
+    -   [Comando no encontrado](https://command-not-found.com/)
+    -   [Generador Bashrc](http://bashrcgenerator.com/)
+    -   [Explicar shell](https://explainshell.com/)
+    -   [tutorial de vim](https://www.openvim.com/)
+    -   [Tutorial de secuencias de comandos de shell de Linux](https://bash.cyberciti.biz/guide/Main_Page)
+    -   [Ejemplos de comandos](https://www.geeksforgeeks.org/)
+-   [Otras herramientas](<>)
+    -   [Bugzilla](https://bugzilla.kernel.org/)
+    -   [Insignias de Github](https://github.com/alexandresanlim/Badges4-README.md-Profile)
+-   [Definiciones de virtualización](<>)
     -   [sombrero rojo](https://www.redhat.com/pt-br/topics/virtualization/what-is-virtualization)
     -   [AWS](https://aws.amazon.com/pt/what-is/virtualization/)
     -   [IBM](https://www.ibm.com/topics/virtualization)
     -   [OpenSource.com](https://opensource.com/resources/virtualization)
--   [KVM (máquinas virtuales del núcleo)](https://www.redhat.com/pt-br/topics/virtualization/what-is-KVM)
--   [Herramientas de gestión KVM](https://www.linux-kvm.org/page/Management_Tools)
--   xén
+-   [KVM](<>)
+    -   [KVM (máquinas virtuales del núcleo)](https://www.redhat.com/pt-br/topics/virtualization/what-is-KVM)
+    -   [Herramientas de gestión KVM](https://www.linux-kvm.org/page/Management_Tools)
+-   [xén](<>)
     -   [XenServer](https://www.xenserver.com/)
     -   [Proyecto Wiki Xen](https://wiki.xenproject.org/wiki/Main_Page)
--   [Blog de LPI: Virtualización Xen y Computación en la Nube #01: Introducción](https://www.lpi.org/pt-br/blog/2020/10/01/xen-virtualization-and-cloud-computing-01-introduction/)
--   Documentos de Openstack
+    -   [Blog de LPI: Virtualización Xen y Computación en la Nube #01: Introducción](https://www.lpi.org/pt-br/blog/2020/10/01/xen-virtualization-and-cloud-computing-01-introduction/)
+-   [Documentos de Openstack](<>)
     -   [sombrero rojo](https://www.redhat.com/pt-br/topics/openstack)
--   [LPIC-3 305-300 Objetivos](https://www.lpi.org/our-certifications/exam-305-objectives/)
--   [LPIC-3 305-300 Wiki](https://wiki.lpi.org/wiki/LPIC-305_Objectives_V3.0)
--   [LPIC-3 305-300 Material de aprendizaje](https://cursos.linuxsemfronteiras.com.br/courses/preparatorio-para-certificacao-lpic-3-305/)
--   [LPIC-3 305-300 Examen simulado por ITexams](https://www.itexams.com/info/305-300)
+-   [Abrir vSwitch](<>)
+    -   [OVS Doc 4Linux](https://blog.4linux.com.br/open-vswitch-o-que-e-o-que-come-onde-vive)
+-   [Examen LPIC-3 305-300](<>)
+    -   [LPIC-3 305-300 Objetivos](https://www.lpi.org/our-certifications/exam-305-objectives/)
+    -   [LPIC-3 305-300 Wiki](https://wiki.lpi.org/wiki/LPIC-305_Objectives_V3.0)
+    -   [LPIC-3 305-300 Material de aprendizaje](https://cursos.linuxsemfronteiras.com.br/courses/preparatorio-para-certificacao-lpic-3-305/)
+    -   [LPIC-3 305-300 Examen simulado por ITexams](https://www.itexams.com/info/305-300)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
