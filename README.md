@@ -279,7 +279,7 @@ Runs on top of a conventional operating system, relying on the host OS for resou
 In the context of hypervisors, which are technologies used to create and manage virtual machines, the terms P2V migration and V2V migration are common in virtualization environments.  
 They refer to processes of migrating systems between different types of platforms.
 
-##### P2V (Physical to Virtual) - Physical to Virtual Migration
+##### P2V - Physical to Virtual Migration
 
 P2V migration refers to the process of migrating a physical server to a virtual machine.  
 In other words, an operating system and its applications, running on dedicated physical hardware, are "converted" and moved to a virtual machine that runs on a hypervisor (such as VMware, Hyper-V, KVM, etc.).
@@ -287,7 +287,7 @@ In other words, an operating system and its applications, running on dedicated p
 * Example: You have a physical server running a Windows or Linux system, and you want to move it to a virtual environment, like a cloud infrastructure or an internal virtualization server.  
 The process involves copying the entire system state, including the operating system, drivers, and data, to create an equivalent virtual machine that can run as if it were on the physical hardware.
 
-##### V2V (Virtual to Virtual) - Virtual to Virtual Migration
+##### V2V  - Virtual to Virtual Migration
 
 V2V migration refers to the process of migrating a virtual machine from one hypervisor to another.  
 In this case, you already have a virtual machine running in a virtualized environment (like VMware), and you want to move it to another virtualized environment (for example, to Hyper-V or to a new VMware server).
@@ -377,7 +377,7 @@ Xen with paravirtualized guests, VMware tools in certain configurations, and som
 * **HVM:** Generally more straightforward to deploy since it supports unmodified OS.
 * **Paravirtualization:** Requires additional setup and modifications to the guest OS, increasing complexity.
   
-#### NUMA (Non-Uniform Memory Access
+#### NUMA (Non-Uniform Memory Access)
 
 NUMA (Non-Uniform Memory Access) is a memory architecture used in multiprocessor systems to optimize memory access by processors.  
 In a NUMA system, memory is distributed unevenly among processors, meaning that each processor has faster access to a portion of memory (its "local memory") than to memory that is physically further away (referred to as "remote memory") and associated with other processors.
@@ -571,11 +571,64 @@ The Xen Project operates under the Linux Foundation, with a focus on building, i
 * **Contributors:** The project includes contributors from various organizations, including major cloud providers, hardware vendors, and independent developers.
 * **XAPI and XenTools:** The Xen Project also includes tools such as XAPI (XenAPI), which is used for managing Xen hypervisor installations, and various other utilities for system management and optimization.
 
+#### XenStore
+
+Xen Store is a critical component of the Xen Hypervisor.  
+Essentially, Xen Store is a distributed key-value database used for communication and information sharing between the Xen hypervisor and the virtual machines (also known as domains) it manages.
+
+Here are some key aspects of Xen Store:
+
+* **Inter-Domain Communication:** Xen Store enables communication between domains, such as Dom0 (the privileged domain that controls hardware resources) and DomUs (user domains, which are the VMs). This is done through key-value entries, where each domain can read or write information.
+
+* **Configuration Management:** It is used to store and access configuration information, such as virtual devices, networking, and boot parameters. This facilitates the dynamic management and configuration of VMs.
+
+* **Events and Notifications:** Xen Store also supports event notifications. When a particular key or value in the Xen Store is modified, interested domains can be notified to react to these changes. This is useful for monitoring and managing resources.
+
+* Simple API: Xen Store provides a simple API for reading and writing data, making it easy for developers to integrate their applications with the Xen virtualization system.
+
+#### XAPI
+
+XAPI, or XenAPI, is the application programming interface (API) used to manage the Xen Hypervisor and its virtual machines (VMs).  
+XAPI is a key component of XenServer (now known as Citrix Hypervisor) and provides a standardized way to interact with the Xen hypervisor to perform operations such as creating, configuring, monitoring, and controlling VMs.
+
+Here are some important aspects of XAPI:
+
+* **VM Management:** XAPI allows administrators to programmatically create, delete, start, and stop virtual machines.
+
+* **Automation:** With XAPI, it's possible to automate the management of virtual resources, including networking, storage, and computing, which is crucial for large cloud environments.
+
+* **Integration:** XAPI can be integrated with other tools and scripts to provide more efficient and customized administration of the Xen environment.
+
+* **Access Control:** XAPI also provides access control mechanisms to ensure that only authorized users can perform specific operations in the virtual environment.
+
+XAPI is the interface that enables control and automation of the Xen Hypervisor, making it easier to manage virtualized environments.
+
 #### Xen Summary
 
 * **Xen:** The core hypervisor technology enabling virtual machines to run on physical hardware.
 * **XenSource:** The company that commercialized Xen, later acquired by Citrix, leading to the development of Citrix XenServer.
 * **Xen Project:** The open-source initiative and community that continues to develop and maintain the Xen hypervisor under the Linux Foundation.
+* **XenStore:**  Xen Store acts as a communication and configuration intermediary between the Xen hypervisor and the VMs, streamlining the operation and management of virtualized environments.
+* **XAPI** is the interface that enables control and automation of the Xen Hypervisor, making it easier to manage virtualized environments.
+
+#### Domain0 (Dom0)
+
+Domain0, or Dom0, is the control domain in a Xen architecture. It manages other domains (DomUs) and has direct access to hardware.  
+Dom0 runs device drivers, allowing DomUs, which lack direct hardware access, to communicate with devices. Typically, it is a full instance of an operating system, like Linux, and is essential for Xen hypervisor operation.
+
+#### DomainU (DomU)
+
+DomUs are non-privileged domains that run virtual machines.  
+They are managed by Dom0 and do not have direct access to hardware. DomUs can be configured to run different operating systems and are used for various purposes, such as application servers and development environments. They rely on Dom0 for hardware interaction.
+
+#### PV-DomU (Paravirtualized DomainU)
+
+PV-DomUs use a technique called paravirtualization. In this model, the DomU operating system is modified to be aware that it runs in a virtualized environment, allowing it to communicate directly with the hypervisor for optimized performance.  
+This results in lower overhead and better efficiency compared to full virtualization.
+
+#### HVM-DomU (Hardware Virtual Machine DomainU)
+
+HVM-DomUs are virtual machines that utilize full virtualization, allowing unmodified operating systems to run. The Xen hypervisor provides hardware emulation for these DomUs, enabling them to run any operating system that supports the underlying hardware architecture. While this offers greater flexibility, it can result in higher overhead compared to PV-DomUs.
 
 #### 351.2 Cited Objects
 
@@ -1096,93 +1149,109 @@ Project Link: [https://github.com/marcossilvestrini/learning-lpic-3-305-300](htt
 ## Acknowledgments
 
 * [Richard Stallman's](http://www.stallman.org/)
-* [GNU/Linux FAQ by Richard Stallman](https://www.gnu.org/gnu/gnu-linux-faq.html)
-* [GNU](https://www.gnu.org/)
-* [GNU Operating System](https://www.gnu.org/gnu/thegnuproject.html)
-* [GCC Compiler](https://gcc.gnu.org/wiki/History)
-* [GNU Tar](https://www.gnu.org/software/tar/)
-* [GNU Make](https://www.gnu.org/software/make/)
-* [GNU Emacs](https://en.wikipedia.org/wiki/Emacs)
-* [GNU Packages](https://www.gnu.org/software/)
-* [GNU/Linux Collection](https://directory.fsf.org/wiki/Collection:GNU/Linux)
-* [GNU Grub Bootloader](https://www.gnu.org/software/grub/)
-* [GNU Hurd](https://www.gnu.org/software/hurd/hurd/what_is_the_gnu_hurd.html)
-* [Kernel](https://www.kernel.org/)
-* [Linux Kernel Man Pages](https://www.kernel.org/doc/man-pages/)
-* [Linux Standard Base](https://en.wikipedia.org/wiki/Linux_Standard_Base)
-* [Filesystem Hierarchy Standard](https://en.wikipedia.org/wiki/Filesystem_Hierarchy_Standard)
-* [File Hierarchy Structure](https://refspecs.linuxfoundation.org/FHS_3.0/fhs-3.0.pdf)
-* [FSF](https://www.fsf.org)
-* [Free Software Directory](https://directory.fsf.org/wiki/Free_Software_Directory:Free_software_replacements)
-* [Free Software](https://www.gnu.org/philosophy/free-sw.html)
-* [Copyleft](https://www.gnu.org/licenses/copyleft.en.html)
-* [GPL](https://www.gnu.org/licenses/quick-guide-gplv3.html)
-* [GNU Lesser General Public License](https://www.gnu.org/licenses/lgpl-3.0.html)
-* [BSD](https://opensource.org/licenses/BSD-3-Clause)
-* [Open Source Initiative](https://opensource.org/)
-* [Creative Commons](https://creativecommons.org/)
-* [License LTS](https://en.wikipedia.org/wiki/Long-term_support)
-* [Debian Free Software Guidelines](https://www.debian.org/social_contract#guidelines)
-* [X11 Org](https://www.x.org/wiki/)
-* [Wayland](https://wayland.freedesktop.org/)
-* [GNU GNOME](https://www.gnu.org/press/gnome-1.0.html)
-* [GNOME](https://www.gnome.org/)
-* [XFCE](https://xfce.org/)
-* [KDE Plasma](https://kde.org/plasma-desktop/)
-* [Harmony](https://en.wikipedia.org/wiki/Harmony_(toolkit))
-* [xRDP](https://bytexd.com/xrdp-centos/)
-* [NTP](https://www.ntppool.org/en/)
-* [Bourne Again Shell](https://www.gnu.org/software/bash/manual/)
-* [Shebang](https://bash.cyberciti.biz/guide/Shebang)
-* [Environment Variables](https://linuxize.com/post/how-to-set-and-list-environment-variables-in-linux/)
-* [GNU Globbing](https://man7.org/linux/man-pages/man7/glob.7.html)
-* [Globbing](https://linuxhint.com/bash_globbing_tutorial/)
-* [Quoting](https://www.gnu.org/software/bash/manual/html_node/Quoting.html)
-* [Regular Expressions](https://www.gnu.org/software/grep/manual/html_node/Regular-Expressions.html)
-* [List Linux Distribution](https://en.wikipedia.org/wiki/List_of_Linux_distributions)
-* [Distro Watch](https://distrowatch.com/)
-* [Comparison Linux Distributions](https://en.wikipedia.org/wiki/Comparison_of_Linux_distributions)
-* [Download Packages](https://pkgs.org/)
-* [Install Packages](https://installati.one/)
-* [Guide Install Packages](https://installati.one/)
-* [Bugzila](https://bugzilla.kernel.org/)
-* [Command Not Found](https://command-not-found.com/)
-* [DistroTest](https://distrotest.net/index.php)
-* [Bash RC Generator](http://bashrcgenerator.com/)
-* [Explainshell](https://explainshell.com/)
-* [Vim Tutorial](https://www.openvim.com/)
-* [Linux Shell Scripting Tutorial](https://bash.cyberciti.biz/guide/Main_Page)
-* [Github Badges](https://github.com/alexandresanlim/Badges4-README.md-Profile)
-* [Commands Examples](https://www.geeksforgeeks.org/)
-* [Compile Your Kernel](https://wiki.linuxquestions.org/wiki/How_to_build_and_install_your_own_Linux_kernel)
-* [Bind](https://www.isc.org/bind/)
-* [Bind Logging](https://www.zytrax.com/books/dns/ch7/logging.html)
-* [List of DNS record types](https://en.wikipedia.org/wiki/List_of_DNS_record_types)
-* [List of DNS record types](https://en.wikipedia.org/wiki/List_of_DNS_record_types)
-* [W3Techs](https://w3techs.com/)
-* [Apache](https://www.apache.org/)
-* [Apache Directives][def]
-* [HTTP Status Codes](https://en.wikipedia.org/wiki/List_of_HTTP_status_codes)
-* [Strong Ciphers for Apache, nginx and Lighttpd](https://cipherlist.eu/)
-* [SSL Tutorials](https://www.golinuxcloud.com/blog/)
-* [SSL Config Mozilla](https://ssl-config.mozilla.org/)
-* Virtualization Definitions
+* [GNU]()
+  * [GNU/Linux FAQ by Richard Stallman](https://www.gnu.org/gnu/gnu-linux-faq.html)
+  * [GNU](https://www.gnu.org/)
+  * [GNU Operating System](https://www.gnu.org/gnu/thegnuproject.html)
+  * [GCC Compiler](https://gcc.gnu.org/wiki/History)
+  * [GNU Tar](https://www.gnu.org/software/tar/)
+  * [GNU Make](https://www.gnu.org/software/make/)
+  * [GNU Emacs](https://en.wikipedia.org/wiki/Emacs)
+  * [GNU Packages](https://www.gnu.org/software/)
+  * [GNU/Linux Collection](https://directory.fsf.org/wiki/Collection:GNU/Linux)
+  * [GNU Grub Bootloader](https://www.gnu.org/software/grub/)
+  * [GNU Hurd](https://www.gnu.org/software/hurd/hurd/what_is_the_gnu_hurd.html)
+* [Kernel]()
+  * [Kernel](https://www.kernel.org/)
+  * [Linux Kernel Man Pages](https://www.kernel.org/doc/man-pages/)
+  * [Compile Your Kernel](https://wiki.linuxquestions.org/wiki/How_to_build_and_install_your_own_Linux_kernel)
+* [Linux Standard Base]()
+  * [Linux Standard Base](https://en.wikipedia.org/wiki/Linux_Standard_Base)
+  * [Filesystem Hierarchy Standard](https://en.wikipedia.org/wiki/Filesystem_Hierarchy_Standard)
+  * [File Hierarchy Structure](https://refspecs.linuxfoundation.org/FHS_3.0/fhs-3.0.pdf)
+* [Free Software]()
+  * [FSF](https://www.fsf.org)
+  * [Free Software Directory](https://directory.fsf.org/wiki/Free_Software_Directory:Free_software_replacements)
+* [License]()
+  * [Free Software](https://www.gnu.org/philosophy/free-sw.html)
+  * [Copyleft](https://www.gnu.org/licenses/copyleft.en.html)
+  * [GPL](https://www.gnu.org/licenses/quick-guide-gplv3.html)
+  * [GNU Lesser General Public License](https://www.gnu.org/licenses/lgpl-3.0.html)
+  * [BSD](https://opensource.org/licenses/BSD-3-Clause)
+  * [Open Source Initiative](https://opensource.org/)
+  * [Creative Commons](https://creativecommons.org/)
+  * [License LTS](https://en.wikipedia.org/wiki/Long-term_support)
+* [Distros]()
+  * [Debian Free Software Guidelines](https://www.debian.org/social_contract#guidelines)
+  * [List Linux Distribution](https://en.wikipedia.org/wiki/List_of_Linux_distributions)
+  * [Distro Watch](https://distrowatch.com/)
+  * [Comparison Linux Distributions](https://en.wikipedia.org/wiki/Comparison_of_Linux_distributions)
+* [Desktop Environments]()
+  * [X11 Org](https://www.x.org/wiki/)
+  * [Wayland](https://wayland.freedesktop.org/)
+  * [GNU GNOME](https://www.gnu.org/press/gnome-1.0.html)
+  * [GNOME](https://www.gnome.org/)
+  * [XFCE](https://xfce.org/)
+  * [KDE Plasma](https://kde.org/plasma-desktop/)
+  * [Harmony](https://en.wikipedia.org/wiki/Harmony_(toolkit))
+* [Protocols]() 
+  * [HTTP]()
+    * [W3Techs](https://w3techs.com/)
+    * [Apache](https://www.apache.org/)
+    * [Apache Directives][def]
+    * [HTTP Status Codes](https://en.wikipedia.org/wiki/List_of_HTTP_status_codes)
+    * [Strong Ciphers for Apache, nginx and Lighttpd](https://cipherlist.eu/)
+    * [SSL Tutorials](https://www.golinuxcloud.com/blog/)
+    * [SSL Config Mozilla](https://ssl-config.mozilla.org/)
+  * [xRDP](https://bytexd.com/xrdp-centos/)
+  * [NTP](https://www.ntppool.org/en/)
+* [DNS]()
+  * [Bind](https://www.isc.org/bind/)
+  * [Bind Logging](https://www.zytrax.com/books/dns/ch7/logging.html)
+  * [List of DNS record types](https://en.wikipedia.org/wiki/List_of_DNS_record_types)
+  * [List of DNS record types](https://en.wikipedia.org/wiki/List_of_DNS_record_types)
+* [Package Manager]()
+  * [Download Packages](https://pkgs.org/)
+  * [Install Packages](https://installati.one/)
+  * [Guide Install Packages](https://installati.one/)
+* [Shell Script]()
+  * [Bourne Again Shell](https://www.gnu.org/software/bash/manual/)
+  * [Shebang](https://bash.cyberciti.biz/guide/Shebang)
+  * [Environment Variables](https://linuxize.com/post/how-to-set-and-list-environment-variables-in-linux/)
+  * [GNU Globbing](https://man7.org/linux/man-pages/man7/glob.7.html)
+  * [Globbing](https://linuxhint.com/bash_globbing_tutorial/)
+  * [Quoting](https://www.gnu.org/software/bash/manual/html_node/Quoting.html)
+  * [Regular Expressions](https://www.gnu.org/software/grep/manual/html_node/Regular-Expressions.html)
+  * [Command Not Found](https://command-not-found.com/)
+  * [Bash RC Generator](http://bashrcgenerator.com/)
+  * [Explainshell](https://explainshell.com/)
+  * [Vim Tutorial](https://www.openvim.com/)
+  * [Linux Shell Scripting Tutorial](https://bash.cyberciti.biz/guide/Main_Page)
+  * [Commands Examples](https://www.geeksforgeeks.org/)
+* [Others Tools]()
+  * [Bugzila](https://bugzilla.kernel.org/)
+  * [Github Badges](https://github.com/alexandresanlim/Badges4-README.md-Profile)
+* [Virtualization Definitions]()
   * [Red Hat](https://www.redhat.com/pt-br/topics/virtualization/what-is-virtualization)
   * [AWS](https://aws.amazon.com/pt/what-is/virtualization/)
   * [IBM](https://www.ibm.com/topics/virtualization)
   * [OpenSource.com](https://opensource.com/resources/virtualization )
-* [KVM(Kernel Virtual Machines)](https://www.redhat.com/pt-br/topics/virtualization/what-is-KVM)
-* [KVM Management Tools](https://www.linux-kvm.org/page/Management_Tools)
-* Xen
+* [KVM]() 
+  * [KVM(Kernel Virtual Machines)](https://www.redhat.com/pt-br/topics/virtualization/what-is-KVM)
+  * [KVM Management Tools](https://www.linux-kvm.org/page/Management_Tools)
+* [Xen]()
   * [XenServer](https://www.xenserver.com/)
   * [Wiki XenProject](https://wiki.xenproject.org/wiki/Main_Page)
-* [LPI Blog: Xen Virtualization and Cloud Computing #01: Introduction](https://www.lpi.org/pt-br/blog/2020/10/01/xen-virtualization-and-cloud-computing-01-introduction/)
-* Openstack Docs
+  * [LPI Blog: Xen Virtualization and Cloud Computing #01: Introduction](https://www.lpi.org/pt-br/blog/2020/10/01/xen-virtualization-and-cloud-computing-01-introduction/)
+* [Openstack Docs]()
   * [RedHat](https://www.redhat.com/pt-br/topics/openstack)
-* [LPIC-3 305-300 Objectives](https://www.lpi.org/our-certifications/exam-305-objectives/)
-* [LPIC-3 305-300 Wiki](https://wiki.lpi.org/wiki/LPIC-305_Objectives_V3.0)
-* [LPIC-3 305-300 Learning Material](https://cursos.linuxsemfronteiras.com.br/courses/preparatorio-para-certificacao-lpic-3-305/)
-* [LPIC-3 305-300 Simulated Exam By ITexams](https://www.itexams.com/info/305-300)
+* [Open vSwitch]()
+  * [OVS Doc 4Linux](https://blog.4linux.com.br/open-vswitch-o-que-e-o-que-come-onde-vive)
+* [LPIC-3 305-300 Exam]()
+  * [LPIC-3 305-300 Objectives](https://www.lpi.org/our-certifications/exam-305-objectives/)
+  * [LPIC-3 305-300 Wiki](https://wiki.lpi.org/wiki/LPIC-305_Objectives_V3.0)
+  * [LPIC-3 305-300 Learning Material](https://cursos.linuxsemfronteiras.com.br/courses/preparatorio-para-certificacao-lpic-3-305/)
+  * [LPIC-3 305-300 Simulated Exam By ITexams](https://www.itexams.com/info/305-300)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
