@@ -196,7 +196,7 @@ man COMMAND
 -   Comprendre les principaux aspects de la migration des machines physiques vers les machines virtuelles
 -   Comprendre les principaux aspects de la migration des machines virtuelles entre les systèmes hôtes
 -   Comprendre les fonctionnalités et les implications de la virtualisation pour une machine virtuelle, telles que la prise d'instantanés, la pause, le clonage et les limites de ressources
--   Connaissance de oVirt, Proxmox, systemd-machined et VirtualBox
+-   Connaissance d'oVirt, Proxmox, systemd-machined et VirtualBox
 -   Connaissance d'Open vSwitch
 
 #### 351.1 Objets cités
@@ -255,7 +255,7 @@ Fonctionne sur un système d'exploitation conventionnel, s'appuyant sur le syst�
 
 -   Environnement de déploiement :
     -   Les hyperviseurs de type 1 sont couramment déployés dans les centres de données et les environnements d'entreprise en raison de leur interaction directe avec le matériel et de leurs hautes performances.
-    -   Les hyperviseurs de type 2 sont plus adaptés à un usage personnel, au développement, aux tests et aux tâches de virtualisation à petite échelle.
+    -   Les hyperviseurs de type 2 sont plus adaptés aux tâches d'utilisation personnelle, de développement, de test et de virtualisation à petite échelle.
 -   Performance:
     -   Les hyperviseurs de type 1 offrent généralement de meilleures performances et une latence plus faible car ils ne s'appuient pas sur un système d'exploitation hôte.
     -   Les hyperviseurs de type 2 peuvent subir une certaine dégradation des performances en raison de la surcharge liée à l'exécution sur un système d'exploitation hôte.
@@ -268,7 +268,7 @@ Fonctionne sur un système d'exploitation conventionnel, s'appuyant sur le syst�
 Dans le contexte des hyperviseurs, qui sont des technologies utilisées pour créer et gérer des machines virtuelles, les termes migration P2V et migration V2V sont courants dans les environnements de virtualisation.  
 Ils font référence à des processus de migration de systèmes entre différents types de plateformes.
 
-##### P2V (physique vers virtuel) - Migration physique vers virtuel
+##### P2V - Migration physique vers virtuelle
 
 La migration P2V fait référence au processus de migration d'un serveur physique vers une machine virtuelle.  
 En d'autres termes, un système d'exploitation et ses applications, fonctionnant sur du matériel physique dédié, sont « convertis » et déplacés vers une machine virtuelle qui s'exécute sur un hyperviseur (comme VMware, Hyper-V, KVM, etc.).
@@ -276,7 +276,7 @@ En d'autres termes, un système d'exploitation et ses applications, fonctionnant
 -   Exemple : Vous disposez d'un serveur physique exécutant un système Windows ou Linux et vous souhaitez le déplacer vers un environnement virtuel, comme une infrastructure cloud ou un serveur de virtualisation interne.  
     Le processus consiste à copier l'intégralité de l'état du système, y compris le système d'exploitation, les pilotes et les données, pour créer une machine virtuelle équivalente pouvant s'exécuter comme si elle se trouvait sur le matériel physique.
 
-##### V2V (Virtuel vers Virtuel) - Migration Virtuel vers Virtuel
+##### V2V - Migration virtuelle vers virtuelle
 
 La migration V2V fait référence au processus de migration d'une machine virtuelle d'un hyperviseur à un autre.  
 Dans ce cas, vous disposez déjà d'une machine virtuelle exécutée dans un environnement virtualisé (comme VMware) et vous souhaitez la déplacer vers un autre environnement virtualisé (par exemple, vers Hyper-V ou vers un nouveau serveur VMware).
@@ -306,7 +306,7 @@ VMware ESXi, Microsoft Hyper-V, KVM (machine virtuelle basée sur le noyau).
 
 -   **Compatibilité:**Peut exécuter n’importe quel système d’exploitation sans modification.
 -   **Performance:**Hautes performances grâce au support matériel.
--   **Sécurité:**Fonctionnalités d’isolation et de sécurité améliorées fournies par le matériel.
+-   **Sécurité:**Fonctionnalités améliorées d’isolation et de sécurité fournies par le matériel.
 
 ###### HVM Disadvantages
 
@@ -366,7 +366,7 @@ Xen avec des invités paravirtualisés, des outils VMware dans certaines configu
 -   **HVM:**Généralement plus simple à déployer car il prend en charge le système d'exploitation non modifié.
 -   **Paravirtualisation :**Nécessite une configuration et des modifications supplémentaires du système d’exploitation invité, ce qui augmente la complexité.
 
-#### NUMA (accès à la mémoire non uniforme
+#### NUMA (accès mémoire non uniforme)
 
 NUMA (Non-Uniform Memory Access) est une architecture de mémoire utilisée dans les systèmes multiprocesseurs pour optimiser l'accès à la mémoire par les processeurs.  
 Dans un système NUMA, la mémoire est inégalement répartie entre les processeurs, ce qui signifie que chaque processeur a un accès plus rapide à une partie de la mémoire (sa « mémoire locale ») qu'à une mémoire physiquement plus éloignée (appelée « mémoire distante ») et associée. avec d'autres processeurs.
@@ -436,7 +436,7 @@ Combine les ressources réseau matérielles et logicielles en une seule entité 
 
 ###### Cas d'utilisation de la virtualisation de réseau
 
-Mise en réseau définie par logiciel (SDN), virtualisation des fonctions réseau (NFV).
+Réseau défini par logiciel (SDN), virtualisation des fonctions réseau (NFV).
 
 ###### Exemples de virtualisation de réseau
 
@@ -448,7 +448,7 @@ VMware NSX, Cisco ACI, OpenStack Neutron.
 
 Regroupe le stockage physique de plusieurs appareils dans une seule unité de stockage virtuelle qui peut être gérée de manière centralisée.
 
-###### Cas d'utilisation de la définition de virtualisation du stockage
+###### Cas d'utilisation de la définition de la virtualisation du stockage
 
 Gestion des données, optimisation du stockage, reprise après sinistre.
 
@@ -536,6 +536,8 @@ Denodo, virtualisation des données Red Hat JBoss, IBM InfoSphere.
 
 #### Xen
 
+![panda](Images/xen-panda.png)
+
 Xen est un hyperviseur open source de type 1 (bare metal), qui permet à plusieurs systèmes d'exploitation de s'exécuter simultanément sur le même matériel physique.  
 Xen fournit une couche entre le matériel physique et les machines virtuelles (VM), permettant un partage et une isolation efficaces des ressources.
 
@@ -560,11 +562,64 @@ Le projet Xen fonctionne sous la Fondation Linux et se concentre sur la créatio
 -   **Contributeurs :**Le projet inclut des contributeurs de diverses organisations, notamment des principaux fournisseurs de cloud, des fournisseurs de matériel et des développeurs indépendants.
 -   **XAPI et XenTools :**Le projet Xen comprend également des outils tels que XAPI (XenAPI), utilisé pour gérer les installations de l'hyperviseur Xen, ainsi que divers autres utilitaires pour la gestion et l'optimisation du système.
 
+#### XenStore
+
+Xen Store est un composant essentiel de l'hyperviseur Xen.  
+Essentiellement, Xen Store est une base de données clé-valeur distribuée utilisée pour la communication et le partage d'informations entre l'hyperviseur Xen et les machines virtuelles (également appelées domaines) qu'il gère.
+
+Voici quelques aspects clés de Xen Store :
+
+-   **Communication inter-domaine :**Xen Store permet la communication entre des domaines, tels que Dom0 (le domaine privilégié qui contrôle les ressources matérielles) et DomUs (domaines utilisateur, qui sont les machines virtuelles). Cela se fait via des entrées clé-valeur, où chaque domaine peut lire ou écrire des informations.
+
+-   **Gestion des configurations :**Il est utilisé pour stocker et accéder aux informations de configuration, telles que les périphériques virtuels, la mise en réseau et les paramètres de démarrage. Cela facilite la gestion et la configuration dynamiques des VM.
+
+-   **Événements et notifications :**Xen Store prend également en charge les notifications d'événements. Lorsqu'une clé ou une valeur particulière dans le Xen Store est modifiée, les domaines intéressés peuvent être avertis pour réagir à ces modifications. Ceci est utile pour surveiller et gérer les ressources.
+
+-   API simple : Xen Store fournit une API simple pour lire et écrire des données, permettant aux développeurs d'intégrer facilement leurs applications au système de virtualisation Xen.
+
+#### Pilule
+
+XAPI, ou XenAPI, est l'interface de programmation d'application (API) utilisée pour gérer l'hyperviseur Xen et ses machines virtuelles (VM).  
+XAPI est un composant clé de XenServer (maintenant connu sous le nom de Citrix Hypervisor) et fournit un moyen standardisé d'interagir avec l'hyperviseur Xen pour effectuer des opérations telles que la création, la configuration, la surveillance et le contrôle des machines virtuelles.
+
+Voici quelques aspects importants de XAPI :
+
+-   **Gestion des machines virtuelles :**XAPI permet aux administrateurs de créer, supprimer, démarrer et arrêter par programme des machines virtuelles.
+
+-   **Automation:**Avec XAPI, il est possible d'automatiser la gestion des ressources virtuelles, notamment la mise en réseau, le stockage et l'informatique, ce qui est crucial pour les grands environnements cloud.
+
+-   **Intégration:**XAPI peut être intégré à d'autres outils et scripts pour fournir une administration plus efficace et personnalisée de l'environnement Xen.
+
+-   **Contrôle d'accès :**XAPI fournit également des mécanismes de contrôle d'accès pour garantir que seuls les utilisateurs autorisés peuvent effectuer des opérations spécifiques dans l'environnement virtuel.
+
+XAPI est l'interface qui permet le contrôle et l'automatisation de l'hyperviseur Xen, facilitant ainsi la gestion des environnements virtualisés.
+
 #### Résumé Xen
 
 -   **Xén :**La technologie d'hyperviseur de base permettant aux machines virtuelles de s'exécuter sur du matériel physique.
 -   **XenSource :**La société qui a commercialisé Xen, acquise plus tard par Citrix, conduisant au développement de Citrix XenServer.
 -   **Projet Xen :**L'initiative et la communauté open source qui continuent de développer et de maintenir l'hyperviseur Xen sous la Fondation Linux.
+-   **XenStore :**Xen Store agit comme intermédiaire de communication et de configuration entre l'hyperviseur Xen et les VM, rationalisant le fonctionnement et la gestion des environnements virtualisés.
+-   **Pilule**est l'interface qui permet le contrôle et l'automatisation de l'hyperviseur Xen, facilitant ainsi la gestion des environnements virtualisés.
+
+#### Domain0 (Dom0)
+
+Domain0, ou Dom0, est le domaine de contrôle dans une architecture Xen. Il gère d'autres domaines (DomUs) et dispose d'un accès direct au matériel.  
+Dom0 exécute des pilotes de périphériques, permettant aux DomU, qui ne disposent pas d'un accès direct au matériel, de communiquer avec les périphériques. En règle générale, il s'agit d'une instance complète d'un système d'exploitation, comme Linux, et elle est essentielle au fonctionnement de l'hyperviseur Xen.
+
+#### DomaineU (DomU)
+
+Les DomU sont des domaines non privilégiés qui exécutent des machines virtuelles.  
+Ils sont gérés par Dom0 et n'ont pas d'accès direct au matériel. Les DomU peuvent être configurés pour exécuter différents systèmes d'exploitation et sont utilisés à diverses fins, telles que les serveurs d'applications et les environnements de développement. Ils s'appuient sur Dom0 pour l'interaction matérielle.
+
+#### PV-DomU (DomainU paravirtualisé)
+
+Les PV-DomU utilisent une technique appelée paravirtualisation. Dans ce modèle, le système d'exploitation DomU est modifié pour prendre conscience qu'il s'exécute dans un environnement virtualisé, lui permettant de communiquer directement avec l'hyperviseur pour des performances optimisées.  
+Cela se traduit par une réduction des frais généraux et une meilleure efficacité par rapport à la virtualisation complète.
+
+#### HVM-DomU (Hardware Virtual Machine DomainU)
+
+Les HVM-DomU sont des machines virtuelles qui utilisent une virtualisation complète, permettant à des systèmes d'exploitation non modifiés de s'exécuter. L'hyperviseur Xen fournit une émulation matérielle pour ces DomU, leur permettant d'exécuter n'importe quel système d'exploitation prenant en charge l'architecture matérielle sous-jacente. Bien que cela offre une plus grande flexibilité, cela peut entraîner des frais généraux plus élevés par rapport aux PV-DomU.
 
 #### 351.2 Objets cités
 
@@ -737,7 +792,7 @@ foo
 
 <a name="topic-352"></a>
 
-## Sujet 352 : Virtualisation des conteneurs
+## Sujet 352 : Virtualisation des conteneurs
 
 * * *
 
@@ -840,7 +895,7 @@ foo
 **Domaines de connaissances clés :**
 
 -   Comprendre l'architecture et les composants de Docker
--   Gérer les conteneurs Docker à l'aide d'images provenant d'un registre Docker
+-   Gérer les conteneurs Docker à l'aide d'images d'un registre Docker
 -   Comprendre et gérer les images et les volumes pour les conteneurs Docker
 -   Comprendre et gérer la journalisation pour les conteneurs Docker
 -   Comprendre et gérer la mise en réseau pour Docker
@@ -1083,93 +1138,110 @@ Lien du projet :<https://github.com/marcossilvestrini/learning-lpic-3-305-300>
 ## Remerciements
 
 -   [Celui de Richard Stallman](http://www.stallman.org/)
--   [FAQ GNU/Linux par Richard Stallman](https://www.gnu.org/gnu/gnu-linux-faq.html)
--   [GNOU](https://www.gnu.org/)
--   [Système d'exploitation GNU](https://www.gnu.org/gnu/thegnuproject.html)
--   [Compilateur GCC](https://gcc.gnu.org/wiki/History)
--   [GNUTR](https://www.gnu.org/software/tar/)
--   [Marque GNU](https://www.gnu.org/software/make/)
--   [GNU-Emacs](https://en.wikipedia.org/wiki/Emacs)
--   [Paquets GNU](https://www.gnu.org/software/)
--   [Collection GNU/Linux](https://directory.fsf.org/wiki/Collection:GNU/Linux)
--   [Chargeur de démarrage GNU Grub](https://www.gnu.org/software/grub/)
--   [GNU Hurd](https://www.gnu.org/software/hurd/hurd/what_is_the_gnu_hurd.html)
--   [Noyau](https://www.kernel.org/)
--   [Pages de manuel du noyau Linux](https://www.kernel.org/doc/man-pages/)
--   [Base standard Linux](https://en.wikipedia.org/wiki/Linux_Standard_Base)
--   [Norme de hiérarchie du système de fichiers](https://en.wikipedia.org/wiki/Filesystem_Hierarchy_Standard)
--   [Structure hiérarchique des fichiers](https://refspecs.linuxfoundation.org/FHS_3.0/fhs-3.0.pdf)
--   [FSF](https://www.fsf.org)
--   [Répertoire des logiciels libres](https://directory.fsf.org/wiki/Free_Software_Directory:Free_software_replacements)
--   [Logiciel gratuit](https://www.gnu.org/philosophy/free-sw.html)
--   [Copie gauche](https://www.gnu.org/licenses/copyleft.en.html)
--   [GPL](https://www.gnu.org/licenses/quick-guide-gplv3.html)
--   [Licence publique générale réduite GNU](https://www.gnu.org/licenses/lgpl-3.0.html)
--   [BSD](https://opensource.org/licenses/BSD-3-Clause)
--   [Initiative Open Source](https://opensource.org/)
--   [Creative Commons](https://creativecommons.org/)
--   [Licence LTS](https://en.wikipedia.org/wiki/Long-term_support)
--   [Directives du logiciel libre Debian](https://www.debian.org/social_contract#guidelines)
--   [Organisation X11](https://www.x.org/wiki/)
--   [Wayland](https://wayland.freedesktop.org/)
--   [GNU-GNOME](https://www.gnu.org/press/gnome-1.0.html)
--   [GNOME](https://www.gnome.org/)
--   [XFCE](https://xfce.org/)
--   [Plasma KDE](https://kde.org/plasma-desktop/)
--   [Harmonie](https://en.wikipedia.org/wiki/Harmony_(toolkit))
--   [xRDP](https://bytexd.com/xrdp-centos/)
--   [NTP](https://www.ntppool.org/en/)
--   [Bourne à nouveau Shell](https://www.gnu.org/software/bash/manual/)
--   [Case](https://bash.cyberciti.biz/guide/Shebang)
--   [Variables d'environnement](https://linuxize.com/post/how-to-set-and-list-environment-variables-in-linux/)
--   [Globulisation GNU](https://man7.org/linux/man-pages/man7/glob.7.html)
--   [Globulation](https://linuxhint.com/bash_globbing_tutorial/)
--   [Citation](https://www.gnu.org/software/bash/manual/html_node/Quoting.html)
--   [Expressions régulières](https://www.gnu.org/software/grep/manual/html_node/Regular-Expressions.html)
--   [Liste des distributions Linux](https://en.wikipedia.org/wiki/List_of_Linux_distributions)
--   [Montre de distribution](https://distrowatch.com/)
--   [Comparaison des distributions Linux](https://en.wikipedia.org/wiki/Comparison_of_Linux_distributions)
--   [Télécharger les forfaits](https://pkgs.org/)
--   [Installer des packages](https://installati.one/)
--   [Guider l'installation des packages](https://installati.one/)
--   [Bugzilla](https://bugzilla.kernel.org/)
--   [Commande introuvable](https://command-not-found.com/)
--   [Test de distribution](https://distrotest.net/index.php)
--   [Générateur Bashrc](http://bashrcgenerator.com/)
--   [Expliquer le shell](https://explainshell.com/)
--   [Tutoriel Vim](https://www.openvim.com/)
--   [Tutoriel de script Shell Linux](https://bash.cyberciti.biz/guide/Main_Page)
--   [Insignes GitHub](https://github.com/alexandresanlim/Badges4-README.md-Profile)
--   [Exemples de commandes](https://www.geeksforgeeks.org/)
--   [Compilez votre noyau](https://wiki.linuxquestions.org/wiki/How_to_build_and_install_your_own_Linux_kernel)
--   [Lier](https://www.isc.org/bind/)
--   [Journalisation de liaison](https://www.zytrax.com/books/dns/ch7/logging.html)
--   [Liste des types d'enregistrements DNS](https://en.wikipedia.org/wiki/List_of_DNS_record_types)
--   [Liste des types d'enregistrements DNS](https://en.wikipedia.org/wiki/List_of_DNS_record_types)
--   [W3Techs](https://w3techs.com/)
--   [Apache](https://www.apache.org/)
--   [Apache Directives][def]
--   [Codes d'état HTTP](https://en.wikipedia.org/wiki/List_of_HTTP_status_codes)
--   [Chiffres forts pour Apache, nginx et Lighttpd](https://cipherlist.eu/)
--   [Tutoriels SSL](https://www.golinuxcloud.com/blog/)
--   [Configuration SSL Mozilla](https://ssl-config.mozilla.org/)
--   Définitions de virtualisation
+-   [GNOU](<>)
+    -   [FAQ GNU/Linux par Richard Stallman](https://www.gnu.org/gnu/gnu-linux-faq.html)
+    -   [GNOU](https://www.gnu.org/)
+    -   [Système d'exploitation GNU](https://www.gnu.org/gnu/thegnuproject.html)
+    -   [Compilateur GCC](https://gcc.gnu.org/wiki/History)
+    -   [GNUTR](https://www.gnu.org/software/tar/)
+    -   [Marque GNU](https://www.gnu.org/software/make/)
+    -   [GNU-Emacs](https://en.wikipedia.org/wiki/Emacs)
+    -   [Paquets GNU](https://www.gnu.org/software/)
+    -   [Collection GNU/Linux](https://directory.fsf.org/wiki/Collection:GNU/Linux)
+    -   [Chargeur de démarrage GNU Grub](https://www.gnu.org/software/grub/)
+    -   [GNU Hurd](https://www.gnu.org/software/hurd/hurd/what_is_the_gnu_hurd.html)
+-   [Noyau](<>)
+    -   [Noyau](https://www.kernel.org/)
+    -   [Pages de manuel du noyau Linux](https://www.kernel.org/doc/man-pages/)
+    -   [Compilez votre noyau](https://wiki.linuxquestions.org/wiki/How_to_build_and_install_your_own_Linux_kernel)
+-   [Base standard Linux](<>)
+    -   [Base standard Linux](https://en.wikipedia.org/wiki/Linux_Standard_Base)
+    -   [Norme de hiérarchie du système de fichiers](https://en.wikipedia.org/wiki/Filesystem_Hierarchy_Standard)
+    -   [Structure hiérarchique des fichiers](https://refspecs.linuxfoundation.org/FHS_3.0/fhs-3.0.pdf)
+-   [Logiciel gratuit](<>)
+    -   [FSF](https://www.fsf.org)
+    -   [Répertoire des logiciels libres](https://directory.fsf.org/wiki/Free_Software_Directory:Free_software_replacements)
+-   [Licence](<>)
+    -   [Logiciel gratuit](https://www.gnu.org/philosophy/free-sw.html)
+    -   [Copie gauche](https://www.gnu.org/licenses/copyleft.en.html)
+    -   [GPL](https://www.gnu.org/licenses/quick-guide-gplv3.html)
+    -   [Licence publique générale réduite GNU](https://www.gnu.org/licenses/lgpl-3.0.html)
+    -   [BSD](https://opensource.org/licenses/BSD-3-Clause)
+    -   [Initiative Open Source](https://opensource.org/)
+    -   [Creative Commons](https://creativecommons.org/)
+    -   [Licence LTS](https://en.wikipedia.org/wiki/Long-term_support)
+-   [Distributions](<>)
+    -   [Directives du logiciel libre Debian](https://www.debian.org/social_contract#guidelines)
+    -   [Liste des distributions Linux](https://en.wikipedia.org/wiki/List_of_Linux_distributions)
+    -   [Montre de distribution](https://distrowatch.com/)
+    -   [Comparaison des distributions Linux](https://en.wikipedia.org/wiki/Comparison_of_Linux_distributions)
+-   [Environnements de bureau](<>)
+    -   [Organisation X11](https://www.x.org/wiki/)
+    -   [Wayland](https://wayland.freedesktop.org/)
+    -   [GNU-GNOME](https://www.gnu.org/press/gnome-1.0.html)
+    -   [GNOME](https://www.gnome.org/)
+    -   [XFCE](https://xfce.org/)
+    -   [Plasma KDE](https://kde.org/plasma-desktop/)
+    -   [Harmonie](https://en.wikipedia.org/wiki/Harmony_(toolkit))
+-   [Protocoles](<>)
+    -   [HTTP](<>)
+        -   [W3Techs](https://w3techs.com/)
+        -   [Apache](https://www.apache.org/)
+        -   [Apache Directives][def]
+        -   [Codes d'état HTTP](https://en.wikipedia.org/wiki/List_of_HTTP_status_codes)
+        -   [Chiffres forts pour Apache, nginx et Lighttpd](https://cipherlist.eu/)
+        -   [Tutoriels SSL](https://www.golinuxcloud.com/blog/)
+        -   [Configuration SSL Mozilla](https://ssl-config.mozilla.org/)
+    -   [xRDP](https://bytexd.com/xrdp-centos/)
+    -   [NTP](https://www.ntppool.org/en/)
+-   [DNS](<>)
+    -   [Lier](https://www.isc.org/bind/)
+    -   [Journalisation de liaison](https://www.zytrax.com/books/dns/ch7/logging.html)
+    -   [Liste des types d'enregistrements DNS](https://en.wikipedia.org/wiki/List_of_DNS_record_types)
+    -   [Liste des types d'enregistrements DNS](https://en.wikipedia.org/wiki/List_of_DNS_record_types)
+-   [Gestionnaire de paquets](<>)
+    -   [Télécharger les forfaits](https://pkgs.org/)
+    -   [Installer des packages](https://installati.one/)
+    -   [Guider l'installation des packages](https://installati.one/)
+-   [Script Shell](<>)
+    -   [Bourne à nouveau Shell](https://www.gnu.org/software/bash/manual/)
+    -   [Case](https://bash.cyberciti.biz/guide/Shebang)
+    -   [Variables d'environnement](https://linuxize.com/post/how-to-set-and-list-environment-variables-in-linux/)
+    -   [Globulisation GNU](https://man7.org/linux/man-pages/man7/glob.7.html)
+    -   [Globulation](https://linuxhint.com/bash_globbing_tutorial/)
+    -   [Citation](https://www.gnu.org/software/bash/manual/html_node/Quoting.html)
+    -   [Expressions régulières](https://www.gnu.org/software/grep/manual/html_node/Regular-Expressions.html)
+    -   [Commande introuvable](https://command-not-found.com/)
+    -   [Générateur Bashrc](http://bashrcgenerator.com/)
+    -   [Expliquer le shell](https://explainshell.com/)
+    -   [Tutoriel Vim](https://www.openvim.com/)
+    -   [Tutoriel de script Shell Linux](https://bash.cyberciti.biz/guide/Main_Page)
+    -   [Exemples de commandes](https://www.geeksforgeeks.org/)
+-   [Autres outils](<>)
+    -   [Bugzilla](https://bugzilla.kernel.org/)
+    -   [Insignes GitHub](https://github.com/alexandresanlim/Badges4-README.md-Profile)
+-   [Définitions de virtualisation](<>)
     -   [Chapeau rouge](https://www.redhat.com/pt-br/topics/virtualization/what-is-virtualization)
     -   [AWS](https://aws.amazon.com/pt/what-is/virtualization/)
     -   [IBM](https://www.ibm.com/topics/virtualization)
     -   [OpenSource.com](https://opensource.com/resources/virtualization)
--   [KVM (machines virtuelles du noyau)](https://www.redhat.com/pt-br/topics/virtualization/what-is-KVM)
--   [Outils de gestion KVM](https://www.linux-kvm.org/page/Management_Tools)
--   Xen
+-   [KVM](<>)
+    -   [KVM (machines virtuelles du noyau)](https://www.redhat.com/pt-br/topics/virtualization/what-is-KVM)
+    -   [Outils de gestion KVM](https://www.linux-kvm.org/page/Management_Tools)
+-   [Xen](<>)
     -   [XenServeur](https://www.xenserver.com/)
     -   [Wiki XenProjet](https://wiki.xenproject.org/wiki/Main_Page)
--   [Blog LPI : Virtualisation Xen et Cloud Computing #01 : Introduction](https://www.lpi.org/pt-br/blog/2020/10/01/xen-virtualization-and-cloud-computing-01-introduction/)
--   Documents Openstack
+    -   [Blog LPI : Virtualisation Xen et Cloud Computing #01 : Introduction](https://www.lpi.org/pt-br/blog/2020/10/01/xen-virtualization-and-cloud-computing-01-introduction/)
+    -   [Virtualisation Xen et Cloud Computing #02 : Comment Xen fait le travail](https://www.lpi.org/blog/2020/10/08/xen-virtualization-and-cloud-computing-02-how-xen-does-job/)
+-   [Documents Openstack](<>)
     -   [Chapeau rouge](https://www.redhat.com/pt-br/topics/openstack)
--   [Objectifs LPIC-3 305-300](https://www.lpi.org/our-certifications/exam-305-objectives/)
--   [Wiki LPIC-3 305-300](https://wiki.lpi.org/wiki/LPIC-305_Objectives_V3.0)
--   [Matériel d'apprentissage LPIC-3 305-300](https://cursos.linuxsemfronteiras.com.br/courses/preparatorio-para-certificacao-lpic-3-305/)
--   [Examen simulé LPIC-3 305-300 par ITexams](https://www.itexams.com/info/305-300)
+-   [Ouvrir le vSwitch](<>)
+    -   [OVS Doc 4Linux](https://blog.4linux.com.br/open-vswitch-o-que-e-o-que-come-onde-vive)
+-   [Examen LPIC-3 305-300](<>)
+    -   [Objectifs LPIC-3 305-300](https://www.lpi.org/our-certifications/exam-305-objectives/)
+    -   [Wiki LPIC-3 305-300](https://wiki.lpi.org/wiki/LPIC-305_Objectives_V3.0)
+    -   [Matériel d'apprentissage LPIC-3 305-300](https://cursos.linuxsemfronteiras.com.br/courses/preparatorio-para-certificacao-lpic-3-305/)
+    -   [Examen simulé LPIC-3 305-300 par ITexams](https://www.itexams.com/info/305-300)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
