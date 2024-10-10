@@ -89,7 +89,7 @@
 > 將涵蓋一些 GNULinux 發行版，例如 Debian 和 RPM\\
 > 也將涵蓋一些軟體包的安裝和配置\\
 > 透過這樣做，您可以讓整個社區有機會從您的更改中受益。
-> 獲得原始程式碼是實現此目的的先決條件。
+> 存取原始碼是實現此目的的先決條件。
 > 使用 vagrant for up 機器並執行本文的實驗和練習內容。
 > 我已經在 Vagrant 資料夾中發布了一個 Vagrantfile ，其中包含必要的內容\\
 > 供您上傳學習環境
@@ -149,9 +149,9 @@ git clone https://github.com/marcossilvestrini/learning-lpic-3-305-300.git
 ## 四項基本自由
 
 > 0.為任何目的隨意運行程序的自由（自由 0）。
-> 1.自由地研究程序如何運作並對其進行更改\\
+> 1.自由地研究程式如何運作並對其進行更改\\
 > 你可以隨心所欲地進行計算（自由 1）。
-> 獲得原始程式碼是實現此目的的先決條件。
+> 存取原始碼是實現此目的的先決條件。
 > 2.重新分發副本的自由，以便您可以幫助他人（自由2）。
 > 3.將修改版本的副本分發給其他人的自由（自由3）。
 
@@ -195,7 +195,7 @@ man COMMAND
 -   了解虛擬機器管理程式和虛擬機器監視器的各種變體
 -   了解將實體機遷移到虛擬機器的主要方面
 -   了解在主機系統之間遷移虛擬機器的主要方面
--   了解虛擬機器虛擬化的功能和影響，例如快照、暫停、複製和資源限制
+-   Understand the features and implications of virtualization for a virtual machine, such as snapshotting, pausing, cloning and resource limits
 -   了解 oVirt、Proxmox、systemd-machined 和 VirtualBox
 -   對 Open vSwitch 的認識
 
@@ -268,7 +268,7 @@ Migration (P2V, V2V)
 在虛擬機器管理程式（用於建立和管理虛擬機器的技術）的上下文中，術語「P2V 遷移」和「V2V 遷移」在虛擬化環境中很常見。  
 它們指的是不同類型的平台之間遷移系統的過程。
 
-##### P2V（實體到虛擬）- 實體到虛擬的遷移
+##### P2V - 實體到虛擬的遷移
 
 P2V遷移是指將實體伺服器遷移到虛擬機器的過程。  
 換句話說，運行在專用實體硬體上的作業系統及其應用程式被「轉換」並移動到運行在虛擬機器管理程式（例如 VMware、Hyper-V、KVM 等）上的虛擬機器。
@@ -276,7 +276,7 @@ P2V遷移是指將實體伺服器遷移到虛擬機器的過程。
 -   範例：您有一台運行 Windows 或 Linux 系統的實體伺服器，並且希望將其移至虛擬環境，例如雲端基礎架構或內部虛擬化伺服器。  
     該過程涉及複製整個系統狀態，包括作業系統、驅動程式和數據，以建立可以像在實體硬體上一樣運行的等效虛擬機器。
 
-##### V2V（虛擬到虛擬）- 虛擬到虛擬的遷移
+##### V2V - 虛擬到虛擬的遷移
 
 V2V 遷移是指將虛擬機器從一個虛擬機器管理程式遷移到另一個虛擬機器管理程式的過程。  
 在這種情況下，您已經有一個在虛擬化環境（例如 VMware）中運行的虛擬機，並且您希望將其移至另一個虛擬化環境（例如，Hyper-V 或新的 VMware 伺服器）。
@@ -289,7 +289,7 @@ V2V 遷移是指將虛擬機器從一個虛擬機器管理程式遷移到另一�
 
 ###### HVM定義
 
-HVM 利用現代 CPU 提供的硬體擴充來虛擬化硬件，從而能夠以最小的效能開銷來建立和管理 VM。
+HVM 利用現代 CPU 提供的硬體擴展來虛擬化硬件，從而以最小的效能開銷創建和管理 VM。
 
 ###### HVM 主要特性
 
@@ -336,7 +336,7 @@ VMware ESXi、Microsoft Hyper-V、KVM（基於核心的虛擬機器）。
 
 ###### 半虛擬化的缺點
 
--   **來賓作業系統修改：**需要修改來賓作業系統，限制了對支援作業系統的相容性。
+-   **來賓作業系統修改：**需要對來賓作業系統進行修改，從而限制了對受支援作業系統的相容性。
 -   **複雜：**需要在來賓作業系統中實作超級呼叫實作額外的複雜性。
 
 ##### 主要差異
@@ -366,10 +366,10 @@ VMware ESXi、Microsoft Hyper-V、KVM（基於核心的虛擬機器）。
 -   **虛擬機器：**通常部署起來更簡單，因為它支援未修改的作業系統。
 -   **半虛擬化：**需要對來賓作業系統進行額外的設定和修改，從而增加了複雜性。
 
-#### NUMA（非統一記憶體訪問
+#### NUMA（非統一記憶體存取）
 
 NUMA（非統一記憶體存取）是多處理器系統中使用的記憶體架構，用於最佳化處理器的記憶體存取。  
-在NUMA 系統中，內部存在處理器之間分佈不均勻，這意味著每個處理器對部分記憶體（其“本地記憶體”）的存取速度比對物理上較遠的記憶體（稱為“遠端記憶體” ）和關聯記憶體的存取速度要快。
+在NUMA 系統中，內部存在處理器之間分佈不均勻，這意味著每個處理器對部分內存（其“本地內存”）的訪問速度比對物理上較遠的內存（稱為“遠端內存” ）和關聯記憶體的存取速度要快。
 
 ##### NUMA 架構的主要特性
 
@@ -536,6 +536,8 @@ Denodo、紅帽 JBoss 資料虛擬化、IBM InfoSphere。
 
 #### Xen
 
+![panda](Images/xen-panda.png)
+
 Xen 是一個開源 type-1（裸機）虛擬機器管理程序，它允許多個作業系統在同一實體硬體上同時運行。  
 Xen 在實體硬體和虛擬機器 (VM) 之間提供了一個層，可實現高效的資源共享和隔離。
 
@@ -560,11 +562,64 @@ Xen 計畫在 Linux 基金會下運作，重點是建立、改進和支持 Xen�
 -   **貢獻者：**該專案包括來自不同組織的貢獻者，包括主要雲端供應商、硬體供應商和獨立開發人員。
 -   **XAPI 和 XenTools：**Xen 專案還包括用於管理 Xen 虛擬機器管理程式安裝的 XAPI (XenAPI) 等工具，以及用於系統管理和最佳化的各種其他實用程式。
 
+#### XenStore
+
+Xen Store 是 Xen Hypervisor 的關鍵元件。  
+本質上，Xen Store 是一個分散式鍵值資料庫，用於 Xen 虛擬機器管理程式與其管理的虛擬機器（也稱為網域）之間的通訊和資訊共用。
+
+以下是 Xen Store 的一些關鍵方面：
+
+-   **域間通訊：**Xen Store 支援域之間的通信，例如 Dom0（控制硬體資源的特權域）和 DomU（用戶域，即 VM）。這是透過鍵值條目完成的，其中每個網域都可以讀取或寫入資訊。
+
+-   **配置管理：**它用於儲存和存取配置信息，例如虛擬設備、網路和啟動參數。這有利於虛擬機器的動態管理和配置。
+
+-   **事件和通知：**Xen Store 也支援事件通知。當 Xen Store 中的特定鍵或值被修改時，可以通知感興趣的網域對這些變更做出反應。這對於監視和管理資源很有用。
+
+-   簡單的API：Xen Store提供了一個簡單的API來讀取和寫入數據，使開發人員可以輕鬆地將他們的應用程式與Xen虛擬化系統整合。
+
+#### 丸
+
+XAPI 或 XenAPI 是用於管理 Xen Hypervisor 及其虛擬機器 (VM) 的應用程式介面 (API)。  
+XAPI 是 XenServer（現在稱為 Citrix Hypervisor）的關鍵元件，提供與 Xen 虛擬機器管理程式互動的標準化方法，以執行建立、設定、監控和控制 VM 等作業。
+
+以下是 XAPI 的一些重要面向：
+
+-   **虛擬機器管理：**XAPI 允許管理員以程式設計方式建立、刪除、啟動和停止虛擬機器。
+
+-   **自動化：**透過 XAPI，可以自動管理虛擬資源，包括網路、儲存和運算，這對於大型雲端環境至關重要。
+
+-   **一體化：**XAPI 可以與其他工具和腳本集成，以提供更有效率和客製化的 Xen 環境管理。
+
+-   **存取控制：**XAPI還提供存取控制機制，確保只有授權使用者才能在虛擬環境中執行特定操作。
+
+XAPI 是支援 Xen Hypervisor 控制和自動化的接口，使管理虛擬化環境變得更加容易。
+
 #### Xen總結
 
 -   **克森：**核心管理程式技術使虛擬機器能夠在實體硬體上運行。
 -   **Xen來源：**該公司將 Xen 商業化，後來被 Citrix 收購，導致了 Citrix XenServer 的開發。
--   **Xen專案：**在 Linux 基金會下繼續開發和維護 Xen 虛擬機器管理程式的開源倡議和社群。
+-   **Xen專案：**在 Linux 基金會下繼續開發和維護 Xen 虛擬機器管理程式的開源計畫和社群。
+-   **XenStore：**Xen Store 充當 Xen 虛擬機器管理程式和 VM 之間的通訊和配置中介，簡化虛擬化環境的操作和管理。
+-   **丸**是支援 Xen Hypervisor 控制和自動化的接口，使管理虛擬化環境變得更加容易。
+
+#### 域0 (Dom0)
+
+Domain0 或 Dom0 是 Xen 架構中的控制域。它管理其他網域 (DomU) 並且可以直接存取硬體。  
+Dom0 運行設備驅動程序，允許缺乏直接硬體存取的 DomU 與設備進行通訊。通常，它是作業系統（如 Linux）的完整實例，對於 Xen 虛擬機器管理程式操作至關重要。
+
+#### 域U (DomU)
+
+DomU 是運作虛擬機器的非特權網域。  
+它們由 Dom0 管理，不能直接存取硬體。 DomU 可以配置為運行不同的作業系統並用於各種目的，例如應用程式伺服器和開發環境。它們依賴 Dom0 進行硬體互動。
+
+#### PV-DomU（半虛擬化DomainU）
+
+PV-DomU 使用一種稱為半虛擬化的技術。在此模型中，DomU 作業系統經過修改，可以意識到它在虛擬化環境中運行，從而允許它直接與虛擬機器管理程式通訊以優化效能。  
+與完全虛擬化相比，這可以降低開銷並提高效率。
+
+#### HVM-DomU（硬體虛擬機器DomainU）
+
+HVM-DomU 是利用完全虛擬化的虛擬機，允許運行未經修改的作業系統。 Xen虛擬機器管理程式為這些DomU提供硬體模擬，使它們能夠運行任何支援底層硬體架構的作業系統。雖然這提供了更大的靈活性，但與 PV-DomU 相比，它可能會導致更高的開銷。
 
 #### 351.2 引用的對象
 
@@ -883,7 +938,7 @@ Dockerfile
 
 -   了解容器編排的相關性
 -   了解 Docker Compose 和 Docker Swarm 的關鍵概念
--   了解 Kubernetes 和 Helm 的關鍵概念
+-   Understand the key concepts of Kubernetes and Helm
 -   對 OpenShift、Rancher 和 Mesosphere DC/OS 的認識
 
 <p align="right">(<a href="#topic-352.4">back to sub topic 352.4</a>)</p>
@@ -1083,93 +1138,110 @@ Vagrantfile
 ## 致謝
 
 -   [理查德·斯托曼的](http://www.stallman.org/)
--   [Richard Stallman 的 GNU/Linux 常見問題解答](https://www.gnu.org/gnu/gnu-linux-faq.html)
--   [GNU](https://www.gnu.org/)
--   [GNU作業系統](https://www.gnu.org/gnu/thegnuproject.html)
--   [海灣合作委員會編譯器](https://gcc.gnu.org/wiki/History)
--   [GNU TR](https://www.gnu.org/software/tar/)
--   [GNU 使](https://www.gnu.org/software/make/)
--   [GNU Emacs](https://en.wikipedia.org/wiki/Emacs)
--   [GNU 軟體包](https://www.gnu.org/software/)
--   [GNU/Linux 集合](https://directory.fsf.org/wiki/Collection:GNU/Linux)
--   [GNU Grub Bootloader](https://www.gnu.org/software/grub/)
--   [GNU赫德](https://www.gnu.org/software/hurd/hurd/what_is_the_gnu_hurd.html)
--   [核心](https://www.kernel.org/)
--   [Linux 核心手冊頁](https://www.kernel.org/doc/man-pages/)
--   [Linux 標準函式庫](https://en.wikipedia.org/wiki/Linux_Standard_Base)
--   [檔案系統層次結構標準](https://en.wikipedia.org/wiki/Filesystem_Hierarchy_Standard)
--   [文件層次結構](https://refspecs.linuxfoundation.org/FHS_3.0/fhs-3.0.pdf)
--   [FSF](https://www.fsf.org)
--   [自由軟體目錄](https://directory.fsf.org/wiki/Free_Software_Directory:Free_software_replacements)
--   [自由軟體](https://www.gnu.org/philosophy/free-sw.html)
--   [版權左](https://www.gnu.org/licenses/copyleft.en.html)
--   [通用公共許可證](https://www.gnu.org/licenses/quick-guide-gplv3.html)
--   [GNU 較寬鬆的通用公共許可證](https://www.gnu.org/licenses/lgpl-3.0.html)
--   [BSD](https://opensource.org/licenses/BSD-3-Clause)
--   [開源倡議](https://opensource.org/)
--   [知識共享](https://creativecommons.org/)
--   [執照長期支持](https://en.wikipedia.org/wiki/Long-term_support)
--   [Debian 自由軟體指南](https://www.debian.org/social_contract#guidelines)
--   [X11組織](https://www.x.org/wiki/)
--   [韋蘭](https://wayland.freedesktop.org/)
--   [GNU 侏儒](https://www.gnu.org/press/gnome-1.0.html)
--   [侏儒](https://www.gnome.org/)
--   [XFCE](https://xfce.org/)
--   [KDE等離子](https://kde.org/plasma-desktop/)
--   [和諧](https://en.wikipedia.org/wiki/Harmony_(toolkit))
--   [xRDP](https://bytexd.com/xrdp-centos/)
--   [NTP](https://www.ntppool.org/en/)
--   [諜影重重 外殼](https://www.gnu.org/software/bash/manual/)
--   [舍邦](https://bash.cyberciti.biz/guide/Shebang)
--   [環境變數](https://linuxize.com/post/how-to-set-and-list-environment-variables-in-linux/)
--   [GNU Globbing](https://man7.org/linux/man-pages/man7/glob.7.html)
--   [通配符](https://linuxhint.com/bash_globbing_tutorial/)
--   [引用](https://www.gnu.org/software/bash/manual/html_node/Quoting.html)
--   [正規表示式](https://www.gnu.org/software/grep/manual/html_node/Regular-Expressions.html)
--   [列出 Linux 發行版](https://en.wikipedia.org/wiki/List_of_Linux_distributions)
--   [發行表](https://distrowatch.com/)
--   [Linux 發行版比較](https://en.wikipedia.org/wiki/Comparison_of_Linux_distributions)
--   [下載包](https://pkgs.org/)
--   [安裝包](https://installati.one/)
--   [指導安裝包](https://installati.one/)
--   [布吉拉](https://bugzilla.kernel.org/)
--   [未找到指令](https://command-not-found.com/)
--   [發行版測試](https://distrotest.net/index.php)
--   [Bashrc 生成器](http://bashrcgenerator.com/)
--   [解釋shell](https://explainshell.com/)
--   [Vim 教程](https://www.openvim.com/)
--   [Linux Shell 腳本編寫教程](https://bash.cyberciti.biz/guide/Main_Page)
--   [Github 徽章](https://github.com/alexandresanlim/Badges4-README.md-Profile)
--   [命令範例](https://www.geeksforgeeks.org/)
--   [編譯你的內核](https://wiki.linuxquestions.org/wiki/How_to_build_and_install_your_own_Linux_kernel)
--   [綁定](https://www.isc.org/bind/)
--   [綁定日誌記錄](https://www.zytrax.com/books/dns/ch7/logging.html)
--   [DNS 記錄類型列表](https://en.wikipedia.org/wiki/List_of_DNS_record_types)
--   [DNS 記錄類型列表](https://en.wikipedia.org/wiki/List_of_DNS_record_types)
--   [W3科技](https://w3techs.com/)
--   [阿帕契](https://www.apache.org/)
--   [阿帕契指令][def]
--   [HTTP 狀態碼](https://en.wikipedia.org/wiki/List_of_HTTP_status_codes)
--   [適用於 Apache、nginx 和 Lighttpd 的強密碼](https://cipherlist.eu/)
--   [SSL 教程](https://www.golinuxcloud.com/blog/)
--   [SSL 設定 Mozilla](https://ssl-config.mozilla.org/)
--   虛擬化定義
+-   [GNU](<>)
+    -   [Richard Stallman 的 GNU/Linux 常見問題解答](https://www.gnu.org/gnu/gnu-linux-faq.html)
+    -   [GNU](https://www.gnu.org/)
+    -   [GNU作業系統](https://www.gnu.org/gnu/thegnuproject.html)
+    -   [海灣合作委員會編譯器](https://gcc.gnu.org/wiki/History)
+    -   [GNU TR](https://www.gnu.org/software/tar/)
+    -   [GNU 使](https://www.gnu.org/software/make/)
+    -   [GNU Emacs](https://en.wikipedia.org/wiki/Emacs)
+    -   [GNU 軟體包](https://www.gnu.org/software/)
+    -   [GNU/Linux 集合](https://directory.fsf.org/wiki/Collection:GNU/Linux)
+    -   [GNU Grub 引導程式](https://www.gnu.org/software/grub/)
+    -   [GNU赫德](https://www.gnu.org/software/hurd/hurd/what_is_the_gnu_hurd.html)
+-   [核心](<>)
+    -   [核心](https://www.kernel.org/)
+    -   [Linux 核心手冊頁](https://www.kernel.org/doc/man-pages/)
+    -   [編譯你的內核](https://wiki.linuxquestions.org/wiki/How_to_build_and_install_your_own_Linux_kernel)
+-   [Linux 標準函式庫](<>)
+    -   [Linux 標準函式庫](https://en.wikipedia.org/wiki/Linux_Standard_Base)
+    -   [檔案系統層次結構標準](https://en.wikipedia.org/wiki/Filesystem_Hierarchy_Standard)
+    -   [文件層次結構](https://refspecs.linuxfoundation.org/FHS_3.0/fhs-3.0.pdf)
+-   [Free Software](<>)
+    -   [FSF](https://www.fsf.org)
+    -   [自由軟體目錄](https://directory.fsf.org/wiki/Free_Software_Directory:Free_software_replacements)
+-   [執照](<>)
+    -   [自由軟體](https://www.gnu.org/philosophy/free-sw.html)
+    -   [版權左](https://www.gnu.org/licenses/copyleft.en.html)
+    -   [通用公共許可證](https://www.gnu.org/licenses/quick-guide-gplv3.html)
+    -   [GNU 較寬鬆的通用公共許可證](https://www.gnu.org/licenses/lgpl-3.0.html)
+    -   [BSD](https://opensource.org/licenses/BSD-3-Clause)
+    -   [開源倡議](https://opensource.org/)
+    -   [知識共享](https://creativecommons.org/)
+    -   [執照長期支持](https://en.wikipedia.org/wiki/Long-term_support)
+-   [發行版](<>)
+    -   [Debian 自由軟體指南](https://www.debian.org/social_contract#guidelines)
+    -   [列出 Linux 發行版](https://en.wikipedia.org/wiki/List_of_Linux_distributions)
+    -   [發行表](https://distrowatch.com/)
+    -   [比較 Linux 發行版](https://en.wikipedia.org/wiki/Comparison_of_Linux_distributions)
+-   [桌面環境](<>)
+    -   [X11組織](https://www.x.org/wiki/)
+    -   [韋蘭](https://wayland.freedesktop.org/)
+    -   [GNU 侏儒](https://www.gnu.org/press/gnome-1.0.html)
+    -   [侏儒](https://www.gnome.org/)
+    -   [XFCE](https://xfce.org/)
+    -   [KDE等離子](https://kde.org/plasma-desktop/)
+    -   [和諧](https://en.wikipedia.org/wiki/Harmony_(toolkit))
+-   [協定](<>)
+    -   [HTTP協定](<>)
+        -   [W3科技](https://w3techs.com/)
+        -   [阿帕契](https://www.apache.org/)
+        -   [阿帕契指令][def]
+        -   [HTTP 狀態碼](https://en.wikipedia.org/wiki/List_of_HTTP_status_codes)
+        -   [適用於 Apache、nginx 和 Lighttpd 的強密碼](https://cipherlist.eu/)
+        -   [SSL 教程](https://www.golinuxcloud.com/blog/)
+        -   [SSL 設定 Mozilla](https://ssl-config.mozilla.org/)
+    -   [xRDP](https://bytexd.com/xrdp-centos/)
+    -   [NTP](https://www.ntppool.org/en/)
+-   [域名系統](<>)
+    -   [綁定](https://www.isc.org/bind/)
+    -   [綁定日誌記錄](https://www.zytrax.com/books/dns/ch7/logging.html)
+    -   [DNS 記錄類型列表](https://en.wikipedia.org/wiki/List_of_DNS_record_types)
+    -   [DNS 記錄類型列表](https://en.wikipedia.org/wiki/List_of_DNS_record_types)
+-   [套件管理器](<>)
+    -   [下載包](https://pkgs.org/)
+    -   [安裝包](https://installati.one/)
+    -   [指導安裝包](https://installati.one/)
+-   [外殼腳本](<>)
+    -   [諜影重重 外殼](https://www.gnu.org/software/bash/manual/)
+    -   [舍邦](https://bash.cyberciti.biz/guide/Shebang)
+    -   [環境變數](https://linuxize.com/post/how-to-set-and-list-environment-variables-in-linux/)
+    -   [GNU 通配符](https://man7.org/linux/man-pages/man7/glob.7.html)
+    -   [通配符](https://linuxhint.com/bash_globbing_tutorial/)
+    -   [引用](https://www.gnu.org/software/bash/manual/html_node/Quoting.html)
+    -   [正規表示式](https://www.gnu.org/software/grep/manual/html_node/Regular-Expressions.html)
+    -   [未找到指令](https://command-not-found.com/)
+    -   [Bashrc 生成器](http://bashrcgenerator.com/)
+    -   [解釋shell](https://explainshell.com/)
+    -   [Vim 教程](https://www.openvim.com/)
+    -   [Linux Shell 腳本編寫教程](https://bash.cyberciti.biz/guide/Main_Page)
+    -   [命令範例](https://www.geeksforgeeks.org/)
+-   [其他工具](<>)
+    -   [布吉拉](https://bugzilla.kernel.org/)
+    -   [Github 徽章](https://github.com/alexandresanlim/Badges4-README.md-Profile)
+-   [虛擬化定義](<>)
     -   [紅帽](https://www.redhat.com/pt-br/topics/virtualization/what-is-virtualization)
     -   [AWS](https://aws.amazon.com/pt/what-is/virtualization/)
     -   [國際商業機器公司](https://www.ibm.com/topics/virtualization)
     -   [OpenSource.com](https://opensource.com/resources/virtualization)
--   [KVM（核心虛擬機器）](https://www.redhat.com/pt-br/topics/virtualization/what-is-KVM)
--   [KVM管理工具](https://www.linux-kvm.org/page/Management_Tools)
--   Xen
+-   [鍵盤虛擬機](<>)
+    -   [KVM（核心虛擬機器）](https://www.redhat.com/pt-br/topics/virtualization/what-is-KVM)
+    -   [KVM管理工具](https://www.linux-kvm.org/page/Management_Tools)
+-   [Xen](<>)
     -   [Xen伺服器](https://www.xenserver.com/)
     -   [維基 Xen 項目](https://wiki.xenproject.org/wiki/Main_Page)
--   [LPI 部落格：Xen 虛擬化與雲端運算 #01：簡介](https://www.lpi.org/pt-br/blog/2020/10/01/xen-virtualization-and-cloud-computing-01-introduction/)
--   Openstack 文件
+    -   [LPI 部落格：Xen 虛擬化與雲端運算 #01：簡介](https://www.lpi.org/pt-br/blog/2020/10/01/xen-virtualization-and-cloud-computing-01-introduction/)
+    -   [Xen 虛擬化與雲端運算#02：Xen 如何完成工作](https://www.lpi.org/blog/2020/10/08/xen-virtualization-and-cloud-computing-02-how-xen-does-job/)
+-   [Openstack 文件](<>)
     -   [紅帽](https://www.redhat.com/pt-br/topics/openstack)
--   [LPIC-3 305-300 目標](https://www.lpi.org/our-certifications/exam-305-objectives/)
--   [LPIC-3 305-300 維基](https://wiki.lpi.org/wiki/LPIC-305_Objectives_V3.0)
--   [LPIC-3 305-300 學習教材](https://cursos.linuxsemfronteiras.com.br/courses/preparatorio-para-certificacao-lpic-3-305/)
--   [LPIC-3 305-300 ITexams 模擬考試](https://www.itexams.com/info/305-300)
+-   [開放虛擬交換機](<>)
+    -   [OVS 文檔 4Linux](https://blog.4linux.com.br/open-vswitch-o-que-e-o-que-come-onde-vive)
+-   [LPIC-3 305-300 考試](<>)
+    -   [LPIC-3 305-300 目標](https://www.lpi.org/our-certifications/exam-305-objectives/)
+    -   [LPIC-3 305-300 維基](https://wiki.lpi.org/wiki/LPIC-305_Objectives_V3.0)
+    -   [LPIC-3 305-300 學習教材](https://cursos.linuxsemfronteiras.com.br/courses/preparatorio-para-certificacao-lpic-3-305/)
+    -   [ITexams 的 LPIC-3 305-300 模擬考試](https://www.itexams.com/info/305-300)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
