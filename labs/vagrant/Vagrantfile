@@ -4,7 +4,7 @@
 Vagrant.configure("2") do |config|
 
   # BOX
-  config.vm.box = "CONFIG_VM_BOX_PLACEHOLDER"
+  config.vm.box = "gutehall/debian12"
 
   ## GUEST CONFIG
   config.vbguest.auto_update = false
@@ -14,7 +14,7 @@ Vagrant.configure("2") do |config|
 
   # LOCAL VARIABLES
   VM_NAME = "lpic3-topic-351"
-  BOX_NAME = "CONFIG_VM_BOX_PLACEHOLDER"
+  BOX_NAME = "gutehall/debian12"
 
   ## MOUNTS
   config.vm.synced_folder ".", "/vagrant", disabled: true
@@ -33,7 +33,7 @@ Vagrant.configure("2") do |config|
       vm.linked_clone = true
       vm.clone_directory = "E:\\Servers\\VMWare\\#{VM_NAME}-instance-1"
       vm.whitelist_verified = true
-      #vm.gui = true
+      vm.gui = true
       #vm.vmx["virtualHW.version"] = "10"
       vm.vmx["displayName"] = "#{VM_NAME}-instance-1"
       vm.vmx["memsize"] = "2048"
@@ -80,7 +80,7 @@ Vagrant.configure("2") do |config|
     elsif BOX_NAME == "silvestrini-ol9"
       vm_config.vm.provision "shell", name: "OL9 Provision", path: "../../scripts/ol9/test.sh", privileged: false
     elsif BOX_NAME == "gutehall/debian12"
-      vm_config.vm.provision "shell", name: "Debian 12 Provision", path: "../../scripts/xen/debian.sh", privileged: false
+      vm_config.vm.provision "shell", name: "Debian 12 Provision", path: "../../scripts/debian/test.sh", privileged: false
     else
       raise "Unknown box name: #{BOX_NAME}"
     end
@@ -98,7 +98,7 @@ Vagrant.configure("2") do |config|
       vm.linked_clone = true
       vm.clone_directory = "E:\\Servers\\VMWare\\#{VM_NAME}-instance-2"
       vm.whitelist_verified = true
-      #vm.gui = true
+      vm.gui = true
       #vm.vmx["virtualHW.version"] = "10"
       vm.vmx["displayName"] = "#{VM_NAME}-instance-2"
       vm.vmx["memsize"] = "2048"

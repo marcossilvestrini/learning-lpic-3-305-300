@@ -1,12 +1,12 @@
-# Scriptpath
-$scriptPath = $PSScriptRoot
+# workdir_menus
+$workdir_menus = $PSScriptRoot
 
 # Vagrant folder
-$vagrantPath= "$($scriptPath | Split-Path -Parent)\vagrant"
+$vagrantPath= "$($workdir_menus | Split-Path -Parent)\vagrant"
 
 # Imports
-. "$scriptPath\vagrant.ps1"
-. "$scriptPath\aws.ps1"
+. "$workdir_menus\vagrant.ps1"
+. "$workdir_menus\aws.ps1"
 
 # Clear
 Clear-Host
@@ -76,7 +76,8 @@ do {
         switch ($providerChoice) {
             "1" { 
                 $provider = "vmware_workstation"
-                $box = "silvestrini-rocky9"            
+                #$box = "silvestrini-rocky9"            
+                $box = "gutehall/debian12"            
                 Copy-Vagrantfile -source "$vagrantPath\Vagrantfile-topic-35$choice" -box $box
                 VagrantUp -provider $provider
             }

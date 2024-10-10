@@ -1,5 +1,5 @@
-# Scriptpath
-$scriptPath = $PSScriptRoot | Split-Path -Parent
+# workdir_gcp
+$workdir_gcp = $PSScriptRoot | Split-Path -Parent
 
 # Function to provision GCP instance
 function ProvisionGCP {

@@ -1,5 +1,5 @@
-# Scriptpath
-$scriptPath = $PSScriptRoot | Split-Path -Parent
+# workdir_mgc
+$workdir_mgc = $PSScriptRoot | Split-Path -Parent
 
 # Function to provision Magalucloud instance
 function ProvisionMagalucloud {

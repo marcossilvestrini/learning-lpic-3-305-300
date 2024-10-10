@@ -1,5 +1,5 @@
 # Scriptpath
-$scriptPath = $PSScriptRoot | Split-Path -Parent
+$workdir_aws = $PSScriptRoot | Split-Path -Parent
 
 # Function to provision AWS instance
 function ProvisionAWS {
