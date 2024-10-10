@@ -241,7 +241,7 @@ Migration (P2V, V2V)
 ###### タイプ 2 の特性
 
 -   特にパーソナルコンピュータでのセットアップと使用が簡単になります。
--   開発、テスト、小規模な導入においてより柔軟に対応できます。
+-   開発、テスト、小規模な導入に対してより柔軟に対応します。
 -   通常、ホスト OS からのオーバーヘッドが追加されるため、タイプ 1 ハイパーバイザーよりも効率が低くなります。
 
 ###### タイプ 2 の例
@@ -257,7 +257,7 @@ Migration (P2V, V2V)
     -   タイプ 1 ハイパーバイザーは、ハードウェアとの直接対話と高いパフォーマンスのため、一般にデータセンターやエンタープライズ環境に導入されます。
     -   タイプ 2 ハイパーバイザーは、個人使用、開発、テスト、および小規模な仮想化タスクにより適しています。
 -   パフォーマンス：
-    -   タイプ 1 ハイパーバイザーは一般に、ホスト OS に依存しないため、パフォーマンスが向上し、遅延が低くなります。
+    -   タイプ 1 ハイパーバイザーは、ホスト OS に依存しないため、一般にパフォーマンスが向上し、遅延が低くなります。
     -   タイプ 2 ハイパーバイザーは、ホスト OS 上で実行するオーバーヘッドにより、パフォーマンスが低下する可能性があります。
 -   管理と使いやすさ:
     -   タイプ 1 ハイパーバイザーは、より複雑なセットアップと管理を必要としますが、大規模な展開向けの高度な機能と拡張性を提供します。
@@ -268,18 +268,18 @@ Migration (P2V, V2V)
 仮想マシンの作成と管理に使用されるテクノロジーであるハイパーバイザーのコンテキストでは、仮想化環境では P2V 移行と V2V 移行という用語が一般的です。  
 これらは、異なるタイプのプラットフォーム間でシステムを移行するプロセスを指します。
 
-##### P2V (物理から仮想) - 物理から仮想への移行
+##### P2V - 物理から仮想への移行
 
 P2V 移行とは、物理サーバーを仮想マシンに移行するプロセスを指します。  
-言い換えれば、専用の物理ハードウェア上で実行されるオペレーティング システムとそのアプリケーションは「変換」され、ハイパーバイザー (VMware、Hyper-V、KVM など) 上で実行される仮想マシンに移動されます。
+言い換えれば、専用の物理ハードウェア上で実行されているオペレーティング システムとそのアプリケーションは「変換」され、ハイパーバイザー (VMware、Hyper-V、KVM など) 上で実行される仮想マシンに移動されます。
 
 -   例: Windows または Linux システムを実行している物理サーバーがあり、それをクラウド インフラストラクチャや内部仮想化サーバーなどの仮想環境に移動したいと考えています。  
     このプロセスには、オペレーティング システム、ドライバー、データを含むシステム状態全体をコピーして、物理ハードウェア上で動作するかのように実行できる同等の仮想マシンを作成することが含まれます。
 
-##### V2V (仮想から仮想) - 仮想から仮想への移行
+##### V2V - 仮想から仮想への移行
 
 V2V 移行とは、仮想マシンをあるハイパーバイザーから別のハイパーバイザーに移行するプロセスを指します。  
-この場合、仮想環境 (VMware など) で仮想マシンがすでに実行されており、それを別の仮想環境 (たとえば、Hyper-V または新しい VMware サーバー) に移動したいと考えています。
+この場合、仮想化環境 (VMware など) で仮想マシンがすでに実行されており、それを別の仮想化環境 (たとえば、Hyper-V または新しい VMware サーバー) に移動したいと考えています。
 
 -   例: VMware 仮想化サーバー上で実行されている仮想マシンがありますが、それを Hyper-V プラットフォームに移行することにしました。この場合、V2V 移行により、仮想マシンがある形式またはハイパーバイザーから別の形式またはハイパーバイザーに変換され、正しく実行を継続できるようになります。
 
@@ -336,7 +336,7 @@ VMware ESXi、Microsoft Hyper-V、KVM (カーネルベースの仮想マシン)�
 
 ###### 準仮想化の欠点
 
--   **ゲスト OS の変更:** Requires modifications to the guest OS, limiting compatibility to supported operating systems.
+-   **ゲスト OS の変更:**ゲスト OS を変更する必要があるため、サポートされているオペレーティング システムとの互換性が制限されます。
 -   **複雑：**ハイパーコールの実装には、ゲスト OS の複雑さがさらに必要になります。
 
 ##### 主な違い
@@ -359,7 +359,7 @@ VMware ESXi、Microsoft Hyper-V、KVM (カーネルベースの仮想マシン)�
 ###### 分離
 
 -   **HVM:**ハードウェア機能を使用して強力な絶縁を提供します。
--   **準仮想化:**ソフトウェアベースの分離に依存しますが、ハードウェアベースの分離ほど堅牢ではない可能性があります。
+-   **準仮想化:**ソフトウェア ベースの分離に依存しますが、ハードウェア ベースの分離ほど堅牢ではない可能性があります。
 
 ###### 複雑
 
@@ -371,10 +371,10 @@ VMware ESXi、Microsoft Hyper-V、KVM (カーネルベースの仮想マシン)�
 NUMA (Non-Uniform Memory Access) は、プロセッサによるメモリ アクセスを最適化するためにマルチプロセッサ システムで使用されるメモリ アーキテクチャです。  
 NUMA システムでは、メモリはプロセッサ間で不均等に分散されます。つまり、各プロセッサは、物理的に遠く離れたメモリ (「リモート メモリ」と呼ばれる) よりもメモリの一部 (「ローカル メモリ」) に高速にアクセスでき、関連付けられています。他のプロセッサと。
 
-##### NUMA アーキテクチャの主な機能
+##### NUMA アーキテクチャの主な特徴
 
 1.  **ローカルおよびリモートメモリ**: 各プロセッサには独自のローカル メモリがあり、より高速にアクセスできます。ただし、時間はかかりますが、他のプロセッサのメモリにアクセスすることもできます。
-2.  **差別化されたレイテンシー**: メモリ アクセスのレイテンシは、プロセッサがローカル メモリにアクセスしているか、別のノードのメモリにアクセスしているかによって異なります。ローカル メモリへのアクセスは高速ですが、別のノード (リモート) のメモリへのアクセスは低速です。
+2.  **差別化されたレイテンシ**: メモリ アクセスのレイテンシは、プロセッサがローカル メモリにアクセスしているか、別のノードのメモリにアクセスしているかによって異なります。ローカル メモリへのアクセスは高速ですが、別のノード (リモート) のメモリへのアクセスは低速です。
 3.  **スケーラビリティ**: NUMA アーキテクチャは、多数のプロセッサを備えたシステムのスケーラビリティを向上させるように設計されています。プロセッサーを追加すると、メモリーも分散され、Uniform Memory Access (UMA) アーキテクチャーで発生するボトルネックが回避されます。
 
 ##### NUMAの利点
@@ -531,10 +531,12 @@ Denodo、Red Hat JBoss Data Virtualization、IBM InfoSphere。
 -   Xen インストールの基本的なトラブルシューティング
 -   錠剤の強さ
 -   XenStoreの認知度
--   Xenブートパラメータの認識
+-   Xen ブートパラメータの認識
 -   xm ユーティリティの認識
 
 #### ゼン
+
+![panda](Images/xen-panda.png)
 
 Xen は、オープンソースのタイプ 1 (ベアメタル) ハイパーバイザーであり、複数のオペレーティング システムを同じ物理ハードウェア上で同時に実行できます。  
 Xen は、物理ハードウェアと仮想マシン (VM) の間にレイヤーを提供し、効率的なリソースの共有と分離を可能にします。
@@ -553,18 +555,71 @@ XenSource は、Xen を商用化するためにケンブリッジ大学の Xen �
 
 #### Xenプロジェクト
 
-Xen プロジェクトは、Xen ハイパーバイザーの商用化後の開発と保守を担当するオープンソース コミュニティおよびイニシアチブを指します。  
+Xen プロジェクトとは、Xen ハイパーバイザーの商用化後の開発と保守を担当するオープンソース コミュニティおよびイニシアチブを指します。  
 Xen プロジェクトは Linux Foundation の下で運営されており、コミュニティ主導の共同作業として Xen の構築、改善、サポートに重点を置いています。
 
--   **目標:**Xen プロジェクトは、クラウド コンピューティング、セキュリティ重視の仮想化 (Qubes OS など)、組み込みシステムなど、幅広いユースケース向けにパフォーマンス、セキュリティ、機能セットを改善することでハイパーバイザーを進化させることを目指しています。
+-   **目標:**Xen プロジェクトは、クラウド コンピューティング、セキュリティ重視の仮想化 (Qubes OS など)、組み込みシステムなどの幅広いユースケース向けにパフォーマンス、セキュリティ、機能セットを改善することでハイパーバイザーを進化させることを目指しています。
 -   **寄稿者:**このプロジェクトには、大手クラウド プロバイダー、ハードウェア ベンダー、独立系開発者など、さまざまな組織からの貢献者が参加しています。
 -   **XAPI と XenTools:**Xen プロジェクトには、Xen ハイパーバイザーのインストールの管理に使用される XAPI (XenAPI) などのツールや、システム管理と最適化のためのその他のさまざまなユーティリティも含まれています。
+
+#### XenStore
+
+Xen Store は、Xen Hypervisor の重要なコンポーネントです。  
+基本的に、Xen Store は、Xen ハイパーバイザーとそれが管理する仮想マシン (ドメインとも呼ばれます) の間の通信と情報共有に使用される分散キー/値データベースです。
+
+Xen Store の重要な側面をいくつか紹介します。
+
+-   **ドメイン間通信:**Xen Store を使用すると、Dom0 (ハードウェア リソースを制御する特権ドメイン) と DomU (ユーザー ドメイン、VM) などのドメイン間の通信が可能になります。これは、各ドメインが情報を読み書きできるキーと値のエントリを通じて行われます。
+
+-   **構成管理:**これは、仮想デバイス、ネットワーク、ブート パラメーターなどの構成情報を保存し、アクセスするために使用されます。これにより、VM の動的な管理と構成が容易になります。
+
+-   **イベントと通知:**Xen Store はイベント通知もサポートしています。 Xen ストア内の特定のキーまたは値が変更されると、関係するドメインにこれ​​らの変更に対応するように通知できます。これは、リソースの監視と管理に役立ちます。
+
+-   シンプルな API: Xen Store は、データの読み取りと書き込みのためのシンプルな API を提供するため、開発者はアプリケーションを Xen 仮想化システムと簡単に統合できます。
+
+#### ピル
+
+XAPI (XenAPI) は、Xen Hypervisor とその仮想マシン (VM) を管理するために使用されるアプリケーション プログラミング インターフェイス (API) です。  
+XAPI は XenServer (現在は Citrix Hypervisor として知られています) の主要コンポーネントであり、Xen ハイパーバイザーと対話して VM の作成、構成、監視、制御などの操作を実行するための標準化された方法を提供します。
+
+XAPI の重要な側面をいくつか示します。
+
+-   **VM管理:**XAPI を使用すると、管理者はプログラムで仮想マシンを作成、削除、起動、停止できます。
+
+-   **オートメーション：**XAPI を使用すると、大規模なクラウド環境にとって重要な、ネットワーク、ストレージ、コンピューティングなどの仮想リソースの管理を自動化できます。
+
+-   **統合：**XAPI は他のツールやスクリプトと統合して、Xen 環境のより効率的なカスタマイズされた管理を提供できます。
+
+-   **アクセス制御:**XAPI は、許可されたユーザーのみが仮想環境で特定の操作を実行できるようにするアクセス制御メカニズムも提供します。
+
+XAPI は、Xen Hypervisor の制御と自動化を可能にし、仮想化環境の管理を容易にするインターフェイスです。
 
 #### Xenの概要
 
 -   **ゼン:**仮想マシンを物理ハードウェア上で実行できるようにするコア ハイパーバイザー テクノロジ。
 -   **Xenソース:**Xen を商用化した企業で、後に Citrix に買収され、Citrix XenServer の開発につながりました。
 -   **Xen プロジェクト:**Linux Foundation の下で Xen ハイパーバイザーの開発と保守を継続するオープンソース イニシアチブおよびコミュニティ。
+-   **Xenストア:**Xen Store は、Xen ハイパーバイザーと VM の間の通信と構成の仲介者として機能し、仮想化環境の運用と管理を合理化します。
+-   **ピル**は、Xen Hypervisor の制御と自動化を可能にし、仮想化環境の管理を容易にするインターフェイスです。
+
+#### ドメイン0 (Dom0)
+
+Domain0 (Dom0) は、Xen アーキテクチャの制御ドメインです。他のドメイン (DomU) を管理し、ハードウェアに直接アクセスします。  
+Dom0 はデバイス ドライバーを実行し、ハードウェアに直接アクセスできない DomU がデバイスと通信できるようにします。通常、これは Linux などのオペレーティング システムの完全なインスタンスであり、Xen ハイパーバイザーの動作に不可欠です。
+
+#### ドメインU (DomU)
+
+DomU は、仮想マシンを実行する非特権ドメインです。  
+これらは Dom0 によって管理され、ハードウェアに直接アクセスすることはできません。 DomU は、さまざまなオペレーティング システムを実行するように構成でき、アプリケーション サーバーや開発環境などのさまざまな目的に使用されます。ハードウェアの対話には Dom0 に依存します。
+
+#### PV-DomU (準仮想化ドメインU)
+
+PV-DomU は準仮想化と呼ばれる技術を使用します。このモデルでは、DomU オペレーティング システムが仮想化環境で実行されることを認識するように変更され、ハイパーバイザーと直接通信してパフォーマンスを最適化できるようになります。  
+これにより、完全な仮想化と比較してオーバーヘッドが低減され、効率が向上します。
+
+#### HVM-DomU (ハードウェア仮想マシン ドメイン U)
+
+HVM-DomU は完全仮想化を利用した仮想マシンであり、変更されていないオペレーティング システムを実行できます。 Xen ハイパーバイザーは、これらの DomU にハードウェア エミュレーションを提供し、基礎となるハードウェア アーキテクチャをサポートする任意のオペレーティング システムを DomU で実行できるようにします。これにより柔軟性が向上しますが、PV-DomU と比較してオーバーヘッドが高くなる可能性があります。
 
 #### 351.2 引用オブジェクト
 
@@ -759,7 +814,7 @@ foo
 -   LXC と Docker が名前空間、cgroup、機能、seccomp、MAC をどのように活用するかを理解する
 -   runcの原理を理解する
 -   CRI-Oとcontainerdの原理を理解する
--   Awareness of the OCI runtime and image specifications
+-   OCI ランタイムとイメージ仕様の認識
 -   Kubernetes Container Runtime Interface (CRI) の認識
 -   ポッドマン、ビルダ、スコペオの認識
 -   Linux およびその他の無料オペレーティング システム (rkt、OpenVZ、systemd-nspawn、BSD Jails など) における他のコンテナ仮想化アプローチの認識
@@ -802,7 +857,7 @@ foo
 
 -   LXC と LXD のアーキテクチャを理解する
 -   LXD を使用して既存のイメージに基づいて LXC コンテナー (ネットワーキングやストレージを含む) を管理する
--   LXC コンテナーのプロパティを構成する
+-   LXCコンテナのプロパティを構成する
 -   LXC コンテナーのリソース使用量を制限する
 -   LXDプロファイルを使用する
 -   LXC イメージを理解する
@@ -977,12 +1032,12 @@ packer
 
 **説明：**受験者は、cloud-init を使用して、標準化されたイメージから作成された仮想マシンを構成できる必要があります。これには、利用可能なハードウェア リソース、特にディスク領域とボリュームに合わせて仮想マシンを調整することが含まれます。  
 さらに、受験者は安全な SSH ログインを許可するようにインスタンスを構成し、特定のソフトウェア パッケージのセットをインストールできる必要があります。  
-さらに、受験者は、cloud-init をサポートする新しいシステム イメージを作成できる必要があります。
+さらに、受験者は、cloud-init サポートを備えた新しいシステム イメージを作成できる必要があります。
 
 **主要な知識領域:**
 
 -   ユーザーデータ、cloud-init の初期化と構成など、cloud-init の機能と概念を理解する
--   Cloud-init を使用して、ファイル システムの作成、サイズ変更、マウントを行い、SSH キーなどのログイン資格情報を含むユーザー アカウントを構成し、ディストリビューションのリポジトリからソフトウェア パッケージをインストールします。
+-   Cloud-init を使用して、ファイル システムの作成、サイズ変更、マウントを行い、SSH キーなどのログイン認証情報を含むユーザー アカウントを構成し、ディストリビューションのリポジトリからソフトウェア パッケージをインストールします。
 -   Cloud-init をシステム イメージに統合する
 -   テストには構成ドライブ データソースを使用する
 
@@ -1083,93 +1138,110 @@ Vagrantfile
 ## 謝辞
 
 -   [リチャード・ストールマンの](http://www.stallman.org/)
--   [Richard Stallman による GNU/Linux FAQ](https://www.gnu.org/gnu/gnu-linux-faq.html)
--   [GNU](https://www.gnu.org/)
--   [GNU オペレーティング システム](https://www.gnu.org/gnu/thegnuproject.html)
--   [GCC コンパイラ](https://gcc.gnu.org/wiki/History)
--   [GNU TR](https://www.gnu.org/software/tar/)
--   [GNU Make](https://www.gnu.org/software/make/)
--   [GNU Emacs](https://en.wikipedia.org/wiki/Emacs)
--   [GNU パッケージ](https://www.gnu.org/software/)
--   [GNU/Linux コレクション](https://directory.fsf.org/wiki/Collection:GNU/Linux)
--   [GNU Grub ブートローダー](https://www.gnu.org/software/grub/)
--   [GNU ハード](https://www.gnu.org/software/hurd/hurd/what_is_the_gnu_hurd.html)
--   [カーネル](https://www.kernel.org/)
--   [Linux カーネルのマニュアル ページ](https://www.kernel.org/doc/man-pages/)
--   [Linux標準ベース](https://en.wikipedia.org/wiki/Linux_Standard_Base)
--   [ファイルシステム階層の標準](https://en.wikipedia.org/wiki/Filesystem_Hierarchy_Standard)
--   [ファイル階層構造](https://refspecs.linuxfoundation.org/FHS_3.0/fhs-3.0.pdf)
--   [FSF](https://www.fsf.org)
--   [フリーソフトウェアディレクトリ](https://directory.fsf.org/wiki/Free_Software_Directory:Free_software_replacements)
--   [フリーソフトウェア](https://www.gnu.org/philosophy/free-sw.html)
--   [コピーレフト](https://www.gnu.org/licenses/copyleft.en.html)
--   [GPL](https://www.gnu.org/licenses/quick-guide-gplv3.html)
--   [GNU 劣等一般公衆利用許諾書](https://www.gnu.org/licenses/lgpl-3.0.html)
--   [BSD](https://opensource.org/licenses/BSD-3-Clause)
--   [オープンソースイニシアチブ](https://opensource.org/)
--   [クリエイティブ・コモンズ](https://creativecommons.org/)
--   [ライセンスLTS](https://en.wikipedia.org/wiki/Long-term_support)
--   [Debian フリーソフトウェアのガイドライン](https://www.debian.org/social_contract#guidelines)
--   [X11組織](https://www.x.org/wiki/)
--   [ウェイランド](https://wayland.freedesktop.org/)
--   [GNU GNOME](https://www.gnu.org/press/gnome-1.0.html)
--   [GNOME](https://www.gnome.org/)
--   [XFCE](https://xfce.org/)
--   [KDEプラズマ](https://kde.org/plasma-desktop/)
--   [調和](https://en.wikipedia.org/wiki/Harmony_(toolkit))
--   [xRDP](https://bytexd.com/xrdp-centos/)
--   [NTP](https://www.ntppool.org/en/)
--   [ボーン・アゲイン シェル](https://www.gnu.org/software/bash/manual/)
--   [シバン](https://bash.cyberciti.biz/guide/Shebang)
--   [環境変数](https://linuxize.com/post/how-to-set-and-list-environment-variables-in-linux/)
--   [GNU グロビング](https://man7.org/linux/man-pages/man7/glob.7.html)
--   [グロビング](https://linuxhint.com/bash_globbing_tutorial/)
--   [引用](https://www.gnu.org/software/bash/manual/html_node/Quoting.html)
--   [正規表現](https://www.gnu.org/software/grep/manual/html_node/Regular-Expressions.html)
--   [Linux ディストリビューションのリスト](https://en.wikipedia.org/wiki/List_of_Linux_distributions)
--   [ディストロウォッチ](https://distrowatch.com/)
--   [Linux ディストリビューションの比較](https://en.wikipedia.org/wiki/Comparison_of_Linux_distributions)
--   [パッケージをダウンロードする](https://pkgs.org/)
--   [パッケージのインストール](https://installati.one/)
--   [パッケージのインストールガイド](https://installati.one/)
--   [バグジラ](https://bugzilla.kernel.org/)
--   [コマンドが見つかりません](https://command-not-found.com/)
--   [ディストリビューションテスト](https://distrotest.net/index.php)
--   [Bashrc ジェネレーター](http://bashrcgenerator.com/)
--   [エクスプレインシェル](https://explainshell.com/)
--   [Vim チュートリアル](https://www.openvim.com/)
--   [Linux シェル スクリプトのチュートリアル](https://bash.cyberciti.biz/guide/Main_Page)
--   [Github バッジ](https://github.com/alexandresanlim/Badges4-README.md-Profile)
--   [コマンドの例](https://www.geeksforgeeks.org/)
--   [カーネルをコンパイルする](https://wiki.linuxquestions.org/wiki/How_to_build_and_install_your_own_Linux_kernel)
--   [バインド](https://www.isc.org/bind/)
--   [バインドロギング](https://www.zytrax.com/books/dns/ch7/logging.html)
--   [DNSレコードタイプのリスト](https://en.wikipedia.org/wiki/List_of_DNS_record_types)
--   [DNSレコードタイプのリスト](https://en.wikipedia.org/wiki/List_of_DNS_record_types)
--   [W3テック](https://w3techs.com/)
--   [アパッチ](https://www.apache.org/)
--   [Apache ディレクティブ][def]
--   [HTTPステータスコード](https://en.wikipedia.org/wiki/List_of_HTTP_status_codes)
--   [Apache、nginx、Lighttpd の強力な暗号](https://cipherlist.eu/)
--   [SSL チュートリアル](https://www.golinuxcloud.com/blog/)
--   [SSL 構成 Mozilla](https://ssl-config.mozilla.org/)
--   仮想化の定義
+-   [GNU](<>)
+    -   [GNU/Linux FAQ by Richard Stallman](https://www.gnu.org/gnu/gnu-linux-faq.html)
+    -   [GNU](https://www.gnu.org/)
+    -   [GNU オペレーティング システム](https://www.gnu.org/gnu/thegnuproject.html)
+    -   [GCC コンパイラ](https://gcc.gnu.org/wiki/History)
+    -   [GNU TR](https://www.gnu.org/software/tar/)
+    -   [GNU Make](https://www.gnu.org/software/make/)
+    -   [GNU Emacs](https://en.wikipedia.org/wiki/Emacs)
+    -   [GNU パッケージ](https://www.gnu.org/software/)
+    -   [GNU/Linux コレクション](https://directory.fsf.org/wiki/Collection:GNU/Linux)
+    -   [GNU Grub ブートローダー](https://www.gnu.org/software/grub/)
+    -   [GNU ハード](https://www.gnu.org/software/hurd/hurd/what_is_the_gnu_hurd.html)
+-   [カーネル](<>)
+    -   [カーネル](https://www.kernel.org/)
+    -   [Linux カーネルのマニュアル ページ](https://www.kernel.org/doc/man-pages/)
+    -   [カーネルをコンパイルする](https://wiki.linuxquestions.org/wiki/How_to_build_and_install_your_own_Linux_kernel)
+-   [Linux標準ベース](<>)
+    -   [Linux標準ベース](https://en.wikipedia.org/wiki/Linux_Standard_Base)
+    -   [ファイルシステム階層の標準](https://en.wikipedia.org/wiki/Filesystem_Hierarchy_Standard)
+    -   [ファイル階層構造](https://refspecs.linuxfoundation.org/FHS_3.0/fhs-3.0.pdf)
+-   [フリーソフトウェア](<>)
+    -   [FSF](https://www.fsf.org)
+    -   [フリーソフトウェアディレクトリ](https://directory.fsf.org/wiki/Free_Software_Directory:Free_software_replacements)
+-   [ライセンス](<>)
+    -   [フリーソフトウェア](https://www.gnu.org/philosophy/free-sw.html)
+    -   [コピーレフト](https://www.gnu.org/licenses/copyleft.en.html)
+    -   [GPL](https://www.gnu.org/licenses/quick-guide-gplv3.html)
+    -   [GNU 劣等一般公衆利用許諾書](https://www.gnu.org/licenses/lgpl-3.0.html)
+    -   [BSD](https://opensource.org/licenses/BSD-3-Clause)
+    -   [オープンソースイニシアチブ](https://opensource.org/)
+    -   [クリエイティブ・コモンズ](https://creativecommons.org/)
+    -   [ライセンスLTS](https://en.wikipedia.org/wiki/Long-term_support)
+-   [ディストリビューション](<>)
+    -   [Debian フリーソフトウェアのガイドライン](https://www.debian.org/social_contract#guidelines)
+    -   [Linux ディストリビューションのリスト](https://en.wikipedia.org/wiki/List_of_Linux_distributions)
+    -   [ディストロウォッチ](https://distrowatch.com/)
+    -   [Linux ディストリビューションの比較](https://en.wikipedia.org/wiki/Comparison_of_Linux_distributions)
+-   [デスクトップ環境](<>)
+    -   [X11組織](https://www.x.org/wiki/)
+    -   [ウェイランド](https://wayland.freedesktop.org/)
+    -   [GNU GNOME](https://www.gnu.org/press/gnome-1.0.html)
+    -   [GNOME](https://www.gnome.org/)
+    -   [XFCE](https://xfce.org/)
+    -   [KDEプラズマ](https://kde.org/plasma-desktop/)
+    -   [調和](https://en.wikipedia.org/wiki/Harmony_(toolkit))
+-   [プロトコル](<>)
+    -   [HTTP](<>)
+        -   [W3テック](https://w3techs.com/)
+        -   [アパッチ](https://www.apache.org/)
+        -   [Apache ディレクティブ][def]
+        -   [HTTPステータスコード](https://en.wikipedia.org/wiki/List_of_HTTP_status_codes)
+        -   [Apache、nginx、Lighttpd の強力な暗号](https://cipherlist.eu/)
+        -   [SSL チュートリアル](https://www.golinuxcloud.com/blog/)
+        -   [SSL 構成 Mozilla](https://ssl-config.mozilla.org/)
+    -   [xRDP](https://bytexd.com/xrdp-centos/)
+    -   [NTP](https://www.ntppool.org/en/)
+-   [DNS](<>)
+    -   [バインド](https://www.isc.org/bind/)
+    -   [バインドロギング](https://www.zytrax.com/books/dns/ch7/logging.html)
+    -   [DNSレコードタイプのリスト](https://en.wikipedia.org/wiki/List_of_DNS_record_types)
+    -   [DNSレコードタイプのリスト](https://en.wikipedia.org/wiki/List_of_DNS_record_types)
+-   [パッケージマネージャー](<>)
+    -   [パッケージをダウンロードする](https://pkgs.org/)
+    -   [パッケージのインストール](https://installati.one/)
+    -   [パッケージのインストールガイド](https://installati.one/)
+-   [シェルスクリプト](<>)
+    -   [ボーン・アゲイン シェル](https://www.gnu.org/software/bash/manual/)
+    -   [シバン](https://bash.cyberciti.biz/guide/Shebang)
+    -   [環境変数](https://linuxize.com/post/how-to-set-and-list-environment-variables-in-linux/)
+    -   [GNU グロビング](https://man7.org/linux/man-pages/man7/glob.7.html)
+    -   [グロビング](https://linuxhint.com/bash_globbing_tutorial/)
+    -   [引用](https://www.gnu.org/software/bash/manual/html_node/Quoting.html)
+    -   [正規表現](https://www.gnu.org/software/grep/manual/html_node/Regular-Expressions.html)
+    -   [コマンドが見つかりません](https://command-not-found.com/)
+    -   [Bashrc ジェネレーター](http://bashrcgenerator.com/)
+    -   [エクスプレインシェル](https://explainshell.com/)
+    -   [Vim チュートリアル](https://www.openvim.com/)
+    -   [Linux シェル スクリプトのチュートリアル](https://bash.cyberciti.biz/guide/Main_Page)
+    -   [コマンドの例](https://www.geeksforgeeks.org/)
+-   [その他のツール](<>)
+    -   [バグジラ](https://bugzilla.kernel.org/)
+    -   [Github バッジ](https://github.com/alexandresanlim/Badges4-README.md-Profile)
+-   [仮想化の定義](<>)
     -   [レッドハット](https://www.redhat.com/pt-br/topics/virtualization/what-is-virtualization)
     -   [AWS](https://aws.amazon.com/pt/what-is/virtualization/)
     -   [IBM](https://www.ibm.com/topics/virtualization)
     -   [OpenSource.com](https://opensource.com/resources/virtualization)
--   [KVM(カーネル仮想マシン)](https://www.redhat.com/pt-br/topics/virtualization/what-is-KVM)
--   [KVM管理ツール](https://www.linux-kvm.org/page/Management_Tools)
--   ゼン
+-   [KVM](<>)
+    -   [KVM(カーネル仮想マシン)](https://www.redhat.com/pt-br/topics/virtualization/what-is-KVM)
+    -   [KVM管理ツール](https://www.linux-kvm.org/page/Management_Tools)
+-   [ゼン](<>)
     -   [Xenサーバー](https://www.xenserver.com/)
     -   [ウィキ Xenプロジェクト](https://wiki.xenproject.org/wiki/Main_Page)
--   [LPI ブログ: Xen 仮想化とクラウド コンピューティング #01: はじめに](https://www.lpi.org/pt-br/blog/2020/10/01/xen-virtualization-and-cloud-computing-01-introduction/)
--   オープンスタックのドキュメント
+    -   [LPI ブログ: Xen 仮想化とクラウド コンピューティング #01: はじめに](https://www.lpi.org/pt-br/blog/2020/10/01/xen-virtualization-and-cloud-computing-01-introduction/)
+    -   [Xen 仮想化とクラウド コンピューティング #02: Xen がどのように機能するか](https://www.lpi.org/blog/2020/10/08/xen-virtualization-and-cloud-computing-02-how-xen-does-job/)
+-   [オープンスタックのドキュメント](<>)
     -   [レッドハット](https://www.redhat.com/pt-br/topics/openstack)
--   [LPIC-3 305-300 の目的](https://www.lpi.org/our-certifications/exam-305-objectives/)
--   [LPIC-3 305-300 Wiki](https://wiki.lpi.org/wiki/LPIC-305_Objectives_V3.0)
--   [LPIC-3 305-300 学習教材](https://cursos.linuxsemfronteiras.com.br/courses/preparatorio-para-certificacao-lpic-3-305/)
--   [ITexams による LPIC-3 305-300 模擬試験](https://www.itexams.com/info/305-300)
+-   [vSwitch を開く](<>)
+    -   [OVS ドキュメント 4Linux](https://blog.4linux.com.br/open-vswitch-o-que-e-o-que-come-onde-vive)
+-   [LPIC-3 305-300 試験](<>)
+    -   [LPIC-3 305-300 の目的](https://www.lpi.org/our-certifications/exam-305-objectives/)
+    -   [LPIC-3 305-300 Wiki](https://wiki.lpi.org/wiki/LPIC-305_Objectives_V3.0)
+    -   [LPIC-3 305-300 学習教材](https://cursos.linuxsemfronteiras.com.br/courses/preparatorio-para-certificacao-lpic-3-305/)
+    -   [ITexams による LPIC-3 305-300 模擬試験](https://www.itexams.com/info/305-300)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
