@@ -194,7 +194,7 @@ man COMMAND
 -   Entenda os prós e os contras da virtualização
 -   Compreender as diversas variações de hipervisores e monitores de máquinas virtuais
 -   Entenda os principais aspectos da migração de máquinas físicas para virtuais
--   Compreender os principais aspectos da migração de máquinas virtuais entre sistemas host
+-   Compreenda os principais aspectos da migração de máquinas virtuais entre sistemas host
 -   Compreenda os recursos e as implicações da virtualização para uma máquina virtual, como captura instantânea, pausa, clonagem e limites de recursos
 -   Conhecimento de oVirt, Proxmox, systemd-machined e VirtualBox
 -   Conscientização do Open vSwitch
@@ -329,7 +329,7 @@ A paravirtualização envolve a modificação do sistema operacional convidado p
 
 Xen com convidados paravirtualizados, ferramentas VMware em determinadas configurações e algumas configurações KVM.
 
-###### Vantagens da paravirtualização
+###### Vantagens da Paravirtualização
 
 -   **Eficiência:**Reduz a sobrecarga de virtualização de hardware, oferecendo potencialmente melhor desempenho para determinadas cargas de trabalho.
 -   **Utilização de recursos:**Uso mais eficiente dos recursos do sistema devido à comunicação direta entre o sistema operacional convidado e o hipervisor.
@@ -498,7 +498,7 @@ Inteligência de negócios, integração de dados em tempo real.
 
 Denodo, Red Hat JBoss Data Virtualization, IBM InfoSphere.
 
-##### Benefícios da virtualização
+##### Benefícios da Virtualização
 
 -   Eficiência de Recursos: Melhor utilização dos recursos físicos.
 -   Economia de custos: Redução de custos operacionais e de hardware.
@@ -535,6 +535,8 @@ Denodo, Red Hat JBoss Data Virtualization, IBM InfoSphere.
 -   Conscientização do utilitário xm
 
 #### Xen
+
+![panda](Images/xen-panda.png)
 
 Xen é um hipervisor tipo 1 (bare metal) de código aberto, que permite que vários sistemas operacionais sejam executados simultaneamente no mesmo hardware físico.  
 O Xen fornece uma camada entre o hardware físico e as máquinas virtuais (VMs), permitindo o compartilhamento e o isolamento eficientes de recursos.
@@ -617,7 +619,7 @@ Isso resulta em menor sobrecarga e melhor eficiência em comparação com a virt
 
 #### HVM-DomU (Domínio de Máquina Virtual de HardwareU)
 
-HVM-DomUs são máquinas virtuais que utilizam virtualização total, permitindo a execução de sistemas operacionais não modificados. O hipervisor Xen fornece emulação de hardware para esses DomUs, permitindo-lhes executar qualquer sistema operacional que suporte a arquitetura de hardware subjacente. Embora isso ofereça maior flexibilidade, pode resultar em sobrecarga maior em comparação com PV-DomUs.
+HVM-DomUs são máquinas virtuais que utilizam virtualização total, permitindo a execução de sistemas operacionais não modificados. O hipervisor Xen fornece emulação de hardware para esses DomUs, permitindo-lhes executar qualquer sistema operacional que suporte a arquitetura de hardware subjacente. Embora isso ofereça maior flexibilidade, pode resultar em maior sobrecarga em comparação com PV-DomUs.
 
 #### 351.2 Objetos Citados
 
@@ -813,7 +815,7 @@ foo
 -   Entenda o princípio do runc
 -   Entenda o princípio do CRI-O e do containerd
 -   Conhecimento do tempo de execução do OCI e das especificações de imagem
--   Conhecimento da Interface de Tempo de Execução de Contêiner (CRI) do Kubernetes
+-   Conhecimento da interface de tempo de execução de contêiner (CRI) do Kubernetes
 -   Consciência de podman, buildah e skopeo
 -   Conhecimento de outras abordagens de virtualização de contêineres no Linux e outros sistemas operacionais livres, como rkt, OpenVZ, systemd-nspawn ou BSD Jails
 
@@ -936,7 +938,7 @@ Dockerfile
 
 -   Entenda a relevância da orquestração de contêineres
 -   Entenda os principais conceitos do Docker Compose e do Docker Swarm
--   Compreenda os principais conceitos de Kubernetes e Helm
+-   Compreender os principais conceitos de Kubernetes e Helm
 -   Conscientização sobre OpenShift, Rancher e Mesosphere DC/OS
 
 <p align="right">(<a href="#topic-352.4">back to sub topic 352.4</a>)</p>
@@ -1035,7 +1037,7 @@ Além disso, os candidatos devem ser capazes de criar novas imagens de sistema c
 **Principais áreas de conhecimento:**
 
 -   Compreender os recursos e conceitos do cloud-init, incluindo dados do usuário, inicialização e configuração do cloud-init
--   Use o cloud-init para criar, redimensionar e montar sistemas de arquivos, configurar contas de usuário, incluindo credenciais de login, como chaves SSH, e instalar pacotes de software do repositório da distribuição
+-   Use cloud-init para criar, redimensionar e montar sistemas de arquivos, configurar contas de usuário, incluindo credenciais de login, como chaves SSH e instalar pacotes de software do repositório da distribuição
 -   Integre o cloud-init às imagens do sistema
 -   Use a fonte de dados da unidade de configuração para teste
 
@@ -1158,7 +1160,7 @@ Link do projeto:<https://github.com/marcossilvestrini/learning-lpic-3-305-300>
     -   [Estrutura de hierarquia de arquivos](https://refspecs.linuxfoundation.org/FHS_3.0/fhs-3.0.pdf)
 -   [Software Livre](<>)
     -   [FSF](https://www.fsf.org)
-    -   [Diretório de software gratuito](https://directory.fsf.org/wiki/Free_Software_Directory:Free_software_replacements)
+    -   [Diretório de Software Gratuito](https://directory.fsf.org/wiki/Free_Software_Directory:Free_software_replacements)
 -   [Licença](<>)
     -   [Software Livre](https://www.gnu.org/philosophy/free-sw.html)
     -   [Copyleft](https://www.gnu.org/licenses/copyleft.en.html)
@@ -1213,7 +1215,7 @@ Link do projeto:<https://github.com/marcossilvestrini/learning-lpic-3-305-300>
     -   [Gerador Bashrc](http://bashrcgenerator.com/)
     -   [Explique](https://explainshell.com/)
     -   [Tutorial Vim](https://www.openvim.com/)
-    -   [Tutorial de script de shell do Linux](https://bash.cyberciti.biz/guide/Main_Page)
+    -   [Linux Shell Scripting Tutorial](https://bash.cyberciti.biz/guide/Main_Page)
     -   [Exemplos de comandos](https://www.geeksforgeeks.org/)
 -   [Outras ferramentas](<>)
     -   [Bugzila](https://bugzilla.kernel.org/)
@@ -1230,6 +1232,7 @@ Link do projeto:<https://github.com/marcossilvestrini/learning-lpic-3-305-300>
     -   [XenServer](https://www.xenserver.com/)
     -   [Wiki XenProject](https://wiki.xenproject.org/wiki/Main_Page)
     -   [Blog LPI: Virtualização Xen e Computação em Nuvem #01: Introdução](https://www.lpi.org/pt-br/blog/2020/10/01/xen-virtualization-and-cloud-computing-01-introduction/)
+    -   [Virtualização Xen e computação em nuvem #02: Como o Xen faz o trabalho](https://www.lpi.org/blog/2020/10/08/xen-virtualization-and-cloud-computing-02-how-xen-does-job/)
 -   [Documentos Openstack](<>)
     -   [Chapéu Vermelho](https://www.redhat.com/pt-br/topics/openstack)
 -   [Abra o vSwitch](<>)
