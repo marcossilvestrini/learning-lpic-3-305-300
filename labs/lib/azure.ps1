@@ -1,5 +1,5 @@
-# Scriptpath
-$scriptPath = $PSScriptRoot | Split-Path -Parent
+# workdir_azure
+$workdir_azure = $PSScriptRoot | Split-Path -Parent
 
 # Function to provision Azure instance
 function ProvisionAzure {

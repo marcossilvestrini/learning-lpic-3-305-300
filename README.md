@@ -547,6 +547,8 @@ Denodo, Red Hat JBoss Data Virtualization, IBM InfoSphere.
 
 #### Xen
 
+![panda](Images/xen-panda.png)
+
 Xen is an open-source type-1 (bare-metal) hypervisor, which allows multiple operating systems to run concurrently on the same physical hardware.  
 Xen provides a layer between the physical hardware and virtual machines (VMs), enabling efficient resource sharing and isolation.
 
@@ -1243,6 +1245,7 @@ Project Link: [https://github.com/marcossilvestrini/learning-lpic-3-305-300](htt
   * [XenServer](https://www.xenserver.com/)
   * [Wiki XenProject](https://wiki.xenproject.org/wiki/Main_Page)
   * [LPI Blog: Xen Virtualization and Cloud Computing #01: Introduction](https://www.lpi.org/pt-br/blog/2020/10/01/xen-virtualization-and-cloud-computing-01-introduction/)
+  * [Xen Virtualization and Cloud Computing #02: How Xen Does the Job](https://www.lpi.org/blog/2020/10/08/xen-virtualization-and-cloud-computing-02-how-xen-does-job/)
 * [Openstack Docs]()
   * [RedHat](https://www.redhat.com/pt-br/topics/openstack)
 * [Open vSwitch]()

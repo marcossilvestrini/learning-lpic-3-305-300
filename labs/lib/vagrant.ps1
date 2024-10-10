@@ -1,11 +1,11 @@
-# Scriptpath
-$scriptPath = $PSScriptRoot
+# workdir_vagrant
+$workdir_vagrant = $PSScriptRoot
 
 # Machine folder
 $vmware_folder = "E:/Servers/VMware"
 
 # Vagrant folder
-$vagrantPath= "$($scriptPath | Split-Path -Parent)\vagrant"
+$vagrantPath= "$($workdir_vagrant | Split-Path -Parent)\vagrant"
 
 # Function to copy the files
 function Copy-Vagrantfile {
@@ -41,7 +41,7 @@ function VagrantUp {
     } else {
         Write-Host "`nError: Vagrantfile not valid" -ForegroundColor Red
     }
-    Set-Location $scriptPath
+    Set-Location $workdir_vagrant
     
 }
 
@@ -71,5 +71,5 @@ function DestroyVagrant {
     } else {
         Write-Host "`nError: Vagrantfile not valid" -ForegroundColor Red
     }
-    Set-Location $scriptPath    
+    Set-Location $workdir_vagrant    
 }
