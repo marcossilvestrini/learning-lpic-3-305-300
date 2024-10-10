@@ -228,7 +228,7 @@ Se ejecuta directamente en el hardware físico del host, proporcionando una capa
 ###### Ejemplos de tipo 1
 
 -   VMware ESXi: un hipervisor robusto y ampliamente utilizado en entornos empresariales.
--   Microsoft Hyper-V: integrado con Windows Server, ofrece sólidas funciones de administración y rendimiento.
+-   Microsoft Hyper-V: integrado con Windows Server, ofrece potentes funciones de gestión y rendimiento.
 -   Xen: un hipervisor de código abierto utilizado por muchos proveedores de servicios en la nube.
 -   KVM (Máquina virtual basada en kernel): Integrada en el kernel de Linux, proporciona un alto rendimiento para sistemas basados ​​en Linux.
 
@@ -249,7 +249,7 @@ Se ejecuta sobre un sistema operativo convencional y depende del sistema operati
 -   VMware Workstation: un potente hipervisor para ejecutar múltiples sistemas operativos en un solo escritorio.
 -   Oracle VirtualBox: un hipervisor de código abierto conocido por su flexibilidad y facilidad de uso.
 -   Parallels Desktop: Diseñado para que los usuarios de Mac ejecuten Windows y otros sistemas operativos junto con macOS.
--   QEMU (Quick EMULator): un emulador y virtualizador de código abierto, que a menudo se usa junto con KVM.
+-   QEMU (Quick EMULator): un emulador y virtualizador de código abierto, que a menudo se utiliza junto con KVM.
 
 ##### Diferencias clave entre los hipervisores tipo 1 y tipo 2
 
@@ -260,7 +260,7 @@ Se ejecuta sobre un sistema operativo convencional y depende del sistema operati
     -   Los hipervisores de tipo 1 generalmente ofrecen mejor rendimiento y menor latencia porque no dependen de un sistema operativo host.
     -   Los hipervisores de tipo 2 pueden experimentar cierta degradación del rendimiento debido a la sobrecarga de ejecutarse sobre un sistema operativo host.
 -   Gestión y facilidad de uso:
-    -   Los hipervisores de tipo 1 requieren una configuración y administración más complejas, pero brindan funciones avanzadas y escalabilidad para implementaciones a gran escala.
+    -   Type 1 hypervisors require more complex setup and management but provide advanced features and scalability for large-scale deployments.
     -   Los hipervisores tipo 2 son más fáciles de instalar y usar, lo que los hace ideales para usuarios individuales y proyectos más pequeños.
 
 ##### Tipos de migración
@@ -276,7 +276,7 @@ En otras palabras, un sistema operativo y sus aplicaciones, que se ejecutan en h
 -   Ejemplo: tiene un servidor físico que ejecuta un sistema Windows o Linux y desea trasladarlo a un entorno virtual, como una infraestructura en la nube o un servidor de virtualización interno.  
     El proceso implica copiar todo el estado del sistema, incluido el sistema operativo, los controladores y los datos, para crear una máquina virtual equivalente que pueda ejecutarse como si estuviera en el hardware físico.
 
-##### V2V: Migración de virtual a virtual
+##### V2V - Migración de virtual a virtual
 
 La migración V2V se refiere al proceso de migrar una máquina virtual de un hipervisor a otro.  
 En este caso, ya tiene una máquina virtual ejecutándose en un entorno virtualizado (como VMware) y desea moverla a otro entorno virtualizado (por ejemplo, a Hyper-V o a un nuevo servidor VMware).
@@ -344,7 +344,7 @@ Xen con invitados paravirtualizados, herramientas VMware en determinadas configu
 ###### Requisitos del sistema operativo invitado
 
 -   **HVM:**Puede ejecutar sistemas operativos invitados no modificados.
--   **Paravirtualización:**Requiere que se modifiquen los sistemas operativos invitados para que funcionen con el hipervisor.
+-   **Paravirtualización:**Requiere que los sistemas operativos invitados se modifiquen para que funcionen con el hipervisor.
 
 ###### Actuación
 
@@ -354,7 +354,7 @@ Xen con invitados paravirtualizados, herramientas VMware en determinadas configu
 ###### Dependencia de hardware
 
 -   **HVM:**Requiere características específicas de CPU (Intel VT-x, AMD-V).
--   **Paravirtualización:**No requiere funciones específicas de CPU, pero necesita un sistema operativo invitado modificado.
+-   **Paravirtualización:**No requiere características específicas de la CPU, pero necesita un sistema operativo invitado modificado.
 
 ###### Aislamiento
 
@@ -374,7 +374,7 @@ En un sistema NUMA, la memoria se distribuye de manera desigual entre los proces
 ##### Características clave de la arquitectura NUMA
 
 1.  **Memoria local y remota**: Cada procesador tiene su propia memoria local, a la que puede acceder más rápidamente. Sin embargo, también puede acceder a la memoria de otros procesadores, aunque esto lleva más tiempo.
-2.  **Latencia diferenciada**: La latencia del acceso a la memoria varía dependiendo de si el procesador accede a su memoria local o a la memoria de otro nodo. El acceso a la memoria local es más rápido, mientras que el acceso a la memoria de otro nodo (remoto) es más lento.
+2.  **Latencia diferenciada**: La latencia de acceso a la memoria varía dependiendo de si el procesador accede a su memoria local o a la memoria de otro nodo. El acceso a la memoria local es más rápido, mientras que el acceso a la memoria de otro nodo (remoto) es más lento.
 3.  **Escalabilidad**: La arquitectura NUMA está diseñada para mejorar la escalabilidad en sistemas con muchos procesadores. A medida que se añaden más procesadores, la memoria también se distribuye, evitando el cuello de botella que se produciría en una arquitectura de acceso uniforme a memoria (UMA).
 
 ##### Ventajas de NUMA
@@ -536,10 +536,12 @@ Denodo, Red Hat JBoss Virtualización de datos, IBM InfoSphere.
 
 #### xén
 
+![panda](Images/xen-panda.png)
+
 Xen es un hipervisor tipo 1 (bare-metal) de código abierto que permite ejecutar múltiples sistemas operativos simultáneamente en el mismo hardware físico.  
 Xen proporciona una capa entre el hardware físico y las máquinas virtuales (VM), lo que permite compartir y aislar recursos de manera eficiente.
 
--   **Arquitectura:**Xen opera con un sistema de dos niveles donde el Dominio 0 (Dom0) es el dominio privilegiado con acceso directo al hardware y administra el hipervisor. Otras máquinas virtuales, llamadas Dominio U (DomU), ejecutan sistemas operativos invitados y son administradas por Dom0.
+-   **Arquitectura:** Xen operates with a two-tier system where Domain 0 (Dom0) is the privileged domain with direct hardware access and manages the hypervisor. Other virtual machines, called Domain U (DomU), run guest operating systems and are managed by Dom0.
 -   **Tipos de virtualización:**Xen admite tanto la paravirtualización (PV), que requiere un sistema operativo invitado modificado, como la virtualización asistida por hardware (HVM), que utiliza extensiones de hardware (por ejemplo, Intel VT-x o AMD-V) para ejecutar sistemas operativos invitados no modificados.
     Xen se utiliza ampliamente en entornos de nube, especialmente por Amazon Web Services (AWS) y otros proveedores de nube a gran escala.
 
@@ -594,7 +596,7 @@ XAPI es la interfaz que permite el control y la automatización del Hipervisor X
 
 #### Resumen de Xen
 
--   **Xen:**La tecnología central de hipervisor que permite que las máquinas virtuales se ejecuten en hardware físico.
+-   **Xén:**La tecnología central de hipervisor que permite que las máquinas virtuales se ejecuten en hardware físico.
 -   **Fuente Xen:**La empresa que comercializaba Xen, posteriormente adquirida por Citrix, dio lugar al desarrollo de Citrix XenServer.
 -   **Proyecto Xen:**La iniciativa y comunidad de código abierto que continúa desarrollando y manteniendo el hipervisor Xen bajo la Fundación Linux.
 -   **Tienda Xen:**Xen Store actúa como intermediario de comunicación y configuración entre el hipervisor Xen y las VM, agilizando la operación y gestión de entornos virtualizados.
@@ -608,7 +610,7 @@ Dom0 ejecuta controladores de dispositivos, lo que permite a los DomU, que carec
 #### DominioU (DomU)
 
 Los DomU son dominios sin privilegios que ejecutan máquinas virtuales.  
-Están gestionados por Dom0 y no tienen acceso directo al hardware. Las DomU se pueden configurar para ejecutar diferentes sistemas operativos y se utilizan para diversos fines, como servidores de aplicaciones y entornos de desarrollo. Confían en Dom0 para la interacción con el hardware.
+Están gestionados por Dom0 y no tienen acceso directo al hardware. Las DomU se pueden configurar para ejecutar diferentes sistemas operativos y se utilizan para diversos fines, como servidores de aplicaciones y entornos de desarrollo. Confían en Dom0 para la interacción del hardware.
 
 #### PV-DomU (DominioU paravirtualizado)
 
@@ -710,7 +712,7 @@ ip link show
 -   Comprender cómo interactúa libvirt con Xen y QEMU
 -   Comprender cómo interactúa libvirt con servicios de red como dnsmasq y radvd
 -   Comprender los archivos de configuración XML de libvirt
--   Awareness of virtlogd and virtlockd
+-   Conciencia de virtlogd y virtlockd
 
 #### 351.4 Objetos citados
 
@@ -892,7 +894,7 @@ foo
 
 **Áreas clave de conocimiento:**
 
--   Comprender la arquitectura y los componentes de Docker.
+-   Comprender la arquitectura y los componentes de Docker
 -   Administre contenedores Docker utilizando imágenes de un registro de Docker
 -   Comprender y administrar imágenes y volúmenes para contenedores Docker
 -   Comprender y gestionar el registro de contenedores Docker
@@ -1230,6 +1232,7 @@ Enlace del proyecto:<https://github.com/marcossilvestrini/learning-lpic-3-305-30
     -   [XenServer](https://www.xenserver.com/)
     -   [Proyecto Wiki Xen](https://wiki.xenproject.org/wiki/Main_Page)
     -   [Blog de LPI: Virtualización Xen y Computación en la Nube #01: Introducción](https://www.lpi.org/pt-br/blog/2020/10/01/xen-virtualization-and-cloud-computing-01-introduction/)
+    -   [Virtualización Xen y Computación en la Nube #02: Cómo hace el trabajo Xen](https://www.lpi.org/blog/2020/10/08/xen-virtualization-and-cloud-computing-02-how-xen-does-job/)
 -   [Documentos de Openstack](<>)
     -   [sombrero rojo](https://www.redhat.com/pt-br/topics/openstack)
 -   [Abrir vSwitch](<>)
