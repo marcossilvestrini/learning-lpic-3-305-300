@@ -196,7 +196,7 @@ man COMMAND
 -   Comprendre les principaux aspects de la migration des machines physiques vers les machines virtuelles
 -   Comprendre les principaux aspects de la migration des machines virtuelles entre les systèmes hôtes
 -   Comprendre les fonctionnalités et les implications de la virtualisation pour une machine virtuelle, telles que la prise d'instantanés, la pause, le clonage et les limites de ressources
--   Connaissance d'oVirt, Proxmox, systemd-machined et VirtualBox
+-   Connaissance de oVirt, Proxmox, systemd-machined et VirtualBox
 -   Connaissance d'Open vSwitch
 
 #### 351.1 Objets cités
@@ -448,7 +448,7 @@ VMware NSX, Cisco ACI, OpenStack Neutron.
 
 Regroupe le stockage physique de plusieurs appareils dans une seule unité de stockage virtuelle qui peut être gérée de manière centralisée.
 
-###### Cas d'utilisation de la définition de la virtualisation du stockage
+###### Cas d'utilisation de la définition de virtualisation du stockage
 
 Gestion des données, optimisation du stockage, reprise après sinistre.
 
@@ -529,7 +529,7 @@ Denodo, virtualisation des données Red Hat JBoss, IBM InfoSphere.
 -   Configuration de base des nœuds et domaines Xen
 -   Gestion de base des nœuds et domaines Xen
 -   Dépannage de base des installations Xen
--   Avarité des pilules
+-   Avaricité des pilules
 -   Connaissance de XenStore
 -   Connaissance des paramètres de démarrage Xen
 -   Connaissance de l'utilitaire xm
@@ -560,7 +560,7 @@ Le projet Xen fonctionne sous la Fondation Linux et se concentre sur la créatio
 
 -   **Objectifs:**Le projet Xen vise à faire progresser l'hyperviseur en améliorant ses performances, sa sécurité et ses fonctionnalités pour un large éventail de cas d'utilisation, notamment le cloud computing, la virtualisation axée sur la sécurité (par exemple, Qubes OS) et les systèmes embarqués.
 -   **Contributeurs :**Le projet inclut des contributeurs de diverses organisations, notamment des principaux fournisseurs de cloud, des fournisseurs de matériel et des développeurs indépendants.
--   **XAPI et XenTools :**Le projet Xen comprend également des outils tels que XAPI (XenAPI), utilisé pour gérer les installations de l'hyperviseur Xen, ainsi que divers autres utilitaires pour la gestion et l'optimisation du système.
+-   **PILULES ET OUTILS HANTOOLS :**Le projet Xen comprend également des outils tels que XAPI (XenAPI), utilisé pour gérer les installations de l'hyperviseur Xen, ainsi que divers autres utilitaires pour la gestion et l'optimisation du système.
 
 #### XenStore
 
@@ -612,7 +612,7 @@ Dom0 exécute des pilotes de périphériques, permettant aux DomU, qui ne dispos
 Les DomU sont des domaines non privilégiés qui exécutent des machines virtuelles.  
 Ils sont gérés par Dom0 et n'ont pas d'accès direct au matériel. Les DomU peuvent être configurés pour exécuter différents systèmes d'exploitation et sont utilisés à diverses fins, telles que les serveurs d'applications et les environnements de développement. Ils s'appuient sur Dom0 pour l'interaction matérielle.
 
-#### PV-DomU (DomainU paravirtualisé)
+#### PV-DomU (Paravirtualized DomainU)
 
 Les PV-DomU utilisent une technique appelée paravirtualisation. Dans ce modèle, le système d'exploitation DomU est modifié pour prendre conscience qu'il s'exécute dans un environnement virtualisé, lui permettant de communiquer directement avec l'hyperviseur pour des performances optimisées.  
 Cela se traduit par une réduction des frais généraux et une meilleure efficacité par rapport à la virtualisation complète.
@@ -816,7 +816,7 @@ foo
 -   Comprendre le principe du CRI-O et de containersd
 -   Connaissance du runtime OCI et des spécifications des images
 -   Connaissance de l'interface d'exécution de conteneur Kubernetes (CRI)
--   Connaissance de podman, buildah et skopeo
+-   Conscience de podman, buildah et scope
 -   Connaissance d'autres approches de virtualisation de conteneurs sous Linux et d'autres systèmes d'exploitation libres, tels que rkt, OpenVZ, systemd-nspawn ou BSD Jails
 
 #### 352.1 Objets cités
@@ -1143,9 +1143,9 @@ Lien du projet :<https://github.com/marcossilvestrini/learning-lpic-3-305-300>
     -   [GNOU](https://www.gnu.org/)
     -   [Système d'exploitation GNU](https://www.gnu.org/gnu/thegnuproject.html)
     -   [Compilateur GCC](https://gcc.gnu.org/wiki/History)
-    -   [GNUTR](https://www.gnu.org/software/tar/)
+    -   [Tar GNU](https://www.gnu.org/software/tar/)
     -   [Marque GNU](https://www.gnu.org/software/make/)
-    -   [GNU-Emacs](https://en.wikipedia.org/wiki/Emacs)
+    -   [GNU Emacs](https://en.wikipedia.org/wiki/Emacs)
     -   [Paquets GNU](https://www.gnu.org/software/)
     -   [Collection GNU/Linux](https://directory.fsf.org/wiki/Collection:GNU/Linux)
     -   [Chargeur de démarrage GNU Grub](https://www.gnu.org/software/grub/)
@@ -1202,7 +1202,7 @@ Lien du projet :<https://github.com/marcossilvestrini/learning-lpic-3-305-300>
 -   [Gestionnaire de paquets](<>)
     -   [Télécharger les forfaits](https://pkgs.org/)
     -   [Installer des packages](https://installati.one/)
-    -   [Guider l'installation des packages](https://installati.one/)
+    -   [Guider les packages d'installation](https://installati.one/)
 -   [Script Shell](<>)
     -   [Bourne à nouveau Shell](https://www.gnu.org/software/bash/manual/)
     -   [Case](https://bash.cyberciti.biz/guide/Shebang)
