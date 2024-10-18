@@ -194,7 +194,7 @@ man COMMAND
 -   Entenda os prós e os contras da virtualização
 -   Compreender as diversas variações de hipervisores e monitores de máquinas virtuais
 -   Entenda os principais aspectos da migração de máquinas físicas para virtuais
--   Compreenda os principais aspectos da migração de máquinas virtuais entre sistemas host
+-   Compreender os principais aspectos da migração de máquinas virtuais entre sistemas host
 -   Compreenda os recursos e as implicações da virtualização para uma máquina virtual, como captura instantânea, pausa, clonagem e limites de recursos
 -   Conhecimento de oVirt, Proxmox, systemd-machined e VirtualBox
 -   Conscientização do Open vSwitch
@@ -310,7 +310,7 @@ VMware ESXi, Microsoft Hyper-V, KVM (máquina virtual baseada em kernel).
 
 ###### Desvantagens do HVM
 
--   **Dependência de hardware:**Requer recursos de hardware específicos, limitando a compatibilidade com sistemas mais antigos.
+-   **Dependência de Hardware:**Requer recursos de hardware específicos, limitando a compatibilidade com sistemas mais antigos.
 -   **Complexidade:**Pode envolver configuração e gerenciamento mais complexos.
 
 ##### Paravirtualização
@@ -329,7 +329,7 @@ A paravirtualização envolve a modificação do sistema operacional convidado p
 
 Xen com convidados paravirtualizados, ferramentas VMware em determinadas configurações e algumas configurações KVM.
 
-###### Vantagens da Paravirtualização
+###### Vantagens da paravirtualização
 
 -   **Eficiência:**Reduz a sobrecarga de virtualização de hardware, oferecendo potencialmente melhor desempenho para determinadas cargas de trabalho.
 -   **Utilização de recursos:**Uso mais eficiente dos recursos do sistema devido à comunicação direta entre o sistema operacional convidado e o hipervisor.
@@ -498,7 +498,7 @@ Inteligência de negócios, integração de dados em tempo real.
 
 Denodo, Red Hat JBoss Data Virtualization, IBM InfoSphere.
 
-##### Benefícios da Virtualização
+##### Benefícios da virtualização
 
 -   Eficiência de Recursos: Melhor utilização dos recursos físicos.
 -   Economia de custos: Redução de custos operacionais e de hardware.
@@ -556,11 +556,11 @@ A empresa forneceu soluções empresariais baseadas no Xen e ofereceu ferramenta
 #### Projeto Xen
 
 Projeto Xen refere-se à comunidade e iniciativa de código aberto responsável pelo desenvolvimento e manutenção do hipervisor Xen após sua comercialização.  
-O Projeto Xen opera sob a Linux Foundation, com foco na construção, melhoria e suporte do Xen como um esforço colaborativo e orientado pela comunidade.
+O Projeto Xen opera sob a Linux Foundation, com foco na construção, melhoria e suporte do Xen como um esforço colaborativo e voltado para a comunidade.
 
 -   **Metas:**O Projeto Xen visa avançar o hipervisor melhorando seu desempenho, segurança e conjunto de recursos para uma ampla gama de casos de uso, incluindo computação em nuvem, virtualização focada em segurança (por exemplo, Qubes OS) e sistemas embarcados.
 -   **Colaboradores:**O projeto inclui colaboradores de diversas organizações, incluindo grandes provedores de nuvem, fornecedores de hardware e desenvolvedores independentes.
--   **XAPI e XenTools:**O Projeto Xen também inclui ferramentas como XAPI (XenAPI), que é usado para gerenciar instalações de hipervisores Xen, e vários outros utilitários para gerenciamento e otimização do sistema.
+-   **COMPRIMIDOS E HANTOOLS:**O Projeto Xen também inclui ferramentas como XAPI (XenAPI), que é usado para gerenciar instalações de hipervisores Xen, e vários outros utilitários para gerenciamento e otimização do sistema.
 
 #### XenStore
 
@@ -612,14 +612,14 @@ Dom0 executa drivers de dispositivos, permitindo que DomUs, que não possuem ace
 DomUs são domínios não privilegiados que executam máquinas virtuais.  
 Eles são gerenciados pelo Dom0 e não têm acesso direto ao hardware. DomUs podem ser configurados para executar diferentes sistemas operacionais e são usados ​​para diversos fins, como servidores de aplicativos e ambientes de desenvolvimento. Eles contam com Dom0 para interação de hardware.
 
-#### PV-DomU (Domínio ParavirtualizadoU)
+#### PV-DOMU (Domínio Paranormalizado)
 
 PV-DomUs usam uma técnica chamada paravirtualização. Neste modelo, o sistema operacional DomU é modificado para saber que roda em um ambiente virtualizado, permitindo a comunicação direta com o hipervisor para desempenho otimizado.  
 Isso resulta em menor sobrecarga e melhor eficiência em comparação com a virtualização completa.
 
 #### HVM-DomU (Domínio de Máquina Virtual de HardwareU)
 
-HVM-DomUs são máquinas virtuais que utilizam virtualização total, permitindo a execução de sistemas operacionais não modificados. O hipervisor Xen fornece emulação de hardware para esses DomUs, permitindo-lhes executar qualquer sistema operacional que suporte a arquitetura de hardware subjacente. Embora isso ofereça maior flexibilidade, pode resultar em maior sobrecarga em comparação com PV-DomUs.
+HVM-DomUs são máquinas virtuais que utilizam virtualização total, permitindo a execução de sistemas operacionais não modificados. O hipervisor Xen fornece emulação de hardware para esses DomUs, permitindo-lhes executar qualquer sistema operacional que suporte a arquitetura de hardware subjacente. Embora isso ofereça maior flexibilidade, pode resultar em sobrecarga maior em comparação com PV-DomUs.
 
 #### 351.2 Objetos Citados
 
@@ -662,7 +662,7 @@ foo
 -   Gerencie instantâneos usando o monitor QEMU
 -   Instale os drivers de dispositivo QEMU Guest Agent e VirtIO
 -   Solucionar problemas de instalações QEMU, incluindo rede e armazenamento
--   Conscientização de parâmetros importantes de configuração do QEMU
+-   Consciência de parâmetros importantes de configuração do QEMU
 
 #### 351.3 Objetos Citados
 
@@ -816,7 +816,7 @@ foo
 -   Entenda o princípio do CRI-O e do containerd
 -   Conhecimento do tempo de execução do OCI e das especificações de imagem
 -   Conhecimento da interface de tempo de execução de contêiner (CRI) do Kubernetes
--   Consciência de podman, buildah e skopeo
+-   Consciência de podman, buildah e escopo
 -   Conhecimento de outras abordagens de virtualização de contêineres no Linux e outros sistemas operacionais livres, como rkt, OpenVZ, systemd-nspawn ou BSD Jails
 
 #### 352.1 Objetos Citados
@@ -938,7 +938,7 @@ Dockerfile
 
 -   Entenda a relevância da orquestração de contêineres
 -   Entenda os principais conceitos do Docker Compose e do Docker Swarm
--   Compreender os principais conceitos de Kubernetes e Helm
+-   Compreenda os principais conceitos de Kubernetes e Helm
 -   Conscientização sobre OpenShift, Rancher e Mesosphere DC/OS
 
 <p align="right">(<a href="#topic-352.4">back to sub topic 352.4</a>)</p>
@@ -1065,7 +1065,7 @@ user-data
 
 <a name="topic-353.4"></a>
 
-### 353.4 Vagabundo
+### 353,4 Vagabundo
 
 **Peso:**3
 
@@ -1127,7 +1127,7 @@ Não se esqueça de dar uma estrela ao projeto! Obrigado novamente!
 
 ## Contato
 
-Marcos Silvestrini -[marcos.silvestrini@gmail.com](mailto:marcos.silvestrini@gmail.com)\\[![Twitter](https://img.shields.io/twitter/url/https/twitter.com/mrsilvestrini.svg?style=social&label=Follow%20%40mrsilvestrini)](https://twitter.com/mrsilvestrini)
+Marcos Silvestrini[marcos.silvestrini@gmail.com](mailto:marcos.silvestrini@gmail.com)\\[![Twitter](https://img.shields.io/twitter/url/https/twitter.com/mrsilvestrini.svg?style=social&label=Follow%20%40mrsilvestrini)](https://twitter.com/mrsilvestrini)
 
 Link do projeto:<https://github.com/marcossilvestrini/learning-lpic-3-305-300>
 
@@ -1143,7 +1143,7 @@ Link do projeto:<https://github.com/marcossilvestrini/learning-lpic-3-305-300>
     -   [GNU](https://www.gnu.org/)
     -   [Sistema operacional GNU](https://www.gnu.org/gnu/thegnuproject.html)
     -   [Compilador GCC](https://gcc.gnu.org/wiki/History)
-    -   [GNUTR](https://www.gnu.org/software/tar/)
+    -   [GNU alcatrão](https://www.gnu.org/software/tar/)
     -   [GNU Make](https://www.gnu.org/software/make/)
     -   [GNU Emacs](https://en.wikipedia.org/wiki/Emacs)
     -   [Pacotes GNU](https://www.gnu.org/software/)
@@ -1215,7 +1215,7 @@ Link do projeto:<https://github.com/marcossilvestrini/learning-lpic-3-305-300>
     -   [Gerador Bashrc](http://bashrcgenerator.com/)
     -   [Explique](https://explainshell.com/)
     -   [Tutorial Vim](https://www.openvim.com/)
-    -   [Linux Shell Scripting Tutorial](https://bash.cyberciti.biz/guide/Main_Page)
+    -   [Tutorial de script de shell do Linux](https://bash.cyberciti.biz/guide/Main_Page)
     -   [Exemplos de comandos](https://www.geeksforgeeks.org/)
 -   [Outras ferramentas](<>)
     -   [Bugzila](https://bugzilla.kernel.org/)
