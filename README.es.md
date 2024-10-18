@@ -4,7 +4,8 @@
 
 * * *
 
-[![MIT License][license-shield]][license-url][![Forks][forks-shield]][forks-url][![Stargazers][stars-shield]][stars-url][![Contributors][contributors-shield]][contributors-url][![Issues][issues-shield]][issues-url][![LinkedIn][linkedin-shield]][linkedin-url]
+[![MIT License][license-shield]][license-url][![Forks][forks-shield]][forks-url][![Stargazers][stars-shield]][stars-url]
+[![Contributors][contributors-shield]][contributors-url][![Issues][issues-shield]][issues-url][![LinkedIn][linkedin-shield]][linkedin-url]
 
 * * *
 
@@ -84,15 +85,15 @@
 
 ## Acerca del proyecto
 
-> Este proyecto tiene como objetivo ayudar a estudiantes o profesionales a aprender los conceptos principales de GNULinux.
-> y software libre\\
-> Se cubrirán algunas distribuciones de GNULinux como Debian y RPM\\
-> También se cubrirá la instalación y configuración de algunos paquetes\\
-> Al hacer esto, podrás darle a toda la comunidad la oportunidad de beneficiarse de tus cambios.\\
-> El acceso al código fuente es una condición previa para ello.\\
-> Utilice vagrant para máquinas y ejecute laboratorios y practique el contenido de este artículo.\\
-> He publicado en la carpeta Vagrant un Vagrantfile con lo necesario\\
-> para que subas un ambiente para estudios
+> This project aims to help students or professionals to learn the main concepts of GNULinux
+> and free software\\
+> Some GNULinux distributions like Debian and RPM will be covered\\
+> Installation and configuration of some packages will also be covered\\
+> By doing this you can give the whole community a chance to benefit from your changes.\\
+> Access to the source code is a precondition for this.\\
+> Use vagrant for up machines and execute labs and practice content in this article.\\
+> I have published in folder Vagrant a Vagrantfile with what is necessary\\
+> for you to upload an environment for studies
 
 * * *
 
@@ -188,7 +189,7 @@ man COMMAND
 
 **Descripción:**Los candidatos deben conocer y comprender los conceptos generales, la teoría y la terminología de la virtualización. Esto incluye terminología de Xen, QEMU y libvirt.
 
-**Áreas clave de conocimiento:**
+**Áreas de conocimiento clave:**
 
 -   Comprender la terminología de virtualización
 -   Comprender los pros y los contras de la virtualización
@@ -228,7 +229,7 @@ Se ejecuta directamente en el hardware físico del host, proporcionando una capa
 ###### Ejemplos de tipo 1
 
 -   VMware ESXi: un hipervisor robusto y ampliamente utilizado en entornos empresariales.
--   Microsoft Hyper-V: integrado con Windows Server, ofrece potentes funciones de gestión y rendimiento.
+-   Microsoft Hyper-V: integrado con Windows Server, ofrece sólidas funciones de administración y rendimiento.
 -   Xen: un hipervisor de código abierto utilizado por muchos proveedores de servicios en la nube.
 -   KVM (Máquina virtual basada en kernel): Integrada en el kernel de Linux, proporciona un alto rendimiento para sistemas basados ​​en Linux.
 
@@ -260,7 +261,7 @@ Se ejecuta sobre un sistema operativo convencional y depende del sistema operati
     -   Los hipervisores de tipo 1 generalmente ofrecen mejor rendimiento y menor latencia porque no dependen de un sistema operativo host.
     -   Los hipervisores de tipo 2 pueden experimentar cierta degradación del rendimiento debido a la sobrecarga de ejecutarse sobre un sistema operativo host.
 -   Gestión y facilidad de uso:
-    -   Type 1 hypervisors require more complex setup and management but provide advanced features and scalability for large-scale deployments.
+    -   Los hipervisores de tipo 1 requieren una configuración y administración más complejas, pero brindan funciones avanzadas y escalabilidad para implementaciones a gran escala.
     -   Los hipervisores tipo 2 son más fáciles de instalar y usar, lo que los hace ideales para usuarios individuales y proyectos más pequeños.
 
 ##### Tipos de migración
@@ -276,7 +277,7 @@ En otras palabras, un sistema operativo y sus aplicaciones, que se ejecutan en h
 -   Ejemplo: tiene un servidor físico que ejecuta un sistema Windows o Linux y desea trasladarlo a un entorno virtual, como una infraestructura en la nube o un servidor de virtualización interno.  
     El proceso implica copiar todo el estado del sistema, incluido el sistema operativo, los controladores y los datos, para crear una máquina virtual equivalente que pueda ejecutarse como si estuviera en el hardware físico.
 
-##### V2V - Migración de virtual a virtual
+##### V2V: Migración de virtual a virtual
 
 La migración V2V se refiere al proceso de migrar una máquina virtual de un hipervisor a otro.  
 En este caso, ya tiene una máquina virtual ejecutándose en un entorno virtualizado (como VMware) y desea moverla a otro entorno virtualizado (por ejemplo, a Hyper-V o a un nuevo servidor VMware).
@@ -344,7 +345,7 @@ Xen con invitados paravirtualizados, herramientas VMware en determinadas configu
 ###### Requisitos del sistema operativo invitado
 
 -   **HVM:**Puede ejecutar sistemas operativos invitados no modificados.
--   **Paravirtualización:**Requiere que los sistemas operativos invitados se modifiquen para que funcionen con el hipervisor.
+-   **Paravirtualización:**Requiere que se modifiquen los sistemas operativos invitados para que funcionen con el hipervisor.
 
 ###### Actuación
 
@@ -374,7 +375,7 @@ En un sistema NUMA, la memoria se distribuye de manera desigual entre los proces
 ##### Características clave de la arquitectura NUMA
 
 1.  **Memoria local y remota**: Cada procesador tiene su propia memoria local, a la que puede acceder más rápidamente. Sin embargo, también puede acceder a la memoria de otros procesadores, aunque esto lleva más tiempo.
-2.  **Latencia diferenciada**: La latencia de acceso a la memoria varía dependiendo de si el procesador accede a su memoria local o a la memoria de otro nodo. El acceso a la memoria local es más rápido, mientras que el acceso a la memoria de otro nodo (remoto) es más lento.
+2.  **Latencia diferenciada**: La latencia del acceso a la memoria varía dependiendo de si el procesador accede a su memoria local o a la memoria de otro nodo. El acceso a la memoria local es más rápido, mientras que el acceso a la memoria de otro nodo (remoto) es más lento.
 3.  **Escalabilidad**: La arquitectura NUMA está diseñada para mejorar la escalabilidad en sistemas con muchos procesadores. A medida que se añaden más procesadores, la memoria también se distribuye, evitando el cuello de botella que se produciría en una arquitectura de acceso uniforme a memoria (UMA).
 
 ##### Ventajas de NUMA
@@ -523,7 +524,7 @@ Denodo, Red Hat JBoss Virtualización de datos, IBM InfoSphere.
 
 **Descripción:**Los candidatos deben poder instalar, configurar, mantener, migrar y solucionar problemas de instalaciones de Xen. La atención se centra en Xen versión 4.x.
 
-**Áreas clave de conocimiento:**
+**Áreas de conocimiento clave:**
 
 -   Comprender la arquitectura de Xen, incluidas las redes y el almacenamiento.
 -   Configuración básica de nodos y dominios Xen.
@@ -541,7 +542,7 @@ Denodo, Red Hat JBoss Virtualización de datos, IBM InfoSphere.
 Xen es un hipervisor tipo 1 (bare-metal) de código abierto que permite ejecutar múltiples sistemas operativos simultáneamente en el mismo hardware físico.  
 Xen proporciona una capa entre el hardware físico y las máquinas virtuales (VM), lo que permite compartir y aislar recursos de manera eficiente.
 
--   **Arquitectura:** Xen operates with a two-tier system where Domain 0 (Dom0) is the privileged domain with direct hardware access and manages the hypervisor. Other virtual machines, called Domain U (DomU), run guest operating systems and are managed by Dom0.
+-   **Architecture:**Xen opera con un sistema de dos niveles donde el Dominio 0 (Dom0) es el dominio privilegiado con acceso directo al hardware y administra el hipervisor. Otras máquinas virtuales, llamadas Dominio U (DomU), ejecutan sistemas operativos invitados y son administradas por Dom0.
 -   **Tipos de virtualización:**Xen admite tanto la paravirtualización (PV), que requiere un sistema operativo invitado modificado, como la virtualización asistida por hardware (HVM), que utiliza extensiones de hardware (por ejemplo, Intel VT-x o AMD-V) para ejecutar sistemas operativos invitados no modificados.
     Xen se utiliza ampliamente en entornos de nube, especialmente por Amazon Web Services (AWS) y otros proveedores de nube a gran escala.
 
@@ -560,7 +561,7 @@ El Proyecto Xen opera bajo la Fundación Linux, con un enfoque en construir, mej
 
 -   **Objetivos:**El Proyecto Xen tiene como objetivo hacer avanzar el hipervisor mejorando su rendimiento, seguridad y conjunto de funciones para una amplia gama de casos de uso, incluida la computación en la nube, la virtualización centrada en la seguridad (por ejemplo, Qubes OS) y los sistemas integrados.
 -   **Colaboradores:**El proyecto incluye contribuyentes de varias organizaciones, incluidos los principales proveedores de nube, proveedores de hardware y desarrolladores independientes.
--   **XAPI y XenTools:**El Proyecto Xen también incluye herramientas como XAPI (XenAPI), que se utiliza para administrar las instalaciones del hipervisor Xen, y varias otras utilidades para la administración y optimización del sistema.
+-   **PASTILLAS Y HANTOOLS:**El Proyecto Xen también incluye herramientas como XAPI (XenAPI), que se utiliza para administrar las instalaciones del hipervisor Xen, y varias otras utilidades para la administración y optimización del sistema.
 
 #### Tienda Xen
 
@@ -612,7 +613,7 @@ Dom0 ejecuta controladores de dispositivos, lo que permite a los DomU, que carec
 Los DomU son dominios sin privilegios que ejecutan máquinas virtuales.  
 Están gestionados por Dom0 y no tienen acceso directo al hardware. Las DomU se pueden configurar para ejecutar diferentes sistemas operativos y se utilizan para diversos fines, como servidores de aplicaciones y entornos de desarrollo. Confían en Dom0 para la interacción del hardware.
 
-#### PV-DomU (DominioU paravirtualizado)
+#### PV-DOMU (Dominio Paranormalizado)
 
 Los PV-DomU utilizan una técnica llamada paravirtualización. En este modelo, el sistema operativo DomU se modifica para que sea consciente de que se ejecuta en un entorno virtualizado, lo que le permite comunicarse directamente con el hipervisor para un rendimiento optimizado.  
 Esto da como resultado una menor sobrecarga y una mejor eficiencia en comparación con la virtualización completa.
@@ -655,7 +656,7 @@ foo
 
 **Descripción:**Los candidatos deben poder instalar, configurar, mantener, migrar y solucionar problemas de instalaciones de QEMU.
 
-**Áreas clave de conocimiento:**
+**Áreas de conocimiento clave:**
 
 -   Comprender la arquitectura de QEMU, incluidos KVM, redes y almacenamiento.
 -   Inicie instancias de QEMU desde la línea de comando
@@ -700,7 +701,7 @@ ip link show
 
 **Descripción:**Los candidatos deben poder administrar hosts de virtualización y máquinas virtuales ("dominios libvirt") utilizando libvirt y herramientas relacionadas.
 
-**Áreas clave de conocimiento:**
+**Áreas de conocimiento clave:**
 
 -   Comprender la arquitectura de libvirt
 -   Administrar conexiones y nodos libvirt
@@ -744,7 +745,7 @@ foo
 
 **Descripción:**Los candidatos deberían poder administrar imágenes de disco de máquinas virtuales. Esto incluye convertir imágenes de disco entre varios formatos e hipervisores y acceder a los datos almacenados dentro de una imagen.
 
-**Áreas clave de conocimiento:**
+**Áreas de conocimiento clave:**
 
 -   Comprender las características de varios formatos de imágenes de discos virtuales, como imágenes sin formato, qcow2 y VMDK.
 -   Administre imágenes de disco de máquinas virtuales usando qemu-img
@@ -804,7 +805,7 @@ foo
 
 **Descripción:**Los candidatos deben comprender el concepto de virtualización de contenedores. Esto incluye comprender los componentes de Linux utilizados para implementar la virtualización de contenedores, así como el uso de herramientas estándar de Linux para solucionar problemas de estos componentes.
 
-**Áreas clave de conocimiento:**
+**Áreas de conocimiento clave:**
 
 -   Comprender los conceptos de sistema y contenedor de aplicaciones.
 -   Comprender y analizar los espacios de nombres del kernel
@@ -816,7 +817,7 @@ foo
 -   Comprender el principio de CRI-O y contenedores.
 -   Conocimiento del tiempo de ejecución de OCI y de las especificaciones de imagen.
 -   Conocimiento de la interfaz de ejecución de contenedores (CRI) de Kubernetes
--   Conciencia de podman, buildah y skopeo.
+-   Conciencia de podman, buildah y alcance.
 -   Conocimiento de otros enfoques de virtualización de contenedores en Linux y otros sistemas operativos libres, como rkt, OpenVZ, systemd-nspawn o BSD Jails.
 
 #### 352.1 Objetos citados
@@ -853,7 +854,7 @@ foo
 
 **Descripción:**Los candidatos deberían poder utilizar contenedores del sistema utilizando LXC y LXD. La versión de LXC cubierta es 3.0 o superior.
 
-**Áreas clave de conocimiento:**
+**Áreas de conocimiento clave:**
 
 -   Comprender la arquitectura de LXC y LXD
 -   Administre contenedores LXC basados ​​en imágenes existentes usando LXD, incluidas redes y almacenamiento.
@@ -892,9 +893,9 @@ foo
 
 **Descripción:**El candidato debe poder gestionar nodos Docker y contenedores Docker. Esto incluye comprender la arquitectura de Docker y cómo interactúa Docker con el sistema Linux del nodo.
 
-**Áreas clave de conocimiento:**
+**Áreas de conocimiento clave:**
 
--   Comprender la arquitectura y los componentes de Docker
+-   Comprender la arquitectura y los componentes de Docker.
 -   Administre contenedores Docker utilizando imágenes de un registro de Docker
 -   Comprender y administrar imágenes y volúmenes para contenedores Docker
 -   Comprender y gestionar el registro de contenedores Docker
@@ -934,7 +935,7 @@ Dockerfile
 
 **Descripción:**Los candidatos deben comprender la importancia de la orquestación de contenedores y los conceptos clave que Docker Swarm y Kubernetes proporcionan para implementar la orquestación de contenedores.
 
-**Áreas clave de conocimiento:**
+**Áreas de conocimiento clave:**
 
 -   Comprender la relevancia de la orquestación de contenedores
 -   Comprender los conceptos clave de Docker Compose y Docker Swarm
@@ -961,7 +962,7 @@ Dockerfile
 
 **Descripción:**Los candidatos deben comprender las ofertas comunes en las nubes públicas y tener conocimientos básicos de las funciones de las herramientas de administración de la nube comúnmente disponibles.
 
-**Áreas clave de conocimiento:**
+**Áreas de conocimiento clave:**
 
 -   Comprender las ofertas comunes en las nubes públicas
 -   Conocimientos básicos de las funciones de OpenStack.
@@ -998,7 +999,7 @@ Terraform
 
 **Descripción:**Los candidatos deberían poder utilizar Packer para crear imágenes del sistema. Esto incluye ejecutar Packer en varios entornos de nube públicos y privados, así como crear imágenes de contenedores para LXC/LXD.
 
-**Áreas clave de conocimiento:**
+**Áreas de conocimiento clave:**
 
 -   Comprender la funcionalidad y características de Packer
 -   Crear y mantener archivos de plantilla
@@ -1034,7 +1035,7 @@ packer
 Además, los candidatos deberían poder configurar instancias para permitir inicios de sesión SSH seguros e instalar un conjunto específico de paquetes de software.  
 Además, los candidatos deberían poder crear nuevas imágenes del sistema con soporte de inicio en la nube.
 
-**Áreas clave de conocimiento:**
+**Áreas de conocimiento clave:**
 
 -   Comprender las características y conceptos de cloud-init, incluidos los datos del usuario, la inicialización y la configuración de cloud-init.
 -   Utilice cloud-init para crear, cambiar el tamaño y montar sistemas de archivos, configurar cuentas de usuario, incluidas credenciales de inicio de sesión como claves SSH e instalar paquetes de software desde el repositorio de la distribución.
@@ -1071,7 +1072,7 @@ user-data
 
 **Descripción:**El candidato debe poder utilizar Vagrant para administrar máquinas virtuales, incluido el aprovisionamiento de la máquina virtual.
 
-**Áreas clave de conocimiento:**
+**Áreas de conocimiento clave:**
 
 -   Comprender la arquitectura y los conceptos de Vagrant, incluidos el almacenamiento y las redes.
 -   Recuperar y utilizar cajas de Atlas
@@ -1143,7 +1144,7 @@ Enlace del proyecto:<https://github.com/marcossilvestrini/learning-lpic-3-305-30
     -   [ÑU](https://www.gnu.org/)
     -   [Sistema operativo GNU](https://www.gnu.org/gnu/thegnuproject.html)
     -   [Compilador GCC](https://gcc.gnu.org/wiki/History)
-    -   [GNU-TR](https://www.gnu.org/software/tar/)
+    -   [Alquitrán GNU](https://www.gnu.org/software/tar/)
     -   [Marca GNU](https://www.gnu.org/software/make/)
     -   [Emacs GNU](https://en.wikipedia.org/wiki/Emacs)
     -   [Paquetes GNU](https://www.gnu.org/software/)
