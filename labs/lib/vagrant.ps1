@@ -8,22 +8,36 @@ $vmware_folder = "E:/Servers/VMware"
 $vagrantPath= "$($workdir_vagrant | Split-Path -Parent)\vagrant"
 
 # Function to copy the files
+# Function to copy the files
 function Copy-Vagrantfile {
     param (
         [string]$source,
         [string]$destination = "$($source | Split-Path -Parent)\Vagrantfile",
-        [string]$box
+        [string]$box,
+        [string]$provider
     )
     if (Test-Path $source) {
         $vagrantfileContent = Get-Content -Path $source
+
         # Replace the placeholder with the selected box
         $vagrantfileContent = $vagrantfileContent -replace 'CONFIG_VM_BOX_PLACEHOLDER', $box
+
+        # Conditional logic to handle network configuration based on provider
+        if ($provider -eq "virtualbox") {
+            # If provider is VirtualBox, add the virtio NIC
+            $vagrantfileContent = $vagrantfileContent -replace '### NETWORK_CONFIG_PLACEHOLDER', ',nic_type: "virtio"'
+        } else {
+            # If provider is VMware or another, remove virtio NIC line
+            $vagrantfileContent = $vagrantfileContent -replace '### NETWORK_CONFIG_PLACEHOLDER', ''
+        }
+
         $vagrantfileContent | Set-Content -Path $destination -Force
-        Write-Host "`nFile '$source' copied to '$destination' successfully with box '$box'!" -ForegroundColor Green
+        Write-Host "`nFile $source copied to $destination successfully with box $box and provider $provider !" -ForegroundColor Green
     } else {
         Write-Host "`nError: File '$source' not found." -ForegroundColor Red
     }
 }
+
 
 # Function to vagrant up
 function VagrantUp {
@@ -37,7 +51,10 @@ function VagrantUp {
     if (vagrant validate) {
         Write-Host "`nVagrantfile valid! Your instances are provisioning..." -ForegroundColor Green
         Write-Host "`nProvider: $provider" -ForegroundColor Yellow 
-        vagrant up --provider $provider
+        Set-Variable VAGRANT_LOG=info
+        #vagrant up --debug  --provider $provider 2>&1 | Tee-Object -FilePath ".\vagrant.log"
+        vagrant up --provider $provider        
+        vagrant reload
     } else {
         Write-Host "`nError: Vagrantfile not valid" -ForegroundColor Red
     }
