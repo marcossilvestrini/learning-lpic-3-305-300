@@ -50,8 +50,8 @@ else
 fi
 
 # Set dns\hosts
-#sudo hostnamectl set-hostname novo-nome-host
-sudo cp -f configs/commons/hosts /etc/
+# sudo hostnamectl set-hostname novo-nome-host
+# sudo cp -f configs/commons/hosts /etc/
 
 # Set custom ssh configs
 sudo cp -f configs/commons/01-sshd-custom.conf /etc/ssh/sshd_config.d
