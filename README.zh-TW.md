@@ -149,7 +149,7 @@ git clone https://github.com/marcossilvestrini/learning-lpic-3-305-300.git
 ## 四項基本自由
 
 > 0.為任何目的隨意運行程序的自由（自由 0）。
-> 1.自由地研究程式如何運作並對其進行更改\\
+> 1.自由地研究程序如何運作並對其進行更改\\
 > 你可以隨心所欲地進行計算（自由 1）。
 > 存取原始碼是實現此目的的先決條件。
 > 2.重新分發副本的自由，以便您可以幫助他人（自由2）。
@@ -195,7 +195,7 @@ man COMMAND
 -   了解虛擬機器管理程式和虛擬機器監視器的各種變體
 -   了解將實體機遷移到虛擬機器的主要方面
 -   了解在主機系統之間遷移虛擬機器的主要方面
--   Understand the features and implications of virtualization for a virtual machine, such as snapshotting, pausing, cloning and resource limits
+-   了解虛擬機器虛擬化的功能和影響，例如快照、暫停、複製和資源限制
 -   了解 oVirt、Proxmox、systemd-machined 和 VirtualBox
 -   對 Open vSwitch 的認識
 
@@ -289,7 +289,7 @@ V2V 遷移是指將虛擬機器從一個虛擬機器管理程式遷移到另一�
 
 ###### HVM定義
 
-HVM 利用現代 CPU 提供的硬體擴展來虛擬化硬件，從而以最小的效能開銷創建和管理 VM。
+HVM 利用現代 CPU 提供的硬體擴充來虛擬化硬件，從而能夠以最小的效能開銷來建立和管理 VM。
 
 ###### HVM 主要特性
 
@@ -560,7 +560,7 @@ Xen 計畫在 Linux 基金會下運作，重點是建立、改進和支持 Xen�
 
 -   **目標：**Xen 專案旨在透過提高虛擬機器管理程式的效能、安全性和適用於各種用例的功能集來推進虛擬機器管理程序，包括雲端運算、注重安全的虛擬化（例如 Qubes OS）和嵌入式系統。
 -   **貢獻者：**該專案包括來自不同組織的貢獻者，包括主要雲端供應商、硬體供應商和獨立開發人員。
--   **XAPI 和 XenTools：**Xen 專案還包括用於管理 Xen 虛擬機器管理程式安裝的 XAPI (XenAPI) 等工具，以及用於系統管理和最佳化的各種其他實用程式。
+-   **藥丸和漢工具：**Xen 專案還包括用於管理 Xen 虛擬機器管理程式安裝的 XAPI (XenAPI) 等工具，以及用於系統管理和最佳化的各種其他實用程式。
 
 #### XenStore
 
@@ -580,7 +580,7 @@ Xen Store 是 Xen Hypervisor 的關鍵元件。
 #### 丸
 
 XAPI 或 XenAPI 是用於管理 Xen Hypervisor 及其虛擬機器 (VM) 的應用程式介面 (API)。  
-XAPI 是 XenServer（現在稱為 Citrix Hypervisor）的關鍵元件，提供與 Xen 虛擬機器管理程式互動的標準化方法，以執行建立、設定、監控和控制 VM 等作業。
+XAPI 是 XenServer（現在稱為 Citrix Hypervisor）的關鍵元件，提供與 Xen 虛擬機器管理程式互動的標準化方式，以執行建立、設定、監控和控制 VM 等作業。
 
 以下是 XAPI 的一些重要面向：
 
@@ -598,7 +598,7 @@ XAPI 是支援 Xen Hypervisor 控制和自動化的接口，使管理虛擬化�
 
 -   **克森：**核心管理程式技術使虛擬機器能夠在實體硬體上運行。
 -   **Xen來源：**該公司將 Xen 商業化，後來被 Citrix 收購，導致了 Citrix XenServer 的開發。
--   **Xen專案：**在 Linux 基金會下繼續開發和維護 Xen 虛擬機器管理程式的開源計畫和社群。
+-   **Xen專案：**在 Linux 基金會下繼續開發和維護 Xen 虛擬機器管理程式的開源倡議和社群。
 -   **XenStore：**Xen Store 充當 Xen 虛擬機器管理程式和 VM 之間的通訊和配置中介，簡化虛擬化環境的操作和管理。
 -   **丸**是支援 Xen Hypervisor 控制和自動化的接口，使管理虛擬化環境變得更加容易。
 
@@ -612,7 +612,7 @@ Dom0 運行設備驅動程序，允許缺乏直接硬體存取的 DomU 與設備
 DomU 是運作虛擬機器的非特權網域。  
 它們由 Dom0 管理，不能直接存取硬體。 DomU 可以配置為運行不同的作業系統並用於各種目的，例如應用程式伺服器和開發環境。它們依賴 Dom0 進行硬體互動。
 
-#### PV-DomU（半虛擬化DomainU）
+#### PV-DOMU（超規範化域）
 
 PV-DomU 使用一種稱為半虛擬化的技術。在此模型中，DomU 作業系統經過修改，可以意識到它在虛擬化環境中運行，從而允許它直接與虛擬機器管理程式通訊以優化效能。  
 與完全虛擬化相比，這可以降低開銷並提高效率。
@@ -816,7 +816,7 @@ foo
 -   了解CRI-O和containerd的原理
 -   了解 OCI 執行時期和影像規範
 -   了解 Kubernetes 容器執行時間介面 (CRI)
--   對 podman、buildah 和 skopeo 的認識
+-   對 podman、buildah 和範圍的認識
 -   了解 Linux 和其他免費作業系統中的其他容器虛擬化方法，例如 rkt、OpenVZ、systemd-nspawn 或 BSD Jails
 
 #### 352.1 引用的對象
@@ -938,7 +938,7 @@ Dockerfile
 
 -   了解容器編排的相關性
 -   了解 Docker Compose 和 Docker Swarm 的關鍵概念
--   Understand the key concepts of Kubernetes and Helm
+-   了解 Kubernetes 和 Helm 的關鍵概念
 -   對 OpenShift、Rancher 和 Mesosphere DC/OS 的認識
 
 <p align="right">(<a href="#topic-352.4">back to sub topic 352.4</a>)</p>
@@ -1143,7 +1143,7 @@ Vagrantfile
     -   [GNU](https://www.gnu.org/)
     -   [GNU作業系統](https://www.gnu.org/gnu/thegnuproject.html)
     -   [海灣合作委員會編譯器](https://gcc.gnu.org/wiki/History)
-    -   [GNU TR](https://www.gnu.org/software/tar/)
+    -   [GNU 焦油](https://www.gnu.org/software/tar/)
     -   [GNU 使](https://www.gnu.org/software/make/)
     -   [GNU Emacs](https://en.wikipedia.org/wiki/Emacs)
     -   [GNU 軟體包](https://www.gnu.org/software/)
@@ -1158,7 +1158,7 @@ Vagrantfile
     -   [Linux 標準函式庫](https://en.wikipedia.org/wiki/Linux_Standard_Base)
     -   [檔案系統層次結構標準](https://en.wikipedia.org/wiki/Filesystem_Hierarchy_Standard)
     -   [文件層次結構](https://refspecs.linuxfoundation.org/FHS_3.0/fhs-3.0.pdf)
--   [Free Software](<>)
+-   [自由軟體](<>)
     -   [FSF](https://www.fsf.org)
     -   [自由軟體目錄](https://directory.fsf.org/wiki/Free_Software_Directory:Free_software_replacements)
 -   [執照](<>)
@@ -1241,7 +1241,7 @@ Vagrantfile
     -   [LPIC-3 305-300 目標](https://www.lpi.org/our-certifications/exam-305-objectives/)
     -   [LPIC-3 305-300 維基](https://wiki.lpi.org/wiki/LPIC-305_Objectives_V3.0)
     -   [LPIC-3 305-300 學習教材](https://cursos.linuxsemfronteiras.com.br/courses/preparatorio-para-certificacao-lpic-3-305/)
-    -   [ITexams 的 LPIC-3 305-300 模擬考試](https://www.itexams.com/info/305-300)
+    -   [LPIC-3 305-300 ITexams 模擬考試](https://www.itexams.com/info/305-300)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
