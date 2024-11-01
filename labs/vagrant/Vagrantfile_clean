@@ -1,0 +1,32 @@
+Vagrant.configure("2") do |config|
+  ## GUEST CONFIG
+  config.vbguest.auto_update = false
+  config.vbguest.no_install = true
+  config.vbguest.no_remote = true
+  config.vm.box_download_insecure = true
+
+  #config.vm.box = "gutehall/debian12"
+  #config.vm.box_version = "2024.10.07"
+  config.vm.box = "bento/debian-12.6"
+  config.vm.box_version = "202407.22.0"
+  config.vm.provider :vmware_desktop do |vmware|
+    vmware.whitelist_verified = true
+    vmware.vmx["ethernet0.pcislotnumber"] = "160"
+    vmware.vmx["ethernet1.pcislotnumber"] = "224"
+  end
+  #config.vm.network "public_network", ip: "192.168.0.130", netmask: "255.255.255.0", mode: "bridge", auto_config: false
+  config.vm.network "public_network", mode: "bridge", auto_config: false
+
+  # manual ip
+  config.vm.provision "shell",
+    run: "always",
+    inline: "ifconfig eth1 192.168.0.130 netmask 255.255.255.0 up"
+  # default router
+  config.vm.provision "shell",
+    run: "always",
+    inline: "route add default gw 192.168.0.1"
+  # delete default gw on eth0
+  config.vm.provision "shell",
+    run: "always",
+    inline: "eval `route -n | awk '{ if ($8 ==\"eth0\" && $2 != \"0.0.0.0\") print \"route del default gw \" $2; }'`"
+end

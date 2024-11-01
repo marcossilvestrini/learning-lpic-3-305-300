@@ -4,7 +4,7 @@
 Vagrant.configure("2") do |config|
 
   # BOX
-  config.vm.box = "CONFIG_VM_BOX_PLACEHOLDER"
+  config.vm.box = "gutehall/debian12"
 
   ## GUEST CONFIG
   config.vbguest.auto_update = false
@@ -14,7 +14,7 @@ Vagrant.configure("2") do |config|
 
   # LOCAL VARIABLES
   VM_NAME = "lpic3-topic-351"
-  BOX_NAME = "CONFIG_VM_BOX_PLACEHOLDER"
+  BOX_NAME = "gutehall/debian12"
 
   # MOUNTS
   config.vm.synced_folder ".", "/vagrant", disabled: true
@@ -59,7 +59,7 @@ Vagrant.configure("2") do |config|
     end
 
     # Network configuration
-    instance1.vm.network "public_network", mode: "bridge", auto_config: false ### NETWORK_CONFIG_PLACEHOLDER
+    instance1.vm.network "public_network", mode: "bridge", auto_config: false 
     # manual ip
     instance1.vm.provision "shell",
       run: "always",
@@ -127,7 +127,7 @@ Vagrant.configure("2") do |config|
     end
 
     # Network configuration
-    instance2.vm.network "public_network", mode: "bridge", auto_config: false ### NETWORK_CONFIG_PLACEHOLDER
+    instance2.vm.network "public_network", mode: "bridge", auto_config: false 
     # manual ip
     instance2.vm.provision "shell",
       run: "always",

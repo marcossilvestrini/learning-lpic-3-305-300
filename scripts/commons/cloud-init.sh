@@ -67,3 +67,18 @@ else
     echo "The public key for ansible is not present in the authorized_keys file...Setting file..."
     cat security/skynet-key-ecdsa.pub >>.ssh/authorized_keys
 fi
+
+# Set dns \ hostname
+sudo cp -f configs/commons/hosts /etc/
+HOSTNAME=$(hostname)
+IPV4=$(ip addr show | grep -oP '192\.168\.0\.\d{1,3}(?=/)')
+if [ -z "$IPV4" ]; then
+    echo "Não foi encontrado um IPv4 no formato 192.168.0.x. Continuando sem adicionar entrada..."
+else    
+    if grep -q "$IPV4" /etc/hosts; then
+        echo "Já existe uma entrada para $IPV4 no arquivo /etc/hosts"
+    else
+        echo "$IPV4 $HOSTNAME" | sudo tee -a /etc/hosts > /dev/null
+        echo "Entrada adicionada: $IPV4 $HOSTNAME"
+    fi
+fi
