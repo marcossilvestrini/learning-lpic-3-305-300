@@ -108,7 +108,11 @@ Pour commencer l'apprentissage, consultez la documentation ci-dessus.
 
 ### Conditions préalables
 
--   Git
+-   [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
+-   [Boîte Virtuelle](https://blogs.vmware.com/workstation/2024/05/vmware-workstation-pro-now-available-free-for-personal-use.html)
+-   [Poste de travail VMware](https://blogs.vmware.com/workstation/2024/05/vmware-workstation-pro-now-available-free-for-personal-use.html)
+-   [Utilitaire VMWare vagabond](https://developer.hashicorp.com/vagrant/install/vmware)
+-   [Vagabond](https://developer.hashicorp.com/vagrant/install)
 
 <a name="installation"></a>
 
@@ -119,6 +123,22 @@ Cloner le dépôt
 ```sh
 git clone https://github.com/marcossilvestrini/learning-lpic-3-305-300.git
 ```
+
+Je crée un script PowerShell pour provisionner les instances avec vagrant pour les laboratoires.  
+Si votre système SO est Windows, vous pouvez utiliser un script[app.ps1](./labs/app.ps1).
+
+Définissez quelques configurations pour votre environnement :
+
+-   Déposer[Vagrantfile-topic-351](./labs/vagrant/Vagrantfile-topic-351)
+    -   vm.clone_directory = "&lt;votre_lettre_de_pilote> :\\<folder>\\&lt;vers_machine>\\#{VM_NAME}-instance-1"
+        Exemple : vm.clone_directory = "E :\\Serveurs\\VMware\\#{VM_NAME}-instance-1"
+    -   vm.vmx["memsize"]= ""
+    -   vm.vmx["numvcpus"]= ""
+    -   vm.vmx["cpuid.coresPerSocket"]= ""
+    -   vb.mémoire = ""
+    -   vb.cpus = ""
+    -   en ligne : "ifconfig eth1 &lt;your_public_ip_instanceX> masque de réseau 255.255.255.0 up"
+    -   inline : "route add default gw &lt;your_public_gateway>"
 
 * * *
 
@@ -137,7 +157,8 @@ Utilisez ce référentiel pour en savoir plus sur l'examen LPIC2 202-450
 ## Feuille de route
 
 -   [x] Créer un référentiel
--   [ ] Créer des exemples sur le sujet 351
+-   [x] Créer des scripts pour les laboratoires de provisioning
+-   [x] Créer des exemples sur le sujet 351
 -   [ ] Créer des exemples sur le sujet 352
 -   [ ] Créer des exemples sur le sujet 353
 -   [ ] Télécharger un examen itexam simulé
@@ -196,7 +217,7 @@ man COMMAND
 -   Comprendre les principaux aspects de la migration des machines physiques vers les machines virtuelles
 -   Comprendre les principaux aspects de la migration des machines virtuelles entre les systèmes hôtes
 -   Comprendre les fonctionnalités et les implications de la virtualisation pour une machine virtuelle, telles que la prise d'instantanés, la pause, le clonage et les limites de ressources
--   Connaissance de oVirt, Proxmox, systemd-machined et VirtualBox
+-   Connaissance d'oVirt, Proxmox, systemd-machined et VirtualBox
 -   Connaissance d'Open vSwitch
 
 #### 351.1 Objets cités
@@ -306,7 +327,7 @@ VMware ESXi, Microsoft Hyper-V, KVM (machine virtuelle basée sur le noyau).
 
 -   **Compatibilité:**Peut exécuter n’importe quel système d’exploitation sans modification.
 -   **Performance:**Hautes performances grâce au support matériel.
--   **Sécurité:**Fonctionnalités améliorées d’isolation et de sécurité fournies par le matériel.
+-   **Sécurité:**Fonctionnalités d’isolation et de sécurité améliorées fournies par le matériel.
 
 ###### HVM Disadvantages
 
@@ -569,13 +590,13 @@ Essentiellement, Xen Store est une base de données clé-valeur distribuée util
 
 Voici quelques aspects clés de Xen Store :
 
--   **Communication inter-domaine :**Xen Store permet la communication entre des domaines, tels que Dom0 (le domaine privilégié qui contrôle les ressources matérielles) et DomUs (domaines utilisateur, qui sont les machines virtuelles). Cela se fait via des entrées clé-valeur, où chaque domaine peut lire ou écrire des informations.
+-   **Communication inter-domaine :**Xen Store permet la communication entre les domaines, tels que Dom0 (le domaine privilégié qui contrôle les ressources matérielles) et DomUs (les domaines utilisateur, qui sont les machines virtuelles). Cela se fait via des entrées clé-valeur, où chaque domaine peut lire ou écrire des informations.
 
 -   **Gestion des configurations :**Il est utilisé pour stocker et accéder aux informations de configuration, telles que les périphériques virtuels, la mise en réseau et les paramètres de démarrage. Cela facilite la gestion et la configuration dynamiques des VM.
 
 -   **Événements et notifications :**Xen Store prend également en charge les notifications d'événements. Lorsqu'une clé ou une valeur particulière dans le Xen Store est modifiée, les domaines intéressés peuvent être avertis pour réagir à ces modifications. Ceci est utile pour surveiller et gérer les ressources.
 
--   API simple : Xen Store fournit une API simple pour lire et écrire des données, permettant aux développeurs d'intégrer facilement leurs applications au système de virtualisation Xen.
+-   API simple : Xen Store fournit une API simple pour lire et écrire des données, permettant ainsi aux développeurs d'intégrer facilement leurs applications au système de virtualisation Xen.
 
 #### Pilule
 
@@ -596,7 +617,7 @@ XAPI est l'interface qui permet le contrôle et l'automatisation de l'hyperviseu
 
 #### Résumé Xen
 
--   **Xén :**La technologie d'hyperviseur de base permettant aux machines virtuelles de s'exécuter sur du matériel physique.
+-   **Xen :**La technologie d'hyperviseur de base permettant aux machines virtuelles de s'exécuter sur du matériel physique.
 -   **XenSource :**La société qui a commercialisé Xen, acquise plus tard par Citrix, conduisant au développement de Citrix XenServer.
 -   **Projet Xen :**L'initiative et la communauté open source qui continuent de développer et de maintenir l'hyperviseur Xen sous la Fondation Linux.
 -   **XenStore :**Xen Store agit comme intermédiaire de communication et de configuration entre l'hyperviseur Xen et les VM, rationalisant le fonctionnement et la gestion des environnements virtualisés.
@@ -890,12 +911,12 @@ foo
 
 **Poids:**9
 
-**Description:**Le candidat doit être capable de gérer les nœuds Docker et les conteneurs Docker. Cela inclut la compréhension de l'architecture de Docker ainsi que la compréhension de la manière dont Docker interagit avec le système Linux du nœud.
+**Description:**Le candidat doit être capable de gérer les nœuds Docker et les conteneurs Docker. Cela inclut la compréhension de l’architecture de Docker ainsi que la compréhension de la manière dont Docker interagit avec le système Linux du nœud.
 
 **Domaines de connaissances clés :**
 
 -   Comprendre l'architecture et les composants de Docker
--   Gérer les conteneurs Docker à l'aide d'images d'un registre Docker
+-   Gérer les conteneurs Docker à l'aide d'images provenant d'un registre Docker
 -   Comprendre et gérer les images et les volumes pour les conteneurs Docker
 -   Comprendre et gérer la journalisation pour les conteneurs Docker
 -   Comprendre et gérer la mise en réseau pour Docker
@@ -912,7 +933,7 @@ docker
 Dockerfile
 ```
 
-#### 352.3 Commandes importantes
+#### 352.3 Important Commands
 
 ##### docker
 
@@ -1145,7 +1166,7 @@ Lien du projet :<https://github.com/marcossilvestrini/learning-lpic-3-305-300>
     -   [Compilateur GCC](https://gcc.gnu.org/wiki/History)
     -   [Tar GNU](https://www.gnu.org/software/tar/)
     -   [Marque GNU](https://www.gnu.org/software/make/)
-    -   [GNU Emacs](https://en.wikipedia.org/wiki/Emacs)
+    -   [GNU-Emacs](https://en.wikipedia.org/wiki/Emacs)
     -   [Paquets GNU](https://www.gnu.org/software/)
     -   [Collection GNU/Linux](https://directory.fsf.org/wiki/Collection:GNU/Linux)
     -   [Chargeur de démarrage GNU Grub](https://www.gnu.org/software/grub/)
