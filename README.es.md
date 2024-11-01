@@ -4,8 +4,7 @@
 
 * * *
 
-[![MIT License][license-shield]][license-url][![Forks][forks-shield]][forks-url][![Stargazers][stars-shield]][stars-url]
-[![Contributors][contributors-shield]][contributors-url][![Issues][issues-shield]][issues-url][![LinkedIn][linkedin-shield]][linkedin-url]
+[![MIT License][license-shield]][license-url][![Forks][forks-shield]][forks-url][![Stargazers][stars-shield]][stars-url][![Contributors][contributors-shield]][contributors-url][![Issues][issues-shield]][issues-url][![LinkedIn][linkedin-shield]][linkedin-url]
 
 * * *
 
@@ -85,15 +84,15 @@
 
 ## Acerca del proyecto
 
-> This project aims to help students or professionals to learn the main concepts of GNULinux
-> and free software\\
-> Some GNULinux distributions like Debian and RPM will be covered\\
-> Installation and configuration of some packages will also be covered\\
-> By doing this you can give the whole community a chance to benefit from your changes.\\
-> Access to the source code is a precondition for this.\\
-> Use vagrant for up machines and execute labs and practice content in this article.\\
-> I have published in folder Vagrant a Vagrantfile with what is necessary\\
-> for you to upload an environment for studies
+> Este proyecto tiene como objetivo ayudar a estudiantes o profesionales a aprender los conceptos principales de GNULinux.
+> y software libre\\
+> Se cubrirán algunas distribuciones de GNULinux como Debian y RPM\\
+> También se cubrirá la instalación y configuración de algunos paquetes\\
+> Al hacer esto, podrás darle a toda la comunidad la oportunidad de beneficiarse de tus cambios.\\
+> El acceso al código fuente es una condición previa para ello.\\
+> Utilice vagrant para máquinas y ejecute laboratorios y practique el contenido de este artículo.\\
+> He publicado en la carpeta Vagrant un Vagrantfile con lo necesario\\
+> para que subas un ambiente para estudios
 
 * * *
 
@@ -109,7 +108,11 @@ Para comenzar el aprendizaje, consulte la documentación anterior.
 
 ### Requisitos previos
 
--   git
+-   [git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
+-   [VirtualBox](https://blogs.vmware.com/workstation/2024/05/vmware-workstation-pro-now-available-free-for-personal-use.html)
+-   [Estación de trabajo VMware](https://blogs.vmware.com/workstation/2024/05/vmware-workstation-pro-now-available-free-for-personal-use.html)
+-   [Utilidad vagabunda VMWare](https://developer.hashicorp.com/vagrant/install/vmware)
+-   [Vagabundo](https://developer.hashicorp.com/vagrant/install)
 
 <a name="installation"></a>
 
@@ -120,6 +123,22 @@ Clonar el repositorio
 ```sh
 git clone https://github.com/marcossilvestrini/learning-lpic-3-305-300.git
 ```
+
+Estoy creando un script de PowerShell para aprovisionar instancias con vagrant for labs.  
+Si su sistema SO es Windows, puede usar script[aplicación.ps1](./labs/app.ps1).
+
+Establezca algunas configuraciones para su entorno:
+
+-   Archivo[Vagrantfile-tema-351](./labs/vagrant/Vagrantfile-topic-351)
+    -   vm.clone_directory = "&lt;su_carta_de_conductor>:\\<folder>\\&lt;a_máquina>\\#{VM_NAME}-instance-1"
+        Example: vm.clone_directory = "E:\\Servidores\\VMware\\#{VM_NAME}-instancia-1"
+    -   vm.vmx["memsize"]= ""
+    -   vm.vmx["numvcpus"]= ""
+    -   vm.vmx["cpuid.coresPerSocket"]= ""
+    -   vb.memoria = ""
+    -   vb.cpus = ""
+    -   en línea: "ifconfig eth1 &lt;your_ip_public_instanceX> máscara de red 255.255.255.0 arriba"
+    -   en línea: "ruta agregar gw predeterminado &lt;your_public_gateway>"
 
 * * *
 
@@ -138,7 +157,8 @@ Utilice este repositorio para obtener información sobre el examen LPIC2 202-450
 ## Hoja de ruta
 
 -   [x] Crear repositorio
--   [ ] Crear ejemplos sobre el Tema 351
+-   [x] Crear scripts para laboratorios de aprovisionamiento
+-   [x] Crear ejemplos sobre el Tema 351
 -   [ ] Crear ejemplos sobre el Tema 352
 -   [ ] Crear ejemplos sobre el Tema 353
 -   [ ] Subir itexam simulado
@@ -229,7 +249,7 @@ Se ejecuta directamente en el hardware físico del host, proporcionando una capa
 ###### Ejemplos de tipo 1
 
 -   VMware ESXi: un hipervisor robusto y ampliamente utilizado en entornos empresariales.
--   Microsoft Hyper-V: integrado con Windows Server, ofrece sólidas funciones de administración y rendimiento.
+-   Microsoft Hyper-V: integrado con Windows Server, ofrece potentes funciones de gestión y rendimiento.
 -   Xen: un hipervisor de código abierto utilizado por muchos proveedores de servicios en la nube.
 -   KVM (Máquina virtual basada en kernel): Integrada en el kernel de Linux, proporciona un alto rendimiento para sistemas basados ​​en Linux.
 
@@ -345,7 +365,7 @@ Xen con invitados paravirtualizados, herramientas VMware en determinadas configu
 ###### Requisitos del sistema operativo invitado
 
 -   **HVM:**Puede ejecutar sistemas operativos invitados no modificados.
--   **Paravirtualización:**Requiere que se modifiquen los sistemas operativos invitados para que funcionen con el hipervisor.
+-   **Paravirtualización:**Requiere que los sistemas operativos invitados se modifiquen para que funcionen con el hipervisor.
 
 ###### Actuación
 
@@ -542,7 +562,7 @@ Denodo, Red Hat JBoss Virtualización de datos, IBM InfoSphere.
 Xen es un hipervisor tipo 1 (bare-metal) de código abierto que permite ejecutar múltiples sistemas operativos simultáneamente en el mismo hardware físico.  
 Xen proporciona una capa entre el hardware físico y las máquinas virtuales (VM), lo que permite compartir y aislar recursos de manera eficiente.
 
--   **Architecture:**Xen opera con un sistema de dos niveles donde el Dominio 0 (Dom0) es el dominio privilegiado con acceso directo al hardware y administra el hipervisor. Otras máquinas virtuales, llamadas Dominio U (DomU), ejecutan sistemas operativos invitados y son administradas por Dom0.
+-   **Arquitectura:**Xen opera con un sistema de dos niveles donde el Dominio 0 (Dom0) es el dominio privilegiado con acceso directo al hardware y administra el hipervisor. Otras máquinas virtuales, llamadas Dominio U (DomU), ejecutan sistemas operativos invitados y son administradas por Dom0.
 -   **Tipos de virtualización:**Xen admite tanto la paravirtualización (PV), que requiere un sistema operativo invitado modificado, como la virtualización asistida por hardware (HVM), que utiliza extensiones de hardware (por ejemplo, Intel VT-x o AMD-V) para ejecutar sistemas operativos invitados no modificados.
     Xen se utiliza ampliamente en entornos de nube, especialmente por Amazon Web Services (AWS) y otros proveedores de nube a gran escala.
 
@@ -572,7 +592,7 @@ Estos son algunos aspectos clave de Xen Store:
 
 -   **Comunicación entre dominios:**Xen Store permite la comunicación entre dominios, como Dom0 (el dominio privilegiado que controla los recursos de hardware) y DomUs (dominios de usuario, que son las máquinas virtuales). Esto se hace a través de entradas clave-valor, donde cada dominio puede leer o escribir información.
 
--   **Gestión de configuración:**Se utiliza para almacenar y acceder a información de configuración, como dispositivos virtuales, redes y parámetros de arranque. Esto facilita la gestión dinámica y la configuración de las máquinas virtuales.
+-   **Gestión de configuración:** It is used to store and access configuration information, such as virtual devices, networking, and boot parameters. This facilitates the dynamic management and configuration of VMs.
 
 -   **Eventos y Notificaciones:**Xen Store también admite notificaciones de eventos. Cuando se modifica una clave o valor particular en Xen Store, se puede notificar a los dominios interesados ​​para que reaccionen a estos cambios. Esto es útil para monitorear y administrar recursos.
 
@@ -597,7 +617,7 @@ XAPI es la interfaz que permite el control y la automatización del Hipervisor X
 
 #### Resumen de Xen
 
--   **Xén:**La tecnología central de hipervisor que permite que las máquinas virtuales se ejecuten en hardware físico.
+-   **Xen:**La tecnología central de hipervisor que permite que las máquinas virtuales se ejecuten en hardware físico.
 -   **Fuente Xen:**La empresa que comercializaba Xen, posteriormente adquirida por Citrix, dio lugar al desarrollo de Citrix XenServer.
 -   **Proyecto Xen:**La iniciativa y comunidad de código abierto que continúa desarrollando y manteniendo el hipervisor Xen bajo la Fundación Linux.
 -   **Tienda Xen:**Xen Store actúa como intermediario de comunicación y configuración entre el hipervisor Xen y las VM, agilizando la operación y gestión de entornos virtualizados.
