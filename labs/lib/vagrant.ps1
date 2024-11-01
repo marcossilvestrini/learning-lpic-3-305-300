@@ -53,8 +53,8 @@ function VagrantUp {
         Write-Host "`nProvider: $provider" -ForegroundColor Yellow 
         Set-Variable VAGRANT_LOG=info
         #vagrant up --debug  --provider $provider 2>&1 | Tee-Object -FilePath ".\vagrant.log"
-        vagrant up --provider $provider        
-        vagrant reload
+        vagrant up --provider $provider 
+        vagrant reload               
     } else {
         Write-Host "`nError: Vagrantfile not valid" -ForegroundColor Red
     }
