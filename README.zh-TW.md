@@ -108,7 +108,11 @@
 
 ### 先決條件
 
--   git
+-   [git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
+-   [虛擬盒子](https://blogs.vmware.com/workstation/2024/05/vmware-workstation-pro-now-available-free-for-personal-use.html)
+-   [虛擬機器工作站](https://blogs.vmware.com/workstation/2024/05/vmware-workstation-pro-now-available-free-for-personal-use.html)
+-   [Vagrant VMWare 實用程式](https://developer.hashicorp.com/vagrant/install/vmware)
+-   [流浪漢](https://developer.hashicorp.com/vagrant/install)
 
 <a name="installation"></a>
 
@@ -119,6 +123,22 @@
 ```sh
 git clone https://github.com/marcossilvestrini/learning-lpic-3-305-300.git
 ```
+
+我正在建立一個腳本 powershell，用於使用 vagrant for lab 來配置實例。  
+如果你的SO系統是windows，你可以使用腳本[應用程式.ps1](./labs/app.ps1).
+
+為您的環境設定一些配置：
+
+-   文件[Vagrantfile-主題-351](./labs/vagrant/Vagrantfile-topic-351)
+    -   vm.clone_directory = "&lt;您的驅動程式字母>:\\<folder>\\&lt;到機器>\\#{VM_NAME}-instance-1"
+        範例： vm.clone_directory = "E:\\伺服器\\虛擬機器軟體\\#{VM_NAME}-instance-1"
+    -   虛擬機器vmx[“記憶體大小”"]= ""
+    -   虛擬機器vmx[“numvcpu”"]= ""
+    -   虛擬機器vmx[“cpuid"coresPerSocket”.]= ""
+    -   vb.記憶體=“”
+    -   vb.cpus = ""
+    -   內嵌：“ifconfig eth1 &lt;your_public_ip_instanceX> 網路遮罩 255.255.255.0 向上”
+    -   內聯：“路由新增預設閘道 &lt;your_public_gateway>”
 
 * * *
 
@@ -137,7 +157,8 @@ git clone https://github.com/marcossilvestrini/learning-lpic-3-305-300.git
 ## 路線圖
 
 -   [x] 建立儲存庫
--   [ ] 建立有關主題 351 的範例
+-   [x] 為配置實驗室建立腳本
+-   [x] 建立有關主題 351 的範例
 -   [ ] 建立有關主題 352 的範例
 -   [ ] 建立有關主題 353 的範例
 -   [ ] 上傳模擬itexam
@@ -289,7 +310,7 @@ V2V 遷移是指將虛擬機器從一個虛擬機器管理程式遷移到另一�
 
 ###### HVM定義
 
-HVM 利用現代 CPU 提供的硬體擴充來虛擬化硬件，從而能夠以最小的效能開銷來建立和管理 VM。
+HVM 利用現代 CPU 提供的硬體擴展來虛擬化硬件，從而以最小的效能開銷創建和管理 VM。
 
 ###### HVM 主要特性
 
@@ -369,7 +390,7 @@ VMware ESXi、Microsoft Hyper-V、KVM（基於核心的虛擬機器）。
 #### NUMA（非統一記憶體存取）
 
 NUMA（非統一記憶體存取）是多處理器系統中使用的記憶體架構，用於最佳化處理器的記憶體存取。  
-在NUMA 系統中，內部存在處理器之間分佈不均勻，這意味著每個處理器對部分內存（其“本地內存”）的訪問速度比對物理上較遠的內存（稱為“遠端內存” ）和關聯記憶體的存取速度要快。
+在NUMA 系統中，內部存在處理器之間分佈不均勻，這意味著每個處理器對部分記憶體（其“本地記憶體”）的存取速度比對物理上較遠的記憶體（稱為“遠端記憶體” ）和關聯記憶體的存取速度要快。
 
 ##### NUMA 架構的主要特性
 
@@ -565,7 +586,7 @@ Xen 計畫在 Linux 基金會下運作，重點是建立、改進和支持 Xen�
 #### XenStore
 
 Xen Store 是 Xen Hypervisor 的關鍵元件。  
-本質上，Xen Store 是一個分散式鍵值資料庫，用於 Xen 虛擬機器管理程式與其管理的虛擬機器（也稱為網域）之間的通訊和資訊共用。
+本質上，Xen Store 是一個分散式鍵值資料庫，用於 Xen 虛擬機器管理程式與其管理的虛擬機器（也稱為域）之間的通訊和資訊共用。
 
 以下是 Xen Store 的一些關鍵方面：
 
@@ -1174,7 +1195,7 @@ Vagrantfile
     -   [Debian 自由軟體指南](https://www.debian.org/social_contract#guidelines)
     -   [列出 Linux 發行版](https://en.wikipedia.org/wiki/List_of_Linux_distributions)
     -   [發行表](https://distrowatch.com/)
-    -   [比較 Linux 發行版](https://en.wikipedia.org/wiki/Comparison_of_Linux_distributions)
+    -   [Linux 發行版比較](https://en.wikipedia.org/wiki/Comparison_of_Linux_distributions)
 -   [桌面環境](<>)
     -   [X11組織](https://www.x.org/wiki/)
     -   [韋蘭](https://wayland.freedesktop.org/)
