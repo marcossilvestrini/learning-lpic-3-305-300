@@ -108,7 +108,11 @@ Para iniciar o aprendizado, consulte a documentação acima.
 
 ### Pré-requisitos
 
--   Git
+-   [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
+-   [Caixa Virtual](https://blogs.vmware.com/workstation/2024/05/vmware-workstation-pro-now-available-free-for-personal-use.html)
+-   [Estação de trabalho VMware](https://blogs.vmware.com/workstation/2024/05/vmware-workstation-pro-now-available-free-for-personal-use.html)
+-   [Utilitário Vagrant VMWare](https://developer.hashicorp.com/vagrant/install/vmware)
+-   [Vagabundo](https://developer.hashicorp.com/vagrant/install)
 
 <a name="installation"></a>
 
@@ -119,6 +123,22 @@ Clonar o repositório
 ```sh
 git clone https://github.com/marcossilvestrini/learning-lpic-3-305-300.git
 ```
+
+Estou criando um script PowerShell para provisionar instâncias com vagrant para laboratórios.  
+Se o seu sistema SO for Windows, você pode usar o script[app.ps1](./labs/app.ps1).
+
+Defina algumas configurações para o seu ambiente:
+
+-   Arquivo[Vagrantfile-topic-351](./labs/vagrant/Vagrantfile-topic-351)
+    -   vm.clone_directory = "&lt;sua_letra_do_driver>:\\<folder>\\&lt;para_máquina>\\#{VM_NAME}-instance-1"
+        Exemplo: vm.clone_directory = "E:\\Servidores\\VMware\\#{VM_NAME}-instance-1"
+    -   vm.vmx["mem tamanho"]= ""
+    -   vm.vmx["numvcpus"]= ""
+    -   vm.vmx["cpuid.coresPerSocket"]= ""
+    -   vb.memory = ""
+    -   vb.cpus = ""
+    -   inline: "ifconfig eth1 &lt;your_public_ip_instanceX> máscara de rede 255.255.255.0 up"
+    -   inline: "rota adiciona gw padrão &lt;seu_public_gateway>"
 
 * * *
 
@@ -137,7 +157,8 @@ Use este repositório para aprender sobre o exame LPIC2 202-450
 ## Roteiro
 
 -   [x] Criar repositório
--   [ ] Crie exemplos sobre o Tópico 351
+-   [x] Crie scripts para laboratórios de provisionamento
+-   [x] Crie exemplos sobre o Tópico 351
 -   [ ] Crie exemplos sobre o Tópico 352
 -   [ ] Crie exemplos sobre o Tópico 353
 -   [ ] Carregar itexam simulado
@@ -279,7 +300,7 @@ Em outras palavras, um sistema operacional e seus aplicativos, executados em har
 ##### V2V - Migração Virtual para Virtual
 
 A migração V2V refere-se ao processo de migração de uma máquina virtual de um hipervisor para outro.  
-Neste caso, você já possui uma máquina virtual em execução em um ambiente virtualizado (como VMware) e deseja movê-la para outro ambiente virtualizado (por exemplo, para Hyper-V ou para um novo servidor VMware).
+Neste caso, você já possui uma máquina virtual rodando em um ambiente virtualizado (como VMware) e deseja movê-la para outro ambiente virtualizado (por exemplo, para Hyper-V ou para um novo servidor VMware).
 
 -   Exemplo: você tem uma máquina virtual rodando em um servidor de virtualização VMware, mas decide migrá-la para uma plataforma Hyper-V. Nesse caso, a migração V2V converte a máquina virtual de um formato ou hipervisor para outro, garantindo que ela continue funcionando corretamente.
 
@@ -334,7 +355,7 @@ Xen com convidados paravirtualizados, ferramentas VMware em determinadas configu
 -   **Eficiência:**Reduz a sobrecarga de virtualização de hardware, oferecendo potencialmente melhor desempenho para determinadas cargas de trabalho.
 -   **Utilização de recursos:**Uso mais eficiente dos recursos do sistema devido à comunicação direta entre o sistema operacional convidado e o hipervisor.
 
-###### Desvantagens da paravirtualização
+###### Desvantagens da Paravirtualização
 
 -   **Modificação do sistema operacional convidado:**Requer modificações no sistema operacional convidado, limitando a compatibilidade aos sistemas operacionais suportados.
 -   **Complexidade:**Requer complexidade adicional no sistema operacional convidado para implementações de hiperchamada.
@@ -542,7 +563,7 @@ Xen é um hipervisor tipo 1 (bare metal) de código aberto, que permite que vár
 O Xen fornece uma camada entre o hardware físico e as máquinas virtuais (VMs), permitindo o compartilhamento e o isolamento eficientes de recursos.
 
 -   **Arquitetura:**O Xen opera com um sistema de duas camadas onde o Domínio 0 (Dom0) é o domínio privilegiado com acesso direto ao hardware e gerencia o hipervisor. Outras máquinas virtuais, chamadas Domain U (DomU), executam sistemas operacionais convidados e são gerenciadas pelo Dom0.
--   **Tipos de virtualização:**O Xen suporta paravirtualização (PV), que requer sistema operacional convidado modificado, e virtualização assistida por hardware (HVM), que usa extensões de hardware (por exemplo, Intel VT-x ou AMD-V) para executar sistemas operacionais convidados não modificados.
+-   **Tipos de virtualização:**O Xen suporta tanto a paravirtualização (PV), que requer sistema operacional convidado modificado, quanto a virtualização assistida por hardware (HVM), que usa extensões de hardware (por exemplo, Intel VT-x ou AMD-V) para executar sistemas operacionais convidados não modificados.
     O Xen é amplamente utilizado em ambientes de nuvem, principalmente pela Amazon Web Services (AWS) e outros provedores de nuvem de grande escala.
 
 #### XenSource
@@ -556,7 +577,7 @@ A empresa forneceu soluções empresariais baseadas no Xen e ofereceu ferramenta
 #### Projeto Xen
 
 Projeto Xen refere-se à comunidade e iniciativa de código aberto responsável pelo desenvolvimento e manutenção do hipervisor Xen após sua comercialização.  
-O Projeto Xen opera sob a Linux Foundation, com foco na construção, melhoria e suporte do Xen como um esforço colaborativo e voltado para a comunidade.
+O Projeto Xen opera sob a Linux Foundation, com foco na construção, melhoria e suporte do Xen como um esforço colaborativo e orientado pela comunidade.
 
 -   **Metas:**O Projeto Xen visa avançar o hipervisor melhorando seu desempenho, segurança e conjunto de recursos para uma ampla gama de casos de uso, incluindo computação em nuvem, virtualização focada em segurança (por exemplo, Qubes OS) e sistemas embarcados.
 -   **Colaboradores:**O projeto inclui colaboradores de diversas organizações, incluindo grandes provedores de nuvem, fornecedores de hardware e desenvolvedores independentes.
@@ -586,7 +607,7 @@ Aqui estão alguns aspectos importantes do XAPI:
 
 -   **Gerenciamento de VM:**XAPI permite que os administradores criem, excluam, iniciem e parem máquinas virtuais de maneira programática.
 
--   **Automação:**Com XAPI, é possível automatizar o gerenciamento de recursos virtuais, incluindo rede, armazenamento e computação, o que é crucial para grandes ambientes de nuvem.
+-   **Automação:**Com o XAPI, é possível automatizar o gerenciamento de recursos virtuais, incluindo rede, armazenamento e computação, o que é crucial para grandes ambientes de nuvem.
 
 -   **Integração:**O XAPI pode ser integrado a outras ferramentas e scripts para fornecer uma administração mais eficiente e personalizada do ambiente Xen.
 
@@ -662,7 +683,7 @@ foo
 -   Gerencie instantâneos usando o monitor QEMU
 -   Instale os drivers de dispositivo QEMU Guest Agent e VirtIO
 -   Solucionar problemas de instalações QEMU, incluindo rede e armazenamento
--   Consciência de parâmetros importantes de configuração do QEMU
+-   Conscientização de parâmetros importantes de configuração do QEMU
 
 #### 351.3 Objetos Citados
 
@@ -815,7 +836,7 @@ foo
 -   Entenda o princípio do runc
 -   Entenda o princípio do CRI-O e do containerd
 -   Conhecimento do tempo de execução do OCI e das especificações de imagem
--   Conhecimento da interface de tempo de execução de contêiner (CRI) do Kubernetes
+-   Conhecimento da Interface de Tempo de Execução de Contêiner (CRI) do Kubernetes
 -   Consciência de podman, buildah e escopo
 -   Conhecimento de outras abordagens de virtualização de contêineres no Linux e outros sistemas operacionais livres, como rkt, OpenVZ, systemd-nspawn ou BSD Jails
 
@@ -1065,7 +1086,7 @@ user-data
 
 <a name="topic-353.4"></a>
 
-### 353,4 Vagabundo
+### 353.4 Vagabundo
 
 **Peso:**3
 
