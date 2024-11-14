@@ -213,7 +213,7 @@ man COMMAND
 
 -   Entenda a terminologia de virtualização
 -   Entenda os prós e os contras da virtualização
--   Compreender as diversas variações de hipervisores e monitores de máquinas virtuais
+-   Compreenda as diversas variações de hipervisores e monitores de máquinas virtuais
 -   Entenda os principais aspectos da migração de máquinas físicas para virtuais
 -   Compreender os principais aspectos da migração de máquinas virtuais entre sistemas host
 -   Compreenda os recursos e as implicações da virtualização para uma máquina virtual, como captura instantânea, pausa, clonagem e limites de recursos
@@ -255,7 +255,7 @@ Migration (P2V, V2V)
 
 ##### Hipervisor tipo 2 (hipervisor hospedado)
 
-###### Definição Tipo 2
+###### Definição de tipo 2
 
 É executado sobre um sistema operacional convencional, contando com o sistema operacional host para gerenciamento de recursos e suporte a dispositivos.
 
@@ -331,7 +331,7 @@ VMware ESXi, Microsoft Hyper-V, KVM (máquina virtual baseada em kernel).
 
 ###### Desvantagens do HVM
 
--   **Dependência de Hardware:**Requer recursos de hardware específicos, limitando a compatibilidade com sistemas mais antigos.
+-   **Dependência de hardware:**Requer recursos de hardware específicos, limitando a compatibilidade com sistemas mais antigos.
 -   **Complexidade:**Pode envolver configuração e gerenciamento mais complexos.
 
 ##### Paravirtualização
@@ -577,7 +577,7 @@ A empresa forneceu soluções empresariais baseadas no Xen e ofereceu ferramenta
 #### Projeto Xen
 
 Projeto Xen refere-se à comunidade e iniciativa de código aberto responsável pelo desenvolvimento e manutenção do hipervisor Xen após sua comercialização.  
-O Projeto Xen opera sob a Linux Foundation, com foco na construção, melhoria e suporte do Xen como um esforço colaborativo e orientado pela comunidade.
+O Projeto Xen opera sob a Linux Foundation, com foco na construção, melhoria e suporte do Xen como um esforço colaborativo e voltado para a comunidade.
 
 -   **Metas:**O Projeto Xen visa avançar o hipervisor melhorando seu desempenho, segurança e conjunto de recursos para uma ampla gama de casos de uso, incluindo computação em nuvem, virtualização focada em segurança (por exemplo, Qubes OS) e sistemas embarcados.
 -   **Colaboradores:**O projeto inclui colaboradores de diversas organizações, incluindo grandes provedores de nuvem, fornecedores de hardware e desenvolvedores independentes.
@@ -607,7 +607,7 @@ Aqui estão alguns aspectos importantes do XAPI:
 
 -   **Gerenciamento de VM:**XAPI permite que os administradores criem, excluam, iniciem e parem máquinas virtuais de maneira programática.
 
--   **Automação:**Com o XAPI, é possível automatizar o gerenciamento de recursos virtuais, incluindo rede, armazenamento e computação, o que é crucial para grandes ambientes de nuvem.
+-   **Automação:**Com XAPI, é possível automatizar o gerenciamento de recursos virtuais, incluindo rede, armazenamento e computação, o que é crucial para grandes ambientes de nuvem.
 
 -   **Integração:**O XAPI pode ser integrado a outras ferramentas e scripts para fornecer uma administração mais eficiente e personalizada do ambiente Xen.
 
@@ -640,7 +640,7 @@ Isso resulta em menor sobrecarga e melhor eficiência em comparação com a virt
 
 #### HVM-DomU (Domínio de Máquina Virtual de HardwareU)
 
-HVM-DomUs são máquinas virtuais que utilizam virtualização total, permitindo a execução de sistemas operacionais não modificados. O hipervisor Xen fornece emulação de hardware para esses DomUs, permitindo-lhes executar qualquer sistema operacional que suporte a arquitetura de hardware subjacente. Embora isso ofereça maior flexibilidade, pode resultar em sobrecarga maior em comparação com PV-DomUs.
+HVM-DomUs são máquinas virtuais que utilizam virtualização completa, permitindo a execução de sistemas operacionais não modificados. O hipervisor Xen fornece emulação de hardware para esses DomUs, permitindo-lhes executar qualquer sistema operacional que suporte a arquitetura de hardware subjacente. Embora isso ofereça maior flexibilidade, pode resultar em sobrecarga maior em comparação com PV-DomUs.
 
 #### 351.2 Objetos Citados
 
@@ -1253,7 +1253,8 @@ Link do projeto:<https://github.com/marcossilvestrini/learning-lpic-3-305-300>
     -   [XenServer](https://www.xenserver.com/)
     -   [Wiki XenProject](https://wiki.xenproject.org/wiki/Main_Page)
     -   [Blog LPI: Virtualização Xen e Computação em Nuvem #01: Introdução](https://www.lpi.org/pt-br/blog/2020/10/01/xen-virtualization-and-cloud-computing-01-introduction/)
-    -   [Virtualização Xen e computação em nuvem #02: Como o Xen faz o trabalho](https://www.lpi.org/blog/2020/10/08/xen-virtualization-and-cloud-computing-02-how-xen-does-job/)
+    -   [Blog do LPI: Virtualização Xen e Computação em Nuvem #02: Como o Xen faz o trabalho](https://www.lpi.org/blog/2020/10/08/xen-virtualization-and-cloud-computing-02-how-xen-does-job/)
+    -   [Guia para iniciantes do projeto Xen](https://wiki.xenproject.org/wiki/Xen_Project_Beginners_Guide#Installing_the_Xen_Project_Software)
 -   [Documentos Openstack](<>)
     -   [Chapéu Vermelho](https://www.redhat.com/pt-br/topics/openstack)
 -   [Abra o vSwitch](<>)
