@@ -130,8 +130,8 @@ Si su sistema SO es Windows, puede usar script[aplicación.ps1](./labs/app.ps1).
 Establezca algunas configuraciones para su entorno:
 
 -   Archivo[Vagrantfile-tema-351](./labs/vagrant/Vagrantfile-topic-351)
-    -   vm.clone_directory = "&lt;su_carta_de_conductor>:\\<folder>\\&lt;a_máquina>\\#{VM_NAME}-instance-1"
-        Example: vm.clone_directory = "E:\\Servidores\\VMware\\#{VM_NAME}-instancia-1"
+    -   vm.clone_directory = "&lt;su_carta_de_conductor>:\\<folder>\\&lt;a_máquina>\\#{VM_NAME}-instancia-1"
+        Ejemplo: vm.clone_directory = "E:\\Servidores\\VMware\\#{VM_NAME}-instancia-1"
     -   vm.vmx["memsize"]= ""
     -   vm.vmx["numvcpus"]= ""
     -   vm.vmx["cpuid.coresPerSocket"]= ""
@@ -249,7 +249,7 @@ Se ejecuta directamente en el hardware físico del host, proporcionando una capa
 ###### Ejemplos de tipo 1
 
 -   VMware ESXi: un hipervisor robusto y ampliamente utilizado en entornos empresariales.
--   Microsoft Hyper-V: integrado con Windows Server, ofrece potentes funciones de gestión y rendimiento.
+-   Microsoft Hyper-V: integrado con Windows Server, ofrece sólidas funciones de administración y rendimiento.
 -   Xen: un hipervisor de código abierto utilizado por muchos proveedores de servicios en la nube.
 -   KVM (Máquina virtual basada en kernel): Integrada en el kernel de Linux, proporciona un alto rendimiento para sistemas basados ​​en Linux.
 
@@ -375,7 +375,7 @@ Xen con invitados paravirtualizados, herramientas VMware en determinadas configu
 ###### Dependencia de hardware
 
 -   **HVM:**Requiere características específicas de CPU (Intel VT-x, AMD-V).
--   **Paravirtualización:**No requiere características específicas de la CPU, pero necesita un sistema operativo invitado modificado.
+-   **Paravirtualización:**No requiere funciones específicas de CPU, pero necesita un sistema operativo invitado modificado.
 
 ###### Aislamiento
 
@@ -542,7 +542,7 @@ Denodo, Red Hat JBoss Virtualización de datos, IBM InfoSphere.
 
 **Peso:**3
 
-**Descripción:**Los candidatos deben poder instalar, configurar, mantener, migrar y solucionar problemas de instalaciones de Xen. La atención se centra en Xen versión 4.x.
+**Descripción:** Candidates should be able to install, configure, maintain, migrate and troubleshoot Xen installations. The focus is on Xen version 4.x.
 
 **Áreas de conocimiento clave:**
 
@@ -592,7 +592,7 @@ Estos son algunos aspectos clave de Xen Store:
 
 -   **Comunicación entre dominios:**Xen Store permite la comunicación entre dominios, como Dom0 (el dominio privilegiado que controla los recursos de hardware) y DomUs (dominios de usuario, que son las máquinas virtuales). Esto se hace a través de entradas clave-valor, donde cada dominio puede leer o escribir información.
 
--   **Gestión de configuración:** It is used to store and access configuration information, such as virtual devices, networking, and boot parameters. This facilitates the dynamic management and configuration of VMs.
+-   **Gestión de configuración:**Se utiliza para almacenar y acceder a información de configuración, como dispositivos virtuales, redes y parámetros de arranque. Esto facilita la gestión dinámica y la configuración de las máquinas virtuales.
 
 -   **Eventos y Notificaciones:**Xen Store también admite notificaciones de eventos. Cuando se modifica una clave o valor particular en Xen Store, se puede notificar a los dominios interesados ​​para que reaccionen a estos cambios. Esto es útil para monitorear y administrar recursos.
 
@@ -617,7 +617,7 @@ XAPI es la interfaz que permite el control y la automatización del Hipervisor X
 
 #### Resumen de Xen
 
--   **Xen:**La tecnología central de hipervisor que permite que las máquinas virtuales se ejecuten en hardware físico.
+-   **Xén:**La tecnología central de hipervisor que permite que las máquinas virtuales se ejecuten en hardware físico.
 -   **Fuente Xen:**La empresa que comercializaba Xen, posteriormente adquirida por Citrix, dio lugar al desarrollo de Citrix XenServer.
 -   **Proyecto Xen:**La iniciativa y comunidad de código abierto que continúa desarrollando y manteniendo el hipervisor Xen bajo la Fundación Linux.
 -   **Tienda Xen:**Xen Store actúa como intermediario de comunicación y configuración entre el hipervisor Xen y las VM, agilizando la operación y gestión de entornos virtualizados.
@@ -1253,7 +1253,8 @@ Enlace del proyecto:<https://github.com/marcossilvestrini/learning-lpic-3-305-30
     -   [XenServer](https://www.xenserver.com/)
     -   [Proyecto Wiki Xen](https://wiki.xenproject.org/wiki/Main_Page)
     -   [Blog de LPI: Virtualización Xen y Computación en la Nube #01: Introducción](https://www.lpi.org/pt-br/blog/2020/10/01/xen-virtualization-and-cloud-computing-01-introduction/)
-    -   [Virtualización Xen y Computación en la Nube #02: Cómo hace el trabajo Xen](https://www.lpi.org/blog/2020/10/08/xen-virtualization-and-cloud-computing-02-how-xen-does-job/)
+    -   [Blog de LPI: Virtualización Xen y Computación en la Nube #02: Cómo hace el trabajo Xen](https://www.lpi.org/blog/2020/10/08/xen-virtualization-and-cloud-computing-02-how-xen-does-job/)
+    -   [Guía para principiantes del proyecto Xen](https://wiki.xenproject.org/wiki/Xen_Project_Beginners_Guide#Installing_the_Xen_Project_Software)
 -   [Documentos de Openstack](<>)
     -   [sombrero rojo](https://www.redhat.com/pt-br/topics/openstack)
 -   [Abrir vSwitch](<>)
