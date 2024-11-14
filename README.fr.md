@@ -213,11 +213,11 @@ man COMMAND
 
 -   Comprendre la terminologie de la virtualisation
 -   Comprendre les avantages et les inconvénients de la virtualisation
--   Comprendre les différentes variantes d'hyperviseurs et de moniteurs de machines virtuelles
+-   Understand the various variations of Hypervisors and Virtual Machine Monitors
 -   Comprendre les principaux aspects de la migration des machines physiques vers les machines virtuelles
 -   Comprendre les principaux aspects de la migration des machines virtuelles entre les systèmes hôtes
 -   Comprendre les fonctionnalités et les implications de la virtualisation pour une machine virtuelle, telles que la prise d'instantanés, la pause, le clonage et les limites de ressources
--   Connaissance d'oVirt, Proxmox, systemd-machined et VirtualBox
+-   Connaissance de oVirt, Proxmox, systemd-machined et VirtualBox
 -   Connaissance d'Open vSwitch
 
 #### 351.1 Objets cités
@@ -287,7 +287,7 @@ Fonctionne sur un système d'exploitation conventionnel, s'appuyant sur le syst�
 ##### Types de migration
 
 Dans le contexte des hyperviseurs, qui sont des technologies utilisées pour créer et gérer des machines virtuelles, les termes migration P2V et migration V2V sont courants dans les environnements de virtualisation.  
-Ils font référence à des processus de migration de systèmes entre différents types de plateformes.
+Ils font référence à des processus de migration de systèmes entre différents types de plates-formes.
 
 ##### P2V - Migration physique vers virtuelle
 
@@ -555,7 +555,7 @@ Denodo, virtualisation des données Red Hat JBoss, IBM InfoSphere.
 -   Connaissance des paramètres de démarrage Xen
 -   Connaissance de l'utilitaire xm
 
-#### Xen
+#### Xén
 
 ![panda](Images/xen-panda.png)
 
@@ -596,7 +596,7 @@ Voici quelques aspects clés de Xen Store :
 
 -   **Événements et notifications :**Xen Store prend également en charge les notifications d'événements. Lorsqu'une clé ou une valeur particulière dans le Xen Store est modifiée, les domaines intéressés peuvent être avertis pour réagir à ces modifications. Ceci est utile pour surveiller et gérer les ressources.
 
--   API simple : Xen Store fournit une API simple pour lire et écrire des données, permettant ainsi aux développeurs d'intégrer facilement leurs applications au système de virtualisation Xen.
+-   API simple : Xen Store fournit une API simple pour lire et écrire des données, permettant aux développeurs d'intégrer facilement leurs applications au système de virtualisation Xen.
 
 #### Pilule
 
@@ -617,7 +617,7 @@ XAPI est l'interface qui permet le contrôle et l'automatisation de l'hyperviseu
 
 #### Résumé Xen
 
--   **Xen :**La technologie d'hyperviseur de base permettant aux machines virtuelles de s'exécuter sur du matériel physique.
+-   **Xén :**La technologie d'hyperviseur de base permettant aux machines virtuelles de s'exécuter sur du matériel physique.
 -   **XenSource :**La société qui a commercialisé Xen, acquise plus tard par Citrix, conduisant au développement de Citrix XenServer.
 -   **Projet Xen :**L'initiative et la communauté open source qui continuent de développer et de maintenir l'hyperviseur Xen sous la Fondation Linux.
 -   **XenStore :**Xen Store agit comme intermédiaire de communication et de configuration entre l'hyperviseur Xen et les VM, rationalisant le fonctionnement et la gestion des environnements virtualisés.
@@ -911,12 +911,12 @@ foo
 
 **Poids:**9
 
-**Description:**Le candidat doit être capable de gérer les nœuds Docker et les conteneurs Docker. Cela inclut la compréhension de l’architecture de Docker ainsi que la compréhension de la manière dont Docker interagit avec le système Linux du nœud.
+**Description:**Le candidat doit être capable de gérer les nœuds Docker et les conteneurs Docker. Cela inclut la compréhension de l'architecture de Docker ainsi que la compréhension de la manière dont Docker interagit avec le système Linux du nœud.
 
 **Domaines de connaissances clés :**
 
 -   Comprendre l'architecture et les composants de Docker
--   Gérer les conteneurs Docker à l'aide d'images provenant d'un registre Docker
+-   Gérer les conteneurs Docker à l'aide d'images d'un registre Docker
 -   Comprendre et gérer les images et les volumes pour les conteneurs Docker
 -   Comprendre et gérer la journalisation pour les conteneurs Docker
 -   Comprendre et gérer la mise en réseau pour Docker
@@ -933,7 +933,7 @@ docker
 Dockerfile
 ```
 
-#### 352.3 Important Commands
+#### 352.3 Commandes importantes
 
 ##### docker
 
@@ -1249,13 +1249,14 @@ Lien du projet :<https://github.com/marcossilvestrini/learning-lpic-3-305-300>
 -   [KVM](<>)
     -   [KVM (machines virtuelles du noyau)](https://www.redhat.com/pt-br/topics/virtualization/what-is-KVM)
     -   [Outils de gestion KVM](https://www.linux-kvm.org/page/Management_Tools)
--   [Xen](<>)
+-   [Xén](<>)
     -   [XenServeur](https://www.xenserver.com/)
     -   [Wiki XenProjet](https://wiki.xenproject.org/wiki/Main_Page)
     -   [Blog LPI : Virtualisation Xen et Cloud Computing #01 : Introduction](https://www.lpi.org/pt-br/blog/2020/10/01/xen-virtualization-and-cloud-computing-01-introduction/)
-    -   [Virtualisation Xen et Cloud Computing #02 : Comment Xen fait le travail](https://www.lpi.org/blog/2020/10/08/xen-virtualization-and-cloud-computing-02-how-xen-does-job/)
+    -   [Blog LPI : Virtualisation Xen et Cloud Computing #02 : Comment Xen fait le travail](https://www.lpi.org/blog/2020/10/08/xen-virtualization-and-cloud-computing-02-how-xen-does-job/)
+    -   [Guide du débutant du projet Xen](https://wiki.xenproject.org/wiki/Xen_Project_Beginners_Guide#Installing_the_Xen_Project_Software)
 -   [Documents Openstack](<>)
-    -   [Chapeau rouge](https://www.redhat.com/pt-br/topics/openstack)
+    -   [Chapeau Rouge](https://www.redhat.com/pt-br/topics/openstack)
 -   [Ouvrir le vSwitch](<>)
     -   [OVS Doc 4Linux](https://blog.4linux.com.br/open-vswitch-o-que-e-o-que-come-onde-vive)
 -   [Examen LPIC-3 305-300](<>)
