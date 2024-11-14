@@ -89,7 +89,7 @@
 > 將涵蓋一些 GNULinux 發行版，例如 Debian 和 RPM\\
 > 也將涵蓋一些軟體包的安裝和配置\\
 > 透過這樣做，您可以讓整個社區有機會從您的更改中受益。
-> 存取原始碼是實現此目的的先決條件。
+> 獲得原始程式碼是實現此目的的先決條件。
 > 使用 vagrant for up 機器並執行本文的實驗和練習內容。
 > 我已經在 Vagrant 資料夾中發布了一個 Vagrantfile ，其中包含必要的內容\\
 > 供您上傳學習環境
@@ -135,7 +135,7 @@ git clone https://github.com/marcossilvestrini/learning-lpic-3-305-300.git
     -   虛擬機器vmx[“記憶體大小”"]= ""
     -   虛擬機器vmx[“numvcpu”"]= ""
     -   虛擬機器vmx[“cpuid"coresPerSocket”.]= ""
-    -   vb.記憶體=“”
+    -   vb.內存=“”
     -   vb.cpus = ""
     -   內嵌：“ifconfig eth1 &lt;your_public_ip_instanceX> 網路遮罩 255.255.255.0 向上”
     -   內聯：“路由新增預設閘道 &lt;your_public_gateway>”
@@ -170,9 +170,9 @@ git clone https://github.com/marcossilvestrini/learning-lpic-3-305-300.git
 ## 四項基本自由
 
 > 0.為任何目的隨意運行程序的自由（自由 0）。
-> 1.自由地研究程序如何運作並對其進行更改\\
+> 1.自由地研究程式如何運作並對其進行更改\\
 > 你可以隨心所欲地進行計算（自由 1）。
-> 存取原始碼是實現此目的的先決條件。
+> 獲得原始程式碼是實現此目的的先決條件。
 > 2.重新分發副本的自由，以便您可以幫助他人（自由2）。
 > 3.將修改版本的副本分發給其他人的自由（自由3）。
 
@@ -390,7 +390,7 @@ VMware ESXi、Microsoft Hyper-V、KVM（基於核心的虛擬機器）。
 #### NUMA（非統一記憶體存取）
 
 NUMA（非統一記憶體存取）是多處理器系統中使用的記憶體架構，用於最佳化處理器的記憶體存取。  
-在NUMA 系統中，內部存在處理器之間分佈不均勻，這意味著每個處理器對部分記憶體（其“本地記憶體”）的存取速度比對物理上較遠的記憶體（稱為“遠端記憶體” ）和關聯記憶體的存取速度要快。
+在NUMA 系統中，內部存在處理器之間分佈不均勻，這意味著每個處理器對部分內存（其“本地內存”）的訪問速度比對物理上較遠的內存（稱為“遠端內存” ）和關聯記憶體的存取速度要快。
 
 ##### NUMA 架構的主要特性
 
@@ -586,7 +586,7 @@ Xen 計畫在 Linux 基金會下運作，重點是建立、改進和支持 Xen�
 #### XenStore
 
 Xen Store 是 Xen Hypervisor 的關鍵元件。  
-本質上，Xen Store 是一個分散式鍵值資料庫，用於 Xen 虛擬機器管理程式與其管理的虛擬機器（也稱為域）之間的通訊和資訊共用。
+本質上，Xen Store 是一個分散式鍵值資料庫，用於 Xen 虛擬機器管理程式與其管理的虛擬機器（也稱為網域）之間的通訊和資訊共用。
 
 以下是 Xen Store 的一些關鍵方面：
 
@@ -1253,7 +1253,8 @@ Vagrantfile
     -   [Xen伺服器](https://www.xenserver.com/)
     -   [維基 Xen 項目](https://wiki.xenproject.org/wiki/Main_Page)
     -   [LPI 部落格：Xen 虛擬化與雲端運算 #01：簡介](https://www.lpi.org/pt-br/blog/2020/10/01/xen-virtualization-and-cloud-computing-01-introduction/)
-    -   [Xen 虛擬化與雲端運算#02：Xen 如何完成工作](https://www.lpi.org/blog/2020/10/08/xen-virtualization-and-cloud-computing-02-how-xen-does-job/)
+    -   [LPI 部落格：Xen 虛擬化與雲端運算 #02：Xen 如何完成工作](https://www.lpi.org/blog/2020/10/08/xen-virtualization-and-cloud-computing-02-how-xen-does-job/)
+    -   [Xen 專案初學者指南](https://wiki.xenproject.org/wiki/Xen_Project_Beginners_Guide#Installing_the_Xen_Project_Software)
 -   [Openstack 文件](<>)
     -   [紅帽](https://www.redhat.com/pt-br/topics/openstack)
 -   [開放虛擬交換機](<>)
