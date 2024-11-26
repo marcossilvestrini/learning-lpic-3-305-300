@@ -157,7 +157,7 @@ Utilisez ce référentiel pour en savoir plus sur l'examen LPIC2 202-450
 ## Feuille de route
 
 -   [x] Créer un référentiel
--   [x] Créer des scripts pour les laboratoires de provisioning
+-   [x] Créer des scripts pour les laboratoires de provisionnement
 -   [x] Créer des exemples sur le sujet 351
 -   [ ] Créer des exemples sur le sujet 352
 -   [ ] Créer des exemples sur le sujet 353
@@ -213,7 +213,7 @@ man COMMAND
 
 -   Comprendre la terminologie de la virtualisation
 -   Comprendre les avantages et les inconvénients de la virtualisation
--   Understand the various variations of Hypervisors and Virtual Machine Monitors
+-   Comprendre les différentes variantes d'hyperviseurs et de moniteurs de machines virtuelles
 -   Comprendre les principaux aspects de la migration des machines physiques vers les machines virtuelles
 -   Comprendre les principaux aspects de la migration des machines virtuelles entre les systèmes hôtes
 -   Comprendre les fonctionnalités et les implications de la virtualisation pour une machine virtuelle, telles que la prise d'instantanés, la pause, le clonage et les limites de ressources
@@ -555,7 +555,7 @@ Denodo, virtualisation des données Red Hat JBoss, IBM InfoSphere.
 -   Connaissance des paramètres de démarrage Xen
 -   Connaissance de l'utilitaire xm
 
-#### Xén
+#### Xen
 
 ![panda](Images/xen-panda.png)
 
@@ -590,7 +590,7 @@ Essentiellement, Xen Store est une base de données clé-valeur distribuée util
 
 Voici quelques aspects clés de Xen Store :
 
--   **Communication inter-domaine :**Xen Store permet la communication entre les domaines, tels que Dom0 (le domaine privilégié qui contrôle les ressources matérielles) et DomUs (les domaines utilisateur, qui sont les machines virtuelles). Cela se fait via des entrées clé-valeur, où chaque domaine peut lire ou écrire des informations.
+-   **Communication inter-domaine :**Xen Store permet la communication entre des domaines, tels que Dom0 (le domaine privilégié qui contrôle les ressources matérielles) et DomUs (domaines utilisateur, qui sont les machines virtuelles). Cela se fait via des entrées clé-valeur, où chaque domaine peut lire ou écrire des informations.
 
 -   **Gestion des configurations :**Il est utilisé pour stocker et accéder aux informations de configuration, telles que les périphériques virtuels, la mise en réseau et les paramètres de démarrage. Cela facilite la gestion et la configuration dynamiques des VM.
 
@@ -617,7 +617,7 @@ XAPI est l'interface qui permet le contrôle et l'automatisation de l'hyperviseu
 
 #### Résumé Xen
 
--   **Xén :**La technologie d'hyperviseur de base permettant aux machines virtuelles de s'exécuter sur du matériel physique.
+-   **Xen :**La technologie d'hyperviseur de base permettant aux machines virtuelles de s'exécuter sur du matériel physique.
 -   **XenSource :**La société qui a commercialisé Xen, acquise plus tard par Citrix, conduisant au développement de Citrix XenServer.
 -   **Projet Xen :**L'initiative et la communauté open source qui continuent de développer et de maintenir l'hyperviseur Xen sous la Fondation Linux.
 -   **XenStore :**Xen Store agit comme intermédiaire de communication et de configuration entre l'hyperviseur Xen et les VM, rationalisant le fonctionnement et la gestion des environnements virtualisés.
@@ -640,9 +640,10 @@ Cela se traduit par une réduction des frais généraux et une meilleure efficac
 
 #### HVM-DomU (Hardware Virtual Machine DomainU)
 
-Les HVM-DomU sont des machines virtuelles qui utilisent une virtualisation complète, permettant à des systèmes d'exploitation non modifiés de s'exécuter. L'hyperviseur Xen fournit une émulation matérielle pour ces DomU, leur permettant d'exécuter n'importe quel système d'exploitation prenant en charge l'architecture matérielle sous-jacente. Bien que cela offre une plus grande flexibilité, cela peut entraîner des frais généraux plus élevés par rapport aux PV-DomU.
+Les HVM-DomU sont des machines virtuelles qui utilisent une virtualisation complète, permettant à des systèmes d'exploitation non modifiés de s'exécuter. L'hyperviseur Xen fournit une émulation matérielle pour ces DomU, leur permettant d'exécuter n'importe quel système d'exploitation prenant en charge l'architecture matérielle sous-jacente.  
+Bien que cela offre une plus grande flexibilité, cela peut entraîner des frais généraux plus élevés par rapport aux PV-DomU.
 
-#### 351.2 Objets cités
+#### 351.2 Cited Objects
 
 ```sh
 Domain0 (Dom0), DomainU (DomU)
@@ -656,10 +657,11 @@ xentop
 
 #### 351.2 Commandes importantes
 
-##### foo
+##### XL
 
 ```sh
-foo
+# view xen information
+xl infos
 ```
 
 <p align="right">(<a href="#topic-351.2">back to sub Topic 351.2</a>)</p>
@@ -839,6 +841,18 @@ foo
 -   Connaissance de l'interface d'exécution de conteneur Kubernetes (CRI)
 -   Conscience de podman, buildah et scope
 -   Connaissance d'autres approches de virtualisation de conteneurs sous Linux et d'autres systèmes d'exploitation libres, tels que rkt, OpenVZ, systemd-nspawn ou BSD Jails
+
+```mermaid
+timeline
+    title Time Line Containers Evolution
+    1979 : chroot
+    2000 : FreeBSD Jails
+    2004 : Solaris Containers
+    2006 : cgroups
+    2008 : LXC
+    2013 : Docker
+    2014 : Kubernetes
+```
 
 #### 352.1 Objets cités
 
@@ -1249,7 +1263,7 @@ Lien du projet :<https://github.com/marcossilvestrini/learning-lpic-3-305-300>
 -   [KVM](<>)
     -   [KVM (machines virtuelles du noyau)](https://www.redhat.com/pt-br/topics/virtualization/what-is-KVM)
     -   [Outils de gestion KVM](https://www.linux-kvm.org/page/Management_Tools)
--   [Xén](<>)
+-   [Xen](<>)
     -   [XenServeur](https://www.xenserver.com/)
     -   [Wiki XenProjet](https://wiki.xenproject.org/wiki/Main_Page)
     -   [Blog LPI : Virtualisation Xen et Cloud Computing #01 : Introduction](https://www.lpi.org/pt-br/blog/2020/10/01/xen-virtualization-and-cloud-computing-01-introduction/)
