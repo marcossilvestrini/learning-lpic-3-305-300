@@ -249,7 +249,7 @@ Se ejecuta directamente en el hardware físico del host, proporcionando una capa
 ###### Ejemplos de tipo 1
 
 -   VMware ESXi: un hipervisor robusto y ampliamente utilizado en entornos empresariales.
--   Microsoft Hyper-V: integrado con Windows Server, ofrece sólidas funciones de administración y rendimiento.
+-   Microsoft Hyper-V: integrado con Windows Server, ofrece potentes funciones de gestión y rendimiento.
 -   Xen: un hipervisor de código abierto utilizado por muchos proveedores de servicios en la nube.
 -   KVM (Máquina virtual basada en kernel): Integrada en el kernel de Linux, proporciona un alto rendimiento para sistemas basados ​​en Linux.
 
@@ -316,7 +316,7 @@ HVM aprovecha las extensiones de hardware proporcionadas por las CPU modernas pa
 
 -   **Soporte de hardware**: Requiere soporte de CPU para extensiones de virtualización como Intel VT-x o AMD-V.
 -   **Virtualización completa:**Las máquinas virtuales pueden ejecutar sistemas operativos invitados no modificados, ya que el hipervisor proporciona una emulación completa del entorno de hardware.
--   **Actuación:**Normalmente ofrece un rendimiento casi nativo debido a la ejecución directa del código invitado en la CPU.
+-   **Performance:**Normalmente ofrece un rendimiento casi nativo debido a la ejecución directa del código invitado en la CPU.
 -   **Aislamiento:**Proporciona un fuerte aislamiento entre las máquinas virtuales, ya que cada máquina virtual funciona como si tuviera su propio hardware dedicado.
 
 ###### Ejemplos de HVM
@@ -327,7 +327,7 @@ VMware ESXi, Microsoft Hyper-V, KVM (Máquina virtual basada en kernel).
 
 -   **Compatibilidad:**Puede ejecutar cualquier sistema operativo sin modificaciones.
 -   **Actuación:**Alto rendimiento gracias al soporte de hardware.
--   **Seguridad:**Funciones mejoradas de aislamiento y seguridad proporcionadas por hardware.
+-   **Seguridad:**Funciones de aislamiento y seguridad mejoradas proporcionadas por hardware.
 
 ###### Desventajas de HVM
 
@@ -375,7 +375,7 @@ Xen con invitados paravirtualizados, herramientas VMware en determinadas configu
 ###### Dependencia de hardware
 
 -   **HVM:**Requiere características específicas de CPU (Intel VT-x, AMD-V).
--   **Paravirtualización:**No requiere funciones específicas de CPU, pero necesita un sistema operativo invitado modificado.
+-   **Paravirtualización:**No requiere características específicas de la CPU, pero necesita un sistema operativo invitado modificado.
 
 ###### Aislamiento
 
@@ -542,7 +542,7 @@ Denodo, Red Hat JBoss Virtualización de datos, IBM InfoSphere.
 
 **Peso:**3
 
-**Descripción:** Candidates should be able to install, configure, maintain, migrate and troubleshoot Xen installations. The focus is on Xen version 4.x.
+**Descripción:**Los candidatos deben poder instalar, configurar, mantener, migrar y solucionar problemas de instalaciones de Xen. La atención se centra en Xen versión 4.x.
 
 **Áreas de conocimiento clave:**
 
@@ -555,7 +555,7 @@ Denodo, Red Hat JBoss Virtualización de datos, IBM InfoSphere.
 -   Conocimiento de los parámetros de arranque de Xen
 -   Conocimiento de la utilidad xm
 
-#### xén
+#### Xen
 
 ![panda](Images/xen-panda.png)
 
@@ -640,7 +640,8 @@ Esto da como resultado una menor sobrecarga y una mejor eficiencia en comparaci�
 
 #### HVM-DomU (DominioU de máquina virtual de hardware)
 
-Los HVM-DomU son máquinas virtuales que utilizan virtualización completa, lo que permite ejecutar sistemas operativos sin modificaciones. El hipervisor Xen proporciona emulación de hardware para estas DomU, permitiéndoles ejecutar cualquier sistema operativo que admita la arquitectura de hardware subyacente. Si bien esto ofrece una mayor flexibilidad, puede generar mayores gastos generales en comparación con las PV-DomU.
+Los HVM-DomU son máquinas virtuales que utilizan virtualización completa, lo que permite ejecutar sistemas operativos sin modificaciones. El hipervisor Xen proporciona emulación de hardware para estos DomU, permitiéndoles ejecutar cualquier sistema operativo que admita la arquitectura de hardware subyacente.  
+Si bien esto ofrece una mayor flexibilidad, puede generar mayores gastos generales en comparación con las PV-DomU.
 
 #### 351.2 Objetos citados
 
@@ -656,10 +657,11 @@ xentop
 
 #### 351.2 Comandos importantes
 
-##### foo
+##### SG
 
 ```sh
-foo
+# view xen information
+xl infos
 ```
 
 <p align="right">(<a href="#topic-351.2">back to sub Topic 351.2</a>)</p>
@@ -839,6 +841,18 @@ foo
 -   Conocimiento de la interfaz de ejecución de contenedores (CRI) de Kubernetes
 -   Conciencia de podman, buildah y alcance.
 -   Conocimiento de otros enfoques de virtualización de contenedores en Linux y otros sistemas operativos libres, como rkt, OpenVZ, systemd-nspawn o BSD Jails.
+
+```mermaid
+timeline
+    title Time Line Containers Evolution
+    1979 : chroot
+    2000 : FreeBSD Jails
+    2004 : Solaris Containers
+    2006 : cgroups
+    2008 : LXC
+    2013 : Docker
+    2014 : Kubernetes
+```
 
 #### 352.1 Objetos citados
 
@@ -1189,7 +1203,7 @@ Enlace del proyecto:<https://github.com/marcossilvestrini/learning-lpic-3-305-30
     -   [Licencia pública general reducida GNU](https://www.gnu.org/licenses/lgpl-3.0.html)
     -   [BSD](https://opensource.org/licenses/BSD-3-Clause)
     -   [Iniciativa de código abierto](https://opensource.org/)
-    -   [Bienes comunes creativos](https://creativecommons.org/)
+    -   [Creative Commons](https://creativecommons.org/)
     -   [Licencia LTS](https://en.wikipedia.org/wiki/Long-term_support)
 -   [Distribuciones](<>)
     -   [Directrices para el software libre de Debian](https://www.debian.org/social_contract#guidelines)
@@ -1249,7 +1263,7 @@ Enlace del proyecto:<https://github.com/marcossilvestrini/learning-lpic-3-305-30
 -   [KVM](<>)
     -   [KVM (máquinas virtuales del núcleo)](https://www.redhat.com/pt-br/topics/virtualization/what-is-KVM)
     -   [Herramientas de gestión KVM](https://www.linux-kvm.org/page/Management_Tools)
--   [xén](<>)
+-   [Xen](<>)
     -   [XenServer](https://www.xenserver.com/)
     -   [Proyecto Wiki Xen](https://wiki.xenproject.org/wiki/Main_Page)
     -   [Blog de LPI: Virtualización Xen y Computación en la Nube #01: Introducción](https://www.lpi.org/pt-br/blog/2020/10/01/xen-virtualization-and-cloud-computing-01-introduction/)
