@@ -135,7 +135,7 @@ git clone https://github.com/marcossilvestrini/learning-lpic-3-305-300.git
     -   虛擬機器vmx[“記憶體大小”"]= ""
     -   虛擬機器vmx[“numvcpu”"]= ""
     -   虛擬機器vmx[“cpuid"coresPerSocket”.]= ""
-    -   vb.內存=“”
+    -   vb.記憶體=“”
     -   vb.cpus = ""
     -   內嵌：“ifconfig eth1 &lt;your_public_ip_instanceX> 網路遮罩 255.255.255.0 向上”
     -   內聯：“路由新增預設閘道 &lt;your_public_gateway>”
@@ -170,7 +170,7 @@ git clone https://github.com/marcossilvestrini/learning-lpic-3-305-300.git
 ## 四項基本自由
 
 > 0.為任何目的隨意運行程序的自由（自由 0）。
-> 1.自由地研究程式如何運作並對其進行更改\\
+> 1.自由地研究程序如何運作並對其進行更改\\
 > 你可以隨心所欲地進行計算（自由 1）。
 > 獲得原始程式碼是實現此目的的先決條件。
 > 2.重新分發副本的自由，以便您可以幫助他人（自由2）。
@@ -310,7 +310,7 @@ V2V 遷移是指將虛擬機器從一個虛擬機器管理程式遷移到另一�
 
 ###### HVM定義
 
-HVM 利用現代 CPU 提供的硬體擴展來虛擬化硬件，從而以最小的效能開銷創建和管理 VM。
+HVM 利用現代 CPU 提供的硬體擴充來虛擬化硬件，從而能夠以最小的效能開銷來建立和管理 VM。
 
 ###### HVM 主要特性
 
@@ -357,7 +357,7 @@ VMware ESXi、Microsoft Hyper-V、KVM（基於核心的虛擬機器）。
 
 ###### 半虛擬化的缺點
 
--   **來賓作業系統修改：**需要對來賓作業系統進行修改，從而限制了對受支援作業系統的相容性。
+-   **來賓作業系統修改：**需要修改來賓作業系統，限制了支援的作業系統的相容性。
 -   **複雜：**需要在來賓作業系統中實作超級呼叫實作額外的複雜性。
 
 ##### 主要差異
@@ -640,7 +640,8 @@ PV-DomU 使用一種稱為半虛擬化的技術。在此模型中，DomU 作業�
 
 #### HVM-DomU（硬體虛擬機器DomainU）
 
-HVM-DomU 是利用完全虛擬化的虛擬機，允許運行未經修改的作業系統。 Xen虛擬機器管理程式為這些DomU提供硬體模擬，使它們能夠運行任何支援底層硬體架構的作業系統。雖然這提供了更大的靈活性，但與 PV-DomU 相比，它可能會導致更高的開銷。
+HVM-DomU 是利用完全虛擬化的虛擬機，允許運行未經修改的作業系統。 Xen虛擬機器管理程式為這些DomU提供硬體模擬，使它們能夠運行任何支援底層硬體架構的作業系統。  
+雖然這提供了更大的靈活性，但與 PV-DomU 相比，它可能會導致更高的開銷。
 
 #### 351.2 引用的對象
 
@@ -656,10 +657,11 @@ xentop
 
 #### 351.2 重要命令
 
-##### 富
+##### XL
 
 ```sh
-foo
+# view xen information
+xl infos
 ```
 
 <p align="right">(<a href="#topic-351.2">back to sub Topic 351.2</a>)</p>
@@ -728,7 +730,7 @@ ip link show
 -   建立和管理 QEMU 和 Xen 網域，包括快照
 -   管理和分析域的資源消耗
 -   建立和管理儲存池和磁碟區
--   建立和管理虛擬網絡
+-   Create and manage virtual networks
 -   在節點之間遷移域
 -   了解 libvirt 如何與 Xen 和 QEMU 交互
 -   了解 libvirt 如何與 dnsmasq 和 radvd 等網路服務交互
@@ -839,6 +841,18 @@ foo
 -   了解 Kubernetes 容器執行時間介面 (CRI)
 -   對 podman、buildah 和範圍的認識
 -   了解 Linux 和其他免費作業系統中的其他容器虛擬化方法，例如 rkt、OpenVZ、systemd-nspawn 或 BSD Jails
+
+```mermaid
+timeline
+    title Time Line Containers Evolution
+    1979 : chroot
+    2000 : FreeBSD Jails
+    2004 : Solaris Containers
+    2006 : cgroups
+    2008 : LXC
+    2013 : Docker
+    2014 : Kubernetes
+```
 
 #### 352.1 引用的對象
 
@@ -1070,7 +1084,7 @@ user-data
 /var/lib/cloud/
 ```
 
-#### 353.3 重要命令
+#### 353.3 Important Commands
 
 ##### 富
 
@@ -1090,7 +1104,7 @@ user-data
 
 **重量：**3
 
-**描述：**候選人應該能夠使用 Vagrant 來管理虛擬機，包括配置虛擬機。
+**描述：** Candidate should be able to use Vagrant to manage virtual machines, including provisioning of the virtual machine.
 
 **關鍵知識領域：**
 
