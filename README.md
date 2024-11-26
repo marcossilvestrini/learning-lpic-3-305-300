@@ -650,7 +650,8 @@ This results in lower overhead and better efficiency compared to full virtualiza
 
 #### HVM-DomU (Hardware Virtual Machine DomainU)
 
-HVM-DomUs are virtual machines that utilize full virtualization, allowing unmodified operating systems to run. The Xen hypervisor provides hardware emulation for these DomUs, enabling them to run any operating system that supports the underlying hardware architecture. While this offers greater flexibility, it can result in higher overhead compared to PV-DomUs.
+HVM-DomUs are virtual machines that utilize full virtualization, allowing unmodified operating systems to run. The Xen hypervisor provides hardware emulation for these DomUs, enabling them to run any operating system that supports the underlying hardware architecture.  
+While this offers greater flexibility, it can result in higher overhead compared to PV-DomUs.
 
 #### 351.2 Cited Objects
 
@@ -666,10 +667,11 @@ xentop
 
 #### 351.2 Important Commands
 
-##### foo
+##### xl
 
 ```sh
-foo
+# view xen information
+xl infos
 ```
 
 <p align="right">(<a href="#topic-351.2">back to sub Topic 351.2</a>)</p>
@@ -769,7 +771,7 @@ foo
 
 <a name="topic-351.5"></a>
 
-### 351.5 Virtual Machine Disk Image Management 
+### 351.5 Virtual Machine Disk Image Management
 
 **Weight:** 3
 
@@ -849,6 +851,18 @@ foo
 * Awareness of the Kubernetes Container Runtime Interface (CRI)
 * Awareness of podman, buildah and skopeo
 * Awareness of other container virtualization approaches in Linux and other free operating systems, such as rkt, OpenVZ, systemd-nspawn or BSD Jails
+
+```mermaid
+timeline
+    title Time Line Containers Evolution
+    1979 : chroot
+    2000 : FreeBSD Jails
+    2004 : Solaris Containers
+    2006 : cgroups
+    2008 : LXC
+    2013 : Docker
+    2014 : Kubernetes
+```
 
 #### 352.1 Cited Objects
 
