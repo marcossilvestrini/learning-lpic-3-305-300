@@ -411,7 +411,7 @@ Dans un système NUMA, la mémoire est inégalement répartie entre les processe
 
 #### Opensource Solutions
 
--   oVirté :<https://www.ovirt.org/>
+-   oVirtie :<https://www.ovirt.org/>
 
 -   Proxmox :<https://www.proxmox.com/en/proxmox-virtual-environment/overview>
 
@@ -457,7 +457,7 @@ Combine les ressources réseau matérielles et logicielles en une seule entité 
 
 ###### Cas d'utilisation de la virtualisation de réseau
 
-Réseau défini par logiciel (SDN), virtualisation des fonctions réseau (NFV).
+Mise en réseau définie par logiciel (SDN), virtualisation des fonctions réseau (NFV).
 
 ###### Exemples de virtualisation de réseau
 
@@ -590,7 +590,7 @@ Essentiellement, Xen Store est une base de données clé-valeur distribuée util
 
 Voici quelques aspects clés de Xen Store :
 
--   **Communication inter-domaine :**Xen Store permet la communication entre des domaines, tels que Dom0 (le domaine privilégié qui contrôle les ressources matérielles) et DomUs (domaines utilisateur, qui sont les machines virtuelles). Cela se fait via des entrées clé-valeur, où chaque domaine peut lire ou écrire des informations.
+-   **Communication inter-domaine :**Xen Store permet la communication entre les domaines, tels que Dom0 (le domaine privilégié qui contrôle les ressources matérielles) et DomUs (les domaines utilisateur, qui sont les machines virtuelles). Cela se fait via des entrées clé-valeur, où chaque domaine peut lire ou écrire des informations.
 
 -   **Gestion des configurations :**Il est utilisé pour stocker et accéder aux informations de configuration, telles que les périphériques virtuels, la mise en réseau et les paramètres de démarrage. Cela facilite la gestion et la configuration dynamiques des VM.
 
@@ -617,7 +617,7 @@ XAPI est l'interface qui permet le contrôle et l'automatisation de l'hyperviseu
 
 #### Résumé Xen
 
--   **Xen :**La technologie d'hyperviseur de base permettant aux machines virtuelles de s'exécuter sur du matériel physique.
+-   **Xén :**La technologie d'hyperviseur de base permettant aux machines virtuelles de s'exécuter sur du matériel physique.
 -   **XenSource :**La société qui a commercialisé Xen, acquise plus tard par Citrix, conduisant au développement de Citrix XenServer.
 -   **Projet Xen :**L'initiative et la communauté open source qui continuent de développer et de maintenir l'hyperviseur Xen sous la Fondation Linux.
 -   **XenStore :**Xen Store agit comme intermédiaire de communication et de configuration entre l'hyperviseur Xen et les VM, rationalisant le fonctionnement et la gestion des environnements virtualisés.
@@ -643,7 +643,7 @@ Cela se traduit par une réduction des frais généraux et une meilleure efficac
 Les HVM-DomU sont des machines virtuelles qui utilisent une virtualisation complète, permettant à des systèmes d'exploitation non modifiés de s'exécuter. L'hyperviseur Xen fournit une émulation matérielle pour ces DomU, leur permettant d'exécuter n'importe quel système d'exploitation prenant en charge l'architecture matérielle sous-jacente.  
 Bien que cela offre une plus grande flexibilité, cela peut entraîner des frais généraux plus élevés par rapport aux PV-DomU.
 
-#### 351.2 Cited Objects
+#### 351.2 Objets cités
 
 ```sh
 Domain0 (Dom0), DomainU (DomU)
@@ -657,7 +657,7 @@ xentop
 
 #### 351.2 Commandes importantes
 
-##### XL
+##### xl
 
 ```sh
 # view xen information
@@ -1125,7 +1125,7 @@ Vagrantfile
 
 #### 353.4 Commandes importantes
 
-##### vagabond
+##### vagrant
 
 ```sh
 # examples
@@ -1180,7 +1180,7 @@ Lien du projet :<https://github.com/marcossilvestrini/learning-lpic-3-305-300>
     -   [Compilateur GCC](https://gcc.gnu.org/wiki/History)
     -   [Tar GNU](https://www.gnu.org/software/tar/)
     -   [Marque GNU](https://www.gnu.org/software/make/)
-    -   [GNU-Emacs](https://en.wikipedia.org/wiki/Emacs)
+    -   [GNU Emacs](https://en.wikipedia.org/wiki/Emacs)
     -   [Paquets GNU](https://www.gnu.org/software/)
     -   [Collection GNU/Linux](https://directory.fsf.org/wiki/Collection:GNU/Linux)
     -   [Chargeur de démarrage GNU Grub](https://www.gnu.org/software/grub/)
@@ -1213,7 +1213,7 @@ Lien du projet :<https://github.com/marcossilvestrini/learning-lpic-3-305-300>
 -   [Environnements de bureau](<>)
     -   [Organisation X11](https://www.x.org/wiki/)
     -   [Wayland](https://wayland.freedesktop.org/)
-    -   [GNU-GNOME](https://www.gnu.org/press/gnome-1.0.html)
+    -   [GNU GNOME](https://www.gnu.org/press/gnome-1.0.html)
     -   [GNOME](https://www.gnome.org/)
     -   [XFCE](https://xfce.org/)
     -   [Plasma KDE](https://kde.org/plasma-desktop/)
@@ -1242,7 +1242,7 @@ Lien du projet :<https://github.com/marcossilvestrini/learning-lpic-3-305-300>
     -   [Bourne à nouveau Shell](https://www.gnu.org/software/bash/manual/)
     -   [Case](https://bash.cyberciti.biz/guide/Shebang)
     -   [Variables d'environnement](https://linuxize.com/post/how-to-set-and-list-environment-variables-in-linux/)
-    -   [Globulisation GNU](https://man7.org/linux/man-pages/man7/glob.7.html)
+    -   [GNU Globbing](https://man7.org/linux/man-pages/man7/glob.7.html)
     -   [Globulation](https://linuxhint.com/bash_globbing_tutorial/)
     -   [Citation](https://www.gnu.org/software/bash/manual/html_node/Quoting.html)
     -   [Expressions régulières](https://www.gnu.org/software/grep/manual/html_node/Regular-Expressions.html)
@@ -1268,9 +1268,17 @@ Lien du projet :<https://github.com/marcossilvestrini/learning-lpic-3-305-300>
     -   [Wiki XenProjet](https://wiki.xenproject.org/wiki/Main_Page)
     -   [Blog LPI : Virtualisation Xen et Cloud Computing #01 : Introduction](https://www.lpi.org/pt-br/blog/2020/10/01/xen-virtualization-and-cloud-computing-01-introduction/)
     -   [Blog LPI : Virtualisation Xen et Cloud Computing #02 : Comment Xen fait le travail](https://www.lpi.org/blog/2020/10/08/xen-virtualization-and-cloud-computing-02-how-xen-does-job/)
+    -   [Blog LPI : Virtualisation Xen et Cloud Computing #04 : Conteneurs, OpenStack et autres plates-formes associées](https://www.lpi.org/pt-br/blog/2020/10/22/xen-virtualization-and-cloud-computing-04-containers-openstack-and-other-related/)
+    -   [Virtualisation Xen et Cloud Computing #05 : Le projet Xen, les Unikernels et l'avenir](https://www.lpi.org/pt-br/blog/2020/10/29/xen-virtualization-and-cloud-computing-05-xen-project-unikernels-and-future/)
     -   [Guide du débutant du projet Xen](https://wiki.xenproject.org/wiki/Xen_Project_Beginners_Guide#Installing_the_Xen_Project_Software)
+    -   [Livre fou](https://wiki.xenproject.org/wiki/Book/HelloXenProject/0-Contents)
+-   [Unikernels](https://www.lpi.org/blog/2020/10/29/xen-virtualization-and-cloud-computing-05-xen-project-unikernels-and-future/)
+    -   [Unicraft](https://github.com/unikraft/unikraft)
+    -   [MirageOS](https://mirage.io/docs/hello-world)
+    -   [HaLVM](https://galois.com/project/halvm/)
+    -   [Unique](https://github.com/solo-io/unik/blob/master/docs/providers/virtualbox.md)
 -   [Documents Openstack](<>)
-    -   [Chapeau Rouge](https://www.redhat.com/pt-br/topics/openstack)
+    -   [Chapeau rouge](https://www.redhat.com/pt-br/topics/openstack)
 -   [Ouvrir le vSwitch](<>)
     -   [OVS Doc 4Linux](https://blog.4linux.com.br/open-vswitch-o-que-e-o-que-come-onde-vive)
 -   [Examen LPIC-3 305-300](<>)
