@@ -89,9 +89,9 @@
 > 將涵蓋一些 GNULinux 發行版，例如 Debian 和 RPM\\
 > 也將涵蓋一些軟體包的安裝和配置\\
 > 透過這樣做，您可以讓整個社區有機會從您的更改中受益。
-> 獲得原始程式碼是實現此目的的先決條件。
+> 存取原始碼是實現此目的的先決條件。
 > 使用 vagrant for up 機器並執行本文的實驗和練習內容。
-> 我已經在 Vagrant 資料夾中發布了一個 Vagrantfile ，其中包含必要的內容\\
+> 我已經在 Vagrant 資料夾中發布了一個 Vagrantfile 以及必要的內容\\
 > 供您上傳學習環境
 
 * * *
@@ -124,7 +124,7 @@
 git clone https://github.com/marcossilvestrini/learning-lpic-3-305-300.git
 ```
 
-我正在建立一個腳本 powershell，用於使用 vagrant for lab 來配置實例。  
+I'm create a script powershell for provisioning instances with vagrant for labs.  
 如果你的SO系統是windows，你可以使用腳本[應用程式.ps1](./labs/app.ps1).
 
 為您的環境設定一些配置：
@@ -172,7 +172,7 @@ git clone https://github.com/marcossilvestrini/learning-lpic-3-305-300.git
 > 0.為任何目的隨意運行程序的自由（自由 0）。
 > 1.自由地研究程序如何運作並對其進行更改\\
 > 你可以隨心所欲地進行計算（自由 1）。
-> 獲得原始程式碼是實現此目的的先決條件。
+> 存取原始碼是實現此目的的先決條件。
 > 2.重新分發副本的自由，以便您可以幫助他人（自由2）。
 > 3.將修改版本的副本分發給其他人的自由（自由3）。
 
@@ -357,7 +357,7 @@ VMware ESXi、Microsoft Hyper-V、KVM（基於核心的虛擬機器）。
 
 ###### 半虛擬化的缺點
 
--   **來賓作業系統修改：**需要修改來賓作業系統，限制了支援的作業系統的相容性。
+-   **來賓作業系統修改：**需要對來賓作業系統進行修改，從而限制了對受支援作業系統的相容性。
 -   **複雜：**需要在來賓作業系統中實作超級呼叫實作額外的複雜性。
 
 ##### 主要差異
@@ -390,7 +390,7 @@ VMware ESXi、Microsoft Hyper-V、KVM（基於核心的虛擬機器）。
 #### NUMA（非統一記憶體存取）
 
 NUMA（非統一記憶體存取）是多處理器系統中使用的記憶體架構，用於最佳化處理器的記憶體存取。  
-在NUMA 系統中，內部存在處理器之間分佈不均勻，這意味著每個處理器對部分內存（其“本地內存”）的訪問速度比對物理上較遠的內存（稱為“遠端內存” ）和關聯記憶體的存取速度要快。
+在NUMA 系統中，內部存在處理器之間分佈不均勻，這意味著每個處理器對一部分內存（其“本地內存”）的訪問速度比對物理上較遠的內存（稱為“遠端內存” ）和關聯記憶體的存取速度要快。
 
 ##### NUMA 架構的主要特性
 
@@ -730,7 +730,7 @@ ip link show
 -   建立和管理 QEMU 和 Xen 網域，包括快照
 -   管理和分析域的資源消耗
 -   建立和管理儲存池和磁碟區
--   Create and manage virtual networks
+-   建立和管理虛擬網絡
 -   在節點之間遷移域
 -   了解 libvirt 如何與 Xen 和 QEMU 交互
 -   了解 libvirt 如何與 dnsmasq 和 radvd 等網路服務交互
@@ -1084,7 +1084,7 @@ user-data
 /var/lib/cloud/
 ```
 
-#### 353.3 Important Commands
+#### 353.3 重要命令
 
 ##### 富
 
@@ -1104,7 +1104,7 @@ user-data
 
 **重量：**3
 
-**描述：** Candidate should be able to use Vagrant to manage virtual machines, including provisioning of the virtual machine.
+**描述：**候選人應該能夠使用 Vagrant 來管理虛擬機，包括配置虛擬機。
 
 **關鍵知識領域：**
 
@@ -1209,7 +1209,7 @@ Vagrantfile
     -   [Debian 自由軟體指南](https://www.debian.org/social_contract#guidelines)
     -   [列出 Linux 發行版](https://en.wikipedia.org/wiki/List_of_Linux_distributions)
     -   [發行表](https://distrowatch.com/)
-    -   [Linux 發行版比較](https://en.wikipedia.org/wiki/Comparison_of_Linux_distributions)
+    -   [比較 Linux 發行版](https://en.wikipedia.org/wiki/Comparison_of_Linux_distributions)
 -   [桌面環境](<>)
     -   [X11組織](https://www.x.org/wiki/)
     -   [韋蘭](https://wayland.freedesktop.org/)
@@ -1268,16 +1268,24 @@ Vagrantfile
     -   [維基 Xen 項目](https://wiki.xenproject.org/wiki/Main_Page)
     -   [LPI 部落格：Xen 虛擬化與雲端運算 #01：簡介](https://www.lpi.org/pt-br/blog/2020/10/01/xen-virtualization-and-cloud-computing-01-introduction/)
     -   [LPI 部落格：Xen 虛擬化與雲端運算 #02：Xen 如何完成工作](https://www.lpi.org/blog/2020/10/08/xen-virtualization-and-cloud-computing-02-how-xen-does-job/)
+    -   [LPI 部落格：Xen 虛擬化與雲端運算 #04：容器、OpenStack 和其他相關平台](https://www.lpi.org/pt-br/blog/2020/10/22/xen-virtualization-and-cloud-computing-04-containers-openstack-and-other-related/)
+    -   [Xen 虛擬化與雲端運算 #05：Xen 專案、Unikernels 和未來](https://www.lpi.org/pt-br/blog/2020/10/29/xen-virtualization-and-cloud-computing-05-xen-project-unikernels-and-future/)
     -   [Xen 專案初學者指南](https://wiki.xenproject.org/wiki/Xen_Project_Beginners_Guide#Installing_the_Xen_Project_Software)
+    -   [瘋狂的書](https://wiki.xenproject.org/wiki/Book/HelloXenProject/0-Contents)
+-   [統一內核](https://www.lpi.org/blog/2020/10/29/xen-virtualization-and-cloud-computing-05-xen-project-unikernels-and-future/)
+    -   [優尼克拉夫特](https://github.com/unikraft/unikraft)
+    -   [Mirage作業系統](https://mirage.io/docs/hello-world)
+    -   [哈拉LVM](https://galois.com/project/halvm/)
+    -   [獨特的](https://github.com/solo-io/unik/blob/master/docs/providers/virtualbox.md)
 -   [Openstack 文件](<>)
     -   [紅帽](https://www.redhat.com/pt-br/topics/openstack)
--   [開放虛擬交換機](<>)
+-   [打開vSwitch](<>)
     -   [OVS 文檔 4Linux](https://blog.4linux.com.br/open-vswitch-o-que-e-o-que-come-onde-vive)
 -   [LPIC-3 305-300 考試](<>)
     -   [LPIC-3 305-300 目標](https://www.lpi.org/our-certifications/exam-305-objectives/)
     -   [LPIC-3 305-300 維基](https://wiki.lpi.org/wiki/LPIC-305_Objectives_V3.0)
     -   [LPIC-3 305-300 學習教材](https://cursos.linuxsemfronteiras.com.br/courses/preparatorio-para-certificacao-lpic-3-305/)
-    -   [LPIC-3 305-300 ITexams 模擬考試](https://www.itexams.com/info/305-300)
+    -   [ITexams 的 LPIC-3 305-300 模擬考試](https://www.itexams.com/info/305-300)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
