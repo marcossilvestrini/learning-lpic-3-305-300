@@ -4,8 +4,7 @@
 
 * * *
 
-[![MIT License][license-shield]][license-url]
-[![Forks][forks-shield]][forks-url][![Stargazers][stars-shield]][stars-url][![Contributors][contributors-shield]][contributors-url][![Issues][issues-shield]][issues-url][![LinkedIn][linkedin-shield]][linkedin-url]
+[![MIT License][license-shield]][license-url][![Forks][forks-shield]][forks-url][![Stargazers][stars-shield]][stars-url][![Contributors][contributors-shield]][contributors-url][![Issues][issues-shield]][issues-url][![LinkedIn][linkedin-shield]][linkedin-url]
 
 * * *
 
@@ -91,8 +90,8 @@
 > سيتم أيضًا تناول تثبيت وتكوين بعض الحزم\\
 > ومن خلال القيام بذلك، يمكنك منح المجتمع بأكمله فرصة للاستفادة من تغييراتك.\\
 > يعد الوصول إلى الكود المصدري شرطًا مسبقًا لذلك.\\
-> استخدم vagrant for up devices وقم بتنفيذ التمارين المعملية والمحتوى التدريبي في هذه المقالة.\\
-> لقد قمت بنشر ملف Vagrantfile في المجلد Vagrant مع ما هو ضروري\\
+> استخدم vagrant for up devices وقم بتنفيذ الدروس المعملية والتمرين على المحتوى في هذه المقالة.\\
+> لقد نشرت في مجلد Vagrant ملف Vagrantfile مع ما هو ضروري\\
 > بالنسبة لك لتحميل بيئة للدراسات
 
 * * *
@@ -174,7 +173,7 @@ git clone https://github.com/marcossilvestrini/learning-lpic-3-305-300.git
 > 1.حرية دراسة آلية عمل البرنامج وتغييره حتى يعمل\\
 > الكمبيوتر الخاص بك كما يحلو لك (الحرية 1).\\
 > يعد الوصول إلى الكود المصدري شرطًا مسبقًا لذلك.\\
-> 2.حرية إعادة توزيع النسخ حتى تتمكن من مساعدة الآخرين (الحرية 2).\\
+> 2.حرية إعادة توزيع النسخ حتى تتمكن من مساعدة الآخرين (حرية 2).\\
 > 3.حرية توزيع نسخ من نسختك المعدلة على الآخرين (الحرية 3).
 
 * * *
@@ -311,7 +310,7 @@ Migration (P2V, V2V)
 
 ###### تعريف HVM
 
-تستفيد تقنية HVM من امتدادات الأجهزة التي توفرها وحدات المعالجة المركزية (CPUs) الحديثة لإضفاء الطابع الافتراضي على الأجهزة، مما يتيح إنشاء الأجهزة الافتراضية وإدارتها بأقل قدر من الأداء.
+تستفيد HVM من امتدادات الأجهزة التي توفرها وحدات المعالجة المركزية (CPUs) الحديثة لإضفاء الطابع الافتراضي على الأجهزة، مما يتيح إنشاء الأجهزة الافتراضية وإدارتها بأقل قدر من الأداء.
 
 ###### الخصائص الرئيسية لـ HVM
 
@@ -560,7 +559,7 @@ VMware ThinApp، Microsoft App-V، Citrix XenApp.
 
 ![panda](Images/xen-panda.png)
 
-Xen هو برنامج Hypervisor مفتوح المصدر من النوع 1 (المعدني)، والذي يسمح بتشغيل أنظمة تشغيل متعددة بشكل متزامن على نفس الأجهزة المادية.  
+Xen هو برنامج Hypervisor مفتوح المصدر من النوع 1 (المعدن فقط)، والذي يسمح لأنظمة تشغيل متعددة بالعمل بشكل متزامن على نفس الأجهزة المادية.  
 يوفر Xen طبقة بين الأجهزة المادية والأجهزة الافتراضية (VMs)، مما يتيح مشاركة الموارد وعزلها بكفاءة.
 
 -   **بنيان:**يعمل Xen بنظام من مستويين حيث المجال 0 (Dom0) هو المجال المميز مع الوصول المباشر إلى الأجهزة ويدير برنامج Hypervisor. تعمل الأجهزة الافتراضية الأخرى، التي تسمى Domain U (DomU)، على تشغيل أنظمة التشغيل الضيف وتتم إدارتها بواسطة Dom0.
@@ -569,8 +568,8 @@ Xen هو برنامج Hypervisor مفتوح المصدر من النوع 1 (ال
 
 #### زين سورس
 
-XenSource هي الشركة التي أسسها المطورون الأصليون لبرنامج Xen Hypervisor في جامعة كامبريدج لتسويق Xen تجاريًا.  
-The company provided enterprise solutions based on Xen and offered additional tools and support to enhance Xen’s capabilities for enterprise use.
+XenSource هي الشركة التي أسسها المطورون الأصليون لبرنامج Xen Hypervisor في جامعة كامبريدج لتسويق Xen.  
+قدمت الشركة حلولًا مؤسسية تعتمد على Xen وقدمت أدوات ودعمًا إضافيًا لتعزيز قدرات Xen للاستخدام المؤسسي.
 
 -   **الاستحواذ من قبل سيتريكس**: في عام 2007، استحوذت شركة Citrix Systems, Inc على XenSource. استخدمت شركة Citrix تقنية Xen كأساس لمنتج Citrix XenServer الخاص بها، والذي أصبح منصة ظاهرية شهيرة على مستوى المؤسسات تعتمد على Xen.
 -   **انتقال**: بعد الاستحواذ، استمر مشروع Xen كمشروع مفتوح المصدر، بينما ركزت Citrix على العروض التجارية مثل XenServer، مع الاستفادة من تقنية XenSource.
@@ -582,7 +581,7 @@ The company provided enterprise solutions based on Xen and offered additional to
 
 -   **الأهداف:**يهدف مشروع Xen إلى تطوير برنامج Hypervisor من خلال تحسين أدائه وأمانه ومجموعة ميزاته لمجموعة واسعة من حالات الاستخدام، بما في ذلك الحوسبة السحابية والمحاكاة الافتراضية التي تركز على الأمان (على سبيل المثال، Qubes OS) والأنظمة المدمجة.
 -   **المساهمين:**يتضمن المشروع مساهمين من مؤسسات مختلفة، بما في ذلك موفري الخدمات السحابية الرئيسيين وبائعي الأجهزة والمطورين المستقلين.
--   **الحبوب والهانتولز:**يتضمن مشروع Xen أيضًا أدوات مثل XAPI (XenAPI)، والتي تُستخدم لإدارة عمليات تثبيت برنامج Xen Hypervisor، والعديد من الأدوات المساعدة الأخرى لإدارة النظام وتحسينه.
+-   **الحبوب والهانتولز:**يتضمن مشروع Xen أيضًا أدوات مثل XAPI (XenAPI)، والتي تُستخدم لإدارة عمليات تثبيت برنامج Hypervisor لـ Xen، والعديد من الأدوات المساعدة الأخرى لإدارة النظام وتحسينه.
 
 #### متجر زين
 
@@ -591,13 +590,13 @@ The company provided enterprise solutions based on Xen and offered additional to
 
 فيما يلي بعض الجوانب الرئيسية لمتجر Xen:
 
--   **الاتصال بين المجالات:**يتيح Xen Store الاتصال بين المجالات، مثل Dom0 (المجال المميز الذي يتحكم في موارد الأجهزة) وDomUs (نطاقات المستخدم، وهي الأجهزة الافتراضية). ويتم ذلك من خلال إدخالات القيمة الرئيسية، حيث يمكن لكل مجال قراءة المعلومات أو كتابتها.
+-   **التواصل بين المجالات:**يتيح Xen Store الاتصال بين المجالات، مثل Dom0 (المجال المميز الذي يتحكم في موارد الأجهزة) وDomUs (نطاقات المستخدم، وهي الأجهزة الافتراضية). ويتم ذلك من خلال إدخالات القيمة الرئيسية، حيث يمكن لكل مجال قراءة المعلومات أو كتابتها.
 
 -   **إدارة التكوين:**يتم استخدامه لتخزين معلومات التكوين والوصول إليها، مثل الأجهزة الافتراضية والشبكات ومعلمات التمهيد. وهذا يسهل الإدارة الديناميكية وتكوين الأجهزة الافتراضية.
 
 -   **الأحداث والإخطارات:**يدعم Xen Store أيضًا إشعارات الأحداث. عندما يتم تعديل مفتاح أو قيمة معينة في متجر Xen، يمكن إخطار المجالات المهتمة للتفاعل مع هذه التغييرات. وهذا مفيد لرصد وإدارة الموارد.
 
--   Simple API: Xen Store provides a simple API for reading and writing data, making it easy for developers to integrate their applications with the Xen virtualization system.
+-   واجهة برمجة تطبيقات بسيطة: يوفر متجر Xen واجهة برمجة تطبيقات بسيطة لقراءة البيانات وكتابتها، مما يسهل على المطورين دمج تطبيقاتهم مع نظام المحاكاة الافتراضية Xen.
 
 #### حبة
 
@@ -619,7 +618,7 @@ XAPI هي الواجهة التي تتيح التحكم والأتمتة في Xe
 #### ملخص زين
 
 -   **زين:**تقنية برنامج Hypervisor الأساسية التي تمكن الأجهزة الافتراضية من العمل على الأجهزة المادية.
--   **زين سورس:**الشركة التي قامت بتسويق Xen، استحوذت عليها Citrix لاحقًا، مما أدى إلى تطوير Citrix XenServer.
+-   **زين سورس:**الشركة التي قامت بتسويق Xen تجاريًا، استحوذت عليها Citrix لاحقًا، مما أدى إلى تطوير Citrix XenServer.
 -   **مشروع زين:**المبادرة والمجتمع مفتوح المصدر الذي يواصل تطوير وصيانة برنامج Xen Hypervisor ضمن مؤسسة Linux.
 -   **متجر زين:**يعمل Xen Store كوسيط اتصال وتكوين بين برنامج Hypervisor Xen والأجهزة الافتراضية، مما يعمل على تبسيط تشغيل وإدارة البيئات الافتراضية.
 -   **حبة**هي الواجهة التي تتيح التحكم في Xen Hypervisor وأتمتته، مما يسهل إدارة البيئات الافتراضية.
@@ -826,7 +825,7 @@ foo
 
 **وزن:**7
 
-**وصف:**يجب على المرشحين فهم مفهوم المحاكاة الافتراضية للحاوية. يتضمن ذلك فهم مكونات Linux المستخدمة لتنفيذ المحاكاة الافتراضية للحاويات بالإضافة إلى استخدام أدوات Linux القياسية لاستكشاف أخطاء هذه المكونات وإصلاحها.
+**وصف:**يجب أن يفهم المرشحون مفهوم المحاكاة الافتراضية للحاوية. يتضمن ذلك فهم مكونات Linux المستخدمة لتنفيذ المحاكاة الافتراضية للحاويات بالإضافة إلى استخدام أدوات Linux القياسية لاستكشاف أخطاء هذه المكونات وإصلاحها.
 
 **مجالات المعرفة الرئيسية:**
 
@@ -896,7 +895,7 @@ foo
 -   قم بتكوين خصائص حاوية LXC
 -   الحد من استخدام موارد حاوية LXC
 -   استخدم ملفات تعريف LXD
--   Understand LXC images
+-   فهم صور LXC
 -   الوعي بأدوات LXC التقليدية
 
 #### 352.2 الكائنات المستشهد بها
@@ -1062,7 +1061,7 @@ packer
 
 <a name="topic-353.3"></a>
 
-### 353.3 سحابة البداية
+### 353.3 سحابة أولية
 
 **وزن:**3
 
@@ -1267,9 +1266,17 @@ Vagrantfile
 -   [زين](<>)
     -   [XenServer](https://www.xenserver.com/)
     -   [مشروع ويكي زين](https://wiki.xenproject.org/wiki/Main_Page)
-    -   [مدونة LPI: المحاكاة الافتراضية لـ Xen والحوسبة السحابية #01: المقدمة](https://www.lpi.org/pt-br/blog/2020/10/01/xen-virtualization-and-cloud-computing-01-introduction/)
+    -   [مدونة LPI: المحاكاة الافتراضية لـ Xen والحوسبة السحابية #01: مقدمة](https://www.lpi.org/pt-br/blog/2020/10/01/xen-virtualization-and-cloud-computing-01-introduction/)
     -   [مدونة LPI: محاكاة Xen الافتراضية والحوسبة السحابية #02: كيف يقوم Xen بالمهمة](https://www.lpi.org/blog/2020/10/08/xen-virtualization-and-cloud-computing-02-how-xen-does-job/)
+    -   [مدونة LPI: محاكاة Xen الافتراضية والحوسبة السحابية #04: الحاويات وOpenStack والأنظمة الأساسية الأخرى ذات الصلة](https://www.lpi.org/pt-br/blog/2020/10/22/xen-virtualization-and-cloud-computing-04-containers-openstack-and-other-related/)
+    -   [محاكاة Xen الافتراضية والحوسبة السحابية #05: مشروع Xen، Unikernels، والمستقبل](https://www.lpi.org/pt-br/blog/2020/10/29/xen-virtualization-and-cloud-computing-05-xen-project-unikernels-and-future/)
     -   [دليل المبتدئين لمشروع Xen](https://wiki.xenproject.org/wiki/Xen_Project_Beginners_Guide#Installing_the_Xen_Project_Software)
+    -   [كتاب مجنون](https://wiki.xenproject.org/wiki/Book/HelloXenProject/0-Contents)
+-   [يونيكرنيل](https://www.lpi.org/blog/2020/10/29/xen-virtualization-and-cloud-computing-05-xen-project-unikernels-and-future/)
+    -   [يونيكرافت](https://github.com/unikraft/unikraft)
+    -   [ميراج أو إس](https://mirage.io/docs/hello-world)
+    -   [هالفم](https://galois.com/project/halvm/)
+    -   [فريد](https://github.com/solo-io/unik/blob/master/docs/providers/virtualbox.md)
 -   [مستندات Openstack](<>)
     -   [ريدهات](https://www.redhat.com/pt-br/topics/openstack)
 -   [افتح في سويتش](<>)
