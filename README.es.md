@@ -209,7 +209,7 @@ man COMMAND
 
 **Descripción:**Los candidatos deben conocer y comprender los conceptos generales, la teoría y la terminología de la virtualización. Esto incluye terminología de Xen, QEMU y libvirt.
 
-**Áreas de conocimiento clave:**
+**Áreas clave de conocimiento:**
 
 -   Comprender la terminología de virtualización
 -   Comprender los pros y los contras de la virtualización
@@ -316,7 +316,7 @@ HVM aprovecha las extensiones de hardware proporcionadas por las CPU modernas pa
 
 -   **Soporte de hardware**: Requiere soporte de CPU para extensiones de virtualización como Intel VT-x o AMD-V.
 -   **Virtualización completa:**Las máquinas virtuales pueden ejecutar sistemas operativos invitados no modificados, ya que el hipervisor proporciona una emulación completa del entorno de hardware.
--   **Performance:**Normalmente ofrece un rendimiento casi nativo debido a la ejecución directa del código invitado en la CPU.
+-   **Actuación:**Normalmente ofrece un rendimiento casi nativo debido a la ejecución directa del código invitado en la CPU.
 -   **Aislamiento:**Proporciona un fuerte aislamiento entre las máquinas virtuales, ya que cada máquina virtual funciona como si tuviera su propio hardware dedicado.
 
 ###### Ejemplos de HVM
@@ -544,7 +544,7 @@ Denodo, Red Hat JBoss Virtualización de datos, IBM InfoSphere.
 
 **Descripción:**Los candidatos deben poder instalar, configurar, mantener, migrar y solucionar problemas de instalaciones de Xen. La atención se centra en Xen versión 4.x.
 
-**Áreas de conocimiento clave:**
+**Áreas clave de conocimiento:**
 
 -   Comprender la arquitectura de Xen, incluidas las redes y el almacenamiento.
 -   Configuración básica de nodos y dominios Xen.
@@ -555,7 +555,7 @@ Denodo, Red Hat JBoss Virtualización de datos, IBM InfoSphere.
 -   Conocimiento de los parámetros de arranque de Xen
 -   Conocimiento de la utilidad xm
 
-#### Xen
+#### xén
 
 ![panda](Images/xen-panda.png)
 
@@ -631,7 +631,7 @@ Dom0 ejecuta controladores de dispositivos, lo que permite a los DomU, que carec
 #### DominioU (DomU)
 
 Los DomU son dominios sin privilegios que ejecutan máquinas virtuales.  
-Están gestionados por Dom0 y no tienen acceso directo al hardware. Las DomU se pueden configurar para ejecutar diferentes sistemas operativos y se utilizan para diversos fines, como servidores de aplicaciones y entornos de desarrollo. Confían en Dom0 para la interacción del hardware.
+Están gestionados por Dom0 y no tienen acceso directo al hardware. Las DomU se pueden configurar para ejecutar diferentes sistemas operativos y se utilizan para diversos fines, como servidores de aplicaciones y entornos de desarrollo. Confían en Dom0 para la interacción con el hardware.
 
 #### PV-DOMU (Dominio Paranormalizado)
 
@@ -640,7 +640,7 @@ Esto da como resultado una menor sobrecarga y una mejor eficiencia en comparaci�
 
 #### HVM-DomU (DominioU de máquina virtual de hardware)
 
-Los HVM-DomU son máquinas virtuales que utilizan virtualización completa, lo que permite ejecutar sistemas operativos sin modificaciones. El hipervisor Xen proporciona emulación de hardware para estos DomU, permitiéndoles ejecutar cualquier sistema operativo que admita la arquitectura de hardware subyacente.  
+Los HVM-DomU son máquinas virtuales que utilizan virtualización completa, lo que permite ejecutar sistemas operativos sin modificaciones. El hipervisor Xen proporciona emulación de hardware para estas DomU, permitiéndoles ejecutar cualquier sistema operativo que admita la arquitectura de hardware subyacente.  
 Si bien esto ofrece una mayor flexibilidad, puede generar mayores gastos generales en comparación con las PV-DomU.
 
 #### 351.2 Objetos citados
@@ -678,7 +678,7 @@ xl infos
 
 **Descripción:**Los candidatos deben poder instalar, configurar, mantener, migrar y solucionar problemas de instalaciones de QEMU.
 
-**Áreas de conocimiento clave:**
+**Áreas clave de conocimiento:**
 
 -   Comprender la arquitectura de QEMU, incluidos KVM, redes y almacenamiento.
 -   Inicie instancias de QEMU desde la línea de comando
@@ -723,7 +723,7 @@ ip link show
 
 **Descripción:**Los candidatos deben poder administrar hosts de virtualización y máquinas virtuales ("dominios libvirt") utilizando libvirt y herramientas relacionadas.
 
-**Áreas de conocimiento clave:**
+**Áreas clave de conocimiento:**
 
 -   Comprender la arquitectura de libvirt
 -   Administrar conexiones y nodos libvirt
@@ -765,9 +765,9 @@ foo
 
 **Peso:**3
 
-**Descripción:**Los candidatos deberían poder administrar imágenes de disco de máquinas virtuales. Esto incluye convertir imágenes de disco entre varios formatos e hipervisores y acceder a los datos almacenados dentro de una imagen.
+**Descripción:** Candidates should be able to manage virtual machines disk images. This includes converting disk images between various formats and hypervisors and accessing data stored within an image.
 
-**Áreas de conocimiento clave:**
+**Áreas clave de conocimiento:**
 
 -   Comprender las características de varios formatos de imágenes de discos virtuales, como imágenes sin formato, qcow2 y VMDK.
 -   Administre imágenes de disco de máquinas virtuales usando qemu-img
@@ -827,7 +827,7 @@ foo
 
 **Descripción:**Los candidatos deben comprender el concepto de virtualización de contenedores. Esto incluye comprender los componentes de Linux utilizados para implementar la virtualización de contenedores, así como el uso de herramientas estándar de Linux para solucionar problemas de estos componentes.
 
-**Áreas de conocimiento clave:**
+**Áreas clave de conocimiento:**
 
 -   Comprender los conceptos de sistema y contenedor de aplicaciones.
 -   Comprender y analizar los espacios de nombres del kernel
@@ -888,7 +888,7 @@ foo
 
 **Descripción:**Los candidatos deberían poder utilizar contenedores del sistema utilizando LXC y LXD. La versión de LXC cubierta es 3.0 o superior.
 
-**Áreas de conocimiento clave:**
+**Áreas clave de conocimiento:**
 
 -   Comprender la arquitectura de LXC y LXD
 -   Administre contenedores LXC basados ​​en imágenes existentes usando LXD, incluidas redes y almacenamiento.
@@ -927,7 +927,7 @@ foo
 
 **Descripción:**El candidato debe poder gestionar nodos Docker y contenedores Docker. Esto incluye comprender la arquitectura de Docker y cómo interactúa Docker con el sistema Linux del nodo.
 
-**Áreas de conocimiento clave:**
+**Áreas clave de conocimiento:**
 
 -   Comprender la arquitectura y los componentes de Docker.
 -   Administre contenedores Docker utilizando imágenes de un registro de Docker
@@ -969,7 +969,7 @@ Dockerfile
 
 **Descripción:**Los candidatos deben comprender la importancia de la orquestación de contenedores y los conceptos clave que Docker Swarm y Kubernetes proporcionan para implementar la orquestación de contenedores.
 
-**Áreas de conocimiento clave:**
+**Áreas clave de conocimiento:**
 
 -   Comprender la relevancia de la orquestación de contenedores
 -   Comprender los conceptos clave de Docker Compose y Docker Swarm
@@ -996,7 +996,7 @@ Dockerfile
 
 **Descripción:**Los candidatos deben comprender las ofertas comunes en las nubes públicas y tener conocimientos básicos de las funciones de las herramientas de administración de la nube comúnmente disponibles.
 
-**Áreas de conocimiento clave:**
+**Áreas clave de conocimiento:**
 
 -   Comprender las ofertas comunes en las nubes públicas
 -   Conocimientos básicos de las funciones de OpenStack.
@@ -1033,7 +1033,7 @@ Terraform
 
 **Descripción:**Los candidatos deberían poder utilizar Packer para crear imágenes del sistema. Esto incluye ejecutar Packer en varios entornos de nube públicos y privados, así como crear imágenes de contenedores para LXC/LXD.
 
-**Áreas de conocimiento clave:**
+**Áreas clave de conocimiento:**
 
 -   Comprender la funcionalidad y características de Packer
 -   Crear y mantener archivos de plantilla
@@ -1069,7 +1069,7 @@ packer
 Además, los candidatos deberían poder configurar instancias para permitir inicios de sesión SSH seguros e instalar un conjunto específico de paquetes de software.  
 Además, los candidatos deberían poder crear nuevas imágenes del sistema con soporte de inicio en la nube.
 
-**Áreas de conocimiento clave:**
+**Áreas clave de conocimiento:**
 
 -   Comprender las características y conceptos de cloud-init, incluidos los datos del usuario, la inicialización y la configuración de cloud-init.
 -   Utilice cloud-init para crear, cambiar el tamaño y montar sistemas de archivos, configurar cuentas de usuario, incluidas credenciales de inicio de sesión como claves SSH e instalar paquetes de software desde el repositorio de la distribución.
@@ -1106,7 +1106,7 @@ user-data
 
 **Descripción:**El candidato debe poder utilizar Vagrant para administrar máquinas virtuales, incluido el aprovisionamiento de la máquina virtual.
 
-**Áreas de conocimiento clave:**
+**Áreas clave de conocimiento:**
 
 -   Comprender la arquitectura y los conceptos de Vagrant, incluidos el almacenamiento y las redes.
 -   Recuperar y utilizar cajas de Atlas
@@ -1203,7 +1203,7 @@ Enlace del proyecto:<https://github.com/marcossilvestrini/learning-lpic-3-305-30
     -   [Licencia pública general reducida GNU](https://www.gnu.org/licenses/lgpl-3.0.html)
     -   [BSD](https://opensource.org/licenses/BSD-3-Clause)
     -   [Iniciativa de código abierto](https://opensource.org/)
-    -   [Creative Commons](https://creativecommons.org/)
+    -   [Bienes comunes creativos](https://creativecommons.org/)
     -   [Licencia LTS](https://en.wikipedia.org/wiki/Long-term_support)
 -   [Distribuciones](<>)
     -   [Directrices para el software libre de Debian](https://www.debian.org/social_contract#guidelines)
@@ -1263,12 +1263,20 @@ Enlace del proyecto:<https://github.com/marcossilvestrini/learning-lpic-3-305-30
 -   [KVM](<>)
     -   [KVM (máquinas virtuales del núcleo)](https://www.redhat.com/pt-br/topics/virtualization/what-is-KVM)
     -   [Herramientas de gestión KVM](https://www.linux-kvm.org/page/Management_Tools)
--   [Xen](<>)
+-   [xén](<>)
     -   [XenServer](https://www.xenserver.com/)
     -   [Proyecto Wiki Xen](https://wiki.xenproject.org/wiki/Main_Page)
     -   [Blog de LPI: Virtualización Xen y Computación en la Nube #01: Introducción](https://www.lpi.org/pt-br/blog/2020/10/01/xen-virtualization-and-cloud-computing-01-introduction/)
     -   [Blog de LPI: Virtualización Xen y Computación en la Nube #02: Cómo hace el trabajo Xen](https://www.lpi.org/blog/2020/10/08/xen-virtualization-and-cloud-computing-02-how-xen-does-job/)
+    -   [Blog de LPI: Virtualización Xen y Computación en la Nube #04: Contenedores, OpenStack y otras plataformas relacionadas](https://www.lpi.org/pt-br/blog/2020/10/22/xen-virtualization-and-cloud-computing-04-containers-openstack-and-other-related/)
+    -   [Virtualización Xen y Computación en la Nube #05: El Proyecto Xen, Unikernels y el Futuro](https://www.lpi.org/pt-br/blog/2020/10/29/xen-virtualization-and-cloud-computing-05-xen-project-unikernels-and-future/)
     -   [Guía para principiantes del proyecto Xen](https://wiki.xenproject.org/wiki/Xen_Project_Beginners_Guide#Installing_the_Xen_Project_Software)
+    -   [libro loco](https://wiki.xenproject.org/wiki/Book/HelloXenProject/0-Contents)
+-   [Unikernel](https://www.lpi.org/blog/2020/10/29/xen-virtualization-and-cloud-computing-05-xen-project-unikernels-and-future/)
+    -   [Unikraft](https://github.com/unikraft/unikraft)
+    -   [MirageOS](https://mirage.io/docs/hello-world)
+    -   [HaLVM](https://galois.com/project/halvm/)
+    -   [Único](https://github.com/solo-io/unik/blob/master/docs/providers/virtualbox.md)
 -   [Documentos de Openstack](<>)
     -   [sombrero rojo](https://www.redhat.com/pt-br/topics/openstack)
 -   [Abrir vSwitch](<>)
