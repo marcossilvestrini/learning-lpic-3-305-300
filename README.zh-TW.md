@@ -146,7 +146,7 @@ git clone https://github.com/marcossilvestrini/learning-lpic-3-305-300.git
 
 ## 用法
 
-使用此儲存庫了解 LPIC2 202-450 考試
+使用此儲存庫了解LPIC-3 305-300 考試
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 

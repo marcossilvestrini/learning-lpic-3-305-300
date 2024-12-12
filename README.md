@@ -156,7 +156,7 @@ Set some configs for your environment:
 
 ## Usage
 
-Use this repository for get learning about LPIC2 202-450 exam
+Use this repository for get learning aboutLPIC-3 305-300 exam
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
