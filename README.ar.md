@@ -147,7 +147,7 @@ git clone https://github.com/marcossilvestrini/learning-lpic-3-305-300.git
 
 ## الاستخدام
 
-استخدم هذا المستودع للتعرف على اختبار LPIC2 202-450
+استخدم هذا المستودع للتعرف على اختبارLPIC-3 305-300
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 

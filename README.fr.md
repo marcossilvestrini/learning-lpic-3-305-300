@@ -146,7 +146,7 @@ Définissez quelques configurations pour votre environnement :
 
 ## Usage
 
-Utilisez ce référentiel pour en savoir plus sur l'examen LPIC2 202-450
+Utilisez ce référentiel pour en savoir plus sur l'examenLPIC-3 305-300
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 

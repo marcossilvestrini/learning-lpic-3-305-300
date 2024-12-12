@@ -146,7 +146,7 @@ Defina algumas configurações para o seu ambiente:
 
 ## Uso
 
-Use este repositório para aprender sobre o exame LPIC2 202-450
+Use este repositório para aprender sobre o exameLPIC-3 305-300
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
