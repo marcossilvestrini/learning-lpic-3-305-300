@@ -88,7 +88,7 @@
 > e software livre\\
 > Algumas distribuições GNULinux como Debian e RPM serão abordadas\\
 > A instalação e configuração de alguns pacotes também serão abordadas\\
-> Ao fazer isso, você pode dar a toda a comunidade a oportunidade de se beneficiar de suas alterações.\\
+> Ao fazer isso, você pode dar a toda a comunidade a chance de se beneficiar de suas alterações.\\
 > O acesso ao código-fonte é uma pré-condição para isso.\\
 > Use o vagrant para atualizar máquinas, executar laboratórios e praticar o conteúdo deste artigo.\\
 > Publiquei na pasta Vagrant um Vagrantfile com o que é necessário\\
@@ -125,7 +125,7 @@ git clone https://github.com/marcossilvestrini/learning-lpic-3-305-300.git
 ```
 
 Estou criando um script PowerShell para provisionar instâncias com vagrant para laboratórios.  
-Se o seu sistema SO for Windows, você pode usar o script[app.ps1](./labs/app.ps1).
+Se o seu sistema SO for Windows, você pode usar o script[aplicativo.ps1](./labs/app.ps1).
 
 Defina algumas configurações para o seu ambiente:
 
@@ -255,7 +255,7 @@ Migration (P2V, V2V)
 
 ##### Hipervisor tipo 2 (hipervisor hospedado)
 
-###### Definição Tipo 2
+###### Definição de tipo 2
 
 É executado sobre um sistema operacional convencional, contando com o sistema operacional host para gerenciamento de recursos e suporte a dispositivos.
 
@@ -300,7 +300,7 @@ Em outras palavras, um sistema operacional e seus aplicativos, executados em har
 ##### V2V - Migração Virtual para Virtual
 
 A migração V2V refere-se ao processo de migração de uma máquina virtual de um hipervisor para outro.  
-Neste caso, você já possui uma máquina virtual rodando em um ambiente virtualizado (como VMware) e deseja movê-la para outro ambiente virtualizado (por exemplo, para Hyper-V ou para um novo servidor VMware).
+Neste caso, você já possui uma máquina virtual em execução em um ambiente virtualizado (como VMware) e deseja movê-la para outro ambiente virtualizado (por exemplo, para Hyper-V ou para um novo servidor VMware).
 
 -   Exemplo: você tem uma máquina virtual rodando em um servidor de virtualização VMware, mas decide migrá-la para uma plataforma Hyper-V. Nesse caso, a migração V2V converte a máquina virtual de um formato ou hipervisor para outro, garantindo que ela continue funcionando corretamente.
 
@@ -314,7 +314,7 @@ O HVM aproveita extensões de hardware fornecidas por CPUs modernas para virtual
 
 ###### Principais características do HVM
 
--   **Suporte de hardware**: requer suporte de CPU para extensões de virtualização como Intel VT-x ou AMD-V.
+-   **Suporte de Hardware**: requer suporte de CPU para extensões de virtualização como Intel VT-x ou AMD-V.
 -   **Virtualização completa:**As VMs podem executar sistemas operacionais convidados não modificados, pois o hipervisor fornece uma emulação completa do ambiente de hardware.
 -   **Desempenho:**Normalmente oferece desempenho quase nativo devido à execução direta do código convidado na CPU.
 -   **Isolamento:**Fornece forte isolamento entre VMs, pois cada VM opera como se tivesse seu próprio hardware dedicado.
@@ -331,7 +331,7 @@ VMware ESXi, Microsoft Hyper-V, KVM (máquina virtual baseada em kernel).
 
 ###### Desvantagens do HVM
 
--   **Dependência de hardware:**Requer recursos de hardware específicos, limitando a compatibilidade com sistemas mais antigos.
+-   **Dependência de Hardware:**Requer recursos de hardware específicos, limitando a compatibilidade com sistemas mais antigos.
 -   **Complexidade:**Pode envolver configuração e gerenciamento mais complexos.
 
 ##### Paravirtualização
@@ -355,7 +355,7 @@ Xen com convidados paravirtualizados, ferramentas VMware em determinadas configu
 -   **Eficiência:**Reduz a sobrecarga de virtualização de hardware, oferecendo potencialmente melhor desempenho para determinadas cargas de trabalho.
 -   **Utilização de recursos:**Uso mais eficiente dos recursos do sistema devido à comunicação direta entre o sistema operacional convidado e o hipervisor.
 
-###### Desvantagens da Paravirtualização
+###### Desvantagens da paravirtualização
 
 -   **Modificação do sistema operacional convidado:**Requer modificações no sistema operacional convidado, limitando a compatibilidade aos sistemas operacionais suportados.
 -   **Complexidade:**Requer complexidade adicional no sistema operacional convidado para implementações de hiperchamada.
@@ -400,12 +400,12 @@ Num sistema NUMA, a memória é distribuída de forma desigual entre os processa
 
 ##### Advantages of NUMA
 
--   Melhor Desempenho em Sistemas Grandes: Como cada processador possui memória local, ele pode funcionar com mais eficiência sem competir tanto com outros processadores pelo acesso à memória.
+-   Melhor Desempenho em Sistemas Grandes: Como cada processador possui memória local, ele pode trabalhar com mais eficiência sem competir tanto com outros processadores pelo acesso à memória.
 -   Escalabilidade: NUMA permite que sistemas com muitos processadores e grandes quantidades de memória sejam dimensionados de forma mais eficaz em comparação com uma arquitetura UMA.
 
 ##### Desvantagens
 
--   Programming Complexity: Programmers need to be aware of which regions of memory are local or remote, optimizing the use of local memory to achieve better performance.
+-   Complexidade de programação: Os programadores precisam estar cientes de quais regiões da memória são locais ou remotas, otimizando o uso da memória local para obter melhor desempenho.
 -   Potenciais penalidades de desempenho: Se um processador acessa frequentemente a memória remota, o desempenho pode ser prejudicado devido à maior latência.
     Essa arquitetura é comum em sistemas multiprocessadores de alto desempenho, como servidores e supercomputadores, onde a escalabilidade e a otimização da memória são críticas.
 
@@ -563,7 +563,7 @@ Xen é um hipervisor tipo 1 (bare metal) de código aberto, que permite que vár
 O Xen fornece uma camada entre o hardware físico e as máquinas virtuais (VMs), permitindo o compartilhamento e o isolamento eficientes de recursos.
 
 -   **Arquitetura:**O Xen opera com um sistema de duas camadas onde o Domínio 0 (Dom0) é o domínio privilegiado com acesso direto ao hardware e gerencia o hipervisor. Outras máquinas virtuais, chamadas Domain U (DomU), executam sistemas operacionais convidados e são gerenciadas pelo Dom0.
--   **Tipos de virtualização:**O Xen suporta paravirtualização (PV), que requer sistema operacional convidado modificado, e virtualização assistida por hardware (HVM), que usa extensões de hardware (por exemplo, Intel VT-x ou AMD-V) para executar sistemas operacionais convidados não modificados.
+-   **Tipos de virtualização:**O Xen suporta tanto a paravirtualização (PV), que requer sistema operacional convidado modificado, quanto a virtualização assistida por hardware (HVM), que usa extensões de hardware (por exemplo, Intel VT-x ou AMD-V) para executar sistemas operacionais convidados não modificados.
     O Xen é amplamente utilizado em ambientes de nuvem, principalmente pela Amazon Web Services (AWS) e outros provedores de nuvem de grande escala.
 
 #### XenSource
@@ -607,7 +607,7 @@ Aqui estão alguns aspectos importantes do XAPI:
 
 -   **Gerenciamento de VM:**XAPI permite que os administradores criem, excluam, iniciem e parem máquinas virtuais de maneira programática.
 
--   **Automação:**Com XAPI, é possível automatizar o gerenciamento de recursos virtuais, incluindo rede, armazenamento e computação, o que é crucial para grandes ambientes de nuvem.
+-   **Automação:**Com o XAPI, é possível automatizar o gerenciamento de recursos virtuais, incluindo rede, armazenamento e computação, o que é crucial para grandes ambientes de nuvem.
 
 -   **Integração:**O XAPI pode ser integrado a outras ferramentas e scripts para fornecer uma administração mais eficiente e personalizada do ambiente Xen.
 
@@ -640,8 +640,8 @@ Isso resulta em menor sobrecarga e melhor eficiência em comparação com a virt
 
 #### HVM-DomU (Domínio de Máquina Virtual de HardwareU)
 
-HVM-DomUs são máquinas virtuais que utilizam virtualização completa, permitindo a execução de sistemas operacionais não modificados. O hipervisor Xen fornece emulação de hardware para esses DomUs, permitindo-lhes executar qualquer sistema operacional que suporte a arquitetura de hardware subjacente.  
-Embora isso ofereça maior flexibilidade, pode resultar em maior sobrecarga em comparação com PV-DomUs.
+HVM-DomUs são máquinas virtuais que utilizam virtualização total, permitindo a execução de sistemas operacionais não modificados. O hipervisor Xen fornece emulação de hardware para esses DomUs, permitindo-lhes executar qualquer sistema operacional que suporte a arquitetura de hardware subjacente.  
+Embora isso ofereça maior flexibilidade, pode resultar em sobrecarga maior em comparação com PV-DomUs.
 
 #### 351.2 Objetos Citados
 
@@ -685,7 +685,7 @@ xl infos
 -   Gerencie instantâneos usando o monitor QEMU
 -   Instale os drivers de dispositivo QEMU Guest Agent e VirtIO
 -   Solucionar problemas de instalações QEMU, incluindo rede e armazenamento
--   Consciência de parâmetros importantes de configuração do QEMU
+-   Conscientização de parâmetros importantes de configuração do QEMU
 
 #### 351.3 Objetos Citados
 
@@ -830,7 +830,7 @@ foo
 **Principais áreas de conhecimento:**
 
 -   Compreenda os conceitos de sistema e contêiner de aplicativo
--   Compreender e analisar namespaces de kernel
+-   Compreenda e analise namespaces de kernel
 -   Compreender e analisar grupos de controle
 -   Compreender e analisar capacidades
 -   Entenda a função do seccomp, SELinux e AppArmor para virtualização de contêineres
@@ -838,7 +838,7 @@ foo
 -   Entenda o princípio do runc
 -   Entenda o princípio do CRI-O e do containerd
 -   Conhecimento do tempo de execução do OCI e das especificações de imagem
--   Conhecimento da Interface de Tempo de Execução de Contêiner (CRI) do Kubernetes
+-   Conhecimento da interface de tempo de execução de contêiner (CRI) do Kubernetes
 -   Consciência de podman, buildah e escopo
 -   Conhecimento de outras abordagens de virtualização de contêineres no Linux e outros sistemas operacionais livres, como rkt, OpenVZ, systemd-nspawn ou BSD Jails
 
@@ -937,7 +937,7 @@ foo
 -   Use Dockerfiles para criar imagens de contêiner
 -   Execute um registro Docker usando a imagem Docker do registro
 
-#### 352.3 Cited Objects
+#### 352.3 Objetos Citados
 
 ```sh
 dockerd
@@ -973,7 +973,7 @@ Dockerfile
 
 -   Entenda a relevância da orquestração de contêineres
 -   Entenda os principais conceitos do Docker Compose e do Docker Swarm
--   Compreenda os principais conceitos do Kubernetes e Helm
+-   Compreenda os principais conceitos de Kubernetes e Helm
 -   Conscientização sobre OpenShift, Rancher e Mesosphere DC/OS
 
 <p align="right">(<a href="#topic-352.4">back to sub topic 352.4</a>)</p>
@@ -1100,7 +1100,7 @@ user-data
 
 <a name="topic-353.4"></a>
 
-### 353.4 Vagabundo
+### 353,4 Vagabundo
 
 **Peso:**3
 
@@ -1254,7 +1254,7 @@ Link do projeto:<https://github.com/marcossilvestrini/learning-lpic-3-305-300>
     -   [Exemplos de comandos](https://www.geeksforgeeks.org/)
 -   [Outras ferramentas](<>)
     -   [Bugzila](https://bugzilla.kernel.org/)
-    -   [Emblemas do GitHub](https://github.com/alexandresanlim/Badges4-README.md-Profile)
+    -   [Emblemas do Github](https://github.com/alexandresanlim/Badges4-README.md-Profile)
 -   [Definições de virtualização](<>)
     -   [Chapéu Vermelho](https://www.redhat.com/pt-br/topics/virtualization/what-is-virtualization)
     -   [AWS](https://aws.amazon.com/pt/what-is/virtualization/)
@@ -1268,7 +1268,15 @@ Link do projeto:<https://github.com/marcossilvestrini/learning-lpic-3-305-300>
     -   [Wiki XenProject](https://wiki.xenproject.org/wiki/Main_Page)
     -   [Blog LPI: Virtualização Xen e Computação em Nuvem #01: Introdução](https://www.lpi.org/pt-br/blog/2020/10/01/xen-virtualization-and-cloud-computing-01-introduction/)
     -   [Blog do LPI: Virtualização Xen e Computação em Nuvem #02: Como o Xen faz o trabalho](https://www.lpi.org/blog/2020/10/08/xen-virtualization-and-cloud-computing-02-how-xen-does-job/)
+    -   [Blog LPI: Virtualização Xen e Computação em Nuvem #04: Contêineres, OpenStack e Outras Plataformas Relacionadas](https://www.lpi.org/pt-br/blog/2020/10/22/xen-virtualization-and-cloud-computing-04-containers-openstack-and-other-related/)
+    -   [Virtualização Xen e Computação em Nuvem #05: O Projeto Xen, Unikernels e o Futuro](https://www.lpi.org/pt-br/blog/2020/10/29/xen-virtualization-and-cloud-computing-05-xen-project-unikernels-and-future/)
     -   [Guia para iniciantes do projeto Xen](https://wiki.xenproject.org/wiki/Xen_Project_Beginners_Guide#Installing_the_Xen_Project_Software)
+    -   [Livro maluco](https://wiki.xenproject.org/wiki/Book/HelloXenProject/0-Contents)
+-   [Unikernel](https://www.lpi.org/blog/2020/10/29/xen-virtualization-and-cloud-computing-05-xen-project-unikernels-and-future/)
+    -   [Unikraft](https://github.com/unikraft/unikraft)
+    -   [Mirage OS](https://mirage.io/docs/hello-world)
+    -   [HaLVM](https://galois.com/project/halvm/)
+    -   [Exclusivo](https://github.com/solo-io/unik/blob/master/docs/providers/virtualbox.md)
 -   [Documentos Openstack](<>)
     -   [Chapéu Vermelho](https://www.redhat.com/pt-br/topics/openstack)
 -   [Abra o vSwitch](<>)
