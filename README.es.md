@@ -109,7 +109,6 @@ Para comenzar el aprendizaje, consulte la documentación anterior.
 ### Requisitos previos
 
 -   [git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
--   [VirtualBox](https://blogs.vmware.com/workstation/2024/05/vmware-workstation-pro-now-available-free-for-personal-use.html)
 -   [Estación de trabajo VMware](https://blogs.vmware.com/workstation/2024/05/vmware-workstation-pro-now-available-free-for-personal-use.html)
 -   [Utilidad vagabunda VMWare](https://developer.hashicorp.com/vagrant/install/vmware)
 -   [Vagabundo](https://developer.hashicorp.com/vagrant/install)
@@ -124,8 +123,7 @@ Clonar el repositorio
 git clone https://github.com/marcossilvestrini/learning-lpic-3-305-300.git
 ```
 
-Estoy creando un script de PowerShell para aprovisionar instancias con vagrant for labs.  
-Si su sistema SO es Windows, puede usar script[aplicación.ps1](./labs/app.ps1).
+Utilice Vagrantfile-topic-XXX para realizar laboratorios.
 
 Establezca algunas configuraciones para su entorno:
 
@@ -135,8 +133,6 @@ Establezca algunas configuraciones para su entorno:
     -   vm.vmx["memsize"]= ""
     -   vm.vmx["numvcpus"]= ""
     -   vm.vmx["cpuid.coresPerSocket"]= ""
-    -   vb.memoria = ""
-    -   vb.cpus = ""
     -   en línea: "ifconfig eth1 &lt;your_ip_public_instanceX> máscara de red 255.255.255.0 arriba"
     -   en línea: "ruta agregar gw predeterminado &lt;your_public_gateway>"
 
@@ -146,7 +142,7 @@ Establezca algunas configuraciones para su entorno:
 
 ## Uso
 
-Utilice este repositorio para obtener información sobre el examenLPIC-3 305-300
+Utilice este repositorio para obtener información sobre el examen LPIC-3 305-300
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -209,13 +205,13 @@ man COMMAND
 
 **Descripción:**Los candidatos deben conocer y comprender los conceptos generales, la teoría y la terminología de la virtualización. Esto incluye terminología de Xen, QEMU y libvirt.
 
-**Áreas clave de conocimiento:**
+**Áreas de conocimiento clave:**
 
 -   Comprender la terminología de virtualización
 -   Comprender los pros y los contras de la virtualización
 -   Comprender las diversas variaciones de hipervisores y monitores de máquinas virtuales
 -   Comprender los aspectos principales de la migración de máquinas físicas a virtuales
--   Comprender los aspectos principales de la migración de máquinas virtuales entre sistemas host.
+-   Comprender los aspectos principales de la migración de máquinas virtuales entre sistemas host
 -   Comprender las características y las implicaciones de la virtualización para una máquina virtual, como la creación de instantáneas, la pausa, la clonación y los límites de recursos.
 -   Conocimiento de oVirt, Proxmox, systemd-machined y VirtualBox
 -   Conocimiento de Open vSwitch
@@ -327,7 +323,7 @@ VMware ESXi, Microsoft Hyper-V, KVM (Máquina virtual basada en kernel).
 
 -   **Compatibilidad:**Puede ejecutar cualquier sistema operativo sin modificaciones.
 -   **Actuación:**Alto rendimiento gracias al soporte de hardware.
--   **Seguridad:**Funciones de aislamiento y seguridad mejoradas proporcionadas por hardware.
+-   **Seguridad:**Funciones mejoradas de aislamiento y seguridad proporcionadas por hardware.
 
 ###### Desventajas de HVM
 
@@ -395,7 +391,7 @@ En un sistema NUMA, la memoria se distribuye de manera desigual entre los proces
 ##### Características clave de la arquitectura NUMA
 
 1.  **Memoria local y remota**: Cada procesador tiene su propia memoria local, a la que puede acceder más rápidamente. Sin embargo, también puede acceder a la memoria de otros procesadores, aunque esto lleva más tiempo.
-2.  **Latencia diferenciada**: La latencia del acceso a la memoria varía dependiendo de si el procesador accede a su memoria local o a la memoria de otro nodo. El acceso a la memoria local es más rápido, mientras que el acceso a la memoria de otro nodo (remoto) es más lento.
+2.  **Latencia diferenciada**: La latencia de acceso a la memoria varía dependiendo de si el procesador accede a su memoria local o a la memoria de otro nodo. El acceso a la memoria local es más rápido, mientras que el acceso a la memoria de otro nodo (remoto) es más lento.
 3.  **Escalabilidad**: La arquitectura NUMA está diseñada para mejorar la escalabilidad en sistemas con muchos procesadores. A medida que se añaden más procesadores, la memoria también se distribuye, evitando el cuello de botella que se produciría en una arquitectura de acceso uniforme a memoria (UMA).
 
 ##### Ventajas de NUMA
@@ -544,7 +540,7 @@ Denodo, Red Hat JBoss Virtualización de datos, IBM InfoSphere.
 
 **Descripción:**Los candidatos deben poder instalar, configurar, mantener, migrar y solucionar problemas de instalaciones de Xen. La atención se centra en Xen versión 4.x.
 
-**Áreas clave de conocimiento:**
+**Áreas de conocimiento clave:**
 
 -   Comprender la arquitectura de Xen, incluidas las redes y el almacenamiento.
 -   Configuración básica de nodos y dominios Xen.
@@ -631,7 +627,7 @@ Dom0 ejecuta controladores de dispositivos, lo que permite a los DomU, que carec
 #### DominioU (DomU)
 
 Los DomU son dominios sin privilegios que ejecutan máquinas virtuales.  
-Están gestionados por Dom0 y no tienen acceso directo al hardware. Las DomU se pueden configurar para ejecutar diferentes sistemas operativos y se utilizan para diversos fines, como servidores de aplicaciones y entornos de desarrollo. Confían en Dom0 para la interacción con el hardware.
+Están gestionados por Dom0 y no tienen acceso directo al hardware. Las DomU se pueden configurar para ejecutar diferentes sistemas operativos y se utilizan para diversos fines, como servidores de aplicaciones y entornos de desarrollo. Confían en Dom0 para la interacción del hardware.
 
 #### PV-DOMU (Dominio Paranormalizado)
 
@@ -640,7 +636,7 @@ Esto da como resultado una menor sobrecarga y una mejor eficiencia en comparaci�
 
 #### HVM-DomU (DominioU de máquina virtual de hardware)
 
-Los HVM-DomU son máquinas virtuales que utilizan virtualización completa, lo que permite ejecutar sistemas operativos sin modificaciones. El hipervisor Xen proporciona emulación de hardware para estas DomU, permitiéndoles ejecutar cualquier sistema operativo que admita la arquitectura de hardware subyacente.  
+Los HVM-DomU son máquinas virtuales que utilizan virtualización completa, lo que permite ejecutar sistemas operativos sin modificaciones. El hipervisor Xen proporciona emulación de hardware para estos DomU, permitiéndoles ejecutar cualquier sistema operativo que admita la arquitectura de hardware subyacente.  
 Si bien esto ofrece una mayor flexibilidad, puede generar mayores gastos generales en comparación con las PV-DomU.
 
 #### 351.2 Objetos citados
@@ -678,7 +674,7 @@ xl infos
 
 **Descripción:**Los candidatos deben poder instalar, configurar, mantener, migrar y solucionar problemas de instalaciones de QEMU.
 
-**Áreas clave de conocimiento:**
+**Áreas de conocimiento clave:**
 
 -   Comprender la arquitectura de QEMU, incluidos KVM, redes y almacenamiento.
 -   Inicie instancias de QEMU desde la línea de comando
@@ -723,7 +719,7 @@ ip link show
 
 **Descripción:**Los candidatos deben poder administrar hosts de virtualización y máquinas virtuales ("dominios libvirt") utilizando libvirt y herramientas relacionadas.
 
-**Áreas clave de conocimiento:**
+**Áreas de conocimiento clave:**
 
 -   Comprender la arquitectura de libvirt
 -   Administrar conexiones y nodos libvirt
@@ -765,9 +761,9 @@ foo
 
 **Peso:**3
 
-**Descripción:** Candidates should be able to manage virtual machines disk images. This includes converting disk images between various formats and hypervisors and accessing data stored within an image.
+**Descripción:**Los candidatos deberían poder administrar imágenes de disco de máquinas virtuales. Esto incluye convertir imágenes de disco entre varios formatos e hipervisores y acceder a los datos almacenados dentro de una imagen.
 
-**Áreas clave de conocimiento:**
+**Áreas de conocimiento clave:**
 
 -   Comprender las características de varios formatos de imágenes de discos virtuales, como imágenes sin formato, qcow2 y VMDK.
 -   Administre imágenes de disco de máquinas virtuales usando qemu-img
@@ -827,7 +823,7 @@ foo
 
 **Descripción:**Los candidatos deben comprender el concepto de virtualización de contenedores. Esto incluye comprender los componentes de Linux utilizados para implementar la virtualización de contenedores, así como el uso de herramientas estándar de Linux para solucionar problemas de estos componentes.
 
-**Áreas clave de conocimiento:**
+**Áreas de conocimiento clave:**
 
 -   Comprender los conceptos de sistema y contenedor de aplicaciones.
 -   Comprender y analizar los espacios de nombres del kernel
@@ -888,7 +884,7 @@ foo
 
 **Descripción:**Los candidatos deberían poder utilizar contenedores del sistema utilizando LXC y LXD. La versión de LXC cubierta es 3.0 o superior.
 
-**Áreas clave de conocimiento:**
+**Áreas de conocimiento clave:**
 
 -   Comprender la arquitectura de LXC y LXD
 -   Administre contenedores LXC basados ​​en imágenes existentes usando LXD, incluidas redes y almacenamiento.
@@ -927,7 +923,7 @@ foo
 
 **Descripción:**El candidato debe poder gestionar nodos Docker y contenedores Docker. Esto incluye comprender la arquitectura de Docker y cómo interactúa Docker con el sistema Linux del nodo.
 
-**Áreas clave de conocimiento:**
+**Áreas de conocimiento clave:**
 
 -   Comprender la arquitectura y los componentes de Docker.
 -   Administre contenedores Docker utilizando imágenes de un registro de Docker
@@ -969,7 +965,7 @@ Dockerfile
 
 **Descripción:**Los candidatos deben comprender la importancia de la orquestación de contenedores y los conceptos clave que Docker Swarm y Kubernetes proporcionan para implementar la orquestación de contenedores.
 
-**Áreas clave de conocimiento:**
+**Áreas de conocimiento clave:**
 
 -   Comprender la relevancia de la orquestación de contenedores
 -   Comprender los conceptos clave de Docker Compose y Docker Swarm
@@ -996,7 +992,7 @@ Dockerfile
 
 **Descripción:**Los candidatos deben comprender las ofertas comunes en las nubes públicas y tener conocimientos básicos de las funciones de las herramientas de administración de la nube comúnmente disponibles.
 
-**Áreas clave de conocimiento:**
+**Áreas de conocimiento clave:**
 
 -   Comprender las ofertas comunes en las nubes públicas
 -   Conocimientos básicos de las funciones de OpenStack.
@@ -1033,7 +1029,7 @@ Terraform
 
 **Descripción:**Los candidatos deberían poder utilizar Packer para crear imágenes del sistema. Esto incluye ejecutar Packer en varios entornos de nube públicos y privados, así como crear imágenes de contenedores para LXC/LXD.
 
-**Áreas clave de conocimiento:**
+**Áreas de conocimiento clave:**
 
 -   Comprender la funcionalidad y características de Packer
 -   Crear y mantener archivos de plantilla
@@ -1069,7 +1065,7 @@ packer
 Además, los candidatos deberían poder configurar instancias para permitir inicios de sesión SSH seguros e instalar un conjunto específico de paquetes de software.  
 Además, los candidatos deberían poder crear nuevas imágenes del sistema con soporte de inicio en la nube.
 
-**Áreas clave de conocimiento:**
+**Áreas de conocimiento clave:**
 
 -   Comprender las características y conceptos de cloud-init, incluidos los datos del usuario, la inicialización y la configuración de cloud-init.
 -   Utilice cloud-init para crear, cambiar el tamaño y montar sistemas de archivos, configurar cuentas de usuario, incluidas credenciales de inicio de sesión como claves SSH e instalar paquetes de software desde el repositorio de la distribución.
@@ -1106,7 +1102,7 @@ user-data
 
 **Descripción:**El candidato debe poder utilizar Vagrant para administrar máquinas virtuales, incluido el aprovisionamiento de la máquina virtual.
 
-**Áreas clave de conocimiento:**
+**Áreas de conocimiento clave:**
 
 -   Comprender la arquitectura y los conceptos de Vagrant, incluidos el almacenamiento y las redes.
 -   Recuperar y utilizar cajas de Atlas
