@@ -119,7 +119,6 @@ For starting the learning, see the documentation above.
 ### Prerequisites
 
 * [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
-* [VirtualBox](https://blogs.vmware.com/workstation/2024/05/vmware-workstation-pro-now-available-free-for-personal-use.html)
 * [VMware Workstation](https://blogs.vmware.com/workstation/2024/05/vmware-workstation-pro-now-available-free-for-personal-use.html)
 * [Vagrant VMWare Utility](https://developer.hashicorp.com/vagrant/install/vmware)
 * [Vagrant](https://developer.hashicorp.com/vagrant/install)
@@ -134,19 +133,16 @@ Clone the repo
 git clone https://github.com/marcossilvestrini/learning-lpic-3-305-300.git
 ```
 
-I'm create a script powershell for provisioning instances with vagrant for labs.  
-If your SO System is windows, you can use script [app.ps1](./labs/app.ps1).  
+Use Vagrantfile-topic-XXX for up labs.
 
 Set some configs for your environment:
 
 * File [Vagrantfile-topic-351](./labs/vagrant/Vagrantfile-topic-351)
   * vm.clone_directory = "<your_driver_letter>:\\<folder>\\<to_machine>\\#{VM_NAME}-instance-1"
-  Example: vm.clone_directory = "E:\\Servers\\VMWare\\#{VM_NAME}-instance-1"
+    Example: vm.clone_directory = "E:\\Servers\\VMWare\\#{VM_NAME}-instance-1"
   * vm.vmx["memsize"] = ""
   * vm.vmx["numvcpus"] = ""
-  * vm.vmx["cpuid.coresPerSocket"] = ""
-  * vb.memory = ""
-  * vb.cpus = ""
+  * vm.vmx["cpuid.coresPerSocket"] = ""  
   * inline: "ifconfig eth1 <your_public_ip_instanceX> netmask 255.255.255.0 up"
   * inline: "route add default gw <your_public_gateway>"
 

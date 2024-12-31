@@ -1,3 +1,6 @@
+# Bugs
+
+------------------------------------------------
 Fix vagrant ssh vagrant@127.0.0.1: Permission denied (publickey) in windows powershell
 
 Option 1
@@ -25,3 +28,7 @@ run this command:
 vagrant box add --insecure debian/buster64
 After, run vagrant up
 ------------------------------------------------
+
+------------------------------------------------
+Erro plugin vbguest in Vagrant 2.4.3
+https://github.com/hashicorp/vagrant/issues/13404#issuecomment-2490437792
