@@ -109,7 +109,6 @@ Pour commencer l'apprentissage, consultez la documentation ci-dessus.
 ### Conditions préalables
 
 -   [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
--   [Boîte Virtuelle](https://blogs.vmware.com/workstation/2024/05/vmware-workstation-pro-now-available-free-for-personal-use.html)
 -   [Poste de travail VMware](https://blogs.vmware.com/workstation/2024/05/vmware-workstation-pro-now-available-free-for-personal-use.html)
 -   [Utilitaire VMWare vagabond](https://developer.hashicorp.com/vagrant/install/vmware)
 -   [Vagabond](https://developer.hashicorp.com/vagrant/install)
@@ -124,8 +123,7 @@ Cloner le dépôt
 git clone https://github.com/marcossilvestrini/learning-lpic-3-305-300.git
 ```
 
-Je crée un script PowerShell pour provisionner les instances avec vagrant pour les laboratoires.  
-Si votre système SO est Windows, vous pouvez utiliser un script[app.ps1](./labs/app.ps1).
+Utilisez Vagrantfile-topic-XXX pour les laboratoires.
 
 Définissez quelques configurations pour votre environnement :
 
@@ -135,10 +133,8 @@ Définissez quelques configurations pour votre environnement :
     -   vm.vmx["memsize"]= ""
     -   vm.vmx["numvcpus"]= ""
     -   vm.vmx["cpuid.coresPerSocket"]= ""
-    -   vb.mémoire = ""
-    -   vb.cpus = ""
     -   en ligne : "ifconfig eth1 &lt;your_public_ip_instanceX> masque de réseau 255.255.255.0 up"
-    -   inline : "route add default gw &lt;your_public_gateway>"
+    -   inline: "route add default gw &lt;your_public_gateway>"
 
 * * *
 
@@ -146,7 +142,7 @@ Définissez quelques configurations pour votre environnement :
 
 ## Usage
 
-Utilisez ce référentiel pour en savoir plus sur l'examenLPIC-3 305-300
+Utilisez ce référentiel pour en savoir plus sur l'examen LPIC-3 305-300
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -157,7 +153,7 @@ Utilisez ce référentiel pour en savoir plus sur l'examenLPIC-3 305-300
 ## Feuille de route
 
 -   [x] Créer un référentiel
--   [x] Créer des scripts pour les laboratoires de provisionnement
+-   [x] Créer des scripts pour les laboratoires de provisioning
 -   [x] Créer des exemples sur le sujet 351
 -   [ ] Créer des exemples sur le sujet 352
 -   [ ] Créer des exemples sur le sujet 353
@@ -287,7 +283,7 @@ Fonctionne sur un système d'exploitation conventionnel, s'appuyant sur le syst�
 ##### Types de migration
 
 Dans le contexte des hyperviseurs, qui sont des technologies utilisées pour créer et gérer des machines virtuelles, les termes migration P2V et migration V2V sont courants dans les environnements de virtualisation.  
-Ils font référence à des processus de migration de systèmes entre différents types de plates-formes.
+Ils font référence à des processus de migration de systèmes entre différents types de plateformes.
 
 ##### P2V - Migration physique vers virtuelle
 
@@ -327,7 +323,7 @@ VMware ESXi, Microsoft Hyper-V, KVM (machine virtuelle basée sur le noyau).
 
 -   **Compatibilité:**Peut exécuter n’importe quel système d’exploitation sans modification.
 -   **Performance:**Hautes performances grâce au support matériel.
--   **Sécurité:**Fonctionnalités d’isolation et de sécurité améliorées fournies par le matériel.
+-   **Sécurité:**Fonctionnalités améliorées d’isolation et de sécurité fournies par le matériel.
 
 ###### HVM Disadvantages
 
@@ -411,7 +407,7 @@ Dans un système NUMA, la mémoire est inégalement répartie entre les processe
 
 #### Opensource Solutions
 
--   oVirtie :<https://www.ovirt.org/>
+-   oVirté :<https://www.ovirt.org/>
 
 -   Proxmox :<https://www.proxmox.com/en/proxmox-virtual-environment/overview>
 
@@ -457,7 +453,7 @@ Combine les ressources réseau matérielles et logicielles en une seule entité 
 
 ###### Cas d'utilisation de la virtualisation de réseau
 
-Mise en réseau définie par logiciel (SDN), virtualisation des fonctions réseau (NFV).
+Réseau défini par logiciel (SDN), virtualisation des fonctions réseau (NFV).
 
 ###### Exemples de virtualisation de réseau
 
@@ -469,7 +465,7 @@ VMware NSX, Cisco ACI, OpenStack Neutron.
 
 Regroupe le stockage physique de plusieurs appareils dans une seule unité de stockage virtuelle qui peut être gérée de manière centralisée.
 
-###### Cas d'utilisation de la définition de virtualisation du stockage
+###### Cas d'utilisation de la définition de la virtualisation du stockage
 
 Gestion des données, optimisation du stockage, reprise après sinistre.
 
@@ -576,7 +572,7 @@ La société a fourni des solutions d'entreprise basées sur Xen et a proposé d
 
 #### Projet Xen
 
-Xen Project fait référence à la communauté et à l'initiative open source responsables du développement et de la maintenance de l'hyperviseur Xen après sa commercialisation.  
+Xen Project refers to the open-source community and initiative responsible for developing and maintaining the Xen hypervisor after its commercialization.  
 Le projet Xen fonctionne sous la Fondation Linux et se concentre sur la création, l'amélioration et le support de Xen dans le cadre d'un effort collaboratif axé sur la communauté.
 
 -   **Objectifs:**Le projet Xen vise à faire progresser l'hyperviseur en améliorant ses performances, sa sécurité et ses fonctionnalités pour un large éventail de cas d'utilisation, notamment le cloud computing, la virtualisation axée sur la sécurité (par exemple, Qubes OS) et les systèmes embarqués.
@@ -590,7 +586,7 @@ Essentiellement, Xen Store est une base de données clé-valeur distribuée util
 
 Voici quelques aspects clés de Xen Store :
 
--   **Communication inter-domaine :**Xen Store permet la communication entre les domaines, tels que Dom0 (le domaine privilégié qui contrôle les ressources matérielles) et DomUs (les domaines utilisateur, qui sont les machines virtuelles). Cela se fait via des entrées clé-valeur, où chaque domaine peut lire ou écrire des informations.
+-   **Communication inter-domaine :**Xen Store permet la communication entre des domaines, tels que Dom0 (le domaine privilégié qui contrôle les ressources matérielles) et DomUs (domaines utilisateur, qui sont les machines virtuelles). Cela se fait via des entrées clé-valeur, où chaque domaine peut lire ou écrire des informations.
 
 -   **Gestion des configurations :**Il est utilisé pour stocker et accéder aux informations de configuration, telles que les périphériques virtuels, la mise en réseau et les paramètres de démarrage. Cela facilite la gestion et la configuration dynamiques des VM.
 
@@ -628,7 +624,7 @@ XAPI est l'interface qui permet le contrôle et l'automatisation de l'hyperviseu
 Domain0, ou Dom0, est le domaine de contrôle dans une architecture Xen. Il gère d'autres domaines (DomUs) et dispose d'un accès direct au matériel.  
 Dom0 exécute des pilotes de périphériques, permettant aux DomU, qui ne disposent pas d'un accès direct au matériel, de communiquer avec les périphériques. En règle générale, il s'agit d'une instance complète d'un système d'exploitation, comme Linux, et elle est essentielle au fonctionnement de l'hyperviseur Xen.
 
-#### DomaineU (DomU)
+#### DomainU (DomU)
 
 Les DomU sont des domaines non privilégiés qui exécutent des machines virtuelles.  
 Ils sont gérés par Dom0 et n'ont pas d'accès direct au matériel. Les DomU peuvent être configurés pour exécuter différents systèmes d'exploitation et sont utilisés à diverses fins, telles que les serveurs d'applications et les environnements de développement. Ils s'appuient sur Dom0 pour l'interaction matérielle.
@@ -657,7 +653,7 @@ xentop
 
 #### 351.2 Commandes importantes
 
-##### xl
+##### XL
 
 ```sh
 # view xen information
@@ -884,7 +880,7 @@ foo
 
 ### 352.2 LXC
 
-**Poids:**6
+**Poids:** 6
 
 **Description:**Les candidats doivent être capables d'utiliser des conteneurs système utilisant LXC et LXD. La version de LXC couverte est 3.0 ou supérieure.
 
@@ -1125,7 +1121,7 @@ Vagrantfile
 
 #### 353.4 Commandes importantes
 
-##### vagrant
+##### vagabond
 
 ```sh
 # examples
@@ -1180,7 +1176,7 @@ Lien du projet :<https://github.com/marcossilvestrini/learning-lpic-3-305-300>
     -   [Compilateur GCC](https://gcc.gnu.org/wiki/History)
     -   [Tar GNU](https://www.gnu.org/software/tar/)
     -   [Marque GNU](https://www.gnu.org/software/make/)
-    -   [GNU Emacs](https://en.wikipedia.org/wiki/Emacs)
+    -   [GNU-Emacs](https://en.wikipedia.org/wiki/Emacs)
     -   [Paquets GNU](https://www.gnu.org/software/)
     -   [Collection GNU/Linux](https://directory.fsf.org/wiki/Collection:GNU/Linux)
     -   [Chargeur de démarrage GNU Grub](https://www.gnu.org/software/grub/)
@@ -1213,7 +1209,7 @@ Lien du projet :<https://github.com/marcossilvestrini/learning-lpic-3-305-300>
 -   [Environnements de bureau](<>)
     -   [Organisation X11](https://www.x.org/wiki/)
     -   [Wayland](https://wayland.freedesktop.org/)
-    -   [GNU GNOME](https://www.gnu.org/press/gnome-1.0.html)
+    -   [GNU-GNOME](https://www.gnu.org/press/gnome-1.0.html)
     -   [GNOME](https://www.gnome.org/)
     -   [XFCE](https://xfce.org/)
     -   [Plasma KDE](https://kde.org/plasma-desktop/)
@@ -1242,7 +1238,7 @@ Lien du projet :<https://github.com/marcossilvestrini/learning-lpic-3-305-300>
     -   [Bourne à nouveau Shell](https://www.gnu.org/software/bash/manual/)
     -   [Case](https://bash.cyberciti.biz/guide/Shebang)
     -   [Variables d'environnement](https://linuxize.com/post/how-to-set-and-list-environment-variables-in-linux/)
-    -   [GNU Globbing](https://man7.org/linux/man-pages/man7/glob.7.html)
+    -   [Globulisation GNU](https://man7.org/linux/man-pages/man7/glob.7.html)
     -   [Globulation](https://linuxhint.com/bash_globbing_tutorial/)
     -   [Citation](https://www.gnu.org/software/bash/manual/html_node/Quoting.html)
     -   [Expressions régulières](https://www.gnu.org/software/grep/manual/html_node/Regular-Expressions.html)
@@ -1272,13 +1268,13 @@ Lien du projet :<https://github.com/marcossilvestrini/learning-lpic-3-305-300>
     -   [Virtualisation Xen et Cloud Computing #05 : Le projet Xen, les Unikernels et l'avenir](https://www.lpi.org/pt-br/blog/2020/10/29/xen-virtualization-and-cloud-computing-05-xen-project-unikernels-and-future/)
     -   [Guide du débutant du projet Xen](https://wiki.xenproject.org/wiki/Xen_Project_Beginners_Guide#Installing_the_Xen_Project_Software)
     -   [Livre fou](https://wiki.xenproject.org/wiki/Book/HelloXenProject/0-Contents)
--   [Unikernels](https://www.lpi.org/blog/2020/10/29/xen-virtualization-and-cloud-computing-05-xen-project-unikernels-and-future/)
+-   [Uninoyau](https://www.lpi.org/blog/2020/10/29/xen-virtualization-and-cloud-computing-05-xen-project-unikernels-and-future/)
     -   [Unicraft](https://github.com/unikraft/unikraft)
     -   [MirageOS](https://mirage.io/docs/hello-world)
     -   [HaLVM](https://galois.com/project/halvm/)
     -   [Unique](https://github.com/solo-io/unik/blob/master/docs/providers/virtualbox.md)
 -   [Documents Openstack](<>)
-    -   [Chapeau rouge](https://www.redhat.com/pt-br/topics/openstack)
+    -   [Chapeau Rouge](https://www.redhat.com/pt-br/topics/openstack)
 -   [Ouvrir le vSwitch](<>)
     -   [OVS Doc 4Linux](https://blog.4linux.com.br/open-vswitch-o-que-e-o-que-come-onde-vive)
 -   [Examen LPIC-3 305-300](<>)
