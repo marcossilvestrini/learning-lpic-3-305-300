@@ -91,7 +91,7 @@
 > 透過這樣做，您可以讓整個社區有機會從您的更改中受益。
 > 存取原始碼是實現此目的的先決條件。
 > 使用 vagrant for up 機器並執行本文的實驗和練習內容。
-> 我已經在 Vagrant 資料夾中發布了一個 Vagrantfile 以及必要的內容\\
+> 我已經在 Vagrant 資料夾中發布了一個 Vagrantfile ，其中包含必要的內容\\
 > 供您上傳學習環境
 
 * * *
@@ -109,7 +109,6 @@
 ### 先決條件
 
 -   [git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
--   [虛擬盒子](https://blogs.vmware.com/workstation/2024/05/vmware-workstation-pro-now-available-free-for-personal-use.html)
 -   [虛擬機器工作站](https://blogs.vmware.com/workstation/2024/05/vmware-workstation-pro-now-available-free-for-personal-use.html)
 -   [Vagrant VMWare 實用程式](https://developer.hashicorp.com/vagrant/install/vmware)
 -   [流浪漢](https://developer.hashicorp.com/vagrant/install)
@@ -124,8 +123,7 @@
 git clone https://github.com/marcossilvestrini/learning-lpic-3-305-300.git
 ```
 
-I'm create a script powershell for provisioning instances with vagrant for labs.  
-如果你的SO系統是windows，你可以使用腳本[應用程式.ps1](./labs/app.ps1).
+使用 Vagrantfile-topic-XXX 進行 up 實驗。
 
 為您的環境設定一些配置：
 
@@ -135,8 +133,6 @@ I'm create a script powershell for provisioning instances with vagrant for labs.
     -   虛擬機器vmx[“記憶體大小”"]= ""
     -   虛擬機器vmx[“numvcpu”"]= ""
     -   虛擬機器vmx[“cpuid"coresPerSocket”.]= ""
-    -   vb.記憶體=“”
-    -   vb.cpus = ""
     -   內嵌：“ifconfig eth1 &lt;your_public_ip_instanceX> 網路遮罩 255.255.255.0 向上”
     -   內聯：“路由新增預設閘道 &lt;your_public_gateway>”
 
@@ -146,7 +142,7 @@ I'm create a script powershell for provisioning instances with vagrant for labs.
 
 ## 用法
 
-使用此儲存庫了解LPIC-3 305-300 考試
+使用此儲存庫了解 LPIC-3 305-300 考試
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -170,7 +166,7 @@ I'm create a script powershell for provisioning instances with vagrant for labs.
 ## 四項基本自由
 
 > 0.為任何目的隨意運行程序的自由（自由 0）。
-> 1.自由地研究程序如何運作並對其進行更改\\
+> 1.自由地研究程式如何運作並對其進行更改\\
 > 你可以隨心所欲地進行計算（自由 1）。
 > 存取原始碼是實現此目的的先決條件。
 > 2.重新分發副本的自由，以便您可以幫助他人（自由2）。
@@ -315,7 +311,7 @@ HVM 利用現代 CPU 提供的硬體擴充來虛擬化硬件，從而能夠以�
 ###### HVM 主要特性
 
 -   **硬體支援**：需要 CPU 支援虛擬化擴展，例如 Intel VT-x 或 AMD-V。
--   **全虛擬化：**虛擬機器可以運行未經修改的來賓作業系統，因為虛擬機器管理程式提供了硬體環境的完整模擬。
+-   **完全虛擬化：**虛擬機器可以運行未經修改的來賓作業系統，因為虛擬機器管理程式提供了硬體環境的完整模擬。
 -   **表現：**由於在 CPU 上直接執行來賓程式碼，因此通常可提供接近本機的效能。
 -   **隔離:**在虛擬機器之間提供強大的隔離，因為每個虛擬機器都像擁有自己的專用硬體一樣運作。
 
@@ -390,7 +386,7 @@ VMware ESXi、Microsoft Hyper-V、KVM（基於核心的虛擬機器）。
 #### NUMA（非統一記憶體存取）
 
 NUMA（非統一記憶體存取）是多處理器系統中使用的記憶體架構，用於最佳化處理器的記憶體存取。  
-在NUMA 系統中，內部存在處理器之間分佈不均勻，這意味著每個處理器對一部分內存（其“本地內存”）的訪問速度比對物理上較遠的內存（稱為“遠端內存” ）和關聯記憶體的存取速度要快。
+在NUMA 系統中，內部存在處理器之間分佈不均勻，這意味著每個處理器對部分內存（其“本地內存”）的訪問速度比對物理上較遠的內存（稱為“遠端內存” ）和關聯記憶體的存取速度要快。
 
 ##### NUMA 架構的主要特性
 
@@ -469,7 +465,7 @@ VMware NSX、思科 ACI、OpenStack Neutron。
 
 將多個裝置的實體儲存池整合到可集中管理的單一虛擬儲存單元中。
 
-###### 儲存虛擬化定義用例
+###### Storage VirtualizationDefinition Use Cases
 
 資料管理、儲存最佳化、災難復原。
 
@@ -601,7 +597,7 @@ Xen Store 是 Xen Hypervisor 的關鍵元件。
 #### 丸
 
 XAPI 或 XenAPI 是用於管理 Xen Hypervisor 及其虛擬機器 (VM) 的應用程式介面 (API)。  
-XAPI 是 XenServer（現在稱為 Citrix Hypervisor）的關鍵元件，提供與 Xen 虛擬機器管理程式互動的標準化方式，以執行建立、設定、監控和控制 VM 等作業。
+XAPI 是 XenServer（現在稱為 Citrix Hypervisor）的關鍵元件，提供與 Xen 虛擬機器管理程式互動的標準化方法，以執行建立、設定、監控和控制 VM 等作業。
 
 以下是 XAPI 的一些重要面向：
 
@@ -619,7 +615,7 @@ XAPI 是支援 Xen Hypervisor 控制和自動化的接口，使管理虛擬化�
 
 -   **克森：**核心管理程式技術使虛擬機器能夠在實體硬體上運行。
 -   **Xen來源：**該公司將 Xen 商業化，後來被 Citrix 收購，導致了 Citrix XenServer 的開發。
--   **Xen專案：**在 Linux 基金會下繼續開發和維護 Xen 虛擬機器管理程式的開源倡議和社群。
+-   **Xen專案：**在 Linux 基金會下繼續開發和維護 Xen 虛擬機器管理程式的開源計畫和社群。
 -   **XenStore：**Xen Store 充當 Xen 虛擬機器管理程式和 VM 之間的通訊和配置中介，簡化虛擬化環境的操作和管理。
 -   **丸**是支援 Xen Hypervisor 控制和自動化的接口，使管理虛擬化環境變得更加容易。
 
@@ -1273,19 +1269,19 @@ Vagrantfile
     -   [Xen 專案初學者指南](https://wiki.xenproject.org/wiki/Xen_Project_Beginners_Guide#Installing_the_Xen_Project_Software)
     -   [瘋狂的書](https://wiki.xenproject.org/wiki/Book/HelloXenProject/0-Contents)
 -   [統一內核](https://www.lpi.org/blog/2020/10/29/xen-virtualization-and-cloud-computing-05-xen-project-unikernels-and-future/)
-    -   [優尼克拉夫特](https://github.com/unikraft/unikraft)
+    -   [尤尼克拉夫特](https://github.com/unikraft/unikraft)
     -   [Mirage作業系統](https://mirage.io/docs/hello-world)
     -   [哈拉LVM](https://galois.com/project/halvm/)
     -   [獨特的](https://github.com/solo-io/unik/blob/master/docs/providers/virtualbox.md)
 -   [Openstack 文件](<>)
     -   [紅帽](https://www.redhat.com/pt-br/topics/openstack)
--   [打開vSwitch](<>)
+-   [開放虛擬交換機](<>)
     -   [OVS 文檔 4Linux](https://blog.4linux.com.br/open-vswitch-o-que-e-o-que-come-onde-vive)
 -   [LPIC-3 305-300 考試](<>)
     -   [LPIC-3 305-300 目標](https://www.lpi.org/our-certifications/exam-305-objectives/)
     -   [LPIC-3 305-300 維基](https://wiki.lpi.org/wiki/LPIC-305_Objectives_V3.0)
     -   [LPIC-3 305-300 學習教材](https://cursos.linuxsemfronteiras.com.br/courses/preparatorio-para-certificacao-lpic-3-305/)
-    -   [ITexams 的 LPIC-3 305-300 模擬考試](https://www.itexams.com/info/305-300)
+    -   [LPIC-3 305-300 ITexams 模擬考試](https://www.itexams.com/info/305-300)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
