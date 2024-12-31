@@ -18,33 +18,33 @@ RELEASE_INFO=$(cat /etc/*release 2>/dev/null)
 # Check Operation System
 if echo "$RELEASE_INFO" | grep -q -i "debian\|ubuntu"; then
     # Debian and Ubuntu
-    echo "This is a Debian or Ubuntu-based distribution."    
+    echo "This is a Debian or Ubuntu-based distribution."
     ## Install packages
     sudo apt install -y  \
-        dos2unix
-
+    dos2unix
+    
     # Oracle Linux
     elif echo "$RELEASE_INFO" | grep -q -i "oracle"; then
-    echo "This is an Oracle Linux distribution."    
+    echo "This is an Oracle Linux distribution."
     ## Install packages
     sudo dnf install -y \
-        dos2unix
-
+    dos2unix
+    
     # Rocky Linux
     elif echo "$RELEASE_INFO" | grep -q -i "rocky"; then
-    echo "This is an Rocky Linux distribution."    
-        
+    echo "This is an Rocky Linux distribution."
+    
     ## Install packages
     sudo dnf install -y \
-        dos2unix
-
+    dos2unix
+    
     ## Clear vagrant settings
     if [ -f "/etc/ssh/sshd_config.d/50-redhat.conf" ]; then
         sudo rm /etc/ssh/sshd_config.d/50-redhat.conf
     fi
     if [ -f "/etc/ssh/sshd_config.d/90-redhat.conf" ]; then
         sudo rm /etc/ssh/sshd_config.d/90-redhat.conf
-    fi    
+    fi
 else
     echo "This distribution is not Debian, Ubuntu,Rocky Linux or Oracle Linux."
 fi
@@ -74,7 +74,7 @@ HOSTNAME=$(hostname)
 IPV4=$(ip addr show | grep -oP '192\.168\.0\.\d{1,3}(?=/)')
 if [ -z "$IPV4" ]; then
     echo "Não foi encontrado um IPv4 no formato 192.168.0.x. Continuando sem adicionar entrada..."
-else    
+else
     if grep -q "$IPV4" /etc/hosts; then
         echo "Já existe uma entrada para $IPV4 no arquivo /etc/hosts"
     else
