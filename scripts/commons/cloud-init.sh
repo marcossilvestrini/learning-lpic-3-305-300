@@ -22,7 +22,11 @@ if echo "$RELEASE_INFO" | grep -q -i "debian\|ubuntu"; then
     ## Install packages
     sudo apt install -y  \
     dos2unix
-    
+    sudo cp -f configs/commons/.bashrc_debian  .bashrc
+    sudo cp -f configs/commons/.bashrc_debian  /root/.bashrc
+    sudo cp -f configs/commons/profile_debian  /etc/profile.d/
+    sudo chmod 644 /etc/profile.d/profile_debian
+        
     # Oracle Linux
     elif echo "$RELEASE_INFO" | grep -q -i "oracle"; then
     echo "This is an Oracle Linux distribution."

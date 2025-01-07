@@ -668,6 +668,12 @@ xentop
 ```sh
 # view xen information
 xl infos
+
+# list Domains
+xl list
+
+# view dmesg information
+xl dmesg
 ```
 
 <p align="right">(<a href="#topic-351.2">back to sub Topic 351.2</a>)</p>
