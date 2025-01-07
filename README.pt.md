@@ -88,7 +88,7 @@
 > e software livre\\
 > Algumas distribuições GNULinux como Debian e RPM serão abordadas\\
 > A instalação e configuração de alguns pacotes também serão abordadas\\
-> Ao fazer isso, você pode dar a toda a comunidade a chance de se beneficiar de suas alterações.\\
+> Ao fazer isso, você pode dar a toda a comunidade a oportunidade de se beneficiar de suas alterações.\\
 > O acesso ao código-fonte é uma pré-condição para isso.\\
 > Use o vagrant para atualizar máquinas, executar laboratórios e praticar o conteúdo deste artigo.\\
 > Publiquei na pasta Vagrant um Vagrantfile com o que é necessário\\
@@ -211,7 +211,7 @@ man COMMAND
 -   Entenda os prós e os contras da virtualização
 -   Compreender as diversas variações de hipervisores e monitores de máquinas virtuais
 -   Entenda os principais aspectos da migração de máquinas físicas para virtuais
--   Compreenda os principais aspectos da migração de máquinas virtuais entre sistemas host
+-   Compreender os principais aspectos da migração de máquinas virtuais entre sistemas host
 -   Compreenda os recursos e as implicações da virtualização para uma máquina virtual, como captura instantânea, pausa, clonagem e limites de recursos
 -   Conhecimento de oVirt, Proxmox, systemd-machined e VirtualBox
 -   Conscientização do Open vSwitch
@@ -327,7 +327,7 @@ VMware ESXi, Microsoft Hyper-V, KVM (máquina virtual baseada em kernel).
 
 ###### Desvantagens do HVM
 
--   **Dependência de hardware:**Requer recursos de hardware específicos, limitando a compatibilidade com sistemas mais antigos.
+-   **Dependência de Hardware:**Requer recursos de hardware específicos, limitando a compatibilidade com sistemas mais antigos.
 -   **Complexidade:**Pode envolver configuração e gerenciamento mais complexos.
 
 ##### Paravirtualização
@@ -351,7 +351,7 @@ Xen com convidados paravirtualizados, ferramentas VMware em determinadas configu
 -   **Eficiência:**Reduz a sobrecarga de virtualização de hardware, oferecendo potencialmente melhor desempenho para determinadas cargas de trabalho.
 -   **Utilização de recursos:**Uso mais eficiente dos recursos do sistema devido à comunicação direta entre o sistema operacional convidado e o hipervisor.
 
-###### Desvantagens da Paravirtualização
+###### Desvantagens da paravirtualização
 
 -   **Modificação do sistema operacional convidado:**Requer modificações no sistema operacional convidado, limitando a compatibilidade aos sistemas operacionais suportados.
 -   **Complexidade:**Requer complexidade adicional no sistema operacional convidado para implementações de hiperchamada.
@@ -396,7 +396,7 @@ Num sistema NUMA, a memória é distribuída de forma desigual entre os processa
 
 ##### Advantages of NUMA
 
--   Melhor Desempenho em Sistemas Grandes: Como cada processador possui memória local, ele pode trabalhar com mais eficiência sem competir tanto com outros processadores pelo acesso à memória.
+-   Melhor Desempenho em Sistemas Grandes: Como cada processador possui memória local, ele pode funcionar com mais eficiência sem competir tanto com outros processadores pelo acesso à memória.
 -   Escalabilidade: NUMA permite que sistemas com muitos processadores e grandes quantidades de memória sejam dimensionados de forma mais eficaz em comparação com uma arquitetura UMA.
 
 ##### Desvantagens
@@ -658,6 +658,12 @@ xentop
 ```sh
 # view xen information
 xl infos
+
+# list Domains
+xl list
+
+# view dmesg information
+xl dmesg
 ```
 
 <p align="right">(<a href="#topic-351.2">back to sub Topic 351.2</a>)</p>
@@ -768,7 +774,7 @@ foo
 -   Compreenda os recursos de vários formatos de imagem de disco virtual, como imagens raw, qcow2 e VMDK
 -   Gerencie imagens de disco de máquinas virtuais usando qemu-img
 -   Monte partições e acesse arquivos contidos em imagens de disco de máquinas virtuais usando libguestfish
--   Copie o conteúdo do disco físico para uma imagem de disco de máquina virtual
+-   Copy physical disk content to a virtual machine disk image
 -   Migrar conteúdo de disco entre vários formatos de imagem de disco de máquina virtual
 -   Conscientização do Formato de Virtualização Aberto (OVF)
 
@@ -1068,7 +1074,7 @@ Além disso, os candidatos devem ser capazes de criar novas imagens de sistema c
 **Principais áreas de conhecimento:**
 
 -   Compreender os recursos e conceitos do cloud-init, incluindo dados do usuário, inicialização e configuração do cloud-init
--   Use cloud-init para criar, redimensionar e montar sistemas de arquivos, configurar contas de usuário, incluindo credenciais de login, como chaves SSH e instalar pacotes de software do repositório da distribuição
+-   Use o cloud-init para criar, redimensionar e montar sistemas de arquivos, configurar contas de usuário, incluindo credenciais de login, como chaves SSH, e instalar pacotes de software do repositório da distribuição
 -   Integre o cloud-init às imagens do sistema
 -   Use a fonte de dados da unidade de configuração para teste
 
@@ -1274,7 +1280,7 @@ Link do projeto:<https://github.com/marcossilvestrini/learning-lpic-3-305-300>
     -   [HaLVM](https://galois.com/project/halvm/)
     -   [Exclusivo](https://github.com/solo-io/unik/blob/master/docs/providers/virtualbox.md)
 -   [Documentos Openstack](<>)
-    -   [Chapéu Vermelho](https://www.redhat.com/pt-br/topics/openstack)
+    -   [RedHat](https://www.redhat.com/pt-br/topics/openstack)
 -   [Abra o vSwitch](<>)
     -   [OVS Documento 4Linux](https://blog.4linux.com.br/open-vswitch-o-que-e-o-que-come-onde-vive)
 -   [Exame LPIC-3 305-300](<>)
