@@ -21,7 +21,10 @@ if echo "$RELEASE_INFO" | grep -q -i "debian\|ubuntu"; then
     echo "This is a Debian or Ubuntu-based distribution."
     ## Install packages
     sudo apt install -y  \
-    dos2unix
+    dos2unix \
+    bridge-utils
+
+    # Configure profile
     sudo cp -f configs/commons/.bashrc_debian  .bashrc
     sudo cp -f configs/commons/.bashrc_debian  /root/.bashrc
     sudo cp -f configs/commons/profile_debian  /etc/profile.d/
@@ -55,7 +58,7 @@ fi
 
 # Set dns\hosts
 # sudo hostnamectl set-hostname novo-nome-host
-# sudo cp -f configs/commons/hosts /etc/
+# sudo cp -f configs/network/hosts /etc/
 
 # Set custom ssh configs
 sudo cp -f configs/commons/01-sshd-custom.conf /etc/ssh/sshd_config.d
@@ -73,7 +76,7 @@ else
 fi
 
 # Set dns \ hostname
-sudo cp -f configs/commons/hosts /etc/
+sudo cp -f configs/network/hosts /etc/
 HOSTNAME=$(hostname)
 IPV4=$(ip addr show | grep -oP '192\.168\.0\.\d{1,3}(?=/)')
 if [ -z "$IPV4" ]; then

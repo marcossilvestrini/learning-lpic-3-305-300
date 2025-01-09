@@ -133,7 +133,7 @@ Clone the repo
 git clone https://github.com/marcossilvestrini/learning-lpic-3-305-300.git
 ```
 
-Use Vagrantfile-topic-XXX for up labs.
+Use Vagrantfile-topic-XXX for customize vms for labs.
 
 Set some configs for your environment:
 
@@ -152,7 +152,28 @@ Set some configs for your environment:
 
 ## Usage
 
-Use this repository for get learning aboutLPIC-3 305-300 exam
+Use this repository for get learning about LPIC-3 305-300 exam
+
+### For up and down
+
+```sh
+cd vagrant && vagrant up
+cd vagrant && vagrant destroy -f
+```
+
+### For reboot vms
+
+```sh
+cd vagrant && vagrant reload
+```
+
+**Important:**
+*If you reboot vms without vagrant, shared folder not mount after boot.*
+
+### Use powershell for up and down
+
+vagrant/up.ps1
+vagrant/destroy.ps1
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -546,6 +567,8 @@ Denodo, Red Hat JBoss Data Virtualization, IBM InfoSphere.
 
 ![xen-architecture](images/xen-achitecture.png)
 
+![xen-architecture](images/xen-achitecture2.png)
+
 **Weight:** 3
 
 **Description:** Candidates should be able to install, configure, maintain, migrate and troubleshoot Xen installations. The focus is on Xen version 4.x.
@@ -674,6 +697,22 @@ xl list
 
 # view dmesg information
 xl dmesg
+
+# monitoring domain
+xl top
+
+# Limit mem Dom0
+xl mem-set 0 2048
+
+# Limite cpu (not permanent after boot)
+xl vcpu-set 0 2
+```
+
+##### brctl
+
+```sh
+# list bridges linked
+brctl show
 ```
 
 <p align="right">(<a href="#topic-351.2">back to sub Topic 351.2</a>)</p>
