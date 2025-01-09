@@ -123,7 +123,7 @@ Cloner le dépôt
 git clone https://github.com/marcossilvestrini/learning-lpic-3-305-300.git
 ```
 
-Utilisez Vagrantfile-topic-XXX pour les laboratoires.
+Utilisez Vagrantfile-topic-XXX pour personnaliser les machines virtuelles pour les laboratoires.
 
 Définissez quelques configurations pour votre environnement :
 
@@ -134,7 +134,7 @@ Définissez quelques configurations pour votre environnement :
     -   vm.vmx["numvcpus"]= ""
     -   vm.vmx["cpuid.coresPerSocket"]= ""
     -   en ligne : "ifconfig eth1 &lt;your_public_ip_instanceX> masque de réseau 255.255.255.0 up"
-    -   inline: "route add default gw &lt;your_public_gateway>"
+    -   inline : "route add default gw &lt;your_public_gateway>"
 
 * * *
 
@@ -143,6 +143,26 @@ Définissez quelques configurations pour votre environnement :
 ## Usage
 
 Utilisez ce référentiel pour en savoir plus sur l'examen LPIC-3 305-300
+
+### Pour monter et descendre
+
+```sh
+cd vagrant && vagrant up
+cd vagrant && vagrant destroy -f
+```
+
+### Pour redémarrer les machines virtuelles
+
+```sh
+cd vagrant && vagrant reload
+```
+
+**Important:**_Si vous redémarrez vms sans vagrant, le dossier partagé ne sera pas monté après le démarrage._
+
+### Utilisez PowerShell pour monter et descendre
+
+vagabond/up.ps1
+vagabond/destroy.ps1
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -283,14 +303,14 @@ Fonctionne sur un système d'exploitation conventionnel, s'appuyant sur le syst�
 ##### Types de migration
 
 Dans le contexte des hyperviseurs, qui sont des technologies utilisées pour créer et gérer des machines virtuelles, les termes migration P2V et migration V2V sont courants dans les environnements de virtualisation.  
-Ils font référence à des processus de migration de systèmes entre différents types de plateformes.
+Ils font référence à des processus de migration de systèmes entre différents types de plates-formes.
 
 ##### P2V - Migration physique vers virtuelle
 
 La migration P2V fait référence au processus de migration d'un serveur physique vers une machine virtuelle.  
 En d'autres termes, un système d'exploitation et ses applications, fonctionnant sur du matériel physique dédié, sont « convertis » et déplacés vers une machine virtuelle qui s'exécute sur un hyperviseur (comme VMware, Hyper-V, KVM, etc.).
 
--   Exemple : Vous disposez d'un serveur physique exécutant un système Windows ou Linux et vous souhaitez le déplacer vers un environnement virtuel, comme une infrastructure cloud ou un serveur de virtualisation interne.  
+-   Example: You have a physical server running a Windows or Linux system, and you want to move it to a virtual environment, like a cloud infrastructure or an internal virtualization server.  
     Le processus consiste à copier l'intégralité de l'état du système, y compris le système d'exploitation, les pilotes et les données, pour créer une machine virtuelle équivalente pouvant s'exécuter comme si elle se trouvait sur le matériel physique.
 
 ##### V2V - Migration virtuelle vers virtuelle
@@ -323,7 +343,7 @@ VMware ESXi, Microsoft Hyper-V, KVM (machine virtuelle basée sur le noyau).
 
 -   **Compatibilité:**Peut exécuter n’importe quel système d’exploitation sans modification.
 -   **Performance:**Hautes performances grâce au support matériel.
--   **Sécurité:**Fonctionnalités améliorées d’isolation et de sécurité fournies par le matériel.
+-   **Sécurité:**Fonctionnalités d’isolation et de sécurité améliorées fournies par le matériel.
 
 ###### HVM Disadvantages
 
@@ -465,7 +485,7 @@ VMware NSX, Cisco ACI, OpenStack Neutron.
 
 Regroupe le stockage physique de plusieurs appareils dans une seule unité de stockage virtuelle qui peut être gérée de manière centralisée.
 
-###### Cas d'utilisation de la définition de la virtualisation du stockage
+###### Cas d'utilisation de la définition de virtualisation du stockage
 
 Gestion des données, optimisation du stockage, reprise après sinistre.
 
@@ -536,6 +556,8 @@ Denodo, virtualisation des données Red Hat JBoss, IBM InfoSphere.
 
 ![xen-architecture](images/xen-achitecture.png)
 
+![xen-architecture](images/xen-achitecture2.png)
+
 **Poids:**3
 
 **Description:**Les candidats doivent être capables d'installer, de configurer, de maintenir, de migrer et de dépanner les installations Xen. L'accent est mis sur Xen version 4.x.
@@ -572,12 +594,12 @@ La société a fourni des solutions d'entreprise basées sur Xen et a proposé d
 
 #### Projet Xen
 
-Xen Project refers to the open-source community and initiative responsible for developing and maintaining the Xen hypervisor after its commercialization.  
+Xen Project fait référence à la communauté et à l'initiative open source responsables du développement et de la maintenance de l'hyperviseur Xen après sa commercialisation.  
 Le projet Xen fonctionne sous la Fondation Linux et se concentre sur la création, l'amélioration et le support de Xen dans le cadre d'un effort collaboratif axé sur la communauté.
 
 -   **Objectifs:**Le projet Xen vise à faire progresser l'hyperviseur en améliorant ses performances, sa sécurité et ses fonctionnalités pour un large éventail de cas d'utilisation, notamment le cloud computing, la virtualisation axée sur la sécurité (par exemple, Qubes OS) et les systèmes embarqués.
 -   **Contributeurs :**Le projet inclut des contributeurs de diverses organisations, notamment des principaux fournisseurs de cloud, des fournisseurs de matériel et des développeurs indépendants.
--   **PILULES ET OUTILS HANTOOLS :**Le projet Xen comprend également des outils tels que XAPI (XenAPI), utilisé pour gérer les installations de l'hyperviseur Xen, ainsi que divers autres utilitaires pour la gestion et l'optimisation du système.
+-   **PILULES ET OUTILS HANTOOL :**Le projet Xen comprend également des outils tels que XAPI (XenAPI), utilisé pour gérer les installations de l'hyperviseur Xen, ainsi que divers autres utilitaires pour la gestion et l'optimisation du système.
 
 #### XenStore
 
@@ -621,10 +643,10 @@ XAPI est l'interface qui permet le contrôle et l'automatisation de l'hyperviseu
 
 #### Domain0 (Dom0)
 
-Domain0, ou Dom0, est le domaine de contrôle dans une architecture Xen. Il gère d'autres domaines (DomUs) et dispose d'un accès direct au matériel.  
+Domain0, ou Dom0, est le domaine de contrôle dans une architecture Xen. Il gère d'autres domaines (DomUs) et a un accès direct au matériel.  
 Dom0 exécute des pilotes de périphériques, permettant aux DomU, qui ne disposent pas d'un accès direct au matériel, de communiquer avec les périphériques. En règle générale, il s'agit d'une instance complète d'un système d'exploitation, comme Linux, et elle est essentielle au fonctionnement de l'hyperviseur Xen.
 
-#### DomainU (DomU)
+#### DomaineU (DomU)
 
 Les DomU sont des domaines non privilégiés qui exécutent des machines virtuelles.  
 Ils sont gérés par Dom0 et n'ont pas d'accès direct au matériel. Les DomU peuvent être configurés pour exécuter différents systèmes d'exploitation et sont utilisés à diverses fins, telles que les serveurs d'applications et les environnements de développement. Ils s'appuient sur Dom0 pour l'interaction matérielle.
@@ -653,11 +675,33 @@ xentop
 
 #### 351.2 Commandes importantes
 
-##### XL
+##### xl
 
 ```sh
 # view xen information
 xl infos
+
+# list Domains
+xl list
+
+# view dmesg information
+xl dmesg
+
+# monitoring domain
+xl top
+
+# Limit mem Dom0
+xl mem-set 0 2048
+
+# Limite cpu (not permanent after boot)
+xl vcpu-set 0 2
+```
+
+##### brctl
+
+```sh
+# list bridges linked
+brctl show
 ```
 
 <p align="right">(<a href="#topic-351.2">back to sub Topic 351.2</a>)</p>
@@ -759,9 +803,9 @@ foo
 
 ### 351.5 Gestion des images disque de machine virtuelle
 
-**Poids:**3
+**Poids:** 3
 
-**Description:**Les candidats doivent être capables de gérer des images disque de machines virtuelles. Cela inclut la conversion d'images disque entre différents formats et hyperviseurs et l'accès aux données stockées dans une image.
+**Description:** Candidates should be able to manage virtual machines disk images. This includes converting disk images between various formats and hypervisors and accessing data stored within an image.
 
 **Domaines de connaissances clés :**
 
@@ -880,7 +924,7 @@ foo
 
 ### 352.2 LXC
 
-**Poids:** 6
+**Poids:**6
 
 **Description:**Les candidats doivent être capables d'utiliser des conteneurs système utilisant LXC et LXD. La version de LXC couverte est 3.0 ou supérieure.
 
@@ -921,12 +965,12 @@ foo
 
 **Poids:**9
 
-**Description:**Le candidat doit être capable de gérer les nœuds Docker et les conteneurs Docker. Cela inclut la compréhension de l'architecture de Docker ainsi que la compréhension de la manière dont Docker interagit avec le système Linux du nœud.
+**Description:**Le candidat doit être capable de gérer les nœuds Docker et les conteneurs Docker. Cela inclut la compréhension de l’architecture de Docker ainsi que la compréhension de la manière dont Docker interagit avec le système Linux du nœud.
 
 **Domaines de connaissances clés :**
 
 -   Comprendre l'architecture et les composants de Docker
--   Gérer les conteneurs Docker à l'aide d'images d'un registre Docker
+-   Gérer les conteneurs Docker à l'aide d'images provenant d'un registre Docker
 -   Comprendre et gérer les images et les volumes pour les conteneurs Docker
 -   Comprendre et gérer la journalisation pour les conteneurs Docker
 -   Comprendre et gérer la mise en réseau pour Docker
@@ -1176,7 +1220,7 @@ Lien du projet :<https://github.com/marcossilvestrini/learning-lpic-3-305-300>
     -   [Compilateur GCC](https://gcc.gnu.org/wiki/History)
     -   [Tar GNU](https://www.gnu.org/software/tar/)
     -   [Marque GNU](https://www.gnu.org/software/make/)
-    -   [GNU-Emacs](https://en.wikipedia.org/wiki/Emacs)
+    -   [GNU Emacs](https://en.wikipedia.org/wiki/Emacs)
     -   [Paquets GNU](https://www.gnu.org/software/)
     -   [Collection GNU/Linux](https://directory.fsf.org/wiki/Collection:GNU/Linux)
     -   [Chargeur de démarrage GNU Grub](https://www.gnu.org/software/grub/)
