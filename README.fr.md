@@ -310,7 +310,7 @@ Ils font référence à des processus de migration de systèmes entre différent
 La migration P2V fait référence au processus de migration d'un serveur physique vers une machine virtuelle.  
 En d'autres termes, un système d'exploitation et ses applications, fonctionnant sur du matériel physique dédié, sont « convertis » et déplacés vers une machine virtuelle qui s'exécute sur un hyperviseur (comme VMware, Hyper-V, KVM, etc.).
 
--   Example: You have a physical server running a Windows or Linux system, and you want to move it to a virtual environment, like a cloud infrastructure or an internal virtualization server.  
+-   Exemple : Vous disposez d'un serveur physique exécutant un système Windows ou Linux et vous souhaitez le déplacer vers un environnement virtuel, comme une infrastructure cloud ou un serveur de virtualisation interne.  
     Le processus consiste à copier l'intégralité de l'état du système, y compris le système d'exploitation, les pilotes et les données, pour créer une machine virtuelle équivalente pouvant s'exécuter comme si elle se trouvait sur le matériel physique.
 
 ##### V2V - Migration virtuelle vers virtuelle
@@ -411,7 +411,7 @@ Dans un système NUMA, la mémoire est inégalement répartie entre les processe
 ##### Principales fonctionnalités de l'architecture NUMA
 
 1.  **Mémoire locale et distante**: Chaque processeur possède sa propre mémoire locale, à laquelle il peut accéder plus rapidement. Cependant, il peut également accéder à la mémoire d'autres processeurs, même si cela prend plus de temps.
-2.  **Latence différenciée**: La latence d'accès mémoire varie selon que le processeur accède à sa mémoire locale ou à la mémoire d'un autre nœud. L’accès à la mémoire locale est plus rapide, tandis que l’accès à la mémoire d’un autre nœud (distant) est plus lent.
+2.  **Latence différenciée**: The latency of memory access varies depending on whether the processor is accessing its local memory or the memory of another node. Local memory access is faster, while accessing another node’s memory (remote) is slower.
 3.  **Évolutivité**: L'architecture NUMA est conçue pour améliorer l'évolutivité des systèmes dotés de nombreux processeurs. À mesure que davantage de processeurs sont ajoutés, la mémoire est également distribuée, évitant ainsi le goulot d'étranglement qui se produirait dans une architecture d'accès uniforme à la mémoire (UMA).
 
 ##### Avantages de NUMA
@@ -599,7 +599,7 @@ Le projet Xen fonctionne sous la Fondation Linux et se concentre sur la créatio
 
 -   **Objectifs:**Le projet Xen vise à faire progresser l'hyperviseur en améliorant ses performances, sa sécurité et ses fonctionnalités pour un large éventail de cas d'utilisation, notamment le cloud computing, la virtualisation axée sur la sécurité (par exemple, Qubes OS) et les systèmes embarqués.
 -   **Contributeurs :**Le projet inclut des contributeurs de diverses organisations, notamment des principaux fournisseurs de cloud, des fournisseurs de matériel et des développeurs indépendants.
--   **PILULES ET OUTILS HANTOOL :**Le projet Xen comprend également des outils tels que XAPI (XenAPI), utilisé pour gérer les installations de l'hyperviseur Xen, ainsi que divers autres utilitaires pour la gestion et l'optimisation du système.
+-   **PILULES ET OUTILS HANTOOLS :**Le projet Xen comprend également des outils tels que XAPI (XenAPI), utilisé pour gérer les installations de l'hyperviseur Xen, ainsi que divers autres utilitaires pour la gestion et l'optimisation du système.
 
 #### XenStore
 
@@ -635,7 +635,7 @@ XAPI est l'interface qui permet le contrôle et l'automatisation de l'hyperviseu
 
 #### Résumé Xen
 
--   **Xén :**La technologie d'hyperviseur de base permettant aux machines virtuelles de s'exécuter sur du matériel physique.
+-   **Xen :**La technologie d'hyperviseur de base permettant aux machines virtuelles de s'exécuter sur du matériel physique.
 -   **XenSource :**La société qui a commercialisé Xen, acquise plus tard par Citrix, conduisant au développement de Citrix XenServer.
 -   **Projet Xen :**L'initiative et la communauté open source qui continuent de développer et de maintenir l'hyperviseur Xen sous la Fondation Linux.
 -   **XenStore :**Xen Store agit comme intermédiaire de communication et de configuration entre l'hyperviseur Xen et les VM, rationalisant le fonctionnement et la gestion des environnements virtualisés.
@@ -643,7 +643,7 @@ XAPI est l'interface qui permet le contrôle et l'automatisation de l'hyperviseu
 
 #### Domain0 (Dom0)
 
-Domain0, ou Dom0, est le domaine de contrôle dans une architecture Xen. Il gère d'autres domaines (DomUs) et a un accès direct au matériel.  
+Domain0, ou Dom0, est le domaine de contrôle dans une architecture Xen. Il gère d'autres domaines (DomUs) et dispose d'un accès direct au matériel.  
 Dom0 exécute des pilotes de périphériques, permettant aux DomU, qui ne disposent pas d'un accès direct au matériel, de communiquer avec les périphériques. En règle générale, il s'agit d'une instance complète d'un système d'exploitation, comme Linux, et elle est essentielle au fonctionnement de l'hyperviseur Xen.
 
 #### DomaineU (DomU)
@@ -722,7 +722,7 @@ brctl show
 
 -   Comprendre l'architecture de QEMU, y compris KVM, la mise en réseau et le stockage
 -   Démarrez les instances QEMU à partir de la ligne de commande
--   Gérer les instantanés à l'aide du moniteur QEMU
+-   Manage snapshots using the QEMU monitor
 -   Installez les pilotes de périphérique QEMU Guest Agent et VirtIO
 -   Dépanner les installations QEMU, y compris la mise en réseau et le stockage
 -   Connaissance des paramètres de configuration importants de QEMU
@@ -803,9 +803,9 @@ foo
 
 ### 351.5 Gestion des images disque de machine virtuelle
 
-**Poids:** 3
+**Poids:**3
 
-**Description:** Candidates should be able to manage virtual machines disk images. This includes converting disk images between various formats and hypervisors and accessing data stored within an image.
+**Description:**Les candidats doivent être capables de gérer des images disque de machines virtuelles. Cela inclut la conversion d'images disque entre différents formats et hyperviseurs et l'accès aux données stockées dans une image.
 
 **Domaines de connaissances clés :**
 
@@ -855,7 +855,7 @@ foo
 
 <a name="topic-352"></a>
 
-## Sujet 352 : Virtualisation des conteneurs
+## Sujet 352 : Virtualisation des conteneurs
 
 * * *
 
@@ -965,12 +965,12 @@ foo
 
 **Poids:**9
 
-**Description:**Le candidat doit être capable de gérer les nœuds Docker et les conteneurs Docker. Cela inclut la compréhension de l’architecture de Docker ainsi que la compréhension de la manière dont Docker interagit avec le système Linux du nœud.
+**Description:**Le candidat doit être capable de gérer les nœuds Docker et les conteneurs Docker. Cela inclut la compréhension de l'architecture de Docker ainsi que la compréhension de la manière dont Docker interagit avec le système Linux du nœud.
 
 **Domaines de connaissances clés :**
 
 -   Comprendre l'architecture et les composants de Docker
--   Gérer les conteneurs Docker à l'aide d'images provenant d'un registre Docker
+-   Gérer les conteneurs Docker à l'aide d'images d'un registre Docker
 -   Comprendre et gérer les images et les volumes pour les conteneurs Docker
 -   Comprendre et gérer la journalisation pour les conteneurs Docker
 -   Comprendre et gérer la mise en réseau pour Docker
@@ -1220,7 +1220,7 @@ Lien du projet :<https://github.com/marcossilvestrini/learning-lpic-3-305-300>
     -   [Compilateur GCC](https://gcc.gnu.org/wiki/History)
     -   [Tar GNU](https://www.gnu.org/software/tar/)
     -   [Marque GNU](https://www.gnu.org/software/make/)
-    -   [GNU Emacs](https://en.wikipedia.org/wiki/Emacs)
+    -   [GNU-Emacs](https://en.wikipedia.org/wiki/Emacs)
     -   [Paquets GNU](https://www.gnu.org/software/)
     -   [Collection GNU/Linux](https://directory.fsf.org/wiki/Collection:GNU/Linux)
     -   [Chargeur de démarrage GNU Grub](https://www.gnu.org/software/grub/)
@@ -1318,7 +1318,7 @@ Lien du projet :<https://github.com/marcossilvestrini/learning-lpic-3-305-300>
     -   [HaLVM](https://galois.com/project/halvm/)
     -   [Unique](https://github.com/solo-io/unik/blob/master/docs/providers/virtualbox.md)
 -   [Documents Openstack](<>)
-    -   [Chapeau Rouge](https://www.redhat.com/pt-br/topics/openstack)
+    -   [Chapeau rouge](https://www.redhat.com/pt-br/topics/openstack)
 -   [Ouvrir le vSwitch](<>)
     -   [OVS Doc 4Linux](https://blog.4linux.com.br/open-vswitch-o-que-e-o-que-come-onde-vive)
 -   [Examen LPIC-3 305-300](<>)
