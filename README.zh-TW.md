@@ -91,7 +91,7 @@
 > 透過這樣做，您可以讓整個社區有機會從您的更改中受益。
 > 存取原始碼是實現此目的的先決條件。
 > 使用 vagrant for up 機器並執行本文的實驗和練習內容。
-> 我已經在 Vagrant 資料夾中發布了一個 Vagrantfile ，其中包含必要的內容\\
+> 我已經在 Vagrant 資料夾中發布了一個 Vagrantfile 以及必要的內容\\
 > 供您上傳學習環境
 
 * * *
@@ -232,7 +232,7 @@ man COMMAND
 -   了解虛擬機器管理程式和虛擬機器監視器的各種變體
 -   了解將實體機遷移到虛擬機器的主要方面
 -   了解在主機系統之間遷移虛擬機器的主要方面
--   Understand the features and implications of virtualization for a virtual machine, such as snapshotting, pausing, cloning and resource limits
+-   了解虛擬機器虛擬化的功能和影響，例如快照、暫停、複製和資源限制
 -   了解 oVirt、Proxmox、systemd-machined 和 VirtualBox
 -   對 Open vSwitch 的認識
 
@@ -326,12 +326,12 @@ V2V 遷移是指將虛擬機器從一個虛擬機器管理程式遷移到另一�
 
 ###### HVM定義
 
-HVM 利用現代 CPU 提供的硬體擴展來虛擬化硬件，從而以最小的效能開銷創建和管理 VM。
+HVM 利用現代 CPU 提供的硬體擴充來虛擬化硬件，從而能夠以最小的效能開銷來建立和管理 VM。
 
 ###### HVM 主要特性
 
 -   **硬體支援**：需要 CPU 支援虛擬化擴展，例如 Intel VT-x 或 AMD-V。
--   **完全虛擬化：**虛擬機器可以運行未經修改的來賓作業系統，因為虛擬機器管理程式提供了硬體環境的完整模擬。
+-   **全虛擬化：**虛擬機器可以運行未經修改的來賓作業系統，因為虛擬機器管理程式提供了硬體環境的完整模擬。
 -   **表現：**由於在 CPU 上直接執行來賓程式碼，因此通常可提供接近本機的效能。
 -   **隔離:**在虛擬機器之間提供強大的隔離，因為每個虛擬機器都像擁有自己的專用硬體一樣運作。
 
@@ -604,7 +604,7 @@ Xen 計畫在 Linux 基金會下運作，重點是建立、改進和支持 Xen�
 #### XenStore
 
 Xen Store 是 Xen Hypervisor 的關鍵元件。  
-本質上，Xen Store 是一個分散式鍵值資料庫，用於 Xen 虛擬機器管理程式與其管理的虛擬機器（也稱為網域）之間的通訊和資訊共用。
+本質上，Xen Store 是一個分散式鍵值資料庫，用於 Xen 虛擬機器管理程式與其管理的虛擬機器（也稱為域）之間的通訊和資訊共用。
 
 以下是 Xen Store 的一些關鍵方面：
 
@@ -633,11 +633,11 @@ XAPI 是 XenServer（現在稱為 Citrix Hypervisor）的關鍵元件，提供�
 
 XAPI 是支援 Xen Hypervisor 控制和自動化的接口，使管理虛擬化環境變得更加容易。
 
-#### Xen總結
+#### Xen Summary
 
 -   **克森：**核心管理程式技術使虛擬機器能夠在實體硬體上運行。
 -   **Xen來源：**該公司將 Xen 商業化，後來被 Citrix 收購，導致了 Citrix XenServer 的開發。
--   **Xen專案：**在 Linux 基金會下繼續開發和維護 Xen 虛擬機器管理程式的開源計畫和社群。
+-   **Xen專案：**在 Linux 基金會下繼續開發和維護 Xen 虛擬機器管理程式的開源倡議和社群。
 -   **XenStore：**Xen Store 充當 Xen 虛擬機器管理程式和 VM 之間的通訊和配置中介，簡化虛擬化環境的操作和管理。
 -   **丸**是支援 Xen Hypervisor 控制和自動化的接口，使管理虛擬化環境變得更加容易。
 
@@ -1249,7 +1249,7 @@ Vagrantfile
     -   [Debian 自由軟體指南](https://www.debian.org/social_contract#guidelines)
     -   [列出 Linux 發行版](https://en.wikipedia.org/wiki/List_of_Linux_distributions)
     -   [發行表](https://distrowatch.com/)
-    -   [比較 Linux 發行版](https://en.wikipedia.org/wiki/Comparison_of_Linux_distributions)
+    -   [Linux 發行版比較](https://en.wikipedia.org/wiki/Comparison_of_Linux_distributions)
 -   [桌面環境](<>)
     -   [X11組織](https://www.x.org/wiki/)
     -   [韋蘭](https://wayland.freedesktop.org/)
@@ -1313,7 +1313,7 @@ Vagrantfile
     -   [Xen 專案初學者指南](https://wiki.xenproject.org/wiki/Xen_Project_Beginners_Guide#Installing_the_Xen_Project_Software)
     -   [瘋狂的書](https://wiki.xenproject.org/wiki/Book/HelloXenProject/0-Contents)
 -   [統一內核](https://www.lpi.org/blog/2020/10/29/xen-virtualization-and-cloud-computing-05-xen-project-unikernels-and-future/)
-    -   [優尼克拉夫特](https://github.com/unikraft/unikraft)
+    -   [尤尼克拉夫特](https://github.com/unikraft/unikraft)
     -   [Mirage作業系統](https://mirage.io/docs/hello-world)
     -   [哈拉LVM](https://galois.com/project/halvm/)
     -   [獨特的](https://github.com/solo-io/unik/blob/master/docs/providers/virtualbox.md)
