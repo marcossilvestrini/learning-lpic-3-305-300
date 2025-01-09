@@ -88,7 +88,7 @@
 > e software livre\\
 > Algumas distribuições GNULinux como Debian e RPM serão abordadas\\
 > A instalação e configuração de alguns pacotes também serão abordadas\\
-> Ao fazer isso, você pode dar a toda a comunidade a oportunidade de se beneficiar de suas alterações.\\
+> Ao fazer isso, você pode dar a toda a comunidade a chance de se beneficiar de suas alterações.\\
 > O acesso ao código-fonte é uma pré-condição para isso.\\
 > Use o vagrant para atualizar máquinas, executar laboratórios e praticar o conteúdo deste artigo.\\
 > Publiquei na pasta Vagrant um Vagrantfile com o que é necessário\\
@@ -123,11 +123,11 @@ Clonar o repositório
 git clone https://github.com/marcossilvestrini/learning-lpic-3-305-300.git
 ```
 
-Use Vagrantfile-topic-XXX para laboratórios.
+Use Vagrantfile-topic-XXX para personalizar vms para laboratórios.
 
 Defina algumas configurações para o seu ambiente:
 
--   Arquivo[Vagrantfile-topic-351](./labs/vagrant/Vagrantfile-topic-351)
+-   Arquivo[Vagrantfile-tópico-351](./labs/vagrant/Vagrantfile-topic-351)
     -   vm.clone_directory = "&lt;sua_letra_do_driver>:\\<folder>\\&lt;para_máquina>\\#{VM_NAME}-instance-1"
         Exemplo: vm.clone_directory = "E:\\Servidores\\VMware\\#{VM_NAME}-instance-1"
     -   vm.vmx["mem tamanho"]= ""
@@ -143,6 +143,26 @@ Defina algumas configurações para o seu ambiente:
 ## Uso
 
 Use este repositório para aprender sobre o exame LPIC-3 305-300
+
+### Para cima e para baixo
+
+```sh
+cd vagrant && vagrant up
+cd vagrant && vagrant destroy -f
+```
+
+### Para reiniciar vms
+
+```sh
+cd vagrant && vagrant reload
+```
+
+**Importante:**_Se você reiniciar o vms sem o vagrant, a pasta compartilhada não será montada após a inicialização._
+
+### Use o PowerShell para cima e para baixo
+
+vagabundo/up.ps1
+vagabundo/destruir.ps1
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -209,7 +229,7 @@ man COMMAND
 
 -   Entenda a terminologia de virtualização
 -   Entenda os prós e os contras da virtualização
--   Compreender as diversas variações de hipervisores e monitores de máquinas virtuais
+-   Compreenda as diversas variações de hipervisores e monitores de máquinas virtuais
 -   Entenda os principais aspectos da migração de máquinas físicas para virtuais
 -   Compreender os principais aspectos da migração de máquinas virtuais entre sistemas host
 -   Compreenda os recursos e as implicações da virtualização para uma máquina virtual, como captura instantânea, pausa, clonagem e limites de recursos
@@ -327,7 +347,7 @@ VMware ESXi, Microsoft Hyper-V, KVM (máquina virtual baseada em kernel).
 
 ###### Desvantagens do HVM
 
--   **Dependência de Hardware:**Requer recursos de hardware específicos, limitando a compatibilidade com sistemas mais antigos.
+-   **Dependência de hardware:**Requer recursos de hardware específicos, limitando a compatibilidade com sistemas mais antigos.
 -   **Complexidade:**Pode envolver configuração e gerenciamento mais complexos.
 
 ##### Paravirtualização
@@ -346,7 +366,7 @@ A paravirtualização envolve a modificação do sistema operacional convidado p
 
 Xen com convidados paravirtualizados, ferramentas VMware em determinadas configurações e algumas configurações KVM.
 
-###### Vantagens da Paravirtualização
+###### Vantagens da paravirtualização
 
 -   **Eficiência:**Reduz a sobrecarga de virtualização de hardware, oferecendo potencialmente melhor desempenho para determinadas cargas de trabalho.
 -   **Utilização de recursos:**Uso mais eficiente dos recursos do sistema devido à comunicação direta entre o sistema operacional convidado e o hipervisor.
@@ -465,7 +485,7 @@ VMware NSX, Cisco ACI, OpenStack Neutron.
 
 Agrupa o armazenamento físico de vários dispositivos em uma única unidade de armazenamento virtual que pode ser gerenciada centralmente.
 
-###### Casos de uso de definição de virtualização de armazenamento
+###### Storage VirtualizationDefinition Use Cases
 
 Gerenciamento de dados, otimização de armazenamento, recuperação de desastres.
 
@@ -536,6 +556,8 @@ Denodo, Red Hat JBoss Data Virtualization, IBM InfoSphere.
 
 ![xen-architecture](images/xen-achitecture.png)
 
+![xen-architecture](images/xen-achitecture2.png)
+
 **Peso:**3
 
 **Descrição:**Os candidatos devem ser capazes de instalar, configurar, manter, migrar e solucionar problemas de instalações do Xen. O foco está no Xen versão 4.x.
@@ -549,7 +571,7 @@ Denodo, Red Hat JBoss Data Virtualization, IBM InfoSphere.
 -   Avareza de COMPRIMIDOS
 -   Conhecimento do XenStore
 -   Conhecimento dos parâmetros de inicialização do Xen
--   Conscientização do utilitário xm
+-   Awareness of the xm utility
 
 #### Xen
 
@@ -559,7 +581,7 @@ Xen é um hipervisor tipo 1 (bare metal) de código aberto, que permite que vár
 O Xen fornece uma camada entre o hardware físico e as máquinas virtuais (VMs), permitindo o compartilhamento e o isolamento eficientes de recursos.
 
 -   **Arquitetura:**O Xen opera com um sistema de duas camadas onde o Domínio 0 (Dom0) é o domínio privilegiado com acesso direto ao hardware e gerencia o hipervisor. Outras máquinas virtuais, chamadas Domain U (DomU), executam sistemas operacionais convidados e são gerenciadas pelo Dom0.
--   **Tipos de virtualização:**O Xen suporta paravirtualização (PV), que requer sistema operacional convidado modificado, e virtualização assistida por hardware (HVM), que usa extensões de hardware (por exemplo, Intel VT-x ou AMD-V) para executar sistemas operacionais convidados não modificados.
+-   **Tipos de virtualização:**O Xen suporta tanto a paravirtualização (PV), que requer sistema operacional convidado modificado, quanto a virtualização assistida por hardware (HVM), que usa extensões de hardware (por exemplo, Intel VT-x ou AMD-V) para executar sistemas operacionais convidados não modificados.
     O Xen é amplamente utilizado em ambientes de nuvem, principalmente pela Amazon Web Services (AWS) e outros provedores de nuvem de grande escala.
 
 #### XenSource
@@ -573,7 +595,7 @@ A empresa forneceu soluções empresariais baseadas no Xen e ofereceu ferramenta
 #### Projeto Xen
 
 Projeto Xen refere-se à comunidade e iniciativa de código aberto responsável pelo desenvolvimento e manutenção do hipervisor Xen após sua comercialização.  
-O Projeto Xen opera sob a Linux Foundation, com foco na construção, melhoria e suporte do Xen como um esforço colaborativo e voltado para a comunidade.
+O Projeto Xen opera sob a Linux Foundation, com foco na construção, melhoria e suporte do Xen como um esforço colaborativo e orientado pela comunidade.
 
 -   **Metas:**O Projeto Xen visa avançar o hipervisor melhorando seu desempenho, segurança e conjunto de recursos para uma ampla gama de casos de uso, incluindo computação em nuvem, virtualização focada em segurança (por exemplo, Qubes OS) e sistemas embarcados.
 -   **Colaboradores:**O projeto inclui colaboradores de diversas organizações, incluindo grandes provedores de nuvem, fornecedores de hardware e desenvolvedores independentes.
@@ -664,6 +686,22 @@ xl list
 
 # view dmesg information
 xl dmesg
+
+# monitoring domain
+xl top
+
+# Limit mem Dom0
+xl mem-set 0 2048
+
+# Limite cpu (not permanent after boot)
+xl vcpu-set 0 2
+```
+
+##### brctl
+
+```sh
+# list bridges linked
+brctl show
 ```
 
 <p align="right">(<a href="#topic-351.2">back to sub Topic 351.2</a>)</p>
@@ -771,10 +809,10 @@ foo
 
 **Principais áreas de conhecimento:**
 
--   Compreenda os recursos de vários formatos de imagem de disco virtual, como imagens raw, qcow2 e VMDK
+-   Compreenda os recursos de vários formatos de imagem de disco virtual, como imagens brutas, qcow2 e VMDK
 -   Gerencie imagens de disco de máquinas virtuais usando qemu-img
 -   Monte partições e acesse arquivos contidos em imagens de disco de máquinas virtuais usando libguestfish
--   Copy physical disk content to a virtual machine disk image
+-   Copie o conteúdo do disco físico para uma imagem de disco de máquina virtual
 -   Migrar conteúdo de disco entre vários formatos de imagem de disco de máquina virtual
 -   Conscientização do Formato de Virtualização Aberto (OVF)
 
@@ -840,7 +878,7 @@ foo
 -   Entenda o princípio do runc
 -   Entenda o princípio do CRI-O e do containerd
 -   Conhecimento do tempo de execução do OCI e das especificações de imagem
--   Conhecimento da interface de tempo de execução de contêiner (CRI) do Kubernetes
+-   Conhecimento da Interface de Tempo de Execução de Contêiner (CRI) do Kubernetes
 -   Consciência de podman, buildah e escopo
 -   Conhecimento de outras abordagens de virtualização de contêineres no Linux e outros sistemas operacionais livres, como rkt, OpenVZ, systemd-nspawn ou BSD Jails
 
@@ -1074,7 +1112,7 @@ Além disso, os candidatos devem ser capazes de criar novas imagens de sistema c
 **Principais áreas de conhecimento:**
 
 -   Compreender os recursos e conceitos do cloud-init, incluindo dados do usuário, inicialização e configuração do cloud-init
--   Use o cloud-init para criar, redimensionar e montar sistemas de arquivos, configurar contas de usuário, incluindo credenciais de login, como chaves SSH, e instalar pacotes de software do repositório da distribuição
+-   Use cloud-init para criar, redimensionar e montar sistemas de arquivos, configurar contas de usuário, incluindo credenciais de login, como chaves SSH e instalar pacotes de software do repositório da distribuição
 -   Integre o cloud-init às imagens do sistema
 -   Use a fonte de dados da unidade de configuração para teste
 
@@ -1256,7 +1294,7 @@ Link do projeto:<https://github.com/marcossilvestrini/learning-lpic-3-305-300>
     -   [Exemplos de comandos](https://www.geeksforgeeks.org/)
 -   [Outras ferramentas](<>)
     -   [Bugzila](https://bugzilla.kernel.org/)
-    -   [Emblemas do Github](https://github.com/alexandresanlim/Badges4-README.md-Profile)
+    -   [Emblemas do GitHub](https://github.com/alexandresanlim/Badges4-README.md-Profile)
 -   [Definições de virtualização](<>)
     -   [Chapéu Vermelho](https://www.redhat.com/pt-br/topics/virtualization/what-is-virtualization)
     -   [AWS](https://aws.amazon.com/pt/what-is/virtualization/)
@@ -1280,7 +1318,7 @@ Link do projeto:<https://github.com/marcossilvestrini/learning-lpic-3-305-300>
     -   [HaLVM](https://galois.com/project/halvm/)
     -   [Exclusivo](https://github.com/solo-io/unik/blob/master/docs/providers/virtualbox.md)
 -   [Documentos Openstack](<>)
-    -   [RedHat](https://www.redhat.com/pt-br/topics/openstack)
+    -   [Chapéu Vermelho](https://www.redhat.com/pt-br/topics/openstack)
 -   [Abra o vSwitch](<>)
     -   [OVS Documento 4Linux](https://blog.4linux.com.br/open-vswitch-o-que-e-o-que-come-onde-vive)
 -   [Exame LPIC-3 305-300](<>)
