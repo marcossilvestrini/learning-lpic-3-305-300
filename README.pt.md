@@ -88,7 +88,7 @@
 > e software livre\\
 > Algumas distribuições GNULinux como Debian e RPM serão abordadas\\
 > A instalação e configuração de alguns pacotes também serão abordadas\\
-> Ao fazer isso, você pode dar a toda a comunidade a chance de se beneficiar de suas alterações.\\
+> Ao fazer isso, você pode dar a toda a comunidade a oportunidade de se beneficiar de suas alterações.\\
 > O acesso ao código-fonte é uma pré-condição para isso.\\
 > Use o vagrant para atualizar máquinas, executar laboratórios e praticar o conteúdo deste artigo.\\
 > Publiquei na pasta Vagrant um Vagrantfile com o que é necessário\\
@@ -127,7 +127,7 @@ Use Vagrantfile-topic-XXX para personalizar vms para laboratórios.
 
 Defina algumas configurações para o seu ambiente:
 
--   Arquivo[Vagrantfile-tópico-351](./labs/vagrant/Vagrantfile-topic-351)
+-   Arquivo[Vagrantfile-topic-351](./labs/vagrant/Vagrantfile-topic-351)
     -   vm.clone_directory = "&lt;sua_letra_do_driver>:\\<folder>\\&lt;para_máquina>\\#{VM_NAME}-instance-1"
         Exemplo: vm.clone_directory = "E:\\Servidores\\VMware\\#{VM_NAME}-instance-1"
     -   vm.vmx["mem tamanho"]= ""
@@ -271,7 +271,7 @@ Migration (P2V, V2V)
 
 ##### Hipervisor tipo 2 (hipervisor hospedado)
 
-###### Definição Tipo 2
+###### Definição de tipo 2
 
 É executado sobre um sistema operacional convencional, contando com o sistema operacional host para gerenciamento de recursos e suporte a dispositivos.
 
@@ -316,7 +316,7 @@ Em outras palavras, um sistema operacional e seus aplicativos, executados em har
 ##### V2V - Migração Virtual para Virtual
 
 A migração V2V refere-se ao processo de migração de uma máquina virtual de um hipervisor para outro.  
-Neste caso, você já possui uma máquina virtual em execução em um ambiente virtualizado (como VMware) e deseja movê-la para outro ambiente virtualizado (por exemplo, para Hyper-V ou para um novo servidor VMware).
+Neste caso, você já possui uma máquina virtual rodando em um ambiente virtualizado (como VMware) e deseja movê-la para outro ambiente virtualizado (por exemplo, para Hyper-V ou para um novo servidor VMware).
 
 -   Exemplo: você tem uma máquina virtual rodando em um servidor de virtualização VMware, mas decide migrá-la para uma plataforma Hyper-V. Nesse caso, a migração V2V converte a máquina virtual de um formato ou hipervisor para outro, garantindo que ela continue funcionando corretamente.
 
@@ -366,7 +366,7 @@ A paravirtualização envolve a modificação do sistema operacional convidado p
 
 Xen com convidados paravirtualizados, ferramentas VMware em determinadas configurações e algumas configurações KVM.
 
-###### Vantagens da paravirtualização
+###### Vantagens da Paravirtualização
 
 -   **Eficiência:**Reduz a sobrecarga de virtualização de hardware, oferecendo potencialmente melhor desempenho para determinadas cargas de trabalho.
 -   **Utilização de recursos:**Uso mais eficiente dos recursos do sistema devido à comunicação direta entre o sistema operacional convidado e o hipervisor.
@@ -385,7 +385,7 @@ Xen com convidados paravirtualizados, ferramentas VMware em determinadas configu
 
 ###### Desempenho
 
--   **HVM:**Normalmente fornece desempenho quase nativo devido à execução assistida por hardware.
+-   **HVM:** Typically provides near-native performance due to hardware-assisted execution.
 -   **Paravirtualização:**Pode oferecer desempenho eficiente reduzindo a sobrecarga da emulação de hardware, mas depende do sistema operacional convidado modificado.
 
 ###### Dependência de Hardware
@@ -485,7 +485,7 @@ VMware NSX, Cisco ACI, OpenStack Neutron.
 
 Agrupa o armazenamento físico de vários dispositivos em uma única unidade de armazenamento virtual que pode ser gerenciada centralmente.
 
-###### Storage VirtualizationDefinition Use Cases
+###### Casos de uso de definição de virtualização de armazenamento
 
 Gerenciamento de dados, otimização de armazenamento, recuperação de desastres.
 
@@ -571,7 +571,7 @@ Denodo, Red Hat JBoss Data Virtualization, IBM InfoSphere.
 -   Avareza de COMPRIMIDOS
 -   Conhecimento do XenStore
 -   Conhecimento dos parâmetros de inicialização do Xen
--   Awareness of the xm utility
+-   Conscientização do utilitário xm
 
 #### Xen
 
@@ -595,7 +595,7 @@ A empresa forneceu soluções empresariais baseadas no Xen e ofereceu ferramenta
 #### Projeto Xen
 
 Projeto Xen refere-se à comunidade e iniciativa de código aberto responsável pelo desenvolvimento e manutenção do hipervisor Xen após sua comercialização.  
-O Projeto Xen opera sob a Linux Foundation, com foco na construção, melhoria e suporte do Xen como um esforço colaborativo e orientado pela comunidade.
+O Projeto Xen opera sob a Linux Foundation, com foco na construção, melhoria e suporte do Xen como um esforço colaborativo e voltado para a comunidade.
 
 -   **Metas:**O Projeto Xen visa avançar o hipervisor melhorando seu desempenho, segurança e conjunto de recursos para uma ampla gama de casos de uso, incluindo computação em nuvem, virtualização focada em segurança (por exemplo, Qubes OS) e sistemas embarcados.
 -   **Colaboradores:**O projeto inclui colaboradores de diversas organizações, incluindo grandes provedores de nuvem, fornecedores de hardware e desenvolvedores independentes.
@@ -658,7 +658,7 @@ Isso resulta em menor sobrecarga e melhor eficiência em comparação com a virt
 
 #### HVM-DomU (Domínio de Máquina Virtual de HardwareU)
 
-HVM-DomUs são máquinas virtuais que utilizam virtualização total, permitindo a execução de sistemas operacionais não modificados. O hipervisor Xen fornece emulação de hardware para esses DomUs, permitindo-lhes executar qualquer sistema operacional que suporte a arquitetura de hardware subjacente.  
+HVM-DomUs são máquinas virtuais que utilizam virtualização completa, permitindo a execução de sistemas operacionais não modificados. O hipervisor Xen fornece emulação de hardware para esses DomUs, permitindo-lhes executar qualquer sistema operacional que suporte a arquitetura de hardware subjacente.  
 Embora isso ofereça maior flexibilidade, pode resultar em maior sobrecarga em comparação com PV-DomUs.
 
 #### 351.2 Objetos Citados
@@ -725,7 +725,7 @@ brctl show
 -   Gerencie instantâneos usando o monitor QEMU
 -   Instale os drivers de dispositivo QEMU Guest Agent e VirtIO
 -   Solucionar problemas de instalações QEMU, incluindo rede e armazenamento
--   Conscientização de parâmetros importantes de configuração do QEMU
+-   Consciência de parâmetros importantes de configuração do QEMU
 
 #### 351.3 Objetos Citados
 
@@ -1013,7 +1013,7 @@ Dockerfile
 
 -   Entenda a relevância da orquestração de contêineres
 -   Entenda os principais conceitos do Docker Compose e do Docker Swarm
--   Compreenda os principais conceitos de Kubernetes e Helm
+-   Compreenda os principais conceitos do Kubernetes e Helm
 -   Conscientização sobre OpenShift, Rancher e Mesosphere DC/OS
 
 <p align="right">(<a href="#topic-352.4">back to sub topic 352.4</a>)</p>
@@ -1140,7 +1140,7 @@ user-data
 
 <a name="topic-353.4"></a>
 
-### 353,4 Vagabundo
+### 353.4 Vagabundo
 
 **Peso:**3
 
@@ -1235,7 +1235,7 @@ Link do projeto:<https://github.com/marcossilvestrini/learning-lpic-3-305-300>
     -   [Estrutura de hierarquia de arquivos](https://refspecs.linuxfoundation.org/FHS_3.0/fhs-3.0.pdf)
 -   [Software Livre](<>)
     -   [FSF](https://www.fsf.org)
-    -   [Diretório de Software Gratuito](https://directory.fsf.org/wiki/Free_Software_Directory:Free_software_replacements)
+    -   [Diretório de software gratuito](https://directory.fsf.org/wiki/Free_Software_Directory:Free_software_replacements)
 -   [Licença](<>)
     -   [Software Livre](https://www.gnu.org/philosophy/free-sw.html)
     -   [Copyleft](https://www.gnu.org/licenses/copyleft.en.html)
