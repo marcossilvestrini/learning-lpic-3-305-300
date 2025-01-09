@@ -123,7 +123,7 @@
 git clone https://github.com/marcossilvestrini/learning-lpic-3-305-300.git
 ```
 
-使用 Vagrantfile-topic-XXX 進行 up 實驗。
+使用 Vagrantfile-topic-XXX 為實驗室自訂虛擬機器。
 
 為您的環境設定一些配置：
 
@@ -143,6 +143,26 @@ git clone https://github.com/marcossilvestrini/learning-lpic-3-305-300.git
 ## 用法
 
 使用此儲存庫了解 LPIC-3 305-300 考試
+
+### 對於上下
+
+```sh
+cd vagrant && vagrant up
+cd vagrant && vagrant destroy -f
+```
+
+### 對於重新啟動虛擬機
+
+```sh
+cd vagrant && vagrant reload
+```
+
+**重要的：**_如果在沒有 vagrant 的情況下重新啟動虛擬機，則啟動後不會掛載共用資料夾。_
+
+### 使用powershell進行向上和向下
+
+流浪者/up.ps1
+流浪者/destroy.ps1
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -166,7 +186,7 @@ git clone https://github.com/marcossilvestrini/learning-lpic-3-305-300.git
 ## 四項基本自由
 
 > 0.為任何目的隨意運行程序的自由（自由 0）。
-> 1.自由地研究程式如何運作並對其進行更改\\
+> 1.自由地研究程序如何運作並對其進行更改\\
 > 你可以隨心所欲地進行計算（自由 1）。
 > 存取原始碼是實現此目的的先決條件。
 > 2.重新分發副本的自由，以便您可以幫助他人（自由2）。
@@ -212,7 +232,7 @@ man COMMAND
 -   了解虛擬機器管理程式和虛擬機器監視器的各種變體
 -   了解將實體機遷移到虛擬機器的主要方面
 -   了解在主機系統之間遷移虛擬機器的主要方面
--   了解虛擬機器虛擬化的功能和影響，例如快照、暫停、複製和資源限制
+-   Understand the features and implications of virtualization for a virtual machine, such as snapshotting, pausing, cloning and resource limits
 -   了解 oVirt、Proxmox、systemd-machined 和 VirtualBox
 -   對 Open vSwitch 的認識
 
@@ -306,7 +326,7 @@ V2V 遷移是指將虛擬機器從一個虛擬機器管理程式遷移到另一�
 
 ###### HVM定義
 
-HVM 利用現代 CPU 提供的硬體擴充來虛擬化硬件，從而能夠以最小的效能開銷來建立和管理 VM。
+HVM 利用現代 CPU 提供的硬體擴展來虛擬化硬件，從而以最小的效能開銷創建和管理 VM。
 
 ###### HVM 主要特性
 
@@ -465,7 +485,7 @@ VMware NSX、思科 ACI、OpenStack Neutron。
 
 將多個裝置的實體儲存池整合到可集中管理的單一虛擬儲存單元中。
 
-###### Storage VirtualizationDefinition Use Cases
+###### 儲存虛擬化定義用例
 
 資料管理、儲存最佳化、災難復原。
 
@@ -536,6 +556,8 @@ Denodo、紅帽 JBoss 資料虛擬化、IBM InfoSphere。
 
 ![xen-architecture](images/xen-achitecture.png)
 
+![xen-architecture](images/xen-achitecture2.png)
+
 **重量：**3
 
 **描述：**考生應該能夠安裝、配置、維護、遷移 Xen 安裝並排除故障。重點是 Xen 版本 4.x。
@@ -597,7 +619,7 @@ Xen Store 是 Xen Hypervisor 的關鍵元件。
 #### 丸
 
 XAPI 或 XenAPI 是用於管理 Xen Hypervisor 及其虛擬機器 (VM) 的應用程式介面 (API)。  
-XAPI 是 XenServer（現在稱為 Citrix Hypervisor）的關鍵元件，提供與 Xen 虛擬機器管理程式互動的標準化方法，以執行建立、設定、監控和控制 VM 等作業。
+XAPI 是 XenServer（現在稱為 Citrix Hypervisor）的關鍵元件，提供與 Xen 虛擬機器管理程式互動的標準化方式，以執行建立、設定、監控和控制 VM 等作業。
 
 以下是 XAPI 的一些重要面向：
 
@@ -658,6 +680,28 @@ xentop
 ```sh
 # view xen information
 xl infos
+
+# list Domains
+xl list
+
+# view dmesg information
+xl dmesg
+
+# monitoring domain
+xl top
+
+# Limit mem Dom0
+xl mem-set 0 2048
+
+# Limite cpu (not permanent after boot)
+xl vcpu-set 0 2
+```
+
+##### brctl
+
+```sh
+# list bridges linked
+brctl show
 ```
 
 <p align="right">(<a href="#topic-351.2">back to sub Topic 351.2</a>)</p>
@@ -1269,7 +1313,7 @@ Vagrantfile
     -   [Xen 專案初學者指南](https://wiki.xenproject.org/wiki/Xen_Project_Beginners_Guide#Installing_the_Xen_Project_Software)
     -   [瘋狂的書](https://wiki.xenproject.org/wiki/Book/HelloXenProject/0-Contents)
 -   [統一內核](https://www.lpi.org/blog/2020/10/29/xen-virtualization-and-cloud-computing-05-xen-project-unikernels-and-future/)
-    -   [尤尼克拉夫特](https://github.com/unikraft/unikraft)
+    -   [優尼克拉夫特](https://github.com/unikraft/unikraft)
     -   [Mirage作業系統](https://mirage.io/docs/hello-world)
     -   [哈拉LVM](https://galois.com/project/halvm/)
     -   [獨特的](https://github.com/solo-io/unik/blob/master/docs/providers/virtualbox.md)
