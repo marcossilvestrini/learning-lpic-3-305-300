@@ -604,7 +604,7 @@ Le projet Xen fonctionne sous la Fondation Linux et se concentre sur la créatio
 
 -   **Objectifs:**Le projet Xen vise à faire progresser l'hyperviseur en améliorant ses performances, sa sécurité et ses fonctionnalités pour un large éventail de cas d'utilisation, notamment le cloud computing, la virtualisation axée sur la sécurité (par exemple, Qubes OS) et les systèmes embarqués.
 -   **Contributeurs :**Le projet inclut des contributeurs de diverses organisations, notamment des principaux fournisseurs de cloud, des fournisseurs de matériel et des développeurs indépendants.
--   **PILULES ET OUTILS HANTOOL :**Le projet Xen comprend également des outils tels que XAPI (XenAPI), utilisé pour gérer les installations de l'hyperviseur Xen, ainsi que divers autres utilitaires pour la gestion et l'optimisation du système.
+-   **PILULES ET OUTILS HANTOOLS :**Le projet Xen comprend également des outils tels que XAPI (XenAPI), utilisé pour gérer les installations de l'hyperviseur Xen, ainsi que divers autres utilitaires pour la gestion et l'optimisation du système.
 
 #### XenStore
 
@@ -619,7 +619,7 @@ Voici quelques aspects clés de Xen Store :
 
 -   **Événements et notifications :**Xen Store prend également en charge les notifications d'événements. Lorsqu'une clé ou une valeur particulière dans le Xen Store est modifiée, les domaines intéressés peuvent être avertis pour réagir à ces modifications. Ceci est utile pour surveiller et gérer les ressources.
 
--   API simple : Xen Store fournit une API simple pour lire et écrire des données, permettant ainsi aux développeurs d'intégrer facilement leurs applications au système de virtualisation Xen.
+-   API simple : Xen Store fournit une API simple pour lire et écrire des données, permettant aux développeurs d'intégrer facilement leurs applications au système de virtualisation Xen.
 
 #### Pilule
 
@@ -640,7 +640,7 @@ XAPI est l'interface qui permet le contrôle et l'automatisation de l'hyperviseu
 
 #### Résumé Xen
 
--   **Xén :**La technologie d'hyperviseur de base permettant aux machines virtuelles de s'exécuter sur du matériel physique.
+-   **Xen :**La technologie d'hyperviseur de base permettant aux machines virtuelles de s'exécuter sur du matériel physique.
 -   **XenSource :**La société qui a commercialisé Xen, acquise plus tard par Citrix, conduisant au développement de Citrix XenServer.
 -   **Projet Xen :**L'initiative et la communauté open source qui continuent de développer et de maintenir l'hyperviseur Xen sous la Fondation Linux.
 -   **XenStore :**Xen Store agit comme intermédiaire de communication et de configuration entre l'hyperviseur Xen et les VM, rationalisant le fonctionnement et la gestion des environnements virtualisés.
@@ -648,7 +648,7 @@ XAPI est l'interface qui permet le contrôle et l'automatisation de l'hyperviseu
 
 #### Domain0 (Dom0)
 
-Domain0, ou Dom0, est le domaine de contrôle dans une architecture Xen. Il gère d'autres domaines (DomUs) et a un accès direct au matériel.  
+Domain0, ou Dom0, est le domaine de contrôle dans une architecture Xen. Il gère d'autres domaines (DomUs) et dispose d'un accès direct au matériel.  
 Dom0 exécute des pilotes de périphériques, permettant aux DomU, qui ne disposent pas d'un accès direct au matériel, de communiquer avec les périphériques. En règle générale, il s'agit d'une instance complète d'un système d'exploitation, comme Linux, et elle est essentielle au fonctionnement de l'hyperviseur Xen.
 
 #### DomaineU (DomU)
@@ -860,7 +860,7 @@ foo
 
 <a name="topic-352"></a>
 
-## Sujet 352 : Virtualisation des conteneurs
+## Sujet 352 : Virtualisation des conteneurs
 
 * * *
 
@@ -970,12 +970,12 @@ foo
 
 **Poids:**9
 
-**Description:**Le candidat doit être capable de gérer les nœuds Docker et les conteneurs Docker. Cela inclut la compréhension de l’architecture de Docker ainsi que la compréhension de la manière dont Docker interagit avec le système Linux du nœud.
+**Description:**Le candidat doit être capable de gérer les nœuds Docker et les conteneurs Docker. Cela inclut la compréhension de l'architecture de Docker ainsi que la compréhension de la manière dont Docker interagit avec le système Linux du nœud.
 
 **Domaines de connaissances clés :**
 
 -   Comprendre l'architecture et les composants de Docker
--   Gérer les conteneurs Docker à l'aide d'images provenant d'un registre Docker
+-   Gérer les conteneurs Docker à l'aide d'images d'un registre Docker
 -   Comprendre et gérer les images et les volumes pour les conteneurs Docker
 -   Comprendre et gérer la journalisation pour les conteneurs Docker
 -   Comprendre et gérer la mise en réseau pour Docker
@@ -1225,7 +1225,7 @@ Lien du projet :<https://github.com/marcossilvestrini/learning-lpic-3-305-300>
     -   [Compilateur GCC](https://gcc.gnu.org/wiki/History)
     -   [Tar GNU](https://www.gnu.org/software/tar/)
     -   [Marque GNU](https://www.gnu.org/software/make/)
-    -   [GNU Emacs](https://en.wikipedia.org/wiki/Emacs)
+    -   [GNU-Emacs](https://en.wikipedia.org/wiki/Emacs)
     -   [Paquets GNU](https://www.gnu.org/software/)
     -   [Collection GNU/Linux](https://directory.fsf.org/wiki/Collection:GNU/Linux)
     -   [Chargeur de démarrage GNU Grub](https://www.gnu.org/software/grub/)
@@ -1323,7 +1323,7 @@ Lien du projet :<https://github.com/marcossilvestrini/learning-lpic-3-305-300>
     -   [HaLVM](https://galois.com/project/halvm/)
     -   [Unique](https://github.com/solo-io/unik/blob/master/docs/providers/virtualbox.md)
 -   [Documents Openstack](<>)
-    -   [Chapeau Rouge](https://www.redhat.com/pt-br/topics/openstack)
+    -   [Chapeau rouge](https://www.redhat.com/pt-br/topics/openstack)
 -   [Ouvrir le vSwitch](<>)
     -   [OVS Doc 4Linux](https://blog.4linux.com.br/open-vswitch-o-que-e-o-que-come-onde-vive)
 -   [Examen LPIC-3 305-300](<>)
