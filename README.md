@@ -131,20 +131,19 @@ Clone the repo
 
 ```sh
 git clone https://github.com/marcossilvestrini/learning-lpic-3-305-300.git
+cd learning-lpic-3-305-300
 ```
 
-Use Vagrantfile-topic-XXX for customize vms for labs.
+Customize a template *Vagrantfile-topic-XXX*. This file contains a vms configuration for labs. Example:
 
-Set some configs for your environment:
-
-* File [Vagrantfile-topic-351](./labs/vagrant/Vagrantfile-topic-351)
+* File [Vagrantfile-topic-351](./vagrant/Vagrantfile-topic-351)
   * vm.clone_directory = "<your_driver_letter>:\\<folder>\\<to_machine>\\#{VM_NAME}-instance-1"
     Example: vm.clone_directory = "E:\\Servers\\VMWare\\#{VM_NAME}-instance-1"
   * vm.vmx["memsize"] = ""
   * vm.vmx["numvcpus"] = ""
-  * vm.vmx["cpuid.coresPerSocket"] = ""  
-  * inline: "ifconfig eth1 <your_public_ip_instanceX> netmask 255.255.255.0 up"
-  * inline: "route add default gw <your_public_gateway>"
+  * vm.vmx["cpuid.coresPerSocket"] = ""
+
+Customize network configuration in files [configs/network](configs/network/). 
 
 ---
 
@@ -155,6 +154,8 @@ Set some configs for your environment:
 Use this repository for get learning about LPIC-3 305-300 exam
 
 ### For up and down
+
+Switch a *Vagrantfile-topic-xxx* template and copy for a new file with name *Vagrantfile*
 
 ```sh
 cd vagrant && vagrant up
@@ -172,8 +173,12 @@ cd vagrant && vagrant reload
 
 ### Use powershell for up and down
 
+If you use Windows platform, I create a powershell script for up and down vms.
+
+```powershell
 vagrant/up.ps1
 vagrant/destroy.ps1
+```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 

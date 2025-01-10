@@ -1,5 +1,12 @@
 #!/bin/bash
 
+<<'MULTILINE-COMMENT'
+    Requirments: none
+    Description: Script for Install Xen
+    Author: Marcos Silvestrini
+    Date: 09/01/2025
+MULTILINE-COMMENT
+
 # Update the package list
 apt-get update
 
