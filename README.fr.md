@@ -10,7 +10,7 @@
 
 # APPRENTISSAGE LPIC-3 305-300
 
-![LPIC3-305-300](Images/lpic3-305-300.jpg)
+![LPIC3-305-300](images/lpic3-305-300.jpg)
 
 <p align="center">
 <strong>Explore the docs »</strong></a>
@@ -213,7 +213,7 @@ man COMMAND
 
 ## Sujet 351 : Virtualisation complète
 
-![LPIC3-305-300](Images/virtualization-351.png)
+![LPIC3-305-300](images/virtualization-351.png)
 
 * * *
 
@@ -575,7 +575,7 @@ Denodo, virtualisation des données Red Hat JBoss, IBM InfoSphere.
 
 #### Xen
 
-![panda](Images/xen-panda.png)
+![panda](images/xen-panda.png)
 
 Xen est un hyperviseur open source de type 1 (bare metal), qui permet à plusieurs systèmes d'exploitation de s'exécuter simultanément sur le même matériel physique.  
 Xen fournit une couche entre le matériel physique et les machines virtuelles (VM), permettant un partage et une isolation efficaces des ressources.

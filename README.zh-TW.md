@@ -10,7 +10,7 @@
 
 # 學習 LPIC-3 305-300
 
-![LPIC3-305-300](Images/lpic3-305-300.jpg)
+![LPIC3-305-300](images/lpic3-305-300.jpg)
 
 <p align="center">
 <strong>Explore the docs »</strong></a>
@@ -213,7 +213,7 @@ man COMMAND
 
 ## 主題 351：完全虛擬化
 
-![LPIC3-305-300](Images/virtualization-351.png)
+![LPIC3-305-300](images/virtualization-351.png)
 
 * * *
 
@@ -575,7 +575,7 @@ Denodo、紅帽 JBoss 資料虛擬化、IBM InfoSphere。
 
 #### Xen
 
-![panda](Images/xen-panda.png)
+![panda](images/xen-panda.png)
 
 Xen 是一個開源 type-1（裸機）虛擬機器管理程序，它允許多個作業系統在同一實體硬體上同時運行。  
 Xen 在實體硬體和虛擬機器 (VM) 之間提供了一個層，可實現高效的資源共享和隔離。

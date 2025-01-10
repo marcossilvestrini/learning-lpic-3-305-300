@@ -10,7 +10,7 @@
 
 # LPIC-3 305-300 の学習
 
-![LPIC3-305-300](Images/lpic3-305-300.jpg)
+![LPIC3-305-300](images/lpic3-305-300.jpg)
 
 <p align="center">
 <strong>Explore the docs »</strong></a>
@@ -213,7 +213,7 @@ man COMMAND
 
 ## トピック 351: 完全仮想化
 
-![LPIC3-305-300](Images/virtualization-351.png)
+![LPIC3-305-300](images/virtualization-351.png)
 
 * * *
 
@@ -575,7 +575,7 @@ Denodo、Red Hat JBoss Data Virtualization、IBM InfoSphere。
 
 #### ゼン
 
-![panda](Images/xen-panda.png)
+![panda](images/xen-panda.png)
 
 Xen は、オープンソースのタイプ 1 (ベアメタル) ハイパーバイザーであり、複数のオペレーティング システムを同じ物理ハードウェア上で同時に実行できます。  
 Xen は、物理ハードウェアと仮想マシン (VM) の間にレイヤーを提供し、効率的なリソースの共有と分離を可能にします。
