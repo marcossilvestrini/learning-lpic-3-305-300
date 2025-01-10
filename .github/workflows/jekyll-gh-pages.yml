@@ -3,8 +3,13 @@ name: Deploy GitHub Pages
 
 on:
   # Runs on pushes targeting the default branch
-  push:
-    branches: ["main"]
+  # push:
+  #   branches: ["main"]  
+  workflow_run:
+    workflows: ["Translate README"]
+    branches: [main]
+    types:
+      - completed
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:

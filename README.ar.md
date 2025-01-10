@@ -10,7 +10,7 @@
 
 # تعلم LPIC-3 305-300
 
-![LPIC3-305-300](Images/lpic3-305-300.jpg)
+![LPIC3-305-300](images/lpic3-305-300.jpg)
 
 <p align="center">
 <strong>Explore the docs »</strong></a>
@@ -213,7 +213,7 @@ man COMMAND
 
 ## موضوع 351: المحاكاة الافتراضية الكاملة
 
-![LPIC3-305-300](Images/virtualization-351.png)
+![LPIC3-305-300](images/virtualization-351.png)
 
 * * *
 
@@ -575,7 +575,7 @@ VMware ThinApp، Microsoft App-V، Citrix XenApp.
 
 #### زين
 
-![panda](Images/xen-panda.png)
+![panda](images/xen-panda.png)
 
 Xen هو برنامج Hypervisor مفتوح المصدر من النوع 1 (المعدني)، والذي يسمح بتشغيل أنظمة تشغيل متعددة بشكل متزامن على نفس الأجهزة المادية.  
 يوفر Xen طبقة بين الأجهزة المادية والأجهزة الافتراضية (VMs)، مما يتيح مشاركة الموارد وعزلها بكفاءة.
