@@ -1,4 +1,15 @@
 #!/bin/bash
+
+<<'MULTILINE-COMMENT'
+    Requirments: none
+    Description: Script for set Network Xen
+    Author: Marcos Silvestrini
+    Date: 09/01/2025
+MULTILINE-COMMENT
+
+# Set language/locale and encoding
+export LANG=C
+
 # Configure  eth1 routes permanently
 cp -f configs/network/configure-network-instance1.service  /etc/systemd/system/configure-network.service
 systemctl daemon-reload

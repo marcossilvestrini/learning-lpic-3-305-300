@@ -2,9 +2,9 @@
 
 <<'MULTILINE-COMMENT'
     Requirments: none
-    Description: Script for set environment for labs
+    Description: Script for set Xen Environment
     Author: Marcos Silvestrini
-    Date: 20/02/2023
+    Date: 09/01/2025
 MULTILINE-COMMENT
 
 # Set language/locale and encoding
@@ -22,6 +22,7 @@ if echo "$RELEASE_INFO" | grep -q -i "debian\|ubuntu"; then
     ## Install packages
     sudo apt install -y  \
     dos2unix \
+    lvm2 \
     bridge-utils
 
     # Configure profile
