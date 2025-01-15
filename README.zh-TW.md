@@ -89,9 +89,9 @@
 > 將涵蓋一些 GNULinux 發行版，例如 Debian 和 RPM\\
 > 也將涵蓋一些軟體包的安裝和配置\\
 > 透過這樣做，您可以讓整個社區有機會從您的更改中受益。
-> 存取原始碼是實現此目的的先決條件。
+> 獲得原始程式碼是實現此目的的先決條件。
 > 使用 vagrant for up 機器並執行本文的實驗和練習內容。
-> 我已經在 Vagrant 資料夾中發布了一個 Vagrantfile 以及必要的內容\\
+> 我已經在 Vagrant 資料夾中發布了一個 Vagrantfile ，其中包含必要的內容\\
 > 供您上傳學習環境
 
 * * *
@@ -193,7 +193,7 @@ vagrant/destroy.ps1
 > 0.為任何目的隨意運行程序的自由（自由 0）。
 > 1.自由地研究程序如何運作並對其進行更改\\
 > 你可以隨心所欲地進行計算（自由 1）。
-> 存取原始碼是實現此目的的先決條件。
+> 獲得原始程式碼是實現此目的的先決條件。
 > 2.重新分發副本的自由，以便您可以幫助他人（自由2）。
 > 3.將修改版本的副本分發給其他人的自由（自由3）。
 
@@ -238,7 +238,7 @@ man COMMAND
 -   了解將實體機遷移到虛擬機器的主要方面
 -   了解在主機系統之間遷移虛擬機器的主要方面
 -   了解虛擬機器虛擬化的功能和影響，例如快照、暫停、複製和資源限制
--   Awareness of oVirt, Proxmox, systemd-machined and VirtualBox
+-   了解 oVirt、Proxmox、systemd-machined 和 VirtualBox
 -   對 Open vSwitch 的認識
 
 #### 351.1 引用的對象
@@ -350,7 +350,7 @@ VMware ESXi、Microsoft Hyper-V、KVM（基於核心的虛擬機器）。
 -   **表現：**高性能得益於硬體支援。
 -   **安全：**硬體提供的增強隔離和安全功能。
 
-###### HVM Disadvantages
+###### HVM 的缺點
 
 -   **硬體依賴性：**需要特定的硬體功能，限制了與舊系統的兼容性。
 -   **複雜：**可能涉及更複雜的配置和管理。
@@ -673,9 +673,28 @@ Domain0 (Dom0), DomainU (DomU)
 PV-DomU, HVM-DomU
 /etc/xen/
 xl
-xl.cfg
-xl.conf
+xl.cfg 
+xl.conf # Xen global configurations
 xentop
+oxenstored # Xenstore configurations
+```
+
+#### 351.2 註釋
+
+```sh
+
+# Xen Settings
+/etc/xen/
+/etc/xen/xl.conf - Main general configuration file for Xen
+/etc/xen/oxenstored.conf - Xenstore configurations
+
+# VM Configurations
+/etc/xen/xlexample.pvlinux
+/etc/xen/xlexample.hvm
+
+# Service Configurations
+/etc/default/xen
+/etc/default/xendomains
 ```
 
 #### 351.2 重要命令
@@ -700,6 +719,12 @@ xl mem-set 0 2048
 
 # Limite cpu (not permanent after boot)
 xl vcpu-set 0 2
+
+# manual conf
+man xl.conf
+
+# manual cfg - about guest configuration
+man xl.cfg
 ```
 
 ##### brctl
@@ -1273,7 +1298,7 @@ Vagrantfile
         -   [SSL 教程](https://www.golinuxcloud.com/blog/)
         -   [SSL 設定 Mozilla](https://ssl-config.mozilla.org/)
     -   [xRDP](https://bytexd.com/xrdp-centos/)
-    -   [NTP](https://www.ntppool.org/en/)
+    -   [國家時間規劃](https://www.ntppool.org/en/)
 -   [域名系統](<>)
     -   [綁定](https://www.isc.org/bind/)
     -   [綁定日誌記錄](https://www.zytrax.com/books/dns/ch7/logging.html)
@@ -1330,7 +1355,7 @@ Vagrantfile
     -   [LPIC-3 305-300 目標](https://www.lpi.org/our-certifications/exam-305-objectives/)
     -   [LPIC-3 305-300 維基](https://wiki.lpi.org/wiki/LPIC-305_Objectives_V3.0)
     -   [LPIC-3 305-300 學習教材](https://cursos.linuxsemfronteiras.com.br/courses/preparatorio-para-certificacao-lpic-3-305/)
-    -   [LPIC-3 305-300 ITexams 模擬考試](https://www.itexams.com/info/305-300)
+    -   [ITexams 的 LPIC-3 305-300 模擬考試](https://www.itexams.com/info/305-300)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
