@@ -178,7 +178,7 @@ vagrant/destroy.ps1
 ## Feuille de route
 
 -   [x] Créer un référentiel
--   [x] Créer des scripts pour les laboratoires de provisioning
+-   [x] Créer des scripts pour les laboratoires de provisionnement
 -   [x] Créer des exemples sur le sujet 351
 -   [ ] Créer des exemples sur le sujet 352
 -   [ ] Créer des exemples sur le sujet 353
@@ -297,7 +297,7 @@ Fonctionne sur un système d'exploitation conventionnel, s'appuyant sur le syst�
 
 -   Environnement de déploiement :
     -   Les hyperviseurs de type 1 sont couramment déployés dans les centres de données et les environnements d'entreprise en raison de leur interaction directe avec le matériel et de leurs hautes performances.
-    -   Les hyperviseurs de type 2 sont plus adaptés aux tâches d'utilisation personnelle, de développement, de test et de virtualisation à petite échelle.
+    -   Les hyperviseurs de type 2 sont plus adaptés à un usage personnel, au développement, aux tests et aux tâches de virtualisation à petite échelle.
 -   Performance:
     -   Les hyperviseurs de type 1 offrent généralement de meilleures performances et une latence plus faible car ils ne s'appuient pas sur un système d'exploitation hôte.
     -   Les hyperviseurs de type 2 peuvent subir une certaine dégradation des performances en raison de la surcharge liée à l'exécution sur un système d'exploitation hôte.
@@ -391,12 +391,12 @@ Xen avec des invités paravirtualisés, des outils VMware dans certaines configu
 ###### Performance
 
 -   **HVM:**Fournit généralement des performances quasi natives grâce à l’exécution assistée par matériel.
--   **Paravirtualisation :**Peut offrir des performances efficaces en réduisant la surcharge de l'émulation matérielle, mais repose sur un système d'exploitation invité modifié.
+-   **Paravirtualisation :** Can offer efficient performance by reducing the overhead of hardware emulation, but relies on modified guest OS.
 
 ###### Dépendance matérielle
 
 -   **HVM:**Nécessite des fonctionnalités CPU spécifiques (Intel VT-x, AMD-V).
--   **Paravirtualisation :**Ne nécessite pas de fonctionnalités de processeur spécifiques mais nécessite un système d'exploitation invité modifié.
+-   **Paravirtualization:**Ne nécessite pas de fonctionnalités de processeur spécifiques mais nécessite un système d'exploitation invité modifié.
 
 ###### Isolement
 
@@ -573,7 +573,7 @@ Denodo, virtualisation des données Red Hat JBoss, IBM InfoSphere.
 -   Configuration de base des nœuds et domaines Xen
 -   Gestion de base des nœuds et domaines Xen
 -   Dépannage de base des installations Xen
--   Avaricité des pilules
+-   Avarité des pilules
 -   Connaissance de XenStore
 -   Connaissance des paramètres de démarrage Xen
 -   Connaissance de l'utilitaire xm
@@ -604,7 +604,7 @@ Le projet Xen fonctionne sous la Fondation Linux et se concentre sur la créatio
 
 -   **Objectifs:**Le projet Xen vise à faire progresser l'hyperviseur en améliorant ses performances, sa sécurité et ses fonctionnalités pour un large éventail de cas d'utilisation, notamment le cloud computing, la virtualisation axée sur la sécurité (par exemple, Qubes OS) et les systèmes embarqués.
 -   **Contributeurs :**Le projet inclut des contributeurs de diverses organisations, notamment des principaux fournisseurs de cloud, des fournisseurs de matériel et des développeurs indépendants.
--   **PILULES ET OUTILS HANTOOLS :**Le projet Xen comprend également des outils tels que XAPI (XenAPI), utilisé pour gérer les installations de l'hyperviseur Xen, ainsi que divers autres utilitaires pour la gestion et l'optimisation du système.
+-   **PILULES ET OUTILS HANTOOL :**Le projet Xen comprend également des outils tels que XAPI (XenAPI), utilisé pour gérer les installations de l'hyperviseur Xen, ainsi que divers autres utilitaires pour la gestion et l'optimisation du système.
 
 #### XenStore
 
@@ -613,9 +613,9 @@ Essentiellement, Xen Store est une base de données clé-valeur distribuée util
 
 Voici quelques aspects clés de Xen Store :
 
--   **Communication inter-domaine :**Xen Store permet la communication entre des domaines, tels que Dom0 (le domaine privilégié qui contrôle les ressources matérielles) et DomUs (domaines utilisateur, qui sont les machines virtuelles). Cela se fait via des entrées clé-valeur, où chaque domaine peut lire ou écrire des informations.
+-   **Communication inter-domaine :**Xen Store permet la communication entre les domaines, tels que Dom0 (le domaine privilégié qui contrôle les ressources matérielles) et DomUs (les domaines utilisateur, qui sont les machines virtuelles). Cela se fait via des entrées clé-valeur, où chaque domaine peut lire ou écrire des informations.
 
--   **Gestion des configurations :**Il est utilisé pour stocker et accéder aux informations de configuration, telles que les périphériques virtuels, la mise en réseau et les paramètres de démarrage. Cela facilite la gestion et la configuration dynamiques des VM.
+-   **Gestion des configurations :**Il est utilisé pour stocker et accéder aux informations de configuration, telles que les périphériques virtuels, la mise en réseau et les paramètres de démarrage. Cela facilite la gestion dynamique et la configuration des machines virtuelles.
 
 -   **Événements et notifications :**Xen Store prend également en charge les notifications d'événements. Lorsqu'une clé ou une valeur particulière dans le Xen Store est modifiée, les domaines intéressés peuvent être avertis pour réagir à ces modifications. Ceci est utile pour surveiller et gérer les ressources.
 
@@ -648,7 +648,7 @@ XAPI est l'interface qui permet le contrôle et l'automatisation de l'hyperviseu
 
 #### Domain0 (Dom0)
 
-Domain0, ou Dom0, est le domaine de contrôle dans une architecture Xen. Il gère d'autres domaines (DomUs) et dispose d'un accès direct au matériel.  
+Domain0, ou Dom0, est le domaine de contrôle dans une architecture Xen. Il gère d'autres domaines (DomUs) et a un accès direct au matériel.  
 Dom0 exécute des pilotes de périphériques, permettant aux DomU, qui ne disposent pas d'un accès direct au matériel, de communiquer avec les périphériques. En règle générale, il s'agit d'une instance complète d'un système d'exploitation, comme Linux, et elle est essentielle au fonctionnement de l'hyperviseur Xen.
 
 #### DomaineU (DomU)
@@ -673,9 +673,28 @@ Domain0 (Dom0), DomainU (DomU)
 PV-DomU, HVM-DomU
 /etc/xen/
 xl
-xl.cfg
-xl.conf
+xl.cfg 
+xl.conf # Xen global configurations
 xentop
+oxenstored # Xenstore configurations
+```
+
+#### 351.2 Remarques
+
+```sh
+
+# Xen Settings
+/etc/xen/
+/etc/xen/xl.conf - Main general configuration file for Xen
+/etc/xen/oxenstored.conf - Xenstore configurations
+
+# VM Configurations
+/etc/xen/xlexample.pvlinux
+/etc/xen/xlexample.hvm
+
+# Service Configurations
+/etc/default/xen
+/etc/default/xendomains
 ```
 
 #### 351.2 Commandes importantes
@@ -700,6 +719,12 @@ xl mem-set 0 2048
 
 # Limite cpu (not permanent after boot)
 xl vcpu-set 0 2
+
+# manual conf
+man xl.conf
+
+# manual cfg - about guest configuration
+man xl.cfg
 ```
 
 ##### brctl
@@ -877,7 +902,7 @@ foo
 -   Comprendre les concepts de système et de conteneur d'applications
 -   Comprendre et analyser les espaces de noms du noyau
 -   Comprendre et analyser les groupes de contrôle
--   Comprendre et analyser les capacités
+-   Understand and analyze capabilities
 -   Comprendre le rôle de seccomp, SELinux et AppArmor pour la virtualisation des conteneurs
 -   Comprendre comment LXC et Docker exploitent les espaces de noms, les groupes de contrôle, les capacités, seccomp et MAC
 -   Comprendre le principe du runc
@@ -975,7 +1000,7 @@ foo
 **Domaines de connaissances clés :**
 
 -   Comprendre l'architecture et les composants de Docker
--   Gérer les conteneurs Docker à l'aide d'images d'un registre Docker
+-   Gérer les conteneurs Docker à l'aide d'images provenant d'un registre Docker
 -   Comprendre et gérer les images et les volumes pour les conteneurs Docker
 -   Comprendre et gérer la journalisation pour les conteneurs Docker
 -   Comprendre et gérer la mise en réseau pour Docker
@@ -1010,7 +1035,7 @@ Dockerfile
 
 ### 352.4 Plateformes d'orchestration de conteneurs
 
-**Poids:**3
+**Poids:** 3
 
 **Description:**Les candidats doivent comprendre l'importance de l'orchestration des conteneurs et les concepts clés fournis par Docker Swarm et Kubernetes pour mettre en œuvre l'orchestration des conteneurs.
 
@@ -1159,7 +1184,7 @@ user-data
 -   Accéder aux machines virtuelles Vagrant
 -   Partager et synchroniser le dossier entre une machine virtuelle Vagrant et le système hôte
 -   Comprendre le provisionnement Vagrant, c'est-à-dire les provisionneurs de fichiers et de shell
--   Comprendre la configuration multi-machines
+-   Understand multi-machine setup
 
 #### 353.4 Objets cités
 
@@ -1230,7 +1255,7 @@ Lien du projet :<https://github.com/marcossilvestrini/learning-lpic-3-305-300>
     -   [Collection GNU/Linux](https://directory.fsf.org/wiki/Collection:GNU/Linux)
     -   [Chargeur de démarrage GNU Grub](https://www.gnu.org/software/grub/)
     -   [GNU Hurd](https://www.gnu.org/software/hurd/hurd/what_is_the_gnu_hurd.html)
--   [Noyau](<>)
+-   [Kernel](<>)
     -   [Noyau](https://www.kernel.org/)
     -   [Pages de manuel du noyau Linux](https://www.kernel.org/doc/man-pages/)
     -   [Compilez votre noyau](https://wiki.linuxquestions.org/wiki/How_to_build_and_install_your_own_Linux_kernel)
@@ -1282,7 +1307,7 @@ Lien du projet :<https://github.com/marcossilvestrini/learning-lpic-3-305-300>
 -   [Gestionnaire de paquets](<>)
     -   [Télécharger les forfaits](https://pkgs.org/)
     -   [Installer des packages](https://installati.one/)
-    -   [Guider les packages d'installation](https://installati.one/)
+    -   [Guider l'installation des packages](https://installati.one/)
 -   [Script Shell](<>)
     -   [Bourne à nouveau Shell](https://www.gnu.org/software/bash/manual/)
     -   [Case](https://bash.cyberciti.biz/guide/Shebang)
@@ -1323,7 +1348,7 @@ Lien du projet :<https://github.com/marcossilvestrini/learning-lpic-3-305-300>
     -   [HaLVM](https://galois.com/project/halvm/)
     -   [Unique](https://github.com/solo-io/unik/blob/master/docs/providers/virtualbox.md)
 -   [Documents Openstack](<>)
-    -   [Chapeau rouge](https://www.redhat.com/pt-br/topics/openstack)
+    -   [Chapeau Rouge](https://www.redhat.com/pt-br/topics/openstack)
 -   [Ouvrir le vSwitch](<>)
     -   [OVS Doc 4Linux](https://blog.4linux.com.br/open-vswitch-o-que-e-o-que-come-onde-vive)
 -   [Examen LPIC-3 305-300](<>)
