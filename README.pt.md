@@ -88,7 +88,7 @@
 > e software livre\\
 > Algumas distribuições GNULinux como Debian e RPM serão abordadas\\
 > A instalação e configuração de alguns pacotes também serão abordadas\\
-> Ao fazer isso, você pode dar a toda a comunidade a oportunidade de se beneficiar de suas alterações.\\
+> Ao fazer isso, você pode dar a toda a comunidade a chance de se beneficiar de suas alterações.\\
 > O acesso ao código-fonte é uma pré-condição para isso.\\
 > Use o vagrant para atualizar máquinas, executar laboratórios e praticar o conteúdo deste artigo.\\
 > Publiquei na pasta Vagrant um Vagrantfile com o que é necessário\\
@@ -234,9 +234,9 @@ man COMMAND
 
 -   Entenda a terminologia de virtualização
 -   Entenda os prós e os contras da virtualização
--   Compreenda as diversas variações de hipervisores e monitores de máquinas virtuais
+-   Compreender as diversas variações de hipervisores e monitores de máquinas virtuais
 -   Entenda os principais aspectos da migração de máquinas físicas para virtuais
--   Compreender os principais aspectos da migração de máquinas virtuais entre sistemas host
+-   Compreenda os principais aspectos da migração de máquinas virtuais entre sistemas host
 -   Compreenda os recursos e as implicações da virtualização para uma máquina virtual, como captura instantânea, pausa, clonagem e limites de recursos
 -   Conhecimento de oVirt, Proxmox, systemd-machined e VirtualBox
 -   Conscientização do Open vSwitch
@@ -276,7 +276,7 @@ Migration (P2V, V2V)
 
 ##### Hipervisor tipo 2 (hipervisor hospedado)
 
-###### Definição de tipo 2
+###### Definição Tipo 2
 
 É executado sobre um sistema operacional convencional, contando com o sistema operacional host para gerenciamento de recursos e suporte a dispositivos.
 
@@ -321,7 +321,7 @@ Em outras palavras, um sistema operacional e seus aplicativos, executados em har
 ##### V2V - Migração Virtual para Virtual
 
 A migração V2V refere-se ao processo de migração de uma máquina virtual de um hipervisor para outro.  
-Neste caso, você já possui uma máquina virtual rodando em um ambiente virtualizado (como VMware) e deseja movê-la para outro ambiente virtualizado (por exemplo, para Hyper-V ou para um novo servidor VMware).
+Neste caso, você já possui uma máquina virtual em execução em um ambiente virtualizado (como VMware) e deseja movê-la para outro ambiente virtualizado (por exemplo, para Hyper-V ou para um novo servidor VMware).
 
 -   Exemplo: você tem uma máquina virtual rodando em um servidor de virtualização VMware, mas decide migrá-la para uma plataforma Hyper-V. Nesse caso, a migração V2V converte a máquina virtual de um formato ou hipervisor para outro, garantindo que ela continue funcionando corretamente.
 
@@ -371,7 +371,7 @@ A paravirtualização envolve a modificação do sistema operacional convidado p
 
 Xen com convidados paravirtualizados, ferramentas VMware em determinadas configurações e algumas configurações KVM.
 
-###### Vantagens da Paravirtualização
+###### Vantagens da paravirtualização
 
 -   **Eficiência:**Reduz a sobrecarga de virtualização de hardware, oferecendo potencialmente melhor desempenho para determinadas cargas de trabalho.
 -   **Utilização de recursos:**Uso mais eficiente dos recursos do sistema devido à comunicação direta entre o sistema operacional convidado e o hipervisor.
@@ -664,7 +664,7 @@ Isso resulta em menor sobrecarga e melhor eficiência em comparação com a virt
 #### HVM-DomU (Domínio de Máquina Virtual de HardwareU)
 
 HVM-DomUs são máquinas virtuais que utilizam virtualização completa, permitindo a execução de sistemas operacionais não modificados. O hipervisor Xen fornece emulação de hardware para esses DomUs, permitindo-lhes executar qualquer sistema operacional que suporte a arquitetura de hardware subjacente.  
-Embora isso ofereça maior flexibilidade, pode resultar em maior sobrecarga em comparação com PV-DomUs.
+Embora isso ofereça maior flexibilidade, pode resultar em sobrecarga maior em comparação com PV-DomUs.
 
 #### 351.2 Objetos Citados
 
@@ -673,9 +673,28 @@ Domain0 (Dom0), DomainU (DomU)
 PV-DomU, HVM-DomU
 /etc/xen/
 xl
-xl.cfg
-xl.conf
+xl.cfg 
+xl.conf # Xen global configurations
 xentop
+oxenstored # Xenstore configurations
+```
+
+#### 351.2 Notas
+
+```sh
+
+# Xen Settings
+/etc/xen/
+/etc/xen/xl.conf - Main general configuration file for Xen
+/etc/xen/oxenstored.conf - Xenstore configurations
+
+# VM Configurations
+/etc/xen/xlexample.pvlinux
+/etc/xen/xlexample.hvm
+
+# Service Configurations
+/etc/default/xen
+/etc/default/xendomains
 ```
 
 #### 351.2 Comandos Importantes
@@ -700,6 +719,12 @@ xl mem-set 0 2048
 
 # Limite cpu (not permanent after boot)
 xl vcpu-set 0 2
+
+# manual conf
+man xl.conf
+
+# manual cfg - about guest configuration
+man xl.cfg
 ```
 
 ##### brctl
@@ -730,7 +755,7 @@ brctl show
 -   Gerencie instantâneos usando o monitor QEMU
 -   Instale os drivers de dispositivo QEMU Guest Agent e VirtIO
 -   Solucionar problemas de instalações QEMU, incluindo rede e armazenamento
--   Consciência de parâmetros importantes de configuração do QEMU
+-   Conscientização de parâmetros importantes de configuração do QEMU
 
 #### 351.3 Objetos Citados
 
@@ -1018,7 +1043,7 @@ Dockerfile
 
 -   Entenda a relevância da orquestração de contêineres
 -   Entenda os principais conceitos do Docker Compose e do Docker Swarm
--   Compreenda os principais conceitos do Kubernetes e Helm
+-   Compreenda os principais conceitos de Kubernetes e Helm
 -   Conscientização sobre OpenShift, Rancher e Mesosphere DC/OS
 
 <p align="right">(<a href="#topic-352.4">back to sub topic 352.4</a>)</p>
@@ -1145,7 +1170,7 @@ user-data
 
 <a name="topic-353.4"></a>
 
-### 353.4 Vagabundo
+### 353,4 Vagabundo
 
 **Peso:**3
 
@@ -1240,7 +1265,7 @@ Link do projeto:<https://github.com/marcossilvestrini/learning-lpic-3-305-300>
     -   [Estrutura de hierarquia de arquivos](https://refspecs.linuxfoundation.org/FHS_3.0/fhs-3.0.pdf)
 -   [Software Livre](<>)
     -   [FSF](https://www.fsf.org)
-    -   [Diretório de software gratuito](https://directory.fsf.org/wiki/Free_Software_Directory:Free_software_replacements)
+    -   [Diretório de Software Gratuito](https://directory.fsf.org/wiki/Free_Software_Directory:Free_software_replacements)
 -   [Licença](<>)
     -   [Software Livre](https://www.gnu.org/philosophy/free-sw.html)
     -   [Copyleft](https://www.gnu.org/licenses/copyleft.en.html)
@@ -1299,7 +1324,7 @@ Link do projeto:<https://github.com/marcossilvestrini/learning-lpic-3-305-300>
     -   [Exemplos de comandos](https://www.geeksforgeeks.org/)
 -   [Outras ferramentas](<>)
     -   [Bugzila](https://bugzilla.kernel.org/)
-    -   [Emblemas do GitHub](https://github.com/alexandresanlim/Badges4-README.md-Profile)
+    -   [Emblemas do Github](https://github.com/alexandresanlim/Badges4-README.md-Profile)
 -   [Definições de virtualização](<>)
     -   [Chapéu Vermelho](https://www.redhat.com/pt-br/topics/virtualization/what-is-virtualization)
     -   [AWS](https://aws.amazon.com/pt/what-is/virtualization/)
