@@ -684,9 +684,28 @@ Domain0 (Dom0), DomainU (DomU)
 PV-DomU, HVM-DomU
 /etc/xen/
 xl
-xl.cfg
-xl.conf
+xl.cfg 
+xl.conf # Xen global configurations
 xentop
+oxenstored # Xenstore configurations
+```
+
+#### 351.2 Notes
+
+```sh
+
+# Xen Settings
+/etc/xen/
+/etc/xen/xl.conf - Main general configuration file for Xen
+/etc/xen/oxenstored.conf - Xenstore configurations
+
+# VM Configurations
+/etc/xen/xlexample.pvlinux
+/etc/xen/xlexample.hvm
+
+# Service Configurations
+/etc/default/xen
+/etc/default/xendomains
 ```
 
 #### 351.2 Important Commands
@@ -711,6 +730,12 @@ xl mem-set 0 2048
 
 # Limite cpu (not permanent after boot)
 xl vcpu-set 0 2
+
+# manual conf
+man xl.conf
+
+# manual cfg - about guest configuration
+man xl.cfg
 ```
 
 ##### brctl
