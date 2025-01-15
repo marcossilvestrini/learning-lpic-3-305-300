@@ -270,7 +270,7 @@ Se ejecuta directamente en el hardware físico del host, proporcionando una capa
 ###### Ejemplos de tipo 1
 
 -   VMware ESXi: un hipervisor robusto y ampliamente utilizado en entornos empresariales.
--   Microsoft Hyper-V: integrado con Windows Server, ofrece sólidas funciones de administración y rendimiento.
+-   Microsoft Hyper-V: integrado con Windows Server, ofrece potentes funciones de gestión y rendimiento.
 -   Xen: un hipervisor de código abierto utilizado por muchos proveedores de servicios en la nube.
 -   KVM (Máquina virtual basada en kernel): Integrada en el kernel de Linux, proporciona un alto rendimiento para sistemas basados ​​en Linux.
 
@@ -291,7 +291,7 @@ Se ejecuta sobre un sistema operativo convencional y depende del sistema operati
 -   VMware Workstation: un potente hipervisor para ejecutar múltiples sistemas operativos en un solo escritorio.
 -   Oracle VirtualBox: un hipervisor de código abierto conocido por su flexibilidad y facilidad de uso.
 -   Parallels Desktop: Diseñado para que los usuarios de Mac ejecuten Windows y otros sistemas operativos junto con macOS.
--   QEMU (Quick EMULator): un emulador y virtualizador de código abierto, que a menudo se usa junto con KVM.
+-   QEMU (Quick EMULator): un emulador y virtualizador de código abierto, que a menudo se utiliza junto con KVM.
 
 ##### Diferencias clave entre los hipervisores tipo 1 y tipo 2
 
@@ -673,9 +673,28 @@ Domain0 (Dom0), DomainU (DomU)
 PV-DomU, HVM-DomU
 /etc/xen/
 xl
-xl.cfg
-xl.conf
+xl.cfg 
+xl.conf # Xen global configurations
 xentop
+oxenstored # Xenstore configurations
+```
+
+#### 351.2 Notas
+
+```sh
+
+# Xen Settings
+/etc/xen/
+/etc/xen/xl.conf - Main general configuration file for Xen
+/etc/xen/oxenstored.conf - Xenstore configurations
+
+# VM Configurations
+/etc/xen/xlexample.pvlinux
+/etc/xen/xlexample.hvm
+
+# Service Configurations
+/etc/default/xen
+/etc/default/xendomains
 ```
 
 #### 351.2 Comandos importantes
@@ -700,6 +719,12 @@ xl mem-set 0 2048
 
 # Limite cpu (not permanent after boot)
 xl vcpu-set 0 2
+
+# manual conf
+man xl.conf
+
+# manual cfg - about guest configuration
+man xl.cfg
 ```
 
 ##### brctl
