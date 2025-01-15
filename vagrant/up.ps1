@@ -1,9 +1,10 @@
 # Variables
 $WORKDIR = $PSScriptRoot
+$BASE_DIR= $WORKDIR | Split-Path -Parent
 
 # Fix scripts
-& "C:\Program Files\Git\mingw64\bin\dos2unix.exe" $WORKDIR\scripts\commons\*
-& "C:\Program Files\Git\mingw64\bin\dos2unix.exe" $WORKDIR\configs\commons\*
+& "C:\Program Files\Git\mingw64\bin\dos2unix.exe" $BASE_DIR\scripts\commons\*
+& "C:\Program Files\Git\mingw64\bin\dos2unix.exe" $BASE_DIR\configs\commons\*
 
 # Set workdir
 Set-Location -Path $WORKDIR

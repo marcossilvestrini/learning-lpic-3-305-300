@@ -23,13 +23,18 @@ if echo "$RELEASE_INFO" | grep -q -i "debian\|ubuntu"; then
     sudo apt install -y  \
     dos2unix \
     lvm2 \
-    bridge-utils
+    bridge-utils \
+    tree
 
     # Configure profile
     sudo cp -f configs/commons/.bashrc_debian  .bashrc
     sudo cp -f configs/commons/.bashrc_debian  /root/.bashrc
     sudo cp -f configs/commons/profile_debian  /etc/profile.d/
     sudo chmod 644 /etc/profile.d/profile_debian
+
+    # Configure vim
+    sudo cp -f configs/commons/.vimrc  .vimrc
+    sudo cp -f configs/commons/.vimrc  /root/.vimrc
         
     # Oracle Linux
     elif echo "$RELEASE_INFO" | grep -q -i "oracle"; then
