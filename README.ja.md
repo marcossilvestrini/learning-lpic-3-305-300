@@ -90,7 +90,7 @@
 > 一部のパッケージのインストールと構成についても説明します\\
 > こうすることで、コミュニティ全体が変更から恩恵を受ける機会を得ることができます。\\
 > ソース コードへのアクセスがその前提条件です。\\
-> 稼働中のマシンに vagrant を使用し、ラボを実行して、この記事の内容を実践してください。\\
+> 稼働中のマシンには vagrant を使用し、ラボを実行して、この記事の内容を実践してください。\\
 > 必要なものを含む Vagrantfile をフォルダー Vagrant に公開しました\\
 > 学習環境をアップロードするため
 
@@ -133,7 +133,7 @@ cd learning-lpic-3-305-300
     -   vm.vmx[「numvcpus」"]= ""
     -   vm.vmx[「cpuid"coresPerSocket」.]= ""
 
-ファイル内のネットワーク構成をカスタマイズする[構成/ネットワーク](configs/network/).
+ファイルでネットワーク構成をカスタマイズする[構成/ネットワーク](configs/network/).
 
 * * *
 
@@ -190,7 +190,7 @@ vagrant/destroy.ps1
 
 ## 4 つの必須の自由
 
-> 0.目的を問わず、プログラムを自由に実行できる (自由 0)。\\
+> 0.目的を問わず、プログラムを自由に実行できます (自由 0)。\\
 > 1.プログラムがどのように動作するかを研究し、そのように変更する自由\\
 > あなたのコンピューティングを思いのままに (自由 1)。\\
 > ソース コードへのアクセスがその前提条件です。\\
@@ -299,7 +299,7 @@ Migration (P2V, V2V)
     -   タイプ 1 ハイパーバイザーは、ハードウェアとの直接対話と高いパフォーマンスのため、一般にデータセンターやエンタープライズ環境に導入されます。
     -   タイプ 2 ハイパーバイザーは、個人使用、開発、テスト、および小規模な仮想化タスクにより適しています。
 -   パフォーマンス：
-    -   タイプ 1 ハイパーバイザーは一般に、ホスト OS に依存しないため、パフォーマンスが向上し、遅延が低くなります。
+    -   タイプ 1 ハイパーバイザーは、ホスト OS に依存しないため、一般にパフォーマンスが向上し、遅延が低くなります。
     -   タイプ 2 ハイパーバイザーは、ホスト OS 上で実行するオーバーヘッドにより、パフォーマンスが低下する可能性があります。
 -   管理と使いやすさ:
     -   タイプ 1 ハイパーバイザーは、より複雑なセットアップと管理を必要としますが、大規模な展開向けの高度な機能と拡張性を提供します。
@@ -310,10 +310,10 @@ Migration (P2V, V2V)
 仮想マシンの作成と管理に使用されるテクノロジーであるハイパーバイザーのコンテキストでは、仮想化環境では P2V 移行と V2V 移行という用語が一般的です。  
 これらは、異なるタイプのプラットフォーム間でシステムを移行するプロセスを指します。
 
-##### P2V - Physical to Virtual Migration
+##### P2V - 物理から仮想への移行
 
 P2V 移行とは、物理サーバーを仮想マシンに移行するプロセスを指します。  
-言い換えれば、専用の物理ハードウェア上で実行されているオペレーティング システムとそのアプリケーションは「変換」され、ハイパーバイザー (VMware、Hyper-V、KVM など) 上で実行される仮想マシンに移動されます。
+言い換えれば、専用の物理ハードウェア上で実行されるオペレーティング システムとそのアプリケーションは「変換」され、ハイパーバイザー (VMware、Hyper-V、KVM など) 上で実行される仮想マシンに移動されます。
 
 -   例: Windows または Linux システムを実行している物理サーバーがあり、それをクラウド インフラストラクチャや内部仮想化サーバーなどの仮想環境に移動したいと考えています。  
     このプロセスには、オペレーティング システム、ドライバー、データを含むシステム状態全体をコピーして、物理ハードウェア上で動作するかのように実行できる同等の仮想マシンを作成することが含まれます。
@@ -321,7 +321,7 @@ P2V 移行とは、物理サーバーを仮想マシンに移行するプロセ�
 ##### V2V - 仮想から仮想への移行
 
 V2V 移行とは、仮想マシンをあるハイパーバイザーから別のハイパーバイザーに移行するプロセスを指します。  
-In this case, you already have a virtual machine running in a virtualized environment (like VMware), and you want to move it to another virtualized environment (for example, to Hyper-V or to a new VMware server).
+この場合、仮想環境 (VMware など) で仮想マシンがすでに実行されており、それを別の仮想環境 (たとえば、Hyper-V または新しい VMware サーバー) に移動したいと考えています。
 
 -   例: VMware 仮想化サーバー上で実行されている仮想マシンがありますが、それを Hyper-V プラットフォームに移行することにしました。この場合、V2V 移行により、仮想マシンがある形式またはハイパーバイザーから別の形式またはハイパーバイザーに変換され、正しく実行を継続できるようになります。
 
@@ -592,7 +592,7 @@ Xen は、物理ハードウェアと仮想マシン (VM) の間にレイヤー�
 #### Xenソース
 
 XenSource は、Xen を商用化するためにケンブリッジ大学の Xen ハイパーバイザーの最初の開発者によって設立された会社です。  
-同社は、Xen に基づいたエンタープライズ ソリューションを提供し、企業での使用向けに Xen の機能を強化するための追加のツールとサポートを提供しました。
+同社は、Xen に基づいたエンタープライズ ソリューションを提供し、企業での使用向けに Xen の機能を強化するための追加ツールとサポートを提供しました。
 
 -   **シトリックスによる買収**：2007 年、XenSource は Citrix Systems, Inc. に買収されました。Citrix は、Xen テクノロジーを Citrix XenServer 製品の基盤として使用し、Xen ベースのエンタープライズ グレードの仮想化プラットフォームとして人気を博しました。
 -   **遷移**：買収後、Xen プロジェクトはオープンソース プロジェクトとして継続されましたが、Citrix は XenSource テクノロジーを活用して XenServer などの商用製品に注力しました。
@@ -602,18 +602,18 @@ XenSource は、Xen を商用化するためにケンブリッジ大学の Xen �
 Xen プロジェクトとは、Xen ハイパーバイザーの商用化後の開発と保守を担当するオープンソース コミュニティおよびイニシアチブを指します。  
 Xen プロジェクトは Linux Foundation の下で運営されており、コミュニティ主導の共同作業として Xen の構築、改善、サポートに重点を置いています。
 
--   **目標:**Xen プロジェクトは、クラウド コンピューティング、セキュリティ重視の仮想化 (Qubes OS など)、組み込みシステムなど、幅広いユースケース向けにパフォーマンス、セキュリティ、機能セットを改善することでハイパーバイザーを進化させることを目指しています。
+-   **目標:**Xen プロジェクトは、クラウド コンピューティング、セキュリティ重視の仮想化 (Qubes OS など)、組み込みシステムなどの幅広いユースケース向けにパフォーマンス、セキュリティ、機能セットを改善することでハイパーバイザーを進化させることを目指しています。
 -   **寄稿者:**このプロジェクトには、大手クラウド プロバイダー、ハードウェア ベンダー、独立系開発者など、さまざまな組織からの貢献者が参加しています。
 -   **錠剤とハンツール:**Xen プロジェクトには、Xen ハイパーバイザーのインストールの管理に使用される XAPI (XenAPI) などのツールや、システム管理と最適化のためのその他のさまざまなユーティリティも含まれています。
 
 #### XenStore
 
 Xen Store は、Xen Hypervisor の重要なコンポーネントです。  
-基本的に、Xen Store は、Xen ハイパーバイザーとそれが管理する仮想マシン (ドメインとも呼ばれる) 間の通信と情報共有に使用される分散キー/値データベースです。
+基本的に、Xen Store は、Xen ハイパーバイザーとそれが管理する仮想マシン (ドメインとも呼ばれます) の間の通信と情報共有に使用される分散キー/値データベースです。
 
-Xen Store の重要な側面をいくつか紹介します。
+Xen Store の重要な側面をいくつか示します。
 
--   **ドメイン間通信:**Xen Store を使用すると、Dom0 (ハードウェア リソースを制御する特権ドメイン) と DomU (ユーザー ドメイン、VM) などのドメイン間の通信が可能になります。これは、各ドメインが情報を読み書きできるキーと値のエントリを通じて行われます。
+-   **ドメイン間通信:**Xen Store を使用すると、Dom0 (ハードウェア リソースを制御する特権ドメイン) と DomU (VM であるユーザー ドメイン) などのドメイン間の通信が可能になります。これは、各ドメインが情報を読み書きできるキーと値のエントリを通じて行われます。
 
 -   **構成管理:**これは、仮想デバイス、ネットワーク、ブート パラメーターなどの構成情報を保存し、アクセスするために使用されます。これにより、VM の動的な管理と構成が容易になります。
 
@@ -666,6 +666,12 @@ PV-DomU は準仮想化と呼ばれる技術を使用します。このモデル
 HVM-DomU は完全仮想化を利用した仮想マシンであり、変更されていないオペレーティング システムを実行できます。 Xen ハイパーバイザーは、これらの DomU にハードウェア エミュレーションを提供し、基礎となるハードウェア アーキテクチャをサポートする任意のオペレーティング システムを DomU で実行できるようにします。  
 これにより柔軟性が向上しますが、PV-DomU と比較してオーバーヘッドが高くなる可能性があります。
 
+#### Xenネットワーク
+
+準仮想化ネットワークデバイス![pv-networking](images/xen-networking2.png)
+
+ブリッジング![pv-networking](images/xen-networking1.png)
+
 #### 351.2 引用オブジェクト
 
 ```sh
@@ -695,6 +701,10 @@ oxenstored # Xenstore configurations
 # Service Configurations
 /etc/default/xen
 /etc/default/xendomains
+
+# xen-tools configurations
+/etc/xen-tools/
+/usr/share/xen-tools/
 ```
 
 #### 351.2 重要なコマンド
@@ -725,12 +735,56 @@ man xl.conf
 
 # manual cfg - about guest configuration
 man xl.cfg
+
+# create DomainU - virtual machines
+xl create /etc/xen/lpic3-pv-guest.cfg
+
+# create DomainU virtual machine and connect to guest
+xl create -c /etc/xen/lpic3-pv-guest.cfg
+
+# connect in domain guest
+xl console <id>|<name> (press enter)
+xl console 1
+xl console lpic3-pv-guest
+
+#How do I exit domU "xl console" session
+#Press ctrl+] or if you're using Putty press ctrl+5.
+
+# Poweroff domain
+xl shutdown lpic3-pv-guest
+
+# destroy domain
+xl destroy lpic3-pv-guest
+
+# reboot domain
+xl reboot lpic3-pv-guest
+```
+
+##### xen-create-image
+
+```sh
+# create a pv image
+xen-create-image \
+  --hostname=lpic3-pv-guest \
+  --memory=1gb \
+  --vcpus=2 \
+  --lvm=vg_xen \
+  --dhcp \
+  --pygrub \
+  --dist=bookworm
+```
+
+##### xen-削除-イメージ
+
+```sh
+# delete a pv image
+xen-delete-image lpic3-pv-guest --lvm=vg_xen
 ```
 
 ##### brctl
 
 ```sh
-# list bridges linked
+# list xen interfaces
 brctl show
 ```
 
@@ -964,7 +1018,7 @@ foo
 -   LXD を使用して既存のイメージに基づいて LXC コンテナー (ネットワーキングやストレージを含む) を管理する
 -   LXCコンテナのプロパティを構成する
 -   LXC コンテナーのリソース使用量を制限する
--   LXDプロファイルを使用する
+-   LXD プロファイルを使用する
 -   LXC イメージを理解する
 -   従来の LXC ツールの認識
 
@@ -1002,7 +1056,7 @@ foo
 -   Docker のアーキテクチャとコンポーネントを理解する
 -   Docker レジストリのイメージを使用して Docker コンテナを管理する
 -   Dockerコンテナのイメージとボリュームを理解して管理する
--   Dockerコンテナのログを理解して管理する
+-   Docker コンテナのログを理解して管理する
 -   Docker のネットワークを理解して管理する
 -   Dockerfile を使用してコンテナー イメージを作成する
 -   レジストリ Docker イメージを使用して Docker レジストリを実行する
@@ -1142,7 +1196,7 @@ packer
 **主要な知識領域:**
 
 -   ユーザーデータ、cloud-init の初期化と構成など、cloud-init の機能と概念を理解する
--   Cloud-init を使用して、ファイル システムの作成、サイズ変更、マウントを行い、SSH キーなどのログイン資格情報を含むユーザー アカウントを構成し、ディストリビューションのリポジトリからソフトウェア パッケージをインストールします。
+-   Cloud-init を使用して、ファイル システムの作成、サイズ変更、マウントを行い、SSH キーなどのログイン認証情報を含むユーザー アカウントを構成し、ディストリビューションのリポジトリからソフトウェア パッケージをインストールします。
 -   Cloud-init をシステム イメージに統合する
 -   テストには構成ドライブ データソースを使用する
 
@@ -1336,6 +1390,8 @@ Vagrantfile
 -   [ゼン](<>)
     -   [Xenサーバー](https://www.xenserver.com/)
     -   [ウィキ Xenプロジェクト](https://wiki.xenproject.org/wiki/Main_Page)
+    -   [ネットワークインターフェース](https://wiki.xenproject.org/wiki/Xen_Networking#Virtual_Network_Interfaces)
+    -   [Xenツール](https://xen-tools.org/software/)
     -   [LPI ブログ: Xen 仮想化とクラウド コンピューティング #01: はじめに](https://www.lpi.org/pt-br/blog/2020/10/01/xen-virtualization-and-cloud-computing-01-introduction/)
     -   [LPI ブログ: Xen 仮想化とクラウド コンピューティング #02: Xen の役割](https://www.lpi.org/blog/2020/10/08/xen-virtualization-and-cloud-computing-02-how-xen-does-job/)
     -   [LPI ブログ: Xen 仮想化とクラウド コンピューティング #04: コンテナー、OpenStack、およびその他の関連プラットフォーム](https://www.lpi.org/pt-br/blog/2020/10/22/xen-virtualization-and-cloud-computing-04-containers-openstack-and-other-related/)
