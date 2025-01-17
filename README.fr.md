@@ -178,7 +178,7 @@ vagrant/destroy.ps1
 ## Feuille de route
 
 -   [x] Créer un référentiel
--   [x] Créer des scripts pour les laboratoires de provisionnement
+-   [x] Créer des scripts pour les laboratoires de provisioning
 -   [x] Créer des exemples sur le sujet 351
 -   [ ] Créer des exemples sur le sujet 352
 -   [ ] Créer des exemples sur le sujet 353
@@ -288,7 +288,7 @@ Fonctionne sur un système d'exploitation conventionnel, s'appuyant sur le syst�
 
 ###### Exemples de type 2
 
--   VMware Workstation : un hyperviseur puissant pour exécuter plusieurs systèmes d'exploitation sur un seul poste de travail.
+-   VMware Workstation : Un hyperviseur puissant pour exécuter plusieurs systèmes d'exploitation sur un seul poste de travail.
 -   Oracle VirtualBox : Un hyperviseur open source connu pour sa flexibilité et sa facilité d'utilisation.
 -   Parallels Desktop : conçu pour que les utilisateurs de Mac puissent exécuter Windows et d'autres systèmes d'exploitation avec macOS.
 -   QEMU (Quick EMUlator) : émulateur et virtualiseur open source, souvent utilisé en conjonction avec KVM.
@@ -297,7 +297,7 @@ Fonctionne sur un système d'exploitation conventionnel, s'appuyant sur le syst�
 
 -   Environnement de déploiement :
     -   Les hyperviseurs de type 1 sont couramment déployés dans les centres de données et les environnements d'entreprise en raison de leur interaction directe avec le matériel et de leurs hautes performances.
-    -   Les hyperviseurs de type 2 sont plus adaptés à un usage personnel, au développement, aux tests et aux tâches de virtualisation à petite échelle.
+    -   Les hyperviseurs de type 2 sont plus adaptés aux tâches d'utilisation personnelle, de développement, de test et de virtualisation à petite échelle.
 -   Performance:
     -   Les hyperviseurs de type 1 offrent généralement de meilleures performances et une latence plus faible car ils ne s'appuient pas sur un système d'exploitation hôte.
     -   Les hyperviseurs de type 2 peuvent subir une certaine dégradation des performances en raison de la surcharge liée à l'exécution sur un système d'exploitation hôte.
@@ -391,12 +391,12 @@ Xen avec des invités paravirtualisés, des outils VMware dans certaines configu
 ###### Performance
 
 -   **HVM:**Fournit généralement des performances quasi natives grâce à l’exécution assistée par matériel.
--   **Paravirtualisation :** Can offer efficient performance by reducing the overhead of hardware emulation, but relies on modified guest OS.
+-   **Paravirtualisation :**Peut offrir des performances efficaces en réduisant la surcharge de l'émulation matérielle, mais repose sur un système d'exploitation invité modifié.
 
 ###### Dépendance matérielle
 
 -   **HVM:**Nécessite des fonctionnalités CPU spécifiques (Intel VT-x, AMD-V).
--   **Paravirtualization:**Ne nécessite pas de fonctionnalités de processeur spécifiques mais nécessite un système d'exploitation invité modifié.
+-   **Paravirtualisation :**Ne nécessite pas de fonctionnalités de processeur spécifiques mais nécessite un système d'exploitation invité modifié.
 
 ###### Isolement
 
@@ -490,7 +490,7 @@ VMware NSX, Cisco ACI, OpenStack Neutron.
 
 Regroupe le stockage physique de plusieurs appareils dans une seule unité de stockage virtuelle qui peut être gérée de manière centralisée.
 
-###### Cas d'utilisation de la définition de virtualisation du stockage
+###### Cas d'utilisation de la définition de la virtualisation du stockage
 
 Gestion des données, optimisation du stockage, reprise après sinistre.
 
@@ -573,7 +573,7 @@ Denodo, virtualisation des données Red Hat JBoss, IBM InfoSphere.
 -   Configuration de base des nœuds et domaines Xen
 -   Gestion de base des nœuds et domaines Xen
 -   Dépannage de base des installations Xen
--   Avarité des pilules
+-   Avaricité des pilules
 -   Connaissance de XenStore
 -   Connaissance des paramètres de démarrage Xen
 -   Connaissance de l'utilitaire xm
@@ -604,7 +604,7 @@ Le projet Xen fonctionne sous la Fondation Linux et se concentre sur la créatio
 
 -   **Objectifs:**Le projet Xen vise à faire progresser l'hyperviseur en améliorant ses performances, sa sécurité et ses fonctionnalités pour un large éventail de cas d'utilisation, notamment le cloud computing, la virtualisation axée sur la sécurité (par exemple, Qubes OS) et les systèmes embarqués.
 -   **Contributeurs :**Le projet inclut des contributeurs de diverses organisations, notamment des principaux fournisseurs de cloud, des fournisseurs de matériel et des développeurs indépendants.
--   **PILULES ET OUTILS HANTOOL :**Le projet Xen comprend également des outils tels que XAPI (XenAPI), utilisé pour gérer les installations de l'hyperviseur Xen, ainsi que divers autres utilitaires pour la gestion et l'optimisation du système.
+-   **PILULES ET OUTILS HANTOOLS :**Le projet Xen comprend également des outils tels que XAPI (XenAPI), utilisé pour gérer les installations de l'hyperviseur Xen, ainsi que divers autres utilitaires pour la gestion et l'optimisation du système.
 
 #### XenStore
 
@@ -613,9 +613,9 @@ Essentiellement, Xen Store est une base de données clé-valeur distribuée util
 
 Voici quelques aspects clés de Xen Store :
 
--   **Communication inter-domaine :**Xen Store permet la communication entre les domaines, tels que Dom0 (le domaine privilégié qui contrôle les ressources matérielles) et DomUs (les domaines utilisateur, qui sont les machines virtuelles). Cela se fait via des entrées clé-valeur, où chaque domaine peut lire ou écrire des informations.
+-   **Communication inter-domaine :**Xen Store permet la communication entre des domaines, tels que Dom0 (le domaine privilégié qui contrôle les ressources matérielles) et DomUs (domaines utilisateur, qui sont les machines virtuelles). Cela se fait via des entrées clé-valeur, où chaque domaine peut lire ou écrire des informations.
 
--   **Gestion des configurations :**Il est utilisé pour stocker et accéder aux informations de configuration, telles que les périphériques virtuels, la mise en réseau et les paramètres de démarrage. Cela facilite la gestion dynamique et la configuration des machines virtuelles.
+-   **Gestion des configurations :**Il est utilisé pour stocker et accéder aux informations de configuration, telles que les périphériques virtuels, la mise en réseau et les paramètres de démarrage. Cela facilite la gestion et la configuration dynamiques des VM.
 
 -   **Événements et notifications :**Xen Store prend également en charge les notifications d'événements. Lorsqu'une clé ou une valeur particulière dans le Xen Store est modifiée, les domaines intéressés peuvent être avertis pour réagir à ces modifications. Ceci est utile pour surveiller et gérer les ressources.
 
@@ -640,7 +640,7 @@ XAPI est l'interface qui permet le contrôle et l'automatisation de l'hyperviseu
 
 #### Résumé Xen
 
--   **Xen :**La technologie d'hyperviseur de base permettant aux machines virtuelles de s'exécuter sur du matériel physique.
+-   **Xén :**La technologie d'hyperviseur de base permettant aux machines virtuelles de s'exécuter sur du matériel physique.
 -   **XenSource :**La société qui a commercialisé Xen, acquise plus tard par Citrix, conduisant au développement de Citrix XenServer.
 -   **Projet Xen :**L'initiative et la communauté open source qui continuent de développer et de maintenir l'hyperviseur Xen sous la Fondation Linux.
 -   **XenStore :**Xen Store agit comme intermédiaire de communication et de configuration entre l'hyperviseur Xen et les VM, rationalisant le fonctionnement et la gestion des environnements virtualisés.
@@ -665,6 +665,12 @@ Cela se traduit par une réduction des frais généraux et une meilleure efficac
 
 Les HVM-DomU sont des machines virtuelles qui utilisent une virtualisation complète, permettant à des systèmes d'exploitation non modifiés de s'exécuter. L'hyperviseur Xen fournit une émulation matérielle pour ces DomU, leur permettant d'exécuter n'importe quel système d'exploitation prenant en charge l'architecture matérielle sous-jacente.  
 Bien que cela offre une plus grande flexibilité, cela peut entraîner des frais généraux plus élevés par rapport aux PV-DomU.
+
+#### Réseau Xen
+
+Périphériques réseau paravirtualisés![pv-networking](images/xen-networking2.png)
+
+Pontage![pv-networking](images/xen-networking1.png)
 
 #### 351.2 Objets cités
 
@@ -695,11 +701,15 @@ oxenstored # Xenstore configurations
 # Service Configurations
 /etc/default/xen
 /etc/default/xendomains
+
+# xen-tools configurations
+/etc/xen-tools/
+/usr/share/xen-tools/
 ```
 
 #### 351.2 Commandes importantes
 
-##### xl
+##### XL
 
 ```sh
 # view xen information
@@ -725,12 +735,56 @@ man xl.conf
 
 # manual cfg - about guest configuration
 man xl.cfg
+
+# create DomainU - virtual machines
+xl create /etc/xen/lpic3-pv-guest.cfg
+
+# create DomainU virtual machine and connect to guest
+xl create -c /etc/xen/lpic3-pv-guest.cfg
+
+# connect in domain guest
+xl console <id>|<name> (press enter)
+xl console 1
+xl console lpic3-pv-guest
+
+#How do I exit domU "xl console" session
+#Press ctrl+] or if you're using Putty press ctrl+5.
+
+# Poweroff domain
+xl shutdown lpic3-pv-guest
+
+# destroy domain
+xl destroy lpic3-pv-guest
+
+# reboot domain
+xl reboot lpic3-pv-guest
+```
+
+##### xen-créer-image
+
+```sh
+# create a pv image
+xen-create-image \
+  --hostname=lpic3-pv-guest \
+  --memory=1gb \
+  --vcpus=2 \
+  --lvm=vg_xen \
+  --dhcp \
+  --pygrub \
+  --dist=bookworm
+```
+
+##### xen-supprimer-image
+
+```sh
+# delete a pv image
+xen-delete-image lpic3-pv-guest --lvm=vg_xen
 ```
 
 ##### brctl
 
 ```sh
-# list bridges linked
+# list xen interfaces
 brctl show
 ```
 
@@ -885,7 +939,7 @@ foo
 
 <a name="topic-352"></a>
 
-## Sujet 352 : Virtualisation des conteneurs
+## Sujet 352 : Virtualisation des conteneurs
 
 * * *
 
@@ -902,7 +956,7 @@ foo
 -   Comprendre les concepts de système et de conteneur d'applications
 -   Comprendre et analyser les espaces de noms du noyau
 -   Comprendre et analyser les groupes de contrôle
--   Understand and analyze capabilities
+-   Comprendre et analyser les capacités
 -   Comprendre le rôle de seccomp, SELinux et AppArmor pour la virtualisation des conteneurs
 -   Comprendre comment LXC et Docker exploitent les espaces de noms, les groupes de contrôle, les capacités, seccomp et MAC
 -   Comprendre le principe du runc
@@ -995,12 +1049,12 @@ foo
 
 **Poids:**9
 
-**Description:**Le candidat doit être capable de gérer les nœuds Docker et les conteneurs Docker. Cela inclut la compréhension de l'architecture de Docker ainsi que la compréhension de la manière dont Docker interagit avec le système Linux du nœud.
+**Description:**Le candidat doit être capable de gérer les nœuds Docker et les conteneurs Docker. Cela inclut la compréhension de l’architecture de Docker ainsi que la compréhension de la manière dont Docker interagit avec le système Linux du nœud.
 
 **Domaines de connaissances clés :**
 
 -   Comprendre l'architecture et les composants de Docker
--   Gérer les conteneurs Docker à l'aide d'images provenant d'un registre Docker
+-   Gérer les conteneurs Docker à l'aide d'images d'un registre Docker
 -   Comprendre et gérer les images et les volumes pour les conteneurs Docker
 -   Comprendre et gérer la journalisation pour les conteneurs Docker
 -   Comprendre et gérer la mise en réseau pour Docker
@@ -1035,7 +1089,7 @@ Dockerfile
 
 ### 352.4 Plateformes d'orchestration de conteneurs
 
-**Poids:** 3
+**Poids:**3
 
 **Description:**Les candidats doivent comprendre l'importance de l'orchestration des conteneurs et les concepts clés fournis par Docker Swarm et Kubernetes pour mettre en œuvre l'orchestration des conteneurs.
 
@@ -1184,7 +1238,7 @@ user-data
 -   Accéder aux machines virtuelles Vagrant
 -   Partager et synchroniser le dossier entre une machine virtuelle Vagrant et le système hôte
 -   Comprendre le provisionnement Vagrant, c'est-à-dire les provisionneurs de fichiers et de shell
--   Understand multi-machine setup
+-   Comprendre la configuration multi-machines
 
 #### 353.4 Objets cités
 
@@ -1250,12 +1304,12 @@ Lien du projet :<https://github.com/marcossilvestrini/learning-lpic-3-305-300>
     -   [Compilateur GCC](https://gcc.gnu.org/wiki/History)
     -   [Tar GNU](https://www.gnu.org/software/tar/)
     -   [Marque GNU](https://www.gnu.org/software/make/)
-    -   [GNU-Emacs](https://en.wikipedia.org/wiki/Emacs)
+    -   [GNU Emacs](https://en.wikipedia.org/wiki/Emacs)
     -   [Paquets GNU](https://www.gnu.org/software/)
     -   [Collection GNU/Linux](https://directory.fsf.org/wiki/Collection:GNU/Linux)
     -   [Chargeur de démarrage GNU Grub](https://www.gnu.org/software/grub/)
     -   [GNU Hurd](https://www.gnu.org/software/hurd/hurd/what_is_the_gnu_hurd.html)
--   [Kernel](<>)
+-   [Noyau](<>)
     -   [Noyau](https://www.kernel.org/)
     -   [Pages de manuel du noyau Linux](https://www.kernel.org/doc/man-pages/)
     -   [Compilez votre noyau](https://wiki.linuxquestions.org/wiki/How_to_build_and_install_your_own_Linux_kernel)
@@ -1307,7 +1361,7 @@ Lien du projet :<https://github.com/marcossilvestrini/learning-lpic-3-305-300>
 -   [Gestionnaire de paquets](<>)
     -   [Télécharger les forfaits](https://pkgs.org/)
     -   [Installer des packages](https://installati.one/)
-    -   [Guider l'installation des packages](https://installati.one/)
+    -   [Guider les packages d'installation](https://installati.one/)
 -   [Script Shell](<>)
     -   [Bourne à nouveau Shell](https://www.gnu.org/software/bash/manual/)
     -   [Case](https://bash.cyberciti.biz/guide/Shebang)
@@ -1336,6 +1390,8 @@ Lien du projet :<https://github.com/marcossilvestrini/learning-lpic-3-305-300>
 -   [Xen](<>)
     -   [XenServeur](https://www.xenserver.com/)
     -   [Wiki XenProjet](https://wiki.xenproject.org/wiki/Main_Page)
+    -   [Interfaces réseau](https://wiki.xenproject.org/wiki/Xen_Networking#Virtual_Network_Interfaces)
+    -   [Outils Xen](https://xen-tools.org/software/)
     -   [Blog LPI : Virtualisation Xen et Cloud Computing #01 : Introduction](https://www.lpi.org/pt-br/blog/2020/10/01/xen-virtualization-and-cloud-computing-01-introduction/)
     -   [Blog LPI : Virtualisation Xen et Cloud Computing #02 : Comment Xen fait le travail](https://www.lpi.org/blog/2020/10/08/xen-virtualization-and-cloud-computing-02-how-xen-does-job/)
     -   [Blog LPI : Virtualisation Xen et Cloud Computing #04 : Conteneurs, OpenStack et autres plates-formes associées](https://www.lpi.org/pt-br/blog/2020/10/22/xen-virtualization-and-cloud-computing-04-containers-openstack-and-other-related/)
@@ -1348,7 +1404,7 @@ Lien du projet :<https://github.com/marcossilvestrini/learning-lpic-3-305-300>
     -   [HaLVM](https://galois.com/project/halvm/)
     -   [Unique](https://github.com/solo-io/unik/blob/master/docs/providers/virtualbox.md)
 -   [Documents Openstack](<>)
-    -   [Chapeau Rouge](https://www.redhat.com/pt-br/topics/openstack)
+    -   [Chapeau rouge](https://www.redhat.com/pt-br/topics/openstack)
 -   [Ouvrir le vSwitch](<>)
     -   [OVS Doc 4Linux](https://blog.4linux.com.br/open-vswitch-o-que-e-o-que-come-onde-vive)
 -   [Examen LPIC-3 305-300](<>)
