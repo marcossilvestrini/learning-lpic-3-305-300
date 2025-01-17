@@ -677,6 +677,14 @@ This results in lower overhead and better efficiency compared to full virtualiza
 HVM-DomUs are virtual machines that utilize full virtualization, allowing unmodified operating systems to run. The Xen hypervisor provides hardware emulation for these DomUs, enabling them to run any operating system that supports the underlying hardware architecture.  
 While this offers greater flexibility, it can result in higher overhead compared to PV-DomUs.
 
+#### Xen Network
+
+Paravirtualised Network Devices
+![pv-networking](images/xen-networking2.png)
+
+Bridging
+![pv-networking](images/xen-networking1.png)
+
 #### 351.2 Cited Objects
 
 ```sh
@@ -706,6 +714,10 @@ oxenstored # Xenstore configurations
 # Service Configurations
 /etc/default/xen
 /etc/default/xendomains
+
+# xen-tools configurations
+/etc/xen-tools/
+/usr/share/xen-tools/
 ```
 
 #### 351.2 Important Commands
@@ -736,12 +748,56 @@ man xl.conf
 
 # manual cfg - about guest configuration
 man xl.cfg
+
+# create DomainU - virtual machines
+xl create /etc/xen/lpic3-pv-guest.cfg
+
+# create DomainU virtual machine and connect to guest
+xl create -c /etc/xen/lpic3-pv-guest.cfg
+
+# connect in domain guest
+xl console <id>|<name> (press enter)
+xl console 1
+xl console lpic3-pv-guest
+
+#How do I exit domU "xl console" session
+#Press ctrl+] or if you're using Putty press ctrl+5.
+
+# Poweroff domain
+xl shutdown lpic3-pv-guest
+
+# destroy domain
+xl destroy lpic3-pv-guest
+
+# reboot domain
+xl reboot lpic3-pv-guest
+```
+
+##### xen-create-image
+
+```sh
+# create a pv image
+xen-create-image \
+  --hostname=lpic3-pv-guest \
+  --memory=1gb \
+  --vcpus=2 \
+  --lvm=vg_xen \
+  --dhcp \
+  --pygrub \
+  --dist=bookworm
+```
+
+##### xen-delete-image
+
+```sh
+# delete a pv image
+xen-delete-image lpic3-pv-guest --lvm=vg_xen
 ```
 
 ##### brctl
 
 ```sh
-# list bridges linked
+# list xen interfaces
 brctl show
 ```
 
@@ -1349,6 +1405,8 @@ Project Link: [https://github.com/marcossilvestrini/learning-lpic-3-305-300](htt
 * [Xen]()
   * [XenServer](https://www.xenserver.com/)
   * [Wiki XenProject](https://wiki.xenproject.org/wiki/Main_Page)
+  * [Network Interfaces](https://wiki.xenproject.org/wiki/Xen_Networking#Virtual_Network_Interfaces)
+  * [Xen Tools](https://xen-tools.org/software/)
   * [LPI Blog: Xen Virtualization and Cloud Computing #01: Introduction](https://www.lpi.org/pt-br/blog/2020/10/01/xen-virtualization-and-cloud-computing-01-introduction/)
   * [LPI Blog: Xen Virtualization and Cloud Computing #02: How Xen Does the Job](https://www.lpi.org/blog/2020/10/08/xen-virtualization-and-cloud-computing-02-how-xen-does-job/)
   * [LPI Blog: Xen Virtualization and Cloud Computing #04: Containers, OpenStack, and Other Related Platforms](https://www.lpi.org/pt-br/blog/2020/10/22/xen-virtualization-and-cloud-computing-04-containers-openstack-and-other-related/)
