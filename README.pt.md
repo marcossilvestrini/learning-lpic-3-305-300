@@ -128,7 +128,7 @@ Personalize um modelo_Vagrantfile-tópico-XXX_. Este arquivo contém uma configu
 
 -   Arquivo[Vagrantfile-topic-351](./vagrant/Vagrantfile-topic-351)
     -   vm.clone_directory = "&lt;sua_letra_do_driver>:\\<folder>\\&lt;para_máquina>\\#{VM_NAME}-instance-1"
-        Exemplo: vm.clone_directory = "E:\\Servidores\\VMware\\#{VM_NAME}-instance-1"
+        Exemplo: vm.clone_directory = "E:\\Servidores\\VMWare\\#{VM_NAME}-instance-1"
     -   vm.vmx["mem tamanho"]= ""
     -   vm.vmx["numvcpus"]= ""
     -   vm.vmx["cpuid.coresPerSocket"]= ""
@@ -234,9 +234,9 @@ man COMMAND
 
 -   Entenda a terminologia de virtualização
 -   Entenda os prós e os contras da virtualização
--   Compreender as diversas variações de hipervisores e monitores de máquinas virtuais
+-   Compreenda as diversas variações de hipervisores e monitores de máquinas virtuais
 -   Entenda os principais aspectos da migração de máquinas físicas para virtuais
--   Compreenda os principais aspectos da migração de máquinas virtuais entre sistemas host
+-   Compreender os principais aspectos da migração de máquinas virtuais entre sistemas host
 -   Compreenda os recursos e as implicações da virtualização para uma máquina virtual, como captura instantânea, pausa, clonagem e limites de recursos
 -   Conhecimento de oVirt, Proxmox, systemd-machined e VirtualBox
 -   Conscientização do Open vSwitch
@@ -321,7 +321,7 @@ Em outras palavras, um sistema operacional e seus aplicativos, executados em har
 ##### V2V - Migração Virtual para Virtual
 
 A migração V2V refere-se ao processo de migração de uma máquina virtual de um hipervisor para outro.  
-Neste caso, você já possui uma máquina virtual em execução em um ambiente virtualizado (como VMware) e deseja movê-la para outro ambiente virtualizado (por exemplo, para Hyper-V ou para um novo servidor VMware).
+Neste caso, você já possui uma máquina virtual rodando em um ambiente virtualizado (como VMware) e deseja movê-la para outro ambiente virtualizado (por exemplo, para Hyper-V ou para um novo servidor VMware).
 
 -   Exemplo: você tem uma máquina virtual rodando em um servidor de virtualização VMware, mas decide migrá-la para uma plataforma Hyper-V. Nesse caso, a migração V2V converte a máquina virtual de um formato ou hipervisor para outro, garantindo que ela continue funcionando corretamente.
 
@@ -352,7 +352,7 @@ VMware ESXi, Microsoft Hyper-V, KVM (máquina virtual baseada em kernel).
 
 ###### Desvantagens do HVM
 
--   **Dependência de hardware:**Requer recursos de hardware específicos, limitando a compatibilidade com sistemas mais antigos.
+-   **Dependência de Hardware:**Requer recursos de hardware específicos, limitando a compatibilidade com sistemas mais antigos.
 -   **Complexidade:**Pode envolver configuração e gerenciamento mais complexos.
 
 ##### Paravirtualização
@@ -518,7 +518,7 @@ Aplicativos e desktops virtuais Citrix, VMware Horizon, serviços de desktop rem
 
 Separa aplicativos do hardware e do sistema operacional subjacentes, permitindo que sejam executados em ambientes isolados.
 
-###### Casos de uso de definição de virtualização de aplicativos
+###### Application VirtualizationDefinition Use Cases
 
 Implantação simplificada de aplicativos, testes de compatibilidade.
 
@@ -586,7 +586,7 @@ Xen é um hipervisor tipo 1 (bare metal) de código aberto, que permite que vár
 O Xen fornece uma camada entre o hardware físico e as máquinas virtuais (VMs), permitindo o compartilhamento e o isolamento eficientes de recursos.
 
 -   **Arquitetura:**O Xen opera com um sistema de duas camadas onde o Domínio 0 (Dom0) é o domínio privilegiado com acesso direto ao hardware e gerencia o hipervisor. Outras máquinas virtuais, chamadas Domain U (DomU), executam sistemas operacionais convidados e são gerenciadas pelo Dom0.
--   **Tipos de virtualização:**O Xen suporta tanto a paravirtualização (PV), que requer sistema operacional convidado modificado, quanto a virtualização assistida por hardware (HVM), que usa extensões de hardware (por exemplo, Intel VT-x ou AMD-V) para executar sistemas operacionais convidados não modificados.
+-   **Tipos de virtualização:**O Xen suporta paravirtualização (PV), que requer sistema operacional convidado modificado, e virtualização assistida por hardware (HVM), que usa extensões de hardware (por exemplo, Intel VT-x ou AMD-V) para executar sistemas operacionais convidados não modificados.
     O Xen é amplamente utilizado em ambientes de nuvem, principalmente pela Amazon Web Services (AWS) e outros provedores de nuvem de grande escala.
 
 #### XenSource
@@ -666,6 +666,12 @@ Isso resulta em menor sobrecarga e melhor eficiência em comparação com a virt
 HVM-DomUs são máquinas virtuais que utilizam virtualização completa, permitindo a execução de sistemas operacionais não modificados. O hipervisor Xen fornece emulação de hardware para esses DomUs, permitindo-lhes executar qualquer sistema operacional que suporte a arquitetura de hardware subjacente.  
 Embora isso ofereça maior flexibilidade, pode resultar em sobrecarga maior em comparação com PV-DomUs.
 
+#### Rede Xen
+
+Dispositivos de rede paravirtualizados![pv-networking](images/xen-networking2.png)
+
+Ponte![pv-networking](images/xen-networking1.png)
+
 #### 351.2 Objetos Citados
 
 ```sh
@@ -695,6 +701,10 @@ oxenstored # Xenstore configurations
 # Service Configurations
 /etc/default/xen
 /etc/default/xendomains
+
+# xen-tools configurations
+/etc/xen-tools/
+/usr/share/xen-tools/
 ```
 
 #### 351.2 Comandos Importantes
@@ -725,12 +735,56 @@ man xl.conf
 
 # manual cfg - about guest configuration
 man xl.cfg
+
+# create DomainU - virtual machines
+xl create /etc/xen/lpic3-pv-guest.cfg
+
+# create DomainU virtual machine and connect to guest
+xl create -c /etc/xen/lpic3-pv-guest.cfg
+
+# connect in domain guest
+xl console <id>|<name> (press enter)
+xl console 1
+xl console lpic3-pv-guest
+
+#How do I exit domU "xl console" session
+#Press ctrl+] or if you're using Putty press ctrl+5.
+
+# Poweroff domain
+xl shutdown lpic3-pv-guest
+
+# destroy domain
+xl destroy lpic3-pv-guest
+
+# reboot domain
+xl reboot lpic3-pv-guest
+```
+
+##### xen-create-image
+
+```sh
+# create a pv image
+xen-create-image \
+  --hostname=lpic3-pv-guest \
+  --memory=1gb \
+  --vcpus=2 \
+  --lvm=vg_xen \
+  --dhcp \
+  --pygrub \
+  --dist=bookworm
+```
+
+##### xen-delete-image
+
+```sh
+# delete a pv image
+xen-delete-image lpic3-pv-guest --lvm=vg_xen
 ```
 
 ##### brctl
 
 ```sh
-# list bridges linked
+# list xen interfaces
 brctl show
 ```
 
@@ -755,7 +809,7 @@ brctl show
 -   Gerencie instantâneos usando o monitor QEMU
 -   Instale os drivers de dispositivo QEMU Guest Agent e VirtIO
 -   Solucionar problemas de instalações QEMU, incluindo rede e armazenamento
--   Conscientização de parâmetros importantes de configuração do QEMU
+-   Consciência de parâmetros importantes de configuração do QEMU
 
 #### 351.3 Objetos Citados
 
@@ -908,7 +962,7 @@ foo
 -   Entenda o princípio do runc
 -   Entenda o princípio do CRI-O e do containerd
 -   Conhecimento do tempo de execução do OCI e das especificações de imagem
--   Conhecimento da Interface de Tempo de Execução de Contêiner (CRI) do Kubernetes
+-   Conhecimento da interface de tempo de execução de contêiner (CRI) do Kubernetes
 -   Consciência de podman, buildah e escopo
 -   Conhecimento de outras abordagens de virtualização de contêineres no Linux e outros sistemas operacionais livres, como rkt, OpenVZ, systemd-nspawn ou BSD Jails
 
@@ -1043,7 +1097,7 @@ Dockerfile
 
 -   Entenda a relevância da orquestração de contêineres
 -   Entenda os principais conceitos do Docker Compose e do Docker Swarm
--   Compreenda os principais conceitos de Kubernetes e Helm
+-   Compreenda os principais conceitos do Kubernetes e Helm
 -   Conscientização sobre OpenShift, Rancher e Mesosphere DC/OS
 
 <p align="right">(<a href="#topic-352.4">back to sub topic 352.4</a>)</p>
@@ -1232,7 +1286,7 @@ Não se esqueça de dar uma estrela ao projeto! Obrigado novamente!
 
 ## Contato
 
-Marcos Silvestrini[marcos.silvestrini@gmail.com](mailto:marcos.silvestrini@gmail.com)\\[![Twitter](https://img.shields.io/twitter/url/https/twitter.com/mrsilvestrini.svg?style=social&label=Follow%20%40mrsilvestrini)](https://twitter.com/mrsilvestrini)
+Marcos Silvestrini - [marcos.silvestrini@gmail.com](mailto:marcos.silvestrini@gmail.com)\\[![Twitter](https://img.shields.io/twitter/url/https/twitter.com/mrsilvestrini.svg?style=social&label=Follow%20%40mrsilvestrini)](https://twitter.com/mrsilvestrini)
 
 Link do projeto:<https://github.com/marcossilvestrini/learning-lpic-3-305-300>
 
@@ -1324,7 +1378,7 @@ Link do projeto:<https://github.com/marcossilvestrini/learning-lpic-3-305-300>
     -   [Exemplos de comandos](https://www.geeksforgeeks.org/)
 -   [Outras ferramentas](<>)
     -   [Bugzila](https://bugzilla.kernel.org/)
-    -   [Emblemas do Github](https://github.com/alexandresanlim/Badges4-README.md-Profile)
+    -   [Emblemas do GitHub](https://github.com/alexandresanlim/Badges4-README.md-Profile)
 -   [Definições de virtualização](<>)
     -   [Chapéu Vermelho](https://www.redhat.com/pt-br/topics/virtualization/what-is-virtualization)
     -   [AWS](https://aws.amazon.com/pt/what-is/virtualization/)
@@ -1336,6 +1390,8 @@ Link do projeto:<https://github.com/marcossilvestrini/learning-lpic-3-305-300>
 -   [Xen](<>)
     -   [XenServer](https://www.xenserver.com/)
     -   [Wiki XenProject](https://wiki.xenproject.org/wiki/Main_Page)
+    -   [Interfaces de rede](https://wiki.xenproject.org/wiki/Xen_Networking#Virtual_Network_Interfaces)
+    -   [Ferramentas Xen](https://xen-tools.org/software/)
     -   [Blog LPI: Virtualização Xen e Computação em Nuvem #01: Introdução](https://www.lpi.org/pt-br/blog/2020/10/01/xen-virtualization-and-cloud-computing-01-introduction/)
     -   [Blog do LPI: Virtualização Xen e Computação em Nuvem #02: Como o Xen faz o trabalho](https://www.lpi.org/blog/2020/10/08/xen-virtualization-and-cloud-computing-02-how-xen-does-job/)
     -   [Blog LPI: Virtualização Xen e Computação em Nuvem #04: Contêineres, OpenStack e Outras Plataformas Relacionadas](https://www.lpi.org/pt-br/blog/2020/10/22/xen-virtualization-and-cloud-computing-04-containers-openstack-and-other-related/)
