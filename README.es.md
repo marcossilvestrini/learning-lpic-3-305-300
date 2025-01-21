@@ -128,7 +128,7 @@ Personaliza una plantilla_Vagrantfile-tema-XXX_. Este archivo contiene una confi
 
 -   Archivo[Vagrantfile-tema-351](./vagrant/Vagrantfile-topic-351)
     -   vm.clone_directory = "&lt;su_carta_de_conductor>:\\<folder>\\&lt;a_máquina>\\#{VM_NAME}-instancia-1"
-        Ejemplo: vm.clone_directory = "E:\\Servidores\\VMware\\#{VM_NAME}-instancia-1"
+        Ejemplo: vm.clone_directory = "E:\\Servidores\\VMWare\\#{VM_NAME}-instancia-1"
     -   vm.vmx["memsize"]= ""
     -   vm.vmx["numvcpus"]= ""
     -   vm.vmx["cpuid.coresPerSocket"]= ""
@@ -230,13 +230,13 @@ man COMMAND
 
 **Descripción:**Los candidatos deben conocer y comprender los conceptos generales, la teoría y la terminología de la virtualización. Esto incluye terminología de Xen, QEMU y libvirt.
 
-**Áreas clave de conocimiento:**
+**Áreas de conocimiento clave:**
 
 -   Comprender la terminología de virtualización
 -   Comprender los pros y los contras de la virtualización
 -   Comprender las diversas variaciones de hipervisores y monitores de máquinas virtuales
 -   Comprender los aspectos principales de la migración de máquinas físicas a virtuales
--   Comprender los aspectos principales de la migración de máquinas virtuales entre sistemas host.
+-   Comprender los aspectos principales de la migración de máquinas virtuales entre sistemas host
 -   Comprender las características y las implicaciones de la virtualización para una máquina virtual, como la creación de instantáneas, la pausa, la clonación y los límites de recursos.
 -   Conocimiento de oVirt, Proxmox, systemd-machined y VirtualBox
 -   Conocimiento de Open vSwitch
@@ -270,7 +270,7 @@ Se ejecuta directamente en el hardware físico del host, proporcionando una capa
 ###### Ejemplos de tipo 1
 
 -   VMware ESXi: un hipervisor robusto y ampliamente utilizado en entornos empresariales.
--   Microsoft Hyper-V: integrado con Windows Server, ofrece sólidas funciones de administración y rendimiento.
+-   Microsoft Hyper-V: integrado con Windows Server, ofrece potentes funciones de gestión y rendimiento.
 -   Xen: un hipervisor de código abierto utilizado por muchos proveedores de servicios en la nube.
 -   KVM (Máquina virtual basada en kernel): Integrada en el kernel de Linux, proporciona un alto rendimiento para sistemas basados ​​en Linux.
 
@@ -318,7 +318,7 @@ En otras palabras, un sistema operativo y sus aplicaciones, que se ejecutan en h
 -   Ejemplo: tiene un servidor físico que ejecuta un sistema Windows o Linux y desea trasladarlo a un entorno virtual, como una infraestructura en la nube o un servidor de virtualización interno.  
     El proceso implica copiar todo el estado del sistema, incluido el sistema operativo, los controladores y los datos, para crear una máquina virtual equivalente que pueda ejecutarse como si estuviera en el hardware físico.
 
-##### V2V - Migración de virtual a virtual
+##### V2V: Migración de virtual a virtual
 
 La migración V2V se refiere al proceso de migrar una máquina virtual de un hipervisor a otro.  
 En este caso, ya tiene una máquina virtual ejecutándose en un entorno virtualizado (como VMware) y desea moverla a otro entorno virtualizado (por ejemplo, a Hyper-V o a un nuevo servidor VMware).
@@ -396,7 +396,7 @@ Xen con invitados paravirtualizados, herramientas VMware en determinadas configu
 ###### Dependencia de hardware
 
 -   **HVM:**Requiere características específicas de CPU (Intel VT-x, AMD-V).
--   **Paravirtualización:**No requiere características específicas de la CPU, pero necesita un sistema operativo invitado modificado.
+-   **Paravirtualización:**No requiere funciones específicas de CPU, pero necesita un sistema operativo invitado modificado.
 
 ###### Aislamiento
 
@@ -567,7 +567,7 @@ Denodo, Red Hat JBoss Virtualización de datos, IBM InfoSphere.
 
 **Descripción:**Los candidatos deben poder instalar, configurar, mantener, migrar y solucionar problemas de instalaciones de Xen. La atención se centra en Xen versión 4.x.
 
-**Áreas clave de conocimiento:**
+**Áreas de conocimiento clave:**
 
 -   Comprender la arquitectura de Xen, incluidas las redes y el almacenamiento.
 -   Configuración básica de nodos y dominios Xen.
@@ -640,11 +640,11 @@ XAPI es la interfaz que permite el control y la automatización del Hipervisor X
 
 #### Resumen de Xen
 
--   **Xen:**La tecnología central de hipervisor que permite que las máquinas virtuales se ejecuten en hardware físico.
+-   **Xén:**La tecnología central de hipervisor que permite que las máquinas virtuales se ejecuten en hardware físico.
 -   **Fuente Xen:**La empresa que comercializaba Xen, posteriormente adquirida por Citrix, dio lugar al desarrollo de Citrix XenServer.
 -   **Proyecto Xen:**La iniciativa y comunidad de código abierto que continúa desarrollando y manteniendo el hipervisor Xen bajo la Fundación Linux.
 -   **Tienda Xen:**Xen Store actúa como intermediario de comunicación y configuración entre el hipervisor Xen y las VM, agilizando la operación y gestión de entornos virtualizados.
--   **Píldora**es la interfaz que permite el control y la automatización del Hipervisor Xen, facilitando la gestión de entornos virtualizados.
+-   **XAPI**es la interfaz que permite el control y la automatización del Hipervisor Xen, facilitando la gestión de entornos virtualizados.
 
 #### Dominio0 (Dom0)
 
@@ -654,7 +654,7 @@ Dom0 ejecuta controladores de dispositivos, lo que permite a los DomU, que carec
 #### DominioU (DomU)
 
 Los DomU son dominios sin privilegios que ejecutan máquinas virtuales.  
-Están gestionados por Dom0 y no tienen acceso directo al hardware. Las DomU se pueden configurar para ejecutar diferentes sistemas operativos y se utilizan para diversos fines, como servidores de aplicaciones y entornos de desarrollo. Confían en Dom0 para la interacción con el hardware.
+Están gestionados por Dom0 y no tienen acceso directo al hardware. Las DomU se pueden configurar para ejecutar diferentes sistemas operativos y se utilizan para diversos fines, como servidores de aplicaciones y entornos de desarrollo. Confían en Dom0 para la interacción del hardware.
 
 #### PV-DOMU (Dominio Paranormalizado)
 
@@ -663,7 +663,7 @@ Esto da como resultado una menor sobrecarga y una mejor eficiencia en comparaci�
 
 #### HVM-DomU (DominioU de máquina virtual de hardware)
 
-Los HVM-DomU son máquinas virtuales que utilizan virtualización completa, lo que permite ejecutar sistemas operativos sin modificaciones. El hipervisor Xen proporciona emulación de hardware para estos DomU, permitiéndoles ejecutar cualquier sistema operativo que admita la arquitectura de hardware subyacente.  
+Los HVM-DomU son máquinas virtuales que utilizan virtualización completa, lo que permite ejecutar sistemas operativos sin modificaciones. El hipervisor Xen proporciona emulación de hardware para estas DomU, permitiéndoles ejecutar cualquier sistema operativo que admita la arquitectura de hardware subyacente.  
 Si bien esto ofrece una mayor flexibilidad, puede generar mayores gastos generales en comparación con las PV-DomU.
 
 #### Red Xen
@@ -709,6 +709,34 @@ oxenstored # Xenstore configurations
 
 #### 351.2 Comandos importantes
 
+##### xen-crear-imagen
+
+```sh
+# create a pv image
+xen-create-image \
+  --hostname=lpic3-pv-guest \
+  --memory=1gb \
+  --vcpus=2 \
+  --lvm=vg_xen \
+  --dhcp \
+  --pygrub \
+  --dist=bookworm
+```
+
+##### xen-eliminar-imagen
+
+```sh
+# delete a pv image
+xen-delete-image lpic3-pv-guest --lvm=vg_xen
+```
+
+##### brctl
+
+```sh
+# list xen interfaces
+brctl show
+```
+
 ##### SG
 
 ```sh
@@ -723,6 +751,8 @@ xl dmesg
 
 # monitoring domain
 xl top
+xentop
+xen top
 
 # Limit mem Dom0
 xl mem-set 0 2048
@@ -760,34 +790,6 @@ xl destroy lpic3-pv-guest
 xl reboot lpic3-pv-guest
 ```
 
-##### xen-crear-imagen
-
-```sh
-# create a pv image
-xen-create-image \
-  --hostname=lpic3-pv-guest \
-  --memory=1gb \
-  --vcpus=2 \
-  --lvm=vg_xen \
-  --dhcp \
-  --pygrub \
-  --dist=bookworm
-```
-
-##### xen-eliminar-imagen
-
-```sh
-# delete a pv image
-xen-delete-image lpic3-pv-guest --lvm=vg_xen
-```
-
-##### brctl
-
-```sh
-# list xen interfaces
-brctl show
-```
-
 <p align="right">(<a href="#topic-351.2">back to sub Topic 351.2</a>)</p>
 <p align="right">(<a href="#topic-351">back to Topic 351</a>)</p>
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -802,9 +804,9 @@ brctl show
 
 **Descripción:**Los candidatos deben poder instalar, configurar, mantener, migrar y solucionar problemas de instalaciones de QEMU.
 
-**Áreas clave de conocimiento:**
+**Áreas de conocimiento clave:**
 
--   Comprender la arquitectura de QEMU, incluidos KVM, redes y almacenamiento.
+-   Understand the architecture of QEMU, including KVM, networking and storage
 -   Inicie instancias de QEMU desde la línea de comando
 -   Administre instantáneas usando el monitor QEMU
 -   Instale los controladores de dispositivo QEMU Guest Agent y VirtIO
@@ -847,7 +849,7 @@ ip link show
 
 **Descripción:**Los candidatos deben poder administrar hosts de virtualización y máquinas virtuales ("dominios libvirt") utilizando libvirt y herramientas relacionadas.
 
-**Áreas clave de conocimiento:**
+**Áreas de conocimiento clave:**
 
 -   Comprender la arquitectura de libvirt
 -   Administrar conexiones y nodos libvirt
@@ -891,7 +893,7 @@ foo
 
 **Descripción:**Los candidatos deberían poder administrar imágenes de disco de máquinas virtuales. Esto incluye convertir imágenes de disco entre varios formatos e hipervisores y acceder a los datos almacenados dentro de una imagen.
 
-**Áreas clave de conocimiento:**
+**Áreas de conocimiento clave:**
 
 -   Comprender las características de varios formatos de imágenes de discos virtuales, como imágenes sin formato, qcow2 y VMDK.
 -   Administre imágenes de disco de máquinas virtuales usando qemu-img
@@ -951,7 +953,7 @@ foo
 
 **Descripción:**Los candidatos deben comprender el concepto de virtualización de contenedores. Esto incluye comprender los componentes de Linux utilizados para implementar la virtualización de contenedores, así como el uso de herramientas estándar de Linux para solucionar problemas de estos componentes.
 
-**Áreas clave de conocimiento:**
+**Áreas de conocimiento clave:**
 
 -   Comprender los conceptos de sistema y contenedor de aplicaciones.
 -   Comprender y analizar los espacios de nombres del kernel
@@ -1012,7 +1014,7 @@ foo
 
 **Descripción:**Los candidatos deberían poder utilizar contenedores del sistema utilizando LXC y LXD. La versión de LXC cubierta es 3.0 o superior.
 
-**Áreas clave de conocimiento:**
+**Áreas de conocimiento clave:**
 
 -   Comprender la arquitectura de LXC y LXD
 -   Administre contenedores LXC basados ​​en imágenes existentes usando LXD, incluidas redes y almacenamiento.
@@ -1051,7 +1053,7 @@ foo
 
 **Descripción:**El candidato debe poder gestionar nodos Docker y contenedores Docker. Esto incluye comprender la arquitectura de Docker y cómo interactúa Docker con el sistema Linux del nodo.
 
-**Áreas clave de conocimiento:**
+**Áreas de conocimiento clave:**
 
 -   Comprender la arquitectura y los componentes de Docker.
 -   Administre contenedores Docker utilizando imágenes de un registro de Docker
@@ -1093,7 +1095,7 @@ Dockerfile
 
 **Descripción:**Los candidatos deben comprender la importancia de la orquestación de contenedores y los conceptos clave que Docker Swarm y Kubernetes proporcionan para implementar la orquestación de contenedores.
 
-**Áreas clave de conocimiento:**
+**Áreas de conocimiento clave:**
 
 -   Comprender la relevancia de la orquestación de contenedores
 -   Comprender los conceptos clave de Docker Compose y Docker Swarm
@@ -1120,7 +1122,7 @@ Dockerfile
 
 **Descripción:**Los candidatos deben comprender las ofertas comunes en las nubes públicas y tener conocimientos básicos de las funciones de las herramientas de administración de la nube comúnmente disponibles.
 
-**Áreas clave de conocimiento:**
+**Áreas de conocimiento clave:**
 
 -   Comprender las ofertas comunes en las nubes públicas
 -   Conocimientos básicos de las funciones de OpenStack.
@@ -1157,7 +1159,7 @@ Terraform
 
 **Descripción:**Los candidatos deberían poder utilizar Packer para crear imágenes del sistema. Esto incluye ejecutar Packer en varios entornos de nube públicos y privados, así como crear imágenes de contenedores para LXC/LXD.
 
-**Áreas clave de conocimiento:**
+**Áreas de conocimiento clave:**
 
 -   Comprender la funcionalidad y características de Packer
 -   Crear y mantener archivos de plantilla
@@ -1193,7 +1195,7 @@ packer
 Además, los candidatos deberían poder configurar instancias para permitir inicios de sesión SSH seguros e instalar un conjunto específico de paquetes de software.  
 Además, los candidatos deberían poder crear nuevas imágenes del sistema con soporte de inicio en la nube.
 
-**Áreas clave de conocimiento:**
+**Áreas de conocimiento clave:**
 
 -   Comprender las características y conceptos de cloud-init, incluidos los datos del usuario, la inicialización y la configuración de cloud-init.
 -   Utilice cloud-init para crear, cambiar el tamaño y montar sistemas de archivos, configurar cuentas de usuario, incluidas credenciales de inicio de sesión como claves SSH e instalar paquetes de software desde el repositorio de la distribución.
@@ -1230,7 +1232,7 @@ user-data
 
 **Descripción:**El candidato debe poder utilizar Vagrant para administrar máquinas virtuales, incluido el aprovisionamiento de la máquina virtual.
 
-**Áreas clave de conocimiento:**
+**Áreas de conocimiento clave:**
 
 -   Comprender la arquitectura y los conceptos de Vagrant, incluidos el almacenamiento y las redes.
 -   Recuperar y utilizar cajas de Atlas
@@ -1272,7 +1274,7 @@ crear una solicitud de extracción. También puedes simplemente abrir un problem
 
 1.  Bifurcar el proyecto
 2.  Crea tu rama de funciones (`git checkout -b feature/AmazingFeature`)
-3.  Confirme sus cambios (`git commit -m 'Add some AmazingFeature'`)
+3.  Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
 4.  Empujar a la rama (`git push origin feature/AmazingFeature`)
 5.  Abrir una solicitud de extracción
 
