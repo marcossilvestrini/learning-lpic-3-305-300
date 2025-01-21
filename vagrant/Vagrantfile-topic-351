@@ -46,8 +46,8 @@ Vagrant.configure("2") do |config|
       vmware.gui = true
       #vmware.vmx["virtualHW.version"] = "10"
       vmware.vmx["displayName"] = "#{VM_NAME}-instance-1"
-      vmware.vmx["memsize"] = "32768"
-      vmware.vmx["numvcpus"] = "8"
+      vmware.vmx["memsize"] = "65536"
+      vmware.vmx["numvcpus"] = "16"
       vmware.vmx["cpuid.coresPerSocket"] = "1"
       vmware.vmx["vhv.enable"] = "TRUE"  # Enable virtualization engine (nested virtualization)
       #vmware.vmx["hypervisor.cpuid.v0"] = "FALSE"  # Ensure guest OS can see CPU features
@@ -59,17 +59,6 @@ Vagrant.configure("2") do |config|
     instance1.vm.network "public_network", mode: "bridge", auto_config: false
     # manual ip
     instance1.vm.provision "shell", name: "[configure-network]", path: "../scripts/network/configure-network-instance1.sh", privileged: true
-    # instance1.vm.provision "shell",
-    #   run: "always",
-    #   inline: "ifconfig eth1 192.168.0.130 netmask 255.255.255.0 up"
-    # # default router
-    # instance1.vm.provision "shell",
-    #   run: "always",
-    #   inline: "route add default gw 192.168.0.1"
-    # # delete default gw on eth0
-    # instance1.vm.provision "shell",
-    #   run: "always",
-    #   inline: "eval `route -n | awk '{ if ($8 ==\"eth0\" && $2 != \"0.0.0.0\") print \"route del default gw \" $2; }'`"
 
     # CLOUD-INIT
     instance1.vm.provision "shell", name: "[cloud-init]", path: "../scripts/commons/cloud-init.sh", privileged: false
