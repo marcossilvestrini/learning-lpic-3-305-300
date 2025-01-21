@@ -90,7 +90,7 @@
 > 一部のパッケージのインストールと構成についても説明します\\
 > こうすることで、コミュニティ全体が変更から恩恵を受ける機会を得ることができます。\\
 > ソース コードへのアクセスがその前提条件です。\\
-> 稼働中のマシンには vagrant を使用し、ラボを実行して、この記事の内容を実践してください。\\
+> 稼働中のマシンに vagrant を使用し、ラボを実行して、この記事の内容を実践してください。\\
 > 必要なものを含む Vagrantfile をフォルダー Vagrant に公開しました\\
 > 学習環境をアップロードするため
 
@@ -133,7 +133,7 @@ cd learning-lpic-3-305-300
     -   vm.vmx[「numvcpus」"]= ""
     -   vm.vmx[「cpuid"coresPerSocket」.]= ""
 
-ファイルでネットワーク構成をカスタマイズする[構成/ネットワーク](configs/network/).
+ファイル内のネットワーク構成をカスタマイズする[構成/ネットワーク](configs/network/).
 
 * * *
 
@@ -190,7 +190,7 @@ vagrant/destroy.ps1
 
 ## 4 つの必須の自由
 
-> 0.目的を問わず、プログラムを自由に実行できます (自由 0)。\\
+> 0.目的を問わず、プログラムを自由に実行できる (自由 0)。\\
 > 1.プログラムがどのように動作するかを研究し、そのように変更する自由\\
 > あなたのコンピューティングを思いのままに (自由 1)。\\
 > ソース コードへのアクセスがその前提条件です。\\
@@ -313,7 +313,7 @@ Migration (P2V, V2V)
 ##### P2V - 物理から仮想への移行
 
 P2V 移行とは、物理サーバーを仮想マシンに移行するプロセスを指します。  
-言い換えれば、専用の物理ハードウェア上で実行されるオペレーティング システムとそのアプリケーションは「変換」され、ハイパーバイザー (VMware、Hyper-V、KVM など) 上で実行される仮想マシンに移動されます。
+言い換えれば、専用の物理ハードウェア上で実行されているオペレーティング システムとそのアプリケーションは「変換」され、ハイパーバイザー (VMware、Hyper-V、KVM など) 上で実行される仮想マシンに移動されます。
 
 -   例: Windows または Linux システムを実行している物理サーバーがあり、それをクラウド インフラストラクチャや内部仮想化サーバーなどの仮想環境に移動したいと考えています。  
     このプロセスには、オペレーティング システム、ドライバー、データを含むシステム状態全体をコピーして、物理ハードウェア上で動作するかのように実行できる同等の仮想マシンを作成することが含まれます。
@@ -321,7 +321,7 @@ P2V 移行とは、物理サーバーを仮想マシンに移行するプロセ�
 ##### V2V - 仮想から仮想への移行
 
 V2V 移行とは、仮想マシンをあるハイパーバイザーから別のハイパーバイザーに移行するプロセスを指します。  
-この場合、仮想環境 (VMware など) で仮想マシンがすでに実行されており、それを別の仮想環境 (たとえば、Hyper-V または新しい VMware サーバー) に移動したいと考えています。
+この場合、仮想化環境 (VMware など) で仮想マシンがすでに実行されており、それを別の仮想化環境 (たとえば、Hyper-V または新しい VMware サーバー) に移動したいと考えています。
 
 -   例: VMware 仮想化サーバー上で実行されている仮想マシンがありますが、それを Hyper-V プラットフォームに移行することにしました。この場合、V2V 移行により、仮想マシンがある形式またはハイパーバイザーから別の形式またはハイパーバイザーに変換され、正しく実行を継続できるようになります。
 
@@ -575,7 +575,7 @@ Denodo、Red Hat JBoss Data Virtualization、IBM InfoSphere。
 -   Xen インストールの基本的なトラブルシューティング
 -   錠剤の強さ
 -   XenStoreの認知度
--   Xenブートパラメータの認識
+-   Xen ブートパラメータの認識
 -   xm ユーティリティの認識
 
 #### ゼン
@@ -592,7 +592,7 @@ Xen は、物理ハードウェアと仮想マシン (VM) の間にレイヤー�
 #### Xenソース
 
 XenSource は、Xen を商用化するためにケンブリッジ大学の Xen ハイパーバイザーの最初の開発者によって設立された会社です。  
-同社は、Xen に基づいたエンタープライズ ソリューションを提供し、企業での使用向けに Xen の機能を強化するための追加ツールとサポートを提供しました。
+同社は、Xen に基づいたエンタープライズ ソリューションを提供し、企業での使用向けに Xen の機能を強化するための追加のツールとサポートを提供しました。
 
 -   **シトリックスによる買収**：2007 年、XenSource は Citrix Systems, Inc. に買収されました。Citrix は、Xen テクノロジーを Citrix XenServer 製品の基盤として使用し、Xen ベースのエンタープライズ グレードの仮想化プラットフォームとして人気を博しました。
 -   **遷移**：買収後、Xen プロジェクトはオープンソース プロジェクトとして継続されましたが、Citrix は XenSource テクノロジーを活用して XenServer などの商用製品に注力しました。
@@ -602,7 +602,7 @@ XenSource は、Xen を商用化するためにケンブリッジ大学の Xen �
 Xen プロジェクトとは、Xen ハイパーバイザーの商用化後の開発と保守を担当するオープンソース コミュニティおよびイニシアチブを指します。  
 Xen プロジェクトは Linux Foundation の下で運営されており、コミュニティ主導の共同作業として Xen の構築、改善、サポートに重点を置いています。
 
--   **目標:**Xen プロジェクトは、クラウド コンピューティング、セキュリティ重視の仮想化 (Qubes OS など)、組み込みシステムなどの幅広いユースケース向けにパフォーマンス、セキュリティ、機能セットを改善することでハイパーバイザーを進化させることを目指しています。
+-   **目標:**Xen プロジェクトは、クラウド コンピューティング、セキュリティ重視の仮想化 (Qubes OS など)、組み込みシステムなど、幅広いユースケース向けにパフォーマンス、セキュリティ、機能セットを改善することでハイパーバイザーを進化させることを目指しています。
 -   **寄稿者:**このプロジェクトには、大手クラウド プロバイダー、ハードウェア ベンダー、独立系開発者など、さまざまな組織からの貢献者が参加しています。
 -   **錠剤とハンツール:**Xen プロジェクトには、Xen ハイパーバイザーのインストールの管理に使用される XAPI (XenAPI) などのツールや、システム管理と最適化のためのその他のさまざまなユーティリティも含まれています。
 
@@ -611,7 +611,7 @@ Xen プロジェクトは Linux Foundation の下で運営されており、コ�
 Xen Store は、Xen Hypervisor の重要なコンポーネントです。  
 基本的に、Xen Store は、Xen ハイパーバイザーとそれが管理する仮想マシン (ドメインとも呼ばれます) の間の通信と情報共有に使用される分散キー/値データベースです。
 
-Xen Store の重要な側面をいくつか示します。
+Xen Store の重要な側面をいくつか紹介します。
 
 -   **ドメイン間通信:**Xen Store を使用すると、Dom0 (ハードウェア リソースを制御する特権ドメイン) と DomU (VM であるユーザー ドメイン) などのドメイン間の通信が可能になります。これは、各ドメインが情報を読み書きできるキーと値のエントリを通じて行われます。
 
@@ -709,6 +709,34 @@ oxenstored # Xenstore configurations
 
 #### 351.2 重要なコマンド
 
+##### xen-create-image
+
+```sh
+# create a pv image
+xen-create-image \
+  --hostname=lpic3-pv-guest \
+  --memory=1gb \
+  --vcpus=2 \
+  --lvm=vg_xen \
+  --dhcp \
+  --pygrub \
+  --dist=bookworm
+```
+
+##### xen-削除-イメージ
+
+```sh
+# delete a pv image
+xen-delete-image lpic3-pv-guest --lvm=vg_xen
+```
+
+##### brctl
+
+```sh
+# list xen interfaces
+brctl show
+```
+
 ##### XL
 
 ```sh
@@ -723,6 +751,8 @@ xl dmesg
 
 # monitoring domain
 xl top
+xentop
+xen top
 
 # Limit mem Dom0
 xl mem-set 0 2048
@@ -758,34 +788,6 @@ xl destroy lpic3-pv-guest
 
 # reboot domain
 xl reboot lpic3-pv-guest
-```
-
-##### xen-create-image
-
-```sh
-# create a pv image
-xen-create-image \
-  --hostname=lpic3-pv-guest \
-  --memory=1gb \
-  --vcpus=2 \
-  --lvm=vg_xen \
-  --dhcp \
-  --pygrub \
-  --dist=bookworm
-```
-
-##### xen-削除-イメージ
-
-```sh
-# delete a pv image
-xen-delete-image lpic3-pv-guest --lvm=vg_xen
-```
-
-##### brctl
-
-```sh
-# list xen interfaces
-brctl show
 ```
 
 <p align="right">(<a href="#topic-351.2">back to sub Topic 351.2</a>)</p>
@@ -1018,7 +1020,7 @@ foo
 -   LXD を使用して既存のイメージに基づいて LXC コンテナー (ネットワーキングやストレージを含む) を管理する
 -   LXCコンテナのプロパティを構成する
 -   LXC コンテナーのリソース使用量を制限する
--   LXD プロファイルを使用する
+-   LXDプロファイルを使用する
 -   LXC イメージを理解する
 -   従来の LXC ツールの認識
 
@@ -1056,7 +1058,7 @@ foo
 -   Docker のアーキテクチャとコンポーネントを理解する
 -   Docker レジストリのイメージを使用して Docker コンテナを管理する
 -   Dockerコンテナのイメージとボリュームを理解して管理する
--   Docker コンテナのログを理解して管理する
+-   Dockerコンテナのログを理解して管理する
 -   Docker のネットワークを理解して管理する
 -   Dockerfile を使用してコンテナー イメージを作成する
 -   レジストリ Docker イメージを使用して Docker レジストリを実行する
@@ -1298,7 +1300,7 @@ Vagrantfile
 
 -   [リチャード・ストールマンの](http://www.stallman.org/)
 -   [GNU](<>)
-    -   [Richard Stallman による GNU/Linux FAQ](https://www.gnu.org/gnu/gnu-linux-faq.html)
+    -   [GNU/Linux FAQ by Richard Stallman](https://www.gnu.org/gnu/gnu-linux-faq.html)
     -   [GNU](https://www.gnu.org/)
     -   [GNU オペレーティング システム](https://www.gnu.org/gnu/thegnuproject.html)
     -   [GCC コンパイラ](https://gcc.gnu.org/wiki/History)
@@ -1311,7 +1313,7 @@ Vagrantfile
     -   [GNU ハード](https://www.gnu.org/software/hurd/hurd/what_is_the_gnu_hurd.html)
 -   [カーネル](<>)
     -   [カーネル](https://www.kernel.org/)
-    -   [Linux カーネルのマニュアル ページ](https://www.kernel.org/doc/man-pages/)
+    -   [Linux Kernel Man Pages](https://www.kernel.org/doc/man-pages/)
     -   [カーネルをコンパイルする](https://wiki.linuxquestions.org/wiki/How_to_build_and_install_your_own_Linux_kernel)
 -   [Linux標準ベース](<>)
     -   [Linux標準ベース](https://en.wikipedia.org/wiki/Linux_Standard_Base)
