@@ -28,4 +28,4 @@ Slack/silvestrini.py
 *__pycache__*
 
 # xen
-isos/
+*.iso
