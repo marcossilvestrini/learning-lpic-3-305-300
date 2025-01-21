@@ -178,7 +178,7 @@ vagrant/destroy.ps1
 ## Feuille de route
 
 -   [x] Créer un référentiel
--   [x] Créer des scripts pour les laboratoires de provisioning
+-   [x] Créer des scripts pour les laboratoires de provisionnement
 -   [x] Créer des exemples sur le sujet 351
 -   [ ] Créer des exemples sur le sujet 352
 -   [ ] Créer des exemples sur le sujet 353
@@ -288,7 +288,7 @@ Fonctionne sur un système d'exploitation conventionnel, s'appuyant sur le syst�
 
 ###### Exemples de type 2
 
--   VMware Workstation : Un hyperviseur puissant pour exécuter plusieurs systèmes d'exploitation sur un seul poste de travail.
+-   VMware Workstation : un hyperviseur puissant pour exécuter plusieurs systèmes d'exploitation sur un seul poste de travail.
 -   Oracle VirtualBox : Un hyperviseur open source connu pour sa flexibilité et sa facilité d'utilisation.
 -   Parallels Desktop : conçu pour que les utilisateurs de Mac puissent exécuter Windows et d'autres systèmes d'exploitation avec macOS.
 -   QEMU (Quick EMUlator) : émulateur et virtualiseur open source, souvent utilisé en conjonction avec KVM.
@@ -297,7 +297,7 @@ Fonctionne sur un système d'exploitation conventionnel, s'appuyant sur le syst�
 
 -   Environnement de déploiement :
     -   Les hyperviseurs de type 1 sont couramment déployés dans les centres de données et les environnements d'entreprise en raison de leur interaction directe avec le matériel et de leurs hautes performances.
-    -   Les hyperviseurs de type 2 sont plus adaptés aux tâches d'utilisation personnelle, de développement, de test et de virtualisation à petite échelle.
+    -   Les hyperviseurs de type 2 sont plus adaptés à un usage personnel, au développement, aux tests et aux tâches de virtualisation à petite échelle.
 -   Performance:
     -   Les hyperviseurs de type 1 offrent généralement de meilleures performances et une latence plus faible car ils ne s'appuient pas sur un système d'exploitation hôte.
     -   Les hyperviseurs de type 2 peuvent subir une certaine dégradation des performances en raison de la surcharge liée à l'exécution sur un système d'exploitation hôte.
@@ -308,7 +308,7 @@ Fonctionne sur un système d'exploitation conventionnel, s'appuyant sur le syst�
 ##### Types de migration
 
 Dans le contexte des hyperviseurs, qui sont des technologies utilisées pour créer et gérer des machines virtuelles, les termes migration P2V et migration V2V sont courants dans les environnements de virtualisation.  
-Ils font référence à des processus de migration de systèmes entre différents types de plates-formes.
+Ils font référence à des processus de migration de systèmes entre différents types de plateformes.
 
 ##### P2V - Migration physique vers virtuelle
 
@@ -490,7 +490,7 @@ VMware NSX, Cisco ACI, OpenStack Neutron.
 
 Regroupe le stockage physique de plusieurs appareils dans une seule unité de stockage virtuelle qui peut être gérée de manière centralisée.
 
-###### Cas d'utilisation de la définition de la virtualisation du stockage
+###### Cas d'utilisation de la définition de virtualisation du stockage
 
 Gestion des données, optimisation du stockage, reprise après sinistre.
 
@@ -615,7 +615,7 @@ Voici quelques aspects clés de Xen Store :
 
 -   **Communication inter-domaine :**Xen Store permet la communication entre des domaines, tels que Dom0 (le domaine privilégié qui contrôle les ressources matérielles) et DomUs (domaines utilisateur, qui sont les machines virtuelles). Cela se fait via des entrées clé-valeur, où chaque domaine peut lire ou écrire des informations.
 
--   **Gestion des configurations :**Il est utilisé pour stocker et accéder aux informations de configuration, telles que les périphériques virtuels, la mise en réseau et les paramètres de démarrage. Cela facilite la gestion et la configuration dynamiques des VM.
+-   **Gestion des configurations :**Il est utilisé pour stocker et accéder aux informations de configuration, telles que les périphériques virtuels, la mise en réseau et les paramètres de démarrage. Cela facilite la gestion dynamique et la configuration des machines virtuelles.
 
 -   **Événements et notifications :**Xen Store prend également en charge les notifications d'événements. Lorsqu'une clé ou une valeur particulière dans le Xen Store est modifiée, les domaines intéressés peuvent être avertis pour réagir à ces modifications. Ceci est utile pour surveiller et gérer les ressources.
 
@@ -648,7 +648,7 @@ XAPI est l'interface qui permet le contrôle et l'automatisation de l'hyperviseu
 
 #### Domain0 (Dom0)
 
-Domain0, ou Dom0, est le domaine de contrôle dans une architecture Xen. Il gère d'autres domaines (DomUs) et a un accès direct au matériel.  
+Domain0, ou Dom0, est le domaine de contrôle dans une architecture Xen. Il gère d'autres domaines (DomUs) et dispose d'un accès direct au matériel.  
 Dom0 exécute des pilotes de périphériques, permettant aux DomU, qui ne disposent pas d'un accès direct au matériel, de communiquer avec les périphériques. En règle générale, il s'agit d'une instance complète d'un système d'exploitation, comme Linux, et elle est essentielle au fonctionnement de l'hyperviseur Xen.
 
 #### DomaineU (DomU)
@@ -709,6 +709,34 @@ oxenstored # Xenstore configurations
 
 #### 351.2 Commandes importantes
 
+##### xen-créer-image
+
+```sh
+# create a pv image
+xen-create-image \
+  --hostname=lpic3-pv-guest \
+  --memory=1gb \
+  --vcpus=2 \
+  --lvm=vg_xen \
+  --dhcp \
+  --pygrub \
+  --dist=bookworm
+```
+
+##### xen-supprimer-image
+
+```sh
+# delete a pv image
+xen-delete-image lpic3-pv-guest --lvm=vg_xen
+```
+
+##### brctl
+
+```sh
+# list xen interfaces
+brctl show
+```
+
 ##### XL
 
 ```sh
@@ -723,6 +751,8 @@ xl dmesg
 
 # monitoring domain
 xl top
+xentop
+xen top
 
 # Limit mem Dom0
 xl mem-set 0 2048
@@ -758,34 +788,6 @@ xl destroy lpic3-pv-guest
 
 # reboot domain
 xl reboot lpic3-pv-guest
-```
-
-##### xen-créer-image
-
-```sh
-# create a pv image
-xen-create-image \
-  --hostname=lpic3-pv-guest \
-  --memory=1gb \
-  --vcpus=2 \
-  --lvm=vg_xen \
-  --dhcp \
-  --pygrub \
-  --dist=bookworm
-```
-
-##### xen-supprimer-image
-
-```sh
-# delete a pv image
-xen-delete-image lpic3-pv-guest --lvm=vg_xen
-```
-
-##### brctl
-
-```sh
-# list xen interfaces
-brctl show
 ```
 
 <p align="right">(<a href="#topic-351.2">back to sub Topic 351.2</a>)</p>
@@ -1049,12 +1051,12 @@ foo
 
 **Poids:**9
 
-**Description:**Le candidat doit être capable de gérer les nœuds Docker et les conteneurs Docker. Cela inclut la compréhension de l’architecture de Docker ainsi que la compréhension de la manière dont Docker interagit avec le système Linux du nœud.
+**Description:**Le candidat doit être capable de gérer les nœuds Docker et les conteneurs Docker. Cela inclut la compréhension de l'architecture de Docker ainsi que la compréhension de la manière dont Docker interagit avec le système Linux du nœud.
 
 **Domaines de connaissances clés :**
 
 -   Comprendre l'architecture et les composants de Docker
--   Gérer les conteneurs Docker à l'aide d'images d'un registre Docker
+-   Gérer les conteneurs Docker à l'aide d'images provenant d'un registre Docker
 -   Comprendre et gérer les images et les volumes pour les conteneurs Docker
 -   Comprendre et gérer la journalisation pour les conteneurs Docker
 -   Comprendre et gérer la mise en réseau pour Docker
