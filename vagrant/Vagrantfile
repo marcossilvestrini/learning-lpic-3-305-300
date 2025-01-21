@@ -46,8 +46,8 @@ Vagrant.configure("2") do |config|
       vmware.gui = true
       #vmware.vmx["virtualHW.version"] = "10"
       vmware.vmx["displayName"] = "#{VM_NAME}-instance-1"
-      vmware.vmx["memsize"] = "32768"
-      vmware.vmx["numvcpus"] = "8"
+      vmware.vmx["memsize"] = "65536"
+      vmware.vmx["numvcpus"] = "16"
       vmware.vmx["cpuid.coresPerSocket"] = "1"
       vmware.vmx["vhv.enable"] = "TRUE"  # Enable virtualization engine (nested virtualization)
       #vmware.vmx["hypervisor.cpuid.v0"] = "FALSE"  # Ensure guest OS can see CPU features
@@ -59,17 +59,6 @@ Vagrant.configure("2") do |config|
     instance1.vm.network "public_network", mode: "bridge", auto_config: false
     # manual ip
     instance1.vm.provision "shell", name: "[configure-network]", path: "../scripts/network/configure-network-instance1.sh", privileged: true
-    # instance1.vm.provision "shell",
-    #   run: "always",
-    #   inline: "ifconfig eth1 192.168.0.130 netmask 255.255.255.0 up"
-    # # default router
-    # instance1.vm.provision "shell",
-    #   run: "always",
-    #   inline: "route add default gw 192.168.0.1"
-    # # delete default gw on eth0
-    # instance1.vm.provision "shell",
-    #   run: "always",
-    #   inline: "eval `route -n | awk '{ if ($8 ==\"eth0\" && $2 != \"0.0.0.0\") print \"route del default gw \" $2; }'`"
 
     # CLOUD-INIT
     instance1.vm.provision "shell", name: "[cloud-init]", path: "../scripts/commons/cloud-init.sh", privileged: false
@@ -83,55 +72,55 @@ Vagrant.configure("2") do |config|
   end
   # END INSTANCE 1
 
-  # BEGIN INSTANCE 2
-  config.vm.define "#{VM_NAME}-instance-2" do |instance2|
+  # # BEGIN INSTANCE 2
+  # config.vm.define "#{VM_NAME}-instance-2" do |instance2|
 
-    # hostname
-    instance2.vm.hostname = "#{VM_NAME}-instance-2"
+  #   # hostname
+  #   instance2.vm.hostname = "#{VM_NAME}-instance-2"
 
-    # VMware Workstation configuration
-    instance2.vm.provider "vmware_workstation" do |vmware|
-      vmware.linked_clone = false
-      vmware.clone_directory = "E:\\Servers\\VMWare\\#{VM_NAME}-instance-2"
-      vmware.whitelist_verified = true
-      vmware.gui = true
-      #vmware.vmx["virtualHW.version"] = "10"
-      vmware.vmx["displayName"] = "#{VM_NAME}-instance-2"
-      vmware.vmx["memsize"] = "32768"
-      vmware.vmx["numvcpus"] = "8"
-      vmware.vmx["cpuid.coresPerSocket"] = "2"
-      vmware.vmx["vhv.enable"] = "TRUE"  # Enable virtualization engine (nested virtualization)
-      #vmware.vmx["hypervisor.cpuid.v0"] = "FALSE"  # Ensure guest OS can see CPU features
-      #vmware.vmx["monitor.virtual_mmu"] = "hardware"  # Use hardware memory management unit
-      #vmware.vmx["monitor.virtual_exec"] = "hardware"  # Use hardware execution virtualization
-    end
+  #   # VMware Workstation configuration
+  #   instance2.vm.provider "vmware_workstation" do |vmware|
+  #     vmware.linked_clone = false
+  #     vmware.clone_directory = "E:\\Servers\\VMWare\\#{VM_NAME}-instance-2"
+  #     vmware.whitelist_verified = true
+  #     vmware.gui = true
+  #     #vmware.vmx["virtualHW.version"] = "10"
+  #     vmware.vmx["displayName"] = "#{VM_NAME}-instance-2"
+  #     vmware.vmx["memsize"] = "32768"
+  #     vmware.vmx["numvcpus"] = "8"
+  #     vmware.vmx["cpuid.coresPerSocket"] = "2"
+  #     vmware.vmx["vhv.enable"] = "TRUE"  # Enable virtualization engine (nested virtualization)
+  #     #vmware.vmx["hypervisor.cpuid.v0"] = "FALSE"  # Ensure guest OS can see CPU features
+  #     #vmware.vmx["monitor.virtual_mmu"] = "hardware"  # Use hardware memory management unit
+  #     #vmware.vmx["monitor.virtual_exec"] = "hardware"  # Use hardware execution virtualization
+  #   end
 
-    # NETWORK CONFIGURATION
-    instance2.vm.network "public_network", mode: "bridge", auto_config: false
-    # manual ip
-    instance2.vm.provision "shell", name: "[configure-network]", path: "../scripts/network/configure-network-instance2.sh", privileged: true
+  #   # NETWORK CONFIGURATION
+  #   instance2.vm.network "public_network", mode: "bridge", auto_config: false
+  #   # manual ip
+  #   instance2.vm.provision "shell", name: "[configure-network]", path: "../scripts/network/configure-network-instance2.sh", privileged: true
 
-    # instance2.vm.provision "shell",
-    #   run: "always",
-    #   inline: "ifconfig eth1 192.168.0.131 netmask 255.255.255.0 up"
-    # # default router
-    # instance2.vm.provision "shell",
-    #   run: "always",
-    #   inline: "route add default gw 192.168.0.1"
-    # # delete default gw on eth0
-    # instance2.vm.provision "shell",
-    #   run: "always",
-    #   inline: "eval `route -n | awk '{ if ($8 ==\"eth0\" && $2 != \"0.0.0.0\") print \"route del default gw \" $2; }'`"
+  #   # instance2.vm.provision "shell",
+  #   #   run: "always",
+  #   #   inline: "ifconfig eth1 192.168.0.131 netmask 255.255.255.0 up"
+  #   # # default router
+  #   # instance2.vm.provision "shell",
+  #   #   run: "always",
+  #   #   inline: "route add default gw 192.168.0.1"
+  #   # # delete default gw on eth0
+  #   # instance2.vm.provision "shell",
+  #   #   run: "always",
+  #   #   inline: "eval `route -n | awk '{ if ($8 ==\"eth0\" && $2 != \"0.0.0.0\") print \"route del default gw \" $2; }'`"
 
-    # CLOUD-INIT
-    instance2.vm.provision "shell", name: "[cloud-init]", path: "../scripts/commons/cloud-init.sh", privileged: false
+  #   # CLOUD-INIT
+  #   instance2.vm.provision "shell", name: "[cloud-init]", path: "../scripts/commons/cloud-init.sh", privileged: false
 
-    # STORAGE CONFIGURATION
-    instance2.vm.provision "shell", name: "[xen-storage]", path: "../scripts/storage/xen-storage.sh", privileged: true
+  #   # STORAGE CONFIGURATION
+  #   instance2.vm.provision "shell", name: "[xen-storage]", path: "../scripts/storage/xen-storage.sh", privileged: true
 
-    # XEN SERVER SETUP
-    instance2.vm.provision "shell", name: "[xen-debian]", path: "../scripts/xen/debian.sh", privileged: true
-    instance2.vm.provision :reload
-  end
-  # end instance 2
+  #   # XEN SERVER SETUP
+  #   instance2.vm.provision "shell", name: "[xen-debian]", path: "../scripts/xen/debian.sh", privileged: true
+  #   instance2.vm.provision :reload
+  # end
+  # # end instance 2
 end

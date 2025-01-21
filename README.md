@@ -722,6 +722,34 @@ oxenstored # Xenstore configurations
 
 #### 351.2 Important Commands
 
+##### xen-create-image
+
+```sh
+# create a pv image
+xen-create-image \
+  --hostname=lpic3-pv-guest \
+  --memory=1gb \
+  --vcpus=2 \
+  --lvm=vg_xen \
+  --dhcp \
+  --pygrub \
+  --dist=bookworm
+```
+
+##### xen-delete-image
+
+```sh
+# delete a pv image
+xen-delete-image lpic3-pv-guest --lvm=vg_xen
+```
+
+##### brctl
+
+```sh
+# list xen interfaces
+brctl show
+```
+
 ##### xl
 
 ```sh
@@ -771,34 +799,6 @@ xl destroy lpic3-pv-guest
 
 # reboot domain
 xl reboot lpic3-pv-guest
-```
-
-##### xen-create-image
-
-```sh
-# create a pv image
-xen-create-image \
-  --hostname=lpic3-pv-guest \
-  --memory=1gb \
-  --vcpus=2 \
-  --lvm=vg_xen \
-  --dhcp \
-  --pygrub \
-  --dist=bookworm
-```
-
-##### xen-delete-image
-
-```sh
-# delete a pv image
-xen-delete-image lpic3-pv-guest --lvm=vg_xen
-```
-
-##### brctl
-
-```sh
-# list xen interfaces
-brctl show
 ```
 
 <p align="right">(<a href="#topic-351.2">back to sub Topic 351.2</a>)</p>
