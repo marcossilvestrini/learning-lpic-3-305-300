@@ -88,7 +88,7 @@
 > e software livre\\
 > Algumas distribuições GNULinux como Debian e RPM serão abordadas\\
 > A instalação e configuração de alguns pacotes também serão abordadas\\
-> Ao fazer isso, você pode dar a toda a comunidade a chance de se beneficiar de suas alterações.\\
+> Ao fazer isso, você pode dar a toda a comunidade a oportunidade de se beneficiar de suas alterações.\\
 > O acesso ao código-fonte é uma pré-condição para isso.\\
 > Use o vagrant para atualizar máquinas, executar laboratórios e praticar o conteúdo deste artigo.\\
 > Publiquei na pasta Vagrant um Vagrantfile com o que é necessário\\
@@ -128,7 +128,7 @@ Personalize um modelo_Vagrantfile-tópico-XXX_. Este arquivo contém uma configu
 
 -   Arquivo[Vagrantfile-topic-351](./vagrant/Vagrantfile-topic-351)
     -   vm.clone_directory = "&lt;sua_letra_do_driver>:\\<folder>\\&lt;para_máquina>\\#{VM_NAME}-instance-1"
-        Exemplo: vm.clone_directory = "E:\\Servidores\\VMWare\\#{VM_NAME}-instance-1"
+        Exemplo: vm.clone_directory = "E:\\Servidores\\VMware\\#{VM_NAME}-instance-1"
     -   vm.vmx["mem tamanho"]= ""
     -   vm.vmx["numvcpus"]= ""
     -   vm.vmx["cpuid.coresPerSocket"]= ""
@@ -145,7 +145,7 @@ Use este repositório para aprender sobre o exame LPIC-3 305-300
 
 ### Para cima e para baixo
 
-Trocar um_Vagrantfile-tópico-xxx_modelo e copie para um novo arquivo com nome_Vagrantfile_
+Mudar um_Vagrantfile-tópico-xxx_modelo e copie para um novo arquivo com nome_Vagrantfile_
 
 ```sh
 cd vagrant && vagrant up
@@ -352,7 +352,7 @@ VMware ESXi, Microsoft Hyper-V, KVM (máquina virtual baseada em kernel).
 
 ###### Desvantagens do HVM
 
--   **Dependência de Hardware:**Requer recursos de hardware específicos, limitando a compatibilidade com sistemas mais antigos.
+-   **Dependência de hardware:**Requer recursos de hardware específicos, limitando a compatibilidade com sistemas mais antigos.
 -   **Complexidade:**Pode envolver configuração e gerenciamento mais complexos.
 
 ##### Paravirtualização
@@ -518,7 +518,7 @@ Aplicativos e desktops virtuais Citrix, VMware Horizon, serviços de desktop rem
 
 Separa aplicativos do hardware e do sistema operacional subjacentes, permitindo que sejam executados em ambientes isolados.
 
-###### Application VirtualizationDefinition Use Cases
+###### Casos de uso de definição de virtualização de aplicativos
 
 Implantação simplificada de aplicativos, testes de compatibilidade.
 
@@ -630,7 +630,7 @@ Aqui estão alguns aspectos importantes do XAPI:
 
 -   **Gerenciamento de VM:**XAPI permite que os administradores criem, excluam, iniciem e parem máquinas virtuais de maneira programática.
 
--   **Automação:**Com XAPI, é possível automatizar o gerenciamento de recursos virtuais, incluindo rede, armazenamento e computação, o que é crucial para grandes ambientes de nuvem.
+-   **Automação:**Com o XAPI, é possível automatizar o gerenciamento de recursos virtuais, incluindo rede, armazenamento e computação, o que é crucial para grandes ambientes de nuvem.
 
 -   **Integração:**O XAPI pode ser integrado a outras ferramentas e scripts para fornecer uma administração mais eficiente e personalizada do ambiente Xen.
 
@@ -709,6 +709,34 @@ oxenstored # Xenstore configurations
 
 #### 351.2 Comandos Importantes
 
+##### xen-create-image
+
+```sh
+# create a pv image
+xen-create-image \
+  --hostname=lpic3-pv-guest \
+  --memory=1gb \
+  --vcpus=2 \
+  --lvm=vg_xen \
+  --dhcp \
+  --pygrub \
+  --dist=bookworm
+```
+
+##### xen-delete-image
+
+```sh
+# delete a pv image
+xen-delete-image lpic3-pv-guest --lvm=vg_xen
+```
+
+##### brctl
+
+```sh
+# list xen interfaces
+brctl show
+```
+
 ##### XL
 
 ```sh
@@ -723,6 +751,8 @@ xl dmesg
 
 # monitoring domain
 xl top
+xentop
+xen top
 
 # Limit mem Dom0
 xl mem-set 0 2048
@@ -760,34 +790,6 @@ xl destroy lpic3-pv-guest
 xl reboot lpic3-pv-guest
 ```
 
-##### xen-create-image
-
-```sh
-# create a pv image
-xen-create-image \
-  --hostname=lpic3-pv-guest \
-  --memory=1gb \
-  --vcpus=2 \
-  --lvm=vg_xen \
-  --dhcp \
-  --pygrub \
-  --dist=bookworm
-```
-
-##### xen-delete-image
-
-```sh
-# delete a pv image
-xen-delete-image lpic3-pv-guest --lvm=vg_xen
-```
-
-##### brctl
-
-```sh
-# list xen interfaces
-brctl show
-```
-
 <p align="right">(<a href="#topic-351.2">back to sub Topic 351.2</a>)</p>
 <p align="right">(<a href="#topic-351">back to Topic 351</a>)</p>
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -804,12 +806,12 @@ brctl show
 
 **Principais áreas de conhecimento:**
 
--   Compreenda a arquitetura do QEMU, incluindo KVM, rede e armazenamento
+-   Understand the architecture of QEMU, including KVM, networking and storage
 -   Inicie instâncias do QEMU na linha de comando
 -   Gerencie instantâneos usando o monitor QEMU
 -   Instale os drivers de dispositivo QEMU Guest Agent e VirtIO
 -   Solucionar problemas de instalações QEMU, incluindo rede e armazenamento
--   Consciência de parâmetros importantes de configuração do QEMU
+-   Conscientização de parâmetros importantes de configuração do QEMU
 
 #### 351.3 Objetos Citados
 
@@ -893,7 +895,7 @@ foo
 
 **Principais áreas de conhecimento:**
 
--   Compreenda os recursos de vários formatos de imagem de disco virtual, como imagens raw, qcow2 e VMDK
+-   Compreenda os recursos de vários formatos de imagem de disco virtual, como imagens brutas, qcow2 e VMDK
 -   Gerencie imagens de disco de máquinas virtuais usando qemu-img
 -   Monte partições e acesse arquivos contidos em imagens de disco de máquinas virtuais usando libguestfish
 -   Copie o conteúdo do disco físico para uma imagem de disco de máquina virtual
@@ -954,7 +956,7 @@ foo
 **Principais áreas de conhecimento:**
 
 -   Compreenda os conceitos de sistema e contêiner de aplicativo
--   Compreenda e analise namespaces de kernel
+-   Compreender e analisar namespaces de kernel
 -   Compreender e analisar grupos de controle
 -   Compreender e analisar capacidades
 -   Entenda a função do seccomp, SELinux e AppArmor para virtualização de contêineres
@@ -962,7 +964,7 @@ foo
 -   Entenda o princípio do runc
 -   Entenda o princípio do CRI-O e do containerd
 -   Conhecimento do tempo de execução do OCI e das especificações de imagem
--   Conhecimento da interface de tempo de execução de contêiner (CRI) do Kubernetes
+-   Conhecimento da Interface de Tempo de Execução de Contêiner (CRI) do Kubernetes
 -   Consciência de podman, buildah e escopo
 -   Conhecimento de outras abordagens de virtualização de contêineres no Linux e outros sistemas operacionais livres, como rkt, OpenVZ, systemd-nspawn ou BSD Jails
 
@@ -1097,7 +1099,7 @@ Dockerfile
 
 -   Entenda a relevância da orquestração de contêineres
 -   Entenda os principais conceitos do Docker Compose e do Docker Swarm
--   Compreenda os principais conceitos do Kubernetes e Helm
+-   Compreenda os principais conceitos de Kubernetes e Helm
 -   Conscientização sobre OpenShift, Rancher e Mesosphere DC/OS
 
 <p align="right">(<a href="#topic-352.4">back to sub topic 352.4</a>)</p>
@@ -1224,7 +1226,7 @@ user-data
 
 <a name="topic-353.4"></a>
 
-### 353,4 Vagabundo
+### 353.4 Vagabundo
 
 **Peso:**3
 
@@ -1273,7 +1275,7 @@ Não se esqueça de dar uma estrela ao projeto! Obrigado novamente!
 1.  Bifurque o projeto
 2.  Crie sua ramificação de recursos (`git checkout -b feature/AmazingFeature`)
 3.  Confirme suas alterações (`git commit -m 'Add some AmazingFeature'`)
-4.  Empurre para a filial (`git push origin feature/AmazingFeature`)
+4.  Push to the Branch (`git push origin feature/AmazingFeature`)
 5.  Abra uma solicitação pull
 
 * * *
@@ -1286,7 +1288,7 @@ Não se esqueça de dar uma estrela ao projeto! Obrigado novamente!
 
 ## Contato
 
-Marcos Silvestrini - [marcos.silvestrini@gmail.com](mailto:marcos.silvestrini@gmail.com)\\[![Twitter](https://img.shields.io/twitter/url/https/twitter.com/mrsilvestrini.svg?style=social&label=Follow%20%40mrsilvestrini)](https://twitter.com/mrsilvestrini)
+Marcos Silvestrini[marcos.silvestrini@gmail.com](mailto:marcos.silvestrini@gmail.com)\\[![Twitter](https://img.shields.io/twitter/url/https/twitter.com/mrsilvestrini.svg?style=social&label=Follow%20%40mrsilvestrini)](https://twitter.com/mrsilvestrini)
 
 Link do projeto:<https://github.com/marcossilvestrini/learning-lpic-3-305-300>
 
