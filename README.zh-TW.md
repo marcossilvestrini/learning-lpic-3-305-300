@@ -129,9 +129,9 @@ cd learning-lpic-3-305-300
 -   文件[Vagrantfile-主題-351](./vagrant/Vagrantfile-topic-351)
     -   vm.clone_directory = "&lt;您的驅動程式字母>:\\<folder>\\&lt;到機器>\\#{VM_NAME}-instance-1"
         範例： vm.clone_directory = "E:\\伺服器\\虛擬機器軟體\\#{VM_NAME}-instance-1"
-    -   虛擬機器vmx[“孟加斯”"]= ""
+    -   虛擬機器vmx[“記憶體大小”"]= ""
     -   虛擬機器vmx[“numvcpu”"]= ""
-    -   虛擬機器vmx[“ cpuid"corespersocket”.]= ""
+    -   虛擬機器vmx[“cpuid"coresPerSocket”.]= ""
 
 在檔案中自訂網路配置[設定/網路](configs/network/).
 
@@ -143,7 +143,7 @@ cd learning-lpic-3-305-300
 
 使用此儲存庫了解 LPIC-3 305-300 考試
 
-### 上下
+### 對於上下
 
 切換一個_Vagrantfile-主題-xxx_模板並複製一個帶有名稱的新文件_流浪文件_
 
@@ -158,7 +158,7 @@ cd vagrant && vagrant destroy -f
 cd vagrant && vagrant reload
 ```
 
-**重要的：**_如果您無流量重新啟動VM，則共用資料夾在開機後不安裝。_
+**重要的：**_如果在沒有 vagrant 的情況下重新啟動虛擬機，則啟動後不會掛載共用資料夾。_
 
 ### 使用powershell進行向上和向下
 
@@ -181,8 +181,8 @@ vagrant/destroy.ps1
 -   [x] 為配置實驗室建立腳本
 -   [x] 建立有關主題 351 的範例
 -   [ ] 建立有關主題 352 的範例
--   [ ] 建立有關主題353的範例
--   [ ] 上傳模擬ITEXAM
+-   [ ] 建立有關主題 353 的範例
+-   [ ] 上傳模擬itexam
 
 * * *
 
@@ -193,7 +193,7 @@ vagrant/destroy.ps1
 > 0.為任何目的隨意運行程序的自由（自由 0）。
 > 1.自由地研究程式如何運作並對其進行更改\\
 > 你可以隨心所欲地進行計算（自由 1）。
-> 獲得原始程式碼是實現此目的的先決條件。
+> 存取原始碼是實現此目的的先決條件。
 > 2.重新分發副本的自由，以便您可以幫助他人（自由2）。
 > 3.將修改版本的副本分發給其他人的自由（自由3）。
 
@@ -241,7 +241,7 @@ man COMMAND
 -   了解 oVirt、Proxmox、systemd-machined 和 VirtualBox
 -   對 Open vSwitch 的認識
 
-#### 351.1引用對象
+#### 351.1 引用的對象
 
 ```sh
 Hypervisor
@@ -264,13 +264,13 @@ Migration (P2V, V2V)
 ###### 1 型特徵
 
 -   高性能、高效率。
--   降低潛伏期和開銷。
+-   更低的延遲和開銷。
 -   通常用於企業環境和資料中心。
 
 ###### 類型 1 範例
 
 -   VMware ESXi：企業環境中強大且廣泛使用的虛擬機器管理程式。
--   Microsoft Hyper-V：與Windows Server集成，提供強大的效能和管理功能。
+-   Microsoft Hyper-V：與 Windows Server 集成，提供強大的效能和管理功能。
 -   Xen：許多雲端服務供應商使用的開源虛擬機器管理程式。
 -   KVM（基於核心的虛擬機器）：整合到Linux核心中，為基於Linux的系統提供高效能。
 
@@ -323,7 +323,7 @@ P2V遷移是指將實體伺服器遷移到虛擬機器的過程。
 V2V 遷移是指將虛擬機器從一個虛擬機器管理程式遷移到另一個虛擬機器管理程式的過程。  
 在這種情況下，您已經有一個在虛擬化環境（例如 VMware）中運行的虛擬機，並且您希望將其移至另一個虛擬化環境（例如，Hyper-V 或新的 VMware 伺服器）。
 
--   Example: You have a virtual machine running on a VMware virtualization server, but you decide to migrate it to a Hyper-V platform. In this case, the V2V migration converts the virtual machine from one format or hypervisor to another, ensuring it can continue running correctly.
+-   範例：您有一個在 VMware 虛擬化伺服器上執行的虛擬機，但您決定將其移轉到 Hyper-V 平台。在這種情況下，V2V 遷移將虛擬機器從一種格式或管理程序轉換為另一種格式或管理程序，確保其可以繼續正確運作。
 
 #### HVM 與半虛擬化
 
@@ -333,7 +333,7 @@ V2V 遷移是指將虛擬機器從一個虛擬機器管理程式遷移到另一�
 
 HVM 利用現代 CPU 提供的硬體擴充來虛擬化硬件，從而能夠以最小的效能開銷來建立和管理 VM。
 
-###### HVM關鍵特徵
+###### HVM 主要特性
 
 -   **硬體支援**：需要 CPU 支援虛擬化擴展，例如 Intel VT-x 或 AMD-V。
 -   **全虛擬化：**虛擬機器可以運行未經修改的來賓作業系統，因為虛擬機器管理程式提供了硬體環境的完整模擬。
@@ -373,17 +373,17 @@ VMware ESXi、Microsoft Hyper-V、KVM（基於核心的虛擬機器）。
 
 ###### 半虛擬化優勢
 
--   **效率：**減少了虛擬化硬體的開銷，有可能為某些工作負載提供更好的效能。
+-   **效率：**減少虛擬化硬件的開銷，有可能為某些工作負載提供更好的效能。
 -   **資源利用：**由於來賓作業系統和虛擬機器管理程式之間的直接通信，可以更有效地利用系統資源。
 
 ###### 半虛擬化的缺點
 
 -   **來賓作業系統修改：**需要對來賓作業系統進行修改，從而限制了對受支援作業系統的相容性。
--   **複雜：**需要在客座作業系統中進行超級呼叫實現的額外複雜性。
+-   **複雜：**需要在來賓作業系統中實作超級呼叫實作額外的複雜性。
 
 ##### 主要差異
 
-###### 訪客作業系統要求
+###### 來賓作業系統要求
 
 -   **虛擬機器：**可以運行未經修改的來賓作業系統。
 -   **半虛擬化：**需要修改來賓作業系統才能與虛擬機器管理程式搭配使用。
@@ -405,15 +405,15 @@ VMware ESXi、Microsoft Hyper-V、KVM（基於核心的虛擬機器）。
 
 ###### 複雜
 
--   **虛擬機器：**通常，由於它支援未修飾的作業系統，因此通常更直接地部署。
--   **半虛擬化：**需要對來賓作業系統進行其他設定和修改，以提高複雜性。
+-   **虛擬機器：**通常部署起來更簡單，因為它支援未修改的作業系統。
+-   **半虛擬化：**需要對來賓作業系統進行額外的設定和修改，從而增加了複雜性。
 
 #### NUMA（非統一記憶體存取）
 
 NUMA（非統一記憶體存取）是多處理器系統中使用的記憶體架構，用於最佳化處理器的記憶體存取。  
 在NUMA 系統中，內部存在處理器之間分佈不均勻，這意味著每個處理器對部分內存（其“本地內存”）的訪問速度比對物理上較遠的內存（稱為“遠端內存” ）和關聯記憶體的存取速度要快。
 
-##### NUMA 架構的主要特性
+##### Key Features of NUMA Architecture
 
 1.  **本地和遠端記憶體**：每個處理器都有自己的本地內存，可以更快地存取該內存。然而，它也可以存取其他處理器的內存，儘管這需要更長的時間。
 2.  **差異化延遲**：記憶體存取的延遲取決於處理器是存取其本地記憶體還是另一個節點的記憶體。本地記憶體存取速度更快，而存取另一個節點（遠端）的記憶體速度較慢。
@@ -427,8 +427,8 @@ NUMA（非統一記憶體存取）是多處理器系統中使用的記憶體架�
 ##### 缺點
 
 -   程式設計複雜性：程式設計師需要了解哪些記憶體區域是本地的或遠端的，優化本地記憶體的使用以獲得更好的效能。
--   潛在的性能處罰：如果處理器經常訪問遙控內存，則由於延遲較高而可能會遭受性能。
-    該體系結構在高效能多處理器系統（例如伺服器和超級電腦）中很常見，在該系統中，可擴展性和記憶體最佳化至關重要。
+-   潛在的效能損失：如果處理器經常存取遠端內存，則效能可能會因較高的延遲而受到影響。
+    這種架構在高效能多處理器系統中很常見，例如伺服器和超級計算機，其中可擴展性和記憶體最佳化至關重要。
 
 #### 開源解決方案
 
@@ -444,17 +444,17 @@ NUMA（非統一記憶體存取）是多處理器系統中使用的記憶體架�
 
 ##### 硬體虛擬化（伺服器虛擬化）
 
-###### HV定義
+###### 高壓定義
 
 抽象化實體硬體以建立運行單獨作業系統和應用程式的虛擬機器 (VM)。
 
-###### HV用例
+###### 高壓用例
 
 資料中心、雲端運算、伺服器整合。
 
 ###### 高壓範例
 
-VMware ESXI，Microsoft Hyper-V，KVM。
+VMware ESXi、微軟 Hyper-V、KVM。
 
 ##### 作業系統虛擬化（容器化）
 
@@ -474,7 +474,7 @@ Docker、Kubernetes、LXC。
 
 ###### 網路虛擬化定義
 
-將硬體和軟體網路資源結合到一個基於軟體的管理實體。
+將硬體和軟體網路資源合併到一個基於軟體的管理實體。
 
 ###### 網路虛擬化用例
 
@@ -524,7 +524,7 @@ Citrix 虛擬應用程式和桌面、VMware Horizo​​n、Microsoft 遠端桌�
 
 ###### 應用程式虛擬化定義範例
 
-VMware ThinApp，Microsoft App-V，Citrix Xenapp。
+VMware ThinApp、Microsoft App-V、Citrix XenApp。
 
 ##### 資料虛擬化
 
@@ -544,7 +544,7 @@ Denodo、紅帽 JBoss 資料虛擬化、IBM InfoSphere。
 
 -   資源效率：更好地利用實體資源。
 -   節省成本：降低硬體和營運成本。
--   可伸縮性：根據需求易於擴展或向下擴展。
+-   可擴展性：根據需求輕鬆擴展或縮小。
 -   靈活性：支援各種工作負載和應用程式。
 -   災難復原：簡化的備份和復原過程。
 -   隔離：透過隔離環境提高安全性。
@@ -569,7 +569,7 @@ Denodo、紅帽 JBoss 資料虛擬化、IBM InfoSphere。
 
 **關鍵知識領域：**
 
--   了解XEN的體系結構，包括網路和存儲
+-   了解 Xen 的架構，包括網路和存儲
 -   Xen節點和域的基本配置
 -   Xen節點和域的基本管理
 -   Xen 安裝的基本故障排除
@@ -582,28 +582,28 @@ Denodo、紅帽 JBoss 資料虛擬化、IBM InfoSphere。
 
 ![panda](images/xen-panda.png)
 
-XEN是一種開源類型1（裸機）管理程序，它允許多個作業系統在同一實體硬體上同時運行。  
+Xen 是一個開源 type-1（裸機）虛擬機器管理程序，它允許多個作業系統在同一實體硬體上同時運行。  
 Xen 在實體硬體和虛擬機器 (VM) 之間提供了一個層，可實現高效的資源共享和隔離。
 
 -   **建築學：**Xen 使用兩層系統運行，其中 Domain 0 (Dom0) 是具有直接硬體存取權並管理虛擬機器管理程式的特權網域。其他虛擬機器稱為 Domain U (DomU)，運行來賓作業系統並由 Dom0 管理。
 -   **虛擬化類型：**Xen 支援半虛擬化 (PV)（需要修改的來賓作業系統）和硬體輔助虛擬化 (HVM)（使用硬體擴充（例如 Intel VT-x 或 AMD-V）來執行未修改的來賓作業系統）。
     Xen 廣泛用於雲端環境，特別是 Amazon Web Services (AWS) 和其他大型雲端供應商。
 
-#### Xensource
+#### XenSource
 
 XenSource 是由劍橋大學 Xen 虛擬機器管理程式的原始開發人員創立的公司，旨在將 Xen 商業化。  
 該公司提供基於Xen的企業解決方案，並提供額外的工具和支援來增強Xen的企業使用能力。
 
--   **Citrix的收購**：2007年，XenSource被Citrix Systems, Inc.收購。
+-   **由 Citrix 收購**：2007年，XenSource被Citrix Systems, Inc.收購。
 -   **過渡**：收購後，Xen 項目繼續作為開源項目，而 Citrix 則專注於利用 XenSource 技術的 XenServer 等商業產品。
 
 #### Xen項目
 
 Xen專案是指在Xen虛擬機器管理程序商業化後負責開發和維護的開源社群和倡議。  
-XEN計畫在Linux基金會下運作，重點是建造，改進和支持Xen作為協作，社區驅動的努力。
+Xen 計畫在 Linux 基金會下運作，重點是建立、改進和支持 Xen，將其作為社群驅動的協作工作。
 
--   **目標：**XEN專案旨在透過改善其效能，安全性和功能設定為廣泛的用例，包括雲端運算，以安全性為中心的虛擬化（例如Qubes OS）和嵌入式系統來推動該管理程式。
--   **貢獻者：**該專案包括來自各種組織的貢獻者，包括主要的雲端供應商，硬體供應商和獨立開發人員。
+-   **目標：**Xen 專案旨在透過提高虛擬機器管理程式的效能、安全性和適用於各種用例的功能集來推進虛擬機器管理程序，包括雲端運算、注重安全的虛擬化（例如 Qubes OS）和嵌入式系統。
+-   **貢獻者：**該專案包括來自不同組織的貢獻者，包括主要雲端供應商、硬體供應商和獨立開發人員。
 -   **藥丸和漢工具：**Xen 專案還包括用於管理 Xen 虛擬機器管理程式安裝的 XAPI (XenAPI) 等工具，以及用於系統管理和最佳化的各種其他實用程式。
 
 #### XenStore
@@ -613,7 +613,7 @@ Xen Store 是 Xen Hypervisor 的關鍵元件。
 
 以下是 Xen Store 的一些關鍵方面：
 
--   **域間通訊：**Xen Store啟用網域之間的通信，例如DOM0（控制硬體資源的特權網域）和DOMUS（使用者網域，是VMS）。這是透過鍵值條目完成的，每個網域都可以讀取或寫入資訊。
+-   **域間通訊：**Xen Store 支援域之間的通信，例如 Dom0（控制硬體資源的特權域）和 DomU（用戶域，即 VM）。這是透過鍵值條目完成的，其中每個網域都可以讀取或寫入資訊。
 
 -   **配置管理：**它用於儲存和存取配置信息，例如虛擬設備、網路和啟動參數。這有利於虛擬機器的動態管理和配置。
 
@@ -626,9 +626,9 @@ Xen Store 是 Xen Hypervisor 的關鍵元件。
 XAPI 或 XenAPI 是用於管理 Xen Hypervisor 及其虛擬機器 (VM) 的應用程式介面 (API)。  
 XAPI 是 XenServer（現在稱為 Citrix Hypervisor）的關鍵元件，提供與 Xen 虛擬機器管理程式互動的標準化方式，以執行建立、設定、監控和控制 VM 等作業。
 
-這是XAPI的一些重要面向：
+以下是 XAPI 的一些重要面向：
 
--   **虛擬機器管理：**XAPI允許管理員透過程式設計性創建，刪除，啟動和停止虛擬機器。
+-   **虛擬機器管理：**XAPI 允許管理員以程式設計方式建立、刪除、啟動和停止虛擬機器。
 
 -   **自動化：**透過 XAPI，可以自動管理虛擬資源，包括網路、儲存和運算，這對於大型雲端環境至關重要。
 
@@ -642,13 +642,13 @@ XAPI 是支援 Xen Hypervisor 控制和自動化的接口，使管理虛擬化�
 
 -   **克森：**核心管理程式技術使虛擬機器能夠在實體硬體上運行。
 -   **Xen來源：**該公司將 Xen 商業化，後來被 Citrix 收購，導致了 Citrix XenServer 的開發。
--   **Xen專案：**在 Linux 基金會下繼續開發和維護 Xen 虛擬機器管理程式的開源計畫和社群。
+-   **Xen Project:**在 Linux 基金會下繼續開發和維護 Xen 虛擬機器管理程式的開源倡議和社群。
 -   **XenStore：**Xen Store 充當 Xen 虛擬機器管理程式和 VM 之間的通訊和配置中介，簡化虛擬化環境的操作和管理。
 -   **丸**是支援 Xen Hypervisor 控制和自動化的接口，使管理虛擬化環境變得更加容易。
 
 #### 域0 (Dom0)
 
-domain0或dom0是XEN體系結構中的控制域。它管理其他網域（Domus），並可以直接存取硬體。  
+Domain0 或 Dom0 是 Xen 架構中的控制域。它管理其他網域 (DomU) 並且可以直接存取硬體。  
 Dom0 運行設備驅動程序，允許缺乏直接硬體存取的 DomU 與設備進行通訊。通常，它是作業系統（如 Linux）的完整實例，對於 Xen 虛擬機器管理程式操作至關重要。
 
 #### 域U (DomU)
@@ -659,7 +659,7 @@ DomU 是運作虛擬機器的非特權網域。
 #### PV-DOMU（超規範化域）
 
 PV-DomU 使用一種稱為半虛擬化的技術。在此模型中，DomU 作業系統經過修改，可以意識到它在虛擬化環境中運行，從而允許它直接與虛擬機器管理程式通訊以優化效能。  
-與完全虛擬化相比，這會導致較低的開銷和提高效率。
+與完全虛擬化相比，這可以降低開銷並提高效率。
 
 #### HVM-DomU（硬體虛擬機器DomainU）
 
@@ -685,7 +685,7 @@ xentop
 oxenstored # Xenstore configurations
 ```
 
-#### 351.2註釋
+#### 351.2 註釋
 
 ```sh
 
@@ -709,6 +709,34 @@ oxenstored # Xenstore configurations
 
 #### 351.2 重要命令
 
+##### xen 建立映像
+
+```sh
+# create a pv image
+xen-create-image \
+  --hostname=lpic3-pv-guest \
+  --memory=1gb \
+  --vcpus=2 \
+  --lvm=vg_xen \
+  --dhcp \
+  --pygrub \
+  --dist=bookworm
+```
+
+##### xen 刪除影像
+
+```sh
+# delete a pv image
+xen-delete-image lpic3-pv-guest --lvm=vg_xen
+```
+
+##### brctl
+
+```sh
+# list xen interfaces
+brctl show
+```
+
 ##### XL
 
 ```sh
@@ -723,6 +751,8 @@ xl dmesg
 
 # monitoring domain
 xl top
+xentop
+xen top
 
 # Limit mem Dom0
 xl mem-set 0 2048
@@ -760,34 +790,6 @@ xl destroy lpic3-pv-guest
 xl reboot lpic3-pv-guest
 ```
 
-##### Xen-Create-image
-
-```sh
-# create a pv image
-xen-create-image \
-  --hostname=lpic3-pv-guest \
-  --memory=1gb \
-  --vcpus=2 \
-  --lvm=vg_xen \
-  --dhcp \
-  --pygrub \
-  --dist=bookworm
-```
-
-##### xen 刪除影像
-
-```sh
-# delete a pv image
-xen-delete-image lpic3-pv-guest --lvm=vg_xen
-```
-
-##### brctl
-
-```sh
-# list xen interfaces
-brctl show
-```
-
 <p align="right">(<a href="#topic-351.2">back to sub Topic 351.2</a>)</p>
 <p align="right">(<a href="#topic-351">back to Topic 351</a>)</p>
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -806,10 +808,10 @@ brctl show
 
 -   了解QEMU的架構，包括KVM、網路和存儲
 -   從命令列啟動 QEMU 實例
--   使用QEMU監視器管理快照
+-   使用 QEMU 監視器管理快照
 -   安裝 QEMU Guest Agent 和 VirtIO 裝置驅動程式
 -   對 QEMU 安裝進行故障排除，包括網路和存儲
--   意識重要的QEMU配置參數
+-   了解重要的 QEMU 配置參數
 
 #### 351.3 引用的對象
 
@@ -824,7 +826,7 @@ brctl
 tunctl
 ```
 
-#### 351.3重要命令
+#### 351.3 重要命令
 
 ##### ip
 
@@ -841,7 +843,7 @@ ip link show
 
 <a name="topic-351.4"></a>
 
-### 351.4 libvirt虛擬機器管理
+### 351.4 Libvirt虛擬機器管理
 
 **重量：**9
 
@@ -851,14 +853,14 @@ ip link show
 
 -   了解libvirt的架構
 -   管理 libvirt 連線和節點
--   建立和管理QEMU和XEN域，包括快照
+-   建立和管理 QEMU 和 Xen 網域，包括快照
 -   管理和分析域的資源消耗
 -   建立和管理儲存池和磁碟區
 -   建立和管理虛擬網絡
 -   在節點之間遷移域
 -   了解 libvirt 如何與 Xen 和 QEMU 交互
 -   了解 libvirt 如何與 dnsmasq 和 radvd 等網路服務交互
--   了解libvirt xml設定檔
+-   了解 libvirt XML 設定文件
 -   對virtlogd和virtlockd的認識
 
 #### 351.4 引用的對象
@@ -894,7 +896,7 @@ foo
 **關鍵知識領域：**
 
 -   了解各種虛擬磁碟映像格式的功能，例如原始映像、qcow2 和 VMDK
--   使用QEMU-IMG管理虛擬機器磁碟影像
+-   使用 qemu-img 管理虛擬機器磁碟映像
 -   使用 libguestfish 掛載分割區並存取虛擬機器磁碟映像中包含的文件
 -   將實體磁碟內容複製到虛擬機器磁碟映像
 -   在各種虛擬機器磁碟映像格式之間遷移磁碟內容
@@ -939,7 +941,7 @@ foo
 
 <a name="topic-352"></a>
 
-## 主題352：容器虛擬化
+## 主題 352：容器虛擬化
 
 * * *
 
@@ -949,7 +951,7 @@ foo
 
 **重量：**7
 
-**描述：**考生應該了解容器虛擬化的概念。這包括了解用於實現容器虛擬化的 Linux 元件以及使用標準 Linux 工具對這些元件進行故障排除。
+**描述：** Candidates should understand the concept of container virtualization. This includes understanding the Linux components used to implement container virtualization as well as using standard Linux tools to troubleshoot these components.
 
 **關鍵知識領域：**
 
@@ -1010,16 +1012,16 @@ foo
 
 **重量：**6
 
-**描述：**候選人應能夠使用LXC和LXD使用系統容器。覆蓋的LXC的版本為3.0或更高。
+**描述：**考生應該能夠使用 LXC 和 LXD 的系統容器。所涵蓋的LXC版本為3.0或更高版本。
 
 **關鍵知識領域：**
 
 -   了解LXC和LXD的架構
--   基於現有映像使用LXD管理LXC容器，包括網路和存儲
--   配置LXC容器屬性
+-   使用 LXD 基於現有映像管理 LXC 容器，包括網路和存儲
+-   配置 LXC 容器屬性
 -   限制LXC容器資源使用
 -   使用 LXD 設定檔
--   了解LXC影像
+-   了解 LXC 影像
 -   對傳統 LXC 工具的認識
 
 #### 352.2 引用的對象
@@ -1029,7 +1031,7 @@ lxd
 lxc (including relevant subcommands)
 ```
 
-#### 352.2重要命令
+#### 352.2 重要命令
 
 ##### 富
 
@@ -1054,11 +1056,11 @@ foo
 **關鍵知識領域：**
 
 -   了解Docker的架構和組件
--   透過使用Docker註冊表的映像來管理Docker容器
+-   使用 Docker 註冊表中的映像管理 Docker 容器
 -   了解和管理 Docker 容器的映像和磁碟區
 -   了解並管理 Docker 容器的日誌記錄
 -   了解並管理 Docker 網路
--   使用Dockerfiles建立容器映像
+-   使用 Dockerfile 建立容器映像
 -   使用註冊表 Docker 映像運行 Docker 註冊表
 
 #### 352.3 引用的對象
@@ -1159,7 +1161,7 @@ Terraform
 
 **關鍵知識領域：**
 
--   了解包裝工的功能和功能
+-   了解Packer的功能和特點
 -   建立和維護範本文件
 -   使用不同的建構器從模板檔案建立映像
 
@@ -1187,9 +1189,9 @@ packer
 
 ### 353.3 雲初始化
 
-**重量：**3
+**Weight:**3
 
-**描述：**候選人應能夠使用雲端機構來配置從標準化圖像創建的虛擬機器。這包括調整虛擬機器以匹配其可用硬體資源，特別是磁碟空間和磁碟區。  
+**描述：**考生應該能夠使用 cloud-init 來配置從標準化映像創建的虛擬機器。這包括調整虛擬機器以匹配其可用的硬體資源，特別是磁碟空間和磁碟區。  
 此外，考生應該能夠配置實例以允許安全 SSH 登入並安裝一組特定的軟體包。  
 此外，考生應該能夠創建具有 cloud-init 支援的新系統映像。
 
@@ -1232,7 +1234,7 @@ user-data
 
 **關鍵知識領域：**
 
--   了解流浪結構和概念，包括儲存和網絡
+-   了解 Vagrant 架構和概念，包括儲存和網路
 -   從 Atlas 檢索並使用盒子
 -   建立並運行 Vagrantfiles
 -   造訪 Vagrant 虛擬機
@@ -1286,7 +1288,7 @@ Vagrantfile
 
 ## 接觸
 
-Marcos Silvestrini-[marcos.silvestrini@gmail.com](mailto:marcos.silvestrini@gmail.com)\\[![Twitter](https://img.shields.io/twitter/url/https/twitter.com/mrsilvestrini.svg?style=social&label=Follow%20%40mrsilvestrini)](https://twitter.com/mrsilvestrini)
+馬科斯·西爾維斯特里尼 -[marcos.silvestrini@gmail.com](mailto:marcos.silvestrini@gmail.com)\\[![Twitter](https://img.shields.io/twitter/url/https/twitter.com/mrsilvestrini.svg?style=social&label=Follow%20%40mrsilvestrini)](https://twitter.com/mrsilvestrini)
 
 項目連結：<https://github.com/marcossilvestrini/learning-lpic-3-305-300>
 
@@ -1306,7 +1308,7 @@ Marcos Silvestrini-[marcos.silvestrini@gmail.com](mailto:marcos.silvestrini@gmai
     -   [GNU 使](https://www.gnu.org/software/make/)
     -   [GNU Emacs](https://en.wikipedia.org/wiki/Emacs)
     -   [GNU 軟體包](https://www.gnu.org/software/)
-    -   [GNU/Linux收藏](https://directory.fsf.org/wiki/Collection:GNU/Linux)
+    -   [GNU/Linux 集合](https://directory.fsf.org/wiki/Collection:GNU/Linux)
     -   [GNU Grub 引導程式](https://www.gnu.org/software/grub/)
     -   [GNU赫德](https://www.gnu.org/software/hurd/hurd/what_is_the_gnu_hurd.html)
 -   [核心](<>)
