@@ -128,7 +128,7 @@ Personaliza una plantilla_Vagrantfile-tema-XXX_. Este archivo contiene una confi
 
 -   Archivo[Vagrantfile-tema-351](./vagrant/Vagrantfile-topic-351)
     -   vm.clone_directory = "&lt;su_carta_de_conductor>:\\<folder>\\&lt;a_máquina>\\#{VM_NAME}-instancia-1"
-        Ejemplo: vm.clone_directory = "E:\\Servidores\\VMWare\\#{VM_NAME}-instancia-1"
+        Ejemplo: vm.clone_directory = "E:\\Servidores\\VMware\\#{VM_NAME}-instancia-1"
     -   vm.vmx["memsize"]= ""
     -   vm.vmx["numvcpus"]= ""
     -   vm.vmx["cpuid.coresPerSocket"]= ""
@@ -236,7 +236,7 @@ man COMMAND
 -   Comprender los pros y los contras de la virtualización
 -   Comprender las diversas variaciones de hipervisores y monitores de máquinas virtuales
 -   Comprender los aspectos principales de la migración de máquinas físicas a virtuales
--   Comprender los aspectos principales de la migración de máquinas virtuales entre sistemas host
+-   Comprender los aspectos principales de la migración de máquinas virtuales entre sistemas host.
 -   Comprender las características y las implicaciones de la virtualización para una máquina virtual, como la creación de instantáneas, la pausa, la clonación y los límites de recursos.
 -   Conocimiento de oVirt, Proxmox, systemd-machined y VirtualBox
 -   Conocimiento de Open vSwitch
@@ -270,7 +270,7 @@ Se ejecuta directamente en el hardware físico del host, proporcionando una capa
 ###### Ejemplos de tipo 1
 
 -   VMware ESXi: un hipervisor robusto y ampliamente utilizado en entornos empresariales.
--   Microsoft Hyper-V: integrado con Windows Server, ofrece potentes funciones de gestión y rendimiento.
+-   Microsoft Hyper-V: integrado con Windows Server, ofrece sólidas funciones de administración y rendimiento.
 -   Xen: un hipervisor de código abierto utilizado por muchos proveedores de servicios en la nube.
 -   KVM (Máquina virtual basada en kernel): Integrada en el kernel de Linux, proporciona un alto rendimiento para sistemas basados ​​en Linux.
 
@@ -291,7 +291,7 @@ Se ejecuta sobre un sistema operativo convencional y depende del sistema operati
 -   VMware Workstation: un potente hipervisor para ejecutar múltiples sistemas operativos en un solo escritorio.
 -   Oracle VirtualBox: un hipervisor de código abierto conocido por su flexibilidad y facilidad de uso.
 -   Parallels Desktop: Diseñado para que los usuarios de Mac ejecuten Windows y otros sistemas operativos junto con macOS.
--   QEMU (Quick EMULator): un emulador y virtualizador de código abierto, que a menudo se usa junto con KVM.
+-   QEMU (Quick EMULator): un emulador y virtualizador de código abierto, que a menudo se utiliza junto con KVM.
 
 ##### Diferencias clave entre los hipervisores tipo 1 y tipo 2
 
@@ -396,7 +396,7 @@ Xen con invitados paravirtualizados, herramientas VMware en determinadas configu
 ###### Dependencia de hardware
 
 -   **HVM:**Requiere características específicas de CPU (Intel VT-x, AMD-V).
--   **Paravirtualización:**No requiere funciones específicas de CPU, pero necesita un sistema operativo invitado modificado.
+-   **Paravirtualización:**No requiere características específicas de la CPU, pero necesita un sistema operativo invitado modificado.
 
 ###### Aislamiento
 
@@ -644,7 +644,7 @@ XAPI es la interfaz que permite el control y la automatización del Hipervisor X
 -   **Fuente Xen:**La empresa que comercializaba Xen, posteriormente adquirida por Citrix, dio lugar al desarrollo de Citrix XenServer.
 -   **Proyecto Xen:**La iniciativa y comunidad de código abierto que continúa desarrollando y manteniendo el hipervisor Xen bajo la Fundación Linux.
 -   **Tienda Xen:**Xen Store actúa como intermediario de comunicación y configuración entre el hipervisor Xen y las VM, agilizando la operación y gestión de entornos virtualizados.
--   **XAPI**es la interfaz que permite el control y la automatización del Hipervisor Xen, facilitando la gestión de entornos virtualizados.
+-   **Píldora**es la interfaz que permite el control y la automatización del Hipervisor Xen, facilitando la gestión de entornos virtualizados.
 
 #### Dominio0 (Dom0)
 
@@ -806,7 +806,7 @@ xl reboot lpic3-pv-guest
 
 **Áreas de conocimiento clave:**
 
--   Understand the architecture of QEMU, including KVM, networking and storage
+-   Comprender la arquitectura de QEMU, incluidos KVM, redes y almacenamiento.
 -   Inicie instancias de QEMU desde la línea de comando
 -   Administre instantáneas usando el monitor QEMU
 -   Instale los controladores de dispositivo QEMU Guest Agent y VirtIO
@@ -1274,7 +1274,7 @@ crear una solicitud de extracción. También puedes simplemente abrir un problem
 
 1.  Bifurcar el proyecto
 2.  Crea tu rama de funciones (`git checkout -b feature/AmazingFeature`)
-3.  Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+3.  Confirme sus cambios (`git commit -m 'Add some AmazingFeature'`)
 4.  Empujar a la rama (`git push origin feature/AmazingFeature`)
 5.  Abrir una solicitud de extracción
 
