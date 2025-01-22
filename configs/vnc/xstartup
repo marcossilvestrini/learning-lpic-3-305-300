@@ -1,0 +1,6 @@
+#!/bin/bash
+xrdb $HOME/.Xresources
+autocutsel -fork
+vncconfig -iconic &
+vncconfig -nowin &
+startxfce4 &

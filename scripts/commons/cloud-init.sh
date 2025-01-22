@@ -20,11 +20,14 @@ if echo "$RELEASE_INFO" | grep -q -i "debian\|ubuntu"; then
     # Debian and Ubuntu
     echo "This is a Debian or Ubuntu-based distribution."
     ## Install packages
+    sudo apt update -y
     sudo apt install -y  \
     dos2unix \
     lvm2 \
     bridge-utils \
-    tree
+    tree \
+    xfce4 xfce4-goodies \
+    tightvncserver
 
     # Configure profile
     sudo cp -f configs/commons/.bashrc_debian  .bashrc
@@ -35,16 +38,34 @@ if echo "$RELEASE_INFO" | grep -q -i "debian\|ubuntu"; then
     # Configure vim
     sudo cp -f configs/commons/.vimrc  .vimrc
     sudo cp -f configs/commons/.vimrc  /root/.vimrc
+
+    # Configure vnc    
+    mkdir -p .vnc
+
+    echo "vagrant" | vncpasswd -f > .vnc/passwd
+    chmod 600 .vnc/passwd
+    
+    cp configs/vnc/xstartup  .vnc/
+    chmod 755 .vnc/xstartup
+    chown vagrant:vagrant .vnc/*
+    # killall Xtightvnc  > /dev/null 2>&1
+    # vncserver 
+    
+    # sudo cp configs/vnc/vncserver@.service /etc/systemd/system/vncserver@:1.service
+    # sudo systemctl daemon-reload
+    # sudo systemctl enable vncserver@:1.service
+    # sudo systemctl start vncserver@:1.service
+
         
     # Oracle Linux
-    elif echo "$RELEASE_INFO" | grep -q -i "oracle"; then
+elif echo "$RELEASE_INFO" | grep -q -i "oracle"; then
     echo "This is an Oracle Linux distribution."
     ## Install packages
     sudo dnf install -y \
     dos2unix
     
     # Rocky Linux
-    elif echo "$RELEASE_INFO" | grep -q -i "rocky"; then
+elif echo "$RELEASE_INFO" | grep -q -i "rocky"; then
     echo "This is an Rocky Linux distribution."
     
     ## Install packages
