@@ -27,7 +27,7 @@ if echo "$RELEASE_INFO" | grep -q -i "debian\|ubuntu"; then
     bridge-utils \
     tree \
     xfce4 xfce4-goodies \
-    tightvncserver
+    tightvncserver dbus-x11
 
     # Configure profile
     sudo cp -f configs/commons/.bashrc_debian  .bashrc
@@ -39,23 +39,19 @@ if echo "$RELEASE_INFO" | grep -q -i "debian\|ubuntu"; then
     sudo cp -f configs/commons/.vimrc  .vimrc
     sudo cp -f configs/commons/.vimrc  /root/.vimrc
 
-    # Configure vnc    
+    # Configure vnc        
+    touch .Xresources  
+    PASSWORD="vagrant"
     mkdir -p .vnc
-
-    echo "vagrant" | vncpasswd -f > .vnc/passwd
-    chmod 600 .vnc/passwd
-    
-    cp configs/vnc/xstartup  .vnc/
-    chmod 755 .vnc/xstartup
-    chown vagrant:vagrant .vnc/*
-    # killall Xtightvnc  > /dev/null 2>&1
-    # vncserver 
-    
-    # sudo cp configs/vnc/vncserver@.service /etc/systemd/system/vncserver@:1.service
-    # sudo systemctl daemon-reload
-    # sudo systemctl enable vncserver@:1.service
-    # sudo systemctl start vncserver@:1.service
-
+    echo -e "$PASSWORD\n$PASSWORD" | vncpasswd -f > ~/.vnc/passwd
+    chmod 600 ~/.vnc/passwd
+    vncserver 
+    vncserver -kill :1
+    killall Xtightvnc  > /dev/null 2>&1      
+    sudo cp configs/vnc/vncserver@.service /etc/systemd/system/vncserver@:1.service
+    sudo systemctl daemon-reload
+    sudo systemctl enable vncserver@:1.service
+    sudo systemctl start vncserver@:1.service
         
     # Oracle Linux
 elif echo "$RELEASE_INFO" | grep -q -i "oracle"; then
@@ -82,10 +78,6 @@ elif echo "$RELEASE_INFO" | grep -q -i "rocky"; then
 else
     echo "This distribution is not Debian, Ubuntu,Rocky Linux or Oracle Linux."
 fi
-
-# Set dns\hosts
-# sudo hostnamectl set-hostname novo-nome-host
-# sudo cp -f configs/network/hosts /etc/
 
 # Set custom ssh configs
 sudo cp -f configs/commons/01-sshd-custom.conf /etc/ssh/sshd_config.d
