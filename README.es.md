@@ -236,7 +236,7 @@ man COMMAND
 -   Comprender los pros y los contras de la virtualización
 -   Comprender las diversas variaciones de hipervisores y monitores de máquinas virtuales
 -   Comprender los aspectos principales de la migración de máquinas físicas a virtuales
--   Comprender los aspectos principales de la migración de máquinas virtuales entre sistemas host.
+-   Comprender los aspectos principales de la migración de máquinas virtuales entre sistemas host
 -   Comprender las características y las implicaciones de la virtualización para una máquina virtual, como la creación de instantáneas, la pausa, la clonación y los límites de recursos.
 -   Conocimiento de oVirt, Proxmox, systemd-machined y VirtualBox
 -   Conocimiento de Open vSwitch
@@ -270,7 +270,7 @@ Se ejecuta directamente en el hardware físico del host, proporcionando una capa
 ###### Ejemplos de tipo 1
 
 -   VMware ESXi: un hipervisor robusto y ampliamente utilizado en entornos empresariales.
--   Microsoft Hyper-V: integrado con Windows Server, ofrece sólidas funciones de administración y rendimiento.
+-   Microsoft Hyper-V: integrado con Windows Server, ofrece potentes funciones de gestión y rendimiento.
 -   Xen: un hipervisor de código abierto utilizado por muchos proveedores de servicios en la nube.
 -   KVM (Máquina virtual basada en kernel): Integrada en el kernel de Linux, proporciona un alto rendimiento para sistemas basados ​​en Linux.
 
@@ -396,7 +396,7 @@ Xen con invitados paravirtualizados, herramientas VMware en determinadas configu
 ###### Dependencia de hardware
 
 -   **HVM:**Requiere características específicas de CPU (Intel VT-x, AMD-V).
--   **Paravirtualización:**No requiere características específicas de la CPU, pero necesita un sistema operativo invitado modificado.
+-   **Paravirtualización:**No requiere funciones específicas de CPU, pero necesita un sistema operativo invitado modificado.
 
 ###### Aislamiento
 
@@ -663,7 +663,7 @@ Esto da como resultado una menor sobrecarga y una mejor eficiencia en comparaci�
 
 #### HVM-DomU (DominioU de máquina virtual de hardware)
 
-Los HVM-DomU son máquinas virtuales que utilizan virtualización completa, lo que permite ejecutar sistemas operativos sin modificaciones. El hipervisor Xen proporciona emulación de hardware para estas DomU, permitiéndoles ejecutar cualquier sistema operativo que admita la arquitectura de hardware subyacente.  
+Los HVM-DomU son máquinas virtuales que utilizan virtualización completa, lo que permite ejecutar sistemas operativos sin modificaciones. El hipervisor Xen proporciona emulación de hardware para estos DomU, permitiéndoles ejecutar cualquier sistema operativo que admita la arquitectura de hardware subyacente.  
 Si bien esto ofrece una mayor flexibilidad, puede generar mayores gastos generales en comparación con las PV-DomU.
 
 #### Red Xen
