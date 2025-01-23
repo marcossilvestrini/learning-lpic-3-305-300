@@ -89,7 +89,7 @@
 > 將涵蓋一些 GNULinux 發行版，例如 Debian 和 RPM\\
 > 也將涵蓋一些軟體包的安裝和配置\\
 > 透過這樣做，您可以讓整個社區有機會從您的更改中受益。
-> 獲得原始程式碼是實現此目的的先決條件。
+> 存取原始碼是實現此目的的先決條件。
 > 使用 vagrant for up 機器並執行本文的實驗和練習內容。
 > 我已經在 Vagrant 資料夾中發布了一個 Vagrantfile ，其中包含必要的內容\\
 > 供您上傳學習環境
@@ -193,7 +193,7 @@ vagrant/destroy.ps1
 > 0.為任何目的隨意運行程序的自由（自由 0）。
 > 1.自由地研究程式如何運作並對其進行更改\\
 > 你可以隨心所欲地進行計算（自由 1）。
-> 獲得原始程式碼是實現此目的的先決條件。
+> 存取原始碼是實現此目的的先決條件。
 > 2.重新分發副本的自由，以便您可以幫助他人（自由2）。
 > 3.將修改版本的副本分發給其他人的自由（自由3）。
 
@@ -261,7 +261,7 @@ Migration (P2V, V2V)
 
 直接在主機的實體硬體上運行，提供基礎層來管理虛擬機，而無需主機作業系統。
 
-###### 1 型特徵
+###### Type 1 Characteristics
 
 -   高性能、高效率。
 -   更低的延遲和開銷。
@@ -296,7 +296,7 @@ Migration (P2V, V2V)
 ##### 類型 1 和類型 2 虛擬機器管理程序之間的主要區別
 
 -   部署環境：
-    -   由於 1 類虛擬機器管理程式與硬體直接互動且效能較高，因此通常部署在資料中心和企業環境中。
+    -   由於 1 類虛擬機器管理程式與硬體直接互動且具有高效能，因此通常部署在資料中心和企業環境中。
     -   2 類虛擬機器管理程式更適合個人使用、開發、測試和小規模虛擬化任務。
 -   表現：
     -   類型 1 虛擬機器管理程式通常提供更好的效能和更低的延遲，因為它們不依賴主機作業系統。
@@ -336,7 +336,7 @@ HVM 利用現代 CPU 提供的硬體擴充來虛擬化硬件，從而能夠以�
 ###### HVM 主要特性
 
 -   **硬體支援**：需要 CPU 支援虛擬化擴展，例如 Intel VT-x 或 AMD-V。
--   **完全虛擬化：**虛擬機器可以運行未經修改的來賓作業系統，因為虛擬機器管理程式提供了硬體環境的完整模擬。
+-   **全虛擬化：**虛擬機器可以運行未經修改的來賓作業系統，因為虛擬機器管理程式提供了硬體環境的完整模擬。
 -   **表現：**由於在 CPU 上直接執行來賓程式碼，因此通常可提供接近本機的效能。
 -   **隔離:**在虛擬機器之間提供強大的隔離，因為每個虛擬機器都像擁有自己的專用硬體一樣運作。
 
@@ -411,7 +411,7 @@ VMware ESXi、Microsoft Hyper-V、KVM（基於核心的虛擬機器）。
 #### NUMA（非統一記憶體存取）
 
 NUMA（非統一記憶體存取）是多處理器系統中使用的記憶體架構，用於最佳化處理器的記憶體存取。  
-在NUMA 系統中，內部存在處理器之間分佈不均勻，這意味著每個處理器對一部分內存（其“本地內存”）的訪問速度比對物理上較遠的內存（稱為“遠端內存” ）和關聯記憶體的存取速度要快。
+在NUMA 系統中，內部存在處理器之間分佈不均勻，這意味著每個處理器對部分內存（其“本地內存”）的訪問速度比對物理上較遠的內存（稱為“遠端內存” ）和關聯記憶體的存取速度要快。
 
 ##### NUMA 架構的主要特性
 
@@ -595,14 +595,14 @@ XenSource 是由劍橋大學 Xen 虛擬機器管理程式的原始開發人員�
 該公司提供基於Xen的企業解決方案，並提供額外的工具和支援來增強Xen的企業使用能力。
 
 -   **由 Citrix 收購**：2007年，XenSource被Citrix Systems, Inc.收購。
--   **過渡**：收購後，Xen 專案繼續作為開源項目，而 Citrix 則利用 XenSource 技術專注於 XenServer 等商業產品。
+-   **過渡**：收購後，Xen 項目繼續作為開源項目，而 Citrix 則專注於利用 XenSource 技術的 XenServer 等商業產品。
 
 #### Xen項目
 
 Xen專案是指在Xen虛擬機器管理程序商業化後負責開發和維護的開源社群和倡議。  
 Xen 計畫在 Linux 基金會下運作，重點是建立、改進和支持 Xen，將其作為社群驅動的協作工作。
 
--   **目標：**Xen 專案旨在透過提高虛擬機器管理程序的效能、安全性和功能集來改進虛擬機器管理程序，以適應各種用例，包括雲端運算、注重安全的虛擬化（例如 Qubes OS）和嵌入式系統。
+-   **目標：**Xen 專案旨在透過提高虛擬機器管理程式的效能、安全性和適用於各種用例的功能集來推進虛擬機器管理程序，包括雲端運算、注重安全的虛擬化（例如 Qubes OS）和嵌入式系統。
 -   **貢獻者：**該專案包括來自不同組織的貢獻者，包括主要雲端供應商、硬體供應商和獨立開發人員。
 -   **藥丸和漢工具：**Xen 專案還包括用於管理 Xen 虛擬機器管理程式安裝的 XAPI (XenAPI) 等工具，以及用於系統管理和最佳化的各種其他實用程式。
 
@@ -613,7 +613,7 @@ Xen Store 是 Xen Hypervisor 的關鍵元件。
 
 以下是 Xen Store 的一些關鍵方面：
 
--   **Inter-Domain Communication:**Xen Store 支援域之間的通信，例如 Dom0（控制硬體資源的特權域）和 DomU（用戶域，即 VM）。這是透過鍵值條目完成的，其中每個網域都可以讀取或寫入資訊。
+-   **域間通訊：**Xen Store 支援域之間的通信，例如 Dom0（控制硬體資源的特權域）和 DomU（用戶域，即 VM）。這是透過鍵值條目完成的，其中每個網域都可以讀取或寫入資訊。
 
 -   **配置管理：**它用於儲存和存取配置信息，例如虛擬設備、網路和啟動參數。這有利於虛擬機器的動態管理和配置。
 
@@ -861,7 +861,7 @@ ip link show
 -   了解 libvirt 如何與 Xen 和 QEMU 交互
 -   了解 libvirt 如何與 dnsmasq 和 radvd 等網路服務交互
 -   了解 libvirt XML 設定文件
--   對virtlogd和virtlockd的認識
+-   Awareness of virtlogd and virtlockd
 
 #### 351.4 引用的對象
 
@@ -1202,7 +1202,7 @@ packer
 -   將 cloud-init 整合到系統映像中
 -   使用配置驅動資料來源進行測試
 
-#### 353.3 引用的對象
+#### 353.3 Cited Objects
 
 ```sh
 cloud-init
@@ -1318,7 +1318,7 @@ Vagrantfile
 -   [Linux 標準函式庫](<>)
     -   [Linux 標準函式庫](https://en.wikipedia.org/wiki/Linux_Standard_Base)
     -   [檔案系統層次結構標準](https://en.wikipedia.org/wiki/Filesystem_Hierarchy_Standard)
-    -   [File Hierarchy Structure](https://refspecs.linuxfoundation.org/FHS_3.0/fhs-3.0.pdf)
+    -   [文件層次結構](https://refspecs.linuxfoundation.org/FHS_3.0/fhs-3.0.pdf)
 -   [自由軟體](<>)
     -   [FSF](https://www.fsf.org)
     -   [自由軟體目錄](https://directory.fsf.org/wiki/Free_Software_Directory:Free_software_replacements)
@@ -1391,7 +1391,7 @@ Vagrantfile
     -   [KVM管理工具](https://www.linux-kvm.org/page/Management_Tools)
 -   [Xen](<>)
     -   [Xen伺服器](https://www.xenserver.com/)
-    -   [維基 Xen 項目](https://wiki.xenproject.org/wiki/Main_Page)
+    -   [Wiki XenProject](https://wiki.xenproject.org/wiki/Main_Page)
     -   [網路介面](https://wiki.xenproject.org/wiki/Xen_Networking#Virtual_Network_Interfaces)
     -   [Xen工具](https://xen-tools.org/software/)
     -   [LPI 部落格：Xen 虛擬化與雲端運算 #01：簡介](https://www.lpi.org/pt-br/blog/2020/10/01/xen-virtualization-and-cloud-computing-01-introduction/)
@@ -1401,7 +1401,7 @@ Vagrantfile
     -   [Xen 專案初學者指南](https://wiki.xenproject.org/wiki/Xen_Project_Beginners_Guide#Installing_the_Xen_Project_Software)
     -   [瘋狂的書](https://wiki.xenproject.org/wiki/Book/HelloXenProject/0-Contents)
 -   [統一內核](https://www.lpi.org/blog/2020/10/29/xen-virtualization-and-cloud-computing-05-xen-project-unikernels-and-future/)
-    -   [優尼克拉夫特](https://github.com/unikraft/unikraft)
+    -   [尤尼克拉夫特](https://github.com/unikraft/unikraft)
     -   [Mirage作業系統](https://mirage.io/docs/hello-world)
     -   [哈拉LVM](https://galois.com/project/halvm/)
     -   [獨特的](https://github.com/solo-io/unik/blob/master/docs/providers/virtualbox.md)
@@ -1413,7 +1413,7 @@ Vagrantfile
     -   [LPIC-3 305-300 目標](https://www.lpi.org/our-certifications/exam-305-objectives/)
     -   [LPIC-3 305-300 維基](https://wiki.lpi.org/wiki/LPIC-305_Objectives_V3.0)
     -   [LPIC-3 305-300 學習教材](https://cursos.linuxsemfronteiras.com.br/courses/preparatorio-para-certificacao-lpic-3-305/)
-    -   [ITexams 的 LPIC-3 305-300 模擬考試](https://www.itexams.com/info/305-300)
+    -   [LPIC-3 305-300 ITexams 模擬考試](https://www.itexams.com/info/305-300)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
