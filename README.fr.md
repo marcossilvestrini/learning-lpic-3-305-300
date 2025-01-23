@@ -178,7 +178,7 @@ vagrant/destroy.ps1
 ## Feuille de route
 
 -   [x] Créer un référentiel
--   [x] Créer des scripts pour les laboratoires de provisioning
+-   [x] Créer des scripts pour les laboratoires de provisionnement
 -   [x] Créer des exemples sur le sujet 351
 -   [ ] Créer des exemples sur le sujet 352
 -   [ ] Créer des exemples sur le sujet 353
@@ -236,7 +236,7 @@ man COMMAND
 -   Comprendre les avantages et les inconvénients de la virtualisation
 -   Comprendre les différentes variantes d'hyperviseurs et de moniteurs de machines virtuelles
 -   Comprendre les principaux aspects de la migration des machines physiques vers les machines virtuelles
--   Comprendre les principaux aspects de la migration des machines virtuelles entre les systèmes hôtes
+-   Understand the major aspects of migrating virtual machines between host systems
 -   Comprendre les fonctionnalités et les implications de la virtualisation pour une machine virtuelle, telles que la prise d'instantanés, la pause, le clonage et les limites de ressources
 -   Connaissance de oVirt, Proxmox, systemd-machined et VirtualBox
 -   Connaissance d'Open vSwitch
@@ -288,7 +288,7 @@ Fonctionne sur un système d'exploitation conventionnel, s'appuyant sur le syst�
 
 ###### Exemples de type 2
 
--   VMware Workstation : un hyperviseur puissant pour exécuter plusieurs systèmes d'exploitation sur un seul poste de travail.
+-   VMware Workstation : Un hyperviseur puissant pour exécuter plusieurs systèmes d'exploitation sur un seul poste de travail.
 -   Oracle VirtualBox : Un hyperviseur open source connu pour sa flexibilité et sa facilité d'utilisation.
 -   Parallels Desktop : conçu pour que les utilisateurs de Mac puissent exécuter Windows et d'autres systèmes d'exploitation avec macOS.
 -   QEMU (Quick EMUlator) : émulateur et virtualiseur open source, souvent utilisé en conjonction avec KVM.
@@ -308,7 +308,7 @@ Fonctionne sur un système d'exploitation conventionnel, s'appuyant sur le syst�
 ##### Types de migration
 
 Dans le contexte des hyperviseurs, qui sont des technologies utilisées pour créer et gérer des machines virtuelles, les termes migration P2V et migration V2V sont courants dans les environnements de virtualisation.  
-Ils font référence à des processus de migration de systèmes entre différents types de plates-formes.
+Ils font référence à des processus de migration de systèmes entre différents types de plateformes.
 
 ##### P2V - Migration physique vers virtuelle
 
@@ -546,7 +546,7 @@ Denodo, virtualisation des données Red Hat JBoss, IBM InfoSphere.
 -   Économies de coûts : réduction des coûts matériels et opérationnels.
 -   Évolutivité : facile à augmenter ou à réduire en fonction de la demande.
 -   Flexibilité : prend en charge une variété de charges de travail et d’applications.
--   Reprise après sinistre : processus de sauvegarde et de récupération simplifiés.
+-   Disaster Recovery: Simplified backup and recovery processes.
 -   Isolation : sécurité améliorée grâce à l'isolation des environnements.
 
 <p align="right">(<a href="#topic-351.1">back to sub Topic 351.1</a>)</p>
@@ -615,7 +615,7 @@ Voici quelques aspects clés de Xen Store :
 
 -   **Communication inter-domaine :**Xen Store permet la communication entre des domaines, tels que Dom0 (le domaine privilégié qui contrôle les ressources matérielles) et DomUs (domaines utilisateur, qui sont les machines virtuelles). Cela se fait via des entrées clé-valeur, où chaque domaine peut lire ou écrire des informations.
 
--   **Gestion des configurations :**Il est utilisé pour stocker et accéder aux informations de configuration, telles que les périphériques virtuels, la mise en réseau et les paramètres de démarrage. Cela facilite la gestion et la configuration dynamiques des VM.
+-   **Gestion des configurations :**Il est utilisé pour stocker et accéder aux informations de configuration, telles que les périphériques virtuels, la mise en réseau et les paramètres de démarrage. Cela facilite la gestion dynamique et la configuration des machines virtuelles.
 
 -   **Événements et notifications :**Xen Store prend également en charge les notifications d'événements. Lorsqu'une clé ou une valeur particulière dans le Xen Store est modifiée, les domaines intéressés peuvent être avertis pour réagir à ces modifications. Ceci est utile pour surveiller et gérer les ressources.
 
@@ -941,7 +941,7 @@ foo
 
 <a name="topic-352"></a>
 
-## Sujet 352 : Virtualisation des conteneurs
+## Sujet 352 : Virtualisation des conteneurs
 
 * * *
 
@@ -1228,7 +1228,7 @@ user-data
 
 ### 353.4 Vagabond
 
-**Poids:**3
+**Poids:** 3
 
 **Description:**Le candidat doit être capable d'utiliser Vagrant pour gérer des machines virtuelles, y compris le provisionnement de la machine virtuelle.
 
@@ -1306,7 +1306,7 @@ Lien du projet :<https://github.com/marcossilvestrini/learning-lpic-3-305-300>
     -   [Compilateur GCC](https://gcc.gnu.org/wiki/History)
     -   [Tar GNU](https://www.gnu.org/software/tar/)
     -   [Marque GNU](https://www.gnu.org/software/make/)
-    -   [GNU-Emacs](https://en.wikipedia.org/wiki/Emacs)
+    -   [GNU Emacs](https://en.wikipedia.org/wiki/Emacs)
     -   [Paquets GNU](https://www.gnu.org/software/)
     -   [Collection GNU/Linux](https://directory.fsf.org/wiki/Collection:GNU/Linux)
     -   [Chargeur de démarrage GNU Grub](https://www.gnu.org/software/grub/)
@@ -1360,10 +1360,10 @@ Lien du projet :<https://github.com/marcossilvestrini/learning-lpic-3-305-300>
     -   [Journalisation de liaison](https://www.zytrax.com/books/dns/ch7/logging.html)
     -   [Liste des types d'enregistrements DNS](https://en.wikipedia.org/wiki/List_of_DNS_record_types)
     -   [Liste des types d'enregistrements DNS](https://en.wikipedia.org/wiki/List_of_DNS_record_types)
--   [Package Manager](<>)
+-   [Gestionnaire de paquets](<>)
     -   [Télécharger les forfaits](https://pkgs.org/)
     -   [Installer des packages](https://installati.one/)
-    -   [Guider l'installation des packages](https://installati.one/)
+    -   [Guider les packages d'installation](https://installati.one/)
 -   [Script Shell](<>)
     -   [Bourne à nouveau Shell](https://www.gnu.org/software/bash/manual/)
     -   [Case](https://bash.cyberciti.biz/guide/Shebang)
