@@ -30,8 +30,8 @@ pvcreate "$DISK"
 # create vg
 vgcreate vg_xen "$DISK"
 
-# # create lv
-# lvcreate -l +100%FREE -n lv_xen vg_xen
+# create lv for hvm guest
+lvcreate -l +20%FREE -n lpic3-hvm-guest-disk  vg_xen
 
 # # format lv with filesystem xfs
 # mkfs.ext4 -L xen-storage /dev/mapper/vg_xen-lv_xen

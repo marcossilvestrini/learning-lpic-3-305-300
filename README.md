@@ -25,7 +25,7 @@
 <p align="center">
 <strong>Explore the docs »</strong></a>
     <br />
-    <a href="">Web Site</a>
+    <a href="https://marcossilvestrini.github.io/learning-lpic-3-305-300/">Web Site</a>
     -
     <a href="https://github.com/marcossilvestrini/learning-lpic-3-305-300">Code Page</a>
     -
@@ -718,6 +718,14 @@ oxenstored # Xenstore configurations
 # xen-tools configurations
 /etc/xen-tools/
 /usr/share/xen-tools/
+
+# docs
+xl(1)
+xl.conf(5)
+xlcpupool.cfg(5)
+xl-disk-configuration(5)
+xl-network-configuration(5)
+xen-tscmode(7)
 ```
 
 #### 351.2 Important Commands
@@ -779,11 +787,23 @@ man xl.conf
 # manual cfg - about guest configuration
 man xl.cfg
 
-# create DomainU - virtual machines
+# create DomainU - virtual machine
 xl create /etc/xen/lpic3-pv-guest.cfg
 
 # create DomainU virtual machine and connect to guest
 xl create -c /etc/xen/lpic3-pv-guest.cfg
+
+# create DomainU virtual machine HVM
+
+## configure /etc/xen/lpic3-hvm-guest.cfg
+
+## create a ssh tunel for vnc
+ssh -l vagrant -L 5900:localhost:5900  192.168.0.130
+
+## create domain hvm
+xl create /etc/xen/lpic3-hvm-guest.cfg
+
+## open vcn conectio in your vnc client with localhost
 
 # connect in domain guest
 xl console <id>|<name> (press enter)

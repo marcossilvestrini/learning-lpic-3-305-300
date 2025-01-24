@@ -28,6 +28,7 @@ Vagrant.configure("2") do |config|
   config.vm.synced_folder "../scripts/", "/home/vagrant/scripts"
   config.vm.synced_folder "../configs/", "/home/vagrant/configs"
   config.vm.synced_folder "../security/", "/home/vagrant/security"
+  config.vm.synced_folder "../isos/", "/home/vagrant/isos"
 
   # STORAGE
   config.vm.disk :disk, size: "200GB", name: "xen_storage", primary: false
