@@ -30,3 +30,4 @@ $vms | ForEach-Object {
         Remove-Item -Path $vmFolder -Recurse -Force
     }
 }
+ Start-Sleep 100000
