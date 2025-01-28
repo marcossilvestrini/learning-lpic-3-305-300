@@ -51,9 +51,9 @@ Vagrant.configure("2") do |config|
       vmware.vmx["numvcpus"] = "16"
       vmware.vmx["cpuid.coresPerSocket"] = "1"
       vmware.vmx["vhv.enable"] = "TRUE"  # Enable virtualization engine (nested virtualization)
-      #vmware.vmx["hypervisor.cpuid.v0"] = "FALSE"  # Ensure guest OS can see CPU features
-      #vmware.vmx["monitor.virtual_mmu"] = "hardware"  # Use hardware memory management unit
-      #vmware.vmx["monitor.virtual_exec"] = "hardware"  # Use hardware execution virtualization
+      # vmware.vmx["hypervisor.cpuid.v0"] = "FALSE"  # Ensure guest OS can see CPU features
+      # vmware.vmx["monitor.virtual_mmu"] = "hardware"  # Use hardware memory management unit
+      # vmware.vmx["monitor.virtual_exec"] = "hardware"  # Use hardware execution virtualization
     end
 
     # NETWORK CONFIGURATION

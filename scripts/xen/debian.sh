@@ -15,9 +15,9 @@ apt-get install -y xen-hypervisor-amd64 xen-tools xen-utils-common xenstore-util
 
 # Add configuration to GRUB
 if grep -q "GRUB_CMDLINE_XEN_DEFAULT" /etc/default/grub; then
-  sed -i 's|^GRUB_CMDLINE_XEN_DEFAULT=.*|GRUB_CMDLINE_XEN_DEFAULT="dom0_max_vcpus=1 dom0_mem=1024M,max:1024M"|' /etc/default/grub
+  sed -i 's|^GRUB_CMDLINE_XEN_DEFAULT=.*|GRUB_CMDLINE_XEN_DEFAULT="dom0_max_vcpus=2 dom0_mem=2048M,max:2048M"|' /etc/default/grub
 else
-  echo 'GRUB_CMDLINE_XEN_DEFAULT="dom0_max_vcpus=1 dom0_mem=1024M,max:1024M"' >> /etc/default/grub
+  echo 'GRUB_CMDLINE_XEN_DEFAULT="dom0_max_vcpus=2 dom0_mem=2048M,max:2048M"' >> /etc/default/grub
 fi
 
 # Update GRUB

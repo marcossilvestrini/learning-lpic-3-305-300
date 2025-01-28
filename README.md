@@ -744,11 +744,25 @@ xen-create-image \
   --dist=bookworm
 ```
 
+##### xen-list-images
+
+```sh
+# list image
+xen-list-image
+```
+
 ##### xen-delete-image
 
 ```sh
 # delete a pv image
 xen-delete-image lpic3-pv-guest --lvm=vg_xen
+```
+
+##### xenstore-ls
+
+```sh
+# list xenstore infos
+xenstore-ls
 ```
 
 ##### brctl
@@ -757,7 +771,6 @@ xen-delete-image lpic3-pv-guest --lvm=vg_xen
 # list xen interfaces
 brctl show
 ```
-
 ##### xl
 
 ```sh
@@ -766,6 +779,24 @@ xl infos
 
 # list Domains
 xl list
+xl list lpic3-hvm-guest
+xl list lpic3-hvm-guest -l
+
+# uptime Domains
+xl uptime
+
+# pause Domain
+xl pause 2
+xl pause lpic3-hvm-guest
+
+# save state Domains
+xl -v save lpic3-hvm-guest ~root/image-lpic3-hvm-guest.save
+
+# restore Domain
+xl restore /root/image-lpic3-hvm-guest.save
+
+# get Domain name
+xl domname 2
 
 # view dmesg information
 xl dmesg
@@ -797,6 +828,9 @@ xl create -c /etc/xen/lpic3-pv-guest.cfg
 
 ## configure /etc/xen/lpic3-hvm-guest.cfg
 
+## create logical volume
+lvcreate -l +20%FREE -n lpic3-hvm-guest-disk  vg_xen
+
 ## create a ssh tunel for vnc
 ssh -l vagrant -L 5900:localhost:5900  192.168.0.130
 
@@ -822,6 +856,10 @@ xl destroy lpic3-pv-guest
 # reboot domain
 xl reboot lpic3-pv-guest
 ```
+
+
+
+
 
 <p align="right">(<a href="#topic-351.2">back to sub Topic 351.2</a>)</p>
 <p align="right">(<a href="#topic-351">back to Topic 351</a>)</p>
