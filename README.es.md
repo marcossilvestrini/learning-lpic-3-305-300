@@ -8,7 +8,7 @@
 
 * * *
 
-# APRENDIZAJE LPIC-3 305-300
+# Aprendizaje de LPIC-3 305-300
 
 ![LPIC3-305-300](images/lpic3-305-300.jpg)
 
@@ -84,15 +84,15 @@
 
 ## Acerca del proyecto
 
-> Este proyecto tiene como objetivo ayudar a estudiantes o profesionales a aprender los conceptos principales de GNULinux.
-> y software libre\\
-> Se cubrirán algunas distribuciones de GNULinux como Debian y RPM\\
-> También se cubrirá la instalación y configuración de algunos paquetes\\
-> Al hacer esto, podrás darle a toda la comunidad la oportunidad de beneficiarse de tus cambios.\\
-> El acceso al código fuente es una condición previa para ello.\\
-> Utilice vagrant para máquinas y ejecute laboratorios y practique el contenido de este artículo.\\
-> He publicado en la carpeta Vagrant un Vagrantfile con lo necesario\\
-> para que subas un ambiente para estudios
+> Este proyecto tiene como objetivo ayudar a los estudiantes o profesionales a aprender los conceptos principales de Gnulinux.
+> y software libre \\
+> Algunas distribuciones de Gnulinux como Debian y RPM estarán cubiertas \\
+> La instalación y la configuración de algunos paquetes también se cubrirán \\
+> Al hacer esto, puede darle a toda la comunidad la oportunidad de beneficiarse de sus cambios.
+> El acceso al código fuente es una condición previa para esto. \\
+> Use Vagrant para máquinas UP y ejecute laboratorios y practique contenido en este artículo.
+> He publicado en carpeta Vagrant un archivo vagabundo con lo que es necesario \\
+> Para que subas un entorno para estudios
 
 * * *
 
@@ -109,8 +109,8 @@ Para comenzar el aprendizaje, consulte la documentación anterior.
 ### Requisitos previos
 
 -   [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
--   [Estación de trabajo VMware](https://blogs.vmware.com/workstation/2024/05/vmware-workstation-pro-now-available-free-for-personal-use.html)
--   [Utilidad vagabunda VMWare](https://developer.hashicorp.com/vagrant/install/vmware)
+-   [Estación de trabajo de VMware](https://blogs.vmware.com/workstation/2024/05/vmware-workstation-pro-now-available-free-for-personal-use.html)
+-   [Utilidad de VMware vagabundo](https://developer.hashicorp.com/vagrant/install/vmware)
 -   [Vagabundo](https://developer.hashicorp.com/vagrant/install)
 
 <a name="installation"></a>
@@ -124,16 +124,16 @@ git clone https://github.com/marcossilvestrini/learning-lpic-3-305-300.git
 cd learning-lpic-3-305-300
 ```
 
-Personaliza una plantilla_Vagrantfile-tema-XXX_. Este archivo contiene una configuración de VMS para Labs. Ejemplo:
+Personalizar una plantilla_Vagrantfile-topic-xxx_. Este archivo contiene una configuración de VMS para Labs. Ejemplo:
 
 -   Archivo[Vagantfile-topic-351](./vagrant/Vagrantfile-topic-351)
-    -   vm.clone_directory = "&lt;Your_driver_letter>:\\<folder>\\&lt;a_máquina>\\#{Vm_name} -instance-1 "
+    -   vm.clone_directory = "&lt;Your_driver_letter>:\\<folder>\\&lt;TO_MACHINE>\\#{Vm_name} -instance-1 "
         Ejemplo: vm.clone_directory = "e:\\Servidor\\VMware\\#{Vm_name} -instance-1 "
-    -   vm.vmx["memsize"]= ""
-    -   vm.vmx["numvcpus"]= ""
-    -   vm.vmx["cpuid.coresPerSocket"]= ""
+    -   vm.vmx["Memsize"]= ""
+    -   vm.vmx["Numvcpus"]= ""
+    -   vm.vmx["CPUID.CORRESPERSOCOUT"]= ""
 
-Personalizar la configuración de red en archivos[configuraciones/red](configs/network/).
+Personalizar la configuración de la red en archivos[configuraciones/red](configs/network/).
 
 * * *
 
@@ -158,7 +158,7 @@ cd vagrant && vagrant destroy -f
 cd vagrant && vagrant reload
 ```
 
-**Importante:**_Si reinicia vms sin vagrant, la carpeta compartida no se monta después del arranque._
+**Importante:**_Si reinicia las máquinas virtuales sin Vagerant, la carpeta compartida no se monta después del arranque._
 
 ### Use PowerShell para arriba y abajo
 
@@ -178,10 +178,10 @@ vagrant/destroy.ps1
 ## Hoja de ruta
 
 -   [x] Crear repositorio
--   [x] Crear scripts para laboratorios de aprovisionamiento
+-   [x] Crear scripts para el aprovisionamiento de laboratorios
 -   [x] Crear ejemplos sobre el tema 351
--   [ ] Crear ejemplos sobre el Tema 352
--   [ ] Crear ejemplos sobre el Tema 353
+-   [ ] Crear ejemplos sobre el tema 352
+-   [ ] Crear ejemplos sobre el tema 353
 -   [ ] Cargar itexam simulado
 
 * * *
@@ -224,22 +224,22 @@ man COMMAND
 
 <a name="topic-351.1"></a>
 
-### 351.1 Conceptos y teoría de la virtualización
+### 351.1 Conceptos y teoría de virtualización
 
 **Peso:**6
 
 **Descripción:**Los candidatos deben conocer y comprender los conceptos generales, la teoría y la terminología de la virtualización. Esto incluye la terminología Xen, Qemu y Libvirt.
 
-**Áreas de conocimiento clave:**
+**Áreas clave de conocimiento:**
 
--   Comprender la terminología de virtualización
+-   Comprender la terminología de la virtualización
 -   Comprender los pros y los contras de la virtualización
 -   Comprender las diversas variaciones de hipervisores y monitores de máquinas virtuales
 -   Comprender los aspectos principales de la migración de máquinas físicas a virtuales
--   Comprender los aspectos principales de la migración de máquinas virtuales entre sistemas host.
--   Comprender las características y las implicaciones de la virtualización para una máquina virtual, como la creación de instantáneas, la pausa, la clonación y los límites de recursos.
--   Conocimiento de oVirt, Proxmox, systemd-machined y VirtualBox
--   Conocimiento de Open vSwitch
+-   Comprender los aspectos principales de la migración de máquinas virtuales entre los sistemas de host
+-   Comprender las características e implicaciones de la virtualización para una máquina virtual, como instantáneas, pausas, clonación y límites de recursos
+-   Conciencia de Ovirt, Proxmox, Systemd-Machined y VirtualBox
+-   Conciencia de Open Vswitch
 
 #### 351.1 Objetos citados
 
@@ -255,13 +255,13 @@ Migration (P2V, V2V)
 
 #### Hipervisores
 
-##### Hipervisor tipo 1 (hipervisor bare-metal)
+##### Hypervisor tipo 1 (hipervisor de metal desnudo)
 
 ###### Definición de tipo 1
 
 Se ejecuta directamente en el hardware físico del host, proporcionando una capa base para administrar máquinas virtuales sin la necesidad de un sistema operativo del host.
 
-###### Características tipo 1
+###### Características del tipo 1
 
 -   Alto rendimiento y eficiencia.
 -   Menor latencia y sobrecarga.
@@ -272,15 +272,15 @@ Se ejecuta directamente en el hardware físico del host, proporcionando una capa
 -   VMware ESXI: un hipervisor robusto y ampliamente utilizado en la configuración empresarial.
 -   Microsoft Hyper-V: integrado con Windows Server, que ofrece un fuerte rendimiento y características de administración.
 -   XEN: Un hipervisor de código abierto utilizado por muchos proveedores de servicios en la nube.
--   KVM (Máquina virtual basada en kernel): Integrada en el kernel de Linux, proporciona un alto rendimiento para sistemas basados ​​en Linux.
+-   KVM (máquina virtual basada en el núcleo): integrado en el kernel de Linux, proporcionando un alto rendimiento para los sistemas basados ​​en Linux.
 
-##### Hipervisor tipo 2 (hipervisor alojado)
+##### Hypervisor tipo 2 (Hypervisor alojado)
 
 ###### Definición de tipo 2
 
 Se ejecuta además de un sistema operativo convencional, confiando en el sistema operativo host para la administración de recursos y el soporte de dispositivos.
 
-###### Características tipo 2
+###### Características de tipo 2
 
 -   Más fácil de configurar y usar, especialmente en computadoras personales.
 -   Más flexible para el desarrollo, las pruebas y las implementaciones de menor escala.
@@ -296,10 +296,10 @@ Se ejecuta además de un sistema operativo convencional, confiando en el sistema
 ##### Diferencias clave entre los hipervisores tipo 1 y tipo 2
 
 -   Entorno de implementación:
-    -   Los hipervisores de tipo 1 se implementan comúnmente en centros de datos y entornos empresariales debido a su interacción directa con el hardware y su alto rendimiento.
+    -   Los hipervisores tipo 1 se implementan comúnmente en centros de datos y entornos empresariales debido a su interacción directa con hardware y alto rendimiento.
     -   Los hipervisores tipo 2 son más adecuados para el uso personal, el desarrollo, las pruebas y las tareas de virtualización a pequeña escala.
 -   Actuación:
-    -   Los hipervisores de tipo 1 generalmente ofrecen mejor rendimiento y menor latencia porque no dependen de un sistema operativo host.
+    -   Los hipervisores tipo 1 generalmente ofrecen un mejor rendimiento y una latencia más baja porque no dependen de un sistema operativo host.
     -   Los hipervisores tipo 2 pueden experimentar cierta degradación del rendimiento debido a la sobrecarga de correr encima de un sistema operativo host.
 -   Gestión y facilidad de uso:
     -   Los hipervisores tipo 1 requieren una configuración y gestión más complejas, pero proporcionan características avanzadas y escalabilidad para implementaciones a gran escala.
@@ -307,7 +307,7 @@ Se ejecuta además de un sistema operativo convencional, confiando en el sistema
 
 ##### Tipos de migración
 
-En el contexto de los hipervisores, que son tecnologías utilizadas para crear y administrar máquinas virtuales, los términos migración P2V y migración V2V son comunes en entornos de virtualización.  
+En el contexto de los hipervisores, que son tecnologías utilizadas para crear y administrar máquinas virtuales, los términos migración de P2V y migración de V2V son comunes en entornos de virtualización.  
 Se refieren a procesos de sistemas migratorios entre diferentes tipos de plataformas.
 
 ##### P2V - migración física a virtual
@@ -315,7 +315,7 @@ Se refieren a procesos de sistemas migratorios entre diferentes tipos de platafo
 La migración de P2V se refiere al proceso de migración de un servidor físico a una máquina virtual.  
 En otras palabras, un sistema operativo y sus aplicaciones, que se ejecutan en hardware físico dedicado, se "convierten" y se mueven a una máquina virtual que se ejecuta en un hipervisor (como VMware, Hyper-V, KVM, etc.).
 
--   Ejemplo: tiene un servidor físico que ejecuta un sistema Windows o Linux y desea trasladarlo a un entorno virtual, como una infraestructura en la nube o un servidor de virtualización interno.  
+-   Ejemplo: tiene un servidor físico que ejecuta un sistema de Windows o Linux, y desea moverlo a un entorno virtual, como una infraestructura en la nube o un servidor de virtualización interno.  
     El proceso implica copiar todo el estado del sistema, incluido el sistema operativo, los controladores y los datos, para crear una máquina virtual equivalente que pueda ejecutarse como si estuviera en el hardware físico.
 
 ##### V2V - migración virtual a virtual
@@ -323,7 +323,7 @@ En otras palabras, un sistema operativo y sus aplicaciones, que se ejecutan en h
 La migración de V2V se refiere al proceso de migración de una máquina virtual de un hipervisor a otro.  
 En este caso, ya tiene una máquina virtual que se ejecuta en un entorno virtualizado (como VMware), y desea moverla a otro entorno virtualizado (por ejemplo, a Hyper-V o a un nuevo servidor VMware).
 
--   Ejemplo: tiene una máquina virtual ejecutándose en un servidor de virtualización VMware, pero decide migrarla a una plataforma Hyper-V. En este caso, la migración V2V convierte la máquina virtual de un formato o hipervisor a otro, asegurando que pueda seguir funcionando correctamente.
+-   Ejemplo: tiene una máquina virtual que se ejecuta en un servidor de virtualización VMware, pero decide migrarla a una plataforma Hyper-V. En este caso, la migración V2V convierte la máquina virtual de un formato o hipervisor a otro, asegurando que pueda continuar funcionando correctamente.
 
 #### HVM y paravirtualización
 
@@ -333,12 +333,12 @@ En este caso, ya tiene una máquina virtual que se ejecuta en un entorno virtual
 
 HVM aprovecha las extensiones de hardware proporcionadas por las CPU modernas para virtualizar el hardware, lo que permite la creación y gestión de máquinas virtuales con una sobrecarga de rendimiento mínima.
 
-###### Características clave de HVM
+###### Características de la clave HVM
 
 -   **Soporte de hardware**: Requiere soporte de CPU para extensiones de virtualización como Intel VT-X o AMD-V.
 -   **Virtualización completa:**Las máquinas virtuales pueden ejecutar sistemas operativos invitados no modificados, ya que el hipervisor proporciona una emulación completa del entorno de hardware.
 -   **Actuación:**Por lo general, ofrece un rendimiento casi nativo debido a la ejecución directa del código de invitado en la CPU.
--   **Aislamiento:**Proporciona un fuerte aislamiento entre las máquinas virtuales, ya que cada máquina virtual funciona como si tuviera su propio hardware dedicado.
+-   **Aislamiento:**Proporciona un aislamiento fuerte entre las máquinas virtuales ya que cada VM funciona como si tuviera su propio hardware dedicado.
 
 ###### Ejemplo de HVM
 
@@ -346,40 +346,40 @@ VMware ESXI, Microsoft Hyper-V, KVM (máquina virtual basada en kernel).
 
 ###### Ventajas de HVM
 
--   **Compatibilidad:**Puede ejecutar cualquier sistema operativo sin modificaciones.
--   **Actuación:**Alto rendimiento gracias al soporte de hardware.
--   **Seguridad:**Funciones mejoradas de aislamiento y seguridad proporcionadas por hardware.
+-   **Compatibilidad:**Puede ejecutar cualquier sistema operativo sin modificación.
+-   **Actuación:**Alto rendimiento debido al soporte de hardware.
+-   **Seguridad:**Características mejoradas de aislamiento y seguridad proporcionadas por hardware.
 
 ###### Desventajas de HVM
 
--   **Dependencia del hardware:**Requiere características de hardware específicas, lo que limita la compatibilidad con sistemas más antiguos.
--   **Complejidad:**Puede implicar una configuración y gestión más complejas.
+-   **Dependencia del hardware:**Requiere características de hardware específicas, limitando la compatibilidad con los sistemas más antiguos.
+-   **Complejidad:**Puede involucrar una configuración y administración más complejas.
 
 ##### Paravirtualización
 
 ###### Definición de paravirtualización
 
-La paravirtualización implica modificar el sistema operativo invitado para que sea consciente del entorno virtual, lo que le permite interactuar de manera más eficiente con el hipervisor.
+La paravirtualización implica modificar el sistema operativo invitado para conocer el entorno virtual, lo que le permite interactuar de manera más eficiente con el hipervisor.
 
-###### Características clave de la paravirtualización
+###### Características clave de paravirtualización
 
--   **Modificación del invitado:**Requiere cambios en el sistema operativo invitado para comunicarse directamente con el hipervisor mediante hiperllamadas.
+-   **Modificación del invitado:**Requiere cambios en el sistema operativo invitado para comunicarse directamente con el hipervisor utilizando hipercalls.
 -   **Actuación:**Puede ser más eficiente que la virtualización completa tradicional porque reduce la sobrecarga asociada con la emulación de hardware.
--   **Compatibilidad:**Limitado a sistemas operativos que han sido modificados para la paravirtualización.
+-   **Compatibilidad:**Limitado a los sistemas operativos que han sido modificados para la paravirtualización.
 
 ###### Ejemplos de paravirtualización
 
-Xen con invitados paravirtualizados, herramientas VMware en determinadas configuraciones y algunas configuraciones KVM.
+Xen con invitados paravirtualizados, herramientas de VMware en ciertas configuraciones y algunas configuraciones de KVM.
 
-###### Ventajas de la paravirtualización
+###### Ventajas de paravirtualización
 
--   **Eficiencia:**Reduce la sobrecarga de virtualizar hardware, ofreciendo potencialmente un mejor rendimiento para determinadas cargas de trabajo.
+-   **Eficiencia:**Reduce la sobrecarga de la virtualización del hardware, que potencialmente ofrece un mejor rendimiento para ciertas cargas de trabajo.
 -   **Utilización de recursos:**Uso más eficiente de los recursos del sistema debido a la comunicación directa entre el sistema operativo invitado y el hipervisor.
 
 ###### Desventajas de paravirtualización
 
--   **Modificación del sistema operativo invitado:**Requiere modificaciones al sistema operativo invitado, lo que limita la compatibilidad a los sistemas operativos compatibles.
--   **Complejidad:**Requiere complejidad adicional en el sistema operativo invitado para implementaciones de hiperllamadas.
+-   **Modificación del sistema operativo de invitado:**Requiere modificaciones al sistema operativo invitado, lo que limita la compatibilidad a los sistemas operativos compatibles.
+-   **Complejidad:**Requiere complejidad adicional en el sistema operativo invitado para implementaciones de hipercall.
 
 ##### Diferencias clave
 
@@ -390,39 +390,39 @@ Xen con invitados paravirtualizados, herramientas VMware en determinadas configu
 
 ###### Actuación
 
--   **HVM:**Normalmente proporciona un rendimiento casi nativo debido a la ejecución asistida por hardware.
+-   **HVM:**Por lo general, proporciona un rendimiento casi nativo debido a la ejecución asistida por hardware.
 -   **Paravirtualización:**Puede ofrecer un rendimiento eficiente al reducir la sobrecarga de la emulación de hardware, pero se basa en un sistema operativo invitado modificado.
 
 ###### Dependencia de hardware
 
--   **HVM:**Requiere características específicas de CPU (Intel VT-x, AMD-V).
+-   **HVM:**Requiere características específicas de CPU (Intel VT-X, AMD-V).
 -   **Paravirtualización:**No requiere características específicas de la CPU, pero necesita un sistema operativo invitado modificado.
 
 ###### Aislamiento
 
--   **HVM:**Proporciona un fuerte aislamiento mediante funciones de hardware.
--   **Paravirtualización:**Se basa en un aislamiento basado en software, que puede no ser tan sólido como el aislamiento basado en hardware.
+-   **HVM:**Proporciona un aislamiento fuerte utilizando características de hardware.
+-   **Paravirtualización:**Se basa en el aislamiento basado en software, que puede no ser tan robusto como el aislamiento basado en hardware.
 
 ###### Complejidad
 
--   **HVM:**Generalmente es más sencillo de implementar ya que admite sistemas operativos no modificados.
--   **Paravirtualización:**Requiere configuración y modificaciones adicionales en el sistema operativo invitado, lo que aumenta la complejidad.
+-   **HVM:**Generalmente más sencillo de implementar ya que admite un sistema operativo no modificado.
+-   **Paravirtualización:**Requiere una configuración y modificaciones adicionales al sistema operativo invitado, aumentando la complejidad.
 
-#### NUMA (Acceso a memoria no uniforme)
+#### NUMA (acceso a la memoria no uniforme)
 
-NUMA (Acceso a memoria no uniforme) es una arquitectura de memoria utilizada en sistemas multiprocesador para optimizar el acceso a la memoria por parte de los procesadores.  
-En un sistema NUMA, la memoria se distribuye de manera desigual entre los procesadores, lo que significa que cada procesador tiene un acceso más rápido a una porción de la memoria (su "memoria local") que a la memoria que está físicamente más lejos (denominada "memoria remota") y asociada. con otros procesadores.
+NUMA (acceso de memoria no uniforme) es una arquitectura de memoria utilizada en los sistemas multiprocesador para optimizar el acceso a la memoria por los procesadores.  
+En un sistema NUMA, la memoria se distribuye de manera desigual entre los procesadores, lo que significa que cada procesador tiene un acceso más rápido a una parte de la memoria (su "memoria local") que a la memoria que está físicamente más lejos (denominada "memoria remota") y asociada con otros procesadores.
 
 ##### Características clave de la arquitectura NUMA
 
 1.  **Memoria local y remota**: Cada procesador tiene su propia memoria local, a la que puede acceder más rápidamente. Sin embargo, también puede acceder a la memoria de otros procesadores, aunque esto lleva más tiempo.
-2.  **Latencia diferenciada**: La latencia del acceso a la memoria varía dependiendo de si el procesador accede a su memoria local o a la memoria de otro nodo. El acceso a la memoria local es más rápido, mientras que el acceso a la memoria de otro nodo (remoto) es más lento.
+2.  **Latencia diferenciada**: La latencia del acceso a la memoria varía según si el procesador está accediendo a su memoria local o la memoria de otro nodo. El acceso a la memoria local es más rápido, mientras que acceder a la memoria de otro nodo (remota) es más lento.
 3.  **Escalabilidad**: La arquitectura NUMA está diseñada para mejorar la escalabilidad en sistemas con muchos procesadores. A medida que se agregan más procesadores, la memoria también se distribuye, evitando el cuello de botella que ocurriría en una arquitectura de acceso de memoria uniforme (UMA).
 
 ##### Ventajas de NUMA
 
--   Mejor rendimiento en sistemas grandes: dado que cada procesador tiene memoria local, puede funcionar de manera más eficiente sin competir tanto con otros procesadores por el acceso a la memoria.
--   Escalabilidad: NUMA permite que los sistemas con muchos procesadores y grandes cantidades de memoria escale de manera más efectiva en comparación con una arquitectura UMA.
+-   Mejor rendimiento en sistemas grandes: dado que cada procesador tiene memoria local, puede funcionar de manera más eficiente sin competir tanto con otros procesadores para el acceso a la memoria.
+-   Escalabilidad: NUMA permite que los sistemas con muchos procesadores y grandes cantidades de memoria escalar de manera más efectiva en comparación con una arquitectura UMA.
 
 ##### Desventajas
 
@@ -430,9 +430,9 @@ En un sistema NUMA, la memoria se distribuye de manera desigual entre los proces
 -   Sanciones potenciales de rendimiento: si un procesador con frecuencia accede a la memoria remota, el rendimiento puede sufrir debido a una mayor latencia.
     Esta arquitectura es común en los sistemas multiprocesador de alto rendimiento, como servidores y supercomputadoras, donde la escalabilidad y la optimización de la memoria son críticos.
 
-#### Soluciones de código abierto
+#### OpenSource Solutions
 
--   oVirt:<https://www.ovirt.org/>
+-   Ovirt:<https://www.ovirt.org/>
 
 -   Proxmox:<https://www.proxmox.com/en/proxmox-virtual-environment/overview>
 
@@ -442,23 +442,23 @@ En un sistema NUMA, la memoria se distribuye de manera desigual entre los proces
 
 #### Tipos de virtualización
 
-##### Virtualización de hardware (virtualización de servidores)
+##### Virtualización de hardware (virtualización del servidor)
 
 ###### Definición de HV
 
-Abstrae el hardware físico para crear máquinas virtuales (VM) que ejecutan sistemas operativos y aplicaciones independientes.
+Abraza el hardware físico para crear máquinas virtuales (VM) que ejecutan sistemas operativos y aplicaciones separadas.
 
-###### Casos de uso de alta tensión
+###### Casos de uso de HV
 
-Centros de datos, computación en la nube, consolidación de servidores.
+Centros de datos, computación en la nube, consolidación del servidor.
 
 ###### Ejemplos de HV
 
 VMware ESXI, Microsoft Hyper-V, KVM.
 
-##### Virtualización del sistema operativo (containerización)
+##### Virtualización del sistema operativo (contenedorización)
 
-###### Definición de contenedorización
+###### Definición de contenedores
 
 Permite que se ejecuten múltiples instancias de espacio de usuario aisladas (contenedores) en un solo núcleo del sistema operativo.
 
@@ -466,7 +466,7 @@ Permite que se ejecuten múltiples instancias de espacio de usuario aisladas (co
 
 Microservicios Arquitectura, desarrollo y entornos de prueba.
 
-###### Ejemplos de contenedorización
+###### Ejemplos de contenedores
 
 Docker, Kubernetes, LXC.
 
@@ -478,13 +478,13 @@ Combina recursos de red de hardware y software en una entidad administrativa ún
 
 ###### Casos de uso de virtualización de red
 
-Redes definidas por software (SDN), virtualización de funciones de red (NFV).
+Networking (SDN) definido por software, Virtualización de funciones de red (NFV).
 
 ###### Ejemplos de virtualización de red
 
 VMware NSX, Cisco ACI, OpenStack Neutron.
 
-##### Virtualización del almacenamiento
+##### Virtualización de almacenamiento
 
 ###### Definición de virtualización de almacenamiento
 
@@ -510,13 +510,13 @@ Infraestructura de escritorio virtual (VDI), soluciones de trabajo remoto.
 
 ###### Ejemplos de definición de virtualización de escritorio
 
-Aplicaciones y escritorios virtuales Citrix, VMware Horizon, Servicios de escritorio remoto de Microsoft.
+Aplicaciones y escritorios virtuales de Citrix, VMware Horizon, Servicios de escritorio remotos de Microsoft.
 
 ##### Virtualización de la aplicación
 
 ###### Definición de virtualización de la aplicación
 
-Separa las aplicaciones del hardware y el sistema operativo subyacentes, permitiéndoles ejecutarse en entornos aislados.
+Separa las aplicaciones del hardware y el sistema operativo subyacente, lo que les permite ejecutarse en entornos aislados.
 
 ###### Casos de uso de la definición de virtualización de la aplicación
 
@@ -532,13 +532,13 @@ VMware ThinApp, Microsoft App-V, Citrix XenApp.
 
 Integra datos de varias fuentes sin consolidarlo físicamente, proporcionando una vista unificada para el análisis y los informes.
 
-###### Casos de uso de definición de virtualización de datos
+###### Casos de uso de la definición de virtualización de datos
 
 Inteligencia de negocios, integración de datos en tiempo real.
 
 ###### Ejemplos de definición de virtualización de datos
 
-Denodo, Red Hat JBoss Virtualización de datos, IBM InfoSphere.
+Denodo, Red Hat JBoss Virtualización de datos, IBM InfoShere.
 
 ##### Beneficios de la virtualización
 
@@ -546,7 +546,7 @@ Denodo, Red Hat JBoss Virtualización de datos, IBM InfoSphere.
 -   Ahorro de costos: costos de hardware y operaciones reducidos.
 -   Escalabilidad: fácil de escalar hacia arriba o hacia abajo según la demanda.
 -   Flexibilidad: admite una variedad de cargas de trabajo y aplicaciones.
--   Recuperación ante desastres: procesos de copia de seguridad y recuperación simplificados.
+-   Recuperación ante desastres: procesos de respaldo y recuperación simplificados.
 -   Aislamiento: mejor seguridad a través del aislamiento de entornos.
 
 <p align="right">(<a href="#topic-351.1">back to sub Topic 351.1</a>)</p>
@@ -565,29 +565,29 @@ Denodo, Red Hat JBoss Virtualización de datos, IBM InfoSphere.
 
 **Peso:**3
 
-**Descripción:**Los candidatos deben poder instalar, configurar, mantener, migrar y solucionar problemas de instalaciones de Xen. La atención se centra en Xen versión 4.x.
+**Descripción:**Los candidatos deben poder instalar, configurar, mantener, migrar y solucionar problemas de XEN. El foco está en XEN versión 4.x.
 
-**Áreas de conocimiento clave:**
+**Áreas clave de conocimiento:**
 
--   Comprender la arquitectura de Xen, incluidas las redes y el almacenamiento.
--   Configuración básica de nodos y dominios Xen.
+-   Comprender la arquitectura de Xen, incluidas las redes y el almacenamiento
+-   Configuración básica de nodos y dominios XEN
 -   Gestión básica de nodos y dominios XEN
--   Solución de problemas básicos de instalaciones de Xen
+-   Solución de problemas básicas de las instalaciones de XEN
 -   Píldora de avarines
--   Conocimiento de XenStore
--   Conocimiento de los parámetros de arranque de Xen
--   Conocimiento de la utilidad xm
+-   Conciencia de Xenstore
+-   Conciencia de los parámetros de arranque xen
+-   Conciencia de la utilidad XM
 
-#### xén
+#### Alternar
 
 ![panda](images/xen-panda.png)
 
-Xen es un hipervisor tipo 1 (bare-metal) de código abierto que permite ejecutar múltiples sistemas operativos simultáneamente en el mismo hardware físico.  
+Xen es un hipervisor de código abierto (desnudo) (moderno), que permite que múltiples sistemas operativos se ejecuten simultáneamente en el mismo hardware físico.  
 Xen proporciona una capa entre el hardware físico y las máquinas virtuales (VM), lo que permite un intercambio de recursos eficiente y el aislamiento.
 
--   **Arquitectura:**Xen opera con un sistema de dos niveles donde el Dominio 0 (Dom0) es el dominio privilegiado con acceso directo al hardware y administra el hipervisor. Otras máquinas virtuales, llamadas Dominio U (DomU), ejecutan sistemas operativos invitados y son administradas por Dom0.
--   **Tipos de virtualización:**Xen admite tanto la paravirtualización (PV), que requiere un sistema operativo invitado modificado, como la virtualización asistida por hardware (HVM), que utiliza extensiones de hardware (por ejemplo, Intel VT-x o AMD-V) para ejecutar sistemas operativos invitados no modificados.
-    Xen se utiliza ampliamente en entornos de nube, especialmente por Amazon Web Services (AWS) y otros proveedores de nube a gran escala.
+-   **Arquitectura:**XEN opera con un sistema de dos niveles donde el dominio 0 (DOM0) es el dominio privilegiado con acceso directo a hardware y administra el hipervisor. Otras máquinas virtuales, llamadas Domain U (DOMU), ejecutan sistemas operativos invitados y son administradas por DOM0.
+-   **Tipos de virtualización:**XEN admite la paravirtualización (PV), que requiere un sistema operativo invitado modificado y la virtualización asistida por hardware (HVM), que utiliza extensiones de hardware (por ejemplo, Intel VT-X o AMD-V) para ejecutar sistemas operativos invitados no modificados.
+    XEN es ampliamente utilizado en entornos en la nube, especialmente por Amazon Web Services (AWS) y otros proveedores de nubes a gran escala.
 
 #### Xenseurce
 
@@ -595,20 +595,20 @@ Xensource fue la compañía fundada por los desarrolladores originales del Xen H
 La Compañía proporcionó soluciones empresariales basadas en XEN y ofreció herramientas y soporte adicionales para mejorar las capacidades de XEN para uso empresarial.
 
 -   **Adquisición de Citrix**: En 2007, Xensource fue adquirido por Citrix Systems, Inc. Citrix utilizó la tecnología XEN como base para su producto Citrix Xenserver, que se convirtió en una plataforma de virtualización popular de grado empresarial basada en Xen.
--   **Transición**: Después de la adquisición, el proyecto Xen continuó como un proyecto de código abierto, mientras que Citrix se centró en ofertas comerciales como XenServer, aprovechando la tecnología XenSource.
+-   **Transición**: Después de la adquisición, el Proyecto XEN continuó como un proyecto de código abierto, mientras que Citrix se centró en ofertas comerciales como Xenserver, aprovechando la tecnología Xensource.
 
 #### Proyecto Xen
 
-El Proyecto XEN se refiere a la comunidad e iniciativa de código abierto responsables de desarrollar y mantener el Hypervisor XEN después de su comercialización.  
-El Proyecto Xen opera bajo la Fundación Linux, con un enfoque en construir, mejorar y respaldar a Xen como un esfuerzo colaborativo impulsado por la comunidad.
+El proyecto XEN se refiere a la comunidad e iniciativa de código abierto responsables de desarrollar y mantener el Hypervisor XEN después de su comercialización.  
+El proyecto XEN opera bajo la Fundación Linux, con un enfoque en la construcción, mejora y apoyar a Xen como un esfuerzo colaborativo y impulsado por la comunidad.
 
 -   **Objetivos:**El proyecto XEN tiene como objetivo avanzar al hipervisor mejorando su rendimiento, seguridad y conjunto de características para una amplia gama de casos de uso, incluida la computación en la nube, la virtualización centrada en la seguridad (por ejemplo, QUBES OS) y sistemas integrados.
--   **Colaboradores:**El proyecto incluye contribuyentes de varias organizaciones, incluidos los principales proveedores de nube, proveedores de hardware y desarrolladores independientes.
--   **PASTILLAS Y HANTOOLS:**El Proyecto Xen también incluye herramientas como XAPI (XenAPI), que se utiliza para administrar las instalaciones del hipervisor Xen, y varias otras utilidades para la administración y optimización del sistema.
+-   **Colaboradores:**El proyecto incluye contribuyentes de varias organizaciones, incluidos los principales proveedores de la nube, proveedores de hardware y desarrolladores independientes.
+-   **Píldora y hedools:** The Xen Project also includes tools such as XAPI (XenAPI), which is used for managing Xen hypervisor installations, and various other utilities for system management and optimization.
 
-#### Tienda Xen
+#### Xenstore
 
-Xen Store es un componente crítico del Xen Hypervisor.  
+La tienda XEN es un componente crítico del Hypervisor XEN.  
 Esencialmente, Xen Store es una base de datos de valor clave distribuida utilizada para la comunicación y el intercambio de información entre el Hypervisor XEN y las máquinas virtuales (también conocidas como dominios) que administra.
 
 Aquí hay algunos aspectos clave de la tienda Xen:
@@ -617,20 +617,20 @@ Aquí hay algunos aspectos clave de la tienda Xen:
 
 -   **Gestión de configuración:**Se utiliza para almacenar y acceder a la información de configuración, como dispositivos virtuales, redes y parámetros de arranque. Esto facilita la gestión dinámica y la configuración de las máquinas virtuales.
 
--   **Eventos y notificaciones:**Xen Store también admite notificaciones de eventos. Cuando se modifica una clave o valor particular en Xen Store, se puede notificar a los dominios interesados ​​para que reaccionen a estos cambios. Esto es útil para monitorear y administrar recursos.
+-   **Eventos y notificaciones:**Xen Store también admite notificaciones de eventos. Cuando se modifica una clave o valor particular en la tienda XEN, se pueden notificar dominios interesados ​​para reaccionar a estos cambios. Esto es útil para monitorear y administrar recursos.
 
 -   API simple: la tienda XEN proporciona una API simple para leer y escribir datos, lo que facilita a los desarrolladores integrar sus aplicaciones con el sistema de virtualización XEN.
 
 #### Píldora
 
 XAPI, o XENAPI, es la interfaz de programación de aplicaciones (API) utilizada para administrar el Hypervisor XEN y sus máquinas virtuales (VM).  
-XAPI es un componente clave de XenServer (ahora conocido como Citrix Hypervisor) y proporciona una forma estandarizada de interactuar con el hipervisor Xen para realizar operaciones como la creación, configuración, monitoreo y control de máquinas virtuales.
+XAPI es un componente clave de Xenserver (ahora conocido como Citrix Hypervisor) y proporciona una forma estandarizada de interactuar con el Hypervisor XEN para realizar operaciones como crear, configurar, monitorear y controlar las máquinas virtuales.
 
 Aquí hay algunos aspectos importantes de Xapi:
 
 -   **Gestión de VM:**XAPI permite a los administradores crear, eliminar, iniciar, iniciar y detener las máquinas virtuales.
 
--   **Automatización:**Con XAPI, es posible automatizar la gestión de recursos virtuales, incluidas las redes, el almacenamiento y la informática, lo cual es crucial para grandes entornos de nube.
+-   **Automatización:**Con XAPI, es posible automatizar la gestión de los recursos virtuales, incluidas las redes, el almacenamiento y la computación, que es crucial para grandes entornos en la nube.
 
 -   **Integración:**XAPI se puede integrar con otras herramientas y scripts para proporcionar una administración más eficiente y personalizada del entorno XEN.
 
@@ -640,37 +640,37 @@ XAPI es la interfaz que permite el control y la automatización del Hypervisor X
 
 #### Resumen de Xen
 
--   **Interpretado:**La tecnología central de hipervisor que permite que las máquinas virtuales se ejecuten en hardware físico.
--   **Fuente Xen:**La compañía que comercializó Xen, más tarde adquirida por Citrix, que condujo al desarrollo de Citrix Xenserver.
+-   **Interpretado:**La tecnología Core Hypervisor que permite que las máquinas virtuales se ejecuten en hardware físico.
+-   **XENSOURCE:**La compañía que comercializó Xen, más tarde adquirida por Citrix, que condujo al desarrollo de Citrix Xenserver.
 -   **Proyecto Xen:**La iniciativa de código abierto y la comunidad que continúa desarrollando y manteniendo el Hypervisor XEN bajo la Fundación Linux.
--   **Tienda Xen:**La tienda XEN actúa como un intermediario de comunicación y configuración entre el Hypervisor XEN y las máquinas virtuales, racionalizando la operación y la gestión de entornos virtualizados.
--   **Píldora**es la interfaz que permite el control y la automatización del Hipervisor Xen, facilitando la gestión de entornos virtualizados.
+-   **Xenstore:**La tienda XEN actúa como un intermediario de comunicación y configuración entre el Hypervisor XEN y las máquinas virtuales, racionalizando la operación y la gestión de entornos virtualizados.
+-   **Píldora**es la interfaz que permite el control y la automatización del Hypervisor XEN, lo que facilita la gestión de entornos virtualizados.
 
 #### Dominio0 (DOM0)
 
-Domain0, o Dom0, es el dominio de control en una arquitectura Xen. Gestiona otros dominios (DomUs) y tiene acceso directo al hardware.  
+Domain0, o DOM0, es el dominio de control en una arquitectura XEN. Manejan otros dominios (DOMUS) y tiene acceso directo al hardware.  
 DOM0 ejecuta los controladores de dispositivos, permitiendo que DOMUS, que carecen de acceso directo a hardware, se comuniquen con los dispositivos. Por lo general, es una instancia completa de un sistema operativo, como Linux, y es esencial para la operación del hipervisor XEN.
 
-#### DominioU (DomU)
+#### Dominio (casa)
 
-Los DomU son dominios sin privilegios que ejecutan máquinas virtuales.  
-Están gestionados por Dom0 y no tienen acceso directo al hardware. Las DomU se pueden configurar para ejecutar diferentes sistemas operativos y se utilizan para diversos fines, como servidores de aplicaciones y entornos de desarrollo. Confían en Dom0 para la interacción del hardware.
+DOMUS son dominios no privilegiados que ejecutan máquinas virtuales.  
+Son administrados por DOM0 y no tienen acceso directo al hardware. DOMUS se puede configurar para ejecutar diferentes sistemas operativos y se utilizan para varios fines, como servidores de aplicaciones y entornos de desarrollo. Confían en DOM0 para la interacción de hardware.
 
-#### PV-DOMU (Dominio Paranormalizado)
+#### Peewee-Dom (Paravardiyed Domina)
 
-Los PV-DomU utilizan una técnica llamada paravirtualización. En este modelo, el sistema operativo DomU se modifica para que sea consciente de que se ejecuta en un entorno virtualizado, lo que le permite comunicarse directamente con el hipervisor para un rendimiento optimizado.  
+PV-DOMUS Utiliza una técnica llamada paravirtualización. En este modelo, el sistema operativo DOMU se modifica para tener en cuenta que se ejecuta en un entorno virtualizado, lo que le permite comunicarse directamente con el hipervisor para un rendimiento optimizado.  
 Esto da como resultado una sobrecarga más baja y una mejor eficiencia en comparación con la virtualización completa.
 
-#### HVM-DomU (DominioU de máquina virtual de hardware)
+#### HVM-DOMU (Hardware Virtual Machine Domainu)
 
-Los HVM-DomU son máquinas virtuales que utilizan virtualización completa, lo que permite ejecutar sistemas operativos sin modificaciones. El hipervisor Xen proporciona emulación de hardware para estas DomU, permitiéndoles ejecutar cualquier sistema operativo que admita la arquitectura de hardware subyacente.  
-Si bien esto ofrece una mayor flexibilidad, puede generar mayores gastos generales en comparación con las PV-DomU.
+HVM-DOMUS son máquinas virtuales que utilizan virtualización completa, lo que permite que los sistemas operativos no modificados se ejecuten. El Hypervisor XEN proporciona emulación de hardware para estos DOMUS, lo que les permite ejecutar cualquier sistema operativo que admita la arquitectura de hardware subyacente.  
+Si bien esto ofrece una mayor flexibilidad, puede dar como resultado una mayor sobrecarga en comparación con PV-DOMUS.
 
-#### Red Xen
+#### Red xen
 
 Dispositivos de red en paravirtualizados![pv-networking](images/xen-networking2.png)
 
-puente![pv-networking](images/xen-networking1.png)
+Puente![pv-networking](images/xen-networking1.png)
 
 #### 351.2 Objetos citados
 
@@ -717,7 +717,7 @@ xen-tscmode(7)
 
 #### 351.2 comandos importantes
 
-##### xen-crear-imagen
+##### xen-create-imagen
 
 ```sh
 # create a pv image
@@ -731,11 +731,25 @@ xen-create-image \
   --dist=bookworm
 ```
 
+##### imágenes de la lista xen
+
+```sh
+# list image
+xen-list-image
+```
+
 ##### Xen-Delete-Image
 
 ```sh
 # delete a pv image
 xen-delete-image lpic3-pv-guest --lvm=vg_xen
+```
+
+##### xenstore-ls
+
+```sh
+# list xenstore infos
+xenstore-ls
 ```
 
 ##### brctl
@@ -753,6 +767,24 @@ xl infos
 
 # list Domains
 xl list
+xl list lpic3-hvm-guest
+xl list lpic3-hvm-guest -l
+
+# uptime Domains
+xl uptime
+
+# pause Domain
+xl pause 2
+xl pause lpic3-hvm-guest
+
+# save state Domains
+xl -v save lpic3-hvm-guest ~root/image-lpic3-hvm-guest.save
+
+# restore Domain
+xl restore /root/image-lpic3-hvm-guest.save
+
+# get Domain name
+xl domname 2
 
 # view dmesg information
 xl dmesg
@@ -783,6 +815,9 @@ xl create -c /etc/xen/lpic3-pv-guest.cfg
 # create DomainU virtual machine HVM
 
 ## configure /etc/xen/lpic3-hvm-guest.cfg
+
+## create logical volume
+lvcreate -l +20%FREE -n lpic3-hvm-guest-disk  vg_xen
 
 ## create a ssh tunel for vnc
 ssh -l vagrant -L 5900:localhost:5900  192.168.0.130
@@ -826,8 +861,8 @@ xl reboot lpic3-pv-guest
 
 **Áreas clave de conocimiento:**
 
--   Comprender la arquitectura de QEMU, incluidos KVM, redes y almacenamiento.
--   Inicie instancias de QEMU desde la línea de comando
+-   Comprender la arquitectura de QEMU, incluyendo KVM, redes y almacenamiento
+-   Iniciar instancias QEMU desde la línea de comando
 -   Administrar instantáneas utilizando el monitor QEMU
 -   Instale el agente invitado de QEMU y los controladores de dispositivos Virtio
 -   Solucionar problemas de instalaciones de QEMU, incluidas las redes y el almacenamiento
@@ -872,16 +907,16 @@ ip link show
 **Áreas clave de conocimiento:**
 
 -   Comprender la arquitectura de libvirt
--   Administrar conexiones y nodos libvirt
--   Cree y administre dominios QEMU y Xen, incluidas instantáneas
+-   Gestionar las conexiones y nodos libvirt
+-   Crear y administrar dominios QEMU y XEN, incluidas las instantáneas
 -   Administrar y analizar el consumo de recursos de dominios
 -   Crear y administrar grupos y volúmenes de almacenamiento
 -   Crear y administrar redes virtuales
 -   Migrar dominios entre nodos
 -   Comprender cómo Libvirt interactúa con Xen y Qemu
--   Comprender cómo interactúa libvirt con servicios de red como dnsmasq y radvd
--   Comprender los archivos de configuración XML de libvirt
--   Conciencia de virtlogd y virtlockd
+-   Comprenda cómo Libvirt interactúa con servicios de red como DNSMASQ y RADVD
+-   Comprender archivos de configuración de Libvirt XML
+-   Conciencia de VirtLogd y Virtlockd
 
 #### 351.4 Objetos citados
 
@@ -891,7 +926,7 @@ libvirtd
 virsh (including relevant subcommands)
 ```
 
-#### 351.4 Comandos importantes
+#### 351.4 comandos importantes
 
 ##### foo
 
@@ -915,10 +950,10 @@ foo
 
 **Áreas clave de conocimiento:**
 
--   Comprender las características de varios formatos de imágenes de discos virtuales, como imágenes sin formato, qcow2 y VMDK.
--   Administre imágenes de disco de máquinas virtuales usando qemu-img
--   Monte particiones y acceda a archivos contenidos en imágenes de disco de máquinas virtuales usando libguestfish
--   Copie el contenido del disco físico a una imagen de disco de máquina virtual
+-   Comprender las características de varios formatos de imagen de disco virtual, como imágenes RAW, QCOW2 y VMDK
+-   Administrar imágenes de disco de máquina virtual usando qemu-img
+-   Monte las particiones y los archivos de acceso contenidos en las imágenes de disco de máquina virtual utilizando el pez libguest
+-   Copiar contenido de disco físico a una imagen de disco de máquina virtual
 -   Migrar contenido de disco entre varios formatos de imagen de disco de máquina virtual
 -   Conciencia del formato de virtualización abierta (OVF)
 
@@ -975,18 +1010,18 @@ foo
 
 **Áreas clave de conocimiento:**
 
--   Comprender los conceptos de sistema y contenedor de aplicaciones.
+-   Comprender los conceptos del sistema y el contenedor de aplicaciones
 -   Comprender y analizar los espacios de nombres del núcleo
 -   Comprender y analizar grupos de control
 -   Comprender y analizar las capacidades
--   Comprender el papel de seccomp, SELinux y AppArmor para la virtualización de contenedores
+-   Comprender el papel de SecComp, Selinux y Apparmor para la virtualización de contenedores
 -   Comprenda cómo LXC y Docker aprovechan los espacios de nombres, CGROUPS, Capacidades, SECComp y Mac
--   Comprender el principio de runc.
--   Comprender el principio de CRI-O y contenedores.
--   Conocimiento del tiempo de ejecución de OCI y de las especificaciones de imagen.
--   Conocimiento de la interfaz de ejecución de contenedores (CRI) de Kubernetes
+-   Comprender el principio de RUNC
+-   Understand the principle of CRI-O and containerd
+-   Conciencia del tiempo de ejecución de OCI y las especificaciones de la imagen
+-   Conciencia de la interfaz de tiempo de ejecución del contenedor Kubernetes (CRI)
 -   Conciencia de Podman, Buildah y Scopeo
--   Conocimiento de otros enfoques de virtualización de contenedores en Linux y otros sistemas operativos libres, como rkt, OpenVZ, systemd-nspawn o BSD Jails.
+-   Conciencia de otros enfoques de virtualización de contenedores en Linux y otros sistemas operativos gratuitos, como RKT, OpenVZ, Systemd-Nspawn o BSD Cails
 
 ```mermaid
 timeline
@@ -1032,17 +1067,17 @@ foo
 
 **Peso:**6
 
-**Descripción:**Los candidatos deberían poder utilizar contenedores del sistema utilizando LXC y LXD. La versión de LXC cubierta es 3.0 o superior.
+**Descripción:**Los candidatos deben poder usar contenedores del sistema utilizando LXC y LXD. La versión de LXC cubierta es de 3.0 o más.
 
-**Áreas de conocimiento clave:**
+**Áreas clave de conocimiento:**
 
 -   Comprender la arquitectura de LXC y LXD
--   Administre contenedores LXC basados ​​en imágenes existentes usando LXD, incluidas redes y almacenamiento.
+-   Administre contenedores LXC en función de las imágenes existentes utilizando LXD, incluidas las redes y el almacenamiento
 -   Configurar las propiedades del contenedor LXC
 -   Limite el uso de recursos de contenedores LXC
--   Utilice perfiles LXD
+-   Usar perfiles LXD
 -   Comprender las imágenes LXC
--   Conocimiento de las herramientas tradicionales de LXC
+-   Conciencia de las herramientas LXC tradicionales
 
 #### 352.2 Objetos citados
 
@@ -1067,21 +1102,21 @@ foo
 
 <a name="topic-352.3"></a>
 
-### 352.3 acoplador
+### 352.3 Docker
 
 **Peso:**9
 
-**Descripción:**El candidato debe poder gestionar nodos Docker y contenedores Docker. Esto incluye comprender la arquitectura de Docker y cómo interactúa Docker con el sistema Linux del nodo.
+**Descripción:**El candidato debe poder administrar nodos Docker y contenedores Docker. Esto incluye comprender la arquitectura de Docker y comprender cómo Docker interactúa con el sistema Linux del nodo.
 
 **Áreas clave de conocimiento:**
 
 -   Comprender la arquitectura y los componentes de Docker
 -   Administre contenedores Docker utilizando imágenes de un registro de Docker
 -   Comprender y administrar imágenes y volúmenes para contenedores Docker
--   Comprender y gestionar el registro de contenedores Docker
+-   Comprender y administrar el registro de contenedores Docker
 -   Comprender y administrar redes para Docker
 -   Use DockerFiles para crear imágenes de contenedores
--   Ejecute un registro de Docker utilizando la imagen de Docker del registro
+-   Ejecutar un registro de Docker utilizando la imagen Docker de registro
 
 #### 352.3 Objetos citados
 
@@ -1115,12 +1150,12 @@ Dockerfile
 
 **Descripción:**Los candidatos deben comprender la importancia de la orquestación de contenedores y los conceptos clave que Docker Swarm y Kubernetes proporcionan para implementar la orquestación de contenedores.
 
-**Áreas de conocimiento clave:**
+**Áreas clave de conocimiento:**
 
--   Comprender la relevancia de la orquestación de contenedores
+-   Comprender la relevancia de la orquestación del contenedor
 -   Comprender los conceptos clave de Docker Compose y Docker Swarm
--   Comprender los conceptos clave de Kubernetes y Helm.
--   Conciencia de OpenShift, Rancher y Mesosphere DC/OS
+-   Comprender los conceptos clave de Kubernetes y Helm
+-   Conciencia de Openshift, Rancher y Mesosphere DC/OS
 
 <p align="right">(<a href="#topic-352.4">back to sub topic 352.4</a>)</p>
 <p align="right">(<a href="#topic-352">back to topic 352</a>)</p>
@@ -1130,7 +1165,7 @@ Dockerfile
 
 <a name="topic-353"></a>
 
-## Tema 353: Implementación y aprovisionamiento de VM
+## Tema 353: Despliegue y aprovisionamiento de VM
 
 * * *
 
@@ -1157,7 +1192,7 @@ OpenStack
 Terraform
 ```
 
-#### 353.1 Comandos importantes
+#### 353.1 comandos importantes
 
 ##### foo
 
@@ -1181,7 +1216,7 @@ Terraform
 
 **Áreas clave de conocimiento:**
 
--   Comprender la funcionalidad y características de Packer
+-   Comprender la funcionalidad y las características de Packer
 -   Crear y mantener archivos de plantilla
 -   Cree imágenes a partir de archivos de plantilla utilizando diferentes constructores
 
@@ -1212,15 +1247,15 @@ packer
 **Peso:**3
 
 **Descripción:**Los candidatos deben usar la Inicla Cloud para configurar máquinas virtuales creadas a partir de imágenes estandarizadas. Esto incluye ajustar máquinas virtuales para que coincidan con sus recursos de hardware disponibles, específicamente, espacio en disco y volúmenes.  
-Además, los candidatos deberían poder configurar instancias para permitir inicios de sesión SSH seguros e instalar un conjunto específico de paquetes de software.  
-Además, los candidatos deberían poder crear nuevas imágenes del sistema con soporte de inicio en la nube.
+Además, los candidatos deberían poder configurar instancias para permitir los inicios de sesión SSH seguros e instalar un conjunto específico de paquetes de software.  
+Además, los candidatos deberían poder crear nuevas imágenes del sistema con soporte de In-Init.
 
-**Áreas de conocimiento clave:**
+**Áreas clave de conocimiento:**
 
--   Comprender las características y conceptos de cloud-init, incluidos los datos del usuario, la inicialización y la configuración de cloud-init.
--   Utilice cloud-init para crear, cambiar el tamaño y montar sistemas de archivos, configurar cuentas de usuario, incluidas credenciales de inicio de sesión como claves SSH e instalar paquetes de software desde el repositorio de la distribución.
+-   Comprensión de las características y conceptos de In-INIT, incluidos los datos del usuario, la inicialización y la configuración de la In-Init de la nube
+-   Use la entrada en la nube para crear, cambiar el tamaño y montar los sistemas de archivos, configurar cuentas de usuario, incluidas las credenciales de inicio de sesión, como las claves SSH e instalar paquetes de software desde el repositorio de la distribución
 -   Integre la entrada de la nube en las imágenes del sistema
--   Utilice la fuente de datos de la unidad de configuración para realizar pruebas
+-   Utilice la fuente de datos de configuración de la unidad para las pruebas
 
 #### 353.3 Objetos citados
 
@@ -1230,7 +1265,7 @@ user-data
 /var/lib/cloud/
 ```
 
-#### 353.3 Comandos importantes
+#### 353.3 comandos importantes
 
 ##### foo
 
@@ -1246,7 +1281,7 @@ user-data
 
 <a name="topic-353.4"></a>
 
-### 353.4 Vagabundo
+### 353.4 vagabundo
 
 **Peso:**3
 
@@ -1254,15 +1289,15 @@ user-data
 
 **Áreas clave de conocimiento:**
 
--   Comprender la arquitectura y los conceptos de Vagrant, incluidos el almacenamiento y las redes.
+-   Comprender la arquitectura y los conceptos vagabundos, incluido el almacenamiento y las redes
 -   Recuperar y usar cajas de Atlas
--   Crear y ejecutar Vagrantfiles
+-   Crear y ejecutar a Vagrantfiles
 -   Acceder a máquinas virtuales vagabundas
--   Compartir y sincronizar carpetas entre una máquina virtual Vagrant y el sistema host
+-   Compartir y sincronizar la carpeta entre una máquina virtual vagabunda y el sistema de host
 -   Comprender el aprovisionamiento vagabundo, es decir, los proveedores de archivos y shell
--   Comprender la configuración de varias máquinas
+-   Comprender la configuración de múltiples máquinas
 
-#### 353.4 Objetos citados
+#### 353.4 objetos citados
 
 ```sh
 vagrant
@@ -1283,20 +1318,20 @@ Vagrantfile
 
 * * *
 
-## Contribuyendo
+## Que contribuye
 
-Las contribuciones son las que hacen de la comunidad de código abierto un lugar increíble para
-aprende, inspira y crea. Cualquier contribución que hagas es**muy apreciado**.
+Las contribuciones son las que hacen que la comunidad de código abierto sea un lugar tan increíble para
+Aprende, inspira y crea. Cualquier contribución que haga son**muy apreciado**.
 
-Si tiene alguna sugerencia que pueda mejorar esto, bifurque el repositorio y
-crear una solicitud de extracción. También puedes simplemente abrir un problema con la etiqueta "mejora".
+Si tiene una sugerencia que lo mejore, bifurca el repositorio y
+crear una solicitud de extracción. También puede simplemente abrir un problema con la etiqueta "Mejora".
 ¡No olvides darle una estrella al proyecto! ¡Gracias de nuevo!
 
 1.  Bifurca el proyecto
 2.  Crea tu rama de características (`git checkout -b feature/AmazingFeature`)
 3.  Comprometa tus cambios (`git commit -m 'Add some AmazingFeature'`)
 4.  Empujar a la rama (`git push origin feature/AmazingFeature`)
-5.  Abrir una solicitud de extracción
+5.  Abra una solicitud de extracción
 
 * * *
 
@@ -1318,15 +1353,15 @@ Enlace del proyecto:<https://github.com/marcossilvestrini/learning-lpic-3-305-30
 
 ## Expresiones de gratitud
 
--   [Richard Stallman](http://www.stallman.org/)
+-   [Richard Stallman's](http://www.stallman.org/)
 -   [ÑU](<>)
-    -   [Preguntas frecuentes sobre GNU/Linux por Richard Stallman](https://www.gnu.org/gnu/gnu-linux-faq.html)
+    -   [Preguntas frecuentes de GNU/Linux por Richard Stallman](https://www.gnu.org/gnu/gnu-linux-faq.html)
     -   [ÑU](https://www.gnu.org/)
     -   [Sistema operativo GNU](https://www.gnu.org/gnu/thegnuproject.html)
-    -   [Compilador GCC](https://gcc.gnu.org/wiki/History)
+    -   [Compilador de GCC](https://gcc.gnu.org/wiki/History)
     -   [Alquitrán GNU](https://www.gnu.org/software/tar/)
-    -   [Marca GNU](https://www.gnu.org/software/make/)
-    -   [Emacs GNU](https://en.wikipedia.org/wiki/Emacs)
+    -   [GNU Make](https://www.gnu.org/software/make/)
+    -   [Emacs de GNU](https://en.wikipedia.org/wiki/Emacs)
     -   [Paquetes de GNU](https://www.gnu.org/software/)
     -   [Colección GNU/Linux](https://directory.fsf.org/wiki/Collection:GNU/Linux)
     -   [Gestor de arranque de GNU GRUB](https://www.gnu.org/software/grub/)
@@ -1334,7 +1369,7 @@ Enlace del proyecto:<https://github.com/marcossilvestrini/learning-lpic-3-305-30
 -   [Núcleo](<>)
     -   [Núcleo](https://www.kernel.org/)
     -   [Páginas de Linux Kernel Man](https://www.kernel.org/doc/man-pages/)
-    -   [Compila tu kernel](https://wiki.linuxquestions.org/wiki/How_to_build_and_install_your_own_Linux_kernel)
+    -   [Compila tu núcleo](https://wiki.linuxquestions.org/wiki/How_to_build_and_install_your_own_Linux_kernel)
 -   [Base estándar de Linux](<>)
     -   [Base estándar de Linux](https://en.wikipedia.org/wiki/Linux_Standard_Base)
     -   [Estándar de jerarquía del sistema de archivos](https://en.wikipedia.org/wiki/Filesystem_Hierarchy_Standard)
@@ -1352,17 +1387,17 @@ Enlace del proyecto:<https://github.com/marcossilvestrini/learning-lpic-3-305-30
     -   [Comunics creativos](https://creativecommons.org/)
     -   [Licencia LTS](https://en.wikipedia.org/wiki/Long-term_support)
 -   [Distracción](<>)
-    -   [Directrices para el software libre de Debian](https://www.debian.org/social_contract#guidelines)
+    -   [Directrices de software gratuito de Debian](https://www.debian.org/social_contract#guidelines)
     -   [Lista de distribución de Linux](https://en.wikipedia.org/wiki/List_of_Linux_distributions)
     -   [Distribuir](https://distrowatch.com/)
     -   [Comparación de distribuciones de Linux](https://en.wikipedia.org/wiki/Comparison_of_Linux_distributions)
 -   [Entornos de escritorio](<>)
-    -   [Organización X11](https://www.x.org/wiki/)
+    -   [X11 orgg](https://www.x.org/wiki/)
     -   [Tierra](https://wayland.freedesktop.org/)
     -   [Gnu gnomo](https://www.gnu.org/press/gnome-1.0.html)
     -   [GNOMO](https://www.gnome.org/)
     -   [XFCE](https://xfce.org/)
-    -   [Plasma KDE](https://kde.org/plasma-desktop/)
+    -   [Donde plasma](https://kde.org/plasma-desktop/)
     -   [Armonía](https://en.wikipedia.org/wiki/Harmony_(toolkit))
 -   [Protocolos](<>)
     -   [Http](<>)
@@ -1370,32 +1405,32 @@ Enlace del proyecto:<https://github.com/marcossilvestrini/learning-lpic-3-305-30
         -   [apache](https://www.apache.org/)
         -   [Directivas Apache][def]
         -   [Códigos de estado HTTP](https://en.wikipedia.org/wiki/List_of_HTTP_status_codes)
-        -   [Cifrados fuertes para Apache, nginx y Lighttpd](https://cipherlist.eu/)
+        -   [Cifradores fuertes para Apache, Nginx y LightTPD](https://cipherlist.eu/)
         -   [Tutoriales SSL](https://www.golinuxcloud.com/blog/)
         -   [SSL Config mozilla](https://ssl-config.mozilla.org/)
     -   [XRDP](https://bytexd.com/xrdp-centos/)
     -   [NTP](https://www.ntppool.org/en/)
 -   [DNS](<>)
     -   [Unir](https://www.isc.org/bind/)
-    -   [Vincular registro](https://www.zytrax.com/books/dns/ch7/logging.html)
-    -   [Lista de tipos de registros DNS](https://en.wikipedia.org/wiki/List_of_DNS_record_types)
+    -   [Bind Rogging](https://www.zytrax.com/books/dns/ch7/logging.html)
+    -   [Lista de tipos de registro DNS](https://en.wikipedia.org/wiki/List_of_DNS_record_types)
     -   [Lista de tipos de registro DNS](https://en.wikipedia.org/wiki/List_of_DNS_record_types)
 -   [Administrador de paquetes](<>)
     -   [Descargar paquetes](https://pkgs.org/)
     -   [Instalar paquetes](https://installati.one/)
     -   [Guía de instalación de paquetes](https://installati.one/)
 -   [Guión de shell](<>)
-    -   [Bourne otra vez Shell](https://www.gnu.org/software/bash/manual/)
+    -   [Bourne Again Shell](https://www.gnu.org/software/bash/manual/)
     -   [El asunto](https://bash.cyberciti.biz/guide/Shebang)
     -   [Variables de entorno](https://linuxize.com/post/how-to-set-and-list-environment-variables-in-linux/)
     -   [GNU Globbing](https://man7.org/linux/man-pages/man7/glob.7.html)
-    -   [globalizar](https://linuxhint.com/bash_globbing_tutorial/)
-    -   [Citando](https://www.gnu.org/software/bash/manual/html_node/Quoting.html)
+    -   [Globo](https://linuxhint.com/bash_globbing_tutorial/)
+    -   [Citado](https://www.gnu.org/software/bash/manual/html_node/Quoting.html)
     -   [Expresiones regulares](https://www.gnu.org/software/grep/manual/html_node/Regular-Expressions.html)
-    -   [Comando no encontrado](https://command-not-found.com/)
+    -   [Comando no se encuentra](https://command-not-found.com/)
     -   [Generador de bashrc](http://bashrcgenerator.com/)
     -   [Explicar](https://explainshell.com/)
-    -   [tutorial de vim](https://www.openvim.com/)
+    -   [Tutorial vim](https://www.openvim.com/)
     -   [Tutorial de secuencias de comandos de Linux Shell](https://bash.cyberciti.biz/guide/Main_Page)
     -   [Ejemplos de comandos](https://www.geeksforgeeks.org/)
 -   [Otras herramientas](<>)
@@ -1409,31 +1444,31 @@ Enlace del proyecto:<https://github.com/marcossilvestrini/learning-lpic-3-305-30
 -   [KVM](<>)
     -   [KVM (máquinas virtuales del núcleo)](https://www.redhat.com/pt-br/topics/virtualization/what-is-KVM)
     -   [Herramientas de gestión de KVM](https://www.linux-kvm.org/page/Management_Tools)
--   [xén](<>)
-    -   [XenServer](https://www.xenserver.com/)
+-   [Alternar](<>)
+    -   [Xenserver](https://www.xenserver.com/)
     -   [Wiki xenproject](https://wiki.xenproject.org/wiki/Main_Page)
     -   [Interfaces de red](https://wiki.xenproject.org/wiki/Xen_Networking#Virtual_Network_Interfaces)
-    -   [Herramientas Xen](https://xen-tools.org/software/)
+    -   [Xen Tools](https://xen-tools.org/software/)
     -   [Blog de LPI: XEN Virtualization and Cloud Computing #01: Introducción](https://www.lpi.org/pt-br/blog/2020/10/01/xen-virtualization-and-cloud-computing-01-introduction/)
     -   [Blog de LPI: Virtualización XEN y computación en la nube #02: Cómo Xen hace el trabajo](https://www.lpi.org/blog/2020/10/08/xen-virtualization-and-cloud-computing-02-how-xen-does-job/)
-    -   [Blog de LPI: Virtualización Xen y Computación en la Nube #04: Contenedores, OpenStack y otras plataformas relacionadas](https://www.lpi.org/pt-br/blog/2020/10/22/xen-virtualization-and-cloud-computing-04-containers-openstack-and-other-related/)
+    -   [Blog LPI: Virtualización XEN y computación en la nube #04: Contenedores, OpenStack y otras plataformas relacionadas](https://www.lpi.org/pt-br/blog/2020/10/22/xen-virtualization-and-cloud-computing-04-containers-openstack-and-other-related/)
     -   [Virtualización XEN y computación en la nube #05: El proyecto Xen, Unikernels y el futuro](https://www.lpi.org/pt-br/blog/2020/10/29/xen-virtualization-and-cloud-computing-05-xen-project-unikernels-and-future/)
-    -   [Guía para principiantes del proyecto Xen](https://wiki.xenproject.org/wiki/Xen_Project_Beginners_Guide#Installing_the_Xen_Project_Software)
-    -   [libro loco](https://wiki.xenproject.org/wiki/Book/HelloXenProject/0-Contents)
--   [Unikernel](https://www.lpi.org/blog/2020/10/29/xen-virtualization-and-cloud-computing-05-xen-project-unikernels-and-future/)
+    -   [Guía de principiantes del proyecto XEN](https://wiki.xenproject.org/wiki/Xen_Project_Beginners_Guide#Installing_the_Xen_Project_Software)
+    -   [Libro loco](https://wiki.xenproject.org/wiki/Book/HelloXenProject/0-Contents)
+-   [Unicernel](https://www.lpi.org/blog/2020/10/29/xen-virtualization-and-cloud-computing-05-xen-project-unikernels-and-future/)
     -   [Fuerza única](https://github.com/unikraft/unikraft)
     -   [MirageOS](https://mirage.io/docs/hello-world)
-    -   [HaLVM](https://galois.com/project/halvm/)
+    -   [Malo](https://galois.com/project/halvm/)
     -   [Único](https://github.com/solo-io/unik/blob/master/docs/providers/virtualbox.md)
--   [Documentos de Openstack](<>)
-    -   [sombrero rojo](https://www.redhat.com/pt-br/topics/openstack)
+-   [OpenStack Docs](<>)
+    -   [Redhat](https://www.redhat.com/pt-br/topics/openstack)
 -   [Abrir vswitch](<>)
     -   [OVS doc 4Linux](https://blog.4linux.com.br/open-vswitch-o-que-e-o-que-come-onde-vive)
 -   [Examen LPIC-3 305-300](<>)
-    -   [LPIC-3 305-300 Objetivos](https://www.lpi.org/our-certifications/exam-305-objectives/)
+    -   [LPIC-3 305-300 OBJETIVOS](https://www.lpi.org/our-certifications/exam-305-objectives/)
     -   [LPIC-3 305-300 wiki](https://wiki.lpi.org/wiki/LPIC-305_Objectives_V3.0)
     -   [LPIC-3 305-300 Material de aprendizaje](https://cursos.linuxsemfronteiras.com.br/courses/preparatorio-para-certificacao-lpic-3-305/)
-    -   [LPIC-3 305-300 Examen simulado por ITexams](https://www.itexams.com/info/305-300)
+    -   [Examen simulado LPIC-3 305-300 por ITEXAMS](https://www.itexams.com/info/305-300)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
