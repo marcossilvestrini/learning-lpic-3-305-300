@@ -27,7 +27,8 @@ if echo "$RELEASE_INFO" | grep -q -i "debian\|ubuntu"; then
     bridge-utils \
     tree \
     xfce4 xfce4-goodies \
-    tightvncserver dbus-x11
+    tightvncserver dbus-x11 \
+    cloud-utils genisoimage cloud-init whois
 
     # Configure profile
     sudo cp -f configs/commons/.bashrc_debian  .bashrc
