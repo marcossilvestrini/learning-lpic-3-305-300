@@ -1006,7 +1006,7 @@ foo
 
 **Peso:**7
 
-**Descrição:**Os candidatos devem entender o conceito de virtualização de contêineres. Isso inclui a compreensão dos componentes do Linux usados ​​para implementar a virtualização de contêineres, bem como usar as ferramentas padrão do Linux para solucionar problemas desses componentes.
+**Descrição:**Os candidatos devem entender o conceito de virtualização de contêineres. Isso inclui a compreensão dos componentes do Linux usados ​​para implementar a virtualização de contêineres, bem como usar as ferramentas padrão do Linux para solucionar esses componentes.
 
 **Principais áreas de conhecimento:**
 
@@ -1327,7 +1327,7 @@ Se você tiver uma sugestão que melhoraria isso, bifór -se o repositório e
 Crie uma solicitação de tração. Você também pode simplesmente abrir um problema com a tag "aprimoramento".
 Não se esqueça de dar uma estrela ao projeto! Obrigado novamente!
 
-1.  Fork the Project
+1.  Bifurcar o projeto
 2.  Crie sua filial de recursos (`git checkout -b feature/AmazingFeature`)
 3.  Compreenda suas mudanças (`git commit -m 'Add some AmazingFeature'`)
 4.  Empurre para o ramo (`git push origin feature/AmazingFeature`)
