@@ -599,12 +599,12 @@ La Compañía proporcionó soluciones empresariales basadas en XEN y ofreció he
 
 #### Proyecto Xen
 
-El proyecto XEN se refiere a la comunidad e iniciativa de código abierto responsables de desarrollar y mantener el Hypervisor XEN después de su comercialización.  
+El Proyecto XEN se refiere a la comunidad e iniciativa de código abierto responsables de desarrollar y mantener el Hypervisor XEN después de su comercialización.  
 El proyecto XEN opera bajo la Fundación Linux, con un enfoque en la construcción, mejora y apoyar a Xen como un esfuerzo colaborativo y impulsado por la comunidad.
 
--   **Objetivos:**El proyecto XEN tiene como objetivo avanzar al hipervisor mejorando su rendimiento, seguridad y conjunto de características para una amplia gama de casos de uso, incluida la computación en la nube, la virtualización centrada en la seguridad (por ejemplo, QUBES OS) y sistemas integrados.
+-   **Goals:**El proyecto XEN tiene como objetivo avanzar al hipervisor mejorando su rendimiento, seguridad y conjunto de características para una amplia gama de casos de uso, incluida la computación en la nube, la virtualización centrada en la seguridad (por ejemplo, QUBES OS) y sistemas integrados.
 -   **Colaboradores:**El proyecto incluye contribuyentes de varias organizaciones, incluidos los principales proveedores de la nube, proveedores de hardware y desarrolladores independientes.
--   **Píldora y hedools:** The Xen Project also includes tools such as XAPI (XenAPI), which is used for managing Xen hypervisor installations, and various other utilities for system management and optimization.
+-   **Píldora y hedools:**El proyecto XEN también incluye herramientas como XAPI (XENAPI), que se utiliza para administrar las instalaciones de XEN Hypervisor y varias otras utilidades para la gestión y optimización del sistema.
 
 #### Xenstore
 
@@ -1017,7 +1017,7 @@ foo
 -   Comprender el papel de SecComp, Selinux y Apparmor para la virtualización de contenedores
 -   Comprenda cómo LXC y Docker aprovechan los espacios de nombres, CGROUPS, Capacidades, SECComp y Mac
 -   Comprender el principio de RUNC
--   Understand the principle of CRI-O and containerd
+-   Comprender el principio de Cri-O y Containerd
 -   Conciencia del tiempo de ejecución de OCI y las especificaciones de la imagen
 -   Conciencia de la interfaz de tiempo de ejecución del contenedor Kubernetes (CRI)
 -   Conciencia de Podman, Buildah y Scopeo
@@ -1448,7 +1448,7 @@ Enlace del proyecto:<https://github.com/marcossilvestrini/learning-lpic-3-305-30
     -   [Xenserver](https://www.xenserver.com/)
     -   [Wiki xenproject](https://wiki.xenproject.org/wiki/Main_Page)
     -   [Interfaces de red](https://wiki.xenproject.org/wiki/Xen_Networking#Virtual_Network_Interfaces)
-    -   [Xen Tools](https://xen-tools.org/software/)
+    -   [Herramientas xen](https://xen-tools.org/software/)
     -   [Blog de LPI: XEN Virtualization and Cloud Computing #01: Introducción](https://www.lpi.org/pt-br/blog/2020/10/01/xen-virtualization-and-cloud-computing-01-introduction/)
     -   [Blog de LPI: Virtualización XEN y computación en la nube #02: Cómo Xen hace el trabajo](https://www.lpi.org/blog/2020/10/08/xen-virtualization-and-cloud-computing-02-how-xen-does-job/)
     -   [Blog LPI: Virtualización XEN y computación en la nube #04: Contenedores, OpenStack y otras plataformas relacionadas](https://www.lpi.org/pt-br/blog/2020/10/22/xen-virtualization-and-cloud-computing-04-containers-openstack-and-other-related/)
