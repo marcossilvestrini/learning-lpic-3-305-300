@@ -31,7 +31,15 @@ pvcreate "$DISK"
 vgcreate vg_xen "$DISK"
 
 # create lv for hvm guest
-lvcreate -l +20%FREE -n lpic3-hvm-guest-disk  vg_xen
+#lvcreate -l +100%FREE -n lpic3-hvm-guest-disk  vg_xen
+lvcreate -L 40G -n lpic3-hvm-guest-disk vg_xen
+mkfs.ext4 /dev/vg_xen/lpic3-hvm-guest-disk
 
-# # format lv with filesystem xfs
-# mkfs.ext4 -L xen-storage /dev/mapper/vg_xen-lv_xen
+# validate user-data
+cloud-init schema --config-file configs/xen/user-data
+
+# generate ISO seed
+cloud-localds -v isos/seed.iso configs/xen/user-data configs/xen/meta-data
+
+# validate seed.iso
+isoinfo -i isos/seed.iso -R -l
