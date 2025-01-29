@@ -127,7 +127,7 @@ cd learning-lpic-3-305-300
 Personnaliser un modèle_Vagrantfile-topic-xxx_. Ce fichier contient une configuration VMS pour les laboratoires. Exemple:
 
 -   Déposer[Vagrantfile-topic-351](./vagrant/Vagrantfile-topic-351)
-    -   vm.clone_directory = "&lt;your_driver_letter>:\\<folder>\\&lt;to_machine>\\# {Vm_name} -instance-1 "
+    -   vm.clone_directory = "&lt;your_driver_letter>:\\<folder>\\&lt;To_machine>\\# {Vm_name} -instance-1 "
         Exemple: vm.clone_directory = "E:\\Serveurs\\Vmware\\# {Vm_name} -instance-1 "
     -   vm.vmx["memsize"]= ""
     -   vm.vmx["Numvcpus"]= ""
@@ -488,7 +488,7 @@ VMware NSX, Cisco ACI, OpenStack Neutron.
 
 ###### Définition de virtualisation de stockage
 
-Poolets Stockage physique de plusieurs appareils dans une seule unité de stockage virtuel qui peut être géré de manière centralisée.
+Pools physical storage from multiple devices into a single virtual storage unit that can be managed centrally.
 
 ###### Définition de virtualisation de stockage Cas d'utilisation
 
