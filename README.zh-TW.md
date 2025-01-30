@@ -169,6 +169,10 @@ vagrant/up.ps1
 vagrant/destroy.ps1
 ```
 
+### 基礎設施架構主題352
+
+![topic-351](images/infraestructure-topic-351.png)
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 * * *
@@ -636,7 +640,7 @@ XAPI是Xenserver（現稱為Citrix Hypervisor）的關鍵組成部分，並提�
 
 -   **訪問控制：**XAPI還提供訪問控制機制，以確保只有授權用戶才能在虛擬環境中執行特定操作。
 
-XAPI是可以控制和自動化XEN管理程序的接口，使管理虛擬化環境更容易。
+XAPI是可以控制和自動化XEN虛擬機程序的接口，使管理虛擬化環境變得更容易。
 
 #### Xen摘要
 
@@ -685,7 +689,7 @@ xentop
 oxenstored # Xenstore configurations
 ```
 
-#### 351.2註釋
+#### 351.2 Notes
 
 ```sh
 
