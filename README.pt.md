@@ -169,6 +169,10 @@ vagrant/up.ps1
 vagrant/destroy.ps1
 ```
 
+### Esquema de infraestrutura Tópico 352
+
+![topic-351](images/infraestructure-topic-351.png)
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 * * *
@@ -316,7 +320,7 @@ A migração de P2V refere -se ao processo de migrar um servidor físico para um
 Em outras palavras, um sistema operacional e seus aplicativos, executados em hardware físico dedicado, são "convertidos" e movidos para uma máquina virtual que é executada em um hipervisor (como VMware, Hyper-V, KVM, etc.).
 
 -   Exemplo: você tem um servidor físico executando um sistema Windows ou Linux e deseja movê -lo para um ambiente virtual, como uma infraestrutura em nuvem ou um servidor de virtualização interna.  
-    O processo envolve copiar todo o estado do sistema, incluindo o sistema operacional, drivers e dados, para criar uma máquina virtual equivalente que possa funcionar como se estivesse no hardware físico.
+    O processo envolve a cópia de todo o estado do sistema, incluindo o sistema operacional, drivers e dados, para criar uma máquina virtual equivalente que possa funcionar como se estivesse no hardware físico.
 
 ##### V2V - Migração virtual para virtual
 
@@ -1006,7 +1010,7 @@ foo
 
 **Peso:**7
 
-**Descrição:**Os candidatos devem entender o conceito de virtualização de contêineres. Isso inclui a compreensão dos componentes do Linux usados ​​para implementar a virtualização de contêineres, bem como usar as ferramentas padrão do Linux para solucionar esses componentes.
+**Descrição:**Os candidatos devem entender o conceito de virtualização de contêineres. Isso inclui a compreensão dos componentes do Linux usados ​​para implementar a virtualização de contêineres, bem como usar as ferramentas padrão do Linux para solucionar problemas desses componentes.
 
 **Principais áreas de conhecimento:**
 
