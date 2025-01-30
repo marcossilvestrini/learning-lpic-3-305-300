@@ -180,6 +180,10 @@ vagrant/up.ps1
 vagrant/destroy.ps1
 ```
 
+### Infrastructure Schema Topic 352
+
+![topic-351](images/infraestructure-topic-351.png)
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ---
