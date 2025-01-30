@@ -180,7 +180,7 @@ vagrant/up.ps1
 vagrant/destroy.ps1
 ```
 
-### Infrastructure Schema Topic 352
+### Infrastructure Schema Topic 351
 
 ![topic-351](images/infraestructure-topic-351.png)
 
