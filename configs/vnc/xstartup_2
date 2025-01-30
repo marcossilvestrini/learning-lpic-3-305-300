@@ -1,8 +1,0 @@
-#!/bin/bash
-xrdb /home/vagrant/.Xresources
-unset SESSION_MANAGER 
-unset DBUS_SESSION_BUS_ADDRESS
-# autocutsel -fork
-# vncconfig -iconic &
-# vncconfig -nowin &
-startxfce4 &
