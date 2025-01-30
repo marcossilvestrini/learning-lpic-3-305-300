@@ -1,0 +1,17 @@
+#makedown preview
+
+open\close full preview
+Ctrl+Shift+V
+
+open \close split preview
+ctr+k,v
+
+#comment\descomment line or block
+ctr+k, c
+ctr+k, U
+
+#save without Formatting
+ctr+k, ctr+shift+s
+
+# Set X11 Forwarding
+https://yunusmuhammad007.medium.com/jetson-nano-vs-code-x11-forwarding-over-ssh-d97fd2290973
