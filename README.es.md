@@ -169,7 +169,7 @@ vagrant/up.ps1
 vagrant/destroy.ps1
 ```
 
-### Esquema de infraestructura Tema 352
+### Schema de infraestructura Tema 351
 
 ![topic-351](images/infraestructure-topic-351.png)
 
@@ -603,10 +603,10 @@ La Compañía proporcionó soluciones empresariales basadas en XEN y ofreció he
 
 #### Proyecto Xen
 
-El proyecto XEN se refiere a la comunidad e iniciativa de código abierto responsables de desarrollar y mantener el Hypervisor XEN después de su comercialización.  
+El Proyecto XEN se refiere a la comunidad e iniciativa de código abierto responsables de desarrollar y mantener el Hypervisor XEN después de su comercialización.  
 El proyecto XEN opera bajo la Fundación Linux, con un enfoque en la construcción, mejora y apoyar a Xen como un esfuerzo colaborativo y impulsado por la comunidad.
 
--   **Objetivos:**El proyecto XEN tiene como objetivo avanzar al hipervisor mejorando su rendimiento, seguridad y conjunto de características para una amplia gama de casos de uso, incluida la computación en la nube, la virtualización centrada en la seguridad (por ejemplo, QUBES OS) y sistemas integrados.
+-   **Objetivos:** The Xen Project aims to advance the hypervisor by improving its performance, security, and feature set for a wide range of use cases, including cloud computing, security-focused virtualization (e.g., Qubes OS), and embedded systems.
 -   **Colaboradores:**El proyecto incluye contribuyentes de varias organizaciones, incluidos los principales proveedores de la nube, proveedores de hardware y desarrolladores independientes.
 -   **Píldora y hedools:**El proyecto XEN también incluye herramientas como XAPI (XENAPI), que se utiliza para administrar las instalaciones de XEN Hypervisor y varias otras utilidades para la gestión y optimización del sistema.
 
@@ -1257,7 +1257,7 @@ Además, los candidatos deberían poder crear nuevas imágenes del sistema con s
 **Áreas clave de conocimiento:**
 
 -   Comprensión de las características y conceptos de In-INIT, incluidos los datos del usuario, la inicialización y la configuración de la In-Init de la nube
--   Use la In-INIT de la nube para crear, cambiar el tamaño y montar los sistemas de archivos, configurar cuentas de usuario, incluidas las credenciales de inicio de sesión, como las claves SSH e instalar paquetes de software desde el repositorio de la distribución.
+-   Use la entrada en la nube para crear, cambiar el tamaño y montar los sistemas de archivos, configurar cuentas de usuario, incluidas las credenciales de inicio de sesión, como las claves SSH e instalar paquetes de software desde el repositorio de la distribución
 -   Integre la entrada de la nube en las imágenes del sistema
 -   Utilice la fuente de datos de configuración de la unidad para las pruebas
 
