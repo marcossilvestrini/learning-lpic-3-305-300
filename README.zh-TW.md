@@ -169,7 +169,7 @@ vagrant/up.ps1
 vagrant/destroy.ps1
 ```
 
-### 基礎設施架構主題352
+### 基礎設施架構主題351
 
 ![topic-351](images/infraestructure-topic-351.png)
 
@@ -508,9 +508,9 @@ IBM SAN音量控制器，VMware VSAN，NetApp ontap。
 
 允許桌面操作系統在託管服務器上託管的虛擬機上運行。
 
-###### 桌面虛擬化定義用例
+###### Desktop Virtualization Definition Use Cases
 
-虛擬桌面基礎架構（VDI），遠程工作解決方案。
+Virtual desktop infrastructure (VDI), remote work solutions.
 
 ###### 桌面虛擬化定義示例
 
@@ -640,7 +640,7 @@ XAPI是Xenserver（現稱為Citrix Hypervisor）的關鍵組成部分，並提�
 
 -   **訪問控制：**XAPI還提供訪問控制機制，以確保只有授權用戶才能在虛擬環境中執行特定操作。
 
-XAPI是可以控制和自動化XEN虛擬機程序的接口，使管理虛擬化環境變得更容易。
+XAPI是可以控制和自動化XEN管理程序的接口，使管理虛擬化環境更容易。
 
 #### Xen摘要
 
@@ -689,7 +689,7 @@ xentop
 oxenstored # Xenstore configurations
 ```
 
-#### 351.2 Notes
+#### 351.2註釋
 
 ```sh
 
@@ -1148,11 +1148,11 @@ Dockerfile
 
 <a name="topic-352.4"></a>
 
-### 352.4集裝箱編排平台
+### 352.4 Container Orchestration Platforms
 
 **重量：**3
 
-**描述：**候選人應該了解容器編排的重要性，以及Docker Swarm和Kubernetes提供的關鍵概念為實施集裝箱編排提供的重要性。
+**Description:**候選人應該了解容器編排的重要性，以及Docker Swarm和Kubernetes提供的關鍵概念為實施集裝箱編排提供的重要性。
 
 **關鍵知識領域：**
 
@@ -1363,7 +1363,7 @@ Marcos Silvestrini-[marcos.silvestrini@gmail.com](mailto:marcos.silvestrini@gmai
     -   [gnu](https://www.gnu.org/)
     -   [GNU操作系統](https://www.gnu.org/gnu/thegnuproject.html)
     -   [海灣合作委員會編譯器](https://gcc.gnu.org/wiki/History)
-    -   [gnu tar](https://www.gnu.org/software/tar/)
+    -   [GNU Tar](https://www.gnu.org/software/tar/)
     -   [GNU製作](https://www.gnu.org/software/make/)
     -   [gnu emacs](https://en.wikipedia.org/wiki/Emacs)
     -   [GNU軟件包](https://www.gnu.org/software/)
@@ -1454,7 +1454,7 @@ Marcos Silvestrini-[marcos.silvestrini@gmail.com](mailto:marcos.silvestrini@gmai
     -   [網絡接口](https://wiki.xenproject.org/wiki/Xen_Networking#Virtual_Network_Interfaces)
     -   [XEN工具](https://xen-tools.org/software/)
     -   [LPI博客：XEN虛擬化和雲計算＃01：簡介](https://www.lpi.org/pt-br/blog/2020/10/01/xen-virtualization-and-cloud-computing-01-introduction/)
-    -   [LPI博客：Xen虛擬化和雲計算＃02：XEN如何完成工作](https://www.lpi.org/blog/2020/10/08/xen-virtualization-and-cloud-computing-02-how-xen-does-job/)
+    -   [LPI Blog: Xen Virtualization and Cloud Computing #02: How Xen Does the Job](https://www.lpi.org/blog/2020/10/08/xen-virtualization-and-cloud-computing-02-how-xen-does-job/)
     -   [LPI博客：XEN虛擬化和雲計算＃04：容器，OpenStack和其他相關平台](https://www.lpi.org/pt-br/blog/2020/10/22/xen-virtualization-and-cloud-computing-04-containers-openstack-and-other-related/)
     -   [XEN虛擬化和雲計算＃05：XEN項目，Unikernels和Future](https://www.lpi.org/pt-br/blog/2020/10/29/xen-virtualization-and-cloud-computing-05-xen-project-unikernels-and-future/)
     -   [XEN項目初學者指南](https://wiki.xenproject.org/wiki/Xen_Project_Beginners_Guide#Installing_the_Xen_Project_Software)
