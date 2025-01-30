@@ -124,7 +124,7 @@ git clone https://github.com/marcossilvestrini/learning-lpic-3-305-300.git
 cd learning-lpic-3-305-300
 ```
 
-Personnaliser un modèle_Vagrantfile-topic-XXX_. Ce fichier contient une configuration VMS pour les laboratoires. Exemple:
+Personnaliser un modèle_Vagrantfile-topic-xxx_. Ce fichier contient une configuration VMS pour les laboratoires. Exemple:
 
 -   Déposer[Vagrantfile-topic-351](./vagrant/Vagrantfile-topic-351)
     -   vm.clone_directory = "&lt;your_driver_letter>:\\<folder>\\&lt;To_machine>\\# {Vm_name} -instance-1 "
@@ -169,7 +169,7 @@ vagrant/up.ps1
 vagrant/destroy.ps1
 ```
 
-### Schéma d'infrastructure Sujet 352
+### Schéma d'infrastructure Sujet 351
 
 ![topic-351](images/infraestructure-topic-351.png)
 
@@ -363,7 +363,7 @@ VMware Esxi, Microsoft Hyper-V, KVM (machine virtuelle basée sur le noyau).
 
 ###### Définition de paravirtualisation
 
-Paravirtualization involves modifying the guest operating system to be aware of the virtual environment, allowing it to interact more efficiently with the hypervisor.
+La paravirtualisation consiste à modifier le système d'exploitation invité pour être conscient de l'environnement virtuel, ce qui lui permet d'interagir plus efficacement avec l'hyperviseur.
 
 ###### Paravirtualisation des caractéristiques clés
 
@@ -1339,7 +1339,7 @@ N'oubliez pas de donner une étoile au projet! Merci encore!
 
 * * *
 
-## Licence
+## License
 
 -   Ce projet est sous licence en vertu de la licence MIT \* voir le fichier licence.md pour plus de détails
 
