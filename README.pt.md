@@ -530,7 +530,7 @@ Implantação simplificada de aplicativos, teste de compatibilidade.
 
 VMware ThinApp, Microsoft App-V, Citrix XenApp.
 
-##### Data Virtualization
+##### Virtualização de dados
 
 ###### Definição de virtualização de dados
 
@@ -1432,7 +1432,7 @@ Link do projeto:<https://github.com/marcossilvestrini/learning-lpic-3-305-300>
     -   [Citando](https://www.gnu.org/software/bash/manual/html_node/Quoting.html)
     -   [Expressões regulares](https://www.gnu.org/software/grep/manual/html_node/Regular-Expressions.html)
     -   [Comando não encontrado](https://command-not-found.com/)
-    -   [Gerador Bashrc](http://bashrcgenerator.com/)
+    -   [Bash gerador de prompt](https://bash-prompt-generator.org/)
     -   [Explique a casca](https://explainshell.com/)
     -   [Tutorial Vim](https://www.openvim.com/)
     -   [Tutorial de script linux shell](https://bash.cyberciti.biz/guide/Main_Page)

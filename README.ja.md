@@ -115,7 +115,7 @@
 
 <a name="installation"></a>
 
-### Installation
+### インストール
 
 レポをクローンします
 
@@ -520,7 +520,7 @@ Citrix仮想アプリとデスクトップ、VMware Horizo​​n、Microsoftリ
 
 ###### アプリケーション仮想化定義
 
-Separates applications from the underlying hardware and operating system, allowing them to run in isolated environments.
+アプリケーションを基礎となるハードウェアおよびオペレーティングシステムから分離し、孤立した環境で実行できるようにします。
 
 ###### アプリケーション仮想化定義のユースケース
 
@@ -1432,7 +1432,7 @@ Vagrantfile
     -   [引用](https://www.gnu.org/software/bash/manual/html_node/Quoting.html)
     -   [正規表現](https://www.gnu.org/software/grep/manual/html_node/Regular-Expressions.html)
     -   [コマンドが見つかりません](https://command-not-found.com/)
-    -   [bashrcジェネレーター](http://bashrcgenerator.com/)
+    -   [バッシュプロンプトジェネレーター](https://bash-prompt-generator.org/)
     -   [説明](https://explainshell.com/)
     -   [VIMチュートリアル](https://www.openvim.com/)
     -   [Linuxシェルスクリプトチュートリアル](https://bash.cyberciti.biz/guide/Main_Page)
