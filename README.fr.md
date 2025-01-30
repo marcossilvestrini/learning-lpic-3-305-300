@@ -911,7 +911,7 @@ ip link show
 **Zones de connaissances clés:**
 
 -   Comprendre l'architecture de libvirt
--   Gérer les connexions et les nœuds libvirt
+-   Manage libvirt connections and nodes
 -   Créer et gérer les domaines Qemu et Xen, y compris les instantanés
 -   Gérer et analyser la consommation de ressources de domaines
 -   Créer et gérer les pools de stockage et les volumes
@@ -1308,7 +1308,7 @@ vagrant
 Vagrantfile
 ```
 
-#### 353.4 Commandes importantes
+#### 353.4 Important Commands
 
 ##### vagabond
 
@@ -1339,7 +1339,7 @@ N'oubliez pas de donner une étoile au projet! Merci encore!
 
 * * *
 
-## License
+## Licence
 
 -   Ce projet est sous licence en vertu de la licence MIT \* voir le fichier licence.md pour plus de détails
 
@@ -1432,7 +1432,7 @@ Lien du projet:<https://github.com/marcossilvestrini/learning-lpic-3-305-300>
     -   [Citation](https://www.gnu.org/software/bash/manual/html_node/Quoting.html)
     -   [Expressions régulières](https://www.gnu.org/software/grep/manual/html_node/Regular-Expressions.html)
     -   [Commande non trouvée](https://command-not-found.com/)
-    -   [Générateur Bashrc](http://bashrcgenerator.com/)
+    -   [Générateur d'invite de bash](https://bash-prompt-generator.org/)
     -   [Expliquer](https://explainshell.com/)
     -   [Tutoriel VIM](https://www.openvim.com/)
     -   [Tutoriel de script de shell Linux](https://bash.cyberciti.biz/guide/Main_Page)
