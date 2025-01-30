@@ -124,7 +124,7 @@ git clone https://github.com/marcossilvestrini/learning-lpic-3-305-300.git
 cd learning-lpic-3-305-300
 ```
 
-Personnaliser un modèle_Vagrantfile-topic-xxx_. Ce fichier contient une configuration VMS pour les laboratoires. Exemple:
+Personnaliser un modèle_Vagrantfile-topic-XXX_. Ce fichier contient une configuration VMS pour les laboratoires. Exemple:
 
 -   Déposer[Vagrantfile-topic-351](./vagrant/Vagrantfile-topic-351)
     -   vm.clone_directory = "&lt;your_driver_letter>:\\<folder>\\&lt;To_machine>\\# {Vm_name} -instance-1 "
@@ -168,6 +168,10 @@ Si vous utilisez la plate-forme Windows, je crée un script PowerShell pour les 
 vagrant/up.ps1
 vagrant/destroy.ps1
 ```
+
+### Schéma d'infrastructure Sujet 352
+
+![topic-351](images/infraestructure-topic-351.png)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -359,7 +363,7 @@ VMware Esxi, Microsoft Hyper-V, KVM (machine virtuelle basée sur le noyau).
 
 ###### Définition de paravirtualisation
 
-La paravirtualisation consiste à modifier le système d'exploitation invité pour être conscient de l'environnement virtuel, ce qui lui permet d'interagir plus efficacement avec l'hyperviseur.
+Paravirtualization involves modifying the guest operating system to be aware of the virtual environment, allowing it to interact more efficiently with the hypervisor.
 
 ###### Paravirtualisation des caractéristiques clés
 
@@ -488,7 +492,7 @@ VMware NSX, Cisco ACI, OpenStack Neutron.
 
 ###### Définition de virtualisation de stockage
 
-Pools physical storage from multiple devices into a single virtual storage unit that can be managed centrally.
+Poolets Stockage physique de plusieurs appareils dans une seule unité de stockage virtuel qui peut être géré de manière centralisée.
 
 ###### Définition de virtualisation de stockage Cas d'utilisation
 
