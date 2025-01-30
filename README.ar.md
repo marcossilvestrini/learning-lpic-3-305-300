@@ -1010,7 +1010,7 @@ foo
 
 **وزن:**7
 
-**وصف:** Candidates should understand the concept of container virtualization. This includes understanding the Linux components used to implement container virtualization as well as using standard Linux tools to troubleshoot these components.
+**وصف:**يجب أن يفهم المرشحون مفهوم المحاكاة الافتراضية للحاويات. ويشمل ذلك فهم مكونات Linux المستخدمة لتنفيذ المحاكاة الافتراضية للحاوية وكذلك استخدام أدوات Linux القياسية لاستكشاف هذه المكونات.
 
 **مجالات المعرفة الرئيسية:**
 
@@ -1432,7 +1432,7 @@ Vagrantfile
     -   [اقتباس](https://www.gnu.org/software/bash/manual/html_node/Quoting.html)
     -   [تعبيرات منتظمة](https://www.gnu.org/software/grep/manual/html_node/Regular-Expressions.html)
     -   [الأمر غير موجود](https://command-not-found.com/)
-    -   [مولد bashrc](http://bashrcgenerator.com/)
+    -   [مولد موجه باش](https://bash-prompt-generator.org/)
     -   [شرح](https://explainshell.com/)
     -   [VIM البرنامج التعليمي](https://www.openvim.com/)
     -   [برنامج البرمجة البرمجة البرمجية Linux Shell](https://bash.cyberciti.biz/guide/Main_Page)
