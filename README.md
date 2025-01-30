@@ -1450,7 +1450,7 @@ Project Link: [https://github.com/marcossilvestrini/learning-lpic-3-305-300](htt
   * [Quoting](https://www.gnu.org/software/bash/manual/html_node/Quoting.html)
   * [Regular Expressions](https://www.gnu.org/software/grep/manual/html_node/Regular-Expressions.html)
   * [Command Not Found](https://command-not-found.com/)
-  * [Bash RC Generator](http://bashrcgenerator.com/)
+  * [Bash Prompt Generator](https://bash-prompt-generator.org/)
   * [Explainshell](https://explainshell.com/)
   * [Vim Tutorial](https://www.openvim.com/)
   * [Linux Shell Scripting Tutorial](https://bash.cyberciti.biz/guide/Main_Page)
