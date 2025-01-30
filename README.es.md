@@ -297,7 +297,7 @@ Se ejecuta además de un sistema operativo convencional, confiando en el sistema
 -   Desktop paralelo: diseñado para que los usuarios de Mac ejecute Windows y otros sistemas operativos junto con macOS.
 -   QEMU (emulador rápido): un emulador y virtualizador de código abierto, a menudo utilizado junto con KVM.
 
-##### Diferencias clave entre los hipervisores tipo 1 y tipo 2
+##### Key Differences Between Type 1 and Type 2 Hypervisors
 
 -   Entorno de implementación:
     -   Los hipervisores tipo 1 se implementan comúnmente en centros de datos y entornos empresariales debido a su interacción directa con hardware y alto rendimiento.
@@ -606,11 +606,11 @@ La Compañía proporcionó soluciones empresariales basadas en XEN y ofreció he
 El Proyecto XEN se refiere a la comunidad e iniciativa de código abierto responsables de desarrollar y mantener el Hypervisor XEN después de su comercialización.  
 El proyecto XEN opera bajo la Fundación Linux, con un enfoque en la construcción, mejora y apoyar a Xen como un esfuerzo colaborativo y impulsado por la comunidad.
 
--   **Objetivos:** The Xen Project aims to advance the hypervisor by improving its performance, security, and feature set for a wide range of use cases, including cloud computing, security-focused virtualization (e.g., Qubes OS), and embedded systems.
+-   **Objetivos:**El proyecto XEN tiene como objetivo avanzar al hipervisor mejorando su rendimiento, seguridad y conjunto de características para una amplia gama de casos de uso, incluida la computación en la nube, la virtualización centrada en la seguridad (por ejemplo, QUBES OS) y sistemas integrados.
 -   **Colaboradores:**El proyecto incluye contribuyentes de varias organizaciones, incluidos los principales proveedores de la nube, proveedores de hardware y desarrolladores independientes.
 -   **Píldora y hedools:**El proyecto XEN también incluye herramientas como XAPI (XENAPI), que se utiliza para administrar las instalaciones de XEN Hypervisor y varias otras utilidades para la gestión y optimización del sistema.
 
-#### Xenstore
+#### XenStore
 
 La tienda XEN es un componente crítico del Hypervisor XEN.  
 Esencialmente, Xen Store es una base de datos de valor clave distribuida utilizada para la comunicación y el intercambio de información entre el Hypervisor XEN y las máquinas virtuales (también conocidas como dominios) que administra.
@@ -1232,7 +1232,7 @@ packer
 
 #### 353.2 Comandos importantes
 
-##### envasador
+##### packer
 
 ```sh
 # examples
@@ -1418,7 +1418,7 @@ Enlace del proyecto:<https://github.com/marcossilvestrini/learning-lpic-3-305-30
     -   [Unir](https://www.isc.org/bind/)
     -   [Bind Rogging](https://www.zytrax.com/books/dns/ch7/logging.html)
     -   [Lista de tipos de registro DNS](https://en.wikipedia.org/wiki/List_of_DNS_record_types)
-    -   [Lista de tipos de registro DNS](https://en.wikipedia.org/wiki/List_of_DNS_record_types)
+    -   [List of DNS record types](https://en.wikipedia.org/wiki/List_of_DNS_record_types)
 -   [Administrador de paquetes](<>)
     -   [Descargar paquetes](https://pkgs.org/)
     -   [Instalar paquetes](https://installati.one/)
@@ -1432,7 +1432,7 @@ Enlace del proyecto:<https://github.com/marcossilvestrini/learning-lpic-3-305-30
     -   [Citado](https://www.gnu.org/software/bash/manual/html_node/Quoting.html)
     -   [Expresiones regulares](https://www.gnu.org/software/grep/manual/html_node/Regular-Expressions.html)
     -   [Comando no se encuentra](https://command-not-found.com/)
-    -   [Generador de bashrc](http://bashrcgenerator.com/)
+    -   [Generador de aviso de bash](https://bash-prompt-generator.org/)
     -   [Explicar](https://explainshell.com/)
     -   [Tutorial vim](https://www.openvim.com/)
     -   [Tutorial de secuencias de comandos de Linux Shell](https://bash.cyberciti.biz/guide/Main_Page)
