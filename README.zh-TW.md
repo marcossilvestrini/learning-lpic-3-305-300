@@ -407,7 +407,7 @@ Xen帶有paraviralizatization的來賓，某些配置中的VMware工具以及一
 -   **HVM：**使用硬件功能提供強大的隔離。
 -   **寄生蟲：**依靠基於軟件的隔離，這可能不像基於硬件的隔離那樣強大。
 
-###### 複雜
+###### Complexity
 
 -   **HVM：**通常，由於它支持未修飾的操作系統，因此通常更直接地部署。
 -   **寄生蟲：**需要對來賓操作系統進行其他設置和修改，從而提高複雜性。
@@ -508,9 +508,9 @@ IBM SAN音量控制器，VMware VSAN，NetApp ontap。
 
 允許桌面操作系統在託管服務器上託管的虛擬機上運行。
 
-###### Desktop Virtualization Definition Use Cases
+###### 桌面虛擬化定義用例
 
-Virtual desktop infrastructure (VDI), remote work solutions.
+虛擬桌面基礎架構（VDI），遠程工作解決方案。
 
 ###### 桌面虛擬化定義示例
 
@@ -1148,11 +1148,11 @@ Dockerfile
 
 <a name="topic-352.4"></a>
 
-### 352.4 Container Orchestration Platforms
+### 352.4集裝箱編排平台
 
 **重量：**3
 
-**Description:**候選人應該了解容器編排的重要性，以及Docker Swarm和Kubernetes提供的關鍵概念為實施集裝箱編排提供的重要性。
+**描述：**候選人應該了解容器編排的重要性，以及Docker Swarm和Kubernetes提供的關鍵概念為實施集裝箱編排提供的重要性。
 
 **關鍵知識領域：**
 
@@ -1363,7 +1363,7 @@ Marcos Silvestrini-[marcos.silvestrini@gmail.com](mailto:marcos.silvestrini@gmai
     -   [gnu](https://www.gnu.org/)
     -   [GNU操作系統](https://www.gnu.org/gnu/thegnuproject.html)
     -   [海灣合作委員會編譯器](https://gcc.gnu.org/wiki/History)
-    -   [GNU Tar](https://www.gnu.org/software/tar/)
+    -   [gnu tar](https://www.gnu.org/software/tar/)
     -   [GNU製作](https://www.gnu.org/software/make/)
     -   [gnu emacs](https://en.wikipedia.org/wiki/Emacs)
     -   [GNU軟件包](https://www.gnu.org/software/)
@@ -1432,7 +1432,7 @@ Marcos Silvestrini-[marcos.silvestrini@gmail.com](mailto:marcos.silvestrini@gmai
     -   [引用](https://www.gnu.org/software/bash/manual/html_node/Quoting.html)
     -   [正則表達式](https://www.gnu.org/software/grep/manual/html_node/Regular-Expressions.html)
     -   [找不到命令](https://command-not-found.com/)
-    -   [BASHRC發電機](http://bashrcgenerator.com/)
+    -   [bash提示生成器](https://bash-prompt-generator.org/)
     -   [解釋殼](https://explainshell.com/)
     -   [VIM教程](https://www.openvim.com/)
     -   [Linux殼腳本教程](https://bash.cyberciti.biz/guide/Main_Page)
@@ -1454,7 +1454,7 @@ Marcos Silvestrini-[marcos.silvestrini@gmail.com](mailto:marcos.silvestrini@gmai
     -   [網絡接口](https://wiki.xenproject.org/wiki/Xen_Networking#Virtual_Network_Interfaces)
     -   [XEN工具](https://xen-tools.org/software/)
     -   [LPI博客：XEN虛擬化和雲計算＃01：簡介](https://www.lpi.org/pt-br/blog/2020/10/01/xen-virtualization-and-cloud-computing-01-introduction/)
-    -   [LPI Blog: Xen Virtualization and Cloud Computing #02: How Xen Does the Job](https://www.lpi.org/blog/2020/10/08/xen-virtualization-and-cloud-computing-02-how-xen-does-job/)
+    -   [LPI博客：Xen虛擬化和雲計算＃02：XEN如何完成工作](https://www.lpi.org/blog/2020/10/08/xen-virtualization-and-cloud-computing-02-how-xen-does-job/)
     -   [LPI博客：XEN虛擬化和雲計算＃04：容器，OpenStack和其他相關平台](https://www.lpi.org/pt-br/blog/2020/10/22/xen-virtualization-and-cloud-computing-04-containers-openstack-and-other-related/)
     -   [XEN虛擬化和雲計算＃05：XEN項目，Unikernels和Future](https://www.lpi.org/pt-br/blog/2020/10/29/xen-virtualization-and-cloud-computing-05-xen-project-unikernels-and-future/)
     -   [XEN項目初學者指南](https://wiki.xenproject.org/wiki/Xen_Project_Beginners_Guide#Installing_the_Xen_Project_Software)
