@@ -115,7 +115,7 @@
 
 <a name="installation"></a>
 
-### インストール
+### Installation
 
 レポをクローンします
 
@@ -169,7 +169,7 @@ vagrant/up.ps1
 vagrant/destroy.ps1
 ```
 
-### インフラストラクチャスキーマトピック352
+### インフラストラクチャスキーマトピック351
 
 ![topic-351](images/infraestructure-topic-351.png)
 
@@ -394,7 +394,7 @@ Paravirtualized Guests、特定の構成のVMwareツール、およびいくつ�
 
 ###### パフォーマンス
 
--   **HVM:**通常、ハードウェア支援の実行により、ネイティブに近いパフォーマンスを提供します。
+-   **HVM：**通常、ハードウェア支援の実行により、ネイティブに近いパフォーマンスを提供します。
 -   **paravirtualization：**ハードウェアエミュレーションのオーバーヘッドを削減することで効率的なパフォーマンスを提供できますが、変更されたゲストOSに依存しています。
 
 ###### ハードウェアの依存関係
@@ -520,7 +520,7 @@ Citrix仮想アプリとデスクトップ、VMware Horizo​​n、Microsoftリ
 
 ###### アプリケーション仮想化定義
 
-アプリケーションを基礎となるハードウェアおよびオペレーティングシステムから分離し、孤立した環境で実行できるようにします。
+Separates applications from the underlying hardware and operating system, allowing them to run in isolated environments.
 
 ###### アプリケーション仮想化定義のユースケース
 
@@ -575,7 +575,7 @@ Denodo、Red Hat JBossデータ仮想化、IBM Infosphere。
 
 -   ネットワーキングやストレージなど、Xenのアーキテクチャを理解します
 -   Xenノードとドメインの基本的な構成
--   Basic management of Xen nodes and domains
+-   Xenノードとドメインの基本管理
 -   XENインストールの基本的なトラブルシューティング
 -   丸薬から離れたアバリン
 -   Xenstoreの認識
@@ -590,7 +590,7 @@ Xenは、オープンソースタイプ1（裸のメタル）ハイパーバイ�
 Xenは、物理ハードウェアと仮想マシン（VM）の間にレイヤーを提供し、効率的なリソース共有と分離を可能にします。
 
 -   **建築：**Xenは、ドメイン0（DOM0）が直接ハードウェアアクセスを備えた特権ドメインであり、ハイパーバイザーを管理する2層システムで動作します。ドメインu（domu）と呼ばれる他の仮想マシンは、ゲストオペレーティングシステムを実行し、dom0によって管理されています。
--   **仮想化の種類：**Xenは、修正されたゲストOSを必要とするParavirtualization（PV）と、ハードウェア拡張機能（Intel VT-XまたはAMD-Vなど）を使用して未修正のゲストオペレーティングシステムを実行するハードウェアアシスト仮想化（HVM）の両方をサポートします。
+-   **仮想化の種類：**Xenは、修正されたゲストOSを必要とするParavirtualization（PV）と、ハードウェアエクステンション（Intel VT-XまたはAMD-Vなど）を使用して未修正のゲストオペレーティングシステムを実行するハードウェアアシスト仮想化（HVM）の両方をサポートします。
     Xenは、特にAmazon Web Services（AWS）およびその他の大規模なクラウドプロバイダーによって、クラウド環境で広く使用されています。
 
 #### xensource
