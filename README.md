@@ -730,6 +730,20 @@ xlcpupool.cfg(5)
 xl-disk-configuration(5)
 xl-network-configuration(5)
 xen-tscmode(7)
+
+# initialized domains auto
+/etc/default/xendomains
+   XENDOMAINS_AUTO=/etc/xen/auto
+
+/etc/xen/auto/
+
+
+# set domain for up after xen reboot
+## create folder auto
+cd /etc/xen && mkdir -p auto && cd auto
+
+# create simbolic link
+ln -s /etc/xen/lpic3-pv-guest /etc/xen/auto/lpic3-pv-guest
 ```
 
 #### 351.2 Important Commands
@@ -775,6 +789,7 @@ xenstore-ls
 # list xen interfaces
 brctl show
 ```
+
 ##### xl
 
 ```sh
@@ -816,12 +831,6 @@ xl mem-set 0 2048
 # Limite cpu (not permanent after boot)
 xl vcpu-set 0 2
 
-# manual conf
-man xl.conf
-
-# manual cfg - about guest configuration
-man xl.cfg
-
 # create DomainU - virtual machine
 xl create /etc/xen/lpic3-pv-guest.cfg
 
@@ -859,11 +868,18 @@ xl destroy lpic3-pv-guest
 
 # reboot domain
 xl reboot lpic3-pv-guest
+
+# list block devices
+xl block-list 1
+xl block-list lpic3-pv-guest
+
+# detach block devices
+xl block-detach lpic3-hvm-guest hdc
+
+# attach block devices
+xl block-attach lpic3-hvm-guest hdc
+
 ```
-
-
-
-
 
 <p align="right">(<a href="#topic-351.2">back to sub Topic 351.2</a>)</p>
 <p align="right">(<a href="#topic-351">back to Topic 351</a>)</p>
