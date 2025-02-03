@@ -80,4 +80,7 @@ autoinstall:
     - net-tools
 
   late-commands:
+    - curtin in-target -- passwd -d vagrant
+    - curtin in-target -- sh -c "echo 'vagrant:vagrant' | chpasswd"
+    - curtin in-target -- usermod -aG sudo vagrant
     - curtin in-target -- sed -i 's/PasswordAuthentication no/PasswordAuthentication yes/g' /etc/ssh/sshd_config

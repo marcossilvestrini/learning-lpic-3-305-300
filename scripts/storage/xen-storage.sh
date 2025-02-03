@@ -33,7 +33,7 @@ vgcreate vg_xen "$DISK"
 # create lv for hvm guest
 #lvcreate -l +100%FREE -n lpic3-hvm-guest-disk  vg_xen
 lvcreate -L 40G -n lpic3-hvm-guest-disk vg_xen
-mkfs.ext4 /dev/vg_xen/lpic3-hvm-guest-disk
+echo "y"| mkfs.ext4 /dev/vg_xen/lpic3-hvm-guest-disk
 
 # validate user-data
 cloud-init schema --config-file configs/xen/user-data
