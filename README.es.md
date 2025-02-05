@@ -297,7 +297,7 @@ Se ejecuta además de un sistema operativo convencional, confiando en el sistema
 -   Desktop paralelo: diseñado para que los usuarios de Mac ejecute Windows y otros sistemas operativos junto con macOS.
 -   QEMU (emulador rápido): un emulador y virtualizador de código abierto, a menudo utilizado junto con KVM.
 
-##### Key Differences Between Type 1 and Type 2 Hypervisors
+##### Diferencias clave entre los hipervisores tipo 1 y tipo 2
 
 -   Entorno de implementación:
     -   Los hipervisores tipo 1 se implementan comúnmente en centros de datos y entornos empresariales debido a su interacción directa con hardware y alto rendimiento.
@@ -610,7 +610,7 @@ El proyecto XEN opera bajo la Fundación Linux, con un enfoque en la construcci�
 -   **Colaboradores:**El proyecto incluye contribuyentes de varias organizaciones, incluidos los principales proveedores de la nube, proveedores de hardware y desarrolladores independientes.
 -   **Píldora y hedools:**El proyecto XEN también incluye herramientas como XAPI (XENAPI), que se utiliza para administrar las instalaciones de XEN Hypervisor y varias otras utilidades para la gestión y optimización del sistema.
 
-#### XenStore
+#### Xenstore
 
 La tienda XEN es un componente crítico del Hypervisor XEN.  
 Esencialmente, Xen Store es una base de datos de valor clave distribuida utilizada para la comunicación y el intercambio de información entre el Hypervisor XEN y las máquinas virtuales (también conocidas como dominios) que administra.
@@ -717,6 +717,20 @@ xlcpupool.cfg(5)
 xl-disk-configuration(5)
 xl-network-configuration(5)
 xen-tscmode(7)
+
+# initialized domains auto
+/etc/default/xendomains
+   XENDOMAINS_AUTO=/etc/xen/auto
+
+/etc/xen/auto/
+
+
+# set domain for up after xen reboot
+## create folder auto
+cd /etc/xen && mkdir -p auto && cd auto
+
+# create simbolic link
+ln -s /etc/xen/lpic3-pv-guest /etc/xen/auto/lpic3-pv-guest
 ```
 
 #### 351.2 comandos importantes
@@ -804,21 +818,15 @@ xl mem-set 0 2048
 # Limite cpu (not permanent after boot)
 xl vcpu-set 0 2
 
-# manual conf
-man xl.conf
-
-# manual cfg - about guest configuration
-man xl.cfg
-
 # create DomainU - virtual machine
 xl create /etc/xen/lpic3-pv-guest.cfg
 
 # create DomainU virtual machine and connect to guest
 xl create -c /etc/xen/lpic3-pv-guest.cfg
 
-# create DomainU virtual machine HVM
 
-## configure /etc/xen/lpic3-hvm-guest.cfg
+##----------------------------------------------
+# create DomainU virtual machine HVM
 
 ## create logical volume
 lvcreate -l +20%FREE -n lpic3-hvm-guest-disk  vg_xen
@@ -826,10 +834,25 @@ lvcreate -l +20%FREE -n lpic3-hvm-guest-disk  vg_xen
 ## create a ssh tunel for vnc
 ssh -l vagrant -L 5900:localhost:5900  192.168.0.130
 
+## configure /etc/xen/lpic3-hvm-guest.cfg
+## set boot for cdrom: boot = "d"
+
 ## create domain hvm
 xl create /etc/xen/lpic3-hvm-guest.cfg
 
-## open vcn conectio in your vnc client with localhost
+## open vcn conection in your vnc client with localhost
+## for view install details
+
+## after installation finished, destroy domain: xl destroy <id_or_name>
+
+## set /etc/xen/lpic3-hvm-guest.cfg: boot for hard disc: boot = "c"
+
+## create domain hvm
+xl create /etc/xen/lpic3-hvm-guest.cfg
+
+## access domain hvm
+xl console <id_or_name>
+##----------------------------------------------
 
 # connect in domain guest
 xl console <id>|<name> (press enter)
@@ -847,6 +870,17 @@ xl destroy lpic3-pv-guest
 
 # reboot domain
 xl reboot lpic3-pv-guest
+
+# list block devices
+xl block-list 1
+xl block-list lpic3-pv-guest
+
+# detach block devices
+xl block-detach lpic3-hvm-guest hdc
+
+# attach block devices
+xl block-attach lpic3-hvm-guest hdc
+
 ```
 
 <p align="right">(<a href="#topic-351.2">back to sub Topic 351.2</a>)</p>
@@ -1232,7 +1266,7 @@ packer
 
 #### 353.2 Comandos importantes
 
-##### packer
+##### envasador
 
 ```sh
 # examples
@@ -1418,7 +1452,7 @@ Enlace del proyecto:<https://github.com/marcossilvestrini/learning-lpic-3-305-30
     -   [Unir](https://www.isc.org/bind/)
     -   [Bind Rogging](https://www.zytrax.com/books/dns/ch7/logging.html)
     -   [Lista de tipos de registro DNS](https://en.wikipedia.org/wiki/List_of_DNS_record_types)
-    -   [List of DNS record types](https://en.wikipedia.org/wiki/List_of_DNS_record_types)
+    -   [Lista de tipos de registro DNS](https://en.wikipedia.org/wiki/List_of_DNS_record_types)
 -   [Administrador de paquetes](<>)
     -   [Descargar paquetes](https://pkgs.org/)
     -   [Instalar paquetes](https://installati.one/)
