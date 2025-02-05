@@ -311,13 +311,13 @@ Migration (P2V, V2V)
 
 ##### أنواع الهجرة
 
-في سياق Hypervisors ، والتي هي تقنيات تستخدم لإنشاء وإدارة الأجهزة الافتراضية ، فإن المصطلحات P2V والترحيل V2V شائعة في بيئات المحاكاة الافتراضية.  
+في سياق Hypervisors ، والتي هي تقنيات تستخدم لإنشاء وإدارة الأجهزة الافتراضية ، فإن المصطلحات P2V ترحيل وترحيل V2V شائعان في بيئات المحاكاة الافتراضية.  
 أنها تشير إلى عمليات أنظمة ترحيل بين أنواع مختلفة من المنصات.
 
 ##### P2V - المادية للهجرة الافتراضية
 
 تشير ترحيل P2V إلى عملية ترحيل الخادم الفعلي إلى جهاز افتراضي.  
-بمعنى آخر ، يتم "تحويل" نظام التشغيل وتطبيقاته ، الذي يعمل على أجهزة مادية مخصصة ، ونقله إلى جهاز افتراضي يعمل على Hypervisor (مثل VMware ، Hyper-V ، KVM ، إلخ).
+بمعنى آخر ، يتم "تحويل" نظام التشغيل وتطبيقاته ، الذي يعمل على الأجهزة المادية المخصصة ، ونقله إلى جهاز افتراضي يعمل على Hypervisor (مثل VMware ، Hyper-V ، KVM ، إلخ).
 
 -   مثال: لديك خادم فعلي يقوم بتشغيل نظام Windows أو Linux ، وتريد نقله إلى بيئة افتراضية ، مثل البنية التحتية السحابية أو خادم المحاكاة الافتراضية الداخلية.  
     تتضمن العملية نسخ حالة النظام بأكملها ، بما في ذلك نظام التشغيل والبرامج تشغيل وبيانات ، لإنشاء جهاز افتراضي مكافئ يمكن أن يعمل كما لو كان على الأجهزة الفعلية.
@@ -717,6 +717,20 @@ xlcpupool.cfg(5)
 xl-disk-configuration(5)
 xl-network-configuration(5)
 xen-tscmode(7)
+
+# initialized domains auto
+/etc/default/xendomains
+   XENDOMAINS_AUTO=/etc/xen/auto
+
+/etc/xen/auto/
+
+
+# set domain for up after xen reboot
+## create folder auto
+cd /etc/xen && mkdir -p auto && cd auto
+
+# create simbolic link
+ln -s /etc/xen/lpic3-pv-guest /etc/xen/auto/lpic3-pv-guest
 ```
 
 #### 351.2 أوامر مهمة
@@ -804,21 +818,15 @@ xl mem-set 0 2048
 # Limite cpu (not permanent after boot)
 xl vcpu-set 0 2
 
-# manual conf
-man xl.conf
-
-# manual cfg - about guest configuration
-man xl.cfg
-
 # create DomainU - virtual machine
 xl create /etc/xen/lpic3-pv-guest.cfg
 
 # create DomainU virtual machine and connect to guest
 xl create -c /etc/xen/lpic3-pv-guest.cfg
 
-# create DomainU virtual machine HVM
 
-## configure /etc/xen/lpic3-hvm-guest.cfg
+##----------------------------------------------
+# create DomainU virtual machine HVM
 
 ## create logical volume
 lvcreate -l +20%FREE -n lpic3-hvm-guest-disk  vg_xen
@@ -826,10 +834,25 @@ lvcreate -l +20%FREE -n lpic3-hvm-guest-disk  vg_xen
 ## create a ssh tunel for vnc
 ssh -l vagrant -L 5900:localhost:5900  192.168.0.130
 
+## configure /etc/xen/lpic3-hvm-guest.cfg
+## set boot for cdrom: boot = "d"
+
 ## create domain hvm
 xl create /etc/xen/lpic3-hvm-guest.cfg
 
-## open vcn conectio in your vnc client with localhost
+## open vcn conection in your vnc client with localhost
+## for view install details
+
+## after installation finished, destroy domain: xl destroy <id_or_name>
+
+## set /etc/xen/lpic3-hvm-guest.cfg: boot for hard disc: boot = "c"
+
+## create domain hvm
+xl create /etc/xen/lpic3-hvm-guest.cfg
+
+## access domain hvm
+xl console <id_or_name>
+##----------------------------------------------
 
 # connect in domain guest
 xl console <id>|<name> (press enter)
@@ -847,6 +870,17 @@ xl destroy lpic3-pv-guest
 
 # reboot domain
 xl reboot lpic3-pv-guest
+
+# list block devices
+xl block-list 1
+xl block-list lpic3-pv-guest
+
+# detach block devices
+xl block-detach lpic3-hvm-guest hdc
+
+# attach block devices
+xl block-attach lpic3-hvm-guest hdc
+
 ```
 
 <p align="right">(<a href="#topic-351.2">back to sub Topic 351.2</a>)</p>
@@ -1393,7 +1427,7 @@ Vagrantfile
 -   [توزيع](<>)
     -   [إرشادات البرمجيات المجانية Debian](https://www.debian.org/social_contract#guidelines)
     -   [قائمة التوزيع Linux](https://en.wikipedia.org/wiki/List_of_Linux_distributions)
-    -   [Dianceatch](https://distrowatch.com/)
+    -   [DivOwatch](https://distrowatch.com/)
     -   [مقارنة توزيعات Linux](https://en.wikipedia.org/wiki/Comparison_of_Linux_distributions)
 -   [بيئات سطح المكتب](<>)
     -   [x11 org](https://www.x.org/wiki/)
