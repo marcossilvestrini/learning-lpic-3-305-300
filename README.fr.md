@@ -143,7 +143,7 @@ Personnaliser la configuration du réseau dans les fichiers[configs / réseau](c
 
 Utilisez ce référentiel pour obtenir un apprentissage sur l'examen LPIC-3 305-300
 
-### Pour de haut en bas
+### For up and down
 
 Changer un_Vagrantfile-topic-xxx_modèle et copier pour un nouveau fichier avec nom_Vagabond_
 
@@ -717,6 +717,20 @@ xlcpupool.cfg(5)
 xl-disk-configuration(5)
 xl-network-configuration(5)
 xen-tscmode(7)
+
+# initialized domains auto
+/etc/default/xendomains
+   XENDOMAINS_AUTO=/etc/xen/auto
+
+/etc/xen/auto/
+
+
+# set domain for up after xen reboot
+## create folder auto
+cd /etc/xen && mkdir -p auto && cd auto
+
+# create simbolic link
+ln -s /etc/xen/lpic3-pv-guest /etc/xen/auto/lpic3-pv-guest
 ```
 
 #### 351.2 Commandes importantes
@@ -804,21 +818,15 @@ xl mem-set 0 2048
 # Limite cpu (not permanent after boot)
 xl vcpu-set 0 2
 
-# manual conf
-man xl.conf
-
-# manual cfg - about guest configuration
-man xl.cfg
-
 # create DomainU - virtual machine
 xl create /etc/xen/lpic3-pv-guest.cfg
 
 # create DomainU virtual machine and connect to guest
 xl create -c /etc/xen/lpic3-pv-guest.cfg
 
-# create DomainU virtual machine HVM
 
-## configure /etc/xen/lpic3-hvm-guest.cfg
+##----------------------------------------------
+# create DomainU virtual machine HVM
 
 ## create logical volume
 lvcreate -l +20%FREE -n lpic3-hvm-guest-disk  vg_xen
@@ -826,10 +834,25 @@ lvcreate -l +20%FREE -n lpic3-hvm-guest-disk  vg_xen
 ## create a ssh tunel for vnc
 ssh -l vagrant -L 5900:localhost:5900  192.168.0.130
 
+## configure /etc/xen/lpic3-hvm-guest.cfg
+## set boot for cdrom: boot = "d"
+
 ## create domain hvm
 xl create /etc/xen/lpic3-hvm-guest.cfg
 
-## open vcn conectio in your vnc client with localhost
+## open vcn conection in your vnc client with localhost
+## for view install details
+
+## after installation finished, destroy domain: xl destroy <id_or_name>
+
+## set /etc/xen/lpic3-hvm-guest.cfg: boot for hard disc: boot = "c"
+
+## create domain hvm
+xl create /etc/xen/lpic3-hvm-guest.cfg
+
+## access domain hvm
+xl console <id_or_name>
+##----------------------------------------------
 
 # connect in domain guest
 xl console <id>|<name> (press enter)
@@ -847,6 +870,17 @@ xl destroy lpic3-pv-guest
 
 # reboot domain
 xl reboot lpic3-pv-guest
+
+# list block devices
+xl block-list 1
+xl block-list lpic3-pv-guest
+
+# detach block devices
+xl block-detach lpic3-hvm-guest hdc
+
+# attach block devices
+xl block-attach lpic3-hvm-guest hdc
+
 ```
 
 <p align="right">(<a href="#topic-351.2">back to sub Topic 351.2</a>)</p>
@@ -911,7 +945,7 @@ ip link show
 **Zones de connaissances clés:**
 
 -   Comprendre l'architecture de libvirt
--   Manage libvirt connections and nodes
+-   Gérer les connexions et les nœuds libvirt
 -   Créer et gérer les domaines Qemu et Xen, y compris les instantanés
 -   Gérer et analyser la consommation de ressources de domaines
 -   Créer et gérer les pools de stockage et les volumes
@@ -961,7 +995,7 @@ foo
 -   Migrer le contenu du disque entre divers formats d'image de disque de machine virtuelle
 -   Conscience du format de virtualisation ouverte (OVF)
 
-#### 351,5 objets cités
+#### 351.5 Cited Objects
 
 ```sh
 qemu-img
@@ -1252,7 +1286,7 @@ packer
 
 **Description:**Les candidats doivent utiliser le cloud-init pour configurer des machines virtuelles créées à partir d'images standardisées. Cela comprend l'ajustement des machines virtuelles pour correspondre à leurs ressources matérielles disponibles, en particulier, l'espace disque et les volumes.  
 De plus, les candidats devraient pouvoir configurer des instances pour permettre des connexions SSH sécurisées et installer un ensemble spécifique de packages logiciels.  
-De plus, les candidats devraient être en mesure de créer de nouvelles images système avec un support Cloud-INT.
+En outre, les candidats devraient être en mesure de créer de nouvelles images système avec un support Cloud-INT.
 
 **Zones de connaissances clés:**
 
@@ -1308,7 +1342,7 @@ vagrant
 Vagrantfile
 ```
 
-#### 353.4 Important Commands
+#### 353.4 Commandes importantes
 
 ##### vagabond
 
@@ -1327,9 +1361,9 @@ Vagrantfile
 Les contributions font de la communauté open source un endroit incroyable
 Apprenez, inspirez et créez. Toutes les contributions que vous faites sont**très apprécié**.
 
-Si vous avez une suggestion qui rendrait cela meilleur, veuillez enfiler le repo et
-Créez une demande de traction. Vous pouvez également ouvrir simplement un problème avec la balise "amélioration".
-N'oubliez pas de donner une étoile au projet! Merci encore!
+If you have a suggestion that would make this better, please fork the repo and
+create a pull request. You can also simply open an issue with the tag "enhancement".
+Don't forget to give the project a star! Thanks again!
 
 1.  Fourk le projet
 2.  Créez votre branche de fonctionnalité (`git checkout -b feature/AmazingFeature`)
