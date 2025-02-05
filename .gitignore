@@ -29,7 +29,6 @@ Slack/silvestrini.py
 
 # xen
 *.iso
-configs/xen/user-data
 
 # vscode
 .vscode/

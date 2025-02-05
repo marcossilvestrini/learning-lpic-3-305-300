@@ -1,10 +1,17 @@
 #cloud-config
+# runcmd:
+#   - [eval, 'echo $(cat /proc/cmdline) "autoinstall" > /root/cmdline']
+#   - [eval, "mount -n --bind -o ro /root/cmdline /proc/cmdline"]
+#   - [eval, "snap restart subiquity.subiquity-server"]
+#   - [eval, "snap restart subiquity.subiquity-service"]
+
 autoinstall:
   version: 1
   identity:
     hostname: lpic3-hvm-guest
     username: vagrant
     password: "vagrant"
+
   users:
     - name: root
       lock_passwd: false
@@ -22,7 +29,7 @@ autoinstall:
     install-server: true
     allow-pw: true
     authorized-keys:
-      - <YOUR_PUBLIC_KEY_HERE
+      - ecdsa-sha2-nistp521 AAAAE2VjZHNhLXNoYTItbmlzdHA1MjEAAAAIbmlzdHA1MjEAAACFBAFXTn6ne9bCnJcmDSPZgql9HicNpukOv3fotZA+CgV0f0CK4Zoun4C6fcSh1esLmDGHMIxzjZ1ayDKXdtWKrX7YEQFGcw2DFHl1fsE88pQLE2Ppu4+NROVxl0TKdZvZxnpVEqLommJf4Z7EQyAd1gw1z+J9W+OuSDD8ME5feZ0gi1vhPA== vagrant@kubernetes
 
   storage:
     layout:
@@ -80,7 +87,10 @@ autoinstall:
     - net-tools
 
   late-commands:
-    - curtin in-target -- passwd -d vagrant
-    - curtin in-target -- sh -c "echo 'vagrant:vagrant' | chpasswd"
-    - curtin in-target -- usermod -aG sudo vagrant
+    # - "umount -lf /cdrom || true"
+    # - "umount -lf /target/cdrom || true"
+    # - "losetup -D || true"
+    # - curtin in-target -- sh -c "echo 'root:vagrant' | chpasswd"
+    # - curtin in-target -- sh -c "echo 'vagrant:vagrant' | chpasswd"
+    # - curtin in-target -- usermod -aG sudo vagrant
     - curtin in-target -- sed -i 's/PasswordAuthentication no/PasswordAuthentication yes/g' /etc/ssh/sshd_config
