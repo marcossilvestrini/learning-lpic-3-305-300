@@ -407,7 +407,7 @@ Xen帶有paraviralizatization的來賓，某些配置中的VMware工具以及一
 -   **HVM：**使用硬件功能提供強大的隔離。
 -   **寄生蟲：**依靠基於軟件的隔離，這可能不像基於硬件的隔離那樣強大。
 
-###### Complexity
+###### 複雜
 
 -   **HVM：**通常，由於它支持未修飾的操作系統，因此通常更直接地部署。
 -   **寄生蟲：**需要對來賓操作系統進行其他設置和修改，從而提高複雜性。
@@ -640,7 +640,7 @@ XAPI是Xenserver（現稱為Citrix Hypervisor）的關鍵組成部分，並提�
 
 -   **訪問控制：**XAPI還提供訪問控制機制，以確保只有授權用戶才能在虛擬環境中執行特定操作。
 
-XAPI是可以控制和自動化XEN管理程序的接口，使管理虛擬化環境更容易。
+XAPI是可以控制和自動化XEN虛擬機程序的接口，使管理虛擬化環境變得更容易。
 
 #### Xen摘要
 
@@ -717,6 +717,20 @@ xlcpupool.cfg(5)
 xl-disk-configuration(5)
 xl-network-configuration(5)
 xen-tscmode(7)
+
+# initialized domains auto
+/etc/default/xendomains
+   XENDOMAINS_AUTO=/etc/xen/auto
+
+/etc/xen/auto/
+
+
+# set domain for up after xen reboot
+## create folder auto
+cd /etc/xen && mkdir -p auto && cd auto
+
+# create simbolic link
+ln -s /etc/xen/lpic3-pv-guest /etc/xen/auto/lpic3-pv-guest
 ```
 
 #### 351.2重要命令
@@ -804,21 +818,15 @@ xl mem-set 0 2048
 # Limite cpu (not permanent after boot)
 xl vcpu-set 0 2
 
-# manual conf
-man xl.conf
-
-# manual cfg - about guest configuration
-man xl.cfg
-
 # create DomainU - virtual machine
 xl create /etc/xen/lpic3-pv-guest.cfg
 
 # create DomainU virtual machine and connect to guest
 xl create -c /etc/xen/lpic3-pv-guest.cfg
 
-# create DomainU virtual machine HVM
 
-## configure /etc/xen/lpic3-hvm-guest.cfg
+##----------------------------------------------
+# create DomainU virtual machine HVM
 
 ## create logical volume
 lvcreate -l +20%FREE -n lpic3-hvm-guest-disk  vg_xen
@@ -826,10 +834,25 @@ lvcreate -l +20%FREE -n lpic3-hvm-guest-disk  vg_xen
 ## create a ssh tunel for vnc
 ssh -l vagrant -L 5900:localhost:5900  192.168.0.130
 
+## configure /etc/xen/lpic3-hvm-guest.cfg
+## set boot for cdrom: boot = "d"
+
 ## create domain hvm
 xl create /etc/xen/lpic3-hvm-guest.cfg
 
-## open vcn conectio in your vnc client with localhost
+## open vcn conection in your vnc client with localhost
+## for view install details
+
+## after installation finished, destroy domain: xl destroy <id_or_name>
+
+## set /etc/xen/lpic3-hvm-guest.cfg: boot for hard disc: boot = "c"
+
+## create domain hvm
+xl create /etc/xen/lpic3-hvm-guest.cfg
+
+## access domain hvm
+xl console <id_or_name>
+##----------------------------------------------
 
 # connect in domain guest
 xl console <id>|<name> (press enter)
@@ -847,6 +870,17 @@ xl destroy lpic3-pv-guest
 
 # reboot domain
 xl reboot lpic3-pv-guest
+
+# list block devices
+xl block-list 1
+xl block-list lpic3-pv-guest
+
+# detach block devices
+xl block-detach lpic3-hvm-guest hdc
+
+# attach block devices
+xl block-attach lpic3-hvm-guest hdc
+
 ```
 
 <p align="right">(<a href="#topic-351.2">back to sub Topic 351.2</a>)</p>
