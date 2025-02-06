@@ -91,7 +91,7 @@
 > Al hacer esto, puede darle a toda la comunidad la oportunidad de beneficiarse de sus cambios.
 > El acceso al código fuente es una condición previa para esto. \\
 > Use Vagrant para máquinas UP y ejecute laboratorios y practique contenido en este artículo.
-> He publicado en carpeta Vagrant A Vagrant File con lo que es necesario \\
+> He publicado en carpeta Vagrant un archivo vagabundo con lo que es necesario \\
 > Para que subas un entorno para estudios
 
 * * *
@@ -130,7 +130,7 @@ Personalizar una plantilla_Vagrantfile-topic-xxx_. Este archivo contiene una con
     -   vm.clone_directory = "&lt;Your_driver_letter>:\\<folder>\\&lt;TO_MACHINE>\\#{Vm_name} -instance-1 "
         Ejemplo: vm.clone_directory = "e:\\Servidor\\VMware\\#{Vm_name} -instance-1 "
     -   vm.vmx["Memsize"]= ""
-    -   vm.vmx["Numvcpus"]= ""
+    -   vm.vmx["numvcpus"]= ""
     -   vm.vmx["CPUID.CORRESPERSOCOUT"]= ""
 
 Personalizar la configuración de la red en archivos[configuraciones/red](configs/network/).
@@ -613,7 +613,7 @@ El proyecto XEN opera bajo la Fundación Linux, con un enfoque en la construcci�
 #### Xenstore
 
 La tienda XEN es un componente crítico del Hypervisor XEN.  
-Esencialmente, la tienda XEN es una base de datos de valor clave distribuida utilizada para la comunicación y el intercambio de información entre el Hypervisor XEN y las máquinas virtuales (también conocidas como dominios) que administra.
+Esencialmente, Xen Store es una base de datos de valor clave distribuida utilizada para la comunicación y el intercambio de información entre el Hypervisor XEN y las máquinas virtuales (también conocidas como dominios) que administra.
 
 Aquí hay algunos aspectos clave de la tienda Xen:
 
