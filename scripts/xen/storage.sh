@@ -34,12 +34,3 @@ vgcreate vg_xen "$DISK" > /dev/null 2>&1
 echo "y" | lvremove lpic3-hvm-guest-disk vg_xen > /dev/null 2>&1
 lvcreate -L 100G -n lpic3-hvm-guest-disk vg_xen
 # echo "y"| mkfs.ext4 /dev/vg_xen/lpic3-hvm-guest-disk
-
-# generate ISO seed for ubuntu
-cloud-init schema --config-file configs/xen/hvm/ubuntu/user-data
-cloud-localds -v isos/ubuntu/seed.iso configs/xen/hvm/ubuntu/user-data configs/xen/hvm/ubuntu/meta-data
-isoinfo -i isos/ubuntu/seed.iso -R -l
-
-# generate ISO seed for debian
-mkisofs -o isos/debian/seed.iso -J -R -V "cidata" configs/xen/hvm/debian/preseed.cfg
-isoinfo -i isos/debian/seed.iso -R -l
