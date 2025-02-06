@@ -29,6 +29,7 @@ Slack/silvestrini.py
 
 # xen
 *.iso
+*.fuse_*
 
 # vscode
 .vscode/
