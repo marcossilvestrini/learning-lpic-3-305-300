@@ -510,7 +510,7 @@ Permite que um sistema operacional de desktop seja executado em uma máquina vir
 
 ###### Casos de uso da definição de virtualização de desktop
 
-Virtual desktop infrastructure (VDI), remote work solutions.
+Infraestrutura de Desktop Virtual (VDI), Soluções de Trabalho Remoto.
 
 ###### Exemplos de definição de virtualização de desktop
 
@@ -646,7 +646,7 @@ O XAPI é a interface que permite o controle e a automação do hipervisor Xen, 
 
 -   **INCROPPING:**A tecnologia principal do hipervisor que permite que as máquinas virtuais sejam executadas em hardware físico.
 -   **Xensource:**A empresa que comercializou Xen, mais tarde adquirida pela Citrix, levando ao desenvolvimento do Citrix Xenserver.
--   **Xen Project:**A iniciativa e a comunidade de código aberto que continuam a desenvolver e manter o hipervisor Xen sob a Fundação Linux.
+-   **Projeto Xen:**A iniciativa e a comunidade de código aberto que continuam a desenvolver e manter o hipervisor Xen sob a Fundação Linux.
 -   **Xenstore:**A Xen Store atua como uma intermediária de comunicação e configuração entre o Hypervisor Xen e as VMs, simplificando a operação e o gerenciamento de ambientes virtualizados.
 -   **Pílula**é a interface que permite o controle e a automação do hipervisor Xen, facilitando o gerenciamento de ambientes virtualizados.
 
