@@ -371,7 +371,7 @@ Paravirtualizationには、ゲストオペレーティングシステムを変�
 -   **パフォーマンス：**エミュレートハードウェアに関連するオーバーヘッドを削減するため、従来の完全な仮想化よりも効率的です。
 -   **互換性：**傍観的化のために変更されたオペレーティングシステムに限定されています。
 
-###### 傍観的な例
+###### Paravirtualizationの例
 
 Paravirtualized Guests、特定の構成のVMwareツール、およびいくつかのKVM構成を備えたXen。
 
@@ -524,7 +524,7 @@ Citrix仮想アプリとデスクトップ、VMware Horizo​​n、Microsoftリ
 
 ###### アプリケーション仮想化定義のユースケース
 
-簡略化されたアプリケーションの展開、互換性テスト。
+Simplified application deployment, compatibility testing.
 
 ###### アプリケーション仮想化定義の例
 
@@ -1414,7 +1414,7 @@ Vagrantfile
     -   [ファイル階層構造](https://refspecs.linuxfoundation.org/FHS_3.0/fhs-3.0.pdf)
 -   [フリーソフトウェア](<>)
     -   [FSF](https://www.fsf.org)
-    -   [フリーソフトウェアディレクトリ](https://directory.fsf.org/wiki/Free_Software_Directory:Free_software_replacements)
+    -   [Free Software Directory](https://directory.fsf.org/wiki/Free_Software_Directory:Free_software_replacements)
 -   [ライセンス](<>)
     -   [フリーソフトウェア](https://www.gnu.org/philosophy/free-sw.html)
     -   [copyleft](https://www.gnu.org/licenses/copyleft.en.html)
@@ -1427,7 +1427,7 @@ Vagrantfile
 -   [ディストリビューション](<>)
     -   [Debianフリーソフトウェアガイドライン](https://www.debian.org/social_contract#guidelines)
     -   [Linux Distributionをリストします](https://en.wikipedia.org/wiki/List_of_Linux_distributions)
-    -   [ディストリビューション](https://distrowatch.com/)
+    -   [Distro Watch](https://distrowatch.com/)
     -   [比較Linux分布](https://en.wikipedia.org/wiki/Comparison_of_Linux_distributions)
 -   [デスクトップ環境](<>)
     -   [X11 ORG](https://www.x.org/wiki/)
@@ -1493,7 +1493,7 @@ Vagrantfile
     -   [Xen Virtualization and Cloud Computing＃05：Xen Project、Unikernels、およびThe Future](https://www.lpi.org/pt-br/blog/2020/10/29/xen-virtualization-and-cloud-computing-05-xen-project-unikernels-and-future/)
     -   [Xen Project初心者ガイド](https://wiki.xenproject.org/wiki/Xen_Project_Beginners_Guide#Installing_the_Xen_Project_Software)
     -   [クレイジーな本](https://wiki.xenproject.org/wiki/Book/HelloXenProject/0-Contents)
--   [Unikernels](https://www.lpi.org/blog/2020/10/29/xen-virtualization-and-cloud-computing-05-xen-project-unikernels-and-future/)
+-   [ユニセル](https://www.lpi.org/blog/2020/10/29/xen-virtualization-and-cloud-computing-05-xen-project-unikernels-and-future/)
     -   [ユニークな力](https://github.com/unikraft/unikraft)
     -   [ミラゴス](https://mirage.io/docs/hello-world)
     -   [悪い](https://galois.com/project/halvm/)
@@ -1501,7 +1501,7 @@ Vagrantfile
 -   [OpenStackドキュメント](<>)
     -   [redhat](https://www.redhat.com/pt-br/topics/openstack)
 -   [vswitchを開きます](<>)
-    -   [ovs doc 4linux](https://blog.4linux.com.br/open-vswitch-o-que-e-o-que-come-onde-vive)
+    -   [OVS Doc 4Linux](https://blog.4linux.com.br/open-vswitch-o-que-e-o-que-come-onde-vive)
 -   [LPIC-3 305-300試験](<>)
     -   [LPIC-3 305-300目的](https://www.lpi.org/our-certifications/exam-305-objectives/)
     -   [LPIC-3 305-300ウィキ](https://wiki.lpi.org/wiki/LPIC-305_Objectives_V3.0)
