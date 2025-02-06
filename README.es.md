@@ -126,11 +126,11 @@ cd learning-lpic-3-305-300
 
 Personalizar una plantilla_Vagrantfile-topic-xxx_. Este archivo contiene una configuración de VMS para Labs. Ejemplo:
 
--   Archivo[Vagantfile-topic-351](./vagrant/Vagrantfile-topic-351)
+-   File [Vagantfile-topic-351](./vagrant/Vagrantfile-topic-351)
     -   vm.clone_directory = "&lt;Your_driver_letter>:\\<folder>\\&lt;TO_MACHINE>\\#{Vm_name} -instance-1 "
         Ejemplo: vm.clone_directory = "e:\\Servidor\\VMware\\#{Vm_name} -instance-1 "
     -   vm.vmx["Memsize"]= ""
-    -   vm.vmx["numvcpus"]= ""
+    -   vm.vmx["Numvcpus"]= ""
     -   vm.vmx["CPUID.CORRESPERSOCOUT"]= ""
 
 Personalizar la configuración de la red en archivos[configuraciones/red](configs/network/).
@@ -607,7 +607,7 @@ El Proyecto XEN se refiere a la comunidad e iniciativa de código abierto respon
 El proyecto XEN opera bajo la Fundación Linux, con un enfoque en la construcción, mejora y apoyar a Xen como un esfuerzo colaborativo y impulsado por la comunidad.
 
 -   **Objetivos:**El proyecto XEN tiene como objetivo avanzar al hipervisor mejorando su rendimiento, seguridad y conjunto de características para una amplia gama de casos de uso, incluida la computación en la nube, la virtualización centrada en la seguridad (por ejemplo, QUBES OS) y sistemas integrados.
--   **Colaboradores:**El proyecto incluye contribuyentes de varias organizaciones, incluidos los principales proveedores de la nube, proveedores de hardware y desarrolladores independientes.
+-   **Contributors:**El proyecto incluye contribuyentes de varias organizaciones, incluidos los principales proveedores de la nube, proveedores de hardware y desarrolladores independientes.
 -   **Píldora y hedools:**El proyecto XEN también incluye herramientas como XAPI (XENAPI), que se utiliza para administrar las instalaciones de XEN Hypervisor y varias otras utilidades para la gestión y optimización del sistema.
 
 #### Xenstore
@@ -646,7 +646,7 @@ XAPI es la interfaz que permite el control y la automatización del Hypervisor X
 
 -   **Interpretado:**La tecnología Core Hypervisor que permite que las máquinas virtuales se ejecuten en hardware físico.
 -   **XENSOURCE:**La compañía que comercializó Xen, más tarde adquirida por Citrix, que condujo al desarrollo de Citrix Xenserver.
--   **Proyecto Xen:**La iniciativa de código abierto y la comunidad que continúa desarrollando y manteniendo el Hypervisor XEN bajo la Fundación Linux.
+-   **Xen Project:**La iniciativa de código abierto y la comunidad que continúa desarrollando y manteniendo el Hypervisor XEN bajo la Fundación Linux.
 -   **Xenstore:**La tienda XEN actúa como un intermediario de comunicación y configuración entre el Hypervisor XEN y las máquinas virtuales, racionalizando la operación y la gestión de entornos virtualizados.
 -   **Píldora**es la interfaz que permite el control y la automatización del Hypervisor XEN, lo que facilita la gestión de entornos virtualizados.
 
@@ -1151,7 +1151,7 @@ foo
 -   Comprender la arquitectura y los componentes de Docker
 -   Administre contenedores Docker utilizando imágenes de un registro de Docker
 -   Comprender y administrar imágenes y volúmenes para contenedores Docker
--   Comprender y administrar el registro de contenedores Docker
+-   Understand and manage logging for Docker containers
 -   Comprender y administrar redes para Docker
 -   Use DockerFiles para crear imágenes de contenedores
 -   Ejecutar un registro de Docker utilizando la imagen Docker de registro
@@ -1361,9 +1361,9 @@ Vagrantfile
 Las contribuciones son las que hacen que la comunidad de código abierto sea un lugar tan increíble para
 Aprende, inspira y crea. Cualquier contribución que haga son**muy apreciado**.
 
-Si tiene una sugerencia que lo mejore, bifurca el repositorio y
-crear una solicitud de extracción. También puede simplemente abrir un problema con la etiqueta "Mejora".
-¡No olvides darle una estrella al proyecto! ¡Gracias de nuevo!
+If you have a suggestion that would make this better, please fork the repo and
+create a pull request. You can also simply open an issue with the tag "enhancement".
+Don't forget to give the project a star! Thanks again!
 
 1.  Bifurca el proyecto
 2.  Crea tu rama de características (`git checkout -b feature/AmazingFeature`)
@@ -1494,7 +1494,7 @@ Enlace del proyecto:<https://github.com/marcossilvestrini/learning-lpic-3-305-30
     -   [Guía de principiantes del proyecto XEN](https://wiki.xenproject.org/wiki/Xen_Project_Beginners_Guide#Installing_the_Xen_Project_Software)
     -   [Libro loco](https://wiki.xenproject.org/wiki/Book/HelloXenProject/0-Contents)
 -   [Unicernel](https://www.lpi.org/blog/2020/10/29/xen-virtualization-and-cloud-computing-05-xen-project-unikernels-and-future/)
-    -   [Fuerza única](https://github.com/unikraft/unikraft)
+    -   [Unikraft](https://github.com/unikraft/unikraft)
     -   [MirageOS](https://mirage.io/docs/hello-world)
     -   [Malo](https://galois.com/project/halvm/)
     -   [Único](https://github.com/solo-io/unik/blob/master/docs/providers/virtualbox.md)
