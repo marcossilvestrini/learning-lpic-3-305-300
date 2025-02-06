@@ -4,13 +4,16 @@
 
 ```sh
 # create a domain
-xl create /etc/xen/lpic3-hvm-guest-ubuntu.cfg
+xl create configs/xen/hvm/ubuntu/lpic3-hvm-guest-ubuntu.cfg
+
+# observe the installation
+xl console <domain_id>
 
 # after create, domain has power off...recreate it for use
-xl create /etc/xen/lpic3-hvm-guest-ubuntu.cfg
+xl create configs/xen/hvm/ubuntu/lpic3-hvm-guest-ubuntu.cfg
 
 # access domain
-xl console lpic3-hvm-guest-ubuntu
+xl console <domain_id>
 # press enter if freezing display
 ```
 
