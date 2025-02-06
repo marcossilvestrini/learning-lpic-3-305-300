@@ -199,7 +199,7 @@ vagrant/destroy.ps1
 > sua computação como desejar (liberdade 1). \\
 > O acesso ao código -fonte é uma condição prévia para isso. \\
 > 2.A liberdade para redistribuir cópias para que você possa ajudar os outros (liberdade 2). \\
-> 3\. Freedom para distribuir cópias de suas versões modificadas para outras pessoas (liberdade 3).
+> 3.Freedom para distribuir cópias de suas versões modificadas para outras pessoas (liberdade 3).
 
 * * *
 
@@ -242,7 +242,7 @@ man COMMAND
 -   Entenda os principais aspectos da migração de máquinas físicas para virtuais
 -   Entenda os principais aspectos da migração de máquinas virtuais entre os sistemas host
 -   Entenda as características e implicações da virtualização para uma máquina virtual, como instantâneos, pausas, clonagem e limites de recursos
--   Consciência de Ovirt, Proxmox, Systemd Machined e VirtualBox
+-   Consciência de Ovirt, Proxmox, Systemd Mathined e VirtualBox
 -   Consciência do Vswitch aberto
 
 #### 351.1 Objetos citados
@@ -263,7 +263,7 @@ Migration (P2V, V2V)
 
 ###### Definição do tipo 1
 
-Runs directly on the host's physical hardware, providing a base layer to manage VMs without the need for a host operating system.  
+Executa diretamente no hardware físico do host, fornecendo uma camada base para gerenciar VMs sem a necessidade de um sistema operacional host.
 
 ###### Características do tipo 1
 
@@ -606,7 +606,7 @@ A empresa forneceu soluções corporativas com base no XEN e ofereceu ferramenta
 O projeto Xen refere-se à comunidade de código aberto e à iniciativa responsável pelo desenvolvimento e manutenção do hipervisor Xen após sua comercialização.  
 O projeto Xen opera sob a Fundação Linux, com foco na construção, melhoria e apoio a Xen como um esforço colaborativo e orientado à comunidade.
 
--   **Metas:**O projeto XEN visa avançar o hipervisor, melhorando seu desempenho, segurança e conjunto de recursos para uma ampla gama de casos de uso, incluindo computação em nuvem, virtualização focada na segurança (por exemplo, QUBES OS) e sistemas incorporados.
+-   **Metas:**O projeto XEN visa avançar o hipervisor, melhorando seu desempenho, segurança e conjunto de recursos para uma ampla gama de casos de uso, incluindo computação em nuvem, virtualização focada na segurança (por exemplo, Qubes OS) e sistemas incorporados.
 -   **Colaboradores:**O projeto inclui colaboradores de várias organizações, incluindo os principais provedores de nuvem, fornecedores de hardware e desenvolvedores independentes.
 -   **Pílula e hedools:**O projeto XEN também inclui ferramentas como XAPI (XenAPI), que é usado para gerenciar instalações do Xen Hypervisor e vários outros utilitários para gerenciamento e otimização do sistema.
 
@@ -667,7 +667,7 @@ Isso resulta em menor sobrecarga e melhor eficiência em comparação com a virt
 
 #### HVM-domu (domínio da máquina virtual de hardware)
 
-O HVM-Domus são máquinas virtuais que utilizam virtualização completa, permitindo que sistemas operacionais não modificados sejam executados. O Xen Hypervisor fornece emulação de hardware para esses Domus, permitindo que eles executem qualquer sistema operacional que suporta a arquitetura de hardware subjacente.  
+O HVM-Domus são máquinas virtuais que utilizam virtualização completa, permitindo que os sistemas operacionais não modificados sejam executados. O Xen Hypervisor fornece emulação de hardware para esses Domus, permitindo que eles executem qualquer sistema operacional que suporta a arquitetura de hardware subjacente.  
 Embora isso ofereça maior flexibilidade, pode resultar em uma sobrecarga mais alta em comparação com o PV-Domus.
 
 #### Rede Xen
@@ -1342,7 +1342,7 @@ vagrant
 Vagrantfile
 ```
 
-#### 353.4 Important Commands
+#### 353.4 Comandos importantes
 
 ##### vagabundo
 
