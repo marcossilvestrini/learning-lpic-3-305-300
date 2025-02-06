@@ -91,7 +91,7 @@
 > Al hacer esto, puede darle a toda la comunidad la oportunidad de beneficiarse de sus cambios.
 > El acceso al código fuente es una condición previa para esto. \\
 > Use Vagrant para máquinas UP y ejecute laboratorios y practique contenido en este artículo.
-> He publicado en carpeta Vagrant un archivo vagabundo con lo que es necesario \\
+> He publicado en carpeta Vagrant A Vagrant File con lo que es necesario \\
 > Para que subas un entorno para estudios
 
 * * *
@@ -613,7 +613,7 @@ El proyecto XEN opera bajo la Fundación Linux, con un enfoque en la construcci�
 #### Xenstore
 
 La tienda XEN es un componente crítico del Hypervisor XEN.  
-Esencialmente, Xen Store es una base de datos de valor clave distribuida utilizada para la comunicación y el intercambio de información entre el Hypervisor XEN y las máquinas virtuales (también conocidas como dominios) que administra.
+Esencialmente, la tienda XEN es una base de datos de valor clave distribuida utilizada para la comunicación y el intercambio de información entre el Hypervisor XEN y las máquinas virtuales (también conocidas como dominios) que administra.
 
 Aquí hay algunos aspectos clave de la tienda Xen:
 
