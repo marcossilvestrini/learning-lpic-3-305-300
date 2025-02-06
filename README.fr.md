@@ -143,7 +143,7 @@ Personnaliser la configuration du réseau dans les fichiers[configs / réseau](c
 
 Utilisez ce référentiel pour obtenir un apprentissage sur l'examen LPIC-3 305-300
 
-### For up and down
+### Pour de haut en bas
 
 Changer un_Vagrantfile-topic-xxx_modèle et copier pour un nouveau fichier avec nom_Vagabond_
 
@@ -995,7 +995,7 @@ foo
 -   Migrer le contenu du disque entre divers formats d'image de disque de machine virtuelle
 -   Conscience du format de virtualisation ouverte (OVF)
 
-#### 351.5 Cited Objects
+#### 351,5 objets cités
 
 ```sh
 qemu-img
@@ -1286,7 +1286,7 @@ packer
 
 **Description:**Les candidats doivent utiliser le cloud-init pour configurer des machines virtuelles créées à partir d'images standardisées. Cela comprend l'ajustement des machines virtuelles pour correspondre à leurs ressources matérielles disponibles, en particulier, l'espace disque et les volumes.  
 De plus, les candidats devraient pouvoir configurer des instances pour permettre des connexions SSH sécurisées et installer un ensemble spécifique de packages logiciels.  
-En outre, les candidats devraient être en mesure de créer de nouvelles images système avec un support Cloud-INT.
+De plus, les candidats devraient être en mesure de créer de nouvelles images système avec un support Cloud-INT.
 
 **Zones de connaissances clés:**
 
@@ -1361,9 +1361,9 @@ Vagrantfile
 Les contributions font de la communauté open source un endroit incroyable
 Apprenez, inspirez et créez. Toutes les contributions que vous faites sont**très apprécié**.
 
-If you have a suggestion that would make this better, please fork the repo and
-create a pull request. You can also simply open an issue with the tag "enhancement".
-Don't forget to give the project a star! Thanks again!
+Si vous avez une suggestion qui rendrait cela meilleur, veuillez enfiler le repo et
+Créez une demande de traction. Vous pouvez également ouvrir simplement un problème avec la balise "amélioration".
+N'oubliez pas de donner une étoile au projet! Merci encore!
 
 1.  Fourk le projet
 2.  Créez votre branche de fonctionnalité (`git checkout -b feature/AmazingFeature`)
