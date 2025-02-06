@@ -311,7 +311,7 @@ Migration (P2V, V2V)
 
 ##### 移行タイプ
 
-仮想マシンの作成と管理に使用されるテクノロジーであるハイパーバイザーのコンテキストでは、仮想化環境ではP2V移行とV2V移行という用語が一般的です。  
+仮想マシンの作成と管理に使用されるテクノロジーであるハイパーバイザーのコンテキストでは、仮想化環境ではP2V移行とV2Vの移行という用語が一般的です。  
 それらは、さまざまなタイプのプラットフォーム間の移行システムのプロセスを指します。
 
 ##### P2V-物理的から仮想移行
@@ -603,12 +603,12 @@ Xensourceは、ケンブリッジ大学のXenハイパーバイザーの元の�
 
 #### xenプロジェクト
 
-Xen Projectは、商業化後のXenハイパーバイザーの開発と維持を担当するオープンソースコミュニティとイニシアチブを指します。  
+Xen Projectとは、商業化後のXenハイパーバイザーの開発と維持を担当するオープンソースコミュニティとイニシアチブを指します。  
 Xenプロジェクトは、Linux Foundationの下で運営されており、Xenの構築、改善、および共同のコミュニティ主導の努力としてのサポートに重点を置いています。
 
 -   **目標：**XENプロジェクトは、クラウドコンピューティング、セキュリティ中心の仮想化（QUBES OSなど）、組み込みシステムなど、幅広いユースケースのパフォーマンス、セキュリティ、および機能セットを改善することにより、ハイパーバイザーを前進させることを目的としています。
 -   **貢献者：**このプロジェクトには、主要なクラウドプロバイダー、ハードウェアベンダー、独立した開発者など、さまざまな組織の貢献者が含まれています。
--   **ピルとヘドール：**XENプロジェクトには、XAPI（Xenapi）などのツールにも含まれています。これは、Xenハイパーバイザーのインストールの管理に使用され、システム管理と最適化のための他のさまざまなユーティリティも含まれています。
+-   **ピルとヘドール：**Xenプロジェクトには、XAPI（Xenapi）などのツールにも含まれています。これは、Xenハイパーバイザーのインストールの管理に使用され、システム管理と最適化のための他のさまざまなユーティリティが含まれています。
 
 #### xenstore
 
@@ -1327,7 +1327,7 @@ user-data
 
 **重要な知識領域：**
 
--   Understand Vagrant architecture and concepts, including storage and networking
+-   ストレージやネットワーキングなど、浮浪者のアーキテクチャと概念を理解してください
 -   Atlasからボックスを取得して使用します
 -   vagrantfilesを作成して実行します
 -   Vagrant Virtual Machinesにアクセスします
@@ -1493,7 +1493,7 @@ Vagrantfile
     -   [Xen Virtualization and Cloud Computing＃05：Xen Project、Unikernels、およびThe Future](https://www.lpi.org/pt-br/blog/2020/10/29/xen-virtualization-and-cloud-computing-05-xen-project-unikernels-and-future/)
     -   [Xen Project初心者ガイド](https://wiki.xenproject.org/wiki/Xen_Project_Beginners_Guide#Installing_the_Xen_Project_Software)
     -   [クレイジーな本](https://wiki.xenproject.org/wiki/Book/HelloXenProject/0-Contents)
--   [ユニセル](https://www.lpi.org/blog/2020/10/29/xen-virtualization-and-cloud-computing-05-xen-project-unikernels-and-future/)
+-   [Unikernels](https://www.lpi.org/blog/2020/10/29/xen-virtualization-and-cloud-computing-05-xen-project-unikernels-and-future/)
     -   [ユニークな力](https://github.com/unikraft/unikraft)
     -   [ミラゴス](https://mirage.io/docs/hello-world)
     -   [悪い](https://galois.com/project/halvm/)
