@@ -1056,7 +1056,7 @@ foo
 -   了解LXC和Docker如何利用名稱空間，CGROUP，功能，Seccomp和Mac
 -   了解Runc的原理
 -   了解CRI-O和Contarerd的原理
--   意識到OCI運行時和圖像規格
+-   Awareness of the OCI runtime and image specifications
 -   對Kubernetes容器運行時接口（CRI）的意識
 -   意識到Podman，Buildah和Scopeo
 -   在Linux和其他免費操作系統（例如RKT，OpenVZ，SystemD-Nspawn或BSD監獄）中了解其他容器虛擬化方法的認識
