@@ -1,0 +1,112 @@
+#cloud-config
+
+# configure for autoinstall start without confirmation
+runcmd:
+  - [eval, 'echo $(cat /proc/cmdline) "autoinstall" > /root/cmdline']
+  - [eval, "mount -n --bind -o ro /root/cmdline /proc/cmdline"]
+  - [eval, "snap restart subiquity.subiquity-server"]
+  - [eval, "snap restart subiquity.subiquity-service"]
+
+# autoinstall ubuntu
+autoinstall:
+  version: 1
+
+  # first commands
+  early-commands:
+    - echo "Starting up Xen Domain HVM Ubuntu Server..."
+
+  # locale
+  locale: pt_BR.UTF-8
+
+  # keyboard
+  keyboard:
+    layout: br
+  timezone: America/Sao_Paulo
+
+  # identifier of the source to install
+  source:
+    id: ubuntu-server-minimal
+
+  # network
+  network:
+    version: 2
+    ethernets:
+      enX0:
+        dhcp4: true
+        dhcp6: false
+        optional: true
+        nameservers:
+          addresses:
+            - 8.8.8.8
+            - 8.8.4.4
+
+  # storage
+  storage:
+    layout:
+      name: lvm
+    config:
+      - id: disk-xvda
+        type: disk
+        match:
+          size: largest
+        ptable: gpt
+        wipe: superblock
+        preserve: false
+        grub_device: true
+      - id: partition-boot
+        type: partition
+        device: disk-xvda
+        size: 512M
+        flag: boot
+      - id: partition-root
+        type: partition
+        device: disk-xvda
+        size: -1
+      - id: lvm-vg
+        type: lvm_volgroup
+        name: vg_root
+        devices: [partition-root]
+      - id: lvm-lv-root
+        type: lvm_partition
+        volgroup: lvm-vg
+        size: -1
+        name: lv_root
+      - id: format-root
+        type: format
+        fstype: ext4
+        volume: lvm-lv-root
+      - id: mount-root
+        type: mount
+        device: format-root
+        path: /
+
+  # hostname and the system initial user
+  identity:
+    hostname: lpic3-hvm-guest-ubuntu
+    realname: "Vagrant User"
+    username: vagrant
+    password: "$6$3fo9HOtZftO0R7ET$LwV9MZSzNinkhV8bbnV0AaaVFW49MHhCwZ7HTH5E7oSW/Kf3NYCyWgFdQ3fA.KfESLEp8jm9IHmRg1OI8FrqB1"
+
+  # openssh config
+  ssh:
+    install-server: true
+    allow-pw: true
+    authorized-keys:
+      - ecdsa-sha2-nistp521 AAAAE2VjZHNhLXNoYTItbmlzdHA1MjEAAAAIbmlzdHA1MjEAAACFBAFXTn6ne9bCnJcmDSPZgql9HicNpukOv3fotZA+CgV0f0CK4Zoun4C6fcSh1esLmDGHMIxzjZ1ayDKXdtWKrX7YEQFGcw2DFHl1fsE88pQLE2Ppu4+NROVxl0TKdZvZxnpVEqLommJf4Z7EQyAd1gw1z+J9W+OuSDD8ME5feZ0gi1vhPA== vagrant@kubernetes
+
+  # install packages
+  packages:
+    - net-tools
+
+  # commands
+  late-commands:
+    - curtin in-target -- sed -i 's/PasswordAuthentication no/PasswordAuthentication yes/g' /etc/ssh/sshd_config
+    - echo 'root:$6$3fo9HOtZftO0R7ET$LwV9MZSzNinkhV8bbnV0AaaVFW49MHhCwZ7HTH5E7oSW/Kf3NYCyWgFdQ3fA.KfESLEp8jm9IHmRg1OI8FrqB1' | chpasswd -e -R /target
+
+  # shutdown instead of reboot
+  shutdown: poweroff
+
+  # user-data
+  user-data:
+    # ssh config
+    allow_public_ssh_keys: true
