@@ -744,8 +744,10 @@ xen-create-image \
   --memory=1gb \
   --vcpus=2 \
   --lvm=vg_xen \
+  --bridge=xenbr0 \
   --dhcp \
   --pygrub \
+  --password=vagrant \
   --dist=bookworm
 ```
 
@@ -1056,7 +1058,7 @@ foo
 -   افهم كيف يستفيد LXC و Docker من مساحات الأسماء ، Cgroups ، القدرات ، SecComp و Mac
 -   فهم مبدأ Runc
 -   فهم مبدأ CRI-O و CONTERD
--   وعي بوقت تشغيل OCI ومواصفات الصورة
+-   وعي بوقت تشغيل OCI ومواصفات الصور
 -   الوعي بواجهة وقت تشغيل حاوية Kubernetes (CRI)
 -   إدراك بودمان ، بوتا و scopeo
 -   إدراك نهج المحاكاة الافتراضية الأخرى للحاويات في Linux وأنظمة التشغيل الحرة الأخرى ، مثل السجون RKT أو OpenVZ أو Systemd-Nspawn أو BSD
