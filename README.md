@@ -757,8 +757,10 @@ xen-create-image \
   --memory=1gb \
   --vcpus=2 \
   --lvm=vg_xen \
+  --bridge=xenbr0 \
   --dhcp \
   --pygrub \
+  --password=vagrant \
   --dist=bookworm
 ```
 
