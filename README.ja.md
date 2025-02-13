@@ -371,7 +371,7 @@ Paravirtualizationには、ゲストオペレーティングシステムを変�
 -   **パフォーマンス：**エミュレートハードウェアに関連するオーバーヘッドを削減するため、従来の完全な仮想化よりも効率的です。
 -   **互換性：**傍観的化のために変更されたオペレーティングシステムに限定されています。
 
-###### Paravirtualizationの例
+###### 傍観的な例
 
 Paravirtualized Guests、特定の構成のVMwareツール、およびいくつかのKVM構成を備えたXen。
 
@@ -524,7 +524,7 @@ Citrix仮想アプリとデスクトップ、VMware Horizo​​n、Microsoftリ
 
 ###### アプリケーション仮想化定義のユースケース
 
-Simplified application deployment, compatibility testing.
+簡略化されたアプリケーションの展開、互換性テスト。
 
 ###### アプリケーション仮想化定義の例
 
@@ -590,7 +590,7 @@ Xenは、オープンソースタイプ1（裸のメタル）ハイパーバイ�
 Xenは、物理ハードウェアと仮想マシン（VM）の間にレイヤーを提供し、効率的なリソース共有と分離を可能にします。
 
 -   **建築：**Xenは、ドメイン0（DOM0）が直接ハードウェアアクセスを備えた特権ドメインであり、ハイパーバイザーを管理する2層システムで動作します。ドメインu（domu）と呼ばれる他の仮想マシンは、ゲストオペレーティングシステムを実行し、dom0によって管理されています。
--   **仮想化の種類：**Xenは、修正されたゲストOSを必要とするParavirtualization（PV）と、ハードウェアエクステンション（Intel VT-XまたはAMD-Vなど）を使用して未修正のゲストオペレーティングシステムを実行するハードウェアアシスト仮想化（HVM）の両方をサポートします。
+-   **仮想化の種類：**Xenは、修正されたゲストOSを必要とするParavirtualization（PV）と、ハードウェア拡張機能（Intel VT-XまたはAMD-Vなど）を使用して未修正のゲストオペレーティングシステムを実行するハードウェアアシスト仮想化（HVM）の両方をサポートします。
     Xenは、特にAmazon Web Services（AWS）およびその他の大規模なクラウドプロバイダーによって、クラウド環境で広く使用されています。
 
 #### xensource
@@ -644,7 +644,7 @@ XAPIは、Xenハイパーバイザーの制御と自動化を可能にするイ�
 
 #### xenサマリー
 
--   **間散布：**コアハイパーバイザー技術により、仮想マシンが物理ハードウェアで実行できるようにします。
+-   **間散布：**コアハイパーバイザーテクノロジーでは、仮想マシンが物理ハードウェアで実行できるようにします。
 -   **Xensource：**Xenを商業化した会社は、後にCitrixに買収され、Citrix Xenserverの開発につながりました。
 -   **xenプロジェクト：**Linux Foundationの下でXenハイパーバイザーの開発と維持を続けるオープンソースのイニシアチブとコミュニティ。
 -   **xenstore：**Xen Storeは、XenハイパーバイザーとVMの間の通信および構成の仲介として機能し、仮想化された環境の動作と管理を合理化します。
@@ -744,8 +744,10 @@ xen-create-image \
   --memory=1gb \
   --vcpus=2 \
   --lvm=vg_xen \
+  --bridge=xenbr0 \
   --dhcp \
   --pygrub \
+  --password=vagrant \
   --dist=bookworm
 ```
 
@@ -1052,7 +1054,7 @@ foo
 -   カーネルネームスペースを理解して分析します
 -   コントロールグループを理解して分析します
 -   能力を理解して分析します
--   コンテナ仮想化のためのSecComp、Selinux、Apparmorの役割を理解する
+-   Understand the role of seccomp, SELinux and AppArmor for container virtualization
 -   LXCとDockerが名前空間、cgroups、機能、Seccomp、およびMacを活用する方法を理解する
 -   Runcの原則を理解します
 -   Cri-Oとcontainerdの原則を理解してください
@@ -1414,7 +1416,7 @@ Vagrantfile
     -   [ファイル階層構造](https://refspecs.linuxfoundation.org/FHS_3.0/fhs-3.0.pdf)
 -   [フリーソフトウェア](<>)
     -   [FSF](https://www.fsf.org)
-    -   [Free Software Directory](https://directory.fsf.org/wiki/Free_Software_Directory:Free_software_replacements)
+    -   [フリーソフトウェアディレクトリ](https://directory.fsf.org/wiki/Free_Software_Directory:Free_software_replacements)
 -   [ライセンス](<>)
     -   [フリーソフトウェア](https://www.gnu.org/philosophy/free-sw.html)
     -   [copyleft](https://www.gnu.org/licenses/copyleft.en.html)
@@ -1427,7 +1429,7 @@ Vagrantfile
 -   [ディストリビューション](<>)
     -   [Debianフリーソフトウェアガイドライン](https://www.debian.org/social_contract#guidelines)
     -   [Linux Distributionをリストします](https://en.wikipedia.org/wiki/List_of_Linux_distributions)
-    -   [Distro Watch](https://distrowatch.com/)
+    -   [ディストリビューション](https://distrowatch.com/)
     -   [比較Linux分布](https://en.wikipedia.org/wiki/Comparison_of_Linux_distributions)
 -   [デスクトップ環境](<>)
     -   [X11 ORG](https://www.x.org/wiki/)
@@ -1501,7 +1503,7 @@ Vagrantfile
 -   [OpenStackドキュメント](<>)
     -   [redhat](https://www.redhat.com/pt-br/topics/openstack)
 -   [vswitchを開きます](<>)
-    -   [OVS Doc 4Linux](https://blog.4linux.com.br/open-vswitch-o-que-e-o-que-come-onde-vive)
+    -   [ovs doc 4linux](https://blog.4linux.com.br/open-vswitch-o-que-e-o-que-come-onde-vive)
 -   [LPIC-3 305-300試験](<>)
     -   [LPIC-3 305-300目的](https://www.lpi.org/our-certifications/exam-305-objectives/)
     -   [LPIC-3 305-300ウィキ](https://wiki.lpi.org/wiki/LPIC-305_Objectives_V3.0)
