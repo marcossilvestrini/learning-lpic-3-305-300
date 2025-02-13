@@ -282,7 +282,7 @@ Migration (P2V, V2V)
 
 ###### 類型2定義
 
-在常規操作系統之上運行，依靠主機OS進行資源管理和設備支持。
+Runs on top of a conventional operating system, relying on the host OS for resource management and device support.
 
 ###### 2型特徵
 
@@ -409,7 +409,7 @@ Xen帶有paraviralizatization的來賓，某些配置中的VMware工具以及一
 
 ###### 複雜
 
--   **HVM：**通常，由於它支持未修飾的操作系統，因此通常更直接地部署。
+-   **HVM：** Generally more straightforward to deploy since it supports unmodified OS.
 -   **寄生蟲：**需要對來賓操作系統進行其他設置和修改，從而提高複雜性。
 
 #### numa（不一致的內存訪問）
@@ -744,8 +744,10 @@ xen-create-image \
   --memory=1gb \
   --vcpus=2 \
   --lvm=vg_xen \
+  --bridge=xenbr0 \
   --dhcp \
   --pygrub \
+  --password=vagrant \
   --dist=bookworm
 ```
 
@@ -897,7 +899,7 @@ xl block-attach lpic3-hvm-guest hdc
 
 **描述：**候選人應能夠安裝，配置，維護，遷移和故障排除QEMU安裝。
 
-**關鍵知識領域：**
+**Key Knowledge Areas:**
 
 -   了解QEMU的體系結構，包括KVM，網絡和存儲
 -   從命令行啟動QEMU實例
@@ -1049,14 +1051,14 @@ foo
 **關鍵知識領域：**
 
 -   了解系統和應用程序容器的概念
--   了解和分析內核名稱空間
+-   Understand and analyze kernel namespaces
 -   了解和分析對照組
 -   了解和分析功能
 -   了解seccomp，selinux和apparmor在容器虛擬化中的作用
 -   了解LXC和Docker如何利用名稱空間，CGROUP，功能，Seccomp和Mac
 -   了解Runc的原理
 -   了解CRI-O和Contarerd的原理
--   Awareness of the OCI runtime and image specifications
+-   意識到OCI運行時和圖像規格
 -   對Kubernetes容器運行時接口（CRI）的意識
 -   意識到Podman，Buildah和Scopeo
 -   在Linux和其他免費操作系統（例如RKT，OpenVZ，SystemD-Nspawn或BSD監獄）中了解其他容器虛擬化方法的認識
@@ -1154,7 +1156,7 @@ foo
 -   了解和管理Docker容器的日誌記錄
 -   了解和管理Docker的網絡
 -   使用Dockerfiles創建容器圖像
--   使用註冊表Docker Image運行Docker註冊表
+-   Run a Docker registry using the registry Docker image
 
 #### 352.3引用對象
 
