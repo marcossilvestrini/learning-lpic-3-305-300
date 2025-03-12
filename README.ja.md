@@ -415,7 +415,7 @@ Paravirtualized Guests、特定の構成のVMwareツール、およびいくつ�
 #### numa（不均一なメモリアクセス）
 
 numa（不均一なメモリアクセス）は、プロセッサによるメモリアクセスを最適化するためにマルチプロセッサシステムで使用されるメモリアーキテクチャです。  
-numaシステムでは、メモリはプロセッサ間で不均一に分散されています。つまり、各プロセッサは、物理的に遠くにあるメモリ（「リモートメモリ」と呼ばれる）および関連するメモリ（「ローカルメモリ」）へのアクセスが高速であることを意味します。他のプロセッサと。
+numaシステムでは、メモリはプロセッサ間で不均一に分散されています。つまり、各プロセッサは、物理的に遠く（「リモートメモリ」と呼ばれる）、他のプロセッサに関連付けられているメモリ（「ローカルメモリ」）へのアクセスが高速であることを意味します。
 
 ##### numaアーキテクチャの重要な機能
 
@@ -590,7 +590,7 @@ Xenは、オープンソースタイプ1（裸のメタル）ハイパーバイ�
 Xenは、物理ハードウェアと仮想マシン（VM）の間にレイヤーを提供し、効率的なリソース共有と分離を可能にします。
 
 -   **建築：**Xenは、ドメイン0（DOM0）が直接ハードウェアアクセスを備えた特権ドメインであり、ハイパーバイザーを管理する2層システムで動作します。ドメインu（domu）と呼ばれる他の仮想マシンは、ゲストオペレーティングシステムを実行し、dom0によって管理されています。
--   **仮想化の種類：**Xenは、修正されたゲストOSを必要とするParavirtualization（PV）と、ハードウェア拡張機能（Intel VT-XまたはAMD-Vなど）を使用して未修正のゲストオペレーティングシステムを実行するハードウェアアシスト仮想化（HVM）の両方をサポートします。
+-   **仮想化の種類：**Xenは、修正されたゲストOSを必要とするParavirtualization（PV）と、ハードウェアエクステンション（Intel VT-XまたはAMD-Vなど）を使用して未修正のゲストオペレーティングシステムを実行するハードウェアアシスト仮想化（HVM）の両方をサポートします。
     Xenは、特にAmazon Web Services（AWS）およびその他の大規模なクラウドプロバイダーによって、クラウド環境で広く使用されています。
 
 #### xensource
@@ -644,7 +644,7 @@ XAPIは、Xenハイパーバイザーの制御と自動化を可能にするイ�
 
 #### xenサマリー
 
--   **間散布：**コアハイパーバイザーテクノロジーでは、仮想マシンが物理ハードウェアで実行できるようにします。
+-   **間散布：**コアハイパーバイザー技術により、仮想マシンが物理ハードウェアで実行できるようにします。
 -   **Xensource：**Xenを商業化した会社は、後にCitrixに買収され、Citrix Xenserverの開発につながりました。
 -   **xenプロジェクト：**Linux Foundationの下でXenハイパーバイザーの開発と維持を続けるオープンソースのイニシアチブとコミュニティ。
 -   **xenstore：**Xen Storeは、XenハイパーバイザーとVMの間の通信および構成の仲介として機能し、仮想化された環境の動作と管理を合理化します。
@@ -826,7 +826,6 @@ xl create /etc/xen/lpic3-pv-guest.cfg
 # create DomainU virtual machine and connect to guest
 xl create -c /etc/xen/lpic3-pv-guest.cfg
 
-
 ##----------------------------------------------
 # create DomainU virtual machine HVM
 
@@ -879,9 +878,16 @@ xl block-list lpic3-pv-guest
 
 # detach block devices
 xl block-detach lpic3-hvm-guest hdc
+xl block-detach 2 xvdc
 
 # attach block devices
-xl block-attach lpic3-hvm-guest hdc
+
+## hard disk devices
+xl block-attach lpic3-hvm-guest-ubuntu 'phy:/dev/vg_xen/lpic3-hvm-guest-disk2,xvde,w'
+
+## cdrom
+xl block-attach lpic3-hvm-guest 'file:/home/vagrant/isos/ubuntu/seed.iso,xvdc:cdrom,r'
+xl block-attach 2 'file:/home/vagrant/isos/ubuntu/seed.iso,xvdc:cdrom,r'
 
 ```
 
@@ -1054,7 +1060,7 @@ foo
 -   カーネルネームスペースを理解して分析します
 -   コントロールグループを理解して分析します
 -   能力を理解して分析します
--   Understand the role of seccomp, SELinux and AppArmor for container virtualization
+-   コンテナ仮想化のためのSecComp、Selinux、Apparmorの役割を理解する
 -   LXCとDockerが名前空間、cgroups、機能、Seccomp、およびMacを活用する方法を理解する
 -   Runcの原則を理解します
 -   Cri-Oとcontainerdの原則を理解してください
