@@ -320,7 +320,7 @@ A migração de P2V refere -se ao processo de migrar um servidor físico para um
 Em outras palavras, um sistema operacional e seus aplicativos, executados em hardware físico dedicado, são "convertidos" e movidos para uma máquina virtual que é executada em um hipervisor (como VMware, Hyper-V, KVM, etc.).
 
 -   Exemplo: você tem um servidor físico executando um sistema Windows ou Linux e deseja movê -lo para um ambiente virtual, como uma infraestrutura em nuvem ou um servidor de virtualização interna.  
-    O processo envolve a cópia de todo o estado do sistema, incluindo o sistema operacional, drivers e dados, para criar uma máquina virtual equivalente que possa funcionar como se estivesse no hardware físico.
+    O processo envolve copiar todo o estado do sistema, incluindo o sistema operacional, drivers e dados, para criar uma máquina virtual equivalente que possa funcionar como se estivesse no hardware físico.
 
 ##### V2V - Migração virtual para virtual
 
@@ -415,7 +415,7 @@ Xen com convidados paravirtualizados, ferramentas VMware em determinadas configu
 #### NUMA (acesso não uniforme de memória)
 
 O NUMA (acesso não uniforme de memória) é uma arquitetura de memória usada em sistemas multiprocessadores para otimizar o acesso à memória pelos processadores.  
-Em um sistema NUMA, a memória é distribuída de maneira desigual entre os processadores, o que significa que cada processador tem um acesso mais rápido a uma parte da memória (sua "memória local") do que à memória que está fisicamente mais distante (referida como "memória remota") e associado com outros processadores.
+Em um sistema NUMA, a memória é distribuída de maneira desigual entre os processadores, o que significa que cada processador tem acesso mais rápido a uma parte da memória (sua "memória local") do que à memória que está fisicamente mais distante (referida como "memória remota") e associada a outros processadores.
 
 ##### Principais recursos da arquitetura NUMA
 
@@ -667,7 +667,7 @@ Isso resulta em menor sobrecarga e melhor eficiência em comparação com a virt
 
 #### HVM-domu (domínio da máquina virtual de hardware)
 
-O HVM-Domus são máquinas virtuais que utilizam virtualização completa, permitindo que os sistemas operacionais não modificados sejam executados. O Xen Hypervisor fornece emulação de hardware para esses domus, permitindo que eles executem qualquer sistema operacional que suporta a arquitetura de hardware subjacente.  
+O HVM-Domus são máquinas virtuais que utilizam virtualização completa, permitindo que os sistemas operacionais não modificados sejam executados. O Xen Hypervisor fornece emulação de hardware para esses Domus, permitindo que eles executem qualquer sistema operacional que suporta a arquitetura de hardware subjacente.  
 Embora isso ofereça maior flexibilidade, pode resultar em uma sobrecarga mais alta em comparação com o PV-Domus.
 
 #### Rede Xen
@@ -826,7 +826,6 @@ xl create /etc/xen/lpic3-pv-guest.cfg
 # create DomainU virtual machine and connect to guest
 xl create -c /etc/xen/lpic3-pv-guest.cfg
 
-
 ##----------------------------------------------
 # create DomainU virtual machine HVM
 
@@ -879,9 +878,16 @@ xl block-list lpic3-pv-guest
 
 # detach block devices
 xl block-detach lpic3-hvm-guest hdc
+xl block-detach 2 xvdc
 
 # attach block devices
-xl block-attach lpic3-hvm-guest hdc
+
+## hard disk devices
+xl block-attach lpic3-hvm-guest-ubuntu 'phy:/dev/vg_xen/lpic3-hvm-guest-disk2,xvde,w'
+
+## cdrom
+xl block-attach lpic3-hvm-guest 'file:/home/vagrant/isos/ubuntu/seed.iso,xvdc:cdrom,r'
+xl block-attach 2 'file:/home/vagrant/isos/ubuntu/seed.iso,xvdc:cdrom,r'
 
 ```
 
@@ -1046,7 +1052,7 @@ foo
 
 **Peso:**7
 
-**Descrição:**Os candidatos devem entender o conceito de virtualização de contêineres. Isso inclui a compreensão dos componentes do Linux usados ​​para implementar a virtualização de contêineres, bem como usar as ferramentas padrão do Linux para solucionar problemas desses componentes.
+**Descrição:**Os candidatos devem entender o conceito de virtualização de contêineres. Isso inclui a compreensão dos componentes do Linux usados ​​para implementar a virtualização de contêineres, bem como usar as ferramentas padrão do Linux para solucionar esses componentes.
 
 **Principais áreas de conhecimento:**
 
@@ -1211,7 +1217,7 @@ Dockerfile
 
 <a name="topic-353.1"></a>
 
-### 353.1 Ferramentas de gerenciamento em nuvem
+### 353.1 Ferramentas de gerenciamento de nuvem
 
 **Peso:**2
 
