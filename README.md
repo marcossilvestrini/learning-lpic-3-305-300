@@ -839,7 +839,6 @@ xl create /etc/xen/lpic3-pv-guest.cfg
 # create DomainU virtual machine and connect to guest
 xl create -c /etc/xen/lpic3-pv-guest.cfg
 
-
 ##----------------------------------------------
 # create DomainU virtual machine HVM
 
@@ -892,9 +891,16 @@ xl block-list lpic3-pv-guest
 
 # detach block devices
 xl block-detach lpic3-hvm-guest hdc
+xl block-detach 2 xvdc
 
 # attach block devices
-xl block-attach lpic3-hvm-guest hdc
+
+## hard disk devices
+xl block-attach lpic3-hvm-guest-ubuntu 'phy:/dev/vg_xen/lpic3-hvm-guest-disk2,xvde,w'
+
+## cdrom
+xl block-attach lpic3-hvm-guest 'file:/home/vagrant/isos/ubuntu/seed.iso,xvdc:cdrom,r'
+xl block-attach 2 'file:/home/vagrant/isos/ubuntu/seed.iso,xvdc:cdrom,r'
 
 ```
 
