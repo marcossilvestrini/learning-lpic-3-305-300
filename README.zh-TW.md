@@ -282,7 +282,7 @@ Migration (P2V, V2V)
 
 ###### 類型2定義
 
-Runs on top of a conventional operating system, relying on the host OS for resource management and device support.
+在常規操作系統之上運行，依靠主機OS進行資源管理和設備支持。
 
 ###### 2型特徵
 
@@ -409,13 +409,13 @@ Xen帶有paraviralizatization的來賓，某些配置中的VMware工具以及一
 
 ###### 複雜
 
--   **HVM：** Generally more straightforward to deploy since it supports unmodified OS.
+-   **HVM：**通常，由於它支持未修飾的操作系統，因此通常更直接地部署。
 -   **寄生蟲：**需要對來賓操作系統進行其他設置和修改，從而提高複雜性。
 
 #### numa（不一致的內存訪問）
 
 NUMA（非統一內存訪問）是多處理器系統中使用的內存體系結構，可通過處理器優化內存訪問。  
-在NUMA系統中，內存在處理器之間不均勻地分佈，這意味著每個處理器對內存的一部分（其“本地內存”）的訪問速度要比物理上更遠的內存（稱為“遠程存儲器”）和關聯的內存更快。與其他處理器。
+在NUMA系統中，內存在處理器之間不均勻地分佈，這意味著每個處理器對內存的一部分（其“本地存儲器”）的訪問速度要比物理更遠的內存（稱為“遠程存儲器”）並與其他處理器關聯的內存更快。
 
 ##### NUMA體系結構的關鍵特徵
 
@@ -826,7 +826,6 @@ xl create /etc/xen/lpic3-pv-guest.cfg
 # create DomainU virtual machine and connect to guest
 xl create -c /etc/xen/lpic3-pv-guest.cfg
 
-
 ##----------------------------------------------
 # create DomainU virtual machine HVM
 
@@ -879,9 +878,16 @@ xl block-list lpic3-pv-guest
 
 # detach block devices
 xl block-detach lpic3-hvm-guest hdc
+xl block-detach 2 xvdc
 
 # attach block devices
-xl block-attach lpic3-hvm-guest hdc
+
+## hard disk devices
+xl block-attach lpic3-hvm-guest-ubuntu 'phy:/dev/vg_xen/lpic3-hvm-guest-disk2,xvde,w'
+
+## cdrom
+xl block-attach lpic3-hvm-guest 'file:/home/vagrant/isos/ubuntu/seed.iso,xvdc:cdrom,r'
+xl block-attach 2 'file:/home/vagrant/isos/ubuntu/seed.iso,xvdc:cdrom,r'
 
 ```
 
@@ -899,7 +905,7 @@ xl block-attach lpic3-hvm-guest hdc
 
 **描述：**候選人應能夠安裝，配置，維護，遷移和故障排除QEMU安裝。
 
-**Key Knowledge Areas:**
+**關鍵知識領域：**
 
 -   了解QEMU的體系結構，包括KVM，網絡和存儲
 -   從命令行啟動QEMU實例
@@ -1051,7 +1057,7 @@ foo
 **關鍵知識領域：**
 
 -   了解系統和應用程序容器的概念
--   Understand and analyze kernel namespaces
+-   了解和分析內核名稱空間
 -   了解和分析對照組
 -   了解和分析功能
 -   了解seccomp，selinux和apparmor在容器虛擬化中的作用
@@ -1156,7 +1162,7 @@ foo
 -   了解和管理Docker容器的日誌記錄
 -   了解和管理Docker的網絡
 -   使用Dockerfiles創建容器圖像
--   Run a Docker registry using the registry Docker image
+-   使用註冊表Docker Image運行Docker註冊表
 
 #### 352.3引用對象
 
