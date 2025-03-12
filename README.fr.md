@@ -415,7 +415,7 @@ Xen avec des invités paravirtualisés, des outils VMware dans certaines configu
 #### NUMA (accès à la mémoire non uniforme)
 
 NUMA (Accès à la mémoire non uniforme) est une architecture de mémoire utilisée dans les systèmes multiprocesseurs pour optimiser l'accès à la mémoire par les processeurs.  
-Dans un système NUMA, la mémoire est distribuée de manière inégale entre les processeurs, ce qui signifie que chaque processeur a un accès plus rapide à une partie de la mémoire (sa "mémoire locale") qu'à la mémoire qui est physiquement plus loin (appelée "mémoire distante") et associée avec d'autres processeurs.
+Dans un système NUMA, la mémoire est distribuée de manière inégale entre les processeurs, ce qui signifie que chaque processeur a un accès plus rapide à une partie de la mémoire (sa "mémoire locale") qu'à la mémoire qui est physiquement plus loin (appelée "mémoire distante") et associée à d'autres processeurs.
 
 ##### Caractéristiques clés de l'architecture NUMA
 
@@ -670,7 +670,7 @@ Il en résulte des frais généraux plus faibles et une meilleure efficacité pa
 HVM-DOMUS sont des machines virtuelles qui utilisent une virtualisation complète, permettant aux systèmes d'exploitation non modifiés de s'exécuter. L'hyperviseur Xen fournit une émulation matérielle pour ces domus, leur permettant d'exécuter tout système d'exploitation qui prend en charge l'architecture matérielle sous-jacente.  
 Bien que cela offre une plus grande flexibilité, cela peut entraîner des frais généraux plus élevés par rapport à PV-DOMUS.
 
-#### Réseau Xen
+#### Xen Network
 
 Appareils réseau paravirtualisés![pv-networking](images/xen-networking2.png)
 
@@ -826,7 +826,6 @@ xl create /etc/xen/lpic3-pv-guest.cfg
 # create DomainU virtual machine and connect to guest
 xl create -c /etc/xen/lpic3-pv-guest.cfg
 
-
 ##----------------------------------------------
 # create DomainU virtual machine HVM
 
@@ -879,9 +878,16 @@ xl block-list lpic3-pv-guest
 
 # detach block devices
 xl block-detach lpic3-hvm-guest hdc
+xl block-detach 2 xvdc
 
 # attach block devices
-xl block-attach lpic3-hvm-guest hdc
+
+## hard disk devices
+xl block-attach lpic3-hvm-guest-ubuntu 'phy:/dev/vg_xen/lpic3-hvm-guest-disk2,xvde,w'
+
+## cdrom
+xl block-attach lpic3-hvm-guest 'file:/home/vagrant/isos/ubuntu/seed.iso,xvdc:cdrom,r'
+xl block-attach 2 'file:/home/vagrant/isos/ubuntu/seed.iso,xvdc:cdrom,r'
 
 ```
 
