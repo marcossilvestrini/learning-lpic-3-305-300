@@ -91,7 +91,7 @@
 > Al hacer esto, puede darle a toda la comunidad la oportunidad de beneficiarse de sus cambios.
 > El acceso al código fuente es una condición previa para esto. \\
 > Use Vagrant para máquinas UP y ejecute laboratorios y practique contenido en este artículo.
-> He publicado en carpeta Vagrant A Vagrant File con lo que es necesario \\
+> He publicado en carpeta Vagrant un archivo vagabundo con lo que es necesario \\
 > Para que subas un entorno para estudios
 
 * * *
@@ -431,8 +431,8 @@ En un sistema NUMA, la memoria se distribuye de manera desigual entre los proces
 ##### Desventajas
 
 -   Complejidad de programación: los programadores deben ser conscientes de qué regiones de memoria son locales o remotas, optimizando el uso de la memoria local para lograr un mejor rendimiento.
--   Potential Performance Penalties: If a processor frequently accesses remote memory, performance may suffer due to higher latency.
-    This architecture is common in high-performance multiprocessor systems, such as servers and supercomputers, where scalability and memory optimization are critical.
+-   Sanciones potenciales de rendimiento: si un procesador con frecuencia accede a la memoria remota, el rendimiento puede sufrir debido a una mayor latencia.
+    Esta arquitectura es común en los sistemas multiprocesador de alto rendimiento, como servidores y supercomputadoras, donde la escalabilidad y la optimización de la memoria son críticos.
 
 #### OpenSource Solutions
 
@@ -613,7 +613,7 @@ El proyecto XEN opera bajo la Fundación Linux, con un enfoque en la construcci�
 #### Xenstore
 
 La tienda XEN es un componente crítico del Hypervisor XEN.  
-Esencialmente, la tienda XEN es una base de datos de valor clave distribuida utilizada para la comunicación y el intercambio de información entre el Hypervisor XEN y las máquinas virtuales (también conocidas como dominios) que administra.
+Esencialmente, Xen Store es una base de datos de valor clave distribuida utilizada para la comunicación y el intercambio de información entre el Hypervisor XEN y las máquinas virtuales (también conocidas como dominios) que administra.
 
 Aquí hay algunos aspectos clave de la tienda Xen:
 
@@ -663,11 +663,11 @@ Son administrados por DOM0 y no tienen acceso directo al hardware. DOMUS se pued
 #### Peewee-Dom (Paravardiyed Domina)
 
 PV-DOMUS Utiliza una técnica llamada paravirtualización. En este modelo, el sistema operativo DOMU se modifica para tener en cuenta que se ejecuta en un entorno virtualizado, lo que le permite comunicarse directamente con el hipervisor para un rendimiento optimizado.  
-Esto da como resultado una sobrecarga más baja y una mejor eficiencia en comparación con la virtualización completa.
+This results in lower overhead and better efficiency compared to full virtualization.
 
 #### HVM-DOMU (Hardware Virtual Machine Domainu)
 
-HVM-DOMUS son máquinas virtuales que utilizan virtualización completa, lo que permite que los sistemas operativos no modificados se ejecuten. El XEN Hypervisor proporciona emulación de hardware para estos DOMUS, lo que les permite ejecutar cualquier sistema operativo que admita la arquitectura de hardware subyacente.  
+HVM-DOMUS son máquinas virtuales que utilizan virtualización completa, lo que permite que los sistemas operativos no modificados se ejecuten. El Hypervisor XEN proporciona emulación de hardware para estos DOMUS, lo que les permite ejecutar cualquier sistema operativo que admita la arquitectura de hardware subyacente.  
 Si bien esto ofrece una mayor flexibilidad, puede dar como resultado una mayor sobrecarga en comparación con PV-DOMUS.
 
 #### Red xen
@@ -826,7 +826,6 @@ xl create /etc/xen/lpic3-pv-guest.cfg
 # create DomainU virtual machine and connect to guest
 xl create -c /etc/xen/lpic3-pv-guest.cfg
 
-
 ##----------------------------------------------
 # create DomainU virtual machine HVM
 
@@ -879,9 +878,16 @@ xl block-list lpic3-pv-guest
 
 # detach block devices
 xl block-detach lpic3-hvm-guest hdc
+xl block-detach 2 xvdc
 
 # attach block devices
-xl block-attach lpic3-hvm-guest hdc
+
+## hard disk devices
+xl block-attach lpic3-hvm-guest-ubuntu 'phy:/dev/vg_xen/lpic3-hvm-guest-disk2,xvde,w'
+
+## cdrom
+xl block-attach lpic3-hvm-guest 'file:/home/vagrant/isos/ubuntu/seed.iso,xvdc:cdrom,r'
+xl block-attach 2 'file:/home/vagrant/isos/ubuntu/seed.iso,xvdc:cdrom,r'
 
 ```
 
