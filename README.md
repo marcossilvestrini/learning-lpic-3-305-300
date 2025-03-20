@@ -902,6 +902,10 @@ xl block-attach lpic3-hvm-guest-ubuntu 'phy:/dev/vg_xen/lpic3-hvm-guest-disk2,xv
 xl block-attach lpic3-hvm-guest 'file:/home/vagrant/isos/ubuntu/seed.iso,xvdc:cdrom,r'
 xl block-attach 2 'file:/home/vagrant/isos/ubuntu/seed.iso,xvdc:cdrom,r'
 
+# insert and eject cdrom devices
+xl cd-insert lpic3-hvm-guest-ubuntu xvdb  /home/vagrant/isos/ubuntu/ubuntu-24.04.1-live-server-amd64.iso
+xl cd-eject lpic3-hvm-guest-ubuntu xvdb
+
 ```
 
 <p align="right">(<a href="#topic-351.2">back to sub Topic 351.2</a>)</p>
@@ -913,6 +917,8 @@ xl block-attach 2 'file:/home/vagrant/isos/ubuntu/seed.iso,xvdc:cdrom,r'
 <a name="topic-351.3"></a>
 
 ### 351.3 QEMU
+
+![xen-kvm-qemu](/images/xen-kvm-qemu.png)
 
 **Weight:** 4
 
@@ -1502,9 +1508,6 @@ Project Link: [https://github.com/marcossilvestrini/learning-lpic-3-305-300](htt
   * [AWS](https://aws.amazon.com/pt/what-is/virtualization/)
   * [IBM](https://www.ibm.com/topics/virtualization)
   * [OpenSource.com](https://opensource.com/resources/virtualization )
-* [KVM]() 
-  * [KVM(Kernel Virtual Machines)](https://www.redhat.com/pt-br/topics/virtualization/what-is-KVM)
-  * [KVM Management Tools](https://www.linux-kvm.org/page/Management_Tools)
 * [Xen]()
   * [XenServer](https://www.xenserver.com/)
   * [Wiki XenProject](https://wiki.xenproject.org/wiki/Main_Page)
@@ -1521,6 +1524,12 @@ Project Link: [https://github.com/marcossilvestrini/learning-lpic-3-305-300](htt
   * [MirageOS](https://mirage.io/docs/hello-world)
   * [HaLVM](https://galois.com/project/halvm/)
   * [Unik](https://github.com/solo-io/unik/blob/master/docs/providers/virtualbox.md)
+* [KVM]() 
+  * [Oficial Doc](https://linux-kvm.org/page/Main_Page) 
+  * [KVM(Kernel Virtual Machines by RedHat)](https://www.redhat.com/pt-br/topics/virtualization/what-is-KVM)
+  * [KVM Management Tools](https://www.linux-kvm.org/page/Management_Tools)
+* [QEMU]()
+  * [Oficial Doc](https://www.qemu.org/)
 * [Openstack Docs]()
   * [RedHat](https://www.redhat.com/pt-br/topics/openstack)
 * [Open vSwitch]()
