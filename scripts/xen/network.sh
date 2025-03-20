@@ -7,11 +7,14 @@
     Date: 09/01/2025
 MULTILINE-COMMENT
 
+# Set language/locale and encoding
+export LANG=C
+
 # Configure  eth1 routes permanently
-cp -f configs/network/configure-network-instance2.service  /etc/systemd/system/configure-network.service
+cp -f configs/xen/network/configure-network.service  /etc/systemd/system
 systemctl daemon-reload
 systemctl enable configure-network.service
 systemctl start configure-network.service
 
 # Create xen bridge network
-cp -f configs/network/xenbr0-instance2  /etc/network/interfaces.d/xenbr0
+cp -f configs/xen/network/xenbr0  /etc/network/interfaces.d
