@@ -889,6 +889,10 @@ xl block-attach lpic3-hvm-guest-ubuntu 'phy:/dev/vg_xen/lpic3-hvm-guest-disk2,xv
 xl block-attach lpic3-hvm-guest 'file:/home/vagrant/isos/ubuntu/seed.iso,xvdc:cdrom,r'
 xl block-attach 2 'file:/home/vagrant/isos/ubuntu/seed.iso,xvdc:cdrom,r'
 
+# insert and eject cdrom devices
+xl cd-insert lpic3-hvm-guest-ubuntu xvdb  /home/vagrant/isos/ubuntu/ubuntu-24.04.1-live-server-amd64.iso
+xl cd-eject lpic3-hvm-guest-ubuntu xvdb
+
 ```
 
 <p align="right">(<a href="#topic-351.2">back to sub Topic 351.2</a>)</p>
@@ -900,6 +904,8 @@ xl block-attach 2 'file:/home/vagrant/isos/ubuntu/seed.iso,xvdc:cdrom,r'
 <a name="topic-351.3"></a>
 
 ### 351.3 QEMU
+
+![xen-kvm-qemu](/images/xen-kvm-qemu.png)
 
 **重さ：**4
 
@@ -1487,9 +1493,6 @@ Vagrantfile
     -   [aws](https://aws.amazon.com/pt/what-is/virtualization/)
     -   [IBM](https://www.ibm.com/topics/virtualization)
     -   [OpenSource.com](https://opensource.com/resources/virtualization)
--   [KVM](<>)
-    -   [KVM（カーネル仮想マシン）](https://www.redhat.com/pt-br/topics/virtualization/what-is-KVM)
-    -   [KVM管理ツール](https://www.linux-kvm.org/page/Management_Tools)
 -   [代替](<>)
     -   [XenServer](https://www.xenserver.com/)
     -   [wiki xenproject](https://wiki.xenproject.org/wiki/Main_Page)
@@ -1506,6 +1509,12 @@ Vagrantfile
     -   [ミラゴス](https://mirage.io/docs/hello-world)
     -   [悪い](https://galois.com/project/halvm/)
     -   [個性的](https://github.com/solo-io/unik/blob/master/docs/providers/virtualbox.md)
+-   [KVM](<>)
+    -   [役員文書](https://linux-kvm.org/page/Main_Page)
+    -   [KVM（Redhatによるカーネル仮想マシン）](https://www.redhat.com/pt-br/topics/virtualization/what-is-KVM)
+    -   [KVM管理ツール](https://www.linux-kvm.org/page/Management_Tools)
+-   [qemu](<>)
+    -   [役員文書](https://www.qemu.org/)
 -   [OpenStackドキュメント](<>)
     -   [redhat](https://www.redhat.com/pt-br/topics/openstack)
 -   [vswitchを開きます](<>)
