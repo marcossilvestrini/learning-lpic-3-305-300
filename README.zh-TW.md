@@ -194,10 +194,10 @@ vagrant/destroy.ps1
 
 ## 四個基本自由
 
-> 0.出於任何目的，按照您希望運行該程序的自由（自由0）。\\ \\
+> 0.出於任何目的，按照您希望運行該程序的自由（自由0）。 \\ \\
 > 1.研究程序的工作方式並更改它的自由
-> 您希望的計算（自由1）。\\
-> 訪問源代碼是此的先決條件。\\ \\
+> 您希望的計算（自由1）。 \\
+> 訪問源代碼是此的先決條件。 \\ \\
 > 2.重新分配副本的自由，以便您可以幫助他人（自由2）。
 > 3\. freedom將修改後版本的副本分發給他人（Freedom 3）。
 
@@ -640,7 +640,7 @@ XAPI是Xenserver（現稱為Citrix Hypervisor）的關鍵組成部分，並提�
 
 -   **訪問控制：**XAPI還提供訪問控制機制，以確保只有授權用戶才能在虛擬環境中執行特定操作。
 
-XAPI是可以控制和自動化XEN虛擬機程序的接口，使管理虛擬化環境變得更容易。
+XAPI是可以控制和自動化XEN管理程序的接口，使管理虛擬化環境更容易。
 
 #### Xen摘要
 
@@ -889,6 +889,10 @@ xl block-attach lpic3-hvm-guest-ubuntu 'phy:/dev/vg_xen/lpic3-hvm-guest-disk2,xv
 xl block-attach lpic3-hvm-guest 'file:/home/vagrant/isos/ubuntu/seed.iso,xvdc:cdrom,r'
 xl block-attach 2 'file:/home/vagrant/isos/ubuntu/seed.iso,xvdc:cdrom,r'
 
+# insert and eject cdrom devices
+xl cd-insert lpic3-hvm-guest-ubuntu xvdb  /home/vagrant/isos/ubuntu/ubuntu-24.04.1-live-server-amd64.iso
+xl cd-eject lpic3-hvm-guest-ubuntu xvdb
+
 ```
 
 <p align="right">(<a href="#topic-351.2">back to sub Topic 351.2</a>)</p>
@@ -900,6 +904,8 @@ xl block-attach 2 'file:/home/vagrant/isos/ubuntu/seed.iso,xvdc:cdrom,r'
 <a name="topic-351.3"></a>
 
 ### 351.3 Qemu
+
+![xen-kvm-qemu](/images/xen-kvm-qemu.png)
 
 **重量：**4
 
@@ -1487,9 +1493,6 @@ Marcos Silvestrini-[marcos.silvestrini@gmail.com](mailto:marcos.silvestrini@gmai
     -   [AWS](https://aws.amazon.com/pt/what-is/virtualization/)
     -   [IBM](https://www.ibm.com/topics/virtualization)
     -   [OpenSource.com](https://opensource.com/resources/virtualization)
--   [KVM](<>)
-    -   [KVM（內核虛擬機）](https://www.redhat.com/pt-br/topics/virtualization/what-is-KVM)
-    -   [KVM管理工具](https://www.linux-kvm.org/page/Management_Tools)
 -   [備用](<>)
     -   [Xenserver](https://www.xenserver.com/)
     -   [Wiki Xenproject](https://wiki.xenproject.org/wiki/Main_Page)
@@ -1506,6 +1509,12 @@ Marcos Silvestrini-[marcos.silvestrini@gmail.com](mailto:marcos.silvestrini@gmai
     -   [Mirageos](https://mirage.io/docs/hello-world)
     -   [壞的](https://galois.com/project/halvm/)
     -   [獨特的](https://github.com/solo-io/unik/blob/master/docs/providers/virtualbox.md)
+-   [KVM](<>)
+    -   [軍官文檔](https://linux-kvm.org/page/Main_Page)
+    -   [KVM（redhat的內核虛擬機）](https://www.redhat.com/pt-br/topics/virtualization/what-is-KVM)
+    -   [KVM管理工具](https://www.linux-kvm.org/page/Management_Tools)
+-   [Qemu](<>)
+    -   [軍官文檔](https://www.qemu.org/)
 -   [OpenStack文檔](<>)
     -   [redhat](https://www.redhat.com/pt-br/topics/openstack)
 -   [開放的VSWITCH](<>)
