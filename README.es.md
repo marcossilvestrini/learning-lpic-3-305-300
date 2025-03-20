@@ -663,7 +663,7 @@ Son administrados por DOM0 y no tienen acceso directo al hardware. DOMUS se pued
 #### Peewee-Dom (Paravardiyed Domina)
 
 PV-DOMUS Utiliza una técnica llamada paravirtualización. En este modelo, el sistema operativo DOMU se modifica para tener en cuenta que se ejecuta en un entorno virtualizado, lo que le permite comunicarse directamente con el hipervisor para un rendimiento optimizado.  
-This results in lower overhead and better efficiency compared to full virtualization.
+Esto da como resultado una sobrecarga más baja y una mejor eficiencia en comparación con la virtualización completa.
 
 #### HVM-DOMU (Hardware Virtual Machine Domainu)
 
@@ -889,6 +889,10 @@ xl block-attach lpic3-hvm-guest-ubuntu 'phy:/dev/vg_xen/lpic3-hvm-guest-disk2,xv
 xl block-attach lpic3-hvm-guest 'file:/home/vagrant/isos/ubuntu/seed.iso,xvdc:cdrom,r'
 xl block-attach 2 'file:/home/vagrant/isos/ubuntu/seed.iso,xvdc:cdrom,r'
 
+# insert and eject cdrom devices
+xl cd-insert lpic3-hvm-guest-ubuntu xvdb  /home/vagrant/isos/ubuntu/ubuntu-24.04.1-live-server-amd64.iso
+xl cd-eject lpic3-hvm-guest-ubuntu xvdb
+
 ```
 
 <p align="right">(<a href="#topic-351.2">back to sub Topic 351.2</a>)</p>
@@ -900,6 +904,8 @@ xl block-attach 2 'file:/home/vagrant/isos/ubuntu/seed.iso,xvdc:cdrom,r'
 <a name="topic-351.3"></a>
 
 ### 351.3 QEMU
+
+![xen-kvm-qemu](/images/xen-kvm-qemu.png)
 
 **Peso:**4
 
@@ -1337,7 +1343,7 @@ user-data
 
 -   Comprender la arquitectura y los conceptos vagabundos, incluido el almacenamiento y las redes
 -   Recuperar y usar cajas de Atlas
--   Crear y ejecutar a Vagrantfiles
+-   Create and run Vagrantfiles
 -   Acceder a máquinas virtuales vagabundas
 -   Compartir y sincronizar la carpeta entre una máquina virtual vagabunda y el sistema de host
 -   Comprender el aprovisionamiento vagabundo, es decir, los proveedores de archivos y shell
@@ -1487,9 +1493,6 @@ Enlace del proyecto:<https://github.com/marcossilvestrini/learning-lpic-3-305-30
     -   [AWS](https://aws.amazon.com/pt/what-is/virtualization/)
     -   [IBM](https://www.ibm.com/topics/virtualization)
     -   [OpenSource.com](https://opensource.com/resources/virtualization)
--   [KVM](<>)
-    -   [KVM (máquinas virtuales del núcleo)](https://www.redhat.com/pt-br/topics/virtualization/what-is-KVM)
-    -   [Herramientas de gestión de KVM](https://www.linux-kvm.org/page/Management_Tools)
 -   [Alternar](<>)
     -   [Xenserver](https://www.xenserver.com/)
     -   [Wiki xenproject](https://wiki.xenproject.org/wiki/Main_Page)
@@ -1506,6 +1509,12 @@ Enlace del proyecto:<https://github.com/marcossilvestrini/learning-lpic-3-305-30
     -   [MirageOS](https://mirage.io/docs/hello-world)
     -   [Malo](https://galois.com/project/halvm/)
     -   [Único](https://github.com/solo-io/unik/blob/master/docs/providers/virtualbox.md)
+-   [KVM](<>)
+    -   [Oficial Doc](https://linux-kvm.org/page/Main_Page)
+    -   [KVM (máquinas virtuales del núcleo de Redhat)](https://www.redhat.com/pt-br/topics/virtualization/what-is-KVM)
+    -   [Herramientas de gestión de KVM](https://www.linux-kvm.org/page/Management_Tools)
+-   [QEMU](<>)
+    -   [Oficial Doc](https://www.qemu.org/)
 -   [OpenStack Docs](<>)
     -   [Redhat](https://www.redhat.com/pt-br/topics/openstack)
 -   [Abrir vswitch](<>)
