@@ -300,7 +300,7 @@ Executa em cima de um sistema operacional convencional, contando com o sistema o
 ##### Diferenças -chave entre os hipervisores do tipo 1 e do tipo 2
 
 -   Ambiente de implantação:
-    -   Os hipervisores tipo 1 são comumente implantados em data centers e ambientes corporativos devido à sua interação direta com hardware e alto desempenho.
+    -   Os hipervisores do tipo 1 são comumente implantados em data centers e ambientes corporativos devido à sua interação direta com hardware e alto desempenho.
     -   Os hipervisores do tipo 2 são mais adequados para tarefas de uso pessoal, desenvolvimento, teste e virtualização em pequena escala.
 -   Desempenho:
     -   Os hipervisores do tipo 1 geralmente oferecem melhor desempenho e menor latência porque não confiam em um sistema operacional host.
@@ -365,7 +365,7 @@ VMware Esxi, Microsoft Hyper-V, KVM (máquina virtual baseada em kernel).
 
 A paravirtualização envolve a modificação do sistema operacional convidado para estar ciente do ambiente virtual, permitindo que ele interaja com mais eficiência com o hipervisor.
 
-###### Características -chave da paravirtualização
+###### Paravirtualization Key Characteristics
 
 -   **Modificação de convidados:**Requer alterações no sistema operacional convidado para se comunicar diretamente com o hipervisor usando hipercalls.
 -   **Desempenho:**Pode ser mais eficiente que a virtualização completa tradicional, pois reduz a sobrecarga associada ao hardware emulando.
@@ -889,6 +889,10 @@ xl block-attach lpic3-hvm-guest-ubuntu 'phy:/dev/vg_xen/lpic3-hvm-guest-disk2,xv
 xl block-attach lpic3-hvm-guest 'file:/home/vagrant/isos/ubuntu/seed.iso,xvdc:cdrom,r'
 xl block-attach 2 'file:/home/vagrant/isos/ubuntu/seed.iso,xvdc:cdrom,r'
 
+# insert and eject cdrom devices
+xl cd-insert lpic3-hvm-guest-ubuntu xvdb  /home/vagrant/isos/ubuntu/ubuntu-24.04.1-live-server-amd64.iso
+xl cd-eject lpic3-hvm-guest-ubuntu xvdb
+
 ```
 
 <p align="right">(<a href="#topic-351.2">back to sub Topic 351.2</a>)</p>
@@ -900,6 +904,8 @@ xl block-attach 2 'file:/home/vagrant/isos/ubuntu/seed.iso,xvdc:cdrom,r'
 <a name="topic-351.3"></a>
 
 ### 351.3 Qemu
+
+![xen-kvm-qemu](/images/xen-kvm-qemu.png)
 
 **Peso:**4
 
@@ -1487,9 +1493,6 @@ Link do projeto:<https://github.com/marcossilvestrini/learning-lpic-3-305-300>
     -   [AWS](https://aws.amazon.com/pt/what-is/virtualization/)
     -   [IBM](https://www.ibm.com/topics/virtualization)
     -   [OpenSource.com](https://opensource.com/resources/virtualization)
--   [KVM](<>)
-    -   [KVM (máquinas virtuais do kernel)](https://www.redhat.com/pt-br/topics/virtualization/what-is-KVM)
-    -   [Ferramentas de gerenciamento da KVM](https://www.linux-kvm.org/page/Management_Tools)
 -   [Alternar](<>)
     -   [Xenserver](https://www.xenserver.com/)
     -   [Wiki XenProject](https://wiki.xenproject.org/wiki/Main_Page)
@@ -1506,6 +1509,12 @@ Link do projeto:<https://github.com/marcossilvestrini/learning-lpic-3-305-300>
     -   [Mirageos](https://mirage.io/docs/hello-world)
     -   [Ruim](https://galois.com/project/halvm/)
     -   [Exclusivo](https://github.com/solo-io/unik/blob/master/docs/providers/virtualbox.md)
+-   [KVM](<>)
+    -   [Oficial Doc](https://linux-kvm.org/page/Main_Page)
+    -   [KVM (máquinas virtuais do kernel por redhat)](https://www.redhat.com/pt-br/topics/virtualization/what-is-KVM)
+    -   [Ferramentas de gerenciamento da KVM](https://www.linux-kvm.org/page/Management_Tools)
+-   [Qemu](<>)
+    -   [Oficial Doc](https://www.qemu.org/)
 -   [OpenStack Docs](<>)
     -   [Redhat](https://www.redhat.com/pt-br/topics/openstack)
 -   [Aberto vswitch](<>)
