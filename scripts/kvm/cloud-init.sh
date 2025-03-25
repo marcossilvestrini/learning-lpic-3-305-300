@@ -25,6 +25,8 @@ if echo "$RELEASE_INFO" | grep -q -i "debian\|ubuntu"; then
     dos2unix \
     lvm2 \
     tree whois \
+    xfce4 xfce4-goodies \
+    tightvncserver dbus-x11 \
     bridge-utils
     
     # Configure profile
@@ -36,6 +38,21 @@ if echo "$RELEASE_INFO" | grep -q -i "debian\|ubuntu"; then
     # Configure vim
     sudo cp -f configs/commons/.vimrc  .vimrc
     sudo cp -f configs/commons/.vimrc  /root/.vimrc
+
+    # Configure vnc        
+    touch .Xresources  
+    PASSWORD="vagrant"
+    mkdir -p .vnc
+    echo -e "$PASSWORD\n$PASSWORD" | vncpasswd -f > ~/.vnc/passwd
+    chmod 600 ~/.vnc/passwd
+    vncserver 
+    vncserver -kill :1
+    killall Xtightvnc  > /dev/null 2>&1      
+    sudo cp configs/vnc/vncserver@.service /etc/systemd/system/vncserver@:1.service
+    sudo systemctl daemon-reload
+    sudo systemctl enable vncserver@:1.service
+    sudo systemctl start vncserver@:1.service
+
         
     # Oracle Linux
 elif echo "$RELEASE_INFO" | grep -q -i "oracle"; then
