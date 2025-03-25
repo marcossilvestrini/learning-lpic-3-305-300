@@ -421,7 +421,7 @@ NUMA (الوصول إلى الذاكرة غير الموحدة) هي بنية ذ
 
 1.  **ذاكرة محلية ونائية**: كل ​​معالج لديه ذاكرته المحلية الخاصة ، والتي يمكن أن يصل بسرعة أكبر. ومع ذلك ، يمكن أيضًا الوصول إلى ذكرى المعالجات الأخرى ، على الرغم من أن هذا يستغرق وقتًا أطول.
 2.  **الكمون المتمايز**: يختلف زمن الوصول للوصول إلى الذاكرة اعتمادًا على ما إذا كان المعالج يصل إلى ذاكرته المحلية أو ذاكرة عقدة أخرى. يكون الوصول إلى الذاكرة المحلي أسرع ، في حين أن الوصول إلى ذاكرة عقدة أخرى (Remote) أبطأ.
-3.  **قابلية التوسع**: تم تصميم Architecture NUMA لتحسين قابلية التوسع في الأنظمة مع العديد من المعالجات. عند إضافة المزيد من المعالجات ، يتم توزيع الذاكرة أيضًا ، وتجنب عنق الزجاجة الذي سيحدث في بنية وصول للذاكرة موحدة (UMA).
+3.  **قابلية التوسع**: تم تصميم Architecture NUMA لتحسين قابلية التوسع في الأنظمة مع العديد من المعالجات. مع إضافة المزيد من المعالجات ، يتم توزيع الذاكرة أيضًا ، وتجنب عنق الزجاجة الذي سيحدث في بنية الوصول الموحد للذاكرة (UMA).
 
 ##### مزايا NUMA
 
@@ -940,6 +940,22 @@ tunctl
 ```sh
 # list links
 ip link show
+
+# check if kvm is enabled
+egrep -o '(vmx|svm)' /proc/cpuinfo
+lscpu |grep Virtualization
+lsmod|grep kvm
+ls -l /dev/kvm
+```
+
+##### تحقق من وحدة KVM
+
+```sh
+# check if kvm is enabled
+egrep -o '(vmx|svm)' /proc/cpuinfo
+lscpu |grep Virtualization
+lsmod|grep kvm
+ls -l /dev/kvm
 ```
 
 <p align="right">(<a href="#topic-351.3">back to sub Topic 351.3</a>)</p>
@@ -1515,6 +1531,7 @@ Vagrantfile
     -   [أدوات إدارة KVM](https://www.linux-kvm.org/page/Management_Tools)
 -   [Qemu](<>)
     -   [موظف الضابط](https://www.qemu.org/)
+    -   [قم بتنزيل الصور](https://www.osboxes.org/)
 -   [مستندات OpenStack](<>)
     -   [ريدهات](https://www.redhat.com/pt-br/topics/openstack)
 -   [فتح vswitch](<>)
