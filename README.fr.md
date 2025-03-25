@@ -478,7 +478,7 @@ Docker, Kubernetes, LXC.
 
 ###### Définition de virtualisation du réseau
 
-Combine les ressources matérielles et réseau logicielles dans une seule entité administrative basée sur un logiciel.
+Combine des ressources matérielles et réseau logicielles dans une seule entité administrative basée sur un logiciel.
 
 ###### Cas d'utilisation de la virtualisation du réseau
 
@@ -940,6 +940,22 @@ tunctl
 ```sh
 # list links
 ip link show
+
+# check if kvm is enabled
+egrep -o '(vmx|svm)' /proc/cpuinfo
+lscpu |grep Virtualization
+lsmod|grep kvm
+ls -l /dev/kvm
+```
+
+##### Vérifiez le module KVM
+
+```sh
+# check if kvm is enabled
+egrep -o '(vmx|svm)' /proc/cpuinfo
+lscpu |grep Virtualization
+lsmod|grep kvm
+ls -l /dev/kvm
 ```
 
 <p align="right">(<a href="#topic-351.3">back to sub Topic 351.3</a>)</p>
@@ -1515,6 +1531,7 @@ Lien du projet:<https://github.com/marcossilvestrini/learning-lpic-3-305-300>
     -   [Outils de gestion KVM](https://www.linux-kvm.org/page/Management_Tools)
 -   [Qemu](<>)
     -   [Officier Doc](https://www.qemu.org/)
+    -   [Télécharger des images](https://www.osboxes.org/)
 -   [Docs OpenStack](<>)
     -   [Redhat](https://www.redhat.com/pt-br/topics/openstack)
 -   [VSWitch ouvert](<>)
