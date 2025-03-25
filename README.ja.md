@@ -299,7 +299,7 @@ Migration (P2V, V2V)
 
 ##### タイプ1とタイプ2のハイパーバイザーの主な違い
 
--   展開環境：
+-   Deployment Environment:
     -   タイプ1のハイパーバイザーは、ハードウェアとの直接的な相互作用と高性能のため、一般にデータセンターとエンタープライズ環境に展開されます。
     -   タイプ2のハイパーバイザーは、個人使用、開発、テスト、および小規模な仮想化タスクにより適しています。
 -   パフォーマンス：
@@ -940,6 +940,22 @@ tunctl
 ```sh
 # list links
 ip link show
+
+# check if kvm is enabled
+egrep -o '(vmx|svm)' /proc/cpuinfo
+lscpu |grep Virtualization
+lsmod|grep kvm
+ls -l /dev/kvm
+```
+
+##### KVMモジュールを確認してください
+
+```sh
+# check if kvm is enabled
+egrep -o '(vmx|svm)' /proc/cpuinfo
+lscpu |grep Virtualization
+lsmod|grep kvm
+ls -l /dev/kvm
 ```
 
 <p align="right">(<a href="#topic-351.3">back to sub Topic 351.3</a>)</p>
@@ -1337,7 +1353,7 @@ user-data
 
 **重さ：**3
 
-**説明：**候補者は、仮想マシンのプロビジョニングなど、仮想マシンを管理するためにVagrantを使用できる必要があります。
+**説明：** Candidate should be able to use Vagrant to manage virtual machines, including provisioning of the virtual machine.
 
 **重要な知識領域：**
 
@@ -1515,6 +1531,7 @@ Vagrantfile
     -   [KVM管理ツール](https://www.linux-kvm.org/page/Management_Tools)
 -   [qemu](<>)
     -   [役員文書](https://www.qemu.org/)
+    -   [画像をダウンロードします](https://www.osboxes.org/)
 -   [OpenStackドキュメント](<>)
     -   [redhat](https://www.redhat.com/pt-br/topics/openstack)
 -   [vswitchを開きます](<>)
