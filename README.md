@@ -953,6 +953,22 @@ tunctl
 ```sh
 # list links
 ip link show
+
+# check if kvm is enabled
+egrep -o '(vmx|svm)' /proc/cpuinfo
+lscpu |grep Virtualization
+lsmod|grep kvm
+ls -l /dev/kvm
+```
+
+##### check kvm module
+
+```sh
+# check if kvm is enabled
+egrep -o '(vmx|svm)' /proc/cpuinfo
+lscpu |grep Virtualization
+lsmod|grep kvm
+ls -l /dev/kvm
 ```
 
 <p align="right">(<a href="#topic-351.3">back to sub Topic 351.3</a>)</p>
@@ -1530,6 +1546,7 @@ Project Link: [https://github.com/marcossilvestrini/learning-lpic-3-305-300](htt
   * [KVM Management Tools](https://www.linux-kvm.org/page/Management_Tools)
 * [QEMU]()
   * [Oficial Doc](https://www.qemu.org/)
+  * [Download Images](https://www.osboxes.org/)
 * [Openstack Docs]()
   * [RedHat](https://www.redhat.com/pt-br/topics/openstack)
 * [Open vSwitch]()

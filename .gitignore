@@ -31,5 +31,10 @@ Slack/silvestrini.py
 *.iso
 *.fuse_*
 
+# kvm \ qemu
+qemu-images/*.vmdk
+qemu-images/*.vdi
+qemu-images/*.qcow2
+
 # vscode
 .vscode/
