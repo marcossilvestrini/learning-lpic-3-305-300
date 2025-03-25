@@ -940,6 +940,22 @@ tunctl
 ```sh
 # list links
 ip link show
+
+# check if kvm is enabled
+egrep -o '(vmx|svm)' /proc/cpuinfo
+lscpu |grep Virtualization
+lsmod|grep kvm
+ls -l /dev/kvm
+```
+
+##### Verifique el módulo KVM
+
+```sh
+# check if kvm is enabled
+egrep -o '(vmx|svm)' /proc/cpuinfo
+lscpu |grep Virtualization
+lsmod|grep kvm
+ls -l /dev/kvm
 ```
 
 <p align="right">(<a href="#topic-351.3">back to sub Topic 351.3</a>)</p>
@@ -1343,7 +1359,7 @@ user-data
 
 -   Comprender la arquitectura y los conceptos vagabundos, incluido el almacenamiento y las redes
 -   Recuperar y usar cajas de Atlas
--   Create and run Vagrantfiles
+-   Crear y ejecutar a Vagrantfiles
 -   Acceder a máquinas virtuales vagabundas
 -   Compartir y sincronizar la carpeta entre una máquina virtual vagabunda y el sistema de host
 -   Comprender el aprovisionamiento vagabundo, es decir, los proveedores de archivos y shell
@@ -1515,6 +1531,7 @@ Enlace del proyecto:<https://github.com/marcossilvestrini/learning-lpic-3-305-30
     -   [Herramientas de gestión de KVM](https://www.linux-kvm.org/page/Management_Tools)
 -   [QEMU](<>)
     -   [Oficial Doc](https://www.qemu.org/)
+    -   [Descargar imágenes](https://www.osboxes.org/)
 -   [OpenStack Docs](<>)
     -   [Redhat](https://www.redhat.com/pt-br/topics/openstack)
 -   [Abrir vswitch](<>)
