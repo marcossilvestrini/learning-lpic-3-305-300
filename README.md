@@ -953,12 +953,27 @@ tunctl
 ```sh
 # list links
 ip link show
+```
 
+#### 351.3 Others Commands
+
+```sh
 # check if kvm is enabled
 egrep -o '(vmx|svm)' /proc/cpuinfo
 lscpu |grep Virtualization
 lsmod|grep kvm
 ls -l /dev/kvm
+
+# check kernel infos
+uname -a
+
+# check root device
+findmnt /
+
+# mount a qcow2 image
+mkdir -p /mnt/qemu
+guestmount -a os-images/Debian_12.0.0_VMM/Debian_12.0.0.qcow2 -i /mnt/qemu/
+
 ```
 
 ##### check kvm module
@@ -969,6 +984,108 @@ egrep -o '(vmx|svm)' /proc/cpuinfo
 lscpu |grep Virtualization
 lsmod|grep kvm
 ls -l /dev/kvm
+hostnamectl
+systemd-detect-virt
+```
+
+##### qemu-img
+
+```sh
+# create image
+qemu-img create -f qcow2 vm-disk-debian-12.qcow2 20G
+
+# convert vmdk to qcow2 image
+qemu-img convert \
+  -f vmdk \
+  -O qcow2 os-images/Debian_12.0.0_VMM/Debian_12.0.0_VMM_LinuxVMImages.COM.vmdk os-images/Debian_12.0.0_VMM/Debian_12.0.0.qcow2 \
+  -p -m16
+
+# check image
+qemu-img info os-images/Debian_12.0.0_VMM/Debian_12.0.0.qcow2
+
+```
+
+##### qemu-system-x86_64
+
+```sh
+# create vm with ISO
+qemu-system-x86_64 \
+  -name lpic3-debian-12 \
+  -enable-kvm -hda vm-disk-debian-12.qcow2 \
+  -cdrom /home/vagrant/isos/debian/debian-12.8.0-amd64-DVD-1.iso  \
+  -boot d \
+  -m 2048 \
+  -smp cpus=2 \
+  -k pt-br
+
+# create vm with ISO using vnc in no gui servers \ ssh connections
+
+## create ssh tunel in host
+ ssh -l vagrant -L 5902:localhost:5902  192.168.0.131
+
+## create vm 
+qemu-system-x86_64 \
+  -name lpic3-debian-12 \
+  -enable-kvm \
+  -m 2048 \
+  -smp cpus=2 \
+  -k pt-br \
+  -vnc :2 \
+  -device qemu-xhci \
+  -device usb-tablet \
+  -device ide-cd,bus=ide.1,drive=cdrom,bootindex=1 \
+  -drive id=cdrom,media=cdrom,if=none,file=/home/vagrant/isos/debian/debian-12.8.0-amd64-DVD-1.iso \
+  -hda vm-disk-debian-12.qcow2 \
+  -boot order=d \
+  -vga std \
+  -display none \
+  -monitor stdio
+
+## view vm status
+info block # block info
+info status # vm info
+system_reset # restart monitor
+boot_set d # force boot iso
+
+# create vm with OS Image - qcow2
+
+## create vm
+qemu-system-x86_64 \
+  -name lpic3-debian-12 \
+  -enable-kvm \
+  -m 2048 \
+  -smp cpus=2 \
+  -k pt-br \
+  -vnc :2 \
+  -device qemu-xhci \
+  -device usb-tablet \
+  -hda os-images/Debian_12.0.0_VMM/Debian_12.0.0.qcow2 \
+  -netdev bridge,id=net0,br=qemubr0 \
+  -device virtio-net-pci,netdev=net0 \
+  -vga std \
+  -display none
+
+## get a ipv4 ip - open ssh in vm and:
+dhcpclient ens4
+
+## create vm with custom kernel params
+qemu-system-x86_64 \
+  -name lpic3-debian-12 \
+  -kernel /vmlinuz \
+  -initrd /initrd.img \
+  -append "root=/dev/mapper/debian--vg-root ro fastboot console=ttyS0" \
+  -enable-kvm \
+  -m 2048 \
+  -smp cpus=2 \
+  -k pt-br \
+  -vnc :2 \
+  -device qemu-xhci \
+  -device usb-tablet \
+  -hda os-images/Debian_12.0.0_VMM/Debian_12.0.0.qcow2 \
+  -netdev bridge,id=net0,br=qemubr0 \
+  -device virtio-net-pci,netdev=net0 \
+  -vga std \
+  -display none
 ```
 
 <p align="right">(<a href="#topic-351.3">back to sub Topic 351.3</a>)</p>
@@ -1546,7 +1663,8 @@ Project Link: [https://github.com/marcossilvestrini/learning-lpic-3-305-300](htt
   * [KVM Management Tools](https://www.linux-kvm.org/page/Management_Tools)
 * [QEMU]()
   * [Oficial Doc](https://www.qemu.org/)
-  * [Download Images](https://www.osboxes.org/)
+  * [Download Images osboxes](https://www.osboxes.org/)
+  * [Download Images linuximages](https://www.linuxvmimages.com/)
 * [Openstack Docs]()
   * [RedHat](https://www.redhat.com/pt-br/topics/openstack)
 * [Open vSwitch]()

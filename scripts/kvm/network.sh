@@ -8,9 +8,8 @@
 MULTILINE-COMMENT
 
 # Configure  eth1 routes permanently
-cp -f configs/kvm/configure-network.service  /etc/systemd/system
+cp -f configs/kvm/network/configure-network.service  /etc/systemd/system
 systemctl daemon-reload
 systemctl enable configure-network.service
 systemctl start configure-network.service
-
 

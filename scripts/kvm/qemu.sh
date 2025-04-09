@@ -14,4 +14,11 @@ export LANG=C
 cd /home/vagrant || exit
 
 # Install qemu
-sudo apt install qemu-system-x86 -y
+apt update -y
+apt install qemu-system-x86 -y
+
+# Configure network bridge
+cp -f configs/kvm/network/qemubr0 /etc/network/interfaces.d/
+mkdir -p /etc/qemu
+echo "allow qemubr0" | sudo tee /etc/qemu/bridge.conf
+chmod u+s /usr/lib/qemu/qemu-bridge-helper

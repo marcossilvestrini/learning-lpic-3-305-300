@@ -21,48 +21,49 @@ if echo "$RELEASE_INFO" | grep -q -i "debian\|ubuntu"; then
     echo "This is a Debian or Ubuntu-based distribution."
     ## Install packages
     sudo apt update -y
-    sudo apt install -y  \
+    sudo apt install -y \
     dos2unix \
     lvm2 \
     tree whois \
     xfce4 xfce4-goodies \
     tightvncserver dbus-x11 \
-    bridge-utils
+    bridge-utils \
+    guestmount
+
     
     # Configure profile
-    sudo cp -f configs/commons/.bashrc_debian  .bashrc
-    sudo cp -f configs/commons/.bashrc_debian  /root/.bashrc
-    sudo cp -f configs/commons/profile_debian  /etc/profile.d/
+    sudo cp -f configs/commons/.bashrc_debian .bashrc
+    sudo cp -f configs/commons/.bashrc_debian /root/.bashrc
+    sudo cp -f configs/commons/profile_debian /etc/profile.d/
     sudo chmod 644 /etc/profile.d/profile_debian
-
+    
     # Configure vim
-    sudo cp -f configs/commons/.vimrc  .vimrc
-    sudo cp -f configs/commons/.vimrc  /root/.vimrc
-
-    # Configure vnc        
-    touch .Xresources  
+    sudo cp -f configs/commons/.vimrc .vimrc
+    sudo cp -f configs/commons/.vimrc /root/.vimrc
+    
+    # Configure vnc
+    touch .Xresources
     PASSWORD="vagrant"
     mkdir -p .vnc
-    echo -e "$PASSWORD\n$PASSWORD" | vncpasswd -f > ~/.vnc/passwd
+    echo -e "$PASSWORD\n$PASSWORD" | vncpasswd -f >~/.vnc/passwd
     chmod 600 ~/.vnc/passwd
-    vncserver 
+    vncserver
     vncserver -kill :1
-    killall Xtightvnc  > /dev/null 2>&1      
+    killall Xtightvnc >/dev/null 2>&1
     sudo cp configs/vnc/vncserver@.service /etc/systemd/system/vncserver@:1.service
     sudo systemctl daemon-reload
     sudo systemctl enable vncserver@:1.service
     sudo systemctl start vncserver@:1.service
-
-        
+    
     # Oracle Linux
-elif echo "$RELEASE_INFO" | grep -q -i "oracle"; then
+    elif echo "$RELEASE_INFO" | grep -q -i "oracle"; then
     echo "This is an Oracle Linux distribution."
     ## Install packages
     sudo dnf install -y \
     dos2unix
     
     # Rocky Linux
-elif echo "$RELEASE_INFO" | grep -q -i "rocky"; then
+    elif echo "$RELEASE_INFO" | grep -q -i "rocky"; then
     echo "This is an Rocky Linux distribution."
     
     ## Install packages
@@ -105,7 +106,10 @@ else
     if grep -q "$IPV4" /etc/hosts; then
         echo "Já existe uma entrada para $IPV4 no arquivo /etc/hosts"
     else
-        echo "$IPV4 $HOSTNAME" | sudo tee -a /etc/hosts > /dev/null
+        echo "$IPV4 $HOSTNAME" | sudo tee -a /etc/hosts >/dev/null
         echo "Entrada adicionada: $IPV4 $HOSTNAME"
     fi
 fi
+
+# set kvm
+sudo usermod -aG kvm vagrant

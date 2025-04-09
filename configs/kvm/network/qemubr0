@@ -1,0 +1,7 @@
+auto qemubr0
+iface qemubr0 inet static
+    address 192.168.0.141
+    netmask 255.255.255.0
+    gateway 192.168.0.1
+    bridge_ports eth1
+    pre-up sleep 2
