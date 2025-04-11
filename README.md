@@ -1086,6 +1086,24 @@ qemu-system-x86_64 \
   -device virtio-net-pci,netdev=net0 \
   -vga std \
   -display none
+
+## create vm with and attach disk
+qemu-system-x86_64 \
+  -name lpic3-debian-12 \
+  -enable-kvm \
+  -m 2048 \
+  -smp cpus=2 \
+  -k pt-br \
+  -vnc :2 \
+  -device qemu-xhci \
+  -device usb-tablet \
+  -hda os-images/Debian_12.0.0_VMM/Debian_12.0.0.qcow2 \
+  -hdb vmdisk-debian12.qcow2 \
+  -drive file=vmdisk-extra-debian12.qcow2,index=2,media=disk,if=ide \
+  -netdev bridge,id=net0,br=qemubr0 \
+  -device virtio-net-pci,netdev=net0 \
+  -vga std \
+  -display none
 ```
 
 <p align="right">(<a href="#topic-351.3">back to sub Topic 351.3</a>)</p>
