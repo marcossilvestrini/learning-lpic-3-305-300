@@ -28,7 +28,8 @@ if echo "$RELEASE_INFO" | grep -q -i "debian\|ubuntu"; then
     xfce4 xfce4-goodies \
     tightvncserver dbus-x11 \
     bridge-utils \
-    guestmount
+    guestmount \
+    libguestfs-tools
 
     
     # Configure profile

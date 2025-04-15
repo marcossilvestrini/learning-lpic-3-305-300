@@ -785,13 +785,6 @@ xen-delete-image lpic3-pv-guest --lvm=vg_xen
 xenstore-ls
 ```
 
-##### brctl
-
-```sh
-# list xen interfaces
-brctl show
-```
-
 ##### xl
 
 ```sh
@@ -948,14 +941,19 @@ tunctl
 
 #### 351.3 Important Commands
 
-##### ip
+#### 351.3 Others Commands
+
+##### check kvm module
 
 ```sh
-# list links
-ip link show
+# check if kvm is enabled
+egrep -o '(vmx|svm)' /proc/cpuinfo
+lscpu |grep Virtualization
+lsmod|grep kvm
+ls -l /dev/kvm
+hostnamectl
+systemd-detect-virt
 ```
-
-#### 351.3 Others Commands
 
 ```sh
 # check if kvm is enabled
@@ -971,21 +969,46 @@ uname -a
 findmnt /
 
 # mount a qcow2 image
+## Example 1:
 mkdir -p /mnt/qemu
 guestmount -a os-images/Debian_12.0.0_VMM/Debian_12.0.0.qcow2 -i /mnt/qemu/
 
+## Example 2:
+sudo guestfish --rw -a os-images/Debian_12.0.0_VMM/Debian_12.0.0.qcow2
+run
+list-filesystems
+
+# run commands in qcow2 images
+## Example 1:
+virt-customize -a  os-images/Debian_12.0.0_VMM/Debian_12.0.0.qcow2  --run-command 'echo hello >/root/hello.txt'
+## Example 2:
+sudo virt-customize -a os-images/Debian_12.0.0_VMM/Debian_12.0.0.qcow2 \
+  --run-command 'echo -e "auto ens3\niface ens3 inet dhcp" > /etc/network/interfaces.d/ens3.cfg'
+
+
+
+# generate mac 
+printf 'DE:AD:BE:EF:%02X:%02X\n' $((RANDOM%256)) $((RANDOM%256))
 ```
 
-##### check kvm module
+##### ip
 
 ```sh
-# check if kvm is enabled
-egrep -o '(vmx|svm)' /proc/cpuinfo
-lscpu |grep Virtualization
-lsmod|grep kvm
-ls -l /dev/kvm
-hostnamectl
-systemd-detect-virt
+# list links
+ip link show
+
+# create bridge
+ip link add br0 type bridge
+```
+
+##### brctl
+
+```sh
+# list links
+ip link show
+
+# create bridge
+ip link add br0 type bridge
 ```
 
 ##### qemu-img
@@ -1057,16 +1080,7 @@ qemu-system-x86_64 \
   -smp cpus=2 \
   -k pt-br \
   -vnc :2 \
-  -device qemu-xhci \
-  -device usb-tablet \
-  -hda os-images/Debian_12.0.0_VMM/Debian_12.0.0.qcow2 \
-  -netdev bridge,id=net0,br=qemubr0 \
-  -device virtio-net-pci,netdev=net0 \
-  -vga std \
-  -display none
-
-## get a ipv4 ip - open ssh in vm and:
-dhcpclient ens4
+  -hda os-images/Debian_12.0.0_VMM/Debian_12.0.0.qcow2
 
 ## create vm with custom kernel params
 qemu-system-x86_64 \
@@ -1079,13 +1093,7 @@ qemu-system-x86_64 \
   -smp cpus=2 \
   -k pt-br \
   -vnc :2 \
-  -device qemu-xhci \
-  -device usb-tablet \
-  -hda os-images/Debian_12.0.0_VMM/Debian_12.0.0.qcow2 \
-  -netdev bridge,id=net0,br=qemubr0 \
-  -device virtio-net-pci,netdev=net0 \
-  -vga std \
-  -display none
+  -hda os-images/Debian_12.0.0_VMM/Debian_12.0.0.qcow2
 
 ## create vm with and attach disk
 qemu-system-x86_64 \
@@ -1093,17 +1101,56 @@ qemu-system-x86_64 \
   -enable-kvm \
   -m 2048 \
   -smp cpus=2 \
-  -k pt-br \
   -vnc :2 \
-  -device qemu-xhci \
-  -device usb-tablet \
   -hda os-images/Debian_12.0.0_VMM/Debian_12.0.0.qcow2 \
   -hdb vmdisk-debian12.qcow2 \
   -drive file=vmdisk-extra-debian12.qcow2,index=2,media=disk,if=ide \
   -netdev bridge,id=net0,br=qemubr0 \
   -device virtio-net-pci,netdev=net0 \
+  
+## create vm network netdev user
+qemu-system-x86_64 \
+  -name lpic3-debian-12 \
+  -enable-kvm \
+  -m 2048 \
+  -smp cpus=2 \
+  -vnc :2 \
+  -hda os-images/Debian_12.0.0_VMM/Debian_12.0.0.qcow2 \
+  -netdev user,id=mynet0,net=192.168.0.150/24,dhcpstart=192.168.0.155,hostfwd=tcp::2222-:22 \
+  -device virtio-net-pci,netdev=mynet0
+
+## create vm network netdev tap (Private Network)
+ip link add br0 type bridge ; ifconfig br0 up
+qemu-system-x86_64 \
+  -name lpic3-debian-12 \
+  -enable-kvm \
+  -m 2048 \
+  -smp cpus=2 \
+  -vnc :2 \
+  -hda os-images/Debian_12.0.0_VMM/Debian_12.0.0.qcow2 \
+  -netdev tap,id=br0 \
+  -device e1000,netdev=br0,mac=DE:AD:BE:EF:1A:24
+
+## create vm with public bridge
+#create a public bridge : https://www.linux-kvm.org/page/Networking
+
+qemu-system-x86_64 \
+  -name lpic3-debian-12 \
+  -enable-kvm \
+  -m 2048 \
+  -smp cpus=2 \
+  -hda os-images/Debian_12.0.0_VMM/Debian_12.0.0.qcow2 \
+  -k pt-br \
+  -vnc :2 \
+  -device qemu-xhci \
+  -device usb-tablet \
   -vga std \
-  -display none
+  -display none \
+  -netdev bridge,id=net0,br=qemubr0 \
+  -device virtio-net-pci,netdev=net0
+
+## get a ipv4 ip - open ssh in vm and:
+dhcpclient ens4
 ```
 
 <p align="right">(<a href="#topic-351.3">back to sub Topic 351.3</a>)</p>
@@ -1679,6 +1726,7 @@ Project Link: [https://github.com/marcossilvestrini/learning-lpic-3-305-300](htt
   * [Oficial Doc](https://linux-kvm.org/page/Main_Page) 
   * [KVM(Kernel Virtual Machines by RedHat)](https://www.redhat.com/pt-br/topics/virtualization/what-is-KVM)
   * [KVM Management Tools](https://www.linux-kvm.org/page/Management_Tools)
+  * [KVM Network](https://www.linux-kvm.org/page/Networking)
 * [QEMU]()
   * [Oficial Doc](https://www.qemu.org/)
   * [Download Images osboxes](https://www.osboxes.org/)
