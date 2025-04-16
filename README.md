@@ -143,7 +143,7 @@ Customize a template *Vagrantfile-topic-XXX*. This file contains a vms configura
   * vm.vmx["numvcpus"] = ""
   * vm.vmx["cpuid.coresPerSocket"] = ""
 
-Customize network configuration in files [configs/network](configs/network/). 
+Customize network configuration in files [configs/network](configs/network/).
 
 ---
 
@@ -447,13 +447,13 @@ This architecture is common in high-performance multiprocessor systems, such as 
 
 #### Opensource Solutions
 
-* oVirt: https://www.ovirt.org/
+* oVirt: <https://www.ovirt.org/>
 
-* Proxmox: https://www.proxmox.com/en/proxmox-virtual-environment/overview
+* Proxmox: <https://www.proxmox.com/en/proxmox-virtual-environment/overview>
 
-* Oracle VirtualBox: https://www.virtualbox.org/
+* Oracle VirtualBox: <https://www.virtualbox.org/>
 
-* Open vSwitch: https://www.openvswitch.org/
+* Open vSwitch: <https://www.openvswitch.org/>
   
 #### Types of Virtualization
 
@@ -941,7 +941,7 @@ tunctl
 
 #### 351.3 Important Commands
 
-#### 351.3 Others Commands
+##### 351.3 Others Commands
 
 ##### check kvm module
 
@@ -985,8 +985,6 @@ virt-customize -a  os-images/Debian_12.0.0_VMM/Debian_12.0.0.qcow2  --run-comman
 sudo virt-customize -a os-images/Debian_12.0.0_VMM/Debian_12.0.0.qcow2 \
   --run-command 'echo -e "auto ens3\niface ens3 inet dhcp" > /etc/network/interfaces.d/ens3.cfg'
 
-
-
 # generate mac 
 printf 'DE:AD:BE:EF:%02X:%02X\n' $((RANDOM%256)) $((RANDOM%256))
 ```
@@ -1025,7 +1023,6 @@ qemu-img convert \
 
 # check image
 qemu-img info os-images/Debian_12.0.0_VMM/Debian_12.0.0.qcow2
-
 ```
 
 ##### qemu-system-x86_64
@@ -1064,12 +1061,6 @@ qemu-system-x86_64 \
   -display none \
   -monitor stdio
 
-## view vm status
-info block # block info
-info status # vm info
-system_reset # restart monitor
-boot_set d # force boot iso
-
 # create vm with OS Image - qcow2
 
 ## create vm
@@ -1106,7 +1097,7 @@ qemu-system-x86_64 \
   -hdb vmdisk-debian12.qcow2 \
   -drive file=vmdisk-extra-debian12.qcow2,index=2,media=disk,if=ide \
   -netdev bridge,id=net0,br=qemubr0 \
-  -device virtio-net-pci,netdev=net0 \
+  -device virtio-net-pci,netdev=net0
   
 ## create vm network netdev user
 qemu-system-x86_64 \
@@ -1151,6 +1142,51 @@ qemu-system-x86_64 \
 
 ## get a ipv4 ip - open ssh in vm and:
 dhcpclient ens4
+```
+
+#### QEMU Monitor
+
+For initiate QEMU monitor in commandline use **-monitor stdio** param in **qemu-system-x86_64**
+
+```sh
+qemu-system-x86_64
+...
+ -monitor stdio
+```
+
+```sh
+# Managment
+info status # vm info
+info cpus # cpu information
+info network # network informations
+stop # pause vm
+cont # start vm in status pause
+system_powerdown # poweroff vm
+system_reset # restart monitor
+
+
+# Blocks
+info block # block info
+boot_set d # force boot iso
+change ide1-cd0  /home/vagrant/isos/debian/debian-12.8.0-amd64-DVD-1.iso  # attach cdrom
+eject ide1-cd0 # detach cdrom
+
+# Snapshots
+info snapshots # list snapshots
+savevm snapshot-01  # create snapshot
+loadvm snapshot-01 # restore snapshot
+delvm snapshot-01
+```
+
+#### Guest Agent
+
+For enable, use:
+
+```sh
+qemu-system-x86_x64
+ -chardev socket,path=/tmp/qga.sock,server=on,wait=off,id=qga0 \
+ -device virtio-serial \
+ -device virtserialport,chardev=qga0,name=org.qemu.guest_agent.0
 ```
 
 <p align="right">(<a href="#topic-351.3">back to sub Topic 351.3</a>)</p>
@@ -1607,7 +1643,7 @@ Don't forget to give the project a star! Thanks again!
 
 ## Contact
 
-Marcos Silvestrini - marcos.silvestrini@gmail.com \
+Marcos Silvestrini - <marcos.silvestrini@gmail.com> \
 [![Twitter](https://img.shields.io/twitter/url/https/twitter.com/mrsilvestrini.svg?style=social&label=Follow%20%40mrsilvestrini)](https://twitter.com/mrsilvestrini)
 
 Project Link: [https://github.com/marcossilvestrini/learning-lpic-3-305-300](https://github.com/marcossilvestrini/learning-lpic-3-305-300)
@@ -1664,7 +1700,7 @@ Project Link: [https://github.com/marcossilvestrini/learning-lpic-3-305-300](htt
   * [XFCE](https://xfce.org/)
   * [KDE Plasma](https://kde.org/plasma-desktop/)
   * [Harmony](https://en.wikipedia.org/wiki/Harmony_(toolkit))
-* [Protocols]() 
+* [Protocols]()
   * [HTTP]()
     * [W3Techs](https://w3techs.com/)
     * [Apache](https://www.apache.org/)
@@ -1722,8 +1758,8 @@ Project Link: [https://github.com/marcossilvestrini/learning-lpic-3-305-300](htt
   * [MirageOS](https://mirage.io/docs/hello-world)
   * [HaLVM](https://galois.com/project/halvm/)
   * [Unik](https://github.com/solo-io/unik/blob/master/docs/providers/virtualbox.md)
-* [KVM]() 
-  * [Oficial Doc](https://linux-kvm.org/page/Main_Page) 
+* [KVM]()
+  * [Oficial Doc](https://linux-kvm.org/page/Main_Page)
   * [KVM(Kernel Virtual Machines by RedHat)](https://www.redhat.com/pt-br/topics/virtualization/what-is-KVM)
   * [KVM Management Tools](https://www.linux-kvm.org/page/Management_Tools)
   * [KVM Network](https://www.linux-kvm.org/page/Networking)
@@ -1731,6 +1767,8 @@ Project Link: [https://github.com/marcossilvestrini/learning-lpic-3-305-300](htt
   * [Oficial Doc](https://www.qemu.org/)
   * [Download Images osboxes](https://www.osboxes.org/)
   * [Download Images linuximages](https://www.linuxvmimages.com/)
+  * [Virtio](https://en.wikibooks.org/wiki/QEMU/Devices/Virtio)
+  * [Guest Agent](https://wiki.qemu.org/Features/GuestAgent)
 * [Openstack Docs]()
   * [RedHat](https://www.redhat.com/pt-br/topics/openstack)
 * [Open vSwitch]()
