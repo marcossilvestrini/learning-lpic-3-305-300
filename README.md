@@ -1222,15 +1222,39 @@ qemu-system-x86_x64
 ```sh
 libvirtd
 /etc/libvirt/
+/var/lib/libvirt
+/var/log/libvirt
 virsh (including relevant subcommands)
 ```
 
 #### 351.4 Important Commands
 
-##### foo
+##### virsh
 
 ```sh
-foo
+# view version
+virsh version
+
+# view system info
+sudo virsh sysinfo
+
+# view node info
+virsh nodeinfo
+
+# hostname
+virsh hostname
+
+# list vms
+virsh list
+
+# view libvirt hypervisioner connection
+virsh uri
+
+# list valid hypervisioners
+virsh-host-validate
+
+# test connetion uri(vm test)
+virsh -c test:///default list
 ```
 
 <p align="right">(<a href="#topic-351.4">back to sub Topic 351.4</a>)</p>
@@ -1769,6 +1793,10 @@ Project Link: [https://github.com/marcossilvestrini/learning-lpic-3-305-300](htt
   * [Download Images linuximages](https://www.linuxvmimages.com/)
   * [Virtio](https://en.wikibooks.org/wiki/QEMU/Devices/Virtio)
   * [Guest Agent](https://wiki.qemu.org/Features/GuestAgent)
+* [Libvirt]()
+  * [Oficial Doc](https://libvirt.org/)
+  * [System Socket Activation](https://libvirt.org/manpages/libvirtd.html#system-socket-activation)
+  * [Conections](https://libvirt.org/uri.html)
 * [Openstack Docs]()
   * [RedHat](https://www.redhat.com/pt-br/topics/openstack)
 * [Open vSwitch]()

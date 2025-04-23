@@ -85,17 +85,24 @@ fi
 # Set custom ssh configs
 sudo cp -f configs/commons/01-sshd-custom.conf /etc/ssh/sshd_config.d
 sudo chmod 644 /etc/ssh/sshd_config.d/01-sshd-custom.conf
-sudo systemctl restart sshd
 
 # Set ssh
 AUTHORIZED_KEYS_FILE=".ssh/authorized_keys"
 PUBLIC_KEY_FILE="security/skynet-key-ecdsa.pub"
+PRIVATE_KEY_FILE="security/skynet-key-ecdsa"
+cp -f $PRIVATE_KEY_FILE  "$HOME/.ssh"
+sudo chmod 600 "$HOME/.ssh/skynet-key-ecdsa"
+cp -f $PUBLIC_KEY_FILE "$HOME/.ssh"
+sudo chmod 644 "$HOME/.ssh/skynet-key-ecdsa.pub"
+
 if grep -q -F -f "$PUBLIC_KEY_FILE" "$AUTHORIZED_KEYS_FILE"; then
     echo "The public key is present in the authorized_keys file."
 else
     echo "The public key for ansible is not present in the authorized_keys file...Setting file..."
     cat security/skynet-key-ecdsa.pub >>.ssh/authorized_keys
 fi
+sudo systemctl restart sshd
+sudo systemctl restart ssh
 
 # Set dns \ hostname
 sudo cp -f configs/network/hosts /etc/
