@@ -373,7 +373,7 @@ A paravirtualização envolve a modificação do sistema operacional convidado p
 
 ###### Exemplos de paravirtualização
 
-Xen com convidados paravirtualizados, ferramentas VMware em determinadas configurações e algumas configurações de KVM.
+Xen com convidados paravirtuários, ferramentas de VMware em determinadas configurações e algumas configurações de KVM.
 
 ###### Vantagens de paravirtualização
 
@@ -772,13 +772,6 @@ xen-delete-image lpic3-pv-guest --lvm=vg_xen
 xenstore-ls
 ```
 
-##### BRCTL
-
-```sh
-# list xen interfaces
-brctl show
-```
-
 ##### xl
 
 ```sh
@@ -935,18 +928,7 @@ tunctl
 
 #### 351.3 Comandos importantes
 
-##### IP
-
-```sh
-# list links
-ip link show
-
-# check if kvm is enabled
-egrep -o '(vmx|svm)' /proc/cpuinfo
-lscpu |grep Virtualization
-lsmod|grep kvm
-ls -l /dev/kvm
-```
+##### 351.3 outros comandos
 
 ##### Verifique o módulo KVM
 
@@ -956,6 +938,242 @@ egrep -o '(vmx|svm)' /proc/cpuinfo
 lscpu |grep Virtualization
 lsmod|grep kvm
 ls -l /dev/kvm
+hostnamectl
+systemd-detect-virt
+```
+
+```sh
+# check if kvm is enabled
+egrep -o '(vmx|svm)' /proc/cpuinfo
+lscpu |grep Virtualization
+lsmod|grep kvm
+ls -l /dev/kvm
+
+# check kernel infos
+uname -a
+
+# check root device
+findmnt /
+
+# mount a qcow2 image
+## Example 1:
+mkdir -p /mnt/qemu
+guestmount -a os-images/Debian_12.0.0_VMM/Debian_12.0.0.qcow2 -i /mnt/qemu/
+
+## Example 2:
+sudo guestfish --rw -a os-images/Debian_12.0.0_VMM/Debian_12.0.0.qcow2
+run
+list-filesystems
+
+# run commands in qcow2 images
+## Example 1:
+virt-customize -a  os-images/Debian_12.0.0_VMM/Debian_12.0.0.qcow2  --run-command 'echo hello >/root/hello.txt'
+## Example 2:
+sudo virt-customize -a os-images/Debian_12.0.0_VMM/Debian_12.0.0.qcow2 \
+  --run-command 'echo -e "auto ens3\niface ens3 inet dhcp" > /etc/network/interfaces.d/ens3.cfg'
+
+# generate mac 
+printf 'DE:AD:BE:EF:%02X:%02X\n' $((RANDOM%256)) $((RANDOM%256))
+```
+
+##### IP
+
+```sh
+# list links
+ip link show
+
+# create bridge
+ip link add br0 type bridge
+```
+
+##### BRCTL
+
+```sh
+# list links
+ip link show
+
+# create bridge
+ip link add br0 type bridge
+```
+
+##### qemu-img
+
+```sh
+# create image
+qemu-img create -f qcow2 vm-disk-debian-12.qcow2 20G
+
+# convert vmdk to qcow2 image
+qemu-img convert \
+  -f vmdk \
+  -O qcow2 os-images/Debian_12.0.0_VMM/Debian_12.0.0_VMM_LinuxVMImages.COM.vmdk os-images/Debian_12.0.0_VMM/Debian_12.0.0.qcow2 \
+  -p -m16
+
+# check image
+qemu-img info os-images/Debian_12.0.0_VMM/Debian_12.0.0.qcow2
+```
+
+##### Qemu-System-X86_64
+
+```sh
+# create vm with ISO
+qemu-system-x86_64 \
+  -name lpic3-debian-12 \
+  -enable-kvm -hda vm-disk-debian-12.qcow2 \
+  -cdrom /home/vagrant/isos/debian/debian-12.8.0-amd64-DVD-1.iso  \
+  -boot d \
+  -m 2048 \
+  -smp cpus=2 \
+  -k pt-br
+
+# create vm with ISO using vnc in no gui servers \ ssh connections
+
+## create ssh tunel in host
+ ssh -l vagrant -L 5902:localhost:5902  192.168.0.131
+
+## create vm 
+qemu-system-x86_64 \
+  -name lpic3-debian-12 \
+  -enable-kvm \
+  -m 2048 \
+  -smp cpus=2 \
+  -k pt-br \
+  -vnc :2 \
+  -device qemu-xhci \
+  -device usb-tablet \
+  -device ide-cd,bus=ide.1,drive=cdrom,bootindex=1 \
+  -drive id=cdrom,media=cdrom,if=none,file=/home/vagrant/isos/debian/debian-12.8.0-amd64-DVD-1.iso \
+  -hda vm-disk-debian-12.qcow2 \
+  -boot order=d \
+  -vga std \
+  -display none \
+  -monitor stdio
+
+# create vm with OS Image - qcow2
+
+## create vm
+qemu-system-x86_64 \
+  -name lpic3-debian-12 \
+  -enable-kvm \
+  -m 2048 \
+  -smp cpus=2 \
+  -k pt-br \
+  -vnc :2 \
+  -hda os-images/Debian_12.0.0_VMM/Debian_12.0.0.qcow2
+
+## create vm with custom kernel params
+qemu-system-x86_64 \
+  -name lpic3-debian-12 \
+  -kernel /vmlinuz \
+  -initrd /initrd.img \
+  -append "root=/dev/mapper/debian--vg-root ro fastboot console=ttyS0" \
+  -enable-kvm \
+  -m 2048 \
+  -smp cpus=2 \
+  -k pt-br \
+  -vnc :2 \
+  -hda os-images/Debian_12.0.0_VMM/Debian_12.0.0.qcow2
+
+## create vm with and attach disk
+qemu-system-x86_64 \
+  -name lpic3-debian-12 \
+  -enable-kvm \
+  -m 2048 \
+  -smp cpus=2 \
+  -vnc :2 \
+  -hda os-images/Debian_12.0.0_VMM/Debian_12.0.0.qcow2 \
+  -hdb vmdisk-debian12.qcow2 \
+  -drive file=vmdisk-extra-debian12.qcow2,index=2,media=disk,if=ide \
+  -netdev bridge,id=net0,br=qemubr0 \
+  -device virtio-net-pci,netdev=net0
+  
+## create vm network netdev user
+qemu-system-x86_64 \
+  -name lpic3-debian-12 \
+  -enable-kvm \
+  -m 2048 \
+  -smp cpus=2 \
+  -vnc :2 \
+  -hda os-images/Debian_12.0.0_VMM/Debian_12.0.0.qcow2 \
+  -netdev user,id=mynet0,net=192.168.0.150/24,dhcpstart=192.168.0.155,hostfwd=tcp::2222-:22 \
+  -device virtio-net-pci,netdev=mynet0
+
+## create vm network netdev tap (Private Network)
+ip link add br0 type bridge ; ifconfig br0 up
+qemu-system-x86_64 \
+  -name lpic3-debian-12 \
+  -enable-kvm \
+  -m 2048 \
+  -smp cpus=2 \
+  -vnc :2 \
+  -hda os-images/Debian_12.0.0_VMM/Debian_12.0.0.qcow2 \
+  -netdev tap,id=br0 \
+  -device e1000,netdev=br0,mac=DE:AD:BE:EF:1A:24
+
+## create vm with public bridge
+#create a public bridge : https://www.linux-kvm.org/page/Networking
+
+qemu-system-x86_64 \
+  -name lpic3-debian-12 \
+  -enable-kvm \
+  -m 2048 \
+  -smp cpus=2 \
+  -hda os-images/Debian_12.0.0_VMM/Debian_12.0.0.qcow2 \
+  -k pt-br \
+  -vnc :2 \
+  -device qemu-xhci \
+  -device usb-tablet \
+  -vga std \
+  -display none \
+  -netdev bridge,id=net0,br=qemubr0 \
+  -device virtio-net-pci,netdev=net0
+
+## get a ipv4 ip - open ssh in vm and:
+dhcpclient ens4
+```
+
+#### Monitor qemu
+
+Para iniciar o monitor Qemu no uso de linha de comando**-Monitor stdio**param in**Qemu-System-X86_64**
+
+```sh
+qemu-system-x86_64
+...
+ -monitor stdio
+```
+
+```sh
+# Managment
+info status # vm info
+info cpus # cpu information
+info network # network informations
+stop # pause vm
+cont # start vm in status pause
+system_powerdown # poweroff vm
+system_reset # restart monitor
+
+
+# Blocks
+info block # block info
+boot_set d # force boot iso
+change ide1-cd0  /home/vagrant/isos/debian/debian-12.8.0-amd64-DVD-1.iso  # attach cdrom
+eject ide1-cd0 # detach cdrom
+
+# Snapshots
+info snapshots # list snapshots
+savevm snapshot-01  # create snapshot
+loadvm snapshot-01 # restore snapshot
+delvm snapshot-01
+```
+
+#### Agente convidado
+
+Para ativar, use:
+
+```sh
+qemu-system-x86_x64
+ -chardev socket,path=/tmp/qga.sock,server=on,wait=off,id=qga0 \
+ -device virtio-serial \
+ -device virtserialport,chardev=qga0,name=org.qemu.guest_agent.0
 ```
 
 <p align="right">(<a href="#topic-351.3">back to sub Topic 351.3</a>)</p>
@@ -974,7 +1192,7 @@ ls -l /dev/kvm
 
 **Principais áreas de conhecimento:**
 
--   Entenda a arquitetura do Libvirt
+-   Understand the architecture of libvirt
 -   Gerenciar conexões e nós da LibVirt
 -   Crie e gerencie domínios qemu e xen, incluindo instantâneos
 -   Gerenciar e analisar o consumo de recursos de domínios
@@ -991,15 +1209,53 @@ ls -l /dev/kvm
 ```sh
 libvirtd
 /etc/libvirt/
-virsh (including relevant subcommands)
+/var/lib/libvirt
+/var/log/libvirt
+virsh (including relevant subcommands) 
 ```
 
 #### 351.4 Comandos importantes
 
-##### foo
+##### Virsh
 
 ```sh
-foo
+# view version
+virsh version
+
+# view system info
+sudo virsh sysinfo
+
+# view node info
+virsh nodeinfo
+
+# hostname
+virsh hostname
+
+# list vms
+virsh list
+
+# view libvirt hypervisioner connection
+virsh uri
+
+# list valid hypervisioners
+virt-host-validate
+virt-host-validate qemu
+
+# test connetion uri(vm test)
+virsh -c test:///default list
+
+# connect remotly
+virsh -c xen+ssh://vagrant@192.168.0.130
+virsh -c xen+ssh://vagrant@192.168.0.130 list
+virsh -c qemu+ssh://vagrant@192.168.0.130/system list
+
+# connect remotly without enter password
+virsh -c 'xen+ssh://vagrant@192.168.0.130?keyfile=/home/vagrant/.ssh/skynet-key-ecdsa'
+
+# using env variable
+export LIBVIRT_DEFAULT_URI=qemu:///system
+export LIBVIRT_DEFAULT_URI=xen+ssh://vagrant@192.168.0.130
+export LIBVIRT_DEFAULT_URI='xen+ssh://vagrant@192.168.0.130?keyfile=/home/vagrant/.ssh/skynet-key-ecdsa'
 ```
 
 <p align="right">(<a href="#topic-351.4">back to sub Topic 351.4</a>)</p>
@@ -1084,7 +1340,7 @@ foo
 -   Entender e analisar recursos
 -   Entenda o papel do Seccomp, Selinux e Apparmor for Container Virtualization
 -   Entenda como o LXC e o Docker alavancam namespaces, cgroups, recursos, Seccomp e Mac
--   Entenda o princípio de Runc
+-   Understand the principle of runc
 -   Entenda o princípio de Cri-O e Containerd
 -   Consciência das especificações de tempo de execução da OCI e imagem
 -   Consciência da interface de tempo de execução do contêiner Kubernetes (CRI)
@@ -1529,9 +1785,17 @@ Link do projeto:<https://github.com/marcossilvestrini/learning-lpic-3-305-300>
     -   [Oficial Doc](https://linux-kvm.org/page/Main_Page)
     -   [KVM (máquinas virtuais do kernel por redhat)](https://www.redhat.com/pt-br/topics/virtualization/what-is-KVM)
     -   [Ferramentas de gerenciamento da KVM](https://www.linux-kvm.org/page/Management_Tools)
+    -   [Rede KVM](https://www.linux-kvm.org/page/Networking)
 -   [Qemu](<>)
     -   [Oficial Doc](https://www.qemu.org/)
-    -   [Baixar imagens](https://www.osboxes.org/)
+    -   [Baixe imagens osboxes](https://www.osboxes.org/)
+    -   [Faça o download de imagens linuximages](https://www.linuxvmimages.com/)
+    -   [Urbano](https://en.wikibooks.org/wiki/QEMU/Devices/Virtio)
+    -   [Agente convidado](https://wiki.qemu.org/Features/GuestAgent)
+-   [Libvirt](<>)
+    -   [Oficial Doc](https://libvirt.org/)
+    -   [Ativação do soquete do sistema](https://libvirt.org/manpages/libvirtd.html#system-socket-activation)
+    -   [Conexões](https://libvirt.org/uri.html)
 -   [OpenStack Docs](<>)
     -   [Redhat](https://www.redhat.com/pt-br/topics/openstack)
 -   [Aberto vswitch](<>)
