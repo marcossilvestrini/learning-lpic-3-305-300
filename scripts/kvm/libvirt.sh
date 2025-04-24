@@ -13,7 +13,7 @@ export LANG=C
 # Set workdir
 cd /home/vagrant || exit
 
-# Install qemu
+# Install libvirt
 apt update -y
 apt install -y \
     libvirt-daemon-system \
@@ -22,6 +22,15 @@ apt install -y \
     virt-manager \
     virtinst \
     libguestfs-tools   
+
+# Configure libvirt uri for remote connection
+#echo "export LIBVIRT_DEFAULT_URI=qemu:///system" >> /home/vagrant/.bashrc
+#echo "export LIBVIRT_DEFAULT_URI=qemu:///system" >> /home/vagrant/.bash_profile
+#echo "export LIBVIRT_DEFAULT_URI=qemu:///system" >> /home/vagrant/.profile
+#echo "export LIBVIRT_DEFAULT_URI=qemu:///system" >> /home/vagrant/.bash_login
+cp configs/kvm/libvirt/libvirt.conf /etc/libvirt/
+systemctl restart libvirtd
+
 
 # Add user to libvirt group
 usermod -aG libvirt vagrant

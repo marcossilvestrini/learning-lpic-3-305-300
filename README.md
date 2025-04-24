@@ -1251,10 +1251,24 @@ virsh list
 virsh uri
 
 # list valid hypervisioners
-virsh-host-validate
+virt-host-validate
+virt-host-validate qemu
 
 # test connetion uri(vm test)
 virsh -c test:///default list
+
+# connect remotly
+virsh -c xen+ssh://vagrant@192.168.0.130
+virsh -c xen+ssh://vagrant@192.168.0.130 list
+virsh -c qemu+ssh://vagrant@192.168.0.130/system list
+
+# connect remotly without enter password
+virsh -c 'xen+ssh://vagrant@192.168.0.130?keyfile=/home/vagrant/.ssh/skynet-key-ecdsa'
+
+# using env variable
+export LIBVIRT_DEFAULT_URI=qemu:///system
+export LIBVIRT_DEFAULT_URI=xen+ssh://vagrant@192.168.0.130
+export LIBVIRT_DEFAULT_URI='xen+ssh://vagrant@192.168.0.130?keyfile=/home/vagrant/.ssh/skynet-key-ecdsa'
 ```
 
 <p align="right">(<a href="#topic-351.4">back to sub Topic 351.4</a>)</p>
