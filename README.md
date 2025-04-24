@@ -1224,7 +1224,7 @@ libvirtd
 /etc/libvirt/
 /var/lib/libvirt
 /var/log/libvirt
-virsh (including relevant subcommands)
+virsh (including relevant subcommands) 
 ```
 
 #### 351.4 Important Commands
