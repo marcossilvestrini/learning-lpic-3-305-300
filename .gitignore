@@ -5,8 +5,8 @@
 **/*.vdi
 
 #security
+security/*
 !security/README.md
-security/
 # **/authorized_keys
 # **/*.pub
 # **/*.ppk
@@ -32,7 +32,7 @@ Slack/silvestrini.py
 *.fuse_*
 
 # kvm \ qemu
-os-images/
+os-images/*
 !os-images/README.md
 
 # vscode
