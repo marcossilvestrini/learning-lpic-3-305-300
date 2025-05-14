@@ -300,7 +300,7 @@ Exécute sur un système d'exploitation conventionnel, en s'appuyant sur le syst
 ##### Différences clés entre les hyperviseurs de type 1 et de type 2
 
 -   Environnement de déploiement:
-    -   Les hyperviseurs de type 1 sont couramment déployés dans les centres de données et les environnements d'entreprise en raison de leur interaction directe avec le matériel et des performances élevées.
+    -   Type 1 hypervisors are commonly deployed in data centers and enterprise environments due to their direct interaction with hardware and high performance.
     -   Les hyperviseurs de type 2 conviennent plus à un usage personnel, au développement, aux tests et aux tâches de virtualisation à petite échelle.
 -   Performance:
     -   Les hyperviseurs de type 1 offrent généralement de meilleures performances et une latence plus faible car elles ne comptent pas sur un système d'exploitation hôte.
@@ -573,7 +573,7 @@ DÉNODO, Red Hat JBoss Data Virtualization, IBM Infosphere.
 
 **Zones de connaissances clés:**
 
--   Understand architecture of Xen, including networking and storage
+-   Comprendre l'architecture de Xen, y compris le réseautage et le stockage
 -   Configuration de base des nœuds et domaines Xen
 -   Gestion de base des nœuds et domaines Xen
 -   Dépannage de base des installations Xen
@@ -1133,7 +1133,7 @@ dhcpclient ens4
 
 #### Moniteur Qemu
 
-Pour initier le moniteur Qemu dans l'utilisation de la ligne de commande**-Monitor stdio**param**Qemu-system-x86_64**
+Pour initier le moniteur Qemu dans l'utilisation de la ligne de commande**-Monitor Stdio**param**Qemu-system-x86_64**
 
 ```sh
 qemu-system-x86_64
@@ -1219,6 +1219,11 @@ virsh (including relevant subcommands)
 ##### Vif
 
 ```sh
+# using env variable for set virsh uri (local or remotly)
+export LIBVIRT_DEFAULT_URI=qemu:///system
+export LIBVIRT_DEFAULT_URI=xen+ssh://vagrant@192.168.0.130
+export LIBVIRT_DEFAULT_URI='xen+ssh://vagrant@192.168.0.130?keyfile=/home/vagrant/.ssh/skynet-key-ecdsa'
+
 # view version
 virsh version
 
@@ -1252,10 +1257,11 @@ virsh -c qemu+ssh://vagrant@192.168.0.130/system list
 # connect remotly without enter password
 virsh -c 'xen+ssh://vagrant@192.168.0.130?keyfile=/home/vagrant/.ssh/skynet-key-ecdsa'
 
-# using env variable
-export LIBVIRT_DEFAULT_URI=qemu:///system
-export LIBVIRT_DEFAULT_URI=xen+ssh://vagrant@192.168.0.130
-export LIBVIRT_DEFAULT_URI='xen+ssh://vagrant@192.168.0.130?keyfile=/home/vagrant/.ssh/skynet-key-ecdsa'
+# list storage pools
+virsh pool-list
+
+# get a pool configuration
+virsh pool-dumpxml default
 ```
 
 <p align="right">(<a href="#topic-351.4">back to sub Topic 351.4</a>)</p>
@@ -1796,6 +1802,7 @@ Lien du projet:<https://github.com/marcossilvestrini/learning-lpic-3-305-300>
     -   [Officier Doc](https://libvirt.org/)
     -   [Activation du socket système](https://libvirt.org/manpages/libvirtd.html#system-socket-activation)
     -   [Relations](https://libvirt.org/uri.html)
+    -   [Stockage](https://libvirt.org/storage.html)
 -   [Docs OpenStack](<>)
     -   [Redhat](https://www.redhat.com/pt-br/topics/openstack)
 -   [VSWitch ouvert](<>)
