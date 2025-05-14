@@ -1219,6 +1219,11 @@ virsh (including relevant subcommands)
 ##### Virsh
 
 ```sh
+# using env variable for set virsh uri (local or remotly)
+export LIBVIRT_DEFAULT_URI=qemu:///system
+export LIBVIRT_DEFAULT_URI=xen+ssh://vagrant@192.168.0.130
+export LIBVIRT_DEFAULT_URI='xen+ssh://vagrant@192.168.0.130?keyfile=/home/vagrant/.ssh/skynet-key-ecdsa'
+
 # view version
 virsh version
 
@@ -1252,10 +1257,11 @@ virsh -c qemu+ssh://vagrant@192.168.0.130/system list
 # connect remotly without enter password
 virsh -c 'xen+ssh://vagrant@192.168.0.130?keyfile=/home/vagrant/.ssh/skynet-key-ecdsa'
 
-# using env variable
-export LIBVIRT_DEFAULT_URI=qemu:///system
-export LIBVIRT_DEFAULT_URI=xen+ssh://vagrant@192.168.0.130
-export LIBVIRT_DEFAULT_URI='xen+ssh://vagrant@192.168.0.130?keyfile=/home/vagrant/.ssh/skynet-key-ecdsa'
+# list storage pools
+virsh pool-list
+
+# get a pool configuration
+virsh pool-dumpxml default
 ```
 
 <p align="right">(<a href="#topic-351.4">back to sub Topic 351.4</a>)</p>
@@ -1796,6 +1802,7 @@ Marcos Silvestrini-[marcos.silvestrini@gmail.com](mailto:marcos.silvestrini@gmai
     -   [軍官文檔](https://libvirt.org/)
     -   [系統插座激活](https://libvirt.org/manpages/libvirtd.html#system-socket-activation)
     -   [連接](https://libvirt.org/uri.html)
+    -   [貯存](https://libvirt.org/storage.html)
 -   [OpenStack文檔](<>)
     -   [redhat](https://www.redhat.com/pt-br/topics/openstack)
 -   [開放的VSWITCH](<>)
