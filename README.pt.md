@@ -300,7 +300,7 @@ Executa em cima de um sistema operacional convencional, contando com o sistema o
 ##### Diferenças -chave entre os hipervisores do tipo 1 e do tipo 2
 
 -   Ambiente de implantação:
-    -   Os hipervisores tipo 1 são comumente implantados em data centers e ambientes corporativos devido à sua interação direta com hardware e alto desempenho.
+    -   Os hipervisores do tipo 1 são comumente implantados em data centers e ambientes corporativos devido à sua interação direta com hardware e alto desempenho.
     -   Os hipervisores do tipo 2 são mais adequados para tarefas de uso pessoal, desenvolvimento, teste e virtualização em pequena escala.
 -   Desempenho:
     -   Os hipervisores do tipo 1 geralmente oferecem melhor desempenho e menor latência porque não confiam em um sistema operacional host.
@@ -373,7 +373,7 @@ A paravirtualização envolve a modificação do sistema operacional convidado p
 
 ###### Exemplos de paravirtualização
 
-Xen com convidados paravirtuários, ferramentas de VMware em determinadas configurações e algumas configurações de KVM.
+Xen com convidados paravirtualizados, ferramentas VMware em determinadas configurações e algumas configurações de KVM.
 
 ###### Vantagens de paravirtualização
 
@@ -1192,7 +1192,7 @@ qemu-system-x86_x64
 
 **Principais áreas de conhecimento:**
 
--   Understand the architecture of libvirt
+-   Entenda a arquitetura do Libvirt
 -   Gerenciar conexões e nós da LibVirt
 -   Crie e gerencie domínios qemu e xen, incluindo instantâneos
 -   Gerenciar e analisar o consumo de recursos de domínios
@@ -1219,6 +1219,11 @@ virsh (including relevant subcommands)
 ##### Virsh
 
 ```sh
+# using env variable for set virsh uri (local or remotly)
+export LIBVIRT_DEFAULT_URI=qemu:///system
+export LIBVIRT_DEFAULT_URI=xen+ssh://vagrant@192.168.0.130
+export LIBVIRT_DEFAULT_URI='xen+ssh://vagrant@192.168.0.130?keyfile=/home/vagrant/.ssh/skynet-key-ecdsa'
+
 # view version
 virsh version
 
@@ -1252,10 +1257,11 @@ virsh -c qemu+ssh://vagrant@192.168.0.130/system list
 # connect remotly without enter password
 virsh -c 'xen+ssh://vagrant@192.168.0.130?keyfile=/home/vagrant/.ssh/skynet-key-ecdsa'
 
-# using env variable
-export LIBVIRT_DEFAULT_URI=qemu:///system
-export LIBVIRT_DEFAULT_URI=xen+ssh://vagrant@192.168.0.130
-export LIBVIRT_DEFAULT_URI='xen+ssh://vagrant@192.168.0.130?keyfile=/home/vagrant/.ssh/skynet-key-ecdsa'
+# list storage pools
+virsh pool-list
+
+# get a pool configuration
+virsh pool-dumpxml default
 ```
 
 <p align="right">(<a href="#topic-351.4">back to sub Topic 351.4</a>)</p>
@@ -1340,7 +1346,7 @@ foo
 -   Entender e analisar recursos
 -   Entenda o papel do Seccomp, Selinux e Apparmor for Container Virtualization
 -   Entenda como o LXC e o Docker alavancam namespaces, cgroups, recursos, Seccomp e Mac
--   Understand the principle of runc
+-   Entenda o princípio de Runc
 -   Entenda o princípio de Cri-O e Containerd
 -   Consciência das especificações de tempo de execução da OCI e imagem
 -   Consciência da interface de tempo de execução do contêiner Kubernetes (CRI)
@@ -1714,7 +1720,7 @@ Link do projeto:<https://github.com/marcossilvestrini/learning-lpic-3-305-300>
     -   [Diretrizes de software livre do Debian](https://www.debian.org/social_contract#guidelines)
     -   [Lista de distribuição Linux](https://en.wikipedia.org/wiki/List_of_Linux_distributions)
     -   [Distrowatch](https://distrowatch.com/)
-    -   [Comparação Distribuições Linux](https://en.wikipedia.org/wiki/Comparison_of_Linux_distributions)
+    -   [Comparison Linux Distributions](https://en.wikipedia.org/wiki/Comparison_of_Linux_distributions)
 -   [Ambientes de mesa](<>)
     -   [X11 org](https://www.x.org/wiki/)
     -   [Wayland](https://wayland.freedesktop.org/)
@@ -1790,12 +1796,13 @@ Link do projeto:<https://github.com/marcossilvestrini/learning-lpic-3-305-300>
     -   [Oficial Doc](https://www.qemu.org/)
     -   [Baixe imagens osboxes](https://www.osboxes.org/)
     -   [Faça o download de imagens linuximages](https://www.linuxvmimages.com/)
-    -   [Urbano](https://en.wikibooks.org/wiki/QEMU/Devices/Virtio)
+    -   [Urina](https://en.wikibooks.org/wiki/QEMU/Devices/Virtio)
     -   [Agente convidado](https://wiki.qemu.org/Features/GuestAgent)
 -   [Libvirt](<>)
     -   [Oficial Doc](https://libvirt.org/)
     -   [Ativação do soquete do sistema](https://libvirt.org/manpages/libvirtd.html#system-socket-activation)
     -   [Conexões](https://libvirt.org/uri.html)
+    -   [Armazenar](https://libvirt.org/storage.html)
 -   [OpenStack Docs](<>)
     -   [Redhat](https://www.redhat.com/pt-br/topics/openstack)
 -   [Aberto vswitch](<>)
