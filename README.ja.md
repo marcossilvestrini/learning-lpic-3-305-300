@@ -290,7 +290,7 @@ Migration (P2V, V2V)
 -   開発、テスト、および小規模な展開により柔軟に対応します。
 -   通常、ホストOSからのオーバーヘッドが追加されたため、タイプ1ハイパーバイザーよりも効率が低くなります。
 
-###### Type 2 Examples
+###### タイプ2の例
 
 -   VMwareワークステーション：単一のデスクトップで複数のオペレーティングシステムを実行するための強力なハイパーバイザー。
 -   Oracle VirtualBox：柔軟性と使いやすさで知られているオープンソースハイパーバイザー。
@@ -320,7 +320,7 @@ P2V移行とは、物理サーバーを仮想マシンに移行するプロセ�
 言い換えれば、専用の物理ハードウェアで実行されるオペレーティングシステムとそのアプリケーションは「変換」され、ハイパーバイザー（VMware、Hyper-V、KVMなど）で実行される仮想マシンに移動します。
 
 -   例：WindowsまたはLinuxシステムを実行している物理サーバーがあり、クラウドインフラストラクチャや内部仮想化サーバーなどの仮想環境に移動する必要があります。  
-    このプロセスでは、オペレーティングシステム、ドライバー、データを含むシステム状態全体をコピーして、物理ハードウェア上で実行できるように実行できる同等の仮想マシンを作成します。
+    このプロセスでは、オペレーティングシステム、ドライバー、データなどのシステム状態全体をコピーして、物理ハードウェア上にあるかのように実行できる同等の仮想マシンを作成します。
 
 ##### V2V-仮想から仮想移行
 
@@ -1219,6 +1219,11 @@ virsh (including relevant subcommands)
 ##### ヴァイルシュ
 
 ```sh
+# using env variable for set virsh uri (local or remotly)
+export LIBVIRT_DEFAULT_URI=qemu:///system
+export LIBVIRT_DEFAULT_URI=xen+ssh://vagrant@192.168.0.130
+export LIBVIRT_DEFAULT_URI='xen+ssh://vagrant@192.168.0.130?keyfile=/home/vagrant/.ssh/skynet-key-ecdsa'
+
 # view version
 virsh version
 
@@ -1252,10 +1257,11 @@ virsh -c qemu+ssh://vagrant@192.168.0.130/system list
 # connect remotly without enter password
 virsh -c 'xen+ssh://vagrant@192.168.0.130?keyfile=/home/vagrant/.ssh/skynet-key-ecdsa'
 
-# using env variable
-export LIBVIRT_DEFAULT_URI=qemu:///system
-export LIBVIRT_DEFAULT_URI=xen+ssh://vagrant@192.168.0.130
-export LIBVIRT_DEFAULT_URI='xen+ssh://vagrant@192.168.0.130?keyfile=/home/vagrant/.ssh/skynet-key-ecdsa'
+# list storage pools
+virsh pool-list
+
+# get a pool configuration
+virsh pool-dumpxml default
 ```
 
 <p align="right">(<a href="#topic-351.4">back to sub Topic 351.4</a>)</p>
@@ -1790,12 +1796,13 @@ Vagrantfile
     -   [役員文書](https://www.qemu.org/)
     -   [画像OSBOXESをダウンロードします](https://www.osboxes.org/)
     -   [画像linuximagesをダウンロードします](https://www.linuxvmimages.com/)
-    -   [都会的な](https://en.wikibooks.org/wiki/QEMU/Devices/Virtio)
+    -   [尿](https://en.wikibooks.org/wiki/QEMU/Devices/Virtio)
     -   [ゲストエージェント](https://wiki.qemu.org/Features/GuestAgent)
 -   [libvirt](<>)
     -   [役員文書](https://libvirt.org/)
     -   [システムソケットのアクティブ化](https://libvirt.org/manpages/libvirtd.html#system-socket-activation)
     -   [接続](https://libvirt.org/uri.html)
+    -   [ストレージ](https://libvirt.org/storage.html)
 -   [OpenStackドキュメント](<>)
     -   [redhat](https://www.redhat.com/pt-br/topics/openstack)
 -   [vswitchを開きます](<>)
