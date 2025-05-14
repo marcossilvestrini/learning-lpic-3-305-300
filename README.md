@@ -1232,6 +1232,11 @@ virsh (including relevant subcommands)
 ##### virsh
 
 ```sh
+# using env variable for set virsh uri (local or remotly)
+export LIBVIRT_DEFAULT_URI=qemu:///system
+export LIBVIRT_DEFAULT_URI=xen+ssh://vagrant@192.168.0.130
+export LIBVIRT_DEFAULT_URI='xen+ssh://vagrant@192.168.0.130?keyfile=/home/vagrant/.ssh/skynet-key-ecdsa'
+
 # view version
 virsh version
 
@@ -1265,10 +1270,11 @@ virsh -c qemu+ssh://vagrant@192.168.0.130/system list
 # connect remotly without enter password
 virsh -c 'xen+ssh://vagrant@192.168.0.130?keyfile=/home/vagrant/.ssh/skynet-key-ecdsa'
 
-# using env variable
-export LIBVIRT_DEFAULT_URI=qemu:///system
-export LIBVIRT_DEFAULT_URI=xen+ssh://vagrant@192.168.0.130
-export LIBVIRT_DEFAULT_URI='xen+ssh://vagrant@192.168.0.130?keyfile=/home/vagrant/.ssh/skynet-key-ecdsa'
+# list storage pools
+virsh pool-list
+
+# get a pool configuration
+virsh pool-dumpxml default
 ```
 
 <p align="right">(<a href="#topic-351.4">back to sub Topic 351.4</a>)</p>
@@ -1811,6 +1817,7 @@ Project Link: [https://github.com/marcossilvestrini/learning-lpic-3-305-300](htt
   * [Oficial Doc](https://libvirt.org/)
   * [System Socket Activation](https://libvirt.org/manpages/libvirtd.html#system-socket-activation)
   * [Conections](https://libvirt.org/uri.html)
+  * [Storage](https://libvirt.org/storage.html)
 * [Openstack Docs]()
   * [RedHat](https://www.redhat.com/pt-br/topics/openstack)
 * [Open vSwitch]()

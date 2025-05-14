@@ -1,48 +1,47 @@
 #!/bin/bash
 
 <<'MULTILINE-COMMENT'
-    Requirments: none
-    Description: Script for set KVM Environment
+    Requirements: none
+    Description: Script to configure KVM Environment
     Author: Marcos Silvestrini
     Date: 19/03/2025
 MULTILINE-COMMENT
 
-# Set language/locale and encoding
+# Set system language and locale
 export LANG=C
 
+# Change to vagrant home directory
 cd /home/vagrant || exit
 
-# Get the contents of the release files
+# Detect OS release information
 RELEASE_INFO=$(cat /etc/*release 2>/dev/null)
 
-# Check Operation System
+# OS validation and package installation
 if echo "$RELEASE_INFO" | grep -q -i "debian\|ubuntu"; then
-    # Debian and Ubuntu
+    # Debian/Ubuntu distribution detected
     echo "This is a Debian or Ubuntu-based distribution."
-    ## Install packages
+
+    # Install required packages
     sudo apt update -y
     sudo apt install -y \
-    dos2unix \
-    lvm2 \
-    tree whois \
-    xfce4 xfce4-goodies \
-    tightvncserver dbus-x11 \
-    bridge-utils \
-    guestmount \
-    libguestfs-tools
+        dos2unix \
+        lvm2 \
+        tree whois \
+        xfce4 xfce4-goodies \
+        tightvncserver dbus-x11 \
+        bridge-utils \
+        guestmount \
+        libguestfs-tools
 
-    
-    # Configure profile
+    # Set user profile for bash and vim
     sudo cp -f configs/commons/.bashrc_debian .bashrc
     sudo cp -f configs/commons/.bashrc_debian /root/.bashrc
     sudo cp -f configs/commons/profile_debian /etc/profile.d/
     sudo chmod 644 /etc/profile.d/profile_debian
-    
-    # Configure vim
     sudo cp -f configs/commons/.vimrc .vimrc
     sudo cp -f configs/commons/.vimrc /root/.vimrc
-    
-    # Configure vnc
+
+    # Configure VNC server for vagrant user
     touch .Xresources
     PASSWORD="vagrant"
     mkdir -p .vnc
@@ -55,69 +54,103 @@ if echo "$RELEASE_INFO" | grep -q -i "debian\|ubuntu"; then
     sudo systemctl daemon-reload
     sudo systemctl enable vncserver@:1.service
     sudo systemctl start vncserver@:1.service
-    
-    # Oracle Linux
-    elif echo "$RELEASE_INFO" | grep -q -i "oracle"; then
+
+elif echo "$RELEASE_INFO" | grep -q -i "oracle"; then
+    # Oracle Linux detected
     echo "This is an Oracle Linux distribution."
-    ## Install packages
-    sudo dnf install -y \
-    dos2unix
-    
-    # Rocky Linux
-    elif echo "$RELEASE_INFO" | grep -q -i "rocky"; then
-    echo "This is an Rocky Linux distribution."
-    
-    ## Install packages
-    sudo dnf install -y \
-    dos2unix
-    
-    ## Clear vagrant settings
-    if [ -f "/etc/ssh/sshd_config.d/50-redhat.conf" ]; then
-        sudo rm /etc/ssh/sshd_config.d/50-redhat.conf
-    fi
-    if [ -f "/etc/ssh/sshd_config.d/90-redhat.conf" ]; then
-        sudo rm /etc/ssh/sshd_config.d/90-redhat.conf
-    fi
+
+    # Install base utilities
+    sudo dnf install -y dos2unix
+
+elif echo "$RELEASE_INFO" | grep -q -i "rocky"; then
+    # Rocky Linux detected
+    echo "This is a Rocky Linux distribution."
+
+    # Install base utilities
+    sudo dnf install -y dos2unix
+
+    # Clean unwanted ssh configuration files
+    [ -f "/etc/ssh/sshd_config.d/50-redhat.conf" ] && sudo rm /etc/ssh/sshd_config.d/50-redhat.conf
+    [ -f "/etc/ssh/sshd_config.d/90-redhat.conf" ] && sudo rm /etc/ssh/sshd_config.d/90-redhat.conf
+
 else
-    echo "This distribution is not Debian, Ubuntu,Rocky Linux or Oracle Linux."
+    # Unsupported OS detected
+    echo "This distribution is not Debian, Ubuntu, Rocky Linux or Oracle Linux."
 fi
 
-# Set custom ssh configs
+# -------------------------------------------------
+# Configure custom SSH server settings
+# -------------------------------------------------
 sudo cp -f configs/commons/01-sshd-custom.conf /etc/ssh/sshd_config.d
 sudo chmod 644 /etc/ssh/sshd_config.d/01-sshd-custom.conf
 
-# Set ssh
+# -------------------------------------------------
+# Copy SSH keys and ensure permissions
+# -------------------------------------------------
 AUTHORIZED_KEYS_FILE=".ssh/authorized_keys"
 PUBLIC_KEY_FILE="security/skynet-key-ecdsa.pub"
 PRIVATE_KEY_FILE="security/skynet-key-ecdsa"
-cp -f $PRIVATE_KEY_FILE  "$HOME/.ssh"
+
+cp -f $PRIVATE_KEY_FILE "$HOME/.ssh"
 sudo chmod 600 "$HOME/.ssh/skynet-key-ecdsa"
+
 cp -f $PUBLIC_KEY_FILE "$HOME/.ssh"
 sudo chmod 644 "$HOME/.ssh/skynet-key-ecdsa.pub"
 
+# Append public key to authorized_keys if not already present
 if grep -q -F -f "$PUBLIC_KEY_FILE" "$AUTHORIZED_KEYS_FILE"; then
     echo "The public key is present in the authorized_keys file."
 else
-    echo "The public key for ansible is not present in the authorized_keys file...Setting file..."
+    echo "The public key is not present. Adding key to authorized_keys file..."
     cat security/skynet-key-ecdsa.pub >>.ssh/authorized_keys
 fi
+
+# Restart SSH service to apply new settings
 sudo systemctl restart sshd
 sudo systemctl restart ssh
 
-# Set dns \ hostname
+# Pre-accept SSH host key to avoid prompts during virsh usage
+ssh -o StrictHostKeyChecking=accept-new -i /home/vagrant/.ssh/skynet-key-ecdsa vagrant@192.168.0.130 exit
+
+# -------------------------------------------------
+# Set libvirt default URI for vagrant user
+# -------------------------------------------------
+mkdir -p /home/vagrant/.config/libvirt
+tee /home/vagrant/.config/libvirt/libvirt.conf > /dev/null <<EOF
+uri_default = "xen+ssh://vagrant@192.168.0.130"
+EOF
+chown -R vagrant:vagrant /home/vagrant/.config
+
+# -------------------------------------------------
+# Configure SSH client for vagrant user with key
+# -------------------------------------------------
+mkdir -p /home/vagrant/.ssh
+
+tee /home/vagrant/.ssh/config > /dev/null <<EOF
+Host 192.168.0.130
+    User vagrant
+    IdentityFile /home/vagrant/.ssh/skynet-key-ecdsa
+    StrictHostKeyChecking accept-new
+    UserKnownHostsFile /home/vagrant/.ssh/known_hosts
+EOF
+
+chown vagrant:vagrant /home/vagrant/.ssh/config
+chmod 600 /home/vagrant/.ssh/config
+
+# -------------------------------------------------
+# Set local hostname and DNS entries in /etc/hosts
+# -------------------------------------------------
 sudo cp -f configs/network/hosts /etc/
 HOSTNAME=$(hostname)
 IPV4=$(ip addr show | grep -oP '192\.168\.0\.\d{1,3}(?=/)')
+
 if [ -z "$IPV4" ]; then
-    echo "Não foi encontrado um IPv4 no formato 192.168.0.x. Continuando sem adicionar entrada..."
+    echo "No IPv4 address matching 192.168.0.x found. Skipping hosts file update."
 else
     if grep -q "$IPV4" /etc/hosts; then
-        echo "Já existe uma entrada para $IPV4 no arquivo /etc/hosts"
+        echo "An entry for $IPV4 already exists in /etc/hosts."
     else
         echo "$IPV4 $HOSTNAME" | sudo tee -a /etc/hosts >/dev/null
-        echo "Entrada adicionada: $IPV4 $HOSTNAME"
+        echo "Added entry: $IPV4 $HOSTNAME"
     fi
 fi
-
-# set kvm
-sudo usermod -aG kvm vagrant

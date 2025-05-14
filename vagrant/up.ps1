@@ -1,10 +1,21 @@
 # Variables
 $WORKDIR = $PSScriptRoot
 $BASE_DIR= $WORKDIR | Split-Path -Parent
+$Dos2UnixPath = "C:\Program Files\Git\mingw64\bin\dos2unix.exe"
 
-# Fix scripts
-& "C:\Program Files\Git\mingw64\bin\dos2unix.exe" $BASE_DIR\scripts\commons\*
-& "C:\Program Files\Git\mingw64\bin\dos2unix.exe" $BASE_DIR\configs\commons\*
+# Function to convert files in folder (excluding directories)
+function Convert-FilesToUnix {
+    param (
+        [string]$FolderPath
+    )
+
+    Get-ChildItem -Path $FolderPath -File -Recurse | ForEach-Object {
+        & $Dos2UnixPath $_.FullName
+    }
+}
+# Apply dos2unix only to files
+Convert-FilesToUnix "$BASE_DIR\scripts\kvm"
+Convert-FilesToUnix "$BASE_DIR\configs"
 
 # Set workdir
 Set-Location -Path $WORKDIR

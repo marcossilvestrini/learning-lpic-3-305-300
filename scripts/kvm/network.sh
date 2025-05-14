@@ -12,4 +12,3 @@ cp -f configs/kvm/network/configure-network.service  /etc/systemd/system
 systemctl daemon-reload
 systemctl enable configure-network.service
 systemctl start configure-network.service
-
