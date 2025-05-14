@@ -1219,6 +1219,11 @@ virsh (including relevant subcommands)
 ##### Virsh
 
 ```sh
+# using env variable for set virsh uri (local or remotly)
+export LIBVIRT_DEFAULT_URI=qemu:///system
+export LIBVIRT_DEFAULT_URI=xen+ssh://vagrant@192.168.0.130
+export LIBVIRT_DEFAULT_URI='xen+ssh://vagrant@192.168.0.130?keyfile=/home/vagrant/.ssh/skynet-key-ecdsa'
+
 # view version
 virsh version
 
@@ -1252,10 +1257,11 @@ virsh -c qemu+ssh://vagrant@192.168.0.130/system list
 # connect remotly without enter password
 virsh -c 'xen+ssh://vagrant@192.168.0.130?keyfile=/home/vagrant/.ssh/skynet-key-ecdsa'
 
-# using env variable
-export LIBVIRT_DEFAULT_URI=qemu:///system
-export LIBVIRT_DEFAULT_URI=xen+ssh://vagrant@192.168.0.130
-export LIBVIRT_DEFAULT_URI='xen+ssh://vagrant@192.168.0.130?keyfile=/home/vagrant/.ssh/skynet-key-ecdsa'
+# list storage pools
+virsh pool-list
+
+# get a pool configuration
+virsh pool-dumpxml default
 ```
 
 <p align="right">(<a href="#topic-351.4">back to sub Topic 351.4</a>)</p>
@@ -1790,12 +1796,13 @@ Enlace del proyecto:<https://github.com/marcossilvestrini/learning-lpic-3-305-30
     -   [Oficial Doc](https://www.qemu.org/)
     -   [Descargar imágenes OSBOXES](https://www.osboxes.org/)
     -   [Descargar imágenes LinuxImages](https://www.linuxvmimages.com/)
-    -   [Urbano](https://en.wikibooks.org/wiki/QEMU/Devices/Virtio)
+    -   [Orina](https://en.wikibooks.org/wiki/QEMU/Devices/Virtio)
     -   [Agente invitado](https://wiki.qemu.org/Features/GuestAgent)
 -   [Libvirt](<>)
     -   [Oficial Doc](https://libvirt.org/)
     -   [Activación del enchufe del sistema](https://libvirt.org/manpages/libvirtd.html#system-socket-activation)
     -   [Conexión](https://libvirt.org/uri.html)
+    -   [Almacenamiento](https://libvirt.org/storage.html)
 -   [OpenStack Docs](<>)
     -   [Redhat](https://www.redhat.com/pt-br/topics/openstack)
 -   [Abrir vswitch](<>)
