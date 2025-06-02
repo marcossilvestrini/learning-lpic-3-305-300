@@ -300,7 +300,7 @@ Executa em cima de um sistema operacional convencional, contando com o sistema o
 ##### Diferenças -chave entre os hipervisores do tipo 1 e do tipo 2
 
 -   Ambiente de implantação:
-    -   Os hipervisores do tipo 1 são comumente implantados em data centers e ambientes corporativos devido à sua interação direta com hardware e alto desempenho.
+    -   Os hipervisores tipo 1 são comumente implantados em data centers e ambientes corporativos devido à sua interação direta com hardware e alto desempenho.
     -   Os hipervisores do tipo 2 são mais adequados para tarefas de uso pessoal, desenvolvimento, teste e virtualização em pequena escala.
 -   Desempenho:
     -   Os hipervisores do tipo 1 geralmente oferecem melhor desempenho e menor latência porque não confiam em um sistema operacional host.
@@ -341,7 +341,7 @@ A HVM aproveita as extensões de hardware fornecidas pelas CPUs modernas para vi
 
 -   **Suporte de hardware**: Requer suporte à CPU para extensões de virtualização, como Intel VT-X ou AMD-V.
 -   **Virtualização completa:**As VMs podem executar sistemas operacionais de hóspedes não modificados, pois o hipervisor fornece uma emulação completa do ambiente de hardware.
--   **Desempenho:**Normalmente, oferece desempenho quase nativo devido à execução direta do código de convidado na CPU.
+-   **Desempenho:** Typically offers near-native performance because of direct execution of guest code on the CPU.
 -   **Isolamento:**Fornece um forte isolamento entre as VMs, pois cada VM opera como se tivesse seu próprio hardware dedicado.
 
 ###### Exemplo de HVM
@@ -628,7 +628,7 @@ Aqui estão alguns aspectos importantes da Xen Store:
 #### Pílula
 
 XAPI, ou Xenapi, é a interface de programação de aplicativos (API) usada para gerenciar o hipervisor Xen e suas máquinas virtuais (VMs).  
-O XAPI é um componente essencial do Xenserver (agora conhecido como Citrix Hypervisor) e fornece uma maneira padronizada de interagir com o hipervisor Xen para executar operações como criar, configurar, monitorar e controlar VMs.
+XAPI is a key component of XenServer (now known as Citrix Hypervisor) and provides a standardized way to interact with the Xen hypervisor to perform operations such as creating, configuring, monitoring, and controlling VMs.
 
 Aqui estão alguns aspectos importantes de Xapi:
 
@@ -1194,7 +1194,7 @@ qemu-system-x86_x64
 
 -   Entenda a arquitetura do Libvirt
 -   Gerenciar conexões e nós da LibVirt
--   Crie e gerencie domínios qemu e xen, incluindo instantâneos
+-   Create and manage QEMU and Xen domains, including snapshots
 -   Gerenciar e analisar o consumo de recursos de domínios
 -   Crie e gerencie pools e volumes de armazenamento
 -   Crie e gerencie redes virtuais
@@ -1223,6 +1223,10 @@ virsh (including relevant subcommands)
 export LIBVIRT_DEFAULT_URI=qemu:///system
 export LIBVIRT_DEFAULT_URI=xen+ssh://vagrant@192.168.0.130
 export LIBVIRT_DEFAULT_URI='xen+ssh://vagrant@192.168.0.130?keyfile=/home/vagrant/.ssh/skynet-key-ecdsa'
+
+# get helps
+virsh help
+virsh help pool-create
 
 # view version
 virsh version
@@ -1258,10 +1262,48 @@ virsh -c qemu+ssh://vagrant@192.168.0.130/system list
 virsh -c 'xen+ssh://vagrant@192.168.0.130?keyfile=/home/vagrant/.ssh/skynet-key-ecdsa'
 
 # list storage pools
-virsh pool-list
+virsh pool-list --details
+
+# list all storage pool
+virsh pool-list --all --details
 
 # get a pool configuration
 virsh pool-dumpxml default
+
+# get pool info
+virsh pool-info default
+
+# create a storage pool
+virsh pool-define-as --name default --type dir --target /var/lib/libvirt/images
+
+# create a storage pool with dumpxml
+virsh pool-create --overwrite --file configs/kvm/libvirt/pool.xml
+
+# start storage pool
+virsh pool-start default
+
+# set storage pool for autostart
+virsh pool-autostart default
+
+# stop storage pool
+virsh pool-destroy linux
+
+# delete xml storage pool file
+virsh pool-undefine linux
+
+# edit storage pool
+virsh pool-edit linux
+
+# list volumes
+virsh vol-list linux
+
+# get volume infos
+virsh vol-info Debian_12.0.0.qcow2 os-images
+virsh vol-info --pool os-images Debian_12.0.0.qcow2 
+
+# create volume
+virsh vol-create-as default --format qcow2 disk1 10G
+
 ```
 
 <p align="right">(<a href="#topic-351.4">back to sub Topic 351.4</a>)</p>
@@ -1720,7 +1762,7 @@ Link do projeto:<https://github.com/marcossilvestrini/learning-lpic-3-305-300>
     -   [Diretrizes de software livre do Debian](https://www.debian.org/social_contract#guidelines)
     -   [Lista de distribuição Linux](https://en.wikipedia.org/wiki/List_of_Linux_distributions)
     -   [Distrowatch](https://distrowatch.com/)
-    -   [Comparison Linux Distributions](https://en.wikipedia.org/wiki/Comparison_of_Linux_distributions)
+    -   [Comparação Distribuições Linux](https://en.wikipedia.org/wiki/Comparison_of_Linux_distributions)
 -   [Ambientes de mesa](<>)
     -   [X11 org](https://www.x.org/wiki/)
     -   [Wayland](https://wayland.freedesktop.org/)
@@ -1796,7 +1838,7 @@ Link do projeto:<https://github.com/marcossilvestrini/learning-lpic-3-305-300>
     -   [Oficial Doc](https://www.qemu.org/)
     -   [Baixe imagens osboxes](https://www.osboxes.org/)
     -   [Faça o download de imagens linuximages](https://www.linuxvmimages.com/)
-    -   [Urina](https://en.wikibooks.org/wiki/QEMU/Devices/Virtio)
+    -   [Urbano](https://en.wikibooks.org/wiki/QEMU/Devices/Virtio)
     -   [Agente convidado](https://wiki.qemu.org/Features/GuestAgent)
 -   [Libvirt](<>)
     -   [Oficial Doc](https://libvirt.org/)
