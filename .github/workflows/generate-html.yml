@@ -22,7 +22,7 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           fetch-depth: 1
 
@@ -53,7 +53,7 @@ jobs:
       - run: /usr/bin/git push origin main
      
       - name: Upload artifacts        
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: ${{ steps.repo_name.outputs.name }}
           path: ./${{ steps.repo_name.outputs.name }}.pdf
