@@ -115,11 +115,11 @@ ssh -o StrictHostKeyChecking=accept-new -i /home/vagrant/.ssh/skynet-key-ecdsa v
 # -------------------------------------------------
 # Set libvirt default URI for vagrant user
 # -------------------------------------------------
-mkdir -p /home/vagrant/.config/libvirt
-tee /home/vagrant/.config/libvirt/libvirt.conf > /dev/null <<EOF
-uri_default = "xen+ssh://vagrant@192.168.0.130"
-EOF
-chown -R vagrant:vagrant /home/vagrant/.config
+# mkdir -p /home/vagrant/.config/libvirt
+# tee /home/vagrant/.config/libvirt/libvirt.conf > /dev/null <<EOF
+# uri_default = "xen+ssh://vagrant@192.168.0.130"
+# EOF
+# chown -R vagrant:vagrant /home/vagrant/.config
 
 # -------------------------------------------------
 # Configure SSH client for vagrant user with key

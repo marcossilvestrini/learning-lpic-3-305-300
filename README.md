@@ -1237,6 +1237,10 @@ export LIBVIRT_DEFAULT_URI=qemu:///system
 export LIBVIRT_DEFAULT_URI=xen+ssh://vagrant@192.168.0.130
 export LIBVIRT_DEFAULT_URI='xen+ssh://vagrant@192.168.0.130?keyfile=/home/vagrant/.ssh/skynet-key-ecdsa'
 
+# get helps
+virsh help
+virsh help pool-create
+
 # view version
 virsh version
 
@@ -1271,10 +1275,48 @@ virsh -c qemu+ssh://vagrant@192.168.0.130/system list
 virsh -c 'xen+ssh://vagrant@192.168.0.130?keyfile=/home/vagrant/.ssh/skynet-key-ecdsa'
 
 # list storage pools
-virsh pool-list
+virsh pool-list --details
+
+# list all storage pool
+virsh pool-list --all --details
 
 # get a pool configuration
 virsh pool-dumpxml default
+
+# get pool info
+virsh pool-info default
+
+# create a storage pool
+virsh pool-define-as --name default --type dir --target /var/lib/libvirt/images
+
+# create a storage pool with dumpxml
+virsh pool-create --overwrite --file configs/kvm/libvirt/pool.xml
+
+# start storage pool
+virsh pool-start default
+
+# set storage pool for autostart
+virsh pool-autostart default
+
+# stop storage pool
+virsh pool-destroy linux
+
+# delete xml storage pool file
+virsh pool-undefine linux
+
+# edit storage pool
+virsh pool-edit linux
+
+# list volumes
+virsh vol-list linux
+
+# get volume infos
+virsh vol-info Debian_12.0.0.qcow2 os-images
+virsh vol-info --pool os-images Debian_12.0.0.qcow2 
+
+# create volume
+virsh vol-create-as default --format qcow2 disk1 10G
+
 ```
 
 <p align="right">(<a href="#topic-351.4">back to sub Topic 351.4</a>)</p>

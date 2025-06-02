@@ -119,6 +119,9 @@ Vagrant.configure("2") do |config|
     # LIBVIRT
     kvm.vm.provision "shell", name: "[libvirt]", path: "../scripts/kvm/libvirt.sh", privileged: true
 
+    # STORAGE CONFIGURATION
+    kvm.vm.provision "shell", name: "[kvm-storage]", path: "../scripts/kvm/storage.sh", privileged: false
+
     # RESTART VM
     kvm.vm.provision :reload
   end

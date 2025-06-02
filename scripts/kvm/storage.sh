@@ -48,6 +48,7 @@ else
     # Force mkfs only if filesystem is missing
     sudo mkfs.xfs -f /dev/vg_libvirt/lpic3-libvirt-guest-disk
     sudo mkdir -p /var/lib/libvirt/images
+    chown -R vagrant:vagrant /var/lib/libvirt/images
     sudo mount /dev/vg_libvirt/lpic3-libvirt-guest-disk /var/lib/libvirt/images
 
     # Avoid duplicate fstab entry
@@ -55,7 +56,7 @@ else
     echo "/dev/vg_libvirt/lpic3-libvirt-guest-disk /var/lib/libvirt/images xfs defaults 0 0" | sudo tee -a /etc/fstab
 fi
 
-# Check if libvirt pool exists
+# Check if libvirt pool default exists
 if virsh pool-list --all | grep -q "default"; then
     echo "Libvirt storage pool 'default' already exists. Skipping creation."
 else
@@ -64,8 +65,20 @@ else
     virsh pool-autostart default
 fi
 
-# Ensure pool is started
+# Ensure pool default is started
 virsh pool-start default > /dev/null 2>&1 || echo "Libvirt pool 'default' is already active."
+
+# Check if libvirt pool os-images exists
+if virsh pool-list --all | grep -q "os-images"; then
+    echo "Libvirt storage pool 'os-images' already exists. Skipping creation."
+else
+    echo "Creating libvirt storage pool 'os-images'..."
+    virsh pool-define-as --name os-images --type dir --target /home/vagrant/os-images/Debian_12.0.0_VMM
+    virsh pool-autostart os-images
+fi
+
+# Ensure pool os-images is started
+virsh pool-start os-images > /dev/null 2>&1 || echo "Libvirt pool 'os-images' is already active."
 
 # Final report
 echo "Storage configuration completed:"
