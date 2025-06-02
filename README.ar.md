@@ -1,6 +1,6 @@
 <h1><a name="readme-top"></a></h1>
 
-[![Create Release](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/release.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/release.yml)[![Translate README](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/translate.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/translate.yml)[![Deploy GitHub Pages](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/jekyll-gh-pages.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/jekyll-gh-pages.yml)[![Generate HTML and PDF](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/generate-html.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/generate-html.yml)[![PSScriptAnalyzer](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/powershell.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/powershell.yml)[![Slack Notification](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/slack.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/slack.yml)
+[![Create Release](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/release.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/release.yml)[![Translate README](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/translate.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/translate.yml)[![Deploy GitHub Pages](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/jekyll-gh-pages.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/deploy-webpage.yml)[![Generate HTML and PDF](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/generate-html.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/generate-html.yml)[![PSScriptAnalyzer](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/powershell.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/powershell.yml)[![Slack Notification](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/slack.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/slack.yml)
 
 * * *
 
@@ -8,7 +8,7 @@
 
 * * *
 
-# تعلم LPIC-3 305-300
+# LEARNING LPIC-3 305-300
 
 ![LPIC3-305-300](images/lpic3-305-300.jpg)
 
@@ -317,7 +317,7 @@ Migration (P2V, V2V)
 ##### P2V - المادية للهجرة الافتراضية
 
 تشير ترحيل P2V إلى عملية ترحيل الخادم الفعلي إلى جهاز افتراضي.  
-بمعنى آخر ، يتم "تحويل" نظام التشغيل وتطبيقاته ، الذي يعمل على الأجهزة المادية المخصصة ، ونقله إلى جهاز افتراضي يعمل على Hypervisor (مثل VMware ، Hyper-V ، KVM ، إلخ).
+بمعنى آخر ، يتم "تحويل" نظام التشغيل وتطبيقاته ، الذي يعمل على أجهزة مادية مخصصة ، ونقله إلى جهاز افتراضي يعمل على Hypervisor (مثل VMware ، Hyper-V ، KVM ، إلخ).
 
 -   مثال: لديك خادم فعلي يقوم بتشغيل نظام Windows أو Linux ، وتريد نقله إلى بيئة افتراضية ، مثل البنية التحتية السحابية أو خادم المحاكاة الافتراضية الداخلية.  
     تتضمن العملية نسخ حالة النظام بأكملها ، بما في ذلك نظام التشغيل والبرامج تشغيل وبيانات ، لإنشاء جهاز افتراضي مكافئ يمكن أن يعمل كما لو كان على الأجهزة الفعلية.
@@ -604,7 +604,7 @@ Xen عبارة عن فرط من النوع الأول من النوع 1 (الع�
 #### مشروع Xen
 
 يشير مشروع Xen إلى مجتمع المصدر المفتوح والمبادرة المسؤولة عن تطوير وصيانة Xen Hypervisor بعد تسويقه.  
-يعمل مشروع XEN بموجب مؤسسة Linux ، مع التركيز على بناء Xen وتحسينه ودعمه كجهد تعاوني يعتمد على المجتمع.
+يعمل مشروع Xen في إطار مؤسسة Linux ، مع التركيز على بناء Xen ، ودعمه ، ودعمه كجهد تعاوني يعتمد على المجتمع.
 
 -   **الأهداف:**يهدف مشروع XEN إلى تقدم Hypervisor من خلال تحسين أدائه وأمانه وميزاته لمجموعة واسعة من حالات الاستخدام ، بما في ذلك الحوسبة السحابية ، والمحاكاة الافتراضية التي تركز على الأمان (على سبيل المثال ، QBES OS) ، والأنظمة المدمجة.
 -   **المساهمين:**يضم المشروع مساهمين من مختلف المؤسسات ، بما في ذلك مقدمي الخدمات السحابية الرئيسية وبائعي الأجهزة والمطورين المستقلين.
@@ -647,7 +647,7 @@ XAPI هي الواجهة التي تتيح التحكم في أجهزة Xen Hype
 -   **intercroping:**تقنية Hypervisor الأساسية التي تتيح الأجهزة الافتراضية لتشغيلها على الأجهزة المادية.
 -   **Xensource:**الشركة التي قامت بتسويق Xen ، التي اكتسبتها لاحقًا Citrix ، مما أدى إلى تطوير Citrix Xenserver.
 -   **مشروع Xen:**المبادرة المفتوحة المصدر والمجتمع التي تواصل تطوير والحفاظ على Xen Hypervisor تحت مؤسسة Linux.
--   **Xenstore:**يعمل متجر Xen كوسيط اتصال وتكوين بين Xen Hypervisor و VMS ، مما يؤدي إلى تبسيط تشغيل وإدارة البيئات الظاهرية.
+-   **Xenstore:**يعمل متجر Xen كوسيط للاتصال والتكوين بين Xen Hypervisor و VMs ، مما يؤدي إلى تبسيط تشغيل وإدارة البيئات الظاهرية.
 -   **حبة**هي الواجهة التي تتيح التحكم في أجهزة Xen Hypervisor وأتمتة ، مما يجعل من السهل إدارة البيئات الافتراضية.
 
 #### DOMAIN0 (DOM0)
@@ -1224,6 +1224,10 @@ export LIBVIRT_DEFAULT_URI=qemu:///system
 export LIBVIRT_DEFAULT_URI=xen+ssh://vagrant@192.168.0.130
 export LIBVIRT_DEFAULT_URI='xen+ssh://vagrant@192.168.0.130?keyfile=/home/vagrant/.ssh/skynet-key-ecdsa'
 
+# get helps
+virsh help
+virsh help pool-create
+
 # view version
 virsh version
 
@@ -1258,10 +1262,47 @@ virsh -c qemu+ssh://vagrant@192.168.0.130/system list
 virsh -c 'xen+ssh://vagrant@192.168.0.130?keyfile=/home/vagrant/.ssh/skynet-key-ecdsa'
 
 # list storage pools
-virsh pool-list
+virsh pool-list --details
+
+# list all storage pool
+virsh pool-list --all --details
 
 # get a pool configuration
 virsh pool-dumpxml default
+
+# get pool info
+virsh pool-info default
+
+# create a storage pool
+virsh pool-define-as --name default --type dir --target /var/lib/libvirt/images
+
+# create a storage pool with dumpxml
+virsh pool-create --overwrite --file configs/kvm/libvirt/pool.xml
+
+# start storage pool
+virsh pool-start default
+
+# set storage pool for autostart
+virsh pool-autostart default
+
+# stop storage pool
+virsh pool-destroy linux
+
+# delete xml storage pool file
+virsh pool-undefine linux
+
+# edit storage pool
+virsh pool-edit linux
+
+# list volumes
+virsh vol-list linux
+
+# get volume infos
+virsh vol-info Debian_12.0.0.qcow2 os-images
+virsh vol-info --pool os-images Debian_12.0.0.qcow2 
+
+# create volume
+virsh vol-create-as default --format qcow2 disk1 10G
 ```
 
 <p align="right">(<a href="#topic-351.4">back to sub Topic 351.4</a>)</p>
@@ -1348,7 +1389,7 @@ foo
 -   افهم كيف يستفيد LXC و Docker من مساحات الأسماء ، Cgroups ، القدرات ، SecComp و Mac
 -   فهم مبدأ Runc
 -   فهم مبدأ CRI-O و CONTERD
--   وعي بوقت تشغيل OCI ومواصفات الصورة
+-   وعي بوقت تشغيل OCI ومواصفات الصور
 -   الوعي بواجهة وقت تشغيل حاوية Kubernetes (CRI)
 -   إدراك بودمان ، بوتا و scopeo
 -   إدراك نهج المحاكاة الافتراضية الأخرى للحاويات في Linux وأنظمة التشغيل الحرة الأخرى ، مثل السجون RKT أو OpenVZ أو Systemd-Nspawn أو BSD
@@ -1583,7 +1624,7 @@ packer
 **مجالات المعرفة الرئيسية:**
 
 -   فهم ميزات ومفاهيم السحابة ، بما في ذلك بيانات المستخدم ، وتهيئة وتكوين السحابة
--   استخدم السحابة لإنشاء أنظمة الملفات وتغيير حجمها وتثبيتها وتكوين حسابات المستخدمين ، بما في ذلك بيانات اعتماد تسجيل الدخول مثل مفاتيح SSH وتثبيت حزم البرامج من مستودع التوزيع
+-   استخدم Cloud-Init لإنشاء أنظمة الملفات وتغيير حجمها وتثبيتها وتكوين حسابات المستخدمين ، بما في ذلك بيانات اعتماد تسجيل الدخول مثل مفاتيح SSH وتثبيت حزم البرامج من مستودع التوزيع
 -   دمج السحابة في صور النظام
 -   استخدم Config Drive DataSource للاختبار
 
@@ -1796,7 +1837,7 @@ Vagrantfile
     -   [موظف الضابط](https://www.qemu.org/)
     -   [قم بتنزيل الصور osboxes](https://www.osboxes.org/)
     -   [قم بتنزيل الصور linuximages](https://www.linuxvmimages.com/)
-    -   [البول](https://en.wikibooks.org/wiki/QEMU/Devices/Virtio)
+    -   [حضري](https://en.wikibooks.org/wiki/QEMU/Devices/Virtio)
     -   [وكيل الضيف](https://wiki.qemu.org/Features/GuestAgent)
 -   [libvirt](<>)
     -   [موظف الضابط](https://libvirt.org/)
