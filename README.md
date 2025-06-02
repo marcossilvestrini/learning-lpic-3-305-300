@@ -1316,7 +1316,6 @@ virsh vol-info --pool os-images Debian_12.0.0.qcow2
 
 # create volume
 virsh vol-create-as default --format qcow2 disk1 10G
-
 ```
 
 <p align="right">(<a href="#topic-351.4">back to sub Topic 351.4</a>)</p>
