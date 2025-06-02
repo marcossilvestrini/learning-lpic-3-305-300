@@ -317,7 +317,7 @@ Se refieren a procesos de sistemas migratorios entre diferentes tipos de platafo
 ##### P2V - migración física a virtual
 
 La migración de P2V se refiere al proceso de migración de un servidor físico a una máquina virtual.  
-En otras palabras, un sistema operativo y sus aplicaciones, que se ejecutan en hardware físico dedicado, se "convierten" y se mueven a una máquina virtual que se ejecuta en un hipervisor (como VMware, Hyper-V, KVM, etc.).
+In other words, an operating system and its applications, running on dedicated physical hardware, are "converted" and moved to a virtual machine that runs on a hypervisor (such as VMware, Hyper-V, KVM, etc.).
 
 -   Ejemplo: tiene un servidor físico que ejecuta un sistema de Windows o Linux, y desea moverlo a un entorno virtual, como una infraestructura en la nube o un servidor de virtualización interno.  
     El proceso implica copiar todo el estado del sistema, incluido el sistema operativo, los controladores y los datos, para crear una máquina virtual equivalente que pueda ejecutarse como si estuviera en el hardware físico.
@@ -1224,6 +1224,10 @@ export LIBVIRT_DEFAULT_URI=qemu:///system
 export LIBVIRT_DEFAULT_URI=xen+ssh://vagrant@192.168.0.130
 export LIBVIRT_DEFAULT_URI='xen+ssh://vagrant@192.168.0.130?keyfile=/home/vagrant/.ssh/skynet-key-ecdsa'
 
+# get helps
+virsh help
+virsh help pool-create
+
 # view version
 virsh version
 
@@ -1258,10 +1262,48 @@ virsh -c qemu+ssh://vagrant@192.168.0.130/system list
 virsh -c 'xen+ssh://vagrant@192.168.0.130?keyfile=/home/vagrant/.ssh/skynet-key-ecdsa'
 
 # list storage pools
-virsh pool-list
+virsh pool-list --details
+
+# list all storage pool
+virsh pool-list --all --details
 
 # get a pool configuration
 virsh pool-dumpxml default
+
+# get pool info
+virsh pool-info default
+
+# create a storage pool
+virsh pool-define-as --name default --type dir --target /var/lib/libvirt/images
+
+# create a storage pool with dumpxml
+virsh pool-create --overwrite --file configs/kvm/libvirt/pool.xml
+
+# start storage pool
+virsh pool-start default
+
+# set storage pool for autostart
+virsh pool-autostart default
+
+# stop storage pool
+virsh pool-destroy linux
+
+# delete xml storage pool file
+virsh pool-undefine linux
+
+# edit storage pool
+virsh pool-edit linux
+
+# list volumes
+virsh vol-list linux
+
+# get volume infos
+virsh vol-info Debian_12.0.0.qcow2 os-images
+virsh vol-info --pool os-images Debian_12.0.0.qcow2 
+
+# create volume
+virsh vol-create-as default --format qcow2 disk1 10G
+
 ```
 
 <p align="right">(<a href="#topic-351.4">back to sub Topic 351.4</a>)</p>
@@ -1796,7 +1838,7 @@ Enlace del proyecto:<https://github.com/marcossilvestrini/learning-lpic-3-305-30
     -   [Oficial Doc](https://www.qemu.org/)
     -   [Descargar imágenes OSBOXES](https://www.osboxes.org/)
     -   [Descargar imágenes LinuxImages](https://www.linuxvmimages.com/)
-    -   [Orina](https://en.wikibooks.org/wiki/QEMU/Devices/Virtio)
+    -   [Urbano](https://en.wikibooks.org/wiki/QEMU/Devices/Virtio)
     -   [Agente invitado](https://wiki.qemu.org/Features/GuestAgent)
 -   [Libvirt](<>)
     -   [Oficial Doc](https://libvirt.org/)
