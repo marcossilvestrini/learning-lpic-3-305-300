@@ -1,6 +1,6 @@
 <h1><a name="readme-top"></a></h1>
 
-[![Create Release](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/release.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/release.yml)[![Translate README](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/translate.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/translate.yml)[![Deploy GitHub Pages](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/jekyll-gh-pages.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/jekyll-gh-pages.yml)[![Generate HTML and PDF](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/generate-html.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/generate-html.yml)[![PSScriptAnalyzer](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/powershell.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/powershell.yml)[![Slack Notification](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/slack.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/slack.yml)
+[![Create Release](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/release.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/release.yml)[![Translate README](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/translate.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/translate.yml)[![Deploy GitHub Pages](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/jekyll-gh-pages.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/deploy-webpage.yml)[![Generate HTML and PDF](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/generate-html.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/generate-html.yml)[![PSScriptAnalyzer](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/powershell.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/powershell.yml)[![Slack Notification](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/slack.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/slack.yml)
 
 * * *
 
@@ -300,7 +300,7 @@ Exécute sur un système d'exploitation conventionnel, en s'appuyant sur le syst
 ##### Différences clés entre les hyperviseurs de type 1 et de type 2
 
 -   Environnement de déploiement:
-    -   Type 1 hypervisors are commonly deployed in data centers and enterprise environments due to their direct interaction with hardware and high performance.
+    -   Les hyperviseurs de type 1 sont couramment déployés dans les centres de données et les environnements d'entreprise en raison de leur interaction directe avec le matériel et des performances élevées.
     -   Les hyperviseurs de type 2 conviennent plus à un usage personnel, au développement, aux tests et aux tâches de virtualisation à petite échelle.
 -   Performance:
     -   Les hyperviseurs de type 1 offrent généralement de meilleures performances et une latence plus faible car elles ne comptent pas sur un système d'exploitation hôte.
@@ -1224,6 +1224,10 @@ export LIBVIRT_DEFAULT_URI=qemu:///system
 export LIBVIRT_DEFAULT_URI=xen+ssh://vagrant@192.168.0.130
 export LIBVIRT_DEFAULT_URI='xen+ssh://vagrant@192.168.0.130?keyfile=/home/vagrant/.ssh/skynet-key-ecdsa'
 
+# get helps
+virsh help
+virsh help pool-create
+
 # view version
 virsh version
 
@@ -1258,10 +1262,47 @@ virsh -c qemu+ssh://vagrant@192.168.0.130/system list
 virsh -c 'xen+ssh://vagrant@192.168.0.130?keyfile=/home/vagrant/.ssh/skynet-key-ecdsa'
 
 # list storage pools
-virsh pool-list
+virsh pool-list --details
+
+# list all storage pool
+virsh pool-list --all --details
 
 # get a pool configuration
 virsh pool-dumpxml default
+
+# get pool info
+virsh pool-info default
+
+# create a storage pool
+virsh pool-define-as --name default --type dir --target /var/lib/libvirt/images
+
+# create a storage pool with dumpxml
+virsh pool-create --overwrite --file configs/kvm/libvirt/pool.xml
+
+# start storage pool
+virsh pool-start default
+
+# set storage pool for autostart
+virsh pool-autostart default
+
+# stop storage pool
+virsh pool-destroy linux
+
+# delete xml storage pool file
+virsh pool-undefine linux
+
+# edit storage pool
+virsh pool-edit linux
+
+# list volumes
+virsh vol-list linux
+
+# get volume infos
+virsh vol-info Debian_12.0.0.qcow2 os-images
+virsh vol-info --pool os-images Debian_12.0.0.qcow2 
+
+# create volume
+virsh vol-create-as default --format qcow2 disk1 10G
 ```
 
 <p align="right">(<a href="#topic-351.4">back to sub Topic 351.4</a>)</p>
