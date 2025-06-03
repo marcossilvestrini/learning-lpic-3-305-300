@@ -1,6 +1,6 @@
 <h1><a name="readme-top"></a></h1>
 
-[![Create Release](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/release.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/release.yml)[![Translate README](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/translate.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/translate.yml)[![Deploy GitHub Pages](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/jekyll-gh-pages.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/deploy-webpage.yml)[![Generate HTML and PDF](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/generate-html.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/generate-html.yml)[![PSScriptAnalyzer](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/powershell.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/powershell.yml)[![Slack Notification](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/slack.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/slack.yml)
+[![Create Release](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/release.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/release.yml)[![Translate README](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/translate.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/translate.yml)[![Generate HTML and PDF](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/generate-html.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/generate-html.yml)[![Deploy Webpage](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/deploy-webpage.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/deploy-webpage.yml)[![PSScriptAnalyzer](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/powershell.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/powershell.yml)[![Slack Notification](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/slack.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/slack.yml)
 
 * * *
 
@@ -352,7 +352,7 @@ VMware ESXI，Microsoft Hyper-V，KVM（基於內核的虛擬機）。
 
 -   **相容性:**可以在沒有修改的情況下運行任何操作系統。
 -   **表現：**高性能由於硬件支持。
--   **Security:**硬件提供的增強隔離和安全功能。
+-   **安全：**硬件提供的增強隔離和安全功能。
 
 ###### HVM缺點
 
@@ -420,7 +420,7 @@ NUMA（非統一內存訪問）是多處理器系統中使用的內存體系結�
 ##### NUMA體系結構的關鍵特徵
 
 1.  **本地和遠程內存**：每個處理器都有自己的本地內存，它可以更快地訪問。但是，儘管需要更長的時間，但它也可以訪問其他處理器的內存。
-2.  **區分潛伏期**：內存訪問的延遲取決於處理器是訪問其本地內存還是其他節點的內存。訪問另一個節點的內存（遠程）時，本地內存訪問更快。
+2.  **區分潛伏期**: The latency of memory access varies depending on whether the processor is accessing its local memory or the memory of another node. Local memory access is faster, while accessing another node’s memory (remote) is slower.
 3.  **可伸縮性**：NUMA架構旨在提高許多處理器系統的可擴展性。隨著添加更多處理器的添加，還會分發內存，避免在統一內存訪問（UMA）體系結構中發生的瓶頸。
 
 ##### NUMA的優勢
@@ -472,7 +472,7 @@ VMware ESXI，Microsoft Hyper-V，KVM。
 
 ###### 容器化示例
 
-Docker, Kubernetes, LXC.
+Docker，Kubernetes，LXC。
 
 ##### 網絡虛擬化
 
@@ -532,7 +532,7 @@ VMware ThinApp，Microsoft App-V，Citrix Xenapp。
 
 ##### 數據虛擬化
 
-###### Data VirtualizationDefinition
+###### 數據虛擬化定義
 
 整合來自各種來源的數據而無需物理整合，提供了統一的觀點進行分析和報告。
 
@@ -662,7 +662,7 @@ Domus是運行虛擬機的非特權域。
 
 #### peewee-dom（paravardiyed domina）
 
-PV-Domus使用一種稱為paraviratualization的技術。在此模型中，對DOMU操作系統進行了修改，以意識到它在虛擬化的環境中運行，從而使其可以直接與操縱虛擬機直接通信以獲得優化的性能。  
+PV-DomUs use a technique called paravirtualization. In this model, the DomU operating system is modified to be aware that it runs in a virtualized environment, allowing it to communicate directly with the hypervisor for optimized performance.  
 與完全虛擬化相比，這會導致較低的開銷和提高效率。
 
 #### HVM-DOMU（硬件虛擬機域）
@@ -1224,6 +1224,8 @@ export LIBVIRT_DEFAULT_URI=qemu:///system
 export LIBVIRT_DEFAULT_URI=xen+ssh://vagrant@192.168.0.130
 export LIBVIRT_DEFAULT_URI='xen+ssh://vagrant@192.168.0.130?keyfile=/home/vagrant/.ssh/skynet-key-ecdsa'
 
+# COMMONS
+
 # get helps
 virsh help
 virsh help pool-create
@@ -1240,8 +1242,12 @@ virsh nodeinfo
 # hostname
 virsh hostname
 
-# list vms
-virsh list
+# check vcn allocated port
+virsh vncdisplay <domain_id>
+virsh vncdisplay <domain_name>
+virsh vncdisplay rocky9-server01 
+
+# HYPERVISIONER
 
 # view libvirt hypervisioner connection
 virsh uri
@@ -1260,6 +1266,8 @@ virsh -c qemu+ssh://vagrant@192.168.0.130/system list
 
 # connect remotly without enter password
 virsh -c 'xen+ssh://vagrant@192.168.0.130?keyfile=/home/vagrant/.ssh/skynet-key-ecdsa'
+
+# STORAGE
 
 # list storage pools
 virsh pool-list --details
@@ -1303,6 +1311,126 @@ virsh vol-info --pool os-images Debian_12.0.0.qcow2
 
 # create volume
 virsh vol-create-as default --format qcow2 disk1 10G
+
+# delete volume
+virsh vol-delete  disk1 default
+
+# DOMAINS \ INSTANCES \ VIRTUAL MACHINES
+
+# list domain\instance\vm
+virsh list
+virsh list --all
+
+# create domain\instance\vm
+virsh create configs/kvm/libvirt/rocky9-server03.xml
+
+# view domain\instance\vm info
+virsh dominfo rocky9-server01
+
+# view domain\instance\vm xml
+virsh dumpxml rocky9-server01
+
+# edit domain\instance\vm xml
+virsh edit rocky9-server01
+
+# stop domain\instance\vm
+virsh shutdown rocky9-server01 # gracefully
+virsh destroy 1
+virsh destroy rocky9-server01
+
+# suspend domain\instance\vm
+virsh suspend rocky9-server01
+
+# resume domain\instance\vm
+virsh resume rocky9-server01
+
+# start domain\instance\vm
+virsh start rocky9-server01
+
+# remove domain\instance\vm
+virsh undefine rocky9-server01
+
+# remove domain\instance\vm and storage volumes
+virsh undefine rocky9-server01 --remove-all-storage
+
+# save domain\instance\vm
+virsh save rocky9-server01 rocky9-server01.qcow2
+
+# restore domain\instance\vm
+virsh restore rocky9-server01.qcow2
+
+# list snapshots
+virsh snapshot-list rocky9-server01
+
+# create snapshot
+virsh snapshot-create rocky9-server01
+
+# restore snapshot
+virsh snapshot-revert rocky9-server01 1748983520
+
+# view snapshot xml
+virsh snapshot-info rocky9-server01 1748983520
+
+# dumpxml snapshot
+virsh snapshot-dumpxml rocky9-server01 1748983520
+
+# xml snapshot path
+/var/lib/libvirt/qemu/snapshot/rocky9-server01/
+
+# view snapshot info
+virsh snapshot-info rocky9-server01 1748983671
+
+# edit snapshot
+virsh snapshot-edit rocky9-server01 1748983520
+
+# delete snapshot
+virsh snapshot-delete rocky9-server01 1748983520
+```
+
+###### virt-install
+
+```sh
+# list os variants
+virt-install --os-variant list
+osinfo-query os
+
+# create domain\instance\vm with iso file
+virsh vol-create-as default --format qcow2 rocky9-disk1 20G
+virt-install --name rocky9-server01 \
+--vcpus 2 \
+--cpu host \
+--memory 2048 \
+--disk vol=default/rocky9-disk1 \
+--cdrom /home/vagrant/isos/rocky/Rocky-9.5-x86_64-minimal.iso \
+--os-variant=rocky9 \
+--graphics vnc,listen=0.0.0.0,port=5905
+
+# create debian domain\instance\vm with qcow2 file
+virt-install --name debian-server01 \
+--vcpus 2 \
+--ram 2048 \
+--disk vol=os-images/Debian_12.0.0.qcow2 \
+--import \
+--osinfo detect=on \
+--graphics vnc,listen=0.0.0.0,port=5906 \
+--noautoconsole
+
+# create rocky9 domain\instance\vm with qcow2 file
+virt-install --name rocky9-server02 \
+--vcpus 2 \
+--ram 2048 \
+--disk path=os-images/RockyLinux_9.4_VMG/RockyLinux_9.4.qcow2,format=qcow2,bus=virtio \
+--import \
+--osinfo detect=on \
+--graphics vnc,listen=0.0.0.0,port=5907 \
+--noautoconsole
+
+# open domain\instance\vm gui console
+virt-viewer debian-server01
+
+# check metadata domain\instance\vm file (if uri is qemu:////system)
+less /etc/libvirt/qemu/debian-server01.xml 
+
 ```
 
 <p align="right">(<a href="#topic-351.4">back to sub Topic 351.4</a>)</p>
@@ -1328,7 +1456,7 @@ virsh vol-create-as default --format qcow2 disk1 10G
 -   在各種虛擬機磁盤圖像格式之間遷移磁盤內容
 -   意識開放虛擬化格式（OVF）
 
-#### 351.5 Cited Objects
+#### 351.5引用的對象
 
 ```sh
 qemu-img
@@ -1581,7 +1709,7 @@ Terraform
 
 ### 353.2包裝工
 
-**重量：**2
+**Weight:**2
 
 **描述：**候選人應該能夠使用Packer創建系統圖像。這包括在各種公共和私有云環境中運行的包裝器，以及為LXC/LXD構建容器圖像。
 
