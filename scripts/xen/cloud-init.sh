@@ -105,7 +105,7 @@ if grep -q -F -f "$PUBLIC_KEY_FILE" "$AUTHORIZED_KEYS_FILE"; then
     echo "The public key is present in the authorized_keys file."
 else
     echo "The public key for ansible is not present. Adding key to authorized_keys file..."
-    cat security/skynet-key-ecdsa.pub >>.ssh/authorized_keys
+    cat "$PUBLIC_KEY_FILE" >> "$AUTHORIZED_KEYS_FILE"
 fi
 
 # Restart SSH service to apply changes
