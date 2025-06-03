@@ -415,7 +415,7 @@ Paravirtualized Guests、特定の構成のVMwareツール、およびいくつ�
 #### numa（不均一なメモリアクセス）
 
 numa（不均一なメモリアクセス）は、プロセッサによるメモリアクセスを最適化するためにマルチプロセッサシステムで使用されるメモリアーキテクチャです。  
-numaシステムでは、メモリはプロセッサ間で不均一に分散されています。つまり、各プロセッサは、物理的に遠く（「リモートメモリ」と呼ばれる）、他のプロセッサに関連付けられているメモリ（「ローカルメモリ」）へのアクセスが高速であることを意味します。
+In a NUMA system, memory is distributed unevenly among processors, meaning that each processor has faster access to a portion of memory (its "local memory") than to memory that is physically further away (referred to as "remote memory") and associated with other processors.
 
 ##### numaアーキテクチャの重要な機能
 
@@ -608,7 +608,7 @@ Xenプロジェクトは、Linux Foundationの下で運営されており、Xen�
 
 -   **目標：**XENプロジェクトは、クラウドコンピューティング、セキュリティ中心の仮想化（QUBES OSなど）、組み込みシステムなど、幅広いユースケースのパフォーマンス、セキュリティ、および機能セットを改善することにより、ハイパーバイザーを前進させることを目的としています。
 -   **貢献者：**このプロジェクトには、主要なクラウドプロバイダー、ハードウェアベンダー、独立した開発者など、さまざまな組織の貢献者が含まれています。
--   **ピルとヘドール：**XENプロジェクトには、XAPI（Xenapi）などのツールにも含まれています。これは、Xenハイパーバイザーのインストールの管理に使用され、システム管理と最適化のための他のさまざまなユーティリティも含まれています。
+-   **ピルとヘドール：**Xenプロジェクトには、XAPI（Xenapi）などのツールにも含まれています。これは、Xenハイパーバイザーのインストールの管理に使用され、システム管理と最適化のための他のさまざまなユーティリティが含まれています。
 
 #### xenstore
 
@@ -1192,7 +1192,7 @@ qemu-system-x86_x64
 
 **重要な知識領域：**
 
--   Understand the architecture of libvirt
+-   libvirtのアーキテクチャを理解してください
 -   libvirt接続とノードを管理します
 -   スナップショットを含むQEMUおよびXENドメインを作成および管理します
 -   ドメインのリソース消費を管理および分析します
