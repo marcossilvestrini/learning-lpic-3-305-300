@@ -1,6 +1,6 @@
 <h1><a name="readme-top"></a></h1>
 
-[![Create Release](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/release.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/release.yml)[![Translate README](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/translate.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/translate.yml)[![Deploy GitHub Pages](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/jekyll-gh-pages.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/deploy-webpage.yml)[![Generate HTML and PDF](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/generate-html.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/generate-html.yml)[![PSScriptAnalyzer](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/powershell.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/powershell.yml)[![Slack Notification](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/slack.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/slack.yml)
+[![Create Release](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/release.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/release.yml)[![Translate README](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/translate.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/translate.yml)[![Generate HTML and PDF](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/generate-html.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/generate-html.yml)[![Deploy Webpage](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/deploy-webpage.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/deploy-webpage.yml)[![PSScriptAnalyzer](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/powershell.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/powershell.yml)[![Slack Notification](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/slack.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/slack.yml)
 
 * * *
 
@@ -192,7 +192,7 @@ vagrant/destroy.ps1
 
 <a name="freedoms"></a>
 
-## 4つの本質的な自由
+## Four Essential Freedoms
 
 > 0.あなたが望むようにプログラムを実行する自由、あらゆる目的のために（自由0）。\\
 > 1.プログラムがどのように機能するかを研究し、それを変更する自由が\\
@@ -415,7 +415,7 @@ Paravirtualized Guests、特定の構成のVMwareツール、およびいくつ�
 #### numa（不均一なメモリアクセス）
 
 numa（不均一なメモリアクセス）は、プロセッサによるメモリアクセスを最適化するためにマルチプロセッサシステムで使用されるメモリアーキテクチャです。  
-In a NUMA system, memory is distributed unevenly among processors, meaning that each processor has faster access to a portion of memory (its "local memory") than to memory that is physically further away (referred to as "remote memory") and associated with other processors.
+numaシステムでは、メモリはプロセッサ間で不均一に分散されています。つまり、各プロセッサは、物理的に遠く（「リモートメモリ」と呼ばれる）、他のプロセッサに関連付けられているメモリ（「ローカルメモリ」）へのアクセスが高速であることを意味します。
 
 ##### numaアーキテクチャの重要な機能
 
@@ -1224,6 +1224,8 @@ export LIBVIRT_DEFAULT_URI=qemu:///system
 export LIBVIRT_DEFAULT_URI=xen+ssh://vagrant@192.168.0.130
 export LIBVIRT_DEFAULT_URI='xen+ssh://vagrant@192.168.0.130?keyfile=/home/vagrant/.ssh/skynet-key-ecdsa'
 
+# COMMONS
+
 # get helps
 virsh help
 virsh help pool-create
@@ -1240,8 +1242,12 @@ virsh nodeinfo
 # hostname
 virsh hostname
 
-# list vms
-virsh list
+# check vcn allocated port
+virsh vncdisplay <domain_id>
+virsh vncdisplay <domain_name>
+virsh vncdisplay rocky9-server01 
+
+# HYPERVISIONER
 
 # view libvirt hypervisioner connection
 virsh uri
@@ -1260,6 +1266,8 @@ virsh -c qemu+ssh://vagrant@192.168.0.130/system list
 
 # connect remotly without enter password
 virsh -c 'xen+ssh://vagrant@192.168.0.130?keyfile=/home/vagrant/.ssh/skynet-key-ecdsa'
+
+# STORAGE
 
 # list storage pools
 virsh pool-list --details
@@ -1303,6 +1311,126 @@ virsh vol-info --pool os-images Debian_12.0.0.qcow2
 
 # create volume
 virsh vol-create-as default --format qcow2 disk1 10G
+
+# delete volume
+virsh vol-delete  disk1 default
+
+# DOMAINS \ INSTANCES \ VIRTUAL MACHINES
+
+# list domain\instance\vm
+virsh list
+virsh list --all
+
+# create domain\instance\vm
+virsh create configs/kvm/libvirt/rocky9-server03.xml
+
+# view domain\instance\vm info
+virsh dominfo rocky9-server01
+
+# view domain\instance\vm xml
+virsh dumpxml rocky9-server01
+
+# edit domain\instance\vm xml
+virsh edit rocky9-server01
+
+# stop domain\instance\vm
+virsh shutdown rocky9-server01 # gracefully
+virsh destroy 1
+virsh destroy rocky9-server01
+
+# suspend domain\instance\vm
+virsh suspend rocky9-server01
+
+# resume domain\instance\vm
+virsh resume rocky9-server01
+
+# start domain\instance\vm
+virsh start rocky9-server01
+
+# remove domain\instance\vm
+virsh undefine rocky9-server01
+
+# remove domain\instance\vm and storage volumes
+virsh undefine rocky9-server01 --remove-all-storage
+
+# save domain\instance\vm
+virsh save rocky9-server01 rocky9-server01.qcow2
+
+# restore domain\instance\vm
+virsh restore rocky9-server01.qcow2
+
+# list snapshots
+virsh snapshot-list rocky9-server01
+
+# create snapshot
+virsh snapshot-create rocky9-server01
+
+# restore snapshot
+virsh snapshot-revert rocky9-server01 1748983520
+
+# view snapshot xml
+virsh snapshot-info rocky9-server01 1748983520
+
+# dumpxml snapshot
+virsh snapshot-dumpxml rocky9-server01 1748983520
+
+# xml snapshot path
+/var/lib/libvirt/qemu/snapshot/rocky9-server01/
+
+# view snapshot info
+virsh snapshot-info rocky9-server01 1748983671
+
+# edit snapshot
+virsh snapshot-edit rocky9-server01 1748983520
+
+# delete snapshot
+virsh snapshot-delete rocky9-server01 1748983520
+```
+
+###### Virt-Install
+
+```sh
+# list os variants
+virt-install --os-variant list
+osinfo-query os
+
+# create domain\instance\vm with iso file
+virsh vol-create-as default --format qcow2 rocky9-disk1 20G
+virt-install --name rocky9-server01 \
+--vcpus 2 \
+--cpu host \
+--memory 2048 \
+--disk vol=default/rocky9-disk1 \
+--cdrom /home/vagrant/isos/rocky/Rocky-9.5-x86_64-minimal.iso \
+--os-variant=rocky9 \
+--graphics vnc,listen=0.0.0.0,port=5905
+
+# create debian domain\instance\vm with qcow2 file
+virt-install --name debian-server01 \
+--vcpus 2 \
+--ram 2048 \
+--disk vol=os-images/Debian_12.0.0.qcow2 \
+--import \
+--osinfo detect=on \
+--graphics vnc,listen=0.0.0.0,port=5906 \
+--noautoconsole
+
+# create rocky9 domain\instance\vm with qcow2 file
+virt-install --name rocky9-server02 \
+--vcpus 2 \
+--ram 2048 \
+--disk path=os-images/RockyLinux_9.4_VMG/RockyLinux_9.4.qcow2,format=qcow2,bus=virtio \
+--import \
+--osinfo detect=on \
+--graphics vnc,listen=0.0.0.0,port=5907 \
+--noautoconsole
+
+# open domain\instance\vm gui console
+virt-viewer debian-server01
+
+# check metadata domain\instance\vm file (if uri is qemu:////system)
+less /etc/libvirt/qemu/debian-server01.xml 
+
 ```
 
 <p align="right">(<a href="#topic-351.4">back to sub Topic 351.4</a>)</p>
@@ -1383,7 +1511,7 @@ foo
 
 -   システムとアプリケーションのコンテナの概念を理解します
 -   カーネルネームスペースを理解して分析します
--   コントロールグループを理解して分析します
+-   Understand and analyze control groups
 -   能力を理解して分析します
 -   コンテナ仮想化のためのSecComp、Selinux、Apparmorの役割を理解する
 -   LXCとDockerが名前空間、cgroups、機能、Seccomp、およびMacを活用する方法を理解する
