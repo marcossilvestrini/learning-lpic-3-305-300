@@ -1237,6 +1237,8 @@ export LIBVIRT_DEFAULT_URI=qemu:///system
 export LIBVIRT_DEFAULT_URI=xen+ssh://vagrant@192.168.0.130
 export LIBVIRT_DEFAULT_URI='xen+ssh://vagrant@192.168.0.130?keyfile=/home/vagrant/.ssh/skynet-key-ecdsa'
 
+# COMMONS
+
 # get helps
 virsh help
 virsh help pool-create
@@ -1253,8 +1255,12 @@ virsh nodeinfo
 # hostname
 virsh hostname
 
-# list vms
-virsh list
+# check vcn allocated port
+virsh vncdisplay <domain_id>
+virsh vncdisplay <domain_name>
+virsh vncdisplay rocky9-server01 
+
+# HYPERVISIONER
 
 # view libvirt hypervisioner connection
 virsh uri
@@ -1273,6 +1279,8 @@ virsh -c qemu+ssh://vagrant@192.168.0.130/system list
 
 # connect remotly without enter password
 virsh -c 'xen+ssh://vagrant@192.168.0.130?keyfile=/home/vagrant/.ssh/skynet-key-ecdsa'
+
+# STORAGE
 
 # list storage pools
 virsh pool-list --details
@@ -1316,6 +1324,61 @@ virsh vol-info --pool os-images Debian_12.0.0.qcow2
 
 # create volume
 virsh vol-create-as default --format qcow2 disk1 10G
+
+# delete volume
+virsh vol-delete  disk1 default
+
+# DOMAINS \ INSTANCES \ VIRTUAL MACHINES
+
+# list domain\instance\vm
+virsh list
+virsh list --all
+
+# stop domain\instance\vm
+virsh destroy 1
+virsh destroy rocky9-server01
+
+# remove domain\instance\vm
+virsh undefine rocky9-server01
+
+# remove domain\instance\vm and storage volumes
+virsh undefine rocky9-server01 --remove-all-storage
+```
+
+###### virt-install
+
+```sh
+# list os variants
+virt-install --os-variant list
+osinfo-query os
+
+# create domain\instance\vm with iso file
+virsh vol-create-as default --format qcow2 rocky9-disk1 20G
+virt-install --name rocky9-server01 \
+--vcpus 2 \
+--cpu host \
+--memory 2048 \
+--disk vol=default/rocky9-disk1 \
+--cdrom /home/vagrant/isos/rocky/Rocky-9.5-x86_64-minimal.iso \
+--os-variant=rocky9 \
+--graphics vnc,listen=0.0.0.0,port=5905
+
+# create domain\instance\vm with qcow2 file
+virt-install --name debian-server01 \
+--vcpus 2 \
+--ram 2048 \
+--disk vol=os-images/Debian_12.0.0.qcow2 \
+--import \
+--osinfo detect=on \
+--graphics vnc,listen=0.0.0.0,port=5906 \
+--noautoconsole
+
+# open domain\instance\vm gui console
+virt-viewer debian-server01
+
+# check metadata domain\instance\vm file (if uri is qemu:////system)
+less /etc/libvirt/qemu/debian-server01.xml 
+
 ```
 
 <p align="right">(<a href="#topic-351.4">back to sub Topic 351.4</a>)</p>

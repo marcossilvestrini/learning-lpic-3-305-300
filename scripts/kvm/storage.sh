@@ -48,7 +48,7 @@ else
     # Force mkfs only if filesystem is missing
     sudo mkfs.xfs -f /dev/vg_libvirt/lpic3-libvirt-guest-disk
     sudo mkdir -p /var/lib/libvirt/images
-    chown -R vagrant:vagrant /var/lib/libvirt/images
+    sudo chown -R vagrant:vagrant /var/lib/libvirt/images
     sudo mount /dev/vg_libvirt/lpic3-libvirt-guest-disk /var/lib/libvirt/images
 
     # Avoid duplicate fstab entry

@@ -31,7 +31,7 @@ if echo "$RELEASE_INFO" | grep -q -i "debian\|ubuntu"; then
         tightvncserver dbus-x11 \
         bridge-utils \
         guestmount \
-        libguestfs-tools
+        libguestfs-tools        
 
     # Set user profile for bash and vim
     sudo cp -f configs/commons/.bashrc_debian .bashrc
@@ -113,19 +113,9 @@ sudo systemctl restart ssh
 ssh -o StrictHostKeyChecking=accept-new -i /home/vagrant/.ssh/skynet-key-ecdsa vagrant@192.168.0.130 exit
 
 # -------------------------------------------------
-# Set libvirt default URI for vagrant user
-# -------------------------------------------------
-# mkdir -p /home/vagrant/.config/libvirt
-# tee /home/vagrant/.config/libvirt/libvirt.conf > /dev/null <<EOF
-# uri_default = "xen+ssh://vagrant@192.168.0.130"
-# EOF
-# chown -R vagrant:vagrant /home/vagrant/.config
-
-# -------------------------------------------------
 # Configure SSH client for vagrant user with key
 # -------------------------------------------------
 mkdir -p /home/vagrant/.ssh
-
 tee /home/vagrant/.ssh/config > /dev/null <<EOF
 Host 192.168.0.130
     User vagrant

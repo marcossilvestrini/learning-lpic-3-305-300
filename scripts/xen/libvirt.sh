@@ -22,7 +22,8 @@ apt install -y \
     virt-manager \
     virtinst \
     libguestfs-tools \
-    libvirt-daemon-driver-xen
+    libvirt-daemon-driver-xen \
+    libosinfo-bin
 
 # Disable libvirt sockets for enable tcp connections
 systemctl mask libvirtd.socket libvirtd-ro.socket libvirtd-admin.socket libvirtd-tls.socket libvirtd-tcp.socket
