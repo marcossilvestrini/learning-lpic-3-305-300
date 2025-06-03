@@ -1334,15 +1334,70 @@ virsh vol-delete  disk1 default
 virsh list
 virsh list --all
 
+# create domain\instance\vm
+virsh create configs/kvm/libvirt/rocky9-server03.xml
+
+# view domain\instance\vm info
+virsh dominfo rocky9-server01
+
+# view domain\instance\vm xml
+virsh dumpxml rocky9-server01
+
+# edit domain\instance\vm xml
+virsh edit rocky9-server01
+
 # stop domain\instance\vm
+virsh shutdown rocky9-server01 # gracefully
 virsh destroy 1
 virsh destroy rocky9-server01
+
+# suspend domain\instance\vm
+virsh suspend rocky9-server01
+
+# resume domain\instance\vm
+virsh resume rocky9-server01
+
+# start domain\instance\vm
+virsh start rocky9-server01
 
 # remove domain\instance\vm
 virsh undefine rocky9-server01
 
 # remove domain\instance\vm and storage volumes
 virsh undefine rocky9-server01 --remove-all-storage
+
+# save domain\instance\vm
+virsh save rocky9-server01 rocky9-server01.qcow2
+
+# restore domain\instance\vm
+virsh restore rocky9-server01.qcow2
+
+# list snapshots
+virsh snapshot-list rocky9-server01
+
+# create snapshot
+virsh snapshot-create rocky9-server01
+
+# restore snapshot
+virsh snapshot-revert rocky9-server01 1748983520
+
+# view snapshot xml
+virsh snapshot-info rocky9-server01 1748983520
+
+# dumpxml snapshot
+virsh snapshot-dumpxml rocky9-server01 1748983520
+
+# xml snapshot path
+/var/lib/libvirt/qemu/snapshot/rocky9-server01/
+
+# view snapshot info
+virsh snapshot-info rocky9-server01 1748983671
+
+# edit snapshot
+virsh snapshot-edit rocky9-server01 1748983520
+
+# delete snapshot
+virsh snapshot-delete rocky9-server01 1748983520
 ```
 
 ###### virt-install
@@ -1363,7 +1418,7 @@ virt-install --name rocky9-server01 \
 --os-variant=rocky9 \
 --graphics vnc,listen=0.0.0.0,port=5905
 
-# create domain\instance\vm with qcow2 file
+# create debian domain\instance\vm with qcow2 file
 virt-install --name debian-server01 \
 --vcpus 2 \
 --ram 2048 \
@@ -1371,6 +1426,16 @@ virt-install --name debian-server01 \
 --import \
 --osinfo detect=on \
 --graphics vnc,listen=0.0.0.0,port=5906 \
+--noautoconsole
+
+# create rocky9 domain\instance\vm with qcow2 file
+virt-install --name rocky9-server02 \
+--vcpus 2 \
+--ram 2048 \
+--disk path=os-images/RockyLinux_9.4_VMG/RockyLinux_9.4.qcow2,format=qcow2,bus=virtio \
+--import \
+--osinfo detect=on \
+--graphics vnc,listen=0.0.0.0,port=5907 \
 --noautoconsole
 
 # open domain\instance\vm gui console
