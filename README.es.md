@@ -329,7 +329,7 @@ En este caso, ya tiene una máquina virtual que se ejecuta en un entorno virtual
 
 -   Ejemplo: tiene una máquina virtual que se ejecuta en un servidor de virtualización VMware, pero decide migrarla a una plataforma Hyper-V. En este caso, la migración V2V convierte la máquina virtual de un formato o hipervisor a otro, asegurando que pueda continuar funcionando correctamente.
 
-#### HVM y paravirtualización
+#### HVM and Paravirtualization
 
 ##### Virtualización asistida por hardware (HVM)
 
@@ -446,7 +446,7 @@ En un sistema NUMA, la memoria se distribuye de manera desigual entre los proces
 
 #### Tipos de virtualización
 
-##### Hardware Virtualization (Server Virtualization)
+##### Virtualización de hardware (virtualización del servidor)
 
 ###### Definición de HV
 
@@ -619,7 +619,7 @@ Aquí hay algunos aspectos clave de la tienda Xen:
 
 -   **Comunicación entre dominios:**La tienda XEN permite la comunicación entre dominios, como DOM0 (el dominio privilegiado que controla los recursos de hardware) y DOMUS (dominios de usuario, que son las máquinas virtuales). Esto se realiza a través de entradas de valor clave, donde cada dominio puede leer o escribir información.
 
--   **Gestión de configuración:** It is used to store and access configuration information, such as virtual devices, networking, and boot parameters. This facilitates the dynamic management and configuration of VMs.
+-   **Gestión de configuración:**Se utiliza para almacenar y acceder a la información de configuración, como dispositivos virtuales, redes y parámetros de arranque. Esto facilita la gestión dinámica y la configuración de las máquinas virtuales.
 
 -   **Eventos y notificaciones:**Xen Store también admite notificaciones de eventos. Cuando se modifica una clave o valor particular en la tienda XEN, se pueden notificar dominios interesados ​​para reaccionar a estos cambios. Esto es útil para monitorear y administrar recursos.
 
