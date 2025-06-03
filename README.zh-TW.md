@@ -352,7 +352,7 @@ VMware ESXI，Microsoft Hyper-V，KVM（基於內核的虛擬機）。
 
 -   **相容性:**可以在沒有修改的情況下運行任何操作系統。
 -   **表現：**高性能由於硬件支持。
--   **安全：**硬件提供的增強隔離和安全功能。
+-   **Security:**硬件提供的增強隔離和安全功能。
 
 ###### HVM缺點
 
@@ -472,7 +472,7 @@ VMware ESXI，Microsoft Hyper-V，KVM。
 
 ###### 容器化示例
 
-Docker，Kubernetes，LXC。
+Docker, Kubernetes, LXC.
 
 ##### 網絡虛擬化
 
@@ -532,7 +532,7 @@ VMware ThinApp，Microsoft App-V，Citrix Xenapp。
 
 ##### 數據虛擬化
 
-###### 數據虛擬化定義
+###### Data VirtualizationDefinition
 
 整合來自各種來源的數據而無需物理整合，提供了統一的觀點進行分析和報告。
 
@@ -640,7 +640,7 @@ XAPI是Xenserver（現稱為Citrix Hypervisor）的關鍵組成部分，並提�
 
 -   **訪問控制：**XAPI還提供訪問控制機制，以確保只有授權用戶才能在虛擬環境中執行特定操作。
 
-XAPI是可以控制和自動化XEN虛擬機程序的接口，使管理虛擬化環境變得更容易。
+XAPI是可以控制和自動化XEN管理程序的接口，使管理虛擬化環境更容易。
 
 #### Xen摘要
 
@@ -1328,7 +1328,7 @@ virsh vol-create-as default --format qcow2 disk1 10G
 -   在各種虛擬機磁盤圖像格式之間遷移磁盤內容
 -   意識開放虛擬化格式（OVF）
 
-#### 351.5引用的對象
+#### 351.5 Cited Objects
 
 ```sh
 qemu-img
