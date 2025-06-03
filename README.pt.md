@@ -300,7 +300,7 @@ Executa em cima de um sistema operacional convencional, contando com o sistema o
 ##### Diferenças -chave entre os hipervisores do tipo 1 e do tipo 2
 
 -   Ambiente de implantação:
-    -   Os hipervisores tipo 1 são comumente implantados em data centers e ambientes corporativos devido à sua interação direta com hardware e alto desempenho.
+    -   Os hipervisores do tipo 1 são comumente implantados em data centers e ambientes corporativos devido à sua interação direta com hardware e alto desempenho.
     -   Os hipervisores do tipo 2 são mais adequados para tarefas de uso pessoal, desenvolvimento, teste e virtualização em pequena escala.
 -   Desempenho:
     -   Os hipervisores do tipo 1 geralmente oferecem melhor desempenho e menor latência porque não confiam em um sistema operacional host.
@@ -1381,7 +1381,7 @@ foo
 
 **Principais áreas de conhecimento:**
 
--   Entenda os conceitos de sistema e contêiner de aplicativos
+-   Understand the concepts of system and application container
 -   Entender e analisar namespaces de kernel
 -   Entender e analisar grupos de controle
 -   Entender e analisar recursos
