@@ -1,7 +1,7 @@
 #!/bin/bash
 
-<<'MULTILINE-COMMENT'
-    Requirments: none
+: <<'MULTILINE-COMMENT'
+    Requirements: none
     Description: Script for set Network Xen
     Author: Marcos Silvestrini
     Date: 09/01/2025

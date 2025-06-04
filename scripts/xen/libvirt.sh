@@ -1,10 +1,10 @@
 #!/bin/bash
 
-<<'MULTILINE-COMMENT'
-    Requirments: none
-    Description: Script for set Libvirt Environment for Connect to Xen
+: <<'MULTILINE-COMMENT'
+    Requirements: none
+    Description: Script for set Xen Libvirt Environment
     Author: Marcos Silvestrini
-    Date: 23/04/2025
+    Date: 22/04/2025
 MULTILINE-COMMENT
 
 # Set language/locale and encoding

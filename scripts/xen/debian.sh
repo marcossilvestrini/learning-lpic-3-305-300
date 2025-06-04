@@ -1,10 +1,10 @@
 #!/bin/bash
 
-<<'MULTILINE-COMMENT'
-    Requirments: none
-    Description: Script for Install Xen
+: <<'MULTILINE-COMMENT'
+    Requirements: none
+    Description: Script for Xen Debian operations
     Author: Marcos Silvestrini
-    Date: 09/01/2025
+    Date: 04/06/2025
 MULTILINE-COMMENT
 
 # Update the package list

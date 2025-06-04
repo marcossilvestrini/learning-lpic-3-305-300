@@ -1,0 +1,6 @@
+<filter name='block-icmp' chain='ipv4'>
+    <uuid>12345678-90ab-cdef-1234-567890abcdef</uuid>
+    <rule action='drop' direction='in'>
+        <icmp/>
+    </rule>
+</filter>

@@ -1199,6 +1199,10 @@ qemu-system-x86_x64
 
 ### 351.4 Libvirt Virtual Machine Management
 
+![libvirt](images/libvirt.png)
+
+![libvirt-network](images/libvirt-default-network.jpg)
+
 **Weight:** 9
 
 **Description:** Candidates should be able to manage virtualization hosts and virtual machines (‘libvirt domains’) using libvirt and related tools.
@@ -1420,7 +1424,7 @@ virsh attach-disk rocky9-server01  /var/lib/libvirt/images/rocky9-disk2  vdb --p
 # remove disk
 virsh detach-disk rocky9-server01 vdb --persistent
 
-# RESOURCES
+# RESOURCES (CPU and Memory)
 
 # get cpu infos
 virsh vcpuinfo rocky9-server01 --pretty
@@ -1456,6 +1460,70 @@ virsh start rocky9-server01
 
 # set current memory config
 virsh setmem rocky9-server01 2500000 --current
+
+# NETWORK
+
+# get netwwork bridges
+brctl show
+
+# get iptables rules for libvirt
+sudo iptables -L -n -t  nat
+
+# list network
+virsh net-list --all
+
+# set default network
+virsh net-define /etc/libvirt/qemu/networks/default.xml
+
+# get network infos
+virsh net-info default
+
+# get xml network
+virsh net-dumpxml default
+
+# xml file
+cat /etc/libvirt/qemu/networks/default.xml
+
+# dhcp config
+sudo cat /etc/libvirt/qemu/networks/default.xml | grep -A 10 dhcp
+sudo cat /var/lib/libvirt/dnsmasq/default.conf
+
+# get domain ipp address
+virsh net-dhcp-leases default
+virsh net-dhcp-leases default --mac 52\:54\:00\:89\:19\:86
+
+# edit network
+virsh net-edit default
+
+# get domain network detais
+virsh domiflist debian-server01
+
+# path for network filter files
+/etc/libvirt/nwfilter/
+
+# list network filters
+virsh nwfilter-list
+
+# create network filter - block icmp traffic
+virsh nwfilter-define block-icmp.xml
+# virsh edit Debian-Server
+    #  <interface type='network'>
+    #        ...
+    #        <filterref filter='block-icmp'/>
+    #        ...
+    # </interface>
+# virsh destroy debian-server01
+# virsh start debian-server01
+
+
+# delete network filter
+virsh nwfilter-undefine block-icmp
+
+# get xml network filter
+virsh nwfilter-dumpxml block-icmp
+
+
+
 ```
 
 ###### virt-install
@@ -1484,6 +1552,7 @@ virt-install --name debian-server01 \
 --import \
 --osinfo detect=on \
 --graphics vnc,listen=0.0.0.0,port=5906 \
+--network network=default \
 --noautoconsole
 
 # create rocky9 domain\instance\vm with qcow2 file
@@ -1494,6 +1563,7 @@ virt-install --name rocky9-server02 \
 --import \
 --osinfo detect=on \
 --graphics vnc,listen=0.0.0.0,port=5907 \
+--network bridge=qemubr0,model=virtio \
 --noautoconsole
 
 # open domain\instance\vm gui console
@@ -2045,6 +2115,8 @@ Project Link: [https://github.com/marcossilvestrini/learning-lpic-3-305-300](htt
   * [System Socket Activation](https://libvirt.org/manpages/libvirtd.html#system-socket-activation)
   * [Conections](https://libvirt.org/uri.html)
   * [Storage](https://libvirt.org/storage.html)
+  * [Network](https://wiki.libvirt.org/Networking.html)
+  * [VirtualNetwork](https://wiki.libvirt.org/VirtualNetworking.html)  
 * [Openstack Docs]()
   * [RedHat](https://www.redhat.com/pt-br/topics/openstack)
 * [Open vSwitch]()

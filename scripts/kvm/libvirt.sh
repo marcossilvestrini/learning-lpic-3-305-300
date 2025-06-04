@@ -1,7 +1,7 @@
 #!/bin/bash
 
-<<'MULTILINE-COMMENT'
-    Requirments: none
+: <<'MULTILINE-COMMENT'
+    Requirements: none
     Description: Script for set Libvirt Environment
     Author: Marcos Silvestrini
     Date: 22/04/2025
@@ -67,3 +67,7 @@ chmod +x /home/vagrant
 
 # restart libvirt service
 systemctl restart libvirtd
+
+# enable libvirt network
+virsh net-start default
+virsh net-autostart default

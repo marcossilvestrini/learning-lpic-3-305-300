@@ -1,6 +1,6 @@
 #!/bin/bash
 
-<<'MULTILINE-COMMENT'
+: <<'MULTILINE-COMMENT'
     Requirements: none
     Description: Idempotent Script to set Storage for Libvirt KVM Client (XFS version)
     Author: Marcos Silvestrini

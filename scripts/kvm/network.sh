@@ -1,7 +1,7 @@
 #!/bin/bash
 
-<<'MULTILINE-COMMENT'
-    Requirments: none
+: <<'MULTILINE-COMMENT'
+    Requirements: none
     Description: Script for set Network KVM QEMU
     Author: Marcos Silvestrini
     Date: 19/03/2025

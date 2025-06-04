@@ -1,7 +1,7 @@
 #!/bin/bash
 
-<<'MULTILINE-COMMENT'
-    Requirments: package foo.package bar
+: <<'MULTILINE-COMMENT'
+    Requirements: package foo.package bar
     Description: Script for learnning about LPIC2
     Author: Marcos Silvestrini
     Date: 17/05/2022
