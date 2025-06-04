@@ -1,7 +1,7 @@
 #!/bin/bash
 
-<<'MULTILINE-COMMENT'
-    Requirments: none
+: <<'MULTILINE-COMMENT'
+    Requirements: none
     Description: Script for set QEMU Environment
     Author: Marcos Silvestrini
     Date: 24/03/2025

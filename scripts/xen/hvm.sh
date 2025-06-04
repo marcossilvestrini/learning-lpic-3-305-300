@@ -1,10 +1,10 @@
 #!/bin/bash
 
-<<'MULTILINE-COMMENT'
-    Requirments: none
-    Description: Script for set Domains HVM Guest for Xen
+: <<'MULTILINE-COMMENT'
+    Requirements: none
+    Description: Script for Xen HVM operations
     Author: Marcos Silvestrini
-    Date: 05/02/2025
+    Date: 04/06/2025
 MULTILINE-COMMENT
 
 # Set language/locale and encoding

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-<<'MULTILINE-COMMENT'
+: <<'MULTILINE-COMMENT'
     Requirements: none
     Description: Script to configure KVM Environment
     Author: Marcos Silvestrini
