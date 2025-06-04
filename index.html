@@ -1619,82 +1619,140 @@ virsh (including relevant subcommands)
 </span><span class="code-line line-number" line="88"><span class="token function">virsh</span> vol-info Debian_12.0.0.qcow2 os-images
 </span><span class="code-line line-number" line="89"><span class="token function">virsh</span> vol-info <span class="token parameter variable">--pool</span> os-images Debian_12.0.0.qcow2 
 </span><span class="code-line line-number" line="90">
-</span><span class="code-line line-number" line="91"><span class="token comment"># create volume</span>
-</span><span class="code-line line-number" line="92"><span class="token function">virsh</span> vol-create-as default <span class="token parameter variable">--format</span> qcow2 disk1 10G
+</span><span class="code-line line-number" line="91"><span class="token comment"># get volume xml</span>
+</span><span class="code-line line-number" line="92"><span class="token function">virsh</span> vol-dumpxml rocky9-disk1 default
 </span><span class="code-line line-number" line="93">
-</span><span class="code-line line-number" line="94"><span class="token comment"># delete volume</span>
-</span><span class="code-line line-number" line="95"><span class="token function">virsh</span> vol-delete  disk1 default
+</span><span class="code-line line-number" line="94"><span class="token comment"># create volume</span>
+</span><span class="code-line line-number" line="95"><span class="token function">virsh</span> vol-create-as default <span class="token parameter variable">--format</span> qcow2 disk1 10G
 </span><span class="code-line line-number" line="96">
-</span><span class="code-line line-number" line="97"><span class="token comment"># DOMAINS \ INSTANCES \ VIRTUAL MACHINES</span>
-</span><span class="code-line line-number" line="98">
-</span><span class="code-line line-number" line="99"><span class="token comment"># list domain\instance\vm</span>
-</span><span class="code-line line-number" line="100"><span class="token function">virsh</span> list
-</span><span class="code-line line-number" line="101"><span class="token function">virsh</span> list <span class="token parameter variable">--all</span>
-</span><span class="code-line line-number" line="102">
-</span><span class="code-line line-number" line="103"><span class="token comment"># create domain\instance\vm</span>
-</span><span class="code-line line-number" line="104"><span class="token function">virsh</span> create configs/kvm/libvirt/rocky9-server03.xml
+</span><span class="code-line line-number" line="97"><span class="token comment"># delete volume</span>
+</span><span class="code-line line-number" line="98"><span class="token function">virsh</span> vol-delete  disk1 default
+</span><span class="code-line line-number" line="99">
+</span><span class="code-line line-number" line="100"><span class="token comment"># DOMAINS \ INSTANCES \ VIRTUAL MACHINES</span>
+</span><span class="code-line line-number" line="101">
+</span><span class="code-line line-number" line="102"><span class="token comment"># list domain\instance\vm</span>
+</span><span class="code-line line-number" line="103"><span class="token function">virsh</span> list
+</span><span class="code-line line-number" line="104"><span class="token function">virsh</span> list <span class="token parameter variable">--all</span>
 </span><span class="code-line line-number" line="105">
-</span><span class="code-line line-number" line="106"><span class="token comment"># view domain\instance\vm info</span>
-</span><span class="code-line line-number" line="107"><span class="token function">virsh</span> dominfo rocky9-server01
+</span><span class="code-line line-number" line="106"><span class="token comment"># create domain\instance\vm</span>
+</span><span class="code-line line-number" line="107"><span class="token function">virsh</span> create configs/kvm/libvirt/rocky9-server03.xml
 </span><span class="code-line line-number" line="108">
-</span><span class="code-line line-number" line="109"><span class="token comment"># view domain\instance\vm xml</span>
-</span><span class="code-line line-number" line="110"><span class="token function">virsh</span> dumpxml rocky9-server01
+</span><span class="code-line line-number" line="109"><span class="token comment"># view domain\instance\vm info</span>
+</span><span class="code-line line-number" line="110"><span class="token function">virsh</span> dominfo rocky9-server01
 </span><span class="code-line line-number" line="111">
-</span><span class="code-line line-number" line="112"><span class="token comment"># edit domain\instance\vm xml</span>
-</span><span class="code-line line-number" line="113"><span class="token function">virsh</span> edit rocky9-server01
+</span><span class="code-line line-number" line="112"><span class="token comment"># view domain\instance\vm xml</span>
+</span><span class="code-line line-number" line="113"><span class="token function">virsh</span> dumpxml rocky9-server01
 </span><span class="code-line line-number" line="114">
-</span><span class="code-line line-number" line="115"><span class="token comment"># stop domain\instance\vm</span>
-</span><span class="code-line line-number" line="116"><span class="token function">virsh</span> <span class="token function">shutdown</span> rocky9-server01 <span class="token comment"># gracefully</span>
-</span><span class="code-line line-number" line="117"><span class="token function">virsh</span> destroy <span class="token number">1</span>
-</span><span class="code-line line-number" line="118"><span class="token function">virsh</span> destroy rocky9-server01
-</span><span class="code-line line-number" line="119">
-</span><span class="code-line line-number" line="120"><span class="token comment"># suspend domain\instance\vm</span>
-</span><span class="code-line line-number" line="121"><span class="token function">virsh</span> <span class="token function">suspend</span> rocky9-server01
+</span><span class="code-line line-number" line="115"><span class="token comment"># edit domain\instance\vm xml</span>
+</span><span class="code-line line-number" line="116"><span class="token function">virsh</span> edit rocky9-server01
+</span><span class="code-line line-number" line="117">
+</span><span class="code-line line-number" line="118"><span class="token comment"># stop domain\instance\vm</span>
+</span><span class="code-line line-number" line="119"><span class="token function">virsh</span> <span class="token function">shutdown</span> rocky9-server01 <span class="token comment"># gracefully</span>
+</span><span class="code-line line-number" line="120"><span class="token function">virsh</span> destroy <span class="token number">1</span>
+</span><span class="code-line line-number" line="121"><span class="token function">virsh</span> destroy rocky9-server01
 </span><span class="code-line line-number" line="122">
-</span><span class="code-line line-number" line="123"><span class="token comment"># resume domain\instance\vm</span>
-</span><span class="code-line line-number" line="124"><span class="token function">virsh</span> resume rocky9-server01
+</span><span class="code-line line-number" line="123"><span class="token comment"># suspend domain\instance\vm</span>
+</span><span class="code-line line-number" line="124"><span class="token function">virsh</span> <span class="token function">suspend</span> rocky9-server01
 </span><span class="code-line line-number" line="125">
-</span><span class="code-line line-number" line="126"><span class="token comment"># start domain\instance\vm</span>
-</span><span class="code-line line-number" line="127"><span class="token function">virsh</span> start rocky9-server01
+</span><span class="code-line line-number" line="126"><span class="token comment"># resume domain\instance\vm</span>
+</span><span class="code-line line-number" line="127"><span class="token function">virsh</span> resume rocky9-server01
 </span><span class="code-line line-number" line="128">
-</span><span class="code-line line-number" line="129"><span class="token comment"># remove domain\instance\vm</span>
-</span><span class="code-line line-number" line="130"><span class="token function">virsh</span> undefine rocky9-server01
+</span><span class="code-line line-number" line="129"><span class="token comment"># start domain\instance\vm</span>
+</span><span class="code-line line-number" line="130"><span class="token function">virsh</span> start rocky9-server01
 </span><span class="code-line line-number" line="131">
-</span><span class="code-line line-number" line="132"><span class="token comment"># remove domain\instance\vm and storage volumes</span>
-</span><span class="code-line line-number" line="133"><span class="token function">virsh</span> undefine rocky9-server01 --remove-all-storage
+</span><span class="code-line line-number" line="132"><span class="token comment"># remove domain\instance\vm</span>
+</span><span class="code-line line-number" line="133"><span class="token function">virsh</span> undefine rocky9-server01
 </span><span class="code-line line-number" line="134">
-</span><span class="code-line line-number" line="135"><span class="token comment"># save domain\instance\vm</span>
-</span><span class="code-line line-number" line="136"><span class="token function">virsh</span> save rocky9-server01 rocky9-server01.qcow2
+</span><span class="code-line line-number" line="135"><span class="token comment"># remove domain\instance\vm and storage volumes</span>
+</span><span class="code-line line-number" line="136"><span class="token function">virsh</span> undefine rocky9-server01 --remove-all-storage
 </span><span class="code-line line-number" line="137">
-</span><span class="code-line line-number" line="138"><span class="token comment"># restore domain\instance\vm</span>
-</span><span class="code-line line-number" line="139"><span class="token function">virsh</span> restore rocky9-server01.qcow2
+</span><span class="code-line line-number" line="138"><span class="token comment"># save domain\instance\vm</span>
+</span><span class="code-line line-number" line="139"><span class="token function">virsh</span> save rocky9-server01 rocky9-server01.qcow2
 </span><span class="code-line line-number" line="140">
-</span><span class="code-line line-number" line="141"><span class="token comment"># list snapshots</span>
-</span><span class="code-line line-number" line="142"><span class="token function">virsh</span> snapshot-list rocky9-server01
+</span><span class="code-line line-number" line="141"><span class="token comment"># restore domain\instance\vm</span>
+</span><span class="code-line line-number" line="142"><span class="token function">virsh</span> restore rocky9-server01.qcow2
 </span><span class="code-line line-number" line="143">
-</span><span class="code-line line-number" line="144"><span class="token comment"># create snapshot</span>
-</span><span class="code-line line-number" line="145"><span class="token function">virsh</span> snapshot-create rocky9-server01
+</span><span class="code-line line-number" line="144"><span class="token comment"># list snapshots</span>
+</span><span class="code-line line-number" line="145"><span class="token function">virsh</span> snapshot-list rocky9-server01
 </span><span class="code-line line-number" line="146">
-</span><span class="code-line line-number" line="147"><span class="token comment"># restore snapshot</span>
-</span><span class="code-line line-number" line="148"><span class="token function">virsh</span> snapshot-revert rocky9-server01 <span class="token number">1748983520</span>
+</span><span class="code-line line-number" line="147"><span class="token comment"># create snapshot</span>
+</span><span class="code-line line-number" line="148"><span class="token function">virsh</span> snapshot-create rocky9-server01
 </span><span class="code-line line-number" line="149">
-</span><span class="code-line line-number" line="150"><span class="token comment"># view snapshot xml</span>
-</span><span class="code-line line-number" line="151"><span class="token function">virsh</span> snapshot-info rocky9-server01 <span class="token number">1748983520</span>
+</span><span class="code-line line-number" line="150"><span class="token comment"># restore snapshot</span>
+</span><span class="code-line line-number" line="151"><span class="token function">virsh</span> snapshot-revert rocky9-server01 <span class="token number">1748983520</span>
 </span><span class="code-line line-number" line="152">
-</span><span class="code-line line-number" line="153"><span class="token comment"># dumpxml snapshot</span>
-</span><span class="code-line line-number" line="154"><span class="token function">virsh</span> snapshot-dumpxml rocky9-server01 <span class="token number">1748983520</span>
+</span><span class="code-line line-number" line="153"><span class="token comment"># view snapshot xml</span>
+</span><span class="code-line line-number" line="154"><span class="token function">virsh</span> snapshot-info rocky9-server01 <span class="token number">1748983520</span>
 </span><span class="code-line line-number" line="155">
-</span><span class="code-line line-number" line="156"><span class="token comment"># xml snapshot path</span>
-</span><span class="code-line line-number" line="157">/var/lib/libvirt/qemu/snapshot/rocky9-server01/
+</span><span class="code-line line-number" line="156"><span class="token comment"># dumpxml snapshot</span>
+</span><span class="code-line line-number" line="157"><span class="token function">virsh</span> snapshot-dumpxml rocky9-server01 <span class="token number">1748983520</span>
 </span><span class="code-line line-number" line="158">
-</span><span class="code-line line-number" line="159"><span class="token comment"># view snapshot info</span>
-</span><span class="code-line line-number" line="160"><span class="token function">virsh</span> snapshot-info rocky9-server01 <span class="token number">1748983671</span>
+</span><span class="code-line line-number" line="159"><span class="token comment"># xml snapshot path</span>
+</span><span class="code-line line-number" line="160">/var/lib/libvirt/qemu/snapshot/rocky9-server01/
 </span><span class="code-line line-number" line="161">
-</span><span class="code-line line-number" line="162"><span class="token comment"># edit snapshot</span>
-</span><span class="code-line line-number" line="163"><span class="token function">virsh</span> snapshot-edit rocky9-server01 <span class="token number">1748983520</span>
+</span><span class="code-line line-number" line="162"><span class="token comment"># view snapshot info</span>
+</span><span class="code-line line-number" line="163"><span class="token function">virsh</span> snapshot-info rocky9-server01 <span class="token number">1748983671</span>
 </span><span class="code-line line-number" line="164">
-</span><span class="code-line line-number" line="165"><span class="token comment"># delete snapshot</span>
-</span><span class="code-line line-number" line="166"><span class="token function">virsh</span> snapshot-delete rocky9-server01 <span class="token number">1748983520</span>
+</span><span class="code-line line-number" line="165"><span class="token comment"># edit snapshot</span>
+</span><span class="code-line line-number" line="166"><span class="token function">virsh</span> snapshot-edit rocky9-server01 <span class="token number">1748983520</span>
+</span><span class="code-line line-number" line="167">
+</span><span class="code-line line-number" line="168"><span class="token comment"># delete snapshot</span>
+</span><span class="code-line line-number" line="169"><span class="token function">virsh</span> snapshot-delete rocky9-server01 <span class="token number">1748983520</span>
+</span><span class="code-line line-number" line="170">
+</span><span class="code-line line-number" line="171"><span class="token comment"># DEVICES</span>
+</span><span class="code-line line-number" line="172">
+</span><span class="code-line line-number" line="173"><span class="token comment"># list block devices</span>
+</span><span class="code-line line-number" line="174"><span class="token function">virsh</span> domblklist rocky9-server01 <span class="token parameter variable">--details</span>
+</span><span class="code-line line-number" line="175">
+</span><span class="code-line line-number" line="176"><span class="token comment"># add cdrom media </span>
+</span><span class="code-line line-number" line="177"><span class="token function">virsh</span> change-media rocky9-server01 sda /home/vagrant/isos/rocky/Rocky-9.5-x86_64-minimal.iso
+</span><span class="code-line line-number" line="178"><span class="token function">virsh</span> attach-disk rocky9-server01 /home/vagrant/isos/rocky/Rocky-9.5-x86_64-minimal.iso sda <span class="token parameter variable">--type</span> cdrom <span class="token parameter variable">--mode</span> <span class="token builtin class-name">readonly</span>
+</span><span class="code-line line-number" line="179">
+</span><span class="code-line line-number" line="180"><span class="token comment"># remove cdrom media</span>
+</span><span class="code-line line-number" line="181"><span class="token function">virsh</span> change-media rocky9-server01 sda <span class="token parameter variable">--eject</span>
+</span><span class="code-line line-number" line="182">
+</span><span class="code-line line-number" line="183"><span class="token comment"># add new disk</span>
+</span><span class="code-line line-number" line="184"><span class="token function">virsh</span> attach-disk rocky9-server01  /var/lib/libvirt/images/rocky9-disk2  vdb <span class="token parameter variable">--persistent</span>
+</span><span class="code-line line-number" line="185">
+</span><span class="code-line line-number" line="186"><span class="token comment"># remove disk</span>
+</span><span class="code-line line-number" line="187"><span class="token function">virsh</span> detach-disk rocky9-server01 vdb <span class="token parameter variable">--persistent</span>
+</span><span class="code-line line-number" line="188">
+</span><span class="code-line line-number" line="189"><span class="token comment"># RESOURCES</span>
+</span><span class="code-line line-number" line="190">
+</span><span class="code-line line-number" line="191"><span class="token comment"># get cpu infos</span>
+</span><span class="code-line line-number" line="192"><span class="token function">virsh</span> vcpuinfo rocky9-server01 <span class="token parameter variable">--pretty</span>
+</span><span class="code-line line-number" line="193"><span class="token function">virsh</span> dominfo rocky9-server01 <span class="token operator">|</span> <span class="token function">grep</span> <span class="token string">'CPU'</span>
+</span><span class="code-line line-number" line="194">
+</span><span class="code-line line-number" line="195"><span class="token comment"># get vcpu count</span>
+</span><span class="code-line line-number" line="196"><span class="token function">virsh</span> vcpucount rocky9-server01
+</span><span class="code-line line-number" line="197">
+</span><span class="code-line line-number" line="198"><span class="token comment"># set vcpus maximum config</span>
+</span><span class="code-line line-number" line="199"><span class="token function">virsh</span> setvcpus rocky9-server01 <span class="token parameter variable">--count</span> <span class="token number">4</span> <span class="token parameter variable">--maximum</span> <span class="token parameter variable">--config</span>
+</span><span class="code-line line-number" line="200"><span class="token function">virsh</span> <span class="token function">shutdown</span> rocky9-server01
+</span><span class="code-line line-number" line="201"><span class="token function">virsh</span> start rocky9-server01
+</span><span class="code-line line-number" line="202">
+</span><span class="code-line line-number" line="203"><span class="token comment"># set vcpu current config</span>
+</span><span class="code-line line-number" line="204"><span class="token function">virsh</span> setvcpus rocky9-server01 <span class="token parameter variable">--count</span> <span class="token number">4</span> <span class="token parameter variable">--config</span>
+</span><span class="code-line line-number" line="205">
+</span><span class="code-line line-number" line="206"><span class="token comment"># set vcpu current live</span>
+</span><span class="code-line line-number" line="207"><span class="token function">virsh</span> setvcpus rocky9-server01 <span class="token parameter variable">--count</span> <span class="token number">3</span> <span class="token parameter variable">--current</span>
+</span><span class="code-line line-number" line="208"><span class="token function">virsh</span> setvcpus rocky9-server01 <span class="token parameter variable">--count</span> <span class="token number">3</span> <span class="token parameter variable">--live</span>
+</span><span class="code-line line-number" line="209">
+</span><span class="code-line line-number" line="210"><span class="token comment"># configure vcpu afinity config</span>
+</span><span class="code-line line-number" line="211"><span class="token function">virsh</span> vcpupin rocky9-server01 <span class="token number">0</span> <span class="token number">7</span> <span class="token parameter variable">--config</span>
+</span><span class="code-line line-number" line="212"><span class="token function">virsh</span> vcpupin rocky9-server01 <span class="token number">1</span> <span class="token number">5</span>-6 <span class="token parameter variable">--config</span>
+</span><span class="code-line line-number" line="213">
+</span><span class="code-line line-number" line="214"><span class="token comment"># configure vcpu afinity current</span>
+</span><span class="code-line line-number" line="215"><span class="token function">virsh</span> vcpupin rocky9-server01 <span class="token number">0</span> <span class="token number">7</span>
+</span><span class="code-line line-number" line="216"><span class="token function">virsh</span> vcpupin rocky9-server01 <span class="token number">1</span> <span class="token number">5</span>-6
+</span><span class="code-line line-number" line="217">
+</span><span class="code-line line-number" line="218"><span class="token comment"># set maximum memory config</span>
+</span><span class="code-line line-number" line="219"><span class="token function">virsh</span> setmaxmem rocky9-server01 <span class="token number">3000000</span> <span class="token parameter variable">--config</span>
+</span><span class="code-line line-number" line="220"><span class="token function">virsh</span> <span class="token function">shutdown</span> rocky9-server01
+</span><span class="code-line line-number" line="221"><span class="token function">virsh</span> start rocky9-server01
+</span><span class="code-line line-number" line="222">
+</span><span class="code-line line-number" line="223"><span class="token comment"># set current memory config</span>
+</span><span class="code-line line-number" line="224"><span class="token function">virsh</span> setmem rocky9-server01 <span class="token number">2500000</span> <span class="token parameter variable">--current</span>
 </span></code><div onclick="copied(this)" data-code="# using env variable for set virsh uri (local or remotly)
 export LIBVIRT_DEFAULT_URI=qemu:///system
 export LIBVIRT_DEFAULT_URI=xen+ssh://vagrant@192.168.0.130
@@ -1785,6 +1843,9 @@ virsh vol-list linux
 virsh vol-info Debian_12.0.0.qcow2 os-images
 virsh vol-info --pool os-images Debian_12.0.0.qcow2 
 
+# get volume xml
+virsh vol-dumpxml rocky9-disk1 default
+
 # create volume
 virsh vol-create-as default --format qcow2 disk1 10G
 
@@ -1861,6 +1922,61 @@ virsh snapshot-edit rocky9-server01 1748983520
 
 # delete snapshot
 virsh snapshot-delete rocky9-server01 1748983520
+
+# DEVICES
+
+# list block devices
+virsh domblklist rocky9-server01 --details
+
+# add cdrom media 
+virsh change-media rocky9-server01 sda /home/vagrant/isos/rocky/Rocky-9.5-x86_64-minimal.iso
+virsh attach-disk rocky9-server01 /home/vagrant/isos/rocky/Rocky-9.5-x86_64-minimal.iso sda --type cdrom --mode readonly
+
+# remove cdrom media
+virsh change-media rocky9-server01 sda --eject
+
+# add new disk
+virsh attach-disk rocky9-server01  /var/lib/libvirt/images/rocky9-disk2  vdb --persistent
+
+# remove disk
+virsh detach-disk rocky9-server01 vdb --persistent
+
+# RESOURCES
+
+# get cpu infos
+virsh vcpuinfo rocky9-server01 --pretty
+virsh dominfo rocky9-server01 | grep &#x27;CPU&#x27;
+
+# get vcpu count
+virsh vcpucount rocky9-server01
+
+# set vcpus maximum config
+virsh setvcpus rocky9-server01 --count 4 --maximum --config
+virsh shutdown rocky9-server01
+virsh start rocky9-server01
+
+# set vcpu current config
+virsh setvcpus rocky9-server01 --count 4 --config
+
+# set vcpu current live
+virsh setvcpus rocky9-server01 --count 3 --current
+virsh setvcpus rocky9-server01 --count 3 --live
+
+# configure vcpu afinity config
+virsh vcpupin rocky9-server01 0 7 --config
+virsh vcpupin rocky9-server01 1 5-6 --config
+
+# configure vcpu afinity current
+virsh vcpupin rocky9-server01 0 7
+virsh vcpupin rocky9-server01 1 5-6
+
+# set maximum memory config
+virsh setmaxmem rocky9-server01 3000000 --config
+virsh shutdown rocky9-server01
+virsh start rocky9-server01
+
+# set current memory config
+virsh setmem rocky9-server01 2500000 --current
 " class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
     <h6 id="virt-install"><a class="anchor" aria-hidden="true" tabindex="-1" href="#virt-install"><span class="octicon octicon-link"></span></a>virt-install</h6>
     <pre class="language-sh"><code class="language-sh code-highlight"><span class="code-line line-number" line="1"><span class="token comment"># list os variants</span>
