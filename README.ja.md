@@ -192,7 +192,7 @@ vagrant/destroy.ps1
 
 <a name="freedoms"></a>
 
-## Four Essential Freedoms
+## 4つの本質的な自由
 
 > 0.あなたが望むようにプログラムを実行する自由、あらゆる目的のために（自由0）。\\
 > 1.プログラムがどのように機能するかを研究し、それを変更する自由が\\
@@ -1186,6 +1186,10 @@ qemu-system-x86_x64
 
 ### 351.4 Libvirt仮想マシン管理
 
+![libvirt](images/libvirt.png)
+
+![libvirt-network](images/libvirt-default-network.jpg)
+
 **重さ：**9
 
 **説明：**候補者は、Libvirtおよび関連ツールを使用して、仮想化ホストと仮想マシン（「Libvirtドメイン」）を管理できる必要があります。
@@ -1309,6 +1313,9 @@ virsh vol-list linux
 virsh vol-info Debian_12.0.0.qcow2 os-images
 virsh vol-info --pool os-images Debian_12.0.0.qcow2 
 
+# get volume xml
+virsh vol-dumpxml rocky9-disk1 default
+
 # create volume
 virsh vol-create-as default --format qcow2 disk1 10G
 
@@ -1385,6 +1392,125 @@ virsh snapshot-edit rocky9-server01 1748983520
 
 # delete snapshot
 virsh snapshot-delete rocky9-server01 1748983520
+
+# DEVICES
+
+# list block devices
+virsh domblklist rocky9-server01 --details
+
+# add cdrom media 
+virsh change-media rocky9-server01 sda /home/vagrant/isos/rocky/Rocky-9.5-x86_64-minimal.iso
+virsh attach-disk rocky9-server01 /home/vagrant/isos/rocky/Rocky-9.5-x86_64-minimal.iso sda --type cdrom --mode readonly
+
+# remove cdrom media
+virsh change-media rocky9-server01 sda --eject
+
+# add new disk
+virsh attach-disk rocky9-server01  /var/lib/libvirt/images/rocky9-disk2  vdb --persistent
+
+# remove disk
+virsh detach-disk rocky9-server01 vdb --persistent
+
+# RESOURCES (CPU and Memory)
+
+# get cpu infos
+virsh vcpuinfo rocky9-server01 --pretty
+virsh dominfo rocky9-server01 | grep 'CPU'
+
+# get vcpu count
+virsh vcpucount rocky9-server01
+
+# set vcpus maximum config
+virsh setvcpus rocky9-server01 --count 4 --maximum --config
+virsh shutdown rocky9-server01
+virsh start rocky9-server01
+
+# set vcpu current config
+virsh setvcpus rocky9-server01 --count 4 --config
+
+# set vcpu current live
+virsh setvcpus rocky9-server01 --count 3 --current
+virsh setvcpus rocky9-server01 --count 3 --live
+
+# configure vcpu afinity config
+virsh vcpupin rocky9-server01 0 7 --config
+virsh vcpupin rocky9-server01 1 5-6 --config
+
+# configure vcpu afinity current
+virsh vcpupin rocky9-server01 0 7
+virsh vcpupin rocky9-server01 1 5-6
+
+# set maximum memory config
+virsh setmaxmem rocky9-server01 3000000 --config
+virsh shutdown rocky9-server01
+virsh start rocky9-server01
+
+# set current memory config
+virsh setmem rocky9-server01 2500000 --current
+
+# NETWORK
+
+# get netwwork bridges
+brctl show
+
+# get iptables rules for libvirt
+sudo iptables -L -n -t  nat
+
+# list network
+virsh net-list --all
+
+# set default network
+virsh net-define /etc/libvirt/qemu/networks/default.xml
+
+# get network infos
+virsh net-info default
+
+# get xml network
+virsh net-dumpxml default
+
+# xml file
+cat /etc/libvirt/qemu/networks/default.xml
+
+# dhcp config
+sudo cat /etc/libvirt/qemu/networks/default.xml | grep -A 10 dhcp
+sudo cat /var/lib/libvirt/dnsmasq/default.conf
+
+# get domain ipp address
+virsh net-dhcp-leases default
+virsh net-dhcp-leases default --mac 52\:54\:00\:89\:19\:86
+
+# edit network
+virsh net-edit default
+
+# get domain network detais
+virsh domiflist debian-server01
+
+# path for network filter files
+/etc/libvirt/nwfilter/
+
+# list network filters
+virsh nwfilter-list
+
+# create network filter - block icmp traffic
+virsh nwfilter-define block-icmp.xml
+# virsh edit Debian-Server
+    #  <interface type='network'>
+    #        ...
+    #        <filterref filter='block-icmp'/>
+    #        ...
+    # </interface>
+# virsh destroy debian-server01
+# virsh start debian-server01
+
+
+# delete network filter
+virsh nwfilter-undefine block-icmp
+
+# get xml network filter
+virsh nwfilter-dumpxml block-icmp
+
+
+
 ```
 
 ###### Virt-Install
@@ -1413,6 +1539,7 @@ virt-install --name debian-server01 \
 --import \
 --osinfo detect=on \
 --graphics vnc,listen=0.0.0.0,port=5906 \
+--network network=default \
 --noautoconsole
 
 # create rocky9 domain\instance\vm with qcow2 file
@@ -1423,6 +1550,7 @@ virt-install --name rocky9-server02 \
 --import \
 --osinfo detect=on \
 --graphics vnc,listen=0.0.0.0,port=5907 \
+--network bridge=qemubr0,model=virtio \
 --noautoconsole
 
 # open domain\instance\vm gui console
@@ -1511,7 +1639,7 @@ foo
 
 -   システムとアプリケーションのコンテナの概念を理解します
 -   カーネルネームスペースを理解して分析します
--   Understand and analyze control groups
+-   コントロールグループを理解して分析します
 -   能力を理解して分析します
 -   コンテナ仮想化のためのSecComp、Selinux、Apparmorの役割を理解する
 -   LXCとDockerが名前空間、cgroups、機能、Seccomp、およびMacを活用する方法を理解する
@@ -1965,13 +2093,15 @@ Vagrantfile
     -   [役員文書](https://www.qemu.org/)
     -   [画像OSBOXESをダウンロードします](https://www.osboxes.org/)
     -   [画像linuximagesをダウンロードします](https://www.linuxvmimages.com/)
-    -   [都会的な](https://en.wikibooks.org/wiki/QEMU/Devices/Virtio)
+    -   [尿](https://en.wikibooks.org/wiki/QEMU/Devices/Virtio)
     -   [ゲストエージェント](https://wiki.qemu.org/Features/GuestAgent)
 -   [libvirt](<>)
     -   [役員文書](https://libvirt.org/)
     -   [システムソケットのアクティブ化](https://libvirt.org/manpages/libvirtd.html#system-socket-activation)
     -   [接続](https://libvirt.org/uri.html)
     -   [ストレージ](https://libvirt.org/storage.html)
+    -   [ネットワーク](https://wiki.libvirt.org/Networking.html)
+    -   [virtualnetwork](https://wiki.libvirt.org/VirtualNetworking.html)
 -   [OpenStackドキュメント](<>)
     -   [redhat](https://www.redhat.com/pt-br/topics/openstack)
 -   [vswitchを開きます](<>)
