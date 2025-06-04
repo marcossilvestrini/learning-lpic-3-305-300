@@ -1186,6 +1186,10 @@ qemu-system-x86_x64
 
 ### 351.4 Libvirt Virtual Machine Management
 
+![libvirt](images/libvirt.png)
+
+![libvirt-network](images/libvirt-default-network.jpg)
+
 **Peso:**9
 
 **Descripción:**Los candidatos deben poder administrar hosts de virtualización y máquinas virtuales ("dominios libvirt") utilizando libvirt y herramientas relacionadas.
@@ -1309,6 +1313,9 @@ virsh vol-list linux
 virsh vol-info Debian_12.0.0.qcow2 os-images
 virsh vol-info --pool os-images Debian_12.0.0.qcow2 
 
+# get volume xml
+virsh vol-dumpxml rocky9-disk1 default
+
 # create volume
 virsh vol-create-as default --format qcow2 disk1 10G
 
@@ -1385,6 +1392,125 @@ virsh snapshot-edit rocky9-server01 1748983520
 
 # delete snapshot
 virsh snapshot-delete rocky9-server01 1748983520
+
+# DEVICES
+
+# list block devices
+virsh domblklist rocky9-server01 --details
+
+# add cdrom media 
+virsh change-media rocky9-server01 sda /home/vagrant/isos/rocky/Rocky-9.5-x86_64-minimal.iso
+virsh attach-disk rocky9-server01 /home/vagrant/isos/rocky/Rocky-9.5-x86_64-minimal.iso sda --type cdrom --mode readonly
+
+# remove cdrom media
+virsh change-media rocky9-server01 sda --eject
+
+# add new disk
+virsh attach-disk rocky9-server01  /var/lib/libvirt/images/rocky9-disk2  vdb --persistent
+
+# remove disk
+virsh detach-disk rocky9-server01 vdb --persistent
+
+# RESOURCES (CPU and Memory)
+
+# get cpu infos
+virsh vcpuinfo rocky9-server01 --pretty
+virsh dominfo rocky9-server01 | grep 'CPU'
+
+# get vcpu count
+virsh vcpucount rocky9-server01
+
+# set vcpus maximum config
+virsh setvcpus rocky9-server01 --count 4 --maximum --config
+virsh shutdown rocky9-server01
+virsh start rocky9-server01
+
+# set vcpu current config
+virsh setvcpus rocky9-server01 --count 4 --config
+
+# set vcpu current live
+virsh setvcpus rocky9-server01 --count 3 --current
+virsh setvcpus rocky9-server01 --count 3 --live
+
+# configure vcpu afinity config
+virsh vcpupin rocky9-server01 0 7 --config
+virsh vcpupin rocky9-server01 1 5-6 --config
+
+# configure vcpu afinity current
+virsh vcpupin rocky9-server01 0 7
+virsh vcpupin rocky9-server01 1 5-6
+
+# set maximum memory config
+virsh setmaxmem rocky9-server01 3000000 --config
+virsh shutdown rocky9-server01
+virsh start rocky9-server01
+
+# set current memory config
+virsh setmem rocky9-server01 2500000 --current
+
+# NETWORK
+
+# get netwwork bridges
+brctl show
+
+# get iptables rules for libvirt
+sudo iptables -L -n -t  nat
+
+# list network
+virsh net-list --all
+
+# set default network
+virsh net-define /etc/libvirt/qemu/networks/default.xml
+
+# get network infos
+virsh net-info default
+
+# get xml network
+virsh net-dumpxml default
+
+# xml file
+cat /etc/libvirt/qemu/networks/default.xml
+
+# dhcp config
+sudo cat /etc/libvirt/qemu/networks/default.xml | grep -A 10 dhcp
+sudo cat /var/lib/libvirt/dnsmasq/default.conf
+
+# get domain ipp address
+virsh net-dhcp-leases default
+virsh net-dhcp-leases default --mac 52\:54\:00\:89\:19\:86
+
+# edit network
+virsh net-edit default
+
+# get domain network detais
+virsh domiflist debian-server01
+
+# path for network filter files
+/etc/libvirt/nwfilter/
+
+# list network filters
+virsh nwfilter-list
+
+# create network filter - block icmp traffic
+virsh nwfilter-define block-icmp.xml
+# virsh edit Debian-Server
+    #  <interface type='network'>
+    #        ...
+    #        <filterref filter='block-icmp'/>
+    #        ...
+    # </interface>
+# virsh destroy debian-server01
+# virsh start debian-server01
+
+
+# delete network filter
+virsh nwfilter-undefine block-icmp
+
+# get xml network filter
+virsh nwfilter-dumpxml block-icmp
+
+
+
 ```
 
 ###### Virt-Install
@@ -1413,6 +1539,7 @@ virt-install --name debian-server01 \
 --import \
 --osinfo detect=on \
 --graphics vnc,listen=0.0.0.0,port=5906 \
+--network network=default \
 --noautoconsole
 
 # create rocky9 domain\instance\vm with qcow2 file
@@ -1423,6 +1550,7 @@ virt-install --name rocky9-server02 \
 --import \
 --osinfo detect=on \
 --graphics vnc,listen=0.0.0.0,port=5907 \
+--network bridge=qemubr0,model=virtio \
 --noautoconsole
 
 # open domain\instance\vm gui console
@@ -1965,13 +2093,15 @@ Enlace del proyecto:<https://github.com/marcossilvestrini/learning-lpic-3-305-30
     -   [Oficial Doc](https://www.qemu.org/)
     -   [Descargar imágenes OSBOXES](https://www.osboxes.org/)
     -   [Descargar imágenes LinuxImages](https://www.linuxvmimages.com/)
-    -   [Urbano](https://en.wikibooks.org/wiki/QEMU/Devices/Virtio)
+    -   [Orina](https://en.wikibooks.org/wiki/QEMU/Devices/Virtio)
     -   [Agente invitado](https://wiki.qemu.org/Features/GuestAgent)
 -   [Libvirt](<>)
     -   [Oficial Doc](https://libvirt.org/)
     -   [Activación del enchufe del sistema](https://libvirt.org/manpages/libvirtd.html#system-socket-activation)
     -   [Conexión](https://libvirt.org/uri.html)
     -   [Almacenamiento](https://libvirt.org/storage.html)
+    -   [Red](https://wiki.libvirt.org/Networking.html)
+    -   [Virtualnetwork](https://wiki.libvirt.org/VirtualNetworking.html)
 -   [OpenStack Docs](<>)
     -   [Redhat](https://www.redhat.com/pt-br/topics/openstack)
 -   [Abrir vswitch](<>)
