@@ -420,7 +420,7 @@ NUMA（非統一內存訪問）是多處理器系統中使用的內存體系結�
 ##### NUMA體系結構的關鍵特徵
 
 1.  **本地和遠程內存**：每個處理器都有自己的本地內存，它可以更快地訪問。但是，儘管需要更長的時間，但它也可以訪問其他處理器的內存。
-2.  **區分潛伏期**: The latency of memory access varies depending on whether the processor is accessing its local memory or the memory of another node. Local memory access is faster, while accessing another node’s memory (remote) is slower.
+2.  **區分潛伏期**：內存訪問的延遲取決於處理器是訪問其本地內存還是其他節點的內存。訪問另一個節點的內存（遠程）時，本地內存訪問更快。
 3.  **可伸縮性**：NUMA架構旨在提高許多處理器系統的可擴展性。隨著添加更多處理器的添加，還會分發內存，避免在統一內存訪問（UMA）體系結構中發生的瓶頸。
 
 ##### NUMA的優勢
@@ -662,7 +662,7 @@ Domus是運行虛擬機的非特權域。
 
 #### peewee-dom（paravardiyed domina）
 
-PV-DomUs use a technique called paravirtualization. In this model, the DomU operating system is modified to be aware that it runs in a virtualized environment, allowing it to communicate directly with the hypervisor for optimized performance.  
+PV-Domus使用一種稱為paraviratualization的技術。在此模型中，對DOMU操作系統進行了修改，以意識到它在虛擬化的環境中運行，從而使其可以直接與操縱虛擬機直接通信以獲得優化的性能。  
 與完全虛擬化相比，這會導致較低的開銷和提高效率。
 
 #### HVM-DOMU（硬件虛擬機域）
@@ -1186,6 +1186,10 @@ qemu-system-x86_x64
 
 ### 351.4 libvirt虛擬機管理
 
+![libvirt](images/libvirt.png)
+
+![libvirt-network](images/libvirt-default-network.jpg)
+
 **重量：**9
 
 **描述：**候選人應能夠使用Libvirt和相關工具來管理虛擬化主機和虛擬機（“ Libvirt域”）。
@@ -1309,6 +1313,9 @@ virsh vol-list linux
 virsh vol-info Debian_12.0.0.qcow2 os-images
 virsh vol-info --pool os-images Debian_12.0.0.qcow2 
 
+# get volume xml
+virsh vol-dumpxml rocky9-disk1 default
+
 # create volume
 virsh vol-create-as default --format qcow2 disk1 10G
 
@@ -1385,6 +1392,125 @@ virsh snapshot-edit rocky9-server01 1748983520
 
 # delete snapshot
 virsh snapshot-delete rocky9-server01 1748983520
+
+# DEVICES
+
+# list block devices
+virsh domblklist rocky9-server01 --details
+
+# add cdrom media 
+virsh change-media rocky9-server01 sda /home/vagrant/isos/rocky/Rocky-9.5-x86_64-minimal.iso
+virsh attach-disk rocky9-server01 /home/vagrant/isos/rocky/Rocky-9.5-x86_64-minimal.iso sda --type cdrom --mode readonly
+
+# remove cdrom media
+virsh change-media rocky9-server01 sda --eject
+
+# add new disk
+virsh attach-disk rocky9-server01  /var/lib/libvirt/images/rocky9-disk2  vdb --persistent
+
+# remove disk
+virsh detach-disk rocky9-server01 vdb --persistent
+
+# RESOURCES (CPU and Memory)
+
+# get cpu infos
+virsh vcpuinfo rocky9-server01 --pretty
+virsh dominfo rocky9-server01 | grep 'CPU'
+
+# get vcpu count
+virsh vcpucount rocky9-server01
+
+# set vcpus maximum config
+virsh setvcpus rocky9-server01 --count 4 --maximum --config
+virsh shutdown rocky9-server01
+virsh start rocky9-server01
+
+# set vcpu current config
+virsh setvcpus rocky9-server01 --count 4 --config
+
+# set vcpu current live
+virsh setvcpus rocky9-server01 --count 3 --current
+virsh setvcpus rocky9-server01 --count 3 --live
+
+# configure vcpu afinity config
+virsh vcpupin rocky9-server01 0 7 --config
+virsh vcpupin rocky9-server01 1 5-6 --config
+
+# configure vcpu afinity current
+virsh vcpupin rocky9-server01 0 7
+virsh vcpupin rocky9-server01 1 5-6
+
+# set maximum memory config
+virsh setmaxmem rocky9-server01 3000000 --config
+virsh shutdown rocky9-server01
+virsh start rocky9-server01
+
+# set current memory config
+virsh setmem rocky9-server01 2500000 --current
+
+# NETWORK
+
+# get netwwork bridges
+brctl show
+
+# get iptables rules for libvirt
+sudo iptables -L -n -t  nat
+
+# list network
+virsh net-list --all
+
+# set default network
+virsh net-define /etc/libvirt/qemu/networks/default.xml
+
+# get network infos
+virsh net-info default
+
+# get xml network
+virsh net-dumpxml default
+
+# xml file
+cat /etc/libvirt/qemu/networks/default.xml
+
+# dhcp config
+sudo cat /etc/libvirt/qemu/networks/default.xml | grep -A 10 dhcp
+sudo cat /var/lib/libvirt/dnsmasq/default.conf
+
+# get domain ipp address
+virsh net-dhcp-leases default
+virsh net-dhcp-leases default --mac 52\:54\:00\:89\:19\:86
+
+# edit network
+virsh net-edit default
+
+# get domain network detais
+virsh domiflist debian-server01
+
+# path for network filter files
+/etc/libvirt/nwfilter/
+
+# list network filters
+virsh nwfilter-list
+
+# create network filter - block icmp traffic
+virsh nwfilter-define block-icmp.xml
+# virsh edit Debian-Server
+    #  <interface type='network'>
+    #        ...
+    #        <filterref filter='block-icmp'/>
+    #        ...
+    # </interface>
+# virsh destroy debian-server01
+# virsh start debian-server01
+
+
+# delete network filter
+virsh nwfilter-undefine block-icmp
+
+# get xml network filter
+virsh nwfilter-dumpxml block-icmp
+
+
+
 ```
 
 ###### virt-install
@@ -1413,6 +1539,7 @@ virt-install --name debian-server01 \
 --import \
 --osinfo detect=on \
 --graphics vnc,listen=0.0.0.0,port=5906 \
+--network network=default \
 --noautoconsole
 
 # create rocky9 domain\instance\vm with qcow2 file
@@ -1423,6 +1550,7 @@ virt-install --name rocky9-server02 \
 --import \
 --osinfo detect=on \
 --graphics vnc,listen=0.0.0.0,port=5907 \
+--network bridge=qemubr0,model=virtio \
 --noautoconsole
 
 # open domain\instance\vm gui console
@@ -1709,7 +1837,7 @@ Terraform
 
 ### 353.2包裝工
 
-**Weight:**2
+**重量：**2
 
 **描述：**候選人應該能夠使用Packer創建系統圖像。這包括在各種公共和私有云環境中運行的包裝器，以及為LXC/LXD構建容器圖像。
 
@@ -1965,13 +2093,15 @@ Marcos Silvestrini-[marcos.silvestrini@gmail.com](mailto:marcos.silvestrini@gmai
     -   [軍官文檔](https://www.qemu.org/)
     -   [下載圖像OSBOXES](https://www.osboxes.org/)
     -   [下載圖像linuximages](https://www.linuxvmimages.com/)
-    -   [城市的](https://en.wikibooks.org/wiki/QEMU/Devices/Virtio)
+    -   [尿](https://en.wikibooks.org/wiki/QEMU/Devices/Virtio)
     -   [來賓經紀人](https://wiki.qemu.org/Features/GuestAgent)
 -   [libvirt](<>)
     -   [軍官文檔](https://libvirt.org/)
     -   [系統插座激活](https://libvirt.org/manpages/libvirtd.html#system-socket-activation)
     -   [連接](https://libvirt.org/uri.html)
     -   [貯存](https://libvirt.org/storage.html)
+    -   [網絡](https://wiki.libvirt.org/Networking.html)
+    -   [虛擬網絡](https://wiki.libvirt.org/VirtualNetworking.html)
 -   [OpenStack文檔](<>)
     -   [redhat](https://www.redhat.com/pt-br/topics/openstack)
 -   [開放的VSWITCH](<>)
