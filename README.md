@@ -1322,6 +1322,9 @@ virsh vol-list linux
 virsh vol-info Debian_12.0.0.qcow2 os-images
 virsh vol-info --pool os-images Debian_12.0.0.qcow2 
 
+# get volume xml
+virsh vol-dumpxml rocky9-disk1 default
+
 # create volume
 virsh vol-create-as default --format qcow2 disk1 10G
 
@@ -1398,6 +1401,61 @@ virsh snapshot-edit rocky9-server01 1748983520
 
 # delete snapshot
 virsh snapshot-delete rocky9-server01 1748983520
+
+# DEVICES
+
+# list block devices
+virsh domblklist rocky9-server01 --details
+
+# add cdrom media 
+virsh change-media rocky9-server01 sda /home/vagrant/isos/rocky/Rocky-9.5-x86_64-minimal.iso
+virsh attach-disk rocky9-server01 /home/vagrant/isos/rocky/Rocky-9.5-x86_64-minimal.iso sda --type cdrom --mode readonly
+
+# remove cdrom media
+virsh change-media rocky9-server01 sda --eject
+
+# add new disk
+virsh attach-disk rocky9-server01  /var/lib/libvirt/images/rocky9-disk2  vdb --persistent
+
+# remove disk
+virsh detach-disk rocky9-server01 vdb --persistent
+
+# RESOURCES
+
+# get cpu infos
+virsh vcpuinfo rocky9-server01 --pretty
+virsh dominfo rocky9-server01 | grep 'CPU'
+
+# get vcpu count
+virsh vcpucount rocky9-server01
+
+# set vcpus maximum config
+virsh setvcpus rocky9-server01 --count 4 --maximum --config
+virsh shutdown rocky9-server01
+virsh start rocky9-server01
+
+# set vcpu current config
+virsh setvcpus rocky9-server01 --count 4 --config
+
+# set vcpu current live
+virsh setvcpus rocky9-server01 --count 3 --current
+virsh setvcpus rocky9-server01 --count 3 --live
+
+# configure vcpu afinity config
+virsh vcpupin rocky9-server01 0 7 --config
+virsh vcpupin rocky9-server01 1 5-6 --config
+
+# configure vcpu afinity current
+virsh vcpupin rocky9-server01 0 7
+virsh vcpupin rocky9-server01 1 5-6
+
+# set maximum memory config
+virsh setmaxmem rocky9-server01 3000000 --config
+virsh shutdown rocky9-server01
+virsh start rocky9-server01
+
+# set current memory config
+virsh setmem rocky9-server01 2500000 --current
 ```
 
 ###### virt-install
