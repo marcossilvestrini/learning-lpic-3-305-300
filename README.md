@@ -1515,15 +1515,11 @@ virsh nwfilter-define block-icmp.xml
 # virsh destroy debian-server01
 # virsh start debian-server01
 
-
 # delete network filter
 virsh nwfilter-undefine block-icmp
 
 # get xml network filter
 virsh nwfilter-dumpxml block-icmp
-
-
-
 ```
 
 ###### virt-install
@@ -1570,8 +1566,7 @@ virt-install --name rocky9-server02 \
 virt-viewer debian-server01
 
 # check metadata domain\instance\vm file (if uri is qemu:////system)
-less /etc/libvirt/qemu/debian-server01.xml 
-
+less /etc/libvirt/qemu/debian-server01.xml
 ```
 
 <p align="right">(<a href="#topic-351.4">back to sub Topic 351.4</a>)</p>
@@ -2116,7 +2111,10 @@ Project Link: [https://github.com/marcossilvestrini/learning-lpic-3-305-300](htt
   * [Conections](https://libvirt.org/uri.html)
   * [Storage](https://libvirt.org/storage.html)
   * [Network](https://wiki.libvirt.org/Networking.html)
-  * [VirtualNetwork](https://wiki.libvirt.org/VirtualNetworking.html)  
+  * [VirtualNetwork](https://wiki.libvirt.org/VirtualNetworking.html)
+  * [virtlogd](https://libvirt.org/manpages/virtlogd.html)
+  * [virtlockd](https://libvirt.org/manpages/virtlockd.html)
+  * [virt-manager](https://virt-manager.org/)
 * [Openstack Docs]()
   * [RedHat](https://www.redhat.com/pt-br/topics/openstack)
 * [Open vSwitch]()
