@@ -564,6 +564,23 @@ Denodo, Red Hat JBoss Data Virtualization, IBM InfoSphere.
 * Disaster Recovery: Simplified backup and recovery processes.
 * Isolation: Improved security through isolation of environments.
 
+#### Emulation
+
+Emulation involves simulating the behavior of hardware or software on a different platform than originally intended.
+
+This process allows software designed for one system to run on another system that may have different architecture or operating environment.
+
+While emulation provides versatility by enabling the execution of unmodified guest operating systems or applications, it often comes with performance overhead.
+
+This overhead arises because the emulated system needs to interpret and translate instructions meant for the original system into instructions compatible with the host system. As a result, emulation can be slower than native execution, making it less efficient for resource-intensive tasks.
+
+Despite this drawback, emulation remains valuable for running legacy software, testing applications across different platforms, and facilitating cross-platform development.
+
+#### systemd-machined
+
+ The systemd-machined service is dedicated to managing virtual machines and containers within the systemd ecosystem.
+ It provides essential functionalities for controlling, monitoring, and maintaining virtual instances, offering robust integration and efficiency within Linux environments.
+
 <p align="right">(<a href="#topic-351.1">back to sub Topic 351.1</a>)</p>
 <p align="right">(<a href="#topic-351">back to Topic 351</a>)</p>
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -898,8 +915,17 @@ xl block-attach 2 'file:/home/vagrant/isos/ubuntu/seed.iso,xvdc:cdrom,r'
 # insert and eject cdrom devices
 xl cd-insert lpic3-hvm-guest-ubuntu xvdb  /home/vagrant/isos/ubuntu/ubuntu-24.04.1-live-server-amd64.iso
 xl cd-eject lpic3-hvm-guest-ubuntu xvdb
-
 ```
+
+#### 251.2 Notes
+
+##### vif
+
+In Xen, “vif” stands for Virtual Interface and is used to configure networking for virtual machines (domains).
+
+By specifying “vif” directives in the domain configuration files, administrators can define network interfaces, assign IP addresses, set up VLANs, and configure other networking parameters for virtual machines running on Xen hosts. For example: vif = [‘bridge=xenbr0’], in this case, it connects the VM’s network interface to the Xen bridge named “xenbr0”.
+
+```sh
 
 <p align="right">(<a href="#topic-351.2">back to sub Topic 351.2</a>)</p>
 <p align="right">(<a href="#topic-351">back to Topic 351</a>)</p>
@@ -1019,7 +1045,8 @@ qemu-img create -f qcow2 vm-disk-debian-12.qcow2 20G
 qemu-img convert \
   -f vmdk \
   -O qcow2 os-images/Debian_12.0.0_VMM/Debian_12.0.0_VMM_LinuxVMImages.COM.vmdk os-images/Debian_12.0.0_VMM/Debian_12.0.0.qcow2 \
-  -p -m16
+  -p \
+  -m16
 
 # check image
 qemu-img info os-images/Debian_12.0.0_VMM/Debian_12.0.0.qcow2
@@ -1149,9 +1176,13 @@ dhcpclient ens4
 For initiate QEMU monitor in commandline use **-monitor stdio** param in **qemu-system-x86_64**
 
 ```sh
-qemu-system-x86_64
-...
- -monitor stdio
+qemu-system-x86_64 -monitor stdio
+```
+
+Exit qemu-monitor:
+
+```sh
+ctrl+alt+2
 ```
 
 ```sh
@@ -1579,6 +1610,8 @@ less /etc/libvirt/qemu/debian-server01.xml
 
 ### 351.5 Virtual Machine Disk Image Management
 
+![disk-managment](images/virtual-machine-disk.png)
+
 **Weight:** 3
 
 **Description:** Candidates should be able to manage virtual machines disk images. This includes converting disk images between various formats and hypervisors and accessing data stored within an image.
@@ -1607,21 +1640,256 @@ virt-inspector
 virt-filesystems
 virt-rescue
 virt-df
-virt-resize
 virt-sparsify
 virt-p2v
 virt-p2v-make-disk
 virt-v2v
-virt-sysprep
 ```
 
 #### 351.5 Important Commands
 
-##### foo
+##### 351.5.1 qemu-img
 
 ```sh
-foo
+# Display detailed information about a disk image
+qemu-img info UbuntuServer_24.04.qcow2
+
+# Create a new 22G raw disk image (default format is raw)
+qemu-img create new-disk 22G
+
+# Create a new 22G disk image in qcow2 format
+qemu-img create -f qcow2 new-disk2 22G
+
+# Convert a VDI image to raw format using 5 threads and show progress
+qemu-img convert -f vdi -O raw Ubuntu-Server.vdk new-Ubuntu.raw -m5 -p
+
+# Convert vmdk to qcow2 image
+qemu-img convert \
+-f vmdk \
+-O qcow2 os-images/UbuntuServer_24.04_VM/UbuntuServer_24.04_VM_LinuxVMImages.COM.vmdk \
+os-images/UbuntuServer_24.04_VM/UbuntuServer_24.04.qcow2 \
+-p \
+-m16
+
+# Resize a raw image to 30G
+qemu-img resize -f raw new-disk 30G
+
+# Resize a qcow2 image to 15G(actual size 30Gdisk 30G)
+qemu-img resize -f raw --shrink new-disk 15G
+
+# Snapshots
+
+# List all snapshots in the image
+qemu-img snapshot -l new-disk2.qcow2
+
+# Create a snapshot named SNAP1
+qemu-img snapshot -c SNAP1 disk
+
+# Apply a snapshot by ID or name
+qemu-img snapshot -a 123456789 disk
+
+# Delete the snapshot named SNAP1
+qemu-img snapshot -d SNAP1 disk
 ```
+
+##### guestfish
+
+```sh
+# set enviroment variables for guestfish
+export LIBGUESTFS_BACKEND_SETTINGS=force_tcg
+
+# Launch guestfish with a disk image
+guestfish -a UbuntuServer_24.04.qcow2
+#run
+#list-partitions
+
+# Run the commands in a script file
+guestfish -a UbuntuServer_24.04.qcow2 -m /dev/sda -i < script.ssh
+
+# Interactively run commands
+guestfish --rw -a UbuntuServer_24.04.qcow2 <<'EOF'
+run
+list-filesystems
+EOF
+
+# Copy a file from the guest image to the host
+export LIBGUESTFS_BACKEND_SETTINGS=force_tcg
+sudo guestfish --rw -a UbuntuServer_24.04.qcow2 -i <<'EOF'
+copy-out /etc/hostname /tmp/
+EOF
+
+# Copy a file from the host into the guest image
+echo "new-hostname" > /tmp/hostname
+export LIBGUESTFS_BACKEND_SETTINGS=force_tcg
+sudo guestfish --rw -a UbuntuServer_24.04.qcow2 -i <<'EOF'
+copy-in /tmp/hostname /etc/
+EOF
+
+# View contents of a file in the guest image
+guestfish --ro -a UbuntuServer_24.04.qcow2 -i <<'EOF'
+cat /etc/hostname
+EOF
+
+# List files in the guest image
+export LIBGUESTFS_BACKEND_SETTINGS=force_tcg
+guestfish --rw -a UbuntuServer_24.04.qcow2 -i <<'EOF'
+ls /home/ubuntu
+EOF
+
+# Edit a file in the guest image
+export LIBGUESTFS_BACKEND_SETTINGS=force_tcg
+guestfish --rw -a UbuntuServer_24.04.qcow2 -i <<'EOF'
+edit /etc/hosts
+EOF
+```
+
+###### guestmount
+
+```sh
+# Mount a disk image to a directory
+guestmount -a UbuntuServer_24.04.qcow2 -m /dev/ubuntu-vg/ubuntu-lv /mnt/ubuntu
+# domain
+guestmount -d rocky9-server02 -m /dev/ubuntu-vg/ubuntu-lv /mnt/ubuntu 
+
+# Mount a specific partition from a disk image
+guestmount -a UbuntuServer_24.04.qcow2 -m /dev/sda2 /mnt/ubuntu
+# domain
+guestmount -d debian-server01 --ro -m  /dev/debian-vg/root /mnt/debian
+```
+
+###### guestumount
+
+```sh
+# Umount a disk image to a directory
+sudo guestunmount /mnt/ubuntu
+```
+
+##### virt-df
+
+```sh
+# Show free and used space on virtual machine filesystems
+virt-df UbuntuServer_24.04.qcow2 -h
+virt-df -d rocky9-server02 -h
+```
+
+##### virt-filesystems
+
+```sh
+# List filesystems, partitions, and logical volumes in a VM disk image (disk image)
+virt-filesystems -a UbuntuServer_24.04.qcow2 --all --long -h
+
+# List filesystems, partitions, and logical volumes in a VM disk image (domain)
+virt-filesystems -d debian-server01 --all --long -h
+```
+
+##### virt-inspector
+
+```sh
+# Inspect and report on the operating system in a VM disk image
+virt-inspector -a UbuntuServer_24.04.qcow2 #(disk)
+virt-inspector -d debian-server01 #(domain) 
+```
+
+##### virt-cat
+
+```sh
+# Display the contents of a file inside a VM disk image
+virt-cat -a UbuntuServer_24.04.qcow2 /etc/hosts
+virt-cat -d debian-server01 /etc/hosts #(domain)
+```
+
+##### virt-diff
+
+```sh
+# Show differences between two VM disk images
+virt-diff -a UbuntuServer_24.04.qcow2 -A Rocky-Linux.qcow2
+```
+
+##### virt-sparsify
+
+```sh
+# Make a VM disk image smaller by removing unused space
+virt-sparsify UbuntuServer_24.04.qcow2 UbuntuServer_24.04-sparse.qcow2
+```
+
+##### virt-resize
+
+```sh
+# Resize a VM disk image or its partitions
+virt-filesystems -a UbuntuServer_24.04.qcow2 --all --long -h #(check size of partitions)
+qemu-img create -f qcow2 UbuntuServer_24.04-expanded.qcow2 100G #(create new disk image with 100G)
+virt-resize --expand /dev/ubuntu-vg/ubuntu-lv \
+UbuntuServer_24.04.qcow2 UbuntuServer_24.04-expanded.qcow2
+
+```
+
+##### virt-copy-in
+
+```sh
+# Copy files from the host into a VM disk image
+
+virt-copy-in -a UbuntuServer_24.04.qcow2 ~vagrant/test-virt-copy-in.txt /home/ubuntu
+```
+
+##### virt-copy-out
+
+```sh
+# Copy files from a VM disk image to the host
+virt-copy-out -a UbuntuServer_24.04.qcow2 /home/ubuntu/.bashrc /tmp
+```
+
+##### virt-ls
+
+```sh
+# List files and directories inside a VM disk image
+virt-ls -a UbuntuServer_24.04.qcow2 /home/ubuntu
+```
+
+##### virt-rescue
+
+```sh
+# Launch a rescue shell on a VM disk image for recovery
+virt-rescue -a UbuntuServer_24.04.qcow2
+```
+
+##### virt-sysprep
+
+```sh
+# Prepare a VM disk image for cloning by removing system-specific data
+virt-sysprep -a UbuntuServer_24.04.qcow2
+```
+
+##### virt-v2v
+
+```sh
+# Convert a VM from a foreign hypervisor to run on KVM
+virt-v2v -i disk input-disk.img -o local -os /var/tmp
+```
+
+##### virt-p2v
+
+```sh
+# Convert a physical machine to use KVM
+```
+
+##### virt-p2v-make-disk
+
+```sh
+# Create a bootable disk image for physical to virtual conversion
+sudo virt-p2v-make-disk -o output.img
+```
+
+#### 351.5 Notes
+
+##### OVF: Open Virtualization Format
+
+OVF: An open format that defines a standard for packaging and distributing virtual machines across different environments.
+
+The generated package has the .ova extension and contains the following files:
+
+* .ovf: XML file with metadata defining the virtual machine environment
+* Image files: .vmdk, .vhd, .vhdx, .qcow2, .raw
+* Additional files: metadata, snapshots, configuration, hash
 
 <p align="right">(<a href="#topic-351.5">back to sub Topic 351.5</a>)</p>
 <p align="right">(<a href="#topic-351">back to Topic 351</a>)</p>
@@ -1658,16 +1926,19 @@ foo
 * Awareness of podman, buildah and skopeo
 * Awareness of other container virtualization approaches in Linux and other free operating systems, such as rkt, OpenVZ, systemd-nspawn or BSD Jails
 
+![virtualization-container](images/virtualization-container.png)
+
 ```mermaid
 timeline
     title Time Line Containers Evolution
     1979 : chroot
     2000 : FreeBSD Jails
-    2004 : Solaris Containers
-    2006 : cgroups
+    2002 : Linux Namespaces
+    2005 : Solaris Containers
+    2007 : cgroups
     2008 : LXC
     2013 : Docker
-    2014 : Kubernetes
+    2015 : Kubernetes
 ```
 
 #### 352.1 Cited Objects
@@ -1689,6 +1960,8 @@ capsh
 ```sh
 foo
 ```
+
+#### 352.1 Notes
 
 <p align="right">(<a href="#topic-352.1">back to sub topic 352.1</a>)</p>
 <p align="right">(<a href="#topic-352">back to topic 352</a>)</p>
@@ -1762,7 +2035,6 @@ dockerd
 docker
 Dockerfile
 ```
-
 
 #### 352.3 Important Commands
 
@@ -2104,7 +2376,7 @@ Project Link: [https://github.com/marcossilvestrini/learning-lpic-3-305-300](htt
   * [Download Images osboxes](https://www.osboxes.org/)
   * [Download Images linuximages](https://www.linuxvmimages.com/)
   * [Virtio](https://en.wikibooks.org/wiki/QEMU/Devices/Virtio)
-  * [Guest Agent](https://wiki.qemu.org/Features/GuestAgent)
+  * [Guest Agent](https://wiki.qemu.org/Features/GuestAgent)  
 * [Libvirt]()
   * [Oficial Doc](https://libvirt.org/)
   * [System Socket Activation](https://libvirt.org/manpages/libvirtd.html#system-socket-activation)
@@ -2115,6 +2387,11 @@ Project Link: [https://github.com/marcossilvestrini/learning-lpic-3-305-300](htt
   * [virtlogd](https://libvirt.org/manpages/virtlogd.html)
   * [virtlockd](https://libvirt.org/manpages/virtlockd.html)
   * [virt-manager](https://virt-manager.org/)
+* [Disk Managment]()
+  * [Disk Images](https://qemu-project.gitlab.io/qemu/system/images.html)
+  * [copy-on-write](https://sempreupdate.com.br/linux/tutoriais/sistema-de-arquivos-copy-on-write-saiba-o-que-e-e-quais-as-vantagens-e-desvantagens/)
+  * [RAM x QCOW2](https://docs.redhat.com/en/documentation/red_hat_virtualization/4.3/html/technical_reference/qcow2)
+  * [Libguestfs](https://libguestfs.org/)
 * [Openstack Docs]()
   * [RedHat](https://www.redhat.com/pt-br/topics/openstack)
 * [Open vSwitch]()

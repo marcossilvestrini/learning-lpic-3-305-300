@@ -2,19 +2,19 @@
 
 : <<'MULTILINE-COMMENT'
     Requirements: kvm, libvirt
-    Description: Graceful shutdown and cleanup of Libvirt domains
+    Description: Graceful shutdown and cleanup of Libvirt domains, including snapshot deletion
     Author: Marcos Silvestrini
-    Date: 04/06/2025
+    Date: 04/06/2025 (Atualizado em 05/06/2025)
 MULTILINE-COMMENT
 
 export LANG=C
 cd /home/vagrant || exit
 
 # List of domains to manage
-domains=("debian-server01" "rocky9-server02")
+domains=("debian-server01" "rocky9-server02" "opensuse-leap15")
 
 for domain in "${domains[@]}"; do
-    if virsh list --all | grep -q "$domain"; then
+    if virsh list --all | grep -qw "$domain"; then
         echo "🔻 Processing domain: $domain"
 
         # Gracefully shut down if running
@@ -31,6 +31,16 @@ for domain in "${domains[@]}"; do
         if virsh domstate "$domain" | grep -q running; then
             echo "⛔ $domain did not shut down gracefully. Forcing shutdown..."
             virsh destroy "$domain"
+        fi
+
+        # Check and delete snapshots if any exist
+        if virsh snapshot-list "$domain" | grep -q '^ '; then
+            echo "📸 Deleting snapshots for $domain..."
+            mapfile -t snapshots < <(virsh snapshot-list "$domain" | awk '/^ / {print $1}')
+            for snap in "${snapshots[@]}"; do
+                echo "❌ Removing snapshot $snap..."
+                virsh snapshot-delete "$domain" --snapshotname "$snap" --metadata
+            done
         fi
 
         # Get disk paths before undefining
