@@ -22,7 +22,8 @@ apt install -y \
     virt-manager \
     virtinst \
     libguestfs-tools \
-    libosinfo-bin
+    libosinfo-bin \
+    virt-v2v
 
 # Add user to libvirt group
 usermod -aG libvirt vagrant

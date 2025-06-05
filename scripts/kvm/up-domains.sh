@@ -20,6 +20,7 @@ cd /home/vagrant || exit
 # Define image variables
 DEBIAN_IMAGE="os-images/Debian_12.0.0_VMM/Debian_12.0.0.qcow2"
 ROCKY_IMAGE="os-images/RockyLinux_9.4_VMG/RockyLinux_9.4.qcow2"
+OPENSUSE_IMAGE="os-images/openSUSE_Leap_15.2_VM/openSUSE_Leap_15.2.qcow2"
 
 # Create debian domain
 if virsh list --all | grep -qw debian-server01; then
@@ -73,4 +74,29 @@ else
         exit 1
     fi
     echo "🎉 Rocky9 domain created successfully!"
+fi
+
+# Create a opensuse domain
+VM_NAME="opensuse-leap15"
+if virsh list --all | grep -qw "$VM_NAME"; then
+    echo "✅ Domain '$VM_NAME' already exists."
+else
+    echo "🚀 Domain '$VM_NAME' not found. Creating now..."
+    echo "🛠️  Starting openSUSE Leap 15.2 domain installation..."
+
+    if ! virt-install \
+        --name "$VM_NAME" \
+        --vcpus 1 \
+        --ram 2048 \
+        --disk path="$OPENSUSE_IMAGE",format=qcow2 \
+        --network bridge=qemubr0,model=virtio \
+        --import \
+        --osinfo detect=on \
+        --graphics vnc,listen=0.0.0.0,port=5908 \
+        --noautoconsole; then
+        echo "❌ Failed to create domain '$VM_NAME'." >&2
+        exit 1
+    fi
+
+    echo "🎉 Domain '$VM_NAME' created successfully!"
 fi

@@ -8,7 +8,7 @@ os-images/*.qcow2
 
 ## Download images
 
-<https://www.linuxvmimages.com/images/debian-12/>
+<https://www.linuxvmimages.com/images>
 
 ## User and Password images
 
