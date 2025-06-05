@@ -1814,15 +1814,11 @@ virsh (including relevant subcommands)
 </span><span class="code-line line-number" line="277"><span class="token comment"># virsh destroy debian-server01</span>
 </span><span class="code-line line-number" line="278"><span class="token comment"># virsh start debian-server01</span>
 </span><span class="code-line line-number" line="279">
-</span><span class="code-line line-number" line="280">
-</span><span class="code-line line-number" line="281"><span class="token comment"># delete network filter</span>
-</span><span class="code-line line-number" line="282"><span class="token function">virsh</span> nwfilter-undefine block-icmp
-</span><span class="code-line line-number" line="283">
-</span><span class="code-line line-number" line="284"><span class="token comment"># get xml network filter</span>
-</span><span class="code-line line-number" line="285"><span class="token function">virsh</span> nwfilter-dumpxml block-icmp
-</span><span class="code-line line-number" line="286">
-</span><span class="code-line line-number" line="287">
-</span><span class="code-line line-number" line="288">
+</span><span class="code-line line-number" line="280"><span class="token comment"># delete network filter</span>
+</span><span class="code-line line-number" line="281"><span class="token function">virsh</span> nwfilter-undefine block-icmp
+</span><span class="code-line line-number" line="282">
+</span><span class="code-line line-number" line="283"><span class="token comment"># get xml network filter</span>
+</span><span class="code-line line-number" line="284"><span class="token function">virsh</span> nwfilter-dumpxml block-icmp
 </span></code><div onclick="copied(this)" data-code="# using env variable for set virsh uri (local or remotly)
 export LIBVIRT_DEFAULT_URI=qemu:///system
 export LIBVIRT_DEFAULT_URI=xen+ssh://vagrant@192.168.0.130
@@ -2102,15 +2098,11 @@ virsh nwfilter-define block-icmp.xml
 # virsh destroy debian-server01
 # virsh start debian-server01
 
-
 # delete network filter
 virsh nwfilter-undefine block-icmp
 
 # get xml network filter
 virsh nwfilter-dumpxml block-icmp
-
-
-
 " class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
     <h6 id="virt-install"><a class="anchor" aria-hidden="true" tabindex="-1" href="#virt-install"><span class="octicon octicon-link"></span></a>virt-install</h6>
     <pre class="language-sh"><code class="language-sh code-highlight"><span class="code-line line-number" line="1"><span class="token comment"># list os variants</span>
@@ -2154,8 +2146,7 @@ virsh nwfilter-dumpxml block-icmp
 </span><span class="code-line line-number" line="39">virt-viewer debian-server01
 </span><span class="code-line line-number" line="40">
 </span><span class="code-line line-number" line="41"><span class="token comment"># check metadata domain\instance\vm file (if uri is qemu:////system)</span>
-</span><span class="code-line line-number" line="42"><span class="token function">less</span> /etc/libvirt/qemu/debian-server01.xml 
-</span><span class="code-line line-number" line="43">
+</span><span class="code-line line-number" line="42"><span class="token function">less</span> /etc/libvirt/qemu/debian-server01.xml
 </span></code><div onclick="copied(this)" data-code="# list os variants
 virt-install --os-variant list
 osinfo-query os
@@ -2197,8 +2188,7 @@ virt-install --name rocky9-server02 \
 virt-viewer debian-server01
 
 # check metadata domain\instance\vm file (if uri is qemu:////system)
-less /etc/libvirt/qemu/debian-server01.xml 
-
+less /etc/libvirt/qemu/debian-server01.xml
 " class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
     <p align="right">(<a href="#topic-351.4">back to sub Topic 351.4</a>)</p>
     <p align="right">(<a href="#topic-351">back to Topic 351</a>)</p>
@@ -2727,6 +2717,9 @@ Vagrantfile
           <li><a href="https://libvirt.org/storage.html">Storage</a></li>
           <li><a href="https://wiki.libvirt.org/Networking.html">Network</a></li>
           <li><a href="https://wiki.libvirt.org/VirtualNetworking.html">VirtualNetwork</a></li>
+          <li><a href="https://libvirt.org/manpages/virtlogd.html">virtlogd</a></li>
+          <li><a href="https://libvirt.org/manpages/virtlockd.html">virtlockd</a></li>
+          <li><a href="https://virt-manager.org/">virt-manager</a></li>
         </ul>
       </li>
       <li><a href="">Openstack Docs</a>
