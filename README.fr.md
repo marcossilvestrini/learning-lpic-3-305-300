@@ -124,7 +124,7 @@ git clone https://github.com/marcossilvestrini/learning-lpic-3-305-300.git
 cd learning-lpic-3-305-300
 ```
 
-Personnaliser un modèle_Vagrantfile-topic-xxx_. Ce fichier contient une configuration VMS pour les laboratoires. Exemple:
+Personnaliser un modèle_Vagrantfile-topic-XXX_. Ce fichier contient une configuration VMS pour les laboratoires. Exemple:
 
 -   Déposer[Vagrantfile-topic-351](./vagrant/Vagrantfile-topic-351)
     -   vm.clone_directory = "&lt;your_driver_letter>:\\<folder>\\&lt;To_machine>\\# {Vm_name} -instance-1 "
@@ -2012,6 +2012,8 @@ sudo chroot ~vagrant/debian bash
 
 #### 🔍 Comprendre les conteneurs
 
+![container](images/containers1.png)
+
 Les conteneurs sont une technologie de virtualisation légère qui emballe les applications ainsi que leurs dépendances requises - code, bibliothèques, variables d'environnement et fichiers de configuration - en unités isolées, portables et reproductibles.
 
 > En termes simples: un conteneur est une boîte autonome qui exécute votre application de la même manière, n'importe où.
@@ -2080,6 +2082,8 @@ Contrairement aux machines virtuelles (VM), les conteneurs ne virtualisent pas l
 
 #### 🧠 Comprendre les espaces de noms Linux
 
+![linux-namespaces](images/linux-namespaces2.png)
+
 Les espaces de noms sont une fonctionnalité de noyau Linux de base qui permette l'isolement au niveau du processus. Ils créent des «vues» distinctes des ressources système mondiales - telles que les ID de processus, le réseau, les systèmes de fichiers et les utilisateurs - afin que chaque groupe de processus pense qu'il s'exécute dans son propre système.
 
 > En termes simples: les espaces de noms trompent un processus en pensant qu'il possède la machine, même s'il ne fait que le partager.
@@ -2101,6 +2105,8 @@ Chaque type d'espace de noms isole une ressource système spécifique. Ensemble,
 | **Cgroup (V2)** | Adhésion au groupe témoin                | Liés aux contrôles des ressources comme le processeur et les limites de mémoire |
 
 ##### 🧪 Analogie visuelle
+
+![linux-namespaces](images/linux-namespaces.png)
 
 Imaginez un immeuble de bureaux partagé:
 
@@ -2188,7 +2194,6 @@ unshare --mount --uts --ipc --user --pid --net  --map-root-user --mount-proc --f
 #ps -aux
 #ip addr show
 #umount /proc
-umount /proc
 ```
 
 ##### LSN
