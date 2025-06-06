@@ -236,14 +236,14 @@ man COMMAND
 
 **關鍵知識領域：**
 
--   了解虛擬化術語
--   了解虛擬化的利弊
--   了解虛擬機管理程序和虛擬機監視器的各種變化
--   了解將物理遷移到虛擬機的主要方面
--   了解主機系統之間遷移虛擬機的主要方面
--   了解虛擬機的虛擬化功能和含義，例如快照，暫停，克隆和資源限制
--   意識到卵形，proxmox，SystemD機加工和虛擬盒
--   意識開放vswitch
+-   🖥️了解虛擬化術語
+-   ⚖️了解虛擬化的利弊
+-   🛠️了解虛擬機管理程序和虛擬機監視的各種變化
+-   🔄了解遷移到虛擬機的主要方面
+-   🚀了解主機系統之間遷移虛擬機的主要方面
+-   📸了解虛擬機對虛擬機的特徵和含義，例如快照，暫停，克隆和資源限制
+-   🌐意識到ovirt，proxmox，systemd生產和虛擬箱
+-   🔗意識開放vswitch
 
 #### 351.1引用對象
 
@@ -267,9 +267,9 @@ Migration (P2V, V2V)
 
 ###### 1型特徵
 
--   高性能和效率。
--   降低潛伏期和開銷。
--   通常用於企業環境和數據中心。
+-   ⚡高性能和效率。
+-   ⏱️降低潛伏期和開銷。
+-   🏢經常用於企業環境和數據中心。
 
 ###### 類型1個示例
 
@@ -286,9 +286,9 @@ Migration (P2V, V2V)
 
 ###### 2型特徵
 
--   更容易設置和使用，尤其是在個人計算機上。
--   更靈活地進行開發，測試和較小規模的部署。
--   由於主機OS的額外開銷，通常比1型管理程序效率低。
+-   🛠️更容易設置和使用，尤其是在個人計算機上。
+-   🔧在開發，測試和較小規模的部署方面更加靈活。
+-   🐢由於主機OS的額外開銷，通常比1型管理程序效率低。
 
 ###### 類型2個示例
 
@@ -339,10 +339,10 @@ HVM利用現代CPU提供的硬件擴展名來虛擬化硬件，從而使VM的創
 
 ###### HVM關鍵特徵
 
--   **硬件支持**：需要CPU支持虛擬化擴展，例如Intel VT-X或AMD-V。
--   **完整的虛擬化：**VM可以運行未修改的訪客操作系統，因為該管理程序提供了完整的硬件環境模仿。
--   **表現：**通常，由於CPU上直接執行訪客代碼，通常會提供近乎本地的性能。
--   **隔離:**由於每個VM都具有自己的專用硬件，因此提供了VM之間的強烈隔離。
+-   🖥️**硬件支持**：需要CPU支持虛擬化擴展，例如Intel VT-X或AMD-V。
+-   🛠️**完整的虛擬化：**VM可以運行未修改的訪客操作系統，因為該管理程序提供了完整的硬件環境模仿。
+-   ⚡**表現：**通常，由於CPU上直接執行訪客代碼，通常會提供近乎本地的性能。
+-   🔒**隔離:**由於每個VM都具有自己的專用硬件，因此提供了VM之間的強烈隔離。
 
 ###### HVM示例
 
@@ -350,14 +350,14 @@ VMware ESXI，Microsoft Hyper-V，KVM（基於內核的虛擬機）。
 
 ###### HVM優勢
 
--   **相容性:**可以在沒有修改的情況下運行任何操作系統。
--   **表現：**高性能由於硬件支持。
--   **安全：**硬件提供的增強隔離和安全功能。
+-   ✅**相容性:**可以在沒有修改的情況下運行任何操作系統。
+-   ⚡**表現：**高性能由於硬件支持。
+-   🔒**安全：**硬件提供的增強隔離和安全功能。
 
 ###### HVM缺點
 
--   **硬件依賴性：**需要特定的硬件功能，從而限制與舊系統的兼容性。
--   **複雜：**可能涉及更複雜的配置和管理。
+-   🛠️**硬件依賴性：**需要特定的硬件功能，從而限制與舊系統的兼容性。
+-   🔧**複雜：**可能涉及更複雜的配置和管理。
 
 ##### 寄生蟲虛擬化
 
@@ -367,9 +367,9 @@ paraviralization涉及修改來賓操作系統以了解虛擬環境，從而使�
 
 ###### 寄生蟲的關鍵特徵
 
--   **來賓修改：**需要更改來賓操作系統，以使用HyperCalls直接與管理程序進行通信。
--   **表現：**比傳統的完全虛擬化可以更有效，因為它減少了與模擬硬件相關的開銷。
--   **相容性:**僅限於已修改用於寄生蟲的操作系統。
+-   🛠️**來賓修改：**需要更改來賓操作系統，以使用HyperCalls直接與管理程序進行通信。
+-   ⚡**表現：**比傳統的完全虛擬化可以更有效，因為它減少了與模擬硬件相關的開銷。
+-   🔗**相容性:**僅限於已修改用於寄生蟲的操作系統。
 
 ###### paraviralization示例
 
@@ -377,13 +377,13 @@ Xen帶有paraviralizatization的來賓，某些配置中的VMware工具以及一
 
 ###### 寄生蟲的優勢
 
--   **效率：**減少了虛擬化硬件的開銷，有可能為某些工作負載提供更好的性能。
--   **資源利用：**由於來賓操作系統和管理程序之間的直接通信，更有效地利用了系統資源。
+-   ⚡**效率：**減少了虛擬化硬件的開銷，有可能為某些工作負載提供更好的性能。
+-   ✅**資源利用：**由於來賓操作系統和管理程序之間的直接通信，更有效地利用了系統資源。
 
 ###### 寄生蟲的缺點
 
--   **客座操作系統修改：**需要對來賓操作系統進行修改，從而將兼容性限制在支持的操作系統上。
--   **複雜：**需要在客座操作系統中進行超級呼叫實現的額外複雜性。
+-   🛠️**客座操作系統修改：**需要對來賓操作系統進行修改，從而將兼容性限制在支持的操作系統上。
+-   🔧**複雜：**需要在客座操作系統中進行超級呼叫實現的額外複雜性。
 
 ##### 關鍵差異
 
@@ -425,24 +425,24 @@ NUMA（非統一內存訪問）是多處理器系統中使用的內存體系結�
 
 ##### NUMA的優勢
 
--   在大型系統中的性能更好：由於每個處理器都有本地內存，因此它可以更有效地工作，而無需與其他處理器競爭以獲得內存訪問。
--   可伸縮性：NUMA允許與UMA體系結構相比，具有許多處理器和大量內存的系統可以更有效地擴展。
+-   ⚡在大型系統中的性能更好：由於每個處理器都有本地內存，因此它可以更有效地工作，而無需與其他處理器競爭以獲得內存訪問。
+-   📈可伸縮性：NUMA允許與UMA體系結構相比，具有許多處理器和大量內存的系統可以更有效地擴展。
 
 ##### 缺點
 
--   編程複雜性：程序員需要了解哪些內存區域是本地或遠程區域，以優化使用本地內存以實現更好的性能。
--   潛在的性能處罰：如果處理器經常訪問遙控內存，則由於延遲較高而可能會遭受性能。
+-   🛠️編程複雜性：程序員需要了解哪些內存區域是本地或遠程區域，以優化使用本地內存以實現更好的性能。
+-   🐢潛在的性能處罰：如果處理器經常訪問遙控內存，則由於延遲較高而可能會遭受性能。
     該體系結構在高性能多處理器系統（例如服務器和超級計算機）中很常見，在該系統中，可擴展性和內存優化至關重要。
 
 #### OpenSource解決方案
 
 -   ovirt：<https://www.ovirt.org/>
 
--   proxmox：<https://www.proxmox.com/en/proxmox-virtual-environment/overview>
+-   🌐proxmox：<https://www.proxmox.com/en/proxmox-virtual-environment/overview>
 
--   Oracle VirtualBox：<https://www.virtualbox.org/>
+-   🌐Oracle VirtualBox：<https://www.virtualbox.org/>
 
--   開放vswitch：<https://www.openvswitch.org/>
+-   🌐開放vswitch：<https://www.openvswitch.org/>
 
 #### 虛擬化類型
 
@@ -524,7 +524,7 @@ Citrix虛擬應用程序和台式機，VMware Horizo​​​​n，Microsoft遠
 
 ###### 應用虛擬化定義用例
 
-簡化的應用程序部署，兼容性測試。
+Simplified application deployment, compatibility testing.
 
 ###### 應用虛擬化定義示例
 
@@ -546,12 +546,29 @@ Denodo，Red Hat Jboss數據虛擬化，IBM Infosphere。
 
 ##### 虛擬化的好處
 
--   資源效率：更好地利用物理資源。
--   節省成本：降低硬件和運營成本。
--   可伸縮性：根據需求易於擴展或向下擴展。
--   靈活性：支持各種工作量和應用程序。
--   災難恢復：簡化的備份和恢復過程。
--   隔離：通過隔離環境改善了安全性。
+-   ⚡資源效率：更好地利用物理資源。
+-   💰節省成本：降低硬件和運營成本。
+-   📈可伸縮性：根據需求易於擴展或向下擴展。
+-   🔧靈活性：支持各種工作量和應用程序。
+-   🔄災難恢復：簡化的備份和恢復過程。
+-   🔒隔離：通過隔離環境改善了安全性。
+
+#### 仿真
+
+仿真涉及模擬與最初預期不同平台上硬件或軟件的行為。
+
+此過程允許為一個系統設計的軟件可以在另一個可能具有不同體系結構或操作環境的系統上運行。
+
+雖然仿真通過實現未修改的來賓操作系統或應用程序來提供多功能性，但它通常帶有性能開銷。
+
+之所以出現此間接費用，是因為模擬系統需要將用於原始系統的指令解釋和翻譯為與主機系統兼容的指令。結果，仿真可以比本地執行慢，從而使資源密集型任務的效率降低。
+
+儘管有這一缺點，但仿真對於運行傳統軟件，在不同平台上測試應用程序以及促進跨平台開發仍然有價值。
+
+#### SystemD機場
+
+SystemD生產的服務致力於管理SystemD生態系統中的虛擬機和容器。
+ 它提供了控制，監視和維護虛擬實例的基本功能，從而在Linux環境中提供了強大的集成和效率。
 
 <p align="right">(<a href="#topic-351.1">back to sub Topic 351.1</a>)</p>
 <p align="right">(<a href="#topic-351">back to Topic 351</a>)</p>
@@ -885,35 +902,44 @@ xl block-attach 2 'file:/home/vagrant/isos/ubuntu/seed.iso,xvdc:cdrom,r'
 # insert and eject cdrom devices
 xl cd-insert lpic3-hvm-guest-ubuntu xvdb  /home/vagrant/isos/ubuntu/ubuntu-24.04.1-live-server-amd64.iso
 xl cd-eject lpic3-hvm-guest-ubuntu xvdb
-
 ```
+
+#### 251.2筆記
+
+##### vif
+
+在Xen中，“ VIF”代表虛擬接口，用於為虛擬機（域）配置網絡。
+
+通過在域配置文件中指定“ VIF”指令，管理員可以定義網絡接口，分配IP地址，設置VLAN，並為在XEN主機上運行的虛擬機配置其他網絡參數。例如：vif =[“橋= Xenbr0”]，在這種情況下，它將VM的網絡接口連接到名為“ XENBR0”的Xen橋。
+
+````sh
 
 <p align="right">(<a href="#topic-351.2">back to sub Topic 351.2</a>)</p>
 <p align="right">(<a href="#topic-351">back to Topic 351</a>)</p>
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-* * *
+---
 
 <a name="topic-351.3"></a>
 
-### 351.3 Qemu
+### 351.3 QEMU
 
 ![xen-kvm-qemu](/images/xen-kvm-qemu.png)
 
-**重量：**4
+**Weight:** 4
 
-**描述：**候選人應能夠安裝，配置，維護，遷移和故障排除QEMU安裝。
+**Description:** Candidates should be able to install, configure, maintain, migrate and troubleshoot QEMU installations.
 
-**關鍵知識領域：**
+**Key Knowledge Areas:**
 
--   了解QEMU的體系結構，包括KVM，網絡和存儲
--   從命令行啟動QEMU實例
--   使用QEMU監視器管理快照
--   安裝QEMU訪客代理和Virtio設備驅動程序
--   對QEMU安裝進行故障排除，包括網絡和存儲
--   意識重要的QEMU配置參數
+* Understand the architecture of QEMU, including KVM, networking and storage
+* Start QEMU instances from the command line
+* Manage snapshots using the QEMU monitor
+* Install the QEMU Guest Agent and VirtIO device drivers
+* Troubleshoot QEMU installations, including networking and storage
+* Awareness of important QEMU configuration parameters
 
-#### 351.3引用對象
+#### 351.3 Cited Objects
 
 ```sh
 Kernel modules: kvm, kvm-intel and kvm-amd
@@ -924,7 +950,7 @@ qemu-system-x86_64
 ip
 brctl
 tunctl
-```
+````
 
 #### 351.3重要命令
 
@@ -1006,7 +1032,8 @@ qemu-img create -f qcow2 vm-disk-debian-12.qcow2 20G
 qemu-img convert \
   -f vmdk \
   -O qcow2 os-images/Debian_12.0.0_VMM/Debian_12.0.0_VMM_LinuxVMImages.COM.vmdk os-images/Debian_12.0.0_VMM/Debian_12.0.0.qcow2 \
-  -p -m16
+  -p \
+  -m16
 
 # check image
 qemu-img info os-images/Debian_12.0.0_VMM/Debian_12.0.0.qcow2
@@ -1136,9 +1163,13 @@ dhcpclient ens4
 在命令行中使用QEMU監視器**-Monitor Stdio**參數**QEMU-SYSTEM-X86_64**
 
 ```sh
-qemu-system-x86_64
-...
- -monitor stdio
+qemu-system-x86_64 -monitor stdio
+```
+
+退出QEMU-MONITOR：
+
+```sh
+ctrl+alt+2
 ```
 
 ```sh
@@ -1502,15 +1533,11 @@ virsh nwfilter-define block-icmp.xml
 # virsh destroy debian-server01
 # virsh start debian-server01
 
-
 # delete network filter
 virsh nwfilter-undefine block-icmp
 
 # get xml network filter
 virsh nwfilter-dumpxml block-icmp
-
-
-
 ```
 
 ###### virt-install
@@ -1557,8 +1584,7 @@ virt-install --name rocky9-server02 \
 virt-viewer debian-server01
 
 # check metadata domain\instance\vm file (if uri is qemu:////system)
-less /etc/libvirt/qemu/debian-server01.xml 
-
+less /etc/libvirt/qemu/debian-server01.xml
 ```
 
 <p align="right">(<a href="#topic-351.4">back to sub Topic 351.4</a>)</p>
@@ -1570,6 +1596,8 @@ less /etc/libvirt/qemu/debian-server01.xml
 <a name="topic-351.5"></a>
 
 ### 351.5虛擬機磁盤圖像管理
+
+![disk-managment](images/virtual-machine-disk.png)
 
 **重量：**3
 
@@ -1599,21 +1627,256 @@ virt-inspector
 virt-filesystems
 virt-rescue
 virt-df
-virt-resize
 virt-sparsify
 virt-p2v
 virt-p2v-make-disk
 virt-v2v
-virt-sysprep
 ```
 
 #### 351.5重要命令
 
-##### foo
+##### 351.5.1 qemu-img
 
 ```sh
-foo
+# Display detailed information about a disk image
+qemu-img info UbuntuServer_24.04.qcow2
+
+# Create a new 22G raw disk image (default format is raw)
+qemu-img create new-disk 22G
+
+# Create a new 22G disk image in qcow2 format
+qemu-img create -f qcow2 new-disk2 22G
+
+# Convert a VDI image to raw format using 5 threads and show progress
+qemu-img convert -f vdi -O raw Ubuntu-Server.vdk new-Ubuntu.raw -m5 -p
+
+# Convert vmdk to qcow2 image
+qemu-img convert \
+-f vmdk \
+-O qcow2 os-images/UbuntuServer_24.04_VM/UbuntuServer_24.04_VM_LinuxVMImages.COM.vmdk \
+os-images/UbuntuServer_24.04_VM/UbuntuServer_24.04.qcow2 \
+-p \
+-m16
+
+# Resize a raw image to 30G
+qemu-img resize -f raw new-disk 30G
+
+# Resize a qcow2 image to 15G(actual size 30Gdisk 30G)
+qemu-img resize -f raw --shrink new-disk 15G
+
+# Snapshots
+
+# List all snapshots in the image
+qemu-img snapshot -l new-disk2.qcow2
+
+# Create a snapshot named SNAP1
+qemu-img snapshot -c SNAP1 disk
+
+# Apply a snapshot by ID or name
+qemu-img snapshot -a 123456789 disk
+
+# Delete the snapshot named SNAP1
+qemu-img snapshot -d SNAP1 disk
 ```
+
+##### 來賓魚
+
+```sh
+# set enviroment variables for guestfish
+export LIBGUESTFS_BACKEND_SETTINGS=force_tcg
+
+# Launch guestfish with a disk image
+guestfish -a UbuntuServer_24.04.qcow2
+#run
+#list-partitions
+
+# Run the commands in a script file
+guestfish -a UbuntuServer_24.04.qcow2 -m /dev/sda -i < script.ssh
+
+# Interactively run commands
+guestfish --rw -a UbuntuServer_24.04.qcow2 <<'EOF'
+run
+list-filesystems
+EOF
+
+# Copy a file from the guest image to the host
+export LIBGUESTFS_BACKEND_SETTINGS=force_tcg
+sudo guestfish --rw -a UbuntuServer_24.04.qcow2 -i <<'EOF'
+copy-out /etc/hostname /tmp/
+EOF
+
+# Copy a file from the host into the guest image
+echo "new-hostname" > /tmp/hostname
+export LIBGUESTFS_BACKEND_SETTINGS=force_tcg
+sudo guestfish --rw -a UbuntuServer_24.04.qcow2 -i <<'EOF'
+copy-in /tmp/hostname /etc/
+EOF
+
+# View contents of a file in the guest image
+guestfish --ro -a UbuntuServer_24.04.qcow2 -i <<'EOF'
+cat /etc/hostname
+EOF
+
+# List files in the guest image
+export LIBGUESTFS_BACKEND_SETTINGS=force_tcg
+guestfish --rw -a UbuntuServer_24.04.qcow2 -i <<'EOF'
+ls /home/ubuntu
+EOF
+
+# Edit a file in the guest image
+export LIBGUESTFS_BACKEND_SETTINGS=force_tcg
+guestfish --rw -a UbuntuServer_24.04.qcow2 -i <<'EOF'
+edit /etc/hosts
+EOF
+```
+
+###### 嘉賓蒙特
+
+```sh
+# Mount a disk image to a directory
+guestmount -a UbuntuServer_24.04.qcow2 -m /dev/ubuntu-vg/ubuntu-lv /mnt/ubuntu
+# domain
+guestmount -d rocky9-server02 -m /dev/ubuntu-vg/ubuntu-lv /mnt/ubuntu 
+
+# Mount a specific partition from a disk image
+guestmount -a UbuntuServer_24.04.qcow2 -m /dev/sda2 /mnt/ubuntu
+# domain
+guestmount -d debian-server01 --ro -m  /dev/debian-vg/root /mnt/debian
+```
+
+###### Guestumount
+
+```sh
+# Umount a disk image to a directory
+sudo guestunmount /mnt/ubuntu
+```
+
+##### virt-df
+
+```sh
+# Show free and used space on virtual machine filesystems
+virt-df UbuntuServer_24.04.qcow2 -h
+virt-df -d rocky9-server02 -h
+```
+
+##### virt-filesystems
+
+```sh
+# List filesystems, partitions, and logical volumes in a VM disk image (disk image)
+virt-filesystems -a UbuntuServer_24.04.qcow2 --all --long -h
+
+# List filesystems, partitions, and logical volumes in a VM disk image (domain)
+virt-filesystems -d debian-server01 --all --long -h
+```
+
+##### Virt-Anspector
+
+```sh
+# Inspect and report on the operating system in a VM disk image
+virt-inspector -a UbuntuServer_24.04.qcow2 #(disk)
+virt-inspector -d debian-server01 #(domain) 
+```
+
+##### virt-cat
+
+```sh
+# Display the contents of a file inside a VM disk image
+virt-cat -a UbuntuServer_24.04.qcow2 /etc/hosts
+virt-cat -d debian-server01 /etc/hosts #(domain)
+```
+
+##### 維爾德
+
+```sh
+# Show differences between two VM disk images
+virt-diff -a UbuntuServer_24.04.qcow2 -A Rocky-Linux.qcow2
+```
+
+##### virt-sparsify
+
+```sh
+# Make a VM disk image smaller by removing unused space
+virt-sparsify UbuntuServer_24.04.qcow2 UbuntuServer_24.04-sparse.qcow2
+```
+
+##### 魔術
+
+```sh
+# Resize a VM disk image or its partitions
+virt-filesystems -a UbuntuServer_24.04.qcow2 --all --long -h #(check size of partitions)
+qemu-img create -f qcow2 UbuntuServer_24.04-expanded.qcow2 100G #(create new disk image with 100G)
+virt-resize --expand /dev/ubuntu-vg/ubuntu-lv \
+UbuntuServer_24.04.qcow2 UbuntuServer_24.04-expanded.qcow2
+
+```
+
+##### Virt-Copy-In
+
+```sh
+# Copy files from the host into a VM disk image
+
+virt-copy-in -a UbuntuServer_24.04.qcow2 ~vagrant/test-virt-copy-in.txt /home/ubuntu
+```
+
+##### virt-copy-out
+
+```sh
+# Copy files from a VM disk image to the host
+virt-copy-out -a UbuntuServer_24.04.qcow2 /home/ubuntu/.bashrc /tmp
+```
+
+##### virt-ls
+
+```sh
+# List files and directories inside a VM disk image
+virt-ls -a UbuntuServer_24.04.qcow2 /home/ubuntu
+```
+
+##### virt-rescue
+
+```sh
+# Launch a rescue shell on a VM disk image for recovery
+virt-rescue -a UbuntuServer_24.04.qcow2
+```
+
+##### virt-sysprep
+
+```sh
+# Prepare a VM disk image for cloning by removing system-specific data
+virt-sysprep -a UbuntuServer_24.04.qcow2
+```
+
+##### virt-v2v
+
+```sh
+# Convert a VM from a foreign hypervisor to run on KVM
+virt-v2v -i disk input-disk.img -o local -os /var/tmp
+```
+
+##### virt-p2v
+
+```sh
+# Convert a physical machine to use KVM
+```
+
+##### Virt-P2V-Make-Disk
+
+```sh
+# Create a bootable disk image for physical to virtual conversion
+sudo virt-p2v-make-disk -o output.img
+```
+
+#### 351.5筆記
+
+##### OVF：開放虛擬化格式
+
+OVF：一種開放格式，該格式定義了用於在不同環境中包裝和分發虛擬機的標準。
+
+生成的軟件包具有.ova擴展名，並包含以下文件：
+
+-   .OVF：帶有元數據定義虛擬機環境的XML文件
+-   圖像文件：.vmdk，.vhd，.vhdx，.qcow2，.raw
+-   其他文件：元數據，快照，配置，哈希
 
 <p align="right">(<a href="#topic-351.5">back to sub Topic 351.5</a>)</p>
 <p align="right">(<a href="#topic-351">back to Topic 351</a>)</p>
@@ -1630,6 +1893,23 @@ foo
 <a name="topic-352.1"></a>
 
 ### 352.1容器虛擬化概念
+
+![virtualization-container](images/virtualization-container.png)
+
+```mermaid
+timeline
+    title Time Line Containers Evolution
+    1979 : chroot
+    2000 : FreeBSD Jails
+    2002 : Linux Namespaces
+    2005 : Solaris Containers
+    2007 : cgroups
+    2008 : LXC
+    2013 : Docker
+    2015 : Kubernetes
+```
+
+* * *
 
 **重量：**7
 
@@ -1650,17 +1930,7 @@ foo
 -   意識到Podman，Buildah和Scopeo
 -   在Linux和其他免費操作系統（例如RKT，OpenVZ，SystemD-Nspawn或BSD監獄）中了解其他容器虛擬化方法的認識
 
-```mermaid
-timeline
-    title Time Line Containers Evolution
-    1979 : chroot
-    2000 : FreeBSD Jails
-    2004 : Solaris Containers
-    2006 : cgroups
-    2008 : LXC
-    2013 : Docker
-    2014 : Kubernetes
-```
+* * *
 
 #### 352.1引用對象
 
@@ -1674,13 +1944,292 @@ capsh
 /proc/[0-9]+/status
 ```
 
-#### 352.1重要命令
+* * *
 
-##### foo
+#### chroot-在UNIX/Linux中更改根目錄
+
+![chroot](images/chroot.png)
+
+##### 什麼是Chroot？
+
+Chroot（更改根部）是類似Unix的操作系統上的系統調用和命令，該操作系統更改了當前運行過程及其子女的明顯根目錄（/）。這創造了一個孤立的環境，通常稱為Chroot監獄。
+
+##### 🧱目的和用例
+
+-   🔒隔離安全申請（監獄）。
+-   🧪創建測試環境而不會影響系統的其餘部分。
+-   🛠️系統恢復（例如，啟動到livecd，將Chroot啟動到安裝的系統中）。
+-   📦在受控環境中構建軟件包。
+
+##### 📁最低要求的結構
+
+Chroot環境必須具有自己的基本文件和結構：
 
 ```sh
-foo
+/mnt/myenv/
+├── bin/
+│   └── bash
+├── etc/
+├── lib/
+├── lib64/
+├── usr/
+├── dev/
+├── proc/
+└── tmp/
 ```
+
+使用LDD確定所需的庫：
+
+```sh
+ldd /bin/bash
+```
+
+##### 🚨限制和安全考慮
+
+-   Chroot不是安全邊界，例如容器或VM。
+-   監獄內的特權用戶（根）可能會爆發。
+-   沒有隔離過程名稱空間，設備或內核級資源的隔離。
+
+對於更強的隔離，請考慮以下替代方案：
+
+-   Linux容器（LXC，Docker）
+-   虛擬機（KVM，QEMU）
+-   內核名稱空間和cgroups
+
+##### 🧪示例：基本的Chroot環境設置
+
+使用此腳本來設置最小的Chroot環境：
+
+[**chroot.sh**](scripts/container/chroot.sh)
+
+##### 🧪用Debootstrap測試Chroot
+
+```sh
+# download debain files
+sudo debootstrap stable ~vagrant/debian http://deb.debian.org/debian
+sudo chroot ~vagrant/debian bash
+```
+
+#### 🔍了解容器
+
+容器是一種輕巧的虛擬化技術，將應用程序及其所需的依賴項（代碼，庫，環境變量和配置文件）包裝為孤立，便攜式和可重複的單元。
+
+> 簡而言之：容器是一個獨立的框，以相同的方式運行您的應用程序。
+
+##### 💡什麼是容器？
+
+與虛擬機（VM）不同，容器不會虛擬化硬件。相反，它們虛擬化操作系統。容器與主機共享相同的Linux內核，但是每個Linux內核在完全隔離的用戶空間中運行。
+
+📌容器與虛擬機：
+
+| 特徵   | 容器         | 虛擬機           |
+| ---- | ---------- | ------------- |
+| OS內核 | 與主機共享      | 每個VM都有自己的操作系統 |
+| 啟動時間 | 快速（秒或更少）   | 慢（分鐘）         |
+| 圖像大小 | 輕量級（MB）    | 重（GB）         |
+| 資源效率 | 高的         | 降低            |
+| 隔離機制 | 內核功能（名稱空間） | 管理程序          |
+
+##### 🔑容器的關鍵特徵
+
+🔹**輕的**：共享主機OS內核，減少開銷並啟用快速啟動。
+
+🔹**便攜的**：在不同的環境（開發，分期，產品，雲，本地）始終運行。
+
+🔹**孤立**：使用名稱空間進行過程，網絡和文件系統隔離。
+
+🔹**高效的**：比傳統的VMS啟用更高的密度和更好的資源利用。
+
+🔹**可擴展**：非常適合微服務和雲原生體系結構。
+
+##### 🧱容器的類型
+
+1.  系統容器
+    -   設計為運行整個操作系統，類似於虛擬機。
+    -   支持多個流程和系統服務（Init，Syslog）。
+    -   遺產或整體應用的理想選擇。
+    -   示例：LXC，libvirt-lxc。
+
+2.  申請容器
+    -   設計用於運行一個過程。
+    -   無狀態，短暫和水平可擴展。
+    -   廣泛用於現代Devops和Kubernetes環境中。
+    -   示例：Docker，Contanserd，Cri-O。
+
+##### 🚀流行的集裝箱運行時間
+
+| 運行時        | 描述                            |
+| ---------- | ----------------------------- |
+| **Docker** | 用於建造和運行容器的最廣泛採用的CLI/守護程序。     |
+| **容器**     | 輕巧的運行時為Docker和Kubernetes提供動力。 |
+| **批評它**    | OCI容器的Kubernetes-native運行時間。  |
+| **LXC**    | 傳統的Linux系統容器，更接近全操作。          |
+| **RKT**    | 以安全為中心的運行時（已棄用）。              |
+
+##### 🔐集裝箱內部和安全元素
+
+| 成分                     | 角色                      |
+| ---------------------- | ----------------------- |
+| **名稱空間**               | 隔離進程，用戶，安裝座，網絡。         |
+| **cgroups**            | 控制和限制資源使用情況（CPU，內存，IO）。 |
+| **功能**                 | 容器內部的細粒度特權控制。           |
+| **seccomp**            | 限制使SYSCALL可以減少攻擊表面。     |
+| **Apparmor / selinux** | 內核級別的強制訪問控制執法。          |
+
+* * *
+
+#### 🧠了解Linux名稱空間
+
+名稱空間是核心Linux內核功能，可啟用過程級別的隔離。它們創建了全球系統資源的單獨“視圖”，例如流程ID，網絡，文件系統和用戶 - ，以便每個流程組都認為它在自己的系統中運行。
+
+> 簡單的術語：命名空間欺騙一個過程以思考它擁有機器，即使它只是共享它。
+
+這是隔離容器的基礎。
+
+##### 🔍名稱空間隔離什麼？
+
+每個名稱空間類型都隔離了特定的系統資源。它們一起組成了一個容器在以下操作的沙箱：
+
+| 名稱空間           | 分離株...  | 現實世界示例           |
+| -------------- | ------- | ---------------- |
+| **pid**        | 流程ID    | 容器內的過程看到不同的PID空間 |
+| **山**          | 文件系統安裝點 | 每個容器都會看到自己的根文件系統 |
+| **網絡**         | 網絡堆棧    | 容器具有孤立的IP，接口和路線  |
+| **UTS**        | 主機名和域名  | 每個容器設置自己的主機名     |
+| **IPC**        | 共享記憶和信號 | 防止容器之間的過程間通信     |
+| **用戶**         | 用戶和組ID  | 在容器中啟用假根（UID 0）  |
+| **cgroup（v2）** | 對照組成員資格 | 與CPU和內存限制等資源控件聯繫 |
+
+##### 🧪視覺類比
+
+想像一個共享的辦公大樓：
+
+-   所有租戶共享相同的基礎（Linux內核）。
+-   每個公司都有自己的辦公室（命名空間）：不同的鎖，家具，電話線和公司名稱。
+-   對於每個租戶，感覺就像他們自己的建築物。
+
+這正是容器體驗系統的方式 - 孤立但有效。
+
+##### 🔧容器如何使用名稱空間
+
+當您運行一個容器（例如，使用Docker或Podman）時，運行時會創建一組新的名稱空間：
+
+```bash
+docker run -it --rm alpine sh
+```
+
+此命令給出了該過程：
+
+-   一個新的PID名稱空間→它是容器內部的過程1。
+-   一個新的網絡名稱空間→其自己的虛擬以太網。
+-   安裝名稱空間→特定於容器的根文件系統。
+-   其他名稱空間取決於配置（用戶，IPC等）
+
+結果：輕巧，孤立的運行時環境，表現得像單獨的系統。
+
+##### ⚙️互補內核功能
+
+名稱空間從容器中隱藏資源。但是，為了控制他們可以使用多少以及可以做什麼，我們需要其他機制：
+
+##### 🔩cgroups（對照組）
+
+CGROUP允許內核限制，優先級和監視過程組之間的資源使用情況。
+
+| 資源     | 用例示例         |
+| ------ | ------------ |
+| 中央處理器  | 限制每個容器的CPU時間 |
+| 記憶     | 帽公羊的使用       |
+| 磁盤I/O。 | 油門讀/寫操作      |
+| 網絡（v2） | 帶寬限制         |
+
+🛡️通過阻止一個容器消耗所有系統資源來阻止“嘈雜的鄰居”問題。
+
+##### 🧱功能
+
+傳統Linux使用二進制特權模型：root（uid 0）可以做所有事情，其他所有人都受到限制。
+
+| 能力                     | 允許...             |
+| ---------------------- | ----------------- |
+| `CAP_NET_BIND_SERVICE` | 與特權端口結合（例如80，443） |
+| `CAP_SYS_ADMIN`        | 系統管理任務的強大全部       |
+| `CAP_KILL`             | 將信號發送到任意過程        |
+
+通過刪除不必要的功能，容器只能以所需的方式運行 - 降低風險。
+
+##### 🔐安全機制
+
+與命名空間和cgroups結合使用，以鎖定容器化的過程可以做的事情：
+
+| 特徵           | 描述                       |
+| ------------ | ------------------------ |
+| **seccomp**  | 白名單或塊Linux系統調用（SYSCALLS） |
+| **Apparmor** | 應用每個應用程序安全配置文件           |
+| **Selinux**  | 通過緊密的系統政策強制執行強制性訪問控制     |
+
+##### 🧠初學者的摘要
+
+> ✅名稱空間隔離容器可以看到的東西  
+> ✅cgroups控制它可以使用的  
+> ✅功能和安全模塊定義了它可以做什麼
+
+這些內核功能共同構成了容器隔離的技術骨幹，可以在沒有完整VM的情況下進行高密度，安全和有效的應用部署。
+
+* * *
+
+#### 352.1重要命令
+
+##### 不共產
+
+```sh
+# create a new namespaces and run a command in it
+unshare --mount --uts --ipc --user --pid --net  --map-root-user --mount-proc --fork chroot ~vagrant/debian bash
+# mount /proc for test
+#mount -t proc proc /proc
+#ps -aux
+#ip addr show
+#umount /proc
+umount /proc
+```
+
+##### LSN
+
+```sh
+# show all namespaces
+lsns
+
+# show only pid namespace
+lsns -s <pid>
+lsns -p 3669
+
+ls -l /proc/<pid>/ns
+ls -l /proc/3669/ns
+
+ps -o pid,pidns,netns,ipcns,utsns,userns,args -p <PID>
+ps -o pid,pidns,netns,ipcns,utsns,userns,args -p 3669
+```
+
+##### nsenter
+
+```sh
+# execute a command in namespace
+sudo nsenter -t <PID> -n  ip link show
+sudo nsenter -t 3669 -n ip link show
+```
+
+##### 252.1 IP
+
+```sh
+# create a new network namespace
+sudo ip netns add lxc1
+
+# list network list
+ip netns list
+
+# exec command in network namespace
+sudo ip netns exec lxc1 ip addr show
+```
+
+* * *
 
 <p align="right">(<a href="#topic-352.1">back to sub topic 352.1</a>)</p>
 <p align="right">(<a href="#topic-352">back to topic 352</a>)</p>
@@ -2064,7 +2613,7 @@ Marcos Silvestrini-[marcos.silvestrini@gmail.com](mailto:marcos.silvestrini@gmai
     -   [Bugzila](https://bugzilla.kernel.org/)
     -   [Github徽章](https://github.com/alexandresanlim/Badges4-README.md-Profile)
 -   [虛擬化定義](<>)
-    -   [紅帽](https://www.redhat.com/pt-br/topics/virtualization/what-is-virtualization)
+    -   [紅帽](https://www.redhat.com/pt-br/topics/virtualization/what-is-virtualization/)
     -   [AWS](https://aws.amazon.com/pt/what-is/virtualization/)
     -   [IBM](https://www.ibm.com/topics/virtualization)
     -   [OpenSource.com](https://opensource.com/resources/virtualization)
@@ -2093,7 +2642,7 @@ Marcos Silvestrini-[marcos.silvestrini@gmail.com](mailto:marcos.silvestrini@gmai
     -   [軍官文檔](https://www.qemu.org/)
     -   [下載圖像OSBOXES](https://www.osboxes.org/)
     -   [下載圖像linuximages](https://www.linuxvmimages.com/)
-    -   [尿](https://en.wikibooks.org/wiki/QEMU/Devices/Virtio)
+    -   [城市的](https://en.wikibooks.org/wiki/QEMU/Devices/Virtio)
     -   [來賓經紀人](https://wiki.qemu.org/Features/GuestAgent)
 -   [libvirt](<>)
     -   [軍官文檔](https://libvirt.org/)
@@ -2102,6 +2651,21 @@ Marcos Silvestrini-[marcos.silvestrini@gmail.com](mailto:marcos.silvestrini@gmai
     -   [貯存](https://libvirt.org/storage.html)
     -   [網絡](https://wiki.libvirt.org/Networking.html)
     -   [虛擬網絡](https://wiki.libvirt.org/VirtualNetworking.html)
+    -   [Vortogd](https://libvirt.org/manpages/virtlogd.html)
+    -   [virtlockd](https://libvirt.org/manpages/virtlockd.html)
+    -   [Virt-Manager](https://virt-manager.org/)
+-   [磁盤管理](<>)
+    -   [磁盤圖像](https://qemu-project.gitlab.io/qemu/system/images.html)
+    -   [抄寫](https://sempreupdate.com.br/linux/tutoriais/sistema-de-arquivos-copy-on-write-saiba-o-que-e-e-quais-as-vantagens-e-desvantagens/)
+    -   [RAM X QCOW2](https://docs.redhat.com/en/documentation/red_hat_virtualization/4.3/html/technical_reference/qcow2)
+    -   [libguestfs](https://libguestfs.org/)
+-   [虛擬化和容器化](<>)
+    -   [AWS DOC容器](https://aws.amazon.com/pt/containers/)
+    -   [GCP DOC容器](https://cloud.google.com/learn/what-are-containers?hl=pt-br)
+    -   [IBM DOC容器](https://www.ibm.com/br-pt/topics/containers)
+    -   [紅帽文檔容器](https://www.redhat.com/en/topics/containers/whats-a-linux-container)
+    -   [名稱空間](https://manpages.ubuntu.com/manpages/noble/man7/namespaces.7.html)
+    -   [最重要的名稱空間](https://www.redhat.com/en/blog/7-linux-namespaces)
 -   [OpenStack文檔](<>)
     -   [redhat](https://www.redhat.com/pt-br/topics/openstack)
 -   [開放的VSWITCH](<>)
