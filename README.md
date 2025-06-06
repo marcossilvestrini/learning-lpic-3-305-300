@@ -247,14 +247,14 @@ man COMMAND
 
 **Key Knowledge Areas:**
 
-* Understand virtualization terminology
-* Understand the pros and cons of virtualization
-* Understand the various variations of Hypervisors and Virtual Machine Monitors
-* Understand the major aspects of migrating physical to virtual machines
-* Understand the major aspects of migrating virtual machines between host systems
-* Understand the features and implications of virtualization for a virtual machine, such as snapshotting, pausing, cloning and resource limits
-* Awareness of oVirt, Proxmox, systemd-machined and VirtualBox
-* Awareness of Open vSwitch
+* 🖥️ Understand virtualization terminology
+* ⚖️ Understand the pros and cons of virtualization
+* 🛠️ Understand the various variations of Hypervisors and Virtual Machine Monitors
+* 🔄 Understand the major aspects of migrating physical to virtual machines
+* 🚀 Understand the major aspects of migrating virtual machines between host systems
+* 📸 Understand the features and implications of virtualization for a virtual machine, such as snapshotting, pausing, cloning and resource limits
+* 🌐 Awareness of oVirt, Proxmox, systemd-machined and VirtualBox
+* 🔗 Awareness of Open vSwitch
 
 #### 351.1 Cited Objects
 
@@ -278,9 +278,9 @@ Runs directly on the host's physical hardware, providing a base layer to manage 
 
 ###### Type 1 Characteristics
 
-* High performance and efficiency.
-* Lower latency and overhead.
-* Often used in enterprise environments and data centers.
+* ⚡ High performance and efficiency.
+* ⏱️ Lower latency and overhead.
+* 🏢 Often used in enterprise environments and data centers.
 
 ###### Type 1 Examples
 
@@ -297,9 +297,9 @@ Runs on top of a conventional operating system, relying on the host OS for resou
 
 ###### Type 2 Characteristics
 
-* Easier to set up and use, especially on personal computers.
-* More flexible for development, testing, and smaller-scale deployments.
-* Typically less efficient than Type 1 hypervisors due to additional overhead from the host OS.
+* 🛠️ Easier to set up and use, especially on personal computers.
+* 🔧 More flexible for development, testing, and smaller-scale deployments.
+* 🐢 Typically less efficient than Type 1 hypervisors due to additional overhead from the host OS.
 
 ###### Type 2 Examples
 
@@ -319,7 +319,7 @@ Runs on top of a conventional operating system, relying on the host OS for resou
 * Management and Ease of Use:
   * Type 1 hypervisors require more complex setup and management but provide advanced features and scalability for large-scale deployments.
   * Type 2 hypervisors are easier to install and use, making them ideal for individual users and smaller projects.
-  
+
 ##### Migration Types
 
 In the context of hypervisors, which are technologies used to create and manage virtual machines, the terms P2V migration and V2V migration are common in virtualization environments.  
@@ -350,10 +350,10 @@ HVM leverages hardware extensions provided by modern CPUs to virtualize hardware
 
 ###### HVM Key Characteristics
 
-* **Hardware Support**: Requires CPU support for virtualization extensions such as Intel VT-x or AMD-V.
-* **Full Virtualization:** VMs can run unmodified guest operating systems, as the hypervisor provides a complete emulation of the hardware environment.
-* **Performance:** Typically offers near-native performance because of direct execution of guest code on the CPU.
-* **Isolation:** Provides strong isolation between VMs since each VM operates as if it has its own dedicated hardware.
+* 🖥️ **Hardware Support**: Requires CPU support for virtualization extensions such as Intel VT-x or AMD-V.
+* 🛠️ **Full Virtualization:** VMs can run unmodified guest operating systems, as the hypervisor provides a complete emulation of the hardware environment.
+* ⚡ **Performance:** Typically offers near-native performance because of direct execution of guest code on the CPU.
+* 🔒 **Isolation:** Provides strong isolation between VMs since each VM operates as if it has its own dedicated hardware.
 
 ###### HVM Examples
 
@@ -361,14 +361,14 @@ VMware ESXi, Microsoft Hyper-V, KVM (Kernel-based Virtual Machine).
 
 ###### HVM Advantages
 
-* **Compatibility:** Can run any operating system without modification.
-* **Performance:** High performance due to hardware support.
-* **Security:** Enhanced isolation and security features provided by hardware.
+* ✅ **Compatibility:** Can run any operating system without modification.
+* ⚡ **Performance:** High performance due to hardware support.
+* 🔒 **Security:** Enhanced isolation and security features provided by hardware.
 
 ###### HVM Disadvantages
 
-* **Hardware Dependency:** Requires specific hardware features, limiting compatibility with older systems.
-* **Complexity:** May involve more complex configuration and management.
+* 🛠️ **Hardware Dependency:** Requires specific hardware features, limiting compatibility with older systems.
+* 🔧 **Complexity:** May involve more complex configuration and management.
 
 ##### Paravirtualization
 
@@ -378,9 +378,9 @@ Paravirtualization involves modifying the guest operating system to be aware of 
 
 ###### Paravirtualization Key Characteristics
 
-* **Guest Modification:** Requires changes to the guest operating system to communicate directly with the hypervisor using hypercalls.
-* **Performance:** Can be more efficient than traditional full virtualization because it reduces the overhead associated with emulating hardware.
-* **Compatibility:** Limited to operating systems that have been modified for paravirtualization.
+* 🛠️ **Guest Modification:** Requires changes to the guest operating system to communicate directly with the hypervisor using hypercalls.
+* ⚡ **Performance:** Can be more efficient than traditional full virtualization because it reduces the overhead associated with emulating hardware.
+* 🔗 **Compatibility:** Limited to operating systems that have been modified for paravirtualization.
 
 ###### Paravirtualization Examples
 
@@ -388,13 +388,13 @@ Xen with paravirtualized guests, VMware tools in certain configurations, and som
 
 ###### Paravirtualization Advantages
 
-* **Efficiency:** Reduces the overhead of virtualizing hardware, potentially offering better performance for certain workloads.
-* **Resource Utilization:** More efficient use of system resources due to direct communication between the guest OS and hypervisor.
+* ⚡ **Efficiency:** Reduces the overhead of virtualizing hardware, potentially offering better performance for certain workloads.
+* ✅ **Resource Utilization:** More efficient use of system resources due to direct communication between the guest OS and hypervisor.
 
 ###### Paravirtualization Disadvantages
 
-* **Guest OS Modification:** Requires modifications to the guest OS, limiting compatibility to supported operating systems.
-* **Complexity:** Requires additional complexity in the guest OS for hypercall implementations.
+* 🛠️ **Guest OS Modification:** Requires modifications to the guest OS, limiting compatibility to supported operating systems.
+* 🔧 **Complexity:** Requires additional complexity in the guest OS for hypercall implementations.
 
 ##### Key Differences
 
@@ -422,7 +422,7 @@ Xen with paravirtualized guests, VMware tools in certain configurations, and som
 
 * **HVM:** Generally more straightforward to deploy since it supports unmodified OS.
 * **Paravirtualization:** Requires additional setup and modifications to the guest OS, increasing complexity.
-  
+
 #### NUMA (Non-Uniform Memory Access)
 
 NUMA (Non-Uniform Memory Access) is a memory architecture used in multiprocessor systems to optimize memory access by processors.  
@@ -436,25 +436,25 @@ In a NUMA system, memory is distributed unevenly among processors, meaning that 
 
 ##### Advantages of NUMA
 
-* Better Performance in Large Systems: Since each processor has local memory, it can work more efficiently without competing as much with other processors for memory access.
-* Scalability: NUMA allows systems with many processors and large amounts of memory to scale more effectively compared to a UMA architecture.
+* ⚡ Better Performance in Large Systems: Since each processor has local memory, it can work more efficiently without competing as much with other processors for memory access.
+* 📈 Scalability: NUMA allows systems with many processors and large amounts of memory to scale more effectively compared to a UMA architecture.
 
 ##### Disadvantages
 
-* Programming Complexity: Programmers need to be aware of which regions of memory are local or remote, optimizing the use of local memory to achieve better performance.
-* Potential Performance Penalties: If a processor frequently accesses remote memory, performance may suffer due to higher latency.
+* 🛠️ Programming Complexity: Programmers need to be aware of which regions of memory are local or remote, optimizing the use of local memory to achieve better performance.
+* 🐢 Potential Performance Penalties: If a processor frequently accesses remote memory, performance may suffer due to higher latency.
 This architecture is common in high-performance multiprocessor systems, such as servers and supercomputers, where scalability and memory optimization are critical.
 
 #### Opensource Solutions
 
-* oVirt: <https://www.ovirt.org/>
+* 🌐 oVirt: <https://www.ovirt.org/>
 
-* Proxmox: <https://www.proxmox.com/en/proxmox-virtual-environment/overview>
+* 🌐 Proxmox: <https://www.proxmox.com/en/proxmox-virtual-environment/overview>
 
-* Oracle VirtualBox: <https://www.virtualbox.org/>
+* 🌐 Oracle VirtualBox: <https://www.virtualbox.org/>
 
-* Open vSwitch: <https://www.openvswitch.org/>
-  
+* 🌐 Open vSwitch: <https://www.openvswitch.org/>
+
 #### Types of Virtualization
 
 ##### Hardware Virtualization (Server Virtualization)
@@ -557,12 +557,12 @@ Denodo, Red Hat JBoss Data Virtualization, IBM InfoSphere.
 
 ##### Benefits of Virtualization
 
-* Resource Efficiency: Better utilization of physical resources.
-* Cost Savings: Reduced hardware and operational costs.
-* Scalability: Easy to scale up or down according to demand.
-* Flexibility: Supports a variety of workloads and applications.
-* Disaster Recovery: Simplified backup and recovery processes.
-* Isolation: Improved security through isolation of environments.
+* ⚡ Resource Efficiency: Better utilization of physical resources.
+* 💰 Cost Savings: Reduced hardware and operational costs.
+* 📈 Scalability: Easy to scale up or down according to demand.
+* 🔧 Flexibility: Supports a variety of workloads and applications.
+* 🔄 Disaster Recovery: Simplified backup and recovery processes.
+* 🔒 Isolation: Improved security through isolation of environments.
 
 #### Emulation
 
@@ -1957,60 +1957,67 @@ capsh
 /proc/[0-9]+/status
 ```
 
----
 
-#### Understanding Containers
-
-Containers are a virtualization technology that packages applications with all their dependencies—code, libraries, and configurations—into isolated, executable units.
-
-This approach ensures that software runs consistently in any environment, whether on desktops, traditional IT infrastructure, or the cloud.
-
-What Are Containers?
-At their core, containers virtualize the operating system, allowing applications to  
-share the underlying server's OS kernel while running as isolated, self-contained processes.  
-Unlike virtual machines (VMs), which include a complete operating system for each instance, containers are lighter and more resource-efficient.
 
 ---
 
-#### Key Aspects of Containers
-
-* **Lightweight**: They share the host operating system's kernel, making them much lighter and faster to start and stop compared to VMs.
-* **Portability**: Since they include all their dependencies, containers can be moved and run across different environments (development, testing, production, public, private, or hybrid clouds) without needing reconfiguration, ensuring consistent behavior.
-* **Isolation**: Each container operates as a separate, isolated process, which provides security by encapsulating the application and its dependencies. This allows for detailed control over CPU and memory usage.
-* **Resource Efficiency**: They promote better utilization of the CPU and memory of physical machines, optimizing infrastructure use.
-
----
-
-#### Type of Containers
-
-There are primarily two types of containers in computing, categorized by their approach and focus:
-
-* System Containers: These are an older form of containers that resemble virtual machines in their approach.They focus on the operating system and allow the execution of multiple processes. They're suitable for traditional or monolithic applications that require environments and configurations similar to those of virtual machines.
-* Application Containers: This is a more recent approach, designed to run a single process. They're centered around stateless microservices, being highly scalable horizontally and ideal for immutable and ephemeral infrastructures. If an application or service needs to be updated, a new container is created from the appropriate image to replace the existing instance.
-
-Besides these types, there are several popular container implementations and runtimes:
-
-* Docker: This is the most popular and widely used container runtime, offering a platform to create, package, and distribute applications in containers.
-* RKT (Rocket): A container system focused on security.
-* Linux Containers (LXC): An open-source Linux container runtime system, used to isolate processes at the operating system level.
-* CRI-O: An implementation of the Kubernetes Container Runtime Interface (CRI) that allows the use of Open Container Initiative (OCI)-compatible runtimes.
-
----
-
-#### Key Containers Elements
-
-* Namespaces: Creation of isolated environments for groups of processes.
-* Cgroups (Control Groups): Control and manage the use of system resources for groups of processes.
-* Capabilities: Control of specific permissions granted to processes within a container.
-* seccomp, SELinux, AppArmor: Additional layers of security.
-
----
-
-#### chroot
+#### chroot - Change Root Directory in Unix/Linux
 
 ![chroot](images/chroot.png)
 
-Test chroot
+##### What is chroot?
+
+chroot (short for change root) is a system call and command on Unix-like operating systems that changes the apparent root directory (/) for the current running process and its children. This creates an isolated environment, commonly referred to as a chroot jail.
+
+##### 🧱 Purpose and Use Cases
+
+* 🔒 Isolate applications for security (jailing).
+* 🧪 Create testing environments without impacting the rest of the system.
+* 🛠️ System recovery (e.g., boot into LiveCD and chroot into installed system).
+* 📦 Building software packages in a controlled environment.
+
+##### 📁 Minimum Required Structure
+
+The chroot environment must have its own essential files and structure:
+
+```sh
+/mnt/myenv/
+├── bin/
+│   └── bash
+├── etc/
+├── lib/
+├── lib64/
+├── usr/
+├── dev/
+├── proc/
+└── tmp/
+```
+
+Use ldd to identify required libraries:
+
+```sh
+ldd /bin/bash
+```
+
+##### 🚨 Limitations and Security Considerations
+
+* chroot is not a security boundary like containers or VMs.
+* A privileged user (root) inside the jail can potentially break out.
+* No isolation of process namespaces, devices, or kernel-level resources.
+
+For stronger isolation, consider alternatives like:
+
+* Linux containers (LXC, Docker)
+* Virtual machines (KVM, QEMU)
+* Kernel namespaces and cgroups
+
+##### 🧪 Example: Basic Chroot Environment Setup
+
+Use this cript for setting up a minimal chroot environment:
+
+[**chroot.sh**](scripts/container/chroot.sh)
+
+##### 🧪 Test chroot with debootstrap
 
 ```sh
 # download debain files
@@ -2018,58 +2025,169 @@ sudo debootstrap stable ~vagrant/debian http://deb.debian.org/debian
 sudo chroot ~vagrant/debian bash
 ```
 
+#### 🔍 Understanding Containers
+
+Containers are a lightweight virtualization technology that package applications along with their required dependencies — code, libraries, environment variables, and configuration files — into isolated, portable, and reproducible units.
+
+>In simple terms: a container is a self-contained box that runs your application the same way, anywhere.
+
+##### 💡 What Is a Container?
+
+Unlike Virtual Machines (VMs), containers do not virtualize hardware. Instead, they virtualize the operating system. Containers share the same Linux kernel with the host, but each one operates in a fully isolated user space.
+
+📌 Containers vs Virtual Machines:
+
+| Feature             | Containers                   | Virtual Machines       |
+| ------------------- | ---------------------------- | ---------------------- |
+| OS Kernel           | Shared with host             | Each VM has its own OS |
+| Startup time        | Fast (seconds or less)       | Slow (minutes)         |
+| Image size          | Lightweight (MBs)            | Heavy (GBs)            |
+| Resource efficiency | High                         | Lower                  |
+| Isolation mechanism | Kernel features (namespaces) | Hypervisor             |
+
+##### 🔑 Key Characteristics of Containers
+
+🔹 **Lightweight**: Share the host OS kernel, reducing overhead and enabling fast startup.
+
+🔹 **Portable**: Run consistently across different environments (dev, staging, prod, cloud, on-prem).
+
+🔹 **Isolated**: Use namespaces for process, network, and filesystem isolation.
+
+🔹 **Efficient**: Enable higher density and better resource utilization than traditional VMs.
+
+🔹 **Scalable**: Perfect fit for microservices and cloud-native architecture.
+
+##### 🧱 Types of Containers
+
+1. System Containers
+   * Designed to run the entire OS, Resemble virtual machines.
+   * Support multiple processes and system services (init, syslog).
+   * Ideal for legacy or monolithic applications.
+   * Example: LXC, libvirt-lxc.
+
+2. Application Containers
+   * Designed to run a single process.
+   * Stateless, ephemeral, and horizontally scalable.
+   * Used widely in modern DevOps and Kubernetes environments.
+   * Example: Docker, containerd, CRI-O.
+
+##### 🚀 Popular Container Runtimes
+
+| Runtime        | Description                                                         |
+| -------------- | ------------------------------------------------------------------- |
+| **Docker**     | Most widely adopted CLI/daemon for building and running containers. |
+| **containerd** | Lightweight runtime powering Docker and Kubernetes.                 |
+| **CRI-O**      | Kubernetes-native runtime for OCI containers.                       |
+| **LXC**        | Traditional Linux system containers, closer to full OS.             |
+| **RKT**        | Security-focused runtime (deprecated).                              |
+
+##### 🔐 Container Internals and Security Elements
+
+| Component              | Role                                                  |
+| ---------------------- | ----------------------------------------------------- |
+| **Namespaces**         | Isolate processes, users, mounts, networks.           |
+| **cgroups**            | Control and limit resource usage (CPU, memory, IO).   |
+| **Capabilities**       | Fine-grained privilege control inside containers.     |
+| **seccomp**            | Restricts allowed syscalls to reduce attack surface.  |
+| **AppArmor / SELinux** | Mandatory Access Control enforcement at kernel level. |
+
 ---
 
-#### Namespaces
+#### 🧠 Understanding Linux Namespaces
 
-Namespaces are a fundamental Linux kernel feature that provides isolation for processes. They allow a container to have its own independent view of the system resources. Essentially, namespaces partition global system resources into isolated subsets that processes within a specific namespace can access. This gives each container its own isolated set of:
+Namespaces are a core Linux kernel feature that enable process-level isolation. They create separate "views" of global system resources — such as process IDs, networking, filesystems, and users — so that each process group believes it is running in its own system.
 
-* PID namespace: Isolated process IDs, meaning a process in one container sees a different set of PIDs than a process in another container or on the host.
-* Mount namespace: Isolated view of the filesystem mount points. Each container has its own root filesystem.
-* Network namespace: Isolated network interfaces, IP addresses, routing tables, etc. Each container can have its own network stack.
-* UTS namespace: Isolated hostname and domain name.
-* IPC namespace: Isolated inter-process communication resources.
-* User namespace: Isolated user and group IDs. This allows a user to be root inside a container without being root on the host system.
+>In simple terms: namespaces trick a process into thinking it owns the machine, even though it's just sharing it.
 
-Namespaces are crucial for creating the illusion that a container is a self-contained system.
+This is the foundation for container isolation.
 
----
+##### 🔍 What Do Namespaces Isolate?
 
-#### Cgroups (Control Groups)
+Each namespace type isolates a specific system resource. Together, they make up the sandbox that a container operates in:
 
-Cgroups, or Control Groups, are another vital Linux kernel feature that allows for the allocation, prioritization, and isolation of system resources such as CPU, memory, I/O, and network bandwidth among groups of processes. While namespaces provide isolation for visibility of resources, cgroups provide isolation for resource consumption.
+| Namespace       | Isolates...                  | Real-world example                                      |
+| --------------- | ---------------------------- | ------------------------------------------------------- |
+| **PID**         | Process IDs                  | Processes inside a container see a different PID space  |
+| **Mount**       | Filesystem mount points      | Each container sees its own root filesystem             |
+| **Network**     | Network stack                | Containers have isolated IPs, interfaces, and routes    |
+| **UTS**         | Hostname and domain name     | Each container sets its own hostname                    |
+| **IPC**         | Shared memory and semaphores | Prevents inter-process communication between containers |
+| **User**        | User and group IDs           | Enables fake root (UID 0) inside the container          |
+| **Cgroup (v2)** | Control group membership     | Ties into resource controls like CPU and memory limits  |
 
-With cgroups, you can:
+##### 🧪 Visual Analogy
 
-* Limit resources: For example, restrict a container to use only a certain percentage of CPU or a specific amount of RAM.
-* Prioritize tasks: Give certain containers more CPU time or I/O access than others.
-* Monitor usage: Track how much of a given resource a group of processes is consuming.
+Imagine a shared office building:
 
-Cgroups ensure that one container doesn't consume all available resources on the host, preventing a "noisy neighbor" problem and ensuring fair resource distribution.
+* All tenants share the same foundation (Linux kernel).
+* Each company has its own office (namespace): different locks, furniture, phone lines, and company name.
+* To each tenant, it feels like their own building.
 
----
+That's exactly how containers experience the system — isolated, yet efficient.
 
-#### Capabilities
+##### 🔧 How Containers Use Namespaces
 
-In traditional Linux security, a process is either "root" (has all privileges) or "non-root" (has limited privileges). This "all or nothing" approach was often too coarse-grained for containers. Capabilities address this by breaking down the traditional "root" privilege into a set of distinct units.
+When you run a container (e.g., with Docker or Podman), the runtime creates a new set of namespaces:
 
-Instead of running a container as a full root user, you can grant it only the specific capabilities it needs. For example:
+```bash
+docker run -it --rm alpine sh
+```
 
-* CAP_NET_BIND_SERVICE: Allows binding to privileged network ports (e.g., ports below 1024).
-* CAP_SYS_ADMIN: Allows performing a range of system administration operations.
-* CAP_KILL: Allows sending signals to any process.
+This command gives the process:
 
-By dropping unnecessary capabilities, you significantly reduce the attack surface of a container, enhancing its security.
+* A new PID namespace → it's process 1 inside the container.
+* A new network namespace → its own virtual Ethernet.
+* A mount namespace → a container-specific root filesystem.
+* Other namespaces depending on configuration (user, IPC, etc.)
 
----
+The result: a lightweight, isolated runtime environment that behaves like a separate system.
 
-#### Security (seccomp, SELinux, AppArmor)
+##### ⚙️ Complementary Kernel Features
 
-Beyond namespaces, cgroups, and capabilities, several other security mechanisms are commonly used with containers to provide additional layers of protection:
+Namespaces hide resources from containers. But to control how much they can use and what they can do, we need additional mechanisms:
 
-* seccomp (Secure Computing Mode): A Linux kernel feature that allows a process to restrict the system calls (syscalls) it can make to the kernel. By applying a seccomp profile, you can define a whitelist or blacklist of syscalls a container is allowed to execute, preventing it from performing potentially dangerous operations.
-* SELinux (Security-Enhanced Linux): A mandatory access control (MAC) security module for the Linux kernel. It provides a flexible and fine-grained security policy that can strictly control what programs, users, and processes can do on a system, including within containers.
-* AppArmor (Application Armor): Another MAC system for Linux that works by loading security profiles into the kernel. These profiles restrict the capabilities of programs (e.g., file access, network access, and other system calls) to a defined set, often easier to configure than SELinux for specific application confinement.
+##### 🔩 Cgroups (Control Groups)
+
+Cgroups allow the kernel to limit, prioritize, and monitor resource usage across process groups.
+
+| Resource     | Use case examples              |
+| ------------ | ------------------------------ |
+| CPU          | Limit CPU time per container   |
+| Memory       | Cap RAM usage                  |
+| Disk I/O     | Throttle read/write operations |
+| Network (v2) | Bandwidth restrictions         |
+
+🛡️ Prevents the "noisy neighbor" problem by stopping one container from consuming all system resources.
+
+##### 🧱 Capabilities
+
+Traditional Linux uses a binary privilege model: root (UID 0) can do everything, everyone else is limited.
+
+| Capability             | Allows...                                   |
+| ---------------------- | ------------------------------------------- |
+| `CAP_NET_BIND_SERVICE` | Binding to privileged ports (e.g. 80, 443)  |
+| `CAP_SYS_ADMIN`        | A powerful catch-all for system admin tasks |
+| `CAP_KILL`             | Sending signals to arbitrary processes      |
+
+By dropping unnecessary capabilities, containers can run with only what they need — reducing risk.
+
+##### 🔐 Security Mechanisms
+
+Used in conjunction with namespaces and cgroups to lock down what a containerized process can do:
+
+| Feature      | Description                                                 |
+| ------------ | ----------------------------------------------------------- |
+| **seccomp**  | Whitelist or block Linux system calls (syscalls)            |
+| **AppArmor** | Apply per-application security profiles                     |
+| **SELinux**  | Enforce Mandatory Access Control with tight system policies |
+
+##### 🧠 Summary for Beginners
+
+>✅ Namespaces isolate what a container can see  
+✅ Cgroups control what it can use  
+✅ Capabilities and security modules define what it can do
+
+Together, these kernel features form the technical backbone of container isolation — enabling high-density, secure, and efficient application deployment without full VMs.
 
 ---
 
@@ -2103,7 +2221,6 @@ ls -l /proc/3669/ns
 
 ps -o pid,pidns,netns,ipcns,utsns,userns,args -p <PID>
 ps -o pid,pidns,netns,ipcns,utsns,userns,args -p 3669
-
 ```
 
 ##### nsenter
@@ -2512,7 +2629,7 @@ Project Link: [https://github.com/marcossilvestrini/learning-lpic-3-305-300](htt
   * [Bugzila](https://bugzilla.kernel.org/)
   * [Github Badges](https://github.com/alexandresanlim/Badges4-README.md-Profile)
 * [Virtualization Definitions]()
-  * [Red Hat](https://www.redhat.com/pt-br/topics/virtualization/what-is-virtualization)
+  * [Red Hat](https://www.redhat.com/pt-br/topics/virtualization/what-is-virtualization/)
   * [AWS](https://aws.amazon.com/pt/what-is/virtualization/)
   * [IBM](https://www.ibm.com/topics/virtualization)
   * [OpenSource.com](https://opensource.com/resources/virtualization )

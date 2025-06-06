@@ -1,0 +1,70 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+# Enable experimental features
+ENV["VAGRANT_EXPERIMENTAL"] = "Disks"
+
+# Plugins
+required_plugins = ["vagrant-vmware-desktop", "vagrant-reload", "vagrant-disksize"]
+required_plugins.each do |plugin|
+  unless Vagrant.has_plugin?(plugin)
+    system "vagrant plugin install #{plugin}"
+    puts "Installed the #{plugin} plugin."
+  end
+end
+
+Vagrant.configure("2") do |config|
+
+  # LOCAL VARIABLES
+  VM_NAME = "lpic3-topic-352"
+  BOX_NAME = "generic/debian12"
+
+  # BOX
+  config.vm.box = BOX_NAME
+  config.vm.box_download_insecure = true
+
+  # MOUNTS
+  config.vm.synced_folder ".", "/vagrant", disabled: true
+  config.vm.synced_folder "../scripts/", "/home/vagrant/scripts"
+  config.vm.synced_folder "../configs/", "/home/vagrant/configs"
+  config.vm.synced_folder "../security/", "/home/vagrant/security"
+
+  # BEGIN INSTANCE CONTAINER
+  config.vm.define "#{VM_NAME}-container" do |container|
+
+    # hostname
+    container.vm.hostname = "#{VM_NAME}-container"
+
+    # STORAGE
+    container.vm.disk :disk, size: "200GB", name: "container_storage", primary: false
+
+    # VMware Workstation configuration
+    container.vm.provider "vmware_workstation" do |vmware|
+      vmware.linked_clone = true
+      vmware.clone_directory = "E:\\Servers\\VMWare\\#{VM_NAME}-container"
+      vmware.whitelist_verified = true
+      vmware.gui = true
+      #vmware.vmx["virtualHW.version"] = "10"
+      vmware.vmx["displayName"] = "#{VM_NAME}-container"
+      vmware.vmx["memsize"] = "65536"
+      vmware.vmx["numvcpus"] = "16"
+      vmware.vmx["cpuid.coresPerSocket"] = "1"
+      vmware.vmx["vhv.enable"] = "TRUE"  # Enable virtualization engine (nested virtualization)
+      # vmware.vmx["hypervisor.cpuid.v0"] = "FALSE"  # Ensure guest OS can see CPU features
+      # vmware.vmx["monitor.virtual_mmu"] = "hardware"  # Use hardware memory management unit
+      # vmware.vmx["monitor.virtual_exec"] = "hardware"  # Use hardware execution virtualization
+    end
+
+    # NETWORK CONFIGURATION
+    container.vm.network "public_network", mode: "bridge", auto_config: false
+    # manual ip and bridge configuration
+    container.vm.provision "shell", name: "[configure-network]", path: "../scripts/container/network.sh", privileged: true
+
+    # CLOUD-INIT
+    container.vm.provision "shell", name: "[cloud-init]", path: "../scripts/container/cloud-init.sh", privileged: false
+
+    # RESTART VM
+    container.vm.provision :reload
+  end
+  # END INSTANCE CONTAINER
+end
