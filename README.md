@@ -1907,6 +1907,23 @@ The generated package has the .ova extension and contains the following files:
 
 ### 352.1  Container Virtualization Concepts
 
+![virtualization-container](images/virtualization-container.png)
+
+```mermaid
+timeline
+    title Time Line Containers Evolution
+    1979 : chroot
+    2000 : FreeBSD Jails
+    2002 : Linux Namespaces
+    2005 : Solaris Containers
+    2007 : cgroups
+    2008 : LXC
+    2013 : Docker
+    2015 : Kubernetes
+```
+
+---
+
 **Weight:** 7
 
 **Description:** Candidates should understand the concept of container virtualization. This includes understanding the Linux components used to implement container virtualization as well as using standard Linux tools to troubleshoot these components.
@@ -1926,20 +1943,7 @@ The generated package has the .ova extension and contains the following files:
 * Awareness of podman, buildah and skopeo
 * Awareness of other container virtualization approaches in Linux and other free operating systems, such as rkt, OpenVZ, systemd-nspawn or BSD Jails
 
-![virtualization-container](images/virtualization-container.png)
-
-```mermaid
-timeline
-    title Time Line Containers Evolution
-    1979 : chroot
-    2000 : FreeBSD Jails
-    2002 : Linux Namespaces
-    2005 : Solaris Containers
-    2007 : cgroups
-    2008 : LXC
-    2013 : Docker
-    2015 : Kubernetes
-```
+---
 
 #### 352.1 Cited Objects
 
@@ -1953,15 +1957,177 @@ capsh
 /proc/[0-9]+/status
 ```
 
-#### 352.1 Important Commands
+---
 
-##### foo
+#### Understanding Containers
+
+Containers are a virtualization technology that packages applications with all their dependencies—code, libraries, and configurations—into isolated, executable units.
+
+This approach ensures that software runs consistently in any environment, whether on desktops, traditional IT infrastructure, or the cloud.
+
+What Are Containers?
+At their core, containers virtualize the operating system, allowing applications to  
+share the underlying server's OS kernel while running as isolated, self-contained processes.  
+Unlike virtual machines (VMs), which include a complete operating system for each instance, containers are lighter and more resource-efficient.
+
+---
+
+#### Key Aspects of Containers
+
+* **Lightweight**: They share the host operating system's kernel, making them much lighter and faster to start and stop compared to VMs.
+* **Portability**: Since they include all their dependencies, containers can be moved and run across different environments (development, testing, production, public, private, or hybrid clouds) without needing reconfiguration, ensuring consistent behavior.
+* **Isolation**: Each container operates as a separate, isolated process, which provides security by encapsulating the application and its dependencies. This allows for detailed control over CPU and memory usage.
+* **Resource Efficiency**: They promote better utilization of the CPU and memory of physical machines, optimizing infrastructure use.
+
+---
+
+#### Type of Containers
+
+There are primarily two types of containers in computing, categorized by their approach and focus:
+
+* System Containers: These are an older form of containers that resemble virtual machines in their approach.They focus on the operating system and allow the execution of multiple processes. They're suitable for traditional or monolithic applications that require environments and configurations similar to those of virtual machines.
+* Application Containers: This is a more recent approach, designed to run a single process. They're centered around stateless microservices, being highly scalable horizontally and ideal for immutable and ephemeral infrastructures. If an application or service needs to be updated, a new container is created from the appropriate image to replace the existing instance.
+
+Besides these types, there are several popular container implementations and runtimes:
+
+* Docker: This is the most popular and widely used container runtime, offering a platform to create, package, and distribute applications in containers.
+* RKT (Rocket): A container system focused on security.
+* Linux Containers (LXC): An open-source Linux container runtime system, used to isolate processes at the operating system level.
+* CRI-O: An implementation of the Kubernetes Container Runtime Interface (CRI) that allows the use of Open Container Initiative (OCI)-compatible runtimes.
+
+---
+
+#### Key Containers Elements
+
+* Namespaces: Creation of isolated environments for groups of processes.
+* Cgroups (Control Groups): Control and manage the use of system resources for groups of processes.
+* Capabilities: Control of specific permissions granted to processes within a container.
+* seccomp, SELinux, AppArmor: Additional layers of security.
+
+---
+
+#### chroot
+
+![chroot](images/chroot.png)
+
+Test chroot
 
 ```sh
-foo
+# download debain files
+sudo debootstrap stable ~vagrant/debian http://deb.debian.org/debian
+sudo chroot ~vagrant/debian bash
 ```
 
-#### 352.1 Notes
+---
+
+#### Namespaces
+
+Namespaces are a fundamental Linux kernel feature that provides isolation for processes. They allow a container to have its own independent view of the system resources. Essentially, namespaces partition global system resources into isolated subsets that processes within a specific namespace can access. This gives each container its own isolated set of:
+
+* PID namespace: Isolated process IDs, meaning a process in one container sees a different set of PIDs than a process in another container or on the host.
+* Mount namespace: Isolated view of the filesystem mount points. Each container has its own root filesystem.
+* Network namespace: Isolated network interfaces, IP addresses, routing tables, etc. Each container can have its own network stack.
+* UTS namespace: Isolated hostname and domain name.
+* IPC namespace: Isolated inter-process communication resources.
+* User namespace: Isolated user and group IDs. This allows a user to be root inside a container without being root on the host system.
+
+Namespaces are crucial for creating the illusion that a container is a self-contained system.
+
+---
+
+#### Cgroups (Control Groups)
+
+Cgroups, or Control Groups, are another vital Linux kernel feature that allows for the allocation, prioritization, and isolation of system resources such as CPU, memory, I/O, and network bandwidth among groups of processes. While namespaces provide isolation for visibility of resources, cgroups provide isolation for resource consumption.
+
+With cgroups, you can:
+
+* Limit resources: For example, restrict a container to use only a certain percentage of CPU or a specific amount of RAM.
+* Prioritize tasks: Give certain containers more CPU time or I/O access than others.
+* Monitor usage: Track how much of a given resource a group of processes is consuming.
+
+Cgroups ensure that one container doesn't consume all available resources on the host, preventing a "noisy neighbor" problem and ensuring fair resource distribution.
+
+---
+
+#### Capabilities
+
+In traditional Linux security, a process is either "root" (has all privileges) or "non-root" (has limited privileges). This "all or nothing" approach was often too coarse-grained for containers. Capabilities address this by breaking down the traditional "root" privilege into a set of distinct units.
+
+Instead of running a container as a full root user, you can grant it only the specific capabilities it needs. For example:
+
+* CAP_NET_BIND_SERVICE: Allows binding to privileged network ports (e.g., ports below 1024).
+* CAP_SYS_ADMIN: Allows performing a range of system administration operations.
+* CAP_KILL: Allows sending signals to any process.
+
+By dropping unnecessary capabilities, you significantly reduce the attack surface of a container, enhancing its security.
+
+---
+
+#### Security (seccomp, SELinux, AppArmor)
+
+Beyond namespaces, cgroups, and capabilities, several other security mechanisms are commonly used with containers to provide additional layers of protection:
+
+* seccomp (Secure Computing Mode): A Linux kernel feature that allows a process to restrict the system calls (syscalls) it can make to the kernel. By applying a seccomp profile, you can define a whitelist or blacklist of syscalls a container is allowed to execute, preventing it from performing potentially dangerous operations.
+* SELinux (Security-Enhanced Linux): A mandatory access control (MAC) security module for the Linux kernel. It provides a flexible and fine-grained security policy that can strictly control what programs, users, and processes can do on a system, including within containers.
+* AppArmor (Application Armor): Another MAC system for Linux that works by loading security profiles into the kernel. These profiles restrict the capabilities of programs (e.g., file access, network access, and other system calls) to a defined set, often easier to configure than SELinux for specific application confinement.
+
+---
+
+#### 352.1 Important Commands
+
+##### unshare
+
+```sh
+# create a new namespaces and run a command in it
+unshare --mount --uts --ipc --user --pid --net  --map-root-user --mount-proc --fork chroot ~vagrant/debian bash
+# mount /proc for test
+#mount -t proc proc /proc
+#ps -aux
+#ip addr show
+#umount /proc
+umount /proc
+```
+
+##### lsns
+
+```sh
+# show all namespaces
+lsns
+
+# show only pid namespace
+lsns -s <pid>
+lsns -p 3669
+
+ls -l /proc/<pid>/ns
+ls -l /proc/3669/ns
+
+ps -o pid,pidns,netns,ipcns,utsns,userns,args -p <PID>
+ps -o pid,pidns,netns,ipcns,utsns,userns,args -p 3669
+
+```
+
+##### nsenter
+
+```sh
+# execute a command in namespace
+sudo nsenter -t <PID> -n  ip link show
+sudo nsenter -t 3669 -n ip link show
+```
+
+##### 252.1 ip
+
+```sh
+# create a new network namespace
+sudo ip netns add lxc1
+
+# list network list
+ip netns list
+
+# exec command in network namespace
+sudo ip netns exec lxc1 ip addr show
+```
+
+---
 
 <p align="right">(<a href="#topic-352.1">back to sub topic 352.1</a>)</p>
 <p align="right">(<a href="#topic-352">back to topic 352</a>)</p>
@@ -2392,6 +2558,13 @@ Project Link: [https://github.com/marcossilvestrini/learning-lpic-3-305-300](htt
   * [copy-on-write](https://sempreupdate.com.br/linux/tutoriais/sistema-de-arquivos-copy-on-write-saiba-o-que-e-e-quais-as-vantagens-e-desvantagens/)
   * [RAM x QCOW2](https://docs.redhat.com/en/documentation/red_hat_virtualization/4.3/html/technical_reference/qcow2)
   * [Libguestfs](https://libguestfs.org/)
+* [Virtualization and Containerization]()
+  * [AWS Doc Containers](https://aws.amazon.com/pt/containers/)
+  * [GCP Doc Containers](https://cloud.google.com/learn/what-are-containers?hl=pt-br)
+  * [IBM Doc Container](https://www.ibm.com/br-pt/topics/containers)
+  * [Red Hat Docs Containers](https://www.redhat.com/en/topics/containers/whats-a-linux-container)
+  * [Namespaces](https://manpages.ubuntu.com/manpages/noble/man7/namespaces.7.html)
+  * [Most important Namespaces](https://www.redhat.com/en/blog/7-linux-namespaces)  
 * [Openstack Docs]()
   * [RedHat](https://www.redhat.com/pt-br/topics/openstack)
 * [Open vSwitch]()
