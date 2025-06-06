@@ -2012,6 +2012,8 @@ sudo chroot ~vagrant/debian bash
 
 #### 🔍 Comprender los contenedores
 
+![container](images/containers1.png)
+
 Los contenedores son una tecnología de virtualización ligera que empaqueta las aplicaciones junto con sus dependencias requeridas (código, bibliotecas, variables de entorno y archivos de configuración) en unidades aisladas, portátiles y reproducibles.
 
 > En términos simples: un contenedor es una caja autónoma que ejecuta su aplicación de la misma manera, en cualquier lugar.
@@ -2080,6 +2082,8 @@ A diferencia de las máquinas virtuales (máquinas virtuales), los contenedores 
 
 #### 🧠 Comprender los espacios de nombres de Linux
 
+![linux-namespaces](images/linux-namespaces2.png)
+
 Los espacios de nombres son una característica de núcleo de Linux Core que habilita el aislamiento a nivel de proceso. Crean "vistas" separadas de los recursos del sistema global, como ID de proceso, redes, sistemas de archivos y usuarios, para que cada grupo de procesos crea que se está ejecutando en su propio sistema.
 
 > En términos simples: los espacios de nombres engañan a un proceso para pensar que posee la máquina, a pesar de que solo la está compartiendo.
@@ -2101,6 +2105,8 @@ Cada tipo de espacio de nombres aísla un recurso específico del sistema. Junto
 | **CGROUP (V2)**    | Membresía del grupo de control            | Atacas en controles de recursos como CPU y límites de memoria |
 
 ##### 🧪 Analogía visual
+
+![linux-namespaces](images/linux-namespaces.png)
 
 Imagina un edificio de oficinas compartido:
 
@@ -2188,7 +2194,6 @@ unshare --mount --uts --ipc --user --pid --net  --map-root-user --mount-proc --f
 #ps -aux
 #ip addr show
 #umount /proc
-umount /proc
 ```
 
 ##### LSNS
