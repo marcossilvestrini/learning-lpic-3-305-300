@@ -300,7 +300,7 @@ Executa em cima de um sistema operacional convencional, contando com o sistema o
 ##### Diferenças -chave entre os hipervisores do tipo 1 e do tipo 2
 
 -   Ambiente de implantação:
-    -   Os hipervisores do tipo 1 são comumente implantados em data centers e ambientes corporativos devido à sua interação direta com hardware e alto desempenho.
+    -   Os hipervisores tipo 1 são comumente implantados em data centers e ambientes corporativos devido à sua interação direta com hardware e alto desempenho.
     -   Os hipervisores do tipo 2 são mais adequados para tarefas de uso pessoal, desenvolvimento, teste e virtualização em pequena escala.
 -   Desempenho:
     -   Os hipervisores do tipo 1 geralmente oferecem melhor desempenho e menor latência porque não confiam em um sistema operacional host.
@@ -559,7 +559,7 @@ A emulação envolve a simulação do comportamento de hardware ou software em u
 
 Esse processo permite que o software projetado para um sistema seja executado em outro sistema que possa ter arquitetura ou ambiente operacional diferente.
 
-Embora a emulação forneça versatilidade, permitindo a execução de sistemas ou aplicativos operacionais de convidados não modificados, ela geralmente vem com sobrecarga de desempenho.
+Embora a emulação forneça versatilidade, permitindo a execução de sistemas ou aplicativos operacionais não modificados, ela geralmente vem com sobrecarga de desempenho.
 
 Essa sobrecarga surge porque o sistema emulado precisa interpretar e traduzir instruções destinadas ao sistema original em instruções compatíveis com o sistema host. Como resultado, a emulação pode ser mais lenta que a execução nativa, tornando-o menos eficiente para tarefas com uso intensivo de recursos.
 
@@ -2012,6 +2012,8 @@ sudo chroot ~vagrant/debian bash
 
 #### 🔍 Entendendo os recipientes
 
+![container](images/containers1.png)
+
 Os contêineres são uma tecnologia de virtualização leve que empacota aplicativos junto com as dependências necessárias - código, bibliotecas, variáveis ​​de ambiente e arquivos de configuração - em unidades isoladas, portáteis e reproduzíveis.
 
 > Em termos simples: um contêiner é uma caixa independente que executa seu aplicativo da mesma maneira, em qualquer lugar.
@@ -2052,7 +2054,7 @@ Ao contrário das máquinas virtuais (VMs), os contêineres não virtualizam o h
 
 2.  Contêineres de aplicação
     -   Projetado para executar um único processo.
-    -   Sem estado, efêmero e horizontalmente escalável.
+    -   Stateless, ephemeral, and horizontally scalable.
     -   Utilizado amplamente em ambientes modernos de DevOps e Kubernetes.
     -   Exemplo: Docker, Containerd, Cri-O.
 
@@ -2080,6 +2082,8 @@ Ao contrário das máquinas virtuais (VMs), os contêineres não virtualizam o h
 
 #### 🧠 Entendendo namespaces Linux
 
+![linux-namespaces](images/linux-namespaces2.png)
+
 Os namespaces são um recurso principal do kernel Linux que permite o isolamento no nível do processo. Eles criam "visualizações" separadas dos recursos globais do sistema - como IDs de processo, redes, sistemas de arquivos e usuários - para que cada grupo de processos acredite que está em execução em seu próprio sistema.
 
 > Em termos simples: os namespaces enganam um processo a pensar que ele é dono da máquina, mesmo que esteja apenas compartilhando -a.
@@ -2101,6 +2105,8 @@ Cada tipo de espaço para nome isola um recurso específico do sistema. Juntos, 
 | **CGROUP (V2)**  | Associação do grupo de controle           | Laços em controles de recursos como CPU e limites de memória    |
 
 ##### 🧪 Analogia visual
+
+![linux-namespaces](images/linux-namespaces.png)
 
 Imagine um prédio de escritórios compartilhado:
 
@@ -2188,7 +2194,6 @@ unshare --mount --uts --ipc --user --pid --net  --map-root-user --mount-proc --f
 #ps -aux
 #ip addr show
 #umount /proc
-umount /proc
 ```
 
 ##### lsns
@@ -2360,7 +2365,7 @@ Dockerfile
 -   Feature Basic Feature Knowledge of Terraform
 -   Consciência do CloudStack, Eucalyptus e Opennebula
 
-#### 353.1 Objetos citados
+#### 353.1 Cited Objects
 
 ```sh
 IaaS, PaaS, SaaS
@@ -2469,7 +2474,7 @@ user-data
 -   Recuperar e usar caixas do Atlas
 -   Crie e execute o VagrantFiles
 -   Acesse máquinas virtuais vagantes
--   Compartilhe e sincronize a pasta entre uma máquina virtual vagante e o sistema host
+-   Share and synchronize folder between a Vagrant virtual machine and the host system
 -   Entenda o provisionamento vagante, ou seja, provisionistas de arquivos e shell
 -   Entenda a configuração de várias máquinas
 
