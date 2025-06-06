@@ -236,14 +236,14 @@ man COMMAND
 
 **Principais áreas de conhecimento:**
 
--   Entenda a terminologia da virtualização
--   Entender os prós e contras da virtualização
--   Entenda as várias variações de hipervisores e monitores de máquinas virtuais
--   Entenda os principais aspectos da migração de máquinas físicas para virtuais
--   Entenda os principais aspectos da migração de máquinas virtuais entre os sistemas host
--   Entenda as características e implicações da virtualização para uma máquina virtual, como instantâneos, pausas, clonagem e limites de recursos
--   Consciência de Ovirt, Proxmox, Systemd Mathined e VirtualBox
--   Consciência do Vswitch aberto
+-   🖥️ entender a terminologia da virtualização
+-   ⚖️ entender os prós e contras da virtualização
+-   🛠️ Entenda as várias variações de hipervisores e monitores de máquinas virtuais
+-   🔄 Entenda os principais aspectos da migração de máquinas físicas para virtuais
+-   🚀 Entenda os principais aspectos da migração de máquinas virtuais entre os sistemas host
+-   📸 Entenda as características e implicações da virtualização para uma máquina virtual, como instantâneos, pausas, clonagem e limites de recursos
+-   🌐 Consciência de ovirt, proxmox, Systemd Machined e VirtualBox
+-   🔗 Consciência do Vswitch aberto
 
 #### 351.1 Objetos citados
 
@@ -267,9 +267,9 @@ Executa diretamente no hardware físico do host, fornecendo uma camada base para
 
 ###### Características do tipo 1
 
--   Alto desempenho e eficiência.
--   Latência inferior e sobrecarga.
--   Frequentemente usado em ambientes corporativos e data centers.
+-   ⚡ Alto desempenho e eficiência.
+-   Latência mais baixa e sobrecarga.
+-   🏢 Freqüentemente usado em ambientes corporativos e data centers.
 
 ###### Exemplos do tipo 1
 
@@ -286,9 +286,9 @@ Executa em cima de um sistema operacional convencional, contando com o sistema o
 
 ###### Características do tipo 2
 
--   Mais fácil de configurar e usar, especialmente em computadores pessoais.
--   Mais flexível para desenvolvimento, teste e implantações em menor escala.
--   Normalmente menos eficiente que os hipervisores do tipo 1 devido a uma sobrecarga adicional do sistema operacional do host.
+-   🛠️ mais fácil de configurar e usar, especialmente em computadores pessoais.
+-   🔧 Mais flexível para desenvolvimento, teste e implantações em menor escala.
+-   🐢 Normalmente menos eficiente que os hipervisores do tipo 1 devido a uma sobrecarga adicional do sistema operacional do host.
 
 ###### Exemplos do tipo 2
 
@@ -339,10 +339,10 @@ A HVM aproveita as extensões de hardware fornecidas pelas CPUs modernas para vi
 
 ###### Características -chave da HVM
 
--   **Suporte de hardware**: Requer suporte à CPU para extensões de virtualização, como Intel VT-X ou AMD-V.
--   **Virtualização completa:**As VMs podem executar sistemas operacionais de hóspedes não modificados, pois o hipervisor fornece uma emulação completa do ambiente de hardware.
--   **Desempenho:**Normalmente, oferece desempenho quase nativo devido à execução direta do código de convidado na CPU.
--   **Isolamento:**Fornece um forte isolamento entre as VMs, pois cada VM opera como se tivesse seu próprio hardware dedicado.
+-   🖥️**Suporte de hardware**: Requer suporte à CPU para extensões de virtualização, como Intel VT-X ou AMD-V.
+-   🛠️**Virtualização completa:**As VMs podem executar sistemas operacionais de hóspedes não modificados, pois o hipervisor fornece uma emulação completa do ambiente de hardware.
+-   ⚡**Desempenho:**Normalmente, oferece desempenho quase nativo devido à execução direta do código de convidado na CPU.
+-   🔒**Isolamento:**Fornece um forte isolamento entre as VMs, pois cada VM opera como se tivesse seu próprio hardware dedicado.
 
 ###### Exemplo de HVM
 
@@ -350,14 +350,14 @@ VMware Esxi, Microsoft Hyper-V, KVM (máquina virtual baseada em kernel).
 
 ###### Vantagens de HVM
 
--   **Compatibilidade:**Pode executar qualquer sistema operacional sem modificação.
--   **Desempenho:**Alto desempenho devido ao suporte de hardware.
--   **Segurança:**Recursos aprimorados de isolamento e segurança fornecidos pelo hardware.
+-   ✅**Compatibilidade:**Pode executar qualquer sistema operacional sem modificação.
+-   ⚡**Desempenho:**Alto desempenho devido ao suporte de hardware.
+-   🔒**Segurança:**Recursos aprimorados de isolamento e segurança fornecidos pelo hardware.
 
 ###### Desvantagens de HVM
 
--   **Dependência de hardware:**Requer recursos específicos de hardware, limitando a compatibilidade com sistemas mais antigos.
--   **Complexidade:**Pode envolver configuração e gerenciamento mais complexos.
+-   🛠️**Dependência de hardware:**Requer recursos específicos de hardware, limitando a compatibilidade com sistemas mais antigos.
+-   🔧**Complexidade:**Pode envolver configuração e gerenciamento mais complexos.
 
 ##### Paravirtualização
 
@@ -367,9 +367,9 @@ A paravirtualização envolve a modificação do sistema operacional convidado p
 
 ###### Características -chave da paravirtualização
 
--   **Modificação de convidados:**Requer alterações no sistema operacional convidado para se comunicar diretamente com o hipervisor usando hipercalls.
--   **Desempenho:**Pode ser mais eficiente que a virtualização completa tradicional, pois reduz a sobrecarga associada ao hardware emulando.
--   **Compatibilidade:**Limitado a sistemas operacionais que foram modificados para paravirtutualização.
+-   🛠️**Modificação de convidados:**Requer alterações no sistema operacional convidado para se comunicar diretamente com o hipervisor usando hipercalls.
+-   ⚡**Desempenho:**Pode ser mais eficiente que a virtualização completa tradicional, pois reduz a sobrecarga associada ao hardware emulando.
+-   🔗**Compatibilidade:**Limitado a sistemas operacionais que foram modificados para paravirtutualização.
 
 ###### Exemplos de paravirtualização
 
@@ -377,13 +377,13 @@ Xen com convidados paravirtualizados, ferramentas VMware em determinadas configu
 
 ###### Vantagens de paravirtualização
 
--   **Eficiência:**Reduz a sobrecarga de virtualizar hardware, potencialmente oferecendo melhor desempenho para determinadas cargas de trabalho.
--   **Utilização de recursos:**Uso mais eficiente dos recursos do sistema devido à comunicação direta entre o sistema operacional convidado e o hipervisor.
+-   ⚡**Eficiência:**Reduz a sobrecarga de virtualizar hardware, potencialmente oferecendo melhor desempenho para determinadas cargas de trabalho.
+-   ✅**Utilização de recursos:**Uso mais eficiente dos recursos do sistema devido à comunicação direta entre o sistema operacional convidado e o hipervisor.
 
 ###### Desvantagens de paravirtualização
 
--   **Modificação do sistema operacional convidado:**Requer modificações para o sistema operacional convidado, limitando a compatibilidade aos sistemas operacionais suportados.
--   **Complexidade:**Requer complexidade adicional no sistema operacional convidado para implementações de hipercall.
+-   🛠️**Modificação do sistema operacional convidado:**Requer modificações para o sistema operacional convidado, limitando a compatibilidade aos sistemas operacionais suportados.
+-   🔧**Complexidade:**Requer complexidade adicional no sistema operacional convidado para implementações de hipercall.
 
 ##### Principais diferenças
 
@@ -425,24 +425,24 @@ Em um sistema NUMA, a memória é distribuída de maneira desigual entre os proc
 
 ##### Advantages of NUMA
 
--   Melhor desempenho em sistemas grandes: como cada processador possui memória local, ele pode funcionar com mais eficiência sem competir tanto com outros processadores pelo acesso à memória.
--   Escalabilidade: o NUMA permite sistemas com muitos processadores e grandes quantidades de memória para escalar de maneira mais eficaz em comparação com uma arquitetura da Uma.
+-   ⚡ Melhor desempenho em sistemas grandes: como cada processador possui memória local, ele pode funcionar com mais eficiência sem competir tanto com outros processadores pelo acesso à memória.
+-   Scalability: O NUMA permite sistemas com muitos processadores e grandes quantidades de memória para escalar com mais eficácia em comparação com uma arquitetura Uma.
 
 ##### Desvantagens
 
 -   Complexidade da programação: os programadores precisam estar cientes de quais regiões de memória são locais ou remotas, otimizando o uso da memória local para obter um melhor desempenho.
--   Penalidades potenciais de desempenho: se um processador acessar frequentemente a memória remota, o desempenho poderá sofrer devido à maior latência.
+-   🐢 Penalidades potenciais de desempenho: se um processador acessar frequentemente a memória remota, o desempenho poderá sofrer devido à maior latência.
     Essa arquitetura é comum em sistemas multiprocessadores de alto desempenho, como servidores e supercomputadores, onde a escalabilidade e a otimização da memória são críticas.
 
 #### Soluções OpenSource
 
--   Ovirt:<https://www.ovirt.org/>
+-   🌐 Ovirt:<https://www.ovirt.org/>
 
--   Proxmox:<https://www.proxmox.com/en/proxmox-virtual-environment/overview>
+-   🌐 Proxmox:<https://www.proxmox.com/en/proxmox-virtual-environment/overview>
 
--   Oracle VirtualBox:<https://www.virtualbox.org/>
+-   🌐 Oracle VirtualBox:<https://www.virtualbox.org/>
 
--   Aberto vswitch:<https://www.openvswitch.org/>
+-   🌐 Open Vswitch:<https://www.openvswitch.org/>
 
 #### Tipos de virtualização
 
@@ -546,12 +546,29 @@ Denodo, Red Hat JBoss Virtualização de dados, IBM InfoSphere.
 
 ##### Benefícios da virtualização
 
--   Eficiência de recursos: melhor utilização de recursos físicos.
--   Economia de custos: hardware reduzido e custos operacionais.
--   Escalabilidade: fácil de aumentar ou diminuir de acordo com a demanda.
--   Flexibilidade: suporta uma variedade de cargas de trabalho e aplicativos.
--   Recuperação de desastres: processos simplificados de backup e recuperação.
--   Isolamento: segurança aprimorada através do isolamento de ambientes.
+-   ⚡ Eficiência de recursos: melhor utilização de recursos físicos.
+-   💰 Economia de custos: hardware reduzido e custos operacionais.
+-   📈 Escalabilidade: fácil de aumentar ou diminuir de acordo com a demanda.
+-   🔧 Flexibilidade: suporta uma variedade de cargas de trabalho e aplicações.
+-   🔄 Recuperação de desastres: processos simplificados de backup e recuperação.
+-   🔒 Isolamento: segurança aprimorada através do isolamento de ambientes.
+
+#### Emulação
+
+A emulação envolve a simulação do comportamento de hardware ou software em uma plataforma diferente do originalmente pretendido.
+
+Esse processo permite que o software projetado para um sistema seja executado em outro sistema que possa ter arquitetura ou ambiente operacional diferente.
+
+Embora a emulação forneça versatilidade, permitindo a execução de sistemas ou aplicativos operacionais de convidados não modificados, ela geralmente vem com sobrecarga de desempenho.
+
+Essa sobrecarga surge porque o sistema emulado precisa interpretar e traduzir instruções destinadas ao sistema original em instruções compatíveis com o sistema host. Como resultado, a emulação pode ser mais lenta que a execução nativa, tornando-o menos eficiente para tarefas com uso intensivo de recursos.
+
+Apesar dessa desvantagem, a emulação permanece valiosa para a execução de software herdado, testando aplicativos em diferentes plataformas e facilitando o desenvolvimento de plataformas cruzadas.
+
+#### Systemd-Mathined
+
+O serviço usinado pela SystemD é dedicado ao gerenciamento de máquinas e contêineres virtuais no ecossistema Systemd.
+ Ele fornece funcionalidades essenciais para controlar, monitorar e manter instâncias virtuais, oferecendo integração e eficiência robustas nos ambientes Linux.
 
 <p align="right">(<a href="#topic-351.1">back to sub Topic 351.1</a>)</p>
 <p align="right">(<a href="#topic-351">back to Topic 351</a>)</p>
@@ -667,7 +684,7 @@ Isso resulta em menor sobrecarga e melhor eficiência em comparação com a virt
 
 #### HVM-domu (domínio da máquina virtual de hardware)
 
-O HVM-Domus são máquinas virtuais que utilizam virtualização completa, permitindo que os sistemas operacionais não modificados sejam executados. O Xen Hypervisor fornece emulação de hardware para esses domus, permitindo que eles executem qualquer sistema operacional que suporta a arquitetura de hardware subjacente.  
+O HVM-Domus são máquinas virtuais que utilizam virtualização completa, permitindo que os sistemas operacionais não modificados sejam executados. O Xen Hypervisor fornece emulação de hardware para esses Domus, permitindo que eles executem qualquer sistema operacional que suporta a arquitetura de hardware subjacente.  
 Embora isso ofereça maior flexibilidade, pode resultar em uma sobrecarga mais alta em comparação com o PV-Domus.
 
 #### Rede Xen
@@ -885,35 +902,44 @@ xl block-attach 2 'file:/home/vagrant/isos/ubuntu/seed.iso,xvdc:cdrom,r'
 # insert and eject cdrom devices
 xl cd-insert lpic3-hvm-guest-ubuntu xvdb  /home/vagrant/isos/ubuntu/ubuntu-24.04.1-live-server-amd64.iso
 xl cd-eject lpic3-hvm-guest-ubuntu xvdb
-
 ```
+
+#### 251.2 Notas
+
+##### VIF
+
+Em Xen, "VIF" significa interface virtual e é usado para configurar a rede para máquinas virtuais (domínios).
+
+Ao especificar as diretrizes "VIF" nos arquivos de configuração do domínio, os administradores podem definir interfaces de rede, atribuir endereços IP, configurar VLANs e configurar outros parâmetros de rede para máquinas virtuais em execução em hosts XEN. Por exemplo: VIF =[=Bridge  Xenbr0], neste caso, conecta a interface de rede da VM à ponte Xen chamada "XenBr0".
+
+````sh
 
 <p align="right">(<a href="#topic-351.2">back to sub Topic 351.2</a>)</p>
 <p align="right">(<a href="#topic-351">back to Topic 351</a>)</p>
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-* * *
+---
 
 <a name="topic-351.3"></a>
 
-### 351.3 Qemu
+### 351.3 QEMU
 
 ![xen-kvm-qemu](/images/xen-kvm-qemu.png)
 
-**Peso:**4
+**Weight:** 4
 
-**Descrição:**Os candidatos devem poder instalar, configurar, manter, migrar e solucionar problemas de instalações QEMU.
+**Description:** Candidates should be able to install, configure, maintain, migrate and troubleshoot QEMU installations.
 
-**Principais áreas de conhecimento:**
+**Key Knowledge Areas:**
 
--   Entenda a arquitetura de Qemu, incluindo KVM, networking e armazenamento
--   Inicie as instâncias QEMU da linha de comando
--   Gerencie instantâneos usando o monitor qemu
--   Instale o agente convidado QEMU e os drivers de dispositivo virtio
--   Solucionar problemas de instalações QEMU, incluindo redes e armazenamento
--   Consciência de importantes parâmetros de configuração do QEMU
+* Understand the architecture of QEMU, including KVM, networking and storage
+* Start QEMU instances from the command line
+* Manage snapshots using the QEMU monitor
+* Install the QEMU Guest Agent and VirtIO device drivers
+* Troubleshoot QEMU installations, including networking and storage
+* Awareness of important QEMU configuration parameters
 
-#### 351.3 Objetos citados
+#### 351.3 Cited Objects
 
 ```sh
 Kernel modules: kvm, kvm-intel and kvm-amd
@@ -924,7 +950,7 @@ qemu-system-x86_64
 ip
 brctl
 tunctl
-```
+````
 
 #### 351.3 Comandos importantes
 
@@ -1006,7 +1032,8 @@ qemu-img create -f qcow2 vm-disk-debian-12.qcow2 20G
 qemu-img convert \
   -f vmdk \
   -O qcow2 os-images/Debian_12.0.0_VMM/Debian_12.0.0_VMM_LinuxVMImages.COM.vmdk os-images/Debian_12.0.0_VMM/Debian_12.0.0.qcow2 \
-  -p -m16
+  -p \
+  -m16
 
 # check image
 qemu-img info os-images/Debian_12.0.0_VMM/Debian_12.0.0.qcow2
@@ -1136,9 +1163,13 @@ dhcpclient ens4
 Para iniciar o monitor Qemu no uso de linha de comando**-Monitor stdio**param in**Qemu-System-X86_64**
 
 ```sh
-qemu-system-x86_64
-...
- -monitor stdio
+qemu-system-x86_64 -monitor stdio
+```
+
+Saia Qemu-Monitor:
+
+```sh
+ctrl+alt+2
 ```
 
 ```sh
@@ -1502,15 +1533,11 @@ virsh nwfilter-define block-icmp.xml
 # virsh destroy debian-server01
 # virsh start debian-server01
 
-
 # delete network filter
 virsh nwfilter-undefine block-icmp
 
 # get xml network filter
 virsh nwfilter-dumpxml block-icmp
-
-
-
 ```
 
 ###### Virt-Install
@@ -1557,8 +1584,7 @@ virt-install --name rocky9-server02 \
 virt-viewer debian-server01
 
 # check metadata domain\instance\vm file (if uri is qemu:////system)
-less /etc/libvirt/qemu/debian-server01.xml 
-
+less /etc/libvirt/qemu/debian-server01.xml
 ```
 
 <p align="right">(<a href="#topic-351.4">back to sub Topic 351.4</a>)</p>
@@ -1570,6 +1596,8 @@ less /etc/libvirt/qemu/debian-server01.xml
 <a name="topic-351.5"></a>
 
 ### 351.5 Gerenciamento de imagem em disco da máquina virtual
+
+![disk-managment](images/virtual-machine-disk.png)
 
 **Peso:**3
 
@@ -1599,21 +1627,256 @@ virt-inspector
 virt-filesystems
 virt-rescue
 virt-df
-virt-resize
 virt-sparsify
 virt-p2v
 virt-p2v-make-disk
 virt-v2v
-virt-sysprep
 ```
 
 #### 351.5 Comandos importantes
 
-##### foo
+##### 351.5.1 Qemu-img
 
 ```sh
-foo
+# Display detailed information about a disk image
+qemu-img info UbuntuServer_24.04.qcow2
+
+# Create a new 22G raw disk image (default format is raw)
+qemu-img create new-disk 22G
+
+# Create a new 22G disk image in qcow2 format
+qemu-img create -f qcow2 new-disk2 22G
+
+# Convert a VDI image to raw format using 5 threads and show progress
+qemu-img convert -f vdi -O raw Ubuntu-Server.vdk new-Ubuntu.raw -m5 -p
+
+# Convert vmdk to qcow2 image
+qemu-img convert \
+-f vmdk \
+-O qcow2 os-images/UbuntuServer_24.04_VM/UbuntuServer_24.04_VM_LinuxVMImages.COM.vmdk \
+os-images/UbuntuServer_24.04_VM/UbuntuServer_24.04.qcow2 \
+-p \
+-m16
+
+# Resize a raw image to 30G
+qemu-img resize -f raw new-disk 30G
+
+# Resize a qcow2 image to 15G(actual size 30Gdisk 30G)
+qemu-img resize -f raw --shrink new-disk 15G
+
+# Snapshots
+
+# List all snapshots in the image
+qemu-img snapshot -l new-disk2.qcow2
+
+# Create a snapshot named SNAP1
+qemu-img snapshot -c SNAP1 disk
+
+# Apply a snapshot by ID or name
+qemu-img snapshot -a 123456789 disk
+
+# Delete the snapshot named SNAP1
+qemu-img snapshot -d SNAP1 disk
 ```
+
+##### peixe -convidado
+
+```sh
+# set enviroment variables for guestfish
+export LIBGUESTFS_BACKEND_SETTINGS=force_tcg
+
+# Launch guestfish with a disk image
+guestfish -a UbuntuServer_24.04.qcow2
+#run
+#list-partitions
+
+# Run the commands in a script file
+guestfish -a UbuntuServer_24.04.qcow2 -m /dev/sda -i < script.ssh
+
+# Interactively run commands
+guestfish --rw -a UbuntuServer_24.04.qcow2 <<'EOF'
+run
+list-filesystems
+EOF
+
+# Copy a file from the guest image to the host
+export LIBGUESTFS_BACKEND_SETTINGS=force_tcg
+sudo guestfish --rw -a UbuntuServer_24.04.qcow2 -i <<'EOF'
+copy-out /etc/hostname /tmp/
+EOF
+
+# Copy a file from the host into the guest image
+echo "new-hostname" > /tmp/hostname
+export LIBGUESTFS_BACKEND_SETTINGS=force_tcg
+sudo guestfish --rw -a UbuntuServer_24.04.qcow2 -i <<'EOF'
+copy-in /tmp/hostname /etc/
+EOF
+
+# View contents of a file in the guest image
+guestfish --ro -a UbuntuServer_24.04.qcow2 -i <<'EOF'
+cat /etc/hostname
+EOF
+
+# List files in the guest image
+export LIBGUESTFS_BACKEND_SETTINGS=force_tcg
+guestfish --rw -a UbuntuServer_24.04.qcow2 -i <<'EOF'
+ls /home/ubuntu
+EOF
+
+# Edit a file in the guest image
+export LIBGUESTFS_BACKEND_SETTINGS=force_tcg
+guestfish --rw -a UbuntuServer_24.04.qcow2 -i <<'EOF'
+edit /etc/hosts
+EOF
+```
+
+###### CONGUIDADE
+
+```sh
+# Mount a disk image to a directory
+guestmount -a UbuntuServer_24.04.qcow2 -m /dev/ubuntu-vg/ubuntu-lv /mnt/ubuntu
+# domain
+guestmount -d rocky9-server02 -m /dev/ubuntu-vg/ubuntu-lv /mnt/ubuntu 
+
+# Mount a specific partition from a disk image
+guestmount -a UbuntuServer_24.04.qcow2 -m /dev/sda2 /mnt/ubuntu
+# domain
+guestmount -d debian-server01 --ro -m  /dev/debian-vg/root /mnt/debian
+```
+
+###### GuestUmount
+
+```sh
+# Umount a disk image to a directory
+sudo guestunmount /mnt/ubuntu
+```
+
+##### virt-df
+
+```sh
+# Show free and used space on virtual machine filesystems
+virt-df UbuntuServer_24.04.qcow2 -h
+virt-df -d rocky9-server02 -h
+```
+
+##### Virt-Filesystems
+
+```sh
+# List filesystems, partitions, and logical volumes in a VM disk image (disk image)
+virt-filesystems -a UbuntuServer_24.04.qcow2 --all --long -h
+
+# List filesystems, partitions, and logical volumes in a VM disk image (domain)
+virt-filesystems -d debian-server01 --all --long -h
+```
+
+##### Virt-Inspetor
+
+```sh
+# Inspect and report on the operating system in a VM disk image
+virt-inspector -a UbuntuServer_24.04.qcow2 #(disk)
+virt-inspector -d debian-server01 #(domain) 
+```
+
+##### Virt-Cat
+
+```sh
+# Display the contents of a file inside a VM disk image
+virt-cat -a UbuntuServer_24.04.qcow2 /etc/hosts
+virt-cat -d debian-server01 /etc/hosts #(domain)
+```
+
+##### Virt-Diff
+
+```sh
+# Show differences between two VM disk images
+virt-diff -a UbuntuServer_24.04.qcow2 -A Rocky-Linux.qcow2
+```
+
+##### virt-sparsify
+
+```sh
+# Make a VM disk image smaller by removing unused space
+virt-sparsify UbuntuServer_24.04.qcow2 UbuntuServer_24.04-sparse.qcow2
+```
+
+##### Virt-resize
+
+```sh
+# Resize a VM disk image or its partitions
+virt-filesystems -a UbuntuServer_24.04.qcow2 --all --long -h #(check size of partitions)
+qemu-img create -f qcow2 UbuntuServer_24.04-expanded.qcow2 100G #(create new disk image with 100G)
+virt-resize --expand /dev/ubuntu-vg/ubuntu-lv \
+UbuntuServer_24.04.qcow2 UbuntuServer_24.04-expanded.qcow2
+
+```
+
+##### Virt-copy-in
+
+```sh
+# Copy files from the host into a VM disk image
+
+virt-copy-in -a UbuntuServer_24.04.qcow2 ~vagrant/test-virt-copy-in.txt /home/ubuntu
+```
+
+##### Virt-copy-out
+
+```sh
+# Copy files from a VM disk image to the host
+virt-copy-out -a UbuntuServer_24.04.qcow2 /home/ubuntu/.bashrc /tmp
+```
+
+##### virt-ls
+
+```sh
+# List files and directories inside a VM disk image
+virt-ls -a UbuntuServer_24.04.qcow2 /home/ubuntu
+```
+
+##### Virt-rescue
+
+```sh
+# Launch a rescue shell on a VM disk image for recovery
+virt-rescue -a UbuntuServer_24.04.qcow2
+```
+
+##### Virt-sysprep
+
+```sh
+# Prepare a VM disk image for cloning by removing system-specific data
+virt-sysprep -a UbuntuServer_24.04.qcow2
+```
+
+##### virt-v2v
+
+```sh
+# Convert a VM from a foreign hypervisor to run on KVM
+virt-v2v -i disk input-disk.img -o local -os /var/tmp
+```
+
+##### Virt-P2V
+
+```sh
+# Convert a physical machine to use KVM
+```
+
+##### Virt-P2V-Make-Disk
+
+```sh
+# Create a bootable disk image for physical to virtual conversion
+sudo virt-p2v-make-disk -o output.img
+```
+
+#### 351.5 Notas
+
+##### OVF: Formato de virtualização aberto
+
+OVF: um formato aberto que define um padrão para embalagem e distribuição de máquinas virtuais em diferentes ambientes.
+
+O pacote gerado possui a extensão .ova e contém os seguintes arquivos:
+
+-   .ovf: arquivo xml com metadados definindo o ambiente da máquina virtual
+-   Arquivos de imagem: .vmdk, .vhd, .vhdx, .qcow2, .raw
+-   Arquivos adicionais: metadados, instantâneos, configuração, hash
 
 <p align="right">(<a href="#topic-351.5">back to sub Topic 351.5</a>)</p>
 <p align="right">(<a href="#topic-351">back to Topic 351</a>)</p>
@@ -1630,6 +1893,23 @@ foo
 <a name="topic-352.1"></a>
 
 ### 352.1 conceitos de virtualização de contêineres
+
+![virtualization-container](images/virtualization-container.png)
+
+```mermaid
+timeline
+    title Time Line Containers Evolution
+    1979 : chroot
+    2000 : FreeBSD Jails
+    2002 : Linux Namespaces
+    2005 : Solaris Containers
+    2007 : cgroups
+    2008 : LXC
+    2013 : Docker
+    2015 : Kubernetes
+```
+
+* * *
 
 **Peso:**7
 
@@ -1648,19 +1928,9 @@ foo
 -   Consciência das especificações de tempo de execução da OCI e imagem
 -   Consciência da interface de tempo de execução do contêiner Kubernetes (CRI)
 -   Consciência de Podman, Buildah e Scopeo
--   Consciência de outras abordagens de virtualização de contêineres no Linux e em outros sistemas operacionais gratuitos, como RKT, OpenVZ, Systemd-Nspawn ou BSD prisões
+-   Consciência de outras abordagens de virtualização de contêineres no Linux e em outros sistemas operacionais gratuitos, como RKT, OpenVZ, Systemd-Npawn ou BSD prisões
 
-```mermaid
-timeline
-    title Time Line Containers Evolution
-    1979 : chroot
-    2000 : FreeBSD Jails
-    2004 : Solaris Containers
-    2006 : cgroups
-    2008 : LXC
-    2013 : Docker
-    2014 : Kubernetes
-```
+* * *
 
 #### 352.1 Objetos citados
 
@@ -1674,13 +1944,292 @@ capsh
 /proc/[0-9]+/status
 ```
 
-#### 352.1 Comandos importantes
+* * *
 
-##### foo
+#### CHROOT - Alterar diretório raiz no Unix/Linux
+
+![chroot](images/chroot.png)
+
+##### O que é chroot?
+
+O Chroot (abreviação de ROOTE de mudança) é uma chamada e comando do sistema em sistemas operacionais do tipo UNIX que altera o diretório raiz aparente (/) para o processo de execução atual e seus filhos. Isso cria um ambiente isolado, comumente referido como uma prisão de chroot.
+
+##### 🧱 Casos de propósito e uso
+
+-   🔒 Isolar solicitações de segurança (prisão).
+-   🧪 Crie ambientes de teste sem afetar o restante do sistema.
+-   Recovery Recuperação do sistema (por exemplo, inicialização no LiveCD e Chroot no sistema instalado).
+-   📦 Construindo pacotes de software em um ambiente controlado.
+
+##### 📁 Estrutura mínima necessária
+
+O ambiente de chroot deve ter seus próprios arquivos e estrutura essenciais:
 
 ```sh
-foo
+/mnt/myenv/
+├── bin/
+│   └── bash
+├── etc/
+├── lib/
+├── lib64/
+├── usr/
+├── dev/
+├── proc/
+└── tmp/
 ```
+
+Use LDD para identificar as bibliotecas necessárias:
+
+```sh
+ldd /bin/bash
+```
+
+##### 🚨 Limitações e considerações de segurança
+
+-   Chroot não é um limite de segurança como recipientes ou VMs.
+-   Um usuário privilegiado (root) dentro da prisão pode potencialmente sair.
+-   Nenhum isolamento de namespaces de processo, dispositivos ou recursos no nível do kernel.
+
+Para um isolamento mais forte, considere alternativas como:
+
+-   Contêineres Linux (LXC, Docker)
+-   Máquinas Virtuais (KVM, Qemu)
+-   Namespaces de kernel e cgroups
+
+##### 🧪 Exemplo: Configuração básica de ambiente de chroot
+
+Use este script para configurar um ambiente mínimo de chroot:
+
+[**chroot.sh**](scripts/container/chroot.sh)
+
+##### 🧪 Teste o chroot com Debootstrap
+
+```sh
+# download debain files
+sudo debootstrap stable ~vagrant/debian http://deb.debian.org/debian
+sudo chroot ~vagrant/debian bash
+```
+
+#### 🔍 Entendendo os recipientes
+
+Os contêineres são uma tecnologia de virtualização leve que empacota aplicativos junto com as dependências necessárias - código, bibliotecas, variáveis ​​de ambiente e arquivos de configuração - em unidades isoladas, portáteis e reproduzíveis.
+
+> Em termos simples: um contêiner é uma caixa independente que executa seu aplicativo da mesma maneira, em qualquer lugar.
+
+##### 💡 O que é um contêiner?
+
+Ao contrário das máquinas virtuais (VMs), os contêineres não virtualizam o hardware. Em vez disso, eles virtualizam o sistema operacional. Os contêineres compartilham o mesmo kernel Linux com o host, mas cada um opera em um espaço de usuário totalmente isolado.
+
+📌 Recipientes versus máquinas virtuais:
+
+| Recurso                 | Contêineres                     | Máquinas virtuais                           |
+| ----------------------- | ------------------------------- | ------------------------------------------- |
+| OS Kernel               | Compartilhado com o host        | Cada VM tem seu próprio sistema operacional |
+| Hora de inicialização   | Rápido (segundos ou menos)      | Lento (minutos)                             |
+| Tamanho da imagem       | Leve (MBS)                      | Pesado (GBS)                                |
+| Eficiência de recursos  | Alto                            | Mais baixo                                  |
+| Mecanismo de isolamento | Recursos de kernel (namespaces) | Hipervisor                                  |
+
+##### 🔑 Características -chave dos contêineres
+
+🔹**Leve**: Compartilhe o kernel do OS host, reduzindo a sobrecarga e permitindo uma inicialização rápida.
+
+🔹**Portátil**: Execute de forma consistente em diferentes ambientes (dev, estadiamento, Prod, Cloud, On-Prem).
+
+🔹**Isolado**: Use namespaces para isolamento de processo, rede e sistema de arquivos.
+
+🔹**Eficiente**: Habilite maior densidade e melhor utilização de recursos do que as VMs tradicionais.
+
+🔹**Escalável**: Ajuste perfeito para microsserviços e arquitetura nativa em nuvem.
+
+##### 🧱 Tipos de recipientes
+
+1.  Contêineres do sistema
+    -   Projetado para executar o sistema operacional inteiro, assemelhar -se a máquinas virtuais.
+    -   Suporte a vários processos e serviços do sistema (init, syslog).
+    -   Ideal para aplicações legadas ou monolíticas.
+    -   Exemplo: lxc, libvirt-lxc.
+
+2.  Contêineres de aplicação
+    -   Projetado para executar um único processo.
+    -   Sem estado, efêmero e horizontalmente escalável.
+    -   Utilizado amplamente em ambientes modernos de DevOps e Kubernetes.
+    -   Exemplo: Docker, Containerd, Cri-O.
+
+##### 🚀 Tempos de contêineres populares
+
+| Tempo de execução | Descrição                                                                                 |
+| ----------------- | ----------------------------------------------------------------------------------------- |
+| **Docker**        | A CLI/daemon mais amplamente adotada para construir e executar recipientes.               |
+| **contêiner**     | Docker e Kubernetes com tempo de execução leves.                                          |
+| **CRI-O**         | Tempo de execução nativo de Kubernetes para contêineres OCI.                              |
+| **LXC**           | Contêineres tradicionais do sistema Linux, mais próximos do sistema operacional completo. |
+| **Rkt**           | Tempo de execução focado na segurança (depreciado).                                       |
+
+##### 🔐 Internações de contêineres e elementos de segurança
+
+| Componente            | Papel                                                                  |
+| --------------------- | ---------------------------------------------------------------------- |
+| **Namespaces**        | Isolar processos, usuários, montagens, redes.                          |
+| **CGROUPS**           | Controle e limite o uso de recursos (CPU, memória, IO).                |
+| **Recursos**          | Controle de privilégios de granulação fina dentro de recipientes.      |
+| **Seccomp**           | Restringem os syscalls permitidos para reduzir a superfície de ataque. |
+| **APARMOR / SELinux** | Execução obrigatória de controle de acesso no nível do kernel.         |
+
+* * *
+
+#### 🧠 Entendendo namespaces Linux
+
+Os namespaces são um recurso principal do kernel Linux que permite o isolamento no nível do processo. Eles criam "visualizações" separadas dos recursos globais do sistema - como IDs de processo, redes, sistemas de arquivos e usuários - para que cada grupo de processos acredite que está em execução em seu próprio sistema.
+
+> Em termos simples: os namespaces enganam um processo a pensar que ele é dono da máquina, mesmo que esteja apenas compartilhando -a.
+
+Esta é a base para o isolamento de contêineres.
+
+##### 🔍 O que os namespaces isolam?
+
+Cada tipo de espaço para nome isola um recurso específico do sistema. Juntos, eles compõem a caixa de areia em que um contêiner opera:
+
+| Espaço para nome | Isolados ...                              | Exemplo do mundo real                                           |
+| ---------------- | ----------------------------------------- | --------------------------------------------------------------- |
+| **PID**          | IDs de processo                           | Processos dentro de um recipiente, veja um espaço PID diferente |
+| **Montar**       | Pontos de montagem do sistema de arquivos | Cada contêiner vê seu próprio sistema de arquivos raiz          |
+| **Rede**         | Pilha de rede                             | Contêineres têm IPs isolados, interfaces e rotas                |
+| **Uts**          | Nome de host e nome de domínio            | Cada contêiner define seu próprio nome de host                  |
+| **IPC**          | Memória compartilhada e semáforos         | Impede a comunicação entre processos entre contêineres          |
+| **Usuário**      | IDs de usuário e grupo                    | Ativa a raiz falsa (UID 0) dentro do recipiente                 |
+| **CGROUP (V2)**  | Associação do grupo de controle           | Laços em controles de recursos como CPU e limites de memória    |
+
+##### 🧪 Analogia visual
+
+Imagine um prédio de escritórios compartilhado:
+
+-   Todos os inquilinos compartilham a mesma base (Linux Kernel).
+-   Cada empresa possui seu próprio escritório (espaço para nome): bloqueios diferentes, móveis, linhas telefônicas e nome da empresa.
+-   Para cada inquilino, parece seu próprio prédio.
+
+É exatamente assim que os contêineres experimentam o sistema - isolados, mas eficientes.
+
+##### 🔧 Como os contêineres usam namespaces
+
+Quando você executa um contêiner (por exemplo, com Docker ou Podman), o tempo de execução cria um novo conjunto de espaços para nome:
+
+```bash
+docker run -it --rm alpine sh
+```
+
+Este comando fornece o processo:
+
+-   Um novo espaço para nome de PID → é o processo 1 dentro do contêiner.
+-   Um novo espaço para nome de rede → sua própria Ethernet virtual.
+-   Um espaço para nome de montagem → Um sistema de arquivos raiz específico do contêiner.
+-   Outros espaços para nome, dependendo da configuração (usuário, IPC, etc.)
+
+O resultado: um ambiente de tempo de execução leve e isolado que se comporta como um sistema separado.
+
+##### ⚙️ Recursos de kernel complementares
+
+Os namespaces oculam recursos de contêineres. Mas para controlar o quanto eles podem usar e o que podem fazer, precisamos de mecanismos adicionais:
+
+##### 🔩 CGROUPS (Grupos de controle)
+
+Os cgroups permitem que o kernel limite, priorize e monitore o uso de recursos entre os grupos de processos.
+
+| Recurso      | Use exemplos de casos                       |
+| ------------ | ------------------------------------------- |
+| CPU          | Limitar o tempo da CPU por contêiner        |
+| Memória      | Cap Ram Uso                                 |
+| E/S de disco | Operações de leitura/gravação do acelerador |
+| Rede (V2)    | Restrições de largura de banda              |
+
+🛡️ Impede o problema "vizinho barulhento", impedindo que um contêiner consumindo todos os recursos do sistema.
+
+##### 🧱 Capacidades
+
+O Linux tradicional usa um modelo de privilégio binário: raiz (UID 0) pode fazer tudo, todo mundo é limitado.
+
+| Capacidade             | Permite ...                                                   |
+| ---------------------- | ------------------------------------------------------------- |
+| `CAP_NET_BIND_SERVICE` | Ligação a portas privilegiadas (por exemplo, 80, 443)         |
+| `CAP_SYS_ADMIN`        | Uma poderosa captura para tarefas de administração do sistema |
+| `CAP_KILL`             | Enviando sinais para processos arbitrários                    |
+
+Ao soltar recursos desnecessários, os contêineres podem executar apenas o que precisam - reduzindo o risco.
+
+##### 🔐 Mecanismos de segurança
+
+Usado em conjunto com namespaces e cgroups para bloquear o que um processo contêiner pode fazer:
+
+| Recurso     | Descrição                                                                   |
+| ----------- | --------------------------------------------------------------------------- |
+| **Seccomp** | Lista de permissões ou bloqueios de chamadas do sistema Linux (syscalls)    |
+| **APARMOR** | Aplicar perfis de segurança por aplicação                                   |
+| **Selinux** | Aplicar o controle de acesso obrigatório com políticas de sistema apertadas |
+
+##### 🧠 Resumo para iniciantes
+
+> ✅ Namespaces Isolle o que um contêiner pode ver  
+> ✅ CGROUPS Controle o que pode usar  
+> ✅ Capacidades e módulos de segurança definem o que pode fazer
+
+Juntos, esses recursos do kernel formam a espinha dorsal técnica do isolamento de contêineres-permitindo implantação de aplicação de alta densidade, segurança e eficiência sem VMs completas.
+
+* * *
+
+#### 352.1 Comandos importantes
+
+##### não se bem
+
+```sh
+# create a new namespaces and run a command in it
+unshare --mount --uts --ipc --user --pid --net  --map-root-user --mount-proc --fork chroot ~vagrant/debian bash
+# mount /proc for test
+#mount -t proc proc /proc
+#ps -aux
+#ip addr show
+#umount /proc
+umount /proc
+```
+
+##### lsns
+
+```sh
+# show all namespaces
+lsns
+
+# show only pid namespace
+lsns -s <pid>
+lsns -p 3669
+
+ls -l /proc/<pid>/ns
+ls -l /proc/3669/ns
+
+ps -o pid,pidns,netns,ipcns,utsns,userns,args -p <PID>
+ps -o pid,pidns,netns,ipcns,utsns,userns,args -p 3669
+```
+
+##### NSENTER
+
+```sh
+# execute a command in namespace
+sudo nsenter -t <PID> -n  ip link show
+sudo nsenter -t 3669 -n ip link show
+```
+
+##### 252.1 IP
+
+```sh
+# create a new network namespace
+sudo ip netns add lxc1
+
+# list network list
+ip netns list
+
+# exec command in network namespace
+sudo ip netns exec lxc1 ip addr show
+```
+
+* * *
 
 <p align="right">(<a href="#topic-352.1">back to sub topic 352.1</a>)</p>
 <p align="right">(<a href="#topic-352">back to topic 352</a>)</p>
@@ -2064,7 +2613,7 @@ Link do projeto:<https://github.com/marcossilvestrini/learning-lpic-3-305-300>
     -   [Bugzila](https://bugzilla.kernel.org/)
     -   [Crachás do github](https://github.com/alexandresanlim/Badges4-README.md-Profile)
 -   [Definições de virtualização](<>)
-    -   [Chapéu vermelho](https://www.redhat.com/pt-br/topics/virtualization/what-is-virtualization)
+    -   [Chapéu vermelho](https://www.redhat.com/pt-br/topics/virtualization/what-is-virtualization/)
     -   [AWS](https://aws.amazon.com/pt/what-is/virtualization/)
     -   [IBM](https://www.ibm.com/topics/virtualization)
     -   [OpenSource.com](https://opensource.com/resources/virtualization)
@@ -2093,7 +2642,7 @@ Link do projeto:<https://github.com/marcossilvestrini/learning-lpic-3-305-300>
     -   [Oficial Doc](https://www.qemu.org/)
     -   [Baixe imagens osboxes](https://www.osboxes.org/)
     -   [Faça o download de imagens linuximages](https://www.linuxvmimages.com/)
-    -   [Urina](https://en.wikibooks.org/wiki/QEMU/Devices/Virtio)
+    -   [Urbano](https://en.wikibooks.org/wiki/QEMU/Devices/Virtio)
     -   [Agente convidado](https://wiki.qemu.org/Features/GuestAgent)
 -   [Libvirt](<>)
     -   [Oficial Doc](https://libvirt.org/)
@@ -2102,6 +2651,21 @@ Link do projeto:<https://github.com/marcossilvestrini/learning-lpic-3-305-300>
     -   [Armazenar](https://libvirt.org/storage.html)
     -   [Rede](https://wiki.libvirt.org/Networking.html)
     -   [VirtualNetwork](https://wiki.libvirt.org/VirtualNetworking.html)
+    -   [Virtogd](https://libvirt.org/manpages/virtlogd.html)
+    -   [Virtlockd](https://libvirt.org/manpages/virtlockd.html)
+    -   [virt-manager](https://virt-manager.org/)
+-   [Gerenciamento de disco](<>)
+    -   [Imagens de disco](https://qemu-project.gitlab.io/qemu/system/images.html)
+    -   [cópia-em-escrever](https://sempreupdate.com.br/linux/tutoriais/sistema-de-arquivos-copy-on-write-saiba-o-que-e-e-quais-as-vantagens-e-desvantagens/)
+    -   [RAM X QCOW2](https://docs.redhat.com/en/documentation/red_hat_virtualization/4.3/html/technical_reference/qcow2)
+    -   [Libguestfs](https://libguestfs.org/)
+-   [Virtualização e contêiner](<>)
+    -   [Contêineres da AWS DOC](https://aws.amazon.com/pt/containers/)
+    -   [Contêineres do DOC GCP](https://cloud.google.com/learn/what-are-containers?hl=pt-br)
+    -   [IBM Doc Container](https://www.ibm.com/br-pt/topics/containers)
+    -   [Red Hat Docs Containers](https://www.redhat.com/en/topics/containers/whats-a-linux-container)
+    -   [Namespaces](https://manpages.ubuntu.com/manpages/noble/man7/namespaces.7.html)
+    -   [Os namespaces mais importantes](https://www.redhat.com/en/blog/7-linux-namespaces)
 -   [OpenStack Docs](<>)
     -   [Redhat](https://www.redhat.com/pt-br/topics/openstack)
 -   [Aberto vswitch](<>)
