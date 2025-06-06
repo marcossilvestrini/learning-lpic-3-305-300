@@ -524,7 +524,7 @@ Citrix虛擬應用程序和台式機，VMware Horizo​​​​n，Microsoft遠
 
 ###### 應用虛擬化定義用例
 
-Simplified application deployment, compatibility testing.
+簡化的應用程序部署，兼容性測試。
 
 ###### 應用虛擬化定義示例
 
@@ -649,7 +649,7 @@ XAPI是Xenserver（現稱為Citrix Hypervisor）的關鍵組成部分，並提�
 
 這是XAPI的一些重要方面：
 
--   **VM管理：**XAPI允許管理員通過編程性創建，刪除，啟動和停止虛擬機。
+-   **VM Management:**XAPI允許管理員通過編程性創建，刪除，啟動和停止虛擬機。
 
 -   **自動化：**使用XAPI，可以自動化虛擬資源的管理，包括網絡，存儲和計算，這對於大雲環境至關重要。
 
@@ -689,7 +689,8 @@ HVM-Domus是使用完整虛擬化的虛擬機，允許未修改的操作系統�
 
 #### XEN網絡
 
-寄生網絡設備![pv-networking](images/xen-networking2.png)
+Paravirtualised Network Devices
+![pv-networking](images/xen-networking2.png)
 
 橋接![pv-networking](images/xen-networking1.png)
 
@@ -1236,7 +1237,7 @@ qemu-system-x86_x64
 -   節點之間的遷移域
 -   了解Libvirt如何與Xen和Qemu互動
 -   了解Libvirt如何與DNSMASQ和RADVD等網絡服務互動
--   了解libvirt xml配置文件
+-   Understand libvirt XML configuration files
 -   意識對virtlogd和virtlockd
 
 #### 351.4引用對象
@@ -2012,6 +2013,8 @@ sudo chroot ~vagrant/debian bash
 
 #### 🔍了解容器
 
+![container](images/containers1.png)
+
 容器是一種輕巧的虛擬化技術，將應用程序及其所需的依賴項（代碼，庫，環境變量和配置文件）包裝為孤立，便攜式和可重複的單元。
 
 > 簡而言之：容器是一個獨立的框，以相同的方式運行您的應用程序。
@@ -2080,6 +2083,8 @@ sudo chroot ~vagrant/debian bash
 
 #### 🧠了解Linux名稱空間
 
+![linux-namespaces](images/linux-namespaces2.png)
+
 名稱空間是核心Linux內核功能，可啟用過程級別的隔離。它們創建了全球系統資源的單獨“視圖”，例如流程ID，網絡，文件系統和用戶 - ，以便每個流程組都認為它在自己的系統中運行。
 
 > 簡單的術語：命名空間欺騙一個過程以思考它擁有機器，即使它只是共享它。
@@ -2101,6 +2106,8 @@ sudo chroot ~vagrant/debian bash
 | **cgroup（v2）** | 對照組成員資格 | 與CPU和內存限制等資源控件聯繫 |
 
 ##### 🧪視覺類比
+
+![linux-namespaces](images/linux-namespaces.png)
 
 想像一個共享的辦公大樓：
 
@@ -2188,7 +2195,6 @@ unshare --mount --uts --ipc --user --pid --net  --map-root-user --mount-proc --f
 #ps -aux
 #ip addr show
 #umount /proc
-umount /proc
 ```
 
 ##### LSN
@@ -2638,7 +2644,7 @@ Marcos Silvestrini-[marcos.silvestrini@gmail.com](mailto:marcos.silvestrini@gmai
     -   [KVM（redhat的內核虛擬機）](https://www.redhat.com/pt-br/topics/virtualization/what-is-KVM)
     -   [KVM管理工具](https://www.linux-kvm.org/page/Management_Tools)
     -   [KVM網絡](https://www.linux-kvm.org/page/Networking)
--   [Qemu](<>)
+-   [QEMU](<>)
     -   [軍官文檔](https://www.qemu.org/)
     -   [下載圖像OSBOXES](https://www.osboxes.org/)
     -   [下載圖像linuximages](https://www.linuxvmimages.com/)
