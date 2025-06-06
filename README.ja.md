@@ -236,14 +236,14 @@ man COMMAND
 
 **重要な知識領域：**
 
--   仮想化の用語を理解します
--   仮想化の長所と短所を理解します
--   ハイパーバイザーと仮想マシンモニターのさまざまなバリエーションを理解する
--   物理的なマシンから仮想マシンへの移行の主要な側面を理解する
--   ホストシステム間で仮想マシンを移行する主要な側面を理解する
--   スナップショット、一時停止、クローニング、リソースの制限など、仮想マシンの仮想化の機能と意味を理解する
--   Ovirt、Proxmox、SystemDマシン、VirtualBoxの認識
--   Open Vswitchの認識
+-   ∎仮想化用語を理解する
+-   ⚖§仮想化の長所と短所を理解します
+-   Hypervisorsと仮想マシンモニターのさまざまなバリエーションを理解する
+-   showmenthy Physical Machinesから仮想マシンへの移行の主要な側面を理解する
+-   hostホストシステム間で仮想マシンを移行する主要な側面を理解する
+-   snapshotting、一時停止、クローニング、リソースの制限など、仮想マシンの仮想化の機能と意味を理解する
+-   ovir、ovirt、proxmox、systemd-machined、virtualboxの認識
+-   openオープンVswitchの認識
 
 #### 351.1引用されたオブジェクト
 
@@ -267,9 +267,9 @@ Migration (P2V, V2V)
 
 ###### タイプ1の特性
 
--   高性能と効率。
--   レイテンシとオーバーヘッドが低い。
--   多くの場合、エンタープライズ環境やデータセンターで使用されます。
+-   ⚡高性能と効率。
+-   daverレイテンシとオーバーヘッドが低い。
+-   courseエンタープライズ環境とデータセンターでよく使用されます。
 
 ###### タイプ1の例
 
@@ -287,8 +287,8 @@ Migration (P2V, V2V)
 ###### タイプ2の特性
 
 -   特にパーソナルコンピューターでは、セットアップと使用が簡単です。
--   開発、テスト、および小規模な展開により柔軟に対応します。
--   通常、ホストOSからのオーバーヘッドが追加されたため、タイプ1ハイパーバイザーよりも効率が低くなります。
+-   development開発、テスト、および小規模の展開により柔軟に対応します。
+-   host Host OSからの追加オーバーヘッドにより、通常、タイプ1ハイパーバイザーよりも効率が低くなります。
 
 ###### タイプ2の例
 
@@ -339,10 +339,10 @@ HVMは、最新のCPUが提供するハードウェア拡張機能を活用し�
 
 ###### HVMキー特性
 
--   **ハードウェアサポート**：Intel VT-XやAMD-Vなどの仮想化拡張機能のCPUサポートが必要です。
--   **完全な仮想化：**ハイパーバイザーはハードウェア環境の完全なエミュレーションを提供するため、VMSは変更されていないゲストオペレーティングシステムを実行できます。
--   **パフォーマンス：**通常、CPUでゲストコードを直接実行するため、ネイティブに近いパフォーマンスを提供します。
--   **分離：**各VMは、独自の専用ハードウェアを持っているかのように動作するため、VM間で強力な分離を提供します。
+-   🖥️**ハードウェアサポート**：Intel VT-XやAMD-Vなどの仮想化拡張機能のCPUサポートが必要です。
+-   🛠️**完全な仮想化：**ハイパーバイザーはハードウェア環境の完全なエミュレーションを提供するため、VMSは変更されていないゲストオペレーティングシステムを実行できます。
+-   ⚡**パフォーマンス：**通常、CPUでゲストコードを直接実行するため、ネイティブに近いパフォーマンスを提供します。
+-   🔒**分離：**各VMは、独自の専用ハードウェアを持っているかのように動作するため、VM間で強力な分離を提供します。
 
 ###### HVMの例
 
@@ -350,14 +350,14 @@ VMware ESXI、Microsoft Hyper-V、KVM（カーネルベースの仮想マシン�
 
 ###### HVMの利点
 
--   **互換性：**変更なしで任意のオペレーティングシステムを実行できます。
--   **パフォーマンス：**ハードウェアサポートによる高性能。
--   **安全：**ハードウェアが提供する拡張分離およびセキュリティ機能。
+-   ✅**互換性：**変更なしで任意のオペレーティングシステムを実行できます。
+-   ⚡**パフォーマンス：**ハードウェアサポートによる高性能。
+-   🔒**安全：**ハードウェアが提供する拡張分離およびセキュリティ機能。
 
 ###### HVM短所
 
--   **ハードウェア依存関係：**特定のハードウェア機能が必要であり、古いシステムとの互換性を制限します。
--   **複雑：**より複雑な構成と管理が含まれる場合があります。
+-   🛠️**ハードウェア依存関係：**特定のハードウェア機能が必要であり、古いシステムとの互換性を制限します。
+-   🔧**複雑：**より複雑な構成と管理が含まれる場合があります。
 
 ##### 官報化
 
@@ -367,9 +367,9 @@ Paravirtualizationには、ゲストオペレーティングシステムを変�
 
 ###### 視床化の重要な特性
 
--   **ゲストの変更：**ハイパーコールを使用してハイパーバイザーと直接通信するために、ゲストオペレーティングシステムの変更が必要です。
--   **パフォーマンス：**エミュレートハードウェアに関連するオーバーヘッドを削減するため、従来の完全な仮想化よりも効率的です。
--   **互換性：**傍観的化のために変更されたオペレーティングシステムに限定されています。
+-   🛠️**ゲストの変更：**ハイパーコールを使用してハイパーバイザーと直接通信するために、ゲストオペレーティングシステムの変更が必要です。
+-   ⚡**パフォーマンス：**エミュレートハードウェアに関連するオーバーヘッドを削減するため、従来の完全な仮想化よりも効率的です。
+-   🔗**互換性：**傍観的化のために変更されたオペレーティングシステムに限定されています。
 
 ###### 傍観的な例
 
@@ -377,13 +377,13 @@ Paravirtualized Guests、特定の構成のVMwareツール、およびいくつ�
 
 ###### 対paravirtualizationの利点
 
--   **効率：**仮想化ハードウェアのオーバーヘッドを減らし、特定のワークロードのパフォーマンスを向上させる可能性があります。
--   **リソース利用：**ゲストOSとハイパーバイザー間の直接通信により、システムリソースのより効率的な使用。
+-   ⚡**効率：**仮想化ハードウェアのオーバーヘッドを減らし、特定のワークロードのパフォーマンスを向上させる可能性があります。
+-   ✅**リソース利用：**ゲストOSとハイパーバイザー間の直接通信により、システムリソースのより効率的な使用。
 
 ###### Paravirtualization Disdvantages
 
--   **ゲストOSの変更：**ゲストOSの変更が必要であり、サポートされているオペレーティングシステムへの互換性を制限します。
--   **複雑：**HyperCallの実装には、ゲストOSの追加の複雑さが必要です。
+-   🛠️**ゲストOSの変更：**ゲストOSの変更が必要であり、サポートされているオペレーティングシステムへの互換性を制限します。
+-   🔧**複雑：**HyperCallの実装には、ゲストOSの追加の複雑さが必要です。
 
 ##### 重要な違い
 
@@ -425,24 +425,24 @@ numaシステムでは、メモリはプロセッサ間で不均一に分散さ�
 
 ##### Numaの利点
 
--   大規模なシステムでのパフォーマンスの向上：各プロセッサにはローカルメモリがあるため、メモリアクセスのために他のプロセッサと競合することなく、より効率的に動作できます。
--   スケーラビリティ：NUMAは、多くのプロセッサと大量のメモリを備えたシステムを、UMAアーキテクチャと比較してより効果的にスケーリングできます。
+-   ingar大規模システムでのパフォーマンスの向上：各プロセッサにはローカルメモリがあるため、メモリアクセスのために他のプロセッサと競合することなく、より効率的に動作できます。
+-   📈スケーラビリティ：NUMAは、多くのプロセッサと大量のメモリを備えたシステムを、UMAアーキテクチャと比較してより効果的にスケーリングできるようにします。
 
 ##### 短所
 
--   プログラミングの複雑さ：プログラマーは、どのメモリの領域がローカルまたはリモートであるかを認識する必要があり、ローカルメモリの使用を最適化してパフォーマンスを向上させる必要があります。
--   潜在的なパフォーマンスペナルティ：プロセッサがリモートメモリに頻繁にアクセスする場合、レイテンシが高いためパフォーマンスが低下する可能性があります。
+-   🛠️プログラミングの複雑さ：プログラマーは、どのメモリの領域がローカルまたはリモートであるかを認識する必要があり、ローカルメモリの使用を最適化してパフォーマンスを向上させます。
+-   coption潜在的なパフォーマンスペナルティ：プロセッサがリモートメモリに頻繁にアクセスする場合、遅延が高いためにパフォーマンスが低下する可能性があります。
     このアーキテクチャは、スケーラビリティとメモリの最適化が重要なサーバーやスーパーコンピューターなどの高性能マルチプロセッサシステムで一般的です。
 
 #### OpenSourceソリューション
 
 -   ovirt：<https://www.ovirt.org/>
 
--   proxmox：<https://www.proxmox.com/en/proxmox-virtual-environment/overview>
+-   🌐proxmox：<https://www.proxmox.com/en/proxmox-virtual-environment/overview>
 
--   Oracle VirtualBox：<https://www.virtualbox.org/>
+-   🌐Oracle VirtualBox：<https://www.virtualbox.org/>
 
--   オープンvswitch：<https://www.openvswitch.org/>
+-   🌐オープンvswitch：<https://www.openvswitch.org/>
 
 #### 仮想化の種類
 
@@ -546,12 +546,29 @@ Denodo、Red Hat JBossデータ仮想化、IBM Infosphere。
 
 ##### 仮想化の利点
 
--   リソース効率：物理リソースのより良い利用。
+-   ⚡リソース効率：物理リソースのより良い利用。
 -   コスト削減：ハードウェアと運用コストの削減。
--   スケーラビリティ：需要に応じて簡単にスケールアップまたはダウンします。
--   柔軟性：さまざまなワークロードとアプリケーションをサポートします。
--   災害復旧：バックアップと復旧プロセスの簡素化。
--   分離：環境の分離によるセキュリティの改善。
+-   scalabilityスケーラビリティ：需要に応じて簡単に縮小または下がります。
+-   flex性：さまざまなワークロードとアプリケーションをサポートします。
+-   災害復旧：簡素化されたバックアップおよび回復プロセス。
+-   🔒分離：環境の分離によるセキュリティの改善。
+
+#### エミュレーション
+
+エミュレーションには、当初の目的とは異なるプラットフォームでハードウェアまたはソフトウェアの動作をシミュレートすることが含まれます。
+
+このプロセスにより、あるシステムが異なるアーキテクチャや動作環境を持つ可能性のある別のシステムで実行されるソフトウェアが設計されています。
+
+エミュレーションは、変更されていないゲストオペレーティングシステムまたはアプリケーションの実行を可能にすることで汎用性を提供しますが、多くの場合、パフォーマンスオーバーヘッドが付属しています。
+
+エミュレートされたシステムは、元のシステムをホストシステムと互換性のある命令に対象とした命令を解釈および翻訳する必要があるため、このオーバーヘッドが発生します。その結果、エミュレーションはネイティブの実行よりも遅くなる可能性があり、リソース集約型タスクの効率が低下します。
+
+この欠点にもかかわらず、エミュレーションは、レガシーソフトウェアを実行し、さまざまなプラットフォームでアプリケーションをテストし、クロスプラットフォーム開発の促進に役立ちます。
+
+#### SystemDマシン
+
+SystemD-Machinedサービスは、SystemDエコシステム内の仮想マシンとコンテナの管理に専念しています。
+ 仮想インスタンスを制御、監視、維持するための重要な機能を提供し、Linux環境内で堅牢な統合と効率を提供します。
 
 <p align="right">(<a href="#topic-351.1">back to sub Topic 351.1</a>)</p>
 <p align="right">(<a href="#topic-351">back to Topic 351</a>)</p>
@@ -885,14 +902,23 @@ xl block-attach 2 'file:/home/vagrant/isos/ubuntu/seed.iso,xvdc:cdrom,r'
 # insert and eject cdrom devices
 xl cd-insert lpic3-hvm-guest-ubuntu xvdb  /home/vagrant/isos/ubuntu/ubuntu-24.04.1-live-server-amd64.iso
 xl cd-eject lpic3-hvm-guest-ubuntu xvdb
-
 ```
+
+#### 251.2ノート
+
+##### vif
+
+Xenでは、「VIF」は仮想インターフェイスの略で、仮想マシン（ドメイン）のネットワークの構成に使用されます。
+
+ドメイン構成ファイルに「VIF」ディレクティブを指定することにより、管理者はネットワークインターフェイスを定義し、IPアドレスを割り当て、VLANを設定し、XENホストで実行されている仮想マシンの他のネットワークパラメーターを構成できます。例：vif =[「ブリッジ= xenbr0」]、この場合、VMのネットワークインターフェイスを「xenbr0」という名前のxenブリッジに接続します。
+
+````sh
 
 <p align="right">(<a href="#topic-351.2">back to sub Topic 351.2</a>)</p>
 <p align="right">(<a href="#topic-351">back to Topic 351</a>)</p>
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-* * *
+---
 
 <a name="topic-351.3"></a>
 
@@ -900,20 +926,20 @@ xl cd-eject lpic3-hvm-guest-ubuntu xvdb
 
 ![xen-kvm-qemu](/images/xen-kvm-qemu.png)
 
-**重さ：**4
+**Weight:** 4
 
-**説明：**候補者は、QEMUのインストールをインストール、構成、保守、移行、およびトラブルシューティングできる必要があります。
+**Description:** Candidates should be able to install, configure, maintain, migrate and troubleshoot QEMU installations.
 
-**重要な知識領域：**
+**Key Knowledge Areas:**
 
--   KVM、ネットワーキング、ストレージなど、QEMUのアーキテクチャを理解する
--   コマンドラインからQEMUインスタンスを開始します
--   QEMUモニターを使用してスナップショットを管理します
--   QEMUゲストエージェントとVirtioデバイスドライバーをインストールします
--   ネットワーキングやストレージを含むQEMUのインストールのトラブルシューティング
--   重要なQEMU構成パラメーターの認識
+* Understand the architecture of QEMU, including KVM, networking and storage
+* Start QEMU instances from the command line
+* Manage snapshots using the QEMU monitor
+* Install the QEMU Guest Agent and VirtIO device drivers
+* Troubleshoot QEMU installations, including networking and storage
+* Awareness of important QEMU configuration parameters
 
-#### 351.3引用されたオブジェクト
+#### 351.3 Cited Objects
 
 ```sh
 Kernel modules: kvm, kvm-intel and kvm-amd
@@ -924,7 +950,7 @@ qemu-system-x86_64
 ip
 brctl
 tunctl
-```
+````
 
 #### 351.3重要なコマンド
 
@@ -1006,7 +1032,8 @@ qemu-img create -f qcow2 vm-disk-debian-12.qcow2 20G
 qemu-img convert \
   -f vmdk \
   -O qcow2 os-images/Debian_12.0.0_VMM/Debian_12.0.0_VMM_LinuxVMImages.COM.vmdk os-images/Debian_12.0.0_VMM/Debian_12.0.0.qcow2 \
-  -p -m16
+  -p \
+  -m16
 
 # check image
 qemu-img info os-images/Debian_12.0.0_VMM/Debian_12.0.0.qcow2
@@ -1136,9 +1163,13 @@ dhcpclient ens4
 コマンドラインの使用でQEMUモニターを開始するには**-monitor stdio**パラメイン**QEMU-System-X86_64**
 
 ```sh
-qemu-system-x86_64
-...
- -monitor stdio
+qemu-system-x86_64 -monitor stdio
+```
+
+QEMU-Monitorを終了：
+
+```sh
+ctrl+alt+2
 ```
 
 ```sh
@@ -1502,15 +1533,11 @@ virsh nwfilter-define block-icmp.xml
 # virsh destroy debian-server01
 # virsh start debian-server01
 
-
 # delete network filter
 virsh nwfilter-undefine block-icmp
 
 # get xml network filter
 virsh nwfilter-dumpxml block-icmp
-
-
-
 ```
 
 ###### Virt-Install
@@ -1557,8 +1584,7 @@ virt-install --name rocky9-server02 \
 virt-viewer debian-server01
 
 # check metadata domain\instance\vm file (if uri is qemu:////system)
-less /etc/libvirt/qemu/debian-server01.xml 
-
+less /etc/libvirt/qemu/debian-server01.xml
 ```
 
 <p align="right">(<a href="#topic-351.4">back to sub Topic 351.4</a>)</p>
@@ -1570,6 +1596,8 @@ less /etc/libvirt/qemu/debian-server01.xml
 <a name="topic-351.5"></a>
 
 ### 351.5仮想マシンディスク画像管理
+
+![disk-managment](images/virtual-machine-disk.png)
 
 **重さ：**3
 
@@ -1599,21 +1627,256 @@ virt-inspector
 virt-filesystems
 virt-rescue
 virt-df
-virt-resize
 virt-sparsify
 virt-p2v
 virt-p2v-make-disk
 virt-v2v
-virt-sysprep
 ```
 
 #### 351.5重要なコマンド
 
-##### foo
+##### 351.5.1 Qemu-img
 
 ```sh
-foo
+# Display detailed information about a disk image
+qemu-img info UbuntuServer_24.04.qcow2
+
+# Create a new 22G raw disk image (default format is raw)
+qemu-img create new-disk 22G
+
+# Create a new 22G disk image in qcow2 format
+qemu-img create -f qcow2 new-disk2 22G
+
+# Convert a VDI image to raw format using 5 threads and show progress
+qemu-img convert -f vdi -O raw Ubuntu-Server.vdk new-Ubuntu.raw -m5 -p
+
+# Convert vmdk to qcow2 image
+qemu-img convert \
+-f vmdk \
+-O qcow2 os-images/UbuntuServer_24.04_VM/UbuntuServer_24.04_VM_LinuxVMImages.COM.vmdk \
+os-images/UbuntuServer_24.04_VM/UbuntuServer_24.04.qcow2 \
+-p \
+-m16
+
+# Resize a raw image to 30G
+qemu-img resize -f raw new-disk 30G
+
+# Resize a qcow2 image to 15G(actual size 30Gdisk 30G)
+qemu-img resize -f raw --shrink new-disk 15G
+
+# Snapshots
+
+# List all snapshots in the image
+qemu-img snapshot -l new-disk2.qcow2
+
+# Create a snapshot named SNAP1
+qemu-img snapshot -c SNAP1 disk
+
+# Apply a snapshot by ID or name
+qemu-img snapshot -a 123456789 disk
+
+# Delete the snapshot named SNAP1
+qemu-img snapshot -d SNAP1 disk
 ```
+
+##### ゲストフィッシュ
+
+```sh
+# set enviroment variables for guestfish
+export LIBGUESTFS_BACKEND_SETTINGS=force_tcg
+
+# Launch guestfish with a disk image
+guestfish -a UbuntuServer_24.04.qcow2
+#run
+#list-partitions
+
+# Run the commands in a script file
+guestfish -a UbuntuServer_24.04.qcow2 -m /dev/sda -i < script.ssh
+
+# Interactively run commands
+guestfish --rw -a UbuntuServer_24.04.qcow2 <<'EOF'
+run
+list-filesystems
+EOF
+
+# Copy a file from the guest image to the host
+export LIBGUESTFS_BACKEND_SETTINGS=force_tcg
+sudo guestfish --rw -a UbuntuServer_24.04.qcow2 -i <<'EOF'
+copy-out /etc/hostname /tmp/
+EOF
+
+# Copy a file from the host into the guest image
+echo "new-hostname" > /tmp/hostname
+export LIBGUESTFS_BACKEND_SETTINGS=force_tcg
+sudo guestfish --rw -a UbuntuServer_24.04.qcow2 -i <<'EOF'
+copy-in /tmp/hostname /etc/
+EOF
+
+# View contents of a file in the guest image
+guestfish --ro -a UbuntuServer_24.04.qcow2 -i <<'EOF'
+cat /etc/hostname
+EOF
+
+# List files in the guest image
+export LIBGUESTFS_BACKEND_SETTINGS=force_tcg
+guestfish --rw -a UbuntuServer_24.04.qcow2 -i <<'EOF'
+ls /home/ubuntu
+EOF
+
+# Edit a file in the guest image
+export LIBGUESTFS_BACKEND_SETTINGS=force_tcg
+guestfish --rw -a UbuntuServer_24.04.qcow2 -i <<'EOF'
+edit /etc/hosts
+EOF
+```
+
+###### GuestMount
+
+```sh
+# Mount a disk image to a directory
+guestmount -a UbuntuServer_24.04.qcow2 -m /dev/ubuntu-vg/ubuntu-lv /mnt/ubuntu
+# domain
+guestmount -d rocky9-server02 -m /dev/ubuntu-vg/ubuntu-lv /mnt/ubuntu 
+
+# Mount a specific partition from a disk image
+guestmount -a UbuntuServer_24.04.qcow2 -m /dev/sda2 /mnt/ubuntu
+# domain
+guestmount -d debian-server01 --ro -m  /dev/debian-vg/root /mnt/debian
+```
+
+###### guestumount
+
+```sh
+# Umount a disk image to a directory
+sudo guestunmount /mnt/ubuntu
+```
+
+##### virt-df
+
+```sh
+# Show free and used space on virtual machine filesystems
+virt-df UbuntuServer_24.04.qcow2 -h
+virt-df -d rocky9-server02 -h
+```
+
+##### Virt-Filesystems
+
+```sh
+# List filesystems, partitions, and logical volumes in a VM disk image (disk image)
+virt-filesystems -a UbuntuServer_24.04.qcow2 --all --long -h
+
+# List filesystems, partitions, and logical volumes in a VM disk image (domain)
+virt-filesystems -d debian-server01 --all --long -h
+```
+
+##### Virt-Inspector
+
+```sh
+# Inspect and report on the operating system in a VM disk image
+virt-inspector -a UbuntuServer_24.04.qcow2 #(disk)
+virt-inspector -d debian-server01 #(domain) 
+```
+
+##### VIRT-CAT
+
+```sh
+# Display the contents of a file inside a VM disk image
+virt-cat -a UbuntuServer_24.04.qcow2 /etc/hosts
+virt-cat -d debian-server01 /etc/hosts #(domain)
+```
+
+##### virt-diff
+
+```sh
+# Show differences between two VM disk images
+virt-diff -a UbuntuServer_24.04.qcow2 -A Rocky-Linux.qcow2
+```
+
+##### virt-sparsify
+
+```sh
+# Make a VM disk image smaller by removing unused space
+virt-sparsify UbuntuServer_24.04.qcow2 UbuntuServer_24.04-sparse.qcow2
+```
+
+##### Virt-Resize
+
+```sh
+# Resize a VM disk image or its partitions
+virt-filesystems -a UbuntuServer_24.04.qcow2 --all --long -h #(check size of partitions)
+qemu-img create -f qcow2 UbuntuServer_24.04-expanded.qcow2 100G #(create new disk image with 100G)
+virt-resize --expand /dev/ubuntu-vg/ubuntu-lv \
+UbuntuServer_24.04.qcow2 UbuntuServer_24.04-expanded.qcow2
+
+```
+
+##### Virt-Copy-in
+
+```sh
+# Copy files from the host into a VM disk image
+
+virt-copy-in -a UbuntuServer_24.04.qcow2 ~vagrant/test-virt-copy-in.txt /home/ubuntu
+```
+
+##### Virt-Copy-Out
+
+```sh
+# Copy files from a VM disk image to the host
+virt-copy-out -a UbuntuServer_24.04.qcow2 /home/ubuntu/.bashrc /tmp
+```
+
+##### virt-ls
+
+```sh
+# List files and directories inside a VM disk image
+virt-ls -a UbuntuServer_24.04.qcow2 /home/ubuntu
+```
+
+##### Virt-Rescue
+
+```sh
+# Launch a rescue shell on a VM disk image for recovery
+virt-rescue -a UbuntuServer_24.04.qcow2
+```
+
+##### virt-sysprep
+
+```sh
+# Prepare a VM disk image for cloning by removing system-specific data
+virt-sysprep -a UbuntuServer_24.04.qcow2
+```
+
+##### Virt-V2V
+
+```sh
+# Convert a VM from a foreign hypervisor to run on KVM
+virt-v2v -i disk input-disk.img -o local -os /var/tmp
+```
+
+##### Virt-P2V
+
+```sh
+# Convert a physical machine to use KVM
+```
+
+##### Virt-P2V-Make-Disk
+
+```sh
+# Create a bootable disk image for physical to virtual conversion
+sudo virt-p2v-make-disk -o output.img
+```
+
+#### 351.5ノート
+
+##### OVF：仮想化形式を開きます
+
+OVF：さまざまな環境にわたって仮想マシンのパッケージングと配布の標準を定義するオープンフォーマット。
+
+生成されたパッケージには.ova拡張機能があり、次のファイルが含まれています。
+
+-   .ovf：仮想マシン環境を定義するメタデータを備えたXMLファイル
+-   画像ファイル：.vmdk、.vhd、.vhdx、.qcow2、.raw
+-   追加ファイル：メタデータ、スナップショット、構成、ハッシュ
 
 <p align="right">(<a href="#topic-351.5">back to sub Topic 351.5</a>)</p>
 <p align="right">(<a href="#topic-351">back to Topic 351</a>)</p>
@@ -1630,6 +1893,23 @@ foo
 <a name="topic-352.1"></a>
 
 ### 352.1コンテナ仮想化の概念
+
+![virtualization-container](images/virtualization-container.png)
+
+```mermaid
+timeline
+    title Time Line Containers Evolution
+    1979 : chroot
+    2000 : FreeBSD Jails
+    2002 : Linux Namespaces
+    2005 : Solaris Containers
+    2007 : cgroups
+    2008 : LXC
+    2013 : Docker
+    2015 : Kubernetes
+```
+
+* * *
 
 **重さ：**7
 
@@ -1650,17 +1930,7 @@ foo
 -   Podman、Buildah、Scopooの認識
 -   LinuxやRKT、OpenVZ、SystemD-NSPAWN、BSD刑務所などのLinuxおよびその他の無料オペレーティングシステムでの他のコンテナ仮想化アプローチの認識
 
-```mermaid
-timeline
-    title Time Line Containers Evolution
-    1979 : chroot
-    2000 : FreeBSD Jails
-    2004 : Solaris Containers
-    2006 : cgroups
-    2008 : LXC
-    2013 : Docker
-    2014 : Kubernetes
-```
+* * *
 
 #### 352.1引用されたオブジェクト
 
@@ -1674,13 +1944,292 @@ capsh
 /proc/[0-9]+/status
 ```
 
-#### 352.1重要なコマンド
+* * *
 
-##### foo
+#### chroot- unix/linuxのルートディレクトリを変更します
+
+![chroot](images/chroot.png)
+
+##### クルーとは何ですか？
+
+Chroot（Change Rootの略）は、現在の実行プロセスとその子供の見かけのルートディレクトリ（/）を変更するUnixのようなオペレーティングシステムのシステムコールとコマンドです。これにより、一般にクルート刑務所と呼ばれる孤立した環境が作成されます。
+
+##### 🧱目的とユースケース
+
+-   securityセキュリティのためのアプリケーションを分離します（投獄）。
+-   systemシステムの残りに影響を与えることなく、テスト環境を作成します。
+-   🛠️システムの回復（例えば、Livecdへの起動とインストールされたシステムへのクルート）。
+-   controld制御された環境にソフトウェアパッケージを構築します。
+
+##### consive最小必要な構造
+
+Chroot環境には、独自の重要なファイルと構造が必要です。
 
 ```sh
-foo
+/mnt/myenv/
+├── bin/
+│   └── bash
+├── etc/
+├── lib/
+├── lib64/
+├── usr/
+├── dev/
+├── proc/
+└── tmp/
 ```
+
+LDDを使用して、必要なライブラリを識別します。
+
+```sh
+ldd /bin/bash
+```
+
+##### 🚨制限とセキュリティ上の考慮事項
+
+-   Chrootは、コンテナやVMのようなセキュリティ境界ではありません。
+-   刑務所内の特権ユーザー（ルート）は、潜在的に発生する可能性があります。
+-   プロセス名空間、デバイス、またはカーネルレベルのリソースの分離はありません。
+
+より強い隔離のために、次のような代替案を考慮してください。
+
+-   Linuxコンテナ（LXC、Docker）
+-   仮想マシン（KVM、QEMU）
+-   カーネルネームスペースとcgroups
+
+##### 🧪例：基本的なクルー環境のセットアップ
+
+このスクリプトを使用して、最小限のクルー環境を設定します。
+
+[**chroot.sh**](scripts/container/chroot.sh)
+
+##### deBootStrapでクルートをテストします
+
+```sh
+# download debain files
+sudo debootstrap stable ~vagrant/debian http://deb.debian.org/debian
+sudo chroot ~vagrant/debian bash
+```
+
+#### containersを理解する
+
+コンテナは、コード、ライブラリ、環境変数、および構成ファイルなど、必要な依存関係と孤立した、ポータブル、再現性のあるユニットに依存する依存関係をパッケージ化する軽量仮想化テクノロジーです。
+
+> 簡単に言えば、コンテナは、どこでも同じ方法でアプリケーションを実行する自己完結型ボックスです。
+
+##### 容器とは何ですか？
+
+仮想マシン（VM）とは異なり、コンテナはハードウェアを仮想化しません。代わりに、オペレーティングシステムを仮想化します。コンテナは同じLinuxカーネルをホストと共有しますが、それぞれが完全に分離されたユーザースペースで動作します。
+
+📌コンテナ対仮想マシン：
+
+| 特徴      | コンテナ         | 仮想マシン           |
+| ------- | ------------ | --------------- |
+| OSカーネル  | ホストと共有       | 各VMには独自のOSがあります |
+| 起動時間    | 高速（秒以下）      | 遅い（分）           |
+| 画像サイズ   | 軽量（MBS）      | ヘビー（GBS）        |
+| リソース効率  | 高い           | より低い            |
+| 分離メカニズム | カーネル機能（名前空間） | ハイパーバイザー        |
+
+##### containersの重要な特性
+
+🔹**軽量**：ホストOSカーネルを共有し、オーバーヘッドを減らし、高速スタートアップを可能にします。
+
+🔹**ポータブル**：さまざまな環境（DEV、ステージング、製品、クラウド、オンプレム）で一貫して実行します。
+
+🔹**隔離**：プロセス、ネットワーク、およびファイルシステムの分離に名前空間を使用します。
+
+🔹**効率的**：従来のVMよりも高い密度とより良いリソース利用を可能にします。
+
+🔹**スケーラブル**：マイクロサービスとクラウドネイティブアーキテクチャに最適です。
+
+##### containersの種類
+
+1.  システムコンテナ
+    -   OS全体を実行するように設計され、仮想マシンに似ています。
+    -   複数のプロセスとシステムサービス（init、syslog）をサポートします。
+    -   レガシーまたはモノリシックアプリケーションに最適です。
+    -   例：LXC、libvirt-lxc。
+
+2.  アプリケーションコンテナ
+    -   単一のプロセスを実行するように設計されています。
+    -   ステートレス、はかない、および水平方向にスケーラブル。
+    -   最新のDevOpsおよびKubernetes環境で広く使用されています。
+    -   例：Docker、containred、cri-o。
+
+##### conpolal人気のあるコンテナランタイム
+
+| ランタイム          | 説明                                      |
+| -------------- | --------------------------------------- |
+| **Docker**     | コンテナを建設および稼働させるために、最も広く採用されているCLI/デーモン。 |
+| **containerd** | DockerとKubernetesの軽量ランタイムパワー。           |
+| **それを批判します**   | OCIコンテナのKubernetes-Nativeランタイム。         |
+| **LXC**        | 完全なOSに近い、従来のLinuxシステムコンテナ。              |
+| **Rkt**        | セキュリティ中心のランタイム（非推奨）。                    |
+
+##### 🔐コンテナ内部とセキュリティ要素
+
+| 成分                     | 役割                              |
+| ---------------------- | ------------------------------- |
+| **名前空間**               | プロセス、ユーザー、マウント、ネットワークを分離します。    |
+| **cgroups**            | リソースの使用（CPU、メモリ、IO）を制御および制限します。 |
+| **機能**                 | コンテナ内の細かい特権制御。                  |
+| **seccomp**            | 制限により、syscallsが攻撃面を減らすことができました。 |
+| **Apparmor / selinux** | カーネルレベルでの必須アクセス制御の施行。           |
+
+* * *
+
+#### Linuxネームスペースの理解
+
+名前空間は、プロセスレベルの分離を可能にするコアLinuxカーネル機能です。プロセスID、ネットワーキング、ファイルシステム、ユーザーなど、グローバルシステムリソースの個別の「ビュー」を作成し、各プロセスグループが独自のシステムで実行されていると考えています。
+
+> 簡単に言えば、名前空間はプロセスをだまして、マシンを所有しているだけでも、マシンを所有していると思わせます。
+
+これがコンテナ分離の基礎です。
+
+##### namesネームスペースは何を分離しますか？
+
+各名前空間タイプは、特定のシステムリソースを分離します。一緒に、コンテナが動作するサンドボックスを構成します。
+
+| 名前空間           | 分離株...            | 実世界の例                              |
+| -------------- | ----------------- | ---------------------------------- |
+| **pid**        | プロセスID            | コンテナ内のプロセスは、別のPIDスペースを参照してください     |
+| **マウント**       | ファイルシステムマウントポイント  | 各コンテナには、独自のルートファイルシステムが表示されます      |
+| **ネットワーク**     | ネットワークスタック        | コンテナには、IP、インターフェイス、およびルートが分離されています |
+| **UTS**        | ホスト名とドメイン名        | 各コンテナは独自のホスト名を設定します                |
+| **IPC**        | 共有メモリとセマフォ        | コンテナ間のプロセス間通信を防ぎます                 |
+| **ユーザー**       | ユーザーおよびグループID     | コンテナ内で偽のルート（UID 0）を有効にします          |
+| **cgroup（v2）** | コントロールグループメンバーシップ | CPUやメモリ制限などのリソースコントロールに結び付けます      |
+
+##### 🧪視覚的類似性
+
+共有オフィスビルを想像してみてください：
+
+-   すべてのテナントは同じ基盤（Linuxカーネル）を共有しています。
+-   各企業には、独自のオフィス（名前空間）があります。さまざまなロック、家具、電話回線、会社名です。
+-   各テナントにとって、それは彼ら自身の建物のように感じます。
+
+それがまさにコンテナがシステムを体験する方法です - 孤立しているが効率的です。
+
+##### containerが名前空間を使用する方法
+
+コンテナを実行すると（DockerやPodmanなど）、ランタイムは新しい名前空間セットを作成します。
+
+```bash
+docker run -it --rm alpine sh
+```
+
+このコマンドはプロセスを提供します。
+
+-   新しいPIDネームスペース→コンテナ内のプロセス1です。
+-   新しいネットワークネームスペース→独自の仮想イーサネット。
+-   マウントネームスペース→コンテナ固有のルートファイルシステム。
+-   構成（ユーザー、IPCなど）に応じて他の名前空間
+
+結果：別のシステムのように振る舞う軽量で孤立したランタイム環境。
+
+##### ⚙⚙補完的なカーネル機能
+
+名前空間はコンテナからリソースを非表示にします。しかし、彼らがどれだけ使用できるか、何ができるかを制御するには、追加のメカニズムが必要です。
+
+##### 🔩cgroups（コントロールグループ）
+
+cgroupを使用すると、カーネルがプロセスグループ全体でリソースの使用を制限、優先順位付け、監視することができます。
+
+| リソース       | ユースケースの例            |
+| ---------- | ------------------- |
+| CPU        | コンテナあたりのCPU時間を制限します |
+| メモリ        | キャップラムの使用           |
+| ディスクI/O    | スロットル読み取り/書き込み操作    |
+| ネットワーク（V2） | 帯域幅の制限              |
+
+deversome容器がすべてのシステムリソースを消費するのを止めることにより、「騒々しい隣人」の問題を防ぎます。
+
+##### 🧱機能
+
+従来のLinuxはバイナリ特権モデルを使用します：root（uid 0）はすべてを実行でき、他のすべての人は限られています。
+
+| 能力                     | 許可します...             |
+| ---------------------- | -------------------- |
+| `CAP_NET_BIND_SERVICE` | 特権ポートへの拘束（例：80、443）  |
+| `CAP_SYS_ADMIN`        | システム管理タスクの強力なキャッチオール |
+| `CAP_KILL`             | 任意のプロセスに信号を送信します     |
+
+不要な機能を削除することにより、コンテナは必要なものだけで実行できます。リスクを軽減します。
+
+##### 🔐セキュリティメカニズム
+
+コンテナ化されたプロセスができることをロックダウンするために、名前空間とcgroupと組み合わせて使用​​されます。
+
+| 特徴           | 説明                                   |
+| ------------ | ------------------------------------ |
+| **seccomp**  | ホワイトリストまたはブロックLinuxシステムコール（syscalls） |
+| **Apparmor** | アプリケーションごとのセキュリティプロファイルを適用します        |
+| **selinux**  | タイトなシステムポリシーで必須アクセス制御を強制します          |
+
+##### 🧠初心者の概要
+
+> container容器が見ることができるものを分離します  
+> cgroups使用できるものを制御します  
+> ✅機能とセキュリティモジュールが何ができるかを定義します
+
+一緒に、これらのカーネル機能は、コンテナ分離の技術的なバックボーンを形成します。これは、完全なVMを使用せずに高密度、安全、効率的なアプリケーションの展開を可能にします。
+
+* * *
+
+#### 352.1重要なコマンド
+
+##### ウンシェア
+
+```sh
+# create a new namespaces and run a command in it
+unshare --mount --uts --ipc --user --pid --net  --map-root-user --mount-proc --fork chroot ~vagrant/debian bash
+# mount /proc for test
+#mount -t proc proc /proc
+#ps -aux
+#ip addr show
+#umount /proc
+umount /proc
+```
+
+##### LSNS
+
+```sh
+# show all namespaces
+lsns
+
+# show only pid namespace
+lsns -s <pid>
+lsns -p 3669
+
+ls -l /proc/<pid>/ns
+ls -l /proc/3669/ns
+
+ps -o pid,pidns,netns,ipcns,utsns,userns,args -p <PID>
+ps -o pid,pidns,netns,ipcns,utsns,userns,args -p 3669
+```
+
+##### nsenter
+
+```sh
+# execute a command in namespace
+sudo nsenter -t <PID> -n  ip link show
+sudo nsenter -t 3669 -n ip link show
+```
+
+##### 252.1 IP
+
+```sh
+# create a new network namespace
+sudo ip netns add lxc1
+
+# list network list
+ip netns list
+
+# exec command in network namespace
+sudo ip netns exec lxc1 ip addr show
+```
+
+* * *
 
 <p align="right">(<a href="#topic-352.1">back to sub topic 352.1</a>)</p>
 <p align="right">(<a href="#topic-352">back to topic 352</a>)</p>
@@ -2064,7 +2613,7 @@ Vagrantfile
     -   [bugzila](https://bugzilla.kernel.org/)
     -   [Githubバッジ](https://github.com/alexandresanlim/Badges4-README.md-Profile)
 -   [仮想化の定義](<>)
-    -   [赤い帽子](https://www.redhat.com/pt-br/topics/virtualization/what-is-virtualization)
+    -   [赤い帽子](https://www.redhat.com/pt-br/topics/virtualization/what-is-virtualization/)
     -   [aws](https://aws.amazon.com/pt/what-is/virtualization/)
     -   [IBM](https://www.ibm.com/topics/virtualization)
     -   [OpenSource.com](https://opensource.com/resources/virtualization)
@@ -2093,7 +2642,7 @@ Vagrantfile
     -   [役員文書](https://www.qemu.org/)
     -   [画像OSBOXESをダウンロードします](https://www.osboxes.org/)
     -   [画像linuximagesをダウンロードします](https://www.linuxvmimages.com/)
-    -   [尿](https://en.wikibooks.org/wiki/QEMU/Devices/Virtio)
+    -   [都会的な](https://en.wikibooks.org/wiki/QEMU/Devices/Virtio)
     -   [ゲストエージェント](https://wiki.qemu.org/Features/GuestAgent)
 -   [libvirt](<>)
     -   [役員文書](https://libvirt.org/)
@@ -2102,6 +2651,21 @@ Vagrantfile
     -   [ストレージ](https://libvirt.org/storage.html)
     -   [ネットワーク](https://wiki.libvirt.org/Networking.html)
     -   [virtualnetwork](https://wiki.libvirt.org/VirtualNetworking.html)
+    -   [virtogd](https://libvirt.org/manpages/virtlogd.html)
+    -   [virtlockd](https://libvirt.org/manpages/virtlockd.html)
+    -   [Virt-Manager](https://virt-manager.org/)
+-   [ディスク管理](<>)
+    -   [ディスク画像](https://qemu-project.gitlab.io/qemu/system/images.html)
+    -   [コピーオンワイト](https://sempreupdate.com.br/linux/tutoriais/sistema-de-arquivos-copy-on-write-saiba-o-que-e-e-quais-as-vantagens-e-desvantagens/)
+    -   [RAM X QCOW2](https://docs.redhat.com/en/documentation/red_hat_virtualization/4.3/html/technical_reference/qcow2)
+    -   [libguestfs](https://libguestfs.org/)
+-   [仮想化とコンテナ化](<>)
+    -   [AWSドキュメントコンテナ](https://aws.amazon.com/pt/containers/)
+    -   [GCPドキュメントコンテナ](https://cloud.google.com/learn/what-are-containers?hl=pt-br)
+    -   [IBMドキュメントコンテナ](https://www.ibm.com/br-pt/topics/containers)
+    -   [Red Hat Docsコンテナ](https://www.redhat.com/en/topics/containers/whats-a-linux-container)
+    -   [名前空間](https://manpages.ubuntu.com/manpages/noble/man7/namespaces.7.html)
+    -   [最も重要な名前空間](https://www.redhat.com/en/blog/7-linux-namespaces)
 -   [OpenStackドキュメント](<>)
     -   [redhat](https://www.redhat.com/pt-br/topics/openstack)
 -   [vswitchを開きます](<>)
