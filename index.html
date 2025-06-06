@@ -2738,7 +2738,7 @@ capsh
       <li>Kernel namespaces and cgroups</li>
     </ul>
     <h5 id="-example-basic-chroot-environment-setup"><a class="anchor" aria-hidden="true" tabindex="-1" href="#-example-basic-chroot-environment-setup"><span class="octicon octicon-link"></span></a>🧪 Example: Basic Chroot Environment Setup</h5>
-    <p>Use this cript for setting up a minimal chroot environment:</p>
+    <p>Use this script for setting up a minimal chroot environment:</p>
     <p><a href="scripts/container/chroot.sh"><strong>chroot.sh</strong></a></p>
     <h5 id="-test-chroot-with-debootstrap"><a class="anchor" aria-hidden="true" tabindex="-1" href="#-test-chroot-with-debootstrap"><span class="octicon octicon-link"></span></a>🧪 Test chroot with debootstrap</h5>
     <pre class="language-sh"><code class="language-sh code-highlight"><span class="code-line line-number" line="1"><span class="token comment"># download debain files</span>
@@ -2749,6 +2749,9 @@ sudo debootstrap stable ~vagrant/debian http://deb.debian.org/debian
 sudo chroot ~vagrant/debian bash
 " class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
     <h4 id="-understanding-containers"><a class="anchor" aria-hidden="true" tabindex="-1" href="#-understanding-containers"><span class="octicon octicon-link"></span></a>🔍 Understanding Containers</h4>
+    <p>
+      <img src="images/containers1.png" alt="container">
+    </p>
     <p>Containers are a lightweight virtualization technology that package applications along with their required dependencies — code, libraries, environment variables, and configuration files — into isolated, portable, and reproducible units.</p>
     <blockquote>
       <p>In simple terms: a container is a self-contained box that runs your application the same way, anywhere.</p>
@@ -2883,6 +2886,9 @@ sudo chroot ~vagrant/debian bash
     </table>
     <hr>
     <h4 id="-understanding-linux-namespaces"><a class="anchor" aria-hidden="true" tabindex="-1" href="#-understanding-linux-namespaces"><span class="octicon octicon-link"></span></a>🧠 Understanding Linux Namespaces</h4>
+    <p>
+      <img src="images/linux-namespaces2.png" alt="linux-namespaces">
+    </p>
     <p>Namespaces are a core Linux kernel feature that enable process-level isolation. They create separate "views" of global system resources — such as process IDs, networking, filesystems, and users — so that each process group believes it is running in its own system.</p>
     <blockquote>
       <p>In simple terms: namespaces trick a process into thinking it owns the machine, even though it's just sharing it.</p>
@@ -2937,6 +2943,9 @@ sudo chroot ~vagrant/debian bash
       </tbody>
     </table>
     <h5 id="-visual-analogy"><a class="anchor" aria-hidden="true" tabindex="-1" href="#-visual-analogy"><span class="octicon octicon-link"></span></a>🧪 Visual Analogy</h5>
+    <p>
+      <img src="images/linux-namespaces.png" alt="linux-namespaces">
+    </p>
     <p>Imagine a shared office building:</p>
     <ul>
       <li>All tenants share the same foundation (Linux kernel).</li>
@@ -3042,6 +3051,16 @@ sudo chroot ~vagrant/debian bash
       <p>✅ Namespaces isolate what a container can see<br>✅ Cgroups control what it can use<br>✅ Capabilities and security modules define what it can do</p>
     </blockquote>
     <p>Together, these kernel features form the technical backbone of container isolation — enabling high-density, secure, and efficient application deployment without full VMs.</p>
+    <h5 id="-understanding-cgroups-control-groups"><a class="anchor" aria-hidden="true" tabindex="-1" href="#-understanding-cgroups-control-groups"><span class="octicon octicon-link"></span></a>🧠 Understanding Cgroups (Control Groups)</h5>
+    <p>Verificar os Cgroups do sistema</p>
+    <h1 id="systemctl-status"><a class="anchor" aria-hidden="true" tabindex="-1" href="#systemctl-status"><span class="octicon octicon-link"></span></a>systemctl status</h1>
+    <h1 id="systemd-cgls"><a class="anchor" aria-hidden="true" tabindex="-1" href="#systemd-cgls"><span class="octicon octicon-link"></span></a>systemd-cgls</h1>
+    <p>Ferramentas de manipulação dos Cgroups</p>
+    <h1 id="apt-get-install-cgroup-tools"><a class="anchor" aria-hidden="true" tabindex="-1" href="#apt-get-install-cgroup-tools"><span class="octicon octicon-link"></span></a>apt-get install cgroup-tools</h1>
+    <h1 id="cgcreate--g-memorycpulsf"><a class="anchor" aria-hidden="true" tabindex="-1" href="#cgcreate--g-memorycpulsf"><span class="octicon octicon-link"></span></a>cgcreate -g memory,cpu:lsf</h1>
+    <h1 id="cgclassify--g-memorycpulsf-"><a class="anchor" aria-hidden="true" tabindex="-1" href="#cgclassify--g-memorycpulsf-"><span class="octicon octicon-link"></span></a>cgclassify -g memory,cpu:lsf
+      <pid></pid>
+    </h1>
     <hr>
     <h4 id="3521-important-commands"><a class="anchor" aria-hidden="true" tabindex="-1" href="#3521-important-commands"><span class="octicon octicon-link"></span></a>352.1 Important Commands</h4>
     <h5 id="unshare"><a class="anchor" aria-hidden="true" tabindex="-1" href="#unshare"><span class="octicon octicon-link"></span></a>unshare</h5>
@@ -3052,7 +3071,6 @@ sudo chroot ~vagrant/debian bash
 </span><span class="code-line line-number" line="5"><span class="token comment">#ps -aux</span>
 </span><span class="code-line line-number" line="6"><span class="token comment">#ip addr show</span>
 </span><span class="code-line line-number" line="7"><span class="token comment">#umount /proc</span>
-</span><span class="code-line line-number" line="8"><span class="token function">umount</span> /proc
 </span></code><div onclick="copied(this)" data-code="# create a new namespaces and run a command in it
 unshare --mount --uts --ipc --user --pid --net  --map-root-user --mount-proc --fork chroot ~vagrant/debian bash
 # mount /proc for test
@@ -3060,7 +3078,6 @@ unshare --mount --uts --ipc --user --pid --net  --map-root-user --mount-proc --f
 #ps -aux
 #ip addr show
 #umount /proc
-umount /proc
 " class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
     <h5 id="lsns"><a class="anchor" aria-hidden="true" tabindex="-1" href="#lsns"><span class="octicon octicon-link"></span></a>lsns</h5>
     <pre class="language-sh"><code class="language-sh code-highlight"><span class="code-line line-number" line="1"><span class="token comment"># show all namespaces</span>
@@ -3537,6 +3554,8 @@ Vagrantfile
           <li><a href="https://www.redhat.com/en/topics/containers/whats-a-linux-container">Red Hat Docs Containers</a></li>
           <li><a href="https://manpages.ubuntu.com/manpages/noble/man7/namespaces.7.html">Namespaces</a></li>
           <li><a href="https://www.redhat.com/en/blog/7-linux-namespaces">Most important Namespaces</a></li>
+          <li><a href="https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/6/html/resource_management_guide/ch01">Cgroups Classes</a></li>
+          <li><a href="https://manpages.ubuntu.com/manpages/noble/man7/cgroups.7.html">Man Cgroups</a></li>
         </ul>
       </li>
       <li><a href="">Openstack Docs</a>
