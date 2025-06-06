@@ -2013,7 +2013,7 @@ For stronger isolation, consider alternatives like:
 
 ##### 🧪 Example: Basic Chroot Environment Setup
 
-Use this cript for setting up a minimal chroot environment:
+Use this script for setting up a minimal chroot environment:
 
 [**chroot.sh**](scripts/container/chroot.sh)
 
@@ -2026,6 +2026,8 @@ sudo chroot ~vagrant/debian bash
 ```
 
 #### 🔍 Understanding Containers
+
+![container](images/containers1.png)
 
 Containers are a lightweight virtualization technology that package applications along with their required dependencies — code, libraries, environment variables, and configuration files — into isolated, portable, and reproducible units.
 
@@ -2095,6 +2097,8 @@ Unlike Virtual Machines (VMs), containers do not virtualize hardware. Instead, t
 
 #### 🧠 Understanding Linux Namespaces
 
+![linux-namespaces](images/linux-namespaces2.png)
+
 Namespaces are a core Linux kernel feature that enable process-level isolation. They create separate "views" of global system resources — such as process IDs, networking, filesystems, and users — so that each process group believes it is running in its own system.
 
 >In simple terms: namespaces trick a process into thinking it owns the machine, even though it's just sharing it.
@@ -2116,6 +2120,8 @@ Each namespace type isolates a specific system resource. Together, they make up 
 | **Cgroup (v2)** | Control group membership     | Ties into resource controls like CPU and memory limits  |
 
 ##### 🧪 Visual Analogy
+
+![linux-namespaces](images/linux-namespaces.png)
 
 Imagine a shared office building:
 
@@ -2203,7 +2209,6 @@ unshare --mount --uts --ipc --user --pid --net  --map-root-user --mount-proc --f
 #ps -aux
 #ip addr show
 #umount /proc
-umount /proc
 ```
 
 ##### lsns
