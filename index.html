@@ -299,14 +299,14 @@ man COMMAND
     <p><strong>Description:</strong> Candidates should know and understand the general concepts, theory and terminology of virtualization. This includes Xen, QEMU and libvirt terminology.</p>
     <p><strong>Key Knowledge Areas:</strong></p>
     <ul>
-      <li>Understand virtualization terminology</li>
-      <li>Understand the pros and cons of virtualization</li>
-      <li>Understand the various variations of Hypervisors and Virtual Machine Monitors</li>
-      <li>Understand the major aspects of migrating physical to virtual machines</li>
-      <li>Understand the major aspects of migrating virtual machines between host systems</li>
-      <li>Understand the features and implications of virtualization for a virtual machine, such as snapshotting, pausing, cloning and resource limits</li>
-      <li>Awareness of oVirt, Proxmox, systemd-machined and VirtualBox</li>
-      <li>Awareness of Open vSwitch</li>
+      <li>🖥️ Understand virtualization terminology</li>
+      <li>⚖️ Understand the pros and cons of virtualization</li>
+      <li>🛠️ Understand the various variations of Hypervisors and Virtual Machine Monitors</li>
+      <li>🔄 Understand the major aspects of migrating physical to virtual machines</li>
+      <li>🚀 Understand the major aspects of migrating virtual machines between host systems</li>
+      <li>📸 Understand the features and implications of virtualization for a virtual machine, such as snapshotting, pausing, cloning and resource limits</li>
+      <li>🌐 Awareness of oVirt, Proxmox, systemd-machined and VirtualBox</li>
+      <li>🔗 Awareness of Open vSwitch</li>
     </ul>
     <h4 id="3511-cited-objects"><a class="anchor" aria-hidden="true" tabindex="-1" href="#3511-cited-objects"><span class="octicon octicon-link"></span></a>351.1 Cited Objects</h4>
     <pre class="language-sh"><code class="language-sh code-highlight"><span class="code-line line-number" line="1">Hypervisor
@@ -330,9 +330,9 @@ Migration (P2V, V2V)
     <p>Runs directly on the host's physical hardware, providing a base layer to manage VMs without the need for a host operating system.</p>
     <h6 id="type-1-characteristics"><a class="anchor" aria-hidden="true" tabindex="-1" href="#type-1-characteristics"><span class="octicon octicon-link"></span></a>Type 1 Characteristics</h6>
     <ul>
-      <li>High performance and efficiency.</li>
-      <li>Lower latency and overhead.</li>
-      <li>Often used in enterprise environments and data centers.</li>
+      <li>⚡ High performance and efficiency.</li>
+      <li>⏱️ Lower latency and overhead.</li>
+      <li>🏢 Often used in enterprise environments and data centers.</li>
     </ul>
     <h6 id="type-1-examples"><a class="anchor" aria-hidden="true" tabindex="-1" href="#type-1-examples"><span class="octicon octicon-link"></span></a>Type 1 Examples</h6>
     <ul>
@@ -346,9 +346,9 @@ Migration (P2V, V2V)
     <p>Runs on top of a conventional operating system, relying on the host OS for resource management and device support.</p>
     <h6 id="type-2-characteristics"><a class="anchor" aria-hidden="true" tabindex="-1" href="#type-2-characteristics"><span class="octicon octicon-link"></span></a>Type 2 Characteristics</h6>
     <ul>
-      <li>Easier to set up and use, especially on personal computers.</li>
-      <li>More flexible for development, testing, and smaller-scale deployments.</li>
-      <li>Typically less efficient than Type 1 hypervisors due to additional overhead from the host OS.</li>
+      <li>🛠️ Easier to set up and use, especially on personal computers.</li>
+      <li>🔧 More flexible for development, testing, and smaller-scale deployments.</li>
+      <li>🐢 Typically less efficient than Type 1 hypervisors due to additional overhead from the host OS.</li>
     </ul>
     <h6 id="type-2-examples"><a class="anchor" aria-hidden="true" tabindex="-1" href="#type-2-examples"><span class="octicon octicon-link"></span></a>Type 2 Examples</h6>
     <ul>
@@ -396,44 +396,44 @@ Migration (P2V, V2V)
     <p>HVM leverages hardware extensions provided by modern CPUs to virtualize hardware, enabling the creation and management of VMs with minimal performance overhead.</p>
     <h6 id="hvm-key-characteristics"><a class="anchor" aria-hidden="true" tabindex="-1" href="#hvm-key-characteristics"><span class="octicon octicon-link"></span></a>HVM Key Characteristics</h6>
     <ul>
-      <li><strong>Hardware Support</strong>: Requires CPU support for virtualization extensions such as Intel VT-x or AMD-V.</li>
-      <li><strong>Full Virtualization:</strong> VMs can run unmodified guest operating systems, as the hypervisor provides a complete emulation of the hardware environment.</li>
-      <li><strong>Performance:</strong> Typically offers near-native performance because of direct execution of guest code on the CPU.</li>
-      <li><strong>Isolation:</strong> Provides strong isolation between VMs since each VM operates as if it has its own dedicated hardware.</li>
+      <li>🖥️ <strong>Hardware Support</strong>: Requires CPU support for virtualization extensions such as Intel VT-x or AMD-V.</li>
+      <li>🛠️ <strong>Full Virtualization:</strong> VMs can run unmodified guest operating systems, as the hypervisor provides a complete emulation of the hardware environment.</li>
+      <li>⚡ <strong>Performance:</strong> Typically offers near-native performance because of direct execution of guest code on the CPU.</li>
+      <li>🔒 <strong>Isolation:</strong> Provides strong isolation between VMs since each VM operates as if it has its own dedicated hardware.</li>
     </ul>
     <h6 id="hvm-examples"><a class="anchor" aria-hidden="true" tabindex="-1" href="#hvm-examples"><span class="octicon octicon-link"></span></a>HVM Examples</h6>
     <p>VMware ESXi, Microsoft Hyper-V, KVM (Kernel-based Virtual Machine).</p>
     <h6 id="hvm-advantages"><a class="anchor" aria-hidden="true" tabindex="-1" href="#hvm-advantages"><span class="octicon octicon-link"></span></a>HVM Advantages</h6>
     <ul>
-      <li><strong>Compatibility:</strong> Can run any operating system without modification.</li>
-      <li><strong>Performance:</strong> High performance due to hardware support.</li>
-      <li><strong>Security:</strong> Enhanced isolation and security features provided by hardware.</li>
+      <li>✅ <strong>Compatibility:</strong> Can run any operating system without modification.</li>
+      <li>⚡ <strong>Performance:</strong> High performance due to hardware support.</li>
+      <li>🔒 <strong>Security:</strong> Enhanced isolation and security features provided by hardware.</li>
     </ul>
     <h6 id="hvm-disadvantages"><a class="anchor" aria-hidden="true" tabindex="-1" href="#hvm-disadvantages"><span class="octicon octicon-link"></span></a>HVM Disadvantages</h6>
     <ul>
-      <li><strong>Hardware Dependency:</strong> Requires specific hardware features, limiting compatibility with older systems.</li>
-      <li><strong>Complexity:</strong> May involve more complex configuration and management.</li>
+      <li>🛠️ <strong>Hardware Dependency:</strong> Requires specific hardware features, limiting compatibility with older systems.</li>
+      <li>🔧 <strong>Complexity:</strong> May involve more complex configuration and management.</li>
     </ul>
     <h5 id="paravirtualization"><a class="anchor" aria-hidden="true" tabindex="-1" href="#paravirtualization"><span class="octicon octicon-link"></span></a>Paravirtualization</h5>
     <h6 id="paravirtualization-definition"><a class="anchor" aria-hidden="true" tabindex="-1" href="#paravirtualization-definition"><span class="octicon octicon-link"></span></a>Paravirtualization Definition</h6>
     <p>Paravirtualization involves modifying the guest operating system to be aware of the virtual environment, allowing it to interact more efficiently with the hypervisor.</p>
     <h6 id="paravirtualization-key-characteristics"><a class="anchor" aria-hidden="true" tabindex="-1" href="#paravirtualization-key-characteristics"><span class="octicon octicon-link"></span></a>Paravirtualization Key Characteristics</h6>
     <ul>
-      <li><strong>Guest Modification:</strong> Requires changes to the guest operating system to communicate directly with the hypervisor using hypercalls.</li>
-      <li><strong>Performance:</strong> Can be more efficient than traditional full virtualization because it reduces the overhead associated with emulating hardware.</li>
-      <li><strong>Compatibility:</strong> Limited to operating systems that have been modified for paravirtualization.</li>
+      <li>🛠️ <strong>Guest Modification:</strong> Requires changes to the guest operating system to communicate directly with the hypervisor using hypercalls.</li>
+      <li>⚡ <strong>Performance:</strong> Can be more efficient than traditional full virtualization because it reduces the overhead associated with emulating hardware.</li>
+      <li>🔗 <strong>Compatibility:</strong> Limited to operating systems that have been modified for paravirtualization.</li>
     </ul>
     <h6 id="paravirtualization-examples"><a class="anchor" aria-hidden="true" tabindex="-1" href="#paravirtualization-examples"><span class="octicon octicon-link"></span></a>Paravirtualization Examples</h6>
     <p>Xen with paravirtualized guests, VMware tools in certain configurations, and some KVM configurations.</p>
     <h6 id="paravirtualization-advantages"><a class="anchor" aria-hidden="true" tabindex="-1" href="#paravirtualization-advantages"><span class="octicon octicon-link"></span></a>Paravirtualization Advantages</h6>
     <ul>
-      <li><strong>Efficiency:</strong> Reduces the overhead of virtualizing hardware, potentially offering better performance for certain workloads.</li>
-      <li><strong>Resource Utilization:</strong> More efficient use of system resources due to direct communication between the guest OS and hypervisor.</li>
+      <li>⚡ <strong>Efficiency:</strong> Reduces the overhead of virtualizing hardware, potentially offering better performance for certain workloads.</li>
+      <li>✅ <strong>Resource Utilization:</strong> More efficient use of system resources due to direct communication between the guest OS and hypervisor.</li>
     </ul>
     <h6 id="paravirtualization-disadvantages"><a class="anchor" aria-hidden="true" tabindex="-1" href="#paravirtualization-disadvantages"><span class="octicon octicon-link"></span></a>Paravirtualization Disadvantages</h6>
     <ul>
-      <li><strong>Guest OS Modification:</strong> Requires modifications to the guest OS, limiting compatibility to supported operating systems.</li>
-      <li><strong>Complexity:</strong> Requires additional complexity in the guest OS for hypercall implementations.</li>
+      <li>🛠️ <strong>Guest OS Modification:</strong> Requires modifications to the guest OS, limiting compatibility to supported operating systems.</li>
+      <li>🔧 <strong>Complexity:</strong> Requires additional complexity in the guest OS for hypercall implementations.</li>
     </ul>
     <h5 id="key-differences"><a class="anchor" aria-hidden="true" tabindex="-1" href="#key-differences"><span class="octicon octicon-link"></span></a>Key Differences</h5>
     <h6 id="guest-os-requirements"><a class="anchor" aria-hidden="true" tabindex="-1" href="#guest-os-requirements"><span class="octicon octicon-link"></span></a>Guest OS Requirements</h6>
@@ -471,30 +471,30 @@ Migration (P2V, V2V)
     </ol>
     <h5 id="advantages-of-numa"><a class="anchor" aria-hidden="true" tabindex="-1" href="#advantages-of-numa"><span class="octicon octicon-link"></span></a>Advantages of NUMA</h5>
     <ul>
-      <li>Better Performance in Large Systems: Since each processor has local memory, it can work more efficiently without competing as much with other processors for memory access.</li>
-      <li>Scalability: NUMA allows systems with many processors and large amounts of memory to scale more effectively compared to a UMA architecture.</li>
+      <li>⚡ Better Performance in Large Systems: Since each processor has local memory, it can work more efficiently without competing as much with other processors for memory access.</li>
+      <li>📈 Scalability: NUMA allows systems with many processors and large amounts of memory to scale more effectively compared to a UMA architecture.</li>
     </ul>
     <h5 id="disadvantages"><a class="anchor" aria-hidden="true" tabindex="-1" href="#disadvantages"><span class="octicon octicon-link"></span></a>Disadvantages</h5>
     <ul>
-      <li>Programming Complexity: Programmers need to be aware of which regions of memory are local or remote, optimizing the use of local memory to achieve better performance.</li>
+      <li>🛠️ Programming Complexity: Programmers need to be aware of which regions of memory are local or remote, optimizing the use of local memory to achieve better performance.</li>
       <li>
-        Potential Performance Penalties: If a processor frequently accesses remote memory, performance may suffer due to higher latency.
+        🐢 Potential Performance Penalties: If a processor frequently accesses remote memory, performance may suffer due to higher latency.
         This architecture is common in high-performance multiprocessor systems, such as servers and supercomputers, where scalability and memory optimization are critical.
       </li>
     </ul>
     <h4 id="opensource-solutions"><a class="anchor" aria-hidden="true" tabindex="-1" href="#opensource-solutions"><span class="octicon octicon-link"></span></a>Opensource Solutions</h4>
     <ul>
       <li>
-        <p>oVirt: <a href="https://www.ovirt.org/">https://www.ovirt.org/</a></p>
+        <p>🌐 oVirt: <a href="https://www.ovirt.org/">https://www.ovirt.org/</a></p>
       </li>
       <li>
-        <p>Proxmox: <a href="https://www.proxmox.com/en/proxmox-virtual-environment/overview">https://www.proxmox.com/en/proxmox-virtual-environment/overview</a></p>
+        <p>🌐 Proxmox: <a href="https://www.proxmox.com/en/proxmox-virtual-environment/overview">https://www.proxmox.com/en/proxmox-virtual-environment/overview</a></p>
       </li>
       <li>
-        <p>Oracle VirtualBox: <a href="https://www.virtualbox.org/">https://www.virtualbox.org/</a></p>
+        <p>🌐 Oracle VirtualBox: <a href="https://www.virtualbox.org/">https://www.virtualbox.org/</a></p>
       </li>
       <li>
-        <p>Open vSwitch: <a href="https://www.openvswitch.org/">https://www.openvswitch.org/</a></p>
+        <p>🌐 Open vSwitch: <a href="https://www.openvswitch.org/">https://www.openvswitch.org/</a></p>
       </li>
     </ul>
     <h4 id="types-of-virtualization"><a class="anchor" aria-hidden="true" tabindex="-1" href="#types-of-virtualization"><span class="octicon octicon-link"></span></a>Types of Virtualization</h4>
@@ -549,12 +549,12 @@ Migration (P2V, V2V)
     <p>Denodo, Red Hat JBoss Data Virtualization, IBM InfoSphere.</p>
     <h5 id="benefits-of-virtualization"><a class="anchor" aria-hidden="true" tabindex="-1" href="#benefits-of-virtualization"><span class="octicon octicon-link"></span></a>Benefits of Virtualization</h5>
     <ul>
-      <li>Resource Efficiency: Better utilization of physical resources.</li>
-      <li>Cost Savings: Reduced hardware and operational costs.</li>
-      <li>Scalability: Easy to scale up or down according to demand.</li>
-      <li>Flexibility: Supports a variety of workloads and applications.</li>
-      <li>Disaster Recovery: Simplified backup and recovery processes.</li>
-      <li>Isolation: Improved security through isolation of environments.</li>
+      <li>⚡ Resource Efficiency: Better utilization of physical resources.</li>
+      <li>💰 Cost Savings: Reduced hardware and operational costs.</li>
+      <li>📈 Scalability: Easy to scale up or down according to demand.</li>
+      <li>🔧 Flexibility: Supports a variety of workloads and applications.</li>
+      <li>🔄 Disaster Recovery: Simplified backup and recovery processes.</li>
+      <li>🔒 Isolation: Improved security through isolation of environments.</li>
     </ul>
     <h4 id="emulation"><a class="anchor" aria-hidden="true" tabindex="-1" href="#emulation"><span class="octicon octicon-link"></span></a>Emulation</h4>
     <p>Emulation involves simulating the behavior of hardware or software on a different platform than originally intended.</p>
@@ -2685,49 +2685,62 @@ capsh
 /proc/[0-9]+/status
 " class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
     <hr>
-    <h4 id="understanding-containers"><a class="anchor" aria-hidden="true" tabindex="-1" href="#understanding-containers"><span class="octicon octicon-link"></span></a>Understanding Containers</h4>
-    <p>Containers are a virtualization technology that packages applications with all their dependencies—code, libraries, and configurations—into isolated, executable units.</p>
-    <p>This approach ensures that software runs consistently in any environment, whether on desktops, traditional IT infrastructure, or the cloud.</p>
-    <p>
-      What Are Containers?
-      At their core, containers virtualize the operating system, allowing applications to<br>share the underlying server's OS kernel while running as isolated, self-contained processes.<br>Unlike virtual machines (VMs), which include a complete operating system for each instance, containers are lighter and more resource-efficient.
-    </p>
-    <hr>
-    <h4 id="key-aspects-of-containers"><a class="anchor" aria-hidden="true" tabindex="-1" href="#key-aspects-of-containers"><span class="octicon octicon-link"></span></a>Key Aspects of Containers</h4>
-    <ul>
-      <li><strong>Lightweight</strong>: They share the host operating system's kernel, making them much lighter and faster to start and stop compared to VMs.</li>
-      <li><strong>Portability</strong>: Since they include all their dependencies, containers can be moved and run across different environments (development, testing, production, public, private, or hybrid clouds) without needing reconfiguration, ensuring consistent behavior.</li>
-      <li><strong>Isolation</strong>: Each container operates as a separate, isolated process, which provides security by encapsulating the application and its dependencies. This allows for detailed control over CPU and memory usage.</li>
-      <li><strong>Resource Efficiency</strong>: They promote better utilization of the CPU and memory of physical machines, optimizing infrastructure use.</li>
-    </ul>
-    <hr>
-    <h4 id="type-of-containers"><a class="anchor" aria-hidden="true" tabindex="-1" href="#type-of-containers"><span class="octicon octicon-link"></span></a>Type of Containers</h4>
-    <p>There are primarily two types of containers in computing, categorized by their approach and focus:</p>
-    <ul>
-      <li>System Containers: These are an older form of containers that resemble virtual machines in their approach.They focus on the operating system and allow the execution of multiple processes. They're suitable for traditional or monolithic applications that require environments and configurations similar to those of virtual machines.</li>
-      <li>Application Containers: This is a more recent approach, designed to run a single process. They're centered around stateless microservices, being highly scalable horizontally and ideal for immutable and ephemeral infrastructures. If an application or service needs to be updated, a new container is created from the appropriate image to replace the existing instance.</li>
-    </ul>
-    <p>Besides these types, there are several popular container implementations and runtimes:</p>
-    <ul>
-      <li>Docker: This is the most popular and widely used container runtime, offering a platform to create, package, and distribute applications in containers.</li>
-      <li>RKT (Rocket): A container system focused on security.</li>
-      <li>Linux Containers (LXC): An open-source Linux container runtime system, used to isolate processes at the operating system level.</li>
-      <li>CRI-O: An implementation of the Kubernetes Container Runtime Interface (CRI) that allows the use of Open Container Initiative (OCI)-compatible runtimes.</li>
-    </ul>
-    <hr>
-    <h4 id="key-containers-elements"><a class="anchor" aria-hidden="true" tabindex="-1" href="#key-containers-elements"><span class="octicon octicon-link"></span></a>Key Containers Elements</h4>
-    <ul>
-      <li>Namespaces: Creation of isolated environments for groups of processes.</li>
-      <li>Cgroups (Control Groups): Control and manage the use of system resources for groups of processes.</li>
-      <li>Capabilities: Control of specific permissions granted to processes within a container.</li>
-      <li>seccomp, SELinux, AppArmor: Additional layers of security.</li>
-    </ul>
-    <hr>
-    <h4 id="chroot"><a class="anchor" aria-hidden="true" tabindex="-1" href="#chroot"><span class="octicon octicon-link"></span></a>chroot</h4>
+    <h4 id="chroot---change-root-directory-in-unixlinux"><a class="anchor" aria-hidden="true" tabindex="-1" href="#chroot---change-root-directory-in-unixlinux"><span class="octicon octicon-link"></span></a>chroot - Change Root Directory in Unix/Linux</h4>
     <p>
       <img src="images/chroot.png" alt="chroot">
     </p>
-    <p>Test chroot</p>
+    <h5 id="what-is-chroot"><a class="anchor" aria-hidden="true" tabindex="-1" href="#what-is-chroot"><span class="octicon octicon-link"></span></a>What is chroot?</h5>
+    <p>chroot (short for change root) is a system call and command on Unix-like operating systems that changes the apparent root directory (/) for the current running process and its children. This creates an isolated environment, commonly referred to as a chroot jail.</p>
+    <h5 id="-purpose-and-use-cases"><a class="anchor" aria-hidden="true" tabindex="-1" href="#-purpose-and-use-cases"><span class="octicon octicon-link"></span></a>🧱 Purpose and Use Cases</h5>
+    <ul>
+      <li>🔒 Isolate applications for security (jailing).</li>
+      <li>🧪 Create testing environments without impacting the rest of the system.</li>
+      <li>🛠️ System recovery (e.g., boot into LiveCD and chroot into installed system).</li>
+      <li>📦 Building software packages in a controlled environment.</li>
+    </ul>
+    <h5 id="-minimum-required-structure"><a class="anchor" aria-hidden="true" tabindex="-1" href="#-minimum-required-structure"><span class="octicon octicon-link"></span></a>📁 Minimum Required Structure</h5>
+    <p>The chroot environment must have its own essential files and structure:</p>
+    <pre class="language-sh"><code class="language-sh code-highlight"><span class="code-line line-number" line="1">/mnt/myenv/
+</span><span class="code-line line-number" line="2">├── bin/
+</span><span class="code-line line-number" line="3">│   └── <span class="token function">bash</span>
+</span><span class="code-line line-number" line="4">├── etc/
+</span><span class="code-line line-number" line="5">├── lib/
+</span><span class="code-line line-number" line="6">├── lib64/
+</span><span class="code-line line-number" line="7">├── usr/
+</span><span class="code-line line-number" line="8">├── dev/
+</span><span class="code-line line-number" line="9">├── proc/
+</span><span class="code-line line-number" line="10">└── tmp/
+</span></code><div onclick="copied(this)" data-code="/mnt/myenv/
+├── bin/
+│   └── bash
+├── etc/
+├── lib/
+├── lib64/
+├── usr/
+├── dev/
+├── proc/
+└── tmp/
+" class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+    <p>Use ldd to identify required libraries:</p>
+    <pre class="language-sh"><code class="language-sh code-highlight"><span class="code-line line-number" line="1">ldd /bin/bash
+</span></code><div onclick="copied(this)" data-code="ldd /bin/bash
+" class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+    <h5 id="-limitations-and-security-considerations"><a class="anchor" aria-hidden="true" tabindex="-1" href="#-limitations-and-security-considerations"><span class="octicon octicon-link"></span></a>🚨 Limitations and Security Considerations</h5>
+    <ul>
+      <li>chroot is not a security boundary like containers or VMs.</li>
+      <li>A privileged user (root) inside the jail can potentially break out.</li>
+      <li>No isolation of process namespaces, devices, or kernel-level resources.</li>
+    </ul>
+    <p>For stronger isolation, consider alternatives like:</p>
+    <ul>
+      <li>Linux containers (LXC, Docker)</li>
+      <li>Virtual machines (KVM, QEMU)</li>
+      <li>Kernel namespaces and cgroups</li>
+    </ul>
+    <h5 id="-example-basic-chroot-environment-setup"><a class="anchor" aria-hidden="true" tabindex="-1" href="#-example-basic-chroot-environment-setup"><span class="octicon octicon-link"></span></a>🧪 Example: Basic Chroot Environment Setup</h5>
+    <p>Use this cript for setting up a minimal chroot environment:</p>
+    <p><a href="scripts/container/chroot.sh"><strong>chroot.sh</strong></a></p>
+    <h5 id="-test-chroot-with-debootstrap"><a class="anchor" aria-hidden="true" tabindex="-1" href="#-test-chroot-with-debootstrap"><span class="octicon octicon-link"></span></a>🧪 Test chroot with debootstrap</h5>
     <pre class="language-sh"><code class="language-sh code-highlight"><span class="code-line line-number" line="1"><span class="token comment"># download debain files</span>
 </span><span class="code-line line-number" line="2"><span class="token function">sudo</span> <span class="token function">debootstrap</span> stable ~vagrant/debian http://deb.debian.org/debian
 </span><span class="code-line line-number" line="3"><span class="token function">sudo</span> <span class="token function">chroot</span> ~vagrant/debian <span class="token function">bash</span>
@@ -2735,46 +2748,300 @@ capsh
 sudo debootstrap stable ~vagrant/debian http://deb.debian.org/debian
 sudo chroot ~vagrant/debian bash
 " class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+    <h4 id="-understanding-containers"><a class="anchor" aria-hidden="true" tabindex="-1" href="#-understanding-containers"><span class="octicon octicon-link"></span></a>🔍 Understanding Containers</h4>
+    <p>Containers are a lightweight virtualization technology that package applications along with their required dependencies — code, libraries, environment variables, and configuration files — into isolated, portable, and reproducible units.</p>
+    <blockquote>
+      <p>In simple terms: a container is a self-contained box that runs your application the same way, anywhere.</p>
+    </blockquote>
+    <h5 id="-what-is-a-container"><a class="anchor" aria-hidden="true" tabindex="-1" href="#-what-is-a-container"><span class="octicon octicon-link"></span></a>💡 What Is a Container?</h5>
+    <p>Unlike Virtual Machines (VMs), containers do not virtualize hardware. Instead, they virtualize the operating system. Containers share the same Linux kernel with the host, but each one operates in a fully isolated user space.</p>
+    <p>📌 Containers vs Virtual Machines:</p>
+    <table>
+      <thead>
+        <tr>
+          <th>Feature</th>
+          <th>Containers</th>
+          <th>Virtual Machines</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>OS Kernel</td>
+          <td>Shared with host</td>
+          <td>Each VM has its own OS</td>
+        </tr>
+        <tr>
+          <td>Startup time</td>
+          <td>Fast (seconds or less)</td>
+          <td>Slow (minutes)</td>
+        </tr>
+        <tr>
+          <td>Image size</td>
+          <td>Lightweight (MBs)</td>
+          <td>Heavy (GBs)</td>
+        </tr>
+        <tr>
+          <td>Resource efficiency</td>
+          <td>High</td>
+          <td>Lower</td>
+        </tr>
+        <tr>
+          <td>Isolation mechanism</td>
+          <td>Kernel features (namespaces)</td>
+          <td>Hypervisor</td>
+        </tr>
+      </tbody>
+    </table>
+    <h5 id="-key-characteristics-of-containers"><a class="anchor" aria-hidden="true" tabindex="-1" href="#-key-characteristics-of-containers"><span class="octicon octicon-link"></span></a>🔑 Key Characteristics of Containers</h5>
+    <p>🔹 <strong>Lightweight</strong>: Share the host OS kernel, reducing overhead and enabling fast startup.</p>
+    <p>🔹 <strong>Portable</strong>: Run consistently across different environments (dev, staging, prod, cloud, on-prem).</p>
+    <p>🔹 <strong>Isolated</strong>: Use namespaces for process, network, and filesystem isolation.</p>
+    <p>🔹 <strong>Efficient</strong>: Enable higher density and better resource utilization than traditional VMs.</p>
+    <p>🔹 <strong>Scalable</strong>: Perfect fit for microservices and cloud-native architecture.</p>
+    <h5 id="-types-of-containers"><a class="anchor" aria-hidden="true" tabindex="-1" href="#-types-of-containers"><span class="octicon octicon-link"></span></a>🧱 Types of Containers</h5>
+    <ol>
+      <li>
+        <p>System Containers</p>
+        <ul>
+          <li>Designed to run the entire OS, Resemble virtual machines.</li>
+          <li>Support multiple processes and system services (init, syslog).</li>
+          <li>Ideal for legacy or monolithic applications.</li>
+          <li>Example: LXC, libvirt-lxc.</li>
+        </ul>
+      </li>
+      <li>
+        <p>Application Containers</p>
+        <ul>
+          <li>Designed to run a single process.</li>
+          <li>Stateless, ephemeral, and horizontally scalable.</li>
+          <li>Used widely in modern DevOps and Kubernetes environments.</li>
+          <li>Example: Docker, containerd, CRI-O.</li>
+        </ul>
+      </li>
+    </ol>
+    <h5 id="-popular-container-runtimes"><a class="anchor" aria-hidden="true" tabindex="-1" href="#-popular-container-runtimes"><span class="octicon octicon-link"></span></a>🚀 Popular Container Runtimes</h5>
+    <table>
+      <thead>
+        <tr>
+          <th>Runtime</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Docker</strong></td>
+          <td>Most widely adopted CLI/daemon for building and running containers.</td>
+        </tr>
+        <tr>
+          <td><strong>containerd</strong></td>
+          <td>Lightweight runtime powering Docker and Kubernetes.</td>
+        </tr>
+        <tr>
+          <td><strong>CRI-O</strong></td>
+          <td>Kubernetes-native runtime for OCI containers.</td>
+        </tr>
+        <tr>
+          <td><strong>LXC</strong></td>
+          <td>Traditional Linux system containers, closer to full OS.</td>
+        </tr>
+        <tr>
+          <td><strong>RKT</strong></td>
+          <td>Security-focused runtime (deprecated).</td>
+        </tr>
+      </tbody>
+    </table>
+    <h5 id="-container-internals-and-security-elements"><a class="anchor" aria-hidden="true" tabindex="-1" href="#-container-internals-and-security-elements"><span class="octicon octicon-link"></span></a>🔐 Container Internals and Security Elements</h5>
+    <table>
+      <thead>
+        <tr>
+          <th>Component</th>
+          <th>Role</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Namespaces</strong></td>
+          <td>Isolate processes, users, mounts, networks.</td>
+        </tr>
+        <tr>
+          <td><strong>cgroups</strong></td>
+          <td>Control and limit resource usage (CPU, memory, IO).</td>
+        </tr>
+        <tr>
+          <td><strong>Capabilities</strong></td>
+          <td>Fine-grained privilege control inside containers.</td>
+        </tr>
+        <tr>
+          <td><strong>seccomp</strong></td>
+          <td>Restricts allowed syscalls to reduce attack surface.</td>
+        </tr>
+        <tr>
+          <td><strong>AppArmor / SELinux</strong></td>
+          <td>Mandatory Access Control enforcement at kernel level.</td>
+        </tr>
+      </tbody>
+    </table>
     <hr>
-    <h4 id="namespaces"><a class="anchor" aria-hidden="true" tabindex="-1" href="#namespaces"><span class="octicon octicon-link"></span></a>Namespaces</h4>
-    <p>Namespaces are a fundamental Linux kernel feature that provides isolation for processes. They allow a container to have its own independent view of the system resources. Essentially, namespaces partition global system resources into isolated subsets that processes within a specific namespace can access. This gives each container its own isolated set of:</p>
+    <h4 id="-understanding-linux-namespaces"><a class="anchor" aria-hidden="true" tabindex="-1" href="#-understanding-linux-namespaces"><span class="octicon octicon-link"></span></a>🧠 Understanding Linux Namespaces</h4>
+    <p>Namespaces are a core Linux kernel feature that enable process-level isolation. They create separate "views" of global system resources — such as process IDs, networking, filesystems, and users — so that each process group believes it is running in its own system.</p>
+    <blockquote>
+      <p>In simple terms: namespaces trick a process into thinking it owns the machine, even though it's just sharing it.</p>
+    </blockquote>
+    <p>This is the foundation for container isolation.</p>
+    <h5 id="-what-do-namespaces-isolate"><a class="anchor" aria-hidden="true" tabindex="-1" href="#-what-do-namespaces-isolate"><span class="octicon octicon-link"></span></a>🔍 What Do Namespaces Isolate?</h5>
+    <p>Each namespace type isolates a specific system resource. Together, they make up the sandbox that a container operates in:</p>
+    <table>
+      <thead>
+        <tr>
+          <th>Namespace</th>
+          <th>Isolates...</th>
+          <th>Real-world example</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>PID</strong></td>
+          <td>Process IDs</td>
+          <td>Processes inside a container see a different PID space</td>
+        </tr>
+        <tr>
+          <td><strong>Mount</strong></td>
+          <td>Filesystem mount points</td>
+          <td>Each container sees its own root filesystem</td>
+        </tr>
+        <tr>
+          <td><strong>Network</strong></td>
+          <td>Network stack</td>
+          <td>Containers have isolated IPs, interfaces, and routes</td>
+        </tr>
+        <tr>
+          <td><strong>UTS</strong></td>
+          <td>Hostname and domain name</td>
+          <td>Each container sets its own hostname</td>
+        </tr>
+        <tr>
+          <td><strong>IPC</strong></td>
+          <td>Shared memory and semaphores</td>
+          <td>Prevents inter-process communication between containers</td>
+        </tr>
+        <tr>
+          <td><strong>User</strong></td>
+          <td>User and group IDs</td>
+          <td>Enables fake root (UID 0) inside the container</td>
+        </tr>
+        <tr>
+          <td><strong>Cgroup (v2)</strong></td>
+          <td>Control group membership</td>
+          <td>Ties into resource controls like CPU and memory limits</td>
+        </tr>
+      </tbody>
+    </table>
+    <h5 id="-visual-analogy"><a class="anchor" aria-hidden="true" tabindex="-1" href="#-visual-analogy"><span class="octicon octicon-link"></span></a>🧪 Visual Analogy</h5>
+    <p>Imagine a shared office building:</p>
     <ul>
-      <li>PID namespace: Isolated process IDs, meaning a process in one container sees a different set of PIDs than a process in another container or on the host.</li>
-      <li>Mount namespace: Isolated view of the filesystem mount points. Each container has its own root filesystem.</li>
-      <li>Network namespace: Isolated network interfaces, IP addresses, routing tables, etc. Each container can have its own network stack.</li>
-      <li>UTS namespace: Isolated hostname and domain name.</li>
-      <li>IPC namespace: Isolated inter-process communication resources.</li>
-      <li>User namespace: Isolated user and group IDs. This allows a user to be root inside a container without being root on the host system.</li>
+      <li>All tenants share the same foundation (Linux kernel).</li>
+      <li>Each company has its own office (namespace): different locks, furniture, phone lines, and company name.</li>
+      <li>To each tenant, it feels like their own building.</li>
     </ul>
-    <p>Namespaces are crucial for creating the illusion that a container is a self-contained system.</p>
-    <hr>
-    <h4 id="cgroups-control-groups"><a class="anchor" aria-hidden="true" tabindex="-1" href="#cgroups-control-groups"><span class="octicon octicon-link"></span></a>Cgroups (Control Groups)</h4>
-    <p>Cgroups, or Control Groups, are another vital Linux kernel feature that allows for the allocation, prioritization, and isolation of system resources such as CPU, memory, I/O, and network bandwidth among groups of processes. While namespaces provide isolation for visibility of resources, cgroups provide isolation for resource consumption.</p>
-    <p>With cgroups, you can:</p>
+    <p>That's exactly how containers experience the system — isolated, yet efficient.</p>
+    <h5 id="-how-containers-use-namespaces"><a class="anchor" aria-hidden="true" tabindex="-1" href="#-how-containers-use-namespaces"><span class="octicon octicon-link"></span></a>🔧 How Containers Use Namespaces</h5>
+    <p>When you run a container (e.g., with Docker or Podman), the runtime creates a new set of namespaces:</p>
+    <pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1"><span class="token function">docker</span> run <span class="token parameter variable">-it</span> <span class="token parameter variable">--rm</span> alpine <span class="token function">sh</span>
+</span></code><div onclick="copied(this)" data-code="docker run -it --rm alpine sh
+" class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+    <p>This command gives the process:</p>
     <ul>
-      <li>Limit resources: For example, restrict a container to use only a certain percentage of CPU or a specific amount of RAM.</li>
-      <li>Prioritize tasks: Give certain containers more CPU time or I/O access than others.</li>
-      <li>Monitor usage: Track how much of a given resource a group of processes is consuming.</li>
+      <li>A new PID namespace → it's process 1 inside the container.</li>
+      <li>A new network namespace → its own virtual Ethernet.</li>
+      <li>A mount namespace → a container-specific root filesystem.</li>
+      <li>Other namespaces depending on configuration (user, IPC, etc.)</li>
     </ul>
-    <p>Cgroups ensure that one container doesn't consume all available resources on the host, preventing a "noisy neighbor" problem and ensuring fair resource distribution.</p>
-    <hr>
-    <h4 id="capabilities"><a class="anchor" aria-hidden="true" tabindex="-1" href="#capabilities"><span class="octicon octicon-link"></span></a>Capabilities</h4>
-    <p>In traditional Linux security, a process is either "root" (has all privileges) or "non-root" (has limited privileges). This "all or nothing" approach was often too coarse-grained for containers. Capabilities address this by breaking down the traditional "root" privilege into a set of distinct units.</p>
-    <p>Instead of running a container as a full root user, you can grant it only the specific capabilities it needs. For example:</p>
-    <ul>
-      <li>CAP_NET_BIND_SERVICE: Allows binding to privileged network ports (e.g., ports below 1024).</li>
-      <li>CAP_SYS_ADMIN: Allows performing a range of system administration operations.</li>
-      <li>CAP_KILL: Allows sending signals to any process.</li>
-    </ul>
-    <p>By dropping unnecessary capabilities, you significantly reduce the attack surface of a container, enhancing its security.</p>
-    <hr>
-    <h4 id="security-seccomp-selinux-apparmor"><a class="anchor" aria-hidden="true" tabindex="-1" href="#security-seccomp-selinux-apparmor"><span class="octicon octicon-link"></span></a>Security (seccomp, SELinux, AppArmor)</h4>
-    <p>Beyond namespaces, cgroups, and capabilities, several other security mechanisms are commonly used with containers to provide additional layers of protection:</p>
-    <ul>
-      <li>seccomp (Secure Computing Mode): A Linux kernel feature that allows a process to restrict the system calls (syscalls) it can make to the kernel. By applying a seccomp profile, you can define a whitelist or blacklist of syscalls a container is allowed to execute, preventing it from performing potentially dangerous operations.</li>
-      <li>SELinux (Security-Enhanced Linux): A mandatory access control (MAC) security module for the Linux kernel. It provides a flexible and fine-grained security policy that can strictly control what programs, users, and processes can do on a system, including within containers.</li>
-      <li>AppArmor (Application Armor): Another MAC system for Linux that works by loading security profiles into the kernel. These profiles restrict the capabilities of programs (e.g., file access, network access, and other system calls) to a defined set, often easier to configure than SELinux for specific application confinement.</li>
-    </ul>
+    <p>The result: a lightweight, isolated runtime environment that behaves like a separate system.</p>
+    <h5 id="️-complementary-kernel-features"><a class="anchor" aria-hidden="true" tabindex="-1" href="#️-complementary-kernel-features"><span class="octicon octicon-link"></span></a>⚙️ Complementary Kernel Features</h5>
+    <p>Namespaces hide resources from containers. But to control how much they can use and what they can do, we need additional mechanisms:</p>
+    <h5 id="-cgroups-control-groups"><a class="anchor" aria-hidden="true" tabindex="-1" href="#-cgroups-control-groups"><span class="octicon octicon-link"></span></a>🔩 Cgroups (Control Groups)</h5>
+    <p>Cgroups allow the kernel to limit, prioritize, and monitor resource usage across process groups.</p>
+    <table>
+      <thead>
+        <tr>
+          <th>Resource</th>
+          <th>Use case examples</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>CPU</td>
+          <td>Limit CPU time per container</td>
+        </tr>
+        <tr>
+          <td>Memory</td>
+          <td>Cap RAM usage</td>
+        </tr>
+        <tr>
+          <td>Disk I/O</td>
+          <td>Throttle read/write operations</td>
+        </tr>
+        <tr>
+          <td>Network (v2)</td>
+          <td>Bandwidth restrictions</td>
+        </tr>
+      </tbody>
+    </table>
+    <p>🛡️ Prevents the "noisy neighbor" problem by stopping one container from consuming all system resources.</p>
+    <h5 id="-capabilities"><a class="anchor" aria-hidden="true" tabindex="-1" href="#-capabilities"><span class="octicon octicon-link"></span></a>🧱 Capabilities</h5>
+    <p>Traditional Linux uses a binary privilege model: root (UID 0) can do everything, everyone else is limited.</p>
+    <table>
+      <thead>
+        <tr>
+          <th>Capability</th>
+          <th>Allows...</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>CAP_NET_BIND_SERVICE</code></td>
+          <td>Binding to privileged ports (e.g. 80, 443)</td>
+        </tr>
+        <tr>
+          <td><code>CAP_SYS_ADMIN</code></td>
+          <td>A powerful catch-all for system admin tasks</td>
+        </tr>
+        <tr>
+          <td><code>CAP_KILL</code></td>
+          <td>Sending signals to arbitrary processes</td>
+        </tr>
+      </tbody>
+    </table>
+    <p>By dropping unnecessary capabilities, containers can run with only what they need — reducing risk.</p>
+    <h5 id="-security-mechanisms"><a class="anchor" aria-hidden="true" tabindex="-1" href="#-security-mechanisms"><span class="octicon octicon-link"></span></a>🔐 Security Mechanisms</h5>
+    <p>Used in conjunction with namespaces and cgroups to lock down what a containerized process can do:</p>
+    <table>
+      <thead>
+        <tr>
+          <th>Feature</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>seccomp</strong></td>
+          <td>Whitelist or block Linux system calls (syscalls)</td>
+        </tr>
+        <tr>
+          <td><strong>AppArmor</strong></td>
+          <td>Apply per-application security profiles</td>
+        </tr>
+        <tr>
+          <td><strong>SELinux</strong></td>
+          <td>Enforce Mandatory Access Control with tight system policies</td>
+        </tr>
+      </tbody>
+    </table>
+    <h5 id="-summary-for-beginners"><a class="anchor" aria-hidden="true" tabindex="-1" href="#-summary-for-beginners"><span class="octicon octicon-link"></span></a>🧠 Summary for Beginners</h5>
+    <blockquote>
+      <p>✅ Namespaces isolate what a container can see<br>✅ Cgroups control what it can use<br>✅ Capabilities and security modules define what it can do</p>
+    </blockquote>
+    <p>Together, these kernel features form the technical backbone of container isolation — enabling high-density, secure, and efficient application deployment without full VMs.</p>
     <hr>
     <h4 id="3521-important-commands"><a class="anchor" aria-hidden="true" tabindex="-1" href="#3521-important-commands"><span class="octicon octicon-link"></span></a>352.1 Important Commands</h4>
     <h5 id="unshare"><a class="anchor" aria-hidden="true" tabindex="-1" href="#unshare"><span class="octicon octicon-link"></span></a>unshare</h5>
@@ -2808,7 +3075,6 @@ umount /proc
 </span><span class="code-line line-number" line="10">
 </span><span class="code-line line-number" line="11"><span class="token function">ps</span> <span class="token parameter variable">-o</span> pid,pidns,netns,ipcns,utsns,userns,args <span class="token parameter variable">-p</span> <span class="token operator">&#x3C;</span>PID<span class="token operator">></span>
 </span><span class="code-line line-number" line="12"><span class="token function">ps</span> <span class="token parameter variable">-o</span> pid,pidns,netns,ipcns,utsns,userns,args <span class="token parameter variable">-p</span> <span class="token number">3669</span>
-</span><span class="code-line line-number" line="13">
 </span></code><div onclick="copied(this)" data-code="# show all namespaces
 lsns
 
@@ -2821,7 +3087,6 @@ ls -l /proc/3669/ns
 
 ps -o pid,pidns,netns,ipcns,utsns,userns,args -p <PID>
 ps -o pid,pidns,netns,ipcns,utsns,userns,args -p 3669
-
 " class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
     <h5 id="nsenter"><a class="anchor" aria-hidden="true" tabindex="-1" href="#nsenter"><span class="octicon octicon-link"></span></a>nsenter</h5>
     <pre class="language-sh"><code class="language-sh code-highlight"><span class="code-line line-number" line="1"><span class="token comment"># execute a command in namespace</span>
@@ -3198,7 +3463,7 @@ Vagrantfile
       </li>
       <li><a href="">Virtualization Definitions</a>
         <ul>
-          <li><a href="https://www.redhat.com/pt-br/topics/virtualization/what-is-virtualization">Red Hat</a></li>
+          <li><a href="https://www.redhat.com/pt-br/topics/virtualization/what-is-virtualization/">Red Hat</a></li>
           <li><a href="https://aws.amazon.com/pt/what-is/virtualization/">AWS</a></li>
           <li><a href="https://www.ibm.com/topics/virtualization">IBM</a></li>
           <li><a href="https://opensource.com/resources/virtualization">OpenSource.com</a></li>
