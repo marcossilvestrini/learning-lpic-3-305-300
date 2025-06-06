@@ -556,6 +556,17 @@ Migration (P2V, V2V)
       <li>Disaster Recovery: Simplified backup and recovery processes.</li>
       <li>Isolation: Improved security through isolation of environments.</li>
     </ul>
+    <h4 id="emulation"><a class="anchor" aria-hidden="true" tabindex="-1" href="#emulation"><span class="octicon octicon-link"></span></a>Emulation</h4>
+    <p>Emulation involves simulating the behavior of hardware or software on a different platform than originally intended.</p>
+    <p>This process allows software designed for one system to run on another system that may have different architecture or operating environment.</p>
+    <p>While emulation provides versatility by enabling the execution of unmodified guest operating systems or applications, it often comes with performance overhead.</p>
+    <p>This overhead arises because the emulated system needs to interpret and translate instructions meant for the original system into instructions compatible with the host system. As a result, emulation can be slower than native execution, making it less efficient for resource-intensive tasks.</p>
+    <p>Despite this drawback, emulation remains valuable for running legacy software, testing applications across different platforms, and facilitating cross-platform development.</p>
+    <h4 id="systemd-machined"><a class="anchor" aria-hidden="true" tabindex="-1" href="#systemd-machined"><span class="octicon octicon-link"></span></a>systemd-machined</h4>
+    <p>
+      The systemd-machined service is dedicated to managing virtual machines and containers within the systemd ecosystem.
+      It provides essential functionalities for controlling, monitoring, and maintaining virtual instances, offering robust integration and efficiency within Linux environments.
+    </p>
     <p align="right">(<a href="#topic-351.1">back to sub Topic 351.1</a>)</p>
     <p align="right">(<a href="#topic-351">back to Topic 351</a>)</p>
     <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -920,7 +931,6 @@ xenstore-ls
 </span><span class="code-line line-number" line="108"><span class="token comment"># insert and eject cdrom devices</span>
 </span><span class="code-line line-number" line="109">xl cd-insert lpic3-hvm-guest-ubuntu xvdb  /home/vagrant/isos/ubuntu/ubuntu-24.04.1-live-server-amd64.iso
 </span><span class="code-line line-number" line="110">xl cd-eject lpic3-hvm-guest-ubuntu xvdb
-</span><span class="code-line line-number" line="111">
 </span></code><div onclick="copied(this)" data-code="# view xen information
 xl infos
 
@@ -1031,38 +1041,78 @@ xl block-attach 2 &#x27;file:/home/vagrant/isos/ubuntu/seed.iso,xvdc:cdrom,r&#x2
 # insert and eject cdrom devices
 xl cd-insert lpic3-hvm-guest-ubuntu xvdb  /home/vagrant/isos/ubuntu/ubuntu-24.04.1-live-server-amd64.iso
 xl cd-eject lpic3-hvm-guest-ubuntu xvdb
-
 " class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
-    <p align="right">(<a href="#topic-351.2">back to sub Topic 351.2</a>)</p>
-    <p align="right">(<a href="#topic-351">back to Topic 351</a>)</p>
-    <p align="right">(<a href="#readme-top">back to top</a>)</p>
-    <hr>
-    <p><a name="topic-351.3"></a></p>
-    <h3 id="3513-qemu"><a class="anchor" aria-hidden="true" tabindex="-1" href="#3513-qemu"><span class="octicon octicon-link"></span></a>351.3 QEMU</h3>
-    <p>
-      <img src="/images/xen-kvm-qemu.png" alt="xen-kvm-qemu">
-    </p>
-    <p><strong>Weight:</strong> 4</p>
-    <p><strong>Description:</strong> Candidates should be able to install, configure, maintain, migrate and troubleshoot QEMU installations.</p>
-    <p><strong>Key Knowledge Areas:</strong></p>
-    <ul>
-      <li>Understand the architecture of QEMU, including KVM, networking and storage</li>
-      <li>Start QEMU instances from the command line</li>
-      <li>Manage snapshots using the QEMU monitor</li>
-      <li>Install the QEMU Guest Agent and VirtIO device drivers</li>
-      <li>Troubleshoot QEMU installations, including networking and storage</li>
-      <li>Awareness of important QEMU configuration parameters</li>
-    </ul>
-    <h4 id="3513-cited-objects"><a class="anchor" aria-hidden="true" tabindex="-1" href="#3513-cited-objects"><span class="octicon octicon-link"></span></a>351.3 Cited Objects</h4>
-    <pre class="language-sh"><code class="language-sh code-highlight"><span class="code-line line-number" line="1">Kernel modules: kvm, kvm-intel and kvm-amd
-</span><span class="code-line line-number" line="2">/dev/kvm
-</span><span class="code-line line-number" line="3">QEMU monitor
-</span><span class="code-line line-number" line="4">qemu
-</span><span class="code-line line-number" line="5">qemu-system-x86_64
-</span><span class="code-line line-number" line="6"><span class="token function">ip</span>
-</span><span class="code-line line-number" line="7">brctl
-</span><span class="code-line line-number" line="8">tunctl
-</span></code><div onclick="copied(this)" data-code="Kernel modules: kvm, kvm-intel and kvm-amd
+    <h4 id="2512-notes"><a class="anchor" aria-hidden="true" tabindex="-1" href="#2512-notes"><span class="octicon octicon-link"></span></a>251.2 Notes</h4>
+    <h5 id="vif"><a class="anchor" aria-hidden="true" tabindex="-1" href="#vif"><span class="octicon octicon-link"></span></a>vif</h5>
+    <p>In Xen, “vif” stands for Virtual Interface and is used to configure networking for virtual machines (domains).</p>
+    <p>By specifying “vif” directives in the domain configuration files, administrators can define network interfaces, assign IP addresses, set up VLANs, and configure other networking parameters for virtual machines running on Xen hosts. For example: vif = [‘bridge=xenbr0’], in this case, it connects the VM’s network interface to the Xen bridge named “xenbr0”.</p>
+    <pre class="language-sh"><code class="language-sh code-highlight"><span class="code-line line-number" line="1">
+</span><span class="code-line line-number" line="2"><span class="token operator">&#x3C;</span>p <span class="token assign-left variable">align</span><span class="token operator">=</span><span class="token string">"right"</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token operator">&#x3C;</span>a <span class="token assign-left variable">href</span><span class="token operator">=</span><span class="token string">"#topic-351.2"</span><span class="token operator">></span>back to sub Topic <span class="token number">351</span>.<span class="token operator"><span class="token file-descriptor important">2</span>&#x3C;</span>/a<span class="token operator">></span><span class="token punctuation">)</span><span class="token operator">&#x3C;</span>/p<span class="token operator">></span>
+</span><span class="code-line line-number" line="3"><span class="token operator">&#x3C;</span>p <span class="token assign-left variable">align</span><span class="token operator">=</span><span class="token string">"right"</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token operator">&#x3C;</span>a <span class="token assign-left variable">href</span><span class="token operator">=</span><span class="token string">"#topic-351"</span><span class="token operator">></span>back to Topic <span class="token number">35</span><span class="token operator"><span class="token file-descriptor important">1</span>&#x3C;</span>/a<span class="token operator">></span><span class="token punctuation">)</span><span class="token operator">&#x3C;</span>/p<span class="token operator">></span>
+</span><span class="code-line line-number" line="4"><span class="token operator">&#x3C;</span>p <span class="token assign-left variable">align</span><span class="token operator">=</span><span class="token string">"right"</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token operator">&#x3C;</span>a <span class="token assign-left variable">href</span><span class="token operator">=</span><span class="token string">"#readme-top"</span><span class="token operator">></span>back to top<span class="token operator">&#x3C;</span>/a<span class="token operator">></span><span class="token punctuation">)</span><span class="token operator">&#x3C;</span>/p<span class="token operator">></span>
+</span><span class="code-line line-number" line="5">
+</span><span class="code-line line-number" line="6">---
+</span><span class="code-line line-number" line="7">
+</span><span class="code-line line-number" line="8"><span class="token operator">&#x3C;</span>a <span class="token assign-left variable">name</span><span class="token operator">=</span><span class="token string">"topic-351.3"</span><span class="token operator">></span><span class="token operator">&#x3C;</span>/a<span class="token operator">></span>
+</span><span class="code-line line-number" line="9">
+</span><span class="code-line line-number" line="10"><span class="token comment">### 351.3 QEMU</span>
+</span><span class="code-line line-number" line="11">
+</span><span class="code-line line-number" line="12"><span class="token operator">!</span><span class="token punctuation">[</span>xen-kvm-qemu<span class="token punctuation">]</span><span class="token punctuation">(</span>/images/xen-kvm-qemu.png<span class="token punctuation">)</span>
+</span><span class="code-line line-number" line="13">
+</span><span class="code-line line-number" line="14">**Weight:** <span class="token number">4</span>
+</span><span class="code-line line-number" line="15">
+</span><span class="code-line line-number" line="16">**Description:** Candidates should be able to install, configure, maintain, migrate and troubleshoot QEMU installations.
+</span><span class="code-line line-number" line="17">
+</span><span class="code-line line-number" line="18">**Key Knowledge Areas:**
+</span><span class="code-line line-number" line="19">
+</span><span class="code-line line-number" line="20">* Understand the architecture of QEMU, including KVM, networking and storage
+</span><span class="code-line line-number" line="21">* Start QEMU instances from the <span class="token builtin class-name">command</span> line
+</span><span class="code-line line-number" line="22">* Manage snapshots using the QEMU monitor
+</span><span class="code-line line-number" line="23">* Install the QEMU Guest Agent and VirtIO device drivers
+</span><span class="code-line line-number" line="24">* Troubleshoot QEMU installations, including networking and storage
+</span><span class="code-line line-number" line="25">* Awareness of important QEMU configuration parameters
+</span><span class="code-line line-number" line="26">
+</span><span class="code-line line-number" line="27"><span class="token comment">#### 351.3 Cited Objects</span>
+</span><span class="code-line line-number" line="28">
+</span><span class="code-line line-number" line="29">```sh
+</span><span class="code-line line-number" line="30">Kernel modules: kvm, kvm-intel and kvm-amd
+</span><span class="code-line line-number" line="31">/dev/kvm
+</span><span class="code-line line-number" line="32">QEMU monitor
+</span><span class="code-line line-number" line="33">qemu
+</span><span class="code-line line-number" line="34">qemu-system-x86_64
+</span><span class="code-line line-number" line="35"><span class="token function">ip</span>
+</span><span class="code-line line-number" line="36">brctl
+</span><span class="code-line line-number" line="37">tunctl
+</span></code><div onclick="copied(this)" data-code="
+<p align=&#x22;right&#x22;>(<a href=&#x22;#topic-351.2&#x22;>back to sub Topic 351.2</a>)</p>
+<p align=&#x22;right&#x22;>(<a href=&#x22;#topic-351&#x22;>back to Topic 351</a>)</p>
+<p align=&#x22;right&#x22;>(<a href=&#x22;#readme-top&#x22;>back to top</a>)</p>
+
+---
+
+<a name=&#x22;topic-351.3&#x22;></a>
+
+### 351.3 QEMU
+
+![xen-kvm-qemu](/images/xen-kvm-qemu.png)
+
+**Weight:** 4
+
+**Description:** Candidates should be able to install, configure, maintain, migrate and troubleshoot QEMU installations.
+
+**Key Knowledge Areas:**
+
+* Understand the architecture of QEMU, including KVM, networking and storage
+* Start QEMU instances from the command line
+* Manage snapshots using the QEMU monitor
+* Install the QEMU Guest Agent and VirtIO device drivers
+* Troubleshoot QEMU installations, including networking and storage
+* Awareness of important QEMU configuration parameters
+
+#### 351.3 Cited Objects
+
+&#x60;&#x60;&#x60;sh
+Kernel modules: kvm, kvm-intel and kvm-amd
 /dev/kvm
 QEMU monitor
 qemu
@@ -1184,10 +1234,11 @@ ip link add br0 type bridge
 </span><span class="code-line line-number" line="5">qemu-img convert <span class="token punctuation">\</span>
 </span><span class="code-line line-number" line="6">  <span class="token parameter variable">-f</span> vmdk <span class="token punctuation">\</span>
 </span><span class="code-line line-number" line="7">  <span class="token parameter variable">-O</span> qcow2 os-images/Debian_12.0.0_VMM/Debian_12.0.0_VMM_LinuxVMImages.COM.vmdk os-images/Debian_12.0.0_VMM/Debian_12.0.0.qcow2 <span class="token punctuation">\</span>
-</span><span class="code-line line-number" line="8">  <span class="token parameter variable">-p</span> <span class="token parameter variable">-m16</span>
-</span><span class="code-line line-number" line="9">
-</span><span class="code-line line-number" line="10"><span class="token comment"># check image</span>
-</span><span class="code-line line-number" line="11">qemu-img info os-images/Debian_12.0.0_VMM/Debian_12.0.0.qcow2
+</span><span class="code-line line-number" line="8">  <span class="token parameter variable">-p</span> <span class="token punctuation">\</span>
+</span><span class="code-line line-number" line="9">  <span class="token parameter variable">-m16</span>
+</span><span class="code-line line-number" line="10">
+</span><span class="code-line line-number" line="11"><span class="token comment"># check image</span>
+</span><span class="code-line line-number" line="12">qemu-img info os-images/Debian_12.0.0_VMM/Debian_12.0.0.qcow2
 </span></code><div onclick="copied(this)" data-code="# create image
 qemu-img create -f qcow2 vm-disk-debian-12.qcow2 20G
 
@@ -1195,7 +1246,8 @@ qemu-img create -f qcow2 vm-disk-debian-12.qcow2 20G
 qemu-img convert \
   -f vmdk \
   -O qcow2 os-images/Debian_12.0.0_VMM/Debian_12.0.0_VMM_LinuxVMImages.COM.vmdk os-images/Debian_12.0.0_VMM/Debian_12.0.0.qcow2 \
-  -p -m16
+  -p \
+  -m16
 
 # check image
 qemu-img info os-images/Debian_12.0.0_VMM/Debian_12.0.0.qcow2
@@ -1432,12 +1484,12 @@ dhcpclient ens4
 " class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
     <h4 id="qemu-monitor"><a class="anchor" aria-hidden="true" tabindex="-1" href="#qemu-monitor"><span class="octicon octicon-link"></span></a>QEMU Monitor</h4>
     <p>For initiate QEMU monitor in commandline use <strong>-monitor stdio</strong> param in <strong>qemu-system-x86_64</strong></p>
-    <pre class="language-sh"><code class="language-sh code-highlight"><span class="code-line line-number" line="1">qemu-system-x86_64
-</span><span class="code-line line-number" line="2"><span class="token punctuation">..</span>.
-</span><span class="code-line line-number" line="3"> <span class="token parameter variable">-monitor</span> stdio
-</span></code><div onclick="copied(this)" data-code="qemu-system-x86_64
-...
- -monitor stdio
+    <pre class="language-sh"><code class="language-sh code-highlight"><span class="code-line line-number" line="1">qemu-system-x86_64 <span class="token parameter variable">-monitor</span> stdio
+</span></code><div onclick="copied(this)" data-code="qemu-system-x86_64 -monitor stdio
+" class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+    <p>Exit qemu-monitor:</p>
+    <pre class="language-sh"><code class="language-sh code-highlight"><span class="code-line line-number" line="1">ctrl+alt+2
+</span></code><div onclick="copied(this)" data-code="ctrl+alt+2
 " class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
     <pre class="language-sh"><code class="language-sh code-highlight"><span class="code-line line-number" line="1"><span class="token comment"># Managment</span>
 </span><span class="code-line line-number" line="2">info status <span class="token comment"># vm info</span>
@@ -2196,6 +2248,9 @@ less /etc/libvirt/qemu/debian-server01.xml
     <hr>
     <p><a name="topic-351.5"></a></p>
     <h3 id="3515-virtual-machine-disk-image-management"><a class="anchor" aria-hidden="true" tabindex="-1" href="#3515-virtual-machine-disk-image-management"><span class="octicon octicon-link"></span></a>351.5 Virtual Machine Disk Image Management</h3>
+    <p>
+      <img src="images/virtual-machine-disk.png" alt="disk-managment">
+    </p>
     <p><strong>Weight:</strong> 3</p>
     <p><strong>Description:</strong> Candidates should be able to manage virtual machines disk images. This includes converting disk images between various formats and hypervisors and accessing data stored within an image.</p>
     <p><strong>Key Knowledge Areas:</strong></p>
@@ -2220,12 +2275,10 @@ less /etc/libvirt/qemu/debian-server01.xml
 </span><span class="code-line line-number" line="10">virt-filesystems
 </span><span class="code-line line-number" line="11">virt-rescue
 </span><span class="code-line line-number" line="12">virt-df
-</span><span class="code-line line-number" line="13">virt-resize
-</span><span class="code-line line-number" line="14">virt-sparsify
-</span><span class="code-line line-number" line="15">virt-p2v
-</span><span class="code-line line-number" line="16">virt-p2v-make-disk
-</span><span class="code-line line-number" line="17">virt-v2v
-</span><span class="code-line line-number" line="18">virt-sysprep
+</span><span class="code-line line-number" line="13">virt-sparsify
+</span><span class="code-line line-number" line="14">virt-p2v
+</span><span class="code-line line-number" line="15">virt-p2v-make-disk
+</span><span class="code-line line-number" line="16">virt-v2v
 </span></code><div onclick="copied(this)" data-code="qemu-img
 guestfish (including relevant subcommands)
 guestmount
@@ -2238,18 +2291,331 @@ virt-inspector
 virt-filesystems
 virt-rescue
 virt-df
-virt-resize
 virt-sparsify
 virt-p2v
 virt-p2v-make-disk
 virt-v2v
-virt-sysprep
 " class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
     <h4 id="3515-important-commands"><a class="anchor" aria-hidden="true" tabindex="-1" href="#3515-important-commands"><span class="octicon octicon-link"></span></a>351.5 Important Commands</h4>
-    <h5 id="foo"><a class="anchor" aria-hidden="true" tabindex="-1" href="#foo"><span class="octicon octicon-link"></span></a>foo</h5>
-    <pre class="language-sh"><code class="language-sh code-highlight"><span class="code-line line-number" line="1">foo
-</span></code><div onclick="copied(this)" data-code="foo
+    <h5 id="35151-qemu-img"><a class="anchor" aria-hidden="true" tabindex="-1" href="#35151-qemu-img"><span class="octicon octicon-link"></span></a>351.5.1 qemu-img</h5>
+    <pre class="language-sh"><code class="language-sh code-highlight"><span class="code-line line-number" line="1"><span class="token comment"># Display detailed information about a disk image</span>
+</span><span class="code-line line-number" line="2">qemu-img info UbuntuServer_24.04.qcow2
+</span><span class="code-line line-number" line="3">
+</span><span class="code-line line-number" line="4"><span class="token comment"># Create a new 22G raw disk image (default format is raw)</span>
+</span><span class="code-line line-number" line="5">qemu-img create new-disk 22G
+</span><span class="code-line line-number" line="6">
+</span><span class="code-line line-number" line="7"><span class="token comment"># Create a new 22G disk image in qcow2 format</span>
+</span><span class="code-line line-number" line="8">qemu-img create <span class="token parameter variable">-f</span> qcow2 new-disk2 22G
+</span><span class="code-line line-number" line="9">
+</span><span class="code-line line-number" line="10"><span class="token comment"># Convert a VDI image to raw format using 5 threads and show progress</span>
+</span><span class="code-line line-number" line="11">qemu-img convert <span class="token parameter variable">-f</span> vdi <span class="token parameter variable">-O</span> raw Ubuntu-Server.vdk new-Ubuntu.raw <span class="token parameter variable">-m5</span> <span class="token parameter variable">-p</span>
+</span><span class="code-line line-number" line="12">
+</span><span class="code-line line-number" line="13"><span class="token comment"># Convert vmdk to qcow2 image</span>
+</span><span class="code-line line-number" line="14">qemu-img convert <span class="token punctuation">\</span>
+</span><span class="code-line line-number" line="15"><span class="token parameter variable">-f</span> vmdk <span class="token punctuation">\</span>
+</span><span class="code-line line-number" line="16"><span class="token parameter variable">-O</span> qcow2 os-images/UbuntuServer_24.04_VM/UbuntuServer_24.04_VM_LinuxVMImages.COM.vmdk <span class="token punctuation">\</span>
+</span><span class="code-line line-number" line="17">os-images/UbuntuServer_24.04_VM/UbuntuServer_24.04.qcow2 <span class="token punctuation">\</span>
+</span><span class="code-line line-number" line="18"><span class="token parameter variable">-p</span> <span class="token punctuation">\</span>
+</span><span class="code-line line-number" line="19"><span class="token parameter variable">-m16</span>
+</span><span class="code-line line-number" line="20">
+</span><span class="code-line line-number" line="21"><span class="token comment"># Resize a raw image to 30G</span>
+</span><span class="code-line line-number" line="22">qemu-img resize <span class="token parameter variable">-f</span> raw new-disk 30G
+</span><span class="code-line line-number" line="23">
+</span><span class="code-line line-number" line="24"><span class="token comment"># Resize a qcow2 image to 15G(actual size 30Gdisk 30G)</span>
+</span><span class="code-line line-number" line="25">qemu-img resize <span class="token parameter variable">-f</span> raw <span class="token parameter variable">--shrink</span> new-disk 15G
+</span><span class="code-line line-number" line="26">
+</span><span class="code-line line-number" line="27"><span class="token comment"># Snapshots</span>
+</span><span class="code-line line-number" line="28">
+</span><span class="code-line line-number" line="29"><span class="token comment"># List all snapshots in the image</span>
+</span><span class="code-line line-number" line="30">qemu-img snapshot <span class="token parameter variable">-l</span> new-disk2.qcow2
+</span><span class="code-line line-number" line="31">
+</span><span class="code-line line-number" line="32"><span class="token comment"># Create a snapshot named SNAP1</span>
+</span><span class="code-line line-number" line="33">qemu-img snapshot <span class="token parameter variable">-c</span> SNAP1 disk
+</span><span class="code-line line-number" line="34">
+</span><span class="code-line line-number" line="35"><span class="token comment"># Apply a snapshot by ID or name</span>
+</span><span class="code-line line-number" line="36">qemu-img snapshot <span class="token parameter variable">-a</span> <span class="token number">123456789</span> disk
+</span><span class="code-line line-number" line="37">
+</span><span class="code-line line-number" line="38"><span class="token comment"># Delete the snapshot named SNAP1</span>
+</span><span class="code-line line-number" line="39">qemu-img snapshot <span class="token parameter variable">-d</span> SNAP1 disk
+</span></code><div onclick="copied(this)" data-code="# Display detailed information about a disk image
+qemu-img info UbuntuServer_24.04.qcow2
+
+# Create a new 22G raw disk image (default format is raw)
+qemu-img create new-disk 22G
+
+# Create a new 22G disk image in qcow2 format
+qemu-img create -f qcow2 new-disk2 22G
+
+# Convert a VDI image to raw format using 5 threads and show progress
+qemu-img convert -f vdi -O raw Ubuntu-Server.vdk new-Ubuntu.raw -m5 -p
+
+# Convert vmdk to qcow2 image
+qemu-img convert \
+-f vmdk \
+-O qcow2 os-images/UbuntuServer_24.04_VM/UbuntuServer_24.04_VM_LinuxVMImages.COM.vmdk \
+os-images/UbuntuServer_24.04_VM/UbuntuServer_24.04.qcow2 \
+-p \
+-m16
+
+# Resize a raw image to 30G
+qemu-img resize -f raw new-disk 30G
+
+# Resize a qcow2 image to 15G(actual size 30Gdisk 30G)
+qemu-img resize -f raw --shrink new-disk 15G
+
+# Snapshots
+
+# List all snapshots in the image
+qemu-img snapshot -l new-disk2.qcow2
+
+# Create a snapshot named SNAP1
+qemu-img snapshot -c SNAP1 disk
+
+# Apply a snapshot by ID or name
+qemu-img snapshot -a 123456789 disk
+
+# Delete the snapshot named SNAP1
+qemu-img snapshot -d SNAP1 disk
 " class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+    <h5 id="guestfish"><a class="anchor" aria-hidden="true" tabindex="-1" href="#guestfish"><span class="octicon octicon-link"></span></a>guestfish</h5>
+    <pre class="language-sh"><code class="language-sh code-highlight"><span class="code-line line-number" line="1"><span class="token comment"># set enviroment variables for guestfish</span>
+</span><span class="code-line line-number" line="2"><span class="token builtin class-name">export</span> <span class="token assign-left variable">LIBGUESTFS_BACKEND_SETTINGS</span><span class="token operator">=</span>force_tcg
+</span><span class="code-line line-number" line="3">
+</span><span class="code-line line-number" line="4"><span class="token comment"># Launch guestfish with a disk image</span>
+</span><span class="code-line line-number" line="5">guestfish <span class="token parameter variable">-a</span> UbuntuServer_24.04.qcow2
+</span><span class="code-line line-number" line="6"><span class="token comment">#run</span>
+</span><span class="code-line line-number" line="7"><span class="token comment">#list-partitions</span>
+</span><span class="code-line line-number" line="8">
+</span><span class="code-line line-number" line="9"><span class="token comment"># Run the commands in a script file</span>
+</span><span class="code-line line-number" line="10">guestfish <span class="token parameter variable">-a</span> UbuntuServer_24.04.qcow2 <span class="token parameter variable">-m</span> /dev/sda <span class="token parameter variable">-i</span> <span class="token operator">&#x3C;</span> script.ssh
+</span><span class="code-line line-number" line="11">
+</span><span class="code-line line-number" line="12"><span class="token comment"># Interactively run commands</span>
+</span><span class="code-line line-number" line="13">guestfish <span class="token parameter variable">--rw</span> <span class="token parameter variable">-a</span> UbuntuServer_24.04.qcow2 <span class="token operator">&#x3C;&#x3C;</span><span class="token string">'EOF'
+</span></span><span class="code-line line-number" line="14"><span class="token string">run
+</span></span><span class="code-line line-number" line="15"><span class="token string">list-filesystems
+</span></span><span class="code-line line-number" line="16"><span class="token string">EOF</span>
+</span><span class="code-line line-number" line="17">
+</span><span class="code-line line-number" line="18"><span class="token comment"># Copy a file from the guest image to the host</span>
+</span><span class="code-line line-number" line="19"><span class="token builtin class-name">export</span> <span class="token assign-left variable">LIBGUESTFS_BACKEND_SETTINGS</span><span class="token operator">=</span>force_tcg
+</span><span class="code-line line-number" line="20"><span class="token function">sudo</span> guestfish <span class="token parameter variable">--rw</span> <span class="token parameter variable">-a</span> UbuntuServer_24.04.qcow2 <span class="token parameter variable">-i</span> <span class="token operator">&#x3C;&#x3C;</span><span class="token string">'EOF'
+</span></span><span class="code-line line-number" line="21"><span class="token string">copy-out /etc/hostname /tmp/
+</span></span><span class="code-line line-number" line="22"><span class="token string">EOF</span>
+</span><span class="code-line line-number" line="23">
+</span><span class="code-line line-number" line="24"><span class="token comment"># Copy a file from the host into the guest image</span>
+</span><span class="code-line line-number" line="25"><span class="token builtin class-name">echo</span> <span class="token string">"new-hostname"</span> <span class="token operator">></span> /tmp/hostname
+</span><span class="code-line line-number" line="26"><span class="token builtin class-name">export</span> <span class="token assign-left variable">LIBGUESTFS_BACKEND_SETTINGS</span><span class="token operator">=</span>force_tcg
+</span><span class="code-line line-number" line="27"><span class="token function">sudo</span> guestfish <span class="token parameter variable">--rw</span> <span class="token parameter variable">-a</span> UbuntuServer_24.04.qcow2 <span class="token parameter variable">-i</span> <span class="token operator">&#x3C;&#x3C;</span><span class="token string">'EOF'
+</span></span><span class="code-line line-number" line="28"><span class="token string">copy-in /tmp/hostname /etc/
+</span></span><span class="code-line line-number" line="29"><span class="token string">EOF</span>
+</span><span class="code-line line-number" line="30">
+</span><span class="code-line line-number" line="31"><span class="token comment"># View contents of a file in the guest image</span>
+</span><span class="code-line line-number" line="32">guestfish <span class="token parameter variable">--ro</span> <span class="token parameter variable">-a</span> UbuntuServer_24.04.qcow2 <span class="token parameter variable">-i</span> <span class="token operator">&#x3C;&#x3C;</span><span class="token string">'EOF'
+</span></span><span class="code-line line-number" line="33"><span class="token string">cat /etc/hostname
+</span></span><span class="code-line line-number" line="34"><span class="token string">EOF</span>
+</span><span class="code-line line-number" line="35">
+</span><span class="code-line line-number" line="36"><span class="token comment"># List files in the guest image</span>
+</span><span class="code-line line-number" line="37"><span class="token builtin class-name">export</span> <span class="token assign-left variable">LIBGUESTFS_BACKEND_SETTINGS</span><span class="token operator">=</span>force_tcg
+</span><span class="code-line line-number" line="38">guestfish <span class="token parameter variable">--rw</span> <span class="token parameter variable">-a</span> UbuntuServer_24.04.qcow2 <span class="token parameter variable">-i</span> <span class="token operator">&#x3C;&#x3C;</span><span class="token string">'EOF'
+</span></span><span class="code-line line-number" line="39"><span class="token string">ls /home/ubuntu
+</span></span><span class="code-line line-number" line="40"><span class="token string">EOF</span>
+</span><span class="code-line line-number" line="41">
+</span><span class="code-line line-number" line="42"><span class="token comment"># Edit a file in the guest image</span>
+</span><span class="code-line line-number" line="43"><span class="token builtin class-name">export</span> <span class="token assign-left variable">LIBGUESTFS_BACKEND_SETTINGS</span><span class="token operator">=</span>force_tcg
+</span><span class="code-line line-number" line="44">guestfish <span class="token parameter variable">--rw</span> <span class="token parameter variable">-a</span> UbuntuServer_24.04.qcow2 <span class="token parameter variable">-i</span> <span class="token operator">&#x3C;&#x3C;</span><span class="token string">'EOF'
+</span></span><span class="code-line line-number" line="45"><span class="token string">edit /etc/hosts
+</span></span><span class="code-line line-number" line="46"><span class="token string">EOF</span>
+</span></code><div onclick="copied(this)" data-code="# set enviroment variables for guestfish
+export LIBGUESTFS_BACKEND_SETTINGS=force_tcg
+
+# Launch guestfish with a disk image
+guestfish -a UbuntuServer_24.04.qcow2
+#run
+#list-partitions
+
+# Run the commands in a script file
+guestfish -a UbuntuServer_24.04.qcow2 -m /dev/sda -i < script.ssh
+
+# Interactively run commands
+guestfish --rw -a UbuntuServer_24.04.qcow2 <<&#x27;EOF&#x27;
+run
+list-filesystems
+EOF
+
+# Copy a file from the guest image to the host
+export LIBGUESTFS_BACKEND_SETTINGS=force_tcg
+sudo guestfish --rw -a UbuntuServer_24.04.qcow2 -i <<&#x27;EOF&#x27;
+copy-out /etc/hostname /tmp/
+EOF
+
+# Copy a file from the host into the guest image
+echo &#x22;new-hostname&#x22; > /tmp/hostname
+export LIBGUESTFS_BACKEND_SETTINGS=force_tcg
+sudo guestfish --rw -a UbuntuServer_24.04.qcow2 -i <<&#x27;EOF&#x27;
+copy-in /tmp/hostname /etc/
+EOF
+
+# View contents of a file in the guest image
+guestfish --ro -a UbuntuServer_24.04.qcow2 -i <<&#x27;EOF&#x27;
+cat /etc/hostname
+EOF
+
+# List files in the guest image
+export LIBGUESTFS_BACKEND_SETTINGS=force_tcg
+guestfish --rw -a UbuntuServer_24.04.qcow2 -i <<&#x27;EOF&#x27;
+ls /home/ubuntu
+EOF
+
+# Edit a file in the guest image
+export LIBGUESTFS_BACKEND_SETTINGS=force_tcg
+guestfish --rw -a UbuntuServer_24.04.qcow2 -i <<&#x27;EOF&#x27;
+edit /etc/hosts
+EOF
+" class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+    <h6 id="guestmount"><a class="anchor" aria-hidden="true" tabindex="-1" href="#guestmount"><span class="octicon octicon-link"></span></a>guestmount</h6>
+    <pre class="language-sh"><code class="language-sh code-highlight"><span class="code-line line-number" line="1"><span class="token comment"># Mount a disk image to a directory</span>
+</span><span class="code-line line-number" line="2">guestmount <span class="token parameter variable">-a</span> UbuntuServer_24.04.qcow2 <span class="token parameter variable">-m</span> /dev/ubuntu-vg/ubuntu-lv /mnt/ubuntu
+</span><span class="code-line line-number" line="3"><span class="token comment"># domain</span>
+</span><span class="code-line line-number" line="4">guestmount <span class="token parameter variable">-d</span> rocky9-server02 <span class="token parameter variable">-m</span> /dev/ubuntu-vg/ubuntu-lv /mnt/ubuntu 
+</span><span class="code-line line-number" line="5">
+</span><span class="code-line line-number" line="6"><span class="token comment"># Mount a specific partition from a disk image</span>
+</span><span class="code-line line-number" line="7">guestmount <span class="token parameter variable">-a</span> UbuntuServer_24.04.qcow2 <span class="token parameter variable">-m</span> /dev/sda2 /mnt/ubuntu
+</span><span class="code-line line-number" line="8"><span class="token comment"># domain</span>
+</span><span class="code-line line-number" line="9">guestmount <span class="token parameter variable">-d</span> debian-server01 <span class="token parameter variable">--ro</span> <span class="token parameter variable">-m</span>  /dev/debian-vg/root /mnt/debian
+</span></code><div onclick="copied(this)" data-code="# Mount a disk image to a directory
+guestmount -a UbuntuServer_24.04.qcow2 -m /dev/ubuntu-vg/ubuntu-lv /mnt/ubuntu
+# domain
+guestmount -d rocky9-server02 -m /dev/ubuntu-vg/ubuntu-lv /mnt/ubuntu 
+
+# Mount a specific partition from a disk image
+guestmount -a UbuntuServer_24.04.qcow2 -m /dev/sda2 /mnt/ubuntu
+# domain
+guestmount -d debian-server01 --ro -m  /dev/debian-vg/root /mnt/debian
+" class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+    <h6 id="guestumount"><a class="anchor" aria-hidden="true" tabindex="-1" href="#guestumount"><span class="octicon octicon-link"></span></a>guestumount</h6>
+    <pre class="language-sh"><code class="language-sh code-highlight"><span class="code-line line-number" line="1"><span class="token comment"># Umount a disk image to a directory</span>
+</span><span class="code-line line-number" line="2"><span class="token function">sudo</span> guestunmount /mnt/ubuntu
+</span></code><div onclick="copied(this)" data-code="# Umount a disk image to a directory
+sudo guestunmount /mnt/ubuntu
+" class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+    <h5 id="virt-df"><a class="anchor" aria-hidden="true" tabindex="-1" href="#virt-df"><span class="octicon octicon-link"></span></a>virt-df</h5>
+    <pre class="language-sh"><code class="language-sh code-highlight"><span class="code-line line-number" line="1"><span class="token comment"># Show free and used space on virtual machine filesystems</span>
+</span><span class="code-line line-number" line="2">virt-df UbuntuServer_24.04.qcow2 <span class="token parameter variable">-h</span>
+</span><span class="code-line line-number" line="3">virt-df <span class="token parameter variable">-d</span> rocky9-server02 <span class="token parameter variable">-h</span>
+</span></code><div onclick="copied(this)" data-code="# Show free and used space on virtual machine filesystems
+virt-df UbuntuServer_24.04.qcow2 -h
+virt-df -d rocky9-server02 -h
+" class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+    <h5 id="virt-filesystems"><a class="anchor" aria-hidden="true" tabindex="-1" href="#virt-filesystems"><span class="octicon octicon-link"></span></a>virt-filesystems</h5>
+    <pre class="language-sh"><code class="language-sh code-highlight"><span class="code-line line-number" line="1"><span class="token comment"># List filesystems, partitions, and logical volumes in a VM disk image (disk image)</span>
+</span><span class="code-line line-number" line="2">virt-filesystems <span class="token parameter variable">-a</span> UbuntuServer_24.04.qcow2 <span class="token parameter variable">--all</span> <span class="token parameter variable">--long</span> <span class="token parameter variable">-h</span>
+</span><span class="code-line line-number" line="3">
+</span><span class="code-line line-number" line="4"><span class="token comment"># List filesystems, partitions, and logical volumes in a VM disk image (domain)</span>
+</span><span class="code-line line-number" line="5">virt-filesystems <span class="token parameter variable">-d</span> debian-server01 <span class="token parameter variable">--all</span> <span class="token parameter variable">--long</span> <span class="token parameter variable">-h</span>
+</span></code><div onclick="copied(this)" data-code="# List filesystems, partitions, and logical volumes in a VM disk image (disk image)
+virt-filesystems -a UbuntuServer_24.04.qcow2 --all --long -h
+
+# List filesystems, partitions, and logical volumes in a VM disk image (domain)
+virt-filesystems -d debian-server01 --all --long -h
+" class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+    <h5 id="virt-inspector"><a class="anchor" aria-hidden="true" tabindex="-1" href="#virt-inspector"><span class="octicon octicon-link"></span></a>virt-inspector</h5>
+    <pre class="language-sh"><code class="language-sh code-highlight"><span class="code-line line-number" line="1"><span class="token comment"># Inspect and report on the operating system in a VM disk image</span>
+</span><span class="code-line line-number" line="2">virt-inspector <span class="token parameter variable">-a</span> UbuntuServer_24.04.qcow2 <span class="token comment">#(disk)</span>
+</span><span class="code-line line-number" line="3">virt-inspector <span class="token parameter variable">-d</span> debian-server01 <span class="token comment">#(domain) </span>
+</span></code><div onclick="copied(this)" data-code="# Inspect and report on the operating system in a VM disk image
+virt-inspector -a UbuntuServer_24.04.qcow2 #(disk)
+virt-inspector -d debian-server01 #(domain) 
+" class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+    <h5 id="virt-cat"><a class="anchor" aria-hidden="true" tabindex="-1" href="#virt-cat"><span class="octicon octicon-link"></span></a>virt-cat</h5>
+    <pre class="language-sh"><code class="language-sh code-highlight"><span class="code-line line-number" line="1"><span class="token comment"># Display the contents of a file inside a VM disk image</span>
+</span><span class="code-line line-number" line="2">virt-cat <span class="token parameter variable">-a</span> UbuntuServer_24.04.qcow2 /etc/hosts
+</span><span class="code-line line-number" line="3">virt-cat <span class="token parameter variable">-d</span> debian-server01 /etc/hosts <span class="token comment">#(domain)</span>
+</span></code><div onclick="copied(this)" data-code="# Display the contents of a file inside a VM disk image
+virt-cat -a UbuntuServer_24.04.qcow2 /etc/hosts
+virt-cat -d debian-server01 /etc/hosts #(domain)
+" class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+    <h5 id="virt-diff"><a class="anchor" aria-hidden="true" tabindex="-1" href="#virt-diff"><span class="octicon octicon-link"></span></a>virt-diff</h5>
+    <pre class="language-sh"><code class="language-sh code-highlight"><span class="code-line line-number" line="1"><span class="token comment"># Show differences between two VM disk images</span>
+</span><span class="code-line line-number" line="2">virt-diff <span class="token parameter variable">-a</span> UbuntuServer_24.04.qcow2 <span class="token parameter variable">-A</span> Rocky-Linux.qcow2
+</span></code><div onclick="copied(this)" data-code="# Show differences between two VM disk images
+virt-diff -a UbuntuServer_24.04.qcow2 -A Rocky-Linux.qcow2
+" class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+    <h5 id="virt-sparsify"><a class="anchor" aria-hidden="true" tabindex="-1" href="#virt-sparsify"><span class="octicon octicon-link"></span></a>virt-sparsify</h5>
+    <pre class="language-sh"><code class="language-sh code-highlight"><span class="code-line line-number" line="1"><span class="token comment"># Make a VM disk image smaller by removing unused space</span>
+</span><span class="code-line line-number" line="2">virt-sparsify UbuntuServer_24.04.qcow2 UbuntuServer_24.04-sparse.qcow2
+</span></code><div onclick="copied(this)" data-code="# Make a VM disk image smaller by removing unused space
+virt-sparsify UbuntuServer_24.04.qcow2 UbuntuServer_24.04-sparse.qcow2
+" class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+    <h5 id="virt-resize"><a class="anchor" aria-hidden="true" tabindex="-1" href="#virt-resize"><span class="octicon octicon-link"></span></a>virt-resize</h5>
+    <pre class="language-sh"><code class="language-sh code-highlight"><span class="code-line line-number" line="1"><span class="token comment"># Resize a VM disk image or its partitions</span>
+</span><span class="code-line line-number" line="2">virt-filesystems <span class="token parameter variable">-a</span> UbuntuServer_24.04.qcow2 <span class="token parameter variable">--all</span> <span class="token parameter variable">--long</span> <span class="token parameter variable">-h</span> <span class="token comment">#(check size of partitions)</span>
+</span><span class="code-line line-number" line="3">qemu-img create <span class="token parameter variable">-f</span> qcow2 UbuntuServer_24.04-expanded.qcow2 100G <span class="token comment">#(create new disk image with 100G)</span>
+</span><span class="code-line line-number" line="4">virt-resize <span class="token parameter variable">--expand</span> /dev/ubuntu-vg/ubuntu-lv <span class="token punctuation">\</span>
+</span><span class="code-line line-number" line="5">UbuntuServer_24.04.qcow2 UbuntuServer_24.04-expanded.qcow2
+</span><span class="code-line line-number" line="6">
+</span></code><div onclick="copied(this)" data-code="# Resize a VM disk image or its partitions
+virt-filesystems -a UbuntuServer_24.04.qcow2 --all --long -h #(check size of partitions)
+qemu-img create -f qcow2 UbuntuServer_24.04-expanded.qcow2 100G #(create new disk image with 100G)
+virt-resize --expand /dev/ubuntu-vg/ubuntu-lv \
+UbuntuServer_24.04.qcow2 UbuntuServer_24.04-expanded.qcow2
+
+" class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+    <h5 id="virt-copy-in"><a class="anchor" aria-hidden="true" tabindex="-1" href="#virt-copy-in"><span class="octicon octicon-link"></span></a>virt-copy-in</h5>
+    <pre class="language-sh"><code class="language-sh code-highlight"><span class="code-line line-number" line="1"><span class="token comment"># Copy files from the host into a VM disk image</span>
+</span><span class="code-line line-number" line="2">
+</span><span class="code-line line-number" line="3">virt-copy-in <span class="token parameter variable">-a</span> UbuntuServer_24.04.qcow2 ~vagrant/test-virt-copy-in.txt /home/ubuntu
+</span></code><div onclick="copied(this)" data-code="# Copy files from the host into a VM disk image
+
+virt-copy-in -a UbuntuServer_24.04.qcow2 ~vagrant/test-virt-copy-in.txt /home/ubuntu
+" class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+    <h5 id="virt-copy-out"><a class="anchor" aria-hidden="true" tabindex="-1" href="#virt-copy-out"><span class="octicon octicon-link"></span></a>virt-copy-out</h5>
+    <pre class="language-sh"><code class="language-sh code-highlight"><span class="code-line line-number" line="1"><span class="token comment"># Copy files from a VM disk image to the host</span>
+</span><span class="code-line line-number" line="2">virt-copy-out <span class="token parameter variable">-a</span> UbuntuServer_24.04.qcow2 /home/ubuntu/.bashrc /tmp
+</span></code><div onclick="copied(this)" data-code="# Copy files from a VM disk image to the host
+virt-copy-out -a UbuntuServer_24.04.qcow2 /home/ubuntu/.bashrc /tmp
+" class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+    <h5 id="virt-ls"><a class="anchor" aria-hidden="true" tabindex="-1" href="#virt-ls"><span class="octicon octicon-link"></span></a>virt-ls</h5>
+    <pre class="language-sh"><code class="language-sh code-highlight"><span class="code-line line-number" line="1"><span class="token comment"># List files and directories inside a VM disk image</span>
+</span><span class="code-line line-number" line="2">virt-ls <span class="token parameter variable">-a</span> UbuntuServer_24.04.qcow2 /home/ubuntu
+</span></code><div onclick="copied(this)" data-code="# List files and directories inside a VM disk image
+virt-ls -a UbuntuServer_24.04.qcow2 /home/ubuntu
+" class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+    <h5 id="virt-rescue"><a class="anchor" aria-hidden="true" tabindex="-1" href="#virt-rescue"><span class="octicon octicon-link"></span></a>virt-rescue</h5>
+    <pre class="language-sh"><code class="language-sh code-highlight"><span class="code-line line-number" line="1"><span class="token comment"># Launch a rescue shell on a VM disk image for recovery</span>
+</span><span class="code-line line-number" line="2">virt-rescue <span class="token parameter variable">-a</span> UbuntuServer_24.04.qcow2
+</span></code><div onclick="copied(this)" data-code="# Launch a rescue shell on a VM disk image for recovery
+virt-rescue -a UbuntuServer_24.04.qcow2
+" class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+    <h5 id="virt-sysprep"><a class="anchor" aria-hidden="true" tabindex="-1" href="#virt-sysprep"><span class="octicon octicon-link"></span></a>virt-sysprep</h5>
+    <pre class="language-sh"><code class="language-sh code-highlight"><span class="code-line line-number" line="1"><span class="token comment"># Prepare a VM disk image for cloning by removing system-specific data</span>
+</span><span class="code-line line-number" line="2">virt-sysprep <span class="token parameter variable">-a</span> UbuntuServer_24.04.qcow2
+</span></code><div onclick="copied(this)" data-code="# Prepare a VM disk image for cloning by removing system-specific data
+virt-sysprep -a UbuntuServer_24.04.qcow2
+" class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+    <h5 id="virt-v2v"><a class="anchor" aria-hidden="true" tabindex="-1" href="#virt-v2v"><span class="octicon octicon-link"></span></a>virt-v2v</h5>
+    <pre class="language-sh"><code class="language-sh code-highlight"><span class="code-line line-number" line="1"><span class="token comment"># Convert a VM from a foreign hypervisor to run on KVM</span>
+</span><span class="code-line line-number" line="2">virt-v2v <span class="token parameter variable">-i</span> disk input-disk.img <span class="token parameter variable">-o</span> <span class="token builtin class-name">local</span> <span class="token parameter variable">-os</span> /var/tmp
+</span></code><div onclick="copied(this)" data-code="# Convert a VM from a foreign hypervisor to run on KVM
+virt-v2v -i disk input-disk.img -o local -os /var/tmp
+" class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+    <h5 id="virt-p2v"><a class="anchor" aria-hidden="true" tabindex="-1" href="#virt-p2v"><span class="octicon octicon-link"></span></a>virt-p2v</h5>
+    <pre class="language-sh"><code class="language-sh code-highlight"><span class="code-line line-number" line="1"><span class="token comment"># Convert a physical machine to use KVM</span>
+</span></code><div onclick="copied(this)" data-code="# Convert a physical machine to use KVM
+" class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+    <h5 id="virt-p2v-make-disk"><a class="anchor" aria-hidden="true" tabindex="-1" href="#virt-p2v-make-disk"><span class="octicon octicon-link"></span></a>virt-p2v-make-disk</h5>
+    <pre class="language-sh"><code class="language-sh code-highlight"><span class="code-line line-number" line="1"><span class="token comment"># Create a bootable disk image for physical to virtual conversion</span>
+</span><span class="code-line line-number" line="2"><span class="token function">sudo</span> virt-p2v-make-disk <span class="token parameter variable">-o</span> output.img
+</span></code><div onclick="copied(this)" data-code="# Create a bootable disk image for physical to virtual conversion
+sudo virt-p2v-make-disk -o output.img
+" class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+    <h4 id="3515-notes"><a class="anchor" aria-hidden="true" tabindex="-1" href="#3515-notes"><span class="octicon octicon-link"></span></a>351.5 Notes</h4>
+    <h5 id="ovf-open-virtualization-format"><a class="anchor" aria-hidden="true" tabindex="-1" href="#ovf-open-virtualization-format"><span class="octicon octicon-link"></span></a>OVF: Open Virtualization Format</h5>
+    <p>OVF: An open format that defines a standard for packaging and distributing virtual machines across different environments.</p>
+    <p>The generated package has the .ova extension and contains the following files:</p>
+    <ul>
+      <li>.ovf: XML file with metadata defining the virtual machine environment</li>
+      <li>Image files: .vmdk, .vhd, .vhdx, .qcow2, .raw</li>
+      <li>Additional files: metadata, snapshots, configuration, hash</li>
+    </ul>
     <p align="right">(<a href="#topic-351.5">back to sub Topic 351.5</a>)</p>
     <p align="right">(<a href="#topic-351">back to Topic 351</a>)</p>
     <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -2259,6 +2625,31 @@ virt-sysprep
     <hr>
     <p><a name="topic-352.1"></a></p>
     <h3 id="3521--container-virtualization-concepts"><a class="anchor" aria-hidden="true" tabindex="-1" href="#3521--container-virtualization-concepts"><span class="octicon octicon-link"></span></a>352.1 Container Virtualization Concepts</h3>
+    <p>
+      <img src="images/virtualization-container.png" alt="virtualization-container">
+    </p>
+    <pre class="language-mermaid"><code class="language-mermaid code-highlight"><span class="code-line line-number" line="1">timeline
+</span><span class="code-line line-number" line="2">    title Time Line Containers Evolution
+</span><span class="code-line line-number" line="3">    1979 <span class="token operator">:</span> chroot
+</span><span class="code-line line-number" line="4">    2000 <span class="token operator">:</span> FreeBSD Jails
+</span><span class="code-line line-number" line="5">    2002 <span class="token operator">:</span> Linux Namespaces
+</span><span class="code-line line-number" line="6">    2005 <span class="token operator">:</span> Solaris Containers
+</span><span class="code-line line-number" line="7">    2007 <span class="token operator">:</span> cgroups
+</span><span class="code-line line-number" line="8">    2008 <span class="token operator">:</span> LXC
+</span><span class="code-line line-number" line="9">    2013 <span class="token operator">:</span> Docker
+</span><span class="code-line line-number" line="10">    2015 <span class="token operator">:</span> Kubernetes
+</span></code><div onclick="copied(this)" data-code="timeline
+    title Time Line Containers Evolution
+    1979 : chroot
+    2000 : FreeBSD Jails
+    2002 : Linux Namespaces
+    2005 : Solaris Containers
+    2007 : cgroups
+    2008 : LXC
+    2013 : Docker
+    2015 : Kubernetes
+" class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+    <hr>
     <p><strong>Weight:</strong> 7</p>
     <p><strong>Description:</strong> Candidates should understand the concept of container virtualization. This includes understanding the Linux components used to implement container virtualization as well as using standard Linux tools to troubleshoot these components.</p>
     <p><strong>Key Knowledge Areas:</strong></p>
@@ -2276,25 +2667,7 @@ virt-sysprep
       <li>Awareness of podman, buildah and skopeo</li>
       <li>Awareness of other container virtualization approaches in Linux and other free operating systems, such as rkt, OpenVZ, systemd-nspawn or BSD Jails</li>
     </ul>
-    <pre class="language-mermaid"><code class="language-mermaid code-highlight"><span class="code-line line-number" line="1">timeline
-</span><span class="code-line line-number" line="2">    title Time Line Containers Evolution
-</span><span class="code-line line-number" line="3">    1979 <span class="token operator">:</span> chroot
-</span><span class="code-line line-number" line="4">    2000 <span class="token operator">:</span> FreeBSD Jails
-</span><span class="code-line line-number" line="5">    2004 <span class="token operator">:</span> Solaris Containers
-</span><span class="code-line line-number" line="6">    2006 <span class="token operator">:</span> cgroups
-</span><span class="code-line line-number" line="7">    2008 <span class="token operator">:</span> LXC
-</span><span class="code-line line-number" line="8">    2013 <span class="token operator">:</span> Docker
-</span><span class="code-line line-number" line="9">    2014 <span class="token operator">:</span> Kubernetes
-</span></code><div onclick="copied(this)" data-code="timeline
-    title Time Line Containers Evolution
-    1979 : chroot
-    2000 : FreeBSD Jails
-    2004 : Solaris Containers
-    2006 : cgroups
-    2008 : LXC
-    2013 : Docker
-    2014 : Kubernetes
-" class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+    <hr>
     <h4 id="3521-cited-objects"><a class="anchor" aria-hidden="true" tabindex="-1" href="#3521-cited-objects"><span class="octicon octicon-link"></span></a>352.1 Cited Objects</h4>
     <pre class="language-sh"><code class="language-sh code-highlight"><span class="code-line line-number" line="1">nsenter
 </span><span class="code-line line-number" line="2">unshare
@@ -2311,11 +2684,172 @@ capsh
 /proc/[0-9]+/ns
 /proc/[0-9]+/status
 " class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
-    <h4 id="3521-important-commands"><a class="anchor" aria-hidden="true" tabindex="-1" href="#3521-important-commands"><span class="octicon octicon-link"></span></a>352.1 Important Commands</h4>
-    <h5 id="foo-1"><a class="anchor" aria-hidden="true" tabindex="-1" href="#foo-1"><span class="octicon octicon-link"></span></a>foo</h5>
-    <pre class="language-sh"><code class="language-sh code-highlight"><span class="code-line line-number" line="1">foo
-</span></code><div onclick="copied(this)" data-code="foo
+    <hr>
+    <h4 id="understanding-containers"><a class="anchor" aria-hidden="true" tabindex="-1" href="#understanding-containers"><span class="octicon octicon-link"></span></a>Understanding Containers</h4>
+    <p>Containers are a virtualization technology that packages applications with all their dependencies—code, libraries, and configurations—into isolated, executable units.</p>
+    <p>This approach ensures that software runs consistently in any environment, whether on desktops, traditional IT infrastructure, or the cloud.</p>
+    <p>
+      What Are Containers?
+      At their core, containers virtualize the operating system, allowing applications to<br>share the underlying server's OS kernel while running as isolated, self-contained processes.<br>Unlike virtual machines (VMs), which include a complete operating system for each instance, containers are lighter and more resource-efficient.
+    </p>
+    <hr>
+    <h4 id="key-aspects-of-containers"><a class="anchor" aria-hidden="true" tabindex="-1" href="#key-aspects-of-containers"><span class="octicon octicon-link"></span></a>Key Aspects of Containers</h4>
+    <ul>
+      <li><strong>Lightweight</strong>: They share the host operating system's kernel, making them much lighter and faster to start and stop compared to VMs.</li>
+      <li><strong>Portability</strong>: Since they include all their dependencies, containers can be moved and run across different environments (development, testing, production, public, private, or hybrid clouds) without needing reconfiguration, ensuring consistent behavior.</li>
+      <li><strong>Isolation</strong>: Each container operates as a separate, isolated process, which provides security by encapsulating the application and its dependencies. This allows for detailed control over CPU and memory usage.</li>
+      <li><strong>Resource Efficiency</strong>: They promote better utilization of the CPU and memory of physical machines, optimizing infrastructure use.</li>
+    </ul>
+    <hr>
+    <h4 id="type-of-containers"><a class="anchor" aria-hidden="true" tabindex="-1" href="#type-of-containers"><span class="octicon octicon-link"></span></a>Type of Containers</h4>
+    <p>There are primarily two types of containers in computing, categorized by their approach and focus:</p>
+    <ul>
+      <li>System Containers: These are an older form of containers that resemble virtual machines in their approach.They focus on the operating system and allow the execution of multiple processes. They're suitable for traditional or monolithic applications that require environments and configurations similar to those of virtual machines.</li>
+      <li>Application Containers: This is a more recent approach, designed to run a single process. They're centered around stateless microservices, being highly scalable horizontally and ideal for immutable and ephemeral infrastructures. If an application or service needs to be updated, a new container is created from the appropriate image to replace the existing instance.</li>
+    </ul>
+    <p>Besides these types, there are several popular container implementations and runtimes:</p>
+    <ul>
+      <li>Docker: This is the most popular and widely used container runtime, offering a platform to create, package, and distribute applications in containers.</li>
+      <li>RKT (Rocket): A container system focused on security.</li>
+      <li>Linux Containers (LXC): An open-source Linux container runtime system, used to isolate processes at the operating system level.</li>
+      <li>CRI-O: An implementation of the Kubernetes Container Runtime Interface (CRI) that allows the use of Open Container Initiative (OCI)-compatible runtimes.</li>
+    </ul>
+    <hr>
+    <h4 id="key-containers-elements"><a class="anchor" aria-hidden="true" tabindex="-1" href="#key-containers-elements"><span class="octicon octicon-link"></span></a>Key Containers Elements</h4>
+    <ul>
+      <li>Namespaces: Creation of isolated environments for groups of processes.</li>
+      <li>Cgroups (Control Groups): Control and manage the use of system resources for groups of processes.</li>
+      <li>Capabilities: Control of specific permissions granted to processes within a container.</li>
+      <li>seccomp, SELinux, AppArmor: Additional layers of security.</li>
+    </ul>
+    <hr>
+    <h4 id="chroot"><a class="anchor" aria-hidden="true" tabindex="-1" href="#chroot"><span class="octicon octicon-link"></span></a>chroot</h4>
+    <p>
+      <img src="images/chroot.png" alt="chroot">
+    </p>
+    <p>Test chroot</p>
+    <pre class="language-sh"><code class="language-sh code-highlight"><span class="code-line line-number" line="1"><span class="token comment"># download debain files</span>
+</span><span class="code-line line-number" line="2"><span class="token function">sudo</span> <span class="token function">debootstrap</span> stable ~vagrant/debian http://deb.debian.org/debian
+</span><span class="code-line line-number" line="3"><span class="token function">sudo</span> <span class="token function">chroot</span> ~vagrant/debian <span class="token function">bash</span>
+</span></code><div onclick="copied(this)" data-code="# download debain files
+sudo debootstrap stable ~vagrant/debian http://deb.debian.org/debian
+sudo chroot ~vagrant/debian bash
 " class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+    <hr>
+    <h4 id="namespaces"><a class="anchor" aria-hidden="true" tabindex="-1" href="#namespaces"><span class="octicon octicon-link"></span></a>Namespaces</h4>
+    <p>Namespaces are a fundamental Linux kernel feature that provides isolation for processes. They allow a container to have its own independent view of the system resources. Essentially, namespaces partition global system resources into isolated subsets that processes within a specific namespace can access. This gives each container its own isolated set of:</p>
+    <ul>
+      <li>PID namespace: Isolated process IDs, meaning a process in one container sees a different set of PIDs than a process in another container or on the host.</li>
+      <li>Mount namespace: Isolated view of the filesystem mount points. Each container has its own root filesystem.</li>
+      <li>Network namespace: Isolated network interfaces, IP addresses, routing tables, etc. Each container can have its own network stack.</li>
+      <li>UTS namespace: Isolated hostname and domain name.</li>
+      <li>IPC namespace: Isolated inter-process communication resources.</li>
+      <li>User namespace: Isolated user and group IDs. This allows a user to be root inside a container without being root on the host system.</li>
+    </ul>
+    <p>Namespaces are crucial for creating the illusion that a container is a self-contained system.</p>
+    <hr>
+    <h4 id="cgroups-control-groups"><a class="anchor" aria-hidden="true" tabindex="-1" href="#cgroups-control-groups"><span class="octicon octicon-link"></span></a>Cgroups (Control Groups)</h4>
+    <p>Cgroups, or Control Groups, are another vital Linux kernel feature that allows for the allocation, prioritization, and isolation of system resources such as CPU, memory, I/O, and network bandwidth among groups of processes. While namespaces provide isolation for visibility of resources, cgroups provide isolation for resource consumption.</p>
+    <p>With cgroups, you can:</p>
+    <ul>
+      <li>Limit resources: For example, restrict a container to use only a certain percentage of CPU or a specific amount of RAM.</li>
+      <li>Prioritize tasks: Give certain containers more CPU time or I/O access than others.</li>
+      <li>Monitor usage: Track how much of a given resource a group of processes is consuming.</li>
+    </ul>
+    <p>Cgroups ensure that one container doesn't consume all available resources on the host, preventing a "noisy neighbor" problem and ensuring fair resource distribution.</p>
+    <hr>
+    <h4 id="capabilities"><a class="anchor" aria-hidden="true" tabindex="-1" href="#capabilities"><span class="octicon octicon-link"></span></a>Capabilities</h4>
+    <p>In traditional Linux security, a process is either "root" (has all privileges) or "non-root" (has limited privileges). This "all or nothing" approach was often too coarse-grained for containers. Capabilities address this by breaking down the traditional "root" privilege into a set of distinct units.</p>
+    <p>Instead of running a container as a full root user, you can grant it only the specific capabilities it needs. For example:</p>
+    <ul>
+      <li>CAP_NET_BIND_SERVICE: Allows binding to privileged network ports (e.g., ports below 1024).</li>
+      <li>CAP_SYS_ADMIN: Allows performing a range of system administration operations.</li>
+      <li>CAP_KILL: Allows sending signals to any process.</li>
+    </ul>
+    <p>By dropping unnecessary capabilities, you significantly reduce the attack surface of a container, enhancing its security.</p>
+    <hr>
+    <h4 id="security-seccomp-selinux-apparmor"><a class="anchor" aria-hidden="true" tabindex="-1" href="#security-seccomp-selinux-apparmor"><span class="octicon octicon-link"></span></a>Security (seccomp, SELinux, AppArmor)</h4>
+    <p>Beyond namespaces, cgroups, and capabilities, several other security mechanisms are commonly used with containers to provide additional layers of protection:</p>
+    <ul>
+      <li>seccomp (Secure Computing Mode): A Linux kernel feature that allows a process to restrict the system calls (syscalls) it can make to the kernel. By applying a seccomp profile, you can define a whitelist or blacklist of syscalls a container is allowed to execute, preventing it from performing potentially dangerous operations.</li>
+      <li>SELinux (Security-Enhanced Linux): A mandatory access control (MAC) security module for the Linux kernel. It provides a flexible and fine-grained security policy that can strictly control what programs, users, and processes can do on a system, including within containers.</li>
+      <li>AppArmor (Application Armor): Another MAC system for Linux that works by loading security profiles into the kernel. These profiles restrict the capabilities of programs (e.g., file access, network access, and other system calls) to a defined set, often easier to configure than SELinux for specific application confinement.</li>
+    </ul>
+    <hr>
+    <h4 id="3521-important-commands"><a class="anchor" aria-hidden="true" tabindex="-1" href="#3521-important-commands"><span class="octicon octicon-link"></span></a>352.1 Important Commands</h4>
+    <h5 id="unshare"><a class="anchor" aria-hidden="true" tabindex="-1" href="#unshare"><span class="octicon octicon-link"></span></a>unshare</h5>
+    <pre class="language-sh"><code class="language-sh code-highlight"><span class="code-line line-number" line="1"><span class="token comment"># create a new namespaces and run a command in it</span>
+</span><span class="code-line line-number" line="2">unshare <span class="token parameter variable">--mount</span> <span class="token parameter variable">--uts</span> <span class="token parameter variable">--ipc</span> <span class="token parameter variable">--user</span> <span class="token parameter variable">--pid</span> <span class="token parameter variable">--net</span>  --map-root-user --mount-proc <span class="token parameter variable">--fork</span> <span class="token function">chroot</span> ~vagrant/debian <span class="token function">bash</span>
+</span><span class="code-line line-number" line="3"><span class="token comment"># mount /proc for test</span>
+</span><span class="code-line line-number" line="4"><span class="token comment">#mount -t proc proc /proc</span>
+</span><span class="code-line line-number" line="5"><span class="token comment">#ps -aux</span>
+</span><span class="code-line line-number" line="6"><span class="token comment">#ip addr show</span>
+</span><span class="code-line line-number" line="7"><span class="token comment">#umount /proc</span>
+</span><span class="code-line line-number" line="8"><span class="token function">umount</span> /proc
+</span></code><div onclick="copied(this)" data-code="# create a new namespaces and run a command in it
+unshare --mount --uts --ipc --user --pid --net  --map-root-user --mount-proc --fork chroot ~vagrant/debian bash
+# mount /proc for test
+#mount -t proc proc /proc
+#ps -aux
+#ip addr show
+#umount /proc
+umount /proc
+" class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+    <h5 id="lsns"><a class="anchor" aria-hidden="true" tabindex="-1" href="#lsns"><span class="octicon octicon-link"></span></a>lsns</h5>
+    <pre class="language-sh"><code class="language-sh code-highlight"><span class="code-line line-number" line="1"><span class="token comment"># show all namespaces</span>
+</span><span class="code-line line-number" line="2">lsns
+</span><span class="code-line line-number" line="3">
+</span><span class="code-line line-number" line="4"><span class="token comment"># show only pid namespace</span>
+</span><span class="code-line line-number" line="5">lsns <span class="token parameter variable">-s</span> <span class="token operator">&#x3C;</span>pid<span class="token operator">></span>
+</span><span class="code-line line-number" line="6">lsns <span class="token parameter variable">-p</span> <span class="token number">3669</span>
+</span><span class="code-line line-number" line="7">
+</span><span class="code-line line-number" line="8"><span class="token function">ls</span> <span class="token parameter variable">-l</span> /proc/<span class="token operator">&#x3C;</span>pid<span class="token operator">></span>/ns
+</span><span class="code-line line-number" line="9"><span class="token function">ls</span> <span class="token parameter variable">-l</span> /proc/3669/ns
+</span><span class="code-line line-number" line="10">
+</span><span class="code-line line-number" line="11"><span class="token function">ps</span> <span class="token parameter variable">-o</span> pid,pidns,netns,ipcns,utsns,userns,args <span class="token parameter variable">-p</span> <span class="token operator">&#x3C;</span>PID<span class="token operator">></span>
+</span><span class="code-line line-number" line="12"><span class="token function">ps</span> <span class="token parameter variable">-o</span> pid,pidns,netns,ipcns,utsns,userns,args <span class="token parameter variable">-p</span> <span class="token number">3669</span>
+</span><span class="code-line line-number" line="13">
+</span></code><div onclick="copied(this)" data-code="# show all namespaces
+lsns
+
+# show only pid namespace
+lsns -s <pid>
+lsns -p 3669
+
+ls -l /proc/<pid>/ns
+ls -l /proc/3669/ns
+
+ps -o pid,pidns,netns,ipcns,utsns,userns,args -p <PID>
+ps -o pid,pidns,netns,ipcns,utsns,userns,args -p 3669
+
+" class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+    <h5 id="nsenter"><a class="anchor" aria-hidden="true" tabindex="-1" href="#nsenter"><span class="octicon octicon-link"></span></a>nsenter</h5>
+    <pre class="language-sh"><code class="language-sh code-highlight"><span class="code-line line-number" line="1"><span class="token comment"># execute a command in namespace</span>
+</span><span class="code-line line-number" line="2"><span class="token function">sudo</span> nsenter <span class="token parameter variable">-t</span> <span class="token operator">&#x3C;</span>PID<span class="token operator">></span> <span class="token parameter variable">-n</span>  <span class="token function">ip</span> <span class="token function">link</span> show
+</span><span class="code-line line-number" line="3"><span class="token function">sudo</span> nsenter <span class="token parameter variable">-t</span> <span class="token number">3669</span> <span class="token parameter variable">-n</span> <span class="token function">ip</span> <span class="token function">link</span> show
+</span></code><div onclick="copied(this)" data-code="# execute a command in namespace
+sudo nsenter -t <PID> -n  ip link show
+sudo nsenter -t 3669 -n ip link show
+" class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+    <h5 id="2521-ip"><a class="anchor" aria-hidden="true" tabindex="-1" href="#2521-ip"><span class="octicon octicon-link"></span></a>252.1 ip</h5>
+    <pre class="language-sh"><code class="language-sh code-highlight"><span class="code-line line-number" line="1"><span class="token comment"># create a new network namespace</span>
+</span><span class="code-line line-number" line="2"><span class="token function">sudo</span> <span class="token function">ip</span> netns <span class="token function">add</span> lxc1
+</span><span class="code-line line-number" line="3">
+</span><span class="code-line line-number" line="4"><span class="token comment"># list network list</span>
+</span><span class="code-line line-number" line="5"><span class="token function">ip</span> netns list
+</span><span class="code-line line-number" line="6">
+</span><span class="code-line line-number" line="7"><span class="token comment"># exec command in network namespace</span>
+</span><span class="code-line line-number" line="8"><span class="token function">sudo</span> <span class="token function">ip</span> netns <span class="token builtin class-name">exec</span> lxc1 <span class="token function">ip</span> addr show
+</span></code><div onclick="copied(this)" data-code="# create a new network namespace
+sudo ip netns add lxc1
+
+# list network list
+ip netns list
+
+# exec command in network namespace
+sudo ip netns exec lxc1 ip addr show
+" class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+    <hr>
     <p align="right">(<a href="#topic-352.1">back to sub topic 352.1</a>)</p>
     <p align="right">(<a href="#topic-352">back to topic 352</a>)</p>
     <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -2341,7 +2875,7 @@ capsh
 lxc (including relevant subcommands)
 " class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
     <h4 id="3522-important-commands"><a class="anchor" aria-hidden="true" tabindex="-1" href="#3522-important-commands"><span class="octicon octicon-link"></span></a>352.2 Important Commands</h4>
-    <h5 id="foo-2"><a class="anchor" aria-hidden="true" tabindex="-1" href="#foo-2"><span class="octicon octicon-link"></span></a>foo</h5>
+    <h5 id="foo"><a class="anchor" aria-hidden="true" tabindex="-1" href="#foo"><span class="octicon octicon-link"></span></a>foo</h5>
     <pre class="language-sh"><code class="language-sh code-highlight"><span class="code-line line-number" line="1">foo
 </span></code><div onclick="copied(this)" data-code="foo
 " class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
@@ -2422,7 +2956,7 @@ OpenStack
 Terraform
 " class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
     <h4 id="3531-important-commands"><a class="anchor" aria-hidden="true" tabindex="-1" href="#3531-important-commands"><span class="octicon octicon-link"></span></a>353.1 Important Commands</h4>
-    <h5 id="foo-3"><a class="anchor" aria-hidden="true" tabindex="-1" href="#foo-3"><span class="octicon octicon-link"></span></a>foo</h5>
+    <h5 id="foo-1"><a class="anchor" aria-hidden="true" tabindex="-1" href="#foo-1"><span class="octicon octicon-link"></span></a>foo</h5>
     <pre class="language-sh"><code class="language-sh code-highlight"><span class="code-line line-number" line="1"><span class="token comment"># examples</span>
 </span></code><div onclick="copied(this)" data-code="# examples
 " class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
@@ -2473,7 +3007,7 @@ user-data
 /var/lib/cloud/
 " class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
     <h4 id="3533-important-commands"><a class="anchor" aria-hidden="true" tabindex="-1" href="#3533-important-commands"><span class="octicon octicon-link"></span></a>353.3 Important Commands</h4>
-    <h5 id="foo-4"><a class="anchor" aria-hidden="true" tabindex="-1" href="#foo-4"><span class="octicon octicon-link"></span></a>foo</h5>
+    <h5 id="foo-2"><a class="anchor" aria-hidden="true" tabindex="-1" href="#foo-2"><span class="octicon octicon-link"></span></a>foo</h5>
     <pre class="language-sh"><code class="language-sh code-highlight"><span class="code-line line-number" line="1"><span class="token comment"># examples</span>
 </span></code><div onclick="copied(this)" data-code="# examples
 " class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
@@ -2720,6 +3254,24 @@ Vagrantfile
           <li><a href="https://libvirt.org/manpages/virtlogd.html">virtlogd</a></li>
           <li><a href="https://libvirt.org/manpages/virtlockd.html">virtlockd</a></li>
           <li><a href="https://virt-manager.org/">virt-manager</a></li>
+        </ul>
+      </li>
+      <li><a href="">Disk Managment</a>
+        <ul>
+          <li><a href="https://qemu-project.gitlab.io/qemu/system/images.html">Disk Images</a></li>
+          <li><a href="https://sempreupdate.com.br/linux/tutoriais/sistema-de-arquivos-copy-on-write-saiba-o-que-e-e-quais-as-vantagens-e-desvantagens/">copy-on-write</a></li>
+          <li><a href="https://docs.redhat.com/en/documentation/red_hat_virtualization/4.3/html/technical_reference/qcow2">RAM x QCOW2</a></li>
+          <li><a href="https://libguestfs.org/">Libguestfs</a></li>
+        </ul>
+      </li>
+      <li><a href="">Virtualization and Containerization</a>
+        <ul>
+          <li><a href="https://aws.amazon.com/pt/containers/">AWS Doc Containers</a></li>
+          <li><a href="https://cloud.google.com/learn/what-are-containers?hl=pt-br">GCP Doc Containers</a></li>
+          <li><a href="https://www.ibm.com/br-pt/topics/containers">IBM Doc Container</a></li>
+          <li><a href="https://www.redhat.com/en/topics/containers/whats-a-linux-container">Red Hat Docs Containers</a></li>
+          <li><a href="https://manpages.ubuntu.com/manpages/noble/man7/namespaces.7.html">Namespaces</a></li>
+          <li><a href="https://www.redhat.com/en/blog/7-linux-namespaces">Most important Namespaces</a></li>
         </ul>
       </li>
       <li><a href="">Openstack Docs</a>
