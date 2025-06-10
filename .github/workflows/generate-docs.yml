@@ -1,0 +1,34 @@
+name: Generate GitBook Docs
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  build-docs:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set Git Config
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Execute PowerShell script
+        run: ./scripts/generate-readmes-gitbook.ps1
+        shell: pwsh
+
+      - name: Commit and Push changes
+        run: |
+          git add docs/ SUMMARY.md .gitbook.yaml
+          if git diff --cached --quiet; then
+            echo "No changes to commit."
+          else
+            git commit -m "chore(docs): auto-generate GitBook documentation"
+            git push
+          fi
