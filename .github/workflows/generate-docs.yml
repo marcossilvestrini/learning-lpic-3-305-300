@@ -20,7 +20,7 @@ jobs:
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
 
       - name: Execute PowerShell script
-        run: ./scripts/generate-readmes-gitbook.ps1
+        run: ./scripts/powershellgenerate-readmes-gitbook.ps1
         shell: pwsh
 
       - name: Commit and Push changes
