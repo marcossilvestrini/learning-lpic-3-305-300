@@ -510,7 +510,7 @@ Permite que um sistema operacional de desktop seja executado em uma máquina vir
 
 ###### Casos de uso da definição de virtualização de desktop
 
-Infraestrutura de desktop virtual (VDI), soluções de trabalho remoto.
+Infraestrutura de Desktop Virtual (VDI), Soluções de Trabalho Remoto.
 
 ###### Exemplos de definição de virtualização de desktop
 
@@ -623,7 +623,7 @@ A empresa forneceu soluções corporativas com base no XEN e ofereceu ferramenta
 O projeto Xen refere-se à comunidade de código aberto e à iniciativa responsável pelo desenvolvimento e manutenção do hipervisor Xen após sua comercialização.  
 O projeto Xen opera sob a Fundação Linux, com foco na construção, melhoria e apoio a Xen como um esforço colaborativo e orientado à comunidade.
 
--   **Metas:**O projeto XEN visa avançar o hipervisor, melhorando seu desempenho, segurança e conjunto de recursos para uma ampla gama de casos de uso, incluindo computação em nuvem, virtualização focada na segurança (por exemplo, QUBES OS) e sistemas incorporados.
+-   **Metas:**O projeto XEN visa avançar o hipervisor, melhorando seu desempenho, segurança e conjunto de recursos para uma ampla gama de casos de uso, incluindo computação em nuvem, virtualização focada na segurança (por exemplo, Qubes OS) e sistemas incorporados.
 -   **Colaboradores:**O projeto inclui colaboradores de várias organizações, incluindo os principais provedores de nuvem, fornecedores de hardware e desenvolvedores independentes.
 -   **Pílula e hedools:**O projeto XEN também inclui ferramentas como XAPI (XenAPI), que é usado para gerenciar instalações do Xen Hypervisor e vários outros utilitários para gerenciamento e otimização do sistema.
 
@@ -684,7 +684,7 @@ Isso resulta em menor sobrecarga e melhor eficiência em comparação com a virt
 
 #### HVM-domu (domínio da máquina virtual de hardware)
 
-O HVM-Domus são máquinas virtuais que utilizam virtualização completa, permitindo que os sistemas operacionais não modificados sejam executados. O Xen Hypervisor fornece emulação de hardware para esses Domus, permitindo que eles executem qualquer sistema operacional que suporta a arquitetura de hardware subjacente.  
+O HVM-Domus são máquinas virtuais que utilizam virtualização completa, permitindo que os sistemas operacionais não modificados sejam executados. O Xen Hypervisor fornece emulação de hardware para esses domus, permitindo que eles executem qualquer sistema operacional que suporta a arquitetura de hardware subjacente.  
 Embora isso ofereça maior flexibilidade, pode resultar em uma sobrecarga mais alta em comparação com o PV-Domus.
 
 #### Rede Xen
@@ -1917,8 +1917,8 @@ timeline
 
 **Principais áreas de conhecimento:**
 
--   Understand the concepts of system and application container
--   Entender e analisar namespaces de kernel
+-   Entenda os conceitos de sistema e contêiner de aplicativos
+-   Understand and analyze kernel namespaces
 -   Entender e analisar grupos de controle
 -   Entender e analisar recursos
 -   Entenda o papel do Seccomp, Selinux e Apparmor for Container Virtualization
@@ -2516,9 +2516,9 @@ Vagrantfile
 Contribuições são o que tornam a comunidade de código aberto um lugar tão incrível para
 Aprenda, inspire e crie. Quaisquer contribuições que você faz são**muito apreciado**.
 
-Se você tiver uma sugestão que melhoraria isso, bifór -se o repositório e
-Crie uma solicitação de tração. Você também pode simplesmente abrir um problema com a tag "aprimoramento".
-Não se esqueça de dar uma estrela ao projeto! Obrigado novamente!
+If you have a suggestion that would make this better, please fork the repo and
+create a pull request. You can also simply open an issue with the tag "enhancement".
+Don't forget to give the project a star! Thanks again!
 
 1.  Bifurcar o projeto
 2.  Crie sua filial de recursos (`git checkout -b feature/AmazingFeature`)
@@ -2536,7 +2536,7 @@ Não se esqueça de dar uma estrela ao projeto! Obrigado novamente!
 
 ## Contato
 
-Marcos Silvestrini -[marcos.silvestrini@gmail.com](mailto:marcos.silvestrini@gmail.com)\\[![Twitter](https://img.shields.io/twitter/url/https/twitter.com/mrsilvestrini.svg?style=social&label=Follow%20%40mrsilvestrini)](https://twitter.com/mrsilvestrini)
+Marcos Silvestrini - [marcos.silvestrini@gmail.com](mailto:marcos.silvestrini@gmail.com)\\[![Twitter](https://img.shields.io/twitter/url/https/twitter.com/mrsilvestrini.svg?style=social&label=Follow%20%40mrsilvestrini)](https://twitter.com/mrsilvestrini)
 
 Link do projeto:<https://github.com/marcossilvestrini/learning-lpic-3-305-300>
 
