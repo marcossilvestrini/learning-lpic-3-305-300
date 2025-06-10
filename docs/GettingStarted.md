@@ -24,7 +24,7 @@ cd learning-lpic-3-305-300
 
 Customize a template *Vagrantfile-topic-XXX*. This file contains a vms configuration for labs. Example:
 
-* File [Vagrantfile-topic-351](./vagrant/Vagrantfile-topic-351)
+* File [Vagrantfile-topic-351](../vagrant/Vagrantfile-topic-351)
   * vm.clone_directory = "<your_driver_letter>:\\<folder>\\<to_machine>\\#{VM_NAME}-instance-1"
     Example: vm.clone_directory = "E:\\Servers\\VMWare\\#{VM_NAME}-instance-1"
   * vm.vmx["memsize"] = ""

@@ -114,7 +114,7 @@ For stronger isolation, consider alternatives like:
 
 Use this script for setting up a minimal chroot environment:
 
-[**chroot.sh**](scripts/container/chroot.sh)
+[**chroot.sh**](../scripts/container/chroot.sh)
 
 ##### 🧪 Test chroot with debootstrap
 
