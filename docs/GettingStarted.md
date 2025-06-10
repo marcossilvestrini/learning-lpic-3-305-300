@@ -31,7 +31,7 @@ Customize a template *Vagrantfile-topic-XXX*. This file contains a vms configura
   * vm.vmx["numvcpus"] = ""
   * vm.vmx["cpuid.coresPerSocket"] = ""
 
-Customize network configuration in files [configs/network](configs/network/).
+Customize network configuration in files [configs/network](../configs/network/).
 
 ---
 
