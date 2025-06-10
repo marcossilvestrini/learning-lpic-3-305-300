@@ -1,10 +1,15 @@
-# Script unificado: split de README.md + geração de SUMMARY.md + .gitbook.yaml
+# Script unificado: split de README.md + geração de SUMMARY.md + .gitbook.yaml (corrigido para rodar localmente e no GitHub Actions)
 
-$baseDir = "k:\CERTIFICACAO\lpic-3-305-300"
-$destinationDir = "$baseDir\docs"
-$summaryPath = Join-Path $baseDir "SUMMARY.md"
-$gitbookYamlPath = Join-Path $baseDir ".gitbook.yaml"
+$scriptPath = $MyInvocation.MyCommand.Definition
+$scriptDir = Split-Path -Parent $scriptPath
+$projectRoot = Resolve-Path "$scriptDir\..\.." | Select-Object -ExpandProperty Path
+$destinationDir = Join-Path $projectRoot "docs"
+$summaryPath = Join-Path $projectRoot "SUMMARY.md"
+$gitbookYamlPath = Join-Path $projectRoot ".gitbook.yaml"
+$sourceFile = Join-Path $projectRoot "README.md"
 
+
+# Títulos válidos
 $validTitles = @(
     "Summary",
     "About Project",
@@ -29,6 +34,7 @@ function Get-SafeFileName {
     return ($safe -replace "\s+", "")
 }
 
+# Cleanup e criação do diretório
 if (Test-Path -Path $destinationDir) {
     Remove-Item -Path $destinationDir -Recurse -Force -ErrorAction SilentlyContinue
 }
@@ -65,7 +71,7 @@ function Invoke-ReadmeForcedSplit {
         $end = if ($i -lt $titleLines.Count - 1) { $titleLines[$i + 1].Line - 1 } else { $lines.Count - 1 }
         $title = $titleLines[$i].Title
 
-        # Ajusta os caminhos relativos das imagens, scripts e vagrant
+        # Ajuste de caminhos relativos
         $content = $lines[$start..$end] | ForEach-Object {
             $_ `
             -replace '!\[([^\]]*)\]\((?<!\.\./)images/', '![${1}](../images/' `
@@ -73,6 +79,7 @@ function Invoke-ReadmeForcedSplit {
             -replace '\[([^\]]+)\]\((?<!\.\./)vagrant/', '[${1}](../vagrant/'
         }
 
+        # Altera título para H1
         if ($content[0] -match '^##\s+') {
             $content[0] = $content[0] -replace '^##\s+', '# '
         }
@@ -85,13 +92,12 @@ function Invoke-ReadmeForcedSplit {
     }
 }
 
-$sourceFile = Join-Path -Path $baseDir -ChildPath "README.md"
 Write-Host "[DEBUG] Processando arquivo: $sourceFile"
-
 $sections = @()
 Invoke-ReadmeForcedSplit -sourceFile $sourceFile -destinationDir $destinationDir -sectionRefs ([ref]$sections)
 Write-Host "Arquivo README.md foi processado com sucesso!"
 
+# Gera SUMMARY.md
 $summaryLines = @("# Summary", "")
 foreach ($s in $sections) {
     $summaryLines += "- [$($s.Title)](docs/$($s.File))"
@@ -99,6 +105,7 @@ foreach ($s in $sections) {
 [System.IO.File]::WriteAllLines($summaryPath, $summaryLines, [System.Text.Encoding]::UTF8)
 Write-Host "[DEBUG] SUMMARY.md gerado: $summaryPath"
 
+# Gera .gitbook.yaml
 $gitbookYaml = @"
 root: docs
 title: "LPIC 305-300"
