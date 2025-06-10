@@ -1,4 +1,4 @@
-﻿# Getting Started
+# Getting Started
 
 For starting the learning, see the documentation above.
 

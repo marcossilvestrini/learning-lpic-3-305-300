@@ -1,4 +1,4 @@
-﻿# Acknowledgments
+# Acknowledgments
 
 * [Richard Stallman's](http://www.stallman.org/)
 * [GNU]()
