@@ -126,10 +126,10 @@ cd learning-lpic-3-305-300
 
 テンプレートをカスタマイズします_vagrantfile-topic-xxx_。このファイルには、ラボ用のVMS構成が含まれています。例：
 
--   ファイル[vagrantfile-topic-351](./vagrant/Vagrantfile-topic-351)
+-   ファイル[vagrantfile-topic-351](vagrant/Vagrantfile-topic-351)
     -   vm.clone_directory = "&lt;your_driver_letter>：\\<folder>\\&lt;to_machine>\\＃{vm_name} -instance-1 "
         例：vm.clone_directory = "e：\\サーバー\\vmware\\＃{vm_name} -instance-1 "
-    -   vm.vmx["memsize"]= ""
+    -   vm.vmx[「Memsize」"]= ""
     -   vm.vmx[「numvcpus」"]= ""
     -   vm.vmx[「cpuid"correspersocout」.]= ""
 
@@ -460,7 +460,7 @@ numaシステムでは、メモリはプロセッサ間で不均一に分散さ�
 
 VMware ESXi、Microsoft Hyper-V、KVM。
 
-##### オペレーティングシステム仮想化（コンテナ化）
+##### Operating System Virtualization (Containerization)
 
 ###### コンテナ化定義
 
@@ -634,7 +634,7 @@ Xenストアは、Xenハイパーバイザーの重要なコンポーネント�
 
 Xenストアのいくつかの重要な側面は次のとおりです。
 
--   **ドメイン間コミュニケーション：**Xenストアでは、Dom0（ハードウェアリソースを制御する特権ドメイン）やDomus（VMSであるユーザードメイン）などのドメイン間の通信を可能にします。これは、各ドメインが情報を読み書きできるキー価値エントリを介して行われます。
+-   **ドメイン間コミュニケーション：** Xen Store enables communication between domains, such as Dom0 (the privileged domain that controls hardware resources) and DomUs (user domains, which are the VMs). This is done through key-value entries, where each domain can read or write information.
 
 -   **構成管理：**仮想デバイス、ネットワーク、ブートパラメーターなどの構成情報を保存およびアクセスするために使用されます。これにより、VMの動的管理と構成が容易になります。
 
@@ -2339,7 +2339,7 @@ Dockerfile
 
 ### 352.4コンテナオーケストレーションプラットフォーム
 
-**Weight:**3
+**重さ：**3
 
 **説明：**候補者は、コンテナオーケストレーションの重要性と、Docker SwarmとKubernetesがコンテナオーケストレーションを実装するために提供する重要な概念を理解する必要があります。
 
