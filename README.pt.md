@@ -510,7 +510,7 @@ Permite que um sistema operacional de desktop seja executado em uma máquina vir
 
 ###### Casos de uso da definição de virtualização de desktop
 
-Infraestrutura de desktop virtual (VDI), soluções de trabalho remoto.
+Infraestrutura de Desktop Virtual (VDI), Soluções de Trabalho Remoto.
 
 ###### Exemplos de definição de virtualização de desktop
 
@@ -623,7 +623,7 @@ A empresa forneceu soluções corporativas com base no XEN e ofereceu ferramenta
 O projeto Xen refere-se à comunidade de código aberto e à iniciativa responsável pelo desenvolvimento e manutenção do hipervisor Xen após sua comercialização.  
 O projeto Xen opera sob a Fundação Linux, com foco na construção, melhoria e apoio a Xen como um esforço colaborativo e orientado à comunidade.
 
--   **Metas:**O projeto XEN visa avançar o hipervisor, melhorando seu desempenho, segurança e conjunto de recursos para uma ampla gama de casos de uso, incluindo computação em nuvem, virtualização focada na segurança (por exemplo, QUBES OS) e sistemas incorporados.
+-   **Metas:**O projeto XEN visa avançar o hipervisor, melhorando seu desempenho, segurança e conjunto de recursos para uma ampla gama de casos de uso, incluindo computação em nuvem, virtualização focada na segurança (por exemplo, Qubes OS) e sistemas incorporados.
 -   **Colaboradores:**O projeto inclui colaboradores de várias organizações, incluindo os principais provedores de nuvem, fornecedores de hardware e desenvolvedores independentes.
 -   **Pílula e hedools:**O projeto XEN também inclui ferramentas como XAPI (XenAPI), que é usado para gerenciar instalações do Xen Hypervisor e vários outros utilitários para gerenciamento e otimização do sistema.
 
