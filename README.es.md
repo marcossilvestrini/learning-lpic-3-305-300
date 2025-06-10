@@ -2182,25 +2182,21 @@ Juntas, estas características del núcleo forman la columna vertebral técnica 
 
 ##### 🧠 Comprender los grupos C (grupos de control)
 
+````sh
 Verificar os Cgroups do sistema
+# systemctl status
+# systemd-cgls
 
-# Estado de SystemCTL
+Ferramentas de manipulação dos Cgroups
+# apt-get install cgroup-tools
 
-# Systemd-CGLS
+# cgcreate -g memory,cpu:lsf
+# cgclassify -g memory,cpu:lsf <PID>
+---
 
-Herramientas de manejo de Cgoup
+#### 352.1 Important Commands
 
-# APT-Get Instalar Toolas CGROUP
-
-# CGCreate -G Memoria, CPU: LSF
-
-# CGClassify -g Memoria, CPU: LSF<PID>
-
-* * *
-
-#### 352.1 comandos importantes
-
-##### desastre
+##### unshare
 
 ```sh
 # create a new namespaces and run a command in it
@@ -2210,7 +2206,7 @@ unshare --mount --uts --ipc --user --pid --net  --map-root-user --mount-proc --f
 #ps -aux
 #ip addr show
 #umount /proc
-```
+````
 
 ##### LSNS
 
@@ -2486,7 +2482,7 @@ user-data
 
 **Áreas clave de conocimiento:**
 
--   Comprender la arquitectura y los conceptos vagabundos, incluido el almacenamiento y las redes
+-   Understand Vagrant architecture and concepts, including storage and networking
 -   Recuperar y usar cajas de Atlas
 -   Crear y ejecutar a Vagrantfiles
 -   Acceder a máquinas virtuales vagabundas

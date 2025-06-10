@@ -361,7 +361,7 @@ VMware ESXI、Microsoft Hyper-V、KVM（カーネルベースの仮想マシン�
 
 ##### 官報化
 
-###### Paravirtualizationの定義
+###### Paravirtualization Definition
 
 Paravirtualizationには、ゲストオペレーティングシステムを変更して仮想環境を認識し、ハイパーバイザーとより効率的に相互作用できるようにします。
 
@@ -430,7 +430,7 @@ numaシステムでは、メモリはプロセッサ間で不均一に分散さ�
 
 ##### 短所
 
--   🛠️プログラミングの複雑さ：プログラマーは、どのメモリの領域がローカルまたはリモートであるかを認識する必要があり、ローカルメモリの使用を最適化してパフォーマンスを向上させます。
+-   🛠️プログラミングの複雑さ：プログラマーは、どのメモリの領域がローカルまたはリモートであるかを認識する必要があり、ローカルメモリの使用を最適化してパフォーマンスを向上させる必要があります。
 -   coption潜在的なパフォーマンスペナルティ：プロセッサがリモートメモリに頻繁にアクセスする場合、遅延が高いためにパフォーマンスが低下する可能性があります。
     このアーキテクチャは、スケーラビリティとメモリの最適化が重要なサーバーやスーパーコンピューターなどの高性能マルチプロセッサシステムで一般的です。
 
@@ -2139,7 +2139,7 @@ docker run -it --rm alpine sh
 
 ##### 🔩cgroups（コントロールグループ）
 
-Cgroups allow the kernel to limit, prioritize, and monitor resource usage across process groups.
+cgroupを使用すると、カーネルがプロセスグループ全体でリソースの使用を制限、優先順位付け、監視することができます。
 
 | リソース       | ユースケースの例            |
 | ---------- | ------------------- |
@@ -2182,25 +2182,21 @@ deversome容器がすべてのシステムリソースを消費するのを止�
 
 ##### croups cgroups（コントロールグループ）の理解
 
-システムcgroupsを確認してください
+````sh
+Verificar os Cgroups do sistema
+# systemctl status
+# systemd-cgls
 
-# SystemCTLステータス
+Ferramentas de manipulação dos Cgroups
+# apt-get install cgroup-tools
 
-# SystemD-CGLS
+# cgcreate -g memory,cpu:lsf
+# cgclassify -g memory,cpu:lsf <PID>
+---
 
-CGOUP処理ツール
+#### 352.1 Important Commands
 
-# apt-getインストールcgroup-tools
-
-# CGCreate -Gメモリ、CPU：LSF
-
-# cgClassify -Gメモリ、CPU：LSF<PID>
-
-* * *
-
-#### 352.1重要なコマンド
-
-##### ウンシェア
+##### unshare
 
 ```sh
 # create a new namespaces and run a command in it
@@ -2210,7 +2206,7 @@ unshare --mount --uts --ipc --user --pid --net  --map-root-user --mount-proc --f
 #ps -aux
 #ip addr show
 #umount /proc
-```
+````
 
 ##### LSNS
 

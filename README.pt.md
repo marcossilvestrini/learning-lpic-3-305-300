@@ -510,7 +510,7 @@ Permite que um sistema operacional de desktop seja executado em uma máquina vir
 
 ###### Casos de uso da definição de virtualização de desktop
 
-Infraestrutura de Desktop Virtual (VDI), Soluções de Trabalho Remoto.
+Infraestrutura de desktop virtual (VDI), soluções de trabalho remoto.
 
 ###### Exemplos de definição de virtualização de desktop
 
@@ -623,7 +623,7 @@ A empresa forneceu soluções corporativas com base no XEN e ofereceu ferramenta
 O projeto Xen refere-se à comunidade de código aberto e à iniciativa responsável pelo desenvolvimento e manutenção do hipervisor Xen após sua comercialização.  
 O projeto Xen opera sob a Fundação Linux, com foco na construção, melhoria e apoio a Xen como um esforço colaborativo e orientado à comunidade.
 
--   **Metas:**O projeto XEN visa avançar o hipervisor, melhorando seu desempenho, segurança e conjunto de recursos para uma ampla gama de casos de uso, incluindo computação em nuvem, virtualização focada na segurança (por exemplo, Qubes OS) e sistemas incorporados.
+-   **Metas:**O projeto XEN visa avançar o hipervisor, melhorando seu desempenho, segurança e conjunto de recursos para uma ampla gama de casos de uso, incluindo computação em nuvem, virtualização focada na segurança (por exemplo, QUBES OS) e sistemas incorporados.
 -   **Colaboradores:**O projeto inclui colaboradores de várias organizações, incluindo os principais provedores de nuvem, fornecedores de hardware e desenvolvedores independentes.
 -   **Pílula e hedools:**O projeto XEN também inclui ferramentas como XAPI (XenAPI), que é usado para gerenciar instalações do Xen Hypervisor e vários outros utilitários para gerenciamento e otimização do sistema.
 
@@ -684,7 +684,7 @@ Isso resulta em menor sobrecarga e melhor eficiência em comparação com a virt
 
 #### HVM-domu (domínio da máquina virtual de hardware)
 
-O HVM-Domus são máquinas virtuais que utilizam virtualização completa, permitindo que os sistemas operacionais não modificados sejam executados. O Xen Hypervisor fornece emulação de hardware para esses domus, permitindo que eles executem qualquer sistema operacional que suporta a arquitetura de hardware subjacente.  
+O HVM-Domus são máquinas virtuais que utilizam virtualização completa, permitindo que os sistemas operacionais não modificados sejam executados. O Xen Hypervisor fornece emulação de hardware para esses Domus, permitindo que eles executem qualquer sistema operacional que suporta a arquitetura de hardware subjacente.  
 Embora isso ofereça maior flexibilidade, pode resultar em uma sobrecarga mais alta em comparação com o PV-Domus.
 
 #### Rede Xen
@@ -910,7 +910,7 @@ xl cd-eject lpic3-hvm-guest-ubuntu xvdb
 
 Em Xen, "VIF" significa interface virtual e é usado para configurar a rede para máquinas virtuais (domínios).
 
-Ao especificar as diretrizes "VIF" nos arquivos de configuração do domínio, os administradores podem definir interfaces de rede, atribuir endereços IP, configurar VLANs e configurar outros parâmetros de rede para máquinas virtuais em execução em hosts XEN. Por exemplo: VIF =[‘bridge=xenbr0’], neste caso, conecta a interface de rede da VM à ponte Xen chamada "XenBr0".
+Ao especificar as diretrizes "VIF" nos arquivos de configuração do domínio, os administradores podem definir interfaces de rede, atribuir endereços IP, configurar VLANs e configurar outros parâmetros de rede para máquinas virtuais em execução em hosts XEN. Por exemplo: VIF =[=Bridge  Xenbr0], neste caso, conecta a interface de rede da VM à ponte Xen chamada "XenBr0".
 
 ````sh
 
@@ -1917,7 +1917,7 @@ timeline
 
 **Principais áreas de conhecimento:**
 
--   Entenda os conceitos de sistema e contêiner de aplicativos
+-   Understand the concepts of system and application container
 -   Entender e analisar namespaces de kernel
 -   Entender e analisar grupos de controle
 -   Entender e analisar recursos
@@ -2049,7 +2049,7 @@ Ao contrário das máquinas virtuais (VMs), os contêineres não virtualizam o h
 1.  Contêineres do sistema
     -   Projetado para executar o sistema operacional inteiro, assemelhar -se a máquinas virtuais.
     -   Suporte a vários processos e serviços do sistema (init, syslog).
-    -   Ideal for legacy or monolithic applications.
+    -   Ideal para aplicações legadas ou monolíticas.
     -   Exemplo: lxc, libvirt-lxc.
 
 2.  Contêineres de aplicação
@@ -2075,7 +2075,7 @@ Ao contrário das máquinas virtuais (VMs), os contêineres não virtualizam o h
 | **Namespaces**        | Isolar processos, usuários, montagens, redes.                          |
 | **CGROUPS**           | Controle e limite o uso de recursos (CPU, memória, IO).                |
 | **Recursos**          | Controle de privilégios de granulação fina dentro de recipientes.      |
-| **seccomp**           | Restringem os syscalls permitidos para reduzir a superfície de ataque. |
+| **Seccomp**           | Restringem os syscalls permitidos para reduzir a superfície de ataque. |
 | **APARMOR / SELinux** | Execução obrigatória de controle de acesso no nível do kernel.         |
 
 * * *
@@ -2182,25 +2182,21 @@ Juntos, esses recursos do kernel formam a espinha dorsal técnica do isolamento 
 
 ##### 🧠 Entendendo os cgroups (grupos de controle)
 
+````sh
 Verificar os Cgroups do sistema
-
-# status do SystemCTL
-
-# Systemd-CGLS
+# systemctl status
+# systemd-cgls
 
 Ferramentas de manipulação dos Cgroups
+# apt-get install cgroup-tools
 
-# APT-Get Install CGROUP-Tools
+# cgcreate -g memory,cpu:lsf
+# cgclassify -g memory,cpu:lsf <PID>
+---
 
-# CGCreate -g Memory, CPU: LSF
+#### 352.1 Important Commands
 
-# CGClassify -g Memory, CPU: LSF<PID>
-
-* * *
-
-#### 352.1 Comandos importantes
-
-##### não se bem
+##### unshare
 
 ```sh
 # create a new namespaces and run a command in it
@@ -2210,7 +2206,7 @@ unshare --mount --uts --ipc --user --pid --net  --map-root-user --mount-proc --f
 #ps -aux
 #ip addr show
 #umount /proc
-```
+````
 
 ##### lsns
 
@@ -2452,7 +2448,7 @@ Além disso, os candidatos devem ser capazes de criar novas imagens do sistema c
 -   Compreendendo os recursos e conceitos de entrada de nuvem, incluindo dados de usuário, inicialização e configuração
 -   Use Cloud-Init para criar, redimensionar e montar sistemas de arquivos, configurar contas de usuário, incluindo credenciais de login, como teclas SSH e instalar pacotes de software do repositório da distribuição
 -   Integre a nuvem-ingressos nas imagens do sistema
--   Use config drive datasource for testing
+-   Use Config Drive DataSource para testar
 
 #### 353.3 Objetos citados
 
