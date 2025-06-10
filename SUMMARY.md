@@ -6,6 +6,7 @@
 - [Usage](docs/Usage.md)
 - [Roadmap](docs/Roadmap.md)
 - [Four Essential Freedoms](docs/FourEssentialFreedoms.md)
+- [Inspect commands](docs/Inspectcommands.md)
 - [Topic 351: Full Virtualization](docs/Topic351FullVirtualization.md)
 - [Topic 352: Container Virtualization](docs/Topic352ContainerVirtualization.md)
 - [Topic 353: VM Deployment and Provisioning](docs/Topic353VMDeploymentandProvisioning.md)

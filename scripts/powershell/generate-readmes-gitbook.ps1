@@ -13,6 +13,7 @@ $validTitles = @(
     "Usage",
     "Roadmap",
     "Four Essential Freedoms",
+    "Inspect commands",
     "Topic 351: Full Virtualization",
     "Topic 352: Container Virtualization",
     "Topic 353: VM Deployment and Provisioning",
@@ -106,8 +107,8 @@ root: docs
 title: "LPIC 305-300"
 description: "Study guide for LPIC-3 Virtualization certification"
 language: "en"
-structure:
-  readme: Summary.md
+structure:  
+  summary: ../SUMMARY.md
 "@
 Set-Content -Path $gitbookYamlPath -Value $gitbookYaml -Encoding UTF8
 Write-Host "[DEBUG] .gitbook.yaml gerado: $gitbookYamlPath"
