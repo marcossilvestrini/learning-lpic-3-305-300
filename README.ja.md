@@ -129,7 +129,7 @@ cd learning-lpic-3-305-300
 -   ファイル[vagrantfile-topic-351](./vagrant/Vagrantfile-topic-351)
     -   vm.clone_directory = "&lt;your_driver_letter>：\\<folder>\\&lt;to_machine>\\＃{vm_name} -instance-1 "
         例：vm.clone_directory = "e：\\サーバー\\vmware\\＃{vm_name} -instance-1 "
-    -   vm.vmx[「Memsize」"]= ""
+    -   vm.vmx["memsize"]= ""
     -   vm.vmx[「numvcpus」"]= ""
     -   vm.vmx[「cpuid"correspersocout」.]= ""
 
@@ -361,7 +361,7 @@ VMware ESXI、Microsoft Hyper-V、KVM（カーネルベースの仮想マシン�
 
 ##### 官報化
 
-###### Paravirtualization Definition
+###### Paravirtualizationの定義
 
 Paravirtualizationには、ゲストオペレーティングシステムを変更して仮想環境を認識し、ハイパーバイザーとより効率的に相互作用できるようにします。
 
@@ -2339,7 +2339,7 @@ Dockerfile
 
 ### 352.4コンテナオーケストレーションプラットフォーム
 
-**重さ：**3
+**Weight:**3
 
 **説明：**候補者は、コンテナオーケストレーションの重要性と、Docker SwarmとKubernetesがコンテナオーケストレーションを実装するために提供する重要な概念を理解する必要があります。
 
