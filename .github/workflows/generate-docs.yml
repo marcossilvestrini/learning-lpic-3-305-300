@@ -24,11 +24,14 @@ jobs:
         shell: pwsh
 
       - name: Commit and Push changes
+        shell: pwsh
         run: |
           git add docs/ SUMMARY.md .gitbook.yaml
-          if git diff --cached --quiet; then
-            echo "No changes to commit."
-          else
+
+          $changes = git diff --cached
+          if (-not [string]::IsNullOrWhiteSpace($changes)) {
             git commit -m "chore(docs): auto-generate GitBook documentation"
             git push
-          fi
+          } else {
+            Write-Host "Nenhuma modificação detectada. Nada a commitar."
+          }
