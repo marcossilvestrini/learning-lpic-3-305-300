@@ -2074,7 +2074,7 @@ A diferencia de las máquinas virtuales (máquinas virtuales), los contenedores 
 | ----------------------- | -------------------------------------------------------------------------------- |
 | **Espacios de nombres** | Aislar procesos, usuarios, monturas, redes.                                      |
 | **CGROUPS**             | Controlar y limitar el uso de recursos (CPU, memoria, IO).                       |
-| **Capabilities**        | Control de privilegios de grano fino dentro de los contenedores.                 |
+| **Capacidades**         | Control de privilegios de grano fino dentro de los contenedores.                 |
 | **seccompe**            | Las restricciones permitieron que los syscalls reduzcan la superficie de ataque. |
 | **Apparmor / Selinux**  | Control de control de acceso obligatorio a nivel de núcleo.                      |
 
