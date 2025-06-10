@@ -306,6 +306,8 @@ Ferramentas de manipulação dos Cgroups
 
 # cgcreate -g memory,cpu:lsf
 # cgclassify -g memory,cpu:lsf <PID>
+```
+
 ---
 
 #### 352.1 Important Commands
