@@ -1,4 +1,4 @@
-﻿# Topic 352: Container Virtualization
+# Topic 352: Container Virtualization
 
 ---
 
