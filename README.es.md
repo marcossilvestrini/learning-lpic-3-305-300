@@ -126,7 +126,7 @@ cd learning-lpic-3-305-300
 
 Personalizar una plantilla_Vagrantfile-topic-xxx_. Este archivo contiene una configuración de VMS para Labs. Ejemplo:
 
--   Archivo[Vagantfile-topic-351](./vagrant/Vagrantfile-topic-351)
+-   Archivo[Vagantfile-topic-351](vagrant/Vagrantfile-topic-351)
     -   vm.clone_directory = "&lt;Your_driver_letter>:\\<folder>\\&lt;TO_MACHINE>\\#{Vm_name} -instance-1 "
         Ejemplo: vm.clone_directory = "e:\\Servidor\\VMware\\#{Vm_name} -instance-1 "
     -   vm.vmx["Memsize"]= ""
@@ -2074,7 +2074,7 @@ A diferencia de las máquinas virtuales (máquinas virtuales), los contenedores 
 | ----------------------- | -------------------------------------------------------------------------------- |
 | **Espacios de nombres** | Aislar procesos, usuarios, monturas, redes.                                      |
 | **CGROUPS**             | Controlar y limitar el uso de recursos (CPU, memoria, IO).                       |
-| **Capacidades**         | Control de privilegios de grano fino dentro de los contenedores.                 |
+| **Capabilities**        | Control de privilegios de grano fino dentro de los contenedores.                 |
 | **seccompe**            | Las restricciones permitieron que los syscalls reduzcan la superficie de ataque. |
 | **Apparmor / Selinux**  | Control de control de acceso obligatorio a nivel de núcleo.                      |
 
