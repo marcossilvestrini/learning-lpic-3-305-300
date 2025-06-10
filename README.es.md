@@ -2482,7 +2482,7 @@ user-data
 
 **Áreas clave de conocimiento:**
 
--   Understand Vagrant architecture and concepts, including storage and networking
+-   Comprender la arquitectura y los conceptos vagabundos, incluido el almacenamiento y las redes
 -   Recuperar y usar cajas de Atlas
 -   Crear y ejecutar a Vagrantfiles
 -   Acceder a máquinas virtuales vagabundas
