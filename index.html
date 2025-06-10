@@ -3052,26 +3052,46 @@ sudo chroot ~vagrant/debian bash
     </blockquote>
     <p>Together, these kernel features form the technical backbone of container isolation — enabling high-density, secure, and efficient application deployment without full VMs.</p>
     <h5 id="-understanding-cgroups-control-groups"><a class="anchor" aria-hidden="true" tabindex="-1" href="#-understanding-cgroups-control-groups"><span class="octicon octicon-link"></span></a>🧠 Understanding Cgroups (Control Groups)</h5>
-    <p>Verificar os Cgroups do sistema</p>
-    <h1 id="systemctl-status"><a class="anchor" aria-hidden="true" tabindex="-1" href="#systemctl-status"><span class="octicon octicon-link"></span></a>systemctl status</h1>
-    <h1 id="systemd-cgls"><a class="anchor" aria-hidden="true" tabindex="-1" href="#systemd-cgls"><span class="octicon octicon-link"></span></a>systemd-cgls</h1>
-    <p>Ferramentas de manipulação dos Cgroups</p>
-    <h1 id="apt-get-install-cgroup-tools"><a class="anchor" aria-hidden="true" tabindex="-1" href="#apt-get-install-cgroup-tools"><span class="octicon octicon-link"></span></a>apt-get install cgroup-tools</h1>
-    <h1 id="cgcreate--g-memorycpulsf"><a class="anchor" aria-hidden="true" tabindex="-1" href="#cgcreate--g-memorycpulsf"><span class="octicon octicon-link"></span></a>cgcreate -g memory,cpu:lsf</h1>
-    <h1 id="cgclassify--g-memorycpulsf-"><a class="anchor" aria-hidden="true" tabindex="-1" href="#cgclassify--g-memorycpulsf-"><span class="octicon octicon-link"></span></a>cgclassify -g memory,cpu:lsf
-      <pid></pid>
-    </h1>
-    <hr>
-    <h4 id="3521-important-commands"><a class="anchor" aria-hidden="true" tabindex="-1" href="#3521-important-commands"><span class="octicon octicon-link"></span></a>352.1 Important Commands</h4>
-    <h5 id="unshare"><a class="anchor" aria-hidden="true" tabindex="-1" href="#unshare"><span class="octicon octicon-link"></span></a>unshare</h5>
-    <pre class="language-sh"><code class="language-sh code-highlight"><span class="code-line line-number" line="1"><span class="token comment"># create a new namespaces and run a command in it</span>
-</span><span class="code-line line-number" line="2">unshare <span class="token parameter variable">--mount</span> <span class="token parameter variable">--uts</span> <span class="token parameter variable">--ipc</span> <span class="token parameter variable">--user</span> <span class="token parameter variable">--pid</span> <span class="token parameter variable">--net</span>  --map-root-user --mount-proc <span class="token parameter variable">--fork</span> <span class="token function">chroot</span> ~vagrant/debian <span class="token function">bash</span>
-</span><span class="code-line line-number" line="3"><span class="token comment"># mount /proc for test</span>
-</span><span class="code-line line-number" line="4"><span class="token comment">#mount -t proc proc /proc</span>
-</span><span class="code-line line-number" line="5"><span class="token comment">#ps -aux</span>
-</span><span class="code-line line-number" line="6"><span class="token comment">#ip addr show</span>
-</span><span class="code-line line-number" line="7"><span class="token comment">#umount /proc</span>
-</span></code><div onclick="copied(this)" data-code="# create a new namespaces and run a command in it
+    <pre class="language-sh"><code class="language-sh code-highlight"><span class="code-line line-number" line="1">Verificar os Cgroups <span class="token keyword">do</span> sistema
+</span><span class="code-line line-number" line="2"><span class="token comment"># systemctl status</span>
+</span><span class="code-line line-number" line="3"><span class="token comment"># systemd-cgls</span>
+</span><span class="code-line line-number" line="4">
+</span><span class="code-line line-number" line="5">Ferramentas de manipulação dos Cgroups
+</span><span class="code-line line-number" line="6"><span class="token comment"># apt-get install cgroup-tools</span>
+</span><span class="code-line line-number" line="7">
+</span><span class="code-line line-number" line="8"><span class="token comment"># cgcreate -g memory,cpu:lsf</span>
+</span><span class="code-line line-number" line="9"><span class="token comment"># cgclassify -g memory,cpu:lsf &#x3C;PID></span>
+</span><span class="code-line line-number" line="10">---
+</span><span class="code-line line-number" line="11">
+</span><span class="code-line line-number" line="12"><span class="token comment">#### 352.1 Important Commands</span>
+</span><span class="code-line line-number" line="13">
+</span><span class="code-line line-number" line="14"><span class="token comment">##### unshare</span>
+</span><span class="code-line line-number" line="15">
+</span><span class="code-line line-number" line="16">```sh
+</span><span class="code-line line-number" line="17"><span class="token comment"># create a new namespaces and run a command in it</span>
+</span><span class="code-line line-number" line="18">unshare <span class="token parameter variable">--mount</span> <span class="token parameter variable">--uts</span> <span class="token parameter variable">--ipc</span> <span class="token parameter variable">--user</span> <span class="token parameter variable">--pid</span> <span class="token parameter variable">--net</span>  --map-root-user --mount-proc <span class="token parameter variable">--fork</span> <span class="token function">chroot</span> ~vagrant/debian <span class="token function">bash</span>
+</span><span class="code-line line-number" line="19"><span class="token comment"># mount /proc for test</span>
+</span><span class="code-line line-number" line="20"><span class="token comment">#mount -t proc proc /proc</span>
+</span><span class="code-line line-number" line="21"><span class="token comment">#ps -aux</span>
+</span><span class="code-line line-number" line="22"><span class="token comment">#ip addr show</span>
+</span><span class="code-line line-number" line="23"><span class="token comment">#umount /proc</span>
+</span></code><div onclick="copied(this)" data-code="Verificar os Cgroups do sistema
+# systemctl status
+# systemd-cgls
+
+Ferramentas de manipulação dos Cgroups
+# apt-get install cgroup-tools
+
+# cgcreate -g memory,cpu:lsf
+# cgclassify -g memory,cpu:lsf <PID>
+---
+
+#### 352.1 Important Commands
+
+##### unshare
+
+&#x60;&#x60;&#x60;sh
+# create a new namespaces and run a command in it
 unshare --mount --uts --ipc --user --pid --net  --map-root-user --mount-proc --fork chroot ~vagrant/debian bash
 # mount /proc for test
 #mount -t proc proc /proc
