@@ -76,7 +76,8 @@ function Invoke-ReadmeForcedSplit {
             $_ `
             -replace '!\[([^\]]*)\]\((?<!\.\./)images/', '![${1}](../images/' `
             -replace '\[([^\]]+)\]\((?<!\.\./)scripts/', '[${1}](../scripts/' `
-            -replace '\[([^\]]+)\]\((?<!\.\./)vagrant/', '[${1}](../vagrant/'
+            -replace '\[([^\]]+)\]\((?<!\.\./)vagrant/', '[${1}](../vagrant/' `
+            -replace '\[([^\]]+)\]\((?<!\.\./)configs/', '[${1}](../configs/'
         }
 
         # Altera título para H1
