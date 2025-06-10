@@ -29,6 +29,8 @@
     -
     <a href="https://github.com/marcossilvestrini/learning-lpic-3-305-300">Code Page</a>
     -
+    <a href="https://skynet-8.gitbook.io/learning-lpic-3-305-300">Gitbook</a>
+    -    
     <a href="https://github.com/marcossilvestrini/learning-lpic-3-305-300/issues">Report Bug</a>
     -
     <a href="https://github.com/marcossilvestrini/learning-lpic-3-305-300/issues">Request Feature</a>
