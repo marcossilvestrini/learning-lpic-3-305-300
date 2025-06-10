@@ -649,7 +649,7 @@ XAPI是Xenserver（現稱為Citrix Hypervisor）的關鍵組成部分，並提�
 
 這是XAPI的一些重要方面：
 
--   **VM Management:**XAPI允許管理員通過編程性創建，刪除，啟動和停止虛擬機。
+-   **VM管理：**XAPI允許管理員通過編程性創建，刪除，啟動和停止虛擬機。
 
 -   **自動化：**使用XAPI，可以自動化虛擬資源的管理，包括網絡，存儲和計算，這對於大雲環境至關重要。
 
@@ -657,7 +657,7 @@ XAPI是Xenserver（現稱為Citrix Hypervisor）的關鍵組成部分，並提�
 
 -   **訪問控制：**XAPI還提供訪問控制機制，以確保只有授權用戶才能在虛擬環境中執行特定操作。
 
-XAPI是可以控制和自動化XEN管理程序的接口，使管理虛擬化環境更容易。
+XAPI是可以控制和自動化XEN虛擬機程序的接口，使管理虛擬化環境變得更容易。
 
 #### Xen摘要
 
@@ -689,8 +689,7 @@ HVM-Domus是使用完整虛擬化的虛擬機，允許未修改的操作系統�
 
 #### XEN網絡
 
-Paravirtualised Network Devices
-![pv-networking](images/xen-networking2.png)
+寄生網絡設備![pv-networking](images/xen-networking2.png)
 
 橋接![pv-networking](images/xen-networking1.png)
 
@@ -1237,7 +1236,7 @@ qemu-system-x86_x64
 -   節點之間的遷移域
 -   了解Libvirt如何與Xen和Qemu互動
 -   了解Libvirt如何與DNSMASQ和RADVD等網絡服務互動
--   Understand libvirt XML configuration files
+-   了解libvirt xml配置文件
 -   意識對virtlogd和virtlockd
 
 #### 351.4引用對象
@@ -2181,6 +2180,22 @@ CGROUP允許內核限制，優先級和監視過程組之間的資源使用情�
 
 這些內核功能共同構成了容器隔離的技術骨幹，可以在沒有完整VM的情況下進行高密度，安全和有效的應用部署。
 
+##### 🧠了解CGROUP（對照組）
+
+檢查系統cgroups
+
+# SystemCTL狀態
+
+# Systemd-CGLS
+
+CGOUP處理工具
+
+# APT-GET安裝Cgroup-Tools
+
+# CGCREATE -G內存，CPU：LSF
+
+# CGCLASSIFY -G內存，CPU：LSF<PID>
+
 * * *
 
 #### 352.1重要命令
@@ -2644,7 +2659,7 @@ Marcos Silvestrini-[marcos.silvestrini@gmail.com](mailto:marcos.silvestrini@gmai
     -   [KVM（redhat的內核虛擬機）](https://www.redhat.com/pt-br/topics/virtualization/what-is-KVM)
     -   [KVM管理工具](https://www.linux-kvm.org/page/Management_Tools)
     -   [KVM網絡](https://www.linux-kvm.org/page/Networking)
--   [QEMU](<>)
+-   [Qemu](<>)
     -   [軍官文檔](https://www.qemu.org/)
     -   [下載圖像OSBOXES](https://www.osboxes.org/)
     -   [下載圖像linuximages](https://www.linuxvmimages.com/)
@@ -2672,6 +2687,8 @@ Marcos Silvestrini-[marcos.silvestrini@gmail.com](mailto:marcos.silvestrini@gmai
     -   [紅帽文檔容器](https://www.redhat.com/en/topics/containers/whats-a-linux-container)
     -   [名稱空間](https://manpages.ubuntu.com/manpages/noble/man7/namespaces.7.html)
     -   [最重要的名稱空間](https://www.redhat.com/en/blog/7-linux-namespaces)
+    -   [Cgroups類](https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/6/html/resource_management_guide/ch01)
+    -   [男人](https://manpages.ubuntu.com/manpages/noble/man7/cgroups.7.html)
 -   [OpenStack文檔](<>)
     -   [redhat](https://www.redhat.com/pt-br/topics/openstack)
 -   [開放的VSWITCH](<>)

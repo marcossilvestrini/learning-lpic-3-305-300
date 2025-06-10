@@ -559,7 +559,7 @@ A emulação envolve a simulação do comportamento de hardware ou software em u
 
 Esse processo permite que o software projetado para um sistema seja executado em outro sistema que possa ter arquitetura ou ambiente operacional diferente.
 
-Embora a emulação forneça versatilidade, permitindo a execução de sistemas ou aplicativos operacionais não modificados, ela geralmente vem com sobrecarga de desempenho.
+Embora a emulação forneça versatilidade, permitindo a execução de sistemas ou aplicativos operacionais de convidados não modificados, ela geralmente vem com sobrecarga de desempenho.
 
 Essa sobrecarga surge porque o sistema emulado precisa interpretar e traduzir instruções destinadas ao sistema original em instruções compatíveis com o sistema host. Como resultado, a emulação pode ser mais lenta que a execução nativa, tornando-o menos eficiente para tarefas com uso intensivo de recursos.
 
@@ -684,7 +684,7 @@ Isso resulta em menor sobrecarga e melhor eficiência em comparação com a virt
 
 #### HVM-domu (domínio da máquina virtual de hardware)
 
-O HVM-Domus são máquinas virtuais que utilizam virtualização completa, permitindo que os sistemas operacionais não modificados sejam executados. O Xen Hypervisor fornece emulação de hardware para esses Domus, permitindo que eles executem qualquer sistema operacional que suporta a arquitetura de hardware subjacente.  
+O HVM-Domus são máquinas virtuais que utilizam virtualização completa, permitindo que os sistemas operacionais não modificados sejam executados. O Xen Hypervisor fornece emulação de hardware para esses domus, permitindo que eles executem qualquer sistema operacional que suporta a arquitetura de hardware subjacente.  
 Embora isso ofereça maior flexibilidade, pode resultar em uma sobrecarga mais alta em comparação com o PV-Domus.
 
 #### Rede Xen
@@ -910,7 +910,7 @@ xl cd-eject lpic3-hvm-guest-ubuntu xvdb
 
 Em Xen, "VIF" significa interface virtual e é usado para configurar a rede para máquinas virtuais (domínios).
 
-Ao especificar as diretrizes "VIF" nos arquivos de configuração do domínio, os administradores podem definir interfaces de rede, atribuir endereços IP, configurar VLANs e configurar outros parâmetros de rede para máquinas virtuais em execução em hosts XEN. Por exemplo: VIF =[=Bridge  Xenbr0], neste caso, conecta a interface de rede da VM à ponte Xen chamada "XenBr0".
+Ao especificar as diretrizes "VIF" nos arquivos de configuração do domínio, os administradores podem definir interfaces de rede, atribuir endereços IP, configurar VLANs e configurar outros parâmetros de rede para máquinas virtuais em execução em hosts XEN. Por exemplo: VIF =[‘bridge=xenbr0’], neste caso, conecta a interface de rede da VM à ponte Xen chamada "XenBr0".
 
 ````sh
 
@@ -1928,7 +1928,7 @@ timeline
 -   Consciência das especificações de tempo de execução da OCI e imagem
 -   Consciência da interface de tempo de execução do contêiner Kubernetes (CRI)
 -   Consciência de Podman, Buildah e Scopeo
--   Consciência de outras abordagens de virtualização de contêineres no Linux e em outros sistemas operacionais gratuitos, como RKT, OpenVZ, Systemd-Npawn ou BSD prisões
+-   Consciência de outras abordagens de virtualização de contêineres no Linux e em outros sistemas operacionais gratuitos, como RKT, OpenVZ, Systemd-Nspawn ou BSD prisões
 
 * * *
 
@@ -2014,7 +2014,7 @@ sudo chroot ~vagrant/debian bash
 
 ![container](images/containers1.png)
 
-Os contêineres são uma tecnologia de virtualização leve que empacota aplicativos junto com as dependências necessárias - código, bibliotecas, variáveis ​​de ambiente e arquivos de configuração - em unidades isoladas, portáteis e reproduzíveis.
+Os contêineres são uma tecnologia de virtualização leve que empacota aplicativos, juntamente com as dependências necessárias - código, bibliotecas, variáveis ​​de ambiente e arquivos de configuração - em unidades isoladas, portáteis e reproduzíveis.
 
 > Em termos simples: um contêiner é uma caixa independente que executa seu aplicativo da mesma maneira, em qualquer lugar.
 
@@ -2049,12 +2049,12 @@ Ao contrário das máquinas virtuais (VMs), os contêineres não virtualizam o h
 1.  Contêineres do sistema
     -   Projetado para executar o sistema operacional inteiro, assemelhar -se a máquinas virtuais.
     -   Suporte a vários processos e serviços do sistema (init, syslog).
-    -   Ideal para aplicações legadas ou monolíticas.
+    -   Ideal for legacy or monolithic applications.
     -   Exemplo: lxc, libvirt-lxc.
 
 2.  Contêineres de aplicação
     -   Projetado para executar um único processo.
-    -   Stateless, ephemeral, and horizontally scalable.
+    -   Sem estado, efêmero e horizontalmente escalável.
     -   Utilizado amplamente em ambientes modernos de DevOps e Kubernetes.
     -   Exemplo: Docker, Containerd, Cri-O.
 
@@ -2075,7 +2075,7 @@ Ao contrário das máquinas virtuais (VMs), os contêineres não virtualizam o h
 | **Namespaces**        | Isolar processos, usuários, montagens, redes.                          |
 | **CGROUPS**           | Controle e limite o uso de recursos (CPU, memória, IO).                |
 | **Recursos**          | Controle de privilégios de granulação fina dentro de recipientes.      |
-| **Seccomp**           | Restringem os syscalls permitidos para reduzir a superfície de ataque. |
+| **seccomp**           | Restringem os syscalls permitidos para reduzir a superfície de ataque. |
 | **APARMOR / SELinux** | Execução obrigatória de controle de acesso no nível do kernel.         |
 
 * * *
@@ -2179,6 +2179,22 @@ Usado em conjunto com namespaces e cgroups para bloquear o que um processo cont�
 > ✅ Capacidades e módulos de segurança definem o que pode fazer
 
 Juntos, esses recursos do kernel formam a espinha dorsal técnica do isolamento de contêineres-permitindo implantação de aplicação de alta densidade, segurança e eficiência sem VMs completas.
+
+##### 🧠 Entendendo os cgroups (grupos de controle)
+
+Verificar os Cgroups do sistema
+
+# status do SystemCTL
+
+# Systemd-CGLS
+
+Ferramentas de manipulação dos Cgroups
+
+# APT-Get Install CGROUP-Tools
+
+# CGCreate -g Memory, CPU: LSF
+
+# CGClassify -g Memory, CPU: LSF<PID>
 
 * * *
 
@@ -2365,7 +2381,7 @@ Dockerfile
 -   Feature Basic Feature Knowledge of Terraform
 -   Consciência do CloudStack, Eucalyptus e Opennebula
 
-#### 353.1 Cited Objects
+#### 353.1 Objetos citados
 
 ```sh
 IaaS, PaaS, SaaS
@@ -2436,7 +2452,7 @@ Além disso, os candidatos devem ser capazes de criar novas imagens do sistema c
 -   Compreendendo os recursos e conceitos de entrada de nuvem, incluindo dados de usuário, inicialização e configuração
 -   Use Cloud-Init para criar, redimensionar e montar sistemas de arquivos, configurar contas de usuário, incluindo credenciais de login, como teclas SSH e instalar pacotes de software do repositório da distribuição
 -   Integre a nuvem-ingressos nas imagens do sistema
--   Use Config Drive DataSource para testar
+-   Use config drive datasource for testing
 
 #### 353.3 Objetos citados
 
@@ -2474,7 +2490,7 @@ user-data
 -   Recuperar e usar caixas do Atlas
 -   Crie e execute o VagrantFiles
 -   Acesse máquinas virtuais vagantes
--   Share and synchronize folder between a Vagrant virtual machine and the host system
+-   Compartilhe e sincronize a pasta entre uma máquina virtual vagante e o sistema host
 -   Entenda o provisionamento vagante, ou seja, provisionistas de arquivos e shell
 -   Entenda a configuração de várias máquinas
 
@@ -2671,6 +2687,8 @@ Link do projeto:<https://github.com/marcossilvestrini/learning-lpic-3-305-300>
     -   [Red Hat Docs Containers](https://www.redhat.com/en/topics/containers/whats-a-linux-container)
     -   [Namespaces](https://manpages.ubuntu.com/manpages/noble/man7/namespaces.7.html)
     -   [Os namespaces mais importantes](https://www.redhat.com/en/blog/7-linux-namespaces)
+    -   [Classes CGROUPS](https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/6/html/resource_management_guide/ch01)
+    -   [Homem CGROUPS](https://manpages.ubuntu.com/manpages/noble/man7/cgroups.7.html)
 -   [OpenStack Docs](<>)
     -   [Redhat](https://www.redhat.com/pt-br/topics/openstack)
 -   [Aberto vswitch](<>)

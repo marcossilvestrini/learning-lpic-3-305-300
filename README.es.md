@@ -2180,6 +2180,22 @@ Se utiliza junto con espacios de nombres y CGROUPS para bloquear lo que puede ha
 
 Juntas, estas características del núcleo forman la columna vertebral técnica del aislamiento del contenedor, lo que permite la implementación de aplicaciones de alta densidad, segura y eficiente sin máquinas virtuales completas.
 
+##### 🧠 Comprender los grupos C (grupos de control)
+
+Verificar os Cgroups do sistema
+
+# Estado de SystemCTL
+
+# Systemd-CGLS
+
+Herramientas de manejo de Cgoup
+
+# APT-Get Instalar Toolas CGROUP
+
+# CGCreate -G Memoria, CPU: LSF
+
+# CGClassify -g Memoria, CPU: LSF<PID>
+
 * * *
 
 #### 352.1 comandos importantes
@@ -2671,6 +2687,8 @@ Enlace del proyecto:<https://github.com/marcossilvestrini/learning-lpic-3-305-30
     -   [Contenedores de Docs de Red Hat](https://www.redhat.com/en/topics/containers/whats-a-linux-container)
     -   [Espacios de nombres](https://manpages.ubuntu.com/manpages/noble/man7/namespaces.7.html)
     -   [Espacios de nombres más importantes](https://www.redhat.com/en/blog/7-linux-namespaces)
+    -   [Clases de CGROUPS](https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/6/html/resource_management_guide/ch01)
+    -   [Groups de hombre](https://manpages.ubuntu.com/manpages/noble/man7/cgroups.7.html)
 -   [OpenStack Docs](<>)
     -   [Redhat](https://www.redhat.com/pt-br/topics/openstack)
 -   [Abrir vswitch](<>)

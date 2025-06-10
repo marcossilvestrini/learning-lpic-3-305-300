@@ -124,7 +124,7 @@ git clone https://github.com/marcossilvestrini/learning-lpic-3-305-300.git
 cd learning-lpic-3-305-300
 ```
 
-Personnaliser un modèle_Vagrantfile-topic-XXX_. Ce fichier contient une configuration VMS pour les laboratoires. Exemple:
+Personnaliser un modèle_Vagrantfile-topic-xxx_. Ce fichier contient une configuration VMS pour les laboratoires. Exemple:
 
 -   Déposer[Vagrantfile-topic-351](./vagrant/Vagrantfile-topic-351)
     -   vm.clone_directory = "&lt;your_driver_letter>:\\<folder>\\&lt;To_machine>\\# {Vm_name} -instance-1 "
@@ -623,7 +623,7 @@ La société a fourni des solutions d'entreprise basées sur Xen et a offert des
 Le projet Xen fait référence à la communauté open source et à l'initiative responsable du développement et du maintien de l'hyperviseur Xen après sa commercialisation.  
 Le projet Xen fonctionne sous la Fondation Linux, en mettant l'accent sur la construction, l'amélioration et le soutien de Xen comme un effort collaboratif et axé sur la communauté.
 
--   **Objectifs:**Le projet Xen vise à faire progresser l'hyperviseur en améliorant ses performances, sa sécurité et son ensemble de fonctionnalités pour un large éventail de cas d'utilisation, notamment le cloud computing, la virtualisation axée sur la sécurité (par exemple, Qubes OS) et les systèmes embarqués.
+-   **Objectifs:**Le projet Xen vise à faire progresser l'hyperviseur en améliorant ses performances, sa sécurité et son ensemble de fonctionnalités pour une large gamme de cas d'utilisation, notamment le cloud computing, la virtualisation axée sur la sécurité (par exemple, Qubes OS) et les systèmes intégrés.
 -   **Contributeurs:**Le projet comprend des contributeurs de diverses organisations, notamment les principaux fournisseurs de cloud, les fournisseurs de matériel et les développeurs indépendants.
 -   **Pilule et hédools:**Le projet Xen comprend également des outils tels que XAPI (Xenapi), qui est utilisé pour gérer les installations d'hyperviseur Xen, et divers autres utilitaires pour la gestion et l'optimisation du système.
 
@@ -2180,6 +2180,22 @@ Utilisé en conjonction avec des espaces de noms et des CGROUP pour verrouiller 
 
 Ensemble, ces caractéristiques du noyau forment l'épine dorsale technique de l'isolement des conteneurs - permettant un déploiement d'applications à haute densité, sécurisé et efficace sans machines virtuelles complètes.
 
+##### 🧠 Comprendre les groupes (groupes de contrôle)
+
+Vérifiez le système CGROUPS
+
+# Statut SystemCTL
+
+# systemd-cgls
+
+Outils de manutention de CGoup
+
+# APT-GET INSTALLATION CGROUP-TOOLS
+
+# Mémoire CGCreate -g, CPU: LSF
+
+# CGCLassify -g Mémoire, CPU: LSF<PID>
+
 * * *
 
 #### 352.1 Commandes importantes
@@ -2671,6 +2687,8 @@ Lien du projet:<https://github.com/marcossilvestrini/learning-lpic-3-305-300>
     -   [Conteneurs Docs Red Hat](https://www.redhat.com/en/topics/containers/whats-a-linux-container)
     -   [Espaces de noms](https://manpages.ubuntu.com/manpages/noble/man7/namespaces.7.html)
     -   [Espaces de noms les plus importants](https://www.redhat.com/en/blog/7-linux-namespaces)
+    -   [Cours de Cgroups](https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/6/html/resource_management_guide/ch01)
+    -   [Homme cgroupes](https://manpages.ubuntu.com/manpages/noble/man7/cgroups.7.html)
 -   [Docs OpenStack](<>)
     -   [Redhat](https://www.redhat.com/pt-br/topics/openstack)
 -   [VSWitch ouvert](<>)
