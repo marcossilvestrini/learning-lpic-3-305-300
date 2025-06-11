@@ -294,19 +294,152 @@ Used in conjunction with namespaces and cgroups to lock down what a containerize
 
 Together, these kernel features form the technical backbone of container isolation — enabling high-density, secure, and efficient application deployment without full VMs.
 
-##### 🧠 Understanding Cgroups (Control Groups)
+#### 🧩 Understanding Cgroups (Control Groups)
+
+![cgroups](../images/cgroups1.png)
+
+##### 📌 Definition
+
+Control Groups (cgroups) are a Linux kernel feature introduced in 2007 that allow you to limit, account for, and isolate the resource usage (CPU, memory, disk I/O, etc.) of groups of processes.
+
+cgroups are heavily used by low-level container runtimes such as runc and crun, and leveraged by container engines like Docker, Podman, and LXC to enforce resource boundaries and provide isolation between containers.
+
+Namespaces isolate, cgroups control.
+
+Namespaces create separate environments for processes (like PID, network, or mounts), while cgroups limit and monitor resource usage (CPU, memory, I/O) for those processes.
+
+⚙️ Key Capabilities
+
+| Feature               | Description                                              |
+| --------------------- | -------------------------------------------------------- |
+| **Resource Limiting** | Impose limits on how much of a resource a group can use  |
+| **Prioritization**    | Allocate more CPU/IO priority to some groups over others |
+| **Accounting**        | Track usage of resources per group                       |
+| **Control**           | Suspend, resume, or kill processes in bulk               |
+| **Isolation**         | Prevent resource starvation between groups               |
+
+##### 📦 Subsystems (Controllers)
+
+cgroups operate through controllers, each responsible for managing one type of resource:
+
+| Subsystem | Description                         |
+| --------- | ----------------------------------- |
+| `cpu`     | Controls CPU scheduling             |
+| `cpuacct` | Generates CPU usage reports         |
+| `memory`  | Limits and accounts memory usage    |
+| `blkio`   | Limits block device I/O             |
+| `devices` | Controls access to devices          |
+| `freezer` | Suspends/resumes execution of tasks |
+| `net_cls` | Tags packets for traffic shaping    |
+| `ns`      | Manages namespace access (rare)     |
+
+##### 📂 Filesystem Layout
+
+cgroups are exposed through the virtual filesystem under /sys/fs/cgroup.
+
+Depending on the version:
+
+* **cgroups v1**: separate hierarchies for each controller (e.g., memory, cpu, etc.)
+* **cgroups v2**: unified hierarchy under a single mount point
+
+Mounted under:
 
 ```sh
-Verificar os Cgroups do sistema
-# systemctl status
-# systemd-cgls
-
-Ferramentas de manipulação dos Cgroups
-# apt-get install cgroup-tools
-
-# cgcreate -g memory,cpu:lsf
-# cgclassify -g memory,cpu:lsf <PID>
+/sys/fs/cgroup/
 ```
+
+Typical cgroups v1 hierarchy:
+
+```sh
+/sys/fs/cgroup/
+├── memory/
+│   ├── mygroup/
+│   │   ├── tasks
+│   │   ├── memory.limit_in_bytes
+├── cpu/
+│   └── mygroup/
+└── ...
+```
+
+In cgroups v2, all resources are managed under a unified hierarchy:
+
+```sh
+/sys/fs/cgroup/
+├── cgroup.procs
+├── cgroup.controllers
+├── memory.max
+├── cpu.max
+└── ...
+```
+
+##### 🧪 Common Usage (v1 and v2 examples)
+
+v1 – Create and assign memory limit:
+
+```sh
+# Mount memory controller (if needed)
+mount -t cgroup -o memory none /sys/fs/cgroup/memory
+
+# Create group
+mkdir /sys/fs/cgroup/memory/mygroup
+
+# Set memory limit (100 MB)
+echo 104857600 | tee /sys/fs/cgroup/memory/mygroup/memory.limit_in_bytes
+
+# Assign a process (e.g., current shell)
+echo $$ | tee /sys/fs/cgroup/memory/mygroup/tasks
+```
+
+v2 – Unified hierarchy:
+
+```sh
+# Create subgroup
+mkdir /sys/fs/cgroup/mygroup
+
+# Enable controllers
+echo +memory +cpu > /sys/fs/cgroup/cgroup.subtree_control
+
+# Move shell into group
+echo $$ > /sys/fs/cgroup/mygroup/cgroup.procs
+
+# Set limits
+echo 104857600 > /sys/fs/cgroup/mygroup/memory.max
+echo "50000 100000" > /sys/fs/cgroup/mygroup/cpu.max  # 50ms quota per 100ms period
+```
+
+🧭 Process & Group Inspection
+
+| Command                 | Description                     |
+| ----------------------- | ------------------------------- |
+| `cat /proc/self/cgroup` | Shows current cgroup membership |
+| `cat /proc/PID/cgroup`  | cgroup of another process       |
+| `cat /proc/PID/status`  | Memory and cgroup info          |
+| `ps -o pid,cmd,cgroup`  | Show process-to-cgroup mapping  |
+
+##### 📦 Usage in Containers
+
+Container engines like Docker, Podman, and containerd delegate resource control to cgroups (via runc or crun), allowing:
+
+* Per-container CPU and memory limits
+* Fine-grained control over blkio and devices
+* Real-time resource accounting
+  
+Docker example:
+
+```sh
+docker run --memory=256m --cpus=1 busybox
+```
+
+Behind the scenes, this creates cgroup rules for memory and CPU limits for the container process.
+
+##### 🧠 Concepts Summary
+
+| Concept         | Explanation                                                        |
+| --------------- | ------------------------------------------------------------------ |
+| **Controllers** | Modules like `cpu`, `memory`, `blkio`, etc. apply limits and rules |
+| **Tasks**       | PIDs (processes) assigned to the control group                     |
+| **Hierarchy**   | Cgroups are structured in a parent-child tree                      |
+| **Delegation**  | Systemd and user services may manage subtrees of cgroups           |
 
 ---
 
@@ -360,6 +493,33 @@ ip netns list
 
 # exec command in network namespace
 sudo ip netns exec lxc1 ip addr show
+```
+
+##### stat
+
+```sh
+# get cgroup version
+stat -fc %T /sys/fs/cgroup
+```
+
+##### systemctl and systemd
+
+```sh
+# get cgroups of system
+systemctl status
+systemd-cgls
+```
+
+##### cgcreate
+
+```sh
+cgcreate -g memory,cpu:lsf
+```
+
+##### cgclassify
+
+```sh
+cgclassify -g memory,cpu:lsf <PID>
 ```
 
 ---
