@@ -3053,26 +3053,250 @@ sudo chroot ~vagrant/debian bash
       <p>✅ Namespaces isolate what a container can see<br>✅ Cgroups control what it can use<br>✅ Capabilities and security modules define what it can do</p>
     </blockquote>
     <p>Together, these kernel features form the technical backbone of container isolation — enabling high-density, secure, and efficient application deployment without full VMs.</p>
-    <h5 id="-understanding-cgroups-control-groups"><a class="anchor" aria-hidden="true" tabindex="-1" href="#-understanding-cgroups-control-groups"><span class="octicon octicon-link"></span></a>🧠 Understanding Cgroups (Control Groups)</h5>
-    <pre class="language-sh"><code class="language-sh code-highlight"><span class="code-line line-number" line="1">Verificar os Cgroups <span class="token keyword">do</span> sistema
-</span><span class="code-line line-number" line="2"><span class="token comment"># systemctl status</span>
-</span><span class="code-line line-number" line="3"><span class="token comment"># systemd-cgls</span>
-</span><span class="code-line line-number" line="4">
-</span><span class="code-line line-number" line="5">Ferramentas de manipulação dos Cgroups
-</span><span class="code-line line-number" line="6"><span class="token comment"># apt-get install cgroup-tools</span>
-</span><span class="code-line line-number" line="7">
-</span><span class="code-line line-number" line="8"><span class="token comment"># cgcreate -g memory,cpu:lsf</span>
-</span><span class="code-line line-number" line="9"><span class="token comment"># cgclassify -g memory,cpu:lsf &#x3C;PID></span>
-</span></code><div onclick="copied(this)" data-code="Verificar os Cgroups do sistema
-# systemctl status
-# systemd-cgls
-
-Ferramentas de manipulação dos Cgroups
-# apt-get install cgroup-tools
-
-# cgcreate -g memory,cpu:lsf
-# cgclassify -g memory,cpu:lsf <PID>
+    <h4 id="-understanding-cgroups-control-groups"><a class="anchor" aria-hidden="true" tabindex="-1" href="#-understanding-cgroups-control-groups"><span class="octicon octicon-link"></span></a>🧩 Understanding Cgroups (Control Groups)</h4>
+    <p>
+      <img src="images/cgroups1.png" alt="cgroups">
+    </p>
+    <h5 id="-definition"><a class="anchor" aria-hidden="true" tabindex="-1" href="#-definition"><span class="octicon octicon-link"></span></a>📌 Definition</h5>
+    <p>Control Groups (cgroups) are a Linux kernel feature introduced in 2007 that allow you to limit, account for, and isolate the resource usage (CPU, memory, disk I/O, etc.) of groups of processes.</p>
+    <p>cgroups are heavily used by low-level container runtimes such as runc and crun, and leveraged by container engines like Docker, Podman, and LXC to enforce resource boundaries and provide isolation between containers.</p>
+    <p>Namespaces isolate, cgroups control.</p>
+    <p>Namespaces create separate environments for processes (like PID, network, or mounts), while cgroups limit and monitor resource usage (CPU, memory, I/O) for those processes.</p>
+    <p>⚙️ Key Capabilities</p>
+    <table>
+      <thead>
+        <tr>
+          <th>Feature</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Resource Limiting</strong></td>
+          <td>Impose limits on how much of a resource a group can use</td>
+        </tr>
+        <tr>
+          <td><strong>Prioritization</strong></td>
+          <td>Allocate more CPU/IO priority to some groups over others</td>
+        </tr>
+        <tr>
+          <td><strong>Accounting</strong></td>
+          <td>Track usage of resources per group</td>
+        </tr>
+        <tr>
+          <td><strong>Control</strong></td>
+          <td>Suspend, resume, or kill processes in bulk</td>
+        </tr>
+        <tr>
+          <td><strong>Isolation</strong></td>
+          <td>Prevent resource starvation between groups</td>
+        </tr>
+      </tbody>
+    </table>
+    <h5 id="-subsystems-controllers"><a class="anchor" aria-hidden="true" tabindex="-1" href="#-subsystems-controllers"><span class="octicon octicon-link"></span></a>📦 Subsystems (Controllers)</h5>
+    <p>cgroups operate through controllers, each responsible for managing one type of resource:</p>
+    <table>
+      <thead>
+        <tr>
+          <th>Subsystem</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>cpu</code></td>
+          <td>Controls CPU scheduling</td>
+        </tr>
+        <tr>
+          <td><code>cpuacct</code></td>
+          <td>Generates CPU usage reports</td>
+        </tr>
+        <tr>
+          <td><code>memory</code></td>
+          <td>Limits and accounts memory usage</td>
+        </tr>
+        <tr>
+          <td><code>blkio</code></td>
+          <td>Limits block device I/O</td>
+        </tr>
+        <tr>
+          <td><code>devices</code></td>
+          <td>Controls access to devices</td>
+        </tr>
+        <tr>
+          <td><code>freezer</code></td>
+          <td>Suspends/resumes execution of tasks</td>
+        </tr>
+        <tr>
+          <td><code>net_cls</code></td>
+          <td>Tags packets for traffic shaping</td>
+        </tr>
+        <tr>
+          <td><code>ns</code></td>
+          <td>Manages namespace access (rare)</td>
+        </tr>
+      </tbody>
+    </table>
+    <h5 id="-filesystem-layout"><a class="anchor" aria-hidden="true" tabindex="-1" href="#-filesystem-layout"><span class="octicon octicon-link"></span></a>📂 Filesystem Layout</h5>
+    <p>cgroups are exposed through the virtual filesystem under /sys/fs/cgroup.</p>
+    <p>Depending on the version:</p>
+    <ul>
+      <li><strong>cgroups v1</strong>: separate hierarchies for each controller (e.g., memory, cpu, etc.)</li>
+      <li><strong>cgroups v2</strong>: unified hierarchy under a single mount point</li>
+    </ul>
+    <p>Mounted under:</p>
+    <pre class="language-sh"><code class="language-sh code-highlight"><span class="code-line line-number" line="1">/sys/fs/cgroup/
+</span></code><div onclick="copied(this)" data-code="/sys/fs/cgroup/
 " class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+    <p>Typical cgroups v1 hierarchy:</p>
+    <pre class="language-sh"><code class="language-sh code-highlight"><span class="code-line line-number" line="1">/sys/fs/cgroup/
+</span><span class="code-line line-number" line="2">├── memory/
+</span><span class="code-line line-number" line="3">│   ├── mygroup/
+</span><span class="code-line line-number" line="4">│   │   ├── tasks
+</span><span class="code-line line-number" line="5">│   │   ├── memory.limit_in_bytes
+</span><span class="code-line line-number" line="6">├── cpu/
+</span><span class="code-line line-number" line="7">│   └── mygroup/
+</span><span class="code-line line-number" line="8">└── <span class="token punctuation">..</span>.
+</span></code><div onclick="copied(this)" data-code="/sys/fs/cgroup/
+├── memory/
+│   ├── mygroup/
+│   │   ├── tasks
+│   │   ├── memory.limit_in_bytes
+├── cpu/
+│   └── mygroup/
+└── ...
+" class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+    <p>In cgroups v2, all resources are managed under a unified hierarchy:</p>
+    <pre class="language-sh"><code class="language-sh code-highlight"><span class="code-line line-number" line="1">/sys/fs/cgroup/
+</span><span class="code-line line-number" line="2">├── cgroup.procs
+</span><span class="code-line line-number" line="3">├── cgroup.controllers
+</span><span class="code-line line-number" line="4">├── memory.max
+</span><span class="code-line line-number" line="5">├── cpu.max
+</span><span class="code-line line-number" line="6">└── <span class="token punctuation">..</span>.
+</span></code><div onclick="copied(this)" data-code="/sys/fs/cgroup/
+├── cgroup.procs
+├── cgroup.controllers
+├── memory.max
+├── cpu.max
+└── ...
+" class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+    <h5 id="-common-usage-v1-and-v2-examples"><a class="anchor" aria-hidden="true" tabindex="-1" href="#-common-usage-v1-and-v2-examples"><span class="octicon octicon-link"></span></a>🧪 Common Usage (v1 and v2 examples)</h5>
+    <p>v1 – Create and assign memory limit:</p>
+    <pre class="language-sh"><code class="language-sh code-highlight"><span class="code-line line-number" line="1"><span class="token comment"># Mount memory controller (if needed)</span>
+</span><span class="code-line line-number" line="2"><span class="token function">mount</span> <span class="token parameter variable">-t</span> cgroup <span class="token parameter variable">-o</span> memory none /sys/fs/cgroup/memory
+</span><span class="code-line line-number" line="3">
+</span><span class="code-line line-number" line="4"><span class="token comment"># Create group</span>
+</span><span class="code-line line-number" line="5"><span class="token function">mkdir</span> /sys/fs/cgroup/memory/mygroup
+</span><span class="code-line line-number" line="6">
+</span><span class="code-line line-number" line="7"><span class="token comment"># Set memory limit (100 MB)</span>
+</span><span class="code-line line-number" line="8"><span class="token builtin class-name">echo</span> <span class="token number">104857600</span> <span class="token operator">|</span> <span class="token function">tee</span> /sys/fs/cgroup/memory/mygroup/memory.limit_in_bytes
+</span><span class="code-line line-number" line="9">
+</span><span class="code-line line-number" line="10"><span class="token comment"># Assign a process (e.g., current shell)</span>
+</span><span class="code-line line-number" line="11"><span class="token builtin class-name">echo</span> <span class="token variable">$$</span> <span class="token operator">|</span> <span class="token function">tee</span> /sys/fs/cgroup/memory/mygroup/tasks
+</span></code><div onclick="copied(this)" data-code="# Mount memory controller (if needed)
+mount -t cgroup -o memory none /sys/fs/cgroup/memory
+
+# Create group
+mkdir /sys/fs/cgroup/memory/mygroup
+
+# Set memory limit (100 MB)
+echo 104857600 | tee /sys/fs/cgroup/memory/mygroup/memory.limit_in_bytes
+
+# Assign a process (e.g., current shell)
+echo $$ | tee /sys/fs/cgroup/memory/mygroup/tasks
+" class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+    <p>v2 – Unified hierarchy:</p>
+    <pre class="language-sh"><code class="language-sh code-highlight"><span class="code-line line-number" line="1"><span class="token comment"># Create subgroup</span>
+</span><span class="code-line line-number" line="2"><span class="token function">mkdir</span> /sys/fs/cgroup/mygroup
+</span><span class="code-line line-number" line="3">
+</span><span class="code-line line-number" line="4"><span class="token comment"># Enable controllers</span>
+</span><span class="code-line line-number" line="5"><span class="token builtin class-name">echo</span> +memory +cpu <span class="token operator">></span> /sys/fs/cgroup/cgroup.subtree_control
+</span><span class="code-line line-number" line="6">
+</span><span class="code-line line-number" line="7"><span class="token comment"># Move shell into group</span>
+</span><span class="code-line line-number" line="8"><span class="token builtin class-name">echo</span> <span class="token variable">$$</span> <span class="token operator">></span> /sys/fs/cgroup/mygroup/cgroup.procs
+</span><span class="code-line line-number" line="9">
+</span><span class="code-line line-number" line="10"><span class="token comment"># Set limits</span>
+</span><span class="code-line line-number" line="11"><span class="token builtin class-name">echo</span> <span class="token number">104857600</span> <span class="token operator">></span> /sys/fs/cgroup/mygroup/memory.max
+</span><span class="code-line line-number" line="12"><span class="token builtin class-name">echo</span> <span class="token string">"50000 100000"</span> <span class="token operator">></span> /sys/fs/cgroup/mygroup/cpu.max  <span class="token comment"># 50ms quota per 100ms period</span>
+</span></code><div onclick="copied(this)" data-code="# Create subgroup
+mkdir /sys/fs/cgroup/mygroup
+
+# Enable controllers
+echo +memory +cpu > /sys/fs/cgroup/cgroup.subtree_control
+
+# Move shell into group
+echo $$ > /sys/fs/cgroup/mygroup/cgroup.procs
+
+# Set limits
+echo 104857600 > /sys/fs/cgroup/mygroup/memory.max
+echo &#x22;50000 100000&#x22; > /sys/fs/cgroup/mygroup/cpu.max  # 50ms quota per 100ms period
+" class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+    <p>🧭 Process &#x26; Group Inspection</p>
+    <table>
+      <thead>
+        <tr>
+          <th>Command</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>cat /proc/self/cgroup</code></td>
+          <td>Shows current cgroup membership</td>
+        </tr>
+        <tr>
+          <td><code>cat /proc/PID/cgroup</code></td>
+          <td>cgroup of another process</td>
+        </tr>
+        <tr>
+          <td><code>cat /proc/PID/status</code></td>
+          <td>Memory and cgroup info</td>
+        </tr>
+        <tr>
+          <td><code>ps -o pid,cmd,cgroup</code></td>
+          <td>Show process-to-cgroup mapping</td>
+        </tr>
+      </tbody>
+    </table>
+    <h5 id="-usage-in-containers"><a class="anchor" aria-hidden="true" tabindex="-1" href="#-usage-in-containers"><span class="octicon octicon-link"></span></a>📦 Usage in Containers</h5>
+    <p>Container engines like Docker, Podman, and containerd delegate resource control to cgroups (via runc or crun), allowing:</p>
+    <ul>
+      <li>Per-container CPU and memory limits</li>
+      <li>Fine-grained control over blkio and devices</li>
+      <li>Real-time resource accounting</li>
+    </ul>
+    <p>Docker example:</p>
+    <pre class="language-sh"><code class="language-sh code-highlight"><span class="code-line line-number" line="1"><span class="token function">docker</span> run <span class="token parameter variable">--memory</span><span class="token operator">=</span>256m <span class="token parameter variable">--cpus</span><span class="token operator">=</span><span class="token number">1</span> busybox
+</span></code><div onclick="copied(this)" data-code="docker run --memory=256m --cpus=1 busybox
+" class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+    <p>Behind the scenes, this creates cgroup rules for memory and CPU limits for the container process.</p>
+    <h5 id="-concepts-summary"><a class="anchor" aria-hidden="true" tabindex="-1" href="#-concepts-summary"><span class="octicon octicon-link"></span></a>🧠 Concepts Summary</h5>
+    <table>
+      <thead>
+        <tr>
+          <th>Concept</th>
+          <th>Explanation</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Controllers</strong></td>
+          <td>Modules like <code>cpu</code>, <code>memory</code>, <code>blkio</code>, etc. apply limits and rules</td>
+        </tr>
+        <tr>
+          <td><strong>Tasks</strong></td>
+          <td>PIDs (processes) assigned to the control group</td>
+        </tr>
+        <tr>
+          <td><strong>Hierarchy</strong></td>
+          <td>Cgroups are structured in a parent-child tree</td>
+        </tr>
+        <tr>
+          <td><strong>Delegation</strong></td>
+          <td>Systemd and user services may manage subtrees of cgroups</td>
+        </tr>
+      </tbody>
+    </table>
     <hr>
     <h4 id="3521-important-commands"><a class="anchor" aria-hidden="true" tabindex="-1" href="#3521-important-commands"><span class="octicon octicon-link"></span></a>352.1 Important Commands</h4>
     <h5 id="unshare"><a class="anchor" aria-hidden="true" tabindex="-1" href="#unshare"><span class="octicon octicon-link"></span></a>unshare</h5>
@@ -3142,6 +3366,28 @@ ip netns list
 
 # exec command in network namespace
 sudo ip netns exec lxc1 ip addr show
+" class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+    <h5 id="stat"><a class="anchor" aria-hidden="true" tabindex="-1" href="#stat"><span class="octicon octicon-link"></span></a>stat</h5>
+    <pre class="language-sh"><code class="language-sh code-highlight"><span class="code-line line-number" line="1"><span class="token comment"># get cgroup version</span>
+</span><span class="code-line line-number" line="2"><span class="token function">stat</span> <span class="token parameter variable">-fc</span> %T /sys/fs/cgroup
+</span></code><div onclick="copied(this)" data-code="# get cgroup version
+stat -fc %T /sys/fs/cgroup
+" class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+    <h5 id="systemctl-and-systemd"><a class="anchor" aria-hidden="true" tabindex="-1" href="#systemctl-and-systemd"><span class="octicon octicon-link"></span></a>systemctl and systemd</h5>
+    <pre class="language-sh"><code class="language-sh code-highlight"><span class="code-line line-number" line="1"><span class="token comment"># get cgroups of system</span>
+</span><span class="code-line line-number" line="2">systemctl status
+</span><span class="code-line line-number" line="3">systemd-cgls
+</span></code><div onclick="copied(this)" data-code="# get cgroups of system
+systemctl status
+systemd-cgls
+" class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+    <h5 id="cgcreate"><a class="anchor" aria-hidden="true" tabindex="-1" href="#cgcreate"><span class="octicon octicon-link"></span></a>cgcreate</h5>
+    <pre class="language-sh"><code class="language-sh code-highlight"><span class="code-line line-number" line="1">cgcreate <span class="token parameter variable">-g</span> memory,cpu:lsf
+</span></code><div onclick="copied(this)" data-code="cgcreate -g memory,cpu:lsf
+" class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+    <h5 id="cgclassify"><a class="anchor" aria-hidden="true" tabindex="-1" href="#cgclassify"><span class="octicon octicon-link"></span></a>cgclassify</h5>
+    <pre class="language-sh"><code class="language-sh code-highlight"><span class="code-line line-number" line="1">cgclassify <span class="token parameter variable">-g</span> memory,cpu:lsf <span class="token operator">&#x3C;</span>PID<span class="token operator">></span>
+</span></code><div onclick="copied(this)" data-code="cgclassify -g memory,cpu:lsf <PID>
 " class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
     <hr>
     <p align="right">(<a href="#topic-352.1">back to sub topic 352.1</a>)</p>
