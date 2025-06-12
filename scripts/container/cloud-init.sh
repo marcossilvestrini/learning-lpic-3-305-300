@@ -31,7 +31,8 @@ if echo "$RELEASE_INFO" | grep -q -i "debian\|ubuntu"; then
         tightvncserver dbus-x11 \
         bridge-utils \
         debootstrap \
-        cgroup-tools
+        cgroup-tools \
+        stress-ng
 
     # Set user profile for bash and vim
     sudo cp -f configs/commons/.bashrc_debian .bashrc
