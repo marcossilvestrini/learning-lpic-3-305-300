@@ -1,6 +1,6 @@
 <h1><a name="readme-top"></a></h1>
 
-[![Create Release](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/release.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/release.yml)[![Translate README](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/translate.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/translate.yml)[![Generate HTML and PDF](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/generate-html.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/generate-html.yml)[![Deploy Webpage](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/deploy-webpage.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/deploy-webpage.yml)[![PSScriptAnalyzer](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/powershell.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/powershell.yml)[![Slack Notification](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/slack.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/slack.yml)
+[![Create Release](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/release.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/release.yml)[![Translate README](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/translate.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/translate.yml)[![Generate HTML and PDF](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/generate-html.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/generate-html.yml)[![Deploy Webpage](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/deploy-webpage.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/deploy-webpage.yml)[![Generate GitBook Docs](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/generate-docs.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/generate-docs.yml)[![PSScriptAnalyzer](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/powershell.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/powershell.yml)[![Slack Notification](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/slack.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/slack.yml)
 
 * * *
 
@@ -20,7 +20,7 @@
     <a href="https://github.com/marcossilvestrini/learning-lpic-3-305-300">Code Page</a>
     -
     <a href="https://skynet-8.gitbook.io/learning-lpic-3-305-300">Gitbook</a>
-    -    
+    -
     <a href="https://github.com/marcossilvestrini/learning-lpic-3-305-300/issues">Report Bug</a>
     -
     <a href="https://github.com/marcossilvestrini/learning-lpic-3-305-300/issues">Request Feature</a>
@@ -302,7 +302,7 @@ Executa em cima de um sistema operacional convencional, contando com o sistema o
 ##### Diferenças -chave entre os hipervisores do tipo 1 e do tipo 2
 
 -   Ambiente de implantação:
-    -   Os hipervisores tipo 1 são comumente implantados em data centers e ambientes corporativos devido à sua interação direta com hardware e alto desempenho.
+    -   Os hipervisores do tipo 1 são comumente implantados em data centers e ambientes corporativos devido à sua interação direta com hardware e alto desempenho.
     -   Os hipervisores do tipo 2 são mais adequados para tarefas de uso pessoal, desenvolvimento, teste e virtualização em pequena escala.
 -   Desempenho:
     -   Os hipervisores do tipo 1 geralmente oferecem melhor desempenho e menor latência porque não confiam em um sistema operacional host.
@@ -446,7 +446,7 @@ Em um sistema NUMA, a memória é distribuída de maneira desigual entre os proc
 
 -   🌐 Open Vswitch:<https://www.openvswitch.org/>
 
-#### Types of Virtualization
+#### Tipos de virtualização
 
 ##### Virtualização de hardware (virtualização do servidor)
 
@@ -594,7 +594,7 @@ O serviço usinado pela SystemD é dedicado ao gerenciamento de máquinas e cont
 
 -   Entenda a arquitetura de Xen, incluindo networking e armazenamento
 -   Configuração básica dos nós e domínios Xen
--   Basic management of Xen nodes and domains
+-   Gerenciamento básico de nós e domínios Xen
 -   Solução de problemas básicos de instalações Xen
 -   Avarines fora da pílula
 -   Consciência de Xenstore
@@ -640,7 +640,7 @@ Aqui estão alguns aspectos importantes da Xen Store:
 
 -   **Gerenciamento de configuração:**É usado para armazenar e acessar informações de configuração, como dispositivos virtuais, redes e parâmetros de inicialização. Isso facilita o gerenciamento dinâmico e a configuração das VMs.
 
--   **Eventos e notificações:** Xen Store also supports event notifications. When a particular key or value in the Xen Store is modified, interested domains can be notified to react to these changes. This is useful for monitoring and managing resources.
+-   **Eventos e notificações:**A Xen Store também suporta notificações de eventos. Quando uma chave ou valor específica na loja Xen é modificada, os domínios interessados ​​podem ser notificados para reagir a essas alterações. Isso é útil para monitorar e gerenciar recursos.
 
 -   API simples: a Xen Store fornece uma API simples para ler e escrever dados, facilitando os desenvolvedores para integrar seus aplicativos ao sistema de virtualização Xen.
 
@@ -2016,7 +2016,7 @@ sudo chroot ~vagrant/debian bash
 
 ![container](images/containers1.png)
 
-Os contêineres são uma tecnologia de virtualização leve que empacota aplicativos junto com as dependências necessárias - código, bibliotecas, variáveis ​​de ambiente e arquivos de configuração - em unidades isoladas, portáteis e reproduzíveis.
+Os contêineres são uma tecnologia de virtualização leve que empacota aplicativos, juntamente com as dependências necessárias - código, bibliotecas, variáveis ​​de ambiente e arquivos de configuração - em unidades isoladas, portáteis e reproduzíveis.
 
 > Em termos simples: um contêiner é uma caixa independente que executa seu aplicativo da mesma maneira, em qualquer lugar.
 
@@ -2210,16 +2210,16 @@ Os namespaces criam ambientes separados para processos (como PID, rede ou montag
 
 Os cgroups operam através dos controladores, cada um responsável pelo gerenciamento de um tipo de recurso:
 
-| Subsystem | Descrição                                 |
-| --------- | ----------------------------------------- |
-| `cpu`     | Controla a programação da CPU             |
-| `cpuacct` | Gera relatórios de uso da CPU             |
-| `memory`  | Limita e contas o uso da memória          |
-| `blkio`   | Limita a E/S do dispositivo de bloco      |
-| `devices` | Controla o acesso a dispositivos          |
-| `freezer` | Suspende/retoma a execução de tarefas     |
-| `net_cls` | Pacotes de tags para modelagem de tráfego |
-| `ns`      | Gerencia o acesso ao namespace (raro)     |
+| Subsistema | Descrição                                 |
+| ---------- | ----------------------------------------- |
+| `cpu`      | Controla a programação da CPU             |
+| `cpuacct`  | Gera relatórios de uso da CPU             |
+| `memory`   | Limita e contas o uso da memória          |
+| `blkio`    | Limita a E/S do dispositivo de bloco      |
+| `devices`  | Controla o acesso a dispositivos          |
+| `freezer`  | Suspende/retoma a execução de tarefas     |
+| `net_cls`  | Pacotes de tags para modelagem de tráfego |
+| `ns`       | Gerencia o acesso ao namespace (raro)     |
 
 ##### Layout Layout do sistema de arquivos
 
