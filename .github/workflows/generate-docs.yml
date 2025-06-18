@@ -32,6 +32,7 @@ jobs:
           $changes = git diff --cached
           if (-not [string]::IsNullOrWhiteSpace($changes)) {
             git commit -m "chore(docs): auto-generate GitBook documentation"
+            git pull --rebase origin main
             git push
           } else {
             Write-Host "Nenhuma modificação detectada. Nada a commitar."

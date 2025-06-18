@@ -197,41 +197,30 @@ EOF
 
 run_scenario_5_cap_ptrace() {
     DESC="Try using strace on a child process (simulate debugging)"
-    log "📌 📌 📌 📌 📌 📌 📌 📌 Preparing test process for strace..."
+    log "📌 Preparing test process for strace..."
 
-    STRACE_BIN="/tmp/strace_copy"
-    cp "$(command -v strace)" "$STRACE_BIN"
-    chmod +x "$STRACE_BIN"
-    setcap cap_sys_ptrace=eip "$STRACE_BIN"
-
-    if ! getcap "$STRACE_BIN" | grep -q "cap_sys_ptrace"; then
-        summary "CAP_SYS_PTRACE" "$DESC" "❌ setcap failed" "N/A"
-        return
-    fi
-
-    # Start a long-running process
     sleep 30 &
     CHILD_PID=$!
     sleep 1
 
     if ! ps -p "$CHILD_PID" &>/dev/null; then
-        summary "CAP_SYS_PTRACE" "$DESC" "❌ Failed to launch child" "N/A"
+        summary "CAP_SYS_PTRACE" "$DESC" "❌ Child process not running" "N/A"
         return
     fi
 
-    OUTPUT=$($STRACE_BIN -p "$CHILD_PID" -o /tmp/ptrace.out -e trace=none -qq 2>&1 || true)
+    OUTPUT=$(strace -p "$CHILD_PID" -e trace=none -qq 2>&1)
 
-    if grep -q "attached" /tmp/ptrace.out || echo "$OUTPUT" | grep -q "attached"; then
+    if echo "$OUTPUT" | grep -q "attached"; then
         RESULT="✅ strace attached – CAP_SYS_PTRACE effective"
     else
-        RESULT="❌ Failed to trace – check execution and permissions"
+        RESULT="❌ Failed to trace – check permissions and environment"
     fi
 
-    CAPS="CAP_SYS_PTRACE set on binary"
+    CAPS="Used strace as root"
     summary "CAP_SYS_PTRACE" "$DESC" "$RESULT" "$CAPS"
     kill "$CHILD_PID" &>/dev/null || true
-    rm -f "$STRACE_BIN" /tmp/ptrace.out
 }
+
 
 
 run_scenario_6_cap_admin() {
