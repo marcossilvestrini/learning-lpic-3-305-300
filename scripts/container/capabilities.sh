@@ -4,12 +4,12 @@
     Script Name: capabilities-lab.sh
     Requirements: root privileges, auto-installs: capsh, tcpdump, python3, strace, util-linux
     Description: Demonstrates Linux capabilities through 6 practical scenarios:
-                 (1) Drop all capabilities (test failures),
-                 (2) Add CAP_NET_RAW and test packet capture,
-                 (3) Add CAP_NET_BIND_SERVICE and bind to port 80,
-                 (4) Use CAP_KILL to kill a process,
-                 (5) Use CAP_SYS_PTRACE to strace another process,
-                 (6) Use CAP_SYS_ADMIN to mount a tmpfs
+        (1) Drop all capabilities (test failures),
+        (2) Add CAP_NET_RAW and test packet capture,
+        (3) Add CAP_NET_BIND_SERVICE and bind to port 80,
+        (4) Use CAP_KILL to kill a process,
+        (5) Use CAP_SYS_PTRACE to strace another process,
+        (6) Use CAP_SYS_ADMIN to mount a tmpfs.
     Author: Marcos Silvestrini
     Date: 16/06/2025
 MULTILINE-COMMENT
@@ -197,39 +197,63 @@ EOF
 
 run_scenario_5_cap_ptrace() {
     DESC="Try using strace on a child process (simulate debugging)"
+    log "📌 📌 📌 📌 📌 📌 📌 📌 Preparing test process for strace..."
 
-    CHILD_PID=$(sleep 5 & echo $!)
-    sleep 1
-    OUTPUT=$(capsh --drop=all --add=cap_sys_ptrace -- -c "strace -p $CHILD_PID -o /dev/null -e trace=none -qq" 2>&1 || true)
+    STRACE_BIN="/tmp/strace_copy"
+    cp "$(command -v strace)" "$STRACE_BIN"
+    chmod +x "$STRACE_BIN"
+    setcap cap_sys_ptrace=eip "$STRACE_BIN"
 
-    if echo "$OUTPUT" | grep -q "Process $CHILD_PID attached"; then
-        RESULT="✅ strace attached – CAP_SYS_PTRACE effective"
-    else
-        RESULT="❌ Failed to trace – likely missing capability"
+    if ! getcap "$STRACE_BIN" | grep -q "cap_sys_ptrace"; then
+        summary "CAP_SYS_PTRACE" "$DESC" "❌ setcap failed" "N/A"
+        return
     fi
 
-    CAPS="Added CAP_SYS_PTRACE"
+    # Start a long-running process
+    sleep 30 &
+    CHILD_PID=$!
+    sleep 1
+
+    if ! ps -p "$CHILD_PID" &>/dev/null; then
+        summary "CAP_SYS_PTRACE" "$DESC" "❌ Failed to launch child" "N/A"
+        return
+    fi
+
+    OUTPUT=$($STRACE_BIN -p "$CHILD_PID" -o /tmp/ptrace.out -e trace=none -qq 2>&1 || true)
+
+    if grep -q "attached" /tmp/ptrace.out || echo "$OUTPUT" | grep -q "attached"; then
+        RESULT="✅ strace attached – CAP_SYS_PTRACE effective"
+    else
+        RESULT="❌ Failed to trace – check execution and permissions"
+    fi
+
+    CAPS="CAP_SYS_PTRACE set on binary"
     summary "CAP_SYS_PTRACE" "$DESC" "$RESULT" "$CAPS"
     kill "$CHILD_PID" &>/dev/null || true
+    rm -f "$STRACE_BIN" /tmp/ptrace.out
 }
+
 
 run_scenario_6_cap_admin() {
     DESC="Try mounting a tmpfs using CAP_SYS_ADMIN"
+    MNT_DIR="/tmp/testmnt"
+    mkdir -p "$MNT_DIR"
+    chmod 755 "$MNT_DIR"
 
-    mkdir -p /tmp/testmnt
-    OUTPUT=$(capsh --drop=all --add=cap_sys_admin -- -c "mount -t tmpfs none /tmp/testmnt" 2>&1 || true)
+    OUTPUT=$(capsh --keep=1 --caps="cap_sys_admin+ep" -- -c "/bin/mount -t tmpfs none $MNT_DIR" 2>&1 || true)
 
-    if mount | grep -q "/tmp/testmnt"; then
+    if mount | grep -q "$MNT_DIR"; then
         RESULT="✅ Mount succeeded with CAP_SYS_ADMIN"
-        umount /tmp/testmnt
+        umount "$MNT_DIR"
     else
         RESULT="❌ Failed to mount – likely missing capability"
     fi
 
     CAPS="Added CAP_SYS_ADMIN"
     summary "CAP_SYS_ADMIN" "$DESC" "$RESULT" "$CAPS"
-    rm -rf /tmp/testmnt
+    rm -rf "$MNT_DIR"
 }
+
 
 main_menu() {
     clear

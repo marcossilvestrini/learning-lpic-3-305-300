@@ -22,8 +22,8 @@ if echo "$RELEASE_INFO" | grep -q -i "debian\|ubuntu"; then
     echo "This is a Debian or Ubuntu-based distribution."
 
     # Install required packages
-    sudo apt update -y
-    sudo apt install -y \
+    sudo apt update -yqq
+    sudo apt install -yqq \
         dos2unix \
         lvm2 \
         tree whois \

@@ -1,10 +1,11 @@
 name: Generate GitBook Docs
 
-on:
-  push:
-    branches:
-      - main
-  workflow_dispatch:
+on:  
+  workflow_run:
+    workflows: ["Translate README"]
+    branches: [main]
+    types:
+      - completed
 
 jobs:
   build-docs:

@@ -2365,6 +2365,16 @@ This enhances system security by enforcing the principle of least privilege.
 | `CAP_SETUID`            | Change user ID (UID) of the process             |
 | `CAP_NET_ADMIN`         | Manage network interfaces, routing, etc.        |
 
+🔐 Some Linux Capabilities Types
+
+| Capability Type | Description |
+|------------------|-------------|
+| **CapInh (Inherited)** | Capabilities inherited from the parent process. |
+| **CapPrm (Permitted)** | Capabilities that the process is allowed to have. |
+| **CapEff (Effective)** | Capabilities that the process is currently using. |
+| **CapBnd (Bounding)** | Restricts the maximum set of effective capabilities a process can obtain. |
+| **CapAmb (Ambient)** | Allows a process to explicitly define its own effective capabilities. |
+
 📦 Capabilities in Containers and Pods
 Containers typically do not run as full root, but instead receive a limited set of capabilities by default depending on the runtime.
 
@@ -2461,6 +2471,20 @@ cgcreate -g memory,cpu:lsf
 ```sh
 cgclassify -g memory,cpu:lsf <PID>
 ```
+
+##### setcap cap_net_raw=ep /usr/bin/tcpdump
+
+```sh
+
+```
+
+##### getcap /usr/bin/tcpdump
+
+```sh
+
+```
+
+##### capsh - capability shell wrapper
 
 ---
 
