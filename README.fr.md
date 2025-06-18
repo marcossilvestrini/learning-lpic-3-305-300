@@ -1,6 +1,6 @@
 <h1><a name="readme-top"></a></h1>
 
-[![Create Release](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/release.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/release.yml)[![Translate README](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/translate.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/translate.yml)[![Generate HTML and PDF](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/generate-html.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/generate-html.yml)[![Deploy Webpage](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/deploy-webpage.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/deploy-webpage.yml)[![PSScriptAnalyzer](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/powershell.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/powershell.yml)[![Slack Notification](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/slack.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/slack.yml)
+[![Create Release](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/release.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/release.yml)[![Translate README](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/translate.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/translate.yml)[![Generate HTML and PDF](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/generate-html.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/generate-html.yml)[![Deploy Webpage](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/deploy-webpage.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/deploy-webpage.yml)[![Generate GitBook Docs](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/generate-docs.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/generate-docs.yml)[![PSScriptAnalyzer](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/powershell.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/powershell.yml)[![Slack Notification](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/slack.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/slack.yml)
 
 * * *
 
@@ -18,6 +18,8 @@
     <a href="https://marcossilvestrini.github.io/learning-lpic-3-305-300/">Web Site</a>
     -
     <a href="https://github.com/marcossilvestrini/learning-lpic-3-305-300">Code Page</a>
+    -
+    <a href="https://skynet-8.gitbook.io/learning-lpic-3-305-300">Gitbook</a>
     -
     <a href="https://github.com/marcossilvestrini/learning-lpic-3-305-300/issues">Report Bug</a>
     -
@@ -126,7 +128,7 @@ cd learning-lpic-3-305-300
 
 Personnaliser un modèle_Vagrantfile-topic-xxx_. Ce fichier contient une configuration VMS pour les laboratoires. Exemple:
 
--   Déposer[Vagrantfile-topic-351](./vagrant/Vagrantfile-topic-351)
+-   Déposer[Vagrantfile-topic-351](vagrant/Vagrantfile-topic-351)
     -   vm.clone_directory = "&lt;your_driver_letter>:\\<folder>\\&lt;To_machine>\\# {Vm_name} -instance-1 "
         Exemple: vm.clone_directory = "E:\\Serveurs\\Vmware\\# {Vm_name} -instance-1 "
     -   vm.vmx["memsize"]= ""
@@ -2137,7 +2139,7 @@ Le résultat: un environnement d'exécution léger et isolé qui se comporte com
 
 Les espaces de noms masquent les ressources des conteneurs. Mais pour contrôler combien ils peuvent utiliser et ce qu'ils peuvent faire, nous avons besoin de mécanismes supplémentaires:
 
-##### 🔩 cgroups (groupes de contrôle)
+###### 🔩 cgroups (groupes de contrôle)
 
 Les CGRoupes permettent au noyau de limiter, de hiérarchiser et de surveiller l'utilisation des ressources entre les groupes de processus.
 
@@ -2150,7 +2152,7 @@ Les CGRoupes permettent au noyau de limiter, de hiérarchiser et de surveiller l
 
 🛡️ empêche le problème du "voisin bruyant" en empêchant un conteneur de consommer toutes les ressources système.
 
-##### 🧱 Capacités
+###### 🧱 Capacités
 
 Linux traditionnel utilise un modèle de privilège binaire: Root (UID 0) peut tout faire, tout le monde est limité.
 
@@ -2180,21 +2182,199 @@ Utilisé en conjonction avec des espaces de noms et des CGROUP pour verrouiller 
 
 Ensemble, ces caractéristiques du noyau forment l'épine dorsale technique de l'isolement des conteneurs - permettant un déploiement d'applications à haute densité, sécurisé et efficace sans machines virtuelles complètes.
 
-##### 🧠 Comprendre les groupes (groupes de contrôle)
+#### 🧩 Comprendre les groupes (groupes de contrôle)
 
-Vérifiez le système CGROUPS
+![cgroups](images/cgroups1.png)
 
-# Statut SystemCTL
+##### 📌 Définition
 
-# systemd-cgls
+Les groupes de contrôle (CGROUP) sont une fonctionnalité du noyau Linux introduit en 2007 qui vous permettent de limiter, de rendre compte et d'isoler l'utilisation des ressources (CPU, mémoire, E / S de disque, etc.) de groupes de processus.
 
-Outils de manutention de CGoup
+Les CGROUP sont fortement utilisés par les temps de récipient de bas niveau tels que RUNC et CRUN, et exploités par des moteurs à conteneurs comme Docker, Podman et LXC pour appliquer les limites des ressources et fournir l'isolement entre les conteneurs.
 
-# APT-GET INSTALLATION CGROUP-TOOLS
+Les espaces de noms isolent, le contrôle des CGROUP.
 
-# Mémoire CGCreate -g, CPU: LSF
+Les espaces de noms créent des environnements distincts pour les processus (comme le PID, le réseau ou les montures), tandis que CGROUPS limite et surveillez l'utilisation des ressources (CPU, mémoire, E / S) pour ces processus.
 
-# CGCLassify -g Mémoire, CPU: LSF<PID>
+⚙️ Capacités clés
+
+| Fonctionnalité                | Description                                                                |
+| ----------------------------- | -------------------------------------------------------------------------- |
+| **Limitation des ressources** | Imposer des limites à la quantité de ressources qu'un groupe peut utiliser |
+| **Priorisation**              | Allouer plus de priorité CPU / IO à certains groupes plutôt que d'autres   |
+| **Comptabilité**              | Suivre l'utilisation des ressources par groupe                             |
+| **Contrôle**                  | Suspendre, reprendre ou tuer les processus en vrac                         |
+| **Isolement**                 | Empêcher la famine des ressources entre les groupes                        |
+
+##### 📦 Sous-systèmes (contrôleurs)
+
+CGroup fonctionne via des contrôleurs, chacun responsable de la gestion d'un type de ressource:
+
+| Sous-système | Description                                        |
+| ------------ | -------------------------------------------------- |
+| `cpu`        | Contrôle la planification du processeur            |
+| `cpuacct`    | Génère des rapports d'utilisation du processeur    |
+| `memory`     | Limites et utilisation de la mémoire des comptes   |
+| `blkio`      | Limite les E / S de l'appareil de bloc             |
+| `devices`    | Contrôle l'accès aux appareils                     |
+| `freezer`    | Suspend / reprend l'exécution des tâches           |
+| `net_cls`    | Paquets de balises pour la mise en forme du trafic |
+| `ns`         | Gère l'accès à l'espace de noms (rare)             |
+
+##### 📂 Disposition du système de fichiers
+
+Les CGROUP sont exposés via le système de fichiers virtuel sous / SYS / FS / CGROUP.
+
+Selon la version:
+
+-   **Cgroups v1**: Hiérarchies séparées pour chaque contrôleur (par exemple, mémoire, CPU, etc.)
+-   **Cgroups v2**: hiérarchie unifiée sous un seul point de montage
+
+Monté sous:
+
+```sh
+/sys/fs/cgroup/
+```
+
+Hiérarchie Cgroups V1 typique:
+
+```sh
+/sys/fs/cgroup/
+├── memory/
+│   ├── mygroup/
+│   │   ├── tasks
+│   │   ├── memory.limit_in_bytes
+├── cpu/
+│   └── mygroup/
+└── ...
+```
+
+Dans CGroups v2, toutes les ressources sont gérées sous une hiérarchie unifiée:
+
+```sh
+/sys/fs/cgroup/
+├── cgroup.procs
+├── cgroup.controllers
+├── memory.max
+├── cpu.max
+└── ...
+```
+
+##### 🧪 Utilisation commune (exemples V1 et V2)
+
+V1 - Créer et affecter la limite de mémoire:
+
+```sh
+# Mount memory controller (if needed)
+mount -t cgroup -o memory none /sys/fs/cgroup/memory
+
+# Create group
+mkdir /sys/fs/cgroup/memory/mygroup
+
+# Set memory limit (100 MB)
+echo 104857600 | tee /sys/fs/cgroup/memory/mygroup/memory.limit_in_bytes
+
+# Assign a process (e.g., current shell)
+echo $$ | tee /sys/fs/cgroup/memory/mygroup/tasks
+```
+
+V2 - Hiérarchie unifiée:
+
+```sh
+# Create subgroup
+mkdir /sys/fs/cgroup/mygroup
+
+# Enable controllers
+echo +memory +cpu > /sys/fs/cgroup/cgroup.subtree_control
+
+# Move shell into group
+echo $$ > /sys/fs/cgroup/mygroup/cgroup.procs
+
+# Set limits
+echo 104857600 > /sys/fs/cgroup/mygroup/memory.max
+echo "50000 100000" > /sys/fs/cgroup/mygroup/cpu.max  # 50ms quota per 100ms period
+```
+
+🧭 Inspection du processus et du groupe
+
+| Commande                | Description                                    |
+| ----------------------- | ---------------------------------------------- |
+| `cat /proc/self/cgroup` | Affiche l'appartenance CGROUP actuelle         |
+| `cat /proc/PID/cgroup`  | Cgroup d'un autre processus                    |
+| `cat /proc/PID/status`  | Informations sur la mémoire et le groupe       |
+| `ps -o pid,cmd,cgroup`  | Afficher la cartographie de processus à groupe |
+
+##### 📦 Utilisation dans les conteneurs
+
+Des moteurs à conteneurs comme Docker, Podman et Containerd Delegate Resource Control aux CGroups (via Runc ou Crun), en autorisant:
+
+-   CPU par contact et limites de mémoire
+-   Contrôle à grains fins sur Blkio et les appareils
+-   Comptabilité des ressources en temps réel
+
+Exemple de docker:
+
+```sh
+docker run --memory=256m --cpus=1 busybox
+```
+
+Dans les coulisses, cela crée des règles de CGROUP pour la mémoire et les limites du processeur pour le processus de conteneur.
+
+##### 🧠 Résumé des concepts
+
+| Concept         | Explication                                                                   |
+| --------------- | ----------------------------------------------------------------------------- |
+| **Contrôleurs** | Modules comme`cpu`,`memory`,`blkio`, etc. Appliquer des limites et des règles |
+| **Tâches**      | Pids (processus) affectés au groupe témoin                                    |
+| **Hiérarchie**  | Les Cgroups sont structurés dans un arbre parent-enfant                       |
+| **Délégation**  | Systemd et les services utilisateur peuvent gérer les sous-arbres de CGROUPS  |
+
+#### 🛡️ Comprendre les capacités
+
+❓ Quelles sont les capacités Linux?
+
+Traditionnellement dans Linux, l'utilisateur racine a un accès illimité au système. Les capacités Linux ont été introduites pour décomposer ces privilèges tout-puissants en autorisations plus petites et discrètes, permettant aux processus d'effectuer des opérations privilégiées spécifiques sans nécessiter un accès racine complet.
+
+Cela améliore la sécurité du système en appliquant le principe du moindre privilège.
+
+| 🔐 Capacité            | 📋 Description                                                       |
+| ---------------------- | -------------------------------------------------------------------- |
+| `CAP_CHOWN`            | Modifier le propriétaire du fichier indépendamment des autorisations |
+| `CAP_NET_BIND_SERVICE` | Se lier aux ports inférieurs à 1024 (par exemple, 80, 443)           |
+| `CAP_SYS_TIME`         | Définir l'horloge du système                                         |
+| `CAP_SYS_ADMIN`        | ⚠️ très puissant - comprend la monture, le BPF et plus               |
+| `CAP_NET_RAW`          | Utilisez des prises brutes (par exemple, ping, traceroute)           |
+| `CAP_SYS_PTRACE`       | Tracez d'autres processus (débogage)                                 |
+| `CAP_KILL`             | Envoyer des signaux à n'importe quel processus                       |
+| `CAP_DAC_OVERRIDE`     | Modifier les fichiers et les répertoires sans autorisation           |
+| `CAP_SETUID`           | Modifier l'ID utilisateur (UID) du processus                         |
+| `CAP_NET_ADMIN`        | Gérer les interfaces réseau, le routage, etc.                        |
+
+🔐 Certains types de capacités Linux
+
+| Type de capacité      | Description                                                                       |
+| --------------------- | --------------------------------------------------------------------------------- |
+| **Capinhos (hérité)** | Capacités héritées du processus parent.                                           |
+| **CAPPRM (autorisé)** | Capacités que le processus est autorisée à avoir.                                 |
+| **CAPEFF (efficace)** | Capacités que le processus utilise actuellement.                                  |
+| **Capbnd (limite)**   | Restreint l'ensemble maximum de capacités efficaces qu'un processus peut obtenir. |
+| **Capamb (ambiant)**  | Permet à un processus de définir explicitement ses propres capacités efficaces.   |
+
+📦 Capacités dans les conteneurs et les gousses
+Les conteneurs ne fonctionnent généralement pas en tant que racine complète, mais reçoivent plutôt un ensemble limité de capacités par défaut en fonction de l'exécution.
+
+Des capacités peuvent être ajoutées ou supprimées dans Kubernetes à l'aide du SecurityContext.
+
+📄 Kubernetes Exemple:
+
+```yaml
+securityContext:
+  capabilities:
+    drop: ["ALL"]
+    add: ["NET_BIND_SERVICE"]
+```
+
+🔐 Cela garantit que le conteneur commence par zéro privilèges et ne reçoit que ce qui est nécessaire.
 
 * * *
 
@@ -2249,6 +2429,47 @@ ip netns list
 # exec command in network namespace
 sudo ip netns exec lxc1 ip addr show
 ```
+
+##### stat
+
+```sh
+# get cgroup version
+stat -fc %T /sys/fs/cgroup
+```
+
+##### SystemCTL et SystemD
+
+```sh
+# get cgroups of system
+systemctl status
+systemd-cgls
+```
+
+##### cgcreate
+
+```sh
+cgcreate -g memory,cpu:lsf
+```
+
+##### cgClassify
+
+```sh
+cgclassify -g memory,cpu:lsf <PID>
+```
+
+##### setCap Cap_net_raw = ep / usr / bin / tcpdump
+
+```sh
+
+```
+
+##### getCap / usr / bin / tcpdump
+
+```sh
+
+```
+
+##### Capsh - Capacité enveloppe de coquille
 
 * * *
 
@@ -2663,7 +2884,7 @@ Lien du projet:<https://github.com/marcossilvestrini/learning-lpic-3-305-300>
     -   [Officier Doc](https://www.qemu.org/)
     -   [Télécharger des images Osboxes](https://www.osboxes.org/)
     -   [Télécharger des images LinuxImages](https://www.linuxvmimages.com/)
-    -   [Urbain](https://en.wikibooks.org/wiki/QEMU/Devices/Virtio)
+    -   [Urine](https://en.wikibooks.org/wiki/QEMU/Devices/Virtio)
     -   [Agent invité](https://wiki.qemu.org/Features/GuestAgent)
 -   [Libvirt](<>)
     -   [Officier Doc](https://libvirt.org/)
@@ -2689,6 +2910,9 @@ Lien du projet:<https://github.com/marcossilvestrini/learning-lpic-3-305-300>
     -   [Espaces de noms les plus importants](https://www.redhat.com/en/blog/7-linux-namespaces)
     -   [Cours de Cgroups](https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/6/html/resource_management_guide/ch01)
     -   [Homme cgroupes](https://manpages.ubuntu.com/manpages/noble/man7/cgroups.7.html)
+    -   [Capacités Doc](https://linux-audit.com/kernel/capabilities/linux-capabilities-101/)
+    -   [Capacités de l'homme](https://manpages.ubuntu.com/manpages/noble/man7/capabilities.7.html)
+    -
 -   [Docs OpenStack](<>)
     -   [Redhat](https://www.redhat.com/pt-br/topics/openstack)
 -   [VSWitch ouvert](<>)
