@@ -302,7 +302,7 @@ Executa em cima de um sistema operacional convencional, contando com o sistema o
 ##### Diferenças -chave entre os hipervisores do tipo 1 e do tipo 2
 
 -   Ambiente de implantação:
-    -   Os hipervisores do tipo 1 são comumente implantados em data centers e ambientes corporativos devido à sua interação direta com hardware e alto desempenho.
+    -   Os hipervisores tipo 1 são comumente implantados em data centers e ambientes corporativos devido à sua interação direta com hardware e alto desempenho.
     -   Os hipervisores do tipo 2 são mais adequados para tarefas de uso pessoal, desenvolvimento, teste e virtualização em pequena escala.
 -   Desempenho:
     -   Os hipervisores do tipo 1 geralmente oferecem melhor desempenho e menor latência porque não confiam em um sistema operacional host.
@@ -512,7 +512,7 @@ Permite que um sistema operacional de desktop seja executado em uma máquina vir
 
 ###### Casos de uso da definição de virtualização de desktop
 
-Infraestrutura de Desktop Virtual (VDI), Soluções de Trabalho Remoto.
+Infraestrutura de desktop virtual (VDI), soluções de trabalho remoto.
 
 ###### Exemplos de definição de virtualização de desktop
 
@@ -2016,7 +2016,7 @@ sudo chroot ~vagrant/debian bash
 
 ![container](images/containers1.png)
 
-Os contêineres são uma tecnologia de virtualização leve que empacota aplicativos, juntamente com as dependências necessárias - código, bibliotecas, variáveis ​​de ambiente e arquivos de configuração - em unidades isoladas, portáteis e reproduzíveis.
+Os contêineres são uma tecnologia de virtualização leve que empacota aplicativos junto com as dependências necessárias - código, bibliotecas, variáveis ​​de ambiente e arquivos de configuração - em unidades isoladas, portáteis e reproduzíveis.
 
 > Em termos simples: um contêiner é uma caixa independente que executa seu aplicativo da mesma maneira, em qualquer lugar.
 
