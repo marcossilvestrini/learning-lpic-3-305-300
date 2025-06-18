@@ -19,6 +19,8 @@
     -
     <a href="https://github.com/marcossilvestrini/learning-lpic-3-305-300">Code Page</a>
     -
+    <a href="https://skynet-8.gitbook.io/learning-lpic-3-305-300">Gitbook</a>
+    -    
     <a href="https://github.com/marcossilvestrini/learning-lpic-3-305-300/issues">Report Bug</a>
     -
     <a href="https://github.com/marcossilvestrini/learning-lpic-3-305-300/issues">Request Feature</a>
@@ -444,7 +446,7 @@ Em um sistema NUMA, a memória é distribuída de maneira desigual entre os proc
 
 -   🌐 Open Vswitch:<https://www.openvswitch.org/>
 
-#### Tipos de virtualização
+#### Types of Virtualization
 
 ##### Virtualização de hardware (virtualização do servidor)
 
@@ -592,7 +594,7 @@ O serviço usinado pela SystemD é dedicado ao gerenciamento de máquinas e cont
 
 -   Entenda a arquitetura de Xen, incluindo networking e armazenamento
 -   Configuração básica dos nós e domínios Xen
--   Gerenciamento básico de nós e domínios Xen
+-   Basic management of Xen nodes and domains
 -   Solução de problemas básicos de instalações Xen
 -   Avarines fora da pílula
 -   Consciência de Xenstore
@@ -638,7 +640,7 @@ Aqui estão alguns aspectos importantes da Xen Store:
 
 -   **Gerenciamento de configuração:**É usado para armazenar e acessar informações de configuração, como dispositivos virtuais, redes e parâmetros de inicialização. Isso facilita o gerenciamento dinâmico e a configuração das VMs.
 
--   **Eventos e notificações:**A Xen Store também suporta notificações de eventos. Quando uma chave ou valor específica na loja Xen é modificada, os domínios interessados ​​podem ser notificados para reagir a essas alterações. Isso é útil para monitorar e gerenciar recursos.
+-   **Eventos e notificações:** Xen Store also supports event notifications. When a particular key or value in the Xen Store is modified, interested domains can be notified to react to these changes. This is useful for monitoring and managing resources.
 
 -   API simples: a Xen Store fornece uma API simples para ler e escrever dados, facilitando os desenvolvedores para integrar seus aplicativos ao sistema de virtualização Xen.
 
@@ -2014,7 +2016,7 @@ sudo chroot ~vagrant/debian bash
 
 ![container](images/containers1.png)
 
-Os contêineres são uma tecnologia de virtualização leve que empacota aplicativos, juntamente com as dependências necessárias - código, bibliotecas, variáveis ​​de ambiente e arquivos de configuração - em unidades isoladas, portáteis e reproduzíveis.
+Os contêineres são uma tecnologia de virtualização leve que empacota aplicativos junto com as dependências necessárias - código, bibliotecas, variáveis ​​de ambiente e arquivos de configuração - em unidades isoladas, portáteis e reproduzíveis.
 
 > Em termos simples: um contêiner é uma caixa independente que executa seu aplicativo da mesma maneira, em qualquer lugar.
 
@@ -2137,7 +2139,7 @@ O resultado: um ambiente de tempo de execução leve e isolado que se comporta c
 
 Os namespaces oculam recursos de contêineres. Mas para controlar o quanto eles podem usar e o que podem fazer, precisamos de mecanismos adicionais:
 
-##### 🔩 CGROUPS (Grupos de controle)
+###### 🔩 CGROUPS (Grupos de controle)
 
 Os cgroups permitem que o kernel limite, priorize e monitore o uso de recursos entre os grupos de processos.
 
@@ -2150,7 +2152,7 @@ Os cgroups permitem que o kernel limite, priorize e monitore o uso de recursos e
 
 🛡️ Impede o problema "vizinho barulhento", impedindo que um contêiner consumindo todos os recursos do sistema.
 
-##### 🧱 Capacidades
+###### 🧱 Capacidades
 
 O Linux tradicional usa um modelo de privilégio binário: raiz (UID 0) pode fazer tudo, todo mundo é limitado.
 
@@ -2180,23 +2182,205 @@ Usado em conjunto com namespaces e cgroups para bloquear o que um processo cont�
 
 Juntos, esses recursos do kernel formam a espinha dorsal técnica do isolamento de contêineres-permitindo implantação de aplicação de alta densidade, segurança e eficiência sem VMs completas.
 
-##### 🧠 Entendendo os cgroups (grupos de controle)
+#### 🧩 Entendendo os cgroups (grupos de controle)
 
-````sh
-Verificar os Cgroups do sistema
-# systemctl status
-# systemd-cgls
+![cgroups](images/cgroups1.png)
 
-Ferramentas de manipulação dos Cgroups
-# apt-get install cgroup-tools
+##### 📌 Definição
 
-# cgcreate -g memory,cpu:lsf
-# cgclassify -g memory,cpu:lsf <PID>
----
+Os grupos de controle (CGROUPS) são um recurso Linux Kernel introduzido em 2007 que permite limitar, explicar e isolar o uso de recursos (CPU, memória, E/S de disco, etc.) de grupos de processos.
 
-#### 352.1 Important Commands
+Os cgroups são fortemente usados ​​por tempos de execução de contêineres de baixo nível, como Runc e Crun, e alavancados por motores de contêineres como Docker, Podman e LXC para aplicar os limites dos recursos e fornecer isolamento entre os contêineres.
 
-##### unshare
+Os namespaces isolam o controle de cgroups.
+
+Os namespaces criam ambientes separados para processos (como PID, rede ou montagens), enquanto o CGROUPS limitam e monitoram o uso de recursos (CPU, memória, E/S) para esses processos.
+
+⚙️ Capacidades -chave
+
+| Recurso                   | Descrição                                                        |
+| ------------------------- | ---------------------------------------------------------------- |
+| **Limitação de recursos** | Impor limites para quanto de um recurso um grupo pode usar       |
+| **Priorização**           | Alocar mais prioridade da CPU/IO para alguns grupos sobre outros |
+| **Contabilidade**         | Rastrear o uso de recursos por grupo                             |
+| **Controlar**             | Suspender, retomar ou matar processos a granel                   |
+| **Isolamento**            | Impedir a fome de recursos entre os grupos                       |
+
+##### 📦 Subsistemas (controladores)
+
+Os cgroups operam através dos controladores, cada um responsável pelo gerenciamento de um tipo de recurso:
+
+| Subsystem | Descrição                                 |
+| --------- | ----------------------------------------- |
+| `cpu`     | Controla a programação da CPU             |
+| `cpuacct` | Gera relatórios de uso da CPU             |
+| `memory`  | Limita e contas o uso da memória          |
+| `blkio`   | Limita a E/S do dispositivo de bloco      |
+| `devices` | Controla o acesso a dispositivos          |
+| `freezer` | Suspende/retoma a execução de tarefas     |
+| `net_cls` | Pacotes de tags para modelagem de tráfego |
+| `ns`      | Gerencia o acesso ao namespace (raro)     |
+
+##### Layout Layout do sistema de arquivos
+
+Os cgroups são expostos através do sistema de arquivos virtual em/sys/fs/cgroup.
+
+Dependendo da versão:
+
+-   **CGROUPS V1**: Hierarquias separadas para cada controlador (por exemplo, memória, CPU, etc.)
+-   **CGROUPS V2**: Hierarquia unificada sob um único ponto de montagem
+
+Montado em:
+
+```sh
+/sys/fs/cgroup/
+```
+
+Hierarquia típica de CGROUPS v1:
+
+```sh
+/sys/fs/cgroup/
+├── memory/
+│   ├── mygroup/
+│   │   ├── tasks
+│   │   ├── memory.limit_in_bytes
+├── cpu/
+│   └── mygroup/
+└── ...
+```
+
+No CGROUPS V2, todos os recursos são gerenciados sob uma hierarquia unificada:
+
+```sh
+/sys/fs/cgroup/
+├── cgroup.procs
+├── cgroup.controllers
+├── memory.max
+├── cpu.max
+└── ...
+```
+
+##### 🧪 Uso comum (exemplos V1 e V2)
+
+v1 - Crie e atribua limite de memória:
+
+```sh
+# Mount memory controller (if needed)
+mount -t cgroup -o memory none /sys/fs/cgroup/memory
+
+# Create group
+mkdir /sys/fs/cgroup/memory/mygroup
+
+# Set memory limit (100 MB)
+echo 104857600 | tee /sys/fs/cgroup/memory/mygroup/memory.limit_in_bytes
+
+# Assign a process (e.g., current shell)
+echo $$ | tee /sys/fs/cgroup/memory/mygroup/tasks
+```
+
+V2 - Hierarquia unificada:
+
+```sh
+# Create subgroup
+mkdir /sys/fs/cgroup/mygroup
+
+# Enable controllers
+echo +memory +cpu > /sys/fs/cgroup/cgroup.subtree_control
+
+# Move shell into group
+echo $$ > /sys/fs/cgroup/mygroup/cgroup.procs
+
+# Set limits
+echo 104857600 > /sys/fs/cgroup/mygroup/memory.max
+echo "50000 100000" > /sys/fs/cgroup/mygroup/cpu.max  # 50ms quota per 100ms period
+```
+
+🧭 Process e inspeção de grupo
+
+| Comando                 | Descrição                                 |
+| ----------------------- | ----------------------------------------- |
+| `cat /proc/self/cgroup` | Mostra a associação atual do CGROUP       |
+| `cat /proc/PID/cgroup`  | cgroup de outro processo                  |
+| `cat /proc/PID/status`  | Informações de memória e cgroup           |
+| `ps -o pid,cmd,cgroup`  | Mostre mapeamento de processo para cgrupo |
+
+##### 📦 Uso em contêineres
+
+Motores de contêiner como Docker, Podman e Containerd Delegate Resource Control para CGroups (via Runc ou Crun), permitindo:
+
+-   CPU por conteúdo e limites de memória
+-   Controle de grão fino sobre o BLKIO e dispositivos
+-   Contabilidade de recursos em tempo real
+
+Exemplo do Docker:
+
+```sh
+docker run --memory=256m --cpus=1 busybox
+```
+
+Nos bastidores, isso cria regras do CGROUP para limites de memória e CPU para o processo de contêiner.
+
+##### 🧠 Resumo dos conceitos
+
+| Conceito          | Explicação                                                             |
+| ----------------- | ---------------------------------------------------------------------- |
+| **Controladores** | Módulos como`cpu`,`memory`,`blkio`, etc. Aplique limites e regras      |
+| **Tarefas**       | PIDs (processos) atribuídos ao grupo de controle                       |
+| **Hierarquia**    | CGROUPS estão estruturados em uma árvore pai-filho                     |
+| **Delegação**     | Os serviços Systemd e do usuário podem gerenciar subárvores de cgroups |
+
+#### 🛡️ Recursos de compreensão
+
+❓ Quais são os recursos do Linux?
+
+Tradicionalmente no Linux, o usuário raiz tem acesso irrestrito ao sistema. Os recursos do Linux foram introduzidos para dividir esses privilégios todo-poderosos em permissões menores e discretas, permitindo que os processos realizem operações privilegiadas específicas sem exigir acesso total à raiz.
+
+Isso aprimora a segurança do sistema, aplicando o princípio do menor privilégio.
+
+| 🔐 Capacidade          | 📋 Descrição                                                        |
+| ---------------------- | ------------------------------------------------------------------- |
+| `CAP_CHOWN`            | Alterar o proprietário do arquivo, independentemente das permissões |
+| `CAP_NET_BIND_SERVICE` | Ligue para as portas abaixo de 1024 (por exemplo, 80, 443)          |
+| `CAP_SYS_TIME`         | Defina o relógio do sistema                                         |
+| `CAP_SYS_ADMIN`        | ⚠️ Muito poderoso - inclui Mount, BPF e muito mais                  |
+| `CAP_NET_RAW`          | Use soquetes crus (por exemplo, ping, traceroute)                   |
+| `CAP_SYS_PTRACE`       | Rastrear outros processos (depuração)                               |
+| `CAP_KILL`             | Envie sinais para qualquer processo                                 |
+| `CAP_DAC_OVERRIDE`     | Modificar arquivos e diretórios sem permissão                       |
+| `CAP_SETUID`           | Alterar ID de usuário (UID) do processo                             |
+| `CAP_NET_ADMIN`        | Gerenciar interfaces de rede, roteamento, etc.                      |
+
+🔐 Alguns tipos de recursos do Linux
+
+| Tipo de capacidade       | Descrição                                                                      |
+| ------------------------ | ------------------------------------------------------------------------------ |
+| **CapInh (Inherited)**   | Recursos herdados do processo pai.                                             |
+| **CAPPRM (permitido)**   | Recursos que o processo pode ter.                                              |
+| **Capeff (eficaz)**      | Recursos que o processo está usando atualmente.                                |
+| **Capbnd (delimitador)** | Restringe o conjunto máximo de recursos eficazes que um processo pode obter.   |
+| **Capamb (ambiente)**    | Permite que um processo defina explicitamente seus próprios recursos eficazes. |
+
+📦 Capacidades em recipientes e vagens
+Os contêineres normalmente não são executados como raiz completa, mas recebem um conjunto limitado de recursos por padrão, dependendo do tempo de execução.
+
+Os recursos podem ser adicionados ou descartados em Kubernetes usando o SecurityContext.
+
+📄 Kubernetes Exemplo:
+
+```yaml
+securityContext:
+  capabilities:
+    drop: ["ALL"]
+    add: ["NET_BIND_SERVICE"]
+```
+
+🔐 Isso garante que o contêiner inicie com privilégios zero e receba apenas o que é necessário.
+
+* * *
+
+#### 352.1 Comandos importantes
+
+##### não se bem
 
 ```sh
 # create a new namespaces and run a command in it
@@ -2206,7 +2390,7 @@ unshare --mount --uts --ipc --user --pid --net  --map-root-user --mount-proc --f
 #ps -aux
 #ip addr show
 #umount /proc
-````
+```
 
 ##### lsns
 
@@ -2245,6 +2429,47 @@ ip netns list
 # exec command in network namespace
 sudo ip netns exec lxc1 ip addr show
 ```
+
+##### Stat
+
+```sh
+# get cgroup version
+stat -fc %T /sys/fs/cgroup
+```
+
+##### SystemCTL e Systemd
+
+```sh
+# get cgroups of system
+systemctl status
+systemd-cgls
+```
+
+##### cgcreate
+
+```sh
+cgcreate -g memory,cpu:lsf
+```
+
+##### cgclassify
+
+```sh
+cgclassify -g memory,cpu:lsf <PID>
+```
+
+##### setcap cap_net_raw = ep/usr/bin/tcpdump
+
+```sh
+
+```
+
+##### getCap/usr/bin/tcpdump
+
+```sh
+
+```
+
+##### Capsh - Capability Shell Wrapper
 
 * * *
 
@@ -2659,7 +2884,7 @@ Link do projeto:<https://github.com/marcossilvestrini/learning-lpic-3-305-300>
     -   [Oficial Doc](https://www.qemu.org/)
     -   [Baixe imagens osboxes](https://www.osboxes.org/)
     -   [Faça o download de imagens linuximages](https://www.linuxvmimages.com/)
-    -   [Urbano](https://en.wikibooks.org/wiki/QEMU/Devices/Virtio)
+    -   [Urina](https://en.wikibooks.org/wiki/QEMU/Devices/Virtio)
     -   [Agente convidado](https://wiki.qemu.org/Features/GuestAgent)
 -   [Libvirt](<>)
     -   [Oficial Doc](https://libvirt.org/)
@@ -2685,6 +2910,9 @@ Link do projeto:<https://github.com/marcossilvestrini/learning-lpic-3-305-300>
     -   [Os namespaces mais importantes](https://www.redhat.com/en/blog/7-linux-namespaces)
     -   [Classes CGROUPS](https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/6/html/resource_management_guide/ch01)
     -   [Homem CGROUPS](https://manpages.ubuntu.com/manpages/noble/man7/cgroups.7.html)
+    -   [Recursos Doc](https://linux-audit.com/kernel/capabilities/linux-capabilities-101/)
+    -   [Capacidades do homem](https://manpages.ubuntu.com/manpages/noble/man7/capabilities.7.html)
+    -
 -   [OpenStack Docs](<>)
     -   [Redhat](https://www.redhat.com/pt-br/topics/openstack)
 -   [Aberto vswitch](<>)
