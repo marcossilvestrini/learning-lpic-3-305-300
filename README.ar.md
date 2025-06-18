@@ -1,6 +1,6 @@
 <h1><a name="readme-top"></a></h1>
 
-[![Create Release](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/release.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/release.yml)[![Translate README](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/translate.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/translate.yml)[![Generate HTML and PDF](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/generate-html.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/generate-html.yml)[![Deploy Webpage](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/deploy-webpage.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/deploy-webpage.yml)[![PSScriptAnalyzer](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/powershell.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/powershell.yml)[![Slack Notification](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/slack.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/slack.yml)
+[![Create Release](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/release.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/release.yml)[![Translate README](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/translate.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/translate.yml)[![Generate HTML and PDF](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/generate-html.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/generate-html.yml)[![Deploy Webpage](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/deploy-webpage.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/deploy-webpage.yml)[![Generate GitBook Docs](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/generate-docs.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/generate-docs.yml)[![PSScriptAnalyzer](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/powershell.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/powershell.yml)[![Slack Notification](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/slack.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/slack.yml)
 
 * * *
 
@@ -18,6 +18,8 @@
     <a href="https://marcossilvestrini.github.io/learning-lpic-3-305-300/">Web Site</a>
     -
     <a href="https://github.com/marcossilvestrini/learning-lpic-3-305-300">Code Page</a>
+    -
+    <a href="https://skynet-8.gitbook.io/learning-lpic-3-305-300">Gitbook</a>
     -
     <a href="https://github.com/marcossilvestrini/learning-lpic-3-305-300/issues">Report Bug</a>
     -
@@ -126,7 +128,7 @@ cd learning-lpic-3-305-300
 
 تخصيص قالب_Vagrantfile-topic-xxx_. يحتوي هذا الملف على تكوين VMS للمختبرات. مثال:
 
--   ملف[Vagrantfile-topic-351](./vagrant/Vagrantfile-topic-351)
+-   ملف[Vagrantfile-topic-351](vagrant/Vagrantfile-topic-351)
     -   vm.clone_directory = "&lt;your_driver_letter>:\\<folder>\\&lt;to_machine>\\#{vm_name} -instance-1 "
         مثال: vm.clone_directory = "E:\\الخوادم\\VMware\\#{vm_name} -instance-1 "
     -   VM.VMX["memsize"]= ""
@@ -625,7 +627,7 @@ Xen عبارة عن فرط من النوع الأول من النوع 1 (الع�
 
 -   **الأهداف:**يهدف مشروع XEN إلى تقدم Hypervisor من خلال تحسين أدائه وأمانه وميزاته لمجموعة واسعة من حالات الاستخدام ، بما في ذلك الحوسبة السحابية ، والمحاكاة الافتراضية التي تركز على الأمان (على سبيل المثال ، QBES OS) ، والأنظمة المدمجة.
 -   **المساهمين:**يضم المشروع مساهمين من مختلف المؤسسات ، بما في ذلك مقدمي الخدمات السحابية الرئيسية وبائعي الأجهزة والمطورين المستقلين.
--   **حبوب منع الحمل والهيدول:**يتضمن مشروع XEN أيضًا أدوات مثل XAPI (Xenapi) ، والتي تستخدم لإدارة عمليات تثبيت Xen Hypervisor ، ومختلف الأدوات المساعدة لإدارة النظام وتحسينها.
+-   **حبوب منع الحمل والهيدول:**يتضمن مشروع XEN أيضًا أدوات مثل XAPI (Xenapi) ، والتي تستخدم لإدارة عمليات تثبيت Xen Hypervisor ، ومختلف المرافق الأخرى لإدارة النظام وتحسينها.
 
 #### Xenstore
 
@@ -684,7 +686,7 @@ PV-DOMUs استخدام تقنية تسمى paravirtualization. في هذا ال
 
 #### HVM-DOMU (الأجهزة الافتراضية المجال)
 
-HVM-DOMUs هي أجهزة افتراضية تستخدم المحاكاة الافتراضية الكاملة ، مما يتيح تشغيل أنظمة التشغيل غير المعدلة. يوفر Xen Hypervisor مضاهاة للأجهزة لهذه DOMU ، مما يتيح لهم تشغيل أي نظام تشغيل يدعم بنية الأجهزة الأساسية.  
+HVM-DOMUs هي أجهزة افتراضية تستخدم المحاكاة الافتراضية الكاملة ، مما يتيح تشغيل أنظمة التشغيل غير المعدلة. يوفر Xen Hypervisor مضاهاة للأجهزة لهذه DOMUS ، مما يتيح لهم تشغيل أي نظام تشغيل يدعم بنية الأجهزة الأساسية.  
 على الرغم من أن هذا يوفر مرونة أكبر ، إلا أنه يمكن أن يؤدي إلى ارتفاع النفقات العامة مقارنة بـ PV-DOMUs.
 
 #### شبكة Xen
@@ -2131,13 +2133,13 @@ docker run -it --rm alpine sh
 -   مساحة اسم جبل → نظام ملفات جذر خاص بالحاوية.
 -   مساحات أسماء أخرى اعتمادًا على التكوين (المستخدم ، IPC ، إلخ)
 
-The result: a lightweight, isolated runtime environment that behaves like a separate system.
+النتيجة: بيئة تشغيل خفيفة الوزن ومعزولة تتصرف مثل نظام منفصل.
 
 ##### ⚙ ميزات النواة التكميلية
 
 مساحات الأسماء تخفي الموارد من الحاويات. ولكن للتحكم في مقدار ما يمكنهم استخدامه وما يمكنهم فعله ، نحتاج إلى آليات إضافية:
 
-##### cgroups (مجموعات التحكم)
+###### cgroups (مجموعات التحكم)
 
 تسمح مجموعات CGROUPS للنواة بتقييد استخدام الموارد وتحديد أولوياتها ومراقبتها عبر مجموعات العمليات.
 
@@ -2150,7 +2152,7 @@ The result: a lightweight, isolated runtime environment that behaves like a sepa
 
 🛡 يمنع مشكلة "الجار الصاخب" عن طريق منع حاوية واحدة من استهلاك جميع موارد النظام.
 
-##### القدرات
+###### القدرات
 
 يستخدم Linux التقليدي نموذج امتياز ثنائي: يمكن للجذر (UID 0) فعل كل شيء ، كل شخص آخر محدود.
 
@@ -2180,23 +2182,205 @@ The result: a lightweight, isolated runtime environment that behaves like a sepa
 
 معا ، تشكل ميزات kernel العمود الفقري الفني لعزل الحاويات-مما يتيح نشر تطبيقات عالية الكثافة وآمنة وفعالة دون VMs كاملة.
 
-##### 🧠 فهم مجموعات cgroups (مجموعات التحكم)
+#### 🧩 فهم مجموعات cgroups (مجموعات التحكم)
 
-````sh
-Verificar os Cgroups do sistema
-# systemctl status
-# systemd-cgls
+![cgroups](images/cgroups1.png)
 
-Ferramentas de manipulação dos Cgroups
-# apt-get install cgroup-tools
+##### التعريف
 
-# cgcreate -g memory,cpu:lsf
-# cgclassify -g memory,cpu:lsf <PID>
----
+مجموعات التحكم (Cgroups) هي ميزة Kernel Linux تم تقديمها في عام 2007 والتي تتيح لك الحد من استخدام الموارد ، وعزلها ، وعزل استخدام الموارد (وحدة المعالجة المركزية ، الذاكرة ، القرص I/O ، إلخ) لمجموعات العمليات.
 
-#### 352.1 Important Commands
+يتم استخدام مجموعات Cgroups بشكل كبير بواسطة أوقات تشغيل الحاويات منخفضة المستوى مثل RunC و CRUN ، والاستفادة من محركات الحاويات مثل Docker و Podman و LXC لفرض حدود الموارد وتوفير العزلة بين الحاويات.
 
-##### unshare
+عزل مساحات الأسماء ، والتحكم في مجموعات Cgroups.
+
+تقوم مساحات الأسماء بإنشاء بيئات منفصلة للعمليات (مثل PID أو الشبكة أو التركيبات) ، بينما تحد مجموعات Cgroups ومراقبة استخدام الموارد (وحدة المعالجة المركزية ، الذاكرة ، I/O) لتلك العمليات.
+
+⚙ القدرات الرئيسية
+
+| ميزة                | وصف                                                                         |
+| ------------------- | --------------------------------------------------------------------------- |
+| **الحد من الموارد** | فرض قيود على مقدار المورد الذي يمكن أن تستخدمه المجموعة                     |
+| **تحديد الأولوية**  | تخصيص المزيد من أولوية وحدة المعالجة المركزية/IO لبعض المجموعات على الآخرين |
+| **محاسبة**          | تتبع استخدام الموارد لكل مجموعة                                             |
+| **يتحكم**           | تعليق أو استئناف أو قتل العمليات بكميات كبيرة                               |
+| **عزل**             | منع الجوع بين المجموعات                                                     |
+
+##### 📦 النظم الفرعية (وحدات التحكم)
+
+تعمل مجموعات Cgroups من خلال وحدات التحكم ، كل مسؤول عن إدارة نوع واحد من الموارد:
+
+| النظام الفرعي | وصف                                        |
+| ------------- | ------------------------------------------ |
+| `cpu`         | تحكم في جدولة وحدة المعالجة المركزية       |
+| `cpuacct`     | يولد تقارير استخدام وحدة المعالجة المركزية |
+| `memory`      | الحدود وحسابات استخدام الذاكرة             |
+| `blkio`       | حدود كتلة الجهاز i/o                       |
+| `devices`     | يتحكم في الوصول إلى الأجهزة                |
+| `freezer`     | يعلق/يستأنف تنفيذ المهام                   |
+| `net_cls`     | علامات الحزم لتشكيل حركة المرور            |
+| `ns`          | يدير الوصول إلى مساحة الاسم (نادر)         |
+
+##### 📂 تخطيط نظام الملفات
+
+يتم عرض مجموعات Cgroups من خلال نظام الملفات الظاهري تحت/SYS/FS/CGROUP.
+
+اعتمادا على الإصدار:
+
+-   **Cgroups V1**: التسلسلات الهرمية المنفصلة لكل وحدة تحكم (على سبيل المثال ، الذاكرة ، وحدة المعالجة المركزية ، إلخ)
+-   **cgroups v2**: التسلسل الهرمي الموحد تحت نقطة واحدة
+
+مثبتة تحت:
+
+```sh
+/sys/fs/cgroup/
+```
+
+التسلسل الهرمي Cgroups النموذجي V1:
+
+```sh
+/sys/fs/cgroup/
+├── memory/
+│   ├── mygroup/
+│   │   ├── tasks
+│   │   ├── memory.limit_in_bytes
+├── cpu/
+│   └── mygroup/
+└── ...
+```
+
+في Cgroups V2 ، تتم إدارة جميع الموارد تحت تسلسل هرمي موحد:
+
+```sh
+/sys/fs/cgroup/
+├── cgroup.procs
+├── cgroup.controllers
+├── memory.max
+├── cpu.max
+└── ...
+```
+
+##### 🧪 الاستخدام الشائع (أمثلة V1 و V2)
+
+V1 - إنشاء وتعيين حد الذاكرة:
+
+```sh
+# Mount memory controller (if needed)
+mount -t cgroup -o memory none /sys/fs/cgroup/memory
+
+# Create group
+mkdir /sys/fs/cgroup/memory/mygroup
+
+# Set memory limit (100 MB)
+echo 104857600 | tee /sys/fs/cgroup/memory/mygroup/memory.limit_in_bytes
+
+# Assign a process (e.g., current shell)
+echo $$ | tee /sys/fs/cgroup/memory/mygroup/tasks
+```
+
+V2 - التسلسل الهرمي الموحد:
+
+```sh
+# Create subgroup
+mkdir /sys/fs/cgroup/mygroup
+
+# Enable controllers
+echo +memory +cpu > /sys/fs/cgroup/cgroup.subtree_control
+
+# Move shell into group
+echo $$ > /sys/fs/cgroup/mygroup/cgroup.procs
+
+# Set limits
+echo 104857600 > /sys/fs/cgroup/mygroup/memory.max
+echo "50000 100000" > /sys/fs/cgroup/mygroup/cpu.max  # 50ms quota per 100ms period
+```
+
+🧭 العملية وفحص المجموعة
+
+| يأمر                    | وصف                       |
+| ----------------------- | ------------------------- |
+| `cat /proc/self/cgroup` | يعرض عضوية CGROUP الحالية |
+| `cat /proc/PID/cgroup`  | cgroup من عملية أخرى      |
+| `cat /proc/PID/status`  | معلومات الذاكرة و cgroup  |
+| `ps -o pid,cmd,cgroup`  | إظهار رسم خرائط للعملية   |
+
+##### 📦 الاستخدام في الحاويات
+
+محركات الحاويات مثل Docker و Podman و Containerd Depigate Control to Cgroups (عبر RunC أو CRUN) ، مما يسمح:
+
+-   لكل وحدة المعالجة المركزية وحدود الذاكرة
+-   التحكم الدقيق في Blkio والأجهزة
+-   محاسبة الموارد في الوقت الحقيقي
+
+مثال Docker:
+
+```sh
+docker run --memory=256m --cpus=1 busybox
+```
+
+وراء الكواليس ، ينشئ ذلك قواعد CGROUP للذاكرة وحدود وحدة المعالجة المركزية لعملية الحاوية.
+
+##### 🧠 ملخص المفاهيم
+
+| مفهوم            | توضيح                                                                      |
+| ---------------- | -------------------------------------------------------------------------- |
+| **وحدات التحكم** | وحدات مثل`cpu`,`memory`,`blkio`، إلخ. تطبيق الحدود والقواعد                |
+| **المهام**       | PIDS (العمليات) المخصصة لمجموعة التحكم                                     |
+| **تَسَلسُل**     | يتم تنظيم مجموعات cgroups في شجرة الوالدين والطفل                          |
+| **وفد**          | قد تقوم خدمات النظام والمستخدم بإدارة المجموعات الفرعية من مجموعات cgroups |
+
+#### 🛡 فهم القدرات
+
+❓ ما هي قدرات Linux؟
+
+تقليديًا في Linux ، يتمتع المستخدم الجذر بالوصول غير المقيد إلى النظام. تم تقديم إمكانيات Linux لتحويل هذه الامتيازات القوية إلى أذونات أصغر ومنفصلة ، مما يسمح للعمليات بإجراء عمليات مميزة محددة دون الحاجة إلى الوصول الكامل للجذر.
+
+هذا يعزز أمن النظام من خلال تطبيق مبدأ أقل امتياز.
+
+| 🔐 القدرة              | 📋 الوصف                                              |
+| ---------------------- | ----------------------------------------------------- |
+| `CAP_CHOWN`            | تغيير مالك الملف بغض النظر عن الأذونات                |
+| `CAP_NET_BIND_SERVICE` | ربط المنافذ أدناه 1024 (على سبيل المثال ، 80 ، 443)   |
+| `CAP_SYS_TIME`         | تعيين ساعة النظام                                     |
+| `CAP_SYS_ADMIN`        | ⚠ قوي للغاية - يشمل جبل ، BPF ، والمزيد               |
+| `CAP_NET_RAW`          | استخدم مآخذ خام (على سبيل المثال ، ping ، traceroute) |
+| `CAP_SYS_PTRACE`       | تتبع العمليات الأخرى (تصحيح الأخطاء)                  |
+| `CAP_KILL`             | إرسال إشارات إلى أي عملية                             |
+| `CAP_DAC_OVERRIDE`     | تعديل الملفات والدلائل دون إذن                        |
+| `CAP_SETUID`           | تغيير معرف المستخدم (UID) من العملية                  |
+| `CAP_NET_ADMIN`        | إدارة واجهات الشبكة ، التوجيه ، إلخ.                  |
+
+🔐 بعض أنواع إمكانات Linux
+
+| نوع القدرة            | وصف                                                                           |
+| --------------------- | ----------------------------------------------------------------------------- |
+| **كابينوس (ورث)**     | القدرات الموروثة من العملية الأصل.                                            |
+| **CAPPRM (مسموح به)** | القدرات التي يسمح لها العملية.                                                |
+| **كابف (فعال)**       | القدرات التي تستخدمها العملية حاليًا.                                         |
+| **Capbnd (المحيط)**   | يقيد الحد الأقصى للمجموعة من القدرات الفعالة التي يمكن أن تحصل عليها العملية. |
+| **كابام (المحيط)**    | يسمح للعملية بتحديد قدراتها الفعالة بشكل صريح.                                |
+
+📦 قدرات في الحاويات والقرون
+لا يتم تشغيل الحاويات عادةً كجذر كامل ، ولكن بدلاً من ذلك تتلقى مجموعة محدودة من القدرات افتراضيًا اعتمادًا على وقت التشغيل.
+
+يمكن إضافة القدرات أو إسقاطها في Kubernetes باستخدام SecurityContext.
+
+📄 kubernetes مثال:
+
+```yaml
+securityContext:
+  capabilities:
+    drop: ["ALL"]
+    add: ["NET_BIND_SERVICE"]
+```
+
+🔐 يضمن هذا أن تبدأ الحاوية بامتيازات صفرية وتتلقى فقط ما هو مطلوب.
+
+* * *
+
+#### 352.1 أوامر مهمة
+
+##### غير شار
 
 ```sh
 # create a new namespaces and run a command in it
@@ -2206,7 +2390,7 @@ unshare --mount --uts --ipc --user --pid --net  --map-root-user --mount-proc --f
 #ps -aux
 #ip addr show
 #umount /proc
-````
+```
 
 ##### LSNS
 
@@ -2245,6 +2429,47 @@ ip netns list
 # exec command in network namespace
 sudo ip netns exec lxc1 ip addr show
 ```
+
+##### Stat
+
+```sh
+# get cgroup version
+stat -fc %T /sys/fs/cgroup
+```
+
+##### SystemCTL و Systemd
+
+```sh
+# get cgroups of system
+systemctl status
+systemd-cgls
+```
+
+##### cgcreate
+
+```sh
+cgcreate -g memory,cpu:lsf
+```
+
+##### cgClassify
+
+```sh
+cgclassify -g memory,cpu:lsf <PID>
+```
+
+##### setcap cap_net_raw = ep/usr/bin/tcpdump
+
+```sh
+
+```
+
+##### getCap/usr/bin/tcpdump
+
+```sh
+
+```
+
+##### capsh - capability shell clospper
 
 * * *
 
@@ -2346,7 +2571,7 @@ Dockerfile
 **مجالات المعرفة الرئيسية:**
 
 -   فهم أهمية تزامن الحاويات
--   Understand the key concepts of Docker Compose and Docker Swarm
+-   فهم المفاهيم الرئيسية لتكوين Docker و Docker Swarm
 -   فهم المفاهيم الرئيسية لـ Kubernetes و Helm
 -   وعي OpenShift و Rancher و Mesosphere DC/OS
 
@@ -2659,7 +2884,7 @@ Vagrantfile
     -   [موظف الضابط](https://www.qemu.org/)
     -   [قم بتنزيل الصور osboxes](https://www.osboxes.org/)
     -   [قم بتنزيل الصور linuximages](https://www.linuxvmimages.com/)
-    -   [حضري](https://en.wikibooks.org/wiki/QEMU/Devices/Virtio)
+    -   [البول](https://en.wikibooks.org/wiki/QEMU/Devices/Virtio)
     -   [وكيل الضيف](https://wiki.qemu.org/Features/GuestAgent)
 -   [libvirt](<>)
     -   [موظف الضابط](https://libvirt.org/)
@@ -2685,6 +2910,9 @@ Vagrantfile
     -   [أهم مساحات الأسماء](https://www.redhat.com/en/blog/7-linux-namespaces)
     -   [فصول Cgroups](https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/6/html/resource_management_guide/ch01)
     -   [رجل cgroups](https://manpages.ubuntu.com/manpages/noble/man7/cgroups.7.html)
+    -   [القدرات DOC](https://linux-audit.com/kernel/capabilities/linux-capabilities-101/)
+    -   [قدرات الرجل](https://manpages.ubuntu.com/manpages/noble/man7/capabilities.7.html)
+    -
 -   [مستندات OpenStack](<>)
     -   [ريدهات](https://www.redhat.com/pt-br/topics/openstack)
 -   [فتح vswitch](<>)
