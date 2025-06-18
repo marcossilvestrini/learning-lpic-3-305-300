@@ -1,6 +1,6 @@
 <h1><a name="readme-top"></a></h1>
 
-[![Create Release](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/release.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/release.yml)[![Translate README](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/translate.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/translate.yml)[![Generate HTML and PDF](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/generate-html.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/generate-html.yml)[![Deploy Webpage](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/deploy-webpage.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/deploy-webpage.yml)[![PSScriptAnalyzer](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/powershell.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/powershell.yml)[![Slack Notification](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/slack.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/slack.yml)
+[![Create Release](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/release.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/release.yml)[![Translate README](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/translate.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/translate.yml)[![Generate HTML and PDF](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/generate-html.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/generate-html.yml)[![Deploy Webpage](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/deploy-webpage.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/deploy-webpage.yml)[![Generate GitBook Docs](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/generate-docs.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/generate-docs.yml)[![PSScriptAnalyzer](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/powershell.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/powershell.yml)[![Slack Notification](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/slack.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/slack.yml)
 
 * * *
 
@@ -18,6 +18,8 @@
     <a href="https://marcossilvestrini.github.io/learning-lpic-3-305-300/">Web Site</a>
     -
     <a href="https://github.com/marcossilvestrini/learning-lpic-3-305-300">Code Page</a>
+    -
+    <a href="https://skynet-8.gitbook.io/learning-lpic-3-305-300">Gitbook</a>
     -
     <a href="https://github.com/marcossilvestrini/learning-lpic-3-305-300/issues">Report Bug</a>
     -
@@ -126,7 +128,7 @@ cd learning-lpic-3-305-300
 
 自定義模板_vagrantfile-topic-xxx_。該文件包含實驗室的VMS配置。例子：
 
--   文件[VagrantFile-Topic-351](./vagrant/Vagrantfile-topic-351)
+-   文件[VagrantFile-Topic-351](vagrant/Vagrantfile-topic-351)
     -   vm.clone_directory =“ &lt;your_driver_letter>：\\<folder>\\&lt;to_machine>\\＃{vm_name} -instance-1
         示例：vm.clone_directory =“ e：\\伺服器\\VMware\\＃{vm_name} -instance-1
     -   vm.vmx[“孟加斯”"]= ""
@@ -563,7 +565,7 @@ Denodo，Red Hat Jboss數據虛擬化，IBM Infosphere。
 
 之所以出現此間接費用，是因為模擬系統需要將用於原始系統的指令解釋和翻譯為與主機系統兼容的指令。結果，仿真可以比本地執行慢，從而使資源密集型任務的效率降低。
 
-儘管有這一缺點，但仿真仍可用於運行舊軟件，在不同平台上測試應用程序以及促進跨平台開發。
+儘管有這一缺點，但仿真對於運行傳統軟件，在不同平台上測試應用程序以及促進跨平台開發仍然有價值。
 
 #### SystemD機場
 
@@ -2084,7 +2086,7 @@ sudo chroot ~vagrant/debian bash
 
 ![linux-namespaces](images/linux-namespaces2.png)
 
-名稱空間是核心Linux內核功能，可啟用過程級別的隔離。它們創建了全球系統資源的單獨“視圖”，例如流程ID，網絡，文件系統和用戶 - 以便每個流程組都認為它在自己的系統中運行。
+名稱空間是核心Linux內核功能，可啟用過程級別的隔離。它們創建了全球系統資源的單獨“視圖”，例如流程ID，網絡，文件系統和用戶 - ，以便每個流程組都認為它在自己的系統中運行。
 
 > 簡單的術語：命名空間欺騙一個過程以思考它擁有機器，即使它只是共享它。
 
@@ -2137,7 +2139,7 @@ docker run -it --rm alpine sh
 
 名稱空間從容器中隱藏資源。但是，為了控制他們可以使用多少以及可以做什麼，我們需要其他機制：
 
-##### 🔩cgroups（對照組）
+###### 🔩cgroups（對照組）
 
 CGROUP允許內核限制，優先級和監視過程組之間的資源使用情況。
 
@@ -2150,7 +2152,7 @@ CGROUP允許內核限制，優先級和監視過程組之間的資源使用情�
 
 🛡️通過阻止一個容器消耗所有系統資源來阻止“嘈雜的鄰居”問題。
 
-##### 🧱功能
+###### 🧱功能
 
 傳統Linux使用二進制特權模型：root（uid 0）可以做所有事情，其他所有人都受到限制。
 
@@ -2180,23 +2182,205 @@ CGROUP允許內核限制，優先級和監視過程組之間的資源使用情�
 
 這些內核功能共同構成了容器隔離的技術骨幹，可以在沒有完整VM的情況下進行高密度，安全和有效的應用部署。
 
-##### 🧠了解CGROUP（對照組）
+#### 🧩了解CGROUP（對照組）
 
-````sh
-Verificar os Cgroups do sistema
-# systemctl status
-# systemd-cgls
+![cgroups](images/cgroups1.png)
 
-Ferramentas de manipulação dos Cgroups
-# apt-get install cgroup-tools
+##### 📌定義
 
-# cgcreate -g memory,cpu:lsf
-# cgclassify -g memory,cpu:lsf <PID>
----
+對照組（CGROUPS）是2007年介紹的Linux內核功能，可讓您限製過程組的資源使用（CPU，內存，磁盤I/O等）。
 
-#### 352.1 Important Commands
+諸如Runc和Crun之類的低級容器運行時大量使用了CGroup，並由Docker，Podman和LXC等容器發動機借用來實施資源邊界並提供容器之間的隔離。
 
-##### unshare
+命名空間隔離，Cgroups控制。
+
+名稱空間為進程（例如PID，網絡或安裝座）創建單獨的環境，而CGroups限制並監視這些過程的資源使用率（CPU，內存，I/O）。
+
+⚙️關鍵功能
+
+| 特徵       | 描述                         |
+| -------- | -------------------------- |
+| **資源限制** | 對一個組可以使用多少資源施加限制           |
+| **優先級**  | 將更多的CPU/IO優先級分配給某些小組而不是其他組 |
+| **會計**   | 跟踪每組資源的使用                  |
+| **控制**   | 批量暫停，恢復或殺死過程               |
+| **隔離**   | 防止群體之間的資源飢餓                |
+
+##### 📦子系統（控制器）
+
+Cgroups通過控制器運行，每個人都負責管理一種類型的資源：
+
+| 子系統       | 描述           |
+| --------- | ------------ |
+| `cpu`     | 控制CPU調度      |
+| `cpuacct` | 生成CPU用法報告    |
+| `memory`  | 限制和帳戶內存使用情況  |
+| `blkio`   | 限制阻止設備I/O    |
+| `devices` | 控制對設備的訪問     |
+| `freezer` | 暫停/恢復任務執行    |
+| `net_cls` | 標籤交通塑料的數據包   |
+| `ns`      | 管理名稱空間訪問（稀有） |
+
+##### 📂文件系統佈局
+
+通過/sys/fs/cgroup下的虛擬文件系統暴露了cgroups。
+
+取決於版本：
+
+-   **cgroups v1**：每個控制器的單獨層次結構（例如，內存，CPU等）
+-   **cgroups v2**：單個安裝點下的統一層次結構
+
+安裝在下面：
+
+```sh
+/sys/fs/cgroup/
+```
+
+典型的cgroups v1層次結構：
+
+```sh
+/sys/fs/cgroup/
+├── memory/
+│   ├── mygroup/
+│   │   ├── tasks
+│   │   ├── memory.limit_in_bytes
+├── cpu/
+│   └── mygroup/
+└── ...
+```
+
+在Cgroups V2中，所有資源均根據統一的層次結構進行管理：
+
+```sh
+/sys/fs/cgroup/
+├── cgroup.procs
+├── cgroup.controllers
+├── memory.max
+├── cpu.max
+└── ...
+```
+
+##### 🧪常見用法（V1和V2示例）
+
+V1  - 創建和分配內存限制：
+
+```sh
+# Mount memory controller (if needed)
+mount -t cgroup -o memory none /sys/fs/cgroup/memory
+
+# Create group
+mkdir /sys/fs/cgroup/memory/mygroup
+
+# Set memory limit (100 MB)
+echo 104857600 | tee /sys/fs/cgroup/memory/mygroup/memory.limit_in_bytes
+
+# Assign a process (e.g., current shell)
+echo $$ | tee /sys/fs/cgroup/memory/mygroup/tasks
+```
+
+V2  - 統一層次結構：
+
+```sh
+# Create subgroup
+mkdir /sys/fs/cgroup/mygroup
+
+# Enable controllers
+echo +memory +cpu > /sys/fs/cgroup/cgroup.subtree_control
+
+# Move shell into group
+echo $$ > /sys/fs/cgroup/mygroup/cgroup.procs
+
+# Set limits
+echo 104857600 > /sys/fs/cgroup/mygroup/memory.max
+echo "50000 100000" > /sys/fs/cgroup/mygroup/cpu.max  # 50ms quota per 100ms period
+```
+
+🧭過程和小組檢查
+
+| 命令                      | 描述              |
+| ----------------------- | --------------- |
+| `cat /proc/self/cgroup` | 顯示當前的CGroup會員資格 |
+| `cat /proc/PID/cgroup`  | 另一個過程的群體        |
+| `cat /proc/PID/status`  | 內存和cgroup信息     |
+| `ps -o pid,cmd,cgroup`  | 顯示過程對組映射        |
+
+##### 📦在容器中使用
+
+Docker，Podman和Containerd的容器發動機將資源控制委託給Cgroups（通過Runc或Crun），允許：
+
+-   人均CPU和內存限制
+-   對BLKIO和設備的細粒度控制
+-   實時資源會計
+
+Docker示例：
+
+```sh
+docker run --memory=256m --cpus=1 busybox
+```
+
+在幕後，這為容器過程創建了用於內存和CPU限制的CGroup規則。
+
+##### 🧠概念摘要
+
+| 概念       | 解釋                                   |
+| -------- | ------------------------------------ |
+| **控制器**  | 模塊喜歡`cpu`,`memory`,`blkio`等等。應用限制和規則 |
+| **任務**   | 分配給對照組的PID（過程）                       |
+| **等級制度** | cgroups是在親子樹中構成的                     |
+| **代表團**  | SystemD和用戶服務可能管理CGroup的子樹            |
+
+#### 🛡️理解功能
+
+❓什麼是Linux功能？
+
+傳統上，在Linux中，Root用戶對系統無限制訪問。引入了Linux功能，以將這些全功能特權分解為較小的離散權限，從而使過程可以執行特定的特權操作而無需完全訪問。
+
+這通過執行最少特權的原則來增強系統安全性。
+
+| 🔐能力                   | 📋描述                      |
+| ---------------------- | ------------------------- |
+| `CAP_CHOWN`            | 更改文件所有者，無論權限如何            |
+| `CAP_NET_BIND_SERVICE` | 與1024以下的端口結合（例如80，443）    |
+| `CAP_SYS_TIME`         | 設置系統時鐘                    |
+| `CAP_SYS_ADMIN`        | ⚠️非常強大 - 包括坐騎，BPF等        |
+| `CAP_NET_RAW`          | 使用原始插座（例如Ping，Traceroute） |
+| `CAP_SYS_PTRACE`       | 追踪其他過程（調試）                |
+| `CAP_KILL`             | 將信號發送到任何過程                |
+| `CAP_DAC_OVERRIDE`     | 未經許可修改文件和目錄               |
+| `CAP_SETUID`           | 更改過程的用戶ID（UID）            |
+| `CAP_NET_ADMIN`        | 管理網絡接口，路由等。               |
+
+🔐一些Linux功能類型
+
+| 能力類型             | 描述                  |
+| ---------------- | ------------------- |
+| **Capinhos（繼承）** | 從父進程繼承的功能。          |
+| **Capprm（允許）**   | 允許該過程具有的功能。         |
+| **Capeff（有效）**   | 該過程當前正在使用的功能。       |
+| **CAPBND（邊界）**   | 限製過程可以獲得的最大有效能力集。   |
+| **Capamb（環境）**   | 允許一個過程明確定義其自身的有效功能。 |
+
+📦容器和豆莢的功能
+容器通常不會以完整的根部運行，而是根據運行時默認收到有限的功能。
+
+可以使用SecurityContext將功能添加或刪除在Kubernetes中。
+
+📄kubernetes示例：
+
+```yaml
+securityContext:
+  capabilities:
+    drop: ["ALL"]
+    add: ["NET_BIND_SERVICE"]
+```
+
+🔐這確保容器以零特權開始，並僅收到所需的內容。
+
+* * *
+
+#### 352.1重要命令
+
+##### 不共產
 
 ```sh
 # create a new namespaces and run a command in it
@@ -2206,7 +2390,7 @@ unshare --mount --uts --ipc --user --pid --net  --map-root-user --mount-proc --f
 #ps -aux
 #ip addr show
 #umount /proc
-````
+```
 
 ##### LSN
 
@@ -2245,6 +2429,47 @@ ip netns list
 # exec command in network namespace
 sudo ip netns exec lxc1 ip addr show
 ```
+
+##### 統計
+
+```sh
+# get cgroup version
+stat -fc %T /sys/fs/cgroup
+```
+
+##### SystemCTL和SystemD
+
+```sh
+# get cgroups of system
+systemctl status
+systemd-cgls
+```
+
+##### cgcreate
+
+```sh
+cgcreate -g memory,cpu:lsf
+```
+
+##### CGClassify
+
+```sh
+cgclassify -g memory,cpu:lsf <PID>
+```
+
+##### setCap cap_net_raw = ep/usr/bin/tcpdump
+
+```sh
+
+```
+
+##### GetCap/usr/bin/tcpdump
+
+```sh
+
+```
+
+##### Capsh-能力外殼包裝紙
 
 * * *
 
@@ -2659,7 +2884,7 @@ Marcos Silvestrini-[marcos.silvestrini@gmail.com](mailto:marcos.silvestrini@gmai
     -   [軍官文檔](https://www.qemu.org/)
     -   [下載圖像OSBOXES](https://www.osboxes.org/)
     -   [下載圖像linuximages](https://www.linuxvmimages.com/)
-    -   [城市的](https://en.wikibooks.org/wiki/QEMU/Devices/Virtio)
+    -   [尿](https://en.wikibooks.org/wiki/QEMU/Devices/Virtio)
     -   [來賓經紀人](https://wiki.qemu.org/Features/GuestAgent)
 -   [libvirt](<>)
     -   [軍官文檔](https://libvirt.org/)
@@ -2685,6 +2910,9 @@ Marcos Silvestrini-[marcos.silvestrini@gmail.com](mailto:marcos.silvestrini@gmai
     -   [最重要的名稱空間](https://www.redhat.com/en/blog/7-linux-namespaces)
     -   [Cgroups類](https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/6/html/resource_management_guide/ch01)
     -   [男人](https://manpages.ubuntu.com/manpages/noble/man7/cgroups.7.html)
+    -   [功能文檔](https://linux-audit.com/kernel/capabilities/linux-capabilities-101/)
+    -   [人能力](https://manpages.ubuntu.com/manpages/noble/man7/capabilities.7.html)
+    -
 -   [OpenStack文檔](<>)
     -   [redhat](https://www.redhat.com/pt-br/topics/openstack)
 -   [開放的VSWITCH](<>)
