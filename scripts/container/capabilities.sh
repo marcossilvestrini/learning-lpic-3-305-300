@@ -49,10 +49,24 @@ summary() {
     echo "======================"
 }
 
+teardown() {
+    echo -e "\n==============================="
+    echo "🧹 Running teardown/cleanup steps..."
+    rm -f /tmp/python3_copy /tmp/server.py /tmp/cap_net_raw_test.sh /tmp/victim_kill.sh /tmp/victim_pid.txt /tmp/strace_copy 2>/dev/null
+    if mount | grep -q "/tmp/testmnt"; then
+        umount /tmp/testmnt 2>/dev/null
+    fi
+    rm -rf /tmp/testmnt 2>/dev/null
+    echo "🧹 Cleanup done!"
+    echo "==============================="
+}
+
+trap teardown EXIT
+
 run_scenario_1_drop_all() {
     DESC="Drop all capabilities and try running tcpdump"
-    OUTPUT=$(capsh --drop=all -- -c "timeout 2 tcpdump -i lo -c 1 > /dev/null 2>&1" 2>&1 || true)
-    if echo "$OUTPUT" | grep -qi "permission denied"; then
+    OUTPUT=$(capsh --drop=all -- -c "timeout 2 tcpdump -i lo -c 1" 2>&1 || true)
+    if echo "$OUTPUT" | grep -Eiq "permission denied|you don't have permission|operation not permitted"; then
         RESULT="✅ Capability drop worked – tcpdump blocked"
     else
         RESULT="❌ Unexpected behavior – tcpdump may have succeeded"
@@ -60,6 +74,7 @@ run_scenario_1_drop_all() {
     CAPS="Dropped ALL"
     summary "Drop All" "$DESC" "$RESULT" "$CAPS"
 }
+
 
 run_scenario_2_add_net_raw() {
     local SCRIPT="/tmp/cap_net_raw_test.sh"
@@ -194,7 +209,6 @@ EOF
     rm -f "$VICTIM_SCRIPT" "$VICTIM_PID_FILE"
 }
 
-
 run_scenario_5_cap_ptrace() {
     DESC="Try using strace on a child process (simulate debugging)"
     log "📌 📌 Preparing test process for strace..."
@@ -234,8 +248,6 @@ run_scenario_5_cap_ptrace() {
     rm -f "$STRACE_COPY"
 }
 
-
-
 run_scenario_6_cap_admin() {
     DESC="Try mounting a tmpfs using CAP_SYS_ADMIN"
     MNT_DIR="/tmp/testmnt"
@@ -270,6 +282,7 @@ main_menu() {
     echo "4. CAP_KILL         - Kill process with and without CAP_KILL"
     echo "5. CAP_SYS_PTRACE   - Use strace on a process"
     echo "6. CAP_SYS_ADMIN    - Try mounting tmpfs"
+    echo "9. Teardown/Cleanup Temporary Files"
     echo "0. Exit"
     echo "==============================="
 }
@@ -289,7 +302,7 @@ install_if_missing mount "util-linux"
 
 while true; do
     main_menu
-    read -rp "Enter your choice [0-6]: " CHOICE
+    read -rp "Enter your choice [0-9]: " CHOICE
     case "$CHOICE" in
         1) run_scenario_1_drop_all ;;
         2) run_scenario_2_add_net_raw ;;
@@ -297,6 +310,7 @@ while true; do
         4) run_scenario_4_cap_kill ;;
         5) run_scenario_5_cap_ptrace ;;
         6) run_scenario_6_cap_admin ;;
+        9) teardown ;;
         0) echo "Bye!" && exit 0 ;;
         *) echo "Invalid option" ;;
     esac
