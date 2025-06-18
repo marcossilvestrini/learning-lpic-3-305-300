@@ -104,6 +104,7 @@ svg { z-index: 99; position: fixed; border: 0px; top: 0px; right: 0; }
       <a href="https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/translate.yml"><img src="https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/translate.yml/badge.svg" alt="Translate README"></a>
       <a href="https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/generate-html.yml"><img src="https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/generate-html.yml/badge.svg" alt="Generate HTML and PDF"></a>
       <a href="https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/deploy-webpage.yml"><img src="https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/deploy-webpage.yml/badge.svg" alt="Deploy Webpage"></a>
+      <a href="https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/generate-docs.yml"><img src="https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/generate-docs.yml/badge.svg" alt="Generate GitBook Docs"></a>
       <a href="https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/powershell.yml"><img src="https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/powershell.yml/badge.svg" alt="PSScriptAnalyzer"></a>
       <a href="https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/slack.yml"><img src="https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/slack.yml/badge.svg" alt="Slack Notification"></a>
     </p>
@@ -2970,7 +2971,7 @@ sudo chroot ~vagrant/debian bash
     <p>The result: a lightweight, isolated runtime environment that behaves like a separate system.</p>
     <h5 id="️-complementary-kernel-features"><a class="anchor" aria-hidden="true" tabindex="-1" href="#️-complementary-kernel-features"><span class="octicon octicon-link"></span></a>⚙️ Complementary Kernel Features</h5>
     <p>Namespaces hide resources from containers. But to control how much they can use and what they can do, we need additional mechanisms:</p>
-    <h5 id="-cgroups-control-groups"><a class="anchor" aria-hidden="true" tabindex="-1" href="#-cgroups-control-groups"><span class="octicon octicon-link"></span></a>🔩 Cgroups (Control Groups)</h5>
+    <h6 id="-cgroups-control-groups"><a class="anchor" aria-hidden="true" tabindex="-1" href="#-cgroups-control-groups"><span class="octicon octicon-link"></span></a>🔩 Cgroups (Control Groups)</h6>
     <p>Cgroups allow the kernel to limit, prioritize, and monitor resource usage across process groups.</p>
     <table>
       <thead>
@@ -2999,7 +3000,7 @@ sudo chroot ~vagrant/debian bash
       </tbody>
     </table>
     <p>🛡️ Prevents the "noisy neighbor" problem by stopping one container from consuming all system resources.</p>
-    <h5 id="-capabilities"><a class="anchor" aria-hidden="true" tabindex="-1" href="#-capabilities"><span class="octicon octicon-link"></span></a>🧱 Capabilities</h5>
+    <h6 id="-capabilities"><a class="anchor" aria-hidden="true" tabindex="-1" href="#-capabilities"><span class="octicon octicon-link"></span></a>🧱 Capabilities</h6>
     <p>Traditional Linux uses a binary privilege model: root (UID 0) can do everything, everyone else is limited.</p>
     <table>
       <thead>
@@ -3297,6 +3298,107 @@ echo &#x22;50000 100000&#x22; > /sys/fs/cgroup/mygroup/cpu.max  # 50ms quota per
         </tr>
       </tbody>
     </table>
+    <h4 id="️-understanding-capabilities"><a class="anchor" aria-hidden="true" tabindex="-1" href="#️-understanding-capabilities"><span class="octicon octicon-link"></span></a>🛡️ Understanding Capabilities</h4>
+    <p>❓ What Are Linux Capabilities?</p>
+    <p>Traditionally in Linux, the root user has unrestricted access to the system. Linux capabilities were introduced to break down these all-powerful privileges into smaller, discrete permissions, allowing processes to perform specific privileged operations without requiring full root access.</p>
+    <p>This enhances system security by enforcing the principle of least privilege.</p>
+    <table>
+      <thead>
+        <tr>
+          <th>🔐 Capability</th>
+          <th>📋 Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>CAP_CHOWN</code></td>
+          <td>Change file owner regardless of permissions</td>
+        </tr>
+        <tr>
+          <td><code>CAP_NET_BIND_SERVICE</code></td>
+          <td>Bind to ports below 1024 (e.g., 80, 443)</td>
+        </tr>
+        <tr>
+          <td><code>CAP_SYS_TIME</code></td>
+          <td>Set system clock</td>
+        </tr>
+        <tr>
+          <td><code>CAP_SYS_ADMIN</code></td>
+          <td>⚠️ Very powerful – includes mount, BPF, and more</td>
+        </tr>
+        <tr>
+          <td><code>CAP_NET_RAW</code></td>
+          <td>Use raw sockets (e.g., ping, traceroute)</td>
+        </tr>
+        <tr>
+          <td><code>CAP_SYS_PTRACE</code></td>
+          <td>Trace other processes (debugging)</td>
+        </tr>
+        <tr>
+          <td><code>CAP_KILL</code></td>
+          <td>Send signals to any process</td>
+        </tr>
+        <tr>
+          <td><code>CAP_DAC_OVERRIDE</code></td>
+          <td>Modify files and directories without permission</td>
+        </tr>
+        <tr>
+          <td><code>CAP_SETUID</code></td>
+          <td>Change user ID (UID) of the process</td>
+        </tr>
+        <tr>
+          <td><code>CAP_NET_ADMIN</code></td>
+          <td>Manage network interfaces, routing, etc.</td>
+        </tr>
+      </tbody>
+    </table>
+    <p>🔐 Some Linux Capabilities Types</p>
+    <table>
+      <thead>
+        <tr>
+          <th>Capability Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>CapInh (Inherited)</strong></td>
+          <td>Capabilities inherited from the parent process.</td>
+        </tr>
+        <tr>
+          <td><strong>CapPrm (Permitted)</strong></td>
+          <td>Capabilities that the process is allowed to have.</td>
+        </tr>
+        <tr>
+          <td><strong>CapEff (Effective)</strong></td>
+          <td>Capabilities that the process is currently using.</td>
+        </tr>
+        <tr>
+          <td><strong>CapBnd (Bounding)</strong></td>
+          <td>Restricts the maximum set of effective capabilities a process can obtain.</td>
+        </tr>
+        <tr>
+          <td><strong>CapAmb (Ambient)</strong></td>
+          <td>Allows a process to explicitly define its own effective capabilities.</td>
+        </tr>
+      </tbody>
+    </table>
+    <p>
+      📦 Capabilities in Containers and Pods
+      Containers typically do not run as full root, but instead receive a limited set of capabilities by default depending on the runtime.
+    </p>
+    <p>Capabilities can be added or dropped in Kubernetes using the securityContext.</p>
+    <p>📄 Kubernetes example:</p>
+    <pre class="language-yaml"><code class="language-yaml code-highlight"><span class="code-line line-number" line="1"><span class="token key atrule">securityContext</span><span class="token punctuation">:</span>
+</span><span class="code-line line-number" line="2">  <span class="token key atrule">capabilities</span><span class="token punctuation">:</span>
+</span><span class="code-line line-number" line="3">    <span class="token key atrule">drop</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">"ALL"</span><span class="token punctuation">]</span>
+</span><span class="code-line line-number" line="4">    <span class="token key atrule">add</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">"NET_BIND_SERVICE"</span><span class="token punctuation">]</span>
+</span></code><div onclick="copied(this)" data-code="securityContext:
+  capabilities:
+    drop: [&#x22;ALL&#x22;]
+    add: [&#x22;NET_BIND_SERVICE&#x22;]
+" class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+    <p>🔐 This ensures the container starts with zero privileges and receives only what is needed.</p>
     <hr>
     <h4 id="3521-important-commands"><a class="anchor" aria-hidden="true" tabindex="-1" href="#3521-important-commands"><span class="octicon octicon-link"></span></a>352.1 Important Commands</h4>
     <h5 id="unshare"><a class="anchor" aria-hidden="true" tabindex="-1" href="#unshare"><span class="octicon octicon-link"></span></a>unshare</h5>
@@ -3389,6 +3491,11 @@ systemd-cgls
     <pre class="language-sh"><code class="language-sh code-highlight"><span class="code-line line-number" line="1">cgclassify <span class="token parameter variable">-g</span> memory,cpu:lsf <span class="token operator">&#x3C;</span>PID<span class="token operator">></span>
 </span></code><div onclick="copied(this)" data-code="cgclassify -g memory,cpu:lsf <PID>
 " class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+    <h5 id="setcap-cap_net_rawep-usrbintcpdump"><a class="anchor" aria-hidden="true" tabindex="-1" href="#setcap-cap_net_rawep-usrbintcpdump"><span class="octicon octicon-link"></span></a>setcap cap_net_raw=ep /usr/bin/tcpdump</h5>
+    <pre class="language-sh"><code class="language-sh code-highlight"></code><div onclick="copied(this)" data-code="" class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+    <h5 id="getcap-usrbintcpdump"><a class="anchor" aria-hidden="true" tabindex="-1" href="#getcap-usrbintcpdump"><span class="octicon octicon-link"></span></a>getcap /usr/bin/tcpdump</h5>
+    <pre class="language-sh"><code class="language-sh code-highlight"></code><div onclick="copied(this)" data-code="" class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+    <h5 id="capsh---capability-shell-wrapper"><a class="anchor" aria-hidden="true" tabindex="-1" href="#capsh---capability-shell-wrapper"><span class="octicon octicon-link"></span></a>capsh - capability shell wrapper</h5>
     <hr>
     <p align="right">(<a href="#topic-352.1">back to sub topic 352.1</a>)</p>
     <p align="right">(<a href="#topic-352">back to topic 352</a>)</p>
@@ -3806,14 +3913,37 @@ Vagrantfile
       </li>
       <li><a href="">Virtualization and Containerization</a>
         <ul>
-          <li><a href="https://aws.amazon.com/pt/containers/">AWS Doc Containers</a></li>
-          <li><a href="https://cloud.google.com/learn/what-are-containers?hl=pt-br">GCP Doc Containers</a></li>
-          <li><a href="https://www.ibm.com/br-pt/topics/containers">IBM Doc Container</a></li>
-          <li><a href="https://www.redhat.com/en/topics/containers/whats-a-linux-container">Red Hat Docs Containers</a></li>
-          <li><a href="https://manpages.ubuntu.com/manpages/noble/man7/namespaces.7.html">Namespaces</a></li>
-          <li><a href="https://www.redhat.com/en/blog/7-linux-namespaces">Most important Namespaces</a></li>
-          <li><a href="https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/6/html/resource_management_guide/ch01">Cgroups Classes</a></li>
-          <li><a href="https://manpages.ubuntu.com/manpages/noble/man7/cgroups.7.html">Man Cgroups</a></li>
+          <li>
+            <p><a href="https://aws.amazon.com/pt/containers/">AWS Doc Containers</a></p>
+          </li>
+          <li>
+            <p><a href="https://cloud.google.com/learn/what-are-containers?hl=pt-br">GCP Doc Containers</a></p>
+          </li>
+          <li>
+            <p><a href="https://www.ibm.com/br-pt/topics/containers">IBM Doc Container</a></p>
+          </li>
+          <li>
+            <p><a href="https://www.redhat.com/en/topics/containers/whats-a-linux-container">Red Hat Docs Containers</a></p>
+          </li>
+          <li>
+            <p><a href="https://manpages.ubuntu.com/manpages/noble/man7/namespaces.7.html">Namespaces</a></p>
+          </li>
+          <li>
+            <p><a href="https://www.redhat.com/en/blog/7-linux-namespaces">Most important Namespaces</a></p>
+          </li>
+          <li>
+            <p><a href="https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/6/html/resource_management_guide/ch01">Cgroups Classes</a></p>
+          </li>
+          <li>
+            <p><a href="https://manpages.ubuntu.com/manpages/noble/man7/cgroups.7.html">Man Cgroups</a></p>
+          </li>
+          <li>
+            <p><a href="https://linux-audit.com/kernel/capabilities/linux-capabilities-101/">Capabilities Doc</a></p>
+          </li>
+          <li>
+            <p><a href="https://manpages.ubuntu.com/manpages/noble/man7/capabilities.7.html">Man Capabilities</a></p>
+          </li>
+          <li></li>
         </ul>
       </li>
       <li><a href="">Openstack Docs</a>
