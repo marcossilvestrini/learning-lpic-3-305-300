@@ -528,7 +528,7 @@ Separa las aplicaciones del hardware y el sistema operativo subyacente, lo que l
 
 Implementación de aplicaciones simplificada, prueba de compatibilidad.
 
-###### Application VirtualizationDefinition Examples
+###### Ejemplos de definición de virtualización de aplicaciones
 
 VMware ThinApp, Microsoft App-V, Citrix XenApp.
 
@@ -2802,7 +2802,7 @@ Enlace del proyecto:<https://github.com/marcossilvestrini/learning-lpic-3-305-30
     -   [Licencia pública general de GNU Lesser Lesser](https://www.gnu.org/licenses/lgpl-3.0.html)
     -   [BSD](https://opensource.org/licenses/BSD-3-Clause)
     -   [Iniciativa de código abierto](https://opensource.org/)
-    -   [Comunes creativos](https://creativecommons.org/)
+    -   [Comunics creativos](https://creativecommons.org/)
     -   [Licencia LTS](https://en.wikipedia.org/wiki/Long-term_support)
 -   [Distracción](<>)
     -   [Directrices de software gratuito de Debian](https://www.debian.org/social_contract#guidelines)
@@ -2831,7 +2831,7 @@ Enlace del proyecto:<https://github.com/marcossilvestrini/learning-lpic-3-305-30
 -   [DNS](<>)
     -   [Unir](https://www.isc.org/bind/)
     -   [Bind Rogging](https://www.zytrax.com/books/dns/ch7/logging.html)
-    -   [List of DNS record types](https://en.wikipedia.org/wiki/List_of_DNS_record_types)
+    -   [Lista de tipos de registro DNS](https://en.wikipedia.org/wiki/List_of_DNS_record_types)
     -   [Lista de tipos de registro DNS](https://en.wikipedia.org/wiki/List_of_DNS_record_types)
 -   [Administrador de paquetes](<>)
     -   [Descargar paquetes](https://pkgs.org/)
