@@ -197,28 +197,41 @@ EOF
 
 run_scenario_5_cap_ptrace() {
     DESC="Try using strace on a child process (simulate debugging)"
-    log "📌 Preparing test process for strace..."
+    log "📌 📌 Preparing test process for strace..."
 
-    sleep 30 &
+    # Copia o strace e configura a capability
+    STRACE_SRC="$(which strace)"
+    STRACE_COPY="/tmp/strace_copy"
+    cp "$STRACE_SRC" "$STRACE_COPY"
+    chmod +x "$STRACE_COPY"
+    setcap cap_sys_ptrace=eip "$STRACE_COPY"
+
+    # Cria processo para ser "traceado"
+    sleep 20 &
     CHILD_PID=$!
     sleep 1
 
     if ! ps -p "$CHILD_PID" &>/dev/null; then
         summary "CAP_SYS_PTRACE" "$DESC" "❌ Child process not running" "N/A"
+        rm -f "$STRACE_COPY"
         return
     fi
 
-    OUTPUT=$(strace -p "$CHILD_PID" -e trace=none -qq 2>&1)
+    # Executa o strace, só liga para retorno, não output
+    "$STRACE_COPY" -p "$CHILD_PID" -e trace=none -qq
+    STRACE_RET=$?
 
-    if echo "$OUTPUT" | grep -q "attached"; then
+    if [[ $STRACE_RET -eq 0 ]]; then
         RESULT="✅ strace attached – CAP_SYS_PTRACE effective"
     else
         RESULT="❌ Failed to trace – check permissions and environment"
     fi
 
-    CAPS="Used strace as root"
+    CAPS="CAP_SYS_PTRACE set on binary"
     summary "CAP_SYS_PTRACE" "$DESC" "$RESULT" "$CAPS"
+
     kill "$CHILD_PID" &>/dev/null || true
+    rm -f "$STRACE_COPY"
 }
 
 
