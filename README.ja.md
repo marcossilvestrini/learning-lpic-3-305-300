@@ -1,6 +1,6 @@
 <h1><a name="readme-top"></a></h1>
 
-[![Create Release](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/release.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/release.yml)[![Translate README](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/translate.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/translate.yml)[![Generate HTML and PDF](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/generate-html.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/generate-html.yml)[![Deploy Webpage](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/deploy-webpage.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/deploy-webpage.yml)[![PSScriptAnalyzer](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/powershell.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/powershell.yml)[![Slack Notification](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/slack.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/slack.yml)
+[![Create Release](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/release.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/release.yml)[![Translate README](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/translate.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/translate.yml)[![Generate HTML and PDF](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/generate-html.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/generate-html.yml)[![Deploy Webpage](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/deploy-webpage.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/deploy-webpage.yml)[![Generate GitBook Docs](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/generate-docs.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/generate-docs.yml)[![PSScriptAnalyzer](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/powershell.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/powershell.yml)[![Slack Notification](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/slack.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/slack.yml)
 
 * * *
 
@@ -18,6 +18,8 @@
     <a href="https://marcossilvestrini.github.io/learning-lpic-3-305-300/">Web Site</a>
     -
     <a href="https://github.com/marcossilvestrini/learning-lpic-3-305-300">Code Page</a>
+    -
+    <a href="https://skynet-8.gitbook.io/learning-lpic-3-305-300">Gitbook</a>
     -
     <a href="https://github.com/marcossilvestrini/learning-lpic-3-305-300/issues">Report Bug</a>
     -
@@ -311,7 +313,7 @@ Migration (P2V, V2V)
 
 ##### 移行タイプ
 
-仮想マシンの作成と管理に使用されるテクノロジーであるハイパーバイザーのコンテキストでは、仮想化環境ではP2V移行とV2Vの移行という用語が一般的です。  
+仮想マシンの作成と管理に使用されるテクノロジーであるハイパーバイザーのコンテキストでは、仮想化環境ではP2V移行とV2V移行という用語が一般的です。  
 それらは、さまざまなタイプのプラットフォーム間の移行システムのプロセスを指します。
 
 ##### P2V-物理的から仮想移行
@@ -430,7 +432,7 @@ numaシステムでは、メモリはプロセッサ間で不均一に分散さ�
 
 ##### 短所
 
--   🛠️プログラミングの複雑さ：プログラマーは、どのメモリの領域がローカルまたはリモートであるかを認識する必要があり、ローカルメモリの使用を最適化してパフォーマンスを向上させる必要があります。
+-   🛠️プログラミングの複雑さ：プログラマーは、どのメモリの領域がローカルまたはリモートであるかを認識する必要があり、ローカルメモリの使用を最適化してパフォーマンスを向上させます。
 -   coption潜在的なパフォーマンスペナルティ：プロセッサがリモートメモリに頻繁にアクセスする場合、遅延が高いためにパフォーマンスが低下する可能性があります。
     このアーキテクチャは、スケーラビリティとメモリの最適化が重要なサーバーやスーパーコンピューターなどの高性能マルチプロセッサシステムで一般的です。
 
@@ -460,7 +462,7 @@ numaシステムでは、メモリはプロセッサ間で不均一に分散さ�
 
 VMware ESXi、Microsoft Hyper-V、KVM。
 
-##### Operating System Virtualization (Containerization)
+##### オペレーティングシステム仮想化（コンテナ化）
 
 ###### コンテナ化定義
 
@@ -634,7 +636,7 @@ Xenストアは、Xenハイパーバイザーの重要なコンポーネント�
 
 Xenストアのいくつかの重要な側面は次のとおりです。
 
--   **ドメイン間コミュニケーション：** Xen Store enables communication between domains, such as Dom0 (the privileged domain that controls hardware resources) and DomUs (user domains, which are the VMs). This is done through key-value entries, where each domain can read or write information.
+-   **ドメイン間コミュニケーション：**Xenストアでは、Dom0（ハードウェアリソースを制御する特権ドメイン）やDomus（VMSであるユーザードメイン）などのドメイン間の通信を可能にします。これは、各ドメインが情報を読み書きできるキー価値エントリを介して行われます。
 
 -   **構成管理：**仮想デバイス、ネットワーク、ブートパラメーターなどの構成情報を保存およびアクセスするために使用されます。これにより、VMの動的管理と構成が容易になります。
 
@@ -664,7 +666,7 @@ XAPIは、Xenハイパーバイザーの制御と自動化を可能にするイ�
 -   **間散布：**コアハイパーバイザー技術により、仮想マシンが物理ハードウェアで実行できるようにします。
 -   **Xensource：**Xenを商業化した会社は、後にCitrixに買収され、Citrix Xenserverの開発につながりました。
 -   **xenプロジェクト：**Linux Foundationの下でXenハイパーバイザーの開発と維持を続けるオープンソースのイニシアチブとコミュニティ。
--   **xenstore：**Xen Storeは、XenハイパーバイザーとVMの間の通信および構成の仲介として機能し、仮想化された環境の動作と管理を合理化します。
+-   **xenstore：**Xen Storeは、XenハイパーバイザーとVMSの間の通信および構成の仲介として機能し、仮想化された環境の動作と管理を合理化します。
 -   **ピル**Xenハイパーバイザーの制御と自動化を可能にするインターフェイスであり、仮想化された環境の管理を容易にします。
 
 #### domain0（dom0）
@@ -1917,7 +1919,7 @@ timeline
 
 **重要な知識領域：**
 
--   システムとアプリケーションのコンテナの概念を理解します
+-   Understand the concepts of system and application container
 -   カーネルネームスペースを理解して分析します
 -   コントロールグループを理解して分析します
 -   能力を理解して分析します
@@ -2137,7 +2139,7 @@ docker run -it --rm alpine sh
 
 名前空間はコンテナからリソースを非表示にします。しかし、彼らがどれだけ使用できるか、何ができるかを制御するには、追加のメカニズムが必要です。
 
-##### 🔩cgroups（コントロールグループ）
+###### 🔩cgroups（コントロールグループ）
 
 cgroupを使用すると、カーネルがプロセスグループ全体でリソースの使用を制限、優先順位付け、監視することができます。
 
@@ -2150,7 +2152,7 @@ cgroupを使用すると、カーネルがプロセスグループ全体でリ�
 
 deversome容器がすべてのシステムリソースを消費するのを止めることにより、「騒々しい隣人」の問題を防ぎます。
 
-##### 🧱機能
+###### 🧱機能
 
 従来のLinuxはバイナリ特権モデルを使用します：root（uid 0）はすべてを実行でき、他のすべての人は限られています。
 
@@ -2180,23 +2182,205 @@ deversome容器がすべてのシステムリソースを消費するのを止�
 
 一緒に、これらのカーネル機能は、コンテナ分離の技術的なバックボーンを形成します。これは、完全なVMを使用せずに高密度、安全、効率的なアプリケーションの展開を可能にします。
 
-##### croups cgroups（コントロールグループ）の理解
+#### croups cgroups（コントロールグループ）の理解
 
-````sh
-Verificar os Cgroups do sistema
-# systemctl status
-# systemd-cgls
+![cgroups](images/cgroups1.png)
 
-Ferramentas de manipulação dos Cgroups
-# apt-get install cgroup-tools
+##### 📌定義
 
-# cgcreate -g memory,cpu:lsf
-# cgclassify -g memory,cpu:lsf <PID>
----
+コントロールグループ（CGROUPS）は、プロセスのグループのリソース使用（CPU、メモリ、ディスクI/Oなど）を制限、説明、および分離できる2007年に導入されたLinuxカーネル機能です。
 
-#### 352.1 Important Commands
+Cgroupは、RuncやCrunなどの低レベルのコンテナのランタイムで非常に使用され、Docker、Podman、LXCなどのコンテナエンジンが活用して、リソースの境界を強制し、コンテナ間の分離を提供します。
 
-##### unshare
+名前空間分離、cgroupsコントロール。
+
+名前空間は、プロセス（PID、ネットワーク、マウントなど）の個別の環境を作成し、CGROUPはこれらのプロセスのリソース使用（CPU、メモリ、I/O）を制限および監視します。
+
+Key機能
+
+| 特徴         | 説明                             |
+| ---------- | ------------------------------ |
+| **リソース制限** | グループが使用できるリソースの量に制限を課します       |
+| **優先順位付け** | 他のグループよりも多くのCPU/IOの優先順位を割り当てます |
+| **会計**     | グループごとのリソースの使用を追跡します           |
+| **コントロール** | 一時停止、再開、または殺害のプロセス             |
+| **分離**     | グループ間のリソースの飢vを防ぎます             |
+
+##### 📦サブシステム（コントローラー）
+
+cgroupsはコントローラーを介して動作し、それぞれが1つのタイプのリソースを管理する責任があります。
+
+| サブシステム    | 説明                   |
+| --------- | -------------------- |
+| `cpu`     | CPUスケジューリングを制御します    |
+| `cpuacct` | CPU使用レポートを生成します      |
+| `memory`  | 制限とアカウントメモリの使用       |
+| `blkio`   | ブロックデバイスI/Oを制限します    |
+| `devices` | デバイスへのアクセスを制御します     |
+| `freezer` | タスクの実行を一時停止/再開します    |
+| `net_cls` | トラフィックシェーピング用のタグパケット |
+| `ns`      | 名前空間アクセスを管理する（まれ）    |
+
+##### 📂ファイルシステムレイアウト
+
+cgroupは、/sys/fs/cgroupの下の仮想ファイルシステムを介して公開されます。
+
+バージョンに応じて：
+
+-   **cgroups v1**：各コントローラーの個別の階層（メモリ、CPUなど）
+-   **CGROUPS V2**：単一のマウントポイントの下の統一階層
+
+下に取り付けられています：
+
+```sh
+/sys/fs/cgroup/
+```
+
+典型的なcgroups v1階層：
+
+```sh
+/sys/fs/cgroup/
+├── memory/
+│   ├── mygroup/
+│   │   ├── tasks
+│   │   ├── memory.limit_in_bytes
+├── cpu/
+│   └── mygroup/
+└── ...
+```
+
+Cgroups v2では、すべてのリソースが統一された階層の下で管理されています。
+
+```sh
+/sys/fs/cgroup/
+├── cgroup.procs
+├── cgroup.controllers
+├── memory.max
+├── cpu.max
+└── ...
+```
+
+##### common共通使用（V1およびV2の例）
+
+V1  - メモリ制限を作成して割り当てます。
+
+```sh
+# Mount memory controller (if needed)
+mount -t cgroup -o memory none /sys/fs/cgroup/memory
+
+# Create group
+mkdir /sys/fs/cgroup/memory/mygroup
+
+# Set memory limit (100 MB)
+echo 104857600 | tee /sys/fs/cgroup/memory/mygroup/memory.limit_in_bytes
+
+# Assign a process (e.g., current shell)
+echo $$ | tee /sys/fs/cgroup/memory/mygroup/tasks
+```
+
+V2  - 統一階層：
+
+```sh
+# Create subgroup
+mkdir /sys/fs/cgroup/mygroup
+
+# Enable controllers
+echo +memory +cpu > /sys/fs/cgroup/cgroup.subtree_control
+
+# Move shell into group
+echo $$ > /sys/fs/cgroup/mygroup/cgroup.procs
+
+# Set limits
+echo 104857600 > /sys/fs/cgroup/mygroup/memory.max
+echo "50000 100000" > /sys/fs/cgroup/mygroup/cpu.max  # 50ms quota per 100ms period
+```
+
+🧭プロセスとグループの検査
+
+| 指示                      | 説明                     |
+| ----------------------- | ---------------------- |
+| `cat /proc/self/cgroup` | 現在のCGROUPメンバーシップを表示します |
+| `cat /proc/PID/cgroup`  | 別のプロセスのcgroup          |
+| `cat /proc/PID/status`  | メモリとcgroup情報           |
+| `ps -o pid,cmd,cgroup`  | プロセス間マッピングを表示します       |
+
+##### containerコンテナでの使用
+
+Docker、Podman、Containerd Delegateリソースコントロールなどのコンテナエンジン（RuncまたはCrunを介して）、以下を許可します。
+
+-   コンテナーごとのCPUおよびメモリ制限
+-   Blkioおよびデバイスに対する細粒の制御
+-   リアルタイムのリソースアカウンティング
+
+Dockerの例：
+
+```sh
+docker run --memory=256m --cpus=1 busybox
+```
+
+舞台裏では、メモリのCGROUPルールとコンテナプロセスのCPU制限が作成されます。
+
+##### concepts概要
+
+| コンセプト       | 説明                                             |
+| ----------- | ---------------------------------------------- |
+| **コントローラー** | のようなモジュール`cpu`,`memory`,`blkio`など、制限とルールを適用します |
+| **タスク**     | コントロールグループに割り当てられたPIDS（プロセス）                   |
+| **階層**      | cgroupは親子の木で構成されています                           |
+| **代表団**     | SystemDおよびユーザーサービスは、CGROUPSのサブツリーを管理できます       |
+
+#### 🛡️理解能力を理解します
+
+linux機能とは何ですか？
+
+伝統的にLinuxでは、ルートユーザーはシステムへの無制限のアクセスを持っています。 Linux機能が導入され、これらのすべての強力な特権をより小さな離散許可に分解し、完全なルートアクセスを必要とせずにプロセスが特定の特権操作を実行できるようにしました。
+
+これにより、最小特権の原則を実施することにより、システムセキュリティが強化されます。
+
+| 🔐機能                   | 📋説明                            |
+| ---------------------- | ------------------------------- |
+| `CAP_CHOWN`            | 権限に関係なく、ファイル所有者を変更します           |
+| `CAP_NET_BIND_SERVICE` | 1024未満のポートにバインドする（例：80、443）     |
+| `CAP_SYS_TIME`         | システムクロックを設定します                  |
+| `CAP_SYS_ADMIN`        | ⚠️非常に強力 - マウント、BPFなどが含まれます      |
+| `CAP_NET_RAW`          | 生のソケットを使用します（例：ping、traceroute） |
+| `CAP_SYS_PTRACE`       | 他のプロセスをトレースする（デバッグ）             |
+| `CAP_KILL`             | 任意のプロセスに信号を送信します                |
+| `CAP_DAC_OVERRIDE`     | 許可なくファイルとディレクトリを変更します           |
+| `CAP_SETUID`           | プロセスのユーザーID（UID）を変更します          |
+| `CAP_NET_ADMIN`        | ネットワークインターフェイス、ルーティングなどを管理します。  |
+
+rinux機能タイプの一部
+
+| 機能タイプ              | 説明                              |
+| ------------------ | ------------------------------- |
+| **Capinhos（継承）**   | 親プロセスから継承された機能。                 |
+| **capprm（許可）**     | プロセスが許可されている機能。                 |
+| **Capeff（効果）**     | プロセスが現在使用している機能。                |
+| **capbnd（境界）**     | プロセスが取得できる効果的な機能の最大セットを制限します。   |
+| **capamb（アンビエント）** | プロセスが独自の効果的な機能を明示的に定義できるようにします。 |
+
+container容器とポッドの機能
+コンテナは通常、完全なルートとして実行されませんが、代わりにランタイムに応じてデフォルトで限られた機能セットを受け取ります。
+
+SecurityContextを使用して、Kubernetesで機能を追加またはドロップすることができます。
+
+📄kubernetesの例：
+
+```yaml
+securityContext:
+  capabilities:
+    drop: ["ALL"]
+    add: ["NET_BIND_SERVICE"]
+```
+
+これにより、コンテナはゼロの特権から始まり、必要なもののみを受け取ることが保証されます。
+
+* * *
+
+#### 352.1重要なコマンド
+
+##### ウンシェア
 
 ```sh
 # create a new namespaces and run a command in it
@@ -2206,7 +2390,7 @@ unshare --mount --uts --ipc --user --pid --net  --map-root-user --mount-proc --f
 #ps -aux
 #ip addr show
 #umount /proc
-````
+```
 
 ##### LSNS
 
@@ -2245,6 +2429,47 @@ ip netns list
 # exec command in network namespace
 sudo ip netns exec lxc1 ip addr show
 ```
+
+##### 統計
+
+```sh
+# get cgroup version
+stat -fc %T /sys/fs/cgroup
+```
+
+##### SystemCtlおよびSystemD
+
+```sh
+# get cgroups of system
+systemctl status
+systemd-cgls
+```
+
+##### cgcreate
+
+```sh
+cgcreate -g memory,cpu:lsf
+```
+
+##### cgclassify
+
+```sh
+cgclassify -g memory,cpu:lsf <PID>
+```
+
+##### setCap cap_net_raw = ep/usr/bin/tcpdump
+
+```sh
+
+```
+
+##### getCap/usr/bin/tcpdump
+
+```sh
+
+```
+
+##### Capsh-機能シェルラッパー
 
 * * *
 
@@ -2659,7 +2884,7 @@ Vagrantfile
     -   [役員文書](https://www.qemu.org/)
     -   [画像OSBOXESをダウンロードします](https://www.osboxes.org/)
     -   [画像linuximagesをダウンロードします](https://www.linuxvmimages.com/)
-    -   [都会的な](https://en.wikibooks.org/wiki/QEMU/Devices/Virtio)
+    -   [尿](https://en.wikibooks.org/wiki/QEMU/Devices/Virtio)
     -   [ゲストエージェント](https://wiki.qemu.org/Features/GuestAgent)
 -   [libvirt](<>)
     -   [役員文書](https://libvirt.org/)
@@ -2685,6 +2910,9 @@ Vagrantfile
     -   [最も重要な名前空間](https://www.redhat.com/en/blog/7-linux-namespaces)
     -   [cgroupsクラス](https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/6/html/resource_management_guide/ch01)
     -   [男のcgroups](https://manpages.ubuntu.com/manpages/noble/man7/cgroups.7.html)
+    -   [機能ドキュメント](https://linux-audit.com/kernel/capabilities/linux-capabilities-101/)
+    -   [マンの能力](https://manpages.ubuntu.com/manpages/noble/man7/capabilities.7.html)
+    -
 -   [OpenStackドキュメント](<>)
     -   [redhat](https://www.redhat.com/pt-br/topics/openstack)
 -   [vswitchを開きます](<>)
