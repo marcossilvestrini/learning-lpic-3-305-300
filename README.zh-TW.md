@@ -672,7 +672,7 @@ XAPI是可以控制和自動化XEN虛擬機程序的接口，使管理虛擬化�
 #### domain0（dom0）
 
 domain0或dom0是XEN體系結構中的控制域。它管理其他域（Domus），並可以直接訪問硬件。  
-DOM0運行設備驅動程序，允許缺乏直接硬件訪問的Domus與設備通信。通常，它是操作系統（例如Linux）的完整實例，對於XEN Hyprovisor操作至關重要。
+Dom0 runs device drivers, allowing DomUs, which lack direct hardware access, to communicate with devices. Typically, it is a full instance of an operating system, like Linux, and is essential for Xen hypervisor operation.
 
 #### 域（房屋）
 
@@ -2104,7 +2104,7 @@ sudo chroot ~vagrant/debian bash
 | **UTS**        | 主機名和域名  | 每個容器設置自己的主機名     |
 | **IPC**        | 共享記憶和信號 | 防止容器之間的過程間通信     |
 | **用戶**         | 用戶和組ID  | 在容器中啟用假根（UID 0）  |
-| **cgroup（v2）** | 對照組成員資格 | 與CPU和內存限制等資源控件聯繫 |
+| **cgroup（v2）** | 對照組會員資格 | 與CPU和內存限制等資源控件聯繫 |
 
 ##### 🧪視覺類比
 
