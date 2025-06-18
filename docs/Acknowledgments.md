@@ -139,6 +139,10 @@
   * [Most important Namespaces](https://www.redhat.com/en/blog/7-linux-namespaces)  
   * [Cgroups Classes](https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/6/html/resource_management_guide/ch01)
   * [Man Cgroups](https://manpages.ubuntu.com/manpages/noble/man7/cgroups.7.html)
+  * [Capabilities Doc](https://linux-audit.com/kernel/capabilities/linux-capabilities-101/)
+  * [Man Capabilities](https://manpages.ubuntu.com/manpages/noble/man7/capabilities.7.html)
+    
+  * 
 * [Openstack Docs]()
   * [RedHat](https://www.redhat.com/pt-br/topics/openstack)
 * [Open vSwitch]()

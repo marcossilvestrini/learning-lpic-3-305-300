@@ -251,7 +251,7 @@ The result: a lightweight, isolated runtime environment that behaves like a sepa
 
 Namespaces hide resources from containers. But to control how much they can use and what they can do, we need additional mechanisms:
 
-##### 🔩 Cgroups (Control Groups)
+###### 🔩 Cgroups (Control Groups)
 
 Cgroups allow the kernel to limit, prioritize, and monitor resource usage across process groups.
 
@@ -264,7 +264,7 @@ Cgroups allow the kernel to limit, prioritize, and monitor resource usage across
 
 🛡️ Prevents the "noisy neighbor" problem by stopping one container from consuming all system resources.
 
-##### 🧱 Capabilities
+###### 🧱 Capabilities
 
 Traditional Linux uses a binary privilege model: root (UID 0) can do everything, everyone else is limited.
 
@@ -441,6 +441,53 @@ Behind the scenes, this creates cgroup rules for memory and CPU limits for the c
 | **Hierarchy**   | Cgroups are structured in a parent-child tree                      |
 | **Delegation**  | Systemd and user services may manage subtrees of cgroups           |
 
+#### 🛡️ Understanding Capabilities
+
+❓ What Are Linux Capabilities?
+
+Traditionally in Linux, the root user has unrestricted access to the system. Linux capabilities were introduced to break down these all-powerful privileges into smaller, discrete permissions, allowing processes to perform specific privileged operations without requiring full root access.
+
+This enhances system security by enforcing the principle of least privilege.
+
+| 🔐 Capability          | 📋 Description                                  |
+| ---------------------- | ------------------------------------------------ |
+| `CAP_CHOWN`            | Change file owner regardless of permissions      |
+| `CAP_NET_BIND_SERVICE` | Bind to ports below 1024 (e.g., 80, 443)         |
+| `CAP_SYS_TIME`         | Set system clock                                 |
+| `CAP_SYS_ADMIN`        | ⚠️ Very powerful – includes mount, BPF, and more |
+| `CAP_NET_RAW`          | Use raw sockets (e.g., ping, traceroute)         |
+| `CAP_SYS_PTRACE`       | Trace other processes (debugging)                |
+| `CAP_KILL`             | Send signals to any process                      |
+| `CAP_DAC_OVERRIDE`     | Modify files and directories without permission  |
+| `CAP_SETUID`            | Change user ID (UID) of the process             |
+| `CAP_NET_ADMIN`         | Manage network interfaces, routing, etc.        |
+
+🔐 Some Linux Capabilities Types
+
+| Capability Type | Description |
+|------------------|-------------|
+| **CapInh (Inherited)** | Capabilities inherited from the parent process. |
+| **CapPrm (Permitted)** | Capabilities that the process is allowed to have. |
+| **CapEff (Effective)** | Capabilities that the process is currently using. |
+| **CapBnd (Bounding)** | Restricts the maximum set of effective capabilities a process can obtain. |
+| **CapAmb (Ambient)** | Allows a process to explicitly define its own effective capabilities. |
+
+📦 Capabilities in Containers and Pods
+Containers typically do not run as full root, but instead receive a limited set of capabilities by default depending on the runtime.
+
+Capabilities can be added or dropped in Kubernetes using the securityContext.
+
+📄 Kubernetes example:
+
+```yaml
+securityContext:
+  capabilities:
+    drop: ["ALL"]
+    add: ["NET_BIND_SERVICE"]
+```
+
+🔐 This ensures the container starts with zero privileges and receives only what is needed.
+
 ---
 
 #### 352.1 Important Commands
@@ -521,6 +568,20 @@ cgcreate -g memory,cpu:lsf
 ```sh
 cgclassify -g memory,cpu:lsf <PID>
 ```
+
+##### setcap cap_net_raw=ep /usr/bin/tcpdump
+
+```sh
+
+```
+
+##### getcap /usr/bin/tcpdump
+
+```sh
+
+```
+
+##### capsh - capability shell wrapper
 
 ---
 
