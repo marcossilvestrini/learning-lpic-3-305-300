@@ -299,7 +299,7 @@ Exécute sur un système d'exploitation conventionnel, en s'appuyant sur le syst
 -   Parallels Desktop: Conçu pour que les utilisateurs de Mac puissent exécuter Windows et d'autres systèmes d'exploitation aux côtés de macOS.
 -   Qemu (émulateur rapide): un émulateur et virtualiseur open source, souvent utilisés en conjonction avec KVM.
 
-##### Key Differences Between Type 1 and Type 2 Hypervisors
+##### Différences clés entre les hyperviseurs de type 1 et de type 2
 
 -   Environnement de déploiement:
     -   Les hyperviseurs de type 1 sont couramment déployés dans les centres de données et les environnements d'entreprise en raison de leur interaction directe avec le matériel et des performances élevées.
@@ -552,7 +552,7 @@ DÉNODO, Red Hat JBoss Data Virtualization, IBM Infosphere.
 -   💰 Économies de coûts: réduction des coûts matériels et opérationnels.
 -   📈 Évolutivité: facile à évoluer ou à la baisse selon la demande.
 -   🔧 Flexibilité: prend en charge une variété de charges de travail et d'applications.
--   🔄 Disaster Recovery: Simplified backup and recovery processes.
+-   🔄 Récupération en cas de catastrophe: processus de sauvegarde et de récupération simplifiés.
 -   🔒 Isolement: une sécurité améliorée par l'isolement des environnements.
 
 #### Émulation
@@ -2166,7 +2166,7 @@ En abandonnant les capacités inutiles, les conteneurs peuvent fonctionner avec 
 
 ##### 🔐 Mécanismes de sécurité
 
-Used in conjunction with namespaces and cgroups to lock down what a containerized process can do:
+Utilisé en conjonction avec des espaces de noms et des CGROUP pour verrouiller ce qu'un processus conteneurisé peut faire:
 
 | Fonctionnalité  | Description                                                                    |
 | --------------- | ------------------------------------------------------------------------------ |
@@ -2352,13 +2352,13 @@ Cela améliore la sécurité du système en appliquant le principe du moindre pr
 
 🔐 Certains types de capacités Linux
 
-| Type de capacité       | Description                                                                       |
-| ---------------------- | --------------------------------------------------------------------------------- |
-| **CapInh (Inherited)** | Capacités héritées du processus parent.                                           |
-| **CAPPRM (autorisé)**  | Capacités que le processus est autorisée à avoir.                                 |
-| **CAPEFF (efficace)**  | Capacités que le processus utilise actuellement.                                  |
-| **Capbnd (limite)**    | Restreint l'ensemble maximum de capacités efficaces qu'un processus peut obtenir. |
-| **Capamb (ambiant)**   | Permet à un processus de définir explicitement ses propres capacités efficaces.   |
+| Type de capacité      | Description                                                                       |
+| --------------------- | --------------------------------------------------------------------------------- |
+| **Capinhos (hérité)** | Capacités héritées du processus parent.                                           |
+| **CAPPRM (autorisé)** | Capacités que le processus est autorisée à avoir.                                 |
+| **CAPEFF (efficace)** | Capacités que le processus utilise actuellement.                                  |
+| **Capbnd (limite)**   | Restreint l'ensemble maximum de capacités efficaces qu'un processus peut obtenir. |
+| **Capamb (ambiant)**  | Permet à un processus de définir explicitement ses propres capacités efficaces.   |
 
 📦 Capacités dans les conteneurs et les gousses
 Les conteneurs ne fonctionnent généralement pas en tant que racine complète, mais reçoivent plutôt un ensemble limité de capacités par défaut en fonction de l'exécution.
