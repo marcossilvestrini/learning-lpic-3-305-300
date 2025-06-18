@@ -2741,9 +2741,9 @@ Vagrantfile
 Las contribuciones son las que hacen que la comunidad de código abierto sea un lugar tan increíble para
 Aprende, inspira y crea. Cualquier contribución que haga son**muy apreciado**.
 
-Si tiene una sugerencia que lo mejore, bifurca el repositorio y
-crear una solicitud de extracción. También puede simplemente abrir un problema con la etiqueta "Mejora".
-¡No olvides darle una estrella al proyecto! ¡Gracias de nuevo!
+If you have a suggestion that would make this better, please fork the repo and
+create a pull request. You can also simply open an issue with the tag "enhancement".
+Don't forget to give the project a star! Thanks again!
 
 1.  Bifurca el proyecto
 2.  Crea tu rama de características (`git checkout -b feature/AmazingFeature`)
