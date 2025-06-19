@@ -4,12 +4,11 @@
     Script Name: full-chroot-lab.sh
     Requirements: root privileges
     Description: Automates setup and teardown of a functional minimal chroot environment,
-                 with interactive menu.
+                 with interactive menu and sumário de validação automático.
     Author: Marcos Silvestrini
     Date: 06/06/2025
 MULTILINE-COMMENT
 
-# Ensure script is run as root
 if [[ "$EUID" -ne 0 ]]; then
   echo "[ERROR] This script must be run as root." >&2
   exit 1
@@ -19,20 +18,14 @@ set -euo pipefail
 IFS=$'\n\t'
 export LANG=C
 
-# Variables
 CHROOT_DIR="/mnt/myenv"
 WORKDIR="/home/vagrant"
-UTILS=(ls ps mkdir cat sh uname touch w)
-REMOVE_DIR=true  # Set to true to also delete the chroot directory
+UTILS=(ls ps mkdir cat sh uname touch w hostname id tr head sed rm)
+REMOVE_DIR=true
 
-# Logging
 log()   { echo "[INFO] $*"; }
 warn()  { echo "[WARN] $*" >&2; }
 abort() { echo "[ERROR] $*" >&2; exit 1; }
-
-# ===============================
-# FUNCTIONS
-# ===============================
 
 copy_binary_and_libs() {
     local bin_path="$1"
@@ -49,7 +42,7 @@ copy_binary_and_libs() {
 setup_chroot_env() {
     cd "$WORKDIR" || abort "Cannot change to $WORKDIR"
     log "Creating chroot base directory structure..."
-    mkdir -p "$CHROOT_DIR"/{bin,etc,usr,proc,sys,dev,dev/pts,tmp}
+    mkdir -p "$CHROOT_DIR"/{bin,etc,usr/bin,usr/sbin,proc,sys,dev/pts,tmp}
     log "Copying /bin/bash binary..."
     cp /bin/bash "$CHROOT_DIR/bin/"
     log "Copying bash dependencies..."
@@ -67,10 +60,7 @@ setup_chroot_env() {
     else
         abort "Dynamic linker not found!"
     fi
-    log "Mounting virtual filesystems..."
-    for mp in dev dev/pts proc sys; do
-        mount --bind "/$mp" "$CHROOT_DIR/$mp" 2>/dev/null || warn "Could not mount /$mp"
-    done
+
     log "Copying essential config files..."
     cp -v /etc/resolv.conf "$CHROOT_DIR/etc/" || warn "No resolv.conf"
     cp -v /etc/passwd /etc/group "$CHROOT_DIR/etc/" || warn "No passwd/group"
@@ -84,8 +74,52 @@ setup_chroot_env() {
             warn "Binary not found: $bin"
         fi
     done
+
+    # Montar /proc, /sys e /dev/pts (suprimir warnings)
+    for mp in proc sys; do
+        if ! mountpoint -q "$CHROOT_DIR/$mp"; then
+            mount --bind "/$mp" "$CHROOT_DIR/$mp" &>/dev/null || warn "Could not mount /$mp"
+        fi
+    done
+    mkdir -p "$CHROOT_DIR/dev/pts"
+    if ! mountpoint -q "$CHROOT_DIR/dev/pts"; then
+        mount -t devpts devpts "$CHROOT_DIR/dev/pts" &>/dev/null || warn "Could not mount devpts"
+    fi
+
     log "Chroot environment setup complete."
-    echo "To enter: chroot $CHROOT_DIR /bin/bash"
+
+    # Sumário/validação automática ao entrar no chroot
+    cat <<'EOF' > "$CHROOT_DIR/chroot-lab-summary.sh"
+echo -e "\n======================"
+echo "📊 Chroot Test Summary"
+echo "======================"
+echo "[SUMMARY]"
+echo "[CHROOT UTS] 🌐 Hostname: $(command -v hostname >/dev/null 2>&1 && hostname || echo 'N/A')"
+echo "[CHROOT USER] 👤 UID/GID: $(command -v id >/dev/null 2>&1 && id || echo 'N/A')"
+echo "[CHROOT PID] 🧵 Running processes:"
+if command -v ps >/dev/null 2>&1 && command -v head >/dev/null 2>&1 && command -v sed >/dev/null 2>&1; then
+    ps aux | head -n 5 | sed 's/^/    /'
+else
+    echo "    ps/head/sed not found"
+fi
+echo "[CHROOT FS] 📂 Root filesystem:"
+if command -v ls >/dev/null 2>&1 && command -v tr >/dev/null 2>&1; then
+    ls / | tr '\n' ' '; echo
+else
+    echo "    ls/tr not found"
+fi
+echo -n "[CHROOT MOUNT] 🗂️ /tmp write: "
+if touch /tmp/chroot-testfile 2>/dev/null; then echo "✔ OK"; else echo "✘ FAILED"; fi
+echo -e "======================\n"
+if command -v rm >/dev/null 2>&1; then
+    rm -f /chroot-lab-summary.sh
+fi
+exec /bin/bash
+EOF
+    chmod +x "$CHROOT_DIR/chroot-lab-summary.sh"
+
+    # Entra no chroot, exibe sumário e shell
+    chroot "$CHROOT_DIR" /bin/bash /chroot-lab-summary.sh
 }
 
 umount_safely() {
@@ -99,7 +133,7 @@ umount_safely() {
 
 teardown_chroot_env() {
     log "Starting chroot environment cleanup..."
-    for mp in dev/pts dev proc sys; do
+    for mp in dev/pts proc sys; do
         umount_safely "$CHROOT_DIR/$mp"
     done
     if [[ "$REMOVE_DIR" == true ]]; then
@@ -122,9 +156,6 @@ main_menu() {
     echo "==============================="
 }
 
-# ===============================
-# MAIN LOOP
-# ===============================
 while true; do
     main_menu
     read -rp "Enter your choice [0,1,9]: " CHOICE

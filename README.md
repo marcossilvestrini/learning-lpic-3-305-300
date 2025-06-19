@@ -1960,75 +1960,9 @@ capsh
 /proc/[0-9]+/status
 ```
 
-
-
 ---
 
-#### chroot - Change Root Directory in Unix/Linux
-
-![chroot](images/chroot.png)
-
-##### What is chroot?
-
-chroot (short for change root) is a system call and command on Unix-like operating systems that changes the apparent root directory (/) for the current running process and its children. This creates an isolated environment, commonly referred to as a chroot jail.
-
-##### 🧱 Purpose and Use Cases
-
-* 🔒 Isolate applications for security (jailing).
-* 🧪 Create testing environments without impacting the rest of the system.
-* 🛠️ System recovery (e.g., boot into LiveCD and chroot into installed system).
-* 📦 Building software packages in a controlled environment.
-
-##### 📁 Minimum Required Structure
-
-The chroot environment must have its own essential files and structure:
-
-```sh
-/mnt/myenv/
-├── bin/
-│   └── bash
-├── etc/
-├── lib/
-├── lib64/
-├── usr/
-├── dev/
-├── proc/
-└── tmp/
-```
-
-Use ldd to identify required libraries:
-
-```sh
-ldd /bin/bash
-```
-
-##### 🚨 Limitations and Security Considerations
-
-* chroot is not a security boundary like containers or VMs.
-* A privileged user (root) inside the jail can potentially break out.
-* No isolation of process namespaces, devices, or kernel-level resources.
-
-For stronger isolation, consider alternatives like:
-
-* Linux containers (LXC, Docker)
-* Virtual machines (KVM, QEMU)
-* Kernel namespaces and cgroups
-
-##### 🧪 Example: Basic Chroot Environment Setup
-
-Use this script for setting up a minimal chroot environment:
-
-[**chroot.sh**](scripts/container/chroot.sh)
-
-##### 🧪 Test chroot with debootstrap
-
-```sh
-# download debain files
-sudo debootstrap stable ~vagrant/debian http://deb.debian.org/debian
-sudo chroot ~vagrant/debian bash
-```
-
-#### 🔍 Understanding Containers
+#### 🧠 Understanding Containers
 
 ![container](images/containers1.png)
 
@@ -2095,6 +2029,74 @@ Unlike Virtual Machines (VMs), containers do not virtualize hardware. Instead, t
 | **Capabilities**       | Fine-grained privilege control inside containers.     |
 | **seccomp**            | Restricts allowed syscalls to reduce attack surface.  |
 | **AppArmor / SELinux** | Mandatory Access Control enforcement at kernel level. |
+
+---
+
+#### 🧠 Understanding chroot - Change Root Directory in Unix/Linux
+
+![chroot](images/chroot.png)
+
+##### What is chroot?
+
+chroot (short for change root) is a system call and command on Unix-like operating systems that changes the apparent root directory (/) for the current running process and its children. This creates an isolated environment, commonly referred to as a chroot jail.
+
+##### 🧱 Purpose and Use Cases
+
+* 🔒 Isolate applications for security (jailing).
+* 🧪 Create testing environments without impacting the rest of the system.
+* 🛠️ System recovery (e.g., boot into LiveCD and chroot into installed system).
+* 📦 Building software packages in a controlled environment.
+
+##### 📁 Minimum Required Structure
+
+The chroot environment must have its own essential files and structure:
+
+```sh
+/mnt/myenv/
+├── bin/
+│   └── bash
+├── etc/
+├── lib/
+├── lib64/
+├── usr/
+├── dev/
+├── proc/
+└── tmp/
+```
+
+Use ldd to identify required libraries:
+
+```sh
+ldd /bin/bash
+```
+
+##### 🚨 Limitations and Security Considerations
+
+* chroot is not a security boundary like containers or VMs.
+* A privileged user (root) inside the jail can potentially break out.
+* No isolation of process namespaces, devices, or kernel-level resources.
+
+For stronger isolation, consider alternatives like:
+
+* Linux containers (LXC, Docker)
+* Virtual machines (KVM, QEMU)
+* Kernel namespaces and cgroups
+
+##### 🧪 Test chroot with debootstrap
+
+```sh
+# download debain files
+sudo debootstrap stable ~vagrant/debian http://deb.debian.org/debian
+sudo chroot ~vagrant/debian bash
+```
+
+##### :🧪 Lab chroot
+
+Use this script for lab: [chroot.sh](scripts/container/chroot.sh)
+
+Output:
+
+![chroot-labt](images/chroot-lab.png)
 
 ---
 
@@ -2197,6 +2199,16 @@ Used in conjunction with namespaces and cgroups to lock down what a containerize
 ✅ Capabilities and security modules define what it can do
 
 Together, these kernel features form the technical backbone of container isolation — enabling high-density, secure, and efficient application deployment without full VMs.
+
+##### 🧪 Lab Namespaces
+
+Use this script for lab: [namespace.sh](scripts/container/namespace.sh)
+
+Output:
+
+![namespaces](images/namespace-lab.png)
+
+---
 
 #### 🧩 Understanding Cgroups (Control Groups)
 
@@ -2345,6 +2357,16 @@ Behind the scenes, this creates cgroup rules for memory and CPU limits for the c
 | **Hierarchy**   | Cgroups are structured in a parent-child tree                      |
 | **Delegation**  | Systemd and user services may manage subtrees of cgroups           |
 
+##### 🧪 Lab Cgroups
+
+Use this script for lab: [cgroups.sh](scripts/container/cgroups.sh)
+
+Output Soft limit memory:
+
+![cgroups-soft-limit](images/cgroups-soft-limit.png)
+
+---
+
 #### 🛡️ Understanding Capabilities
 
 ❓ What Are Linux Capabilities?
@@ -2391,6 +2413,14 @@ securityContext:
 ```
 
 🔐 This ensures the container starts with zero privileges and receives only what is needed.
+
+##### 🧪 Lab Capabilities
+
+Use this script for lab: [capabilities.sh](scripts/container/capabilities.sh)
+
+Output:
+
+![capabilities-lab](images/capabilities-lab.png)
 
 ---
 
