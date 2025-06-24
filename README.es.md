@@ -1948,71 +1948,7 @@ capsh
 
 * * *
 
-#### Chroot: cambiar el directorio raíz en Unix/Linux
-
-![chroot](images/chroot.png)
-
-##### ¿Qué es Chroot?
-
-Chroot (abreviatura de Root de cambio) es una llamada y comando del sistema en sistemas operativos similares a UNIX que cambia el directorio raíz aparente (/) para el proceso de ejecución actual y sus hijos. Esto crea un entorno aislado, comúnmente conocido como una cárcel de chroot.
-
-##### 🧱 Casos de propósito y uso
-
--   🔒 Aislar aplicaciones para la seguridad (cárcel).
--   🧪 Crear entornos de prueba sin afectar el resto del sistema.
--   🛠️ Recuperación del sistema (por ejemplo, arranque en LIVECD y Chroot en el sistema instalado).
--   📦 Construir paquetes de software en un entorno controlado.
-
-##### 📁 Estructura mínima requerida
-
-El entorno chroot debe tener sus propios archivos y estructura esenciales:
-
-```sh
-/mnt/myenv/
-├── bin/
-│   └── bash
-├── etc/
-├── lib/
-├── lib64/
-├── usr/
-├── dev/
-├── proc/
-└── tmp/
-```
-
-Use LDD para identificar las bibliotecas requeridas:
-
-```sh
-ldd /bin/bash
-```
-
-##### 🚨 Limitaciones y consideraciones de seguridad
-
--   Chroot no es un límite de seguridad como contenedores o máquinas virtuales.
--   Un usuario privilegiado (raíz) dentro de la cárcel puede estallar.
--   No hay aislamiento de espacios de nombres de procesos, dispositivos o recursos a nivel de núcleo.
-
-Para un aislamiento más fuerte, considere alternativas como:
-
--   Contenedores de Linux (LXC, Docker)
--   Máquinas virtuales (KVM, QEMU)
--   Espacios de nombres de núcleo y CGROUPS
-
-##### 🧪 Ejemplo: configuración básica del entorno de chroot
-
-Use este script para configurar un entorno mínimo de chroot:
-
-[**chroot.sh**](scripts/container/chroot.sh)
-
-##### 🧪 Pruebe chroot con desbootstrap
-
-```sh
-# download debain files
-sudo debootstrap stable ~vagrant/debian http://deb.debian.org/debian
-sudo chroot ~vagrant/debian bash
-```
-
-#### 🔍 Comprender los contenedores
+#### 🧠 Comprender los contenedores
 
 ![container](images/containers1.png)
 
@@ -2079,6 +2015,74 @@ A diferencia de las máquinas virtuales (máquinas virtuales), los contenedores 
 | **Capacidades**         | Control de privilegios de grano fino dentro de los contenedores.                 |
 | **seccompe**            | Las restricciones permitieron que los syscalls reduzcan la superficie de ataque. |
 | **Apparmor / Selinux**  | Control de control de acceso obligatorio a nivel de núcleo.                      |
+
+* * *
+
+#### 🧠 Comprensión de Chroot: cambie el directorio raíz en Unix/Linux
+
+![chroot](images/chroot.png)
+
+##### ¿Qué es Chroot?
+
+Chroot (abreviatura de Root de cambio) es una llamada y comando del sistema en sistemas operativos similares a UNIX que cambia el directorio raíz aparente (/) para el proceso de ejecución actual y sus hijos. Esto crea un entorno aislado, comúnmente conocido como una cárcel de chroot.
+
+##### 🧱 Casos de propósito y uso
+
+-   🔒 Aislar aplicaciones para la seguridad (cárcel).
+-   🧪 Crear entornos de prueba sin afectar el resto del sistema.
+-   🛠️ Recuperación del sistema (por ejemplo, arranque en LIVECD y Chroot en el sistema instalado).
+-   📦 Construir paquetes de software en un entorno controlado.
+
+##### 📁 Estructura mínima requerida
+
+El entorno chroot debe tener sus propios archivos y estructura esenciales:
+
+```sh
+/mnt/myenv/
+├── bin/
+│   └── bash
+├── etc/
+├── lib/
+├── lib64/
+├── usr/
+├── dev/
+├── proc/
+└── tmp/
+```
+
+Use LDD para identificar las bibliotecas requeridas:
+
+```sh
+ldd /bin/bash
+```
+
+##### 🚨 Limitaciones y consideraciones de seguridad
+
+-   Chroot no es un límite de seguridad como contenedores o máquinas virtuales.
+-   Un usuario privilegiado (raíz) dentro de la cárcel puede estallar.
+-   No hay aislamiento de espacios de nombres de procesos, dispositivos o recursos a nivel de núcleo.
+
+Para un aislamiento más fuerte, considere alternativas como:
+
+-   Contenedores de Linux (LXC, Docker)
+-   Máquinas virtuales (KVM, QEMU)
+-   Espacios de nombres de núcleo y CGROUPS
+
+##### 🧪 Pruebe chroot con desbootstrap
+
+```sh
+# download debain files
+sudo debootstrap stable ~vagrant/debian http://deb.debian.org/debian
+sudo chroot ~vagrant/debian bash
+```
+
+##### : 🧪 Lab Chroot
+
+Use este script para laboratorio:[chroot.sh](scripts/container/chroot.sh)
+
+Producción:
+
+![chroot-labt](images/chroot-lab.png)
 
 * * *
 
@@ -2181,6 +2185,16 @@ Se utiliza junto con espacios de nombres y CGROUPS para bloquear lo que puede ha
 > ✅ Capacidades y módulos de seguridad definen lo que puede hacer
 
 Juntas, estas características del núcleo forman la columna vertebral técnica del aislamiento del contenedor, lo que permite la implementación de aplicaciones de alta densidad, segura y eficiente sin máquinas virtuales completas.
+
+##### 🧪 Espacios de nombres de laboratorio
+
+Use este script para laboratorio:[namespace.sh](scripts/container/namespace.sh)
+
+Producción:
+
+![namespaces](images/namespace-lab.png)
+
+* * *
 
 #### 🧩 Comprender los grupos C (grupos de control)
 
@@ -2329,6 +2343,16 @@ Detrás de escena, esto crea reglas CGROUP para la memoria y los límites de la 
 | **Jerarquía**     | Los croups están estructurados en un árbol de padres e hijos                 |
 | **Delegación**    | Systemd y los servicios de usuarios pueden administrar subárboles de CGROUPS |
 
+##### 🧪 LAB CGROUPS
+
+Use este script para laboratorio:[cgroups.sh](scripts/container/cgroups.sh)
+
+Salida Memoria de límite suave:
+
+![cgroups-soft-limit](images/cgroups-soft-limit.png)
+
+* * *
+
 #### 🛡️ Capacidades de comprensión
 
 ❓ ¿Qué son las capacidades de Linux?
@@ -2375,6 +2399,14 @@ securityContext:
 ```
 
 🔐 Esto asegura que el contenedor comience con cero privilegios y recibe solo lo que se necesita.
+
+##### 🧪 Capacidades de laboratorio
+
+Use este script para laboratorio:[capabilities.sh](scripts/container/capabilities.sh)
+
+Producción:
+
+![capabilities-lab](images/capabilities-lab.png)
 
 * * *
 
@@ -2741,9 +2773,9 @@ Vagrantfile
 Las contribuciones son las que hacen que la comunidad de código abierto sea un lugar tan increíble para
 Aprende, inspira y crea. Cualquier contribución que haga son**muy apreciado**.
 
-If you have a suggestion that would make this better, please fork the repo and
-create a pull request. You can also simply open an issue with the tag "enhancement".
-Don't forget to give the project a star! Thanks again!
+Si tiene una sugerencia que lo mejore, bifurca el repositorio y
+crear una solicitud de extracción. También puede simplemente abrir un problema con la etiqueta "Mejora".
+¡No olvides darle una estrella al proyecto! ¡Gracias de nuevo!
 
 1.  Bifurca el proyecto
 2.  Crea tu rama de características (`git checkout -b feature/AmazingFeature`)
@@ -2884,7 +2916,7 @@ Enlace del proyecto:<https://github.com/marcossilvestrini/learning-lpic-3-305-30
     -   [Oficial Doc](https://www.qemu.org/)
     -   [Descargar imágenes OSBOXES](https://www.osboxes.org/)
     -   [Descargar imágenes LinuxImages](https://www.linuxvmimages.com/)
-    -   [Orina](https://en.wikibooks.org/wiki/QEMU/Devices/Virtio)
+    -   [Urbano](https://en.wikibooks.org/wiki/QEMU/Devices/Virtio)
     -   [Agente invitado](https://wiki.qemu.org/Features/GuestAgent)
 -   [Libvirt](<>)
     -   [Oficial Doc](https://libvirt.org/)
