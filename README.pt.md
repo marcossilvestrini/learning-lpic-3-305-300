@@ -302,7 +302,7 @@ Executa em cima de um sistema operacional convencional, contando com o sistema o
 ##### Diferenças -chave entre os hipervisores do tipo 1 e do tipo 2
 
 -   Ambiente de implantação:
-    -   Os hipervisores tipo 1 são comumente implantados em data centers e ambientes corporativos devido à sua interação direta com hardware e alto desempenho.
+    -   Type 1 hypervisors are commonly deployed in data centers and enterprise environments due to their direct interaction with hardware and high performance.
     -   Os hipervisores do tipo 2 são mais adequados para tarefas de uso pessoal, desenvolvimento, teste e virtualização em pequena escala.
 -   Desempenho:
     -   Os hipervisores do tipo 1 geralmente oferecem melhor desempenho e menor latência porque não confiam em um sistema operacional host.
@@ -512,7 +512,7 @@ Permite que um sistema operacional de desktop seja executado em uma máquina vir
 
 ###### Casos de uso da definição de virtualização de desktop
 
-Infraestrutura de desktop virtual (VDI), soluções de trabalho remoto.
+Infraestrutura de Desktop Virtual (VDI), Soluções de Trabalho Remoto.
 
 ###### Exemplos de definição de virtualização de desktop
 
@@ -1948,75 +1948,11 @@ capsh
 
 * * *
 
-#### CHROOT - Alterar diretório raiz no Unix/Linux
-
-![chroot](images/chroot.png)
-
-##### O que é chroot?
-
-O Chroot (abreviação de ROOTE de mudança) é uma chamada e comando do sistema em sistemas operacionais do tipo UNIX que altera o diretório raiz aparente (/) para o processo de execução atual e seus filhos. Isso cria um ambiente isolado, comumente referido como uma prisão de chroot.
-
-##### 🧱 Casos de propósito e uso
-
--   🔒 Isolar solicitações de segurança (prisão).
--   🧪 Crie ambientes de teste sem afetar o restante do sistema.
--   Recovery Recuperação do sistema (por exemplo, inicialização no LiveCD e Chroot no sistema instalado).
--   📦 Construindo pacotes de software em um ambiente controlado.
-
-##### 📁 Estrutura mínima necessária
-
-O ambiente de chroot deve ter seus próprios arquivos e estrutura essenciais:
-
-```sh
-/mnt/myenv/
-├── bin/
-│   └── bash
-├── etc/
-├── lib/
-├── lib64/
-├── usr/
-├── dev/
-├── proc/
-└── tmp/
-```
-
-Use LDD para identificar as bibliotecas necessárias:
-
-```sh
-ldd /bin/bash
-```
-
-##### 🚨 Limitações e considerações de segurança
-
--   Chroot não é um limite de segurança como recipientes ou VMs.
--   Um usuário privilegiado (root) dentro da prisão pode potencialmente sair.
--   Nenhum isolamento de namespaces de processo, dispositivos ou recursos no nível do kernel.
-
-Para um isolamento mais forte, considere alternativas como:
-
--   Contêineres Linux (LXC, Docker)
--   Máquinas Virtuais (KVM, Qemu)
--   Namespaces de kernel e cgroups
-
-##### 🧪 Exemplo: Configuração básica de ambiente de chroot
-
-Use este script para configurar um ambiente mínimo de chroot:
-
-[**chroot.sh**](scripts/container/chroot.sh)
-
-##### 🧪 Teste o chroot com Debootstrap
-
-```sh
-# download debain files
-sudo debootstrap stable ~vagrant/debian http://deb.debian.org/debian
-sudo chroot ~vagrant/debian bash
-```
-
-#### 🔍 Entendendo os recipientes
+#### 🧠 Entendendo os recipientes
 
 ![container](images/containers1.png)
 
-Os contêineres são uma tecnologia de virtualização leve que empacota aplicativos junto com as dependências necessárias - código, bibliotecas, variáveis ​​de ambiente e arquivos de configuração - em unidades isoladas, portáteis e reproduzíveis.
+Os contêineres são uma tecnologia de virtualização leve que empacota aplicativos, juntamente com as dependências necessárias - código, bibliotecas, variáveis ​​de ambiente e arquivos de configuração - em unidades isoladas, portáteis e reproduzíveis.
 
 > Em termos simples: um contêiner é uma caixa independente que executa seu aplicativo da mesma maneira, em qualquer lugar.
 
@@ -2079,6 +2015,74 @@ Ao contrário das máquinas virtuais (VMs), os contêineres não virtualizam o h
 | **Recursos**          | Controle de privilégios de granulação fina dentro de recipientes.      |
 | **Seccomp**           | Restringem os syscalls permitidos para reduzir a superfície de ataque. |
 | **APARMOR / SELinux** | Execução obrigatória de controle de acesso no nível do kernel.         |
+
+* * *
+
+#### 🧠 Entendendo o Chroot - Alterar o diretório raiz no Unix/Linux
+
+![chroot](images/chroot.png)
+
+##### O que é chroot?
+
+O Chroot (abreviação de ROOTE de mudança) é uma chamada e comando do sistema em sistemas operacionais do tipo UNIX que altera o diretório raiz aparente (/) para o processo de execução atual e seus filhos. Isso cria um ambiente isolado, comumente referido como uma prisão de chroot.
+
+##### 🧱 Casos de propósito e uso
+
+-   🔒 Isolar solicitações de segurança (prisão).
+-   🧪 Crie ambientes de teste sem afetar o restante do sistema.
+-   Recovery Recuperação do sistema (por exemplo, inicialização no LiveCD e Chroot no sistema instalado).
+-   📦 Construindo pacotes de software em um ambiente controlado.
+
+##### 📁 Estrutura mínima necessária
+
+O ambiente de chroot deve ter seus próprios arquivos e estrutura essenciais:
+
+```sh
+/mnt/myenv/
+├── bin/
+│   └── bash
+├── etc/
+├── lib/
+├── lib64/
+├── usr/
+├── dev/
+├── proc/
+└── tmp/
+```
+
+Use LDD para identificar as bibliotecas necessárias:
+
+```sh
+ldd /bin/bash
+```
+
+##### 🚨 Limitações e considerações de segurança
+
+-   Chroot não é um limite de segurança como recipientes ou VMs.
+-   Um usuário privilegiado (root) dentro da prisão pode potencialmente sair.
+-   Nenhum isolamento de namespaces de processo, dispositivos ou recursos no nível do kernel.
+
+Para um isolamento mais forte, considere alternativas como:
+
+-   Contêineres Linux (LXC, Docker)
+-   Máquinas Virtuais (KVM, Qemu)
+-   Namespaces de kernel e cgroups
+
+##### 🧪 Teste o chroot com Debootstrap
+
+```sh
+# download debain files
+sudo debootstrap stable ~vagrant/debian http://deb.debian.org/debian
+sudo chroot ~vagrant/debian bash
+```
+
+##### : 🧪 CHROOT LAB
+
+Use este script para laboratório:[chroot.sh](scripts/container/chroot.sh)
+
+Saída:
+
+![chroot-labt](images/chroot-lab.png)
 
 * * *
 
@@ -2181,6 +2185,16 @@ Usado em conjunto com namespaces e cgroups para bloquear o que um processo cont�
 > ✅ Capacidades e módulos de segurança definem o que pode fazer
 
 Juntos, esses recursos do kernel formam a espinha dorsal técnica do isolamento de contêineres-permitindo implantação de aplicação de alta densidade, segurança e eficiência sem VMs completas.
+
+##### 🧪 Namespaces de laboratório
+
+Use este script para laboratório:[namespace.sh](scripts/container/namespace.sh)
+
+Saída:
+
+![namespaces](images/namespace-lab.png)
+
+* * *
 
 #### 🧩 Entendendo os cgroups (grupos de controle)
 
@@ -2329,6 +2343,16 @@ Nos bastidores, isso cria regras do CGROUP para limites de memória e CPU para o
 | **Hierarquia**    | CGROUPS estão estruturados em uma árvore pai-filho                     |
 | **Delegação**     | Os serviços Systemd e do usuário podem gerenciar subárvores de cgroups |
 
+##### 🧪 CGROUPS LAB
+
+Use este script para laboratório:[cgroups.sh](scripts/container/cgroups.sh)
+
+Saída Soft Limit Memory:
+
+![cgroups-soft-limit](images/cgroups-soft-limit.png)
+
+* * *
+
 #### 🛡️ Recursos de compreensão
 
 ❓ Quais são os recursos do Linux?
@@ -2375,6 +2399,14 @@ securityContext:
 ```
 
 🔐 Isso garante que o contêiner inicie com privilégios zero e receba apenas o que é necessário.
+
+##### 🧪 Recursos de laboratório
+
+Use este script para laboratório:[capabilities.sh](scripts/container/capabilities.sh)
+
+Saída:
+
+![capabilities-lab](images/capabilities-lab.png)
 
 * * *
 
@@ -2884,7 +2916,7 @@ Link do projeto:<https://github.com/marcossilvestrini/learning-lpic-3-305-300>
     -   [Oficial Doc](https://www.qemu.org/)
     -   [Baixe imagens osboxes](https://www.osboxes.org/)
     -   [Faça o download de imagens linuximages](https://www.linuxvmimages.com/)
-    -   [Urina](https://en.wikibooks.org/wiki/QEMU/Devices/Virtio)
+    -   [Urbano](https://en.wikibooks.org/wiki/QEMU/Devices/Virtio)
     -   [Agente convidado](https://wiki.qemu.org/Features/GuestAgent)
 -   [Libvirt](<>)
     -   [Oficial Doc](https://libvirt.org/)
