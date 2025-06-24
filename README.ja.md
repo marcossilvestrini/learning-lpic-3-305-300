@@ -427,12 +427,12 @@ numaシステムでは、メモリはプロセッサ間で不均一に分散さ�
 
 ##### Numaの利点
 
--   ingar大規模システムでのパフォーマンスの向上：各プロセッサにはローカルメモリがあるため、メモリアクセスのために他のプロセッサと競合することなく、より効率的に動作する可能性があります。
+-   ingar大規模システムでのパフォーマンスの向上：各プロセッサにはローカルメモリがあるため、メモリアクセスのために他のプロセッサと競合することなく、より効率的に動作できます。
 -   📈スケーラビリティ：NUMAは、多くのプロセッサと大量のメモリを備えたシステムを、UMAアーキテクチャと比較してより効果的にスケーリングできるようにします。
 
 ##### 短所
 
--   🛠️プログラミングの複雑さ：プログラマーは、どのメモリの領域がローカルまたはリモートであるかを認識する必要があり、ローカルメモリの使用を最適化してパフォーマンスを向上させる必要があります。
+-   🛠️プログラミングの複雑さ：プログラマーは、どのメモリの領域がローカルまたはリモートであるかを認識する必要があり、ローカルメモリの使用を最適化してパフォーマンスを向上させます。
 -   coption潜在的なパフォーマンスペナルティ：プロセッサがリモートメモリに頻繁にアクセスする場合、遅延が高いためにパフォーマンスが低下する可能性があります。
     このアーキテクチャは、スケーラビリティとメモリの最適化が重要なサーバーやスーパーコンピューターなどの高性能マルチプロセッサシステムで一般的です。
 
@@ -1948,70 +1948,6 @@ capsh
 
 * * *
 
-#### chroot- unix/linuxのルートディレクトリを変更します
-
-![chroot](images/chroot.png)
-
-##### クルーとは何ですか？
-
-Chroot（Change Rootの略）は、現在の実行プロセスとその子供の見かけのルートディレクトリ（/）を変更するUnixのようなオペレーティングシステムのシステムコールとコマンドです。これにより、一般にクルート刑務所と呼ばれる孤立した環境が作成されます。
-
-##### 🧱目的とユースケース
-
--   securityセキュリティのためのアプリケーションを分離します（投獄）。
--   systemシステムの残りに影響を与えることなく、テスト環境を作成します。
--   🛠️システムの回復（例えば、Livecdへの起動とインストールされたシステムへのクルート）。
--   controld制御された環境にソフトウェアパッケージを構築します。
-
-##### consive最小必要な構造
-
-Chroot環境には、独自の重要なファイルと構造が必要です。
-
-```sh
-/mnt/myenv/
-├── bin/
-│   └── bash
-├── etc/
-├── lib/
-├── lib64/
-├── usr/
-├── dev/
-├── proc/
-└── tmp/
-```
-
-LDDを使用して、必要なライブラリを識別します。
-
-```sh
-ldd /bin/bash
-```
-
-##### 🚨制限とセキュリティ上の考慮事項
-
--   Chrootは、コンテナやVMのようなセキュリティ境界ではありません。
--   刑務所内の特権ユーザー（ルート）は、潜在的に発生する可能性があります。
--   プロセス名空間、デバイス、またはカーネルレベルのリソースの分離はありません。
-
-より強い隔離のために、次のような代替案を考慮してください。
-
--   Linuxコンテナ（LXC、Docker）
--   仮想マシン（KVM、QEMU）
--   カーネルネームスペースとcgroups
-
-##### 🧪例：基本的なクルー環境のセットアップ
-
-このスクリプトを使用して、最小限のクルー環境を設定します。
-
-[**chroot.sh**](scripts/container/chroot.sh)
-
-##### deBootStrapでクルートをテストします
-
-```sh
-# download debain files
-sudo debootstrap stable ~vagrant/debian http://deb.debian.org/debian
-sudo chroot ~vagrant/debian bash
-```
-
 #### containersを理解する
 
 ![container](images/containers1.png)
@@ -2079,6 +2015,74 @@ sudo chroot ~vagrant/debian bash
 | **機能**                 | コンテナ内の細かい特権制御。                  |
 | **seccomp**            | 制限により、syscallsが攻撃面を減らすことができました。 |
 | **Apparmor / selinux** | カーネルレベルでの必須アクセス制御の施行。           |
+
+* * *
+
+#### chroot -unix/linuxのルートディレクトリを変更します
+
+![chroot](images/chroot.png)
+
+##### クルーとは何ですか？
+
+Chroot（Change Rootの略）は、現在の実行プロセスとその子供の見かけのルートディレクトリ（/）を変更するUnixのようなオペレーティングシステムのシステムコールとコマンドです。これにより、一般にクルート刑務所と呼ばれる孤立した環境が作成されます。
+
+##### 🧱目的とユースケース
+
+-   securityセキュリティのためのアプリケーションを分離します（投獄）。
+-   systemシステムの残りに影響を与えることなく、テスト環境を作成します。
+-   🛠️システムの回復（例えば、Livecdへの起動とインストールされたシステムへのクルート）。
+-   controld制御された環境にソフトウェアパッケージを構築します。
+
+##### consive最小必要な構造
+
+Chroot環境には、独自の重要なファイルと構造が必要です。
+
+```sh
+/mnt/myenv/
+├── bin/
+│   └── bash
+├── etc/
+├── lib/
+├── lib64/
+├── usr/
+├── dev/
+├── proc/
+└── tmp/
+```
+
+LDDを使用して、必要なライブラリを識別します。
+
+```sh
+ldd /bin/bash
+```
+
+##### 🚨制限とセキュリティ上の考慮事項
+
+-   Chrootは、コンテナやVMのようなセキュリティ境界ではありません。
+-   刑務所内の特権ユーザー（ルート）は、潜在的に発生する可能性があります。
+-   プロセス名空間、デバイス、またはカーネルレベルのリソースの分離はありません。
+
+より強い隔離のために、次のような代替案を考慮してください。
+
+-   Linuxコンテナ（LXC、Docker）
+-   仮想マシン（KVM、QEMU）
+-   カーネルネームスペースとcgroups
+
+##### deBootStrapでクルートをテストします
+
+```sh
+# download debain files
+sudo debootstrap stable ~vagrant/debian http://deb.debian.org/debian
+sudo chroot ~vagrant/debian bash
+```
+
+##### ：🧪ラボクルート
+
+このスクリプトをラボに使用します。[chroot.sh](scripts/container/chroot.sh)
+
+出力：
+
+![chroot-labt](images/chroot-lab.png)
 
 * * *
 
@@ -2181,6 +2185,16 @@ deversome容器がすべてのシステムリソースを消費するのを止�
 > ✅機能とセキュリティモジュールが何ができるかを定義します
 
 一緒に、これらのカーネル機能は、コンテナ分離の技術的なバックボーンを形成します。これは、完全なVMを使用せずに高密度、安全、効率的なアプリケーションの展開を可能にします。
+
+##### 🧪ラボ名空間
+
+このスクリプトをラボに使用します。[namespace.sh](scripts/container/namespace.sh)
+
+出力：
+
+![namespaces](images/namespace-lab.png)
+
+* * *
 
 #### croups cgroups（コントロールグループ）の理解
 
@@ -2329,6 +2343,16 @@ docker run --memory=256m --cpus=1 busybox
 | **階層**      | cgroupは親子の木で構成されています                           |
 | **代表団**     | SystemDおよびユーザーサービスは、CGROUPSのサブツリーを管理できます       |
 
+##### 🧪Labcgroups
+
+このスクリプトをラボに使用します。[cgroups.sh](scripts/container/cgroups.sh)
+
+出力ソフトリミットメモリ：
+
+![cgroups-soft-limit](images/cgroups-soft-limit.png)
+
+* * *
+
 #### 🛡️理解能力を理解します
 
 linux機能とは何ですか？
@@ -2375,6 +2399,14 @@ securityContext:
 ```
 
 これにより、コンテナはゼロの特権から始まり、必要なもののみを受け取ることが保証されます。
+
+##### 🧪ラボ機能
+
+このスクリプトをラボに使用します。[capabilities.sh](scripts/container/capabilities.sh)
+
+出力：
+
+![capabilities-lab](images/capabilities-lab.png)
 
 * * *
 
@@ -2884,7 +2916,7 @@ Vagrantfile
     -   [役員文書](https://www.qemu.org/)
     -   [画像OSBOXESをダウンロードします](https://www.osboxes.org/)
     -   [画像linuximagesをダウンロードします](https://www.linuxvmimages.com/)
-    -   [尿](https://en.wikibooks.org/wiki/QEMU/Devices/Virtio)
+    -   [都会的な](https://en.wikibooks.org/wiki/QEMU/Devices/Virtio)
     -   [ゲストエージェント](https://wiki.qemu.org/Features/GuestAgent)
 -   [libvirt](<>)
     -   [役員文書](https://libvirt.org/)
