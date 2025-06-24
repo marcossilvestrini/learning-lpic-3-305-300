@@ -647,7 +647,7 @@ Voici quelques aspects clés de Xen Store:
 #### Pilule
 
 XAPI, ou Xenapi, est l'interface de programmation d'application (API) utilisée pour gérer l'hyperviseur Xen et ses machines virtuelles (VM).  
-XAPI est un composant clé de Xenserver (maintenant connu sous le nom d'hyperviseur Citrix) et fournit un moyen standardisé d'interagir avec l'hyperviseur Xen pour effectuer des opérations telles que la création, la configuration, la surveillance et le contrôle des machines virtuelles.
+XAPI est un composant clé de XenServer (maintenant connu sous le nom d'hyperviseur Citrix) et fournit un moyen standardisé d'interagir avec l'hyperviseur Xen pour effectuer des opérations telles que la création, la configuration, la surveillance et le contrôle des machines virtuelles.
 
 Voici quelques aspects importants de XAPI:
 
@@ -1948,71 +1948,7 @@ capsh
 
 * * *
 
-#### Chroot - Modifier le répertoire racine dans Unix / Linux
-
-![chroot](images/chroot.png)
-
-##### Qu'est-ce que le chroot?
-
-Chroot (abréviation de Change Root) est un appel et une commande système sur les systèmes d'exploitation de type UNIX qui modifient le répertoire racine apparent (/) pour le processus de fonctionnement actuel et ses enfants. Cela crée un environnement isolé, communément appelé une prison de chroot.
-
-##### 🧱 But et cas d'utilisation
-
--   🔒 Isoler les demandes de sécurité (emprisonnement).
--   🧪 Créez des environnements de test sans avoir un impact sur le reste du système.
--   🛠️ Récupération du système (par exemple, démarrer dans Livecd et chroot dans le système installé).
--   📦 Construire des packages de logiciels dans un environnement contrôlé.
-
-##### 📁 Structure minimale requise
-
-L'environnement de chroot doit avoir ses propres fichiers et structure essentiels:
-
-```sh
-/mnt/myenv/
-├── bin/
-│   └── bash
-├── etc/
-├── lib/
-├── lib64/
-├── usr/
-├── dev/
-├── proc/
-└── tmp/
-```
-
-Utilisez LDD pour identifier les bibliothèques requises:
-
-```sh
-ldd /bin/bash
-```
-
-##### 🚨 limitations et considérations de sécurité
-
--   Le chroot n'est pas une limite de sécurité comme les conteneurs ou les machines virtuelles.
--   Un utilisateur privilégié (racine) à l'intérieur de la prison peut potentiellement éclater.
--   Aucune isolation d'espaces de noms de processus, d'appareils ou de ressources au niveau du noyau.
-
-Pour une isolement plus fort, considérez des alternatives comme:
-
--   Conteneurs Linux (LXC, Docker)
--   Machines virtuelles (KVM, QEMU)
--   Espaces de noms et groupes de noyau
-
-##### 🧪 Exemple: Configuration de l'environnement de chroot de base
-
-Utilisez ce script pour configurer un environnement de chroot minimal:
-
-[**chroot.sh**](scripts/container/chroot.sh)
-
-##### 🧪 Test de chroot avec debootstrap
-
-```sh
-# download debain files
-sudo debootstrap stable ~vagrant/debian http://deb.debian.org/debian
-sudo chroot ~vagrant/debian bash
-```
-
-#### 🔍 Comprendre les conteneurs
+#### 🧠 Comprendre les conteneurs
 
 ![container](images/containers1.png)
 
@@ -2079,6 +2015,74 @@ Contrairement aux machines virtuelles (VM), les conteneurs ne virtualisent pas l
 | **Capacités**          | Contrôle des privilèges à grain fin à l'intérieur des conteneurs.     |
 | **seccompente**        | Restreint les systèmes autorisés à réduire la surface d'attaque.      |
 | **Apparmor / selinux** | Application obligatoire du contrôle d'accès au niveau du noyau.       |
+
+* * *
+
+#### 🧠 Comprendre le chroot - Modifier le répertoire racine dans Unix / Linux
+
+![chroot](images/chroot.png)
+
+##### Qu'est-ce que le chroot?
+
+Chroot (abréviation de Change Root) est un appel et une commande système sur les systèmes d'exploitation de type UNIX qui modifient le répertoire racine apparent (/) pour le processus de fonctionnement actuel et ses enfants. Cela crée un environnement isolé, communément appelé une prison de chroot.
+
+##### 🧱 But et cas d'utilisation
+
+-   🔒 Isoler les demandes de sécurité (emprisonnement).
+-   🧪 Créez des environnements de test sans avoir un impact sur le reste du système.
+-   🛠️ Récupération du système (par exemple, démarrer dans Livecd et chroot dans le système installé).
+-   📦 Construire des packages de logiciels dans un environnement contrôlé.
+
+##### 📁 Structure minimale requise
+
+L'environnement de chroot doit avoir ses propres fichiers et structure essentiels:
+
+```sh
+/mnt/myenv/
+├── bin/
+│   └── bash
+├── etc/
+├── lib/
+├── lib64/
+├── usr/
+├── dev/
+├── proc/
+└── tmp/
+```
+
+Utilisez LDD pour identifier les bibliothèques requises:
+
+```sh
+ldd /bin/bash
+```
+
+##### 🚨 limitations et considérations de sécurité
+
+-   Le chroot n'est pas une limite de sécurité comme les conteneurs ou les machines virtuelles.
+-   Un utilisateur privilégié (racine) à l'intérieur de la prison peut potentiellement éclater.
+-   Aucune isolation d'espaces de noms de processus, d'appareils ou de ressources au niveau du noyau.
+
+Pour une isolement plus fort, considérez des alternatives comme:
+
+-   Conteneurs Linux (LXC, Docker)
+-   Machines virtuelles (KVM, QEMU)
+-   Espaces de noms et groupes de noyau
+
+##### 🧪 Test de chroot avec debootstrap
+
+```sh
+# download debain files
+sudo debootstrap stable ~vagrant/debian http://deb.debian.org/debian
+sudo chroot ~vagrant/debian bash
+```
+
+##### : 🧪 Chroot Lab
+
+Utilisez ce script pour le laboratoire:[chroot.sh](scripts/container/chroot.sh)
+
+Sortir:
+
+![chroot-labt](images/chroot-lab.png)
 
 * * *
 
@@ -2181,6 +2185,16 @@ Utilisé en conjonction avec des espaces de noms et des CGROUP pour verrouiller 
 > ✅ Les capacités et les modules de sécurité définissent ce qu'il peut faire
 
 Ensemble, ces caractéristiques du noyau forment l'épine dorsale technique de l'isolement des conteneurs - permettant un déploiement d'applications à haute densité, sécurisé et efficace sans machines virtuelles complètes.
+
+##### 🧪 Espaces de noms de laboratoire
+
+Utilisez ce script pour le laboratoire:[namespace.sh](scripts/container/namespace.sh)
+
+Sortir:
+
+![namespaces](images/namespace-lab.png)
+
+* * *
 
 #### 🧩 Comprendre les groupes (groupes de contrôle)
 
@@ -2329,6 +2343,16 @@ Dans les coulisses, cela crée des règles de CGROUP pour la mémoire et les lim
 | **Hiérarchie**  | Les Cgroups sont structurés dans un arbre parent-enfant                       |
 | **Délégation**  | Systemd et les services utilisateur peuvent gérer les sous-arbres de CGROUPS  |
 
+##### 🧪 LAB COMPROUPS
+
+Utilisez ce script pour le laboratoire:[cgroups.sh](scripts/container/cgroups.sh)
+
+Sortie de la mémoire limite douce:
+
+![cgroups-soft-limit](images/cgroups-soft-limit.png)
+
+* * *
+
 #### 🛡️ Comprendre les capacités
 
 ❓ Quelles sont les capacités Linux?
@@ -2375,6 +2399,14 @@ securityContext:
 ```
 
 🔐 Cela garantit que le conteneur commence par zéro privilèges et ne reçoit que ce qui est nécessaire.
+
+##### 🧪 Capacités de laboratoire
+
+Utilisez ce script pour le laboratoire:[capabilities.sh](scripts/container/capabilities.sh)
+
+Sortir:
+
+![capabilities-lab](images/capabilities-lab.png)
 
 * * *
 
@@ -2884,7 +2916,7 @@ Lien du projet:<https://github.com/marcossilvestrini/learning-lpic-3-305-300>
     -   [Officier Doc](https://www.qemu.org/)
     -   [Télécharger des images Osboxes](https://www.osboxes.org/)
     -   [Télécharger des images LinuxImages](https://www.linuxvmimages.com/)
-    -   [Urine](https://en.wikibooks.org/wiki/QEMU/Devices/Virtio)
+    -   [Urbain](https://en.wikibooks.org/wiki/QEMU/Devices/Virtio)
     -   [Agent invité](https://wiki.qemu.org/Features/GuestAgent)
 -   [Libvirt](<>)
     -   [Officier Doc](https://libvirt.org/)
