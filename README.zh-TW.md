@@ -829,7 +829,7 @@ xen top
 # Limit mem Dom0
 xl mem-set 0 2048
 
-# Limite cpu (not permanent after boot)
+# Limit cpu (not permanent after boot)
 xl vcpu-set 0 2
 
 # create DomainU - virtual machine
@@ -2408,6 +2408,120 @@ securityContext:
 
 ![capabilities-lab](images/capabilities-lab.png)
 
+#### 🛡️seccomp（安全計算模式）
+
+**這是什麼？**
+
+-   Linux內核功能用於限製過程可以使用的SYSCALLS（系統調用）。
+-   通常用於容器（例如Docker），瀏覽器，沙盒等。
+
+**它如何工作？**
+
+-   一個過程啟用了SecComp配置文件/過濾器。
+-   內核塊，日誌或殺死該過程，如果它嘗試禁止使用SYSCALLS。
+-   過濾器以BPF（Berkeley數據包過濾器）格式編寫。
+
+**快速命令**
+
+```sh
+# Check support
+docker info | grep Seccomp
+
+# Disable for a container:
+docker run --security-opt seccomp=unconfined ...
+
+# Inspect running process:
+grep Seccomp /proc/$$/status
+```
+
+**工具**
+
+```sh
+# for analyzing
+seccomp-tools 
+
+# Profiles
+/etc/docker/seccomp.json
+```
+
+#### 🦺apparmor
+
+**這是什麼？**
+
+-   強制性訪問控制（MAC）系統，用於限制哪些特定程序可以訪問。
+-   配置文件是基於文本的，面向路徑的，易於閱讀和編輯的。
+
+**它如何工作？**
+
+-   每個二進製文件都可以具有定義其允許的文件，網絡和功能的配置文件，即使是根！
+-   易於在抱怨，執行和殘疾模式之間切換。
+
+**快速命令：**
+
+```sh
+#Status
+aa-status
+
+# Put a program in enforce mode
+sudo aa-enforce /etc/apparmor.d/usr.bin.foo
+
+# Profiles
+location: /etc/apparmor.d/
+```
+
+**工具：**
+
+AA-genprof，aa-logprof用於生成/更新配置文件
+
+紀錄
+
+```sh
+/var/log/syslog (search for apparmor)
+```
+
+#### 🔒Selinux（安全增強Linux）
+
+**這是什麼？**
+
+-   一個非常強大的MAC系統，用於控制對所有內容的訪問：文件，過程，用戶，端口，網絡等。
+-   使用標籤（上下文）和詳細政策。
+
+**它如何工作？**
+
+-   所有內容（過程，文件，端口等）都會獲得安全上下文。
+-   內核檢查針對政策規則的所有操作。
+
+**快速命令：**
+
+```sh
+#Status
+sestatus
+
+#Set to enforcing/permissive:
+setenforce 1  # Enforcing
+setenforce 0  # Permissive
+
+#List security contexts:
+ls -Z  # Files
+ps -eZ # Processes
+```
+
+**工具：**
+
+-   Audit2Allow，Semanage，CHCON（用於管理政策/標籤）
+
+-   logs：/var/log/audit/audit.log
+
+-   政策：/etc/selinux/
+
+#### 📋公共安全系統的摘要表
+
+| 系統       | 重點         | 複雜  | 政策位置              | 典型用途               |
+| -------- | ---------- | --- | ----------------- | ------------------ |
+| seccomp  | 內核Syscalls | 中等的 | 每個程序（通過代碼/配置）     | Docker，沙盒          |
+| Apparmor | 每個訪問       | 簡單的 | /etc/apparmor.d/  | Ubuntu，快照，Suse     |
+| Selinux  | 全系統MAC     | 先進的 | /etc/selinux/ +標籤 | Rhel，Fedora，Centos |
+
 * * *
 
 #### 352.1重要命令
@@ -2489,19 +2603,68 @@ cgcreate -g memory,cpu:lsf
 cgclassify -g memory,cpu:lsf <PID>
 ```
 
-##### setCap cap_net_raw = ep/usr/bin/tcpdump
+##### PSCAP-列表過程功能
 
 ```sh
-
+# List capabilities of all process
+pscap
 ```
 
 ##### GetCap/usr/bin/tcpdump
 
 ```sh
+getcap /usr/bin/tcpdump
+```
 
+##### setCap cap_net_raw = ep/usr/bin/tcpdump
+
+```sh
+# add capabilities to tcpdump
+sudo setcap cap_net_raw=ep /usr/bin/tcpdump
+
+# remove capabilities from tcpdump
+sudo setcap -r /usr/bin/tcpdump
+sudo setcap '' /usr/bin/tcpdump
+```
+
+##### 按過程檢查功能
+
+```sh
+grep Cap /proc/<PID>/status
 ```
 
 ##### Capsh-能力外殼包裝紙
+
+```sh
+# use grep Cap /proc/<PID>/statusfor get hexadecimal value(Example CApEff=0000000000002000)
+capsh --decode=0000000000002000
+```
+
+##### Apparmor-將程序增強限制為有限的資源集
+
+```sh
+# check AppArmor status
+sudo aa-status
+
+#  unload all AppArmor profiles
+aa-teardown
+
+# loads AppArmor profiles into the kernel
+aaparmor_parser
+```
+
+###### Selinux-安全增強Linux
+
+```sh
+# check SELinux status
+sudo sestatus
+
+# check SELinux mode
+sudo getenforce 
+
+# set SELinux to enforcing mode
+sudo setenforce 1
+```
 
 * * *
 
