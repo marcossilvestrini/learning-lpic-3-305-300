@@ -843,7 +843,7 @@ xen top
 # Limit mem Dom0
 xl mem-set 0 2048
 
-# Limite cpu (not permanent after boot)
+# Limit cpu (not permanent after boot)
 xl vcpu-set 0 2
 
 # create DomainU - virtual machine
@@ -2422,6 +2422,120 @@ Output:
 
 ![capabilities-lab](images/capabilities-lab.png)
 
+#### 🛡️ Seccomp (Secure Computing Mode)
+
+**What is it?**
+
+* A Linux kernel feature for restricting which syscalls (system calls) a process can use.
+* Commonly used in containers (like Docker), browsers, sandboxes, etc.
+
+**How does it work?**
+
+* A process enables a seccomp profile/filter.
+* The kernel blocks, logs, or kills the process if it tries forbidden syscalls.
+* Filters are written in BPF (Berkeley Packet Filter) format.
+
+**Quick commands**
+
+```sh
+# Check support
+docker info | grep Seccomp
+
+# Disable for a container:
+docker run --security-opt seccomp=unconfined ...
+
+# Inspect running process:
+grep Seccomp /proc/$$/status
+```
+
+**Tools**
+
+```sh
+# for analyzing
+seccomp-tools 
+
+# Profiles
+/etc/docker/seccomp.json
+```
+
+#### 🦺AppArmor
+
+**What is it?**
+
+* A Mandatory Access Control (MAC) system for restricting what specific programs can access.
+* Profiles are text-based, path-oriented, easy to read and edit.
+
+**How does it work?**
+
+* Each binary can have a profile that defines its allowed files, network, and capabilities—even as root!
+* Easy to switch between complain, enforce, and disabled modes.
+
+**Quick commands:**
+
+```sh
+#Status
+aa-status
+
+# Put a program in enforce mode
+sudo aa-enforce /etc/apparmor.d/usr.bin.foo
+
+# Profiles
+location: /etc/apparmor.d/
+```
+
+**Tools:**
+
+aa-genprof, aa-logprof for generating/updating profiles
+
+Logs
+
+```sh
+/var/log/syslog (search for apparmor)
+```
+
+#### 🔒SELinux (Security-Enhanced Linux)
+
+**What is it?**
+
+* A very powerful MAC system for controlling access to everything: files, processes, users, ports, networks, and more.
+* Uses labels (contexts) and detailed policies.
+
+**How does it work?**
+
+* Everything (process, file, port, etc.) gets a security context.
+* Kernel checks every action against policy rules.
+
+**Quick commands:**
+
+```sh
+#Status
+sestatus
+
+#Set to enforcing/permissive:
+setenforce 1  # Enforcing
+setenforce 0  # Permissive
+
+#List security contexts:
+ls -Z  # Files
+ps -eZ # Processes
+```
+
+**Tools:**
+
+* audit2allow, semanage, chcon (for managing policies/labels)
+
+* Logs: /var/log/audit/audit.log
+
+* Policies: /etc/selinux/
+
+#### 📋 Summary Table for Common Security Systems
+
+| System   | Focus              | Complexity | Policy Location               | Typical Use          |
+| -------- | ------------------ | ---------- | ----------------------------- | -------------------- |
+| Seccomp  | Kernel syscalls    | Medium     | Per-process (via code/config) | Docker, sandboxes    |
+| AppArmor | Per-program access | Easy       | /etc/apparmor.d/              | Ubuntu, Snap, SUSE   |
+| SELinux  | Full-system MAC    | Advanced   | /etc/selinux/ + labels        | RHEL, Fedora, CentOS |
+
 ---
 
 #### 352.1 Important Commands
@@ -2503,19 +2617,68 @@ cgcreate -g memory,cpu:lsf
 cgclassify -g memory,cpu:lsf <PID>
 ```
 
-##### setcap cap_net_raw=ep /usr/bin/tcpdump
+##### pscap - List Process Capabilities
 
 ```sh
-
+# List capabilities of all process
+pscap
 ```
 
 ##### getcap /usr/bin/tcpdump
 
 ```sh
+getcap /usr/bin/tcpdump
+```
 
+##### setcap cap_net_raw=ep /usr/bin/tcpdump
+
+```sh
+# add capabilities to tcpdump
+sudo setcap cap_net_raw=ep /usr/bin/tcpdump
+
+# remove capabilities from tcpdump
+sudo setcap -r /usr/bin/tcpdump
+sudo setcap '' /usr/bin/tcpdump
+```
+
+##### check capabilities by process
+
+```sh
+grep Cap /proc/<PID>/status
 ```
 
 ##### capsh - capability shell wrapper
+
+```sh
+# use grep Cap /proc/<PID>/statusfor get hexadecimal value(Example CApEff=0000000000002000)
+capsh --decode=0000000000002000
+```
+
+##### AppArmor - kernel enhancement to confine programs to a limited set of resources
+
+```sh
+# check AppArmor status
+sudo aa-status
+
+#  unload all AppArmor profiles
+aa-teardown
+
+# loads AppArmor profiles into the kernel
+aaparmor_parser
+```
+
+###### SELinux - Security-Enhanced Linux
+
+```sh
+# check SELinux status
+sudo sestatus
+
+# check SELinux mode
+sudo getenforce 
+
+# set SELinux to enforcing mode
+sudo setenforce 1
+```
 
 ---
 
