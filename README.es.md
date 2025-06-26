@@ -829,7 +829,7 @@ xen top
 # Limit mem Dom0
 xl mem-set 0 2048
 
-# Limite cpu (not permanent after boot)
+# Limit cpu (not permanent after boot)
 xl vcpu-set 0 2
 
 # create DomainU - virtual machine
@@ -2188,7 +2188,7 @@ Juntas, estas características del núcleo forman la columna vertebral técnica 
 
 ##### 🧪 Espacios de nombres de laboratorio
 
-Use este script para laboratorio:[namespace.sh](scripts/container/namespace.sh)
+Use this script for lab: [namespace.sh](scripts/container/namespace.sh)
 
 Producción:
 
@@ -2408,6 +2408,120 @@ Producción:
 
 ![capabilities-lab](images/capabilities-lab.png)
 
+#### 🛡️ SECCOMP (modo de computación seguro)
+
+**¿Qué es?**
+
+-   Una función de núcleo de Linux para restringir qué syscalls (llamadas del sistema) puede usar un proceso.
+-   Comúnmente utilizado en contenedores (como Docker), navegadores, cajas de arena, etc.
+
+**¿Cómo funciona?**
+
+-   Un proceso habilita un perfil/filtro SECComp.
+-   El núcleo bloquea, registra o mata el proceso si intenta syscalls prohibidos.
+-   Los filtros se escriben en formato BPF (filtro de paquetes de Berkeley).
+
+**Comandos rápidos**
+
+```sh
+# Check support
+docker info | grep Seccomp
+
+# Disable for a container:
+docker run --security-opt seccomp=unconfined ...
+
+# Inspect running process:
+grep Seccomp /proc/$$/status
+```
+
+**Herramientas**
+
+```sh
+# for analyzing
+seccomp-tools 
+
+# Profiles
+/etc/docker/seccomp.json
+```
+
+#### 🦺 Abarmor
+
+**¿Qué es?**
+
+-   Un sistema de control de acceso obligatorio (MAC) para restringir a qué programas específicos pueden acceder.
+-   Los perfiles están basados ​​en texto, orientados a la ruta, fáciles de leer y editar.
+
+**¿Cómo funciona?**
+
+-   Cada binario puede tener un perfil que define sus archivos, red y capacidades permitidas, ¡incluso como root!
+-   Fácil de cambiar entre modos de queja, aplicación y discapacitado.
+
+**Comandos rápidos:**
+
+```sh
+#Status
+aa-status
+
+# Put a program in enforce mode
+sudo aa-enforce /etc/apparmor.d/usr.bin.foo
+
+# Profiles
+location: /etc/apparmor.d/
+```
+
+**Herramientas:**
+
+AA-GenProf, AA-LogProf para generar/actualizar perfiles
+
+Registro
+
+```sh
+/var/log/syslog (search for apparmor)
+```
+
+#### 🔒selinux (Linux mejorado con seguridad)
+
+**¿Qué es?**
+
+-   Un sistema Mac muy potente para controlar el acceso a todo: archivos, procesos, usuarios, puertos, redes y más.
+-   Utiliza etiquetas (contextos) y políticas detalladas.
+
+**¿Cómo funciona?**
+
+-   Todo (proceso, archivo, puerto, etc.) obtiene un contexto de seguridad.
+-   El núcleo verifica cada acción contra las reglas de política.
+
+**Comandos rápidos:**
+
+```sh
+#Status
+sestatus
+
+#Set to enforcing/permissive:
+setenforce 1  # Enforcing
+setenforce 0  # Permissive
+
+#List security contexts:
+ls -Z  # Files
+ps -eZ # Processes
+```
+
+**Herramientas:**
+
+-   audit2allow, semanage, chcon (para administrar políticas/etiquetas)
+
+-   Logs: /var/log/audit/audit.log
+
+-   Políticas:/etc/selinux/
+
+#### 📋 Tabla de resumen para sistemas de seguridad comunes
+
+| Sistema  | Enfocar                 | Complejidad | Ubicación de la política                       | Uso típico           |
+| -------- | ----------------------- | ----------- | ---------------------------------------------- | -------------------- |
+| Seccompe | Syscalls de kernel      | Medio       | Por proceso (a través de código/configuración) | Docker, Sandboxes    |
+| Aparmor  | Acceso por programa     | Fácil       | /etc/apparmor.d/                               | Ubuntu, Snap, Suse   |
+| Selinux  | Mac de sistema completo | Avanzado    | /etc/selinux/ + etiquetas                      | RHEL, Fedora, CentOS |
+
 * * *
 
 #### 352.1 comandos importantes
@@ -2489,19 +2603,68 @@ cgcreate -g memory,cpu:lsf
 cgclassify -g memory,cpu:lsf <PID>
 ```
 
-##### setcap cap_net_raw = ep/usr/bin/tcpdump
+##### PSCAP - Capacidades del proceso de lista
 
 ```sh
-
+# List capabilities of all process
+pscap
 ```
 
 ##### getCap/usr/bin/tcpdump
 
 ```sh
+getcap /usr/bin/tcpdump
+```
 
+##### setcap cap_net_raw = ep/usr/bin/tcpdump
+
+```sh
+# add capabilities to tcpdump
+sudo setcap cap_net_raw=ep /usr/bin/tcpdump
+
+# remove capabilities from tcpdump
+sudo setcap -r /usr/bin/tcpdump
+sudo setcap '' /usr/bin/tcpdump
+```
+
+##### Verifique las capacidades por proceso
+
+```sh
+grep Cap /proc/<PID>/status
 ```
 
 ##### Capsh - envoltura de concha de capacidad
+
+```sh
+# use grep Cap /proc/<PID>/statusfor get hexadecimal value(Example CApEff=0000000000002000)
+capsh --decode=0000000000002000
+```
+
+##### APARMOR - Mejora del núcleo para limitar los programas a un conjunto limitado de recursos
+
+```sh
+# check AppArmor status
+sudo aa-status
+
+#  unload all AppArmor profiles
+aa-teardown
+
+# loads AppArmor profiles into the kernel
+aaparmor_parser
+```
+
+###### Selinux - Linux mejorado con seguridad
+
+```sh
+# check SELinux status
+sudo sestatus
+
+# check SELinux mode
+sudo getenforce 
+
+# set SELinux to enforcing mode
+sudo setenforce 1
+```
 
 * * *
 
