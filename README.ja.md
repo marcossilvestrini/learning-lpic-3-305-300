@@ -322,7 +322,7 @@ P2V移行とは、物理サーバーを仮想マシンに移行するプロセ�
 言い換えれば、専用の物理ハードウェアで実行されるオペレーティングシステムとそのアプリケーションは「変換」され、ハイパーバイザー（VMware、Hyper-V、KVMなど）で実行される仮想マシンに移動します。
 
 -   例：WindowsまたはLinuxシステムを実行している物理サーバーがあり、クラウドインフラストラクチャや内部仮想化サーバーなどの仮想環境に移動する必要があります。  
-    このプロセスでは、オペレーティングシステム、ドライバー、データを含むシステム状態全体をコピーして、物理ハードウェア上で実行できるように実行できる同等の仮想マシンを作成します。
+    このプロセスでは、オペレーティングシステム、ドライバー、データなどのシステム状態全体をコピーして、物理ハードウェア上にあるかのように実行できる同等の仮想マシンを作成します。
 
 ##### V2V-仮想から仮想移行
 
@@ -829,7 +829,7 @@ xen top
 # Limit mem Dom0
 xl mem-set 0 2048
 
-# Limite cpu (not permanent after boot)
+# Limit cpu (not permanent after boot)
 xl vcpu-set 0 2
 
 # create DomainU - virtual machine
@@ -2408,6 +2408,120 @@ securityContext:
 
 ![capabilities-lab](images/capabilities-lab.png)
 
+#### 🛡seccomp（セキュアコンピューティングモード）
+
+**それは何ですか？**
+
+-   プロセスが使用できるシステム（システム呼び出し）を制限するためのLinuxカーネル機能。
+-   コンテナ（Dockerなど）、ブラウザ、サンドボックスなどで一般的に使用されています。
+
+**どのように機能しますか？**
+
+-   プロセスにより、SECCOMPプロファイル/フィルターが可能になります。
+-   カーネルは、禁止されたシステムを試みた場合、プロセスをブロック、ログ、または殺害します。
+-   フィルターは、BPF（Berkeley Packet Filter）形式で記述されています。
+
+**クイックコマンド**
+
+```sh
+# Check support
+docker info | grep Seccomp
+
+# Disable for a container:
+docker run --security-opt seccomp=unconfined ...
+
+# Inspect running process:
+grep Seccomp /proc/$$/status
+```
+
+**ツール**
+
+```sh
+# for analyzing
+seccomp-tools 
+
+# Profiles
+/etc/docker/seccomp.json
+```
+
+#### Apparmor
+
+**それは何ですか？**
+
+-   特定のプログラムがアクセスできるものを制限するための必須アクセス制御（MAC）システム。
+-   プロファイルは、テキストベース、パス指向、読みやすい編集が簡単です。
+
+**どのように機能しますか？**
+
+-   各バイナリには、許可されたファイル、ネットワーク、および機能を定義するプロファイルを使用できます。
+-   不満、実施、無効化モードを簡単に切り替えることができます。
+
+**クイックコマンド：**
+
+```sh
+#Status
+aa-status
+
+# Put a program in enforce mode
+sudo aa-enforce /etc/apparmor.d/usr.bin.foo
+
+# Profiles
+location: /etc/apparmor.d/
+```
+
+**ツール：**
+
+AA-GenProf、プロファイルを生成/更新するためのAA-LogProf
+
+ログ
+
+```sh
+/var/log/syslog (search for apparmor)
+```
+
+#### 🔒SELINUX（セキュリティ強化Linux）
+
+**それは何ですか？**
+
+-   ファイル、プロセス、ユーザー、ポート、ネットワークなど、すべてへのアクセスを制御するための非常に強力なMacシステム。
+-   ラベル（コンテキスト）と詳細なポリシーを使用します。
+
+**どのように機能しますか？**
+
+-   すべて（プロセス、ファイル、ポートなど）がセキュリティコンテキストを取得します。
+-   カーネルは、ポリシールールに反してすべてのアクションをチェックします。
+
+**クイックコマンド：**
+
+```sh
+#Status
+sestatus
+
+#Set to enforcing/permissive:
+setenforce 1  # Enforcing
+setenforce 0  # Permissive
+
+#List security contexts:
+ls -Z  # Files
+ps -eZ # Processes
+```
+
+**ツール：**
+
+-   audit2allow、セマネージ、CHCON（ポリシー/ラベルの管理用）
+
+-   logs：/var/log/audit/audit.log
+
+-   ポリシー：/etc/selinux/
+
+#### common共通セキュリティシステムの概要表
+
+| システム     | 集中           | 複雑   | ポリシーの場所              | 典型的な使用             |
+| -------- | ------------ | ---- | -------------------- | ------------------ |
+| seccomp  | カーネルsyscalls | 中くらい | プロセスごと（コード/config経由） | Docker、サンドボックス     |
+| Apparmor | プログラムごとのアクセス | 簡単   | /etc/apparmor.d/     | ubuntu、snap、suse   |
+| selinux  | フルシステムMac    | 高度な  | /etc/selinux/ +ラベル   | Rhel、Fedora、Centos |
+
 * * *
 
 #### 352.1重要なコマンド
@@ -2489,19 +2603,68 @@ cgcreate -g memory,cpu:lsf
 cgclassify -g memory,cpu:lsf <PID>
 ```
 
-##### setCap cap_net_raw = ep/usr/bin/tcpdump
+##### PSCAP-プロセス機能をリストします
 
 ```sh
-
+# List capabilities of all process
+pscap
 ```
 
 ##### getCap/usr/bin/tcpdump
 
 ```sh
+getcap /usr/bin/tcpdump
+```
 
+##### setCap cap_net_raw = ep/usr/bin/tcpdump
+
+```sh
+# add capabilities to tcpdump
+sudo setcap cap_net_raw=ep /usr/bin/tcpdump
+
+# remove capabilities from tcpdump
+sudo setcap -r /usr/bin/tcpdump
+sudo setcap '' /usr/bin/tcpdump
+```
+
+##### プロセスごとに機能を確認します
+
+```sh
+grep Cap /proc/<PID>/status
 ```
 
 ##### Capsh-機能シェルラッパー
+
+```sh
+# use grep Cap /proc/<PID>/statusfor get hexadecimal value(Example CApEff=0000000000002000)
+capsh --decode=0000000000002000
+```
+
+##### Apparmor-プログラムを限られたリソースに限定するためのカーネル強化
+
+```sh
+# check AppArmor status
+sudo aa-status
+
+#  unload all AppArmor profiles
+aa-teardown
+
+# loads AppArmor profiles into the kernel
+aaparmor_parser
+```
+
+###### Selinux-セキュリティ強化Linux
+
+```sh
+# check SELinux status
+sudo sestatus
+
+# check SELinux mode
+sudo getenforce 
+
+# set SELinux to enforcing mode
+sudo setenforce 1
+```
 
 * * *
 
