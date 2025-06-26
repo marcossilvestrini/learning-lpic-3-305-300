@@ -314,7 +314,7 @@ Exécute sur un système d'exploitation conventionnel, en s'appuyant sur le syst
 ##### Types de migration
 
 Dans le contexte des hyperviseurs, qui sont des technologies utilisées pour créer et gérer les machines virtuelles, les termes migration P2V et migration V2V sont courants dans les environnements de virtualisation.  
-Ils se réfèrent aux processus de migration des systèmes entre différents types de plates-formes.
+They refer to processes of migrating systems between different types of platforms.
 
 ##### P2V - Migration physique à virtuelle
 
@@ -677,7 +677,7 @@ DOM0 exécute les pilotes de périphériques, permettant à Domus, qui manque d'
 #### Domaine (maison)
 
 Domus sont des domaines non privilégiés qui exécutent des machines virtuelles.  
-Ils sont gérés par DOM0 et n'ont pas accès direct au matériel. DOMUS peut être configuré pour exécuter différents systèmes d'exploitation et est utilisé à diverses fins, tels que les serveurs d'applications et les environnements de développement. Ils comptent sur DOM0 pour l'interaction matérielle.
+They are managed by Dom0 and do not have direct access to hardware. DomUs can be configured to run different operating systems and are used for various purposes, such as application servers and development environments. They rely on Dom0 for hardware interaction.
 
 #### PV-DomU (Paravirtualized DomainU)
 
@@ -829,7 +829,7 @@ xen top
 # Limit mem Dom0
 xl mem-set 0 2048
 
-# Limite cpu (not permanent after boot)
+# Limit cpu (not permanent after boot)
 xl vcpu-set 0 2
 
 # create DomainU - virtual machine
@@ -2408,6 +2408,120 @@ Sortir:
 
 ![capabilities-lab](images/capabilities-lab.png)
 
+#### 🛡️ SecComp (mode informatique sécurisé)
+
+**Qu'est-ce que c'est?**
+
+-   Une fonctionnalité du noyau Linux pour restreindre les systèmes (appels système) qu'un processus peut utiliser.
+-   Couramment utilisé dans les conteneurs (comme Docker), les navigateurs, les bacs à sable, etc.
+
+**Comment ça marche?**
+
+-   Un processus permet un profil / filtre SecComp.
+-   Le noyau bloque, enregistre ou tue le processus s'il essaie des systèmes interdits.
+-   Les filtres sont écrits au format BPF (Berkeley Packet Filter).
+
+**Commandes rapides**
+
+```sh
+# Check support
+docker info | grep Seccomp
+
+# Disable for a container:
+docker run --security-opt seccomp=unconfined ...
+
+# Inspect running process:
+grep Seccomp /proc/$$/status
+```
+
+**Outils**
+
+```sh
+# for analyzing
+seccomp-tools 
+
+# Profiles
+/etc/docker/seccomp.json
+```
+
+#### 🦺Apparmor
+
+**Qu'est-ce que c'est?**
+
+-   Un système de contrôle d'accès obligatoire (Mac) pour restreindre les programmes spécifiques qui peuvent accéder.
+-   Les profils sont basés sur du texte, axés sur le chemin, faciles à lire et à lire.
+
+**Comment ça marche?**
+
+-   Chaque binaire peut avoir un profil qui définit ses fichiers, son réseau et ses capacités autorisés, même comme racine!
+-   Facile à basculer entre les modes de plainte, d'application et de désactivé.
+
+**Commandes rapides:**
+
+```sh
+#Status
+aa-status
+
+# Put a program in enforce mode
+sudo aa-enforce /etc/apparmor.d/usr.bin.foo
+
+# Profiles
+location: /etc/apparmor.d/
+```
+
+**Outils:**
+
+AA-Genprof, AA-LogProf pour la génération / mise à jour des profils
+
+Bûches
+
+```sh
+/var/log/syslog (search for apparmor)
+```
+
+#### 🔒SeLinux (Linux amélioré par la sécurité)
+
+**Qu'est-ce que c'est?**
+
+-   Un système Mac très puissant pour contrôler l'accès à tout: fichiers, processus, utilisateurs, ports, réseaux, etc.
+-   Utilise des étiquettes (contextes) et des politiques détaillées.
+
+**Comment ça marche?**
+
+-   Tout (processus, fichier, port, etc.) obtient un contexte de sécurité.
+-   Le noyau vérifie toutes les mesures contre les règles de politique.
+
+**Commandes rapides:**
+
+```sh
+#Status
+sestatus
+
+#Set to enforcing/permissive:
+setenforce 1  # Enforcing
+setenforce 0  # Permissive
+
+#List security contexts:
+ls -Z  # Files
+ps -eZ # Processes
+```
+
+**Outils:**
+
+-   Audit2Allow, Semmanage, CHCON (pour la gestion des politiques / étiquettes)
+
+-   Journaux: /var/log/audit/audit.log
+
+-   Politiques: / etc / selinux /
+
+#### 📋 Tableau de résumé pour les systèmes de sécurité communs
+
+| Système     | Se concentrer         | Complexité | Emplacement de la politique       | Utilisation typique  |
+| ----------- | --------------------- | ---------- | --------------------------------- | -------------------- |
+| Seccompente | Syscaux du noyau      | Moyen      | Par processus (via code / config) | Docker, bacs à sable |
+| Apparmor    | Accès par programme   | Facile     | /etc/apparmor.d/                  | Ubuntu, Snap, Suse   |
+| Selinux     | Mac à système complet | Avancé     | / etc / seinux / + étiquettes     | Rhel, fedora, centos |
+
 * * *
 
 #### 352.1 Commandes importantes
@@ -2489,19 +2603,68 @@ cgcreate -g memory,cpu:lsf
 cgclassify -g memory,cpu:lsf <PID>
 ```
 
-##### setCap Cap_net_raw = ep / usr / bin / tcpdump
+##### PSCAP - Capacités de processus répertoriées
 
 ```sh
-
+# List capabilities of all process
+pscap
 ```
 
 ##### getCap / usr / bin / tcpdump
 
 ```sh
+getcap /usr/bin/tcpdump
+```
 
+##### setCap Cap_net_raw = ep / usr / bin / tcpdump
+
+```sh
+# add capabilities to tcpdump
+sudo setcap cap_net_raw=ep /usr/bin/tcpdump
+
+# remove capabilities from tcpdump
+sudo setcap -r /usr/bin/tcpdump
+sudo setcap '' /usr/bin/tcpdump
+```
+
+##### Vérifier les capacités par processus
+
+```sh
+grep Cap /proc/<PID>/status
 ```
 
 ##### Capsh - Capacité enveloppe de coquille
+
+```sh
+# use grep Cap /proc/<PID>/statusfor get hexadecimal value(Example CApEff=0000000000002000)
+capsh --decode=0000000000002000
+```
+
+##### Apparmor - amélioration du noyau pour limiter les programmes à un ensemble limité de ressources
+
+```sh
+# check AppArmor status
+sudo aa-status
+
+#  unload all AppArmor profiles
+aa-teardown
+
+# loads AppArmor profiles into the kernel
+aaparmor_parser
+```
+
+###### SELINUX - Linux amélioré par la sécurité
+
+```sh
+# check SELinux status
+sudo sestatus
+
+# check SELinux mode
+sudo getenforce 
+
+# set SELinux to enforcing mode
+sudo setenforce 1
+```
 
 * * *
 
