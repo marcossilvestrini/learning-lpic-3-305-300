@@ -302,7 +302,7 @@ Executa em cima de um sistema operacional convencional, contando com o sistema o
 ##### Diferenças -chave entre os hipervisores do tipo 1 e do tipo 2
 
 -   Ambiente de implantação:
-    -   Type 1 hypervisors are commonly deployed in data centers and enterprise environments due to their direct interaction with hardware and high performance.
+    -   Os hipervisores do tipo 1 são comumente implantados em data centers e ambientes corporativos devido à sua interação direta com hardware e alto desempenho.
     -   Os hipervisores do tipo 2 são mais adequados para tarefas de uso pessoal, desenvolvimento, teste e virtualização em pequena escala.
 -   Desempenho:
     -   Os hipervisores do tipo 1 geralmente oferecem melhor desempenho e menor latência porque não confiam em um sistema operacional host.
@@ -663,7 +663,7 @@ O XAPI é a interface que permite o controle e a automação do hipervisor Xen, 
 
 #### Resumo Xen
 
--   **INCROPPING:**A tecnologia principal do hipervisor que permite que as máquinas virtuais sejam executadas em hardware físico.
+-   **Xen:**A tecnologia principal do hipervisor que permite que as máquinas virtuais sejam executadas em hardware físico.
 -   **Xensource:**A empresa que comercializou Xen, mais tarde adquirida pela Citrix, levando ao desenvolvimento do Citrix Xenserver.
 -   **Projeto Xen:**A iniciativa e a comunidade de código aberto que continuam a desenvolver e manter o hipervisor Xen sob a Fundação Linux.
 -   **Xenstore:**A Xen Store atua como uma intermediária de comunicação e configuração entre o Hypervisor Xen e as VMs, simplificando a operação e o gerenciamento de ambientes virtualizados.
@@ -829,7 +829,7 @@ xen top
 # Limit mem Dom0
 xl mem-set 0 2048
 
-# Limite cpu (not permanent after boot)
+# Limit cpu (not permanent after boot)
 xl vcpu-set 0 2
 
 # create DomainU - virtual machine
@@ -2106,7 +2106,7 @@ Cada tipo de espaço para nome isola um recurso específico do sistema. Juntos, 
 | **Montar**       | Pontos de montagem do sistema de arquivos | Cada contêiner vê seu próprio sistema de arquivos raiz          |
 | **Rede**         | Pilha de rede                             | Contêineres têm IPs isolados, interfaces e rotas                |
 | **Uts**          | Nome de host e nome de domínio            | Cada contêiner define seu próprio nome de host                  |
-| **IPC**          | Memória compartilhada e semáforos         | Impede a comunicação entre processos entre contêineres          |
+| **IPC**          | Shared memory and semaphores              | Impede a comunicação entre processos entre contêineres          |
 | **Usuário**      | IDs de usuário e grupo                    | Ativa a raiz falsa (UID 0) dentro do recipiente                 |
 | **CGROUP (V2)**  | Associação do grupo de controle           | Laços em controles de recursos como CPU e limites de memória    |
 
@@ -2178,7 +2178,7 @@ Usado em conjunto com namespaces e cgroups para bloquear o que um processo cont�
 | **APARMOR** | Aplicar perfis de segurança por aplicação                                   |
 | **Selinux** | Aplicar o controle de acesso obrigatório com políticas de sistema apertadas |
 
-##### 🧠 Resumo para iniciantes
+##### 🧠 Summary for Beginners
 
 > ✅ Namespaces Isolle o que um contêiner pode ver  
 > ✅ CGROUPS Controle o que pode usar  
@@ -2408,6 +2408,120 @@ Saída:
 
 ![capabilities-lab](images/capabilities-lab.png)
 
+#### 🛡️ Seccomp (modo de computação segura)
+
+**O que é?**
+
+-   Um recurso do kernel do Linux para restringir quais syscalls (sistema chama) um processo pode usar.
+-   Comumente usado em recipientes (como o docker), navegadores, caixas de areia, etc.
+
+**Como funciona?**
+
+-   Um processo permite um perfil/filtro Seccomp.
+-   O kernel bloqueia, registra ou mata o processo se tentar os syscalls proibidos.
+-   Os filtros são escritos no formato BPF (Berkeley Packet Filter).
+
+**Comandos rápidos**
+
+```sh
+# Check support
+docker info | grep Seccomp
+
+# Disable for a container:
+docker run --security-opt seccomp=unconfined ...
+
+# Inspect running process:
+grep Seccomp /proc/$$/status
+```
+
+**Ferramentas**
+
+```sh
+# for analyzing
+seccomp-tools 
+
+# Profiles
+/etc/docker/seccomp.json
+```
+
+#### 🦺APARMOR
+
+**O que é?**
+
+-   Um sistema de controle de acesso obrigatório (MAC) para restringir o que programas específicos podem acessar.
+-   Os perfis são baseados em texto, orientados para o caminho, fáceis de ler e editar.
+
+**Como funciona?**
+
+-   Cada binário pode ter um perfil que define seus arquivos, rede e recursos permitidos - mesmo como root!
+-   Fácil de alternar entre reclamar, aplicar e desativar os modos desativados.
+
+**Comandos rápidos:**
+
+```sh
+#Status
+aa-status
+
+# Put a program in enforce mode
+sudo aa-enforce /etc/apparmor.d/usr.bin.foo
+
+# Profiles
+location: /etc/apparmor.d/
+```
+
+**Ferramentas:**
+
+AA-GENPROF, AA-LOGPROF para gerar/atualizar perfis
+
+Logs
+
+```sh
+/var/log/syslog (search for apparmor)
+```
+
+#### 🔒SeLinux (Linux aprimorado de segurança)
+
+**O que é?**
+
+-   Um sistema MAC muito poderoso para controlar o acesso a tudo: arquivos, processos, usuários, portas, redes e muito mais.
+-   Usa rótulos (contextos) e políticas detalhadas.
+
+**Como funciona?**
+
+-   Tudo (processo, arquivo, porta, etc.) recebe um contexto de segurança.
+-   O kernel verifica todas as ações contra regras políticas.
+
+**Comandos rápidos:**
+
+```sh
+#Status
+sestatus
+
+#Set to enforcing/permissive:
+setenforce 1  # Enforcing
+setenforce 0  # Permissive
+
+#List security contexts:
+ls -Z  # Files
+ps -eZ # Processes
+```
+
+**Ferramentas:**
+
+-   Audit2allow, Semanage, CHCON (para gerenciar políticas/etiquetas)
+
+-   Logs: /var/log/audit/audit.log
+
+-   Políticas:/etc/Selinux/
+
+#### 📋 Tabela de resumo para sistemas de segurança comuns
+
+| Sistema | Foco                    | Complexidade | Localização da política                | Uso típico              |
+| ------- | ----------------------- | ------------ | -------------------------------------- | ----------------------- |
+| Seccomp | Syscalls do kernel      | Médio        | Por processo (via código/configuração) | Docker, caixas de areia |
+| APARMOR | Acesso por programa     | Fácil        | /etc/apparmor.d/                       | Ubuntu, Snap, Suse      |
+| Selinux | Mac do sistema completo | Avançado     | /etc/selinux/ + rótulos                | Rhel, Fedora, Centos    |
+
 * * *
 
 #### 352.1 Comandos importantes
@@ -2489,19 +2603,68 @@ cgcreate -g memory,cpu:lsf
 cgclassify -g memory,cpu:lsf <PID>
 ```
 
-##### setcap cap_net_raw = ep/usr/bin/tcpdump
+##### PSCAP - Recursos de processo de lista
 
 ```sh
-
+# List capabilities of all process
+pscap
 ```
 
 ##### getCap/usr/bin/tcpdump
 
 ```sh
+getcap /usr/bin/tcpdump
+```
 
+##### setcap cap_net_raw = ep/usr/bin/tcpdump
+
+```sh
+# add capabilities to tcpdump
+sudo setcap cap_net_raw=ep /usr/bin/tcpdump
+
+# remove capabilities from tcpdump
+sudo setcap -r /usr/bin/tcpdump
+sudo setcap '' /usr/bin/tcpdump
+```
+
+##### Verifique os recursos por processo
+
+```sh
+grep Cap /proc/<PID>/status
 ```
 
 ##### Capsh - Capability Shell Wrapper
+
+```sh
+# use grep Cap /proc/<PID>/statusfor get hexadecimal value(Example CApEff=0000000000002000)
+capsh --decode=0000000000002000
+```
+
+##### Appmor - Aprimoramento do kernel para limitar os programas a um conjunto limitado de recursos
+
+```sh
+# check AppArmor status
+sudo aa-status
+
+#  unload all AppArmor profiles
+aa-teardown
+
+# loads AppArmor profiles into the kernel
+aaparmor_parser
+```
+
+###### Selinux - Linux aprimorado de segurança
+
+```sh
+# check SELinux status
+sudo sestatus
+
+# check SELinux mode
+sudo getenforce 
+
+# set SELinux to enforcing mode
+sudo setenforce 1
+```
 
 * * *
 
