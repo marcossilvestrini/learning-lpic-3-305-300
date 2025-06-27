@@ -10,12 +10,12 @@
 
 ---
 
-[![MIT License][license-shield]][license-url]
-[![Forks][forks-shield]][forks-url]
-[![Stargazers][stars-shield]][stars-url]
-[![Contributors][contributors-shield]][contributors-url]
-[![Issues][issues-shield]][issues-url]
-[![LinkedIn][linkedin-shield]][linkedin-url]
+[MIT License][license-url]
+[Forks][forks-url]
+[Stargazers][stars-url]
+[Contributors][contributors-url]
+[Issues][issues-url]
+[LinkedIn][linkedin-url]
 
 ---
 
@@ -93,31 +93,31 @@
 
 ---
 
-<a name="about-the-project"></a>
+`<a name="about-the-project"></a>`
 
 ## About Project
 
->This project aims to help students or professionals to learn the main concepts of GNULinux
-and free software\
-Some GNULinux distributions like Debian and RPM will be covered\
-Installation and configuration of some packages will also be covered\
-By doing this you can give the whole community a chance to benefit from your changes.\
-Access to the source code is a precondition for this.\
-Use vagrant for up machines and execute labs and practice content in this article.\
-I have published in folder Vagrant a Vagrantfile with what is necessary\
-for you to upload an environment for studies
+> This project aims to help students or professionals to learn the main concepts of GNULinux
+> and free software
+> Some GNULinux distributions like Debian and RPM will be covered
+> Installation and configuration of some packages will also be covered
+> By doing this you can give the whole community a chance to benefit from your changes.
+> Access to the source code is a precondition for this.
+> Use vagrant for up machines and execute labs and practice content in this article.
+> I have published in folder Vagrant a Vagrantfile with what is necessary
+> for you to upload an environment for studies
 
 ---
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-<a name="getting-started"></a>
+`<a name="getting-started"></a>`
 
 ## Getting Started
 
 For starting the learning, see the documentation above.
 
-<a name="prerequisites"></a>
+`<a name="prerequisites"></a>`
 
 ### Prerequisites
 
@@ -126,7 +126,7 @@ For starting the learning, see the documentation above.
 * [Vagrant VMWare Utility](https://developer.hashicorp.com/vagrant/install/vmware)
 * [Vagrant](https://developer.hashicorp.com/vagrant/install)
 
-<a name="installation"></a>
+`<a name="installation"></a>`
 
 ### Installation
 
@@ -140,7 +140,7 @@ cd learning-lpic-3-305-300
 Customize a template *Vagrantfile-topic-XXX*. This file contains a vms configuration for labs. Example:
 
 * File [Vagrantfile-topic-351](vagrant/Vagrantfile-topic-351)
-  * vm.clone_directory = "<your_driver_letter>:\\<folder>\\<to_machine>\\#{VM_NAME}-instance-1"
+  * vm.clone_directory = "<your_driver_letter>:\\`<folder>`\\<to_machine>\\#{VM_NAME}-instance-1"
     Example: vm.clone_directory = "E:\\Servers\\VMWare\\#{VM_NAME}-instance-1"
   * vm.vmx["memsize"] = ""
   * vm.vmx["numvcpus"] = ""
@@ -150,7 +150,7 @@ Customize network configuration in files [configs/network](configs/network/).
 
 ---
 
-<a name="usage"></a>
+`<a name="usage"></a>`
 
 ## Usage
 
@@ -191,29 +191,29 @@ vagrant/destroy.ps1
 
 ---
 
-<a name="roadmap"></a>
+`<a name="roadmap"></a>`
 
 ## Roadmap
 
-* [x] Create repository
-* [x] Create scripts for provisioning labs
-* [x] Create examples about Topic 351
+* [X] Create repository
+* [X] Create scripts for provisioning labs
+* [X] Create examples about Topic 351
 * [ ] Create examples about Topic 352
 * [ ] Create examples about Topic 353
 * [ ] Upload simulated itexam
 
 ---
 
-<a name="freedoms"></a>
+`<a name="freedoms"></a>`
 
 ## Four Essential Freedoms
 
->0.The freedom to run the program as you wish, for any purpose (freedom 0).\
->1.The freedom to study how the program works, and change it so it does\
->your computing as you wish (freedom 1).\
->Access to the source code is a precondition for this.\
->2.The freedom to redistribute copies so you can help others (freedom 2).\
->3.freedom to distribute copies of your modified versions to others (freedom 3).
+> 0.The freedom to run the program as you wish, for any purpose (freedom 0).
+> 1.The freedom to study how the program works, and change it so it does
+> your computing as you wish (freedom 1).
+> Access to the source code is a precondition for this.
+> 2.The freedom to redistribute copies so you can help others (freedom 2).
+> 3.freedom to distribute copies of your modified versions to others (freedom 3).
 
 ---
 
@@ -232,7 +232,7 @@ man COMMAND
 
 ---
 
-<a name="topic-351"></a>
+`<a name="topic-351"></a>`
 
 ## Topic 351: Full Virtualization
 
@@ -240,11 +240,11 @@ man COMMAND
 
 ---
 
-<a name="topic-351.1"></a>
+`<a name="topic-351.1"></a>`
 
 ### 351.1 Virtualization Concepts and Theory
 
-**Weight:** 6  
+**Weight:** 6
 
 **Description:** Candidates should know and understand the general concepts, theory and terminology of virtualization. This includes Xen, QEMU and libvirt terminology.
 
@@ -277,7 +277,7 @@ Migration (P2V, V2V)
 
 ###### Type 1 Definition
 
-Runs directly on the host's physical hardware, providing a base layer to manage VMs without the need for a host operating system.  
+Runs directly on the host's physical hardware, providing a base layer to manage VMs without the need for a host operating system.
 
 ###### Type 1 Characteristics
 
@@ -325,21 +325,19 @@ Runs on top of a conventional operating system, relying on the host OS for resou
 
 ##### Migration Types
 
-In the context of hypervisors, which are technologies used to create and manage virtual machines, the terms P2V migration and V2V migration are common in virtualization environments.  
+In the context of hypervisors, which are technologies used to create and manage virtual machines, the terms P2V migration and V2V migration are common in virtualization environments.
 They refer to processes of migrating systems between different types of platforms.
 
 ##### P2V - Physical to Virtual Migration
 
-P2V migration refers to the process of migrating a physical server to a virtual machine.  
-In other words, an operating system and its applications, running on dedicated physical hardware, are "converted" and moved to a virtual machine that runs on a hypervisor (such as VMware, Hyper-V, KVM, etc.).
+P2V migration refers to the process of migrating a physical server to a virtual machine.In other words, an operating system and its applications, running on dedicated physical hardware, are "converted" and moved to a virtual machine that runs on a hypervisor (such as VMware, Hyper-V, KVM, etc.).
 
-* Example: You have a physical server running a Windows or Linux system, and you want to move it to a virtual environment, like a cloud infrastructure or an internal virtualization server.  
-The process involves copying the entire system state, including the operating system, drivers, and data, to create an equivalent virtual machine that can run as if it were on the physical hardware.
+* Example: You have a physical server running a Windows or Linux system, and you want to move it to a virtual environment, like a cloud infrastructure or an internal virtualization server.
+  The process involves copying the entire system state, including the operating system, drivers, and data, to create an equivalent virtual machine that can run as if it were on the physical hardware.
 
 ##### V2V  - Virtual to Virtual Migration
 
-V2V migration refers to the process of migrating a virtual machine from one hypervisor to another.  
-In this case, you already have a virtual machine running in a virtualized environment (like VMware), and you want to move it to another virtualized environment (for example, to Hyper-V or to a new VMware server).
+V2V migration refers to the process of migrating a virtual machine from one hypervisor to another.In this case, you already have a virtual machine running in a virtualized environment (like VMware), and you want to move it to another virtualized environment (for example, to Hyper-V or to a new VMware server).
 
 * Example: You have a virtual machine running on a VMware virtualization server, but you decide to migrate it to a Hyper-V platform. In this case, the V2V migration converts the virtual machine from one format or hypervisor to another, ensuring it can continue running correctly.
 
@@ -428,7 +426,7 @@ Xen with paravirtualized guests, VMware tools in certain configurations, and som
 
 #### NUMA (Non-Uniform Memory Access)
 
-NUMA (Non-Uniform Memory Access) is a memory architecture used in multiprocessor systems to optimize memory access by processors.  
+NUMA (Non-Uniform Memory Access) is a memory architecture used in multiprocessor systems to optimize memory access by processors.
 In a NUMA system, memory is distributed unevenly among processors, meaning that each processor has faster access to a portion of memory (its "local memory") than to memory that is physically further away (referred to as "remote memory") and associated with other processors.
 
 ##### Key Features of NUMA Architecture
@@ -446,17 +444,14 @@ In a NUMA system, memory is distributed unevenly among processors, meaning that 
 
 * 🛠️ Programming Complexity: Programmers need to be aware of which regions of memory are local or remote, optimizing the use of local memory to achieve better performance.
 * 🐢 Potential Performance Penalties: If a processor frequently accesses remote memory, performance may suffer due to higher latency.
-This architecture is common in high-performance multiprocessor systems, such as servers and supercomputers, where scalability and memory optimization are critical.
+  This architecture is common in high-performance multiprocessor systems, such as servers and supercomputers, where scalability and memory optimization are critical.
 
 #### Opensource Solutions
 
-* 🌐 oVirt: <https://www.ovirt.org/>
-
-* 🌐 Proxmox: <https://www.proxmox.com/en/proxmox-virtual-environment/overview>
-
-* 🌐 Oracle VirtualBox: <https://www.virtualbox.org/>
-
-* 🌐 Open vSwitch: <https://www.openvswitch.org/>
+* 🌐 oVirt: [https://www.ovirt.org/](https://www.ovirt.org/)
+* 🌐 Proxmox: [https://www.proxmox.com/en/proxmox-virtual-environment/overview](https://www.proxmox.com/en/proxmox-virtual-environment/overview)
+* 🌐 Oracle VirtualBox: [https://www.virtualbox.org/](https://www.virtualbox.org/)
+* 🌐 Open vSwitch: [https://www.openvswitch.org/](https://www.openvswitch.org/)
 
 #### Types of Virtualization
 
@@ -464,7 +459,7 @@ This architecture is common in high-performance multiprocessor systems, such as 
 
 ###### HV Definition
 
-Abstracts physical hardware to create virtual machines (VMs) that run separate operating systems and applications.  
+Abstracts physical hardware to create virtual machines (VMs) that run separate operating systems and applications.
 
 ###### HV Use Cases
 
@@ -590,7 +585,7 @@ Despite this drawback, emulation remains valuable for running legacy software, t
 
 ---
 
-<a name="topic-351.2"></a>
+`<a name="topic-351.2"></a>`
 
 ### 351.2 Xen
 
@@ -617,25 +612,22 @@ Despite this drawback, emulation remains valuable for running legacy software, t
 
 ![panda](images/xen-panda.png)
 
-Xen is an open-source type-1 (bare-metal) hypervisor, which allows multiple operating systems to run concurrently on the same physical hardware.  
-Xen provides a layer between the physical hardware and virtual machines (VMs), enabling efficient resource sharing and isolation.
+Xen is an open-source type-1 (bare-metal) hypervisor, which allows multiple operating systems to run concurrently on the same physical hardware.Xen provides a layer between the physical hardware and virtual machines (VMs), enabling efficient resource sharing and isolation.
 
 * **Architecture:** Xen operates with a two-tier system where Domain 0 (Dom0) is the privileged domain with direct hardware access and manages the hypervisor. Other virtual machines, called Domain U (DomU), run guest operating systems and are managed by Dom0.
 * **Types of Virtualization:** Xen supports both paravirtualization (PV), which requires modified guest OS, and hardware-assisted virtualization (HVM), which uses hardware extensions (e.g., Intel VT-x or AMD-V) to run unmodified guest operating systems.
-Xen is widely used in cloud environments, notably by Amazon Web Services (AWS) and other large-scale cloud providers.
+  Xen is widely used in cloud environments, notably by Amazon Web Services (AWS) and other large-scale cloud providers.
 
 #### XenSource
 
-XenSource was the company founded by the original developers of the Xen hypervisor at the University of Cambridge to commercialize Xen.  
-The company provided enterprise solutions based on Xen and offered additional tools and support to enhance Xen’s capabilities for enterprise use.
+XenSource was the company founded by the original developers of the Xen hypervisor at the University of Cambridge to commercialize Xen.The company provided enterprise solutions based on Xen and offered additional tools and support to enhance Xen’s capabilities for enterprise use.
 
 * **Acquisition by Citrix**: In 2007, XenSource was acquired by Citrix Systems, Inc. Citrix used Xen technology as the foundation for its Citrix XenServer product, which became a popular enterprise-grade virtualization platform based on Xen.
 * **Transition**: After the acquisition, the Xen project continued as an open-source project, while Citrix focused on commercial offerings like XenServer, leveraging XenSource technology.
 
 #### Xen Project
 
-Xen Project refers to the open-source community and initiative responsible for developing and maintaining the Xen hypervisor after its commercialization.  
-The Xen Project operates under the Linux Foundation, with a focus on building, improving, and supporting Xen as a collaborative, community-driven effort.
+Xen Project refers to the open-source community and initiative responsible for developing and maintaining the Xen hypervisor after its commercialization.The Xen Project operates under the Linux Foundation, with a focus on building, improving, and supporting Xen as a collaborative, community-driven effort.
 
 * **Goals:** The Xen Project aims to advance the hypervisor by improving its performance, security, and feature set for a wide range of use cases, including cloud computing, security-focused virtualization (e.g., Qubes OS), and embedded systems.
 * **Contributors:** The project includes contributors from various organizations, including major cloud providers, hardware vendors, and independent developers.
@@ -643,32 +635,26 @@ The Xen Project operates under the Linux Foundation, with a focus on building, i
 
 #### XenStore
 
-Xen Store is a critical component of the Xen Hypervisor.  
+Xen Store is a critical component of the Xen Hypervisor.
 Essentially, Xen Store is a distributed key-value database used for communication and information sharing between the Xen hypervisor and the virtual machines (also known as domains) it manages.
 
 Here are some key aspects of Xen Store:
 
 * **Inter-Domain Communication:** Xen Store enables communication between domains, such as Dom0 (the privileged domain that controls hardware resources) and DomUs (user domains, which are the VMs). This is done through key-value entries, where each domain can read or write information.
-
 * **Configuration Management:** It is used to store and access configuration information, such as virtual devices, networking, and boot parameters. This facilitates the dynamic management and configuration of VMs.
-
 * **Events and Notifications:** Xen Store also supports event notifications. When a particular key or value in the Xen Store is modified, interested domains can be notified to react to these changes. This is useful for monitoring and managing resources.
-
 * Simple API: Xen Store provides a simple API for reading and writing data, making it easy for developers to integrate their applications with the Xen virtualization system.
 
 #### XAPI
 
-XAPI, or XenAPI, is the application programming interface (API) used to manage the Xen Hypervisor and its virtual machines (VMs).  
+XAPI, or XenAPI, is the application programming interface (API) used to manage the Xen Hypervisor and its virtual machines (VMs).
 XAPI is a key component of XenServer (now known as Citrix Hypervisor) and provides a standardized way to interact with the Xen hypervisor to perform operations such as creating, configuring, monitoring, and controlling VMs.
 
 Here are some important aspects of XAPI:
 
 * **VM Management:** XAPI allows administrators to programmatically create, delete, start, and stop virtual machines.
-
 * **Automation:** With XAPI, it's possible to automate the management of virtual resources, including networking, storage, and computing, which is crucial for large cloud environments.
-
 * **Integration:** XAPI can be integrated with other tools and scripts to provide more efficient and customized administration of the Xen environment.
-
 * **Access Control:** XAPI also provides access control mechanisms to ensure that only authorized users can perform specific operations in the virtual environment.
 
 XAPI is the interface that enables control and automation of the Xen Hypervisor, making it easier to manage virtualized environments.
@@ -683,22 +669,22 @@ XAPI is the interface that enables control and automation of the Xen Hypervisor,
 
 #### Domain0 (Dom0)
 
-Domain0, or Dom0, is the control domain in a Xen architecture. It manages other domains (DomUs) and has direct access to hardware.  
+Domain0, or Dom0, is the control domain in a Xen architecture. It manages other domains (DomUs) and has direct access to hardware.
 Dom0 runs device drivers, allowing DomUs, which lack direct hardware access, to communicate with devices. Typically, it is a full instance of an operating system, like Linux, and is essential for Xen hypervisor operation.
 
 #### DomainU (DomU)
 
-DomUs are non-privileged domains that run virtual machines.  
+DomUs are non-privileged domains that run virtual machines.
 They are managed by Dom0 and do not have direct access to hardware. DomUs can be configured to run different operating systems and are used for various purposes, such as application servers and development environments. They rely on Dom0 for hardware interaction.
 
 #### PV-DomU (Paravirtualized DomainU)
 
-PV-DomUs use a technique called paravirtualization. In this model, the DomU operating system is modified to be aware that it runs in a virtualized environment, allowing it to communicate directly with the hypervisor for optimized performance.  
+PV-DomUs use a technique called paravirtualization. In this model, the DomU operating system is modified to be aware that it runs in a virtualized environment, allowing it to communicate directly with the hypervisor for optimized performance.
 This results in lower overhead and better efficiency compared to full virtualization.
 
 #### HVM-DomU (Hardware Virtual Machine DomainU)
 
-HVM-DomUs are virtual machines that utilize full virtualization, allowing unmodified operating systems to run. The Xen hypervisor provides hardware emulation for these DomUs, enabling them to run any operating system that supports the underlying hardware architecture.  
+HVM-DomUs are virtual machines that utilize full virtualization, allowing unmodified operating systems to run. The Xen hypervisor provides hardware emulation for these DomUs, enabling them to run any operating system that supports the underlying hardware architecture.
 While this offers greater flexibility, it can result in higher overhead compared to PV-DomUs.
 
 #### Xen Network
@@ -1229,7 +1215,7 @@ qemu-system-x86_x64
 
 ---
 
-<a name="topic-351.4"></a>
+`<a name="topic-351.4"></a>`
 
 ### 351.4 Libvirt Virtual Machine Management
 
@@ -1609,7 +1595,7 @@ less /etc/libvirt/qemu/debian-server01.xml
 
 ---
 
-<a name="topic-351.5"></a>
+`<a name="topic-351.5"></a>`
 
 ### 351.5 Virtual Machine Disk Image Management
 
@@ -1900,13 +1886,13 @@ The generated package has the .ova extension and contains the following files:
 
 ---
 
-<a name="topic-352"></a>
+`<a name="topic-352"></a>`
 
 ## Topic 352: Container Virtualization
 
 ---
 
-<a name="topic-352.1"></a>
+`<a name="topic-352.1"></a>`
 
 ### 352.1  Container Virtualization Concepts
 
@@ -1968,7 +1954,7 @@ capsh
 
 Containers are a lightweight virtualization technology that package applications along with their required dependencies — code, libraries, environment variables, and configuration files — into isolated, portable, and reproducible units.
 
->In simple terms: a container is a self-contained box that runs your application the same way, anywhere.
+> In simple terms: a container is a self-contained box that runs your application the same way, anywhere.
 
 ##### 💡 What Is a Container?
 
@@ -1999,12 +1985,13 @@ Unlike Virtual Machines (VMs), containers do not virtualize hardware. Instead, t
 ##### 🧱 Types of Containers
 
 1. System Containers
+
    * Designed to run the entire OS, Resemble virtual machines.
    * Support multiple processes and system services (init, syslog).
    * Ideal for legacy or monolithic applications.
    * Example: LXC, libvirt-lxc.
-
 2. Application Containers
+
    * Designed to run a single process.
    * Stateless, ephemeral, and horizontally scalable.
    * Used widely in modern DevOps and Kubernetes environments.
@@ -2012,8 +1999,8 @@ Unlike Virtual Machines (VMs), containers do not virtualize hardware. Instead, t
 
 ##### 🚀 Popular Container Runtimes
 
-| Runtime        | Description                                                         |
-| -------------- | ------------------------------------------------------------------- |
+| Runtime              | Description                                                         |
+| -------------------- | ------------------------------------------------------------------- |
 | **Docker**     | Most widely adopted CLI/daemon for building and running containers. |
 | **containerd** | Lightweight runtime powering Docker and Kubernetes.                 |
 | **CRI-O**      | Kubernetes-native runtime for OCI containers.                       |
@@ -2022,8 +2009,8 @@ Unlike Virtual Machines (VMs), containers do not virtualize hardware. Instead, t
 
 ##### 🔐 Container Internals and Security Elements
 
-| Component              | Role                                                  |
-| ---------------------- | ----------------------------------------------------- |
+| Component                    | Role                                                  |
+| ---------------------------- | ----------------------------------------------------- |
 | **Namespaces**         | Isolate processes, users, mounts, networks.           |
 | **cgroups**            | Control and limit resource usage (CPU, memory, IO).   |
 | **Capabilities**       | Fine-grained privilege control inside containers.     |
@@ -2106,7 +2093,7 @@ Output:
 
 Namespaces are a core Linux kernel feature that enable process-level isolation. They create separate "views" of global system resources — such as process IDs, networking, filesystems, and users — so that each process group believes it is running in its own system.
 
->In simple terms: namespaces trick a process into thinking it owns the machine, even though it's just sharing it.
+> In simple terms: namespaces trick a process into thinking it owns the machine, even though it's just sharing it.
 
 This is the foundation for container isolation.
 
@@ -2114,8 +2101,8 @@ This is the foundation for container isolation.
 
 Each namespace type isolates a specific system resource. Together, they make up the sandbox that a container operates in:
 
-| Namespace       | Isolates...                  | Real-world example                                      |
-| --------------- | ---------------------------- | ------------------------------------------------------- |
+| Namespace             | Isolates...                  | Real-world example                                      |
+| --------------------- | ---------------------------- | ------------------------------------------------------- |
 | **PID**         | Process IDs                  | Processes inside a container see a different PID space  |
 | **Mount**       | Filesystem mount points      | Each container sees its own root filesystem             |
 | **Network**     | Network stack                | Containers have isolated IPs, interfaces, and routes    |
@@ -2174,8 +2161,8 @@ Cgroups allow the kernel to limit, prioritize, and monitor resource usage across
 
 Traditional Linux uses a binary privilege model: root (UID 0) can do everything, everyone else is limited.
 
-| Capability             | Allows...                                   |
-| ---------------------- | ------------------------------------------- |
+| Capability               | Allows...                                   |
+| ------------------------ | ------------------------------------------- |
 | `CAP_NET_BIND_SERVICE` | Binding to privileged ports (e.g. 80, 443)  |
 | `CAP_SYS_ADMIN`        | A powerful catch-all for system admin tasks |
 | `CAP_KILL`             | Sending signals to arbitrary processes      |
@@ -2186,17 +2173,17 @@ By dropping unnecessary capabilities, containers can run with only what they nee
 
 Used in conjunction with namespaces and cgroups to lock down what a containerized process can do:
 
-| Feature      | Description                                                 |
-| ------------ | ----------------------------------------------------------- |
+| Feature            | Description                                                 |
+| ------------------ | ----------------------------------------------------------- |
 | **seccomp**  | Whitelist or block Linux system calls (syscalls)            |
 | **AppArmor** | Apply per-application security profiles                     |
 | **SELinux**  | Enforce Mandatory Access Control with tight system policies |
 
 ##### 🧠 Summary for Beginners
 
->✅ Namespaces isolate what a container can see  
-✅ Cgroups control what it can use  
-✅ Capabilities and security modules define what it can do
+> ✅ Namespaces isolate what a container can see
+> ✅ Cgroups control what it can use
+> ✅ Capabilities and security modules define what it can do
 
 Together, these kernel features form the technical backbone of container isolation — enabling high-density, secure, and efficient application deployment without full VMs.
 
@@ -2226,8 +2213,8 @@ Namespaces create separate environments for processes (like PID, network, or mou
 
 ⚙️ Key Capabilities
 
-| Feature               | Description                                              |
-| --------------------- | -------------------------------------------------------- |
+| Feature                     | Description                                              |
+| --------------------------- | -------------------------------------------------------- |
 | **Resource Limiting** | Impose limits on how much of a resource a group can use  |
 | **Prioritization**    | Allocate more CPU/IO priority to some groups over others |
 | **Accounting**        | Track usage of resources per group                       |
@@ -2238,8 +2225,8 @@ Namespaces create separate environments for processes (like PID, network, or mou
 
 cgroups operate through controllers, each responsible for managing one type of resource:
 
-| Subsystem | Description                         |
-| --------- | ----------------------------------- |
+| Subsystem   | Description                         |
+| ----------- | ----------------------------------- |
 | `cpu`     | Controls CPU scheduling             |
 | `cpuacct` | Generates CPU usage reports         |
 | `memory`  | Limits and accounts memory usage    |
@@ -2325,8 +2312,8 @@ echo "50000 100000" > /sys/fs/cgroup/mygroup/cpu.max  # 50ms quota per 100ms per
 
 🧭 Process & Group Inspection
 
-| Command                 | Description                     |
-| ----------------------- | ------------------------------- |
+| Command                   | Description                     |
+| ------------------------- | ------------------------------- |
 | `cat /proc/self/cgroup` | Shows current cgroup membership |
 | `cat /proc/PID/cgroup`  | cgroup of another process       |
 | `cat /proc/PID/status`  | Memory and cgroup info          |
@@ -2339,7 +2326,7 @@ Container engines like Docker, Podman, and containerd delegate resource control 
 * Per-container CPU and memory limits
 * Fine-grained control over blkio and devices
 * Real-time resource accounting
-  
+
 Docker example:
 
 ```sh
@@ -2350,12 +2337,12 @@ Behind the scenes, this creates cgroup rules for memory and CPU limits for the c
 
 ##### 🧠 Concepts Summary
 
-| Concept         | Explanation                                                        |
-| --------------- | ------------------------------------------------------------------ |
+| Concept               | Explanation                                                              |
+| --------------------- | ------------------------------------------------------------------------ |
 | **Controllers** | Modules like `cpu`, `memory`, `blkio`, etc. apply limits and rules |
-| **Tasks**       | PIDs (processes) assigned to the control group                     |
-| **Hierarchy**   | Cgroups are structured in a parent-child tree                      |
-| **Delegation**  | Systemd and user services may manage subtrees of cgroups           |
+| **Tasks**       | PIDs (processes) assigned to the control group                           |
+| **Hierarchy**   | Cgroups are structured in a parent-child tree                            |
+| **Delegation**  | Systemd and user services may manage subtrees of cgroups                 |
 
 ##### 🧪 Lab Cgroups
 
@@ -2375,28 +2362,28 @@ Traditionally in Linux, the root user has unrestricted access to the system. Lin
 
 This enhances system security by enforcing the principle of least privilege.
 
-| 🔐 Capability          | 📋 Description                                  |
-| ---------------------- | ------------------------------------------------ |
-| `CAP_CHOWN`            | Change file owner regardless of permissions      |
-| `CAP_NET_BIND_SERVICE` | Bind to ports below 1024 (e.g., 80, 443)         |
-| `CAP_SYS_TIME`         | Set system clock                                 |
+| 🔐 Capability            | 📋 Description                                      |
+| ------------------------ | --------------------------------------------------- |
+| `CAP_CHOWN`            | Change file owner regardless of permissions         |
+| `CAP_NET_BIND_SERVICE` | Bind to ports below 1024 (e.g., 80, 443)            |
+| `CAP_SYS_TIME`         | Set system clock                                    |
 | `CAP_SYS_ADMIN`        | ⚠️ Very powerful – includes mount, BPF, and more |
-| `CAP_NET_RAW`          | Use raw sockets (e.g., ping, traceroute)         |
-| `CAP_SYS_PTRACE`       | Trace other processes (debugging)                |
-| `CAP_KILL`             | Send signals to any process                      |
-| `CAP_DAC_OVERRIDE`     | Modify files and directories without permission  |
-| `CAP_SETUID`            | Change user ID (UID) of the process             |
-| `CAP_NET_ADMIN`         | Manage network interfaces, routing, etc.        |
+| `CAP_NET_RAW`          | Use raw sockets (e.g., ping, traceroute)            |
+| `CAP_SYS_PTRACE`       | Trace other processes (debugging)                   |
+| `CAP_KILL`             | Send signals to any process                         |
+| `CAP_DAC_OVERRIDE`     | Modify files and directories without permission     |
+| `CAP_SETUID`           | Change user ID (UID) of the process                 |
+| `CAP_NET_ADMIN`        | Manage network interfaces, routing, etc.            |
 
 🔐 Some Linux Capabilities Types
 
-| Capability Type | Description |
-|------------------|-------------|
-| **CapInh (Inherited)** | Capabilities inherited from the parent process. |
-| **CapPrm (Permitted)** | Capabilities that the process is allowed to have. |
-| **CapEff (Effective)** | Capabilities that the process is currently using. |
-| **CapBnd (Bounding)** | Restricts the maximum set of effective capabilities a process can obtain. |
-| **CapAmb (Ambient)** | Allows a process to explicitly define its own effective capabilities. |
+| Capability Type              | Description                                                               |
+| ---------------------------- | ------------------------------------------------------------------------- |
+| **CapInh (Inherited)** | Capabilities inherited from the parent process.                           |
+| **CapPrm (Permitted)** | Capabilities that the process is allowed to have.                         |
+| **CapEff (Effective)** | Capabilities that the process is currently using.                         |
+| **CapBnd (Bounding)**  | Restricts the maximum set of effective capabilities a process can obtain. |
+| **CapAmb (Ambient)**   | Allows a process to explicitly define its own effective capabilities.     |
 
 📦 Capabilities in Containers and Pods
 Containers typically do not run as full root, but instead receive a limited set of capabilities by default depending on the runtime.
@@ -2523,9 +2510,7 @@ ps -eZ # Processes
 **Tools:**
 
 * audit2allow, semanage, chcon (for managing policies/labels)
-
 * Logs: /var/log/audit/audit.log
-
 * Policies: /etc/selinux/
 
 #### 📋 Summary Table for Common Security Systems
@@ -2535,6 +2520,153 @@ ps -eZ # Processes
 | Seccomp  | Kernel syscalls    | Medium     | Per-process (via code/config) | Docker, sandboxes    |
 | AppArmor | Per-program access | Easy       | /etc/apparmor.d/              | Ubuntu, Snap, SUSE   |
 | SELinux  | Full-system MAC    | Advanced   | /etc/selinux/ + labels        | RHEL, Fedora, CentOS |
+
+#### 🗂️ Linux Container Isolation & Security Comparison
+
+| Technology                  | Purpose / What It Does                                                                               | Main Differences                                                                                | Example in Containers                                                                        |
+| --------------------------- | ---------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
+| **chroot 🏠**         | Changes the apparent root directory for a process. Isolates filesystem.                              | Simple filesystem isolation; does**not** restrict resources, privileges, or system calls. | Docker uses `chroot` internally for building minimal images, but not for strong isolation. |
+| **cgroups 📊**        | Controls and limits resource usage (CPU, memory, disk I/O, etc.) per group of processes.             | Kernel feature; fine-grained resource control, not isolation.                                   | Docker and Kubernetes use cgroups to limit CPU/mem per container/pod.                        |
+| **namespaces 🌐**     | Isolate system resources: PID, mount, UTS, network, user, IPC, time.                                 | Kernel feature; provides different kinds of isolation.                                          | Each container runs in its own set of namespaces (PID, net, mount, etc).                     |
+| **capabilities 🛡️** | Split root privileges into fine-grained units (e.g., net\_admin, sys\_admin).                        | More granular than all-or-nothing root/non-root; can drop or grant specific privileges.         | Docker containers usually run with reduced capabilities (drop dangerous ones).               |
+| **seccomp 🧱**        | Filter/restrict which syscalls a process can make (whitelisting/blacklisting).                       | Very focused: blocks kernel syscalls; cannot block all actions.                                 | Docker’s default profile blocks dangerous syscalls (e.g.,`ptrace`, `mount`).            |
+| **AppArmor 🐧**       | Mandatory Access Control (MAC) framework: restricts programs' file/network access via profiles.      | Profile-based, easier to manage than SELinux; less fine-grained in some cases.                  | Ubuntu-based containers often use AppArmor for container process profiles.                   |
+| **SELinux 🔒**        | More complex MAC framework, label-based, very fine-grained. Can confine users, processes, and files. | More powerful and complex than AppArmor; enforced on Fedora/RHEL/CentOS.                        | On OpenShift/Kubernetes with RHEL, SELinux labels are used to keep pods separate.            |
+
+Summary
+
+* chroot: Basic isolation, no resource/security guarantees.
+* cgroups: Resource control, not isolation.
+* namespaces: Isolate "views" of kernel resources.
+* capabilities: Fine-tune process privileges.
+* seccomp: Restrict system call surface.
+* AppArmor/SELinux: Limit what processes can touch, even as root (MAC).
+
+#### 🧩 OCI, runc, containerd, CRI, CRI-O — What They Are in the Container Ecosystem
+
+##### Overview and Roles
+
+* **OCI (Open Container Initiative) 🏛️**
+
+  A foundation creating open standards for **container images** and  **runtimes** .
+
+  *Defines how images are formatted, stored, and how containers are started/stopped (runtime spec).*
+* **runc ⚙️**
+
+  A universal, low-level, lightweight CLI tool that can run containers according to the OCI runtime specification.
+
+  *“The engine” that turns an image + configuration into an actual running Linux container.*
+* **containerd 🏋️**
+
+  A core container runtime daemon for managing the complete container lifecycle: **pulling images, managing storage, running containers** (calls runc), networking plugins, etc.
+
+  *Used by Docker, Kubernetes, nerdctl, and other tools as their main container runtime backend.*
+* **CRI (Container Runtime Interface) 🔌**
+
+  A Kubernetes-specific gRPC API to connect Kubernetes with container runtimes.
+
+  *Not used outside Kubernetes, but enables K8s to talk to containerd, CRI-O, etc.*
+* **CRI-O 🥤**
+
+  A lightweight, Kubernetes-focused runtime that **only** runs OCI containers, using runc under the hood.
+
+  *Mostly used in Kubernetes, but demonstrates how to build a minimal container runtime focused on open standards.*
+
+##### 🏷️ Comparison Table: OCI, runc, containerd, CRI, CRI-O
+
+| Component            | Emoji | What Is It?                           | Who Uses It?                            | Example Usage                                                                |
+| -------------------- | ----- | ------------------------------------- | --------------------------------------- | ---------------------------------------------------------------------------- |
+| **OCI**        | 🏛️  | Standards/specifications              | Docker, Podman, CRI-O, containerd, runc | Ensures images/containers are compatible across tools                        |
+| **runc**       | ⚙️  | Container runtime (CLI)               | containerd, CRI-O, Docker, Podman       | Directly running a container from a bundle (e.g.`runc run`)                |
+| **containerd** | 🏋️  | Container runtime daemon              | Docker, Kubernetes, nerdctl             | Handles pulling images, managing storage/network, starts containers via runc |
+| **CRI**        | 🔌    | K8s runtime interface (API)           | Kubernetes only                         | Lets kubelet talk to containerd/CRI-O                                        |
+| **CRI-O**      | 🥤    | Lightweight container runtime for K8s | Kubernetes, OpenShift                   | Used as K8s container engine                                                 |
+
+---
+
+##### 🛠️ Practical Examples (General Container World)
+
+* **Building images:**
+
+  Any tool (Docker, Podman, Buildah) can produce images following the **OCI Image Spec** so they’re compatible everywhere.
+* **Running containers:**
+
+  Both Podman and Docker ultimately use **runc** (via containerd or directly) to create containers.
+* **Managing many containers:**
+
+  **containerd** can be used on its own (via `ctr` or `nerdctl`) or as a backend for Docker and Kubernetes.
+* **Plug-and-play runtimes:**
+
+  Thanks to  **OCI** , you could swap runc for another OCI-compliant runtime (like Kata Containers for VMs, gVisor for sandboxing) without changing how you build or manage images.
+
+---
+
+##### 🚢 Typical Stack
+
+```plaintext
+[User CLI / Orchestration]
+           |
+   [containerd / CRI-O]
+           |
+        [runc]
+           |
+[Linux Kernel: namespaces, cgroups, etc]
+```
+
+* **Docker** : User CLI → containerd → runc
+* **Podman** : User CLI → runc
+* **Kubernetes** : kubelet (CRI) → containerd or CRI-O → runc
+
+---
+
+##### 🧠 Summary
+
+* **OCI** = Common language for images/runtimes (standards/specs)
+* **runc** = Actual tool that creates and manages container processes
+* **containerd** = Full-featured daemon that manages images, containers, lifecycle
+* **CRI** = Only for Kubernetes, to make runtimes pluggable
+* **CRI-O** = Lightweight runtime focused on Kubernetes, built on OCI standards and runc
+
+##### 🧩 Diagram: Container Ecosystem
+
+```mermaid
+graph TD
+    subgraph OCI_Standards
+        OCI1["OCI Image Spec"]
+        OCI2["OCI Runtime Spec"]
+    end
+
+    subgraph Orchestration_CLI
+        Docker["Docker CLI"]
+        Podman["Podman CLI"]
+        Kubelet["Kubelet"]
+        Nerdctl["nerdctl CLI"]
+    end
+
+    subgraph Container_Runtimes
+        containerd["containerd"]
+        crio["CRI-O"]
+    end
+
+    runc["runc"]
+
+    Kernel["Linux Kernel\n(namespaces, cgroups, seccomp, etc)"]
+
+    %% Connections
+    Docker --> containerd
+    Podman --> runc
+    Nerdctl --> containerd
+    Kubelet --> CRI[CRI API]
+    CRI --> containerd
+    CRI --> crio
+    containerd --> runc
+    crio --> runc
+    runc --> Kernel
+
+    OCI1 -.-> containerd
+    OCI1 -.-> crio
+    OCI2 -.-> runc
+```
 
 ---
 
@@ -2688,7 +2820,7 @@ sudo setenforce 1
 
 ---
 
-<a name="topic-352.2"></a>
+`<a name="topic-352.2"></a>`
 
 ### 352.2 LXC
 
@@ -2727,7 +2859,7 @@ foo
 
 ---
 
-<a name="topic-352.3"></a>
+`<a name="topic-352.3"></a>`
 
 ### 352.3 Docker
 
@@ -2769,7 +2901,7 @@ Dockerfile
 
 ---
 
-<a name="topic-352.4"></a>
+`<a name="topic-352.4"></a>`
 
 ### 352.4 Container Orchestration Platforms
 
@@ -2790,13 +2922,13 @@ Dockerfile
 
 ---
 
-<a name="topic-353"></a>
+`<a name="topic-353"></a>`
 
 ## Topic 353: VM Deployment and Provisioning
 
 ---
 
-<a name="topic-353.1"></a>
+`<a name="topic-353.1"></a>`
 
 ### 353.1  Cloud Management Tools
 
@@ -2833,7 +2965,7 @@ Terraform
 
 ---
 
-<a name="topic-353.2"></a>
+`<a name="topic-353.2"></a>`
 
 ### 353.2 Packer
 
@@ -2867,14 +2999,14 @@ packer
 
 ---
 
-<a name="topic-353.3"></a>
+`<a name="topic-353.3"></a>`
 
 ### 353.3 cloud-init
 
 **Weight:** 3
 
-**Description:** Candidates should able to use cloud-init to configure virtual machines created from standardized images. This includes adjusting virtual machines to match their available hardware resources, specifically, disk space and volumes.  
-Additionally, candidates should be able to configure instances to allow secure SSH logins and install a specific set of software packages.  
+**Description:** Candidates should able to use cloud-init to configure virtual machines created from standardized images. This includes adjusting virtual machines to match their available hardware resources, specifically, disk space and volumes.
+Additionally, candidates should be able to configure instances to allow secure SSH logins and install a specific set of software packages.
 Furthermore, candidates should be able to create new system images with cloud-init support.
 
 **Key Knowledge Areas:**
@@ -2906,7 +3038,7 @@ user-data
 
 ---
 
-<a name="topic-353.4"></a>
+`<a name="topic-353.4"></a>`
 
 ### 353.4 Vagrant
 
@@ -2970,7 +3102,7 @@ Don't forget to give the project a star! Thanks again!
 
 ## Contact
 
-Marcos Silvestrini - <marcos.silvestrini@gmail.com> \
+Marcos Silvestrini - <marcos.silvestrini@gmail.com>
 [![Twitter](https://img.shields.io/twitter/url/https/twitter.com/mrsilvestrini.svg?style=social&label=Follow%20%40mrsilvestrini)](https://twitter.com/mrsilvestrini)
 
 Project Link: [https://github.com/marcossilvestrini/learning-lpic-3-305-300](https://github.com/marcossilvestrini/learning-lpic-3-305-300)
@@ -2981,7 +3113,7 @@ Project Link: [https://github.com/marcossilvestrini/learning-lpic-3-305-300](htt
 
 ## Acknowledgments
 
-* [Richard Stallman's](http://www.stallman.org/)
+* [Richard Stallman&#39;s](http://www.stallman.org/)
 * [GNU]()
   * [GNU/Linux FAQ by Richard Stallman](https://www.gnu.org/gnu/gnu-linux-faq.html)
   * [GNU](https://www.gnu.org/)
@@ -3068,7 +3200,7 @@ Project Link: [https://github.com/marcossilvestrini/learning-lpic-3-305-300](htt
   * [Red Hat](https://www.redhat.com/pt-br/topics/virtualization/what-is-virtualization/)
   * [AWS](https://aws.amazon.com/pt/what-is/virtualization/)
   * [IBM](https://www.ibm.com/topics/virtualization)
-  * [OpenSource.com](https://opensource.com/resources/virtualization )
+  * [OpenSource.com](https://opensource.com/resources/virtualization)
 * [Xen]()
   * [XenServer](https://www.xenserver.com/)
   * [Wiki XenProject](https://wiki.xenproject.org/wiki/Main_Page)
@@ -3077,7 +3209,7 @@ Project Link: [https://github.com/marcossilvestrini/learning-lpic-3-305-300](htt
   * [LPI Blog: Xen Virtualization and Cloud Computing #01: Introduction](https://www.lpi.org/pt-br/blog/2020/10/01/xen-virtualization-and-cloud-computing-01-introduction/)
   * [LPI Blog: Xen Virtualization and Cloud Computing #02: How Xen Does the Job](https://www.lpi.org/blog/2020/10/08/xen-virtualization-and-cloud-computing-02-how-xen-does-job/)
   * [LPI Blog: Xen Virtualization and Cloud Computing #04: Containers, OpenStack, and Other Related Platforms](https://www.lpi.org/pt-br/blog/2020/10/22/xen-virtualization-and-cloud-computing-04-containers-openstack-and-other-related/)
-  * [Xen Virtualization and Cloud Computing #05: The Xen Project, Unikernels, and the Future](https://www.lpi.org/pt-br/blog/2020/10/29/xen-virtualization-and-cloud-computing-05-xen-project-unikernels-and-future/)  
+  * [Xen Virtualization and Cloud Computing #05: The Xen Project, Unikernels, and the Future](https://www.lpi.org/pt-br/blog/2020/10/29/xen-virtualization-and-cloud-computing-05-xen-project-unikernels-and-future/)
   * [Xen Project Beginners Guide](https://wiki.xenproject.org/wiki/Xen_Project_Beginners_Guide#Installing_the_Xen_Project_Software)
   * [Crazy Book](https://wiki.xenproject.org/wiki/Book/HelloXenProject/0-Contents)
 * [Unikernels](https://www.lpi.org/blog/2020/10/29/xen-virtualization-and-cloud-computing-05-xen-project-unikernels-and-future/)
@@ -3095,7 +3227,7 @@ Project Link: [https://github.com/marcossilvestrini/learning-lpic-3-305-300](htt
   * [Download Images osboxes](https://www.osboxes.org/)
   * [Download Images linuximages](https://www.linuxvmimages.com/)
   * [Virtio](https://en.wikibooks.org/wiki/QEMU/Devices/Virtio)
-  * [Guest Agent](https://wiki.qemu.org/Features/GuestAgent)  
+  * [Guest Agent](https://wiki.qemu.org/Features/GuestAgent)
 * [Libvirt]()
   * [Oficial Doc](https://libvirt.org/)
   * [System Socket Activation](https://libvirt.org/manpages/libvirtd.html#system-socket-activation)
@@ -3117,13 +3249,15 @@ Project Link: [https://github.com/marcossilvestrini/learning-lpic-3-305-300](htt
   * [IBM Doc Container](https://www.ibm.com/br-pt/topics/containers)
   * [Red Hat Docs Containers](https://www.redhat.com/en/topics/containers/whats-a-linux-container)
   * [Namespaces](https://manpages.ubuntu.com/manpages/noble/man7/namespaces.7.html)
-  * [Most important Namespaces](https://www.redhat.com/en/blog/7-linux-namespaces)  
+  * [Most important Namespaces](https://www.redhat.com/en/blog/7-linux-namespaces)
   * [Cgroups Classes](https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/6/html/resource_management_guide/ch01)
   * [Man Cgroups](https://manpages.ubuntu.com/manpages/noble/man7/cgroups.7.html)
   * [Capabilities Doc](https://linux-audit.com/kernel/capabilities/linux-capabilities-101/)
   * [Man Capabilities](https://manpages.ubuntu.com/manpages/noble/man7/capabilities.7.html)
-    
-  * 
+  * [Seccomp Profiles in Docker](https://docs.docker.com/engine/security/seccomp/)
+  * [AppArmor Profiles in Docker](https://docs.docker.com/engine/security/apparmor/)
+  * [SElinux](https://pt.wikipedia.org/wiki/SELinux)
+  * [Apparmor SElinux Comparation](https://www.redhat.com/en/blog/apparmor-selinux-isolation)
 * [Openstack Docs]()
   * [RedHat](https://www.redhat.com/pt-br/topics/openstack)
 * [Open vSwitch]()
@@ -3139,7 +3273,9 @@ Project Link: [https://github.com/marcossilvestrini/learning-lpic-3-305-300](htt
 ---
 
 <!-- MARKDOWN LINKS & IMAGES-->
+
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
+
 [contributors-shield]: https://img.shields.io/github/contributors/marcossilvestrini/learning-lpic-3-305-300.svg?style=for-the-badge
 [contributors-url]: https://github.com/marcossilvestrini/learning-lpic-3-305-300/graphs/contributors
 [forks-shield]: https://img.shields.io/github/forks/marcossilvestrini/learning-lpic-3-305-300.svg?style=for-the-badge
