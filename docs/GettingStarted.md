@@ -2,7 +2,7 @@
 
 For starting the learning, see the documentation above.
 
-<a name="prerequisites"></a>
+`<a name="prerequisites"></a>`
 
 ### Prerequisites
 
@@ -11,7 +11,7 @@ For starting the learning, see the documentation above.
 * [Vagrant VMWare Utility](https://developer.hashicorp.com/vagrant/install/vmware)
 * [Vagrant](https://developer.hashicorp.com/vagrant/install)
 
-<a name="installation"></a>
+`<a name="installation"></a>`
 
 ### Installation
 
@@ -25,7 +25,7 @@ cd learning-lpic-3-305-300
 Customize a template *Vagrantfile-topic-XXX*. This file contains a vms configuration for labs. Example:
 
 * File [Vagrantfile-topic-351](../vagrant/Vagrantfile-topic-351)
-  * vm.clone_directory = "<your_driver_letter>:\\<folder>\\<to_machine>\\#{VM_NAME}-instance-1"
+  * vm.clone_directory = "<your_driver_letter>:\\`<folder>`\\<to_machine>\\#{VM_NAME}-instance-1"
     Example: vm.clone_directory = "E:\\Servers\\VMWare\\#{VM_NAME}-instance-1"
   * vm.vmx["memsize"] = ""
   * vm.vmx["numvcpus"] = ""
@@ -35,5 +35,5 @@ Customize network configuration in files [configs/network](../configs/network/).
 
 ---
 
-<a name="usage"></a>
+`<a name="usage"></a>`
 

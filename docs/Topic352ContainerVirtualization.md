@@ -2,7 +2,7 @@
 
 ---
 
-<a name="topic-352.1"></a>
+`<a name="topic-352.1"></a>`
 
 ### 352.1  Container Virtualization Concepts
 
@@ -64,7 +64,7 @@ capsh
 
 Containers are a lightweight virtualization technology that package applications along with their required dependencies — code, libraries, environment variables, and configuration files — into isolated, portable, and reproducible units.
 
->In simple terms: a container is a self-contained box that runs your application the same way, anywhere.
+> In simple terms: a container is a self-contained box that runs your application the same way, anywhere.
 
 ##### 💡 What Is a Container?
 
@@ -95,12 +95,13 @@ Unlike Virtual Machines (VMs), containers do not virtualize hardware. Instead, t
 ##### 🧱 Types of Containers
 
 1. System Containers
+
    * Designed to run the entire OS, Resemble virtual machines.
    * Support multiple processes and system services (init, syslog).
    * Ideal for legacy or monolithic applications.
    * Example: LXC, libvirt-lxc.
-
 2. Application Containers
+
    * Designed to run a single process.
    * Stateless, ephemeral, and horizontally scalable.
    * Used widely in modern DevOps and Kubernetes environments.
@@ -108,8 +109,8 @@ Unlike Virtual Machines (VMs), containers do not virtualize hardware. Instead, t
 
 ##### 🚀 Popular Container Runtimes
 
-| Runtime        | Description                                                         |
-| -------------- | ------------------------------------------------------------------- |
+| Runtime              | Description                                                         |
+| -------------------- | ------------------------------------------------------------------- |
 | **Docker**     | Most widely adopted CLI/daemon for building and running containers. |
 | **containerd** | Lightweight runtime powering Docker and Kubernetes.                 |
 | **CRI-O**      | Kubernetes-native runtime for OCI containers.                       |
@@ -118,8 +119,8 @@ Unlike Virtual Machines (VMs), containers do not virtualize hardware. Instead, t
 
 ##### 🔐 Container Internals and Security Elements
 
-| Component              | Role                                                  |
-| ---------------------- | ----------------------------------------------------- |
+| Component                    | Role                                                  |
+| ---------------------------- | ----------------------------------------------------- |
 | **Namespaces**         | Isolate processes, users, mounts, networks.           |
 | **cgroups**            | Control and limit resource usage (CPU, memory, IO).   |
 | **Capabilities**       | Fine-grained privilege control inside containers.     |
@@ -202,7 +203,7 @@ Output:
 
 Namespaces are a core Linux kernel feature that enable process-level isolation. They create separate "views" of global system resources — such as process IDs, networking, filesystems, and users — so that each process group believes it is running in its own system.
 
->In simple terms: namespaces trick a process into thinking it owns the machine, even though it's just sharing it.
+> In simple terms: namespaces trick a process into thinking it owns the machine, even though it's just sharing it.
 
 This is the foundation for container isolation.
 
@@ -210,8 +211,8 @@ This is the foundation for container isolation.
 
 Each namespace type isolates a specific system resource. Together, they make up the sandbox that a container operates in:
 
-| Namespace       | Isolates...                  | Real-world example                                      |
-| --------------- | ---------------------------- | ------------------------------------------------------- |
+| Namespace             | Isolates...                  | Real-world example                                      |
+| --------------------- | ---------------------------- | ------------------------------------------------------- |
 | **PID**         | Process IDs                  | Processes inside a container see a different PID space  |
 | **Mount**       | Filesystem mount points      | Each container sees its own root filesystem             |
 | **Network**     | Network stack                | Containers have isolated IPs, interfaces, and routes    |
@@ -270,8 +271,8 @@ Cgroups allow the kernel to limit, prioritize, and monitor resource usage across
 
 Traditional Linux uses a binary privilege model: root (UID 0) can do everything, everyone else is limited.
 
-| Capability             | Allows...                                   |
-| ---------------------- | ------------------------------------------- |
+| Capability               | Allows...                                   |
+| ------------------------ | ------------------------------------------- |
 | `CAP_NET_BIND_SERVICE` | Binding to privileged ports (e.g. 80, 443)  |
 | `CAP_SYS_ADMIN`        | A powerful catch-all for system admin tasks |
 | `CAP_KILL`             | Sending signals to arbitrary processes      |
@@ -282,17 +283,17 @@ By dropping unnecessary capabilities, containers can run with only what they nee
 
 Used in conjunction with namespaces and cgroups to lock down what a containerized process can do:
 
-| Feature      | Description                                                 |
-| ------------ | ----------------------------------------------------------- |
+| Feature            | Description                                                 |
+| ------------------ | ----------------------------------------------------------- |
 | **seccomp**  | Whitelist or block Linux system calls (syscalls)            |
 | **AppArmor** | Apply per-application security profiles                     |
 | **SELinux**  | Enforce Mandatory Access Control with tight system policies |
 
 ##### 🧠 Summary for Beginners
 
->✅ Namespaces isolate what a container can see  
-✅ Cgroups control what it can use  
-✅ Capabilities and security modules define what it can do
+> ✅ Namespaces isolate what a container can see
+> ✅ Cgroups control what it can use
+> ✅ Capabilities and security modules define what it can do
 
 Together, these kernel features form the technical backbone of container isolation — enabling high-density, secure, and efficient application deployment without full VMs.
 
@@ -322,8 +323,8 @@ Namespaces create separate environments for processes (like PID, network, or mou
 
 ⚙️ Key Capabilities
 
-| Feature               | Description                                              |
-| --------------------- | -------------------------------------------------------- |
+| Feature                     | Description                                              |
+| --------------------------- | -------------------------------------------------------- |
 | **Resource Limiting** | Impose limits on how much of a resource a group can use  |
 | **Prioritization**    | Allocate more CPU/IO priority to some groups over others |
 | **Accounting**        | Track usage of resources per group                       |
@@ -334,8 +335,8 @@ Namespaces create separate environments for processes (like PID, network, or mou
 
 cgroups operate through controllers, each responsible for managing one type of resource:
 
-| Subsystem | Description                         |
-| --------- | ----------------------------------- |
+| Subsystem   | Description                         |
+| ----------- | ----------------------------------- |
 | `cpu`     | Controls CPU scheduling             |
 | `cpuacct` | Generates CPU usage reports         |
 | `memory`  | Limits and accounts memory usage    |
@@ -421,8 +422,8 @@ echo "50000 100000" > /sys/fs/cgroup/mygroup/cpu.max  # 50ms quota per 100ms per
 
 🧭 Process & Group Inspection
 
-| Command                 | Description                     |
-| ----------------------- | ------------------------------- |
+| Command                   | Description                     |
+| ------------------------- | ------------------------------- |
 | `cat /proc/self/cgroup` | Shows current cgroup membership |
 | `cat /proc/PID/cgroup`  | cgroup of another process       |
 | `cat /proc/PID/status`  | Memory and cgroup info          |
@@ -435,7 +436,7 @@ Container engines like Docker, Podman, and containerd delegate resource control 
 * Per-container CPU and memory limits
 * Fine-grained control over blkio and devices
 * Real-time resource accounting
-  
+
 Docker example:
 
 ```sh
@@ -446,12 +447,12 @@ Behind the scenes, this creates cgroup rules for memory and CPU limits for the c
 
 ##### 🧠 Concepts Summary
 
-| Concept         | Explanation                                                        |
-| --------------- | ------------------------------------------------------------------ |
+| Concept               | Explanation                                                              |
+| --------------------- | ------------------------------------------------------------------------ |
 | **Controllers** | Modules like `cpu`, `memory`, `blkio`, etc. apply limits and rules |
-| **Tasks**       | PIDs (processes) assigned to the control group                     |
-| **Hierarchy**   | Cgroups are structured in a parent-child tree                      |
-| **Delegation**  | Systemd and user services may manage subtrees of cgroups           |
+| **Tasks**       | PIDs (processes) assigned to the control group                           |
+| **Hierarchy**   | Cgroups are structured in a parent-child tree                            |
+| **Delegation**  | Systemd and user services may manage subtrees of cgroups                 |
 
 ##### 🧪 Lab Cgroups
 
@@ -471,28 +472,28 @@ Traditionally in Linux, the root user has unrestricted access to the system. Lin
 
 This enhances system security by enforcing the principle of least privilege.
 
-| 🔐 Capability          | 📋 Description                                  |
-| ---------------------- | ------------------------------------------------ |
-| `CAP_CHOWN`            | Change file owner regardless of permissions      |
-| `CAP_NET_BIND_SERVICE` | Bind to ports below 1024 (e.g., 80, 443)         |
-| `CAP_SYS_TIME`         | Set system clock                                 |
+| 🔐 Capability            | 📋 Description                                      |
+| ------------------------ | --------------------------------------------------- |
+| `CAP_CHOWN`            | Change file owner regardless of permissions         |
+| `CAP_NET_BIND_SERVICE` | Bind to ports below 1024 (e.g., 80, 443)            |
+| `CAP_SYS_TIME`         | Set system clock                                    |
 | `CAP_SYS_ADMIN`        | ⚠️ Very powerful – includes mount, BPF, and more |
-| `CAP_NET_RAW`          | Use raw sockets (e.g., ping, traceroute)         |
-| `CAP_SYS_PTRACE`       | Trace other processes (debugging)                |
-| `CAP_KILL`             | Send signals to any process                      |
-| `CAP_DAC_OVERRIDE`     | Modify files and directories without permission  |
-| `CAP_SETUID`            | Change user ID (UID) of the process             |
-| `CAP_NET_ADMIN`         | Manage network interfaces, routing, etc.        |
+| `CAP_NET_RAW`          | Use raw sockets (e.g., ping, traceroute)            |
+| `CAP_SYS_PTRACE`       | Trace other processes (debugging)                   |
+| `CAP_KILL`             | Send signals to any process                         |
+| `CAP_DAC_OVERRIDE`     | Modify files and directories without permission     |
+| `CAP_SETUID`           | Change user ID (UID) of the process                 |
+| `CAP_NET_ADMIN`        | Manage network interfaces, routing, etc.            |
 
 🔐 Some Linux Capabilities Types
 
-| Capability Type | Description |
-|------------------|-------------|
-| **CapInh (Inherited)** | Capabilities inherited from the parent process. |
-| **CapPrm (Permitted)** | Capabilities that the process is allowed to have. |
-| **CapEff (Effective)** | Capabilities that the process is currently using. |
-| **CapBnd (Bounding)** | Restricts the maximum set of effective capabilities a process can obtain. |
-| **CapAmb (Ambient)** | Allows a process to explicitly define its own effective capabilities. |
+| Capability Type              | Description                                                               |
+| ---------------------------- | ------------------------------------------------------------------------- |
+| **CapInh (Inherited)** | Capabilities inherited from the parent process.                           |
+| **CapPrm (Permitted)** | Capabilities that the process is allowed to have.                         |
+| **CapEff (Effective)** | Capabilities that the process is currently using.                         |
+| **CapBnd (Bounding)**  | Restricts the maximum set of effective capabilities a process can obtain. |
+| **CapAmb (Ambient)**   | Allows a process to explicitly define its own effective capabilities.     |
 
 📦 Capabilities in Containers and Pods
 Containers typically do not run as full root, but instead receive a limited set of capabilities by default depending on the runtime.
@@ -619,9 +620,7 @@ ps -eZ # Processes
 **Tools:**
 
 * audit2allow, semanage, chcon (for managing policies/labels)
-
 * Logs: /var/log/audit/audit.log
-
 * Policies: /etc/selinux/
 
 #### 📋 Summary Table for Common Security Systems
@@ -631,6 +630,153 @@ ps -eZ # Processes
 | Seccomp  | Kernel syscalls    | Medium     | Per-process (via code/config) | Docker, sandboxes    |
 | AppArmor | Per-program access | Easy       | /etc/apparmor.d/              | Ubuntu, Snap, SUSE   |
 | SELinux  | Full-system MAC    | Advanced   | /etc/selinux/ + labels        | RHEL, Fedora, CentOS |
+
+#### 🗂️ Linux Container Isolation & Security Comparison
+
+| Technology                  | Purpose / What It Does                                                                               | Main Differences                                                                                | Example in Containers                                                                        |
+| --------------------------- | ---------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
+| **chroot 🏠**         | Changes the apparent root directory for a process. Isolates filesystem.                              | Simple filesystem isolation; does**not** restrict resources, privileges, or system calls. | Docker uses `chroot` internally for building minimal images, but not for strong isolation. |
+| **cgroups 📊**        | Controls and limits resource usage (CPU, memory, disk I/O, etc.) per group of processes.             | Kernel feature; fine-grained resource control, not isolation.                                   | Docker and Kubernetes use cgroups to limit CPU/mem per container/pod.                        |
+| **namespaces 🌐**     | Isolate system resources: PID, mount, UTS, network, user, IPC, time.                                 | Kernel feature; provides different kinds of isolation.                                          | Each container runs in its own set of namespaces (PID, net, mount, etc).                     |
+| **capabilities 🛡️** | Split root privileges into fine-grained units (e.g., net\_admin, sys\_admin).                        | More granular than all-or-nothing root/non-root; can drop or grant specific privileges.         | Docker containers usually run with reduced capabilities (drop dangerous ones).               |
+| **seccomp 🧱**        | Filter/restrict which syscalls a process can make (whitelisting/blacklisting).                       | Very focused: blocks kernel syscalls; cannot block all actions.                                 | Docker’s default profile blocks dangerous syscalls (e.g.,`ptrace`, `mount`).            |
+| **AppArmor 🐧**       | Mandatory Access Control (MAC) framework: restricts programs' file/network access via profiles.      | Profile-based, easier to manage than SELinux; less fine-grained in some cases.                  | Ubuntu-based containers often use AppArmor for container process profiles.                   |
+| **SELinux 🔒**        | More complex MAC framework, label-based, very fine-grained. Can confine users, processes, and files. | More powerful and complex than AppArmor; enforced on Fedora/RHEL/CentOS.                        | On OpenShift/Kubernetes with RHEL, SELinux labels are used to keep pods separate.            |
+
+Summary
+
+* chroot: Basic isolation, no resource/security guarantees.
+* cgroups: Resource control, not isolation.
+* namespaces: Isolate "views" of kernel resources.
+* capabilities: Fine-tune process privileges.
+* seccomp: Restrict system call surface.
+* AppArmor/SELinux: Limit what processes can touch, even as root (MAC).
+
+#### 🧩 OCI, runc, containerd, CRI, CRI-O — What They Are in the Container Ecosystem
+
+##### Overview and Roles
+
+* **OCI (Open Container Initiative) 🏛️**
+
+  A foundation creating open standards for **container images** and  **runtimes** .
+
+  *Defines how images are formatted, stored, and how containers are started/stopped (runtime spec).*
+* **runc ⚙️**
+
+  A universal, low-level, lightweight CLI tool that can run containers according to the OCI runtime specification.
+
+  *“The engine” that turns an image + configuration into an actual running Linux container.*
+* **containerd 🏋️**
+
+  A core container runtime daemon for managing the complete container lifecycle: **pulling images, managing storage, running containers** (calls runc), networking plugins, etc.
+
+  *Used by Docker, Kubernetes, nerdctl, and other tools as their main container runtime backend.*
+* **CRI (Container Runtime Interface) 🔌**
+
+  A Kubernetes-specific gRPC API to connect Kubernetes with container runtimes.
+
+  *Not used outside Kubernetes, but enables K8s to talk to containerd, CRI-O, etc.*
+* **CRI-O 🥤**
+
+  A lightweight, Kubernetes-focused runtime that **only** runs OCI containers, using runc under the hood.
+
+  *Mostly used in Kubernetes, but demonstrates how to build a minimal container runtime focused on open standards.*
+
+##### 🏷️ Comparison Table: OCI, runc, containerd, CRI, CRI-O
+
+| Component            | Emoji | What Is It?                           | Who Uses It?                            | Example Usage                                                                |
+| -------------------- | ----- | ------------------------------------- | --------------------------------------- | ---------------------------------------------------------------------------- |
+| **OCI**        | 🏛️  | Standards/specifications              | Docker, Podman, CRI-O, containerd, runc | Ensures images/containers are compatible across tools                        |
+| **runc**       | ⚙️  | Container runtime (CLI)               | containerd, CRI-O, Docker, Podman       | Directly running a container from a bundle (e.g.`runc run`)                |
+| **containerd** | 🏋️  | Container runtime daemon              | Docker, Kubernetes, nerdctl             | Handles pulling images, managing storage/network, starts containers via runc |
+| **CRI**        | 🔌    | K8s runtime interface (API)           | Kubernetes only                         | Lets kubelet talk to containerd/CRI-O                                        |
+| **CRI-O**      | 🥤    | Lightweight container runtime for K8s | Kubernetes, OpenShift                   | Used as K8s container engine                                                 |
+
+---
+
+##### 🛠️ Practical Examples (General Container World)
+
+* **Building images:**
+
+  Any tool (Docker, Podman, Buildah) can produce images following the **OCI Image Spec** so they’re compatible everywhere.
+* **Running containers:**
+
+  Both Podman and Docker ultimately use **runc** (via containerd or directly) to create containers.
+* **Managing many containers:**
+
+  **containerd** can be used on its own (via `ctr` or `nerdctl`) or as a backend for Docker and Kubernetes.
+* **Plug-and-play runtimes:**
+
+  Thanks to  **OCI** , you could swap runc for another OCI-compliant runtime (like Kata Containers for VMs, gVisor for sandboxing) without changing how you build or manage images.
+
+---
+
+##### 🚢 Typical Stack
+
+```plaintext
+[User CLI / Orchestration]
+           |
+   [containerd / CRI-O]
+           |
+        [runc]
+           |
+[Linux Kernel: namespaces, cgroups, etc]
+```
+
+* **Docker** : User CLI → containerd → runc
+* **Podman** : User CLI → runc
+* **Kubernetes** : kubelet (CRI) → containerd or CRI-O → runc
+
+---
+
+##### 🧠 Summary
+
+* **OCI** = Common language for images/runtimes (standards/specs)
+* **runc** = Actual tool that creates and manages container processes
+* **containerd** = Full-featured daemon that manages images, containers, lifecycle
+* **CRI** = Only for Kubernetes, to make runtimes pluggable
+* **CRI-O** = Lightweight runtime focused on Kubernetes, built on OCI standards and runc
+
+##### 🧩 Diagram: Container Ecosystem
+
+```mermaid
+graph TD
+    subgraph OCI_Standards
+        OCI1["OCI Image Spec"]
+        OCI2["OCI Runtime Spec"]
+    end
+
+    subgraph Orchestration_CLI
+        Docker["Docker CLI"]
+        Podman["Podman CLI"]
+        Kubelet["Kubelet"]
+        Nerdctl["nerdctl CLI"]
+    end
+
+    subgraph Container_Runtimes
+        containerd["containerd"]
+        crio["CRI-O"]
+    end
+
+    runc["runc"]
+
+    Kernel["Linux Kernel\n(namespaces, cgroups, seccomp, etc)"]
+
+    %% Connections
+    Docker --> containerd
+    Podman --> runc
+    Nerdctl --> containerd
+    Kubelet --> CRI[CRI API]
+    CRI --> containerd
+    CRI --> crio
+    containerd --> runc
+    crio --> runc
+    runc --> Kernel
+
+    OCI1 -.-> containerd
+    OCI1 -.-> crio
+    OCI2 -.-> runc
+```
 
 ---
 
@@ -784,7 +930,7 @@ sudo setenforce 1
 
 ---
 
-<a name="topic-352.2"></a>
+`<a name="topic-352.2"></a>`
 
 ### 352.2 LXC
 
@@ -823,7 +969,7 @@ foo
 
 ---
 
-<a name="topic-352.3"></a>
+`<a name="topic-352.3"></a>`
 
 ### 352.3 Docker
 
@@ -865,7 +1011,7 @@ Dockerfile
 
 ---
 
-<a name="topic-352.4"></a>
+`<a name="topic-352.4"></a>`
 
 ### 352.4 Container Orchestration Platforms
 
@@ -886,5 +1032,5 @@ Dockerfile
 
 ---
 
-<a name="topic-353"></a>
+`<a name="topic-353"></a>`
 

@@ -1,6 +1,6 @@
 # Acknowledgments
 
-* [Richard Stallman's](http://www.stallman.org/)
+* [Richard Stallman&#39;s](http://www.stallman.org/)
 * [GNU]()
   * [GNU/Linux FAQ by Richard Stallman](https://www.gnu.org/gnu/gnu-linux-faq.html)
   * [GNU](https://www.gnu.org/)
@@ -87,7 +87,7 @@
   * [Red Hat](https://www.redhat.com/pt-br/topics/virtualization/what-is-virtualization/)
   * [AWS](https://aws.amazon.com/pt/what-is/virtualization/)
   * [IBM](https://www.ibm.com/topics/virtualization)
-  * [OpenSource.com](https://opensource.com/resources/virtualization )
+  * [OpenSource.com](https://opensource.com/resources/virtualization)
 * [Xen]()
   * [XenServer](https://www.xenserver.com/)
   * [Wiki XenProject](https://wiki.xenproject.org/wiki/Main_Page)
@@ -96,7 +96,7 @@
   * [LPI Blog: Xen Virtualization and Cloud Computing #01: Introduction](https://www.lpi.org/pt-br/blog/2020/10/01/xen-virtualization-and-cloud-computing-01-introduction/)
   * [LPI Blog: Xen Virtualization and Cloud Computing #02: How Xen Does the Job](https://www.lpi.org/blog/2020/10/08/xen-virtualization-and-cloud-computing-02-how-xen-does-job/)
   * [LPI Blog: Xen Virtualization and Cloud Computing #04: Containers, OpenStack, and Other Related Platforms](https://www.lpi.org/pt-br/blog/2020/10/22/xen-virtualization-and-cloud-computing-04-containers-openstack-and-other-related/)
-  * [Xen Virtualization and Cloud Computing #05: The Xen Project, Unikernels, and the Future](https://www.lpi.org/pt-br/blog/2020/10/29/xen-virtualization-and-cloud-computing-05-xen-project-unikernels-and-future/)  
+  * [Xen Virtualization and Cloud Computing #05: The Xen Project, Unikernels, and the Future](https://www.lpi.org/pt-br/blog/2020/10/29/xen-virtualization-and-cloud-computing-05-xen-project-unikernels-and-future/)
   * [Xen Project Beginners Guide](https://wiki.xenproject.org/wiki/Xen_Project_Beginners_Guide#Installing_the_Xen_Project_Software)
   * [Crazy Book](https://wiki.xenproject.org/wiki/Book/HelloXenProject/0-Contents)
 * [Unikernels](https://www.lpi.org/blog/2020/10/29/xen-virtualization-and-cloud-computing-05-xen-project-unikernels-and-future/)
@@ -114,7 +114,7 @@
   * [Download Images osboxes](https://www.osboxes.org/)
   * [Download Images linuximages](https://www.linuxvmimages.com/)
   * [Virtio](https://en.wikibooks.org/wiki/QEMU/Devices/Virtio)
-  * [Guest Agent](https://wiki.qemu.org/Features/GuestAgent)  
+  * [Guest Agent](https://wiki.qemu.org/Features/GuestAgent)
 * [Libvirt]()
   * [Oficial Doc](https://libvirt.org/)
   * [System Socket Activation](https://libvirt.org/manpages/libvirtd.html#system-socket-activation)
@@ -136,13 +136,15 @@
   * [IBM Doc Container](https://www.ibm.com/br-pt/topics/containers)
   * [Red Hat Docs Containers](https://www.redhat.com/en/topics/containers/whats-a-linux-container)
   * [Namespaces](https://manpages.ubuntu.com/manpages/noble/man7/namespaces.7.html)
-  * [Most important Namespaces](https://www.redhat.com/en/blog/7-linux-namespaces)  
+  * [Most important Namespaces](https://www.redhat.com/en/blog/7-linux-namespaces)
   * [Cgroups Classes](https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/6/html/resource_management_guide/ch01)
   * [Man Cgroups](https://manpages.ubuntu.com/manpages/noble/man7/cgroups.7.html)
   * [Capabilities Doc](https://linux-audit.com/kernel/capabilities/linux-capabilities-101/)
   * [Man Capabilities](https://manpages.ubuntu.com/manpages/noble/man7/capabilities.7.html)
-    
-  * 
+  * [Seccomp Profiles in Docker](https://docs.docker.com/engine/security/seccomp/)
+  * [AppArmor Profiles in Docker](https://docs.docker.com/engine/security/apparmor/)
+  * [SElinux](https://pt.wikipedia.org/wiki/SELinux)
+  * [Apparmor SElinux Comparation](https://www.redhat.com/en/blog/apparmor-selinux-isolation)
 * [Openstack Docs]()
   * [RedHat](https://www.redhat.com/pt-br/topics/openstack)
 * [Open vSwitch]()
@@ -158,7 +160,9 @@
 ---
 
 <!-- MARKDOWN LINKS & IMAGES-->
+
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
+
 [contributors-shield]: https://img.shields.io/github/contributors/marcossilvestrini/learning-lpic-3-305-300.svg?style=for-the-badge
 [contributors-url]: https://github.com/marcossilvestrini/learning-lpic-3-305-300/graphs/contributors
 [forks-shield]: https://img.shields.io/github/forks/marcossilvestrini/learning-lpic-3-305-300.svg?style=for-the-badge

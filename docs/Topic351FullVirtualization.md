@@ -4,11 +4,11 @@
 
 ---
 
-<a name="topic-351.1"></a>
+`<a name="topic-351.1"></a>`
 
 ### 351.1 Virtualization Concepts and Theory
 
-**Weight:** 6  
+**Weight:** 6
 
 **Description:** Candidates should know and understand the general concepts, theory and terminology of virtualization. This includes Xen, QEMU and libvirt terminology.
 
@@ -41,7 +41,7 @@ Migration (P2V, V2V)
 
 ###### Type 1 Definition
 
-Runs directly on the host's physical hardware, providing a base layer to manage VMs without the need for a host operating system.  
+Runs directly on the host's physical hardware, providing a base layer to manage VMs without the need for a host operating system.
 
 ###### Type 1 Characteristics
 
@@ -89,21 +89,19 @@ Runs on top of a conventional operating system, relying on the host OS for resou
 
 ##### Migration Types
 
-In the context of hypervisors, which are technologies used to create and manage virtual machines, the terms P2V migration and V2V migration are common in virtualization environments.  
+In the context of hypervisors, which are technologies used to create and manage virtual machines, the terms P2V migration and V2V migration are common in virtualization environments.
 They refer to processes of migrating systems between different types of platforms.
 
 ##### P2V - Physical to Virtual Migration
 
-P2V migration refers to the process of migrating a physical server to a virtual machine.  
-In other words, an operating system and its applications, running on dedicated physical hardware, are "converted" and moved to a virtual machine that runs on a hypervisor (such as VMware, Hyper-V, KVM, etc.).
+P2V migration refers to the process of migrating a physical server to a virtual machine.In other words, an operating system and its applications, running on dedicated physical hardware, are "converted" and moved to a virtual machine that runs on a hypervisor (such as VMware, Hyper-V, KVM, etc.).
 
-* Example: You have a physical server running a Windows or Linux system, and you want to move it to a virtual environment, like a cloud infrastructure or an internal virtualization server.  
-The process involves copying the entire system state, including the operating system, drivers, and data, to create an equivalent virtual machine that can run as if it were on the physical hardware.
+* Example: You have a physical server running a Windows or Linux system, and you want to move it to a virtual environment, like a cloud infrastructure or an internal virtualization server.
+  The process involves copying the entire system state, including the operating system, drivers, and data, to create an equivalent virtual machine that can run as if it were on the physical hardware.
 
 ##### V2V  - Virtual to Virtual Migration
 
-V2V migration refers to the process of migrating a virtual machine from one hypervisor to another.  
-In this case, you already have a virtual machine running in a virtualized environment (like VMware), and you want to move it to another virtualized environment (for example, to Hyper-V or to a new VMware server).
+V2V migration refers to the process of migrating a virtual machine from one hypervisor to another.In this case, you already have a virtual machine running in a virtualized environment (like VMware), and you want to move it to another virtualized environment (for example, to Hyper-V or to a new VMware server).
 
 * Example: You have a virtual machine running on a VMware virtualization server, but you decide to migrate it to a Hyper-V platform. In this case, the V2V migration converts the virtual machine from one format or hypervisor to another, ensuring it can continue running correctly.
 
@@ -192,7 +190,7 @@ Xen with paravirtualized guests, VMware tools in certain configurations, and som
 
 #### NUMA (Non-Uniform Memory Access)
 
-NUMA (Non-Uniform Memory Access) is a memory architecture used in multiprocessor systems to optimize memory access by processors.  
+NUMA (Non-Uniform Memory Access) is a memory architecture used in multiprocessor systems to optimize memory access by processors.
 In a NUMA system, memory is distributed unevenly among processors, meaning that each processor has faster access to a portion of memory (its "local memory") than to memory that is physically further away (referred to as "remote memory") and associated with other processors.
 
 ##### Key Features of NUMA Architecture
@@ -210,17 +208,14 @@ In a NUMA system, memory is distributed unevenly among processors, meaning that 
 
 * 🛠️ Programming Complexity: Programmers need to be aware of which regions of memory are local or remote, optimizing the use of local memory to achieve better performance.
 * 🐢 Potential Performance Penalties: If a processor frequently accesses remote memory, performance may suffer due to higher latency.
-This architecture is common in high-performance multiprocessor systems, such as servers and supercomputers, where scalability and memory optimization are critical.
+  This architecture is common in high-performance multiprocessor systems, such as servers and supercomputers, where scalability and memory optimization are critical.
 
 #### Opensource Solutions
 
-* 🌐 oVirt: <https://www.ovirt.org/>
-
-* 🌐 Proxmox: <https://www.proxmox.com/en/proxmox-virtual-environment/overview>
-
-* 🌐 Oracle VirtualBox: <https://www.virtualbox.org/>
-
-* 🌐 Open vSwitch: <https://www.openvswitch.org/>
+* 🌐 oVirt: [https://www.ovirt.org/](https://www.ovirt.org/)
+* 🌐 Proxmox: [https://www.proxmox.com/en/proxmox-virtual-environment/overview](https://www.proxmox.com/en/proxmox-virtual-environment/overview)
+* 🌐 Oracle VirtualBox: [https://www.virtualbox.org/](https://www.virtualbox.org/)
+* 🌐 Open vSwitch: [https://www.openvswitch.org/](https://www.openvswitch.org/)
 
 #### Types of Virtualization
 
@@ -228,7 +223,7 @@ This architecture is common in high-performance multiprocessor systems, such as 
 
 ###### HV Definition
 
-Abstracts physical hardware to create virtual machines (VMs) that run separate operating systems and applications.  
+Abstracts physical hardware to create virtual machines (VMs) that run separate operating systems and applications.
 
 ###### HV Use Cases
 
@@ -354,7 +349,7 @@ Despite this drawback, emulation remains valuable for running legacy software, t
 
 ---
 
-<a name="topic-351.2"></a>
+`<a name="topic-351.2"></a>`
 
 ### 351.2 Xen
 
@@ -381,25 +376,22 @@ Despite this drawback, emulation remains valuable for running legacy software, t
 
 ![panda](../images/xen-panda.png)
 
-Xen is an open-source type-1 (bare-metal) hypervisor, which allows multiple operating systems to run concurrently on the same physical hardware.  
-Xen provides a layer between the physical hardware and virtual machines (VMs), enabling efficient resource sharing and isolation.
+Xen is an open-source type-1 (bare-metal) hypervisor, which allows multiple operating systems to run concurrently on the same physical hardware.Xen provides a layer between the physical hardware and virtual machines (VMs), enabling efficient resource sharing and isolation.
 
 * **Architecture:** Xen operates with a two-tier system where Domain 0 (Dom0) is the privileged domain with direct hardware access and manages the hypervisor. Other virtual machines, called Domain U (DomU), run guest operating systems and are managed by Dom0.
 * **Types of Virtualization:** Xen supports both paravirtualization (PV), which requires modified guest OS, and hardware-assisted virtualization (HVM), which uses hardware extensions (e.g., Intel VT-x or AMD-V) to run unmodified guest operating systems.
-Xen is widely used in cloud environments, notably by Amazon Web Services (AWS) and other large-scale cloud providers.
+  Xen is widely used in cloud environments, notably by Amazon Web Services (AWS) and other large-scale cloud providers.
 
 #### XenSource
 
-XenSource was the company founded by the original developers of the Xen hypervisor at the University of Cambridge to commercialize Xen.  
-The company provided enterprise solutions based on Xen and offered additional tools and support to enhance Xen’s capabilities for enterprise use.
+XenSource was the company founded by the original developers of the Xen hypervisor at the University of Cambridge to commercialize Xen.The company provided enterprise solutions based on Xen and offered additional tools and support to enhance Xen’s capabilities for enterprise use.
 
 * **Acquisition by Citrix**: In 2007, XenSource was acquired by Citrix Systems, Inc. Citrix used Xen technology as the foundation for its Citrix XenServer product, which became a popular enterprise-grade virtualization platform based on Xen.
 * **Transition**: After the acquisition, the Xen project continued as an open-source project, while Citrix focused on commercial offerings like XenServer, leveraging XenSource technology.
 
 #### Xen Project
 
-Xen Project refers to the open-source community and initiative responsible for developing and maintaining the Xen hypervisor after its commercialization.  
-The Xen Project operates under the Linux Foundation, with a focus on building, improving, and supporting Xen as a collaborative, community-driven effort.
+Xen Project refers to the open-source community and initiative responsible for developing and maintaining the Xen hypervisor after its commercialization.The Xen Project operates under the Linux Foundation, with a focus on building, improving, and supporting Xen as a collaborative, community-driven effort.
 
 * **Goals:** The Xen Project aims to advance the hypervisor by improving its performance, security, and feature set for a wide range of use cases, including cloud computing, security-focused virtualization (e.g., Qubes OS), and embedded systems.
 * **Contributors:** The project includes contributors from various organizations, including major cloud providers, hardware vendors, and independent developers.
@@ -407,32 +399,26 @@ The Xen Project operates under the Linux Foundation, with a focus on building, i
 
 #### XenStore
 
-Xen Store is a critical component of the Xen Hypervisor.  
+Xen Store is a critical component of the Xen Hypervisor.
 Essentially, Xen Store is a distributed key-value database used for communication and information sharing between the Xen hypervisor and the virtual machines (also known as domains) it manages.
 
 Here are some key aspects of Xen Store:
 
 * **Inter-Domain Communication:** Xen Store enables communication between domains, such as Dom0 (the privileged domain that controls hardware resources) and DomUs (user domains, which are the VMs). This is done through key-value entries, where each domain can read or write information.
-
 * **Configuration Management:** It is used to store and access configuration information, such as virtual devices, networking, and boot parameters. This facilitates the dynamic management and configuration of VMs.
-
 * **Events and Notifications:** Xen Store also supports event notifications. When a particular key or value in the Xen Store is modified, interested domains can be notified to react to these changes. This is useful for monitoring and managing resources.
-
 * Simple API: Xen Store provides a simple API for reading and writing data, making it easy for developers to integrate their applications with the Xen virtualization system.
 
 #### XAPI
 
-XAPI, or XenAPI, is the application programming interface (API) used to manage the Xen Hypervisor and its virtual machines (VMs).  
+XAPI, or XenAPI, is the application programming interface (API) used to manage the Xen Hypervisor and its virtual machines (VMs).
 XAPI is a key component of XenServer (now known as Citrix Hypervisor) and provides a standardized way to interact with the Xen hypervisor to perform operations such as creating, configuring, monitoring, and controlling VMs.
 
 Here are some important aspects of XAPI:
 
 * **VM Management:** XAPI allows administrators to programmatically create, delete, start, and stop virtual machines.
-
 * **Automation:** With XAPI, it's possible to automate the management of virtual resources, including networking, storage, and computing, which is crucial for large cloud environments.
-
 * **Integration:** XAPI can be integrated with other tools and scripts to provide more efficient and customized administration of the Xen environment.
-
 * **Access Control:** XAPI also provides access control mechanisms to ensure that only authorized users can perform specific operations in the virtual environment.
 
 XAPI is the interface that enables control and automation of the Xen Hypervisor, making it easier to manage virtualized environments.
@@ -447,22 +433,22 @@ XAPI is the interface that enables control and automation of the Xen Hypervisor,
 
 #### Domain0 (Dom0)
 
-Domain0, or Dom0, is the control domain in a Xen architecture. It manages other domains (DomUs) and has direct access to hardware.  
+Domain0, or Dom0, is the control domain in a Xen architecture. It manages other domains (DomUs) and has direct access to hardware.
 Dom0 runs device drivers, allowing DomUs, which lack direct hardware access, to communicate with devices. Typically, it is a full instance of an operating system, like Linux, and is essential for Xen hypervisor operation.
 
 #### DomainU (DomU)
 
-DomUs are non-privileged domains that run virtual machines.  
+DomUs are non-privileged domains that run virtual machines.
 They are managed by Dom0 and do not have direct access to hardware. DomUs can be configured to run different operating systems and are used for various purposes, such as application servers and development environments. They rely on Dom0 for hardware interaction.
 
 #### PV-DomU (Paravirtualized DomainU)
 
-PV-DomUs use a technique called paravirtualization. In this model, the DomU operating system is modified to be aware that it runs in a virtualized environment, allowing it to communicate directly with the hypervisor for optimized performance.  
+PV-DomUs use a technique called paravirtualization. In this model, the DomU operating system is modified to be aware that it runs in a virtualized environment, allowing it to communicate directly with the hypervisor for optimized performance.
 This results in lower overhead and better efficiency compared to full virtualization.
 
 #### HVM-DomU (Hardware Virtual Machine DomainU)
 
-HVM-DomUs are virtual machines that utilize full virtualization, allowing unmodified operating systems to run. The Xen hypervisor provides hardware emulation for these DomUs, enabling them to run any operating system that supports the underlying hardware architecture.  
+HVM-DomUs are virtual machines that utilize full virtualization, allowing unmodified operating systems to run. The Xen hypervisor provides hardware emulation for these DomUs, enabling them to run any operating system that supports the underlying hardware architecture.
 While this offers greater flexibility, it can result in higher overhead compared to PV-DomUs.
 
 #### Xen Network
@@ -993,7 +979,7 @@ qemu-system-x86_x64
 
 ---
 
-<a name="topic-351.4"></a>
+`<a name="topic-351.4"></a>`
 
 ### 351.4 Libvirt Virtual Machine Management
 
@@ -1373,7 +1359,7 @@ less /etc/libvirt/qemu/debian-server01.xml
 
 ---
 
-<a name="topic-351.5"></a>
+`<a name="topic-351.5"></a>`
 
 ### 351.5 Virtual Machine Disk Image Management
 
@@ -1664,5 +1650,5 @@ The generated package has the .ova extension and contains the following files:
 
 ---
 
-<a name="topic-352"></a>
+`<a name="topic-352"></a>`
 
