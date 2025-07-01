@@ -760,7 +760,7 @@ graph TD
 
     runc["runc"]
 
-    Kernel["Linux Kernel\n(namespaces, cgroups, seccomp, etc)"]
+    Kernel["Linux Kernel(namespaces, cgroups, seccomp, etc)"]
 
     %% Connections
     Docker --> containerd
@@ -777,6 +777,7 @@ graph TD
     OCI1 -.-> crio
     OCI2 -.-> runc
 ```
+
 
 ---
 
@@ -909,7 +910,7 @@ aa-teardown
 aaparmor_parser
 ```
 
-###### SELinux - Security-Enhanced Linux
+##### SELinux - Security-Enhanced Linux
 
 ```sh
 # check SELinux status
@@ -920,6 +921,16 @@ sudo getenforce
 
 # set SELinux to enforcing mode
 sudo setenforce 1
+```
+
+##### runc
+
+```sh
+#create a spec file for runc
+runc spec
+
+# run a container using runc
+sudo runc run mycontainer
 ```
 
 ---
