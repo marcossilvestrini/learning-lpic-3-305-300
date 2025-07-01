@@ -2650,7 +2650,7 @@ graph TD
 
     runc["runc"]
 
-    Kernel["Linux Kernel\n(namespaces, cgroups, seccomp, etc)"]
+    Kernel["Linux Kernel(namespaces, cgroups, seccomp, etc)"]
 
     %% Connections
     Docker --> containerd
@@ -2667,6 +2667,7 @@ graph TD
     OCI1 -.-> crio
     OCI2 -.-> runc
 ```
+
 
 ---
 
@@ -2799,7 +2800,7 @@ aa-teardown
 aaparmor_parser
 ```
 
-###### SELinux - Security-Enhanced Linux
+##### SELinux - Security-Enhanced Linux
 
 ```sh
 # check SELinux status
@@ -2810,6 +2811,16 @@ sudo getenforce
 
 # set SELinux to enforcing mode
 sudo setenforce 1
+```
+
+##### runc
+
+```sh
+#create a spec file for runc
+runc spec
+
+# run a container using runc
+sudo runc run mycontainer
 ```
 
 ---
@@ -3258,6 +3269,12 @@ Project Link: [https://github.com/marcossilvestrini/learning-lpic-3-305-300](htt
   * [AppArmor Profiles in Docker](https://docs.docker.com/engine/security/apparmor/)
   * [SElinux](https://pt.wikipedia.org/wiki/SELinux)
   * [Apparmor SElinux Comparation](https://www.redhat.com/en/blog/apparmor-selinux-isolation)
+  * [runC](https://www.docker.com/blog/runc/)
+  * [runc Github](https://github.com/opencontainers/runc)
+  * [OCI](https://opencontainers.org/about/overview/)
+  * [CRI](https://kubernetes.io/docs/concepts/architecture/cri/)
+  * [CRI-O](https://cri-o.io/)
+  * [containerd](https://containerd.io/)
 * [Openstack Docs]()
   * [RedHat](https://www.redhat.com/pt-br/topics/openstack)
 * [Open vSwitch]()

@@ -32,9 +32,11 @@ if echo "$RELEASE_INFO" | grep -q -i "debian\|ubuntu"; then
         bridge-utils \
         debootstrap \
         cgroup-tools \
+        runc \
         stress-ng \
         libcap-ng-utils \
-        tcpdump
+        tcpdump \
+        jq
 
     # Set user profile for bash and vim
     sudo cp -f configs/commons/.bashrc_debian .bashrc
