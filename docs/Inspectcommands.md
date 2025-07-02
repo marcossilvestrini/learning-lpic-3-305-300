@@ -13,5 +13,5 @@ man COMMAND
 
 ---
 
-`<a name="topic-351"></a>`
+<a name="topic-351"></a>
 

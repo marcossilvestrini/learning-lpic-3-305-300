@@ -2,7 +2,7 @@
 
 ---
 
-`<a name="topic-352.1"></a>`
+<a name="topic-352.1"></a>
 
 ### 352.1  Container Virtualization Concepts
 
@@ -786,7 +786,7 @@ For runc lab, you can use this script: [runc.sh](../scripts/container/runc.sh)
 
 ##### 🧪 lab containerd
 
-For runc lab, you can use this script: [containerd.sh](../scripts/container/container.sh)
+For runc containerd, you can use this script: [containerd.sh](../scripts/container/container.sh)
 
 ![containerd](../images/containerd-lab.png)
 
@@ -1032,7 +1032,7 @@ sudo runc run mycontainer
 
 ---
 
-`<a name="topic-352.2"></a>`
+<a name="topic-352.2"></a>
 
 ### 352.2 LXC
 
@@ -1071,7 +1071,7 @@ foo
 
 ---
 
-`<a name="topic-352.3"></a>`
+<a name="topic-352.3"></a>
 
 ### 352.3 Docker
 
@@ -1113,7 +1113,7 @@ Dockerfile
 
 ---
 
-`<a name="topic-352.4"></a>`
+<a name="topic-352.4"></a>
 
 ### 352.4 Container Orchestration Platforms
 
@@ -1134,5 +1134,5 @@ Dockerfile
 
 ---
 
-`<a name="topic-353"></a>`
+<a name="topic-353"></a>
 
