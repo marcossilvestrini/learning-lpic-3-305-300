@@ -93,7 +93,7 @@
 
 ---
 
-`<a name="about-the-project"></a>`
+<a name="about-the-project"></a>
 
 ## About Project
 
@@ -111,13 +111,13 @@
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-`<a name="getting-started"></a>`
+<a name="getting-started"></a>
 
 ## Getting Started
 
 For starting the learning, see the documentation above.
 
-`<a name="prerequisites"></a>`
+<a name="prerequisites"></a>
 
 ### Prerequisites
 
@@ -126,7 +126,7 @@ For starting the learning, see the documentation above.
 * [Vagrant VMWare Utility](https://developer.hashicorp.com/vagrant/install/vmware)
 * [Vagrant](https://developer.hashicorp.com/vagrant/install)
 
-`<a name="installation"></a>`
+<a name="installation"></a>
 
 ### Installation
 
@@ -150,7 +150,7 @@ Customize network configuration in files [configs/network](configs/network/).
 
 ---
 
-`<a name="usage"></a>`
+<a name="usage"></a>
 
 ## Usage
 
@@ -191,20 +191,20 @@ vagrant/destroy.ps1
 
 ---
 
-`<a name="roadmap"></a>`
+<a name="roadmap"></a>
 
 ## Roadmap
 
 * [X] Create repository
 * [X] Create scripts for provisioning labs
 * [X] Create examples about Topic 351
-* [ ] Create examples about Topic 352
+* [X] Create examples about Topic 352
 * [ ] Create examples about Topic 353
 * [ ] Upload simulated itexam
 
 ---
 
-`<a name="freedoms"></a>`
+<a name="freedoms"></a>
 
 ## Four Essential Freedoms
 
@@ -232,7 +232,7 @@ man COMMAND
 
 ---
 
-`<a name="topic-351"></a>`
+<a name="topic-351"></a>
 
 ## Topic 351: Full Virtualization
 
@@ -240,7 +240,7 @@ man COMMAND
 
 ---
 
-`<a name="topic-351.1"></a>`
+<a name="topic-351.1"></a>
 
 ### 351.1 Virtualization Concepts and Theory
 
@@ -585,7 +585,7 @@ Despite this drawback, emulation remains valuable for running legacy software, t
 
 ---
 
-`<a name="topic-351.2"></a>`
+<a name="topic-351.2"></a>
 
 ### 351.2 Xen
 
@@ -1215,7 +1215,7 @@ qemu-system-x86_x64
 
 ---
 
-`<a name="topic-351.4"></a>`
+<a name="topic-351.4"></a>
 
 ### 351.4 Libvirt Virtual Machine Management
 
@@ -1595,7 +1595,7 @@ less /etc/libvirt/qemu/debian-server01.xml
 
 ---
 
-`<a name="topic-351.5"></a>`
+<a name="topic-351.5"></a>
 
 ### 351.5 Virtual Machine Disk Image Management
 
@@ -1886,13 +1886,13 @@ The generated package has the .ova extension and contains the following files:
 
 ---
 
-`<a name="topic-352"></a>`
+<a name="topic-352"></a>
 
 ## Topic 352: Container Virtualization
 
 ---
 
-`<a name="topic-352.1"></a>`
+<a name="topic-352.1"></a>
 
 ### 352.1  Container Virtualization Concepts
 
@@ -2676,7 +2676,7 @@ For runc lab, you can use this script: [runc.sh](scripts/container/runc.sh)
 
 ##### 🧪 lab containerd
 
-For runc lab, you can use this script: [containerd.sh](scripts/container/container.sh)
+For runc containerd, you can use this script: [containerd.sh](scripts/container/container.sh)
 
 ![containerd](images/containerd-lab.png)
 
@@ -2922,7 +2922,7 @@ sudo runc run mycontainer
 
 ---
 
-`<a name="topic-352.2"></a>`
+<a name="topic-352.2"></a>
 
 ### 352.2 LXC
 
@@ -2961,7 +2961,7 @@ foo
 
 ---
 
-`<a name="topic-352.3"></a>`
+<a name="topic-352.3"></a>
 
 ### 352.3 Docker
 
@@ -3003,7 +3003,7 @@ Dockerfile
 
 ---
 
-`<a name="topic-352.4"></a>`
+<a name="topic-352.4"></a>
 
 ### 352.4 Container Orchestration Platforms
 
@@ -3024,13 +3024,13 @@ Dockerfile
 
 ---
 
-`<a name="topic-353"></a>`
+<a name="topic-353"></a>
 
 ## Topic 353: VM Deployment and Provisioning
 
 ---
 
-`<a name="topic-353.1"></a>`
+<a name="topic-353.1"></a>
 
 ### 353.1  Cloud Management Tools
 
@@ -3067,7 +3067,7 @@ Terraform
 
 ---
 
-`<a name="topic-353.2"></a>`
+<a name="topic-353.2"></a>
 
 ### 353.2 Packer
 
@@ -3101,7 +3101,7 @@ packer
 
 ---
 
-`<a name="topic-353.3"></a>`
+<a name="topic-353.3"></a>
 
 ### 353.3 cloud-init
 
@@ -3140,7 +3140,7 @@ user-data
 
 ---
 
-`<a name="topic-353.4"></a>`
+<a name="topic-353.4"></a>
 
 ### 353.4 Vagrant
 
