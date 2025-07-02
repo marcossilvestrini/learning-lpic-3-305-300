@@ -49,10 +49,10 @@ jobs:
       - run: /usr/bin/git config --global user.email "marcos.silvestrini@gmail.com"
       - run: /usr/bin/git config --global user.name "marcossilvestrini"
       - run: /usr/bin/git add .
-      - run: /usr/bin/git commit -m "Deploy pdf and html files"
-      - run: /usr/bin/git push origin main
+      - run: /usr/bin/git commit -m "Deploy pdf and html files"      
       - run: /usr/bin/git fetch origin main
       - run: /usr/bin/git rebase origin/main
+      - run: /usr/bin/git push origin main
 
       - name: Upload artifacts        
         uses: actions/upload-artifact@v4
