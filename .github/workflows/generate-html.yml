@@ -51,7 +51,9 @@ jobs:
       - run: /usr/bin/git add .
       - run: /usr/bin/git commit -m "Deploy pdf and html files"
       - run: /usr/bin/git push origin main
-     
+      - run: /usr/bin/git fetch origin main
+      - run: /usr/bin/git rebase origin/main
+
       - name: Upload artifacts        
         uses: actions/upload-artifact@v4
         with:
