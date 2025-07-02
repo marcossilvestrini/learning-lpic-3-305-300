@@ -45,13 +45,13 @@ jobs:
           htmlFile: ./index.html
           outputFile: "./${{ steps.repo_name.outputs.name }}.pdf"          
           pdfOptions: '{"format": "A4", "margin": {"top": "10mm", "left": "10mm", "right": "10mm", "bottom": "10mm"}}'          
+      
       - run: sudo chmod 777 "${{ steps.repo_name.outputs.name }}.pdf"
       - run: /usr/bin/git config --global user.email "marcos.silvestrini@gmail.com"
       - run: /usr/bin/git config --global user.name "marcossilvestrini"
+      - run: /usr/bin/git pull --rebase origin main
       - run: /usr/bin/git add .
-      - run: /usr/bin/git commit -m "Deploy pdf and html files"      
-      - run: /usr/bin/git fetch origin main
-      - run: /usr/bin/git rebase origin/main
+      - run: /usr/bin/git commit -m "Deploy pdf and html files"            
       - run: /usr/bin/git push origin main
 
       - name: Upload artifacts        
