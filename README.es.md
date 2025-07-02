@@ -164,7 +164,7 @@ cd vagrant && vagrant reload
 
 ### Use PowerShell para arriba y abajo
 
-Si usa la plataforma Windows, creo un script PowerShell para VMS arriba y abajo.
+If you use Windows platform, I create a powershell script for up and down vms.
 
 ```powershell
 vagrant/up.ps1
@@ -2864,7 +2864,7 @@ grep Cap /proc/<PID>/status
 capsh --decode=0000000000002000
 ```
 
-##### APARMOR - Mejora del núcleo para limitar los programas a un conjunto limitado de recursos
+##### AppArmor - kernel enhancement to confine programs to a limited set of resources
 
 ```sh
 # check AppArmor status
@@ -2958,7 +2958,7 @@ foo
 **Áreas clave de conocimiento:**
 
 -   Comprender la arquitectura y los componentes de Docker
--   Manage Docker containers by using images from a Docker registry
+-   Administre contenedores Docker utilizando imágenes de un registro de Docker
 -   Comprender y administrar imágenes y volúmenes para contenedores Docker
 -   Comprender y administrar el registro de contenedores Docker
 -   Comprender y administrar redes para Docker
