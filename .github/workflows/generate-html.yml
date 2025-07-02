@@ -46,14 +46,16 @@ jobs:
           outputFile: "./${{ steps.repo_name.outputs.name }}.pdf"          
           pdfOptions: '{"format": "A4", "margin": {"top": "10mm", "left": "10mm", "right": "10mm", "bottom": "10mm"}}'          
       
-      - run: sudo chmod 777 "${{ steps.repo_name.outputs.name }}.pdf"
-      - run: /usr/bin/git config --global user.email "marcos.silvestrini@gmail.com"
-      - run: /usr/bin/git config --global user.name "marcossilvestrini"
-      - run: /usr/bin/git pull --rebase origin main
-      - run: /usr/bin/git add .
-      - run: /usr/bin/git commit -m "Deploy pdf and html files"            
-      - run: /usr/bin/git push origin main
-
+      - name: Commit and push PDF and HTML to docs branch
+        run: |
+          git config --global user.email "marcos.silvestrini@gmail.com"
+          git config --global user.name "marcossilvestrini"
+          git checkout --orphan docs
+          git rm -rf .
+          git add index.html "${{ steps.repo_name.outputs.name }}.pdf"
+          git commit -m "Deploy PDF and HTML files [skip ci]"
+          git push --force origin docs
+          
       - name: Upload artifacts        
         uses: actions/upload-artifact@v4
         with:
