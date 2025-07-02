@@ -778,8 +778,99 @@ graph TD
     OCI2 -.-> runc
 ```
 
+##### 🧪 lab runc
+
+For runc lab, you can use this script: [runc.sh](../scripts/container/runc.sh)
+
+![runc](../images/runc-lab.png)
+
+##### 🧪 lab containerd
+
+For runc lab, you can use this script: [containerd.sh](../scripts/container/container.sh)
+
+![containerd](../images/containerd-lab.png)
 
 ---
+
+#### 🚀 Podman, Buildah, Skopeo, OpenVZ, crun & Kata Containers – Fast Track
+
+---
+
+##### 🐳 **Podman**
+
+* **What is it?** A container manager compatible with Docker CLI, but **daemonless** and can run  **rootless** .
+* **Use:** Create, run, stop, and inspect containers and pods.
+* **Highlights:** No central daemon, safer for multi-user, integrates with systemd.
+* [More info]()
+
+---
+
+##### 📦 **Buildah**
+
+* **What is it?** Tool to **build and manipulate container images** (OCI/Docker) without a daemon.
+* **Use:** Building images in CI/CD pipelines or scripting.
+* **Highlights:** Lightweight, rootless support, used by Podman under the hood.
+* [More info](https://www.redhat.com/en/topics/containers/what-is-buildah)
+
+---
+
+##### 🔭 **Skopeo**
+
+* **What is it?** Utility to **inspect, copy, and move container images** between registries **without pulling or running** them.
+* **Use:** Move images, check signatures and metadata.
+* **Highlights:** No daemon, ideal for automation and security.
+* [More info]()
+
+---
+
+##### 🏢 **OpenVZ**
+
+* **What is it?** **Container-based virtualization** solution for Linux (pre-dating modern container tools).
+* **Use:** Lightweight VPS (virtual private servers) sharing the same kernel.
+* **Highlights:** Very efficient, but less isolated than VM (shares kernel).
+* [More info](https://en.wikipedia.org/wiki/OpenVZ)
+
+---
+
+##### ⚡ **crun**
+
+* **What is it?** Ultra-fast, minimal OCI runtime for containers, written in C (not Go).
+* **Use:** Executes containers with minimal overhead.
+* **Highlights:** Faster and lighter than runc, default for Podman on some systems.
+* [More info](https://www.redhat.com/sysadmin/introduction-crun)
+
+---
+
+##### 🛡️ **Kata Containers**
+
+* **What is it?** Open source project combining containers and VMs: each container runs in a lightweight micro-VM.
+* **Use:** Strong isolation for sensitive workloads or multi-tenant environments.
+* **Highlights:** VM-grade security, near-container performance.
+* [More info](https://katacontainers.io/)
+
+---
+
+##### 📊 **Comparison Table**
+
+| Project                   | Category       | Isolation             | Daemon? | Main Use               | Rootless | Notes                       |
+| ------------------------- | -------------- | --------------------- | ------- | ---------------------- | -------- | --------------------------- |
+| **Podman**          | Orchestration  | Container             | No      | Manage containers      | Yes      | Docker-like CLI             |
+| **Buildah**         | Build          | N/A                   | No      | Build images           | Yes      | For CI/CD, no container run |
+| **Skopeo**          | Image transfer | N/A                   | No      | Move/check images      | Yes      | No container execution      |
+| **OpenVZ**          | Virtualization | Container/VPS         | Yes     | Lightweight VPS        | No       | Kernel shared, legacy tech  |
+| **crun**            | OCI Runtime    | Container             | No      | Fast container runtime | Yes      | Faster than runc            |
+| **Kata Containers** | Runtime/VM     | MicroVM per container | No      | Strong isolation       | Yes      | VM-level security           |
+
+---
+
+##### ☑️ **Quick Recap**
+
+* **Podman:** Modern, daemonless Docker alternative.
+* **Buildah:** Build images, doesn't run containers.
+* **Skopeo:** Moves/inspects images, never runs them.
+* **OpenVZ:** Legacy container-based VPS.
+* **crun:** Super fast, lightweight OCI runtime.
+* **Kata:** Containers with VM-level isolation.
 
 #### 352.1 Important Commands
 
