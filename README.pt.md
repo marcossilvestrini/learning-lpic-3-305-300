@@ -2171,7 +2171,7 @@ Usado em conjunto com namespaces e cgroups para bloquear o que um processo cont�
 > ✅ CGROUPS Controle o que pode usar
 > ✅ Capacidades e módulos de segurança definem o que pode fazer
 
-Juntos, esses recursos do kernel formam a espinha dorsal técnica do isolamento de contêineres-permitindo implantação de aplicação de alta densidade, segurança e eficiência sem VMs completas.
+Juntos, esses recursos do kernel formam a espinha dorsal técnica do isolamento de contêineres-permitindo implantação de aplicativos de alta densidade, seguros e eficientes sem VMs completas.
 
 ##### 🧪 Namespaces de laboratório
 
@@ -2530,7 +2530,7 @@ Resumo
 
 #### 🧩 OCI, Runc, Containerd, CRI, CRI-O-O que eles são no ecossistema de contêineres
 
-##### Overview and Roles
+##### Visão geral e papéis
 
 -   **OCI (iniciativa de contêiner aberto) 🏛️**
 
@@ -2851,7 +2851,7 @@ sudo setcap -r /usr/bin/tcpdump
 sudo setcap '' /usr/bin/tcpdump
 ```
 
-##### check capabilities by process
+##### Verifique os recursos por processo
 
 ```sh
 grep Cap /proc/<PID>/status
@@ -3059,7 +3059,7 @@ Terraform
 
 **Peso:**2
 
-**Descrição:** Candidates should be able to use Packer to create system images. This includes running Packer in various public and private cloud environments as well as building container images for LXC/LXD.
+**Descrição:**Os candidatos devem poder usar o Packer para criar imagens do sistema. Isso inclui a execução do Packer em vários ambientes de nuvem pública e privada, além de criar imagens de contêineres para LXC/LXD.
 
 **Principais áreas de conhecimento:**
 
