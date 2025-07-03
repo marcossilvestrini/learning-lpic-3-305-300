@@ -6,6 +6,8 @@ on:
     branches: [main]
     types:
       - completed
+permissions:
+  contents: write
 
 jobs:
   generate_html_and_pdf:
@@ -39,12 +41,13 @@ jobs:
 
       - name: Commit and push PDF and HTML to docs branch
         run: |
-          git config --global user.email "marcos.silvestrini@gmail.com"
-          git config --global user.name "marcossilvestrini"
-          git checkout --orphan docs          
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions@users.noreply.github.com"
+          git checkout main
+          git pull origin main
           git add index.html "${{ steps.repo_name.outputs.name }}.pdf"
-          git commit -m "Deploy PDF and HTML files [skip ci]"
-          git push --force origin docs
+          git commit -m "Add generated PDF and HTML [skip ci]" || echo "No changes to commit"
+          git push origin main
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
