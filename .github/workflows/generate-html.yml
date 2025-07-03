@@ -1,10 +1,6 @@
 name: Generate HTML and PDF
 
 on:
-  # workflow_dispatch:
-  # push:
-  #   branches:
-  #     - main
   workflow_run:
     workflows: ["Translate README"]
     branches: [main]
@@ -14,11 +10,7 @@ on:
 jobs:
   generate_html_and_pdf:
     name: Generate HTML and PDF
-    runs-on: ${{ matrix.os }}
-    strategy:
-      fail-fast: false
-      matrix:
-        os: [ubuntu-latest]
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout code
@@ -28,7 +20,7 @@ jobs:
 
       - name: Get Repository Name
         id: repo_name
-        run: echo "::set-output name=name::$(basename $GITHUB_REPOSITORY)"
+        run: echo "name=$(basename $GITHUB_REPOSITORY)" >> $GITHUB_OUTPUT
 
       - name: Converts Markdown to HTML
         uses: jaywcjlove/markdown-to-html-cli@main
@@ -37,22 +29,24 @@ jobs:
           output: index.html
           github-corners: "https://github.com/marcossilvestrini/${{ steps.repo_name.outputs.name }}"
           favicon: data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌐</text></svg>
-    
 
       - name: HTML to PDF
         uses: fifsky/html-to-pdf-action@master
         with:
           htmlFile: ./index.html
-          outputFile: "./${{ steps.repo_name.outputs.name }}.pdf"          
-          pdfOptions: '{"format": "A4", "margin": {"top": "10mm", "left": "10mm", "right": "10mm", "bottom": "10mm"}}'          
-      - run: sudo chmod 777 "${{ steps.repo_name.outputs.name }}.pdf"
-      - run: /usr/bin/git config --global user.email "marcos.silvestrini@gmail.com"
-      - run: /usr/bin/git config --global user.name "marcossilvestrini"
-      - run: /usr/bin/git add .
-      - run: /usr/bin/git commit -m "Deploy pdf and html files"
-      - run: /usr/bin/git push origin main
-     
-      - name: Upload artifacts        
+          outputFile: "./${{ steps.repo_name.outputs.name }}.pdf"
+          pdfOptions: '{"format": "A4", "margin": {"top": "10mm", "left": "10mm", "right": "10mm", "bottom": "10mm"}}'
+
+      - name: Commit and push PDF and HTML to docs branch
+        run: |
+          git config --global user.email "marcos.silvestrini@gmail.com"
+          git config --global user.name "marcossilvestrini"
+          git checkout --orphan docs          
+          git add index.html "${{ steps.repo_name.outputs.name }}.pdf"
+          git commit -m "Deploy PDF and HTML files [skip ci]"
+          git push --force origin docs
+
+      - name: Upload artifacts
         uses: actions/upload-artifact@v4
         with:
           name: ${{ steps.repo_name.outputs.name }}

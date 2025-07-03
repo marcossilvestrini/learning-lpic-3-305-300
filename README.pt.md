@@ -4,7 +4,7 @@
 
 * * *
 
-[![MIT License][license-shield]][license-url][![Forks][forks-shield]][forks-url][![Stargazers][stars-shield]][stars-url][![Contributors][contributors-shield]][contributors-url][![Issues][issues-shield]][issues-url][![LinkedIn][linkedin-shield]][linkedin-url]
+[Minha licença][license-url][Garfos][forks-url][Stargazers][stars-url][Colaboradores][contributors-url][Problemas][issues-url][LinkedIn][linkedin-url]
 
 * * *
 
@@ -87,13 +87,13 @@
 ## Sobre o projeto
 
 > Este projeto tem como objetivo ajudar estudantes ou profissionais a aprender os principais conceitos de gnulinux
-> e software livre \\
-> Algumas distribuições de Gnulinux como Debian e RPM serão cobertas \\
-> Instalação e configuração de alguns pacotes também serão cobertas \\
-> Ao fazer isso, você pode dar a toda a comunidade a chance de se beneficiar de suas mudanças. \\
-> O acesso ao código -fonte é uma condição prévia para isso. \\
-> Use o Vagrant para máquinas UP e execute laboratórios e pratique o conteúdo deste artigo. \\
-> Eu publiquei na pasta Vagrant A VagrantFile com o que é necessário \\
+> e software livre
+> Algumas distribuições de Gnulinux como Debian e RPM serão cobertas
+> Instalação e configuração de alguns pacotes também serão cobertas
+> Ao fazer isso, você pode dar a toda a comunidade a chance de se beneficiar de suas mudanças.
+> O acesso ao código -fonte é uma condição prévia para isso.
+> Use o Vagrant para máquinas UP e execute laboratórios e pratique o conteúdo deste artigo.
+> Eu publiquei na pasta Vagrant um VagrantFile com o que é necessário
 > para você fazer upload de um ambiente para estudos
 
 * * *
@@ -129,7 +129,7 @@ cd learning-lpic-3-305-300
 Personalize um modelo_VagrantFile-Topic-xxx_. Este arquivo contém uma configuração VMS para laboratórios. Exemplo:
 
 -   Arquivo[VagrantFile-Topic-351](vagrant/Vagrantfile-topic-351)
-    -   vm.clone_directory = "&lt;your_driver_letter>:\\<folder>\\&lt;para_machine>\\#{Vm_name} -instance-1 "
+    -   vm.clone_directory = "&lt;your_driver_letter>:\\`<folder>`\\&lt;para_machine>\\#{Vm_name} -instance-1 "
         Exemplo: vm.clone_directory = "e:\\Servidores\\VMware\\#{Vm_name} -instance-1 "
     -   vm.vmx["Memsize"]= ""
     -   vm.vmx[“NumVCPus”"]= ""
@@ -186,7 +186,7 @@ vagrant/destroy.ps1
 -   [x] Criar repositório
 -   [x] Crie scripts para provisioning laboratórios
 -   [x] Crie exemplos sobre o tópico 351
--   [ ] Crie exemplos sobre o tópico 352
+-   [x] Crie exemplos sobre o tópico 352
 -   [ ] Crie exemplos sobre o tópico 353
 -   [ ] Carregue o ITEXAM simulado
 
@@ -196,11 +196,11 @@ vagrant/destroy.ps1
 
 ## Quatro liberdades essenciais
 
-> 0.a liberdade para executar o programa como desejar, para qualquer finalidade (liberdade 0). \\
-> 1.A liberdade para estudar como o programa funciona e muda para que \\
-> sua computação como desejar (liberdade 1). \\
-> O acesso ao código -fonte é uma condição prévia para isso. \\
-> 2.A liberdade para redistribuir cópias para que você possa ajudar os outros (liberdade 2). \\
+> 0.a liberdade para executar o programa como desejar, para qualquer finalidade (liberdade 0).
+> 1.A liberdade para estudar como o programa funciona e muda para
+> sua computação como desejar (liberdade 1).
+> O acesso ao código -fonte é uma condição prévia para isso.
+> 2.A liberdade para redistribuir cópias para que você possa ajudar os outros (liberdade 2).
 > 3.Freedom para distribuir cópias de suas versões modificadas para outras pessoas (liberdade 3).
 
 * * *
@@ -313,21 +313,19 @@ Executa em cima de um sistema operacional convencional, contando com o sistema o
 
 ##### Tipos de migração
 
-No contexto dos hipervisores, que são tecnologias usadas para criar e gerenciar máquinas virtuais, os termos migração de P2V e migração V2V são comuns em ambientes de virtualização.  
+No contexto dos hipervisores, que são tecnologias usadas para criar e gerenciar máquinas virtuais, os termos migração de P2V e migração V2V são comuns em ambientes de virtualização.
 Eles se referem a processos de sistemas de migração entre diferentes tipos de plataformas.
 
 ##### P2V - Migração física para virtual
 
-A migração de P2V refere -se ao processo de migrar um servidor físico para uma máquina virtual.  
-Em outras palavras, um sistema operacional e seus aplicativos, executados em hardware físico dedicado, são "convertidos" e movidos para uma máquina virtual que é executada em um hipervisor (como VMware, Hyper-V, KVM, etc.).
+A migração de P2V refere-se ao processo de migração de um servidor físico para uma máquina virtual. Em outras palavras, um sistema operacional e seus aplicativos, executando em hardware físico dedicado, são "convertidos" e movidos a uma máquina virtual que é executada em um hipervisor (como VMware, Hyper-V, KVM, etc.).
 
--   Exemplo: você tem um servidor físico executando um sistema Windows ou Linux e deseja movê -lo para um ambiente virtual, como uma infraestrutura em nuvem ou um servidor de virtualização interna.  
+-   Exemplo: você tem um servidor físico executando um sistema Windows ou Linux e deseja movê -lo para um ambiente virtual, como uma infraestrutura em nuvem ou um servidor de virtualização interna.
     O processo envolve copiar todo o estado do sistema, incluindo o sistema operacional, drivers e dados, para criar uma máquina virtual equivalente que possa funcionar como se estivesse no hardware físico.
 
 ##### V2V - Migração virtual para virtual
 
-A migração V2V refere -se ao processo de migrar uma máquina virtual de um hipervisor para outro.  
-Nesse caso, você já possui uma máquina virtual em execução em um ambiente virtualizado (como o VMware) e deseja movê-lo para outro ambiente virtualizado (por exemplo, para Hyper-V ou para um novo servidor VMware).
+A migração V2V refere-se ao processo de migração de uma máquina virtual de um hipervisor para outro. Nesse caso, você já tem uma máquina virtual em execução em um ambiente virtualizado (como o VMware) e deseja movê-lo para outro ambiente virtualizado (por exemplo, para Hyper-V ou um novo servidor VMware).
 
 -   Exemplo: você tem uma máquina virtual em execução em um servidor de virtualização do VMware, mas decide migrá-lo para uma plataforma Hyper-V. Nesse caso, a migração V2V converte a máquina virtual de um formato ou hipervisor para outro, garantindo que ela possa continuar funcionando corretamente.
 
@@ -416,7 +414,7 @@ Xen com convidados paravirtualizados, ferramentas VMware em determinadas configu
 
 #### NUMA (acesso não uniforme de memória)
 
-O NUMA (acesso não uniforme de memória) é uma arquitetura de memória usada em sistemas multiprocessadores para otimizar o acesso à memória pelos processadores.  
+O NUMA (acesso não uniforme de memória) é uma arquitetura de memória usada em sistemas multiprocessadores para otimizar o acesso à memória pelos processadores.
 Em um sistema NUMA, a memória é distribuída de maneira desigual entre os processadores, o que significa que cada processador tem acesso mais rápido a uma parte da memória (sua "memória local") do que à memória que está fisicamente mais distante (referida como "memória remota") e associada a outros processadores.
 
 ##### Principais recursos da arquitetura NUMA
@@ -439,11 +437,8 @@ Em um sistema NUMA, a memória é distribuída de maneira desigual entre os proc
 #### Soluções OpenSource
 
 -   🌐 Ovirt:<https://www.ovirt.org/>
-
 -   🌐 Proxmox:<https://www.proxmox.com/en/proxmox-virtual-environment/overview>
-
 -   🌐 Oracle VirtualBox:<https://www.virtualbox.org/>
-
 -   🌐 Open Vswitch:<https://www.openvswitch.org/>
 
 #### Tipos de virtualização
@@ -561,7 +556,7 @@ A emulação envolve a simulação do comportamento de hardware ou software em u
 
 Esse processo permite que o software projetado para um sistema seja executado em outro sistema que possa ter arquitetura ou ambiente operacional diferente.
 
-Embora a emulação forneça versatilidade, permitindo a execução de sistemas ou aplicativos operacionais de convidados não modificados, ela geralmente vem com sobrecarga de desempenho.
+Embora a emulação forneça versatilidade, permitindo a execução de sistemas ou aplicativos operacionais não modificados, ela geralmente vem com sobrecarga de desempenho.
 
 Essa sobrecarga surge porque o sistema emulado precisa interpretar e traduzir instruções destinadas ao sistema original em instruções compatíveis com o sistema host. Como resultado, a emulação pode ser mais lenta que a execução nativa, tornando-o menos eficiente para tarefas com uso intensivo de recursos.
 
@@ -605,8 +600,7 @@ O serviço usinado pela SystemD é dedicado ao gerenciamento de máquinas e cont
 
 ![panda](images/xen-panda.png)
 
-O XEN é um hipervisor de código aberto (sem metal), que permite que vários sistemas operacionais sejam executados simultaneamente no mesmo hardware físico.  
-O Xen fornece uma camada entre o hardware físico e as máquinas virtuais (VMs), permitindo compartilhamento e isolamento eficientes de recursos.
+O XEN é um hipervisor de código aberto tipo 1 (sem metal), que permite que vários sistemas operacionais sejam executados simultaneamente no mesmo hardware físico.xen fornece uma camada entre o hardware físico e as máquinas virtuais (VMs), permitindo compartilhamento de recursos eficientes e isolamento.
 
 -   **Arquitetura:**O Xen opera com um sistema de duas camadas em que o Domínio 0 (DOM0) é o domínio privilegiado com acesso direto ao hardware e gerencia o hipervisor. Outras máquinas virtuais, chamadas de domínio U (DOMU), executam sistemas operacionais convidados e são gerenciados pelo DOM0.
 -   **Tipos de virtualização:**O XEN suporta paravirtualização (PV), que requer o sistema operacional convidado modificado e a virtualização assistida por hardware (HVM), que usa extensões de hardware (por exemplo, Intel VT-X ou AMD-V) para executar sistemas operacionais de convidados não modificados.
@@ -614,16 +608,14 @@ O Xen fornece uma camada entre o hardware físico e as máquinas virtuais (VMs),
 
 #### Xensource
 
-A Xensource foi a empresa fundada pelos desenvolvedores originais do Xen Hypervisor da Universidade de Cambridge para comercializar Xen.  
-A empresa forneceu soluções corporativas com base no XEN e ofereceu ferramentas e suporte adicionais para aprimorar os recursos do Xen para uso corporativo.
+A Xensource foi a empresa fundada pelos desenvolvedores originais do Xen Hypervisor da Universidade de Cambridge para comercializar a Xen. A empresa forneceu soluções corporativas com base no XEN e ofereceu ferramentas e suporte adicionais para aprimorar os recursos da XEN para uso corporativo.
 
 -   **Aquisição pela Citrix**: Em 2007, a Xensource foi adquirida pela Citrix Systems, Inc. A Citrix usou a tecnologia Xen como base para o seu produto Citrix Xenserver, que se tornou uma popular plataforma de virtualização de grau corporativo baseado em Xen.
 -   **Transição**: Após a aquisição, o projeto Xen continuou como um projeto de código aberto, enquanto a Citrix se concentrou em ofertas comerciais como Xenserver, alavancando a tecnologia Xensource.
 
 #### Projeto Xen
 
-O projeto Xen refere-se à comunidade de código aberto e à iniciativa responsável pelo desenvolvimento e manutenção do hipervisor Xen após sua comercialização.  
-O projeto Xen opera sob a Fundação Linux, com foco na construção, melhoria e apoio a Xen como um esforço colaborativo e orientado à comunidade.
+O projeto XEN refere-se à comunidade de código aberto e à iniciativa responsável pelo desenvolvimento e manutenção do hipervisor Xen após sua comercialização. O projeto Xen opera sob a Fundação Linux, com foco na construção, melhoria e apoio a Xen como um esforço colaborativo e orientado pela comunidade.
 
 -   **Metas:**O projeto XEN visa avançar o hipervisor, melhorando seu desempenho, segurança e conjunto de recursos para uma ampla gama de casos de uso, incluindo computação em nuvem, virtualização focada na segurança (por exemplo, Qubes OS) e sistemas incorporados.
 -   **Colaboradores:**O projeto inclui colaboradores de várias organizações, incluindo os principais provedores de nuvem, fornecedores de hardware e desenvolvedores independentes.
@@ -631,39 +623,33 @@ O projeto Xen opera sob a Fundação Linux, com foco na construção, melhoria e
 
 #### Xenstore
 
-A Xen Store é um componente crítico do hipervisor Xen.  
+A Xen Store é um componente crítico do hipervisor Xen.
 Essencialmente, o Xen Store é um banco de dados de valor-chave distribuído usado para comunicação e compartilhamento de informações entre o hypervisor Xen e as máquinas virtuais (também conhecidas como domínios) que ele gerencia.
 
 Aqui estão alguns aspectos importantes da Xen Store:
 
 -   **Comunicação entre domínios:**O Xen Store permite a comunicação entre domínios, como o DOM0 (o domínio privilegiado que controla os recursos de hardware) e o DOMUS (domínios do usuário, que são as VMs). Isso é feito através de entradas de valor-chave, onde cada domínio pode ler ou escrever informações.
-
 -   **Gerenciamento de configuração:**É usado para armazenar e acessar informações de configuração, como dispositivos virtuais, redes e parâmetros de inicialização. Isso facilita o gerenciamento dinâmico e a configuração das VMs.
-
 -   **Eventos e notificações:**A Xen Store também suporta notificações de eventos. Quando uma chave ou valor específica na loja Xen é modificada, os domínios interessados ​​podem ser notificados para reagir a essas alterações. Isso é útil para monitorar e gerenciar recursos.
-
 -   API simples: a Xen Store fornece uma API simples para ler e escrever dados, facilitando os desenvolvedores para integrar seus aplicativos ao sistema de virtualização Xen.
 
 #### Pílula
 
-XAPI, ou Xenapi, é a interface de programação de aplicativos (API) usada para gerenciar o hipervisor Xen e suas máquinas virtuais (VMs).  
+XAPI, ou Xenapi, é a interface de programação de aplicativos (API) usada para gerenciar o hipervisor Xen e suas máquinas virtuais (VMs).
 O XAPI é um componente essencial do Xenserver (agora conhecido como Citrix Hypervisor) e fornece uma maneira padronizada de interagir com o hipervisor Xen para executar operações como criar, configurar, monitorar e controlar VMs.
 
 Aqui estão alguns aspectos importantes de Xapi:
 
 -   **Gerenciamento de VM:**O XAPI permite que os administradores criem, excluam, excluam, iniciem e parem e parem e parem programaticamente as máquinas virtuais.
-
 -   **Automação:**Com o XAPI, é possível automatizar o gerenciamento de recursos virtuais, incluindo redes, armazenamento e computação, o que é crucial para grandes ambientes em nuvem.
-
 -   **Integração:**O XAPI pode ser integrado a outras ferramentas e scripts para fornecer administração mais eficiente e personalizada do ambiente XEN.
-
 -   **Controle de acesso:**O XAPI também fornece mecanismos de controle de acesso para garantir que apenas usuários autorizados possam executar operações específicas no ambiente virtual.
 
 O XAPI é a interface que permite o controle e a automação do hipervisor Xen, facilitando o gerenciamento de ambientes virtualizados.
 
 #### Resumo Xen
 
--   **Xen:**A tecnologia principal do hipervisor que permite que as máquinas virtuais sejam executadas em hardware físico.
+-   **INCROPPING:**A tecnologia principal do hipervisor que permite que as máquinas virtuais sejam executadas em hardware físico.
 -   **Xensource:**A empresa que comercializou Xen, mais tarde adquirida pela Citrix, levando ao desenvolvimento do Citrix Xenserver.
 -   **Projeto Xen:**A iniciativa e a comunidade de código aberto que continuam a desenvolver e manter o hipervisor Xen sob a Fundação Linux.
 -   **Xenstore:**A Xen Store atua como uma intermediária de comunicação e configuração entre o Hypervisor Xen e as VMs, simplificando a operação e o gerenciamento de ambientes virtualizados.
@@ -671,22 +657,22 @@ O XAPI é a interface que permite o controle e a automação do hipervisor Xen, 
 
 #### Domain0 (DOM0)
 
-Domain0, OR DOM0, é o domínio de controle em uma arquitetura Xen. Ele gerencia outros domínios (DOMUS) e tem acesso direto ao hardware.  
+Domain0, OR DOM0, é o domínio de controle em uma arquitetura Xen. Ele gerencia outros domínios (DOMUS) e tem acesso direto ao hardware.
 O DOM0 executa drivers de dispositivo, permitindo que o Domus, que não possua acesso direto ao hardware, se comunique com dispositivos. Normalmente, é uma instância completa de um sistema operacional, como o Linux, e é essencial para a operação de hipervisor do Xen.
 
 #### Domínio (casa)
 
-Domus são domínios não privilegiados que executam máquinas virtuais.  
+Domus são domínios não privilegiados que executam máquinas virtuais.
 Eles são gerenciados pelo DOM0 e não têm acesso direto ao hardware. O DOMUS pode ser configurado para executar diferentes sistemas operacionais e é usado para vários fins, como servidores de aplicativos e ambientes de desenvolvimento. Eles dependem do DOM0 para interação de hardware.
 
 #### Peewee-dom (paravardiyed domina)
 
-O PV-Domus usa uma técnica chamada paravirtutualização. Neste modelo, o sistema operacional DOMU é modificado para estar ciente de que ele é executado em um ambiente virtualizado, permitindo que ele se comunique diretamente com o hipervisor para o desempenho otimizado.  
+O PV-Domus usa uma técnica chamada paravirtutualização. Neste modelo, o sistema operacional DOMU é modificado para estar ciente de que ele é executado em um ambiente virtualizado, permitindo que ele se comunique diretamente com o hipervisor para o desempenho otimizado.
 Isso resulta em menor sobrecarga e melhor eficiência em comparação com a virtualização total.
 
 #### HVM-domu (domínio da máquina virtual de hardware)
 
-O HVM-Domus são máquinas virtuais que utilizam virtualização completa, permitindo que os sistemas operacionais não modificados sejam executados. O Xen Hypervisor fornece emulação de hardware para esses Domus, permitindo que eles executem qualquer sistema operacional que suporta a arquitetura de hardware subjacente.  
+O HVM-Domus são máquinas virtuais que utilizam virtualização completa, permitindo que os sistemas operacionais não modificados sejam executados. O Xen Hypervisor fornece emulação de hardware para esses Domus, permitindo que eles executem qualquer sistema operacional que suporta a arquitetura de hardware subjacente.
 Embora isso ofereça maior flexibilidade, pode resultar em uma sobrecarga mais alta em comparação com o PV-Domus.
 
 #### Rede Xen
@@ -1930,7 +1916,7 @@ timeline
 -   Consciência das especificações de tempo de execução da OCI e imagem
 -   Consciência da interface de tempo de execução do contêiner Kubernetes (CRI)
 -   Consciência de Podman, Buildah e Scopeo
--   Consciência de outras abordagens de virtualização de contêineres no Linux e em outros sistemas operacionais gratuitos, como RKT, OpenVZ, Systemd-Nspawn ou BSD prisões
+-   Consciência de outras abordagens de virtualização de contêineres no Linux e em outros sistemas operacionais gratuitos, como RKT, OpenVZ, Systemd-Npawn ou BSD prisões
 
 * * *
 
@@ -1985,12 +1971,13 @@ Ao contrário das máquinas virtuais (VMs), os contêineres não virtualizam o h
 ##### 🧱 Tipos de recipientes
 
 1.  Contêineres do sistema
+
     -   Projetado para executar o sistema operacional inteiro, assemelhar -se a máquinas virtuais.
     -   Suporte a vários processos e serviços do sistema (init, syslog).
     -   Ideal para aplicações legadas ou monolíticas.
     -   Exemplo: lxc, libvirt-lxc.
-
 2.  Contêineres de aplicação
+
     -   Projetado para executar um único processo.
     -   Sem estado, efêmero e horizontalmente escalável.
     -   Utilizado amplamente em ambientes modernos de DevOps e Kubernetes.
@@ -2106,7 +2093,7 @@ Cada tipo de espaço para nome isola um recurso específico do sistema. Juntos, 
 | **Montar**       | Pontos de montagem do sistema de arquivos | Cada contêiner vê seu próprio sistema de arquivos raiz          |
 | **Rede**         | Pilha de rede                             | Contêineres têm IPs isolados, interfaces e rotas                |
 | **Uts**          | Nome de host e nome de domínio            | Cada contêiner define seu próprio nome de host                  |
-| **IPC**          | Shared memory and semaphores              | Impede a comunicação entre processos entre contêineres          |
+| **IPC**          | Memória compartilhada e semáforos         | Impede a comunicação entre processos entre contêineres          |
 | **Usuário**      | IDs de usuário e grupo                    | Ativa a raiz falsa (UID 0) dentro do recipiente                 |
 | **CGROUP (V2)**  | Associação do grupo de controle           | Laços em controles de recursos como CPU e limites de memória    |
 
@@ -2178,13 +2165,13 @@ Usado em conjunto com namespaces e cgroups para bloquear o que um processo cont�
 | **APARMOR** | Aplicar perfis de segurança por aplicação                                   |
 | **Selinux** | Aplicar o controle de acesso obrigatório com políticas de sistema apertadas |
 
-##### 🧠 Summary for Beginners
+##### 🧠 Resumo para iniciantes
 
-> ✅ Namespaces Isolle o que um contêiner pode ver  
-> ✅ CGROUPS Controle o que pode usar  
+> ✅ Namespaces Isolle o que um contêiner pode ver
+> ✅ CGROUPS Controle o que pode usar
 > ✅ Capacidades e módulos de segurança definem o que pode fazer
 
-Juntos, esses recursos do kernel formam a espinha dorsal técnica do isolamento de contêineres-permitindo implantação de aplicação de alta densidade, segurança e eficiência sem VMs completas.
+Juntos, esses recursos do kernel formam a espinha dorsal técnica do isolamento de contêineres-permitindo implantação de aplicativos de alta densidade, seguros e eficientes sem VMs completas.
 
 ##### 🧪 Namespaces de laboratório
 
@@ -2509,9 +2496,7 @@ ps -eZ # Processes
 **Ferramentas:**
 
 -   Audit2allow, Semanage, CHCON (para gerenciar políticas/etiquetas)
-
 -   Logs: /var/log/audit/audit.log
-
 -   Políticas:/etc/Selinux/
 
 #### 📋 Tabela de resumo para sistemas de segurança comuns
@@ -2522,7 +2507,246 @@ ps -eZ # Processes
 | APARMOR | Acesso por programa     | Fácil        | /etc/apparmor.d/                       | Ubuntu, Snap, Suse      |
 | Selinux | Mac do sistema completo | Avançado     | /etc/selinux/ + rótulos                | Rhel, Fedora, Centos    |
 
+#### 🗂️ Isolamento de contêineres Linux e comparação de segurança
+
+| Tecnologia        | Propósito / o que faz                                                                                                   | Principais diferenças                                                                                         | Exemplo em contêineres                                                                                |
+| ----------------- | ----------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- |
+| **Chroot 🏠**     | Altera o diretório raiz aparente para um processo. Isolate o sistema de arquivos.                                       | Isolamento simples do sistema de arquivos; faz**não**restringir recursos, privilégios ou chamadas do sistema. | Docker usa`chroot`Internamente para criar imagens mínimas, mas não para um forte isolamento.          |
+| **CGROUPS 📊**    | Controla e limita o uso de recursos (CPU, memória, E/S de disco, etc.) por grupo de processos.                          | Recurso do kernel; Controle de recursos de grão fino, não isolamento.                                         | Docker e Kubernetes usam cgroups para limitar a CPU/MEM por contêiner/pod.                            |
+| **Namespaces 🌐** | Isolar recursos do sistema: PID, MOUNT, UTS, Rede, Usuário, IPC, Time.                                                  | Recurso do kernel; fornece diferentes tipos de isolamento.                                                    | Cada contêiner é executado em seu próprio conjunto de espaços para nome (PID, rede, montagem etc.).   |
+| **Recursos 🛡️**  | Dividir privilégios de raiz em unidades de grão fino (por exemplo, rede_admin, sys_admin).                              | Mais granular do que tudo o ou nada raiz/não raiz; pode abandonar ou conceder privilégios específicos.        | Os contêineres do Docker geralmente são executados com recursos reduzidos (solteiros perigosos).      |
+| **Seccomp 🧱**    | Filtrar/restringir quais syscalls um processo pode fazer (lista de permissões/lista negra).                             | Muito focado: blocos de syscalls do kernel; não pode bloquear todas as ações.                                 | O perfil padrão do Docker bloqueia syscalls perigosos (por exemplo,,`ptrace`,`mount`).                |
+| **APARMOR 🐧**    | Estrutura de controle de acesso obrigatório (MAC): restringe o acesso de arquivo/rede dos programas por meio de perfis. | Baseado em perfil, mais fácil de gerenciar do que o Selinux; menos granulação fina em alguns casos.           | Os contêineres baseados em Ubuntu geralmente usam o Apmor para perfis de processo de contêiner.       |
+| **Selinux 🔒**    | Estrutura MAC mais complexa, baseada em etiquetas, muito fina. Pode limitar usuários, processos e arquivos.             | Mais poderoso e complexo que o Aparmor; Forçado em Fedora/Rhel/Centos.                                        | No OpenShift/Kubernetes com RHEL, os rótulos do Selinux são usados ​​para manter as vagens separadas. |
+
+Resumo
+
+-   CHROOT: Isolamento básico, sem garantias de recurso/segurança.
+-   CGROUPS: Controle de recursos, não isolamento.
+-   Namespaces: isolar "vistas" dos recursos do kernel.
+-   Recursos: privilégios de processo de ajuste fino.
+-   Seccomp: Restre a superfície da chamada do sistema.
+-   APARMOR/SELinux: limite o que os processos podem tocar, mesmo como root (Mac).
+
+#### 🧩 OCI, Runc, Containerd, CRI, CRI-O-O que eles são no ecossistema de contêineres
+
+##### Visão geral e papéis
+
+-   **OCI (iniciativa de contêiner aberto) 🏛️**
+
+    Uma fundação criando padrões abertos para**imagens de contêiner**e**Runtimes**.
+
+    _Define como as imagens são formatadas, armazenadas e como os contêineres são iniciados/parados (especificações de tempo de execução)._
+-   **⚙️ Runc**
+
+    Uma ferramenta CLI universal, de baixo nível e leve que pode executar contêineres de acordo com a especificação de tempo de execução da OCI.
+
+    _"O motor" que transforma uma configuração de imagem + em um contêiner Linux em execução real._
+-   **Containerd 🏋️**
+
+    Um daemon de tempo de execução do contêiner principal para gerenciar o ciclo de vida completo do contêiner:**puxando imagens, gerenciando armazenamento, executando recipientes**(chama Runc), plugins de rede, etc.
+
+    _Usado por Docker, Kubernetes, Nerdctl e outras ferramentas como seu principal back -end de tempo de execução do contêiner._
+-   **CRI (interface de tempo de execução do contêiner) 🔌**
+
+    Uma API GRPC específica para Kubernetes para conectar o Kubernetes com os tempos de execução do contêiner.
+
+    _Não usado fora de Kubernetes, mas permite que os K8s conversem com contêineres, Cri-O, etc._
+-   **CRI-O 🥤**
+
+    Um tempo de execução leve e focado em Kubernetes que**apenas**Executa contêineres OCI, usando o Runc sob o capô.
+
+    _Principalmente usado em Kubernetes, mas demonstra como criar um tempo de execução mínimo de contêiner focado nos padrões abertos._
+
+##### Tables Tabelas de comparação: OCI, Runc, Containerd, CRI, CRI-O
+
+| Componente    | Emoji | O que é?                                     | Quem o usa?                             | Exemplo de uso                                                                        |
+| ------------- | ----- | -------------------------------------------- | --------------------------------------- | ------------------------------------------------------------------------------------- |
+| **OCI**       | 🏛️   | Padrões/especificações                       | Docker, Podman, CRI-O, containerd, runc | Garante que imagens/recipientes sejam compatíveis entre as ferramentas                |
+| **Runc**      | ⚙️    | Time de execução de contêineres (CLI)        | containerd, CRI-O, Docker, Podman       | Executando diretamente um recipiente de um pacote (por exemplo`runc run`)             |
+| **contêiner** | 🏋️   | Daemon de tempo de execução do contêiner     | Docker, Kubernetes, Nerdctl             | Manças de puxar imagens, gerenciar armazenamento/rede, inicia os contêineres via Runc |
+| **Cri**       | 🔌    | Interface de tempo de execução do K8S (API)  | Somente Kubernetes                      | Deixe Kubelet falar com o contêiner/Cri-O                                             |
+| **CRI-O**     | 🥤    | Tempo de execução do contêiner leve para K8s | Kubernetes, OpenShift                   | Usado como motor de contêiner K8S                                                     |
+
 * * *
+
+##### Exemplos Exemplos práticos (mundo geral de contêineres)
+
+-   **Imagens de construção:**
+
+    Qualquer ferramenta (Docker, Podman, Builtah) pode produzir imagens seguindo o**OCI Image Spec**Então eles são compatíveis em todos os lugares.
+-   **Recipientes em execução:**
+
+    Podman e Docker finalmente usam**Runc**(via contêiner ou diretamente) para criar contêineres.
+-   **Gerenciando muitos contêineres:**
+
+    **contêiner**pode ser usado por conta própria (via`ctr`ou`nerdctl`) ou como um back -end para Docker e Kubernetes.
+-   **Tempos de execução plug-and-play:**
+
+    Obrigado a**OCI**, você pode trocar o Runc por outro tempo de execução compatível com OCI (como os contêineres KATA para VMS, Gvisor for Sandboxing) sem alterar a maneira como você cria ou gerencia imagens.
+
+* * *
+
+##### 🚢 Pilha típica
+
+```plaintext
+[User CLI / Orchestration]
+           |
+   [containerd / CRI-O]
+           |
+        [runc]
+           |
+[Linux Kernel: namespaces, cgroups, etc]
+```
+
+-   **Docker**: Usuário 151 → Contêiner → Runc
+-   **Subman**: Usuário 151 → Runc
+-   **Kubernetes**: Kubelet (CRI) → Contêiner ou Cri-O → Runc
+
+* * *
+
+##### 🧠 Resumo
+
+-   **OCI**= Linguagem comum para imagens/tempo de execução (padrões/especificações)
+-   **Runc**= Ferramenta real que cria e gerencia processos de contêiner
+-   **contêiner**= Daemon completo que gerencia imagens, recipientes, ciclo de vida
+-   **Cri**= Somente para Kubernetes, para tornar os tempos de execução que
+-   **CRI-O**= Tempo de execução leve focado em Kubernetes, construídos com os padrões da OCI e Runc
+
+##### 🧩 Diagrama: ecossistema de contêineres
+
+```mermaid
+graph TD
+    subgraph OCI_Standards
+        OCI1["OCI Image Spec"]
+        OCI2["OCI Runtime Spec"]
+    end
+
+    subgraph Orchestration_CLI
+        Docker["Docker CLI"]
+        Podman["Podman CLI"]
+        Kubelet["Kubelet"]
+        Nerdctl["nerdctl CLI"]
+    end
+
+    subgraph Container_Runtimes
+        containerd["containerd"]
+        crio["CRI-O"]
+    end
+
+    runc["runc"]
+
+    Kernel["Linux Kernel(namespaces, cgroups, seccomp, etc)"]
+
+    %% Connections
+    Docker --> containerd
+    Podman --> runc
+    Nerdctl --> containerd
+    Kubelet --> CRI[CRI API]
+    CRI --> containerd
+    CRI --> crio
+    containerd --> runc
+    crio --> runc
+    runc --> Kernel
+
+    OCI1 -.-> containerd
+    OCI1 -.-> crio
+    OCI2 -.-> runc
+```
+
+##### 🧪 Lab Runc
+
+Para o Runc Lab, você pode usar este script:[runc.sh](scripts/container/runc.sh)
+
+![runc](images/runc-lab.png)
+
+##### 🧪 Container de laboratório
+
+Para o Runc Containerd, você pode usar este script:[containerd.sh](scripts/container/container.sh)
+
+![containerd](images/containerd-lab.png)
+
+* * *
+
+#### 🚀 Podman, Buildah, Skopeo, OpenVZ, Crun e Kata Containers - Fast Track
+
+* * *
+
+##### 🐳**Subman**
+
+-   **O que é?**Um gerente de contêineres compatível com a CLI do Docker, mas**Sem daemon**e pode correr**sem raiz**.
+-   **Usar:**Crie, execute, pare e inspecione recipientes e vagens.
+-   **Destaques:**Nenhum Daemon Central, mais seguro para o MultiUser, integra-se ao Systemd.
+-   [Mais informações](<>)
+
+* * *
+
+##### 📦**Buildah**
+
+-   **O que é?**Ferramenta para**Construir e manipular imagens de contêineres**(OCI/Docker) sem daemon.
+-   **Usar:**Construindo imagens em pipelines CI/CD ou scripts.
+-   **Destaques:**Suporte leve e sem raiz, usado por podman sob o capô.
+-   [Mais informações](https://www.redhat.com/en/topics/containers/what-is-buildah)
+
+* * *
+
+##### 🔭**Escopo**
+
+-   **O que é?**Utilidade para**Inspecionar, copiar e mover imagens de contêiner**entre registros**sem puxar ou correr**eles.
+-   **Usar:**Mova imagens, verifique as assinaturas e os metadados.
+-   **Destaques:**Sem daemon, ideal para automação e segurança.
+-   [Mais informações](<>)
+
+* * *
+
+##### 🏢**OpenVZ**
+
+-   **O que é?****Virtualização baseada em contêiner**Solução para Linux (ferramentas modernas de contêiner modernas).
+-   **Usar:**VPs leves (servidores privados virtuais) compartilhando o mesmo kernel.
+-   **Destaques:**Muito eficiente, mas menos isolado que a VM (ações do kernel).
+-   [Mais informações](https://en.wikipedia.org/wiki/OpenVZ)
+
+* * *
+
+##### ⚡**Crun**
+
+-   **O que é?**Tempo de execução Ultra-Fast e Minimal OCI para contêineres, escrito em C (não vá).
+-   **Usar:**Executa recipientes com sobrecarga mínima.
+-   **Destaques:**Mais rápido e mais leve que o Runc, padrão para o Podman em alguns sistemas.
+-   [Mais informações](https://www.redhat.com/sysadmin/introduction-crun)
+
+* * *
+
+##### 🛡️**Contêiner de palavras**
+
+-   **O que é?**Projeto de código aberto Combinando recipientes e VMs: Cada contêiner é executado em um micro-VM leve.
+-   **Usar:**Isolamento forte para cargas de trabalho sensíveis ou ambientes multi-inquilinos.
+-   **Destaques:**Segurança de grau de VM, desempenho próximo do contorno.
+-   [Mais informações](https://katacontainers.io/)
+
+* * *
+
+##### 📊**Tabela de comparação**
+
+| Projeto                   | Categoria               | Isolamento            | Daemon? | Uso principal                         | Sem raiz | Notas                                   |
+| ------------------------- | ----------------------- | --------------------- | ------- | ------------------------------------- | -------- | --------------------------------------- |
+| **Subman**                | Orquestração            | Recipiente            | No      | Gerenciar contêineres                 | Sim      | CLI do tipo Docker                      |
+| **Buildah**               | Construir               | N / D                 | No      | Construir imagens                     | Sim      | Para CI/CD, sem execução de contêineres |
+| **Escopo**                | Transferência de imagem | N / D                 | No      | Mova/verifique as imagens             | Sim      | Nenhuma execução de contêiner           |
+| **OpenVZ**                | Virtualização           | Contêiner/vps         | Sim     | VPS leves                             | No       | Kernel compartilhou, Tech Legacy        |
+| **Crun**                  | OCI Runtime             | Recipiente            | No      | Tempo de execução rápido do contêiner | Sim      | Mais rápido que o Runc                  |
+| **Contêiner de palavras** | Runtime/VM              | Microvm por contêiner | No      | Isolamento forte                      | Sim      | Segurança no nível da VM                |
+
+* * *
+
+##### ☑️**Recapitulação rápida**
+
+-   **Podman:**Alternativa moderna e sem daemon sem daemon.
+-   **Buildah:**Crie imagens, não executa recipientes.
+-   **Skeape:**Move/inspeciona imagens, nunca as executa.
+-   **OpenVZ:**VPs baseados em contêineres legados.
+-   **Cruel:**Tempo de execução super rápido e leve da OCI.
+-   **Dizer:**Recipientes com isolamento no nível da VM.
 
 #### 352.1 Comandos importantes
 
@@ -2653,7 +2877,7 @@ aa-teardown
 aaparmor_parser
 ```
 
-###### Selinux - Linux aprimorado de segurança
+##### Selinux - Linux aprimorado de segurança
 
 ```sh
 # check SELinux status
@@ -2664,6 +2888,16 @@ sudo getenforce
 
 # set SELinux to enforcing mode
 sudo setenforce 1
+```
+
+##### Runc
+
+```sh
+#create a spec file for runc
+runc spec
+
+# run a container using runc
+sudo runc run mycontainer
 ```
 
 * * *
@@ -2859,8 +3093,8 @@ packer
 
 **Peso:**3
 
-**Descrição:**Os candidatos devem usar a entrada da nuvem para configurar máquinas virtuais criadas a partir de imagens padronizadas. Isso inclui o ajuste das máquinas virtuais para corresponder aos seus recursos de hardware disponíveis, especificamente, espaço em disco e volumes.  
-Além disso, os candidatos devem poder configurar instâncias para permitir logins SSH seguros e instalar um conjunto específico de pacotes de software.  
+**Descrição:**Os candidatos devem usar a entrada da nuvem para configurar máquinas virtuais criadas a partir de imagens padronizadas. Isso inclui o ajuste das máquinas virtuais para corresponder aos seus recursos de hardware disponíveis, especificamente, espaço em disco e volumes.
+Além disso, os candidatos devem poder configurar instâncias para permitir logins SSH seguros e instalar um conjunto específico de pacotes de software.
 Além disso, os candidatos devem ser capazes de criar novas imagens do sistema com suporte à initência da nuvem.
 
 **Principais áreas de conhecimento:**
@@ -2956,7 +3190,7 @@ Não se esqueça de dar uma estrela ao projeto! Obrigado novamente!
 
 ## Contato
 
-Marcos Silvestrini -[marcos.silvestrini@gmail.com](mailto:marcos.silvestrini@gmail.com)\\[![Twitter](https://img.shields.io/twitter/url/https/twitter.com/mrsilvestrini.svg?style=social&label=Follow%20%40mrsilvestrini)](https://twitter.com/mrsilvestrini)
+Marcos Silvestrini -[marcos.silvestrini@gmail.com](mailto:marcos.silvestrini@gmail.com)[![Twitter](https://img.shields.io/twitter/url/https/twitter.com/mrsilvestrini.svg?style=social&label=Follow%20%40mrsilvestrini)](https://twitter.com/mrsilvestrini)
 
 Link do projeto:<https://github.com/marcossilvestrini/learning-lpic-3-305-300>
 
@@ -3107,7 +3341,22 @@ Link do projeto:<https://github.com/marcossilvestrini/learning-lpic-3-305-300>
     -   [Homem CGROUPS](https://manpages.ubuntu.com/manpages/noble/man7/cgroups.7.html)
     -   [Recursos Doc](https://linux-audit.com/kernel/capabilities/linux-capabilities-101/)
     -   [Capacidades do homem](https://manpages.ubuntu.com/manpages/noble/man7/capabilities.7.html)
-    -
+    -   [Perfis Seccomp no Docker](https://docs.docker.com/engine/security/seccomp/)
+    -   [Perfis de Aparmor no Docker](https://docs.docker.com/engine/security/apparmor/)
+    -   [Selinux](https://pt.wikipedia.org/wiki/SELinux)
+    -   [Comparação do Appmor Selinux](https://www.redhat.com/en/blog/apparmor-selinux-isolation)
+    -   [Runc](https://www.docker.com/blog/runc/)
+    -   [Runc Github](https://github.com/opencontainers/runc)
+    -   [OCI](https://opencontainers.org/about/overview/)
+    -   [Cri](https://kubernetes.io/docs/concepts/architecture/cri/)
+    -   [CRI-O](https://cri-o.io/)
+    -   [contêiner](https://containerd.io/)
+    -   [Subman](https://www.redhat.com/pt-br/topics/containers/what-is-podman)
+    -   [Escopo](https://www.redhat.com/pt-br/topics/containers/what-is-skopeo)
+    -   [Buildah](https://www.redhat.com/en/topics/containers/what-is-buildah)
+    -   [OpenVZ](https://openvz.org/)
+    -   [Crun](https://www.redhat.com/en/blog/introduction-crun)
+    -   [dizer](https://katacontainers.io/)
 -   [OpenStack Docs](<>)
     -   [Redhat](https://www.redhat.com/pt-br/topics/openstack)
 -   [Aberto vswitch](<>)
