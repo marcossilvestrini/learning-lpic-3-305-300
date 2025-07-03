@@ -4,11 +4,13 @@
 
 * * *
 
-[Minha licença][license-url][Garfos][forks-url][Stargazers][stars-url][Colaboradores][contributors-url][Issues][issues-url][LinkedIn][linkedin-url]
+[![MIT License][license-shield]][license-url][![Forks][forks-shield]][forks-url][![Stargazers][stars-shield]][stars-url][![Contributors][contributors-shield]][contributors-url][![Issues][issues-shield]][issues-url][![LinkedIn][linkedin-shield]][linkedin-url]
 
 * * *
 
 # Aprendendo LPIC-3 305-300
+
+[![English](https://img.shields.io/badge/lang-English-blue?logo=readme&logoColor=white)](./README.md)[![Português](https://img.shields.io/badge/lang-Português-green?logo=readme&logoColor=white)](README_pt.md)
 
 ![LPIC3-305-300](images/lpic3-305-300.jpg)
 
@@ -533,7 +535,7 @@ VMware ThinApp, Microsoft App-V, Citrix XenApp.
 
 Integra dados de várias fontes sem consolidá -los fisicamente, fornecendo uma visão unificada para análise e relatório.
 
-###### Casos de uso da definição de virtualização de dados
+###### Data VirtualizationDefinition Use Cases
 
 Inteligência de negócios, integração de dados em tempo real.
 
@@ -1962,7 +1964,7 @@ Ao contrário das máquinas virtuais (VMs), os contêineres não virtualizam o h
 
 🔹**Portátil**: Execute de forma consistente em diferentes ambientes (dev, estadiamento, Prod, Cloud, On-Prem).
 
-🔹**Isolado**: Use namespaces for process, network, and filesystem isolation.
+🔹**Isolado**: Use namespaces para isolamento de processo, rede e sistema de arquivos.
 
 🔹**Eficiente**: Habilite maior densidade e melhor utilização de recursos do que as VMs tradicionais.
 
@@ -2203,7 +2205,7 @@ Os namespaces criam ambientes separados para processos (como PID, rede ou montag
 | ------------------------- | ---------------------------------------------------------------- |
 | **Limitação de recursos** | Impor limites para quanto de um recurso um grupo pode usar       |
 | **Priorização**           | Alocar mais prioridade da CPU/IO para alguns grupos sobre outros |
-| **Accounting**            | Rastrear o uso de recursos por grupo                             |
+| **Contabilidade**         | Rastrear o uso de recursos por grupo                             |
 | **Controlar**             | Suspender, retomar ou matar processos a granel                   |
 | **Isolamento**            | Impedir a fome de recursos entre os grupos                       |
 
@@ -2237,7 +2239,7 @@ Montado em:
 /sys/fs/cgroup/
 ```
 
-Typical cgroups v1 hierarchy:
+Hierarquia típica de CGROUPS v1:
 
 ```sh
 /sys/fs/cgroup/
@@ -3322,7 +3324,7 @@ Link do projeto:<https://github.com/marcossilvestrini/learning-lpic-3-305-300>
     -   [Armazenar](https://libvirt.org/storage.html)
     -   [Rede](https://wiki.libvirt.org/Networking.html)
     -   [VirtualNetwork](https://wiki.libvirt.org/VirtualNetworking.html)
-    -   [virtlogd](https://libvirt.org/manpages/virtlogd.html)
+    -   [Virtogd](https://libvirt.org/manpages/virtlogd.html)
     -   [Virtlockd](https://libvirt.org/manpages/virtlockd.html)
     -   [virt-manager](https://virt-manager.org/)
 -   [Gerenciamento de disco](<>)
@@ -3393,7 +3395,7 @@ Link do projeto:<https://github.com/marcossilvestrini/learning-lpic-3-305-300>
 
 [license-shield]: https://img.shields.io/github/license/marcossilvestrini/learning-lpic-3-305-300.svg?style=for-the-badge
 
-[license-url]: https://github.com/marcossilvestrini/learning-lpic-3-305-300/blob/master/LICENSE
+[license-url]: https://github.com/marcossilvestrini/learning-lpic-3-305-300/blob/main/LICENSE
 
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 
