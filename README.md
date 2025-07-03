@@ -10,12 +10,12 @@
 
 ---
 
-[MIT License][license-url]
-[Forks][forks-url]
-[Stargazers][stars-url]
-[Contributors][contributors-url]
-[Issues][issues-url]
-[LinkedIn][linkedin-url]
+[![MIT License][license-shield]][license-url]
+[![Forks][forks-shield]][forks-url]
+[![Stargazers][stars-shield]][stars-url]
+[![Contributors][contributors-shield]][contributors-url]
+[![Issues][issues-shield]][issues-url]
+[![LinkedIn][linkedin-shield]][linkedin-url]
 
 ---
 
@@ -23,7 +23,6 @@
 
 [![English](https://img.shields.io/badge/lang-English-blue?logo=readme&logoColor=white)](./README.md)
 [![Português](https://img.shields.io/badge/lang-Português-green?logo=readme&logoColor=white)](README_pt.md)
-
 
 ![LPIC3-305-300](images/lpic3-305-300.jpg)
 
@@ -3403,7 +3402,7 @@ Project Link: [https://github.com/marcossilvestrini/learning-lpic-3-305-300](htt
 [issues-shield]: https://img.shields.io/github/issues/marcossilvestrini/learning-lpic-3-305-300.svg?style=for-the-badge
 [issues-url]: https://github.com/marcossilvestrini/learning-lpic-3-305-300/issues
 [license-shield]: https://img.shields.io/github/license/marcossilvestrini/learning-lpic-3-305-300.svg?style=for-the-badge
-[license-url]: https://github.com/marcossilvestrini/learning-lpic-3-305-300/blob/master/LICENSE
+[license-url]: https://github.com/marcossilvestrini/learning-lpic-3-305-300/blob/main/LICENSE
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/marcossilvestrini
 [def]: https://httpd.apache.org/docs/2.4/mod/directives.html
