@@ -6,41 +6,57 @@ on:
       - main
       - master
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 12.x
-      # ISO Langusge Codes: https://cloud.google.com/translate/docs/languages  
-      - name: Adding README - Portuguese
-        uses: dephraiim/translate-readme@main
-        with:
-          LANG: pt
+    translate:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v3
+              with:
+                fetch-depth: 3
 
-      - name: Adding README - Espanish
-        uses: dephraiim/translate-readme@main
-        with:
-          LANG: es
+            - name: Auto Translate
+              uses: Lin-jun-xiang/action-translate-readme@v2 # Based on the tag
+              with:
+                token: ${{ secrets.Action_Bot }} # Based on step2 name
+                #zhipuai: ${{ secrets.zhipuai_api_key }} # Optional: Based on step3
+                #openai: ${{ secrets.OPENAI_API_KEY }}  # Optional: Based on step3
+                langs: "pt,es,ja,zh-TW,French,Arabic" # You can define any langs
+# jobs:
+#   build:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - uses: actions/checkout@v4
+#       - name: Setup Node.js
+#         uses: actions/setup-node@v4
+#         with:
+#           node-version: 12.x
+#       # ISO Langusge Codes: https://cloud.google.com/translate/docs/languages  
+#       - name: Adding README - Portuguese
+#         uses: dephraiim/translate-readme@main
+#         with:
+#           LANG: pt
 
-      - name: Adding README - Japonese
-        uses: dephraiim/translate-readme@main
-        with:
-          LANG: ja
+#       - name: Adding README - Espanish
+#         uses: dephraiim/translate-readme@main
+#         with:
+#           LANG: es
 
-      - name: Adding README - Chinese Traditional
-        uses: dephraiim/translate-readme@main
-        with:
-          LANG: zh-TW 
+#       - name: Adding README - Japonese
+#         uses: dephraiim/translate-readme@main
+#         with:
+#           LANG: ja
 
-      - name: Adding README - Arabic
-        uses: dephraiim/translate-readme@main
-        with:
-          LANG: ar
+#       - name: Adding README - Chinese Traditional
+#         uses: dephraiim/translate-readme@main
+#         with:
+#           LANG: zh-TW 
 
-      - name: Adding README - French
-        uses: dephraiim/translate-readme@main
-        with:
-          LANG: fr
+#       - name: Adding README - Arabic
+#         uses: dephraiim/translate-readme@main
+#         with:
+#           LANG: ar
+
+#       - name: Adding README - French
+#         uses: dephraiim/translate-readme@main
+#         with:
+#           LANG: fr
