@@ -5,23 +5,6 @@ on:
     branches:
       - main
       - master
-jobs:
-    translate:
-        runs-on: ubuntu-latest
-        steps:
-            - name: Checkout
-              uses: actions/checkout@v4
-              with:
-                fetch-depth: 3
-
-            - name: Auto Translate
-              uses: Lin-jun-xiang/action-translate-readme@v2 # Based on the tag
-              with:
-                token: ${{ secrets.ACTION_TRANSLATE }} # Based on step2 name
-                #zhipuai: ${{ secrets.zhipuai_api_key }} # Optional: Based on step3
-                openai: ${{ secrets.OPENAI_API_KEY }}  # Optional: Based on step3
-                #langs: "pt,es,ja,zh-TW,French,Arabic" # You can define any langs
-                langs: "pt" # You can define any langs
 # jobs:
 #   build:
 #     runs-on: ubuntu-latest
@@ -61,3 +44,52 @@ jobs:
 #         uses: dephraiim/translate-readme@main
 #         with:
 #           LANG: fr
+
+# jobs:
+#     translate:
+#         runs-on: ubuntu-latest
+#         steps:
+#             - name: Checkout
+#               uses: actions/checkout@v4
+#               with:
+#                 fetch-depth: 3
+
+#             - name: Auto Translate
+#               uses: Lin-jun-xiang/action-translate-readme@v2 # Based on the tag
+#               with:
+#                 token: ${{ secrets.ACTION_TRANSLATE }} # Based on step2 name
+#                 #zhipuai: ${{ secrets.zhipuai_api_key }} # Optional: Based on step3
+#                 openai: ${{ secrets.OPENAI_API_KEY }}  # Optional: Based on step3
+#                 #langs: "pt,es,ja,zh-TW,French,Arabic" # You can define any langs
+#                 langs: "pt" # You can define any langs
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12.x
+      # ISO Langusge Codes: https://cloud.google.com/translate/docs/languages  
+      - name: Adding README - Chinese Simplified
+        uses: kubbot/auto-translate-readme@main
+        with:
+          LANG: zh-CN
+      - name: Adding README - Chinese Traditional
+        uses: kubbot/auto-translate-readme@main
+        with:
+          LANG: zh-TW
+      - name: Adding README - Hindi
+        uses: kubbot/auto-translate-readme@main
+        with:
+          LANG: hi
+      - name: Adding README - Arabic
+        uses: kubbot/auto-translate-readme@main
+        with:
+          LANG: ar
+      - name: Adding README - French
+        uses: kubbot/auto-translate-readme@main
+        with:
+          LANG: fr
