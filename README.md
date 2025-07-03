@@ -22,7 +22,7 @@
 # LEARNING LPIC-3 305-300
 
 [![English](https://img.shields.io/badge/lang-English-blue?logo=readme&logoColor=white)](./README.md)
-[![Português](https://img.shields.io/badge/lang-Português-green?logo=readme&logoColor=white)](README.pt.md)
+[![Português](https://img.shields.io/badge/lang-Português-green?logo=readme&logoColor=white)](README_pt.md)
 
 
 ![LPIC3-305-300](images/lpic3-305-300.jpg)
