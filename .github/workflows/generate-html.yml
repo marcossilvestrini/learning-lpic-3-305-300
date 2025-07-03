@@ -1,0 +1,53 @@
+name: Generate HTML and PDF
+
+on:
+  workflow_run:
+    workflows: ["Translate README"]
+    branches: [main]
+    types:
+      - completed
+
+jobs:
+  generate_html_and_pdf:
+    name: Generate HTML and PDF
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Get Repository Name
+        id: repo_name
+        run: echo "name=$(basename $GITHUB_REPOSITORY)" >> $GITHUB_OUTPUT
+
+      - name: Converts Markdown to HTML
+        uses: jaywcjlove/markdown-to-html-cli@main
+        with:
+          source: README.md
+          output: index.html
+          github-corners: "https://github.com/marcossilvestrini/${{ steps.repo_name.outputs.name }}"
+          favicon: data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌐</text></svg>
+
+      - name: HTML to PDF
+        uses: fifsky/html-to-pdf-action@master
+        with:
+          htmlFile: ./index.html
+          outputFile: "./${{ steps.repo_name.outputs.name }}.pdf"
+          pdfOptions: '{"format": "A4", "margin": {"top": "10mm", "left": "10mm", "right": "10mm", "bottom": "10mm"}}'
+
+      - name: Commit and push PDF and HTML to docs branch
+        run: |
+          git config --global user.email "marcos.silvestrini@gmail.com"
+          git config --global user.name "marcossilvestrini"
+          git checkout --orphan docs          
+          git add index.html "${{ steps.repo_name.outputs.name }}.pdf"
+          git commit -m "Deploy PDF and HTML files [skip ci]"
+          git push --force origin docs
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ steps.repo_name.outputs.name }}
+          path: ./${{ steps.repo_name.outputs.name }}.pdf

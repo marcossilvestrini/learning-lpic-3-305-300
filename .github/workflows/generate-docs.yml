@@ -1,0 +1,39 @@
+name: Generate GitBook Docs
+
+on:  
+  workflow_run:
+    workflows: ["Translate README"]
+    branches: [main]
+    types:
+      - completed
+
+jobs:
+  build-docs:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set Git Config
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Execute PowerShell script
+        run: ./scripts/powershell/generate-readmes-gitbook.ps1
+        shell: pwsh
+
+      - name: Commit and Push changes
+        shell: pwsh
+        run: |
+          git add docs/ SUMMARY.md .gitbook.yaml
+
+          $changes = git diff --cached
+          if (-not [string]::IsNullOrWhiteSpace($changes)) {
+            git commit -m "chore(docs): auto-generate GitBook documentation"
+            git pull --rebase origin main
+            git push
+          } else {
+            Write-Host "Nenhuma modificação detectada. Nada a commitar."
+          }

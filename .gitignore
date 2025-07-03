@@ -1,0 +1,39 @@
+#ignore files general
+**/*.log
+**/*.vagrant
+*workspace.code-workspace
+**/*.vdi
+
+#security
+security/*
+!security/README.md
+# **/authorized_keys
+# **/*.pub
+# **/*.ppk
+# **/*pk_centos
+# **/*private*
+
+#Linux kernel
+**/Kernel
+
+#Apps
+*.exe
+
+#Bind
+Vagrant/Bind/test/*
+!Vagrant/Bind/test/.gitkeep
+
+#Slack
+Slack/silvestrini.py
+*__pycache__*
+
+# xen
+*.iso
+*.fuse_*
+
+# kvm \ qemu
+os-images/*
+!os-images/README.md
+
+# vscode
+.vscode/

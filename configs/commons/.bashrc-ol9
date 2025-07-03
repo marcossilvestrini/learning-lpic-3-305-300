@@ -1,0 +1,28 @@
+# .bashrc
+
+# Source global definitions
+if [ -f /etc/bashrc ]; then
+    . /etc/bashrc
+fi
+
+# User specific environment
+if ! [[ "$PATH" =~ "$HOME/.local/bin:$HOME/bin:" ]]; then
+    PATH="$HOME/.local/bin:$HOME/bin:$PATH"
+fi
+export PATH
+
+# # Fun Cowsay
+# COWS=(/usr/share/cowsay/cows/*)
+# RAND_COW=$(($RANDOM % $(ls /usr/share/cowsay/cows/*.cow | wc -l)))
+# cowsay -f ${COWS[$RAND_COW]} $(fortune -s)
+
+# Set PS1
+export PS1="\[\e[31m\][\[\e[m\]\[\e[38;5;172m\]\u\[\e[m\]@\[\e[38;5;153m\]\h\[\e[m\] \[\e[38;5;214m\]\W\[\e[m\]\[\e[31m\]]\[\e[m\]\\$"
+
+# Timezone
+export TZ='America/Sao_Paulo'
+
+# Env backstage
+if [ -f "/opt/backstage/skynet/.env" ]; then
+    source /opt/backstage/skynet/.env
+fi
