@@ -36,7 +36,8 @@ if echo "$RELEASE_INFO" | grep -q -i "debian\|ubuntu"; then
         stress-ng \
         libcap-ng-utils \
         tcpdump \
-        jq
+        jq \
+        git
 
     # Set user profile for bash and vim
     sudo cp -f configs/commons/.bashrc_debian .bashrc

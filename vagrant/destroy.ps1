@@ -30,3 +30,10 @@ $vms | ForEach-Object {
         Remove-Item -Path $vmFolder -Recurse -Force
     }
 }
+
+# Remove vware inventory
+$inventoryPath = "C:\Users\marcos.silvestrini\AppData\Roaming\VMware\inventory.vmls"
+If(Test-Path $inventoryPath) {
+    Write-Host "File $inventoryPath removed"
+    Remove-Item -Path $inventoryPath -Recurse -Force
+}

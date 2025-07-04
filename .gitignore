@@ -37,3 +37,6 @@ os-images/*
 
 # vscode
 .vscode/
+
+# packages
+packages/
