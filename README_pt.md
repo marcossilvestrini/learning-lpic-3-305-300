@@ -320,7 +320,7 @@ Eles se referem a processos de sistemas de migração entre diferentes tipos de 
 
 ##### P2V - Migração física para virtual
 
-A migração de P2V refere-se ao processo de migração de um servidor físico para uma máquina virtual. Em outras palavras, um sistema operacional e seus aplicativos, executando em hardware físico dedicado, são "convertidos" e movidos a uma máquina virtual que é executada em um hipervisor (como VMware, Hyper-V, KVM, etc.).
+A migração de P2V refere-se ao processo de migração de um servidor físico para uma máquina virtual. Em outras palavras, um sistema operacional e seus aplicativos, executando em hardware físico dedicado, são "convertidos" e movidos para uma máquina virtual que é executada em um hipervisor (como VMware, Hyper-V, KVM, etc.).
 
 -   Exemplo: você tem um servidor físico executando um sistema Windows ou Linux e deseja movê -lo para um ambiente virtual, como uma infraestrutura em nuvem ou um servidor de virtualização interna.
     O processo envolve copiar todo o estado do sistema, incluindo o sistema operacional, drivers e dados, para criar uma máquina virtual equivalente que possa funcionar como se estivesse no hardware físico.
@@ -467,7 +467,7 @@ Permite que várias instâncias isoladas do espaço do usuário (contêineres) s
 
 ###### Casos de uso de contêinerização
 
-Ambientes de arquitetura, desenvolvimento e teste de microsserviços.
+Microservices architecture, development and testing environments.
 
 ###### Exemplos de contêinerização
 
@@ -535,7 +535,7 @@ VMware ThinApp, Microsoft App-V, Citrix XenApp.
 
 Integra dados de várias fontes sem consolidá -los fisicamente, fornecendo uma visão unificada para análise e relatório.
 
-###### Data VirtualizationDefinition Use Cases
+###### Casos de uso da definição de virtualização de dados
 
 Inteligência de negócios, integração de dados em tempo real.
 
@@ -558,7 +558,7 @@ A emulação envolve a simulação do comportamento de hardware ou software em u
 
 Esse processo permite que o software projetado para um sistema seja executado em outro sistema que possa ter arquitetura ou ambiente operacional diferente.
 
-Embora a emulação forneça versatilidade, permitindo a execução de sistemas ou aplicativos operacionais não modificados, ela geralmente vem com sobrecarga de desempenho.
+Embora a emulação forneça versatilidade, permitindo a execução de sistemas ou aplicativos operacionais de convidados não modificados, ela geralmente vem com sobrecarga de desempenho.
 
 Essa sobrecarga surge porque o sistema emulado precisa interpretar e traduzir instruções destinadas ao sistema original em instruções compatíveis com o sistema host. Como resultado, a emulação pode ser mais lenta que a execução nativa, tornando-o menos eficiente para tarefas com uso intensivo de recursos.
 
@@ -610,7 +610,7 @@ O XEN é um hipervisor de código aberto tipo 1 (sem metal), que permite que vá
 
 #### Xensource
 
-A Xensource foi a empresa fundada pelos desenvolvedores originais do Xen Hypervisor da Universidade de Cambridge para comercializar a Xen. A empresa forneceu soluções corporativas com base no XEN e ofereceu ferramentas e suporte adicionais para aprimorar os recursos do XEN para uso corporativo.
+A Xensource foi a empresa fundada pelos desenvolvedores originais do Xen Hypervisor da Universidade de Cambridge para comercializar a Xen. A empresa forneceu soluções corporativas com base no XEN e ofereceu ferramentas e suporte adicionais para aprimorar os recursos da XEN para uso corporativo.
 
 -   **Aquisição pela Citrix**: Em 2007, a Xensource foi adquirida pela Citrix Systems, Inc. A Citrix usou a tecnologia Xen como base para o seu produto Citrix Xenserver, que se tornou uma popular plataforma de virtualização de grau corporativo baseado em Xen.
 -   **Transição**: Após a aquisição, o projeto Xen continuou como um projeto de código aberto, enquanto a Citrix se concentrou em ofertas comerciais como Xenserver, alavancando a tecnologia Xensource.
@@ -3332,7 +3332,7 @@ Link do projeto:<https://github.com/marcossilvestrini/learning-lpic-3-305-300>
     -   [cópia-em-escrever](https://sempreupdate.com.br/linux/tutoriais/sistema-de-arquivos-copy-on-write-saiba-o-que-e-e-quais-as-vantagens-e-desvantagens/)
     -   [RAM X QCOW2](https://docs.redhat.com/en/documentation/red_hat_virtualization/4.3/html/technical_reference/qcow2)
     -   [Libguestfs](https://libguestfs.org/)
--   [Virtualização e contêiner](<>)
+-   [Contêineres](<>)
     -   [Contêineres da AWS DOC](https://aws.amazon.com/pt/containers/)
     -   [Contêineres do DOC GCP](https://cloud.google.com/learn/what-are-containers?hl=pt-br)
     -   [IBM Doc Container](https://www.ibm.com/br-pt/topics/containers)
@@ -3359,6 +3359,11 @@ Link do projeto:<https://github.com/marcossilvestrini/learning-lpic-3-305-300>
     -   [OpenVZ](https://openvz.org/)
     -   [Crun](https://www.redhat.com/en/blog/introduction-crun)
     -   [dizer](https://katacontainers.io/)
+-   [LXC - Contêineres Linux](<>)
+    -   [LXC](https://linuxcontainers.org/lxc/introduction/)
+    -   [Lxd canônico](https://canonical.com/lxd)
+    -   [LXD Github canônico](https://github.com/canonical/lxd)
+    -   [Documentação LXD](https://linuxcontainers.org/lxd/docs/master/)
 -   [OpenStack Docs](<>)
     -   [Redhat](https://www.redhat.com/pt-br/topics/openstack)
 -   [Aberto vswitch](<>)
@@ -3373,7 +3378,7 @@ Link do projeto:<https://github.com/marcossilvestrini/learning-lpic-3-305-300>
 
 * * *
 
-<!-- MARKDOWN LINKS & IMAGES-->
+<!-- MARKDOWN LINKS & IMAGES -->
 
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 
