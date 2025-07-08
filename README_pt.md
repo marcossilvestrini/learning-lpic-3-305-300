@@ -84,7 +84,7 @@
 
 * * *
 
-`<a name="about-the-project"></a>`
+<a name="about-the-project"></a>
 
 ## Sobre o projeto
 
@@ -102,13 +102,13 @@
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-`<a name="getting-started"></a>`
+<a name="getting-started"></a>
 
 ## Começando
 
 Para iniciar o aprendizado, consulte a documentação acima.
 
-`<a name="prerequisites"></a>`
+<a name="prerequisites"></a>
 
 ### Pré -requisitos
 
@@ -117,7 +117,7 @@ Para iniciar o aprendizado, consulte a documentação acima.
 -   [Utilitário VMware Vagrant](https://developer.hashicorp.com/vagrant/install/vmware)
 -   [Vagabundo](https://developer.hashicorp.com/vagrant/install)
 
-`<a name="installation"></a>`
+<a name="installation"></a>
 
 ### Instalação
 
@@ -141,7 +141,7 @@ Personalize a configuração de rede em arquivos[Configs/Network](configs/networ
 
 * * *
 
-`<a name="usage"></a>`
+<a name="usage"></a>
 
 ## Uso
 
@@ -181,7 +181,7 @@ vagrant/destroy.ps1
 
 * * *
 
-`<a name="roadmap"></a>`
+<a name="roadmap"></a>
 
 ## Roteiro
 
@@ -194,7 +194,7 @@ vagrant/destroy.ps1
 
 * * *
 
-`<a name="freedoms"></a>`
+<a name="freedoms"></a>
 
 ## Quatro liberdades essenciais
 
@@ -222,7 +222,7 @@ man COMMAND
 
 * * *
 
-`<a name="topic-351"></a>`
+<a name="topic-351"></a>
 
 ## Tópico 351: Virtualização completa
 
@@ -230,7 +230,7 @@ man COMMAND
 
 * * *
 
-`<a name="topic-351.1"></a>`
+<a name="topic-351.1"></a>
 
 ### 351.1 Conceitos e teoria de virtualização
 
@@ -335,7 +335,7 @@ A migração V2V refere-se ao processo de migração de uma máquina virtual de 
 
 ##### Virtualização assistida por hardware (HVM)
 
-###### HVM Definition
+###### Definição de HVM
 
 A HVM aproveita as extensões de hardware fornecidas pelas CPUs modernas para virtualizar o hardware, permitindo a criação e o gerenciamento de VMs com o mínimo de sobrecarga de desempenho.
 
@@ -575,7 +575,7 @@ O serviço usinado pela SystemD é dedicado ao gerenciamento de máquinas e cont
 
 * * *
 
-`<a name="topic-351.2"></a>`
+<a name="topic-351.2"></a>
 
 ### 351.2 Alternação
 
@@ -1203,7 +1203,7 @@ qemu-system-x86_x64
 
 * * *
 
-`<a name="topic-351.4"></a>`
+<a name="topic-351.4"></a>
 
 ### 351.4 LibVirt Máquina virtual Gerenciamento
 
@@ -1583,7 +1583,7 @@ less /etc/libvirt/qemu/debian-server01.xml
 
 * * *
 
-`<a name="topic-351.5"></a>`
+<a name="topic-351.5"></a>
 
 ### 351.5 Gerenciamento de imagem em disco da máquina virtual
 
@@ -1874,13 +1874,13 @@ O pacote gerado possui a extensão .ova e contém os seguintes arquivos:
 
 * * *
 
-`<a name="topic-352"></a>`
+<a name="topic-352"></a>
 
 ## Tópico 352: Virtualização de contêineres
 
 * * *
 
-`<a name="topic-352.1"></a>`
+<a name="topic-352.1"></a>
 
 ### 352.1 conceitos de virtualização de contêineres
 
@@ -2904,7 +2904,7 @@ sudo runc run mycontainer
 
 * * *
 
-`<a name="topic-352.2"></a>`
+<a name="topic-352.2"></a>
 
 ### 352.2 LXC
 
@@ -3049,7 +3049,7 @@ sudo lxc-destroy -n debian01
 
 * * *
 
-`<a name="topic-352.3"></a>`
+<a name="topic-352.3"></a>
 
 ### 352.3 Docker
 
@@ -3091,7 +3091,7 @@ Dockerfile
 
 * * *
 
-`<a name="topic-352.4"></a>`
+<a name="topic-352.4"></a>
 
 ### 352.4 Plataformas de orquestração de contêineres
 
@@ -3112,13 +3112,13 @@ Dockerfile
 
 * * *
 
-`<a name="topic-353"></a>`
+<a name="topic-353"></a>
 
 ## Tópico 353: implantação e provisionamento da VM
 
 * * *
 
-`<a name="topic-353.1"></a>`
+<a name="topic-353.1"></a>
 
 ### 353.1 Ferramentas de gerenciamento de nuvem
 
@@ -3155,7 +3155,7 @@ Terraform
 
 * * *
 
-`<a name="topic-353.2"></a>`
+<a name="topic-353.2"></a>
 
 ### 353.2 Packer
 
@@ -3189,7 +3189,7 @@ packer
 
 * * *
 
-`<a name="topic-353.3"></a>`
+<a name="topic-353.3"></a>
 
 ### 353.3 Cloud-Init
 
@@ -3228,7 +3228,7 @@ user-data
 
 * * *
 
-`<a name="topic-353.4"></a>`
+<a name="topic-353.4"></a>
 
 ### 353.4 Vagrant
 
