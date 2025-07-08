@@ -30,14 +30,15 @@ if echo "$RELEASE_INFO" | grep -q -i "debian\|ubuntu"; then
         xfce4 xfce4-goodies \
         tightvncserver dbus-x11 \
         bridge-utils \
-        debootstrap \
-        cgroup-tools \
-        runc \
         stress-ng \
         libcap-ng-utils \
         tcpdump \
         jq \
-        git
+        git \
+        debootstrap \
+        cgroup-tools \
+        runc \
+        lxc
 
     # Set user profile for bash and vim
     sudo cp -f configs/commons/.bashrc_debian .bashrc
