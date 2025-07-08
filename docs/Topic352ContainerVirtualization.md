@@ -2,7 +2,7 @@
 
 ---
 
-<a name="topic-352.1"></a>
+`<a name="topic-352.1"></a>`
 
 ### 352.1  Container Virtualization Concepts
 
@@ -191,15 +191,14 @@ sudo chroot ~vagrant/debian bash
 
 Use this script for lab: [chroot.sh](../scripts/container/chroot.sh)
 
-Output:
-
-![chroot-labt](../images/chroot-lab.png)
+[![asciicast](https://asciinema.org/a/PWkjazgTXll9678Qy6LLOaKdN.svg)](https://asciinema.org/a/PWkjazgTXll9678Qy6LLOaKdN)
 
 ---
 
 #### 🧠 Understanding Linux Namespaces
 
 ![linux-namespaces](../images/linux-namespaces2.png)
+
 
 Namespaces are a core Linux kernel feature that enable process-level isolation. They create separate "views" of global system resources — such as process IDs, networking, filesystems, and users — so that each process group believes it is running in its own system.
 
@@ -301,9 +300,7 @@ Together, these kernel features form the technical backbone of container isolati
 
 Use this script for lab: [namespace.sh](../scripts/container/namespace.sh)
 
-Output:
-
-![namespaces](../images/namespace-lab.png)
+[![asciicast](https://asciinema.org/a/8H6iczCMO24VgjWqwCcXEKWBG.svg)](https://asciinema.org/a/8H6iczCMO24VgjWqwCcXEKWBG)
 
 ---
 
@@ -458,9 +455,7 @@ Behind the scenes, this creates cgroup rules for memory and CPU limits for the c
 
 Use this script for lab: [cgroups.sh](../scripts/container/cgroups.sh)
 
-Output Soft limit memory:
-
-![cgroups-soft-limit](../images/cgroups-soft-limit.png)
+[![asciicast](https://asciinema.org/a/WbudWJpHKPzBWMh8CGRxCIpZf.svg)](https://asciinema.org/a/WbudWJpHKPzBWMh8CGRxCIpZf)
 
 ---
 
@@ -515,9 +510,7 @@ securityContext:
 
 Use this script for lab: [capabilities.sh](../scripts/container/capabilities.sh)
 
-Output:
-
-![capabilities-lab](../images/capabilities-lab.png)
+[![asciicast](https://asciinema.org/a/kCiUGvY0YGA5Mdzbj1NSdfLAx.svg)](https://asciinema.org/a/kCiUGvY0YGA5Mdzbj1NSdfLAx)
 
 #### 🛡️ Seccomp (Secure Computing Mode)
 
@@ -782,11 +775,11 @@ graph TD
 
 For runc lab, you can use this script: [runc.sh](../scripts/container/runc.sh)
 
-![runc](../images/runc-lab.png)
+[![asciicast](https://asciinema.org/a/UDVnhKSxPFRXDcwg0HYFkZdlX.svg)](https://asciinema.org/a/UDVnhKSxPFRXDcwg0HYFkZdlX)
 
 ##### 🧪 lab containerd
 
-For runc containerd, you can use this script: [containerd.sh](../scripts/container/container.sh)
+For containerd, you can use this script: [containerd.sh](../scripts/container/container.sh)
 
 ![containerd](../images/containerd-lab.png)
 
@@ -1022,6 +1015,8 @@ runc spec
 
 # run a container using runc
 sudo runc run mycontainer
+
+
 ```
 
 ---
@@ -1032,7 +1027,7 @@ sudo runc run mycontainer
 
 ---
 
-<a name="topic-352.2"></a>
+`<a name="topic-352.2"></a>`
 
 ### 352.2 LXC
 
@@ -1055,14 +1050,120 @@ sudo runc run mycontainer
 ```sh
 lxd
 lxc (including relevant subcommands)
+/etc/lxc/
+/var/log/lxc/
+/usr/share/lxc/templates
 ```
+
+#### 🧩 LXC & LXD – The Linux System Containers Suite
+
+---
+
+##### 📦 LXC (Linux Containers)
+
+* **What is it?**
+
+  The *core* userspace toolset for managing application and system containers on Linux. Think of LXC as **"chroot on steroids"** – it provides lightweight process isolation using kernel features (namespaces, cgroups, AppArmor, seccomp, etc).
+* **Use:**
+
+  * Run full Linux distributions as containers (not just single apps).
+  * Useful for testing, legacy apps, or simulating servers.
+* **Highlights:**
+
+  * CLI-focused: `lxc-create`, `lxc-start`, `lxc-attach`, etc.
+  * Fine-grained control over container resources.
+  * No daemon – runs per-container processes.
+* **Best for:**
+
+  Linux experts who want total control and “bare-metal” feel for containers.
+* [Docs](https://linuxcontainers.org/lxc/introduction/)
+
+---
+
+##### 🌐 LXD
+
+* **What is it?**
+
+  **LXD** is a *next-generation* container and VM manager,  **built on top of LXC** . It offers a powerful but user-friendly experience to manage containers and virtual machines via REST API, CLI, or even a Web UI.
+* **Use:**
+
+  * Manage system containers and virtual machines at scale.
+  * Networked “container as a service” with easy orchestration.
+* **Highlights:**
+
+  * **REST API** : manage containers/VMs over the network.
+  * **Images:** Instant deployment of many Linux distros.
+  * **Snapshots, storage pools, clustering, live migration.**
+  * Supports running unprivileged containers by default.
+  * CLI: `lxc launch`, `lxc exec`, `lxc snapshot`, etc. *(Yes, same prefix as LXC, but different backend!)*
+* **Best for:**
+
+  DevOps, sysadmins, cloud-native setups, lab environments.
+* [Docs](https://linuxcontainers.org/lxd/) | [Canonical LXD](https://canonical.com/lxd)
+
+---
+
+##### 📊 LXC vs LXD Comparison Table
+
+| Feature                 | 🏷️ LXC                              | 🌐 LXD                                |
+| ----------------------- | ------------------------------------- | ------------------------------------- |
+| **Type**          | Low-level userspace container manager | High-level manager (containers + VMs) |
+| **Interface**     | CLI only                              | REST API, CLI, Web UI                 |
+| **Daemon?**       | No (runs as processes)                | Yes (central daemon/service)          |
+| **Orchestration** | Manual, scriptable                    | Built-in clustering & API             |
+| **Images**        | Template-based                        | Full image repository, many OSes      |
+| **Snapshots**     | Manual                                | Native, integrated                    |
+| **VM support**    | No                                    | Yes (QEMU/KVM)                        |
+| **Use-case**      | Fine-grained control, “bare-metal”  | Scalable, user-friendly, multi-host   |
+| **Security**      | Can be unprivileged, but DIY          | Default unprivileged, more isolation  |
+| **Best for**      | Linux pros, advanced scripting        | DevOps, cloud, teams, self-service    |
+
+---
+
+##### ☑️ Quick Recap
+
+* **LXC** = The low-level building blocks. Power and flexibility for  *container purists* .
+* **LXD** = Modern, API-driven, scalable platform on top of LXC for *easy* container and VM management (single node or clusters).
 
 #### 352.2 Important Commands
 
-##### foo
+##### lxc
 
 ```sh
-foo
+####### Examples of lxc commands #####
+
+# check lxc version
+lxc-create --version
+
+# create a priveleged container
+sudo lxc-create -n busybox -t busybox
+
+# list containers
+sudo lxc-ls --fancy
+sudo lxc-ls -f
+
+# create container with template
+sudo lxc-create -n debian01 -t download
+lxc-create --name server2 --template download -- --dist alpine --release 3.19 --arch amd64
+
+# get container info
+sudo lxc-info -n debian01
+
+# start container
+sudo lxc-start -n debian01
+
+# stop container
+sudo lxc-stop -n debian01
+
+# connect to container
+sudo lxc-attach -n debian01
+
+# excute a command in container
+sudo lxc-attach -n debian01 --  echo "Hello from"
+sudo lxc-attach -n debian01 -- bash -c ls
+
+# delete container
+sudo lxc-destroy -n debian01
 ```
 
 <p align="right">(<a href="#topic-352.2">back to sub topic 352.2</a>)</p>
@@ -1071,7 +1172,7 @@ foo
 
 ---
 
-<a name="topic-352.3"></a>
+`<a name="topic-352.3"></a>`
 
 ### 352.3 Docker
 
@@ -1113,7 +1214,7 @@ Dockerfile
 
 ---
 
-<a name="topic-352.4"></a>
+`<a name="topic-352.4"></a>`
 
 ### 352.4 Container Orchestration Platforms
 
@@ -1134,5 +1235,5 @@ Dockerfile
 
 ---
 
-<a name="topic-353"></a>
+`<a name="topic-353"></a>`
 

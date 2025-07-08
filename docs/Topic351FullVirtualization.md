@@ -4,7 +4,7 @@
 
 ---
 
-<a name="topic-351.1"></a>
+`<a name="topic-351.1"></a>`
 
 ### 351.1 Virtualization Concepts and Theory
 
@@ -349,7 +349,7 @@ Despite this drawback, emulation remains valuable for running legacy software, t
 
 ---
 
-<a name="topic-351.2"></a>
+`<a name="topic-351.2"></a>`
 
 ### 351.2 Xen
 
@@ -979,7 +979,7 @@ qemu-system-x86_x64
 
 ---
 
-<a name="topic-351.4"></a>
+`<a name="topic-351.4"></a>`
 
 ### 351.4 Libvirt Virtual Machine Management
 
@@ -1359,7 +1359,7 @@ less /etc/libvirt/qemu/debian-server01.xml
 
 ---
 
-<a name="topic-351.5"></a>
+`<a name="topic-351.5"></a>`
 
 ### 351.5 Virtual Machine Disk Image Management
 
@@ -1650,5 +1650,5 @@ The generated package has the .ova extension and contains the following files:
 
 ---
 
-<a name="topic-352"></a>
+`<a name="topic-352"></a>`
 
