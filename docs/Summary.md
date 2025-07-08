@@ -52,5 +52,5 @@
 
 ---
 
-`<a name="about-the-project"></a>`
+<a name="about-the-project"></a>
 
