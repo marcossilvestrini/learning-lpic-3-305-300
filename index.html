@@ -3857,9 +3857,7 @@ ps -eZ # Processes
     <p><a href="https://asciinema.org/a/UDVnhKSxPFRXDcwg0HYFkZdlX"><img src="https://asciinema.org/a/UDVnhKSxPFRXDcwg0HYFkZdlX.svg" alt="asciicast"></a></p>
     <h5 id="-lab-containerd"><a class="anchor" aria-hidden="true" tabindex="-1" href="#-lab-containerd"><span class="octicon octicon-link"></span></a>🧪 lab containerd</h5>
     <p>For containerd, you can use this script: <a href="scripts/container/container.sh">containerd.sh</a></p>
-    <p>
-      <img src="images/containerd-lab.png" alt="containerd">
-    </p>
+    <p><a href="https://asciinema.org/a/fCJsiwcL2ePneQX1aafITtoGM"><img src="https://asciinema.org/a/fCJsiwcL2ePneQX1aafITtoGM.svg" alt="asciicast"></a></p>
     <hr>
     <h4 id="-podman-buildah-skopeo-openvz-crun--kata-containers--fast-track"><a class="anchor" aria-hidden="true" tabindex="-1" href="#-podman-buildah-skopeo-openvz-crun--kata-containers--fast-track"><span class="octicon octicon-link"></span></a>🚀 Podman, Buildah, Skopeo, OpenVZ, crun &#x26; Kata Containers – Fast Track</h4>
     <hr>
@@ -4158,15 +4156,11 @@ sudo setenforce 1
 </span><span class="code-line line-number" line="3">
 </span><span class="code-line line-number" line="4"><span class="token comment"># run a container using runc</span>
 </span><span class="code-line line-number" line="5"><span class="token function">sudo</span> runc run mycontainer
-</span><span class="code-line line-number" line="6">
-</span><span class="code-line line-number" line="7">
 </span></code><div onclick="copied(this)" data-code="#create a spec file for runc
 runc spec
 
 # run a container using runc
 sudo runc run mycontainer
-
-
 " class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
     <hr>
     <p align="right">(<a href="#topic-352.1">back to sub topic 352.1</a>)</p>
@@ -4191,11 +4185,13 @@ sudo runc run mycontainer
     <pre class="language-sh"><code class="language-sh code-highlight"><span class="code-line line-number" line="1">lxd
 </span><span class="code-line line-number" line="2">lxc <span class="token punctuation">(</span>including relevant subcommands<span class="token punctuation">)</span>
 </span><span class="code-line line-number" line="3">/etc/lxc/
-</span><span class="code-line line-number" line="4">/var/log/lxc/
-</span><span class="code-line line-number" line="5">/usr/share/lxc/templates
+</span><span class="code-line line-number" line="4">/etc/default/lxc
+</span><span class="code-line line-number" line="5">/var/log/lxc/
+</span><span class="code-line line-number" line="6">/usr/share/lxc/templates
 </span></code><div onclick="copied(this)" data-code="lxd
 lxc (including relevant subcommands)
 /etc/lxc/
+/etc/default/lxc
 /var/log/lxc/
 /usr/share/lxc/templates
 " class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
@@ -4226,10 +4222,10 @@ lxc (including relevant subcommands)
         <p><strong>Best for:</strong></p>
         <p>Linux experts who want total control and “bare-metal” feel for containers.</p>
       </li>
-      <li>
-        <p><a href="https://linuxcontainers.org/lxc/introduction/">Docs</a></p>
-      </li>
     </ul>
+    <h5 id="-lab-lxc"><a class="anchor" aria-hidden="true" tabindex="-1" href="#-lab-lxc"><span class="octicon octicon-link"></span></a>🧪 lab LXC</h5>
+    <p>For LXC lab, you can use this script: <a href="scripts/container/lxc.sh">lxc.sh</a></p>
+    <p><a href="https://asciinema.org/a/CpjDAXRnaKH5kExg9eWSBJGHI"><img src="https://asciinema.org/a/CpjDAXRnaKH5kExg9eWSBJGHI.svg" alt="asciicast"></a></p>
     <hr>
     <h5 id="-lxd"><a class="anchor" aria-hidden="true" tabindex="-1" href="#-lxd"><span class="octicon octicon-link"></span></a>🌐 LXD</h5>
     <ul>
@@ -4258,10 +4254,9 @@ lxc (including relevant subcommands)
         <p><strong>Best for:</strong></p>
         <p>DevOps, sysadmins, cloud-native setups, lab environments.</p>
       </li>
-      <li>
-        <p><a href="https://linuxcontainers.org/lxd/">Docs</a> | <a href="https://canonical.com/lxd">Canonical LXD</a></p>
-      </li>
     </ul>
+    <h5 id="-lab-lxd"><a class="anchor" aria-hidden="true" tabindex="-1" href="#-lab-lxd"><span class="octicon octicon-link"></span></a>🧪 lab LXD</h5>
+    <p>For LXD lab, you can use this script: <a href="scripts/container/lxd.sh">lxd.sh</a></p>
     <hr>
     <h5 id="-lxc-vs-lxd-comparison-table"><a class="anchor" aria-hidden="true" tabindex="-1" href="#-lxc-vs-lxd-comparison-table"><span class="octicon octicon-link"></span></a>📊 LXC vs LXD Comparison Table</h5>
     <table>
@@ -4338,16 +4333,16 @@ lxc (including relevant subcommands)
 </span><span class="code-line line-number" line="3"><span class="token comment"># check lxc version</span>
 </span><span class="code-line line-number" line="4">lxc-create <span class="token parameter variable">--version</span>
 </span><span class="code-line line-number" line="5">
-</span><span class="code-line line-number" line="6"><span class="token comment"># create a priveleged container</span>
-</span><span class="code-line line-number" line="7"><span class="token function">sudo</span> lxc-create <span class="token parameter variable">-n</span> busybox <span class="token parameter variable">-t</span> busybox
-</span><span class="code-line line-number" line="8">
-</span><span class="code-line line-number" line="9"><span class="token comment"># list containers</span>
-</span><span class="code-line line-number" line="10"><span class="token function">sudo</span> lxc-ls <span class="token parameter variable">--fancy</span>
-</span><span class="code-line line-number" line="11"><span class="token function">sudo</span> lxc-ls <span class="token parameter variable">-f</span>
+</span><span class="code-line line-number" line="6"><span class="token comment"># list containers</span>
+</span><span class="code-line line-number" line="7"><span class="token function">sudo</span> lxc-ls <span class="token parameter variable">--fancy</span>
+</span><span class="code-line line-number" line="8"><span class="token function">sudo</span> lxc-ls <span class="token parameter variable">-f</span>
+</span><span class="code-line line-number" line="9">
+</span><span class="code-line line-number" line="10"><span class="token comment"># create a priveleged container</span>
+</span><span class="code-line line-number" line="11"><span class="token function">sudo</span> lxc-create <span class="token parameter variable">-n</span> busybox <span class="token parameter variable">-t</span> busybox
 </span><span class="code-line line-number" line="12">
-</span><span class="code-line line-number" line="13"><span class="token comment"># create container with template</span>
+</span><span class="code-line line-number" line="13"><span class="token comment"># create a priveleged container with template</span>
 </span><span class="code-line line-number" line="14"><span class="token function">sudo</span> lxc-create <span class="token parameter variable">-n</span> debian01 <span class="token parameter variable">-t</span> download
-</span><span class="code-line line-number" line="15">lxc-create <span class="token parameter variable">--name</span> server2 <span class="token parameter variable">--template</span> download -- <span class="token parameter variable">--dist</span> alpine <span class="token parameter variable">--release</span> <span class="token number">3.19</span> <span class="token parameter variable">--arch</span> amd64
+</span><span class="code-line line-number" line="15"><span class="token function">sudo</span> lxc-create <span class="token parameter variable">--name</span> server2 <span class="token parameter variable">--template</span> download -- <span class="token parameter variable">--dist</span> alpine <span class="token parameter variable">--release</span> <span class="token number">3.19</span> <span class="token parameter variable">--arch</span> amd64
 </span><span class="code-line line-number" line="16">
 </span><span class="code-line line-number" line="17"><span class="token comment"># get container info</span>
 </span><span class="code-line line-number" line="18"><span class="token function">sudo</span> lxc-info <span class="token parameter variable">-n</span> debian01
@@ -4367,21 +4362,43 @@ lxc (including relevant subcommands)
 </span><span class="code-line line-number" line="32">
 </span><span class="code-line line-number" line="33"><span class="token comment"># delete container</span>
 </span><span class="code-line line-number" line="34"><span class="token function">sudo</span> lxc-destroy <span class="token parameter variable">-n</span> debian01
+</span><span class="code-line line-number" line="35">
+</span><span class="code-line line-number" line="36"><span class="token comment"># rootfs of a container</span>
+</span><span class="code-line line-number" line="37"><span class="token function">sudo</span> <span class="token function">ls</span> <span class="token parameter variable">-l</span> /var/lib/lxc/server1/rootfs
+</span><span class="code-line line-number" line="38">
+</span><span class="code-line line-number" line="39"><span class="token comment"># lxc configuration</span>
+</span><span class="code-line line-number" line="40">/etc/default/lxc
+</span><span class="code-line line-number" line="41">/etc/default/lxc-net
+</span><span class="code-line line-number" line="42">/etc/lxc/default.conf
+</span><span class="code-line line-number" line="43">/usr/share/lxc/
+</span><span class="code-line line-number" line="44">
+</span><span class="code-line line-number" line="45"><span class="token comment"># lxc container configuration</span>
+</span><span class="code-line line-number" line="46">/var/lib/lxc/
+</span><span class="code-line line-number" line="47">
+</span><span class="code-line line-number" line="48"><span class="token comment"># modify rootfs of a container</span>
+</span><span class="code-line line-number" line="49"><span class="token function">sudo</span> <span class="token function">touch</span>  /var/lib/lxc/server1/rootfs/tmp/test_toofs_file
+</span><span class="code-line line-number" line="50"><span class="token function">sudo</span> lxc-attach server1
+</span><span class="code-line line-number" line="51"><span class="token function">ls</span> /tmp
+</span><span class="code-line line-number" line="52">
+</span><span class="code-line line-number" line="53"><span class="token comment"># get lxc namespaces</span>
+</span><span class="code-line line-number" line="54"><span class="token function">sudo</span> lsns <span class="token parameter variable">-p</span> <span class="token operator">&#x3C;</span>LXC_CONTAINER_PID<span class="token operator">></span>
+</span><span class="code-line line-number" line="55"><span class="token function">sudo</span> lsns <span class="token parameter variable">-p</span> <span class="token variable"><span class="token variable">$(</span><span class="token function">sudo</span> lxc-info <span class="token parameter variable">-n</span> server1 <span class="token operator">|</span> <span class="token function">awk</span> <span class="token string">'/PID:/ { print $2 }'</span><span class="token variable">)</span></span>
+</span><span class="code-line line-number" line="56">
 </span></code><div onclick="copied(this)" data-code="####### Examples of lxc commands #####
 
 # check lxc version
 lxc-create --version
 
-# create a priveleged container
-sudo lxc-create -n busybox -t busybox
-
 # list containers
 sudo lxc-ls --fancy
 sudo lxc-ls -f
 
-# create container with template
+# create a priveleged container
+sudo lxc-create -n busybox -t busybox
+
+# create a priveleged container with template
 sudo lxc-create -n debian01 -t download
-lxc-create --name server2 --template download -- --dist alpine --release 3.19 --arch amd64
+sudo lxc-create --name server2 --template download -- --dist alpine --release 3.19 --arch amd64
 
 # get container info
 sudo lxc-info -n debian01
@@ -4401,6 +4418,28 @@ sudo lxc-attach -n debian01 -- bash -c ls
 
 # delete container
 sudo lxc-destroy -n debian01
+
+# rootfs of a container
+sudo ls -l /var/lib/lxc/server1/rootfs
+
+# lxc configuration
+/etc/default/lxc
+/etc/default/lxc-net
+/etc/lxc/default.conf
+/usr/share/lxc/
+
+# lxc container configuration
+/var/lib/lxc/
+
+# modify rootfs of a container
+sudo touch  /var/lib/lxc/server1/rootfs/tmp/test_toofs_file
+sudo lxc-attach server1
+ls /tmp
+
+# get lxc namespaces
+sudo lsns -p <LXC_CONTAINER_PID>
+sudo lsns -p $(sudo lxc-info -n server1 | awk &#x27;/PID:/ { print $2 }&#x27;)
+
 " class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
     <p align="right">(<a href="#topic-352.2">back to sub topic 352.2</a>)</p>
     <p align="right">(<a href="#topic-352">back to topic 352</a>)</p>
