@@ -2674,7 +2674,7 @@ For runc lab, you can use this script: [runc.sh](scripts/container/runc.sh)
 
 For containerd, you can use this script: [containerd.sh](scripts/container/container.sh)
 
-![containerd](images/containerd-lab.png)
+[![asciicast](https://asciinema.org/a/fCJsiwcL2ePneQX1aafITtoGM.svg)](https://asciinema.org/a/fCJsiwcL2ePneQX1aafITtoGM)
 
 ---
 
@@ -2908,8 +2908,6 @@ runc spec
 
 # run a container using runc
 sudo runc run mycontainer
-
-
 ```
 
 ---
@@ -2944,6 +2942,7 @@ sudo runc run mycontainer
 lxd
 lxc (including relevant subcommands)
 /etc/lxc/
+/etc/default/lxc
 /var/log/lxc/
 /usr/share/lxc/templates
 ```
@@ -2969,7 +2968,12 @@ lxc (including relevant subcommands)
 * **Best for:**
 
   Linux experts who want total control and “bare-metal” feel for containers.
-* [Docs](https://linuxcontainers.org/lxc/introduction/)
+
+##### 🧪 lab LXC
+
+For LXC lab, you can use this script: [lxc.sh](scripts/container/lxc.sh)
+
+[![asciicast](https://asciinema.org/a/CpjDAXRnaKH5kExg9eWSBJGHI.svg)](https://asciinema.org/a/CpjDAXRnaKH5kExg9eWSBJGHI)
 
 ---
 
@@ -2992,7 +2996,10 @@ lxc (including relevant subcommands)
 * **Best for:**
 
   DevOps, sysadmins, cloud-native setups, lab environments.
-* [Docs](https://linuxcontainers.org/lxd/) | [Canonical LXD](https://canonical.com/lxd)
+
+##### 🧪 lab LXD
+
+For LXD lab, you can use this script: [lxd.sh](scripts/container/lxd.sh)
 
 ---
 
@@ -3028,16 +3035,16 @@ lxc (including relevant subcommands)
 # check lxc version
 lxc-create --version
 
-# create a priveleged container
-sudo lxc-create -n busybox -t busybox
-
 # list containers
 sudo lxc-ls --fancy
 sudo lxc-ls -f
 
-# create container with template
+# create a priveleged container
+sudo lxc-create -n busybox -t busybox
+
+# create a priveleged container with template
 sudo lxc-create -n debian01 -t download
-lxc-create --name server2 --template download -- --dist alpine --release 3.19 --arch amd64
+sudo lxc-create --name server2 --template download -- --dist alpine --release 3.19 --arch amd64
 
 # get container info
 sudo lxc-info -n debian01
@@ -3057,6 +3064,28 @@ sudo lxc-attach -n debian01 -- bash -c ls
 
 # delete container
 sudo lxc-destroy -n debian01
+
+# rootfs of a container
+sudo ls -l /var/lib/lxc/server1/rootfs
+
+# lxc configuration
+/etc/default/lxc
+/etc/default/lxc-net
+/etc/lxc/default.conf
+/usr/share/lxc/
+
+# lxc container configuration
+/var/lib/lxc/
+
+# modify rootfs of a container
+sudo touch  /var/lib/lxc/server1/rootfs/tmp/test_toofs_file
+sudo lxc-attach server1
+ls /tmp
+
+# get lxc namespaces
+sudo lsns -p <LXC_CONTAINER_PID>
+sudo lsns -p $(sudo lxc-info -n server1 | awk '/PID:/ { print $2 }')
+
 ```
 
 <p align="right">(<a href="#topic-352.2">back to sub topic 352.2</a>)</p>

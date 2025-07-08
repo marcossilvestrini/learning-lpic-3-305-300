@@ -16,7 +16,7 @@ set -euo pipefail
 IFS=$'\n\t'
 
 LAB_CONTAINER="lxd-lab"
-IMAGE="images:alpine/3.18"
+IMAGE="images:alpine/3.19"
 LAB_STATE="/tmp/lxd-lab"
 
 log()   { echo -e "[INFO] $*"; }
