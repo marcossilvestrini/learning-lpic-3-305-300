@@ -4,7 +4,7 @@
 
 * * *
 
-[![MIT License][license-shield]][license-url][![Forks][forks-shield]][forks-url][![Stargazers][stars-shield]][stars-url][![Contributors][contributors-shield]][contributors-url][![Issues][issues-shield]][issues-url][![LinkedIn][linkedin-shield]][linkedin-url]
+[Minha licença][license-url][Garfos][forks-url][Stargazers][stars-url][Colaboradores][contributors-url][Problemas][issues-url][LinkedIn][linkedin-url]
 
 * * *
 
@@ -84,7 +84,7 @@
 
 * * *
 
-<a name="about-the-project"></a>
+`<a name="about-the-project"></a>`
 
 ## Sobre o projeto
 
@@ -102,13 +102,13 @@
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-<a name="getting-started"></a>
+`<a name="getting-started"></a>`
 
 ## Começando
 
 Para iniciar o aprendizado, consulte a documentação acima.
 
-<a name="prerequisites"></a>
+`<a name="prerequisites"></a>`
 
 ### Pré -requisitos
 
@@ -117,7 +117,7 @@ Para iniciar o aprendizado, consulte a documentação acima.
 -   [Utilitário VMware Vagrant](https://developer.hashicorp.com/vagrant/install/vmware)
 -   [Vagabundo](https://developer.hashicorp.com/vagrant/install)
 
-<a name="installation"></a>
+`<a name="installation"></a>`
 
 ### Instalação
 
@@ -141,7 +141,7 @@ Personalize a configuração de rede em arquivos[Configs/Network](configs/networ
 
 * * *
 
-<a name="usage"></a>
+`<a name="usage"></a>`
 
 ## Uso
 
@@ -181,7 +181,7 @@ vagrant/destroy.ps1
 
 * * *
 
-<a name="roadmap"></a>
+`<a name="roadmap"></a>`
 
 ## Roteiro
 
@@ -194,7 +194,7 @@ vagrant/destroy.ps1
 
 * * *
 
-<a name="freedoms"></a>
+`<a name="freedoms"></a>`
 
 ## Quatro liberdades essenciais
 
@@ -222,7 +222,7 @@ man COMMAND
 
 * * *
 
-<a name="topic-351"></a>
+`<a name="topic-351"></a>`
 
 ## Tópico 351: Virtualização completa
 
@@ -230,7 +230,7 @@ man COMMAND
 
 * * *
 
-<a name="topic-351.1"></a>
+`<a name="topic-351.1"></a>`
 
 ### 351.1 Conceitos e teoria de virtualização
 
@@ -304,7 +304,7 @@ Executa em cima de um sistema operacional convencional, contando com o sistema o
 ##### Diferenças -chave entre os hipervisores do tipo 1 e do tipo 2
 
 -   Ambiente de implantação:
-    -   Os hipervisores do tipo 1 são comumente implantados em data centers e ambientes corporativos devido à sua interação direta com hardware e alto desempenho.
+    -   Os hipervisores tipo 1 são comumente implantados em data centers e ambientes corporativos devido à sua interação direta com hardware e alto desempenho.
     -   Os hipervisores do tipo 2 são mais adequados para tarefas de uso pessoal, desenvolvimento, teste e virtualização em pequena escala.
 -   Desempenho:
     -   Os hipervisores do tipo 1 geralmente oferecem melhor desempenho e menor latência porque não confiam em um sistema operacional host.
@@ -335,7 +335,7 @@ A migração V2V refere-se ao processo de migração de uma máquina virtual de 
 
 ##### Virtualização assistida por hardware (HVM)
 
-###### Definição de HVM
+###### HVM Definition
 
 A HVM aproveita as extensões de hardware fornecidas pelas CPUs modernas para virtualizar o hardware, permitindo a criação e o gerenciamento de VMs com o mínimo de sobrecarga de desempenho.
 
@@ -467,7 +467,7 @@ Permite que várias instâncias isoladas do espaço do usuário (contêineres) s
 
 ###### Casos de uso de contêinerização
 
-Microservices architecture, development and testing environments.
+Ambientes de arquitetura, desenvolvimento e teste de microsserviços.
 
 ###### Exemplos de contêinerização
 
@@ -575,7 +575,7 @@ O serviço usinado pela SystemD é dedicado ao gerenciamento de máquinas e cont
 
 * * *
 
-<a name="topic-351.2"></a>
+`<a name="topic-351.2"></a>`
 
 ### 351.2 Alternação
 
@@ -1203,7 +1203,7 @@ qemu-system-x86_x64
 
 * * *
 
-<a name="topic-351.4"></a>
+`<a name="topic-351.4"></a>`
 
 ### 351.4 LibVirt Máquina virtual Gerenciamento
 
@@ -1583,7 +1583,7 @@ less /etc/libvirt/qemu/debian-server01.xml
 
 * * *
 
-<a name="topic-351.5"></a>
+`<a name="topic-351.5"></a>`
 
 ### 351.5 Gerenciamento de imagem em disco da máquina virtual
 
@@ -1874,13 +1874,13 @@ O pacote gerado possui a extensão .ova e contém os seguintes arquivos:
 
 * * *
 
-<a name="topic-352"></a>
+`<a name="topic-352"></a>`
 
 ## Tópico 352: Virtualização de contêineres
 
 * * *
 
-<a name="topic-352.1"></a>
+`<a name="topic-352.1"></a>`
 
 ### 352.1 conceitos de virtualização de contêineres
 
@@ -1918,7 +1918,7 @@ timeline
 -   Consciência das especificações de tempo de execução da OCI e imagem
 -   Consciência da interface de tempo de execução do contêiner Kubernetes (CRI)
 -   Consciência de Podman, Buildah e Scopeo
--   Consciência de outras abordagens de virtualização de contêineres no Linux e em outros sistemas operacionais gratuitos, como RKT, OpenVZ, Systemd-Npawn ou BSD prisões
+-   Consciência de outras abordagens de virtualização de contêineres no Linux e em outros sistemas operacionais gratuitos, como RKT, OpenVZ, Systemd-Nspawn ou BSD prisões
 
 * * *
 
@@ -2069,9 +2069,7 @@ sudo chroot ~vagrant/debian bash
 
 Use este script para laboratório:[chroot.sh](scripts/container/chroot.sh)
 
-Saída:
-
-![chroot-labt](images/chroot-lab.png)
+[![asciicast](https://asciinema.org/a/PWkjazgTXll9678Qy6LLOaKdN.svg)](https://asciinema.org/a/PWkjazgTXll9678Qy6LLOaKdN)
 
 * * *
 
@@ -2173,15 +2171,13 @@ Usado em conjunto com namespaces e cgroups para bloquear o que um processo cont�
 > ✅ CGROUPS Controle o que pode usar
 > ✅ Capacidades e módulos de segurança definem o que pode fazer
 
-Juntos, esses recursos do kernel formam a espinha dorsal técnica do isolamento de contêineres-permitindo implantação de aplicativos de alta densidade, seguros e eficientes sem VMs completas.
+Juntos, esses recursos do kernel formam a espinha dorsal técnica do isolamento de contêineres-permitindo implantação de aplicação de alta densidade, segurança e eficiência sem VMs completas.
 
 ##### 🧪 Namespaces de laboratório
 
 Use este script para laboratório:[namespace.sh](scripts/container/namespace.sh)
 
-Saída:
-
-![namespaces](images/namespace-lab.png)
+[![asciicast](https://asciinema.org/a/8H6iczCMO24VgjWqwCcXEKWBG.svg)](https://asciinema.org/a/8H6iczCMO24VgjWqwCcXEKWBG)
 
 * * *
 
@@ -2336,9 +2332,7 @@ Nos bastidores, isso cria regras do CGROUP para limites de memória e CPU para o
 
 Use este script para laboratório:[cgroups.sh](scripts/container/cgroups.sh)
 
-Saída Soft Limit Memory:
-
-![cgroups-soft-limit](images/cgroups-soft-limit.png)
+[![asciicast](https://asciinema.org/a/WbudWJpHKPzBWMh8CGRxCIpZf.svg)](https://asciinema.org/a/WbudWJpHKPzBWMh8CGRxCIpZf)
 
 * * *
 
@@ -2393,9 +2387,7 @@ securityContext:
 
 Use este script para laboratório:[capabilities.sh](scripts/container/capabilities.sh)
 
-Saída:
-
-![capabilities-lab](images/capabilities-lab.png)
+[![asciicast](https://asciinema.org/a/kCiUGvY0YGA5Mdzbj1NSdfLAx.svg)](https://asciinema.org/a/kCiUGvY0YGA5Mdzbj1NSdfLAx)
 
 #### 🛡️ Seccomp (modo de computação segura)
 
@@ -2660,11 +2652,11 @@ graph TD
 
 Para o Runc Lab, você pode usar este script:[runc.sh](scripts/container/runc.sh)
 
-![runc](images/runc-lab.png)
+[![asciicast](https://asciinema.org/a/UDVnhKSxPFRXDcwg0HYFkZdlX.svg)](https://asciinema.org/a/UDVnhKSxPFRXDcwg0HYFkZdlX)
 
 ##### 🧪 Container de laboratório
 
-Para o Runc Containerd, você pode usar este script:[containerd.sh](scripts/container/container.sh)
+Para o contêiner, você pode usar este script:[containerd.sh](scripts/container/container.sh)
 
 ![containerd](images/containerd-lab.png)
 
@@ -2900,6 +2892,8 @@ runc spec
 
 # run a container using runc
 sudo runc run mycontainer
+
+
 ```
 
 * * *
@@ -2910,7 +2904,7 @@ sudo runc run mycontainer
 
 * * *
 
-<a name="topic-352.2"></a>
+`<a name="topic-352.2"></a>`
 
 ### 352.2 LXC
 
@@ -2933,14 +2927,120 @@ sudo runc run mycontainer
 ```sh
 lxd
 lxc (including relevant subcommands)
+/etc/lxc/
+/var/log/lxc/
+/usr/share/lxc/templates
 ```
+
+#### 🧩 LXC & LXD - O conjunto de contêineres do sistema Linux
+
+* * *
+
+##### 📦 LXC (contêineres Linux)
+
+-   **O que é?**
+
+    O_essencial_UsuáriosPace ToolSet para gerenciar contêineres de aplicativos e sistemas no Linux. Pense no LXC como**"Chroot em esteróides"**- Ele fornece isolamento leve do processo usando recursos do kernel (espaços para nome, cgroups, Aparmor, Seccomp, etc.).
+-   **Usar:**
+
+    -   Execute distribuições completas do Linux como contêineres (não apenas aplicativos únicos).
+    -   Útil para testes, aplicativos herdados ou servidores simulados.
+-   **Destaques:**
+
+    -   Focado na CLI:`lxc-create`,`lxc-start`,`lxc-attach`, etc.
+    -   Controle de grão fino sobre os recursos de contêiner.
+    -   Nenhum Daemon-executa processos por conteúdo.
+-   **Melhor para:**
+
+    Especialistas do Linux que desejam controle total e sensação de "metal nu" para recipientes.
+-   [Documentos](https://linuxcontainers.org/lxc/introduction/)
+
+* * *
+
+##### 🌐 LXD
+
+-   **O que é?**
+
+    **Lxd**é a_próxima geração_Container e VM Manager,**Construído em cima do LXC**. Ele oferece uma experiência poderosa, mas fácil de usar, para gerenciar contêineres e máquinas virtuais via API REST, CLI ou até uma interface da web.
+-   **Usar:**
+
+    -   Gerenciar contêineres do sistema e máquinas virtuais em escala.
+    -   Contêiner em rede “como serviço” com orquestração fácil.
+-   **Destaques:**
+
+    -   **Rest API**: Gerencie contêineres/VMs sobre a rede.
+    -   **Imagens:**Implantação instantânea de muitas distros do Linux.
+    -   **Instantâneos, piscinas de armazenamento, clustering, migração ao vivo.**
+    -   Suporta a execução de contêineres sem privilégios por padrão.
+    -   CLI:`lxc launch`,`lxc exec`,`lxc snapshot`, etc._(Sim, o mesmo prefixo que LXC, mas back -end diferente!)_
+-   **Melhor para:**
+
+    DevOps, sysadmins, configurações nativas da nuvem, ambientes de laboratório.
+-   [Documentos](https://linuxcontainers.org/lxd/)\|[LXD canônico](https://canonical.com/lxd)
+
+* * *
+
+##### 📊 LXC vs Tabela de comparação LXD
+
+| Recurso           | 🏷️ LXC                                       | 🌐 LXD                                                       |
+| ----------------- | --------------------------------------------- | ------------------------------------------------------------ |
+| **Tipo**          | Gerente de contêiner de espaço de baixo nível | Gerente de alto nível (contêineres + VMs)                    |
+| **Interface**     | Apenas CLI                                    | API REST, CLI, interface da usuário da web                   |
+| **Daemon?**       | No (runs as processes)                        | Sim (daemon/serviço central)                                 |
+| **Orquestração**  | Manual, Scriptable                            | Clustering embutido e API                                    |
+| **Imagens**       | Baseado em modelo                             | Repositório de imagem completa, muitos sistemas operacionais |
+| **Instantâneos**  | Manual                                        | Nativo, integrado                                            |
+| **Suporte da VM** | No                                            | Sim (qemu/kvm)                                               |
+| **Uso de uso**    | Controle de grão fino, “Bare-metal”           | Multi-host escalável, fácil de usar                          |
+| **Segurança**     | Pode ser sem privilégios, mas DIY             | Não privilegiado, mais isolamento                            |
+| **Melhor para**   | Prós Linux, script avançado                   | DevOps, nuvem, equipes, autoatendimento                      |
+
+* * *
+
+##### ☑️ Recapitulação rápida
+
+-   **LXC**= Os blocos de construção de baixo nível. Poder e flexibilidade para_Puristas de contêineres_.
+-   **Lxd**= Moderno, orientado a API e plataforma escalável em cima do LXC para_fácil_Gerenciamento de contêineres e VM (nó único ou clusters).
 
 #### 352.2 Comandos importantes
 
-##### foo
+##### LXC
 
 ```sh
-foo
+####### Examples of lxc commands #####
+
+# check lxc version
+lxc-create --version
+
+# create a priveleged container
+sudo lxc-create -n busybox -t busybox
+
+# list containers
+sudo lxc-ls --fancy
+sudo lxc-ls -f
+
+# create container with template
+sudo lxc-create -n debian01 -t download
+lxc-create --name server2 --template download -- --dist alpine --release 3.19 --arch amd64
+
+# get container info
+sudo lxc-info -n debian01
+
+# start container
+sudo lxc-start -n debian01
+
+# stop container
+sudo lxc-stop -n debian01
+
+# connect to container
+sudo lxc-attach -n debian01
+
+# excute a command in container
+sudo lxc-attach -n debian01 --  echo "Hello from"
+sudo lxc-attach -n debian01 -- bash -c ls
+
+# delete container
+sudo lxc-destroy -n debian01
 ```
 
 <p align="right">(<a href="#topic-352.2">back to sub topic 352.2</a>)</p>
@@ -2949,7 +3049,7 @@ foo
 
 * * *
 
-<a name="topic-352.3"></a>
+`<a name="topic-352.3"></a>`
 
 ### 352.3 Docker
 
@@ -2991,7 +3091,7 @@ Dockerfile
 
 * * *
 
-<a name="topic-352.4"></a>
+`<a name="topic-352.4"></a>`
 
 ### 352.4 Plataformas de orquestração de contêineres
 
@@ -3012,13 +3112,13 @@ Dockerfile
 
 * * *
 
-<a name="topic-353"></a>
+`<a name="topic-353"></a>`
 
 ## Tópico 353: implantação e provisionamento da VM
 
 * * *
 
-<a name="topic-353.1"></a>
+`<a name="topic-353.1"></a>`
 
 ### 353.1 Ferramentas de gerenciamento de nuvem
 
@@ -3055,7 +3155,7 @@ Terraform
 
 * * *
 
-<a name="topic-353.2"></a>
+`<a name="topic-353.2"></a>`
 
 ### 353.2 Packer
 
@@ -3089,7 +3189,7 @@ packer
 
 * * *
 
-<a name="topic-353.3"></a>
+`<a name="topic-353.3"></a>`
 
 ### 353.3 Cloud-Init
 
@@ -3128,7 +3228,7 @@ user-data
 
 * * *
 
-<a name="topic-353.4"></a>
+`<a name="topic-353.4"></a>`
 
 ### 353.4 Vagrant
 
@@ -3364,6 +3464,7 @@ Link do projeto:<https://github.com/marcossilvestrini/learning-lpic-3-305-300>
     -   [Lxd canônico](https://canonical.com/lxd)
     -   [LXD Github canônico](https://github.com/canonical/lxd)
     -   [Documentação LXD](https://linuxcontainers.org/lxd/docs/master/)
+    -   [Imagens de contêiner Linux](https://images.linuxcontainers.org/)
 -   [OpenStack Docs](<>)
     -   [Redhat](https://www.redhat.com/pt-br/topics/openstack)
 -   [Aberto vswitch](<>)
