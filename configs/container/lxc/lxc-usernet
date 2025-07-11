@@ -1,0 +1,2 @@
+# USERNAME TYPE BRIDGE COUNT
+vagrant veth lxcbr0 10
