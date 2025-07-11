@@ -4384,6 +4384,41 @@ lxc (including relevant subcommands)
 </span><span class="code-line line-number" line="54"><span class="token function">sudo</span> lsns <span class="token parameter variable">-p</span> <span class="token operator">&#x3C;</span>LXC_CONTAINER_PID<span class="token operator">></span>
 </span><span class="code-line line-number" line="55"><span class="token function">sudo</span> lsns <span class="token parameter variable">-p</span> <span class="token variable"><span class="token variable">$(</span><span class="token function">sudo</span> lxc-info <span class="token parameter variable">-n</span> server1 <span class="token operator">|</span> <span class="token function">awk</span> <span class="token string">'/PID:/ { print $2 }'</span><span class="token variable">)</span></span>
 </span><span class="code-line line-number" line="56">
+</span><span class="code-line line-number" line="57"><span class="token comment"># create unprivileged container</span>
+</span><span class="code-line line-number" line="58">
+</span><span class="code-line line-number" line="59"><span class="token comment"># cat /etc/subuid</span>
+</span><span class="code-line line-number" line="60">
+</span><span class="code-line line-number" line="61"><span class="token comment">## create directory for unprivileged container</span>
+</span><span class="code-line line-number" line="62"><span class="token function">mkdir</span> <span class="token parameter variable">-p</span> /home/vagrant/.config/lxc
+</span><span class="code-line line-number" line="63">
+</span><span class="code-line line-number" line="64"><span class="token comment">## copy default config</span>
+</span><span class="code-line line-number" line="65"><span class="token function">cp</span> /etc/lxc/default.conf /home/vagrant/.config/lxc/
+</span><span class="code-line line-number" line="66">
+</span><span class="code-line line-number" line="67"><span class="token comment">## configure subordinate user and group IDs</span>
+</span><span class="code-line line-number" line="68"><span class="token function">vim</span> /home/vagrant/.config/lxc/default.conf
+</span><span class="code-line line-number" line="69">
+</span><span class="code-line line-number" line="70"><span class="token comment">## add the following lines</span>
+</span><span class="code-line line-number" line="71">lxc.idmap <span class="token operator">=</span> u <span class="token number">0</span> <span class="token number">100000</span> <span class="token number">65536</span>
+</span><span class="code-line line-number" line="72">lxc.idmap <span class="token operator">=</span> g <span class="token number">0</span> <span class="token number">100000</span> <span class="token number">65536</span>
+</span><span class="code-line line-number" line="73">
+</span><span class="code-line line-number" line="74"><span class="token comment">## configure lxc-usernet</span>
+</span><span class="code-line line-number" line="75"><span class="token function">sudo</span> <span class="token function">vim</span> /etc/lxc/lxc-usernet
+</span><span class="code-line line-number" line="76">
+</span><span class="code-line line-number" line="77"><span class="token comment">## add the following line</span>
+</span><span class="code-line line-number" line="78">vagrant veth lxcbr0 <span class="token number">10</span>
+</span><span class="code-line line-number" line="79">
+</span><span class="code-line line-number" line="80"><span class="token comment">## create unprivileged container</span>
+</span><span class="code-line line-number" line="81">lxc-create <span class="token parameter variable">-n</span> unprivileged <span class="token parameter variable">-t</span> download -- <span class="token parameter variable">-d</span> ubuntu <span class="token parameter variable">-r</span> focal <span class="token parameter variable">-a</span> amd64
+</span><span class="code-line line-number" line="82">
+</span><span class="code-line line-number" line="83"><span class="token comment">## check container status</span>
+</span><span class="code-line line-number" line="84">lxc-ls <span class="token parameter variable">-f</span>
+</span><span class="code-line line-number" line="85">
+</span><span class="code-line line-number" line="86"><span class="token comment">## start unprivileged container</span>
+</span><span class="code-line line-number" line="87">lxc-start <span class="token parameter variable">-n</span> unprivileged <span class="token parameter variable">--logpriority</span><span class="token operator">=</span>DEBUG <span class="token parameter variable">--logfile</span><span class="token operator">=</span>lxc.log
+</span><span class="code-line line-number" line="88">
+</span><span class="code-line line-number" line="89"><span class="token comment">## unprivileged container files</span>
+</span><span class="code-line line-number" line="90"><span class="token function">ls</span> .local/share/lxc/unprivileged/
+</span><span class="code-line line-number" line="91">
 </span></code><div onclick="copied(this)" data-code="####### Examples of lxc commands #####
 
 # check lxc version
@@ -4439,6 +4474,41 @@ ls /tmp
 # get lxc namespaces
 sudo lsns -p <LXC_CONTAINER_PID>
 sudo lsns -p $(sudo lxc-info -n server1 | awk &#x27;/PID:/ { print $2 }&#x27;)
+
+# create unprivileged container
+
+# cat /etc/subuid
+
+## create directory for unprivileged container
+mkdir -p /home/vagrant/.config/lxc
+
+## copy default config
+cp /etc/lxc/default.conf /home/vagrant/.config/lxc/
+
+## configure subordinate user and group IDs
+vim /home/vagrant/.config/lxc/default.conf
+
+## add the following lines
+lxc.idmap = u 0 100000 65536
+lxc.idmap = g 0 100000 65536
+
+## configure lxc-usernet
+sudo vim /etc/lxc/lxc-usernet
+
+## add the following line
+vagrant veth lxcbr0 10
+
+## create unprivileged container
+lxc-create -n unprivileged -t download -- -d ubuntu -r focal -a amd64
+
+## check container status
+lxc-ls -f
+
+## start unprivileged container
+lxc-start -n unprivileged --logpriority=DEBUG --logfile=lxc.log
+
+## unprivileged container files
+ls .local/share/lxc/unprivileged/
 
 " class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
     <p align="right">(<a href="#topic-352.2">back to sub topic 352.2</a>)</p>
