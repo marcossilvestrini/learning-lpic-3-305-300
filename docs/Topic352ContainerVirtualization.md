@@ -1193,6 +1193,41 @@ ls /tmp
 sudo lsns -p <LXC_CONTAINER_PID>
 sudo lsns -p $(sudo lxc-info -n server1 | awk '/PID:/ { print $2 }')
 
+# create unprivileged container
+
+# cat /etc/subuid
+
+## create directory for unprivileged container
+mkdir -p /home/vagrant/.config/lxc
+
+## copy default config
+cp /etc/lxc/default.conf /home/vagrant/.config/lxc/
+
+## configure subordinate user and group IDs
+vim /home/vagrant/.config/lxc/default.conf
+
+## add the following lines
+lxc.idmap = u 0 100000 65536
+lxc.idmap = g 0 100000 65536
+
+## configure lxc-usernet
+sudo vim /etc/lxc/lxc-usernet
+
+## add the following line
+vagrant veth lxcbr0 10
+
+## create unprivileged container
+lxc-create -n unprivileged -t download -- -d ubuntu -r focal -a amd64
+
+## check container status
+lxc-ls -f
+
+## start unprivileged container
+lxc-start -n unprivileged --logpriority=DEBUG --logfile=lxc.log
+
+## unprivileged container files
+ls .local/share/lxc/unprivileged/
+
 ```
 
 <p align="right">(<a href="#topic-352.2">back to sub topic 352.2</a>)</p>
