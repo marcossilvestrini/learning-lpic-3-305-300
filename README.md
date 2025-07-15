@@ -3032,6 +3032,15 @@ For LXD lab, you can use this script: [lxd.sh](scripts/container/lxd.sh)
 ```sh
 ####### Examples of lxc commands #####
 
+# lxc configuration
+/etc/default/lxc
+/etc/default/lxc-net
+/etc/lxc/default.conf
+/usr/share/lxc/
+
+# lxc container configuration
+/var/lib/lxc/
+
 # check lxc version
 lxc-create --version
 
@@ -3049,6 +3058,12 @@ sudo lxc-create --name server2 --template download -- --dist alpine --release 3.
 # get container info
 sudo lxc-info -n debian01
 
+# get container PID
+sudo lxc-info -n debian01 -pH
+
+# get container config
+sudo lxc-checkconfig -n debian01
+
 # start container
 sudo lxc-start -n debian01
 
@@ -3065,17 +3080,11 @@ sudo lxc-attach -n debian01 -- bash -c ls
 # delete container
 sudo lxc-destroy -n debian01
 
+# delete container and snapshot
+sudo lxc-destroy -n -s debian01
+
 # rootfs of a container
 sudo ls -l /var/lib/lxc/server1/rootfs
-
-# lxc configuration
-/etc/default/lxc
-/etc/default/lxc-net
-/etc/lxc/default.conf
-/usr/share/lxc/
-
-# lxc container configuration
-/var/lib/lxc/
 
 # modify rootfs of a container
 sudo touch  /var/lib/lxc/server1/rootfs/tmp/test_toofs_file
@@ -3084,17 +3093,60 @@ ls /tmp
 
 # get lxc namespaces
 sudo lsns -p <LXC_CONTAINER_PID>
+sudo lsns -p $(sudo lxc-info server2 -pH)
 sudo lsns -p $(sudo lxc-info -n server1 | awk '/PID:/ { print $2 }')
 
-# create unprivileged container
+# unprivileged container namespaces
+lsns -p $(lxc-info -n ubuntu | awk '/PID:/ { print $2 }')
 
-# cat /etc/subuid
+# get container resource 
+sudo lxc-top
+
+# create a container snapshot
+sudo lxc-stop -k -n debian01
+sudo lxc-snapshot -n debian01
+
+# list snapshots
+sudo lxc-snapshot -n debian01 -L
+
+# restore snapshot
+sudo lxc-stop -n debian01
+sudo lxc-snapshot -n debian01 -r snap0
+
+# delete snapshot
+sudo lxc-snapshot -n debian01 -d snap0
+
+# create a new container with snapshot
+sudo lxc-snapshot -n debian01 -r snap0 -N debian02
+
+# create container checkpoint (privileged container)
+sudo lxc-checkpoint -n debian01 -s -D /home/vagrant/.config/lxc/checkpoints/debian01-checkpoint01.file 
+
+# define memory container limits with cgroups
+sudo lxc-cgroup -n debian01 memory.max 262144000 #(250 MB × 1.048.576 bytes = 262144000 bytes)
+
+# define CPU cores of container  with cgroups
+sudo lxc-cgroup -n debian01 cpuset.cpus 0-2
+
+# get container cgroup limits
+sudo cgget -g :lxc.payload.debian01 -a |grep memory.max
+sudo cgget -g :lxc.payload.debian01 -a |grep cpuset
+
+# set container cgroup limits in file
+sudo vim /var/lib/lxc/debian01/config
+# add the following lines
+lxc.cgroup2.cpuset.cpus = "5-6"
+
+######## create unprivileged container #######
 
 ## create directory for unprivileged container
 mkdir -p /home/vagrant/.config/lxc
 
 ## copy default config
 cp /etc/lxc/default.conf /home/vagrant/.config/lxc/
+
+## get subordinate user and group IDs
+cat /etc/subuid
 
 ## configure subordinate user and group IDs
 vim /home/vagrant/.config/lxc/default.conf
@@ -3110,13 +3162,19 @@ sudo vim /etc/lxc/lxc-usernet
 vagrant veth lxcbr0 10
 
 ## create unprivileged container
-lxc-create -n unprivileged -t download -- -d ubuntu -r focal -a amd64
+lxc-create -n unprivileged -t download -- -d ubuntu -r jammy -a amd64
 
-## check container status
-lxc-ls -f
+## set permissions for unprivileged container
+sudo setfacl -m u:100000:--x /home/vagrant
+sudo setfacl -m u:100000:--x /home/vagrant/.config
+sudo setfacl -m u:100000:--x /home/vagrant/.local
+sudo setfacl -m u:100000:--x /home/vagrant/.local/share
 
 ## start unprivileged container
 lxc-start -n unprivileged --logpriority=DEBUG --logfile=lxc.log
+
+## check container status
+lxc-ls -f
 
 ## unprivileged container files
 ls .local/share/lxc/unprivileged/
