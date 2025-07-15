@@ -4330,96 +4330,163 @@ lxc (including relevant subcommands)
     <h5 id="lxc"><a class="anchor" aria-hidden="true" tabindex="-1" href="#lxc"><span class="octicon octicon-link"></span></a>lxc</h5>
     <pre class="language-sh"><code class="language-sh code-highlight"><span class="code-line line-number" line="1"><span class="token comment">####### Examples of lxc commands #####</span>
 </span><span class="code-line line-number" line="2">
-</span><span class="code-line line-number" line="3"><span class="token comment"># check lxc version</span>
-</span><span class="code-line line-number" line="4">lxc-create <span class="token parameter variable">--version</span>
-</span><span class="code-line line-number" line="5">
-</span><span class="code-line line-number" line="6"><span class="token comment"># list containers</span>
-</span><span class="code-line line-number" line="7"><span class="token function">sudo</span> lxc-ls <span class="token parameter variable">--fancy</span>
-</span><span class="code-line line-number" line="8"><span class="token function">sudo</span> lxc-ls <span class="token parameter variable">-f</span>
-</span><span class="code-line line-number" line="9">
-</span><span class="code-line line-number" line="10"><span class="token comment"># create a priveleged container</span>
-</span><span class="code-line line-number" line="11"><span class="token function">sudo</span> lxc-create <span class="token parameter variable">-n</span> busybox <span class="token parameter variable">-t</span> busybox
-</span><span class="code-line line-number" line="12">
-</span><span class="code-line line-number" line="13"><span class="token comment"># create a priveleged container with template</span>
-</span><span class="code-line line-number" line="14"><span class="token function">sudo</span> lxc-create <span class="token parameter variable">-n</span> debian01 <span class="token parameter variable">-t</span> download
-</span><span class="code-line line-number" line="15"><span class="token function">sudo</span> lxc-create <span class="token parameter variable">--name</span> server2 <span class="token parameter variable">--template</span> download -- <span class="token parameter variable">--dist</span> alpine <span class="token parameter variable">--release</span> <span class="token number">3.19</span> <span class="token parameter variable">--arch</span> amd64
-</span><span class="code-line line-number" line="16">
-</span><span class="code-line line-number" line="17"><span class="token comment"># get container info</span>
-</span><span class="code-line line-number" line="18"><span class="token function">sudo</span> lxc-info <span class="token parameter variable">-n</span> debian01
-</span><span class="code-line line-number" line="19">
-</span><span class="code-line line-number" line="20"><span class="token comment"># start container</span>
-</span><span class="code-line line-number" line="21"><span class="token function">sudo</span> lxc-start <span class="token parameter variable">-n</span> debian01
-</span><span class="code-line line-number" line="22">
-</span><span class="code-line line-number" line="23"><span class="token comment"># stop container</span>
-</span><span class="code-line line-number" line="24"><span class="token function">sudo</span> lxc-stop <span class="token parameter variable">-n</span> debian01
+</span><span class="code-line line-number" line="3"><span class="token comment"># lxc configuration</span>
+</span><span class="code-line line-number" line="4">/etc/default/lxc
+</span><span class="code-line line-number" line="5">/etc/default/lxc-net
+</span><span class="code-line line-number" line="6">/etc/lxc/default.conf
+</span><span class="code-line line-number" line="7">/usr/share/lxc/
+</span><span class="code-line line-number" line="8">
+</span><span class="code-line line-number" line="9"><span class="token comment"># lxc container configuration</span>
+</span><span class="code-line line-number" line="10">/var/lib/lxc/
+</span><span class="code-line line-number" line="11">
+</span><span class="code-line line-number" line="12"><span class="token comment"># check lxc version</span>
+</span><span class="code-line line-number" line="13">lxc-create <span class="token parameter variable">--version</span>
+</span><span class="code-line line-number" line="14">
+</span><span class="code-line line-number" line="15"><span class="token comment"># list containers</span>
+</span><span class="code-line line-number" line="16"><span class="token function">sudo</span> lxc-ls <span class="token parameter variable">--fancy</span>
+</span><span class="code-line line-number" line="17"><span class="token function">sudo</span> lxc-ls <span class="token parameter variable">-f</span>
+</span><span class="code-line line-number" line="18">
+</span><span class="code-line line-number" line="19"><span class="token comment"># create a priveleged container</span>
+</span><span class="code-line line-number" line="20"><span class="token function">sudo</span> lxc-create <span class="token parameter variable">-n</span> busybox <span class="token parameter variable">-t</span> busybox
+</span><span class="code-line line-number" line="21">
+</span><span class="code-line line-number" line="22"><span class="token comment"># create a priveleged container with template</span>
+</span><span class="code-line line-number" line="23"><span class="token function">sudo</span> lxc-create <span class="token parameter variable">-n</span> debian01 <span class="token parameter variable">-t</span> download
+</span><span class="code-line line-number" line="24"><span class="token function">sudo</span> lxc-create <span class="token parameter variable">--name</span> server2 <span class="token parameter variable">--template</span> download -- <span class="token parameter variable">--dist</span> alpine <span class="token parameter variable">--release</span> <span class="token number">3.19</span> <span class="token parameter variable">--arch</span> amd64
 </span><span class="code-line line-number" line="25">
-</span><span class="code-line line-number" line="26"><span class="token comment"># connect to container</span>
-</span><span class="code-line line-number" line="27"><span class="token function">sudo</span> lxc-attach <span class="token parameter variable">-n</span> debian01
+</span><span class="code-line line-number" line="26"><span class="token comment"># get container info</span>
+</span><span class="code-line line-number" line="27"><span class="token function">sudo</span> lxc-info <span class="token parameter variable">-n</span> debian01
 </span><span class="code-line line-number" line="28">
-</span><span class="code-line line-number" line="29"><span class="token comment"># excute a command in container</span>
-</span><span class="code-line line-number" line="30"><span class="token function">sudo</span> lxc-attach <span class="token parameter variable">-n</span> debian01 --  <span class="token builtin class-name">echo</span> <span class="token string">"Hello from"</span>
-</span><span class="code-line line-number" line="31"><span class="token function">sudo</span> lxc-attach <span class="token parameter variable">-n</span> debian01 -- <span class="token function">bash</span> <span class="token parameter variable">-c</span> <span class="token function">ls</span>
-</span><span class="code-line line-number" line="32">
-</span><span class="code-line line-number" line="33"><span class="token comment"># delete container</span>
-</span><span class="code-line line-number" line="34"><span class="token function">sudo</span> lxc-destroy <span class="token parameter variable">-n</span> debian01
-</span><span class="code-line line-number" line="35">
-</span><span class="code-line line-number" line="36"><span class="token comment"># rootfs of a container</span>
-</span><span class="code-line line-number" line="37"><span class="token function">sudo</span> <span class="token function">ls</span> <span class="token parameter variable">-l</span> /var/lib/lxc/server1/rootfs
-</span><span class="code-line line-number" line="38">
-</span><span class="code-line line-number" line="39"><span class="token comment"># lxc configuration</span>
-</span><span class="code-line line-number" line="40">/etc/default/lxc
-</span><span class="code-line line-number" line="41">/etc/default/lxc-net
-</span><span class="code-line line-number" line="42">/etc/lxc/default.conf
-</span><span class="code-line line-number" line="43">/usr/share/lxc/
-</span><span class="code-line line-number" line="44">
-</span><span class="code-line line-number" line="45"><span class="token comment"># lxc container configuration</span>
-</span><span class="code-line line-number" line="46">/var/lib/lxc/
+</span><span class="code-line line-number" line="29"><span class="token comment"># get container PID</span>
+</span><span class="code-line line-number" line="30"><span class="token function">sudo</span> lxc-info <span class="token parameter variable">-n</span> debian01 <span class="token parameter variable">-pH</span>
+</span><span class="code-line line-number" line="31">
+</span><span class="code-line line-number" line="32"><span class="token comment"># get container config</span>
+</span><span class="code-line line-number" line="33"><span class="token function">sudo</span> lxc-checkconfig <span class="token parameter variable">-n</span> debian01
+</span><span class="code-line line-number" line="34">
+</span><span class="code-line line-number" line="35"><span class="token comment"># start container</span>
+</span><span class="code-line line-number" line="36"><span class="token function">sudo</span> lxc-start <span class="token parameter variable">-n</span> debian01
+</span><span class="code-line line-number" line="37">
+</span><span class="code-line line-number" line="38"><span class="token comment"># stop container</span>
+</span><span class="code-line line-number" line="39"><span class="token function">sudo</span> lxc-stop <span class="token parameter variable">-n</span> debian01
+</span><span class="code-line line-number" line="40">
+</span><span class="code-line line-number" line="41"><span class="token comment"># connect to container</span>
+</span><span class="code-line line-number" line="42"><span class="token function">sudo</span> lxc-attach <span class="token parameter variable">-n</span> debian01
+</span><span class="code-line line-number" line="43">
+</span><span class="code-line line-number" line="44"><span class="token comment"># excute a command in container</span>
+</span><span class="code-line line-number" line="45"><span class="token function">sudo</span> lxc-attach <span class="token parameter variable">-n</span> debian01 --  <span class="token builtin class-name">echo</span> <span class="token string">"Hello from"</span>
+</span><span class="code-line line-number" line="46"><span class="token function">sudo</span> lxc-attach <span class="token parameter variable">-n</span> debian01 -- <span class="token function">bash</span> <span class="token parameter variable">-c</span> <span class="token function">ls</span>
 </span><span class="code-line line-number" line="47">
-</span><span class="code-line line-number" line="48"><span class="token comment"># modify rootfs of a container</span>
-</span><span class="code-line line-number" line="49"><span class="token function">sudo</span> <span class="token function">touch</span>  /var/lib/lxc/server1/rootfs/tmp/test_toofs_file
-</span><span class="code-line line-number" line="50"><span class="token function">sudo</span> lxc-attach server1
-</span><span class="code-line line-number" line="51"><span class="token function">ls</span> /tmp
-</span><span class="code-line line-number" line="52">
-</span><span class="code-line line-number" line="53"><span class="token comment"># get lxc namespaces</span>
-</span><span class="code-line line-number" line="54"><span class="token function">sudo</span> lsns <span class="token parameter variable">-p</span> <span class="token operator">&#x3C;</span>LXC_CONTAINER_PID<span class="token operator">></span>
-</span><span class="code-line line-number" line="55"><span class="token function">sudo</span> lsns <span class="token parameter variable">-p</span> <span class="token variable"><span class="token variable">$(</span><span class="token function">sudo</span> lxc-info <span class="token parameter variable">-n</span> server1 <span class="token operator">|</span> <span class="token function">awk</span> <span class="token string">'/PID:/ { print $2 }'</span><span class="token variable">)</span></span>
+</span><span class="code-line line-number" line="48"><span class="token comment"># delete container</span>
+</span><span class="code-line line-number" line="49"><span class="token function">sudo</span> lxc-destroy <span class="token parameter variable">-n</span> debian01
+</span><span class="code-line line-number" line="50">
+</span><span class="code-line line-number" line="51"><span class="token comment"># delete container and snapshot</span>
+</span><span class="code-line line-number" line="52"><span class="token function">sudo</span> lxc-destroy <span class="token parameter variable">-n</span> <span class="token parameter variable">-s</span> debian01
+</span><span class="code-line line-number" line="53">
+</span><span class="code-line line-number" line="54"><span class="token comment"># rootfs of a container</span>
+</span><span class="code-line line-number" line="55"><span class="token function">sudo</span> <span class="token function">ls</span> <span class="token parameter variable">-l</span> /var/lib/lxc/server1/rootfs
 </span><span class="code-line line-number" line="56">
-</span><span class="code-line line-number" line="57"><span class="token comment"># create unprivileged container</span>
-</span><span class="code-line line-number" line="58">
-</span><span class="code-line line-number" line="59"><span class="token comment"># cat /etc/subuid</span>
-</span><span class="code-line line-number" line="60">
-</span><span class="code-line line-number" line="61"><span class="token comment">## create directory for unprivileged container</span>
-</span><span class="code-line line-number" line="62"><span class="token function">mkdir</span> <span class="token parameter variable">-p</span> /home/vagrant/.config/lxc
-</span><span class="code-line line-number" line="63">
-</span><span class="code-line line-number" line="64"><span class="token comment">## copy default config</span>
-</span><span class="code-line line-number" line="65"><span class="token function">cp</span> /etc/lxc/default.conf /home/vagrant/.config/lxc/
+</span><span class="code-line line-number" line="57"><span class="token comment"># modify rootfs of a container</span>
+</span><span class="code-line line-number" line="58"><span class="token function">sudo</span> <span class="token function">touch</span>  /var/lib/lxc/server1/rootfs/tmp/test_toofs_file
+</span><span class="code-line line-number" line="59"><span class="token function">sudo</span> lxc-attach server1
+</span><span class="code-line line-number" line="60"><span class="token function">ls</span> /tmp
+</span><span class="code-line line-number" line="61">
+</span><span class="code-line line-number" line="62"><span class="token comment"># get lxc namespaces</span>
+</span><span class="code-line line-number" line="63"><span class="token function">sudo</span> lsns <span class="token parameter variable">-p</span> <span class="token operator">&#x3C;</span>LXC_CONTAINER_PID<span class="token operator">></span>
+</span><span class="code-line line-number" line="64"><span class="token function">sudo</span> lsns <span class="token parameter variable">-p</span> <span class="token variable"><span class="token variable">$(</span><span class="token function">sudo</span> lxc-info server2 <span class="token parameter variable">-pH</span><span class="token variable">)</span></span>
+</span><span class="code-line line-number" line="65"><span class="token function">sudo</span> lsns <span class="token parameter variable">-p</span> <span class="token variable"><span class="token variable">$(</span><span class="token function">sudo</span> lxc-info <span class="token parameter variable">-n</span> server1 <span class="token operator">|</span> <span class="token function">awk</span> <span class="token string">'/PID:/ { print $2 }'</span><span class="token variable">)</span></span>
 </span><span class="code-line line-number" line="66">
-</span><span class="code-line line-number" line="67"><span class="token comment">## configure subordinate user and group IDs</span>
-</span><span class="code-line line-number" line="68"><span class="token function">vim</span> /home/vagrant/.config/lxc/default.conf
+</span><span class="code-line line-number" line="67"><span class="token comment"># unprivileged container namespaces</span>
+</span><span class="code-line line-number" line="68">lsns <span class="token parameter variable">-p</span> <span class="token variable"><span class="token variable">$(</span>lxc-info <span class="token parameter variable">-n</span> ubuntu <span class="token operator">|</span> <span class="token function">awk</span> <span class="token string">'/PID:/ { print $2 }'</span><span class="token variable">)</span></span>
 </span><span class="code-line line-number" line="69">
-</span><span class="code-line line-number" line="70"><span class="token comment">## add the following lines</span>
-</span><span class="code-line line-number" line="71">lxc.idmap <span class="token operator">=</span> u <span class="token number">0</span> <span class="token number">100000</span> <span class="token number">65536</span>
-</span><span class="code-line line-number" line="72">lxc.idmap <span class="token operator">=</span> g <span class="token number">0</span> <span class="token number">100000</span> <span class="token number">65536</span>
-</span><span class="code-line line-number" line="73">
-</span><span class="code-line line-number" line="74"><span class="token comment">## configure lxc-usernet</span>
-</span><span class="code-line line-number" line="75"><span class="token function">sudo</span> <span class="token function">vim</span> /etc/lxc/lxc-usernet
+</span><span class="code-line line-number" line="70"><span class="token comment"># get container resource </span>
+</span><span class="code-line line-number" line="71"><span class="token function">sudo</span> lxc-top
+</span><span class="code-line line-number" line="72">
+</span><span class="code-line line-number" line="73"><span class="token comment"># create a container snapshot</span>
+</span><span class="code-line line-number" line="74"><span class="token function">sudo</span> lxc-stop <span class="token parameter variable">-k</span> <span class="token parameter variable">-n</span> debian01
+</span><span class="code-line line-number" line="75"><span class="token function">sudo</span> lxc-snapshot <span class="token parameter variable">-n</span> debian01
 </span><span class="code-line line-number" line="76">
-</span><span class="code-line line-number" line="77"><span class="token comment">## add the following line</span>
-</span><span class="code-line line-number" line="78">vagrant veth lxcbr0 <span class="token number">10</span>
+</span><span class="code-line line-number" line="77"><span class="token comment"># list snapshots</span>
+</span><span class="code-line line-number" line="78"><span class="token function">sudo</span> lxc-snapshot <span class="token parameter variable">-n</span> debian01 <span class="token parameter variable">-L</span>
 </span><span class="code-line line-number" line="79">
-</span><span class="code-line line-number" line="80"><span class="token comment">## create unprivileged container</span>
-</span><span class="code-line line-number" line="81">lxc-create <span class="token parameter variable">-n</span> unprivileged <span class="token parameter variable">-t</span> download -- <span class="token parameter variable">-d</span> ubuntu <span class="token parameter variable">-r</span> focal <span class="token parameter variable">-a</span> amd64
-</span><span class="code-line line-number" line="82">
-</span><span class="code-line line-number" line="83"><span class="token comment">## check container status</span>
-</span><span class="code-line line-number" line="84">lxc-ls <span class="token parameter variable">-f</span>
-</span><span class="code-line line-number" line="85">
-</span><span class="code-line line-number" line="86"><span class="token comment">## start unprivileged container</span>
-</span><span class="code-line line-number" line="87">lxc-start <span class="token parameter variable">-n</span> unprivileged <span class="token parameter variable">--logpriority</span><span class="token operator">=</span>DEBUG <span class="token parameter variable">--logfile</span><span class="token operator">=</span>lxc.log
-</span><span class="code-line line-number" line="88">
-</span><span class="code-line line-number" line="89"><span class="token comment">## unprivileged container files</span>
-</span><span class="code-line line-number" line="90"><span class="token function">ls</span> .local/share/lxc/unprivileged/
-</span><span class="code-line line-number" line="91">
+</span><span class="code-line line-number" line="80"><span class="token comment"># restore snapshot</span>
+</span><span class="code-line line-number" line="81"><span class="token function">sudo</span> lxc-stop <span class="token parameter variable">-n</span> debian01
+</span><span class="code-line line-number" line="82"><span class="token function">sudo</span> lxc-snapshot <span class="token parameter variable">-n</span> debian01 <span class="token parameter variable">-r</span> snap0
+</span><span class="code-line line-number" line="83">
+</span><span class="code-line line-number" line="84"><span class="token comment"># delete snapshot</span>
+</span><span class="code-line line-number" line="85"><span class="token function">sudo</span> lxc-snapshot <span class="token parameter variable">-n</span> debian01 <span class="token parameter variable">-d</span> snap0
+</span><span class="code-line line-number" line="86">
+</span><span class="code-line line-number" line="87"><span class="token comment"># create a new container with snapshot</span>
+</span><span class="code-line line-number" line="88"><span class="token function">sudo</span> lxc-snapshot <span class="token parameter variable">-n</span> debian01 <span class="token parameter variable">-r</span> snap0 <span class="token parameter variable">-N</span> debian02
+</span><span class="code-line line-number" line="89">
+</span><span class="code-line line-number" line="90"><span class="token comment"># create container checkpoint (privileged container)</span>
+</span><span class="code-line line-number" line="91"><span class="token function">sudo</span> lxc-checkpoint <span class="token parameter variable">-n</span> debian01 <span class="token parameter variable">-s</span> <span class="token parameter variable">-D</span> /home/vagrant/.config/lxc/checkpoints/debian01-checkpoint01.file 
+</span><span class="code-line line-number" line="92">
+</span><span class="code-line line-number" line="93"><span class="token comment"># define memory container limits with cgroups</span>
+</span><span class="code-line line-number" line="94"><span class="token function">sudo</span> lxc-cgroup <span class="token parameter variable">-n</span> debian01 memory.max <span class="token number">262144000</span> <span class="token comment">#(250 MB × 1.048.576 bytes = 262144000 bytes)</span>
+</span><span class="code-line line-number" line="95">
+</span><span class="code-line line-number" line="96"><span class="token comment"># define CPU cores of container  with cgroups</span>
+</span><span class="code-line line-number" line="97"><span class="token function">sudo</span> lxc-cgroup <span class="token parameter variable">-n</span> debian01 cpuset.cpus <span class="token number">0</span>-2
+</span><span class="code-line line-number" line="98">
+</span><span class="code-line line-number" line="99"><span class="token comment"># get container cgroup limits</span>
+</span><span class="code-line line-number" line="100"><span class="token function">sudo</span> cgget <span class="token parameter variable">-g</span> :lxc.payload.debian01 <span class="token parameter variable">-a</span> <span class="token operator">|</span><span class="token function">grep</span> memory.max
+</span><span class="code-line line-number" line="101"><span class="token function">sudo</span> cgget <span class="token parameter variable">-g</span> :lxc.payload.debian01 <span class="token parameter variable">-a</span> <span class="token operator">|</span><span class="token function">grep</span> cpuset
+</span><span class="code-line line-number" line="102">
+</span><span class="code-line line-number" line="103"><span class="token comment"># set container cgroup limits in file</span>
+</span><span class="code-line line-number" line="104"><span class="token function">sudo</span> <span class="token function">vim</span> /var/lib/lxc/debian01/config
+</span><span class="code-line line-number" line="105"><span class="token comment"># add the following lines</span>
+</span><span class="code-line line-number" line="106">lxc.cgroup2.cpuset.cpus <span class="token operator">=</span> <span class="token string">"5-6"</span>
+</span><span class="code-line line-number" line="107">
+</span><span class="code-line line-number" line="108"><span class="token comment">######## create unprivileged container #######</span>
+</span><span class="code-line line-number" line="109">
+</span><span class="code-line line-number" line="110"><span class="token comment">## create directory for unprivileged container</span>
+</span><span class="code-line line-number" line="111"><span class="token function">mkdir</span> <span class="token parameter variable">-p</span> /home/vagrant/.config/lxc
+</span><span class="code-line line-number" line="112">
+</span><span class="code-line line-number" line="113"><span class="token comment">## copy default config</span>
+</span><span class="code-line line-number" line="114"><span class="token function">cp</span> /etc/lxc/default.conf /home/vagrant/.config/lxc/
+</span><span class="code-line line-number" line="115">
+</span><span class="code-line line-number" line="116"><span class="token comment">## get subordinate user and group IDs</span>
+</span><span class="code-line line-number" line="117"><span class="token function">cat</span> /etc/subuid
+</span><span class="code-line line-number" line="118">
+</span><span class="code-line line-number" line="119"><span class="token comment">## configure subordinate user and group IDs</span>
+</span><span class="code-line line-number" line="120"><span class="token function">vim</span> /home/vagrant/.config/lxc/default.conf
+</span><span class="code-line line-number" line="121">
+</span><span class="code-line line-number" line="122"><span class="token comment">## add the following lines</span>
+</span><span class="code-line line-number" line="123">lxc.idmap <span class="token operator">=</span> u <span class="token number">0</span> <span class="token number">100000</span> <span class="token number">65536</span>
+</span><span class="code-line line-number" line="124">lxc.idmap <span class="token operator">=</span> g <span class="token number">0</span> <span class="token number">100000</span> <span class="token number">65536</span>
+</span><span class="code-line line-number" line="125">
+</span><span class="code-line line-number" line="126"><span class="token comment">## configure lxc-usernet</span>
+</span><span class="code-line line-number" line="127"><span class="token function">sudo</span> <span class="token function">vim</span> /etc/lxc/lxc-usernet
+</span><span class="code-line line-number" line="128">
+</span><span class="code-line line-number" line="129"><span class="token comment">## add the following line</span>
+</span><span class="code-line line-number" line="130">vagrant veth lxcbr0 <span class="token number">10</span>
+</span><span class="code-line line-number" line="131">
+</span><span class="code-line line-number" line="132"><span class="token comment">## create unprivileged container</span>
+</span><span class="code-line line-number" line="133">lxc-create <span class="token parameter variable">-n</span> unprivileged <span class="token parameter variable">-t</span> download -- <span class="token parameter variable">-d</span> ubuntu <span class="token parameter variable">-r</span> jammy <span class="token parameter variable">-a</span> amd64
+</span><span class="code-line line-number" line="134">
+</span><span class="code-line line-number" line="135"><span class="token comment">## set permissions for unprivileged container</span>
+</span><span class="code-line line-number" line="136"><span class="token function">sudo</span> setfacl <span class="token parameter variable">-m</span> u:100000:--x /home/vagrant
+</span><span class="code-line line-number" line="137"><span class="token function">sudo</span> setfacl <span class="token parameter variable">-m</span> u:100000:--x /home/vagrant/.config
+</span><span class="code-line line-number" line="138"><span class="token function">sudo</span> setfacl <span class="token parameter variable">-m</span> u:100000:--x /home/vagrant/.local
+</span><span class="code-line line-number" line="139"><span class="token function">sudo</span> setfacl <span class="token parameter variable">-m</span> u:100000:--x /home/vagrant/.local/share
+</span><span class="code-line line-number" line="140">
+</span><span class="code-line line-number" line="141"><span class="token comment">## start unprivileged container</span>
+</span><span class="code-line line-number" line="142">lxc-start <span class="token parameter variable">-n</span> unprivileged <span class="token parameter variable">--logpriority</span><span class="token operator">=</span>DEBUG <span class="token parameter variable">--logfile</span><span class="token operator">=</span>lxc.log
+</span><span class="code-line line-number" line="143">
+</span><span class="code-line line-number" line="144"><span class="token comment">## check container status</span>
+</span><span class="code-line line-number" line="145">lxc-ls <span class="token parameter variable">-f</span>
+</span><span class="code-line line-number" line="146">
+</span><span class="code-line line-number" line="147"><span class="token comment">## unprivileged container files</span>
+</span><span class="code-line line-number" line="148"><span class="token function">ls</span> .local/share/lxc/unprivileged/
+</span><span class="code-line line-number" line="149">
 </span></code><div onclick="copied(this)" data-code="####### Examples of lxc commands #####
+
+# lxc configuration
+/etc/default/lxc
+/etc/default/lxc-net
+/etc/lxc/default.conf
+/usr/share/lxc/
+
+# lxc container configuration
+/var/lib/lxc/
 
 # check lxc version
 lxc-create --version
@@ -4438,6 +4505,12 @@ sudo lxc-create --name server2 --template download -- --dist alpine --release 3.
 # get container info
 sudo lxc-info -n debian01
 
+# get container PID
+sudo lxc-info -n debian01 -pH
+
+# get container config
+sudo lxc-checkconfig -n debian01
+
 # start container
 sudo lxc-start -n debian01
 
@@ -4454,17 +4527,11 @@ sudo lxc-attach -n debian01 -- bash -c ls
 # delete container
 sudo lxc-destroy -n debian01
 
+# delete container and snapshot
+sudo lxc-destroy -n -s debian01
+
 # rootfs of a container
 sudo ls -l /var/lib/lxc/server1/rootfs
-
-# lxc configuration
-/etc/default/lxc
-/etc/default/lxc-net
-/etc/lxc/default.conf
-/usr/share/lxc/
-
-# lxc container configuration
-/var/lib/lxc/
 
 # modify rootfs of a container
 sudo touch  /var/lib/lxc/server1/rootfs/tmp/test_toofs_file
@@ -4473,17 +4540,60 @@ ls /tmp
 
 # get lxc namespaces
 sudo lsns -p <LXC_CONTAINER_PID>
+sudo lsns -p $(sudo lxc-info server2 -pH)
 sudo lsns -p $(sudo lxc-info -n server1 | awk &#x27;/PID:/ { print $2 }&#x27;)
 
-# create unprivileged container
+# unprivileged container namespaces
+lsns -p $(lxc-info -n ubuntu | awk &#x27;/PID:/ { print $2 }&#x27;)
 
-# cat /etc/subuid
+# get container resource 
+sudo lxc-top
+
+# create a container snapshot
+sudo lxc-stop -k -n debian01
+sudo lxc-snapshot -n debian01
+
+# list snapshots
+sudo lxc-snapshot -n debian01 -L
+
+# restore snapshot
+sudo lxc-stop -n debian01
+sudo lxc-snapshot -n debian01 -r snap0
+
+# delete snapshot
+sudo lxc-snapshot -n debian01 -d snap0
+
+# create a new container with snapshot
+sudo lxc-snapshot -n debian01 -r snap0 -N debian02
+
+# create container checkpoint (privileged container)
+sudo lxc-checkpoint -n debian01 -s -D /home/vagrant/.config/lxc/checkpoints/debian01-checkpoint01.file 
+
+# define memory container limits with cgroups
+sudo lxc-cgroup -n debian01 memory.max 262144000 #(250 MB × 1.048.576 bytes = 262144000 bytes)
+
+# define CPU cores of container  with cgroups
+sudo lxc-cgroup -n debian01 cpuset.cpus 0-2
+
+# get container cgroup limits
+sudo cgget -g :lxc.payload.debian01 -a |grep memory.max
+sudo cgget -g :lxc.payload.debian01 -a |grep cpuset
+
+# set container cgroup limits in file
+sudo vim /var/lib/lxc/debian01/config
+# add the following lines
+lxc.cgroup2.cpuset.cpus = &#x22;5-6&#x22;
+
+######## create unprivileged container #######
 
 ## create directory for unprivileged container
 mkdir -p /home/vagrant/.config/lxc
 
 ## copy default config
 cp /etc/lxc/default.conf /home/vagrant/.config/lxc/
+
+## get subordinate user and group IDs
+cat /etc/subuid
 
 ## configure subordinate user and group IDs
 vim /home/vagrant/.config/lxc/default.conf
@@ -4499,13 +4609,19 @@ sudo vim /etc/lxc/lxc-usernet
 vagrant veth lxcbr0 10
 
 ## create unprivileged container
-lxc-create -n unprivileged -t download -- -d ubuntu -r focal -a amd64
+lxc-create -n unprivileged -t download -- -d ubuntu -r jammy -a amd64
 
-## check container status
-lxc-ls -f
+## set permissions for unprivileged container
+sudo setfacl -m u:100000:--x /home/vagrant
+sudo setfacl -m u:100000:--x /home/vagrant/.config
+sudo setfacl -m u:100000:--x /home/vagrant/.local
+sudo setfacl -m u:100000:--x /home/vagrant/.local/share
 
 ## start unprivileged container
 lxc-start -n unprivileged --logpriority=DEBUG --logfile=lxc.log
+
+## check container status
+lxc-ls -f
 
 ## unprivileged container files
 ls .local/share/lxc/unprivileged/
