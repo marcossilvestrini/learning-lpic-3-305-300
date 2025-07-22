@@ -71,7 +71,7 @@ Vagrant.configure("2") do |config|
     # STORAGE CONFIGURATION
     xen.vm.provision "shell", name: "[xen-storage]", path: "../scripts/xen/storage.sh", privileged: true
 
-  # HVM CONFIGURATION
+    # HVM CONFIGURATION
     xen.vm.provision "shell", name: "[xen-hvm]", path: "../scripts/xen/hvm.sh", privileged: true
 
     # LIBVIRT CONFIGURATION

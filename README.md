@@ -10,12 +10,12 @@
 
 ---
 
-[![MIT License][license-shield]][license-url]
-[![Forks][forks-shield]][forks-url]
-[![Stargazers][stars-shield]][stars-url]
-[![Contributors][contributors-shield]][contributors-url]
-[![Issues][issues-shield]][issues-url]
-[![LinkedIn][linkedin-shield]][linkedin-url]
+[MIT License][license-url]
+[Forks][forks-url]
+[Stargazers][stars-url]
+[Contributors][contributors-url]
+[Issues][issues-url]
+[LinkedIn][linkedin-url]
 
 ---
 
@@ -96,7 +96,7 @@
 
 ---
 
-<a name="about-the-project"></a>
+`<a name="about-the-project"></a>`
 
 ## About Project
 
@@ -114,13 +114,13 @@
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-<a name="getting-started"></a>
+`<a name="getting-started"></a>`
 
 ## Getting Started
 
 For starting the learning, see the documentation above.
 
-<a name="prerequisites"></a>
+`<a name="prerequisites"></a>`
 
 ### Prerequisites
 
@@ -129,7 +129,7 @@ For starting the learning, see the documentation above.
 * [Vagrant VMWare Utility](https://developer.hashicorp.com/vagrant/install/vmware)
 * [Vagrant](https://developer.hashicorp.com/vagrant/install)
 
-<a name="installation"></a>
+`<a name="installation"></a>`
 
 ### Installation
 
@@ -153,7 +153,7 @@ Customize network configuration in files [configs/network](configs/network/).
 
 ---
 
-<a name="usage"></a>
+`<a name="usage"></a>`
 
 ## Usage
 
@@ -194,7 +194,7 @@ vagrant/destroy.ps1
 
 ---
 
-<a name="roadmap"></a>
+`<a name="roadmap"></a>`
 
 ## Roadmap
 
@@ -207,7 +207,7 @@ vagrant/destroy.ps1
 
 ---
 
-<a name="freedoms"></a>
+`<a name="freedoms"></a>`
 
 ## Four Essential Freedoms
 
@@ -235,7 +235,7 @@ man COMMAND
 
 ---
 
-<a name="topic-351"></a>
+`<a name="topic-351"></a>`
 
 ## Topic 351: Full Virtualization
 
@@ -243,7 +243,7 @@ man COMMAND
 
 ---
 
-<a name="topic-351.1"></a>
+`<a name="topic-351.1"></a>`
 
 ### 351.1 Virtualization Concepts and Theory
 
@@ -588,7 +588,7 @@ Despite this drawback, emulation remains valuable for running legacy software, t
 
 ---
 
-<a name="topic-351.2"></a>
+`<a name="topic-351.2"></a>`
 
 ### 351.2 Xen
 
@@ -1218,7 +1218,7 @@ qemu-system-x86_x64
 
 ---
 
-<a name="topic-351.4"></a>
+`<a name="topic-351.4"></a>`
 
 ### 351.4 Libvirt Virtual Machine Management
 
@@ -1598,7 +1598,7 @@ less /etc/libvirt/qemu/debian-server01.xml
 
 ---
 
-<a name="topic-351.5"></a>
+`<a name="topic-351.5"></a>`
 
 ### 351.5 Virtual Machine Disk Image Management
 
@@ -1889,13 +1889,13 @@ The generated package has the .ova extension and contains the following files:
 
 ---
 
-<a name="topic-352"></a>
+`<a name="topic-352"></a>`
 
 ## Topic 352: Container Virtualization
 
 ---
 
-<a name="topic-352.1"></a>
+`<a name="topic-352.1"></a>`
 
 ### 352.1  Container Virtualization Concepts
 
@@ -2091,7 +2091,6 @@ Use this script for lab: [chroot.sh](scripts/container/chroot.sh)
 #### 🧠 Understanding Linux Namespaces
 
 ![linux-namespaces](images/linux-namespaces2.png)
-
 
 Namespaces are a core Linux kernel feature that enable process-level isolation. They create separate "views" of global system resources — such as process IDs, networking, filesystems, and users — so that each process group believes it is running in its own system.
 
@@ -2918,7 +2917,7 @@ sudo runc run mycontainer
 
 ---
 
-<a name="topic-352.2"></a>
+`<a name="topic-352.2"></a>`
 
 ### 352.2 LXC
 
@@ -2997,6 +2996,32 @@ For LXC lab, you can use this script: [lxc.sh](scripts/container/lxc.sh)
 
   DevOps, sysadmins, cloud-native setups, lab environments.
 
+##### 📝 **LXD Storage: Feature Table (per backend)**
+
+| Feature                     | dir | zfs       | btrfs     | lvm/lvmthin  | ceph/cephfs          |
+| --------------------------- | --- | --------- | --------- | ------------ | -------------------- |
+| **Snapshots**         | ❌  | ✅        | ✅        | ✅           | ✅                   |
+| **Thin Provisioning** | ❌  | ✅        | ✅        | ✅ (lvmthin) | ✅                   |
+| **Resizing**          | ❌  | ✅        | ✅        | ✅           | ✅                   |
+| **Quotas**            | ❌  | ✅        | ✅        | ✅ (lvmthin) | ✅                   |
+| **Live Migration**    | ❌  | ✅        | ✅        | ✅           | ✅                   |
+| **Deduplication**     | ❌  | ✅        | ❌        | ❌           | ✅ (Ceph)            |
+| **Compression**       | ❌  | ✅        | ✅        | ❌           | ✅ (Ceph)            |
+| **Encryption**        | ❌  | ✅        | ❌        | ✅ (LUKS)    | ✅                   |
+| **Cluster/Remote**    | ❌  | ❌        | ❌        | ❌           | ✅                   |
+| **Best Use Case**     | Dev | Labs/Prod | Labs/Prod | Labs/Prod    | Clusters, Enterprise |
+
+##### 🔍 **Quick LXD Storage Summary**
+
+* **Storage Pools:** Abstracts the backend—multiple pools, different drivers per pool.
+* **Available Drivers:** dir, zfs, btrfs, lvm, lvmthin, ceph, cephfs (more via plugins).
+* **Custom Volumes:** Create, mount, unmount for containers/VMs.
+* **Snapshots & Clones:** Native, fast, supports backup/restore, copy-on-write migration.
+* **Quotas & Resize:** Easy live management for pools, containers, or volumes.
+* **Live Migration:** Move containers/VMs across hosts without downtime.
+* **Security:** Built-in encryption (ZFS, LVM, Ceph), ACLs, backup/restore, etc.
+* **Enterprise-ready:** Suits clustered and high-availability setups.
+
 ##### 🧪 lab LXD
 
 For LXD lab, you can use this script: [lxd.sh](scripts/container/lxd.sh)
@@ -3024,6 +3049,38 @@ For LXD lab, you can use this script: [lxd.sh](scripts/container/lxd.sh)
 
 * **LXC** = The low-level building blocks. Power and flexibility for  *container purists* .
 * **LXD** = Modern, API-driven, scalable platform on top of LXC for *easy* container and VM management (single node or clusters).
+
+##### 🗃️ LXC vs LXD - Storage Support (Summary)
+
+| Feature                       | **LXC**                          | **LXD**                                                                                                                     |
+| ----------------------------- | -------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
+| **Storage Backends**    | Local filesystem (default only)        | **dir**(filesystem), **zfs** , **btrfs** , **lvm** , **ceph** , **cephfs** ,**lvmthin** |
+| **Storage Pools**       | ❌ (just local paths, no native pools) | ✅ Multiple storage pools, each with different drivers                                                                            |
+| **Snapshots**           | Manual/FS dependent                    | ✅ Native, fast, automatic, scheduled, consistent snapshots                                                                       |
+| **Thin Provisioning**   | ❌ (not supported natively)            | ✅ Supported in ZFS, Btrfs, LVM thin, Ceph                                                                                        |
+| **Quotas**              | ❌                                     | ✅ Supported per container/volume (in ZFS, Btrfs, Ceph, LVMthin)                                                                  |
+| **Live Migration**      | Limited                                | ✅ Live storage migration between hosts, copy-on-write                                                                            |
+| **Encryption**          | ❌                                     | ✅ (ZFS, LVM, Ceph)                                                                                                               |
+| **Custom Volumes**      | ❌                                     | ✅ Create, attach/detach custom storage volumes for containers/VMs                                                                |
+| **Remote Storage**      | ❌                                     | ✅ Ceph, CephFS, NFS, SMB support                                                                                                 |
+| **Filesystem Features** | Host dependent                         | ZFS: dedup, compress, snapshots, send/receive, cache, quotas. LVM: thin, snapshots, etc.                                          |
+| **Resizing**            | Manual (via host)                      | ✅ Volumes and pools can be resized live                                                                                          |
+| **Storage Drivers**     | Basic/local only                       | Extensible plugins, multiple enterprise-ready drivers                                                                             |
+
+##### 📊 Final Comparison Table
+
+|                             | **LXC**  | **LXD**                                          |
+| --------------------------- | -------------- | ------------------------------------------------------ |
+| **Storage Backend**   | Local only     | dir, zfs, btrfs, lvm, lvmthin, ceph, cephfs            |
+| **Storage Pools**     | ❌             | ✅ Multiple, independent, hot-pluggable                |
+| **Snapshots**         | Limited/manual | ✅ Fast, automatic, consistent                         |
+| **Thin Provisioning** | ❌             | ✅ (ZFS, Btrfs, LVMthin, Ceph)                         |
+| **Quotas**            | ❌             | ✅                                                     |
+| **Resizing**          | Manual         | ✅                                                     |
+| **Remote Storage**    | ❌             | ✅ (Ceph, NFS, SMB)                                    |
+| **Custom Volumes**    | ❌             | ✅                                                     |
+| **Cluster Ready**     | ❌             | ✅                                                     |
+| **Enterprise**        | No             | Yes—HA, backup, migration, security, production ready |
 
 #### 352.2 Important Commands
 
@@ -3132,7 +3189,7 @@ sudo lxc-cgroup -n debian01 cpuset.cpus 0-2
 sudo cgget -g :lxc.payload.debian01 -a |grep memory.max
 sudo cgget -g :lxc.payload.debian01 -a |grep cpuset
 
-# set container cgroup limits in file
+# set container cgroup vcpus range in file
 sudo vim /var/lib/lxc/debian01/config
 # add the following lines
 lxc.cgroup2.cpuset.cpus = "5-6"
@@ -3179,6 +3236,57 @@ lxc-ls -f
 ## unprivileged container files
 ls .local/share/lxc/unprivileged/
 
+####### Examples of LXD commands #####
+
+@ lxd configuration files
+/var/lib/lxd
+/var/log/lxd
+
+# initialize lxd
+sudo lxd init
+sudo lxd init --auto
+sudo cat lxd-init.yaml | lxd init --preseed
+
+# check lxd version
+sudo lxd --version
+
+# check lxd status
+systemctl status lxd
+
+# lxd list storage
+lxc storage list
+
+# show lxd storage pools
+lxc storage show default
+
+# lxd storage info
+lxc storage info default
+
+# create a new storage pool btrfs
+lxc storage create lpic3-btrfs btrfs
+lxc storage create lpic3-btrfs btrfs size=10GB
+
+# delete storage pool
+lxc storage delete lpic3-btrfs
+
+# edit storage pool
+lxc storage edit lpic3-btrfs
+
+# get storage pool properties
+lxc storage  get lpic3-btrfs size
+
+# set storage pool properties
+lxc storage set lpic3-btrfs size 20GB
+
+# list storage volumes
+lxc storage volume list lpic3-btrfs
+
+# create a new storage volume
+lxc storage volume create lpic3-btrfs vol-lpic3-btrfs
+
+# delete storage volume
+lxc storage volume delete lpic3-btrfs vol-lpic3-btrfs
+
 ```
 
 <p align="right">(<a href="#topic-352.2">back to sub topic 352.2</a>)</p>
@@ -3187,7 +3295,7 @@ ls .local/share/lxc/unprivileged/
 
 ---
 
-<a name="topic-352.3"></a>
+`<a name="topic-352.3"></a>`
 
 ### 352.3 Docker
 
@@ -3229,7 +3337,7 @@ Dockerfile
 
 ---
 
-<a name="topic-352.4"></a>
+`<a name="topic-352.4"></a>`
 
 ### 352.4 Container Orchestration Platforms
 
@@ -3250,13 +3358,13 @@ Dockerfile
 
 ---
 
-<a name="topic-353"></a>
+`<a name="topic-353"></a>`
 
 ## Topic 353: VM Deployment and Provisioning
 
 ---
 
-<a name="topic-353.1"></a>
+`<a name="topic-353.1"></a>`
 
 ### 353.1  Cloud Management Tools
 
@@ -3293,7 +3401,7 @@ Terraform
 
 ---
 
-<a name="topic-353.2"></a>
+`<a name="topic-353.2"></a>`
 
 ### 353.2 Packer
 
@@ -3327,7 +3435,7 @@ packer
 
 ---
 
-<a name="topic-353.3"></a>
+`<a name="topic-353.3"></a>`
 
 ### 353.3 cloud-init
 
@@ -3366,7 +3474,7 @@ user-data
 
 ---
 
-<a name="topic-353.4"></a>
+`<a name="topic-353.4"></a>`
 
 ### 353.4 Vagrant
 
@@ -3604,6 +3712,8 @@ Project Link: [https://github.com/marcossilvestrini/learning-lpic-3-305-300](htt
   * [LXD Canonical Github](https://github.com/canonical/lxd)
   * [LXD Documentation](https://linuxcontainers.org/lxd/docs/master/)
   * [Linux Container Images](https://images.linuxcontainers.org/)
+  * [LXD Storage](https://documentation.ubuntu.com/lxd/stable-4.0/storage/)
+  * [LXD Storage pools, volumes, and buckets](https://documentation.ubuntu.com/lxd/stable-5.21/explanation/storage/#exp-storage)
 * [Openstack Docs]()
   * [RedHat](https://www.redhat.com/pt-br/topics/openstack)
 * [Open vSwitch]()
@@ -3635,4 +3745,3 @@ Project Link: [https://github.com/marcossilvestrini/learning-lpic-3-305-300](htt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/marcossilvestrini
 [def]: https://httpd.apache.org/docs/2.4/mod/directives.html
-

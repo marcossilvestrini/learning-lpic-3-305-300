@@ -26,6 +26,7 @@ if echo "$RELEASE_INFO" | grep -q -i "debian\|ubuntu"; then
     sudo apt install -yqq \
         dos2unix \
         lvm2 \
+        btrfs-progs \
         tree whois \
         xfce4 xfce4-goodies \
         tightvncserver dbus-x11 \
@@ -38,7 +39,8 @@ if echo "$RELEASE_INFO" | grep -q -i "debian\|ubuntu"; then
         debootstrap \
         cgroup-tools \
         runc \
-        lxc
+        lxc \
+        lxd
 
     # Set user profile for bash and vim
     sudo cp -f configs/commons/.bashrc_debian .bashrc
