@@ -2,7 +2,7 @@
 
 ---
 
-<a name="topic-352.1"></a>
+`<a name="topic-352.1"></a>`
 
 ### 352.1  Container Virtualization Concepts
 
@@ -198,7 +198,6 @@ Use this script for lab: [chroot.sh](../scripts/container/chroot.sh)
 #### 🧠 Understanding Linux Namespaces
 
 ![linux-namespaces](../images/linux-namespaces2.png)
-
 
 Namespaces are a core Linux kernel feature that enable process-level isolation. They create separate "views" of global system resources — such as process IDs, networking, filesystems, and users — so that each process group believes it is running in its own system.
 
@@ -1025,7 +1024,7 @@ sudo runc run mycontainer
 
 ---
 
-<a name="topic-352.2"></a>
+`<a name="topic-352.2"></a>`
 
 ### 352.2 LXC
 
@@ -1104,6 +1103,32 @@ For LXC lab, you can use this script: [lxc.sh](../scripts/container/lxc.sh)
 
   DevOps, sysadmins, cloud-native setups, lab environments.
 
+##### 📝 **LXD Storage: Feature Table (per backend)**
+
+| Feature                     | dir | zfs       | btrfs     | lvm/lvmthin  | ceph/cephfs          |
+| --------------------------- | --- | --------- | --------- | ------------ | -------------------- |
+| **Snapshots**         | ❌  | ✅        | ✅        | ✅           | ✅                   |
+| **Thin Provisioning** | ❌  | ✅        | ✅        | ✅ (lvmthin) | ✅                   |
+| **Resizing**          | ❌  | ✅        | ✅        | ✅           | ✅                   |
+| **Quotas**            | ❌  | ✅        | ✅        | ✅ (lvmthin) | ✅                   |
+| **Live Migration**    | ❌  | ✅        | ✅        | ✅           | ✅                   |
+| **Deduplication**     | ❌  | ✅        | ❌        | ❌           | ✅ (Ceph)            |
+| **Compression**       | ❌  | ✅        | ✅        | ❌           | ✅ (Ceph)            |
+| **Encryption**        | ❌  | ✅        | ❌        | ✅ (LUKS)    | ✅                   |
+| **Cluster/Remote**    | ❌  | ❌        | ❌        | ❌           | ✅                   |
+| **Best Use Case**     | Dev | Labs/Prod | Labs/Prod | Labs/Prod    | Clusters, Enterprise |
+
+##### 🔍 **Quick LXD Storage Summary**
+
+* **Storage Pools:** Abstracts the backend—multiple pools, different drivers per pool.
+* **Available Drivers:** dir, zfs, btrfs, lvm, lvmthin, ceph, cephfs (more via plugins).
+* **Custom Volumes:** Create, mount, unmount for containers/VMs.
+* **Snapshots & Clones:** Native, fast, supports backup/restore, copy-on-write migration.
+* **Quotas & Resize:** Easy live management for pools, containers, or volumes.
+* **Live Migration:** Move containers/VMs across hosts without downtime.
+* **Security:** Built-in encryption (ZFS, LVM, Ceph), ACLs, backup/restore, etc.
+* **Enterprise-ready:** Suits clustered and high-availability setups.
+
 ##### 🧪 lab LXD
 
 For LXD lab, you can use this script: [lxd.sh](../scripts/container/lxd.sh)
@@ -1131,6 +1156,38 @@ For LXD lab, you can use this script: [lxd.sh](../scripts/container/lxd.sh)
 
 * **LXC** = The low-level building blocks. Power and flexibility for  *container purists* .
 * **LXD** = Modern, API-driven, scalable platform on top of LXC for *easy* container and VM management (single node or clusters).
+
+##### 🗃️ LXC vs LXD - Storage Support (Summary)
+
+| Feature                       | **LXC**                          | **LXD**                                                                                                                     |
+| ----------------------------- | -------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
+| **Storage Backends**    | Local filesystem (default only)        | **dir**(filesystem), **zfs** , **btrfs** , **lvm** , **ceph** , **cephfs** ,**lvmthin** |
+| **Storage Pools**       | ❌ (just local paths, no native pools) | ✅ Multiple storage pools, each with different drivers                                                                            |
+| **Snapshots**           | Manual/FS dependent                    | ✅ Native, fast, automatic, scheduled, consistent snapshots                                                                       |
+| **Thin Provisioning**   | ❌ (not supported natively)            | ✅ Supported in ZFS, Btrfs, LVM thin, Ceph                                                                                        |
+| **Quotas**              | ❌                                     | ✅ Supported per container/volume (in ZFS, Btrfs, Ceph, LVMthin)                                                                  |
+| **Live Migration**      | Limited                                | ✅ Live storage migration between hosts, copy-on-write                                                                            |
+| **Encryption**          | ❌                                     | ✅ (ZFS, LVM, Ceph)                                                                                                               |
+| **Custom Volumes**      | ❌                                     | ✅ Create, attach/detach custom storage volumes for containers/VMs                                                                |
+| **Remote Storage**      | ❌                                     | ✅ Ceph, CephFS, NFS, SMB support                                                                                                 |
+| **Filesystem Features** | Host dependent                         | ZFS: dedup, compress, snapshots, send/receive, cache, quotas. LVM: thin, snapshots, etc.                                          |
+| **Resizing**            | Manual (via host)                      | ✅ Volumes and pools can be resized live                                                                                          |
+| **Storage Drivers**     | Basic/local only                       | Extensible plugins, multiple enterprise-ready drivers                                                                             |
+
+##### 📊 Final Comparison Table
+
+|                             | **LXC**  | **LXD**                                          |
+| --------------------------- | -------------- | ------------------------------------------------------ |
+| **Storage Backend**   | Local only     | dir, zfs, btrfs, lvm, lvmthin, ceph, cephfs            |
+| **Storage Pools**     | ❌             | ✅ Multiple, independent, hot-pluggable                |
+| **Snapshots**         | Limited/manual | ✅ Fast, automatic, consistent                         |
+| **Thin Provisioning** | ❌             | ✅ (ZFS, Btrfs, LVMthin, Ceph)                         |
+| **Quotas**            | ❌             | ✅                                                     |
+| **Resizing**          | Manual         | ✅                                                     |
+| **Remote Storage**    | ❌             | ✅ (Ceph, NFS, SMB)                                    |
+| **Custom Volumes**    | ❌             | ✅                                                     |
+| **Cluster Ready**     | ❌             | ✅                                                     |
+| **Enterprise**        | No             | Yes—HA, backup, migration, security, production ready |
 
 #### 352.2 Important Commands
 
@@ -1239,7 +1296,7 @@ sudo lxc-cgroup -n debian01 cpuset.cpus 0-2
 sudo cgget -g :lxc.payload.debian01 -a |grep memory.max
 sudo cgget -g :lxc.payload.debian01 -a |grep cpuset
 
-# set container cgroup limits in file
+# set container cgroup vcpus range in file
 sudo vim /var/lib/lxc/debian01/config
 # add the following lines
 lxc.cgroup2.cpuset.cpus = "5-6"
@@ -1286,6 +1343,57 @@ lxc-ls -f
 ## unprivileged container files
 ls .local/share/lxc/unprivileged/
 
+####### Examples of LXD commands #####
+
+@ lxd configuration files
+/var/lib/lxd
+/var/log/lxd
+
+# initialize lxd
+sudo lxd init
+sudo lxd init --auto
+sudo cat lxd-init.yaml | lxd init --preseed
+
+# check lxd version
+sudo lxd --version
+
+# check lxd status
+systemctl status lxd
+
+# lxd list storage
+lxc storage list
+
+# show lxd storage pools
+lxc storage show default
+
+# lxd storage info
+lxc storage info default
+
+# create a new storage pool btrfs
+lxc storage create lpic3-btrfs btrfs
+lxc storage create lpic3-btrfs btrfs size=10GB
+
+# delete storage pool
+lxc storage delete lpic3-btrfs
+
+# edit storage pool
+lxc storage edit lpic3-btrfs
+
+# get storage pool properties
+lxc storage  get lpic3-btrfs size
+
+# set storage pool properties
+lxc storage set lpic3-btrfs size 20GB
+
+# list storage volumes
+lxc storage volume list lpic3-btrfs
+
+# create a new storage volume
+lxc storage volume create lpic3-btrfs vol-lpic3-btrfs
+
+# delete storage volume
+lxc storage volume delete lpic3-btrfs vol-lpic3-btrfs
+
 ```
 
 <p align="right">(<a href="#topic-352.2">back to sub topic 352.2</a>)</p>
@@ -1294,7 +1402,7 @@ ls .local/share/lxc/unprivileged/
 
 ---
 
-<a name="topic-352.3"></a>
+`<a name="topic-352.3"></a>`
 
 ### 352.3 Docker
 
@@ -1336,7 +1444,7 @@ Dockerfile
 
 ---
 
-<a name="topic-352.4"></a>
+`<a name="topic-352.4"></a>`
 
 ### 352.4 Container Orchestration Platforms
 
@@ -1357,5 +1465,5 @@ Dockerfile
 
 ---
 
-<a name="topic-353"></a>
+`<a name="topic-353"></a>`
 

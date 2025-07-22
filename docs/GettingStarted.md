@@ -2,7 +2,7 @@
 
 For starting the learning, see the documentation above.
 
-<a name="prerequisites"></a>
+`<a name="prerequisites"></a>`
 
 ### Prerequisites
 
@@ -11,7 +11,7 @@ For starting the learning, see the documentation above.
 * [Vagrant VMWare Utility](https://developer.hashicorp.com/vagrant/install/vmware)
 * [Vagrant](https://developer.hashicorp.com/vagrant/install)
 
-<a name="installation"></a>
+`<a name="installation"></a>`
 
 ### Installation
 
@@ -35,5 +35,5 @@ Customize network configuration in files [configs/network](../configs/network/).
 
 ---
 
-<a name="usage"></a>
+`<a name="usage"></a>`
 

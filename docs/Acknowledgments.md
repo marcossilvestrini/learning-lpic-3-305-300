@@ -163,6 +163,8 @@
   * [LXD Canonical Github](https://github.com/canonical/lxd)
   * [LXD Documentation](https://linuxcontainers.org/lxd/docs/master/)
   * [Linux Container Images](https://images.linuxcontainers.org/)
+  * [LXD Storage](https://documentation.ubuntu.com/lxd/stable-4.0/storage/)
+  * [LXD Storage pools, volumes, and buckets](https://documentation.ubuntu.com/lxd/stable-5.21/explanation/storage/#exp-storage)
 * [Openstack Docs]()
   * [RedHat](https://www.redhat.com/pt-br/topics/openstack)
 * [Open vSwitch]()
@@ -194,4 +196,3 @@
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/marcossilvestrini
 [def]: https://httpd.apache.org/docs/2.4/mod/directives.html
-
