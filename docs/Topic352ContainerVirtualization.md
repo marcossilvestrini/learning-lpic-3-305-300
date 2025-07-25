@@ -2,7 +2,7 @@
 
 ---
 
-`<a name="topic-352.1"></a>`
+<a name="topic-352.1"></a>
 
 ### 352.1  Container Virtualization Concepts
 
@@ -1024,7 +1024,7 @@ sudo runc run mycontainer
 
 ---
 
-`<a name="topic-352.2"></a>`
+<a name="topic-352.2"></a>
 
 ### 352.2 LXC
 
@@ -1194,7 +1194,6 @@ For LXD lab, you can use this script: [lxd.sh](../scripts/container/lxd.sh)
 ##### lxc
 
 ```sh
-####### Examples of lxc commands #####
 
 # lxc configuration
 /etc/default/lxc
@@ -1342,10 +1341,12 @@ lxc-ls -f
 
 ## unprivileged container files
 ls .local/share/lxc/unprivileged/
+```
 
-####### Examples of LXD commands #####
+##### lxd
 
-@ lxd configuration files
+```sh
+# lxd configuration files
 /var/lib/lxd
 /var/log/lxd
 
@@ -1369,9 +1370,19 @@ lxc storage show default
 # lxd storage info
 lxc storage info default
 
+# craete a new storage pool dir
+lxc storage create lpic3-dir dir 
+
+# create a new storage pool lvm
+lxc storage create lpic3-lvm lvm source=/dev/sdb1
+
 # create a new storage pool btrfs
 lxc storage create lpic3-btrfs btrfs
 lxc storage create lpic3-btrfs btrfs size=10GB
+lxc storage create lpic3-btrfs btrfs source=/dev/sdb2
+
+# create a new storage pool zfs
+lxc storage create lpic3-zfs zfs source=/dev/sdb3
 
 # delete storage pool
 lxc storage delete lpic3-btrfs
@@ -1402,7 +1413,7 @@ lxc storage volume delete lpic3-btrfs vol-lpic3-btrfs
 
 ---
 
-`<a name="topic-352.3"></a>`
+<a name="topic-352.3"></a>
 
 ### 352.3 Docker
 
@@ -1444,7 +1455,7 @@ Dockerfile
 
 ---
 
-`<a name="topic-352.4"></a>`
+<a name="topic-352.4"></a>
 
 ### 352.4 Container Orchestration Platforms
 
@@ -1465,5 +1476,5 @@ Dockerfile
 
 ---
 
-`<a name="topic-353"></a>`
+<a name="topic-353"></a>
 
