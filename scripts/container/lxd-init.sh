@@ -10,6 +10,7 @@ MULTILINE-COMMENT
 
 set -euo pipefail
 IFS=$'\n\t'
+export PATH=$PATH:/snap/bin
 
 # ========== LOGGING ==========
 log()   { echo -e "🌟 [INFO] $*"; }
@@ -32,10 +33,10 @@ log "Debian/Ubuntu detected. Proceeding with LXD setup..."
 
 # ========== LXD INSTALL ==========
 if ! command -v lxc >/dev/null; then
-    log "LXD not found. Installing LXD..."
-    apt-get update -qq && apt-get install -y -qq lxd || abort "Failed to install LXD!"
+    log "LXD not found in PATH. Trying to install via Snap..."
+    snap install lxd --channel=latest/stable || abort "Failed to install LXD via Snap!"
 else
-    log "LXD already installed."
+    log "LXD already installed (Snap)."
 fi
 
 # ========== LXD INIT ==========
@@ -46,12 +47,11 @@ else
 fi
 
 # ========== LXD SERVICE ==========
-systemctl enable lxd &>/dev/null || warn "Failed to enable LXD at boot."
-if systemctl is-active --quiet lxd; then
-    log "LXD service is running. 🚀"
+if systemctl is-active --quiet snap.lxd.daemon; then
+    log "LXD (Snap) service is running. 🚀"
 else
-    warn "LXD not running. Starting service..."
-    systemctl start lxd || abort "Failed to start LXD service."
+    warn "LXD (Snap) service is not running. Starting..."
+    systemctl start snap.lxd.daemon || abort "Failed to start LXD (Snap) daemon."
 fi
 
 # ========== LXD GROUP ==========
@@ -62,5 +62,19 @@ else
     log "User 'vagrant' already in group 'lxd'."
 fi
 
-log "✅ LXD environment setup complete!"
+# Post-init: configure LXD MinIO S3 backend support
+echo "Configuring LXD MinIO S3 backend..."
 
+# Set the MinIO binary path for LXD Snap (only required for Snap installations)
+sudo snap set lxd minio.path=/opt/minio
+
+# Restart LXD daemon to reload MinIO support
+sudo snap restart lxd
+
+# Set the S3 endpoint address for LXD storage buckets
+lxc config set core.storage_buckets_address ":8555"
+
+echo "LXD S3 bucket backend configured."
+
+
+log "✅ LXD environment setup complete!"
