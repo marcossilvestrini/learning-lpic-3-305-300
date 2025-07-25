@@ -4,7 +4,7 @@
 
 * * *
 
-[![MIT License][license-shield]][license-url][![Forks][forks-shield]][forks-url][![Stargazers][stars-shield]][stars-url][![Contributors][contributors-shield]][contributors-url][![Issues][issues-shield]][issues-url][![LinkedIn][linkedin-shield]][linkedin-url]
+[Minha licença][license-url][Garfos][forks-url][Stargazers][stars-url][Colaboradores][contributors-url][Problemas][issues-url][LinkedIn][linkedin-url]
 
 * * *
 
@@ -654,7 +654,7 @@ O XAPI é a interface que permite o controle e a automação do hipervisor Xen, 
 -   **INCROPPING:**A tecnologia principal do hipervisor que permite que as máquinas virtuais sejam executadas em hardware físico.
 -   **Xensource:**A empresa que comercializou Xen, mais tarde adquirida pela Citrix, levando ao desenvolvimento do Citrix Xenserver.
 -   **Projeto Xen:**A iniciativa e a comunidade de código aberto que continuam a desenvolver e manter o hipervisor Xen sob a Fundação Linux.
--   **Xenstore:**A Xen Store atua como uma intermediária de comunicação e configuração entre o hypervisor Xen e as VMs, simplificando a operação e o gerenciamento de ambientes virtualizados.
+-   **Xenstore:**A Xen Store atua como uma intermediária de comunicação e configuração entre o Hypervisor Xen e as VMs, simplificando a operação e o gerenciamento de ambientes virtualizados.
 -   **Pílula**é a interface que permite o controle e a automação do hipervisor Xen, facilitando o gerenciamento de ambientes virtualizados.
 
 #### Domain0 (DOM0)
@@ -2187,7 +2187,7 @@ Use este script para laboratório:[namespace.sh](scripts/container/namespace.sh)
 
 ##### 📌 Definição
 
-Os grupos de controle (CGROUPS) são um recurso Linux Kernel introduzido em 2007 que permite limitar, explicar e isolar o uso de recursos (CPU, memória, E/S de disco, etc.) de grupos de processos.
+Control Groups (cgroups) are a Linux kernel feature introduced in 2007 that allow you to limit, account for, and isolate the resource usage (CPU, memory, disk I/O, etc.) of groups of processes.
 
 Os cgroups são fortemente usados por tempos de execução de contêineres de baixo nível, como Runc e Crun, e alavancados por motores de contêineres como Docker, Podman e LXC para aplicar os limites dos recursos e fornecer isolamento entre os contêineres.
 
@@ -2981,6 +2981,32 @@ Para o laboratório LXC, você pode usar este script:[lxc.sh](scripts/container/
 
     DevOps, sysadmins, configurações nativas da nuvem, ambientes de laboratório.
 
+##### 📝**Armazenamento LXD: Tabela de recursos (por back -end)**
+
+| Recurso                  | Você | ZFS               | Brfs              | LVM/LVMTHIN       | ceph/cephfs          |
+| ------------------------ | ---- | ----------------- | ----------------- | ----------------- | -------------------- |
+| **Instantâneos**         | ❌    | ✅                 | ✅                 | ✅                 | ✅                    |
+| **Provisionamento fino** | ❌    | ✅                 | ✅                 | ✅ (LvMthin)       | ✅                    |
+| **Redimensionamento**    | ❌    | ✅                 | ✅                 | ✅                 | ✅                    |
+| **Cotas**                | ❌    | ✅                 | ✅                 | ✅ (LvMthin)       | ✅                    |
+| **Migração ao vivo**     | ❌    | ✅                 | ✅                 | ✅                 | ✅                    |
+| **Desduplicação**        | ❌    | ✅                 | ❌                 | ❌                 | ✅ (ceph)             |
+| **Compressão**           | ❌    | ✅                 | ✅                 | ❌                 | ✅ (ceph)             |
+| **Criptografia**         | ❌    | ✅                 | ❌                 | ✅ (luxo)          | ✅                    |
+| **Cluster/remoto**       | ❌    | ❌                 | ❌                 | ❌                 | ✅                    |
+| **Melhor caso de uso**   | Dev  | Laboratórios/prod | Laboratórios/prod | Laboratórios/prod | Clusters, Enterprise |
+
+##### 🔍**Resumo do armazenamento rápido LXD**
+
+-   **Pools de armazenamento:**Abstrair o back -end - piscinas multiplicadas, diferentes motoristas por piscina.
+-   **Drivers disponíveis:**Dir, zfs, btrfs, lvm, lvmthin, ceph, cephfs (mais via plugins).
+-   **Volumes personalizados:**Criar, montar, desmontar para contêineres/VMs.
+-   **Instantâneos e clones:**Nativo, rápido, suporta migração de backup/restauração, cópia-na-gravação.
+-   **Cotas e redimensionar:**Easy Live Management para piscinas, contêineres ou volumes.
+-   **Migração ao vivo:**Mova contêineres/VMs entre hosts sem tempo de inatividade.
+-   **Segurança:**Criptografia embutida (ZFS, LVM, CEPH), ACLs, backup/restauração, etc.
+-   **Enterprise-Proy:**Instalações em cluster e alta disponibilidade em cluster.
+
 ##### 🧪 LAB LXD
 
 Para LXD Lab, você pode usar este script:[lxd.sh](scripts/container/lxd.sh)
@@ -3009,12 +3035,43 @@ Para LXD Lab, você pode usar este script:[lxd.sh](scripts/container/lxd.sh)
 -   **LXC**= Os blocos de construção de baixo nível. Poder e flexibilidade para_Puristas de contêineres_.
 -   **Lxd**= Moderno, orientado a API e plataforma escalável em cima do LXC para_fácil_Gerenciamento de contêineres e VM (nó único ou clusters).
 
+##### 🗃️ LXC vs LXD - Suporte de armazenamento (resumo)
+
+| Recurso                             | **LXC**                                          | **Lxd**                                                                                         |
+| ----------------------------------- | ------------------------------------------------ | ----------------------------------------------------------------------------------------------- |
+| **Back -ends de armazenamento**     | Sistema de arquivos local (somente padrão)       | **Você**(FileSystem),**ZFS**,**Brfs**,**lvm**,**Ceph**,**ceffs**,**LvMthin**                    |
+| **Pools de armazenamento**          | ❌ (apenas caminhos locais, sem piscinas nativas) | ✅ Vários pools de armazenamento, cada um com diferentes drivers                                 |
+| **Instantâneos**                    | Manual/FS dependente                             | ✅ Instantâneos nativos, rápidos, automáticos, programados e consistentes                        |
+| **Provisionamento fino**            | ❌ (não suportado nativamente)                    | ✅ Suportado em ZFS, BTRFS, LVM Thin, CEPH                                                       |
+| **Cotas**                           | ❌                                                | ✅ Suporte por contêiner/volume (em ZFS, BTRFS, CEPH, LVMTHIN)                                   |
+| **Migração ao vivo**                | Limitado                                         | ✅ Migração de armazenamento ao vivo entre hosts, copiar-se-write                                |
+| **Criptografia**                    | ❌                                                | ✅ (ZFS, LVM, CEPH)                                                                              |
+| **Volumes personalizados**          | ❌                                                | ✅ Criar, anexar/destacar os volumes de armazenamento personalizado para contêineres/VMs         |
+| **Armazenamento remoto**            | ❌                                                | ✅ Ceph, Cephfs, NFS, Suporte de SMB                                                             |
+| **Recursos do sistema de arquivos** | Host dependente                                  | ZFS: Dedup, Compress, instantâneos, enviar/receber, cache, cotas. LVM: fino, instantâneos, etc. |
+| **Redimensionamento**               | Manual (via host)                                | ✅ Volumes e piscinas podem ser redimensionados ao vivo                                          |
+| **Drivers de armazenamento**        | Somente básico/local                             | Plugins extensíveis, vários drivers prontos para empresas                                       |
+
+##### 📊 Tabela de comparação final
+
+|                                | **LXC**         | **Lxd**                                                |
+| ------------------------------ | --------------- | ------------------------------------------------------ |
+| **Back -end de armazenamento** | Somente local   | Dir, zfs, btrfs, lvm, lvmthin, ceph, cephfs            |
+| **Pools de armazenamento**     | ❌               | ✅ Múltiplo, independente e quente                      |
+| **Instantâneos**               | Limitado/manual | ✅ Rápido, automático, consistente                      |
+| **Provisionamento fino**       | ❌               | ✅ (ZFS, BTRFS, LVMTHAIN, CEPPH)                        |
+| **Cotas**                      | ❌               | ✅                                                      |
+| **Redimensionamento**          | Manual          | ✅                                                      |
+| **Armazenamento remoto**       | ❌               | ✅ (Ceph, NFS, SMB)                                     |
+| **Volumes personalizados**     | ❌               | ✅                                                      |
+| **Cluster pronto**             | ❌               | ✅                                                      |
+| **Empresa**                    | No              | Sim - ha, backup, migração, segurança, produção pronta |
+
 #### 352.2 Comandos importantes
 
 ##### LXC
 
 ```sh
-####### Examples of lxc commands #####
 
 # lxc configuration
 /etc/default/lxc
@@ -3116,7 +3173,7 @@ sudo lxc-cgroup -n debian01 cpuset.cpus 0-2
 sudo cgget -g :lxc.payload.debian01 -a |grep memory.max
 sudo cgget -g :lxc.payload.debian01 -a |grep cpuset
 
-# set container cgroup limits in file
+# set container cgroup vcpus range in file
 sudo vim /var/lib/lxc/debian01/config
 # add the following lines
 lxc.cgroup2.cpuset.cpus = "5-6"
@@ -3162,6 +3219,69 @@ lxc-ls -f
 
 ## unprivileged container files
 ls .local/share/lxc/unprivileged/
+```
+
+##### lxd
+
+```sh
+# lxd configuration files
+/var/lib/lxd
+/var/log/lxd
+
+# initialize lxd
+sudo lxd init
+sudo lxd init --auto
+sudo cat lxd-init.yaml | lxd init --preseed
+
+# check lxd version
+sudo lxd --version
+
+# check lxd status
+systemctl status lxd
+
+# lxd list storage
+lxc storage list
+
+# show lxd storage pools
+lxc storage show default
+
+# lxd storage info
+lxc storage info default
+
+# craete a new storage pool dir
+lxc storage create lpic3-dir dir 
+
+# create a new storage pool lvm
+lxc storage create lpic3-lvm lvm source=/dev/sdb1
+
+# create a new storage pool btrfs
+lxc storage create lpic3-btrfs btrfs
+lxc storage create lpic3-btrfs btrfs size=10GB
+lxc storage create lpic3-btrfs btrfs source=/dev/sdb2
+
+# create a new storage pool zfs
+lxc storage create lpic3-zfs zfs source=/dev/sdb3
+
+# delete storage pool
+lxc storage delete lpic3-btrfs
+
+# edit storage pool
+lxc storage edit lpic3-btrfs
+
+# get storage pool properties
+lxc storage  get lpic3-btrfs size
+
+# set storage pool properties
+lxc storage set lpic3-btrfs size 20GB
+
+# list storage volumes
+lxc storage volume list lpic3-btrfs
+
+# create a new storage volume
+lxc storage volume create lpic3-btrfs vol-lpic3-btrfs
+
+# delete storage volume
+lxc storage volume delete lpic3-btrfs vol-lpic3-btrfs
 
 ```
 
@@ -3587,6 +3707,8 @@ Link do projeto:<https://github.com/marcossilvestrini/learning-lpic-3-305-300>
     -   [LXD Github canônico](https://github.com/canonical/lxd)
     -   [Documentação LXD](https://linuxcontainers.org/lxd/docs/master/)
     -   [Imagens de contêiner Linux](https://images.linuxcontainers.org/)
+    -   [LXD Storage](https://documentation.ubuntu.com/lxd/stable-4.0/storage/)
+    -   [Piscinas de armazenamento LXD, volumes e baldes](https://documentation.ubuntu.com/lxd/stable-5.21/explanation/storage/#exp-storage)
 -   [OpenStack Docs](<>)
     -   [Redhat](https://www.redhat.com/pt-br/topics/openstack)
 -   [Aberto vswitch](<>)
