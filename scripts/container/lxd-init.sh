@@ -76,5 +76,4 @@ lxc config set core.storage_buckets_address ":8555"
 
 echo "LXD S3 bucket backend configured."
 
-
 log "✅ LXD environment setup complete!"

@@ -71,7 +71,6 @@ fi
 
 log "✅ MinIO server and client installed for LXD S3 bucket support."
 
-log "✅ For access web interface, execute: /opt/minio/minio server /data --console-address ":9001"
+log "✅ For access web interface, execute: /opt/minio/minio server /data --console-address \":9001\""
 log "✅ For MinIO client, use: /opt/minio/mc --config-dir /root/.minio --insecure alias set myminio http://localhost:9000 minioadmin minioadmin"
 log "✅ To access MinIO web interface, open your browser and visit: http://<your-server-ip>:9000"
-
