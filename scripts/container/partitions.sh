@@ -55,16 +55,23 @@ install_if_missing_zfs() {
 
 # ===== DISK DETECTION =====
 get_secondary_disk() {
-    root_disk=$(lsblk -nr -o NAME,MOUNTPOINT | awk '$2=="/"{print $1}')
+    # Discover the device mounted as root ('/')
+    local root_partition root_disk
+    root_partition=$(findmnt -n -o SOURCE /)
+    # Extract the base disk (e.g., /dev/sda from /dev/sda1)
+    if [[ "$root_partition" =~ (/dev/[a-z]+)[0-9]+ ]]; then
+        root_disk="${BASH_REMATCH[1]}"
+    else
+        root_disk="$root_partition"
+    fi
     for d in $(lsblk -dn -o NAME,TYPE | awk '$2=="disk"{print $1}'); do
-        device="/dev/$d"
-        [[ "$d" == "$root_disk" ]] && continue
-        echo "$device"
+        disk="/dev/$d"
+        [[ "$disk" == "$root_disk" ]] && continue
+        echo "$disk"
         return 0
     done
     return 1
 }
-
 # ===== PARTITIONING (IDEMPOTENT) =====
 create_partitions() {
     local disk="$1"
@@ -135,6 +142,22 @@ format_partitions() {
 
 }
 
+cleanup_all() {
+    local disk="$1"
+    log "Cleaning up any mounted filesystems, LVM, or ZFS pools on $disk and its partitions..."
+
+    # Unmount all possible partitions on the disk
+    for p in 1 2 3; do
+        sudo umount "${disk}${p}" 2>/dev/null || true
+    done
+
+    # Deactivate LVM volume group (if any)
+    sudo lvchange -an lpic3-lxd-lvm 2>/dev/null || true
+    sudo vgchange -an lpic3-lxd-lvm 2>/dev/null || true
+
+    # Export ZFS pool (if any)
+    sudo zpool export lpic3-lxd-zfs 2>/dev/null || true
+}
 
 # ===== FINAL REPORT =====
 summary() {
@@ -156,6 +179,7 @@ install_if_missing mkfs.xfs xfsprogs
 DISK=$(get_secondary_disk) || { error "No suitable secondary disk found!"; exit 1; }
 log "💾 Selected disk for storage: $DISK"
 
+cleanup_all "$DISK"
 create_partitions "$DISK"
 format_partitions "$DISK"
 summary

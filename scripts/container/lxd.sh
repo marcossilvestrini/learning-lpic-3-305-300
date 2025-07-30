@@ -19,6 +19,7 @@ LAB_CONTAINER="lxd-lab"
 IMAGE="images:alpine/3.19"
 LAB_STATE="/tmp/lxd-lab"
 
+
 log()   { echo -e "[INFO] $*"; }
 warn()  { echo -e "[WARN] $*" >&2; }
 abort() { echo -e "[ERROR] $*" >&2; exit 1; }
@@ -97,9 +98,19 @@ main_menu() {
 }
 
 if [[ "$EUID" -ne 0 ]]; then abort "Run as root."; fi
-install_if_missing lxd lxd
-install_if_missing lxc lxd-client
-init_lxd
+install_if_missing snap snapd
+
+# Enable and start snap service
+systemctl enable --now snapd.socket
+ln -s /var/lib/snapd/snap /snap || true
+# Install latest LXD from Snap
+snap install lxd --channel=latest/stable
+# Add user 'vagrant' to 'lxd' group
+usermod -aG lxd vagrant
+
+# Ensure lxd command is available
+export PATH=$PATH:/snap/bin
+# create lab state directory
 mkdir -p "$LAB_STATE"
 
 while true; do
