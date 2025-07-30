@@ -50,7 +50,7 @@
   * [HTTP]()
     * [W3Techs](https://w3techs.com/)
     * [Apache](https://www.apache.org/)
-    * [Apache Directives][def]
+    * [Apache Directives](https://httpd.apache.org/docs/2.4/mod/directives.html)
     * [HTTP Status Codes](https://en.wikipedia.org/wiki/List_of_HTTP_status_codes)
     * [Strong Ciphers for Apache, nginx and Lighttpd](https://cipherlist.eu/)
     * [SSL Tutorials](https://www.golinuxcloud.com/blog/)
@@ -159,10 +159,12 @@
   * [kata](https://katacontainers.io/)
 * [LXC - Linux Containers]()
   * [LXC](https://linuxcontainers.org/lxc/introduction/)
+  * [Linux Container Images](https://images.linuxcontainers.org/)
+* [LXD]
   * [LXD Canonical](https://canonical.com/lxd)
   * [LXD Canonical Github](https://github.com/canonical/lxd)
   * [LXD Documentation](https://linuxcontainers.org/lxd/docs/master/)
-  * [Linux Container Images](https://images.linuxcontainers.org/)
+  * [LDX Images](https://images.lxd.canonical.com/)  
   * [LXD Storage](https://documentation.ubuntu.com/lxd/stable-4.0/storage/)
   * [LXD Storage pools, volumes, and buckets](https://documentation.ubuntu.com/lxd/stable-5.21/explanation/storage/#exp-storage)
 * [Openstack Docs]()

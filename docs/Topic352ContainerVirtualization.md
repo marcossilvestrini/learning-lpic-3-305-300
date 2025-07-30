@@ -1361,6 +1361,8 @@ sudo lxd --version
 # check lxd status
 systemctl status lxd
 
+#### lxd storage management ####
+
 # lxd list storage
 lxc storage list
 
@@ -1404,6 +1406,108 @@ lxc storage volume create lpic3-btrfs vol-lpic3-btrfs
 
 # delete storage volume
 lxc storage volume delete lpic3-btrfs vol-lpic3-btrfs
+
+### managment lxd storage buckets ####
+
+# create lxd bucket
+lxc storage bucket create lpic3-btrfs bucket-lpic3-btrfs
+lxc storage bucket create lpic3-zfs bucket-lpic3-zfs
+
+# list lxd buckets
+lxc storage bucket list lpic3-btrfs
+
+# set lxd bucket properties
+lxc storage bucket set lpic3-btrfs bucket-lpic3-btrfs size 10GB
+
+# edit lxd bucket 
+lxc storage bucket edit lpic3-btrfs bucket-lpic3-btrfs
+
+# delete lxd bucket
+lxc storage bucket delete lpic3-btrfs bucket-lpic3-btrfs
+
+# show ldx storage bucket
+lxc storage bucket show lpic3-btrfs bucket-lpic3-btrfs
+
+# create storage bucket keys
+lxc storage bucket key create lpic3-btrfs bucket-lpic3-btrfs key-bucket-lpic3-btrfs
+
+# edit storage bucket keys
+lxc storage bucket key edit lpic3-btrfs bucket-lpic3-btrfs key-bucket-lpic3-btrfs
+
+# list storage bucket keys
+lxc storage bucket key list lpic3-btrfs bucket-lpic3-btrfs
+
+# show storage bucket keys
+lxc storage bucket key show lpic3-btrfs bucket-lpic3-btrfs key-bucket-lpic3-btrfs
+
+# delete storage bucket keys
+lxc storage bucket key delete lpic3-btrfs bucket-lpic3-btrfs key-bucket-lpic3-btrfs
+
+### lxd image management ###
+
+# list lxd repositories
+lxc remote list
+
+# add lxd remote repository
+lxc remote add lpic3-images https://images.lxd.canonical.com --protocol=simplestreams
+
+# remove lxd remote repository
+lxc remote remove lpic3-images 
+
+# list lxd images
+lxc image list
+
+# list lxd images from remote repository
+lxc image list images:
+lxc image list images: os=Ubuntu
+lxc image list images: os=Ubuntu release=jammy
+lxc image list images: os=Ubuntu release=jammy architecture=amd64
+lxc image list images: architecture=amd64 type=containe
+lxc image list images: d kal
+
+# download lxd image to local
+lxc image copy images:centos/9-Stream local: --alias centos-9
+
+# export lxd remote image
+lxc image export aed8a3749942  ./lxd-images/centos-9
+
+# export lxd remote image
+lxc image export images:f8fadb0d1b28 ./lxd-images/alma-9
+
+# remove lxd image
+lxc image delete centos-9
+
+# mount lxd rootfs
+mkdir -p /mnt/lxd-rootfs/centos-9
+sudo mount lxd-images/centos-9/aed8a374994230243aaa82e979ac7d23f379e511556d35af051b1638662d47ae.squashfs  /mnt/lxd-rootfs/centos-9/
+ls /mnt/lxd-rootfs/centos-9/
+
+# create a new container from image
+lxc launch images:ubuntu/jammy ubuntu-lxd
+lxc launch images:debian/12 debian12lxc
+lxc launch images:fedora/41 fedora41
+lxc launch images:opensuse/15.6 opensuse15
+
+# create a new container from image with storage pool
+lxc launch images:alpine/3.19 alpine --storage lpic3-lvm
+lxc launch images:kali kali --storage lpic3-zfs
+
+# create a new container from image local
+lxc launch 757b2a721e9d kali-local-image
+
+# list containers
+lxc list
+
+# stop container
+lxc stop alpine
+
+# start container
+lxc start alpine
+
+# delete container
+lxc delete alpine --force
+
+
 
 ```
 
