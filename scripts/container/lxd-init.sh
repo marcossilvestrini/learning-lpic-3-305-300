@@ -63,7 +63,7 @@ else
 fi
 
 # Post-init: configure LXD MinIO S3 backend support
-echo "Configuring LXD MinIO S3 backend..."
+log "Configuring LXD MinIO S3 backend..."
 
 # Set the MinIO binary path for LXD Snap (only required for Snap installations)
 sudo snap set lxd minio.path=/opt/minio
@@ -73,7 +73,16 @@ sudo snap restart lxd
 
 # Set the S3 endpoint address for LXD storage buckets
 lxc config set core.storage_buckets_address ":8555"
+log "LXD MinIO S3 backend configured at :8555"
 
-echo "LXD S3 bucket backend configured."
+# load ZFS kernel module if not already loaded
+if ! lsmod | grep -q zfs; then
+    log "Loading ZFS kernel module..."
+    sudo /sbin/modprobe zfs || {
+        error "Failed to load ZFS kernel module. Ensure ZFS is installed."
+        exit 1
+    }
+fi
+log "ZFS kernel module loaded successfully."
 
 log "✅ LXD environment setup complete!"

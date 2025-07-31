@@ -36,15 +36,19 @@ install_if_missing() {
 
 install_if_missing_zfs() {
     if ! command -v zpool &>/dev/null; then
-        log "Installing ZFS (zfsutils-linux and zfs-dkms)..."        
+        log "Instalando ZFS (zfsutils-linux e zfs-dkms)..."
+
         if ! grep -q "^deb .* contrib" /etc/apt/sources.list; then
-            warn "Repositório 'contrib' não detectado. Adicionando temporariamente..."
+            warn "Repository 'contrib' not detected. Adding temporarily..."            
             sudo sed -i '/^deb .* main/ s/$/ contrib/' /etc/apt/sources.list
             sudo apt update
         fi
 
-        sudo apt install -y zfsutils-linux zfs-dkms || {
-            error "Falha ao instalar ZFS. Verifique os repositórios."
+        # Accept the ZFS license non-interactively
+        echo "zfs-dkms zfs-dkms/license note" | sudo debconf-set-selections
+
+        sudo DEBIAN_FRONTEND=noninteractive apt install -y zfsutils-linux zfs-dkms || {
+            error "Failed to install ZFS. Check your repositories."
             exit 1
         }
     else
@@ -132,15 +136,6 @@ install_if_missing fdisk util-linux
 
 # ZFS - Check if zfsutils-linux is installed
 install_if_missing_zfs
-    
-# load ZFS kernel module if not already loaded
-if ! lsmod | grep -q zfs; then
-    log "Loading ZFS kernel module..."
-    sudo /sbin/modprobe zfs || {
-        error "Failed to load ZFS kernel module. Ensure ZFS is installed."
-        exit 1
-    }
-fi
 
 DISK=$(get_secondary_disk) || { error "No suitable secondary disk found!"; exit 1; }
 log "💾 Selected disk for storage: $DISK"

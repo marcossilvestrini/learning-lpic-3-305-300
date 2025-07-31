@@ -16,39 +16,50 @@ end
 Vagrant.configure("2") do |config|
 
   # LOCAL VARIABLES
-  VM_NAME = "lpic3-topic-352"
-  BOX_NAME = "generic/debian12"
+  vm_name = "lpic3-topic-352"
+  box_name = "generic/debian12"
+  scripts_path = "../scripts/"
+  configs_path = "../configs/"
+  security_path = "../security/"
+  packages_path = "../packages/"
 
   # BOX
-  config.vm.box = BOX_NAME
+  config.vm.box = box_name
   config.vm.box_download_insecure = true
 
   # MOUNTS
   config.vm.synced_folder ".", "/vagrant", disabled: true
-  config.vm.synced_folder "../scripts/", "/home/vagrant/scripts"
-  config.vm.synced_folder "../configs/", "/home/vagrant/configs"
-  config.vm.synced_folder "../security/", "/home/vagrant/security"
-  config.vm.synced_folder "../packages/", "/home/vagrant/packages"
+  config.vm.synced_folder scripts_path, "/home/vagrant/scripts"
+  config.vm.synced_folder configs_path, "/home/vagrant/configs"
+  config.vm.synced_folder security_path, "/home/vagrant/security"
+  config.vm.synced_folder packages_path, "/home/vagrant/packages"
+
 
   # BEGIN INSTANCE CONTAINER
-  config.vm.define "#{VM_NAME}-container" do |container|
+  config.vm.define "#{vm_name}-container" do |container|
 
     # hostname
-    container.vm.hostname = "#{VM_NAME}-container"
+    container.vm.hostname = "#{vm_name}-container"
 
     # STORAGE
-    container.vm.disk :disk, size: "200GB", name: "container_storage", primary: false
+    # Parametrização do tamanho do disco
+    disk_size = "200GB"
+    container.vm.disk :disk, size: disk_size, name: "container_storage", primary: false
 
     # VMware Workstation configuration
+    # Parametrização de recursos
+    mem_size = "65536" # MB
+    num_vcpus = "16"
+    clone_dir = "E:\\Servers\\VMWare\\#{vm_name}-container"
     container.vm.provider "vmware_workstation" do |vmware|
       vmware.linked_clone = true
-      vmware.clone_directory = "E:\\Servers\\VMWare\\#{VM_NAME}-container"
+      vmware.clone_directory = clone_dir
       vmware.whitelist_verified = true
       vmware.gui = true
       #vmware.vmx["virtualHW.version"] = "10"
-      vmware.vmx["displayName"] = "#{VM_NAME}-container"
-      vmware.vmx["memsize"] = "65536"
-      vmware.vmx["numvcpus"] = "16"
+      vmware.vmx["displayName"] = "#{vm_name}-container"
+      vmware.vmx["memsize"] = mem_size
+      vmware.vmx["numvcpus"] = num_vcpus
       vmware.vmx["cpuid.coresPerSocket"] = "1"
       vmware.vmx["vhv.enable"] = "TRUE"  # Enable virtualization engine (nested virtualization)
       # vmware.vmx["hypervisor.cpuid.v0"] = "FALSE"  # Ensure guest OS can see CPU features
@@ -57,27 +68,27 @@ Vagrant.configure("2") do |config|
     end
 
     # NETWORK CONFIGURATION
+    # Provisionamento de rede
     container.vm.network "public_network", mode: "bridge", auto_config: false
-    # manual ip and bridge configuration
-    container.vm.provision "shell", name: "[configure-network]", path: "../scripts/container/network.sh", privileged: true
+    container.vm.provision "shell", name: "[configure-network]", path: File.join(scripts_path, "container/network.sh"), privileged: true
 
     # CLOUD-INIT
-    container.vm.provision "shell", name: "[cloud-init]", path: "../scripts/container/cloud-init.sh", privileged: false
+    container.vm.provision "shell", name: "[cloud-init]", path: File.join(scripts_path, "container/cloud-init.sh"), privileged: false
 
-    # # QEMU
-    # container.vm.provision "shell", name: "[qemu]", path: "../scripts/kvm/qemu.sh", privileged: true
+    # # QEMU (descomente se necessário)
+    # container.vm.provision "shell", name: "[qemu]", path: File.join(scripts_path, "kvm/qemu.sh"), privileged: true
 
-    # CLOUD-INIT
-    container.vm.provision "shell", name: "[storage]", path: "../scripts/container/storage.sh", privileged: false
+    # STORAGE
+    container.vm.provision "shell", name: "[storage]", path: File.join(scripts_path, "container/storage.sh"), privileged: false
 
-    # CLOUD-INIT
-    container.vm.provision "shell", name: "[minio]", path: "../scripts/container/minio.sh", privileged: false
+    # MINIO
+    container.vm.provision "shell", name: "[minio]", path: File.join(scripts_path, "container/minio.sh"), privileged: false
 
     # RESTART VM
     container.vm.provision :reload
 
     # LXD AUTO-SETUP
-    container.vm.provision "shell", name: "[lxd-setup]", path: "../scripts/container/lxd-init.sh", privileged: true, run: "always"
+    container.vm.provision "shell", name: "[lxd-setup]", path: File.join(scripts_path, "container/lxd-init.sh"), privileged: true, run: "always"
   end
   # END INSTANCE CONTAINER
 end
