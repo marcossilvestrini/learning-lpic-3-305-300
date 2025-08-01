@@ -1,19 +1,19 @@
 #!/bin/bash
 
 : <<'MULTILINE-COMMENT'
-    Script Name: lxd-storage-lab.sh
-    Description: Prepare disk with partitions for LVM, Btrfs, and ZFS (for LXD storage pools)
-    Author: Marcos Silvestrini + Linux Specialist AI
-    Date: 21/07/2025
+    📝 Script Name: lxd-storage-lab.sh
+    📚 Description: Prepare disk with partitions for LVM, Btrfs, and ZFS (for LXD storage pools)
+    👤 Author: Marcos Silvestrini + Linux Specialist AI
+    📅 Date: 21/07/2025
 MULTILINE-COMMENT
 
 set -euo pipefail
 IFS=$'\n\t'
 
 # ===== LOGGING =====
-log()   { echo -e "🟢 [INFO] $*"; }
-warn()  { echo -e "🟡 [WARN] $*" >&2; }
-error() { echo -e "🔴 [ERROR] $*" >&2; }
+log()   { echo -e "[INFO] 🟢 $*"; }
+warn()  { echo -e "[WARN] 🟡 $*" >&2; }
+error() { echo -e "[ERROR] 🔴 $*" >&2; }
 
 # ===== DEPENDENCIES =====
 install_if_missing() {
@@ -132,11 +132,11 @@ format_partitions() {
             /^  pool: /{p=$2}
             $1==part {print p}
         ')
-        log "🟢 [INFO] ZFS partition ${DISK}3 is already in use by pool: $pool_name. Skipping creation."
+        log "ZFS partition ${DISK}3 is already in use by pool: $pool_name. Skipping creation."
     elif sudo zpool list | grep -qw lpic3-lxd-zfs; then
-        log "🟢 [INFO] ZFS pool lpic3-lxd-zfs already exists. Skipping creation."
+        log "ZFS pool lpic3-lxd-zfs already exists. Skipping creation."
     else
-        log "🟢 [INFO] Creating ZFS pool lpic3-lxd-zfs on ${DISK}3"
+        log "Creating ZFS pool lpic3-lxd-zfs on ${DISK}3"
         sudo zpool create -f lpic3-lxd-zfs ${DISK}3
     fi
 

@@ -1,15 +1,15 @@
 #!/usr/bin/env bash
 
 : <<'MULTILINE-COMMENT'
-    Script Name: lxc-lab.sh
-    Requirements: root privileges, lxc, curl
-    Description: Simulate basic LXC operations:
+    📝 Script Name: lxc-lab.sh
+    🔒 Requirements: root privileges, lxc, curl
+    📚 Description: Simulate basic LXC operations:
       - Create container
       - Start/Stop container
       - Exec shell inside
       - Teardown lab
-    Author: Marcos Silvestrini + Linux Specialist AI
-    Date: 07/07/2025
+    👤 Author: Marcos Silvestrini + Linux Specialist AI
+    📅 Date: 07/07/2025
 MULTILINE-COMMENT
 
 set -euo pipefail
@@ -20,9 +20,9 @@ RELEASE=${RELEASE:-"3.19"}
 DISTRO="images:alpine/$RELEASE"
 LAB_STATE="/tmp/lxc-lab"
 
-log()   { echo -e "[INFO] $*"; }
-warn()  { echo -e "[WARN] $*" >&2; }
-abort() { echo -e "[ERROR] $*" >&2; exit 1; }
+log()   { echo -e "[INFO] 📌 $*"; }
+warn()  { echo -e "[WARN] ⚠️ $*" >&2; }
+abort() { echo -e "[ERROR] ❌ $*" >&2; exit 1; }
 
 install_if_missing() {
     local cmd="$1"

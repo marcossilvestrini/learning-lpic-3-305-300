@@ -1,16 +1,16 @@
 #!/usr/bin/env bash
 
 : <<'MULTILINE-COMMENT'
-    Script Name: containerd-lab.sh
-    Requirements: root privileges, containerd, ctr, curl
-    Description: Simulate basic containerd operations:
+    📝 Script Name: containerd-lab.sh
+    🔒 Requirements: root privileges, containerd, ctr, curl
+    📚 Description: Simulate basic containerd operations:
       - Pull image (busybox)
       - Create and run container
       - Exec shell inside
       - Stop/Remove container
       - Teardown lab
-    Author: Marcos Silvestrini + Linux Specialist AI
-    Date: 01/07/2025
+    👤 Author: Marcos Silvestrini + Linux Specialist AI
+    📅 Date: 01/07/2025
 MULTILINE-COMMENT
 
 set -euo pipefail
@@ -22,9 +22,9 @@ IMAGE="docker.io/library/busybox:latest"
 LAB_STATE="/tmp/containerd-lab"
 LOG="$LAB_STATE/lab.log"
 
-log()   { echo -e "[INFO] $*"; }
-warn()  { echo -e "[WARN] $*" >&2; }
-abort() { echo -e "[ERROR] $*" >&2; exit 1; }
+log()   { echo -e "[INFO] 📌 $*"; }
+warn()  { echo -e "[WARN] ⚠️ $*" >&2; }
+abort() { echo -e "[ERROR] ❌ $*" >&2; exit 1; }
 
 install_if_missing() {
     local cmd="$1"

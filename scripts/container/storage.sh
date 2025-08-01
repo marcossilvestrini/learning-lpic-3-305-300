@@ -1,18 +1,18 @@
 #!/bin/bash
 
 : <<'MULTILINE-COMMENT'
-    Script Name: lxd-storage-lab.sh
-    Description: Prepare a secondary disk for LXD storage pools (LVM, Btrfs, ZFS) with full cleanup and idempotent reset. All partitions, filesystems, and LVM signatures are forcefully removed.
-    Author: Marcos Silvestrini + Linux Specialist AI
-    Date: 21/07/2025
+    📝 Script Name: lxd-storage-lab.sh
+    📚 Description: Prepare a secondary disk for LXD storage pools (LVM, Btrfs, ZFS) with full cleanup and idempotent reset. All partitions, filesystems, and LVM signatures are forcefully removed.
+    👤 Author: Marcos Silvestrini + Linux Specialist AI
+    📅 Date: 21/07/2025
 MULTILINE-COMMENT
 
 set -euo pipefail
 IFS=$'\n\t'
 
-log()   { echo -e "🟢 [INFO] $*"; }
-warn()  { echo -e "🟡 [WARN] $*" >&2; }
-error() { echo -e "🔴 [ERROR] $*" >&2; }
+log()   { echo -e "[INFO] 🟢 $*"; }
+warn()  { echo -e "[WARN] 🟡 $*" >&2; }
+error() { echo -e "[ERROR] 🔴 $*" >&2; }
 
 install_if_missing() {
     local cmd="$1"

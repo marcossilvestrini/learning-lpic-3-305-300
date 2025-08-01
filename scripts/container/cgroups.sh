@@ -1,14 +1,14 @@
 #!/usr/bin/env bash
 
 : <<'MULTILINE-COMMENT'
-    Script Name: cgroups.sh
-    Requirements: root privileges, cgroups v2, stress-ng installed
-    Description: Demonstrates cgroups v2 behavior through 3 common pod scenarios:
+    📝 Script Name: cgroups.sh
+    🔒 Requirements: root privileges, cgroups v2, stress-ng installed
+    📚 Description: Demonstrates cgroups v2 behavior through 3 common pod scenarios:
                  (1) Soft resource limits (limited but stable),
                  (2) CPU throttling (process slowed by CPU quota),
                  (3) OOM kill (process terminated by kernel for exceeding memory)
-    Author: Marcos Silvestrini
-    Date: 10/06/2025
+    👤 Author: Marcos Silvestrini
+    📅 Date: 10/06/2025
 MULTILINE-COMMENT
 
 set -euo pipefail

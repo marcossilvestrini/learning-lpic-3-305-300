@@ -1,17 +1,17 @@
 #!/usr/bin/env bash
 
 : <<'MULTILINE-COMMENT'
-    Script Name: runc-lab.sh
-    Requirements: root privileges, runc, curl, jq
-    Description: Simulate basic runc operations:
+    📝 Script Name: runc-lab.sh
+    🔒 Requirements: root privileges, runc, curl, jq
+    📚 Description: Simulate basic runc operations:
       - Download and setup busybox rootfs
       - Generate OCI spec
       - Run container
       - Exec into container
       - Kill container
       - Teardown everything
-    Author: Marcos Silvestrini + Linux Specialist AI
-    Date: 01/07/2025
+    👤 Author: Marcos Silvestrini + Linux Specialist AI
+    📅 Date: 01/07/2025
 MULTILINE-COMMENT
 
 set -euo pipefail
@@ -25,9 +25,9 @@ CONTAINER_ID="busybox-lab"
 BUSYBOX_BIN="$LAB_DIR/busybox"
 
 # ===== LOGGING =====
-log()   { echo -e "[INFO] $*"; }
-warn()  { echo -e "[WARN] $*" >&2; }
-abort() { echo -e "[ERROR] $*" >&2; exit 1; }
+log()   { echo -e "[INFO] 📌 $*"; }
+warn()  { echo -e "[WARN] ⚠️ $*" >&2; }
+abort() { echo -e "[ERROR] ❌ $*" >&2; exit 1; }
 
 install_if_missing() {
     local cmd="$1"

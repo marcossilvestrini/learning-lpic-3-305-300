@@ -1,11 +1,11 @@
 #!/bin/bash
 
 : <<'MULTILINE-COMMENT'
-    Script Name: minio.sh
-    Description: Install MinIO server and client, set up systemd unit for automatic service management (LXD S3 integration)
-    Requirements: curl, sudo, Linux x86_64, LXD snap
-    Author: Marcos Silvestrini + Linux Specialist AI
-    Date: 24/07/2025
+    📝 Script Name: minio.sh
+    📚 Description: Install MinIO server and client, set up systemd unit for automatic service management (LXD S3 integration)
+    🔒 Requirements: curl, sudo, Linux x86_64, LXD snap
+    👤 Author: Marcos Silvestrini + Linux Specialist AI
+    📅 Date: 24/07/2025
 MULTILINE-COMMENT
 
 set -euo pipefail
@@ -18,9 +18,9 @@ SERVICE_NAME="minio"
 MINIO_RELEASE_URL="https://dl.min.io/server/minio/release/linux-amd64/minio"
 MC_RELEASE_URL="https://dl.min.io/client/mc/release/linux-amd64/mc"
 
-log()   { echo -e "🟢 [INFO] $*"; }
-warn()  { echo -e "🟡 [WARN] $*" >&2; }
-error() { echo -e "🔴 [ERROR] $*" >&2; }
+log()   { echo -e "[INFO] 🟢 $*"; }
+warn()  { echo -e "[WARN] 🟡 $*" >&2; }
+error() { echo -e "[ERROR] 🔴 $*" >&2; }
 
 # Install curl if missing
 if ! command -v curl >/dev/null 2>&1; then
@@ -41,15 +41,25 @@ fi
 # Create directory for MinIO binaries
 sudo mkdir -p "$BIN_DIR"
 
-# Download MinIO server binary
-log "Downloading MinIO server..."
-sudo curl -fsSL "$MINIO_RELEASE_URL" -o "$BIN_DIR/minio"
-sudo chmod +x "$BIN_DIR/minio"
 
-# Download MinIO client binary
-log "Downloading MinIO client..."
-sudo curl -fsSL "$MC_RELEASE_URL" -o "$BIN_DIR/mc"
-sudo chmod +x "$BIN_DIR/mc"
+
+# Download MinIO server binary (idempotente)
+if [ ! -f "$BIN_DIR/minio" ]; then
+    log "Downloading MinIO server..."
+    curl -fsSL "$MINIO_RELEASE_URL" | sudo tee "$BIN_DIR/minio" > /dev/null
+    sudo chmod +x "$BIN_DIR/minio"
+else
+    log "MinIO server binary already exists, skipping download."
+fi
+
+# Download MinIO client binary (idempotente)
+if [ ! -f "$BIN_DIR/mc" ]; then
+    log "Downloading MinIO client..."
+    curl -fsSL "$MC_RELEASE_URL" | sudo tee "$BIN_DIR/mc" > /dev/null
+    sudo chmod +x "$BIN_DIR/mc"
+else
+    log "MinIO client binary already exists, skipping download."
+fi
 
 # Set ownership
 sudo chown root:root "$BIN_DIR/"*

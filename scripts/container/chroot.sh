@@ -1,12 +1,12 @@
 #!/bin/bash
 
 : <<'MULTILINE-COMMENT'
-    Script Name: full-chroot-lab.sh
-    Requirements: root privileges
-    Description: Automates setup and teardown of a functional minimal chroot environment,
+    📝 Script Name: full-chroot-lab.sh
+    🔒 Requirements: root privileges
+    📚 Description: Automates setup and teardown of a functional minimal chroot environment,
                  with interactive menu and sumário de validação automático.
-    Author: Marcos Silvestrini
-    Date: 06/06/2025
+    👤 Author: Marcos Silvestrini
+    📅 Date: 06/06/2025
 MULTILINE-COMMENT
 
 if [[ "$EUID" -ne 0 ]]; then
@@ -23,9 +23,9 @@ WORKDIR="/home/vagrant"
 UTILS=(ls ps mkdir cat sh uname touch w hostname id tr head sed rm)
 REMOVE_DIR=true
 
-log()   { echo "[INFO] $*"; }
-warn()  { echo "[WARN] $*" >&2; }
-abort() { echo "[ERROR] $*" >&2; exit 1; }
+log()   { echo -e "[INFO] 📌 $*"; }
+warn()  { echo -e "[WARN] ⚠️ $*" >&2; }
+abort() { echo -e "[ERROR] ❌ $*" >&2; exit 1; }
 
 copy_binary_and_libs() {
     local bin_path="$1"

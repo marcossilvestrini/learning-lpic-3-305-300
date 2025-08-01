@@ -1,25 +1,29 @@
 #!/bin/bash
 
 : <<'MULTILINE-COMMENT'
-    Requirements: none
-    Description: Script to configure Container Environment
-    Author: Marcos Silvestrini
-    Date: 06/06/2025
+    📝 Requirements: none
+    📚 Description: Script to configure Container Environment
+    👤 Author: Marcos Silvestrini
+    📅 Date: 06/06/2025
 MULTILINE-COMMENT
 
-# Set system language and locale
+
+# 🌐 Set system language and locale
 export LANG=C
 
-# Change to vagrant home directory
+
+# 🏠 Change to vagrant home directory
 cd /home/vagrant || exit
 
-# Detect OS release information
+
+# 🕵️ Detect OS release information
 RELEASE_INFO=$(cat /etc/*release 2>/dev/null)
 
-# OS validation and package installation
+
+# 🚦 OS validation and package installation
 if echo "$RELEASE_INFO" | grep -q -i "debian\|ubuntu"; then
     # Debian/Ubuntu distribution detected
-    echo "This is a Debian or Ubuntu-based distribution."
+    echo "🟢 This is a Debian or Ubuntu-based distribution."
 
     # Install required packages
     sudo apt update -yqq

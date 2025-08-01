@@ -3254,7 +3254,7 @@ sudo lxd --version
 # check lxd status
 systemctl status lxd
 
-#### lxd storage management ####
+#### LXD STORAGE MANAGEMENT ####
 
 # lxd list storage
 lxc storage list
@@ -3336,7 +3336,7 @@ lxc storage bucket key show lpic3-btrfs bucket-lpic3-btrfs key-bucket-lpic3-btrf
 # delete storage bucket keys
 lxc storage bucket key delete lpic3-btrfs bucket-lpic3-btrfs key-bucket-lpic3-btrfs
 
-### lxd image management ###
+### LXD IMAGE MANAGEMENT ###
 
 # list lxd repositories
 lxc remote list
@@ -3375,32 +3375,67 @@ mkdir -p /mnt/lxd-rootfs/centos-9
 sudo mount lxd-images/centos-9/aed8a374994230243aaa82e979ac7d23f379e511556d35af051b1638662d47ae.squashfs  /mnt/lxd-rootfs/centos-9/
 ls /mnt/lxd-rootfs/centos-9/
 
-# create a new container from image
+# create a new container\instance from image
 lxc launch images:ubuntu/jammy ubuntu-lxd
 lxc launch images:debian/12 debian12lxc
 lxc launch images:fedora/41 fedora41
 lxc launch images:opensuse/15.6 opensuse15
 
-# create a new container from image with storage pool
+# create a new container\instance from image with storage pool
 lxc launch images:alpine/3.19 alpine --storage lpic3-lvm
 lxc launch images:kali kali --storage lpic3-zfs
 
-# create a new container from image local
+# create a new container\instance from image local
 lxc launch 757b2a721e9d kali-local-image
 
-# list containers
+# list container\instances
 lxc list
 
-# stop container
+# stop container\instance
 lxc stop alpine
 
-# start container
+# start container\instance
 lxc start alpine
 
-# delete container
+# delete container\instance
 lxc delete alpine --force
 
+# show container\instance
+lxc info alpine
 
+# show container\instance config
+lxc config show alpine
+
+# edit container\instance config
+lxc config edit alpine
+
+# view container\instance config
+lxc config get alpine boot.autostart
+
+# set container\instance config
+lxc config set alpine boot.autostart=false
+
+# set limit for container\instance
+lxc config set alpine limits.cpu 2
+lxc config set alpine limits.memory 10%
+
+# unset limit for container\instance
+lxc config unset alpine limits.cpu  
+lxc config unset alpine limits.memory
+
+# execute command in container\instance
+lxc --exec alpine -- /bin/bash
+lxc exec alpine -- uname -a || dhclient
+lxc exec alpine -- sh -c "echo 'Hello from Alpine'"
+
+# lxd copy file to container\instance
+lxc file push /etc/hosts alpine/etc/hosts
+
+# lxd edit file in container\instance
+lxc file edit alpine/etc/hosts
+
+# download file from container\instance
+lxc file pull alpine/etc/hosts /tmp/alpine-hosts
 
 ```
 
@@ -3831,6 +3866,7 @@ Project Link: [https://github.com/marcossilvestrini/learning-lpic-3-305-300](htt
   * [LDX Images](https://images.lxd.canonical.com/)  
   * [LXD Storage](https://documentation.ubuntu.com/lxd/stable-4.0/storage/)
   * [LXD Storage pools, volumes, and buckets](https://documentation.ubuntu.com/lxd/stable-5.21/explanation/storage/#exp-storage)
+  * [LXD Installation](https://documentation.ubuntu.com/lxd/stable-4.0/instances/)
 * [Openstack Docs]()
   * [RedHat](https://www.redhat.com/pt-br/topics/openstack)
 * [Open vSwitch]()

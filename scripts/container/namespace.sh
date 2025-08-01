@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
 
 : <<'MULTILINE-COMMENT'
-    Script Name: namespace.sh
-    Requirements: root privileges, unshare, chroot, Linux with namespace support
-    Description: Automates creation of a minimal chroot and launches an isolated environment using multiple Linux namespaces.
-    SAFETY: All mounts are isolated; no mounts are unmounted on the host! 
-    Author: Marcos Silvestrini
-    Date: 18/06/2025
+    📝 Script Name: namespace.sh
+    🔒 Requirements: root privileges, unshare, chroot, Linux with namespace support
+    📚 Description: Automates creation of a minimal chroot and launches an isolated environment using multiple Linux namespaces.
+    🦺 SAFETY: All mounts are isolated; no mounts are unmounted on the host! 
+    👤 Author: Marcos Silvestrini
+    📅 Date: 18/06/2025
 MULTILINE-COMMENT
 
 set -euo pipefail

@@ -1,15 +1,15 @@
 #!/usr/bin/env bash
 
 : <<'MULTILINE-COMMENT'
-    Script Name: lxd-lab.sh
-    Requirements: root privileges, lxd, lxc, curl
-    Description: Simulate basic LXD operations:
+    📝 Script Name: lxd-lab.sh
+    🔒 Requirements: root privileges, lxd, lxc, curl
+    📚 Description: Simulate basic LXD operations:
       - Launch container (Alpine)
       - Exec shell inside
       - Stop/Delete container
       - Teardown lab
-    Author: Marcos Silvestrini + Linux Specialist AI
-    Date: 01/07/2025
+    👤 Author: Marcos Silvestrini + Linux Specialist AI
+    📅 Date: 01/07/2025
 MULTILINE-COMMENT
 
 set -euo pipefail
@@ -20,9 +20,9 @@ IMAGE="images:alpine/3.19"
 LAB_STATE="/tmp/lxd-lab"
 
 
-log()   { echo -e "[INFO] $*"; }
-warn()  { echo -e "[WARN] $*" >&2; }
-abort() { echo -e "[ERROR] $*" >&2; exit 1; }
+log()   { echo -e "[INFO] 📌 $*"; }
+warn()  { echo -e "[WARN] ⚠️ $*" >&2; }
+abort() { echo -e "[ERROR] ❌ $*" >&2; exit 1; }
 
 install_if_missing() {
     local cmd="$1"

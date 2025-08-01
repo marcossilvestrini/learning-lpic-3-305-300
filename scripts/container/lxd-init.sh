@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 
 : <<'MULTILINE-COMMENT'
-    Script Name: lxd-setup.sh
-    Requirements: root privileges, apt, lxd
-    Description: Automate LXD install/config on Debian/Ubuntu
-    Author: Marcos Silvestrini + Linux Specialist AI
-    Date: 21/07/2025
+    📝 Script Name: lxd-setup.sh
+    🔒 Requirements: root privileges, apt, lxd
+    📚 Description: Automate LXD install/config on Debian/Ubuntu
+    👤 Author: Marcos Silvestrini + Linux Specialist AI
+    📅 Date: 21/07/2025
 MULTILINE-COMMENT
 
 set -euo pipefail
@@ -14,7 +14,7 @@ export PATH=$PATH:/snap/bin
 
 # ========== LOGGING ==========
 log()   { echo -e "🌟 [INFO] $*"; }
-warn()  { echo -e "⚠️  [WARN] $*" >&2; }
+warn()  { echo -e "⚠️ [WARN] $*" >&2; }
 abort() { echo -e "🛑 [ERROR] $*" >&2; exit 1; }
 
 # ========== VALIDATION ==========
