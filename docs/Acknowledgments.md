@@ -167,6 +167,7 @@
   * [LDX Images](https://images.lxd.canonical.com/)  
   * [LXD Storage](https://documentation.ubuntu.com/lxd/stable-4.0/storage/)
   * [LXD Storage pools, volumes, and buckets](https://documentation.ubuntu.com/lxd/stable-5.21/explanation/storage/#exp-storage)
+  * [LXD Installation](https://documentation.ubuntu.com/lxd/stable-4.0/instances/)
 * [Openstack Docs]()
   * [RedHat](https://www.redhat.com/pt-br/topics/openstack)
 * [Open vSwitch]()
