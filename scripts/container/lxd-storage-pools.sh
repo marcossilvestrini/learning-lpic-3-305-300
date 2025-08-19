@@ -11,8 +11,6 @@ set -euo pipefail
 IFS=$'\n\t'
 LANG=C
 
-
-
 # 🧩 Function: Get secondary disk (not root disk)
 get_secondary_disk() {
     local root_partition root_disk
@@ -96,9 +94,7 @@ validate_volumes_and_buckets() {
     done
 }
 
-# ===============================================
-# S3 Bucket Automation: Upload and List Files    #
-# ===============================================
+# 🧩 Function: S3 Bucket Automation: Upload and List Files
 s3_upload_and_list() {
     # Ensure awscli is installed
     if ! command -v aws >/dev/null 2>&1; then
@@ -168,6 +164,9 @@ validate_partitions "$PART1" "$PART2" "$PART3"
 create_lxd_pool lpic3-lvm lvm "$PART1"
 create_lxd_pool lpic3-btrfs btrfs "$PART2"
 create_lxd_pool lpic3-zfs zfs "$PART3"
+# fix error:
+# cannot be restored due to subsequent snapshot(s). Set zfs.remove_snapshots to override
+lxc storage set lpic3-zfs volume.zfs.remove_snapshots=true
 
 log "Pools created/validated:"
 lxc storage list
@@ -178,63 +177,6 @@ done
 
 validate_volumes_and_buckets lpic3-lvm lpic3-btrfs lpic3-zfs
 
-s3_upload_and_list
-
-log "🎉✅ Script finished successfully!"
-
-# ===============================================
-# S3 Bucket Automation: Upload and List Files    #
-# ===============================================
-
-s3_upload_and_list() {
-    # Ensure awscli is installed
-    if ! command -v aws >/dev/null 2>&1; then
-        log "awscli not found. Installing..."
-        if command -v apt >/dev/null 2>&1; then
-            sudo apt update && sudo apt install -y awscli || error "Failed to install awscli."
-        elif command -v dnf >/dev/null 2>&1; then
-            sudo dnf install -y awscli || error "Failed to install awscli."
-        elif command -v yum >/dev/null 2>&1; then
-            sudo yum install -y awscli || error "Failed to install awscli."
-        else
-            error "No supported package manager found to install awscli."
-        fi
-    fi
-
-    local endpoint
-    endpoint="https://$(hostname -I | awk '{print $1}' | head -n1):8555"
-    local region="us-east-1"
-    local file_to_upload="scripts/container/cloud-init.sh"
-    if [ ! -f "$file_to_upload" ]; then
-        error "File $file_to_upload not found!"
-    fi
-
-    for pool in lpic3-lvm lpic3-btrfs lpic3-zfs; do
-        bucket="bucket-$pool"
-        # Get admin key info
-        key_info=$(lxc storage bucket key show $pool $bucket admin 2>/dev/null)
-        access_key=$(echo "$key_info" | awk -F': ' '/access-key:/ {print $2}')
-        secret_key=$(echo "$key_info" | awk -F': ' '/secret-key:/ {print $2}')
-        if [ -z "$access_key" ] || [ -z "$secret_key" ]; then
-            warn "No admin key found for $bucket in $pool. Skipping."
-            continue
-        fi
-
-        export AWS_ACCESS_KEY_ID="$access_key"
-        export AWS_SECRET_ACCESS_KEY="$secret_key"
-        export AWS_DEFAULT_REGION="$region"
-
-        log "Uploading $file_to_upload to s3://$bucket/ using pool $pool..."
-        aws --no-verify-ssl --endpoint-url "$endpoint" s3 cp "$file_to_upload" s3://$bucket/ || warn "Failed to upload to $bucket."
-
-        log "Listing files in s3://$bucket/ ..."
-        aws --no-verify-ssl --endpoint-url "$endpoint" s3 ls s3://$bucket/ || warn "Failed to list files in $bucket."
-    done
-
-    unset AWS_ACCESS_KEY_ID AWS_SECRET_ACCESS_KEY AWS_DEFAULT_REGION
-}
-
-# Call the function at the end of the script (optional, comment out if not desired by default)
 s3_upload_and_list
 
 log "🎉✅ Script finished successfully!"

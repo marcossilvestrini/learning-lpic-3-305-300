@@ -62,7 +62,7 @@ else
 fi
 
 # Set ownership
-sudo chown root:root "$BIN_DIR/"*
+sudo chown vagrant:vagrant "$BIN_DIR/"*
 
 # Display versions
 log "MinIO server version:"

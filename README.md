@@ -3504,6 +3504,25 @@ lxc network attach lxdbr0 alpine
 # detach a network from a container
 lxc network detach lxdbr0 alpine
 
+### LXD SNAPSHOT MANAGEMENT ###
+
+# create a snapshot
+lxc snapshot debian12
+
+# create a snapshot
+lxc snapshot debian12 nome-snapshot
+
+# restore a snapshot
+lxc restore debian12 nome-snapshot
+
+# delete a snapshot
+lxc delete debian12/snap0
+
+# show snapshot info
+lxc info debian12
+
+# copy a snapshot
+lxc copy debian12/snap0 debian12-2
 
 ```
 
