@@ -5215,7 +5215,26 @@ ls .local/share/lxc/unprivileged/
 </span><span class="code-line line-number" line="228"><span class="token comment"># detach a network from a container</span>
 </span><span class="code-line line-number" line="229">lxc network detach lxdbr0 alpine
 </span><span class="code-line line-number" line="230">
-</span><span class="code-line line-number" line="231">
+</span><span class="code-line line-number" line="231"><span class="token comment">### LXD SNAPSHOT MANAGEMENT ###</span>
+</span><span class="code-line line-number" line="232">
+</span><span class="code-line line-number" line="233"><span class="token comment"># create a snapshot</span>
+</span><span class="code-line line-number" line="234">lxc snapshot debian12
+</span><span class="code-line line-number" line="235">
+</span><span class="code-line line-number" line="236"><span class="token comment"># create a snapshot</span>
+</span><span class="code-line line-number" line="237">lxc snapshot debian12 nome-snapshot
+</span><span class="code-line line-number" line="238">
+</span><span class="code-line line-number" line="239"><span class="token comment"># restore a snapshot</span>
+</span><span class="code-line line-number" line="240">lxc restore debian12 nome-snapshot
+</span><span class="code-line line-number" line="241">
+</span><span class="code-line line-number" line="242"><span class="token comment"># delete a snapshot</span>
+</span><span class="code-line line-number" line="243">lxc delete debian12/snap0
+</span><span class="code-line line-number" line="244">
+</span><span class="code-line line-number" line="245"><span class="token comment"># show snapshot info</span>
+</span><span class="code-line line-number" line="246">lxc info debian12
+</span><span class="code-line line-number" line="247">
+</span><span class="code-line line-number" line="248"><span class="token comment"># copy a snapshot</span>
+</span><span class="code-line line-number" line="249">lxc copy debian12/snap0 debian12-2
+</span><span class="code-line line-number" line="250">
 </span></code><div onclick="copied(this)" data-code="# lxd configuration files
 /var/lib/lxd
 /var/log/lxd
@@ -5446,6 +5465,25 @@ lxc network attach lxdbr0 alpine
 # detach a network from a container
 lxc network detach lxdbr0 alpine
 
+### LXD SNAPSHOT MANAGEMENT ###
+
+# create a snapshot
+lxc snapshot debian12
+
+# create a snapshot
+lxc snapshot debian12 nome-snapshot
+
+# restore a snapshot
+lxc restore debian12 nome-snapshot
+
+# delete a snapshot
+lxc delete debian12/snap0
+
+# show snapshot info
+lxc info debian12
+
+# copy a snapshot
+lxc copy debian12/snap0 debian12-2
 
 " class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
     <p align="right">(<a href="#topic-352.2">back to sub topic 352.2</a>)</p>
