@@ -4,11 +4,11 @@
 
 * * *
 
-[Minha licença][license-url][Garfos][forks-url][Stargazers][stars-url][Colaboradores][contributors-url][Problemas][issues-url][LinkedIn][linkedin-url]
+[![MIT License][license-shield]][license-url][![Forks][forks-shield]][forks-url][![Stargazers][stars-shield]][stars-url][![Contributors][contributors-shield]][contributors-url][![Issues][issues-shield]][issues-url]
 
-* * *
+## [![LinkedIn][linkedin-shield]][linkedin-url]
 
-# Aprendendo LPIC-3 305-300
+# 📚 Aprendendo Lpic-3 305-300
 
 [![English](https://img.shields.io/badge/lang-English-blue?logo=readme&logoColor=white)](./README.md)[![Português](https://img.shields.io/badge/lang-Português-green?logo=readme&logoColor=white)](README_pt.md)
 
@@ -30,7 +30,7 @@
 
 * * *
 
-## Resumo
+## Resumo Resumo
 
 <details>
   <summary><b>TABLE OF CONTENT</b></summary>
@@ -86,7 +86,7 @@
 
 <a name="about-the-project"></a>
 
-## Sobre o projeto
+## 📖 Sobre o projeto
 
 > Este projeto tem como objetivo ajudar estudantes ou profissionais a aprender os principais conceitos de gnulinux
 > e software livre
@@ -104,7 +104,7 @@
 
 <a name="getting-started"></a>
 
-## Começando
+## 🚀 Introdução
 
 Para iniciar o aprendizado, consulte a documentação acima.
 
@@ -119,7 +119,7 @@ Para iniciar o aprendizado, consulte a documentação acima.
 
 <a name="installation"></a>
 
-### Instalação
+### 💾 Instalação
 
 Clone o repo
 
@@ -143,11 +143,11 @@ Personalize a configuração de rede em arquivos[Configs/Network](configs/networ
 
 <a name="usage"></a>
 
-## Uso
+## 📝 Uso
 
 Use este repositório para obter aprendizado sobre o exame LPIC-3 305-300
 
-### Para cima e para baixo
+### ⬆️⬇️ para cima e para baixo
 
 Mudar a_VagrantFile-Topic-xxx_modelo e cópia para um novo arquivo com nome_VagrantFile_
 
@@ -156,7 +156,7 @@ cd vagrant && vagrant up
 cd vagrant && vagrant destroy -f
 ```
 
-### Para reiniciar VMs
+### 🔄 Para reiniciar VMs
 
 ```sh
 cd vagrant && vagrant reload
@@ -164,7 +164,7 @@ cd vagrant && vagrant reload
 
 **Importante:**_Se você reiniciar VMs sem vagão, a pasta compartilhada não é montada após a inicialização._
 
-### Use PowerShell para cima e para baixo
+### 💻 Use PowerShell para cima e para baixo
 
 Se você usa a plataforma Windows, crio um script PowerShell para VMs para cima e para baixo.
 
@@ -173,7 +173,7 @@ vagrant/up.ps1
 vagrant/destroy.ps1
 ```
 
-### Esquema de infraestrutura Tópico 351
+### 🗺️ Esquema de infraestrutura Tópico 351
 
 ![topic-351](images/infraestructure-topic-351.png)
 
@@ -183,7 +183,7 @@ vagrant/destroy.ps1
 
 <a name="roadmap"></a>
 
-## Roteiro
+## Roteiro Roteiro
 
 -   [x] Criar repositório
 -   [x] Crie scripts para provisioning laboratórios
@@ -196,7 +196,7 @@ vagrant/destroy.ps1
 
 <a name="freedoms"></a>
 
-## Quatro liberdades essenciais
+## 🗽 Quatro liberdades essenciais
 
 > 0.a liberdade para executar o programa como desejar, para qualquer finalidade (liberdade 0).
 > 1.A liberdade para estudar como o programa funciona e muda para
@@ -207,7 +207,7 @@ vagrant/destroy.ps1
 
 * * *
 
-## Inspecionar comandos
+## 🔍 Inspecione os comandos
 
 ```sh
 type COMMAND
@@ -224,7 +224,7 @@ man COMMAND
 
 <a name="topic-351"></a>
 
-## Tópico 351: Virtualização completa
+## 🖥️ Tópico 351: Virtualização completa
 
 ![LPIC3-305-300](images/virtualization-351.png)
 
@@ -232,7 +232,7 @@ man COMMAND
 
 <a name="topic-351.1"></a>
 
-### 351.1 Conceitos e teoria de virtualização
+### 🧠 351.1 Conceitos e teoria de virtualização
 
 **Peso:**6
 
@@ -249,7 +249,7 @@ man COMMAND
 -   🌐 Consciência de ovirt, proxmox, Systemd Machined e VirtualBox
 -   🔗 Consciência do Vswitch aberto
 
-#### 351.1 Objetos citados
+#### 📋 351.1 Objetos citados
 
 ```sh
 Hypervisor
@@ -261,47 +261,47 @@ CPU flags
 Migration (P2V, V2V)
 ```
 
-#### Hipervisores
+#### Hypervisors Hipervisores
 
-##### Hypervisor tipo 1 (hipervisor nua-metal)
+##### 🏢 Hypervisor tipo 1 (hipervisor nua-metal)
 
-###### Definição do tipo 1
+###### 📄 Definição do tipo 1
 
 Executa diretamente no hardware físico do host, fornecendo uma camada base para gerenciar VMs sem a necessidade de um sistema operacional host.
 
-###### Características do tipo 1
+###### 📝 Características do tipo 1
 
 -   ⚡ Alto desempenho e eficiência.
 -   Latência mais baixa e sobrecarga.
 -   🏢 Freqüentemente usado em ambientes corporativos e data centers.
 
-###### Exemplos do tipo 1
+###### 💡 Exemplos do tipo 1
 
 -   VMware ESXi: um hipervisor robusto e amplamente usado em configurações corporativas.
 -   Microsoft Hyper-V: integrado ao Windows Server, oferecendo fortes recursos de desempenho e gerenciamento.
 -   Xen: Um hipervisor de código aberto usado por muitos provedores de serviços em nuvem.
 -   KVM (máquina virtual baseada em kernel): integrada ao kernel Linux, fornecendo alto desempenho para sistemas baseados em Linux.
 
-##### Hypervisor tipo 2 (hipervisor hospedado)
+##### 🏠 Hypervisor tipo 2 (hipervisor hospedado)
 
-###### Definição do tipo 2
+###### 📄 Definição do tipo 2
 
 Executa em cima de um sistema operacional convencional, contando com o sistema operacional host para gerenciamento de recursos e suporte ao dispositivo.
 
-###### Características do tipo 2
+###### 📝 Características do tipo 2
 
 -   🛠️ mais fácil de configurar e usar, especialmente em computadores pessoais.
 -   🔧 Mais flexível para desenvolvimento, teste e implantações em menor escala.
 -   🐢 Normalmente menos eficiente que os hipervisores do tipo 1 devido a uma sobrecarga adicional do sistema operacional do host.
 
-###### Exemplos do tipo 2
+###### 💡 Exemplos do tipo 2
 
 -   VMware Workstation: um poderoso hipervisor para executar vários sistemas operacionais em uma única área de trabalho.
 -   Oracle VirtualBox: um hipervisor de código aberto conhecido por sua flexibilidade e facilidade de uso.
 -   Paralels Desktop: Projetado para usuários de Mac para executar o Windows e outros sistemas operacionais ao lado de MacOS.
 -   Qemu (emulador rápido): um emulador de código aberto e virtualizador, geralmente usado em conjunto com o KVM.
 
-##### Diferenças -chave entre os hipervisores do tipo 1 e do tipo 2
+##### ⚖️ Diferenças -chave entre os hipervisores do tipo 1 e do tipo 2
 
 -   Ambiente de implantação:
     -   Os hipervisores tipo 1 são comumente implantados em data centers e ambientes corporativos devido à sua interação direta com hardware e alto desempenho.
@@ -313,237 +313,237 @@ Executa em cima de um sistema operacional convencional, contando com o sistema o
     -   Os hipervisores do tipo 1 requerem configuração e gerenciamento mais complexos, mas fornecem recursos avançados e escalabilidade para implantações em larga escala.
     -   Os hipervisores tipo 2 são mais fáceis de instalar e usar, tornando -os ideais para usuários individuais e projetos menores.
 
-##### Tipos de migração
+##### 🔄 Tipos de migração
 
 No contexto dos hipervisores, que são tecnologias usadas para criar e gerenciar máquinas virtuais, os termos migração de P2V e migração V2V são comuns em ambientes de virtualização.
 Eles se referem a processos de sistemas de migração entre diferentes tipos de plataformas.
 
-##### P2V - Migração física para virtual
+##### 🖥️➡️🖥️ P2V - Migração física para virtual
 
 A migração de P2V refere-se ao processo de migração de um servidor físico para uma máquina virtual. Em outras palavras, um sistema operacional e seus aplicativos, executando em hardware físico dedicado, são "convertidos" e movidos para uma máquina virtual que é executada em um hipervisor (como VMware, Hyper-V, KVM, etc.).
 
 -   Exemplo: você tem um servidor físico executando um sistema Windows ou Linux e deseja movê -lo para um ambiente virtual, como uma infraestrutura em nuvem ou um servidor de virtualização interna.
     O processo envolve copiar todo o estado do sistema, incluindo o sistema operacional, drivers e dados, para criar uma máquina virtual equivalente que possa funcionar como se estivesse no hardware físico.
 
-##### V2V - Migração virtual para virtual
+##### 🖥️🔁🖥️ V2V - Virtual para Migração Virtual
 
 A migração V2V refere-se ao processo de migração de uma máquina virtual de um hipervisor para outro. Nesse caso, você já tem uma máquina virtual em execução em um ambiente virtualizado (como o VMware) e deseja movê-lo para outro ambiente virtualizado (por exemplo, para Hyper-V ou um novo servidor VMware).
 
 -   Exemplo: você tem uma máquina virtual em execução em um servidor de virtualização do VMware, mas decide migrá-lo para uma plataforma Hyper-V. Nesse caso, a migração V2V converte a máquina virtual de um formato ou hipervisor para outro, garantindo que ela possa continuar funcionando corretamente.
 
-#### HVM e paravirtualização
+#### 🧩 HVM e paravirtualização
 
-##### Virtualização assistida por hardware (HVM)
+##### ⚙️ Virtualização assistida por hardware (HVM)
 
-###### Definição de HVM
+###### 📄 Definição HVM
 
 A HVM aproveita as extensões de hardware fornecidas pelas CPUs modernas para virtualizar o hardware, permitindo a criação e o gerenciamento de VMs com o mínimo de sobrecarga de desempenho.
 
-###### Características -chave da HVM
+###### 📝 Características -chave HVM
 
 -   🖥️**Suporte de hardware**: Requer suporte à CPU para extensões de virtualização, como Intel VT-X ou AMD-V.
 -   🛠️**Virtualização completa:**As VMs podem executar sistemas operacionais de hóspedes não modificados, pois o hipervisor fornece uma emulação completa do ambiente de hardware.
 -   ⚡**Desempenho:**Normalmente, oferece desempenho quase nativo devido à execução direta do código de convidado na CPU.
 -   🔒**Isolamento:**Fornece um forte isolamento entre as VMs, pois cada VM opera como se tivesse seu próprio hardware dedicado.
 
-###### Exemplo de HVM
+###### 💡 Exemplo de HVM
 
 VMware Esxi, Microsoft Hyper-V, KVM (máquina virtual baseada em kernel).
 
-###### Vantagens de HVM
+###### ✅ Vantagens HVM
 
 -   ✅**Compatibilidade:**Pode executar qualquer sistema operacional sem modificação.
 -   ⚡**Desempenho:**Alto desempenho devido ao suporte de hardware.
 -   🔒**Segurança:**Recursos aprimorados de isolamento e segurança fornecidos pelo hardware.
 
-###### Desvantagens de HVM
+###### Desvantagens HVM Desvantagens
 
 -   🛠️**Dependência de hardware:**Requer recursos específicos de hardware, limitando a compatibilidade com sistemas mais antigos.
 -   🔧**Complexidade:**Pode envolver configuração e gerenciamento mais complexos.
 
-##### Paravirtualização
+##### 🧩 Paravirtualização
 
-###### Definição de paravirtualização
+###### 📄 Definição de paravirtualização
 
 A paravirtualização envolve a modificação do sistema operacional convidado para estar ciente do ambiente virtual, permitindo que ele interaja com mais eficiência com o hipervisor.
 
-###### Características -chave da paravirtualização
+###### 📝 Características -chave da paravirtualização
 
 -   🛠️**Modificação de convidados:**Requer alterações no sistema operacional convidado para se comunicar diretamente com o hipervisor usando hipercalls.
 -   ⚡**Desempenho:**Pode ser mais eficiente que a virtualização completa tradicional, pois reduz a sobrecarga associada ao hardware emulando.
 -   🔗**Compatibilidade:**Limitado a sistemas operacionais que foram modificados para paravirtutualização.
 
-###### Exemplos de paravirtualização
+###### 💡 Exemplos de paravirtualização
 
 Xen com convidados paravirtualizados, ferramentas VMware em determinadas configurações e algumas configurações de KVM.
 
-###### Vantagens de paravirtualização
+###### ✅ Vantagens de paravirtualização
 
 -   ⚡**Eficiência:**Reduz a sobrecarga de virtualizar hardware, potencialmente oferecendo melhor desempenho para determinadas cargas de trabalho.
 -   ✅**Utilização de recursos:**Uso mais eficiente dos recursos do sistema devido à comunicação direta entre o sistema operacional convidado e o hipervisor.
 
-###### Desvantagens de paravirtualização
+###### ❌ Desvantagens de paravirtualização
 
 -   🛠️**Modificação do sistema operacional convidado:**Requer modificações para o sistema operacional convidado, limitando a compatibilidade aos sistemas operacionais suportados.
 -   🔧**Complexidade:**Requer complexidade adicional no sistema operacional convidado para implementações de hipercall.
 
-##### Principais diferenças
+##### ⚖️ Diferenças -chave
 
-###### Requisitos do sistema operacional convidado
+###### 🖥️ Requisitos do sistema operacional convidado
 
 -   **HVM:**Pode executar sistemas operacionais de convidados não modificados.
 -   **Paravirtutualização:**Requer que os sistemas operacionais de convidados sejam modificados para trabalhar com o hipervisor.
 
-###### Desempenho
+###### ⚡ Desempenho
 
 -   **HVM:**Normalmente, fornece desempenho quase nativo devido à execução assistida por hardware.
 -   **Paravirtutualização:**Pode oferecer desempenho eficiente, reduzindo a sobrecarga da emulação de hardware, mas depende do sistema operacional convidado modificado.
 
-###### Dependência de hardware
+###### 🧰 Dependência de hardware
 
 -   **HVM:**Requer recursos específicos da CPU (Intel VT-X, AMD-V).
 -   **Paravirtutualização:**Não requer recursos específicos da CPU, mas precisa de um sistema operacional de convidado modificado.
 
-###### Isolamento
+###### 🔒 Isolamento
 
 -   **HVM:**Fornece um isolamento forte usando recursos de hardware.
 -   **Paravirtutualização:**Depende do isolamento baseado em software, que pode não ser tão robusto quanto o isolamento baseado em hardware.
 
-###### Complexidade
+###### 🧩 Complexidade
 
 -   **HVM:**Geralmente mais simples de implantar, pois suporta o sistema operacional não modificado.
 -   **Paravirtutualização:**Requer configuração e modificações adicionais para o sistema operacional convidado, aumentando a complexidade.
 
-#### NUMA (acesso não uniforme de memória)
+#### 🧠 NUMA (acesso não uniforme de memória)
 
 O NUMA (acesso não uniforme de memória) é uma arquitetura de memória usada em sistemas multiprocessadores para otimizar o acesso à memória pelos processadores.
-Em um sistema NUMA, a memória é distribuída de maneira desigual entre os processadores, o que significa que cada processador tem acesso mais rápido a uma parte da memória (sua "memória local") do que à memória que está fisicamente mais distante (referida como "memória remota") e associada a outros processadores.
+Em um sistema NUMA, a memória é distribuída de maneira desigual entre os processadores, o que significa que cada processador tem um acesso mais rápido a uma parte da memória (sua "memória local") do que à memória que está fisicamente mais distante (referida como "memória remota") e associada a outros processadores.
 
-##### Principais recursos da arquitetura NUMA
+##### 📝 Principais características da arquitetura NUMA
 
-1.  **Memória local e remota**: Cada processador tem sua própria memória local, que pode acessar mais rapidamente. No entanto, também pode acessar a memória de outros processadores, embora isso leve mais tempo.
+1.  **Memória local e remota**: Each processor has its own local memory, which it can access more quickly. However, it can also access the memory of other processors, although this takes longer.
 2.  **Latência diferenciada**: A latência do acesso à memória varia dependendo se o processador está acessando sua memória local ou a memória de outro nó. O acesso à memória local é mais rápido, enquanto o acesso à memória de outro nó (remoto) é mais lento.
 3.  **Escalabilidade**: A arquitetura da NUMA foi projetada para melhorar a escalabilidade em sistemas com muitos processadores. À medida que mais processadores são adicionados, a memória também é distribuída, evitando o gargalo que ocorreria em uma arquitetura uniforme de acesso à memória (Uma).
 
-##### Advantages of NUMA
+##### ✅ Advantages of NUMA
 
 -   ⚡ Melhor desempenho em sistemas grandes: como cada processador possui memória local, ele pode funcionar com mais eficiência sem competir tanto com outros processadores pelo acesso à memória.
 -   Scalability: O NUMA permite sistemas com muitos processadores e grandes quantidades de memória para escalar com mais eficácia em comparação com uma arquitetura Uma.
 
-##### Desvantagens
+##### ❌ Desvantagens
 
 -   Complexidade da programação: os programadores precisam estar cientes de quais regiões de memória são locais ou remotas, otimizando o uso da memória local para obter um melhor desempenho.
 -   🐢 Penalidades potenciais de desempenho: se um processador acessar frequentemente a memória remota, o desempenho poderá sofrer devido à maior latência.
     Essa arquitetura é comum em sistemas multiprocessadores de alto desempenho, como servidores e supercomputadores, onde a escalabilidade e a otimização da memória são críticas.
 
-#### Soluções OpenSource
+#### 🆓 Soluções OpenSource
 
 -   🌐 Ovirt:<https://www.ovirt.org/>
 -   🌐 Proxmox:<https://www.proxmox.com/en/proxmox-virtual-environment/overview>
 -   🌐 Oracle VirtualBox:<https://www.virtualbox.org/>
 -   🌐 Open Vswitch:<https://www.openvswitch.org/>
 
-#### Tipos de virtualização
+#### 🗂️ Tipos de virtualização
 
 ##### Virtualização de hardware (virtualização do servidor)
 
-###### Definição de HV
+###### 📄 Definição HV
 
 Abstraia o hardware físico para criar máquinas virtuais (VMs) que executam sistemas e aplicativos operacionais separados.
 
-###### Casos de uso de HV
+###### 🛠️ Casos de uso de hv hv
 
 Data centers, computação em nuvem, consolidação do servidor.
 
-###### Exemplos de HV
+###### 💡 Exemplos de HV
 
 VMware Esxi, Microsoft Hyper-V, KVM.
 
-##### Virtualização do sistema operacional (contêinerização)
+##### 📦 Virtualização do sistema operacional (contêinerização)
 
-###### Definição de contêinerização
+###### 📄 Definição de contêiner
 
 Permite que várias instâncias isoladas do espaço do usuário (contêineres) sejam executadas em um único kernel do sistema operacional.
 
-###### Casos de uso de contêinerização
+###### 🛠️ Casos de uso de contêinerização
 
 Ambientes de arquitetura, desenvolvimento e teste de microsserviços.
 
-###### Exemplos de contêinerização
+###### 💡 Exemplos de contêiner
 
 Docker, Kubernetes, LXC.
 
-##### Virtualização de rede
+##### 🌐 Virtualização de rede
 
-###### Definição de virtualização de rede
+###### 📄 Definição de virtualização de rede
 
 Combina recursos de rede de hardware e software em uma única entidade administrativa baseada em software.
 
-###### Casos de uso da virtualização de rede
+###### 🛠️ Casos de uso da virtualização de rede de rede
 
 Networking definido por software (SDN), Virtualização da Função de Rede (NFV).
 
-###### Exemplos de virtualização de rede
+###### 💡 Exemplos de virtualização de rede
 
 VMware NSX, Cisco ACI, OpenStack Neutron.
 
-##### Virtualização de armazenamento
+##### 💾 Virtualização de armazenamento
 
-###### Definição de virtualização de armazenamento
+###### 📄 Definição de virtualização de armazenamento
 
 Pools armazenamento físico de vários dispositivos em uma única unidade de armazenamento virtual que pode ser gerenciada centralmente.
 
-###### Casos de uso da definição de virtualização de armazenamento
+###### 🛠️ Casos de uso da virtualização de armazenamento
 
 Gerenciamento de dados, otimização de armazenamento, recuperação de desastres.
 
-###### Exemplos de definição de virtualização de armazenamento
+###### 💡 Exemplos de virtualização de armazenamento
 
 IBM SAN Volume Controller, VMware vsan, NetApp OTAP.
 
-##### Virtualização da área de trabalho
+##### Virttualização da área de trabalho
 
-###### Definição de virtualização da área de trabalho
+###### 📄 Definição de virtualização da área de trabalho
 
 Permite que um sistema operacional de desktop seja executado em uma máquina virtual hospedada em um servidor.
 
-###### Casos de uso da definição de virtualização de desktop
+###### 🛠️ Casos de uso da virtualização de desktop
 
 Infraestrutura de Desktop Virtual (VDI), Soluções de Trabalho Remoto.
 
-###### Exemplos de definição de virtualização de desktop
+###### 💡 Exemplos de virtualização da área de trabalho
 
 Citrix Apps e desktops Citrix, VMware Horizon, Microsoft Remote Desktop Services.
 
-##### Virtualização de aplicativos
+##### 📱 Virtualização de aplicativos
 
-###### Definição de virtualização do aplicativo
+###### 📄 Definição de virtualização de aplicativos
 
 Separa os aplicativos do hardware subjacente e do sistema operacional, permitindo que eles sejam executados em ambientes isolados.
 
-###### Casos de uso da definição de virtualização de aplicativos
+###### 🛠️ Casos de uso da virtualização de aplicativos
 
 Implantação simplificada de aplicativos, teste de compatibilidade.
 
-###### Exemplos de definição de virtualização de aplicativos
+###### 💡 Exemplos de virtualização de aplicativos
 
 VMware ThinApp, Microsoft App-V, Citrix XenApp.
 
-##### Virtualização de dados
+##### 🗃️ Virtualização de dados
 
-###### Definição de virtualização de dados
+###### 📄 Definição de virtualização de dados
 
 Integra dados de várias fontes sem consolidá -los fisicamente, fornecendo uma visão unificada para análise e relatório.
 
-###### Casos de uso da definição de virtualização de dados
+###### 🛠️ Casos de uso da virtualização de dados
 
 Inteligência de negócios, integração de dados em tempo real.
 
-###### Exemplos de definição de virtualização de dados
+###### 💡 Exemplos de virtualização de dados
 
 Denodo, Red Hat JBoss Virtualização de dados, IBM InfoSphere.
 
-##### Benefícios da virtualização
+##### 🌟 Benefícios da virtualização
 
 -   ⚡ Eficiência de recursos: melhor utilização de recursos físicos.
 -   💰 Economia de custos: hardware reduzido e custos operacionais.
@@ -577,7 +577,7 @@ O serviço usinado pela SystemD é dedicado ao gerenciamento de máquinas e cont
 
 <a name="topic-351.2"></a>
 
-### 351.2 Alternação
+### 🐧 351.2 Alternação
 
 ![xen-architecture](images/xen-achitecture.png)
 
@@ -598,7 +598,7 @@ O serviço usinado pela SystemD é dedicado ao gerenciamento de máquinas e cont
 -   Consciência dos parâmetros de inicialização do Xen
 -   Consciência do utilitário XM
 
-#### Alternar
+#### 🐧 Alternação
 
 ![panda](images/xen-panda.png)
 
@@ -608,14 +608,14 @@ O XEN é um hipervisor de código aberto tipo 1 (sem metal), que permite que vá
 -   **Tipos de virtualização:**O XEN suporta paravirtualização (PV), que requer o sistema operacional convidado modificado e a virtualização assistida por hardware (HVM), que usa extensões de hardware (por exemplo, Intel VT-X ou AMD-V) para executar sistemas operacionais de convidados não modificados.
     O XEN é amplamente utilizado em ambientes em nuvem, principalmente pela Amazon Web Services (AWS) e outros provedores de nuvem em larga escala.
 
-#### Xensource
+#### 🏢 Xensource
 
 A Xensource foi a empresa fundada pelos desenvolvedores originais do Xen Hypervisor da Universidade de Cambridge para comercializar a Xen. A empresa forneceu soluções corporativas com base no XEN e ofereceu ferramentas e suporte adicionais para aprimorar os recursos da XEN para uso corporativo.
 
 -   **Aquisição pela Citrix**: Em 2007, a Xensource foi adquirida pela Citrix Systems, Inc. A Citrix usou a tecnologia Xen como base para o seu produto Citrix Xenserver, que se tornou uma popular plataforma de virtualização de grau corporativo baseado em Xen.
 -   **Transição**: Após a aquisição, o projeto Xen continuou como um projeto de código aberto, enquanto a Citrix se concentrou em ofertas comerciais como Xenserver, alavancando a tecnologia Xensource.
 
-#### Projeto Xen
+#### 🌍 Projeto Xen
 
 O projeto XEN refere-se à comunidade de código aberto e à iniciativa responsável pelo desenvolvimento e manutenção do hipervisor Xen após sua comercialização. O projeto Xen opera sob a Fundação Linux, com foco na construção, melhoria e apoio a Xen como um esforço colaborativo e orientado pela comunidade.
 
@@ -623,7 +623,7 @@ O projeto XEN refere-se à comunidade de código aberto e à iniciativa respons�
 -   **Colaboradores:**O projeto inclui colaboradores de várias organizações, incluindo os principais provedores de nuvem, fornecedores de hardware e desenvolvedores independentes.
 -   **Pílula e hedools:**O projeto XEN também inclui ferramentas como XAPI (XenAPI), que é usado para gerenciar instalações do Xen Hypervisor e vários outros utilitários para gerenciamento e otimização do sistema.
 
-#### Xenstore
+#### 🗄️ Xenstore
 
 A Xen Store é um componente crítico do hipervisor Xen.
 Essencialmente, o Xen Store é um banco de dados de valor-chave distribuído usado para comunicação e compartilhamento de informações entre o hypervisor Xen e as máquinas virtuais (também conhecidas como domínios) que ele gerencia.
@@ -635,7 +635,7 @@ Aqui estão alguns aspectos importantes da Xen Store:
 -   **Eventos e notificações:**A Xen Store também suporta notificações de eventos. Quando uma chave ou valor específica na loja Xen é modificada, os domínios interessados podem ser notificados para reagir a essas alterações. Isso é útil para monitorar e gerenciar recursos.
 -   API simples: a Xen Store fornece uma API simples para ler e escrever dados, facilitando os desenvolvedores para integrar seus aplicativos ao sistema de virtualização Xen.
 
-#### Pílula
+#### 🔗 Xapi
 
 XAPI, ou Xenapi, é a interface de programação de aplicativos (API) usada para gerenciar o hipervisor Xen e suas máquinas virtuais (VMs).
 O XAPI é um componente essencial do Xenserver (agora conhecido como Citrix Hypervisor) e fornece uma maneira padronizada de interagir com o hipervisor Xen para executar operações como criar, configurar, monitorar e controlar VMs.
@@ -649,7 +649,7 @@ Aqui estão alguns aspectos importantes de Xapi:
 
 O XAPI é a interface que permite o controle e a automação do hipervisor Xen, facilitando o gerenciamento de ambientes virtualizados.
 
-#### Resumo Xen
+#### Resumo Xen Resumo
 
 -   **INCROPPING:**A tecnologia principal do hipervisor que permite que as máquinas virtuais sejam executadas em hardware físico.
 -   **Xensource:**A empresa que comercializou Xen, mais tarde adquirida pela Citrix, levando ao desenvolvimento do Citrix Xenserver.
@@ -657,33 +657,33 @@ O XAPI é a interface que permite o controle e a automação do hipervisor Xen, 
 -   **Xenstore:**A Xen Store atua como uma intermediária de comunicação e configuração entre o Hypervisor Xen e as VMs, simplificando a operação e o gerenciamento de ambientes virtualizados.
 -   **Pílula**é a interface que permite o controle e a automação do hipervisor Xen, facilitando o gerenciamento de ambientes virtualizados.
 
-#### Domain0 (DOM0)
+#### 🖥️ Domain0 (DOM0)
 
 Domain0, OR DOM0, é o domínio de controle em uma arquitetura Xen. Ele gerencia outros domínios (DOMUS) e tem acesso direto ao hardware.
 O DOM0 executa drivers de dispositivo, permitindo que o Domus, que não possua acesso direto ao hardware, se comunique com dispositivos. Normalmente, é uma instância completa de um sistema operacional, como o Linux, e é essencial para a operação de hipervisor do Xen.
 
-#### Domínio (casa)
+#### 💻 Domínio (casa)
 
 Domus são domínios não privilegiados que executam máquinas virtuais.
 Eles são gerenciados pelo DOM0 e não têm acesso direto ao hardware. O DOMUS pode ser configurado para executar diferentes sistemas operacionais e é usado para vários fins, como servidores de aplicativos e ambientes de desenvolvimento. Eles dependem do DOM0 para interação de hardware.
 
-#### Peewee-dom (paravardiyed domina)
+#### 🧩 PV-DOMU (domínio paravirtualizado)
 
 O PV-Domus usa uma técnica chamada paravirtutualização. Neste modelo, o sistema operacional DOMU é modificado para estar ciente de que ele é executado em um ambiente virtualizado, permitindo que ele se comunique diretamente com o hipervisor para o desempenho otimizado.
 Isso resulta em menor sobrecarga e melhor eficiência em comparação com a virtualização total.
 
-#### HVM-domu (domínio da máquina virtual de hardware)
+#### ⚙️ HVM-DOMU (domínio da máquina virtual de hardware)
 
 O HVM-Domus são máquinas virtuais que utilizam virtualização completa, permitindo que os sistemas operacionais não modificados sejam executados. O Xen Hypervisor fornece emulação de hardware para esses Domus, permitindo que eles executem qualquer sistema operacional que suporta a arquitetura de hardware subjacente.
 Embora isso ofereça maior flexibilidade, pode resultar em uma sobrecarga mais alta em comparação com o PV-Domus.
 
-#### Rede Xen
+#### 🌐 Rede Xen
 
 Dispositivos de rede paravirtualizados![pv-networking](images/xen-networking2.png)
 
 Ponte![pv-networking](images/xen-networking1.png)
 
-#### 351.2 Objetos citados
+#### 📋 351.2 Objetos citados
 
 ```sh
 Domain0 (Dom0), DomainU (DomU)
@@ -696,7 +696,7 @@ xentop
 oxenstored # Xenstore configurations
 ```
 
-#### 351.2 Notas
+#### 📝 351.2 Notas
 
 ```sh
 
@@ -740,9 +740,9 @@ cd /etc/xen && mkdir -p auto && cd auto
 ln -s /etc/xen/lpic3-pv-guest /etc/xen/auto/lpic3-pv-guest
 ```
 
-#### 351.2 Comandos importantes
+#### 💻 351.2 Comandos importantes
 
-##### Imagem Xen-Criar
+##### 🏗️ Xen-Create-Image
 
 ```sh
 # create a pv image
@@ -758,28 +758,28 @@ xen-create-image \
   --dist=bookworm
 ```
 
-##### Imagens Xen-Lista
+##### 📄 Xen-List-Imagens
 
 ```sh
 # list image
 xen-list-image
 ```
 
-##### Xen-Delete-Image
+##### ❌ Xen-Delete-Image
 
 ```sh
 # delete a pv image
 xen-delete-image lpic3-pv-guest --lvm=vg_xen
 ```
 
-##### Xenstore-LS
+##### 🗄️ XENSTORE-LS
 
 ```sh
 # list xenstore infos
 xenstore-ls
 ```
 
-##### xl
+##### ⚙️ XL
 
 ```sh
 # view xen information
@@ -902,34 +902,32 @@ Em Xen, "VIF" significa interface virtual e é usado para configurar a rede para
 
 Ao especificar as diretrizes "VIF" nos arquivos de configuração do domínio, os administradores podem definir interfaces de rede, atribuir endereços IP, configurar VLANs e configurar outros parâmetros de rede para máquinas virtuais em execução em hosts XEN. Por exemplo: VIF =[=Bridge  Xenbr0], neste caso, conecta a interface de rede da VM à ponte Xen chamada "XenBr0".
 
-````sh
-
 <p align="right">(<a href="#topic-351.2">back to sub Topic 351.2</a>)</p>
 <p align="right">(<a href="#topic-351">back to Topic 351</a>)</p>
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
----
+* * *
 
 <a name="topic-351.3"></a>
 
-### 351.3 QEMU
+### 🖥️ 351.3 Qemu
 
 ![xen-kvm-qemu](/images/xen-kvm-qemu.png)
 
-**Weight:** 4
+**Peso:**4
 
-**Description:** Candidates should be able to install, configure, maintain, migrate and troubleshoot QEMU installations.
+**Descrição:**Os candidatos devem poder instalar, configurar, manter, migrar e solucionar problemas de instalações QEMU.
 
-**Key Knowledge Areas:**
+**Principais áreas de conhecimento:**
 
-* Understand the architecture of QEMU, including KVM, networking and storage
-* Start QEMU instances from the command line
-* Manage snapshots using the QEMU monitor
-* Install the QEMU Guest Agent and VirtIO device drivers
-* Troubleshoot QEMU installations, including networking and storage
-* Awareness of important QEMU configuration parameters
+-   Entenda a arquitetura de Qemu, incluindo KVM, networking e armazenamento
+-   Inicie as instâncias QEMU da linha de comando
+-   Gerencie instantâneos usando o monitor qemu
+-   Instale o agente convidado QEMU e os drivers de dispositivo virtio
+-   Solucionar problemas de instalações QEMU, incluindo redes e armazenamento
+-   Consciência de importantes parâmetros de configuração do QEMU
 
-#### 351.3 Cited Objects
+#### 📋 351.3 Objetos citados
 
 ```sh
 Kernel modules: kvm, kvm-intel and kvm-amd
@@ -940,13 +938,13 @@ qemu-system-x86_64
 ip
 brctl
 tunctl
-````
+```
 
-#### 351.3 Comandos importantes
+#### 🛠️ 351.3 Comandos importantes
 
-##### 351.3 outros comandos
+##### 📝 351.3 outros comandos
 
-##### Verifique o módulo KVM
+##### 🧪 Verifique o módulo KVM
 
 ```sh
 # check if kvm is enabled
@@ -992,7 +990,7 @@ sudo virt-customize -a os-images/Debian_12.0.0_VMM/Debian_12.0.0.qcow2 \
 printf 'DE:AD:BE:EF:%02X:%02X\n' $((RANDOM%256)) $((RANDOM%256))
 ```
 
-##### IP
+##### 🌐 IP
 
 ```sh
 # list links
@@ -1002,7 +1000,7 @@ ip link show
 ip link add br0 type bridge
 ```
 
-##### BRCTL
+##### 🌉 Brctl
 
 ```sh
 # list links
@@ -1012,7 +1010,7 @@ ip link show
 ip link add br0 type bridge
 ```
 
-##### qemu-img
+##### 💾 qemu-img
 
 ```sh
 # create image
@@ -1029,7 +1027,7 @@ qemu-img convert \
 qemu-img info os-images/Debian_12.0.0_VMM/Debian_12.0.0.qcow2
 ```
 
-##### Qemu-System-X86_64
+##### 🖥️ Qemu-System-X86_64
 
 ```sh
 # create vm with ISO
@@ -1148,7 +1146,7 @@ qemu-system-x86_64 \
 dhcpclient ens4
 ```
 
-#### Monitor qemu
+#### Monitor qemu Monitor
 
 Para iniciar o monitor Qemu no uso de linha de comando**-Monitor stdio**param in**Qemu-System-X86_64**
 
@@ -1186,7 +1184,7 @@ loadvm snapshot-01 # restore snapshot
 delvm snapshot-01
 ```
 
-#### Agente convidado
+#### 🤖 Agente convidado
 
 Para ativar, use:
 
@@ -1205,7 +1203,7 @@ qemu-system-x86_x64
 
 <a name="topic-351.4"></a>
 
-### 351.4 LibVirt Máquina virtual Gerenciamento
+### 🏢 351.4 Libvirt Máquina virtual Gerenciamento de máquinas
 
 ![libvirt](images/libvirt.png)
 
@@ -1229,7 +1227,7 @@ qemu-system-x86_x64
 -   Entenda os arquivos de configuração do LibVirt XML
 -   Consciência de VirtLogd e Virtlockd
 
-#### 351.4 Objetos citados
+#### 📋 351.4 Objetos citados
 
 ```sh
 libvirtd
@@ -1239,9 +1237,9 @@ libvirtd
 virsh (including relevant subcommands) 
 ```
 
-#### 351.4 Comandos importantes
+#### 🛠️ 351.4 Comandos importantes
 
-##### Virsh
+##### 🖥️ Virsh
 
 ```sh
 # using env variable for set virsh uri (local or remotly)
@@ -1530,7 +1528,7 @@ virsh nwfilter-undefine block-icmp
 virsh nwfilter-dumpxml block-icmp
 ```
 
-###### Virt-Install
+###### 🏗️ Virt-Install
 
 ```sh
 # list os variants
@@ -1585,7 +1583,7 @@ less /etc/libvirt/qemu/debian-server01.xml
 
 <a name="topic-351.5"></a>
 
-### 351.5 Gerenciamento de imagem em disco da máquina virtual
+### 💾 351.5 Gerenciamento de imagem em disco da máquina virtual
 
 ![disk-managment](images/virtual-machine-disk.png)
 
@@ -1602,7 +1600,7 @@ less /etc/libvirt/qemu/debian-server01.xml
 -   Migrar o conteúdo do disco entre vários formatos de imagem de disco da máquina virtual
 -   Consciência do formato de virtualização aberta (OVF)
 
-#### 351.5 Objetos citados
+#### 📋 351.5 Objetos citados
 
 ```sh
 qemu-img
@@ -1623,9 +1621,9 @@ virt-p2v-make-disk
 virt-v2v
 ```
 
-#### 351.5 Comandos importantes
+#### 🛠️ 351.5 Comandos importantes
 
-##### 351.5.1 Qemu-img
+##### 💾 351.5.1 Qemu-img
 
 ```sh
 # Display detailed information about a disk image
@@ -1669,7 +1667,7 @@ qemu-img snapshot -a 123456789 disk
 qemu-img snapshot -d SNAP1 disk
 ```
 
-##### peixe -convidado
+##### 🐟 Peixe -convidado
 
 ```sh
 # set enviroment variables for guestfish
@@ -1720,7 +1718,7 @@ edit /etc/hosts
 EOF
 ```
 
-###### CONGUIDADE
+###### 🗂️ Guestrount
 
 ```sh
 # Mount a disk image to a directory
@@ -1734,14 +1732,14 @@ guestmount -a UbuntuServer_24.04.qcow2 -m /dev/sda2 /mnt/ubuntu
 guestmount -d debian-server01 --ro -m  /dev/debian-vg/root /mnt/debian
 ```
 
-###### GuestUmount
+###### 🗑️ GuestUmount
 
 ```sh
 # Umount a disk image to a directory
 sudo guestunmount /mnt/ubuntu
 ```
 
-##### virt-df
+##### 📊 Virt-df
 
 ```sh
 # Show free and used space on virtual machine filesystems
@@ -1749,7 +1747,7 @@ virt-df UbuntuServer_24.04.qcow2 -h
 virt-df -d rocky9-server02 -h
 ```
 
-##### Virt-Filesystems
+##### 🗃️ Fil-Filesystems
 
 ```sh
 # List filesystems, partitions, and logical volumes in a VM disk image (disk image)
@@ -1759,7 +1757,7 @@ virt-filesystems -a UbuntuServer_24.04.qcow2 --all --long -h
 virt-filesystems -d debian-server01 --all --long -h
 ```
 
-##### Virt-Inspetor
+##### 🔍 Inspetor de Virt
 
 ```sh
 # Inspect and report on the operating system in a VM disk image
@@ -1767,7 +1765,7 @@ virt-inspector -a UbuntuServer_24.04.qcow2 #(disk)
 virt-inspector -d debian-server01 #(domain) 
 ```
 
-##### Virt-Cat
+##### 🐱 Virt-Cat
 
 ```sh
 # Display the contents of a file inside a VM disk image
@@ -1775,21 +1773,21 @@ virt-cat -a UbuntuServer_24.04.qcow2 /etc/hosts
 virt-cat -d debian-server01 /etc/hosts #(domain)
 ```
 
-##### Virt-Diff
+##### 🔀 Virt-Diff
 
 ```sh
 # Show differences between two VM disk images
 virt-diff -a UbuntuServer_24.04.qcow2 -A Rocky-Linux.qcow2
 ```
 
-##### virt-sparsify
+##### 🧹 Virt-Spparsify
 
 ```sh
 # Make a VM disk image smaller by removing unused space
 virt-sparsify UbuntuServer_24.04.qcow2 UbuntuServer_24.04-sparse.qcow2
 ```
 
-##### Virt-resize
+##### 📏 Virt-ressectize
 
 ```sh
 # Resize a VM disk image or its partitions
@@ -1800,7 +1798,7 @@ UbuntuServer_24.04.qcow2 UbuntuServer_24.04-expanded.qcow2
 
 ```
 
-##### Virt-copy-in
+##### 📥 Virt-copy-in
 
 ```sh
 # Copy files from the host into a VM disk image
@@ -1808,57 +1806,57 @@ UbuntuServer_24.04.qcow2 UbuntuServer_24.04-expanded.qcow2
 virt-copy-in -a UbuntuServer_24.04.qcow2 ~vagrant/test-virt-copy-in.txt /home/ubuntu
 ```
 
-##### Virt-copy-out
+##### 📤 Virt-copy-out
 
 ```sh
 # Copy files from a VM disk image to the host
 virt-copy-out -a UbuntuServer_24.04.qcow2 /home/ubuntu/.bashrc /tmp
 ```
 
-##### virt-ls
+##### 📋 Virt-ls
 
 ```sh
 # List files and directories inside a VM disk image
 virt-ls -a UbuntuServer_24.04.qcow2 /home/ubuntu
 ```
 
-##### Virt-rescue
+##### 🚑 Virt-rescue
 
 ```sh
 # Launch a rescue shell on a VM disk image for recovery
 virt-rescue -a UbuntuServer_24.04.qcow2
 ```
 
-##### Virt-sysprep
+##### 🧰 Virt-Sysprep
 
 ```sh
 # Prepare a VM disk image for cloning by removing system-specific data
 virt-sysprep -a UbuntuServer_24.04.qcow2
 ```
 
-##### virt-v2v
+##### 🔄 Virt-V2V
 
 ```sh
 # Convert a VM from a foreign hypervisor to run on KVM
 virt-v2v -i disk input-disk.img -o local -os /var/tmp
 ```
 
-##### Virt-P2V
+##### 🔄 Virt-P2V
 
 ```sh
 # Convert a physical machine to use KVM
 ```
 
-##### Virt-P2V-Make-Disk
+##### 💽 Virt-P2V-Make-Disk
 
 ```sh
 # Create a bootable disk image for physical to virtual conversion
 sudo virt-p2v-make-disk -o output.img
 ```
 
-#### 351.5 Notas
+#### 📝 351.5 Notas
 
-##### OVF: Formato de virtualização aberto
+##### 📦 OVF: Formato de virtualização aberto
 
 OVF: um formato aberto que define um padrão para embalagem e distribuição de máquinas virtuais em diferentes ambientes.
 
@@ -1876,13 +1874,13 @@ O pacote gerado possui a extensão .ova e contém os seguintes arquivos:
 
 <a name="topic-352"></a>
 
-## Tópico 352: Virtualização de contêineres
+## 📦 Tópico 352: Virtualização de contêineres
 
 * * *
 
 <a name="topic-352.1"></a>
 
-### 352.1 conceitos de virtualização de contêineres
+### 🧠 352.1 conceitos de virtualização de contêineres
 
 ![virtualization-container](images/virtualization-container.png)
 
@@ -1922,7 +1920,7 @@ timeline
 
 * * *
 
-#### 352.1 Objetos citados
+#### 📋 352.1 Objetos citados
 
 ```sh
 nsenter
@@ -2742,9 +2740,9 @@ Para o contêiner, você pode usar este script:[containerd.sh](scripts/container
 -   **Cruel:**Tempo de execução super rápido e leve da OCI.
 -   **Dizer:**Recipientes com isolamento no nível da VM.
 
-#### 352.1 Comandos importantes
+#### 🛠️ 352.1 comandos importantes
 
-##### não se bem
+##### 🔗 Não se bem
 
 ```sh
 # create a new namespaces and run a command in it
@@ -2756,7 +2754,7 @@ unshare --mount --uts --ipc --user --pid --net  --map-root-user --mount-proc --f
 #umount /proc
 ```
 
-##### lsns
+##### 🔍 lsns
 
 ```sh
 # show all namespaces
@@ -2773,7 +2771,7 @@ ps -o pid,pidns,netns,ipcns,utsns,userns,args -p <PID>
 ps -o pid,pidns,netns,ipcns,utsns,userns,args -p 3669
 ```
 
-##### NSENTER
+##### 🚪 NSENTER
 
 ```sh
 # execute a command in namespace
@@ -2781,7 +2779,7 @@ sudo nsenter -t <PID> -n  ip link show
 sudo nsenter -t 3669 -n ip link show
 ```
 
-##### 252.1 IP
+##### 🌐 252.1 IP
 
 ```sh
 # create a new network namespace
@@ -2794,14 +2792,14 @@ ip netns list
 sudo ip netns exec lxc1 ip addr show
 ```
 
-##### Stat
+##### 📊 Stat
 
 ```sh
 # get cgroup version
 stat -fc %T /sys/fs/cgroup
 ```
 
-##### SystemCTL e Systemd
+##### 🛠️ Systemctl e Systemd
 
 ```sh
 # get cgroups of system
@@ -2809,32 +2807,32 @@ systemctl status
 systemd-cgls
 ```
 
-##### cgcreate
+##### 🏗️ CGcreate
 
 ```sh
 cgcreate -g memory,cpu:lsf
 ```
 
-##### cgclassify
+##### 🏷️ CGclassify
 
 ```sh
 cgclassify -g memory,cpu:lsf <PID>
 ```
 
-##### PSCAP - Recursos de processo de lista
+##### 🛡️ PSCAP - Recursos de processo de lista
 
 ```sh
 # List capabilities of all process
 pscap
 ```
 
-##### getCap/usr/bin/tcpdump
+##### 🛡️ getcap/usr/bin/tcpdump
 
 ```sh
 getcap /usr/bin/tcpdump
 ```
 
-##### setcap cap_net_raw = ep/usr/bin/tcpdump
+##### 🛡️ setcap cap_net_raw = ep/usr/bin/tcpdump
 
 ```sh
 # add capabilities to tcpdump
@@ -2845,20 +2843,20 @@ sudo setcap -r /usr/bin/tcpdump
 sudo setcap '' /usr/bin/tcpdump
 ```
 
-##### Verifique os recursos por processo
+##### Recursos de verificação dos recursos de verificação por processo
 
 ```sh
 grep Cap /proc/<PID>/status
 ```
 
-##### Capsh - Capability Shell Wrapper
+##### 🛡️ Capsh - invólucro de shell de capacidade
 
 ```sh
 # use grep Cap /proc/<PID>/statusfor get hexadecimal value(Example CApEff=0000000000002000)
 capsh --decode=0000000000002000
 ```
 
-##### Appmor - Aprimoramento do kernel para limitar os programas a um conjunto limitado de recursos
+##### 🦺 Apparmor - Aprimoramento do kernel para limitar os programas a um conjunto limitado de recursos
 
 ```sh
 # check AppArmor status
@@ -2871,7 +2869,7 @@ aa-teardown
 aaparmor_parser
 ```
 
-##### Selinux - Linux aprimorado de segurança
+##### 🔒 Selinux - Linux aprimorado em segurança
 
 ```sh
 # check SELinux status
@@ -2884,7 +2882,7 @@ sudo getenforce
 sudo setenforce 1
 ```
 
-##### Runc
+##### ⚙️ Runc
 
 ```sh
 #create a spec file for runc
@@ -2904,7 +2902,7 @@ sudo runc run mycontainer
 
 <a name="topic-352.2"></a>
 
-### 352.2 LXC
+### 📦 352.2 LXC
 
 **Peso:**6
 
@@ -2920,7 +2918,7 @@ sudo runc run mycontainer
 -   Entenda imagens LXC
 -   Consciência das ferramentas tradicionais do LXC
 
-#### 352.2 Objetos citados
+#### 📋 352.2 Objetos citados
 
 ```sh
 lxd
@@ -3007,10 +3005,6 @@ Para o laboratório LXC, você pode usar este script:[lxc.sh](scripts/container/
 -   **Segurança:**Criptografia embutida (ZFS, LVM, CEPH), ACLs, backup/restauração, etc.
 -   **Enterprise-Proy:**Instalações em cluster e alta disponibilidade em cluster.
 
-##### 🧪 LAB LXD
-
-Para LXD Lab, você pode usar este script:[lxd.sh](scripts/container/lxd.sh)
-
 * * *
 
 ##### 📊 LXC vs Tabela de comparação LXD
@@ -3052,7 +3046,7 @@ Para LXD Lab, você pode usar este script:[lxd.sh](scripts/container/lxd.sh)
 | **Redimensionamento**               | Manual (via host)                                | ✅ Volumes e piscinas podem ser redimensionados ao vivo                                          |
 | **Drivers de armazenamento**        | Somente básico/local                             | Plugins extensíveis, vários drivers prontos para empresas                                       |
 
-##### 📊 Tabela de comparação final
+##### 📊 Tabela de comparação de armazenamento final
 
 |                                | **LXC**         | **Lxd**                                                |
 | ------------------------------ | --------------- | ------------------------------------------------------ |
@@ -3067,9 +3061,50 @@ Para LXD Lab, você pode usar este script:[lxd.sh](scripts/container/lxd.sh)
 | **Cluster pronto**             | ❌               | ✅                                                      |
 | **Empresa**                    | No              | Sim - ha, backup, migração, segurança, produção pronta |
 
-#### 352.2 Comandos importantes
+##### 🌐 LXC vs LXD - Suporte de rede (resumo)
 
-##### LXC
+| Recurso                  | **LXC**                           | **Lxd**                                                                    |
+| ------------------------ | --------------------------------- | -------------------------------------------------------------------------- |
+| **Tipos de rede**        | Bridge, Veth, MacVlan, Phys, Vlan | ponte, ovn, macvlan, sriiov, físico, vlan, fã, túneis                      |
+| **Redes gerenciadas**    | ❌ manual (configuração do host)   | ✅ Gerenciado nativamente via API/CLI, fácil de criar e editar              |
+| **API de rede**          | ❌ Comandos da CLI SOMENTE         | ✅ API REST, CLI, integração com ferramentas externas                       |
+| **Suporte da ponte**     | ✅ manual                          | ✅ Automático e avançado (L2, Open VSwitch, Bridge nativo)                  |
+| **Nat & dhcp**           | ❌ manual (iptables/dnsmasq)       | ✅ NAT integrado, DHCP, DNS, por rede configurável                          |
+| **Dns**                  | ❌ manual                          | ✅ DNS integrados, domínios personalizados, integração resolvida do SystemD |
+| **IPVSH**                | ✅ (manual, limitado)              | ✅ Suporte completo, Auto, DHCPV6, Nat6, roteamento                         |
+| **VLAN**                 | ✅ (manual, anfitrião)             | ✅ VLANs nativas, configuração fácil                                        |
+| **SR-IOV**               | ❌                                 | ✅ Suporte nativo                                                           |
+| **ACLs de rede**         | ❌                                 | ✅ ACLs, atacantes, zonas, pares, regras de firewall                        |
+| **Clustering**           | ❌                                 | ✅ Redes replicadas e gerenciadas em clusters                               |
+| **Anexar/destacar**      | Manual (anfitrião)                | ✅ CLI/API, HOTPLUG, fácil para contêineres/VMs                             |
+| **Segurança**            | Manual (anfitrião)                | ✅ Isolamento, firewall, LCA, integração de firewalld, regras por rede      |
+| **Rotas personalizadas** | Manual                            | ✅ Suporte de rotas personalizadas, vários gateways                         |
+| **Perfis de rede**       | ❌                                 | ✅ Perfis de rede reutilizáveis                                             |
+| **Monitoramento**        | Manual                            | ✅ Status, ipam, logs, informações detalhadas via CLI/API                   |
+| **Empresa**              | No                                | Sim-Multi-Tenant, ACL, Clustering, integração em nuvem                     |
+
+##### 📊 Tabela de comparação de rede final
+
+|                   | **LXC**           | **Lxd**                                               |
+| ----------------- | ----------------- | ----------------------------------------------------- |
+| **Tipos de rede** | Ponte, Veth, Vlan | ponte, ovn, macvlan, sriiov, físico, vlan, fã, túneis |
+| **Gerenciou**     | ❌                 | ✅                                                     |
+| **Nat/DHCP/DNS**  | Manual            | ✅ Integrado                                           |
+| **VLAN**          | Manual            | ✅                                                     |
+| **SR-IOV**        | ❌                 | ✅                                                     |
+| **API**           | ❌                 | ✅                                                     |
+| **Clustering**    | ❌                 | ✅                                                     |
+| **Segurança/ACL** | Manual            | ✅                                                     |
+| **Perfis**        | ❌                 | ✅                                                     |
+| **Empresa**       | No                | Sim                                                   |
+
+##### 🧪 LAB LXD
+
+Para LXD Lab, você pode usar este script:[lxd.sh](scripts/container/lxd.sh)
+
+#### 🛠️ 352.2 comandos importantes
+
+##### 📦 LXC
 
 ```sh
 
@@ -3221,7 +3256,7 @@ lxc-ls -f
 ls .local/share/lxc/unprivileged/
 ```
 
-##### lxd
+##### 🌐 LXD
 
 ```sh
 # lxd configuration files
@@ -3239,7 +3274,7 @@ sudo lxd --version
 # check lxd status
 systemctl status lxd
 
-#### lxd storage management ####
+#### LXD STORAGE MANAGEMENT ####
 
 # lxd list storage
 lxc storage list
@@ -3321,7 +3356,7 @@ lxc storage bucket key show lpic3-btrfs bucket-lpic3-btrfs key-bucket-lpic3-btrf
 # delete storage bucket keys
 lxc storage bucket key delete lpic3-btrfs bucket-lpic3-btrfs key-bucket-lpic3-btrfs
 
-### lxd image management ###
+### LXD IMAGE MANAGEMENT ###
 
 # list lxd repositories
 lxc remote list
@@ -3360,6 +3395,8 @@ mkdir -p /mnt/lxd-rootfs/centos-9
 sudo mount lxd-images/centos-9/aed8a374994230243aaa82e979ac7d23f379e511556d35af051b1638662d47ae.squashfs  /mnt/lxd-rootfs/centos-9/
 ls /mnt/lxd-rootfs/centos-9/
 
+### LXD INSTANCES MANAGEMENT ###
+
 # create a new container from image
 lxc launch images:ubuntu/jammy ubuntu-lxd
 lxc launch images:debian/12 debian12lxc
@@ -3373,19 +3410,104 @@ lxc launch images:kali kali --storage lpic3-zfs
 # create a new container from image local
 lxc launch 757b2a721e9d kali-local-image
 
-# list containers
+# create new vm
+lxc launch --vm  images:debian/13 debian13 --storage lpic3-zfs
+lxc launch --vm  images:e44d713a71b6 rocky9 --storage lpic3-btrfs
+
+# list container\instances
 lxc list
 
-# stop container
+# stop container\instance
 lxc stop alpine
 
-# start container
+# start container\instance
 lxc start alpine
 
-# delete container
+# delete container\instance
 lxc delete alpine --force
 
+# show container\instance
+lxc info alpine
 
+# show container\instance config
+lxc config show alpine
+
+# edit container\instance config
+lxc config edit alpine
+
+# view container\instance config
+lxc config get alpine boot.autostart
+
+# set container\instance config
+lxc config set alpine boot.autostart=false
+
+# set limit for container\instance
+lxc config set alpine limits.cpu 2
+lxc config set alpine limits.memory 10%
+
+# unset limit for container\instance
+lxc config unset alpine limits.cpu  
+lxc config unset alpine limits.memory
+
+# execute command in container\instance
+lxc --exec alpine -- /bin/bash
+lxc exec alpine -- uname -a || dhclient
+lxc exec alpine -- sh -c "echo 'Hello from Alpine'"
+
+# lxd copy file to container\instance
+lxc file push /etc/hosts alpine/etc/hosts
+
+# lxd edit file in container\instance
+lxc file edit alpine/etc/hosts
+
+# download file from container\instance
+lxc file pull alpine/etc/hosts /tmp/alpine-hosts
+
+### LXD NETWORK MANAGEMENT ###
+
+# list networks
+lxc network list
+
+# show network details
+lxc network show lxdbr0
+
+# create a new network
+lxc network create lxdbr1
+
+# delete a network
+lxc network delete lxdbr0
+
+# show network details
+lxc network show lxdbr0
+
+# set ipv4.dhcp.ranges
+lxc network set lxdbr0 ipv4.dhcp.ranges=10.119.220.100-10.119.220.200
+
+# attach a network to a container
+lxc network attach lxdbr0 alpine
+
+# detach a network from a container
+lxc network detach lxdbr0 alpine
+
+### LXD SNAPSHOT MANAGEMENT ###
+
+# create a snapshot
+lxc snapshot debian12
+
+# create a snapshot
+lxc snapshot debian12 nome-snapshot
+
+# restore a snapshot
+lxc restore debian12 nome-snapshot
+
+# delete a snapshot
+lxc delete debian12/snap0
+
+# show snapshot info
+lxc info debian12
+
+# copy a snapshot
+lxc copy debian12/snap0 debian12-2
 
 ```
 
@@ -3397,7 +3519,7 @@ lxc delete alpine --force
 
 <a name="topic-352.3"></a>
 
-### 352.3 Docker
+### 🐳 352.3 Docker
 
 **Peso:**9
 
@@ -3413,7 +3535,7 @@ lxc delete alpine --force
 -   Use DockerFiles para criar imagens de contêiner
 -   Execute um registro do Docker usando a imagem do Docker do Registro
 
-#### 352.3 Objetos citados
+#### 📋 352.3 Objetos citados
 
 ```sh
 dockerd
@@ -3423,9 +3545,9 @@ docker
 Dockerfile
 ```
 
-#### 352.3 Comandos importantes
+#### 🛠️ 352.3 Comandos importantes
 
-##### Docker
+##### 🐳 Docker
 
 ```sh
 # Examples of docker
@@ -3439,7 +3561,7 @@ Dockerfile
 
 <a name="topic-352.4"></a>
 
-### 352.4 Plataformas de orquestração de contêineres
+### 🗂️ 352.4 Plataformas de orquestração de contêineres
 
 **Peso:**3
 
@@ -3460,13 +3582,13 @@ Dockerfile
 
 <a name="topic-353"></a>
 
-## Tópico 353: implantação e provisionamento da VM
+## ☁️ Tópico 353: VM Deployment and Provisioning
 
 * * *
 
 <a name="topic-353.1"></a>
 
-### 353.1 Ferramentas de gerenciamento de nuvem
+### ☁️ 353.1 Ferramentas de gerenciamento em nuvem
 
 **Peso:**2
 
@@ -3479,7 +3601,7 @@ Dockerfile
 -   Feature Basic Feature Knowledge of Terraform
 -   Consciência do CloudStack, Eucalyptus e Opennebula
 
-#### 353.1 Objetos citados
+#### 📋 353.1 Objetos citados
 
 ```sh
 IaaS, PaaS, SaaS
@@ -3487,9 +3609,9 @@ OpenStack
 Terraform
 ```
 
-#### 353.1 Comandos importantes
+#### 🛠️ 353.1 Comandos importantes
 
-##### foo
+##### 📝 Foo
 
 ```sh
 # examples
@@ -3503,7 +3625,7 @@ Terraform
 
 <a name="topic-353.2"></a>
 
-### 353.2 Packer
+### 📦 353.2 Packer
 
 **Peso:**2
 
@@ -3515,15 +3637,15 @@ Terraform
 -   Crie e mantenha arquivos de modelo
 -   Crie imagens a partir de arquivos de modelo usando diferentes construtores
 
-#### 353.2 Objetos citados
+#### 📋 353.2 Objetos citados
 
 ```sh
 packer
 ```
 
-#### 353.2 Comandos importantes
+#### 🛠️ 353.2 Comandos importantes
 
-##### Packer
+##### 📦 Packer
 
 ```sh
 # examples
@@ -3537,7 +3659,7 @@ packer
 
 <a name="topic-353.3"></a>
 
-### 353.3 Cloud-Init
+### ☁️ 353.3 Cloud-Init
 
 **Peso:**3
 
@@ -3552,7 +3674,7 @@ Além disso, os candidatos devem ser capazes de criar novas imagens do sistema c
 -   Integre a nuvem-ingressos nas imagens do sistema
 -   Use Config Drive DataSource para testar
 
-#### 353.3 Objetos citados
+#### 📋 353.3 Objetos citados
 
 ```sh
 cloud-init
@@ -3560,9 +3682,9 @@ user-data
 /var/lib/cloud/
 ```
 
-#### 353.3 Comandos importantes
+#### 🛠️ 353.3 Comandos importantes
 
-##### foo
+##### 📝 Foo
 
 ```sh
 # examples
@@ -3576,7 +3698,7 @@ user-data
 
 <a name="topic-353.4"></a>
 
-### 353.4 Vagrant
+### 📦 353.4 Vagrant
 
 **Peso:**3
 
@@ -3592,16 +3714,16 @@ user-data
 -   Entenda o provisionamento vagante, ou seja, provisionistas de arquivos e shell
 -   Entenda a configuração de várias máquinas
 
-#### 353.4 Objetos citados
+#### 📋 353.4 Objetos citados
 
 ```sh
 vagrant
 Vagrantfile
 ```
 
-#### 353.4 Comandos importantes
+#### 🛠️ 353.4 Comandos importantes
 
-##### vagabundo
+##### 📦 Vagrant
 
 ```sh
 # examples
@@ -3613,7 +3735,7 @@ Vagrantfile
 
 * * *
 
-## Contribuindo
+## 🤝 Contribuindo
 
 Contribuições são o que tornam a comunidade de código aberto um lugar tão incrível para
 Aprenda, inspire e crie. Quaisquer contribuições que você faz são**muito apreciado**.
@@ -3630,13 +3752,13 @@ Não se esqueça de dar uma estrela ao projeto! Obrigado novamente!
 
 * * *
 
-## Licença
+## 📄 Licença
 
 -   Este projeto está licenciado sob a licença do MIT \* Veja o arquivo License.md para obter detalhes
 
 * * *
 
-## Contato
+## 📬 Contato
 
 Marcos Silvestrini -[marcos.silvestrini@gmail.com](mailto:marcos.silvestrini@gmail.com)[![Twitter](https://img.shields.io/twitter/url/https/twitter.com/mrsilvestrini.svg?style=social&label=Follow%20%40mrsilvestrini)](https://twitter.com/mrsilvestrini)
 
@@ -3646,7 +3768,7 @@ Link do projeto:<https://github.com/marcossilvestrini/learning-lpic-3-305-300>
 
 * * *
 
-## Agradecimentos
+## 🙏 Agradecimentos
 
 -   [Richard Stallman's](http://www.stallman.org/)
 -   [GNU](<>)
@@ -3815,6 +3937,10 @@ Link do projeto:<https://github.com/marcossilvestrini/learning-lpic-3-305-300>
     -   [Imagens LDX](https://images.lxd.canonical.com/)
     -   [LXD Storage](https://documentation.ubuntu.com/lxd/stable-4.0/storage/)
     -   [Piscinas de armazenamento LXD, volumes e baldes](https://documentation.ubuntu.com/lxd/stable-5.21/explanation/storage/#exp-storage)
+    -   [Tipos de rede LXD](https://documentation.ubuntu.com/lxd/latest/explanation/networks/)
+    -   [Parâmetros de rede LXD](https://documentation.ubuntu.com/lxd/stable-4.0/networks/)
+    -   [Configuração da rede LXD](https://documentation.ubuntu.com/lxd/latest/howto/network_create/)
+    -   [Instalação LXD](https://documentation.ubuntu.com/lxd/stable-4.0/instances/)
 -   [OpenStack Docs](<>)
     -   [Redhat](https://www.redhat.com/pt-br/topics/openstack)
 -   [Aberto vswitch](<>)
