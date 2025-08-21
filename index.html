@@ -5217,24 +5217,60 @@ ls .local/share/lxc/unprivileged/
 </span><span class="code-line line-number" line="230">
 </span><span class="code-line line-number" line="231"><span class="token comment">### LXD SNAPSHOT MANAGEMENT ###</span>
 </span><span class="code-line line-number" line="232">
-</span><span class="code-line line-number" line="233"><span class="token comment"># create a snapshot</span>
-</span><span class="code-line line-number" line="234">lxc snapshot debian12
-</span><span class="code-line line-number" line="235">
-</span><span class="code-line line-number" line="236"><span class="token comment"># create a snapshot</span>
-</span><span class="code-line line-number" line="237">lxc snapshot debian12 nome-snapshot
-</span><span class="code-line line-number" line="238">
-</span><span class="code-line line-number" line="239"><span class="token comment"># restore a snapshot</span>
-</span><span class="code-line line-number" line="240">lxc restore debian12 nome-snapshot
-</span><span class="code-line line-number" line="241">
-</span><span class="code-line line-number" line="242"><span class="token comment"># delete a snapshot</span>
-</span><span class="code-line line-number" line="243">lxc delete debian12/snap0
-</span><span class="code-line line-number" line="244">
-</span><span class="code-line line-number" line="245"><span class="token comment"># show snapshot info</span>
-</span><span class="code-line line-number" line="246">lxc info debian12
-</span><span class="code-line line-number" line="247">
-</span><span class="code-line line-number" line="248"><span class="token comment"># copy a snapshot</span>
-</span><span class="code-line line-number" line="249">lxc copy debian12/snap0 debian12-2
-</span><span class="code-line line-number" line="250">
+</span><span class="code-line line-number" line="233"><span class="token comment"># snapshot files</span>
+</span><span class="code-line line-number" line="234">/var/lib/lxd/snapshots/
+</span><span class="code-line line-number" line="235">/var/snap/lxd/common/lxd/snapshots
+</span><span class="code-line line-number" line="236">
+</span><span class="code-line line-number" line="237"><span class="token comment"># create a snapshot</span>
+</span><span class="code-line line-number" line="238">lxc snapshot debian12
+</span><span class="code-line line-number" line="239">
+</span><span class="code-line line-number" line="240"><span class="token comment"># create a snapshot</span>
+</span><span class="code-line line-number" line="241">lxc snapshot debian12 nome-snapshot
+</span><span class="code-line line-number" line="242">
+</span><span class="code-line line-number" line="243"><span class="token comment"># restore a snapshot</span>
+</span><span class="code-line line-number" line="244">lxc restore debian12 nome-snapshot
+</span><span class="code-line line-number" line="245">
+</span><span class="code-line line-number" line="246"><span class="token comment"># delete a snapshot</span>
+</span><span class="code-line line-number" line="247">lxc delete debian12/snap0
+</span><span class="code-line line-number" line="248">
+</span><span class="code-line line-number" line="249"><span class="token comment"># show snapshot info</span>
+</span><span class="code-line line-number" line="250">lxc info debian12
+</span><span class="code-line line-number" line="251">
+</span><span class="code-line line-number" line="252"><span class="token comment"># copy a snapshot</span>
+</span><span class="code-line line-number" line="253">lxc copy debian12/snap0 debian12-2
+</span><span class="code-line line-number" line="254">
+</span><span class="code-line line-number" line="255"><span class="token comment">### LXD PROFILES MANAGEMENT ###</span>
+</span><span class="code-line line-number" line="256">
+</span><span class="code-line line-number" line="257"><span class="token comment"># list profiles</span>
+</span><span class="code-line line-number" line="258">lxc profile list
+</span><span class="code-line line-number" line="259">
+</span><span class="code-line line-number" line="260"><span class="token comment"># show profile details</span>
+</span><span class="code-line line-number" line="261">lxc profile show default
+</span><span class="code-line line-number" line="262">
+</span><span class="code-line line-number" line="263"><span class="token comment"># copy profile</span>
+</span><span class="code-line line-number" line="264">lxc profile copy default production
+</span><span class="code-line line-number" line="265">
+</span><span class="code-line line-number" line="266"><span class="token comment"># edit profile</span>
+</span><span class="code-line line-number" line="267">lxc profile edit production
+</span><span class="code-line line-number" line="268">
+</span><span class="code-line line-number" line="269"><span class="token comment">#set environment variables</span>
+</span><span class="code-line line-number" line="270">lxc profile <span class="token builtin class-name">set</span> production environment.EDITOR <span class="token function">vim</span>
+</span><span class="code-line line-number" line="271">
+</span><span class="code-line line-number" line="272"><span class="token comment"># unset memory limit</span>
+</span><span class="code-line line-number" line="273">lxc profile <span class="token builtin class-name">unset</span> production limits.memory
+</span><span class="code-line line-number" line="274">
+</span><span class="code-line line-number" line="275"><span class="token comment"># set boot autostart</span>
+</span><span class="code-line line-number" line="276">lxc profile <span class="token builtin class-name">set</span> production boot.autostart <span class="token boolean">true</span>
+</span><span class="code-line line-number" line="277">
+</span><span class="code-line line-number" line="278"><span class="token comment"># add profile to container</span>
+</span><span class="code-line line-number" line="279">lxc profile <span class="token function">add</span> debian12 production
+</span><span class="code-line line-number" line="280">
+</span><span class="code-line line-number" line="281"><span class="token comment"># remove profile from container</span>
+</span><span class="code-line line-number" line="282">lxc profile remove debian12 production
+</span><span class="code-line line-number" line="283">
+</span><span class="code-line line-number" line="284"><span class="token comment"># launch container with profile</span>
+</span><span class="code-line line-number" line="285">lxc launch 1u1u1u1u1u1 rockylinux9-2 <span class="token parameter variable">-p</span> producition
+</span><span class="code-line line-number" line="286">
 </span></code><div onclick="copied(this)" data-code="# lxd configuration files
 /var/lib/lxd
 /var/log/lxd
@@ -5467,6 +5503,10 @@ lxc network detach lxdbr0 alpine
 
 ### LXD SNAPSHOT MANAGEMENT ###
 
+# snapshot files
+/var/lib/lxd/snapshots/
+/var/snap/lxd/common/lxd/snapshots
+
 # create a snapshot
 lxc snapshot debian12
 
@@ -5484,6 +5524,38 @@ lxc info debian12
 
 # copy a snapshot
 lxc copy debian12/snap0 debian12-2
+
+### LXD PROFILES MANAGEMENT ###
+
+# list profiles
+lxc profile list
+
+# show profile details
+lxc profile show default
+
+# copy profile
+lxc profile copy default production
+
+# edit profile
+lxc profile edit production
+
+#set environment variables
+lxc profile set production environment.EDITOR vim
+
+# unset memory limit
+lxc profile unset production limits.memory
+
+# set boot autostart
+lxc profile set production boot.autostart true
+
+# add profile to container
+lxc profile add debian12 production
+
+# remove profile from container
+lxc profile remove debian12 production
+
+# launch container with profile
+lxc launch 1u1u1u1u1u1 rockylinux9-2 -p producition
 
 " class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
     <p align="right">(<a href="#topic-352.2">back to sub topic 352.2</a>)</p>
@@ -5919,13 +5991,15 @@ Vagrantfile
           <li><a href="https://canonical.com/lxd">LXD Canonical</a></li>
           <li><a href="https://github.com/canonical/lxd">LXD Canonical Github</a></li>
           <li><a href="https://linuxcontainers.org/lxd/docs/master/">LXD Documentation</a></li>
+          <li><a href="https://documentation.ubuntu.com/lxd/stable-4.0/instances/">LXD Installation</a></li>
           <li><a href="https://images.lxd.canonical.com/">LDX Images</a></li>
           <li><a href="https://documentation.ubuntu.com/lxd/stable-4.0/storage/">LXD Storage</a></li>
           <li><a href="https://documentation.ubuntu.com/lxd/stable-5.21/explanation/storage/#exp-storage">LXD Storage pools, volumes, and buckets</a></li>
           <li><a href="https://documentation.ubuntu.com/lxd/latest/explanation/networks/">LXD Network Types</a></li>
           <li><a href="https://documentation.ubuntu.com/lxd/stable-4.0/networks/">LXD Network Parameters</a></li>
           <li><a href="https://documentation.ubuntu.com/lxd/latest/howto/network_create/">LXD Network Configuration</a></li>
-          <li><a href="https://documentation.ubuntu.com/lxd/stable-4.0/instances/">LXD Installation</a></li>
+          <li><a href="https://documentation.ubuntu.com/lxd/to/latest/profiles/">LXD Profiles</a></li>
+          <li><a href="https://documentation.ubuntu.com/lxd/en/stable-4.0/instances/">LXD Instances</a></li>
         </ul>
       </li>
       <li><a href="">Openstack Docs</a>
