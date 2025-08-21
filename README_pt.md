@@ -421,7 +421,7 @@ Em um sistema NUMA, a memória é distribuída de maneira desigual entre os proc
 
 ##### 📝 Principais características da arquitetura NUMA
 
-1.  **Memória local e remota**: Each processor has its own local memory, which it can access more quickly. However, it can also access the memory of other processors, although this takes longer.
+1.  **Memória local e remota**: Cada processador tem sua própria memória local, que pode acessar mais rapidamente. No entanto, também pode acessar a memória de outros processadores, embora isso leve mais tempo.
 2.  **Latência diferenciada**: A latência do acesso à memória varia dependendo se o processador está acessando sua memória local ou a memória de outro nó. O acesso à memória local é mais rápido, enquanto o acesso à memória de outro nó (remoto) é mais lento.
 3.  **Escalabilidade**: A arquitetura da NUMA foi projetada para melhorar a escalabilidade em sistemas com muitos processadores. À medida que mais processadores são adicionados, a memória também é distribuída, evitando o gargalo que ocorreria em uma arquitetura uniforme de acesso à memória (Uma).
 
@@ -2552,13 +2552,13 @@ Resumo
 
 ##### Tables Tabelas de comparação: OCI, Runc, Containerd, CRI, CRI-O
 
-| Componente    | Emoji | O que é?                                     | Quem o usa?                             | Exemplo de uso                                                                        |
-| ------------- | ----- | -------------------------------------------- | --------------------------------------- | ------------------------------------------------------------------------------------- |
-| **OCI**       | 🏛️   | Padrões/especificações                       | Docker, Podman, CRI-O, containerd, runc | Garante que imagens/recipientes sejam compatíveis entre as ferramentas                |
-| **Runc**      | ⚙️    | Time de execução de contêineres (CLI)        | containerd, CRI-O, Docker, Podman       | Executando diretamente um recipiente de um pacote (por exemplo`runc run`)             |
-| **contêiner** | 🏋️   | Daemon de tempo de execução do contêiner     | Docker, Kubernetes, Nerdctl             | Manças de puxar imagens, gerenciar armazenamento/rede, inicia os contêineres via Runc |
-| **Cri**       | 🔌    | Interface de tempo de execução do K8S (API)  | Somente Kubernetes                      | Deixe Kubelet falar com o contêiner/Cri-O                                             |
-| **CRI-O**     | 🥤    | Tempo de execução do contêiner leve para K8s | Kubernetes, OpenShift                   | Usado como motor de contêiner K8S                                                     |
+| Componente    | Emoji | O que é?                                     | Quem o usa?                             | Exemplo de uso                                                               |
+| ------------- | ----- | -------------------------------------------- | --------------------------------------- | ---------------------------------------------------------------------------- |
+| **OCI**       | 🏛️   | Padrões/especificações                       | Docker, Podman, CRI-O, containerd, runc | Garante que imagens/recipientes sejam compatíveis entre as ferramentas       |
+| **Runc**      | ⚙️    | Time de execução de contêineres (CLI)        | containerd, CRI-O, Docker, Podman       | Executando diretamente um recipiente de um pacote (por exemplo`runc run`)    |
+| **contêiner** | 🏋️   | Daemon de tempo de execução do contêiner     | Docker, Kubernetes, Nerdctl             | Handles pulling images, managing storage/network, starts containers via runc |
+| **Cri**       | 🔌    | Interface de tempo de execução do K8S (API)  | Somente Kubernetes                      | Deixe Kubelet falar com o contêiner/Cri-O                                    |
+| **CRI-O**     | 🥤    | Tempo de execução do contêiner leve para K8s | Kubernetes, OpenShift                   | Usado como motor de contêiner K8S                                            |
 
 * * *
 
@@ -3491,6 +3491,10 @@ lxc network detach lxdbr0 alpine
 
 ### LXD SNAPSHOT MANAGEMENT ###
 
+# snapshot files
+/var/lib/lxd/snapshots/
+/var/snap/lxd/common/lxd/snapshots
+
 # create a snapshot
 lxc snapshot debian12
 
@@ -3508,6 +3512,38 @@ lxc info debian12
 
 # copy a snapshot
 lxc copy debian12/snap0 debian12-2
+
+### LXD PROFILES MANAGEMENT ###
+
+# list profiles
+lxc profile list
+
+# show profile details
+lxc profile show default
+
+# copy profile
+lxc profile copy default production
+
+# edit profile
+lxc profile edit production
+
+#set environment variables
+lxc profile set production environment.EDITOR vim
+
+# unset memory limit
+lxc profile unset production limits.memory
+
+# set boot autostart
+lxc profile set production boot.autostart true
+
+# add profile to container
+lxc profile add debian12 production
+
+# remove profile from container
+lxc profile remove debian12 production
+
+# launch container with profile
+lxc launch 1u1u1u1u1u1 rockylinux9-2 -p producition
 
 ```
 
@@ -3934,13 +3970,15 @@ Link do projeto:<https://github.com/marcossilvestrini/learning-lpic-3-305-300>
     -   [Lxd canônico](https://canonical.com/lxd)
     -   [LXD Github canônico](https://github.com/canonical/lxd)
     -   [Documentação LXD](https://linuxcontainers.org/lxd/docs/master/)
+    -   [Instalação LXD](https://documentation.ubuntu.com/lxd/stable-4.0/instances/)
     -   [Imagens LDX](https://images.lxd.canonical.com/)
     -   [LXD Storage](https://documentation.ubuntu.com/lxd/stable-4.0/storage/)
     -   [Piscinas de armazenamento LXD, volumes e baldes](https://documentation.ubuntu.com/lxd/stable-5.21/explanation/storage/#exp-storage)
     -   [Tipos de rede LXD](https://documentation.ubuntu.com/lxd/latest/explanation/networks/)
     -   [Parâmetros de rede LXD](https://documentation.ubuntu.com/lxd/stable-4.0/networks/)
     -   [Configuração da rede LXD](https://documentation.ubuntu.com/lxd/latest/howto/network_create/)
-    -   [Instalação LXD](https://documentation.ubuntu.com/lxd/stable-4.0/instances/)
+    -   [Perfis LXD](https://documentation.ubuntu.com/lxd/to/latest/profiles/)
+    -   [Instâncias LXD](https://documentation.ubuntu.com/lxd/en/stable-4.0/instances/)
 -   [OpenStack Docs](<>)
     -   [Redhat](https://www.redhat.com/pt-br/topics/openstack)
 -   [Aberto vswitch](<>)
