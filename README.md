@@ -1,3 +1,4 @@
+
 <h1><a name="readme-top"></a></h1>
 
 [![Create Release](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/release.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/release.yml)
@@ -3506,6 +3507,10 @@ lxc network detach lxdbr0 alpine
 
 ### LXD SNAPSHOT MANAGEMENT ###
 
+# snapshot files
+/var/lib/lxd/snapshots/
+/var/snap/lxd/common/lxd/snapshots
+
 # create a snapshot
 lxc snapshot debian12
 
@@ -3523,6 +3528,38 @@ lxc info debian12
 
 # copy a snapshot
 lxc copy debian12/snap0 debian12-2
+
+### LXD PROFILES MANAGEMENT ###
+
+# list profiles
+lxc profile list
+
+# show profile details
+lxc profile show default
+
+# copy profile
+lxc profile copy default production
+
+# edit profile
+lxc profile edit production
+
+#set environment variables
+lxc profile set production environment.EDITOR vim
+
+# unset memory limit
+lxc profile unset production limits.memory
+
+# set boot autostart
+lxc profile set production boot.autostart true
+
+# add profile to container
+lxc profile add debian12 production
+
+# remove profile from container
+lxc profile remove debian12 production
+
+# launch container with profile
+lxc launch 1u1u1u1u1u1 rockylinux9-2 -p producition
 
 ```
 
@@ -3950,13 +3987,15 @@ Project Link: [https://github.com/marcossilvestrini/learning-lpic-3-305-300](htt
   * [LXD Canonical](https://canonical.com/lxd)
   * [LXD Canonical Github](https://github.com/canonical/lxd)
   * [LXD Documentation](https://linuxcontainers.org/lxd/docs/master/)
+  * [LXD Installation](https://documentation.ubuntu.com/lxd/stable-4.0/instances/)
   * [LDX Images](https://images.lxd.canonical.com/)
   * [LXD Storage](https://documentation.ubuntu.com/lxd/stable-4.0/storage/)
   * [LXD Storage pools, volumes, and buckets](https://documentation.ubuntu.com/lxd/stable-5.21/explanation/storage/#exp-storage)
   * [LXD Network Types](https://documentation.ubuntu.com/lxd/latest/explanation/networks/)
   * [LXD Network Parameters](https://documentation.ubuntu.com/lxd/stable-4.0/networks/)
-  * [LXD Network Configuration](https://documentation.ubuntu.com/lxd/latest/howto/network_create/)
-  * [LXD Installation](https://documentation.ubuntu.com/lxd/stable-4.0/instances/)
+  * [LXD Network Configuration](https://documentation.ubuntu.com/lxd/latest/howto/network_create/)  
+  * [LXD Profiles](https://documentation.ubuntu.com/lxd/to/latest/profiles/)
+  * [LXD Instances](https://documentation.ubuntu.com/lxd/en/stable-4.0/instances/)
 * [Openstack Docs]()
   * [RedHat](https://www.redhat.com/pt-br/topics/openstack)
 * [Open vSwitch]()

@@ -85,4 +85,56 @@ if ! lsmod | grep -q zfs; then
 fi
 log "ZFS kernel module loaded successfully."
 
+# ========== LXD GROUP ==========
+if ! getent group lxd | grep -qw vagrant; then
+    log "Adding 'vagrant' to group 'lxd'..."
+    usermod -aG lxd vagrant || warn "Failed to add vagrant to lxd group."
+else
+    log "User 'vagrant' already in group 'lxd'."
+fi
+
+# ========== LXD UI SETUP ==========
+log "Enabling LXD UI..."
+
+# Enable UI feature flag on snap
+snap set lxd ui.enable=true || warn "Failed to enable UI via snap."
+
+# Expose HTTPS listener on port 8443 (required for UI access)
+lxc config set core.https_address ":8443" || warn "Failed to expose LXD API/UI."
+
+# Restart the LXD daemon to apply changes
+snap restart --reload lxd || systemctl reload snap.lxd.daemon
+
+# # Open firewall port if UFW is active
+# if command -v ufw >/dev/null && ufw status | grep -q active; then
+#     ufw allow 8443/tcp || warn "Failed to open 8443/tcp on UFW."
+# fi
+
+# Detect first 192.168.x.x IPv4 from host
+HOST_IP=$(hostname -I | tr ' ' '\n' | grep -m1 '^192\.168\.')
+
+# Validate that port 8443 is listening and show access URL
+if ss -lntp | grep -q ":8443"; then
+    if [[ -n "$HOST_IP" ]]; then
+        log "LXD UI is available at https://${HOST_IP}:8443 🎨"
+    else
+        log "LXD UI is available at https://<host>:8443 🎨 (no 192.168.x.x IP found)"
+    fi
+else
+    warn "Port 8443 is not listening. Check LXD daemon logs."
+fi
+
+# ========== LXD CONFIGURATION ==========
+
+# Configure profiles
+lxc profile create production
+lxc profile set production limits.memory 32GiB
+lxc profile set production limits.cpu 10
+lxc profile set production environment.EDITOR vim
+lxc profile set default environment.EDITOR vim
+
+# Restart the LXD daemon to apply changes
+snap restart --reload lxd || systemctl reload snap.lxd.daemon
+log "LXD profile configuration created successfully. 🚀"
+
 log "✅ LXD environment setup complete!"
