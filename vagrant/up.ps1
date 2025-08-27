@@ -25,8 +25,7 @@ function VagrantUp {
     param (
         [string]$topic
     )
-    # Up instances
-    
+    # Up instances    
     Write-Host "Up Instances Topic $topic" -ForegroundColor Green
     Copy-Item Vagrantfile-topic-$topic -Destination Vagrantfile -Force        
     vagrant up --provider vmware_workstation

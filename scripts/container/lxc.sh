@@ -8,7 +8,7 @@
       - Start/Stop container
       - Exec shell inside
       - Teardown lab
-    👤 Author: Marcos Silvestrini + Linux Specialist AI
+    👤 Author: Marcos Silvestrini
     📅 Date: 07/07/2025
 MULTILINE-COMMENT
 

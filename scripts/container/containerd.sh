@@ -9,7 +9,7 @@
       - Exec shell inside
       - Stop/Remove container
       - Teardown lab
-    👤 Author: Marcos Silvestrini + Linux Specialist AI
+    👤 Author: Marcos Silvestrini
     📅 Date: 01/07/2025
 MULTILINE-COMMENT
 

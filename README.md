@@ -3560,7 +3560,6 @@ lxc profile remove debian12 production
 
 # launch container with profile
 lxc launch 1u1u1u1u1u1 rockylinux9-2 -p producition
-
 ```
 
 <p align="right">(<a href="#topic-352.2">back to sub topic 352.2</a>)</p>
@@ -3596,6 +3595,8 @@ dockerd
 docker
 Dockerfile
 ```
+
+
 
 #### 🛠️ 352.3 Important Commands
 

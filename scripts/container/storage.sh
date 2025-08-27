@@ -3,7 +3,7 @@
 : <<'MULTILINE-COMMENT'
     📝 Script Name: lxd-storage-lab.sh
     📚 Description: Prepare a secondary disk for LXD storage pools (LVM, Btrfs, ZFS) with full cleanup and idempotent reset. All partitions, filesystems, and LVM signatures are forcefully removed.
-    👤 Author: Marcos Silvestrini + Linux Specialist AI
+    👤 Author: Marcos Silvestrini
     📅 Date: 21/07/2025
 MULTILINE-COMMENT
 

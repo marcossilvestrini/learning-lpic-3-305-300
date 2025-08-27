@@ -4,7 +4,7 @@
     📝 Script Name: lxd-setup.sh
     🔒 Requirements: root privileges, apt, lxd
     📚 Description: Automate LXD install/config on Debian/Ubuntu
-    👤 Author: Marcos Silvestrini + Linux Specialist AI
+    👤 Author: Marcos Silvestrini
     📅 Date: 21/07/2025
 MULTILINE-COMMENT
 
@@ -127,14 +127,14 @@ fi
 # ========== LXD CONFIGURATION ==========
 
 # Configure profiles
-lxc profile create production
-lxc profile set production limits.memory 32GiB
-lxc profile set production limits.cpu 10
-lxc profile set production environment.EDITOR vim
-lxc profile set default environment.EDITOR vim
+# lxc profile create production
+# lxc profile set production limits.memory 16GiB
+# lxc profile set production limits.cpu 10
+# lxc profile set production environment.EDITOR vim
+# lxc profile set default environment.EDITOR vim
 
-# Restart the LXD daemon to apply changes
-snap restart --reload lxd || systemctl reload snap.lxd.daemon
-log "LXD profile configuration created successfully. 🚀"
+# # Restart the LXD daemon to apply changes
+# snap restart --reload lxd || systemctl reload snap.lxd.daemon
+# log "LXD profile configuration created successfully. 🚀"
 
 log "✅ LXD environment setup complete!"

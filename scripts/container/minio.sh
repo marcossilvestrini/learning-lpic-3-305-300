@@ -4,7 +4,7 @@
     📝 Script Name: minio.sh
     📚 Description: Install MinIO server and client, set up systemd unit for automatic service management (LXD S3 integration)
     🔒 Requirements: curl, sudo, Linux x86_64, LXD snap
-    👤 Author: Marcos Silvestrini + Linux Specialist AI
+    👤 Author: Marcos Silvestrini
     📅 Date: 24/07/2025
 MULTILINE-COMMENT
 

@@ -10,7 +10,7 @@
       - Exec into container
       - Kill container
       - Teardown everything
-    👤 Author: Marcos Silvestrini + Linux Specialist AI
+    👤 Author: Marcos Silvestrini
     📅 Date: 01/07/2025
 MULTILINE-COMMENT
 

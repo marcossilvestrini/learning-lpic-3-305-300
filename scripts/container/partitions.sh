@@ -3,7 +3,7 @@
 : <<'MULTILINE-COMMENT'
     📝 Script Name: lxd-storage-lab.sh
     📚 Description: Prepare disk with partitions for LVM, Btrfs, and ZFS (for LXD storage pools)
-    👤 Author: Marcos Silvestrini + Linux Specialist AI
+    👤 Author: Marcos Silvestrini
     📅 Date: 21/07/2025
 MULTILINE-COMMENT
 
