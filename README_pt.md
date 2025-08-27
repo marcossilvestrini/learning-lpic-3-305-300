@@ -417,7 +417,7 @@ Xen com convidados paravirtualizados, ferramentas VMware em determinadas configu
 #### 🧠 NUMA (acesso não uniforme de memória)
 
 O NUMA (acesso não uniforme de memória) é uma arquitetura de memória usada em sistemas multiprocessadores para otimizar o acesso à memória pelos processadores.
-Em um sistema NUMA, a memória é distribuída de maneira desigual entre os processadores, o que significa que cada processador tem um acesso mais rápido a uma parte da memória (sua "memória local") do que à memória que está fisicamente mais distante (referida como "memória remota") e associada a outros processadores.
+Em um sistema NUMA, a memória é distribuída de maneira desigual entre os processadores, o que significa que cada processador tem acesso mais rápido a uma parte da memória (sua "memória local") do que à memória que está fisicamente mais distante (referida como "memória remota") e associada a outros processadores.
 
 ##### 📝 Principais características da arquitetura NUMA
 
@@ -619,7 +619,7 @@ A Xensource foi a empresa fundada pelos desenvolvedores originais do Xen Hypervi
 
 O projeto XEN refere-se à comunidade de código aberto e à iniciativa responsável pelo desenvolvimento e manutenção do hipervisor Xen após sua comercialização. O projeto Xen opera sob a Fundação Linux, com foco na construção, melhoria e apoio a Xen como um esforço colaborativo e orientado pela comunidade.
 
--   **Metas:**O projeto XEN visa avançar o hipervisor, melhorando seu desempenho, segurança e conjunto de recursos para uma ampla gama de casos de uso, incluindo computação em nuvem, virtualização focada na segurança (por exemplo, Qubes OS) e sistemas incorporados.
+-   **Metas:**O projeto XEN visa avançar o hipervisor, melhorando seu desempenho, segurança e conjunto de recursos para uma ampla gama de casos de uso, incluindo computação em nuvem, virtualização focada na segurança (por exemplo, QUBES OS) e sistemas incorporados.
 -   **Colaboradores:**O projeto inclui colaboradores de várias organizações, incluindo os principais provedores de nuvem, fornecedores de hardware e desenvolvedores independentes.
 -   **Pílula e hedools:**O projeto XEN também inclui ferramentas como XAPI (XenAPI), que é usado para gerenciar instalações do Xen Hypervisor e vários outros utilitários para gerenciamento e otimização do sistema.
 
@@ -632,7 +632,7 @@ Aqui estão alguns aspectos importantes da Xen Store:
 
 -   **Comunicação entre domínios:**O Xen Store permite a comunicação entre domínios, como o DOM0 (o domínio privilegiado que controla os recursos de hardware) e o DOMUS (domínios do usuário, que são as VMs). Isso é feito através de entradas de valor-chave, onde cada domínio pode ler ou escrever informações.
 -   **Gerenciamento de configuração:**É usado para armazenar e acessar informações de configuração, como dispositivos virtuais, redes e parâmetros de inicialização. Isso facilita o gerenciamento dinâmico e a configuração das VMs.
--   **Eventos e notificações:**A Xen Store também suporta notificações de eventos. Quando uma chave ou valor específica na loja Xen é modificada, os domínios interessados podem ser notificados para reagir a essas alterações. Isso é útil para monitorar e gerenciar recursos.
+-   **Eventos e notificações:**A Xen Store também suporta notificações de eventos. Quando uma chave ou valor específica na loja Xen é modificada, os domínios interessados ​​podem ser notificados para reagir a essas alterações. Isso é útil para monitorar e gerenciar recursos.
 -   API simples: a Xen Store fornece uma API simples para ler e escrever dados, facilitando os desenvolvedores para integrar seus aplicativos ao sistema de virtualização Xen.
 
 #### 🔗 Xapi
@@ -674,7 +674,7 @@ Isso resulta em menor sobrecarga e melhor eficiência em comparação com a virt
 
 #### ⚙️ HVM-DOMU (domínio da máquina virtual de hardware)
 
-O HVM-Domus são máquinas virtuais que utilizam virtualização completa, permitindo que os sistemas operacionais não modificados sejam executados. O Xen Hypervisor fornece emulação de hardware para esses Domus, permitindo que eles executem qualquer sistema operacional que suporta a arquitetura de hardware subjacente.
+O HVM-Domus são máquinas virtuais que utilizam virtualização completa, permitindo que os sistemas operacionais não modificados sejam executados. O Xen Hypervisor fornece emulação de hardware para esses domus, permitindo que eles executem qualquer sistema operacional que suporta a arquitetura de hardware subjacente.
 Embora isso ofereça maior flexibilidade, pode resultar em uma sobrecarga mais alta em comparação com o PV-Domus.
 
 #### 🌐 Rede Xen
@@ -1901,7 +1901,7 @@ timeline
 
 **Peso:**7
 
-**Descrição:**Os candidatos devem entender o conceito de virtualização de contêineres. Isso inclui a compreensão dos componentes do Linux usados para implementar a virtualização de contêineres, bem como usar as ferramentas padrão do Linux para solucionar esses componentes.
+**Descrição:**Os candidatos devem entender o conceito de virtualização de contêineres. Isso inclui a compreensão dos componentes do Linux usados ​​para implementar a virtualização de contêineres, bem como usar as ferramentas padrão do Linux para solucionar esses componentes.
 
 **Principais áreas de conhecimento:**
 
@@ -1938,7 +1938,7 @@ capsh
 
 ![container](images/containers1.png)
 
-Os contêineres são uma tecnologia de virtualização leve que empacota aplicativos, juntamente com as dependências necessárias - código, bibliotecas, variáveis de ambiente e arquivos de configuração - em unidades isoladas, portáteis e reproduzíveis.
+Os contêineres são uma tecnologia de virtualização leve que empacota aplicativos, juntamente com as dependências necessárias - código, bibliotecas, variáveis ​​de ambiente e arquivos de configuração - em unidades isoladas, portáteis e reproduzíveis.
 
 > Em termos simples: um contêiner é uma caixa independente que executa seu aplicativo da mesma maneira, em qualquer lugar.
 
@@ -2187,7 +2187,7 @@ Use este script para laboratório:[namespace.sh](scripts/container/namespace.sh)
 
 Os grupos de controle (CGROUPS) são um recurso Linux Kernel introduzido em 2007 que permite limitar, explicar e isolar o uso de recursos (CPU, memória, E/S de disco, etc.) de grupos de processos.
 
-Os cgroups são fortemente usados por tempos de execução de contêineres de baixo nível, como Runc e Crun, e alavancados por motores de contêineres como Docker, Podman e LXC para aplicar os limites dos recursos e fornecer isolamento entre os contêineres.
+Os cgroups são fortemente usados ​​por tempos de execução de contêineres de baixo nível, como Runc e Crun, e alavancados por motores de contêineres como Docker, Podman e LXC para aplicar os limites dos recursos e fornecer isolamento entre os contêineres.
 
 Os namespaces isolam o controle de cgroups.
 
@@ -2501,15 +2501,15 @@ ps -eZ # Processes
 
 #### 🗂️ Isolamento de contêineres Linux e comparação de segurança
 
-| Tecnologia        | Propósito / o que faz                                                                                                   | Principais diferenças                                                                                         | Exemplo em contêineres                                                                              |
-| ----------------- | ----------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- |
-| **Chroot 🏠**     | Altera o diretório raiz aparente para um processo. Isolate o sistema de arquivos.                                       | Isolamento simples do sistema de arquivos; faz**não**restringir recursos, privilégios ou chamadas do sistema. | Docker usa`chroot`Internamente para criar imagens mínimas, mas não para um forte isolamento.        |
-| **CGROUPS 📊**    | Controla e limita o uso de recursos (CPU, memória, E/S de disco, etc.) por grupo de processos.                          | Recurso do kernel; Controle de recursos de grão fino, não isolamento.                                         | Docker e Kubernetes usam cgroups para limitar a CPU/MEM por contêiner/pod.                          |
-| **Namespaces 🌐** | Isolar recursos do sistema: PID, MOUNT, UTS, Rede, Usuário, IPC, Time.                                                  | Recurso do kernel; fornece diferentes tipos de isolamento.                                                    | Cada contêiner é executado em seu próprio conjunto de espaços para nome (PID, rede, montagem etc.). |
-| **Recursos 🛡️**  | Dividir privilégios de raiz em unidades de grão fino (por exemplo, rede_admin, sys_admin).                              | Mais granular do que tudo o ou nada raiz/não raiz; pode abandonar ou conceder privilégios específicos.        | Os contêineres do Docker geralmente são executados com recursos reduzidos (solteiros perigosos).    |
-| **Seccomp 🧱**    | Filtrar/restringir quais syscalls um processo pode fazer (lista de permissões/lista negra).                             | Muito focado: blocos de syscalls do kernel; não pode bloquear todas as ações.                                 | O perfil padrão do Docker bloqueia syscalls perigosos (por exemplo,,`ptrace`,`mount`).              |
-| **APARMOR 🐧**    | Estrutura de controle de acesso obrigatório (MAC): restringe o acesso de arquivo/rede dos programas por meio de perfis. | Baseado em perfil, mais fácil de gerenciar do que o Selinux; menos granulação fina em alguns casos.           | Os contêineres baseados em Ubuntu geralmente usam o Apmor para perfis de processo de contêiner.     |
-| **Selinux 🔒**    | Estrutura MAC mais complexa, baseada em etiquetas, muito fina. Pode limitar usuários, processos e arquivos.             | Mais poderoso e complexo que o Aparmor; Forçado em Fedora/Rhel/Centos.                                        | No OpenShift/Kubernetes com RHEL, os rótulos do Selinux são usados para manter as vagens separadas. |
+| Tecnologia        | Propósito / o que faz                                                                                                   | Principais diferenças                                                                                         | Exemplo em contêineres                                                                                |
+| ----------------- | ----------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- |
+| **Chroot 🏠**     | Altera o diretório raiz aparente para um processo. Isolate o sistema de arquivos.                                       | Isolamento simples do sistema de arquivos; faz**não**restringir recursos, privilégios ou chamadas do sistema. | Docker usa`chroot`Internamente para criar imagens mínimas, mas não para um forte isolamento.          |
+| **CGROUPS 📊**    | Controla e limita o uso de recursos (CPU, memória, E/S de disco, etc.) por grupo de processos.                          | Recurso do kernel; Controle de recursos de grão fino, não isolamento.                                         | Docker e Kubernetes usam cgroups para limitar a CPU/MEM por contêiner/pod.                            |
+| **Namespaces 🌐** | Isolar recursos do sistema: PID, MOUNT, UTS, Rede, Usuário, IPC, Time.                                                  | Recurso do kernel; fornece diferentes tipos de isolamento.                                                    | Cada contêiner é executado em seu próprio conjunto de espaços para nome (PID, rede, montagem etc.).   |
+| **Recursos 🛡️**  | Dividir privilégios de raiz em unidades de grão fino (por exemplo, rede_admin, sys_admin).                              | Mais granular do que tudo o ou nada raiz/não raiz; pode abandonar ou conceder privilégios específicos.        | Os contêineres do Docker geralmente são executados com recursos reduzidos (solteiros perigosos).      |
+| **Seccomp 🧱**    | Filtrar/restringir quais syscalls um processo pode fazer (lista de permissões/lista negra).                             | Muito focado: blocos de syscalls do kernel; não pode bloquear todas as ações.                                 | O perfil padrão do Docker bloqueia syscalls perigosos (por exemplo,,`ptrace`,`mount`).                |
+| **APARMOR 🐧**    | Estrutura de controle de acesso obrigatório (MAC): restringe o acesso de arquivo/rede dos programas por meio de perfis. | Baseado em perfil, mais fácil de gerenciar do que o Selinux; menos granulação fina em alguns casos.           | Os contêineres baseados em Ubuntu geralmente usam o Apmor para perfis de processo de contêiner.       |
+| **Selinux 🔒**    | Estrutura MAC mais complexa, baseada em etiquetas, muito fina. Pode limitar usuários, processos e arquivos.             | Mais poderoso e complexo que o Aparmor; Forçado em Fedora/Rhel/Centos.                                        | No OpenShift/Kubernetes com RHEL, os rótulos do Selinux são usados ​​para manter as vagens separadas. |
 
 Resumo
 
@@ -2552,13 +2552,13 @@ Resumo
 
 ##### Tables Tabelas de comparação: OCI, Runc, Containerd, CRI, CRI-O
 
-| Componente    | Emoji | O que é?                                     | Quem o usa?                             | Exemplo de uso                                                               |
-| ------------- | ----- | -------------------------------------------- | --------------------------------------- | ---------------------------------------------------------------------------- |
-| **OCI**       | 🏛️   | Padrões/especificações                       | Docker, Podman, CRI-O, containerd, runc | Garante que imagens/recipientes sejam compatíveis entre as ferramentas       |
-| **Runc**      | ⚙️    | Time de execução de contêineres (CLI)        | containerd, CRI-O, Docker, Podman       | Executando diretamente um recipiente de um pacote (por exemplo`runc run`)    |
-| **contêiner** | 🏋️   | Daemon de tempo de execução do contêiner     | Docker, Kubernetes, Nerdctl             | Handles pulling images, managing storage/network, starts containers via runc |
-| **Cri**       | 🔌    | Interface de tempo de execução do K8S (API)  | Somente Kubernetes                      | Deixe Kubelet falar com o contêiner/Cri-O                                    |
-| **CRI-O**     | 🥤    | Tempo de execução do contêiner leve para K8s | Kubernetes, OpenShift                   | Usado como motor de contêiner K8S                                            |
+| Componente    | Emoji | O que é?                                     | Quem o usa?                             | Exemplo de uso                                                                        |
+| ------------- | ----- | -------------------------------------------- | --------------------------------------- | ------------------------------------------------------------------------------------- |
+| **OCI**       | 🏛️   | Padrões/especificações                       | Docker, Podman, CRI-O, containerd, runc | Garante que imagens/recipientes sejam compatíveis entre as ferramentas                |
+| **Runc**      | ⚙️    | Time de execução de contêineres (CLI)        | containerd, CRI-O, Docker, Podman       | Executando diretamente um recipiente de um pacote (por exemplo`runc run`)             |
+| **contêiner** | 🏋️   | Daemon de tempo de execução do contêiner     | Docker, Kubernetes, Nerdctl             | Manças de puxar imagens, gerenciar armazenamento/rede, inicia os contêineres via Runc |
+| **Cri**       | 🔌    | Interface de tempo de execução do K8S (API)  | Somente Kubernetes                      | Deixe Kubelet falar com o contêiner/Cri-O                                             |
+| **CRI-O**     | 🥤    | Tempo de execução do contêiner leve para K8s | Kubernetes, OpenShift                   | Usado como motor de contêiner K8S                                                     |
 
 * * *
 
@@ -3544,7 +3544,6 @@ lxc profile remove debian12 production
 
 # launch container with profile
 lxc launch 1u1u1u1u1u1 rockylinux9-2 -p producition
-
 ```
 
 <p align="right">(<a href="#topic-352.2">back to sub topic 352.2</a>)</p>
@@ -3875,7 +3874,7 @@ Link do projeto:<https://github.com/marcossilvestrini/learning-lpic-3-305-300>
 -   [Script de shell](<>)
     -   [Bourne novamente Shell](https://www.gnu.org/software/bash/manual/)
     -   [Shebang](https://bash.cyberciti.biz/guide/Shebang)
-    -   [Variáveis de ambiente](https://linuxize.com/post/how-to-set-and-list-environment-variables-in-linux/)
+    -   [Variáveis ​​de ambiente](https://linuxize.com/post/how-to-set-and-list-environment-variables-in-linux/)
     -   [GNU Globbing](https://man7.org/linux/man-pages/man7/glob.7.html)
     -   [Globbing](https://linuxhint.com/bash_globbing_tutorial/)
     -   [Citando](https://www.gnu.org/software/bash/manual/html_node/Quoting.html)
