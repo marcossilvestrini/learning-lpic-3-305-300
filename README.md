@@ -3572,6 +3572,10 @@ lxc launch 1u1u1u1u1u1 rockylinux9-2 -p producition
 
 ### 🐳 352.3 Docker
 
+![docker-architecture](images/docker.png)
+
+![docker-runtime](images/docker-containerd.png)
+
 **Weight:** 9
 
 **Description:** Candidate should be able to manage Docker nodes and Docker containers. This include understand the architecture of Docker as well as understanding how Docker interacts with the node’s Linux system.
@@ -3595,8 +3599,6 @@ dockerd
 docker
 Dockerfile
 ```
-
-
 
 #### 🛠️ 352.3 Important Commands
 
@@ -3984,7 +3986,7 @@ Project Link: [https://github.com/marcossilvestrini/learning-lpic-3-305-300](htt
 * [LXC - Linux Containers]()
   * [LXC](https://linuxcontainers.org/lxc/introduction/)
   * [Linux Container Images](https://images.linuxcontainers.org/)
-* [LXD]
+* [LXD]()
   * [LXD Canonical](https://canonical.com/lxd)
   * [LXD Canonical Github](https://github.com/canonical/lxd)
   * [LXD Documentation](https://linuxcontainers.org/lxd/docs/master/)
@@ -3997,6 +3999,11 @@ Project Link: [https://github.com/marcossilvestrini/learning-lpic-3-305-300](htt
   * [LXD Network Configuration](https://documentation.ubuntu.com/lxd/latest/howto/network_create/)  
   * [LXD Profiles](https://documentation.ubuntu.com/lxd/to/latest/profiles/)
   * [LXD Instances](https://documentation.ubuntu.com/lxd/en/stable-4.0/instances/)
+* [Docker](https://www.docker.com/)
+  * [Docker Overview](https://docs.docker.com/get-started/overview/)
+  * [Containerd x Docker](https://www.docker.com/blog/containerd-vs-docker/)
+  * [TestContainers](https://testcontainers.com/)
+
 * [Openstack Docs]()
   * [RedHat](https://www.redhat.com/pt-br/topics/openstack)
 * [Open vSwitch]()
