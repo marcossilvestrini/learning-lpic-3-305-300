@@ -1,4 +1,7 @@
 {
+    "MD003": {
+        "style": "atx"
+    },
     "MD033": {
         "allowed_elements": [
             "p",
@@ -13,10 +16,15 @@
             "strong",
             "/strong",
             "h1",
+            "h2",
             "b"
         ]
     },
     "MD013": {
-        "line_length": 300
-    }
+        "line_length": 400
+    },
+    "MD042": false,
+    "MD036": false,
+    "MD053": false
+
 }

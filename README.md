@@ -1,4 +1,3 @@
-
 <h1><a name="readme-top"></a></h1>
 
 [![Create Release](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/release.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/release.yml)
@@ -11,12 +10,12 @@
 
 ---
 
-[![MIT License][license-shield]][license-url]
-[![Forks][forks-shield]][forks-url]
-[![Stargazers][stars-shield]][stars-url]
-[![Contributors][contributors-shield]][contributors-url]
-[![Issues][issues-shield]][issues-url]
-[![LinkedIn][linkedin-shield]][linkedin-url]
+[MIT License][license-url]
+[Forks][forks-url]
+[Stargazers][stars-url]
+[Contributors][contributors-url]
+[Issues][issues-url]
+[LinkedIn][linkedin-url]
 ------------------------
 
 # 📚 LEARNING LPIC-3 305-300
@@ -71,12 +70,12 @@
       </ul>
     </li>
     <li>
-      <a href="#topic-352">Topic 352: Container Virtualization</a>
+      <a href="#topic-352">Topic 352: container Virtualization</a>
       <ul>
-        <li><a href="#topic-352.1">352.1 Container Virtualization Concepts</a></li>
+        <li><a href="#topic-352.1">352.1 container Virtualization Concepts</a></li>
         <li><a href="#topic-352.2">352.2 LXC</a></li>
         <li><a href="#topic-352.3">352.3 Docker</a></li>
-        <li><a href="#topic-352.4">352.4 Container Orchestration Platforms</a></li>
+        <li><a href="#topic-352.4">352.4 container Orchestration Platforms</a></li>
       </ul>
     </li>
     <li>
@@ -188,7 +187,7 @@ vagrant/destroy.ps1
 
 ### 🗺️ Infrastructure Schema Topic 351
 
-![topic-351](images/infraestructure-topic-351.png)
+![topic-351](images/infrastructure-topic-351.png)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -472,17 +471,17 @@ Data centers, cloud computing, server consolidation.
 
 VMware ESXi, Microsoft Hyper-V, KVM.
 
-##### 📦 Operating System Virtualization (Containerization)
+##### 📦 Operating System Virtualization (containerization)
 
-###### 📄 Containerization Definition
+###### 📄 containerization Definition
 
 Allows multiple isolated user-space instances (containers) to run on a single OS kernel.
 
-###### 🛠️ Containerization Use Cases
+###### 🛠️ containerization Use Cases
 
 Microservices architecture, development and testing environments.
 
-###### 💡 Containerization Examples
+###### 💡 containerization Examples
 
 Docker, Kubernetes, LXC.
 
@@ -592,9 +591,9 @@ Despite this drawback, emulation remains valuable for running legacy software, t
 
 ### 🐧 351.2 Xen
 
-![xen-architecture](images/xen-achitecture.png)
+![xen-architecture](images/xen-architecture.png)
 
-![xen-architecture](images/xen-achitecture2.png)
+![xen-architecture](images/xen-architecture2.png)
 
 **Weight:** 3
 
@@ -692,7 +691,7 @@ While this offers greater flexibility, it can result in higher overhead compared
 
 #### 🌐 Xen Network
 
-Paravirtualised Network Devices
+Paravirtualized Network Devices
 ![pv-networking](images/xen-networking2.png)
 
 Bridging
@@ -751,7 +750,7 @@ xen-tscmode(7)
 ## create folder auto
 cd /etc/xen && mkdir -p auto && cd auto
 
-# create simbolic link
+# create symbolic link
 ln -s /etc/xen/lpic3-pv-guest /etc/xen/auto/lpic3-pv-guest
 ```
 
@@ -856,7 +855,7 @@ ssh -l vagrant -L 5900:localhost:5900  192.168.0.130
 ## create domain hvm
 xl create /etc/xen/lpic3-hvm-guest.cfg
 
-## open vcn conection in your vnc client with localhost
+## open vcn connection in your vnc client with localhost
 ## for view install details
 
 ## after installation finished, destroy domain: xl destroy <id_or_name>
@@ -1176,7 +1175,7 @@ ctrl+alt+2
 ```
 
 ```sh
-# Managment
+# Management
 info status # vm info
 info cpus # cpu information
 info network # network informations
@@ -1257,7 +1256,7 @@ virsh (including relevant subcommands)
 ##### 🖥️ virsh
 
 ```sh
-# using env variable for set virsh uri (local or remotly)
+# using env variable for set virsh uri (local or remotely)
 export LIBVIRT_DEFAULT_URI=qemu:///system
 export LIBVIRT_DEFAULT_URI=xen+ssh://vagrant@192.168.0.130
 export LIBVIRT_DEFAULT_URI='xen+ssh://vagrant@192.168.0.130?keyfile=/home/vagrant/.ssh/skynet-key-ecdsa'
@@ -1285,24 +1284,24 @@ virsh vncdisplay <domain_id>
 virsh vncdisplay <domain_name>
 virsh vncdisplay rocky9-server01 
 
-# HYPERVISIONER
+# HYPERVISORS
 
-# view libvirt hypervisioner connection
+# view libvirt hypervisor connection
 virsh uri
 
-# list valid hypervisioners
+# list valid hypervisors
 virt-host-validate
 virt-host-validate qemu
 
-# test connetion uri(vm test)
+# test connection uri(vm test)
 virsh -c test:///default list
 
-# connect remotly
+# connect remotely
 virsh -c xen+ssh://vagrant@192.168.0.130
 virsh -c xen+ssh://vagrant@192.168.0.130 list
 virsh -c qemu+ssh://vagrant@192.168.0.130/system list
 
-# connect remotly without enter password
+# connect remotely without enter password
 virsh -c 'xen+ssh://vagrant@192.168.0.130?keyfile=/home/vagrant/.ssh/skynet-key-ecdsa'
 
 # STORAGE
@@ -1466,11 +1465,11 @@ virsh setvcpus rocky9-server01 --count 4 --config
 virsh setvcpus rocky9-server01 --count 3 --current
 virsh setvcpus rocky9-server01 --count 3 --live
 
-# configure vcpu afinity config
+# configure vcpu affinity config
 virsh vcpupin rocky9-server01 0 7 --config
 virsh vcpupin rocky9-server01 1 5-6 --config
 
-# configure vcpu afinity current
+# configure vcpu affinity current
 virsh vcpupin rocky9-server01 0 7
 virsh vcpupin rocky9-server01 1 5-6
 
@@ -1516,7 +1515,7 @@ virsh net-dhcp-leases default --mac 52\:54\:00\:89\:19\:86
 # edit network
 virsh net-edit default
 
-# get domain network detais
+# get domain network details
 virsh domiflist debian-server01
 
 # path for network filter files
@@ -1600,7 +1599,7 @@ less /etc/libvirt/qemu/debian-server01.xml
 
 ### 💾 351.5 Virtual Machine Disk Image Management
 
-![disk-managment](images/virtual-machine-disk.png)
+![disk-management](images/virtual-machine-disk.png)
 
 **Weight:** 3
 
@@ -1610,7 +1609,7 @@ less /etc/libvirt/qemu/debian-server01.xml
 
 * Understand features of various virtual disk image formats, such as raw images, qcow2 and VMDK
 * Manage virtual machine disk images using qemu-img
-* Mount partitions and access files contained in virtual machine disk images using libguestfish
+* Mount partitions and access files containerd in virtual machine disk images using libguestfish
 * Copy physical disk content to a virtual machine disk image
 * Migrate disk content between various virtual machine disk image formats
 * Awareness of Open Virtualization Format (OVF)
@@ -1685,7 +1684,7 @@ qemu-img snapshot -d SNAP1 disk
 ##### 🐟 guestfish
 
 ```sh
-# set enviroment variables for guestfish
+# set environment variables for guestfish
 export LIBGUESTFS_BACKEND_SETTINGS=force_tcg
 
 # Launch guestfish with a disk image
@@ -1889,23 +1888,23 @@ The generated package has the .ova extension and contains the following files:
 
 <a name="topic-352"></a>
 
-## 📦 Topic 352: Container Virtualization
+## 📦 Topic 352: container Virtualization
 
 ---
 
 <a name="topic-352.1"></a>
 
-### 🧠 352.1  Container Virtualization Concepts
+### 🧠 352.1  container Virtualization Concepts
 
 ![virtualization-container](images/virtualization-container.png)
 
 ```mermaid
 timeline
-    title Time Line Containers Evolution
+    title Time Line containers Evolution
     1979 : chroot
     2000 : FreeBSD Jails
     2002 : Linux Namespaces
-    2005 : Solaris Containers
+    2005 : Solaris containers
     2007 : cgroups
     2008 : LXC
     2013 : Docker
@@ -1929,7 +1928,7 @@ timeline
 * Understand the principle of runc
 * Understand the principle of CRI-O and containerd
 * Awareness of the OCI runtime and image specifications
-* Awareness of the Kubernetes Container Runtime Interface (CRI)
+* Awareness of the Kubernetes container Runtime Interface (CRI)
 * Awareness of podman, buildah and skopeo
 * Awareness of other container virtualization approaches in Linux and other free operating systems, such as rkt, OpenVZ, systemd-nspawn or BSD Jails
 
@@ -1949,21 +1948,21 @@ capsh
 
 ---
 
-#### 🧠 Understanding Containers
+#### 🧠 Understanding containers
 
 ![container](images/containers1.png)
 
-Containers are a lightweight virtualization technology that package applications along with their required dependencies — code, libraries, environment variables, and configuration files — into isolated, portable, and reproducible units.
+containers are a lightweight virtualization technology that package applications along with their required dependencies — code, libraries, environment variables, and configuration files — into isolated, portable, and reproducible units.
 
-> In simple terms: a container is a self-contained box that runs your application the same way, anywhere.
+> In simple terms: a container is a self-containerd box that runs your application the same way, anywhere.
 
-##### 💡 What Is a Container?
+##### 💡 What Is a container?
 
-Unlike Virtual Machines (VMs), containers do not virtualize hardware. Instead, they virtualize the operating system. Containers share the same Linux kernel with the host, but each one operates in a fully isolated user space.
+Unlike Virtual Machines (VMs), containers do not virtualize hardware. Instead, they virtualize the operating system. containers share the same Linux kernel with the host, but each one operates in a fully isolated user space.
 
-📌 Containers vs Virtual Machines:
+📌 containers vs Virtual Machines:
 
-| Feature             | Containers                   | Virtual Machines       |
+| Feature             | containers                   | Virtual Machines       |
 | ------------------- | ---------------------------- | ---------------------- |
 | OS Kernel           | Shared with host             | Each VM has its own OS |
 | Startup time        | Fast (seconds or less)       | Slow (minutes)         |
@@ -1971,7 +1970,7 @@ Unlike Virtual Machines (VMs), containers do not virtualize hardware. Instead, t
 | Resource efficiency | High                         | Lower                  |
 | Isolation mechanism | Kernel features (namespaces) | Hypervisor             |
 
-##### 🔑 Key Characteristics of Containers
+##### 🔑 Key Characteristics of containers
 
 🔹 **Lightweight**: Share the host OS kernel, reducing overhead and enabling fast startup.
 
@@ -1983,22 +1982,22 @@ Unlike Virtual Machines (VMs), containers do not virtualize hardware. Instead, t
 
 🔹 **Scalable**: Perfect fit for microservices and cloud-native architecture.
 
-##### 🧱 Types of Containers
+##### 🧱 Types of containers
 
-1. System Containers
+1. System containers
 
    * Designed to run the entire OS, Resemble virtual machines.
    * Support multiple processes and system services (init, syslog).
    * Ideal for legacy or monolithic applications.
    * Example: LXC, libvirt-lxc.
-2. Application Containers
+2. Application containers
 
    * Designed to run a single process.
    * Stateless, ephemeral, and horizontally scalable.
    * Used widely in modern DevOps and Kubernetes environments.
    * Example: Docker, containerd, CRI-O.
 
-##### 🚀 Popular Container Runtimes
+##### 🚀 Popular container Runtimes
 
 | Runtime              | Description                                                         |
 | -------------------- | ------------------------------------------------------------------- |
@@ -2008,7 +2007,7 @@ Unlike Virtual Machines (VMs), containers do not virtualize hardware. Instead, t
 | **LXC**        | Traditional Linux system containers, closer to full OS.             |
 | **RKT**        | Security-focused runtime (deprecated).                              |
 
-##### 🔐 Container Internals and Security Elements
+##### 🔐 container Internals and Security Elements
 
 | Component                    | Role                                                  |
 | ---------------------------- | ----------------------------------------------------- |
@@ -2073,7 +2072,7 @@ For stronger isolation, consider alternatives like:
 ##### 🧪 Test chroot with debootstrap
 
 ```sh
-# download debain files
+# download debian files
 sudo debootstrap stable ~vagrant/debian http://deb.debian.org/debian
 sudo chroot ~vagrant/debian bash
 ```
@@ -2104,7 +2103,7 @@ Each namespace type isolates a specific system resource. Together, they make up 
 | --------------------- | ---------------------------- | ------------------------------------------------------- |
 | **PID**         | Process IDs                  | Processes inside a container see a different PID space  |
 | **Mount**       | Filesystem mount points      | Each container sees its own root filesystem             |
-| **Network**     | Network stack                | Containers have isolated IPs, interfaces, and routes    |
+| **Network**     | Network stack                | containers have isolated IPs, interfaces, and routes    |
 | **UTS**         | Hostname and domain name     | Each container sets its own hostname                    |
 | **IPC**         | Shared memory and semaphores | Prevents inter-process communication between containers |
 | **User**        | User and group IDs           | Enables fake root (UID 0) inside the container          |
@@ -2122,7 +2121,7 @@ Imagine a shared office building:
 
 That's exactly how containers experience the system — isolated, yet efficient.
 
-##### 🔧 How Containers Use Namespaces
+##### 🔧 How containers Use Namespaces
 
 When you run a container (e.g., with Docker or Podman), the runtime creates a new set of namespaces:
 
@@ -2316,9 +2315,9 @@ echo "50000 100000" > /sys/fs/cgroup/mygroup/cpu.max  # 50ms quota per 100ms per
 | `cat /proc/PID/status`  | Memory and cgroup info          |
 | `ps -o pid,cmd,cgroup`  | Show process-to-cgroup mapping  |
 
-##### 📦 Usage in Containers
+##### 📦 Usage in containers
 
-Container engines like Docker, Podman, and containerd delegate resource control to cgroups (via runc or crun), allowing:
+container engines like Docker, Podman, and containerd delegate resource control to cgroups (via runc or crun), allowing:
 
 * Per-container CPU and memory limits
 * Fine-grained control over blkio and devices
@@ -2380,8 +2379,8 @@ This enhances system security by enforcing the principle of least privilege.
 | **CapBnd (Bounding)**  | Restricts the maximum set of effective capabilities a process can obtain. |
 | **CapAmb (Ambient)**   | Allows a process to explicitly define its own effective capabilities.     |
 
-📦 Capabilities in Containers and Pods
-Containers typically do not run as full root, but instead receive a limited set of capabilities by default depending on the runtime.
+📦 Capabilities in containers and Pods
+containers typically do not run as full root, but instead receive a limited set of capabilities by default depending on the runtime.
 
 Capabilities can be added or dropped in Kubernetes using the securityContext.
 
@@ -2514,9 +2513,9 @@ ps -eZ # Processes
 | AppArmor | Per-program access | Easy       | /etc/apparmor.d/              | Ubuntu, Snap, SUSE   |
 | SELinux  | Full-system MAC    | Advanced   | /etc/selinux/ + labels        | RHEL, Fedora, CentOS |
 
-#### 🗂️ Linux Container Isolation & Security Comparison
+#### 🗂️ Linux container Isolation & Security Comparison
 
-| Technology                  | Purpose / What It Does                                                                               | Main Differences                                                                                | Example in Containers                                                                        |
+| Technology                  | Purpose / What It Does                                                                               | Main Differences                                                                                | Example in containers                                                                        |
 | --------------------------- | ---------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
 | **chroot 🏠**         | Changes the apparent root directory for a process. Isolates filesystem.                              | Simple filesystem isolation; does**not** restrict resources, privileges, or system calls. | Docker uses `chroot` internally for building minimal images, but not for strong isolation. |
 | **cgroups 📊**        | Controls and limits resource usage (CPU, memory, disk I/O, etc.) per group of processes.             | Kernel feature; fine-grained resource control, not isolation.                                   | Docker and Kubernetes use cgroups to limit CPU/mem per container/pod.                        |
@@ -2535,11 +2534,11 @@ Summary
 * seccomp: Restrict system call surface.
 * AppArmor/SELinux: Limit what processes can touch, even as root (MAC).
 
-#### 🧩 OCI, runc, containerd, CRI, CRI-O — What They Are in the Container Ecosystem
+#### 🧩 OCI, runc, containerd, CRI, CRI-O — What They Are in the container Ecosystem
 
 ##### Overview and Roles
 
-* **OCI (Open Container Initiative) 🏛️**
+* **OCI (Open container Initiative) 🏛️**
 
   A foundation creating open standards for **container images** and  **runtimes** .
 
@@ -2554,7 +2553,7 @@ Summary
   A core container runtime daemon for managing the complete container lifecycle: **pulling images, managing storage, running containers** (calls runc), networking plugins, etc.
 
   *Used by Docker, Kubernetes, nerdctl, and other tools as their main container runtime backend.*
-* **CRI (Container Runtime Interface) 🔌**
+* **CRI (container Runtime Interface) 🔌**
 
   A Kubernetes-specific gRPC API to connect Kubernetes with container runtimes.
 
@@ -2570,14 +2569,14 @@ Summary
 | Component            | Emoji | What Is It?                           | Who Uses It?                            | Example Usage                                                                |
 | -------------------- | ----- | ------------------------------------- | --------------------------------------- | ---------------------------------------------------------------------------- |
 | **OCI**        | 🏛️  | Standards/specifications              | Docker, Podman, CRI-O, containerd, runc | Ensures images/containers are compatible across tools                        |
-| **runc**       | ⚙️  | Container runtime (CLI)               | containerd, CRI-O, Docker, Podman       | Directly running a container from a bundle (e.g.`runc run`)                |
-| **containerd** | 🏋️  | Container runtime daemon              | Docker, Kubernetes, nerdctl             | Handles pulling images, managing storage/network, starts containers via runc |
+| **runc**       | ⚙️  | container runtime (CLI)               | containerd, CRI-O, Docker, Podman       | Directly running a container from a bundle (e.g.`runc run`)                |
+| **containerd** | 🏋️  | container runtime daemon              | Docker, Kubernetes, nerdctl             | Handles pulling images, managing storage/network, starts containers via runc |
 | **CRI**        | 🔌    | K8s runtime interface (API)           | Kubernetes only                         | Lets kubelet talk to containerd/CRI-O                                        |
 | **CRI-O**      | 🥤    | Lightweight container runtime for K8s | Kubernetes, OpenShift                   | Used as K8s container engine                                                 |
 
 ---
 
-##### 🛠️ Practical Examples (General Container World)
+##### 🛠️ Practical Examples (General container World)
 
 * **Building images:**
 
@@ -2590,7 +2589,7 @@ Summary
   **containerd** can be used on its own (via `ctr` or `nerdctl`) or as a backend for Docker and Kubernetes.
 * **Plug-and-play runtimes:**
 
-  Thanks to  **OCI** , you could swap runc for another OCI-compliant runtime (like Kata Containers for VMs, gVisor for sandboxing) without changing how you build or manage images.
+  Thanks to  **OCI** , you could swap runc for another OCI-compliant runtime (like Kata containers for VMs, gVisor for sandboxing) without changing how you build or manage images.
 
 ---
 
@@ -2620,7 +2619,7 @@ Summary
 * **CRI** = Only for Kubernetes, to make runtimes pluggable
 * **CRI-O** = Lightweight runtime focused on Kubernetes, built on OCI standards and runc
 
-##### 🧩 Diagram: Container Ecosystem
+##### 🧩 Diagram: container Ecosystem
 
 ```mermaid
 graph TD
@@ -2636,7 +2635,7 @@ graph TD
         Nerdctl["nerdctl CLI"]
     end
 
-    subgraph Container_Runtimes
+    subgraph container_Runtimes
         containerd["containerd"]
         crio["CRI-O"]
     end
@@ -2675,7 +2674,7 @@ For containerd, you can use this script: [containerd.sh](scripts/container/conta
 
 ---
 
-#### 🚀 Podman, Buildah, Skopeo, OpenVZ, crun & Kata Containers – Fast Track
+#### 🚀 Podman, Buildah, Skopeo, OpenVZ, crun & Kata containers – Fast Track
 
 ---
 
@@ -2708,7 +2707,7 @@ For containerd, you can use this script: [containerd.sh](scripts/container/conta
 
 ##### 🏢 **OpenVZ**
 
-* **What is it?** **Container-based virtualization** solution for Linux (pre-dating modern container tools).
+* **What is it?** **container-based virtualization** solution for Linux (pre-dating modern container tools).
 * **Use:** Lightweight VPS (virtual private servers) sharing the same kernel.
 * **Highlights:** Very efficient, but less isolated than VM (shares kernel).
 * [More info](https://en.wikipedia.org/wiki/OpenVZ)
@@ -2724,7 +2723,7 @@ For containerd, you can use this script: [containerd.sh](scripts/container/conta
 
 ---
 
-##### 🛡️ **Kata Containers**
+##### 🛡️ **Kata containers**
 
 * **What is it?** Open source project combining containers and VMs: each container runs in a lightweight micro-VM.
 * **Use:** Strong isolation for sensitive workloads or multi-tenant environments.
@@ -2737,12 +2736,12 @@ For containerd, you can use this script: [containerd.sh](scripts/container/conta
 
 | Project                   | Category       | Isolation             | Daemon? | Main Use               | Rootless | Notes                       |
 | ------------------------- | -------------- | --------------------- | ------- | ---------------------- | -------- | --------------------------- |
-| **Podman**          | Orchestration  | Container             | No      | Manage containers      | Yes      | Docker-like CLI             |
+| **Podman**          | Orchestration  | container             | No      | Manage containers      | Yes      | Docker-like CLI             |
 | **Buildah**         | Build          | N/A                   | No      | Build images           | Yes      | For CI/CD, no container run |
 | **Skopeo**          | Image transfer | N/A                   | No      | Move/check images      | Yes      | No container execution      |
-| **OpenVZ**          | Virtualization | Container/VPS         | Yes     | Lightweight VPS        | No       | Kernel shared, legacy tech  |
-| **crun**            | OCI Runtime    | Container             | No      | Fast container runtime | Yes      | Faster than runc            |
-| **Kata Containers** | Runtime/VM     | MicroVM per container | No      | Strong isolation       | Yes      | VM-level security           |
+| **OpenVZ**          | Virtualization | container/VPS         | Yes     | Lightweight VPS        | No       | Kernel shared, legacy tech  |
+| **crun**            | OCI Runtime    | container             | No      | Fast container runtime | Yes      | Faster than runc            |
+| **Kata containers** | Runtime/VM     | MicroVM per container | No      | Strong isolation       | Yes      | VM-level security           |
 
 ---
 
@@ -2753,7 +2752,7 @@ For containerd, you can use this script: [containerd.sh](scripts/container/conta
 * **Skopeo:** Moves/inspects images, never runs them.
 * **OpenVZ:** Legacy container-based VPS.
 * **crun:** Super fast, lightweight OCI runtime.
-* **Kata:** Containers with VM-level isolation.
+* **Kata:** containers with VM-level isolation.
 
 #### 🛠️ 352.1 Important Commands
 
@@ -2944,11 +2943,11 @@ lxc (including relevant subcommands)
 /usr/share/lxc/templates
 ```
 
-#### 🧩 LXC & LXD – The Linux System Containers Suite
+#### 🧩 LXC & LXD – The Linux System containers Suite
 
 ---
 
-##### 📦 LXC (Linux Containers)
+##### 📦 LXC (Linux containers)
 
 * **What is it?**
 
@@ -3076,43 +3075,42 @@ For LXC lab, you can use this script: [lxc.sh](scripts/container/lxc.sh)
 | **Cluster Ready**     | ❌             | ✅                                                     |
 | **Enterprise**        | No             | Yes—HA, backup, migration, security, production ready |
 
-
 ##### 🌐 LXC vs LXD - Network Support (Summary)
 
-| Feature                | **LXC**                                 | **LXD**                                                                                 |
-|------------------------|-----------------------------------------|----------------------------------------------------------------------------------------|
-| **Network Types**      | bridge, veth, macvlan, phys, vlan       | bridge, ovn, macvlan, sriov, physical, vlan, fan, tunnels                              |
-| **Managed Networks**   | ❌ Manual (host config)                  | ✅ Natively managed via API/CLI, easy to create and edit                                |
-| **Network API**        | ❌ CLI commands only                     | ✅ REST API, CLI, integration with external tools                                       |
-| **Bridge Support**     | ✅ Manual                                | ✅ Automatic and advanced (L2, Open vSwitch, native bridge)                             |
-| **NAT & DHCP**         | ❌ Manual (iptables/dnsmasq)             | ✅ Integrated NAT, DHCP, DNS, per-network configurable                                  |
-| **DNS**                | ❌ Manual                                | ✅ Integrated DNS, custom domains, systemd-resolved integration                         |
-| **IPv6**               | ✅ (manual, limited)                     | ✅ Full support, auto, DHCPv6, NAT6, routing                                            |
-| **VLAN**               | ✅ (manual, host)                        | ✅ Native VLANs, easy configuration                                                     |
-| **SR-IOV**             | ❌                                       | ✅ Native support                                                                       |
-| **Network ACLs**       | ❌                                       | ✅ ACLs, forwards, zones, peerings, firewall rules                                      |
-| **Clustering**         | ❌                                       | ✅ Replicated and managed networks in clusters                                          |
-| **Attach/Detach**      | Manual (host)                           | ✅ CLI/API, hotplug, easy for containers/VMs                                            |
-| **Security**           | Manual (host)                           | ✅ Isolation, firewall, ACL, firewalld integration, per-network rules                   |
-| **Custom Routes**      | Manual                                  | ✅ Custom routes support, multiple gateways                                             |
-| **Network Profiles**   | ❌                                       | ✅ Reusable network profiles                                                            |
-| **Monitoring**         | Manual                                  | ✅ Status, IPAM, logs, detailed info via CLI/API                                        |
-| **Enterprise**         | No                                      | Yes—multi-tenant, ACL, clustering, cloud integration                                   |
+| Feature                    | **LXC**                     | **LXD**                                                         |
+| -------------------------- | --------------------------------- | --------------------------------------------------------------------- |
+| **Network Types**    | bridge, veth, macvlan, phys, vlan | bridge, ovn, macvlan, sriov, physical, vlan, fan, tunnels             |
+| **Managed Networks** | ❌ Manual (host config)           | ✅ Natively managed via API/CLI, easy to create and edit              |
+| **Network API**      | ❌ CLI commands only              | ✅ REST API, CLI, integration with external tools                     |
+| **Bridge Support**   | ✅ Manual                         | ✅ Automatic and advanced (L2, Open vSwitch, native bridge)           |
+| **NAT & DHCP**       | ❌ Manual (iptables/dnsmasq)      | ✅ Integrated NAT, DHCP, DNS, per-network configurable                |
+| **DNS**              | ❌ Manual                         | ✅ Integrated DNS, custom domains, systemd-resolved integration       |
+| **IPv6**             | ✅ (manual, limited)              | ✅ Full support, auto, DHCPv6, NAT6, routing                          |
+| **VLAN**             | ✅ (manual, host)                 | ✅ Native VLANs, easy configuration                                   |
+| **SR-IOV**           | ❌                                | ✅ Native support                                                     |
+| **Network ACLs**     | ❌                                | ✅ ACLs, forwards, zones, peerings, firewall rules                    |
+| **Clustering**       | ❌                                | ✅ Replicated and managed networks in clusters                        |
+| **Attach/Detach**    | Manual (host)                     | ✅ CLI/API, hotplug, easy for containers/VMs                          |
+| **Security**         | Manual (host)                     | ✅ Isolation, firewall, ACL, firewalld integration, per-network rules |
+| **Custom Routes**    | Manual                            | ✅ Custom routes support, multiple gateways                           |
+| **Network Profiles** | ❌                                | ✅ Reusable network profiles                                          |
+| **Monitoring**       | Manual                            | ✅ Status, IPAM, logs, detailed info via CLI/API                      |
+| **Enterprise**       | No                                | Yes—multi-tenant, ACL, clustering, cloud integration                 |
 
 ##### 📊 Final Network Comparison Table
 
-|                        | **LXC**                | **LXD**                                                      |
-|------------------------|------------------------|--------------------------------------------------------------|
-| **Network Types**      | bridge, veth, vlan     | bridge, ovn, macvlan, sriov, physical, vlan, fan, tunnels    |
-| **Managed**            | ❌                     | ✅                                                           |
-| **NAT/DHCP/DNS**       | Manual                 | ✅ Integrated                                                |
-| **VLAN**               | Manual                 | ✅                                                           |
-| **SR-IOV**             | ❌                     | ✅                                                           |
-| **API**                | ❌                     | ✅                                                           |
-| **Clustering**         | ❌                     | ✅                                                           |
-| **Security/ACL**       | Manual                 | ✅                                                           |
-| **Profiles**           | ❌                     | ✅                                                           |
-| **Enterprise**         | No                     | Yes                                                         |
+|                         | **LXC**      | **LXD**                                             |
+| ----------------------- | ------------------ | --------------------------------------------------------- |
+| **Network Types** | bridge, veth, vlan | bridge, ovn, macvlan, sriov, physical, vlan, fan, tunnels |
+| **Managed**       | ❌                 | ✅                                                        |
+| **NAT/DHCP/DNS**  | Manual             | ✅ Integrated                                             |
+| **VLAN**          | Manual             | ✅                                                        |
+| **SR-IOV**        | ❌                 | ✅                                                        |
+| **API**           | ❌                 | ✅                                                        |
+| **Clustering**    | ❌                 | ✅                                                        |
+| **Security/ACL**  | Manual             | ✅                                                        |
+| **Profiles**      | ❌                 | ✅                                                        |
+| **Enterprise**    | No                 | Yes                                                       |
 
 ##### 🧪 lab LXD
 
@@ -3165,7 +3163,7 @@ sudo lxc-stop -n debian01
 # connect to container
 sudo lxc-attach -n debian01
 
-# excute a command in container
+# execute a command in container
 sudo lxc-attach -n debian01 --  echo "Hello from"
 sudo lxc-attach -n debian01 -- bash -c ls
 
@@ -3179,12 +3177,12 @@ sudo lxc-destroy -n -s debian01
 sudo ls -l /var/lib/lxc/server1/rootfs
 
 # modify rootfs of a container
-sudo touch  /var/lib/lxc/server1/rootfs/tmp/test_toofs_file
+sudo touch  /var/lib/lxc/server1/rootfs/tmp/test_roofs_file
 sudo lxc-attach server1
 ls /tmp
 
 # get lxc namespaces
-sudo lsns -p <LXC_CONTAINER_PID>
+sudo lsns -p <LXC_container_PID>
 sudo lsns -p $(sudo lxc-info server2 -pH)
 sudo lsns -p $(sudo lxc-info -n server1 | awk '/PID:/ { print $2 }')
 
@@ -3301,7 +3299,7 @@ lxc storage show default
 # lxd storage info
 lxc storage info default
 
-# craete a new storage pool dir
+# create a new storage pool dir
 lxc storage create lpic3-dir dir 
 
 # create a new storage pool lvm
@@ -3336,7 +3334,7 @@ lxc storage volume create lpic3-btrfs vol-lpic3-btrfs
 # delete storage volume
 lxc storage volume delete lpic3-btrfs vol-lpic3-btrfs
 
-### managment lxd storage buckets ####
+### Management lxd storage buckets ####
 
 # create lxd bucket
 lxc storage bucket create lpic3-btrfs bucket-lpic3-btrfs
@@ -3391,7 +3389,7 @@ lxc image list images:
 lxc image list images: os=Ubuntu
 lxc image list images: os=Ubuntu release=jammy
 lxc image list images: os=Ubuntu release=jammy architecture=amd64
-lxc image list images: architecture=amd64 type=containe
+lxc image list images: architecture=amd64 type=container
 lxc image list images: d kal
 
 # download lxd image to local
@@ -3559,7 +3557,7 @@ lxc profile add debian12 production
 lxc profile remove debian12 production
 
 # launch container with profile
-lxc launch 1u1u1u1u1u1 rockylinux9-2 -p producition
+lxc launch 1u1u1u1u1u1 rockylinux9-2 -p production
 ```
 
 <p align="right">(<a href="#topic-352.2">back to sub topic 352.2</a>)</p>
@@ -3600,6 +3598,123 @@ docker
 Dockerfile
 ```
 
+#### 📖 Definition
+
+Docker is an **open-source container platform** that allows developers and operators to package applications and their dependencies into  **containers** .
+
+These containers ensure  **consistency across environments** , speed up deployments, and reduce infrastructure complexity.
+
+---
+
+#### 🔑 Key Concepts
+
+* 📦 **container** → Lightweight, isolated runtime sharing the host kernel.
+* 🖼️ **Image** → Read-only template containing the app and dependencies.
+* ⚙️ **Docker Engine (dockerd)** → Daemon managing containers, images, and volumes.
+* ⌨️ **Docker CLI** → Command-line tool (`docker`) communicating with the daemon.
+* ☁️ **Docker Hub** → Default registry for storing and distributing images.
+
+---
+
+#### 🚀 Advantages
+
+* ⚡ **Lightweight & Fast** → Much faster than virtual machines.
+* 🌍 **Portability** → Runs anywhere Docker is supported.
+* 🛠️ **Rich Ecosystem** → Compose, Swarm, Hub, Desktop UI, registries.
+* 🔄 **DevOps Friendly** → CI/CD integration and IaC alignment.
+
+---
+
+#### 📑 Docker Registries
+
+* ☁️ **Docker Hub** → Default, public registry.
+* 🏢 **Private Registries** → Harbor, Artifactory, GitHub container Registry.
+* 🔒 Use `docker login` to authenticate, push, and pull images.
+
+---
+
+#### 🧩 Docker Compose
+
+Tool to define and run **multi-container applications** via YAML:
+
+**docker-compose.yml example**
+
+version: "3.9"
+services:
+  web:
+    image: nginx:latest
+    ports:
+      - "8080:80"
+  app:
+    build: ./app
+    environment:
+      - DB_HOST=db
+  db:
+    image: postgres:15
+    environment:
+      - POSTGRES_PASSWORD=secret
+
+Run:
+
+docker compose up -d
+docker compose ps
+docker compose logs -f
+
+## Docker + containerd + shim + runc Architecture
+
+![Docker shim architecture example](images/docker-shim.png)
+
+### 🔹 Main Components
+
+* **Docker CLI / Docker Daemon (`dockerd`)**
+
+  The `docker` command communicates with the Docker daemon, which orchestrates container lifecycle, images, networks, and volumes.
+* **containerd**
+
+  A high-level container runtime that manages the entire container lifecycle: pulling images, managing storage, networking, and execution.
+* **containerd-shim**
+
+  * Acts as the *parent process* of each container once `runc` has done its job.
+  * Keeps **stdin/stdout/stderr** streams open, even if Docker or containerd restarts (so `docker logs` / `kubectl logs` still work).
+  * Collects the container exit code and reports it back to the manager.
+  * Prevents containers from becoming orphans if the daemon crashes or is restarted.
+* **runc**
+
+  A low-level runtime (OCI-compliant) that creates containers using Linux namespaces and cgroups.
+
+  After launching the container, `runc` exits, and `containerd-shim` takes over as the parent process.
+
+---
+
+### 🔹 Execution Flow
+
+1. **User** runs `docker run ...` → the **Docker Daemon** is called.
+2. **Docker Daemon** delegates to  **containerd** .
+3. **containerd** spawns  **runc** , which sets up the container.
+4. Once the container starts,  **runc exits** .
+5. **containerd-shim** remains as the  **container’s parent process** , handling logging and exit codes.
+
+---
+
+### 🔹 Benefits of the Shim Layer
+
+* **Resilience** → Containers continue running even if `dockerd` or `containerd` crash or restart.
+* **Logging** → Maintains container log streams for `docker logs` or `kubectl logs`.
+* **Isolation** → Each container has its own shim, simplifying lifecycle management.
+* **Standards Compliance** → Works with the  **OCI runtime spec** , ensuring compatibility.
+
+#### ⚖️ Docker vs. containerd
+
+| 🔹 Feature / Component | 🐳 Docker (dockerd)                 | 🐋 containerd                      |
+| ---------------------- | ----------------------------------- | ---------------------------------- |
+| Scope                  | Full platform (build, CLI, UI, Hub) | Core container runtime only        |
+| API                    | High-level Docker API               | Low-level CRI/runtime API          |
+| Built upon             | Uses containerd internally          | Standalone runtime                 |
+| Features               | Build, Compose, Swarm, Hub, Desktop | Image lifecycle, pull/run, runtime |
+| Use Cases              | Dev workflows, local testing        | Kubernetes, production runtimes    |
+| Footprint              | Heavier, more tooling               | Lightweight, efficient             |
+| Ecosystem              | Rich developer tools                | CNCF project, Kubernetes default   |
+
 #### 🛠️ 352.3 Important Commands
 
 ##### 🐳 docker
@@ -3616,7 +3731,7 @@ Dockerfile
 
 <a name="topic-352.4"></a>
 
-### 🗂️ 352.4 Container Orchestration Platforms
+### 🗂️ 352.4 container Orchestration Platforms
 
 **Weight:** 3
 
@@ -3739,7 +3854,7 @@ user-data
 
 #### 🛠️ 353.3 Important Commands
 
-##### 📝 foo
+##### 📝 cloud-init
 
 ```sh
 # examples
@@ -3828,6 +3943,7 @@ Project Link: [https://github.com/marcossilvestrini/learning-lpic-3-305-300](htt
 
 * [Richard Stallman&#39;s](http://www.stallman.org/)
 * [GNU]()
+
   * [GNU/Linux FAQ by Richard Stallman](https://www.gnu.org/gnu/gnu-linux-faq.html)
   * [GNU](https://www.gnu.org/)
   * [GNU Operating System](https://www.gnu.org/gnu/thegnuproject.html)
@@ -3840,17 +3956,21 @@ Project Link: [https://github.com/marcossilvestrini/learning-lpic-3-305-300](htt
   * [GNU Grub Bootloader](https://www.gnu.org/software/grub/)
   * [GNU Hurd](https://www.gnu.org/software/hurd/hurd/what_is_the_gnu_hurd.html)
 * [Kernel]()
+
   * [Kernel](https://www.kernel.org/)
   * [Linux Kernel Man Pages](https://www.kernel.org/doc/man-pages/)
   * [Compile Your Kernel](https://wiki.linuxquestions.org/wiki/How_to_build_and_install_your_own_Linux_kernel)
 * [Linux Standard Base]()
+
   * [Linux Standard Base](https://en.wikipedia.org/wiki/Linux_Standard_Base)
   * [Filesystem Hierarchy Standard](https://en.wikipedia.org/wiki/Filesystem_Hierarchy_Standard)
   * [File Hierarchy Structure](https://refspecs.linuxfoundation.org/FHS_3.0/fhs-3.0.pdf)
 * [Free Software]()
+
   * [FSF](https://www.fsf.org)
   * [Free Software Directory](https://directory.fsf.org/wiki/Free_Software_Directory:Free_software_replacements)
 * [License]()
+
   * [Free Software](https://www.gnu.org/philosophy/free-sw.html)
   * [Copyleft](https://www.gnu.org/licenses/copyleft.en.html)
   * [GPL](https://www.gnu.org/licenses/quick-guide-gplv3.html)
@@ -3860,11 +3980,13 @@ Project Link: [https://github.com/marcossilvestrini/learning-lpic-3-305-300](htt
   * [Creative Commons](https://creativecommons.org/)
   * [License LTS](https://en.wikipedia.org/wiki/Long-term_support)
 * [Distros]()
+
   * [Debian Free Software Guidelines](https://www.debian.org/social_contract#guidelines)
   * [List Linux Distribution](https://en.wikipedia.org/wiki/List_of_Linux_distributions)
   * [Distro Watch](https://distrowatch.com/)
   * [Comparison Linux Distributions](https://en.wikipedia.org/wiki/Comparison_of_Linux_distributions)
 * [Desktop Environments]()
+
   * [X11 Org](https://www.x.org/wiki/)
   * [Wayland](https://wayland.freedesktop.org/)
   * [GNU GNOME](https://www.gnu.org/press/gnome-1.0.html)
@@ -3873,6 +3995,7 @@ Project Link: [https://github.com/marcossilvestrini/learning-lpic-3-305-300](htt
   * [KDE Plasma](https://kde.org/plasma-desktop/)
   * [Harmony](https://en.wikipedia.org/wiki/Harmony_(toolkit))
 * [Protocols]()
+
   * [HTTP]()
     * [W3Techs](https://w3techs.com/)
     * [Apache](https://www.apache.org/)
@@ -3884,15 +4007,18 @@ Project Link: [https://github.com/marcossilvestrini/learning-lpic-3-305-300](htt
   * [xRDP](https://bytexd.com/xrdp-centos/)
   * [NTP](https://www.ntppool.org/en/)
 * [DNS]()
+
   * [Bind](https://www.isc.org/bind/)
   * [Bind Logging](https://www.zytrax.com/books/dns/ch7/logging.html)
   * [List of DNS record types](https://en.wikipedia.org/wiki/List_of_DNS_record_types)
   * [List of DNS record types](https://en.wikipedia.org/wiki/List_of_DNS_record_types)
 * [Package Manager]()
+
   * [Download Packages](https://pkgs.org/)
   * [Install Packages](https://installati.one/)
   * [Guide Install Packages](https://installati.one/)
 * [Shell Script]()
+
   * [Bourne Again Shell](https://www.gnu.org/software/bash/manual/)
   * [Shebang](https://bash.cyberciti.biz/guide/Shebang)
   * [Environment Variables](https://linuxize.com/post/how-to-set-and-list-environment-variables-in-linux/)
@@ -3907,42 +4033,49 @@ Project Link: [https://github.com/marcossilvestrini/learning-lpic-3-305-300](htt
   * [Linux Shell Scripting Tutorial](https://bash.cyberciti.biz/guide/Main_Page)
   * [Commands Examples](https://www.geeksforgeeks.org/)
 * [Others Tools]()
+
   * [Bugzila](https://bugzilla.kernel.org/)
   * [Github Badges](https://github.com/alexandresanlim/Badges4-README.md-Profile)
 * [Virtualization Definitions]()
+
   * [Red Hat](https://www.redhat.com/pt-br/topics/virtualization/what-is-virtualization/)
   * [AWS](https://aws.amazon.com/pt/what-is/virtualization/)
   * [IBM](https://www.ibm.com/topics/virtualization)
   * [OpenSource.com](https://opensource.com/resources/virtualization)
 * [Xen]()
+
   * [XenServer](https://www.xenserver.com/)
   * [Wiki XenProject](https://wiki.xenproject.org/wiki/Main_Page)
   * [Network Interfaces](https://wiki.xenproject.org/wiki/Xen_Networking#Virtual_Network_Interfaces)
   * [Xen Tools](https://xen-tools.org/software/)
   * [LPI Blog: Xen Virtualization and Cloud Computing #01: Introduction](https://www.lpi.org/pt-br/blog/2020/10/01/xen-virtualization-and-cloud-computing-01-introduction/)
   * [LPI Blog: Xen Virtualization and Cloud Computing #02: How Xen Does the Job](https://www.lpi.org/blog/2020/10/08/xen-virtualization-and-cloud-computing-02-how-xen-does-job/)
-  * [LPI Blog: Xen Virtualization and Cloud Computing #04: Containers, OpenStack, and Other Related Platforms](https://www.lpi.org/pt-br/blog/2020/10/22/xen-virtualization-and-cloud-computing-04-containers-openstack-and-other-related/)
+  * [LPI Blog: Xen Virtualization and Cloud Computing #04: containers, OpenStack, and Other Related Platforms](https://www.lpi.org/pt-br/blog/2020/10/22/xen-virtualization-and-cloud-computing-04-containers-openstack-and-other-related/)
   * [Xen Virtualization and Cloud Computing #05: The Xen Project, Unikernels, and the Future](https://www.lpi.org/pt-br/blog/2020/10/29/xen-virtualization-and-cloud-computing-05-xen-project-unikernels-and-future/)
   * [Xen Project Beginners Guide](https://wiki.xenproject.org/wiki/Xen_Project_Beginners_Guide#Installing_the_Xen_Project_Software)
   * [Crazy Book](https://wiki.xenproject.org/wiki/Book/HelloXenProject/0-Contents)
 * [Unikernels](https://www.lpi.org/blog/2020/10/29/xen-virtualization-and-cloud-computing-05-xen-project-unikernels-and-future/)
+
   * [Unikraft](https://github.com/unikraft/unikraft)
   * [MirageOS](https://mirage.io/docs/hello-world)
   * [HaLVM](https://galois.com/project/halvm/)
   * [Unik](https://github.com/solo-io/unik/blob/master/docs/providers/virtualbox.md)
 * [KVM]()
-  * [Oficial Doc](https://linux-kvm.org/page/Main_Page)
+
+  * [Official Doc](https://linux-kvm.org/page/Main_Page)
   * [KVM(Kernel Virtual Machines by RedHat)](https://www.redhat.com/pt-br/topics/virtualization/what-is-KVM)
   * [KVM Management Tools](https://www.linux-kvm.org/page/Management_Tools)
   * [KVM Network](https://www.linux-kvm.org/page/Networking)
 * [QEMU]()
-  * [Oficial Doc](https://www.qemu.org/)
+
+  * [Official Doc](https://www.qemu.org/)
   * [Download Images osboxes](https://www.osboxes.org/)
   * [Download Images linuximages](https://www.linuxvmimages.com/)
   * [Virtio](https://en.wikibooks.org/wiki/QEMU/Devices/Virtio)
   * [Guest Agent](https://wiki.qemu.org/Features/GuestAgent)
 * [Libvirt]()
-  * [Oficial Doc](https://libvirt.org/)
+
+  * [Official Doc](https://libvirt.org/)
   * [System Socket Activation](https://libvirt.org/manpages/libvirtd.html#system-socket-activation)
   * [Conections](https://libvirt.org/uri.html)
   * [Storage](https://libvirt.org/storage.html)
@@ -3951,16 +4084,18 @@ Project Link: [https://github.com/marcossilvestrini/learning-lpic-3-305-300](htt
   * [virtlogd](https://libvirt.org/manpages/virtlogd.html)
   * [virtlockd](https://libvirt.org/manpages/virtlockd.html)
   * [virt-manager](https://virt-manager.org/)
-* [Disk Managment]()
+* [Disk Management]()
+
   * [Disk Images](https://qemu-project.gitlab.io/qemu/system/images.html)
   * [copy-on-write](https://sempreupdate.com.br/linux/tutoriais/sistema-de-arquivos-copy-on-write-saiba-o-que-e-e-quais-as-vantagens-e-desvantagens/)
   * [RAM x QCOW2](https://docs.redhat.com/en/documentation/red_hat_virtualization/4.3/html/technical_reference/qcow2)
   * [Libguestfs](https://libguestfs.org/)
-* [Containers]()
-  * [AWS Doc Containers](https://aws.amazon.com/pt/containers/)
-  * [GCP Doc Containers](https://cloud.google.com/learn/what-are-containers?hl=pt-br)
-  * [IBM Doc Container](https://www.ibm.com/br-pt/topics/containers)
-  * [Red Hat Docs Containers](https://www.redhat.com/en/topics/containers/whats-a-linux-container)
+* [containers]()
+
+  * [AWS Doc containers](https://aws.amazon.com/pt/containers/)
+  * [GCP Doc containers](https://cloud.google.com/learn/what-are-containers?hl=pt-br)
+  * [IBM Doc container](https://www.ibm.com/br-pt/topics/containers)
+  * [Red Hat Docs containers](https://www.redhat.com/en/topics/containers/whats-a-linux-container)
   * [Namespaces](https://manpages.ubuntu.com/manpages/noble/man7/namespaces.7.html)
   * [Most important Namespaces](https://www.redhat.com/en/blog/7-linux-namespaces)
   * [Cgroups Classes](https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/6/html/resource_management_guide/ch01)
@@ -3970,7 +4105,7 @@ Project Link: [https://github.com/marcossilvestrini/learning-lpic-3-305-300](htt
   * [Seccomp Profiles in Docker](https://docs.docker.com/engine/security/seccomp/)
   * [AppArmor Profiles in Docker](https://docs.docker.com/engine/security/apparmor/)
   * [SElinux](https://pt.wikipedia.org/wiki/SELinux)
-  * [Apparmor SElinux Comparation](https://www.redhat.com/en/blog/apparmor-selinux-isolation)
+  * [Apparmor SElinux comparator](https://www.redhat.com/en/blog/apparmor-selinux-isolation)
   * [runC](https://www.docker.com/blog/runc/)
   * [runc Github](https://github.com/opencontainers/runc)
   * [OCI](https://opencontainers.org/about/overview/)
@@ -3983,10 +4118,12 @@ Project Link: [https://github.com/marcossilvestrini/learning-lpic-3-305-300](htt
   * [OpenVZ](https://openvz.org/)
   * [crun](https://www.redhat.com/en/blog/introduction-crun)
   * [kata](https://katacontainers.io/)
-* [LXC - Linux Containers]()
+* [LXC - Linux containers]()
+
   * [LXC](https://linuxcontainers.org/lxc/introduction/)
-  * [Linux Container Images](https://images.linuxcontainers.org/)
+  * [Linux container Images](https://images.linuxcontainers.org/)
 * [LXD]()
+
   * [LXD Canonical](https://canonical.com/lxd)
   * [LXD Canonical Github](https://github.com/canonical/lxd)
   * [LXD Documentation](https://linuxcontainers.org/lxd/docs/master/)
@@ -3996,19 +4133,22 @@ Project Link: [https://github.com/marcossilvestrini/learning-lpic-3-305-300](htt
   * [LXD Storage pools, volumes, and buckets](https://documentation.ubuntu.com/lxd/stable-5.21/explanation/storage/#exp-storage)
   * [LXD Network Types](https://documentation.ubuntu.com/lxd/latest/explanation/networks/)
   * [LXD Network Parameters](https://documentation.ubuntu.com/lxd/stable-4.0/networks/)
-  * [LXD Network Configuration](https://documentation.ubuntu.com/lxd/latest/howto/network_create/)  
+  * [LXD Network Configuration](https://documentation.ubuntu.com/lxd/latest/howto/network_create/)
   * [LXD Profiles](https://documentation.ubuntu.com/lxd/to/latest/profiles/)
   * [LXD Instances](https://documentation.ubuntu.com/lxd/en/stable-4.0/instances/)
 * [Docker](https://www.docker.com/)
-  * [Docker Overview](https://docs.docker.com/get-started/overview/)
-  * [Containerd x Docker](https://www.docker.com/blog/containerd-vs-docker/)
-  * [TestContainers](https://testcontainers.com/)
 
+  * [Docker Overview](https://docs.docker.com/get-started/overview/)
+  * [containerd x Docker](https://www.docker.com/blog/containerd-vs-docker/)
+  * [Testcontainers](https://testcontainers.com/)
 * [Openstack Docs]()
+
   * [RedHat](https://www.redhat.com/pt-br/topics/openstack)
 * [Open vSwitch]()
+
   * [OVS Doc 4Linux](https://blog.4linux.com.br/open-vswitch-o-que-e-o-que-come-onde-vive)
 * [LPIC-3 305-300 Exam]()
+
   * [LPIC-3 305-300 Objectives](https://www.lpi.org/our-certifications/exam-305-objectives/)
   * [LPIC-3 305-300 Wiki](https://wiki.lpi.org/wiki/LPIC-305_Objectives_V3.0)
   * [LPIC-3 305-300 Learning Material](https://cursos.linuxsemfronteiras.com.br/courses/preparatorio-para-certificacao-lpic-3-305/)

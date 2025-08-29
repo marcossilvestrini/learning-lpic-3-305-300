@@ -98,6 +98,8 @@ if grep -q -F -f "$PUBLIC_KEY_FILE" "$AUTHORIZED_KEYS_FILE"; then
 else
     echo "🔑 Adding public key for ansible to authorized_keys..."
     cat "$PUBLIC_KEY_FILE" >> "$AUTHORIZED_KEYS_FILE"
+    echo "The public key for ansible is not present. Adding key to authorized_keys file..."
+    cat "$PUBLIC_KEY_FILE" >> "$AUTHORIZED_KEYS_FILE"
 fi
 
 # 🔄 Restart SSH service to apply changes
