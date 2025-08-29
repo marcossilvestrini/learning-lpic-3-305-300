@@ -4,9 +4,9 @@
 
 * * *
 
-[![MIT License][license-shield]][license-url][![Forks][forks-shield]][forks-url][![Stargazers][stars-shield]][stars-url][![Contributors][contributors-shield]][contributors-url][![Issues][issues-shield]][issues-url]
+[Minha licença][license-url][Garfos][forks-url][Stargazers][stars-url][Colaboradores][contributors-url][Problemas][issues-url]
 
-## [![LinkedIn][linkedin-shield]][linkedin-url]
+## [LinkedIn][linkedin-url]
 
 # 📚 Aprendendo Lpic-3 305-300
 
@@ -59,12 +59,12 @@
       </ul>
     </li>
     <li>
-      <a href="#topic-352">Topic 352: Container Virtualization</a>
+      <a href="#topic-352">Topic 352: container Virtualization</a>
       <ul>
-        <li><a href="#topic-352.1">352.1 Container Virtualization Concepts</a></li>
+        <li><a href="#topic-352.1">352.1 container Virtualization Concepts</a></li>
         <li><a href="#topic-352.2">352.2 LXC</a></li>
         <li><a href="#topic-352.3">352.3 Docker</a></li>
-        <li><a href="#topic-352.4">352.4 Container Orchestration Platforms</a></li>
+        <li><a href="#topic-352.4">352.4 container Orchestration Platforms</a></li>
       </ul>
     </li>
     <li>
@@ -175,7 +175,7 @@ vagrant/destroy.ps1
 
 ### 🗺️ Esquema de infraestrutura Tópico 351
 
-![topic-351](images/infraestructure-topic-351.png)
+![topic-351](images/infrastructure-topic-351.png)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -579,9 +579,9 @@ O serviço usinado pela SystemD é dedicado ao gerenciamento de máquinas e cont
 
 ### 🐧 351.2 Alternação
 
-![xen-architecture](images/xen-achitecture.png)
+![xen-architecture](images/xen-architecture.png)
 
-![xen-architecture](images/xen-achitecture2.png)
+![xen-architecture](images/xen-architecture2.png)
 
 **Peso:**3
 
@@ -619,7 +619,7 @@ A Xensource foi a empresa fundada pelos desenvolvedores originais do Xen Hypervi
 
 O projeto XEN refere-se à comunidade de código aberto e à iniciativa responsável pelo desenvolvimento e manutenção do hipervisor Xen após sua comercialização. O projeto Xen opera sob a Fundação Linux, com foco na construção, melhoria e apoio a Xen como um esforço colaborativo e orientado pela comunidade.
 
--   **Metas:**O projeto XEN visa avançar o hipervisor, melhorando seu desempenho, segurança e conjunto de recursos para uma ampla gama de casos de uso, incluindo computação em nuvem, virtualização focada na segurança (por exemplo, QUBES OS) e sistemas incorporados.
+-   **Metas:**O projeto XEN visa avançar o hipervisor, melhorando seu desempenho, segurança e conjunto de recursos para uma ampla gama de casos de uso, incluindo computação em nuvem, virtualização focada na segurança (por exemplo, Qubes OS) e sistemas incorporados.
 -   **Colaboradores:**O projeto inclui colaboradores de várias organizações, incluindo os principais provedores de nuvem, fornecedores de hardware e desenvolvedores independentes.
 -   **Pílula e hedools:**O projeto XEN também inclui ferramentas como XAPI (XenAPI), que é usado para gerenciar instalações do Xen Hypervisor e vários outros utilitários para gerenciamento e otimização do sistema.
 
@@ -674,7 +674,7 @@ Isso resulta em menor sobrecarga e melhor eficiência em comparação com a virt
 
 #### ⚙️ HVM-DOMU (domínio da máquina virtual de hardware)
 
-O HVM-Domus são máquinas virtuais que utilizam virtualização completa, permitindo que os sistemas operacionais não modificados sejam executados. O Xen Hypervisor fornece emulação de hardware para esses domus, permitindo que eles executem qualquer sistema operacional que suporta a arquitetura de hardware subjacente.
+O HVM-Domus são máquinas virtuais que utilizam virtualização completa, permitindo que os sistemas operacionais não modificados sejam executados. O Xen Hypervisor fornece emulação de hardware para esses Domus, permitindo que eles executem qualquer sistema operacional que suporta a arquitetura de hardware subjacente.
 Embora isso ofereça maior flexibilidade, pode resultar em uma sobrecarga mais alta em comparação com o PV-Domus.
 
 #### 🌐 Rede Xen
@@ -736,7 +736,7 @@ xen-tscmode(7)
 ## create folder auto
 cd /etc/xen && mkdir -p auto && cd auto
 
-# create simbolic link
+# create symbolic link
 ln -s /etc/xen/lpic3-pv-guest /etc/xen/auto/lpic3-pv-guest
 ```
 
@@ -841,7 +841,7 @@ ssh -l vagrant -L 5900:localhost:5900  192.168.0.130
 ## create domain hvm
 xl create /etc/xen/lpic3-hvm-guest.cfg
 
-## open vcn conection in your vnc client with localhost
+## open vcn connection in your vnc client with localhost
 ## for view install details
 
 ## after installation finished, destroy domain: xl destroy <id_or_name>
@@ -1161,7 +1161,7 @@ ctrl+alt+2
 ```
 
 ```sh
-# Managment
+# Management
 info status # vm info
 info cpus # cpu information
 info network # network informations
@@ -1242,7 +1242,7 @@ virsh (including relevant subcommands)
 ##### 🖥️ Virsh
 
 ```sh
-# using env variable for set virsh uri (local or remotly)
+# using env variable for set virsh uri (local or remotely)
 export LIBVIRT_DEFAULT_URI=qemu:///system
 export LIBVIRT_DEFAULT_URI=xen+ssh://vagrant@192.168.0.130
 export LIBVIRT_DEFAULT_URI='xen+ssh://vagrant@192.168.0.130?keyfile=/home/vagrant/.ssh/skynet-key-ecdsa'
@@ -1270,24 +1270,24 @@ virsh vncdisplay <domain_id>
 virsh vncdisplay <domain_name>
 virsh vncdisplay rocky9-server01 
 
-# HYPERVISIONER
+# HYPERVISORS
 
-# view libvirt hypervisioner connection
+# view libvirt hypervisor connection
 virsh uri
 
-# list valid hypervisioners
+# list valid hypervisors
 virt-host-validate
 virt-host-validate qemu
 
-# test connetion uri(vm test)
+# test connection uri(vm test)
 virsh -c test:///default list
 
-# connect remotly
+# connect remotely
 virsh -c xen+ssh://vagrant@192.168.0.130
 virsh -c xen+ssh://vagrant@192.168.0.130 list
 virsh -c qemu+ssh://vagrant@192.168.0.130/system list
 
-# connect remotly without enter password
+# connect remotely without enter password
 virsh -c 'xen+ssh://vagrant@192.168.0.130?keyfile=/home/vagrant/.ssh/skynet-key-ecdsa'
 
 # STORAGE
@@ -1451,11 +1451,11 @@ virsh setvcpus rocky9-server01 --count 4 --config
 virsh setvcpus rocky9-server01 --count 3 --current
 virsh setvcpus rocky9-server01 --count 3 --live
 
-# configure vcpu afinity config
+# configure vcpu affinity config
 virsh vcpupin rocky9-server01 0 7 --config
 virsh vcpupin rocky9-server01 1 5-6 --config
 
-# configure vcpu afinity current
+# configure vcpu affinity current
 virsh vcpupin rocky9-server01 0 7
 virsh vcpupin rocky9-server01 1 5-6
 
@@ -1501,7 +1501,7 @@ virsh net-dhcp-leases default --mac 52\:54\:00\:89\:19\:86
 # edit network
 virsh net-edit default
 
-# get domain network detais
+# get domain network details
 virsh domiflist debian-server01
 
 # path for network filter files
@@ -1585,7 +1585,7 @@ less /etc/libvirt/qemu/debian-server01.xml
 
 ### 💾 351.5 Gerenciamento de imagem em disco da máquina virtual
 
-![disk-managment](images/virtual-machine-disk.png)
+![disk-management](images/virtual-machine-disk.png)
 
 **Peso:**3
 
@@ -1595,7 +1595,7 @@ less /etc/libvirt/qemu/debian-server01.xml
 
 -   Entenda os recursos de vários formatos de imagem de disco virtual, como imagens cruas, QCOW2 e VMDK
 -   Gerenciar imagens de disco da máquina virtual usando Qemu-IMG
--   Monte Partições e Arquivos de Acesso contidos em imagens de disco da máquina virtual usando LibGuestfish
+-   Monte Partições e Arquivos de Acesso Containerd em imagens de disco de máquina virtual usando LibGuestfish
 -   Copie o conteúdo do disco físico para uma imagem de disco da máquina virtual
 -   Migrar o conteúdo do disco entre vários formatos de imagem de disco da máquina virtual
 -   Consciência do formato de virtualização aberta (OVF)
@@ -1670,7 +1670,7 @@ qemu-img snapshot -d SNAP1 disk
 ##### 🐟 Peixe -convidado
 
 ```sh
-# set enviroment variables for guestfish
+# set environment variables for guestfish
 export LIBGUESTFS_BACKEND_SETTINGS=force_tcg
 
 # Launch guestfish with a disk image
@@ -1886,11 +1886,11 @@ O pacote gerado possui a extensão .ova e contém os seguintes arquivos:
 
 ```mermaid
 timeline
-    title Time Line Containers Evolution
+    title Time Line containers Evolution
     1979 : chroot
     2000 : FreeBSD Jails
     2002 : Linux Namespaces
-    2005 : Solaris Containers
+    2005 : Solaris containers
     2007 : cgroups
     2008 : LXC
     2013 : Docker
@@ -1916,7 +1916,7 @@ timeline
 -   Consciência das especificações de tempo de execução da OCI e imagem
 -   Consciência da interface de tempo de execução do contêiner Kubernetes (CRI)
 -   Consciência de Podman, Buildah e Scopeo
--   Consciência de outras abordagens de virtualização de contêineres no Linux e em outros sistemas operacionais gratuitos, como RKT, OpenVZ, Systemd-Nspawn ou BSD prisões
+-   Consciência de outras abordagens de virtualização de contêineres no Linux e em outros sistemas operacionais gratuitos, como RKT, OpenVZ, Systemd-Npawn ou BSD prisões
 
 * * *
 
@@ -1940,7 +1940,7 @@ capsh
 
 Os contêineres são uma tecnologia de virtualização leve que empacota aplicativos, juntamente com as dependências necessárias - código, bibliotecas, variáveis ​​de ambiente e arquivos de configuração - em unidades isoladas, portáteis e reproduzíveis.
 
-> Em termos simples: um contêiner é uma caixa independente que executa seu aplicativo da mesma maneira, em qualquer lugar.
+> Em termos simples: um contêiner é uma caixa de autocontrole que executa seu aplicativo da mesma maneira, em qualquer lugar.
 
 ##### 💡 O que é um contêiner?
 
@@ -1948,7 +1948,7 @@ Ao contrário das máquinas virtuais (VMs), os contêineres não virtualizam o h
 
 📌 Recipientes versus máquinas virtuais:
 
-| Recurso                 | Contêineres                     | Máquinas virtuais                           |
+| Recurso                 | contêineres                     | Máquinas virtuais                           |
 | ----------------------- | ------------------------------- | ------------------------------------------- |
 | OS Kernel               | Compartilhado com o host        | Cada VM tem seu próprio sistema operacional |
 | Hora de inicialização   | Rápido (segundos ou menos)      | Lento (minutos)                             |
@@ -2058,7 +2058,7 @@ Para um isolamento mais forte, considere alternativas como:
 ##### 🧪 Teste o chroot com Debootstrap
 
 ```sh
-# download debain files
+# download debian files
 sudo debootstrap stable ~vagrant/debian http://deb.debian.org/debian
 sudo chroot ~vagrant/debian bash
 ```
@@ -2621,7 +2621,7 @@ graph TD
         Nerdctl["nerdctl CLI"]
     end
 
-    subgraph Container_Runtimes
+    subgraph container_Runtimes
         containerd["containerd"]
         crio["CRI-O"]
     end
@@ -2722,11 +2722,11 @@ Para o contêiner, você pode usar este script:[containerd.sh](scripts/container
 
 | Projeto                   | Categoria               | Isolamento            | Daemon? | Uso principal                         | Sem raiz | Notas                                   |
 | ------------------------- | ----------------------- | --------------------- | ------- | ------------------------------------- | -------- | --------------------------------------- |
-| **Subman**                | Orquestração            | Recipiente            | No      | Gerenciar contêineres                 | Sim      | CLI do tipo Docker                      |
+| **Subman**                | Orquestração            | recipiente            | No      | Gerenciar contêineres                 | Sim      | CLI do tipo Docker                      |
 | **Buildah**               | Construir               | N / D                 | No      | Construir imagens                     | Sim      | Para CI/CD, sem execução de contêineres |
 | **Escopo**                | Transferência de imagem | N / D                 | No      | Mova/verifique as imagens             | Sim      | Nenhuma execução de contêiner           |
-| **OpenVZ**                | Virtualização           | Contêiner/vps         | Sim     | VPS leves                             | No       | Kernel compartilhou, Tech Legacy        |
-| **Crun**                  | OCI Runtime             | Recipiente            | No      | Tempo de execução rápido do contêiner | Sim      | Mais rápido que o Runc                  |
+| **OpenVZ**                | Virtualização           | contêiner/vps         | Sim     | VPS leves                             | No       | Kernel compartilhou, Tech Legacy        |
+| **Crun**                  | OCI Runtime             | recipiente            | No      | Tempo de execução rápido do contêiner | Sim      | Mais rápido que o Runc                  |
 | **Contêiner de palavras** | Runtime/VM              | Microvm por contêiner | No      | Isolamento forte                      | Sim      | Segurança no nível da VM                |
 
 * * *
@@ -3149,7 +3149,7 @@ sudo lxc-stop -n debian01
 # connect to container
 sudo lxc-attach -n debian01
 
-# excute a command in container
+# execute a command in container
 sudo lxc-attach -n debian01 --  echo "Hello from"
 sudo lxc-attach -n debian01 -- bash -c ls
 
@@ -3163,12 +3163,12 @@ sudo lxc-destroy -n -s debian01
 sudo ls -l /var/lib/lxc/server1/rootfs
 
 # modify rootfs of a container
-sudo touch  /var/lib/lxc/server1/rootfs/tmp/test_toofs_file
+sudo touch  /var/lib/lxc/server1/rootfs/tmp/test_roofs_file
 sudo lxc-attach server1
 ls /tmp
 
 # get lxc namespaces
-sudo lsns -p <LXC_CONTAINER_PID>
+sudo lsns -p <LXC_container_PID>
 sudo lsns -p $(sudo lxc-info server2 -pH)
 sudo lsns -p $(sudo lxc-info -n server1 | awk '/PID:/ { print $2 }')
 
@@ -3285,7 +3285,7 @@ lxc storage show default
 # lxd storage info
 lxc storage info default
 
-# craete a new storage pool dir
+# create a new storage pool dir
 lxc storage create lpic3-dir dir 
 
 # create a new storage pool lvm
@@ -3320,7 +3320,7 @@ lxc storage volume create lpic3-btrfs vol-lpic3-btrfs
 # delete storage volume
 lxc storage volume delete lpic3-btrfs vol-lpic3-btrfs
 
-### managment lxd storage buckets ####
+### Management lxd storage buckets ####
 
 # create lxd bucket
 lxc storage bucket create lpic3-btrfs bucket-lpic3-btrfs
@@ -3375,7 +3375,7 @@ lxc image list images:
 lxc image list images: os=Ubuntu
 lxc image list images: os=Ubuntu release=jammy
 lxc image list images: os=Ubuntu release=jammy architecture=amd64
-lxc image list images: architecture=amd64 type=containe
+lxc image list images: architecture=amd64 type=container
 lxc image list images: d kal
 
 # download lxd image to local
@@ -3543,7 +3543,7 @@ lxc profile add debian12 production
 lxc profile remove debian12 production
 
 # launch container with profile
-lxc launch 1u1u1u1u1u1 rockylinux9-2 -p producition
+lxc launch 1u1u1u1u1u1 rockylinux9-2 -p production
 ```
 
 <p align="right">(<a href="#topic-352.2">back to sub topic 352.2</a>)</p>
@@ -3555,6 +3555,10 @@ lxc launch 1u1u1u1u1u1 rockylinux9-2 -p producition
 <a name="topic-352.3"></a>
 
 ### 🐳 352.3 Docker
+
+![docker-architecture](images/docker.png)
+
+![docker-runtime](images/docker-containerd.png)
 
 **Peso:**9
 
@@ -3579,6 +3583,128 @@ dockerd
 docker
 Dockerfile
 ```
+
+#### 📖 Definição
+
+Docker é um**Plataforma de contêiner de código aberto**isso permite que desenvolvedores e operadores empacotem aplicativos e suas dependências em**contêineres**.
+
+Esses contêineres garantem**consistência entre ambientes**, acelere as implantações e reduza a complexidade da infraestrutura.
+
+* * *
+
+#### 🔑 Conceitos -chave
+
+-   📦**recipiente**→ Tempo de execução leve e isolado compartilhando o kernel do host.
+-   🖼️**Imagem**→ modelo somente leitura que contém o aplicativo e as dependências.
+-   ⚙️**Motor Docker (Dockerd)**→ Daemon Gerenciando recipientes, imagens e volumes.
+-   ⌨️**Docker cli**→ Ferramenta de linha de comando (`docker`) comunicação com o daemon.
+-   ☁️**Docker Hub**→ Registro padrão para armazenar e distribuir imagens.
+
+* * *
+
+#### 🚀 Vantagens
+
+-   ⚡**Leve e rápido**→ Muito mais rápido que as máquinas virtuais.
+-   🌍**Portabilidade**→ Executa em qualquer lugar Docker é suportado.
+-   🛠️**Rico ecossistema**→ Compor, enxame, cubo, interface do usuário da área de trabalho, registros.
+-   🔄**DevOps amigável**→ Integração de IC/CD e alinhamento IAC.
+
+* * *
+
+#### 📑 Registos do Docker
+
+-   ☁️**Docker Hub**→ Padrão, Registro Público.
+-   🏢**Registros privados**→ Harbor, Artifactory, Registro de Container Github.
+-   🔒 Uso`docker login`Para autenticar, empurrar e puxar imagens.
+
+* * *
+
+#### 🧩 Docker Compose
+
+Ferramenta para definir e executar**Aplicativos multi-containers**via yaml:
+
+**Exemplo de Docker-compose.yml**
+
+Versão: "3.9"
+Serviços:
+  web:
+    Imagem: nginx: mais recente
+    Portas:
+
+      - "8080:80"
+
+aplicativo:
+    Build :./App
+    ambiente:
+
+      - DB_HOST=db
+
+DB:
+    Imagem: Postgres: 15
+    ambiente:
+
+      - POSTGRES_PASSWORD=secret
+
+Correr:
+
+Docker compõe -d
+Docker compor ps
+Docker compor logs -f
+
+## Docker + Containerd + Shim + Runc Architecture
+
+![Docker shim architecture example](images/docker-shim.png)
+
+### 🔹 Componentes principais
+
+-   **Docker Cli / Docker Daemon (`dockerd`)**
+
+    O`docker`O comando se comunica com o Docker Daemon, que orquestra ciclo de vida do contêiner, imagens, redes e volumes.
+-   **contêiner**
+
+    Um tempo de execução de contêineres de alto nível que gerencia todo o ciclo de vida do contêiner: puxando imagens, gerenciamento de armazenamento, rede e execução.
+-   **contêiner-shim**
+
+    -   Atua como o_processo pai_de cada recipiente uma vez`runc`fez seu trabalho.
+    -   Mantém**stdin/stdout/stderr**fluxos abertos, mesmo que o Docker ou o contêiner reinicie (então`docker logs`/`kubectl logs`ainda trabalho).
+    -   Coleta o código de saída do contêiner e o relata de volta ao gerente.
+    -   Impede que os contêineres se tornem órfãos se o daemon falhar ou for reiniciado.
+-   **Runc**
+
+    Um tempo de execução de baixo nível (compatível com OCI) que cria contêineres usando namespaces Linux e CGROUPS.
+
+    Depois de lançar o contêiner,`runc`sai e`containerd-shim`assume o controle como o processo pai.
+
+* * *
+
+### 🔹 Fluxo de execução
+
+1.  **Usuário**corre`docker run ...`→ O**Docker Daemon**é chamado.
+2.  **Docker Daemon**delegados para**contêiner**.
+3.  **contêiner**Spawns**Runc**, que configura o contêiner.
+4.  Depois que o contêiner é iniciado,**Runc sai**.
+5.  **contêiner-shim**permanece como o**processo pai do contêiner**, manuseando códigos de registro e saída.
+
+* * *
+
+### 🔹 Benefícios da camada de calço
+
+-   **Resiliência**→ Os contêineres continuam correndo mesmo que`dockerd`ou`containerd`travar ou reiniciar.
+-   **Log**→ mantém fluxos de log de contêineres para`docker logs`ou`kubectl logs`.
+-   **Isolamento**→ Cada contêiner tem seu próprio calço, simplificando o gerenciamento do ciclo de vida.
+-   **Conformidade com padrões**→ trabalha com o**Especificação de tempo de execução da OCI**, garantindo compatibilidade.
+
+#### ⚖️ Docker vs. Containerd
+
+| 🔹 Recurso / componente | 🐳 Docker (Dockerd)                                | 🐋 Containerd                                         |
+| ----------------------- | -------------------------------------------------- | ----------------------------------------------------- |
+| Escopo                  | Plataforma completa (Build, CLI, UI, Hub)          | Tempo de execução do contêiner do núcleo apenas       |
+| API                     | API do Docker de alto nível                        | API CRI/tempo de execução de baixo nível              |
+| Construído sobre        | Usa o contêiner internamente                       | Tempo de execução independente                        |
+| Características         | Construir, compor, enxame, hub, desktop            | Ciclo de vida da imagem, puxar/run, tempo de execução |
+| Casos de uso            | Fluxos de trabalho de desenvolvimento, teste local | Kubernetes, tempo de produção                         |
+| Pegada                  | Mais pesado e mais ferramenta                      | Leve, eficiente                                       |
+| Ecossistema             | Ferramentas de desenvolvedor ricas                 | Projeto CNCF, Kubernetes Padrão                       |
 
 #### 🛠️ 352.3 Comandos importantes
 
@@ -3719,7 +3845,7 @@ user-data
 
 #### 🛠️ 353.3 Comandos importantes
 
-##### 📝 Foo
+##### 📝 Cloud-Init
 
 ```sh
 # examples
@@ -3807,6 +3933,7 @@ Link do projeto:<https://github.com/marcossilvestrini/learning-lpic-3-305-300>
 
 -   [Richard Stallman's](http://www.stallman.org/)
 -   [GNU](<>)
+
     -   [GNU/FAQ Linux por Richard Stallman](https://www.gnu.org/gnu/gnu-linux-faq.html)
     -   [GNU](https://www.gnu.org/)
     -   [Sistema operacional GNU](https://www.gnu.org/gnu/thegnuproject.html)
@@ -3819,17 +3946,21 @@ Link do projeto:<https://github.com/marcossilvestrini/learning-lpic-3-305-300>
     -   [GNU GRUB Bootloader](https://www.gnu.org/software/grub/)
     -   [GNU Hurd](https://www.gnu.org/software/hurd/hurd/what_is_the_gnu_hurd.html)
 -   [Kernel](<>)
+
     -   [Kernel](https://www.kernel.org/)
     -   [Páginas do Kernel Linux](https://www.kernel.org/doc/man-pages/)
     -   [Compile seu kernel](https://wiki.linuxquestions.org/wiki/How_to_build_and_install_your_own_Linux_kernel)
 -   [Base padrão Linux](<>)
+
     -   [Base padrão Linux](https://en.wikipedia.org/wiki/Linux_Standard_Base)
     -   [Padrão de hierarquia do sistema de arquivos](https://en.wikipedia.org/wiki/Filesystem_Hierarchy_Standard)
     -   [Estrutura de hierarquia de arquivos](https://refspecs.linuxfoundation.org/FHS_3.0/fhs-3.0.pdf)
 -   [Software livre](<>)
+
     -   [FSF](https://www.fsf.org)
     -   [Diretório de software livre](https://directory.fsf.org/wiki/Free_Software_Directory:Free_software_replacements)
 -   [Licença](<>)
+
     -   [Software livre](https://www.gnu.org/philosophy/free-sw.html)
     -   [Copyleft](https://www.gnu.org/licenses/copyleft.en.html)
     -   [Gpl](https://www.gnu.org/licenses/quick-guide-gplv3.html)
@@ -3839,11 +3970,13 @@ Link do projeto:<https://github.com/marcossilvestrini/learning-lpic-3-305-300>
     -   [Creative Commons](https://creativecommons.org/)
     -   [Licença LTS](https://en.wikipedia.org/wiki/Long-term_support)
 -   [Distos](<>)
+
     -   [Diretrizes de software livre do Debian](https://www.debian.org/social_contract#guidelines)
     -   [Lista de distribuição Linux](https://en.wikipedia.org/wiki/List_of_Linux_distributions)
     -   [Distrowatch](https://distrowatch.com/)
     -   [Comparação Distribuições Linux](https://en.wikipedia.org/wiki/Comparison_of_Linux_distributions)
 -   [Ambientes de mesa](<>)
+
     -   [X11 org](https://www.x.org/wiki/)
     -   [Wayland](https://wayland.freedesktop.org/)
     -   [GNU Gnome](https://www.gnu.org/press/gnome-1.0.html)
@@ -3852,6 +3985,7 @@ Link do projeto:<https://github.com/marcossilvestrini/learning-lpic-3-305-300>
     -   [Onde plasma](https://kde.org/plasma-desktop/)
     -   [Harmonia](https://en.wikipedia.org/wiki/Harmony_(toolkit))
 -   [Protocolos](<>)
+
     -   [Http](<>)
         -   [W3Techs](https://w3techs.com/)
         -   [Apache](https://www.apache.org/)
@@ -3863,15 +3997,18 @@ Link do projeto:<https://github.com/marcossilvestrini/learning-lpic-3-305-300>
     -   [XRDP](https://bytexd.com/xrdp-centos/)
     -   [Ntp](https://www.ntppool.org/en/)
 -   [Dns](<>)
+
     -   [Vincular](https://www.isc.org/bind/)
     -   [Vincular o log](https://www.zytrax.com/books/dns/ch7/logging.html)
     -   [Lista de tipos de registro DNS](https://en.wikipedia.org/wiki/List_of_DNS_record_types)
     -   [Lista de tipos de registro DNS](https://en.wikipedia.org/wiki/List_of_DNS_record_types)
 -   [Gerente de pacotes](<>)
+
     -   [Baixar pacotes](https://pkgs.org/)
     -   [Instale pacotes](https://installati.one/)
     -   [Guia de instalação de pacotes](https://installati.one/)
 -   [Script de shell](<>)
+
     -   [Bourne novamente Shell](https://www.gnu.org/software/bash/manual/)
     -   [Shebang](https://bash.cyberciti.biz/guide/Shebang)
     -   [Variáveis ​​de ambiente](https://linuxize.com/post/how-to-set-and-list-environment-variables-in-linux/)
@@ -3886,14 +4023,17 @@ Link do projeto:<https://github.com/marcossilvestrini/learning-lpic-3-305-300>
     -   [Tutorial de script linux shell](https://bash.cyberciti.biz/guide/Main_Page)
     -   [Comandos exemplos](https://www.geeksforgeeks.org/)
 -   [Outras ferramentas](<>)
+
     -   [Bugzila](https://bugzilla.kernel.org/)
     -   [Crachás do github](https://github.com/alexandresanlim/Badges4-README.md-Profile)
 -   [Definições de virtualização](<>)
+
     -   [Chapéu vermelho](https://www.redhat.com/pt-br/topics/virtualization/what-is-virtualization/)
     -   [AWS](https://aws.amazon.com/pt/what-is/virtualization/)
     -   [IBM](https://www.ibm.com/topics/virtualization)
     -   [OpenSource.com](https://opensource.com/resources/virtualization)
 -   [Alternar](<>)
+
     -   [Xenserver](https://www.xenserver.com/)
     -   [Wiki XenProject](https://wiki.xenproject.org/wiki/Main_Page)
     -   [Interfaces de rede](https://wiki.xenproject.org/wiki/Xen_Networking#Virtual_Network_Interfaces)
@@ -3905,23 +4045,27 @@ Link do projeto:<https://github.com/marcossilvestrini/learning-lpic-3-305-300>
     -   [Guia para iniciantes do projeto Xen](https://wiki.xenproject.org/wiki/Xen_Project_Beginners_Guide#Installing_the_Xen_Project_Software)
     -   [Livro maluco](https://wiki.xenproject.org/wiki/Book/HelloXenProject/0-Contents)
 -   [Unicernel](https://www.lpi.org/blog/2020/10/29/xen-virtualization-and-cloud-computing-05-xen-project-unikernels-and-future/)
+
     -   [Força única](https://github.com/unikraft/unikraft)
     -   [Mirageos](https://mirage.io/docs/hello-world)
     -   [Ruim](https://galois.com/project/halvm/)
     -   [Exclusivo](https://github.com/solo-io/unik/blob/master/docs/providers/virtualbox.md)
 -   [KVM](<>)
-    -   [Oficial Doc](https://linux-kvm.org/page/Main_Page)
+
+    -   [Doc](https://linux-kvm.org/page/Main_Page)
     -   [KVM (máquinas virtuais do kernel por redhat)](https://www.redhat.com/pt-br/topics/virtualization/what-is-KVM)
     -   [Ferramentas de gerenciamento da KVM](https://www.linux-kvm.org/page/Management_Tools)
     -   [Rede KVM](https://www.linux-kvm.org/page/Networking)
 -   [Qemu](<>)
-    -   [Oficial Doc](https://www.qemu.org/)
+
+    -   [Doc](https://www.qemu.org/)
     -   [Baixe imagens osboxes](https://www.osboxes.org/)
     -   [Faça o download de imagens linuximages](https://www.linuxvmimages.com/)
     -   [Urbano](https://en.wikibooks.org/wiki/QEMU/Devices/Virtio)
     -   [Agente convidado](https://wiki.qemu.org/Features/GuestAgent)
 -   [Libvirt](<>)
-    -   [Oficial Doc](https://libvirt.org/)
+
+    -   [Doc](https://libvirt.org/)
     -   [Ativação do soquete do sistema](https://libvirt.org/manpages/libvirtd.html#system-socket-activation)
     -   [Conexões](https://libvirt.org/uri.html)
     -   [Armazenar](https://libvirt.org/storage.html)
@@ -3931,11 +4075,13 @@ Link do projeto:<https://github.com/marcossilvestrini/learning-lpic-3-305-300>
     -   [Virtlockd](https://libvirt.org/manpages/virtlockd.html)
     -   [virt-manager](https://virt-manager.org/)
 -   [Gerenciamento de disco](<>)
+
     -   [Imagens de disco](https://qemu-project.gitlab.io/qemu/system/images.html)
     -   [cópia-em-escrever](https://sempreupdate.com.br/linux/tutoriais/sistema-de-arquivos-copy-on-write-saiba-o-que-e-e-quais-as-vantagens-e-desvantagens/)
     -   [RAM X QCOW2](https://docs.redhat.com/en/documentation/red_hat_virtualization/4.3/html/technical_reference/qcow2)
     -   [Libguestfs](https://libguestfs.org/)
--   [Contêineres](<>)
+-   [contêineres](<>)
+
     -   [Contêineres da AWS DOC](https://aws.amazon.com/pt/containers/)
     -   [Contêineres do DOC GCP](https://cloud.google.com/learn/what-are-containers?hl=pt-br)
     -   [IBM Doc Container](https://www.ibm.com/br-pt/topics/containers)
@@ -3949,7 +4095,7 @@ Link do projeto:<https://github.com/marcossilvestrini/learning-lpic-3-305-300>
     -   [Perfis Seccomp no Docker](https://docs.docker.com/engine/security/seccomp/)
     -   [Perfis de Aparmor no Docker](https://docs.docker.com/engine/security/apparmor/)
     -   [Selinux](https://pt.wikipedia.org/wiki/SELinux)
-    -   [Comparação do Appmor Selinux](https://www.redhat.com/en/blog/apparmor-selinux-isolation)
+    -   [Comparador do Appmor Selinux](https://www.redhat.com/en/blog/apparmor-selinux-isolation)
     -   [Runc](https://www.docker.com/blog/runc/)
     -   [Runc Github](https://github.com/opencontainers/runc)
     -   [OCI](https://opencontainers.org/about/overview/)
@@ -3963,9 +4109,11 @@ Link do projeto:<https://github.com/marcossilvestrini/learning-lpic-3-305-300>
     -   [Crun](https://www.redhat.com/en/blog/introduction-crun)
     -   [dizer](https://katacontainers.io/)
 -   [LXC - Contêineres Linux](<>)
+
     -   [LXC](https://linuxcontainers.org/lxc/introduction/)
     -   [Imagens de contêiner Linux](https://images.linuxcontainers.org/)
--   [Lxd]
+-   [Lxd](<>)
+
     -   [Lxd canônico](https://canonical.com/lxd)
     -   [LXD Github canônico](https://github.com/canonical/lxd)
     -   [Documentação LXD](https://linuxcontainers.org/lxd/docs/master/)
@@ -3978,11 +4126,19 @@ Link do projeto:<https://github.com/marcossilvestrini/learning-lpic-3-305-300>
     -   [Configuração da rede LXD](https://documentation.ubuntu.com/lxd/latest/howto/network_create/)
     -   [Perfis LXD](https://documentation.ubuntu.com/lxd/to/latest/profiles/)
     -   [Instâncias LXD](https://documentation.ubuntu.com/lxd/en/stable-4.0/instances/)
+-   [Docker](https://www.docker.com/)
+
+    -   [Visão geral do Docker](https://docs.docker.com/get-started/overview/)
+    -   [Contêiner x Docker](https://www.docker.com/blog/containerd-vs-docker/)
+    -   [TestContainers](https://testcontainers.com/)
 -   [OpenStack Docs](<>)
+
     -   [Redhat](https://www.redhat.com/pt-br/topics/openstack)
 -   [Aberto vswitch](<>)
+
     -   [OVS DOC 4LINUX](https://blog.4linux.com.br/open-vswitch-o-que-e-o-que-come-onde-vive)
 -   [Exame LPIC-3 305-300](<>)
+
     -   [Lpic-3 305-300 Objetivos](https://www.lpi.org/our-certifications/exam-305-objectives/)
     -   [LPIC-3 305-300 Wiki](https://wiki.lpi.org/wiki/LPIC-305_Objectives_V3.0)
     -   [Lpic-3 305-300 Material de aprendizado](https://cursos.linuxsemfronteiras.com.br/courses/preparatorio-para-certificacao-lpic-3-305/)
