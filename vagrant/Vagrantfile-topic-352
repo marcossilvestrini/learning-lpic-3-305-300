@@ -35,62 +35,62 @@ Vagrant.configure("2") do |config|
   config.vm.synced_folder packages_path, "/home/vagrant/packages"
 
 
-  # BEGIN INSTANCE CONTAINER
-  config.vm.define "#{vm_name}-container" do |container|
+  # # BEGIN INSTANCE CONTAINER
+  # config.vm.define "#{vm_name}-container" do |container|
 
-    # hostname
-    container.vm.hostname = "#{vm_name}-container"
+  #   # hostname
+  #   container.vm.hostname = "#{vm_name}-container"
 
-    # STORAGE
-    # Parametrização do tamanho do disco
-    disk_size = "200GB"
-    container.vm.disk :disk, size: disk_size, name: "container_storage", primary: false
+  #   # STORAGE
+  #   # Parametrização do tamanho do disco
+  #   disk_size = "200GB"
+  #   container.vm.disk :disk, size: disk_size, name: "container_storage", primary: false
 
-    # VMware Workstation configuration
-    # Parametrização de recursos
-    mem_size = "16000" # MB
-    num_vcpus = "4"
-    clone_dir = "E:\\Servers\\VMWare\\#{vm_name}-container"
-    container.vm.provider "vmware_workstation" do |vmware|
-      vmware.linked_clone = true
-      vmware.clone_directory = clone_dir
-      vmware.whitelist_verified = true
-      vmware.gui = true
-      #vmware.vmx["virtualHW.version"] = "10"
-      vmware.vmx["displayName"] = "#{vm_name}-container"
-      vmware.vmx["memsize"] = mem_size
-      vmware.vmx["numvcpus"] = num_vcpus
-      vmware.vmx["cpuid.coresPerSocket"] = "1"
-      vmware.vmx["vhv.enable"] = "TRUE"  # Enable virtualization engine (nested virtualization)
-      # vmware.vmx["hypervisor.cpuid.v0"] = "FALSE"  # Ensure guest OS can see CPU features
-      # vmware.vmx["monitor.virtual_mmu"] = "hardware"  # Use hardware memory management unit
-      # vmware.vmx["monitor.virtual_exec"] = "hardware"  # Use hardware execution virtualization
-    end
+  #   # VMware Workstation configuration
+  #   # Parametrização de recursos
+  #   mem_size = "16000" # MB
+  #   num_vcpus = "4"
+  #   clone_dir = "E:\\Servers\\VMWare\\#{vm_name}-container"
+  #   container.vm.provider "vmware_workstation" do |vmware|
+  #     vmware.linked_clone = true
+  #     vmware.clone_directory = clone_dir
+  #     vmware.whitelist_verified = true
+  #     vmware.gui = true
+  #     #vmware.vmx["virtualHW.version"] = "10"
+  #     vmware.vmx["displayName"] = "#{vm_name}-container"
+  #     vmware.vmx["memsize"] = mem_size
+  #     vmware.vmx["numvcpus"] = num_vcpus
+  #     vmware.vmx["cpuid.coresPerSocket"] = "1"
+  #     vmware.vmx["vhv.enable"] = "TRUE"  # Enable virtualization engine (nested virtualization)
+  #     # vmware.vmx["hypervisor.cpuid.v0"] = "FALSE"  # Ensure guest OS can see CPU features
+  #     # vmware.vmx["monitor.virtual_mmu"] = "hardware"  # Use hardware memory management unit
+  #     # vmware.vmx["monitor.virtual_exec"] = "hardware"  # Use hardware execution virtualization
+  #   end
 
-    # NETWORK CONFIGURATION
-    # Provisionamento de rede
-    container.vm.network "public_network", mode: "bridge", auto_config: false
-    container.vm.provision "shell", name: "[configure-network]", path: File.join(scripts_path, "container/network.sh"), privileged: true
+  #   # NETWORK CONFIGURATION
+  #   # Provisionamento de rede
+  #   container.vm.network "public_network", mode: "bridge", auto_config: false
+  #   container.vm.provision "shell", name: "[configure-network]", path: File.join(scripts_path, "container/network.sh"), privileged: true
 
-    # CLOUD-INIT
-    container.vm.provision "shell", name: "[cloud-init]", path: File.join(scripts_path, "container/cloud-init.sh"), privileged: false
+  #   # CLOUD-INIT
+  #   container.vm.provision "shell", name: "[cloud-init]", path: File.join(scripts_path, "container/cloud-init.sh"), privileged: false
 
-    # # QEMU (descomente se necessário)
-    # container.vm.provision "shell", name: "[qemu]", path: File.join(scripts_path, "kvm/qemu.sh"), privileged: true
+  #   # # QEMU (descomente se necessário)
+  #   # container.vm.provision "shell", name: "[qemu]", path: File.join(scripts_path, "kvm/qemu.sh"), privileged: true
 
-    # STORAGE
-    container.vm.provision "shell", name: "[storage]", path: File.join(scripts_path, "container/storage.sh"), privileged: false
+  #   # STORAGE
+  #   container.vm.provision "shell", name: "[storage]", path: File.join(scripts_path, "container/storage.sh"), privileged: false
 
-    # MINIO
-    container.vm.provision "shell", name: "[minio]", path: File.join(scripts_path, "container/minio.sh"), privileged: false
+  #   # MINIO
+  #   container.vm.provision "shell", name: "[minio]", path: File.join(scripts_path, "container/minio.sh"), privileged: false
 
-    # RESTART VM
-    container.vm.provision :reload
+  #   # RESTART VM
+  #   container.vm.provision :reload
 
-    # LXD AUTO-SETUP
-    container.vm.provision "shell", name: "[lxd-setup]", path: File.join(scripts_path, "container/lxd-init.sh"), privileged: true, run: "always"
-  end
-  # END INSTANCE CONTAINER
+  #   # LXD AUTO-SETUP
+  #   container.vm.provision "shell", name: "[lxd-setup]", path: File.join(scripts_path, "container/lxd-init.sh"), privileged: true, run: "always"
+  # end
+  # # END INSTANCE CONTAINER
   
   # BEGIN INSTANCE DOCKER
   config.vm.define "#{vm_name}-docker" do |docker|

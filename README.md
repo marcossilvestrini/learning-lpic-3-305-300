@@ -2775,7 +2775,7 @@ unshare --mount --uts --ipc --user --pid --net  --map-root-user --mount-proc --f
 lsns
 
 # show only pid namespace
-lsns -s <pid>
+lsns -p <pid>
 lsns -p 3669
 
 ls -l /proc/<pid>/ns
@@ -2788,9 +2788,18 @@ ps -o pid,pidns,netns,ipcns,utsns,userns,args -p 3669
 ##### 🚪 nsenter
 
 ```sh
-# execute a command in namespace
-sudo nsenter -t <PID> -n  ip link show
+# get PID docker container
+# execute a command in namespace Network
 sudo nsenter -t 3669 -n ip link show
+
+# execute a command in namespace UTS
+sudo nsenter -t 3669 -u hostname
+
+# execute a command in namespace mount
+nsenter -t 3669 -m ls
+
+# execute a command in all namespaces
+sudo nsenter -t 3669 -a ps
 ```
 
 ##### 🌐 252.1 ip
