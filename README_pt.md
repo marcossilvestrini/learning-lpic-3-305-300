@@ -610,7 +610,7 @@ O XEN é um hipervisor de código aberto tipo 1 (sem metal), que permite que vá
 
 #### 🏢 Xensource
 
-A Xensource foi a empresa fundada pelos desenvolvedores originais do Xen Hypervisor da Universidade de Cambridge para comercializar a Xen. A empresa forneceu soluções corporativas com base no XEN e ofereceu ferramentas e suporte adicionais para aprimorar os recursos da XEN para uso corporativo.
+A Xensource foi a empresa fundada pelos desenvolvedores originais do Xen Hypervisor da Universidade de Cambridge para comercializar a Xen. A empresa forneceu soluções corporativas com base no XEN e ofereceu ferramentas e suporte adicionais para aprimorar os recursos do XEN para uso corporativo.
 
 -   **Aquisição pela Citrix**: Em 2007, a Xensource foi adquirida pela Citrix Systems, Inc. A Citrix usou a tecnologia Xen como base para o seu produto Citrix Xenserver, que se tornou uma popular plataforma de virtualização de grau corporativo baseado em Xen.
 -   **Transição**: Após a aquisição, o projeto Xen continuou como um projeto de código aberto, enquanto a Citrix se concentrou em ofertas comerciais como Xenserver, alavancando a tecnologia Xensource.
@@ -619,7 +619,7 @@ A Xensource foi a empresa fundada pelos desenvolvedores originais do Xen Hypervi
 
 O projeto XEN refere-se à comunidade de código aberto e à iniciativa responsável pelo desenvolvimento e manutenção do hipervisor Xen após sua comercialização. O projeto Xen opera sob a Fundação Linux, com foco na construção, melhoria e apoio a Xen como um esforço colaborativo e orientado pela comunidade.
 
--   **Metas:**O projeto XEN visa avançar o hipervisor, melhorando seu desempenho, segurança e conjunto de recursos para uma ampla gama de casos de uso, incluindo computação em nuvem, virtualização focada na segurança (por exemplo, Qubes OS) e sistemas incorporados.
+-   **Metas:**O projeto XEN visa avançar o hipervisor, melhorando seu desempenho, segurança e conjunto de recursos para uma ampla gama de casos de uso, incluindo computação em nuvem, virtualização focada na segurança (por exemplo, QUBES OS) e sistemas incorporados.
 -   **Colaboradores:**O projeto inclui colaboradores de várias organizações, incluindo os principais provedores de nuvem, fornecedores de hardware e desenvolvedores independentes.
 -   **Pílula e hedools:**O projeto XEN também inclui ferramentas como XAPI (XenAPI), que é usado para gerenciar instalações do Xen Hypervisor e vários outros utilitários para gerenciamento e otimização do sistema.
 
@@ -1901,7 +1901,7 @@ timeline
 
 **Peso:**7
 
-**Descrição:**Os candidatos devem entender o conceito de virtualização de contêineres. Isso inclui a compreensão dos componentes do Linux usados ​​para implementar a virtualização de contêineres, bem como usar as ferramentas padrão do Linux para solucionar esses componentes.
+**Descrição:**Os candidatos devem entender o conceito de virtualização de contêineres. Isso inclui a compreensão dos componentes do Linux usados ​​para implementar a virtualização de contêineres, bem como usar as ferramentas padrão do Linux para solucionar problemas desses componentes.
 
 **Principais áreas de conhecimento:**
 
@@ -1916,7 +1916,7 @@ timeline
 -   Consciência das especificações de tempo de execução da OCI e imagem
 -   Consciência da interface de tempo de execução do contêiner Kubernetes (CRI)
 -   Consciência de Podman, Buildah e Scopeo
--   Consciência de outras abordagens de virtualização de contêineres no Linux e em outros sistemas operacionais gratuitos, como RKT, OpenVZ, Systemd-Npawn ou BSD prisões
+-   Consciência de outras abordagens de virtualização de contêineres no Linux e em outros sistemas operacionais gratuitos, como RKT, OpenVZ, Systemd-Nspawn ou BSD prisões
 
 * * *
 
@@ -1938,7 +1938,7 @@ capsh
 
 ![container](images/containers1.png)
 
-Os contêineres são uma tecnologia de virtualização leve que empacota aplicativos, juntamente com as dependências necessárias - código, bibliotecas, variáveis ​​de ambiente e arquivos de configuração - em unidades isoladas, portáteis e reproduzíveis.
+Os contêineres são uma tecnologia de virtualização leve que empacota aplicativos junto com as dependências necessárias - código, bibliotecas, variáveis ​​de ambiente e arquivos de configuração - em unidades isoladas, portáteis e reproduzíveis.
 
 > Em termos simples: um contêiner é uma caixa de autocontrole que executa seu aplicativo da mesma maneira, em qualquer lugar.
 
@@ -2342,18 +2342,18 @@ Tradicionalmente no Linux, o usuário raiz tem acesso irrestrito ao sistema. Os 
 
 Isso aprimora a segurança do sistema, aplicando o princípio do menor privilégio.
 
-| 🔐 Capacidade          | 📋 Descrição                                                        |
-| ---------------------- | ------------------------------------------------------------------- |
-| `CAP_CHOWN`            | Alterar o proprietário do arquivo, independentemente das permissões |
-| `CAP_NET_BIND_SERVICE` | Ligue para as portas abaixo de 1024 (por exemplo, 80, 443)          |
-| `CAP_SYS_TIME`         | Defina o relógio do sistema                                         |
-| `CAP_SYS_ADMIN`        | ⚠️ Muito poderoso - inclui Mount, BPF e muito mais                  |
-| `CAP_NET_RAW`          | Use soquetes crus (por exemplo, ping, traceroute)                   |
-| `CAP_SYS_PTRACE`       | Rastrear outros processos (depuração)                               |
-| `CAP_KILL`             | Envie sinais para qualquer processo                                 |
-| `CAP_DAC_OVERRIDE`     | Modificar arquivos e diretórios sem permissão                       |
-| `CAP_SETUID`           | Alterar ID de usuário (UID) do processo                             |
-| `CAP_NET_ADMIN`        | Gerenciar interfaces de rede, roteamento, etc.                      |
+| 🔐 Capacidade          | 📋 Descrição                                               |
+| ---------------------- | ---------------------------------------------------------- |
+| `CAP_CHOWN`            | Change file owner regardless of permissions                |
+| `CAP_NET_BIND_SERVICE` | Ligue para as portas abaixo de 1024 (por exemplo, 80, 443) |
+| `CAP_SYS_TIME`         | Defina o relógio do sistema                                |
+| `CAP_SYS_ADMIN`        | ⚠️ Muito poderoso - inclui Mount, BPF e muito mais         |
+| `CAP_NET_RAW`          | Use soquetes crus (por exemplo, ping, traceroute)          |
+| `CAP_SYS_PTRACE`       | Rastrear outros processos (depuração)                      |
+| `CAP_KILL`             | Envie sinais para qualquer processo                        |
+| `CAP_DAC_OVERRIDE`     | Modificar arquivos e diretórios sem permissão              |
+| `CAP_SETUID`           | Alterar ID de usuário (UID) do processo                    |
+| `CAP_NET_ADMIN`        | Gerenciar interfaces de rede, roteamento, etc.             |
 
 🔐 Alguns tipos de recursos do Linux
 
@@ -2761,7 +2761,7 @@ unshare --mount --uts --ipc --user --pid --net  --map-root-user --mount-proc --f
 lsns
 
 # show only pid namespace
-lsns -s <pid>
+lsns -p <pid>
 lsns -p 3669
 
 ls -l /proc/<pid>/ns
@@ -2774,9 +2774,18 @@ ps -o pid,pidns,netns,ipcns,utsns,userns,args -p 3669
 ##### 🚪 NSENTER
 
 ```sh
-# execute a command in namespace
-sudo nsenter -t <PID> -n  ip link show
+# get PID docker container
+# execute a command in namespace Network
 sudo nsenter -t 3669 -n ip link show
+
+# execute a command in namespace UTS
+sudo nsenter -t 3669 -u hostname
+
+# execute a command in namespace mount
+nsenter -t 3669 -m ls
+
+# execute a command in all namespaces
+sudo nsenter -t 3669 -a ps
 ```
 
 ##### 🌐 252.1 IP
@@ -3659,7 +3668,7 @@ Docker compor logs -f
 
 -   **Docker Cli / Docker Daemon (`dockerd`)**
 
-    O`docker`O comando se comunica com o Docker Daemon, que orquestra ciclo de vida do contêiner, imagens, redes e volumes.
+    O`docker`O comando se comunica com o daemon do Docker, que orquestra ciclo de vida do contêiner, imagens, redes e volumes.
 -   **contêiner**
 
     Um tempo de execução de contêineres de alto nível que gerencia todo o ciclo de vida do contêiner: puxando imagens, gerenciamento de armazenamento, rede e execução.
@@ -3711,7 +3720,39 @@ Docker compor logs -f
 ##### 🐳 Docker
 
 ```sh
-# Examples of docker
+# files
+/var/lib/docker
+/etc/docker/daemon.json
+
+
+# get version
+docker --version
+
+# docker infos
+docker info
+
+# create container
+docker run hello-world
+docker run -it ubuntu bash
+
+################ OTHERS COMMANDS ################
+
+# get PID of container
+docker inspect --format '{{.State.Pid}}' <container_id|name>
+
+# get ID of <container_id|name>
+docker inspect --format '{{.Id}}' <container_id|name>
+
+# inspect namespaces
+ls -l /proc/<PID>/ns
+sudo lsns -p <PID>
+ps -o pid,ppid,cmd,netns,mntns,pidns,utsns <PID>
+
+# inspect cgroups
+lscgroup | grep <PID> # cgroup v1
+cat /proc/<PID>/cgroup # cgroup v2
+ls -l /sys/fs/cgroup/system.slice/docker-<FULL_ID_CONTAINER>.scope
+cat /sys/fs/cgroup/system.slice/docker-<FULL_ID_CONTAINER>.scope/cgroup.procs
 ```
 
 <p align="right">(<a href="#topic-352.3">back to sub topic 352.3</a>)</p>
@@ -4130,6 +4171,8 @@ Link do projeto:<https://github.com/marcossilvestrini/learning-lpic-3-305-300>
 
     -   [Visão geral do Docker](https://docs.docker.com/get-started/overview/)
     -   [Contêiner x Docker](https://www.docker.com/blog/containerd-vs-docker/)
+    -   [Instalar](https://docs.docker.com/engine/install/)
+    -   [Configuração de daemon](https://docs.docker.com/engine/daemon/)
     -   [TestContainers](https://testcontainers.com/)
 -   [OpenStack Docs](<>)
 
