@@ -29,7 +29,8 @@ if echo "$RELEASE_INFO" | grep -q -i "debian\|ubuntu"; then
         lvm2 \
         btrfs-progs \
         tree whois \
-        ca-certificates curl gnupg lsb-release
+        ca-certificates curl gnupg lsb-release \
+        cgroup-tools jq yq
        
     # clean up apt cache
     sudo apt clean

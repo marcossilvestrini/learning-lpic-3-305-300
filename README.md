@@ -3729,7 +3729,39 @@ docker compose logs -f
 ##### 🐳 docker
 
 ```sh
-# Examples of docker
+# files
+/var/lib/docker
+/etc/docker/daemon.json
+
+
+# get version
+docker --version
+
+# docker infos
+docker info
+
+# create container
+docker run hello-world
+docker run -it ubuntu bash
+
+################ OTHERS COMMANDS ################
+
+# get PID of container
+docker inspect --format '{{.State.Pid}}' <container_id|name>
+
+# get ID of <container_id|name>
+docker inspect --format '{{.Id}}' <container_id|name>
+
+# inspect namespaces
+ls -l /proc/<PID>/ns
+sudo lsns -p <PID>
+ps -o pid,ppid,cmd,netns,mntns,pidns,utsns <PID>
+
+# inspect cgroups
+lscgroup | grep <PID> # cgroup v1
+cat /proc/<PID>/cgroup # cgroup v2
+ls -l /sys/fs/cgroup/system.slice/docker-<FULL_ID_CONTAINER>.scope
+cat /sys/fs/cgroup/system.slice/docker-<FULL_ID_CONTAINER>.scope/cgroup.procs
 ```
 
 <p align="right">(<a href="#topic-352.3">back to sub topic 352.3</a>)</p>
@@ -4148,7 +4180,9 @@ Project Link: [https://github.com/marcossilvestrini/learning-lpic-3-305-300](htt
 * [Docker](https://www.docker.com/)
 
   * [Docker Overview](https://docs.docker.com/get-started/overview/)
-  * [containerd x Docker](https://www.docker.com/blog/containerd-vs-docker/)
+  * [Containerd x Docker](https://www.docker.com/blog/containerd-vs-docker/)
+  * [Install]( https://docs.docker.com/engine/install/)
+  * [Daemon Configuration]( https://docs.docker.com/engine/daemon/)
   * [Testcontainers](https://testcontainers.com/)
 * [Openstack Docs]()
 

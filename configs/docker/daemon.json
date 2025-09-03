@@ -1,0 +1,22 @@
+{
+  "data-root": "/var/lib/docker",
+  "exec-opts": ["native.cgroupdriver=systemd"],
+  "log-driver": "json-file",
+  "log-opts": {
+    "max-size": "100m",
+    "max-file": "3"
+  },
+  "storage-driver": "overlay2",
+  "insecure-registries": [
+    "registry.local:5000"
+  ],
+  "registry-mirrors": [
+    "https://mirror.gcr.io"
+  ],
+  "iptables": true,
+  "ip-forward": true,
+  "ip-masq": true,
+  "dns": ["8.8.8.8", "1.1.1.1"],
+  "live-restore": true,
+  "default-shm-size": "1g"
+}
