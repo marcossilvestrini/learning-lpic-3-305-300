@@ -10,12 +10,12 @@
 
 ---
 
-[MIT License][license-url]
-[Forks][forks-url]
-[Stargazers][stars-url]
-[Contributors][contributors-url]
-[Issues][issues-url]
-[LinkedIn][linkedin-url]
+[![MIT License][license-shield]][license-url]
+[![Forks][forks-shield]][forks-url]
+[![Stargazers][stars-shield]][stars-url]
+[![Contributors][contributors-shield]][contributors-url]
+[![Issues][issues-shield]][issues-url]
+[![LinkedIn][linkedin-shield]][linkedin-url]
 ------------------------
 
 # 📚 LEARNING LPIC-3 305-300

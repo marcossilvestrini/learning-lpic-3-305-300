@@ -1,6 +1,5 @@
 ﻿# Summary
 
-<<<<<<< HEAD
 - [🗂️ Summary](docs/🗂️Summary.md)
 - [📖 About Project](docs/📖AboutProject.md)
 - [🚀 Getting Started](docs/🚀GettingStarted.md)
@@ -15,5 +14,3 @@
 - [📄 License](docs/📄License.md)
 - [📬 Contact](docs/📬Contact.md)
 - [🙏 Acknowledgments](docs/🙏Acknowledgments.md)
-=======
->>>>>>> 1b1410ef29e47f5cd6db69884d9ac06b6ba7cb4d
