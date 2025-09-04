@@ -1779,11 +1779,11 @@ docker compose up -d
 docker compose ps
 docker compose logs -f
 
-## Docker + containerd + shim + runc Architecture
+#### Docker + containerd + shim + runc Architecture
 
 ![\Docker shim architecture example](../images/docker-shim.png)
 
-### 🔹 Main Components
+##### 🔹 Main Components
 
 * **Docker CLI / Docker Daemon (`dockerd`)**
 
@@ -1805,7 +1805,7 @@ docker compose logs -f
 
 ---
 
-### 🔹 Execution Flow
+##### 🔹 Execution Flow
 
 1. **User** runs `docker run ...` → the **Docker Daemon** is called.
 2. **Docker Daemon** delegates to  **containerd** .
@@ -1815,7 +1815,7 @@ docker compose logs -f
 
 ---
 
-### 🔹 Benefits of the Shim Layer
+##### 🔹 Benefits of the Shim Layer
 
 * **Resilience** → Containers continue running even if `dockerd` or `containerd` crash or restart.
 * **Logging** → Maintains container log streams for `docker logs` or `kubectl logs`.

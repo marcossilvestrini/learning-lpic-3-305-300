@@ -507,7 +507,6 @@ xen-tscmode(7)
 
 /etc/xen/auto/
 
-
 # set domain for up after xen reboot
 ## create folder auto
 cd /etc/xen && mkdir -p auto && cd auto
@@ -515,6 +514,16 @@ cd /etc/xen && mkdir -p auto && cd auto
 # create symbolic link
 ln -s /etc/xen/lpic3-pv-guest /etc/xen/auto/lpic3-pv-guest
 ```
+
+##### vif
+
+In Xen, “vif” stands for Virtual Interface and is used to configure networking for virtual machines (domains).
+
+By specifying “vif” directives in the domain configuration files, administrators can define network interfaces, assign IP addresses, set up VLANs, and configure other networking parameters for virtual machines running on Xen hosts. For example: vif = [‘bridge=xenbr0’], in this case, it connects the VM’s network interface to the Xen bridge named “xenbr0”.
+
+#### Xen Lab
+
+Use this script for lab provisioning: [\xen.sh](../scripts/xen/xen.sh)
 
 #### 💻 351.2 Important Commands
 
@@ -669,14 +678,6 @@ xl block-attach 2 'file:/home/vagrant/isos/ubuntu/seed.iso,xvdc:cdrom,r'
 xl cd-insert lpic3-hvm-guest-ubuntu xvdb  /home/vagrant/isos/ubuntu/ubuntu-24.04.1-live-server-amd64.iso
 xl cd-eject lpic3-hvm-guest-ubuntu xvdb
 ```
-
-#### 251.2 Notes
-
-##### vif
-
-In Xen, “vif” stands for Virtual Interface and is used to configure networking for virtual machines (domains).
-
-By specifying “vif” directives in the domain configuration files, administrators can define network interfaces, assign IP addresses, set up VLANs, and configure other networking parameters for virtual machines running on Xen hosts. For example: vif = [‘bridge=xenbr0’], in this case, it connects the VM’s network interface to the Xen bridge named “xenbr0”.
 
 <p align="right">(<a href="#topic-351.2">back to sub Topic 351.2</a>)</p>
 <p align="right">(<a href="#topic-351">back to Topic 351</a>)</p>
