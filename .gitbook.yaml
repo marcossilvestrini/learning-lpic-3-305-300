@@ -1,6 +1,6 @@
-root: docs
+﻿root: docs
 title: "LPIC 305-300"
 description: "Study guide for LPIC-3 Virtualization certification"
 language: "en"
-structure:  
+structure:
   summary: ../SUMMARY.md
