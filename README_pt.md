@@ -4,9 +4,9 @@
 
 * * *
 
-[Minha licença][license-url][Garfos][forks-url][Stargazers][stars-url][Colaboradores][contributors-url][Problemas][issues-url]
+[![MIT License][license-shield]][license-url][![Forks][forks-shield]][forks-url][![Stargazers][stars-shield]][stars-url][![Contributors][contributors-shield]][contributors-url][![Issues][issues-shield]][issues-url]
 
-## [LinkedIn][linkedin-url]
+## [![LinkedIn][linkedin-shield]][linkedin-url]
 
 # 📚 Aprendendo Lpic-3 305-300
 
@@ -226,7 +226,7 @@ man COMMAND
 
 ## 🖥️ Tópico 351: Virtualização completa
 
-![LPIC3-305-300](images/virtualization-351.png)
+![Virtualization](images/virtualization-351.png)
 
 * * *
 
@@ -610,7 +610,7 @@ O XEN é um hipervisor de código aberto tipo 1 (sem metal), que permite que vá
 
 #### 🏢 Xensource
 
-A Xensource foi a empresa fundada pelos desenvolvedores originais do Xen Hypervisor da Universidade de Cambridge para comercializar a Xen. A empresa forneceu soluções corporativas com base no XEN e ofereceu ferramentas e suporte adicionais para aprimorar os recursos da XEN para uso corporativo.
+A Xensource foi a empresa fundada pelos desenvolvedores originais do Xen Hypervisor da Universidade de Cambridge para comercializar a Xen. A empresa forneceu soluções corporativas com base no XEN e ofereceu ferramentas e suporte adicionais para aprimorar os recursos do XEN para uso corporativo.
 
 -   **Aquisição pela Citrix**: Em 2007, a Xensource foi adquirida pela Citrix Systems, Inc. A Citrix usou a tecnologia Xen como base para o seu produto Citrix Xenserver, que se tornou uma popular plataforma de virtualização de grau corporativo baseado em Xen.
 -   **Transição**: Após a aquisição, o projeto Xen continuou como um projeto de código aberto, enquanto a Citrix se concentrou em ofertas comerciais como Xenserver, alavancando a tecnologia Xensource.
@@ -619,7 +619,7 @@ A Xensource foi a empresa fundada pelos desenvolvedores originais do Xen Hypervi
 
 O projeto XEN refere-se à comunidade de código aberto e à iniciativa responsável pelo desenvolvimento e manutenção do hipervisor Xen após sua comercialização. O projeto Xen opera sob a Fundação Linux, com foco na construção, melhoria e apoio a Xen como um esforço colaborativo e orientado pela comunidade.
 
--   **Metas:**O projeto XEN visa avançar o hipervisor, melhorando seu desempenho, segurança e conjunto de recursos para uma ampla gama de casos de uso, incluindo computação em nuvem, virtualização focada na segurança (por exemplo, Qubes OS) e sistemas incorporados.
+-   **Metas:**O projeto XEN visa avançar o hipervisor, melhorando seu desempenho, segurança e conjunto de recursos para uma ampla gama de casos de uso, incluindo computação em nuvem, virtualização focada na segurança (por exemplo, QUBES OS) e sistemas incorporados.
 -   **Colaboradores:**O projeto inclui colaboradores de várias organizações, incluindo os principais provedores de nuvem, fornecedores de hardware e desenvolvedores independentes.
 -   **Pílula e hedools:**O projeto XEN também inclui ferramentas como XAPI (XenAPI), que é usado para gerenciar instalações do Xen Hypervisor e vários outros utilitários para gerenciamento e otimização do sistema.
 
@@ -731,7 +731,6 @@ xen-tscmode(7)
 
 /etc/xen/auto/
 
-
 # set domain for up after xen reboot
 ## create folder auto
 cd /etc/xen && mkdir -p auto && cd auto
@@ -739,6 +738,16 @@ cd /etc/xen && mkdir -p auto && cd auto
 # create symbolic link
 ln -s /etc/xen/lpic3-pv-guest /etc/xen/auto/lpic3-pv-guest
 ```
+
+##### VIF
+
+Em Xen, "VIF" significa interface virtual e é usado para configurar a rede para máquinas virtuais (domínios).
+
+Ao especificar as diretrizes "VIF" nos arquivos de configuração do domínio, os administradores podem definir interfaces de rede, atribuir endereços IP, configurar VLANs e configurar outros parâmetros de rede para máquinas virtuais em execução em hosts XEN. Por exemplo: VIF =[=Bridge  Xenbr0], neste caso, conecta a interface de rede da VM à ponte Xen chamada "XenBr0".
+
+#### Xen Lab
+
+Use este script para provisionamento de laboratório:[xen.sh](scripts/xen/xen.sh)
 
 #### 💻 351.2 Comandos importantes
 
@@ -893,14 +902,6 @@ xl block-attach 2 'file:/home/vagrant/isos/ubuntu/seed.iso,xvdc:cdrom,r'
 xl cd-insert lpic3-hvm-guest-ubuntu xvdb  /home/vagrant/isos/ubuntu/ubuntu-24.04.1-live-server-amd64.iso
 xl cd-eject lpic3-hvm-guest-ubuntu xvdb
 ```
-
-#### 251.2 Notas
-
-##### VIF
-
-Em Xen, "VIF" significa interface virtual e é usado para configurar a rede para máquinas virtuais (domínios).
-
-Ao especificar as diretrizes "VIF" nos arquivos de configuração do domínio, os administradores podem definir interfaces de rede, atribuir endereços IP, configurar VLANs e configurar outros parâmetros de rede para máquinas virtuais em execução em hosts XEN. Por exemplo: VIF =[=Bridge  Xenbr0], neste caso, conecta a interface de rede da VM à ponte Xen chamada "XenBr0".
 
 <p align="right">(<a href="#topic-351.2">back to sub Topic 351.2</a>)</p>
 <p align="right">(<a href="#topic-351">back to Topic 351</a>)</p>
@@ -1901,7 +1902,7 @@ timeline
 
 **Peso:**7
 
-**Descrição:**Os candidatos devem entender o conceito de virtualização de contêineres. Isso inclui a compreensão dos componentes do Linux usados ​​para implementar a virtualização de contêineres, bem como usar as ferramentas padrão do Linux para solucionar esses componentes.
+**Descrição:**Os candidatos devem entender o conceito de virtualização de contêineres. Isso inclui a compreensão dos componentes do Linux usados ​​para implementar a virtualização de contêineres, bem como usar as ferramentas padrão do Linux para solucionar problemas desses componentes.
 
 **Principais áreas de conhecimento:**
 
@@ -1938,7 +1939,7 @@ capsh
 
 ![container](images/containers1.png)
 
-Os contêineres são uma tecnologia de virtualização leve que empacota aplicativos, juntamente com as dependências necessárias - código, bibliotecas, variáveis ​​de ambiente e arquivos de configuração - em unidades isoladas, portáteis e reproduzíveis.
+Os contêineres são uma tecnologia de virtualização leve que empacota aplicativos junto com as dependências necessárias - código, bibliotecas, variáveis ​​de ambiente e arquivos de configuração - em unidades isoladas, portáteis e reproduzíveis.
 
 > Em termos simples: um contêiner é uma caixa de autocontrole que executa seu aplicativo da mesma maneira, em qualquer lugar.
 
@@ -2575,7 +2576,7 @@ Resumo
     **contêiner**pode ser usado por conta própria (via`ctr`ou`nerdctl`) ou como um back -end para Docker e Kubernetes.
 -   **Tempos de execução plug-and-play:**
 
-    Obrigado a**OCI**, você pode trocar o Runc por outro tempo de execução compatível com OCI (como os contêineres KATA para VMS, Gvisor for Sandboxing) sem alterar a maneira como você cria ou gerencia imagens.
+    Obrigado a**OCI**, você pode trocar o Runc por outro tempo de execução compatível com OCI (como os contêineres KATA para VMS, Gvisor for Sandboxing) sem alterar a maneira como você constrói ou gerencia imagens.
 
 * * *
 
@@ -3660,11 +3661,11 @@ Docker compõe -d
 Docker compor ps
 Docker compor logs -f
 
-## Docker + Containerd + Shim + Runc Architecture
+#### Docker + Containerd + Shim + Runc Architecture
 
 ![Docker shim architecture example](images/docker-shim.png)
 
-### 🔹 Componentes principais
+##### 🔹 Componentes principais
 
 -   **Docker Cli / Docker Daemon (`dockerd`)**
 
@@ -3686,7 +3687,7 @@ Docker compor logs -f
 
 * * *
 
-### 🔹 Fluxo de execução
+##### 🔹 Fluxo de execução
 
 1.  **Usuário**corre`docker run ...`→ O**Docker Daemon**é chamado.
 2.  **Docker Daemon**delegados para**contêiner**.
@@ -3696,7 +3697,7 @@ Docker compor logs -f
 
 * * *
 
-### 🔹 Benefícios da camada de calço
+##### 🔹 Benefícios da camada de calço
 
 -   **Resiliência**→ Os contêineres continuam correndo mesmo que`dockerd`ou`containerd`travar ou reiniciar.
 -   **Log**→ mantém fluxos de log de contêineres para`docker logs`ou`kubectl logs`.
@@ -4102,7 +4103,7 @@ Link do projeto:<https://github.com/marcossilvestrini/learning-lpic-3-305-300>
     -   [Doc](https://www.qemu.org/)
     -   [Baixe imagens osboxes](https://www.osboxes.org/)
     -   [Faça o download de imagens linuximages](https://www.linuxvmimages.com/)
-    -   [Urina](https://en.wikibooks.org/wiki/QEMU/Devices/Virtio)
+    -   [Urbano](https://en.wikibooks.org/wiki/QEMU/Devices/Virtio)
     -   [Agente convidado](https://wiki.qemu.org/Features/GuestAgent)
 -   [Libvirt](<>)
 
