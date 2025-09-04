@@ -13,7 +13,6 @@ export LANG=C
 # 🏠 Change to vagrant home directory
 cd /home/vagrant || exit
 
-
 # 🕵️ Detect OS release information
 RELEASE_INFO=$(cat /etc/*release 2>/dev/null)
 
@@ -30,7 +29,8 @@ if echo "$RELEASE_INFO" | grep -q -i "debian\|ubuntu"; then
         btrfs-progs \
         tree whois \
         ca-certificates curl gnupg lsb-release \
-        cgroup-tools jq yq
+        cgroup-tools \
+        jq yq
        
     # clean up apt cache
     sudo apt clean
@@ -43,7 +43,6 @@ if echo "$RELEASE_INFO" | grep -q -i "debian\|ubuntu"; then
     sudo chmod 644 /etc/profile.d/profile_debian
     sudo cp -f configs/commons/.vimrc .vimrc
     sudo cp -f configs/commons/.vimrc /root/.vimrc
-
 
     # Clear residual files and ensure directory exists
     sudo rm -f /etc/apt/trusted.gpg.d/docker.gpg /usr/share/keyrings/docker-archive-keyring.gpg
@@ -82,9 +81,9 @@ if echo "$RELEASE_INFO" | grep -q -i "debian\|ubuntu"; then
     sudo systemctl start containerd.service
 
     # Configure user permissions
-    sudo groupadd docker
-    sudo usermod -aG docker vagrant    
-    newgrp docker
+    sudo groupadd docker || true
+    sudo usermod -aG docker vagrant || true
+    newgrp docker || true
 
 elif echo "$RELEASE_INFO" | grep -q -i "oracle"; then
     # Oracle Linux detected
@@ -190,6 +189,4 @@ else
         echo "Added entry: $IPV4 $HOSTNAME"
     fi
 fi
-
-
-
+# -------------------------------------------------
