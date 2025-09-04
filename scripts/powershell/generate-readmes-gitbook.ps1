@@ -44,9 +44,9 @@ function Remove-StrangeChars {
   $clean = $Text
   # Strip BOM if any
   if ($clean.Length -gt 0 -and [int]$clean[0] -eq 0xFEFF) { $clean = $clean.Substring(1) }
-  # Remove zero-width and stray BOMs in body
-  $clean = $clean -replace "`u200B",''
-  $clean = $clean -replace "`uFEFF",''
+  # Remove zero-width and stray BOMs in body  
+  $clean = $clean -replace "`u{200B}",''
+  $clean = $clean -replace "`u{FEFF}",''
   # Normalize line-endings
   $clean = $clean -replace "`r`n","`n" -replace "`r","`n"
   return $clean
