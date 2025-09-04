@@ -2342,18 +2342,18 @@ Tradicionalmente no Linux, o usuário raiz tem acesso irrestrito ao sistema. Os 
 
 Isso aprimora a segurança do sistema, aplicando o princípio do menor privilégio.
 
-| 🔐 Capacidade          | 📋 Descrição                                               |
-| ---------------------- | ---------------------------------------------------------- |
-| `CAP_CHOWN`            | Change file owner regardless of permissions                |
-| `CAP_NET_BIND_SERVICE` | Ligue para as portas abaixo de 1024 (por exemplo, 80, 443) |
-| `CAP_SYS_TIME`         | Defina o relógio do sistema                                |
-| `CAP_SYS_ADMIN`        | ⚠️ Muito poderoso - inclui Mount, BPF e muito mais         |
-| `CAP_NET_RAW`          | Use soquetes crus (por exemplo, ping, traceroute)          |
-| `CAP_SYS_PTRACE`       | Rastrear outros processos (depuração)                      |
-| `CAP_KILL`             | Envie sinais para qualquer processo                        |
-| `CAP_DAC_OVERRIDE`     | Modificar arquivos e diretórios sem permissão              |
-| `CAP_SETUID`           | Alterar ID de usuário (UID) do processo                    |
-| `CAP_NET_ADMIN`        | Gerenciar interfaces de rede, roteamento, etc.             |
+| 🔐 Capacidade          | 📋 Descrição                                                        |
+| ---------------------- | ------------------------------------------------------------------- |
+| `CAP_CHOWN`            | Alterar o proprietário do arquivo, independentemente das permissões |
+| `CAP_NET_BIND_SERVICE` | Ligue para as portas abaixo de 1024 (por exemplo, 80, 443)          |
+| `CAP_SYS_TIME`         | Defina o relógio do sistema                                         |
+| `CAP_SYS_ADMIN`        | ⚠️ Muito poderoso - inclui Mount, BPF e muito mais                  |
+| `CAP_NET_RAW`          | Use soquetes crus (por exemplo, ping, traceroute)                   |
+| `CAP_SYS_PTRACE`       | Rastrear outros processos (depuração)                               |
+| `CAP_KILL`             | Envie sinais para qualquer processo                                 |
+| `CAP_DAC_OVERRIDE`     | Modificar arquivos e diretórios sem permissão                       |
+| `CAP_SETUID`           | Alterar ID de usuário (UID) do processo                             |
+| `CAP_NET_ADMIN`        | Gerenciar interfaces de rede, roteamento, etc.                      |
 
 🔐 Alguns tipos de recursos do Linux
 
@@ -2575,7 +2575,7 @@ Resumo
     **contêiner**pode ser usado por conta própria (via`ctr`ou`nerdctl`) ou como um back -end para Docker e Kubernetes.
 -   **Tempos de execução plug-and-play:**
 
-    Obrigado a**OCI**, você pode trocar o Runc por outro tempo de execução compatível com OCI (como os contêineres KATA para VMS, Gvisor for Sandboxing) sem alterar a maneira como você cria ou gerencia imagens.
+    Obrigado a**OCI**, você pode trocar o Runc por outro tempo de execução compatível com OCI (como os contêineres KATA para VMS, Gvisor for Sandboxing) sem alterar a maneira como você constrói ou gerencia imagens.
 
 * * *
 
