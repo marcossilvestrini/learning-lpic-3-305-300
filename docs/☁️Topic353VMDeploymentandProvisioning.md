@@ -1,4 +1,4 @@
-﻿# ☁️ Topic 353: VM Deployment and Provisioning
+# ☁️ Topic 353: VM Deployment and Provisioning
 
 ---
 

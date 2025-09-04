@@ -1,4 +1,4 @@
-﻿# 🔍 Inspect commands
+# 🔍 Inspect commands
 
 ```sh
 type COMMAND

@@ -1,4 +1,4 @@
-﻿# 📖 About Project
+# 📖 About Project
 
 > This project aims to help students or professionals to learn the main concepts of GNULinux
 > and free software

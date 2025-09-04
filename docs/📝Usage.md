@@ -1,4 +1,4 @@
-﻿# 📝 Usage
+# 📝 Usage
 
 Use this repository for get learning about LPIC-3 305-300 exam
 

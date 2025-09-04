@@ -1,4 +1,4 @@
-﻿# 🗽 Four Essential Freedoms
+# 🗽 Four Essential Freedoms
 
 > 0.The freedom to run the program as you wish, for any purpose (freedom 0).
 > 1.The freedom to study how the program works, and change it so it does
