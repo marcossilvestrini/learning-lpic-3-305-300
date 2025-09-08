@@ -201,6 +201,8 @@
   * [Containerd x Docker](https://www.docker.com/blog/containerd-vs-docker/)
   * [Install]( https://docs.docker.com/engine/install/)
   * [Daemon Configuration]( https://docs.docker.com/engine/daemon/)
+  * [Docker Images](https://docs.docker.com/engine/storage/drivers/#images-and-layers)
+  * [Docker Hub](https://hub.docker.com/)
   * [Testcontainers](https://testcontainers.com/)
 * [Openstack Docs]()
 
