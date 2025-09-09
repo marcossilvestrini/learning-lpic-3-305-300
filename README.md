@@ -3643,12 +3643,27 @@ These containers ensure  **consistency across environments** , speed up deployme
 
 ---
 
+#### Docker Images
+
+![docker-images](images/docker-images.png)
+
+ - Concept: immutable package with app, dependencies, and metadata.
+ - Layers and cache: each Dockerfile instruction becomes a reusable layer; builds and pulls share layers.
+ - Naming: `registry/namespace/repo:tag` (e.g., `docker.io/library/nginx:1.27`).
+ - Digest: use `@sha256:...` to pin exact content (good for production).
+ - Image vs container: image is read-only; container is an instance with an ephemeral write layer.
+ - Basic commands: `docker image ls`, `docker pull`, `docker run`, `docker inspect`, `docker history`, `docker tag`, `docker push`, `docker rmi`, `docker image prune -a`, `docker save`/`docker load`.
+ - Best practices: minimal base (alpine/distroless), multi-stage builds, pin versions/tags, run as non-root `USER`.
+
+---
+
 #### 🧩 Docker Compose
 
 Tool to define and run **multi-container applications** via YAML:
 
 **docker-compose.yml example**
 
+```yaml
 version: "3.9"
 services:
   web:
@@ -3663,12 +3678,15 @@ services:
     image: postgres:15
     environment:
       - POSTGRES_PASSWORD=secret
+```
 
 Run:
 
+```sh
 docker compose up -d
 docker compose ps
 docker compose logs -f
+```
 
 #### Docker + containerd + shim + runc Architecture
 
