@@ -3647,13 +3647,14 @@ These containers ensure  **consistency across environments** , speed up deployme
 
 ![docker-images](images/docker-images.png)
 
- - Concept: immutable package with app, dependencies, and metadata.
- - Layers and cache: each Dockerfile instruction becomes a reusable layer; builds and pulls share layers.
- - Naming: `registry/namespace/repo:tag` (e.g., `docker.io/library/nginx:1.27`).
- - Digest: use `@sha256:...` to pin exact content (good for production).
- - Image vs container: image is read-only; container is an instance with an ephemeral write layer.
- - Basic commands: `docker image ls`, `docker pull`, `docker run`, `docker inspect`, `docker history`, `docker tag`, `docker push`, `docker rmi`, `docker image prune -a`, `docker save`/`docker load`.
- - Best practices: minimal base (alpine/distroless), multi-stage builds, pin versions/tags, run as non-root `USER`.
+* Concept: immutable package with app, dependencies, and metadata.
+* Layers and cache: each Dockerfile instruction becomes a reusable layer
+* Builds and pulls share layers.
+* Naming: `registry/namespace/repo:tag` (e.g., `docker.io/library/nginx:1.27`).
+* Digest: use `@sha256:...` to pin exact content (good for production).
+* Image vs container: image is read-only; container is an instance with an ephemeral write layer.
+* Basic commands: `docker image ls`, `docker pull`, `docker run`, `docker inspect`, `docker history`, `docker tag`, `docker push`, `docker rmi`, `docker image prune -a`, `docker save`/`docker load`.
+* Best practices: minimal base (alpine/distroless), multi-stage builds, pin versions/tags, run as non-root `USER`.
 
 ---
 
@@ -3748,22 +3749,59 @@ docker compose logs -f
 ##### 🐳 docker
 
 ```sh
-# files
+############ FILES ############
 /var/lib/docker
 /etc/docker/daemon.json
 
-
+############ DAEMON ############
 # get version
 docker --version
 
 # docker infos
 docker info
 
+############ MANAGE IMAGES ############
+# pull image from docker hub
+docker pull nginx:latest
+
+# list images
+docker image ls
+docker images
+docker images -a
+docker images --format "{{.Repository}}: {{.Tag}} {{.Size}}"
+
+# docker image inspect
+docker image inspect nginx:latest
+docker inspect nginx:latest
+docker inspect --format '{{.Id}}' nginx:latest
+docker image inspect --format "{{json .RootFS.Layers}}" acme/my-base-image:1.0
+
+# remove image
+docker image rm nginx:latest
+docker rmi nginx:latest
+docker rmi -f nginx:latest
+docker image prune -a
+
+# docker history
+docker history nginx:latest
+
+############ MANAGE CONTAINERS ############
+
 # create container
 docker run hello-world
 docker run -it ubuntu bash
 
-################ OTHERS COMMANDS ################
+# list containers
+docker container ls
+docker container ls -a
+docker ps
+docker ps -a
+
+# get size of containers
+docker ps -s
+docker ps --size --format "table {{.ID}}\t{{.Image}}\t{{.Names}}\t{{.Size}}"
+
+############ OTHERS COMMANDS ############
 
 # get PID of container
 docker inspect --format '{{.State.Pid}}' <container_id|name>
