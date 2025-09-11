@@ -88,15 +88,15 @@
 
 ## 📖 Sobre o projeto
 
-> Este projeto tem como objetivo ajudar estudantes ou profissionais a aprender os principais conceitos de gnulinux
-> e software livre
-> Algumas distribuições de Gnulinux como Debian e RPM serão cobertas
-> Instalação e configuração de alguns pacotes também serão cobertas
-> Ao fazer isso, você pode dar a toda a comunidade a chance de se beneficiar de suas mudanças.
-> O acesso ao código -fonte é uma condição prévia para isso.
-> Use o Vagrant para máquinas UP e execute laboratórios e pratique o conteúdo deste artigo.
-> Eu publiquei na pasta Vagrant um VagrantFile com o que é necessário
-> para você fazer upload de um ambiente para estudos
+> This project aims to help students or professionals to learn the main concepts of GNULinux
+> and free software
+> Some GNULinux distributions like Debian and RPM will be covered
+> Installation and configuration of some packages will also be covered
+> By doing this you can give the whole community a chance to benefit from your changes.
+> Access to the source code is a precondition for this.
+> Use vagrant for up machines and execute labs and practice content in this article.
+> I have published in folder Vagrant a Vagrantfile with what is necessary
+> for you to upload an environment for studies
 
 * * *
 
@@ -304,7 +304,7 @@ Executa em cima de um sistema operacional convencional, contando com o sistema o
 ##### ⚖️ Diferenças -chave entre os hipervisores do tipo 1 e do tipo 2
 
 -   Ambiente de implantação:
-    -   Os hipervisores tipo 1 são comumente implantados em data centers e ambientes corporativos devido à sua interação direta com hardware e alto desempenho.
+    -   Os hipervisores do tipo 1 são comumente implantados em data centers e ambientes corporativos devido à sua interação direta com hardware e alto desempenho.
     -   Os hipervisores do tipo 2 são mais adequados para tarefas de uso pessoal, desenvolvimento, teste e virtualização em pequena escala.
 -   Desempenho:
     -   Os hipervisores do tipo 1 geralmente oferecem melhor desempenho e menor latência porque não confiam em um sistema operacional host.
@@ -610,7 +610,7 @@ O XEN é um hipervisor de código aberto tipo 1 (sem metal), que permite que vá
 
 #### 🏢 Xensource
 
-A Xensource foi a empresa fundada pelos desenvolvedores originais do Xen Hypervisor da Universidade de Cambridge para comercializar a Xen. A empresa forneceu soluções corporativas com base no XEN e ofereceu ferramentas e suporte adicionais para aprimorar os recursos do XEN para uso corporativo.
+A Xensource foi a empresa fundada pelos desenvolvedores originais do Xen Hypervisor da Universidade de Cambridge para comercializar a Xen. A empresa forneceu soluções corporativas com base no XEN e ofereceu ferramentas e suporte adicionais para aprimorar os recursos da XEN para uso corporativo.
 
 -   **Aquisição pela Citrix**: Em 2007, a Xensource foi adquirida pela Citrix Systems, Inc. A Citrix usou a tecnologia Xen como base para o seu produto Citrix Xenserver, que se tornou uma popular plataforma de virtualização de grau corporativo baseado em Xen.
 -   **Transição**: Após a aquisição, o projeto Xen continuou como um projeto de código aberto, enquanto a Citrix se concentrou em ofertas comerciais como Xenserver, alavancando a tecnologia Xensource.
@@ -619,7 +619,7 @@ A Xensource foi a empresa fundada pelos desenvolvedores originais do Xen Hypervi
 
 O projeto XEN refere-se à comunidade de código aberto e à iniciativa responsável pelo desenvolvimento e manutenção do hipervisor Xen após sua comercialização. O projeto Xen opera sob a Fundação Linux, com foco na construção, melhoria e apoio a Xen como um esforço colaborativo e orientado pela comunidade.
 
--   **Metas:**O projeto XEN visa avançar o hipervisor, melhorando seu desempenho, segurança e conjunto de recursos para uma ampla gama de casos de uso, incluindo computação em nuvem, virtualização focada na segurança (por exemplo, QUBES OS) e sistemas incorporados.
+-   **Metas:**O projeto XEN visa avançar o hipervisor, melhorando seu desempenho, segurança e conjunto de recursos para uma ampla gama de casos de uso, incluindo computação em nuvem, virtualização focada na segurança (por exemplo, Qubes OS) e sistemas incorporados.
 -   **Colaboradores:**O projeto inclui colaboradores de várias organizações, incluindo os principais provedores de nuvem, fornecedores de hardware e desenvolvedores independentes.
 -   **Pílula e hedools:**O projeto XEN também inclui ferramentas como XAPI (XenAPI), que é usado para gerenciar instalações do Xen Hypervisor e vários outros utilitários para gerenciamento e otimização do sistema.
 
@@ -1902,7 +1902,7 @@ timeline
 
 **Peso:**7
 
-**Descrição:**Os candidatos devem entender o conceito de virtualização de contêineres. Isso inclui a compreensão dos componentes do Linux usados ​​para implementar a virtualização de contêineres, bem como usar as ferramentas padrão do Linux para solucionar problemas desses componentes.
+**Descrição:**Os candidatos devem entender o conceito de virtualização de contêineres. Isso inclui a compreensão dos componentes do Linux usados ​​para implementar a virtualização de contêineres, bem como usar as ferramentas padrão do Linux para solucionar esses componentes.
 
 **Principais áreas de conhecimento:**
 
@@ -1939,7 +1939,7 @@ capsh
 
 ![container](images/containers1.png)
 
-Os contêineres são uma tecnologia de virtualização leve que empacota aplicativos junto com as dependências necessárias - código, bibliotecas, variáveis ​​de ambiente e arquivos de configuração - em unidades isoladas, portáteis e reproduzíveis.
+Os contêineres são uma tecnologia de virtualização leve que empacota aplicativos, juntamente com as dependências necessárias - código, bibliotecas, variáveis ​​de ambiente e arquivos de configuração - em unidades isoladas, portáteis e reproduzíveis.
 
 > Em termos simples: um contêiner é uma caixa de autocontrole que executa seu aplicativo da mesma maneira, em qualquer lugar.
 
@@ -2196,13 +2196,13 @@ Os namespaces criam ambientes separados para processos (como PID, rede ou montag
 
 ⚙️ Capacidades -chave
 
-| Recurso                   | Descrição                                                        |
-| ------------------------- | ---------------------------------------------------------------- |
-| **Limitação de recursos** | Impor limites para quanto de um recurso um grupo pode usar       |
-| **Priorização**           | Alocar mais prioridade da CPU/IO para alguns grupos sobre outros |
-| **Contabilidade**         | Rastrear o uso de recursos por grupo                             |
-| **Controlar**             | Suspender, retomar ou matar processos a granel                   |
-| **Isolamento**            | Impedir a fome de recursos entre os grupos                       |
+| Recurso                   | Descrição                                                  |
+| ------------------------- | ---------------------------------------------------------- |
+| **Limitação de recursos** | Impor limites para quanto de um recurso um grupo pode usar |
+| **Priorização**           | Allocate more CPU/IO priority to some groups over others   |
+| **Contabilidade**         | Rastrear o uso de recursos por grupo                       |
+| **Controlar**             | Suspender, retomar ou matar processos a granel             |
+| **Isolamento**            | Impedir a fome de recursos entre os grupos                 |
 
 ##### 📦 Subsistemas (controladores)
 
@@ -2576,7 +2576,7 @@ Resumo
     **contêiner**pode ser usado por conta própria (via`ctr`ou`nerdctl`) ou como um back -end para Docker e Kubernetes.
 -   **Tempos de execução plug-and-play:**
 
-    Obrigado a**OCI**, você pode trocar o Runc por outro tempo de execução compatível com OCI (como os contêineres KATA para VMS, Gvisor for Sandboxing) sem alterar a maneira como você constrói ou gerencia imagens.
+    Obrigado a**OCI**, você pode trocar o Runc por outro tempo de execução compatível com OCI (como os contêineres KATA para VMS, Gvisor for Sandboxing) sem alterar a maneira como você cria ou gerencia imagens.
 
 * * *
 
@@ -3629,37 +3629,51 @@ Esses contêineres garantem**consistência entre ambientes**, acelere as implant
 
 * * *
 
+#### Imagens do Docker
+
+![docker-images](images/docker-images.png)
+
+-   Conceito: pacote imutável com aplicativo, dependências e metadados.
+-   Camadas e cache: cada instrução do Dockerfile se torna uma camada reutilizável
+-   Construa e puxa camadas de compartilhamento.
+-   Nati:`registry/namespace/repo:tag`(Por exemplo,`docker.io/library/nginx:1.27`).
+-   Digest: Use`@sha256:...`Para fixar o conteúdo exato (bom para produção).
+-   Imagem vs Container: A imagem é somente leitura; O contêiner é uma instância com uma camada de gravação efêmero.
+-   Comandos básicos:`docker image ls`,`docker pull`,`docker run`,`docker inspect`,`docker history`,`docker tag`,`docker push`,`docker rmi`,`docker image prune -a`,`docker save`/`docker load`.
+-   Melhores práticas: base mínima (alpina/distrolisa), compilações em vários estágios, versões/tags de pinos, executadas como não raiz`USER`.
+
+* * *
+
 #### 🧩 Docker Compose
 
 Ferramenta para definir e executar**Aplicativos multi-containers**via yaml:
 
 **Exemplo de Docker-compose.yml**
 
-Versão: "3.9"
-Serviços:
+```yaml
+version: "3.9"
+services:
   web:
-    Imagem: nginx: mais recente
-    Portas:
-
+    image: nginx:latest
+    ports:
       - "8080:80"
-
-aplicativo:
-    Build :./App
-    ambiente:
-
+  app:
+    build: ./app
+    environment:
       - DB_HOST=db
-
-DB:
-    Imagem: Postgres: 15
-    ambiente:
-
+  db:
+    image: postgres:15
+    environment:
       - POSTGRES_PASSWORD=secret
+```
 
 Correr:
 
-Docker compõe -d
-Docker compor ps
-Docker compor logs -f
+```sh
+docker compose up -d
+docker compose ps
+docker compose logs -f
+```
 
 #### Docker + Containerd + Shim + Runc Architecture
 
@@ -3721,22 +3735,59 @@ Docker compor logs -f
 ##### 🐳 Docker
 
 ```sh
-# files
+############ FILES ############
 /var/lib/docker
 /etc/docker/daemon.json
 
-
+############ DAEMON ############
 # get version
 docker --version
 
 # docker infos
 docker info
 
+############ MANAGE IMAGES ############
+# pull image from docker hub
+docker pull nginx:latest
+
+# list images
+docker image ls
+docker images
+docker images -a
+docker images --format "{{.Repository}}: {{.Tag}} {{.Size}}"
+
+# docker image inspect
+docker image inspect nginx:latest
+docker inspect nginx:latest
+docker inspect --format '{{.Id}}' nginx:latest
+docker image inspect --format "{{json .RootFS.Layers}}" acme/my-base-image:1.0
+
+# remove image
+docker image rm nginx:latest
+docker rmi nginx:latest
+docker rmi -f nginx:latest
+docker image prune -a
+
+# docker history
+docker history nginx:latest
+
+############ MANAGE CONTAINERS ############
+
 # create container
 docker run hello-world
 docker run -it ubuntu bash
 
-################ OTHERS COMMANDS ################
+# list containers
+docker container ls
+docker container ls -a
+docker ps
+docker ps -a
+
+# get size of containers
+docker ps -s
+docker ps --size --format "table {{.ID}}\t{{.Image}}\t{{.Names}}\t{{.Size}}"
+
+############ OTHERS COMMANDS ############
 
 # get PID of container
 docker inspect --format '{{.State.Pid}}' <container_id|name>
@@ -4103,7 +4154,7 @@ Link do projeto:<https://github.com/marcossilvestrini/learning-lpic-3-305-300>
     -   [Doc](https://www.qemu.org/)
     -   [Baixe imagens osboxes](https://www.osboxes.org/)
     -   [Faça o download de imagens linuximages](https://www.linuxvmimages.com/)
-    -   [Urbano](https://en.wikibooks.org/wiki/QEMU/Devices/Virtio)
+    -   [Urina](https://en.wikibooks.org/wiki/QEMU/Devices/Virtio)
     -   [Agente convidado](https://wiki.qemu.org/Features/GuestAgent)
 -   [Libvirt](<>)
 
@@ -4174,6 +4225,8 @@ Link do projeto:<https://github.com/marcossilvestrini/learning-lpic-3-305-300>
     -   [Contêiner x Docker](https://www.docker.com/blog/containerd-vs-docker/)
     -   [Instalar](https://docs.docker.com/engine/install/)
     -   [Configuração de daemon](https://docs.docker.com/engine/daemon/)
+    -   [Imagens do Docker](https://docs.docker.com/engine/storage/drivers/#images-and-layers)
+    -   [Docker Hub](https://hub.docker.com/)
     -   [TestContainers](https://testcontainers.com/)
 -   [OpenStack Docs](<>)
 
