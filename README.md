@@ -10,12 +10,12 @@
 
 ---
 
-[![MIT License][license-shield]][license-url]
-[![Forks][forks-shield]][forks-url]
-[![Stargazers][stars-shield]][stars-url]
-[![Contributors][contributors-shield]][contributors-url]
-[![Issues][issues-shield]][issues-url]
-[![LinkedIn][linkedin-shield]][linkedin-url]
+[MIT License][license-url]
+[Forks][forks-url]
+[Stargazers][stars-url]
+[Contributors][contributors-url]
+[Issues][issues-url]
+[LinkedIn][linkedin-url]
 ------------------------
 
 # 📚 LEARNING LPIC-3 305-300
@@ -95,7 +95,7 @@
 
 ---
 
-<a name="about-the-project"></a>
+`<a name="about-the-project"></a>`
 
 ## 📖 About Project
 
@@ -113,13 +113,13 @@
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-<a name="getting-started"></a>
+`<a name="getting-started"></a>`
 
 ## 🚀 Getting Started
 
 For starting the learning, see the documentation above.
 
-<a name="prerequisites"></a>
+`<a name="prerequisites"></a>`
 
 ### 🛠️ Prerequisites
 
@@ -128,7 +128,7 @@ For starting the learning, see the documentation above.
 * [Vagrant VMWare Utility](https://developer.hashicorp.com/vagrant/install/vmware)
 * [Vagrant](https://developer.hashicorp.com/vagrant/install)
 
-<a name="installation"></a>
+`<a name="installation"></a>`
 
 ### 💾 Installation
 
@@ -152,7 +152,7 @@ Customize network configuration in files [configs/network](configs/network/).
 
 ---
 
-<a name="usage"></a>
+`<a name="usage"></a>`
 
 ## 📝 Usage
 
@@ -193,7 +193,7 @@ vagrant/destroy.ps1
 
 ---
 
-<a name="roadmap"></a>
+`<a name="roadmap"></a>`
 
 ## 🛣️ Roadmap
 
@@ -206,7 +206,7 @@ vagrant/destroy.ps1
 
 ---
 
-<a name="freedoms"></a>
+`<a name="freedoms"></a>`
 
 ## 🗽 Four Essential Freedoms
 
@@ -234,7 +234,7 @@ man COMMAND
 
 ---
 
-<a name="topic-351"></a>
+`<a name="topic-351"></a>`
 
 ## 🖥️ Topic 351: Full Virtualization
 
@@ -242,7 +242,7 @@ man COMMAND
 
 ---
 
-<a name="topic-351.1"></a>
+`<a name="topic-351.1"></a>`
 
 ### 🧠 351.1 Virtualization Concepts and Theory
 
@@ -587,7 +587,7 @@ Despite this drawback, emulation remains valuable for running legacy software, t
 
 ---
 
-<a name="topic-351.2"></a>
+`<a name="topic-351.2"></a>`
 
 ### 🐧 351.2 Xen
 
@@ -923,7 +923,7 @@ xl cd-eject lpic3-hvm-guest-ubuntu xvdb
 
 ---
 
-<a name="topic-351.3"></a>
+`<a name="topic-351.3"></a>`
 
 ### 🖥️ 351.3 QEMU
 
@@ -1216,7 +1216,7 @@ qemu-system-x86_x64
 
 ---
 
-<a name="topic-351.4"></a>
+`<a name="topic-351.4"></a>`
 
 ### 🏢 351.4 Libvirt Virtual Machine Management
 
@@ -1596,7 +1596,7 @@ less /etc/libvirt/qemu/debian-server01.xml
 
 ---
 
-<a name="topic-351.5"></a>
+`<a name="topic-351.5"></a>`
 
 ### 💾 351.5 Virtual Machine Disk Image Management
 
@@ -1887,13 +1887,13 @@ The generated package has the .ova extension and contains the following files:
 
 ---
 
-<a name="topic-352"></a>
+`<a name="topic-352"></a>`
 
 ## 📦 Topic 352: container Virtualization
 
 ---
 
-<a name="topic-352.1"></a>
+`<a name="topic-352.1"></a>`
 
 ### 🧠 352.1  container Virtualization Concepts
 
@@ -2924,7 +2924,7 @@ sudo runc run mycontainer
 
 ---
 
-<a name="topic-352.2"></a>
+`<a name="topic-352.2"></a>`
 
 ### 📦 352.2 LXC
 
@@ -3576,7 +3576,7 @@ lxc launch 1u1u1u1u1u1 rockylinux9-2 -p production
 
 ---
 
-<a name="topic-352.3"></a>
+`<a name="topic-352.3"></a>`
 
 ### 🐳 352.3 Docker
 
@@ -3656,37 +3656,262 @@ These containers ensure  **consistency across environments** , speed up deployme
 * Basic commands: `docker image ls`, `docker pull`, `docker run`, `docker inspect`, `docker history`, `docker tag`, `docker push`, `docker rmi`, `docker image prune -a`, `docker save`/`docker load`.
 * Best practices: minimal base (alpine/distroless), multi-stage builds, pin versions/tags, run as non-root `USER`.
 
+##### Docker Image Layers
+
+In this example, I demonstrate a docker image layers.
+
+In the first image we have a base image of alpine and add one layer.
+
+```dockerfile
+# syntax=docker/dockerfile:1
+FROM alpine
+RUN apk add --no-cache bash
+```
+
+The second image I have a my-base-image:1.0 and add two layers, generating a new image with name acme/my-final-image:1.0.
+
+```dockerfile
+# syntax=docker/dockerfile:1
+FROM acme/my-base-image:1.0
+COPY . /app
+RUN chmod +x /app/hello.sh
+CMD /app/hello.sh
+```
+
+![docker-image-layers](images/docker-image-layers.png)
+
+##### Docker image Copy-on-Write (CoW)
+
+In this example, I demonstrate a docker image Copy-on-Write (CoW).
+
+Create a 5 containers from the same image.
+
+```sh
+docker run -dit --name my_container_1 acme/my-final-image:1.0 bash \
+  && docker run -dit --name my_container_2 acme/my-final-image:1.0 bash \
+  && docker run -dit --name my_container_3 acme/my-final-image:1.0 bash \
+  && docker run -dit --name my_container_4 acme/my-final-image:1.0 bash \
+  && docker run -dit --name my_container_5 acme/my-final-image:1.0 bash
+```
+
+See the size of the containers.
+
+```sh
+docker ps --size --format "table {{.ID}}\t{{.Image}}\t{{.Names}}\t{{.Size}}"
+```
+
+To demonstrate this, run the following command to write the word 'hello' to a file on the container's writable layer in containers my_container_1, my_container_2, and my_container_3:
+
+```sh
+for i in {1..3}; do docker exec my_container_$i sh -c 'printf hello > /out.txt'; done
+```
+
+Check the size of the containers again.
+
+```sh
+docker ps --size --format "table {{.ID}}\t{{.Image}}\t{{.Names}}\t{{.Size}}"
+```
+
+![docker-image-cow](images/docker-image-cow.png)
+
+##### 🐳 Dockerfile Image Instructions and Layers
+
+**📊 Table: Instruction vs. Layer Generation**
+
+| Instruction     | Creates a Filesystem Layer? | Notes                                                                              |
+| --------------- | --------------------------- | ---------------------------------------------------------------------------------- |
+| `FROM`        | ❌ No                       | Sets the base image; underlying layers come from it.                               |
+| `RUN`         | ✅ Yes                      | Executes filesystem changes; adds content that persists.                           |
+| `COPY`        | ✅ Yes                      | Adds files from build context into the image filesystem.                           |
+| `ADD`         | ✅ Yes                      | Similar to COPY, with additional features (URLs, tar extraction).                  |
+| `LABEL`       | ❌ No                       | Only adds metadata; doesn’t change filesystem content.                            |
+| `ENV`         | ❌ No                       | Defines environment variables; stored as metadata.                                 |
+| `ARG`         | ❌ No                       | Build-time only; does not affect final image unless used later.                    |
+| `WORKDIR`     | ❌ No                       | Changes working directory; metadata only.                                          |
+| `USER`        | ❌ No                       | Sets the user; metadata only.                                                      |
+| `EXPOSE`      | ❌ No                       | Declares exposed port(s); metadata only.                                           |
+| `ENTRYPOINT`  | ❌ No                       | Defines how container starts; metadata configuration.                              |
+| `CMD`         | ❌ No                       | Default command or args; metadata only.                                            |
+| `VOLUME`      | ✅ Yes / Partial            | Declares mount points; metadata + volumes in runtime; has filesystem implications. |
+| `HEALTHCHECK` | ❌ No                       | Defines health check config; stored as metadata.                                   |
+| `STOPSIGNAL`  | ❌ No                       | Defines signal to stop container; metadata only.                                   |
+| `SHELL`       | ❌ No                       | Changes shell for later `RUN`; metadata only.                                    |
+| `ONBUILD`     | ❌ No                       | Triggers for future builds; metadata only.                                         |
+
+**🔎 Key Insights**
+
+* Most Dockerfile instructions **create a new image layer** — even metadata changes (`CMD`, `EXPOSE`, etc.) are stored as part of the final image configuration.
+* **Heavyweight layers** come from instructions that **modify the filesystem** (`RUN`, `COPY`, `ADD`).
+* **Lightweight/metadata layers** come from instructions like `ENV`, `CMD`, `LABEL`.
+* **`ARG` is special** : it exists only at build-time and is discarded in the final image unless used in other instructions.
+* To minimize image size:
+  * Combine multiple `RUN` commands into one.
+  * Use `.dockerignore` to avoid copying unnecessary files.
+  * Order instructions to maximize Docker’s  **build cache efficiency** .
+
+---
+
+#### 🐳 Dockerfile
+
+##### 🔎 What is a Dockerfile?
+
+A **Dockerfile** is a **declarative text file** that contains a sequence of **build instructions** for constructing a Docker image. 
+
+Each instruction specifies how to configure the image: what base to use, which files to copy, what commands to run, what environment to set, and how the resulting container should behave at runtime.
+
+It is essentially the **recipe** for building immutable, reproducible container images.
+
+🧩 Key Characteristics
+
+* **Declarative** : Instead of running manual steps, you declare the desired state of the image.
+* **Layered** : Each instruction can produce an image layer, which allows caching, reusability, and efficient distribution.
+* **Portable** : Dockerfiles ensure consistency across environments (development, staging, production).
+* **Composable** : With multi-stage builds, you can chain multiple `FROM` statements to optimize for smaller, production-ready images.
+
+##### 🛠️ Core Instructions
+
+Some of the most common instructions include:
+
+* `FROM`: specifies the base image.
+* `RUN`: executes commands to install or configure software.
+* `COPY` / `ADD`: moves files from the build context into the image.
+* `ENV`, `WORKDIR`, `USER`: sets environment variables, directories, and execution context.
+* `CMD` / `ENTRYPOINT`: defines default commands or processes when the container starts.
+* `EXPOSE`, `VOLUME`, `HEALTHCHECK`: configure networking, persistent storage, and monitoring.
+
+##### 🚀 Why It Matters
+
+* **Reproducibility** : Same Dockerfile → same image → same behavior everywhere.
+* **Automation** : Enables CI/CD pipelines to build, test, and deploy containers automatically.
+* **Optimization** : Properly structured Dockerfiles minimize image size and speed up builds.
+* **Compliance** : Standardized images with fixed Dockerfiles simplify auditing, patching, and governance.
+
+✅ In short:
+
+A **Dockerfile** is the **blueprint** for Docker images — the foundation of containerized application delivery.
+
+**Dockerfile example**
+
+```dockerfile
+# syntax=docker/dockerfile:1
+FROM nginx:latest
+COPY ./html /usr/share/nginx/html
+EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]
+```
+
 ---
 
 #### 🧩 Docker Compose
 
-Tool to define and run **multi-container applications** via YAML:
+##### 📘 Docker Compose Command Reference
 
-**docker-compose.yml example**
+Docker Compose is a tool for defining and managing multi-container Docker applications using a YAML file (`docker-compose.yml`). 
+
+Below is a structured table of the main commands and their purposes.
+
+**📊 Table: Docker Compose Commands**
+
+| Command                                 | Purpose                                                                               | Example                                                                    |
+| --------------------------------------- | ------------------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
+| ▶️**`docker compose up`**           | Build, (re)create, start, and attach to containers defined in `docker-compose.yml`. | `docker compose up -d`                                                   |
+| ⏹️**`docker compose down`**         | Stop and remove containers, networks, volumes, and images created by `up`.          | `docker compose down --volumes`                                          |
+| 🔄**`docker compose restart`**  | Restart running services.                                                             | `docker compose restart web`                                             |
+| 🟢**`docker compose start`**    | Start existing containers without recreating them.                                    | `docker compose start db`                                                |
+| 🔴**`docker compose stop`**     | Stop running containers without removing them.                                        | `docker compose stop db`                                                 |
+| 🧹**`docker compose rm`**       | Remove stopped service containers.                                                    | `docker compose rm -f`                                                   |
+| 🏗️**`docker compose build`**        | Build or rebuild service images.                                                      | `docker compose build web`                                               |
+| 📥**`docker compose pull`**     | Pull service images from a registry.                                                  | `docker compose pull redis`                                              |
+| 📤**`docker compose push`**     | Push service images to a registry.                                                    | `docker compose push api`                                                |
+| 📄**`docker compose config`**   | Validate and view the Compose file.                                                   | `docker compose config`                                                  |
+| 📋**`docker compose ps`**       | List containers managed by Compose.                                                   | `docker compose ps`                                                      |
+| 📊**`docker compose top`**      | Display running processes of containers.                                              | `docker compose top`                                                     |
+| 📜**`docker compose logs`**     | View output logs from services.                                                       | `docker compose logs -f api`                                             |
+| 🔍**`docker compose exec`**     | Run a command in a running service container.                                         | `docker compose exec db psql -U postgres`                                |
+| 🐚**`docker compose run`**      | Run one-off commands in a new container.                                              | `docker compose run web sh`                                              |
+| 🔧**`docker compose override`** | Use `-f`to specify multiple Compose files (overrides).                              | `docker compose -f docker-compose.yml -f docker-compose.override.yml up` |
+| 🌐**Networking**                  | Networks are auto-created; can be declared explicitly in YAML.                        | `docker network ls`                                                      |
+| 📦**Volumes**                     | Manage persistent data; can be declared in YAML and used across services.             | `docker volume ls`                                                       |
+
+##### 🔑 Key Notes
+
+* **`up` vs `start`** : `up` builds/recreates containers, `start` only runs existing ones.
+* **`run` vs `exec`** : `run` launches a *new* container, `exec` runs inside an existing one.
+* **Config validation** : Always run `docker compose config` to check for syntax errors.
+* **Detach mode** : Use `-d` to run services in background.
+
+##### **📄 `docker-compose.yml`**
 
 ```yaml
-version: "3.9"
+version: "3.9"  # Compose file format
+
 services:
   web:
     image: nginx:latest
+    container_name: my-nginx
     ports:
-      - "8080:80"
-  app:
-    build: ./app
+      - "8080:80"             # host:container
+    volumes:
+      - ./html:/usr/share/nginx/html:ro
+    networks:
+      - app-network
+
+  api:
+    build:
+      context: ./api          # build from Dockerfile in ./api
+      dockerfile: Dockerfile
+    container_name: my-api
     environment:
-      - DB_HOST=db
+      - NODE_ENV=production
+      - API_KEY=${API_KEY}    # read from .env file
+    depends_on:
+      - db
+    ports:
+      - "3000:3000"
+    networks:
+      - app-network
+
   db:
     image: postgres:15
+    container_name: my-postgres
+    restart: always
     environment:
-      - POSTGRES_PASSWORD=secret
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: secret
+      POSTGRES_DB: appdb
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    networks:
+      - app-network
+
+volumes:
+  db-data:
+
+networks:
+  app-network:
+    driver: bridge
+
 ```
 
-Run:
+**🔎 Explanation**
+
+* **`services`** : Defines containers (`web`, `api`, `db`) that make up the app.
+* **`ports`** : Maps host ports to container ports (`8080:80`).
+* **`volumes`** :
+* Named volume (`db-data`) for persistent DB data.
+* Bind mount (`./html:/usr/share/nginx/html`) to serve static content.
+* **`build`** : Allows building a custom image from a Dockerfile.
+* **`depends_on`** : Ensures service startup order (`api` waits for `db`).
+* **`networks`** : Defines an isolated virtual network for communication.
+
+**🚀 Usage**
+
+Start in detached mode
 
 ```sh
 docker compose up -d
-docker compose ps
-docker compose logs -f
+docker compose logs -f api
+docker compose down -v
 ```
 
 #### Docker + containerd + shim + runc Architecture
@@ -3787,27 +4012,97 @@ docker history nginx:latest
 
 ############ MANAGE CONTAINERS ############
 
-# create container
-docker run hello-world
-docker run -it ubuntu bash
-
-# list containers
+# list containers running
 docker container ls
-docker container ls -a
 docker ps
+
+# list all containers
+docker container ls -a
 docker ps -a
 
-# get size of containers
+# list containers id
+docker container ls -q
+
+# list lçast created container
+docker container ls -l
+
+# list containers with size
 docker ps -s
 docker ps --size --format "table {{.ID}}\t{{.Image}}\t{{.Names}}\t{{.Size}}"
 
-############ OTHERS COMMANDS ############
+# create container
+docker container run hello-world
+
+# create container as daemon
+docker container run -d --name my-nginx -p 8080:80 nginx:latest
+
+# create container and run interactively
+docker container run -it ubuntu bash
+
+# docker container port
+docker container port my-nginx
+
+# create container and exepose port 80 to host port 8080
+docker container run -d --name my-nginx -p 8080:80 nginx:
+
+# create container and publish all exposed ports to random ports
+docker container run -d --name my-nginx -P nginx:latest
+
+# create container and expose tcp port 8080 and udp port 8080 to host
+docker container run -d --name my-nginx -p 8080:80/tcp -p 8080:80/udp nginx:latest
+
+# create a container and expose port 8888
+docker container run -d --name my-nginx -p 9082:80 --expose 8888 nginx:latest
+
+# create container in detached mode
+docker container run -d -it --name alpine alpine
+
+# pause container
+docker container pause <container_id|name>
+
+# unpause container
+docker container unpause <container_id|name>
+
+# stop container
+docker container stop <container_id|name>
+
+# start container
+docker container start <container_id|name>
+
+# remove container
+docker container rm <container_id|name>
+
+# remove container force
+docker container rm -f <container_id|name>
+
+# prune all stopped containers
+docker container prune
+
+# remove all containers
+docker container rm -f $(docker container ps -a -q)
+
+# inspect container
+docker container inspect <container_id|name>
 
 # get PID of container
-docker inspect --format '{{.State.Pid}}' <container_id|name>
+docker container inspect --format '{{.State.Pid}}' <container_id|name>
 
-# get ID of <container_id|name>
-docker inspect --format '{{.Id}}' <container_id|name>
+# get ID of container
+docker container inspect --format '{{.Id}}' <container_id|name>
+docker container inspect --format '{{.Id}}' <container_id|name>
+
+# execute command in container
+docker container exec -it <container_id|name> bash
+docker container exec -it <container_id|name> ls /
+docker container exec -it <container_id|name> sh -c "echo 'Hello from container'"
+
+# copy file to container
+docker container cp /etc/hosts <container_id|name>:/etc/hosts
+
+# copy file from container
+docker container cp <container_id|name>:/etc/hosts /tmp/container-hosts
+
+############ OTHERS COMMANDS ############
 
 # inspect namespaces
 ls -l /proc/<PID>/ns
@@ -3827,7 +4122,7 @@ cat /sys/fs/cgroup/system.slice/docker-<FULL_ID_CONTAINER>.scope/cgroup.procs
 
 ---
 
-<a name="topic-352.4"></a>
+`<a name="topic-352.4"></a>`
 
 ### 🗂️ 352.4 container Orchestration Platforms
 
@@ -3848,13 +4143,13 @@ cat /sys/fs/cgroup/system.slice/docker-<FULL_ID_CONTAINER>.scope/cgroup.procs
 
 ---
 
-<a name="topic-353"></a>
+`<a name="topic-353"></a>`
 
 ## ☁️ Topic 353: VM Deployment and Provisioning
 
 ---
 
-<a name="topic-353.1"></a>
+`<a name="topic-353.1"></a>`
 
 ### ☁️ 353.1  Cloud Management Tools
 
@@ -3891,7 +4186,7 @@ Terraform
 
 ---
 
-<a name="topic-353.2"></a>
+`<a name="topic-353.2"></a>`
 
 ### 📦 353.2 Packer
 
@@ -3925,7 +4220,7 @@ packer
 
 ---
 
-<a name="topic-353.3"></a>
+`<a name="topic-353.3"></a>`
 
 ### ☁️ 353.3 cloud-init
 
@@ -3964,7 +4259,7 @@ user-data
 
 ---
 
-<a name="topic-353.4"></a>
+`<a name="topic-353.4"></a>`
 
 ### 📦 353.4 Vagrant
 
@@ -4238,8 +4533,8 @@ Project Link: [https://github.com/marcossilvestrini/learning-lpic-3-305-300](htt
 
   * [Docker Overview](https://docs.docker.com/get-started/overview/)
   * [Containerd x Docker](https://www.docker.com/blog/containerd-vs-docker/)
-  * [Install]( https://docs.docker.com/engine/install/)
-  * [Daemon Configuration]( https://docs.docker.com/engine/daemon/)
+  * [Install](https://docs.docker.com/engine/install/)
+  * [Daemon Configuration](https://docs.docker.com/engine/daemon/)
   * [Docker Images](https://docs.docker.com/engine/storage/drivers/#images-and-layers)
   * [Docker Hub](https://hub.docker.com/)
   * [Testcontainers](https://testcontainers.com/)
