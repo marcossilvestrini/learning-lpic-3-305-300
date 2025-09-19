@@ -6256,8 +6256,8 @@ docker compose down -v
 </span><span class="code-line line-number" line="66"><span class="token comment"># docker container port</span>
 </span><span class="code-line line-number" line="67"><span class="token function">docker</span> container port my-nginx
 </span><span class="code-line line-number" line="68">
-</span><span class="code-line line-number" line="69"><span class="token comment"># create container and exepose port 80 to host port 8080</span>
-</span><span class="code-line line-number" line="70"><span class="token function">docker</span> container run <span class="token parameter variable">-d</span> <span class="token parameter variable">--name</span> my-nginx <span class="token parameter variable">-p</span> <span class="token number">8080</span>:80 nginx:
+</span><span class="code-line line-number" line="69"><span class="token comment"># create container and expose port 80 to host port 8080</span>
+</span><span class="code-line line-number" line="70"><span class="token function">docker</span> container run <span class="token parameter variable">-d</span> <span class="token parameter variable">--name</span> my-nginx <span class="token parameter variable">-p</span> <span class="token number">8080</span>:80 nginx:latest
 </span><span class="code-line line-number" line="71">
 </span><span class="code-line line-number" line="72"><span class="token comment"># create container and publish all exposed ports to random ports</span>
 </span><span class="code-line line-number" line="73"><span class="token function">docker</span> container run <span class="token parameter variable">-d</span> <span class="token parameter variable">--name</span> my-nginx <span class="token parameter variable">-P</span> nginx:latest
@@ -6396,8 +6396,8 @@ docker container run -it ubuntu bash
 # docker container port
 docker container port my-nginx
 
-# create container and exepose port 80 to host port 8080
-docker container run -d --name my-nginx -p 8080:80 nginx:
+# create container and expose port 80 to host port 8080
+docker container run -d --name my-nginx -p 8080:80 nginx:latest
 
 # create container and publish all exposed ports to random ports
 docker container run -d --name my-nginx -P nginx:latest
@@ -6911,6 +6911,10 @@ Vagrantfile
           <li><a href="https://docs.docker.com/engine/daemon/">Daemon Configuration</a></li>
           <li><a href="https://docs.docker.com/engine/storage/drivers/#images-and-layers">Docker Images</a></li>
           <li><a href="https://hub.docker.com/">Docker Hub</a></li>
+          <li><a href="https://docs.docker.com/storage/">Storage on Docker</a></li>
+          <li><a href="https://docs.docker.com/storage/volumes/">Volumes</a></li>
+          <li><a href="https://docs.docker.com/storage/bind-mounts/">Bind Mounts</a></li>
+          <li><a href="https://docs.docker.com/storage/storagedriver/select-storage-driver/">Storage Drivers</a></li>
           <li><a href="https://testcontainers.com/">Testcontainers</a></li>
         </ul>
       </li>
