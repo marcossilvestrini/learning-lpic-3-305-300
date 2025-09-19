@@ -4042,8 +4042,8 @@ docker container run -it ubuntu bash
 # docker container port
 docker container port my-nginx
 
-# create container and exepose port 80 to host port 8080
-docker container run -d --name my-nginx -p 8080:80 nginx:
+# create container and expose port 80 to host port 8080
+docker container run -d --name my-nginx -p 8080:80 nginx:latest
 
 # create container and publish all exposed ports to random ports
 docker container run -d --name my-nginx -P nginx:latest
@@ -4537,6 +4537,10 @@ Project Link: [https://github.com/marcossilvestrini/learning-lpic-3-305-300](htt
   * [Daemon Configuration](https://docs.docker.com/engine/daemon/)
   * [Docker Images](https://docs.docker.com/engine/storage/drivers/#images-and-layers)
   * [Docker Hub](https://hub.docker.com/)
+  * [Storage on Docker](https://docs.docker.com/storage/)
+  * [Volumes]( https://docs.docker.com/storage/volumes/)
+  * [Bind Mounts](https://docs.docker.com/storage/bind-mounts/)
+  * [Storage Drivers]( https://docs.docker.com/storage/storagedriver/select-storage-driver/)
   * [Testcontainers](https://testcontainers.com/)
 * [Openstack Docs]()
 
