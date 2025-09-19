@@ -2151,8 +2151,8 @@ docker container run -it ubuntu bash
 # docker container port
 docker container port my-nginx
 
-# create container and exepose port 80 to host port 8080
-docker container run -d --name my-nginx -p 8080:80 nginx:
+# create container and expose port 80 to host port 8080
+docker container run -d --name my-nginx -p 8080:80 nginx:latest
 
 # create container and publish all exposed ports to random ports
 docker container run -d --name my-nginx -P nginx:latest
