@@ -4,9 +4,9 @@
 
 * * *
 
-[![MIT License][license-shield]][license-url][![Forks][forks-shield]][forks-url][![Stargazers][stars-shield]][stars-url][![Contributors][contributors-shield]][contributors-url][![Issues][issues-shield]][issues-url]
+[Minha licença][license-url][Garfos][forks-url][Stargazers][stars-url][Colaboradores][contributors-url][Problemas][issues-url]
 
-## [![LinkedIn][linkedin-shield]][linkedin-url]
+## [LinkedIn][linkedin-url]
 
 # 📚 Aprendendo Lpic-3 305-300
 
@@ -84,31 +84,31 @@
 
 * * *
 
-<a name="about-the-project"></a>
+`<a name="about-the-project"></a>`
 
 ## 📖 Sobre o projeto
 
-> This project aims to help students or professionals to learn the main concepts of GNULinux
-> and free software
-> Some GNULinux distributions like Debian and RPM will be covered
-> Installation and configuration of some packages will also be covered
-> By doing this you can give the whole community a chance to benefit from your changes.
-> Access to the source code is a precondition for this.
-> Use vagrant for up machines and execute labs and practice content in this article.
-> I have published in folder Vagrant a Vagrantfile with what is necessary
-> for you to upload an environment for studies
+> Este projeto tem como objetivo ajudar estudantes ou profissionais a aprender os principais conceitos de gnulinux
+> e software livre
+> Algumas distribuições de Gnulinux como Debian e RPM serão cobertas
+> Instalação e configuração de alguns pacotes também serão cobertas
+> Ao fazer isso, você pode dar a toda a comunidade a chance de se beneficiar de suas mudanças.
+> O acesso ao código -fonte é uma condição prévia para isso.
+> Use o Vagrant para máquinas UP e execute laboratórios e pratique o conteúdo deste artigo.
+> Eu publiquei na pasta Vagrant um VagrantFile com o que é necessário
+> para você fazer upload de um ambiente para estudos
 
 * * *
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-<a name="getting-started"></a>
+`<a name="getting-started"></a>`
 
 ## 🚀 Introdução
 
 Para iniciar o aprendizado, consulte a documentação acima.
 
-<a name="prerequisites"></a>
+`<a name="prerequisites"></a>`
 
 ### Pré -requisitos
 
@@ -117,7 +117,7 @@ Para iniciar o aprendizado, consulte a documentação acima.
 -   [Utilitário VMware Vagrant](https://developer.hashicorp.com/vagrant/install/vmware)
 -   [Vagabundo](https://developer.hashicorp.com/vagrant/install)
 
-<a name="installation"></a>
+`<a name="installation"></a>`
 
 ### 💾 Instalação
 
@@ -141,7 +141,7 @@ Personalize a configuração de rede em arquivos[Configs/Network](configs/networ
 
 * * *
 
-<a name="usage"></a>
+`<a name="usage"></a>`
 
 ## 📝 Uso
 
@@ -181,7 +181,7 @@ vagrant/destroy.ps1
 
 * * *
 
-<a name="roadmap"></a>
+`<a name="roadmap"></a>`
 
 ## Roteiro Roteiro
 
@@ -194,7 +194,7 @@ vagrant/destroy.ps1
 
 * * *
 
-<a name="freedoms"></a>
+`<a name="freedoms"></a>`
 
 ## 🗽 Quatro liberdades essenciais
 
@@ -222,7 +222,7 @@ man COMMAND
 
 * * *
 
-<a name="topic-351"></a>
+`<a name="topic-351"></a>`
 
 ## 🖥️ Tópico 351: Virtualização completa
 
@@ -230,7 +230,7 @@ man COMMAND
 
 * * *
 
-<a name="topic-351.1"></a>
+`<a name="topic-351.1"></a>`
 
 ### 🧠 351.1 Conceitos e teoria de virtualização
 
@@ -304,7 +304,7 @@ Executa em cima de um sistema operacional convencional, contando com o sistema o
 ##### ⚖️ Diferenças -chave entre os hipervisores do tipo 1 e do tipo 2
 
 -   Ambiente de implantação:
-    -   Os hipervisores do tipo 1 são comumente implantados em data centers e ambientes corporativos devido à sua interação direta com hardware e alto desempenho.
+    -   Os hipervisores tipo 1 são comumente implantados em data centers e ambientes corporativos devido à sua interação direta com hardware e alto desempenho.
     -   Os hipervisores do tipo 2 são mais adequados para tarefas de uso pessoal, desenvolvimento, teste e virtualização em pequena escala.
 -   Desempenho:
     -   Os hipervisores do tipo 1 geralmente oferecem melhor desempenho e menor latência porque não confiam em um sistema operacional host.
@@ -575,7 +575,7 @@ O serviço usinado pela SystemD é dedicado ao gerenciamento de máquinas e cont
 
 * * *
 
-<a name="topic-351.2"></a>
+`<a name="topic-351.2"></a>`
 
 ### 🐧 351.2 Alternação
 
@@ -619,7 +619,7 @@ A Xensource foi a empresa fundada pelos desenvolvedores originais do Xen Hypervi
 
 O projeto XEN refere-se à comunidade de código aberto e à iniciativa responsável pelo desenvolvimento e manutenção do hipervisor Xen após sua comercialização. O projeto Xen opera sob a Fundação Linux, com foco na construção, melhoria e apoio a Xen como um esforço colaborativo e orientado pela comunidade.
 
--   **Metas:**O projeto XEN visa avançar o hipervisor, melhorando seu desempenho, segurança e conjunto de recursos para uma ampla gama de casos de uso, incluindo computação em nuvem, virtualização focada na segurança (por exemplo, Qubes OS) e sistemas incorporados.
+-   **Metas:**O projeto XEN visa avançar o hipervisor, melhorando seu desempenho, segurança e conjunto de recursos para uma ampla gama de casos de uso, incluindo computação em nuvem, virtualização focada na segurança (por exemplo, QUBES OS) e sistemas incorporados.
 -   **Colaboradores:**O projeto inclui colaboradores de várias organizações, incluindo os principais provedores de nuvem, fornecedores de hardware e desenvolvedores independentes.
 -   **Pílula e hedools:**O projeto XEN também inclui ferramentas como XAPI (XenAPI), que é usado para gerenciar instalações do Xen Hypervisor e vários outros utilitários para gerenciamento e otimização do sistema.
 
@@ -909,7 +909,7 @@ xl cd-eject lpic3-hvm-guest-ubuntu xvdb
 
 * * *
 
-<a name="topic-351.3"></a>
+`<a name="topic-351.3"></a>`
 
 ### 🖥️ 351.3 Qemu
 
@@ -1202,7 +1202,7 @@ qemu-system-x86_x64
 
 * * *
 
-<a name="topic-351.4"></a>
+`<a name="topic-351.4"></a>`
 
 ### 🏢 351.4 Libvirt Máquina virtual Gerenciamento de máquinas
 
@@ -1582,7 +1582,7 @@ less /etc/libvirt/qemu/debian-server01.xml
 
 * * *
 
-<a name="topic-351.5"></a>
+`<a name="topic-351.5"></a>`
 
 ### 💾 351.5 Gerenciamento de imagem em disco da máquina virtual
 
@@ -1873,13 +1873,13 @@ O pacote gerado possui a extensão .ova e contém os seguintes arquivos:
 
 * * *
 
-<a name="topic-352"></a>
+`<a name="topic-352"></a>`
 
 ## 📦 Tópico 352: Virtualização de contêineres
 
 * * *
 
-<a name="topic-352.1"></a>
+`<a name="topic-352.1"></a>`
 
 ### 🧠 352.1 conceitos de virtualização de contêineres
 
@@ -2196,13 +2196,13 @@ Os namespaces criam ambientes separados para processos (como PID, rede ou montag
 
 ⚙️ Capacidades -chave
 
-| Recurso                   | Descrição                                                  |
-| ------------------------- | ---------------------------------------------------------- |
-| **Limitação de recursos** | Impor limites para quanto de um recurso um grupo pode usar |
-| **Priorização**           | Allocate more CPU/IO priority to some groups over others   |
-| **Contabilidade**         | Rastrear o uso de recursos por grupo                       |
-| **Controlar**             | Suspender, retomar ou matar processos a granel             |
-| **Isolamento**            | Impedir a fome de recursos entre os grupos                 |
+| Recurso                   | Descrição                                                        |
+| ------------------------- | ---------------------------------------------------------------- |
+| **Limitação de recursos** | Impor limites para quanto de um recurso um grupo pode usar       |
+| **Priorização**           | Alocar mais prioridade da CPU/IO para alguns grupos sobre outros |
+| **Contabilidade**         | Rastrear o uso de recursos por grupo                             |
+| **Controlar**             | Suspender, retomar ou matar processos a granel                   |
+| **Isolamento**            | Impedir a fome de recursos entre os grupos                       |
 
 ##### 📦 Subsistemas (controladores)
 
@@ -2910,7 +2910,7 @@ sudo runc run mycontainer
 
 * * *
 
-<a name="topic-352.2"></a>
+`<a name="topic-352.2"></a>`
 
 ### 📦 352.2 LXC
 
@@ -3562,7 +3562,7 @@ lxc launch 1u1u1u1u1u1 rockylinux9-2 -p production
 
 * * *
 
-<a name="topic-352.3"></a>
+`<a name="topic-352.3"></a>`
 
 ### 🐳 352.3 Docker
 
@@ -3636,43 +3636,268 @@ Esses contêineres garantem**consistência entre ambientes**, acelere as implant
 -   Conceito: pacote imutável com aplicativo, dependências e metadados.
 -   Camadas e cache: cada instrução do Dockerfile se torna uma camada reutilizável
 -   Construa e puxa camadas de compartilhamento.
--   Nati:`registry/namespace/repo:tag`(Por exemplo,`docker.io/library/nginx:1.27`).
+-   SABER:`registry/namespace/repo:tag`(Por exemplo,`docker.io/library/nginx:1.27`).
 -   Digest: Use`@sha256:...`Para fixar o conteúdo exato (bom para produção).
 -   Imagem vs Container: A imagem é somente leitura; O contêiner é uma instância com uma camada de gravação efêmero.
 -   Comandos básicos:`docker image ls`,`docker pull`,`docker run`,`docker inspect`,`docker history`,`docker tag`,`docker push`,`docker rmi`,`docker image prune -a`,`docker save`/`docker load`.
 -   Melhores práticas: base mínima (alpina/distrolisa), compilações em vários estágios, versões/tags de pinos, executadas como não raiz`USER`.
 
+##### Camadas de imagem do docker
+
+Neste exemplo, demonstro uma camada de imagem do Docker.
+
+Na primeira imagem, temos uma imagem base de Alpine e adicionamos uma camada.
+
+```dockerfile
+# syntax=docker/dockerfile:1
+FROM alpine
+RUN apk add --no-cache bash
+```
+
+A segunda imagem que tenho uma imagem My-Base: 1.0 e adicione duas camadas, gerando uma nova imagem com nome ACME/MY-FINAL-AGEM: 1.0.
+
+```dockerfile
+# syntax=docker/dockerfile:1
+FROM acme/my-base-image:1.0
+COPY . /app
+RUN chmod +x /app/hello.sh
+CMD /app/hello.sh
+```
+
+![docker-image-layers](images/docker-image-layers.png)
+
+##### Docker Image cópia-on-write (vaca)
+
+Neste exemplo, eu demonstro uma imagem do docker cópia-em-escritura (vaca).
+
+Crie 5 recipientes da mesma imagem.
+
+```sh
+docker run -dit --name my_container_1 acme/my-final-image:1.0 bash \
+  && docker run -dit --name my_container_2 acme/my-final-image:1.0 bash \
+  && docker run -dit --name my_container_3 acme/my-final-image:1.0 bash \
+  && docker run -dit --name my_container_4 acme/my-final-image:1.0 bash \
+  && docker run -dit --name my_container_5 acme/my-final-image:1.0 bash
+```
+
+Veja o tamanho dos recipientes.
+
+```sh
+docker ps --size --format "table {{.ID}}\t{{.Image}}\t{{.Names}}\t{{.Size}}"
+```
+
+Para demonstrar isso, execute o seguinte comando para escrever a palavra 'hello' em um arquivo na camada gravável do contêiner em contêineres my_container_1, my_container_2 e my_container_3:
+
+```sh
+for i in {1..3}; do docker exec my_container_$i sh -c 'printf hello > /out.txt'; done
+```
+
+Verifique o tamanho dos contêineres novamente.
+
+```sh
+docker ps --size --format "table {{.ID}}\t{{.Image}}\t{{.Names}}\t{{.Size}}"
+```
+
+![docker-image-cow](images/docker-image-cow.png)
+
+##### 🐳 Instruções e camadas de imagem do Dockerfile
+
+**📊 Tabela: Instrução vs. Geração de camadas**
+
+| Instrução     | Cria uma camada de sistema de arquivos? | Notas                                                                                                         |
+| ------------- | --------------------------------------- | ------------------------------------------------------------------------------------------------------------- |
+| `FROM`        | ❌ No                                    | Define a imagem base; Camadas subjacentes vêm disso.                                                          |
+| `RUN`         | ✅ Sim                                   | Executa alterações do sistema de arquivos; adiciona conteúdo que persiste.                                    |
+| `COPY`        | ✅ Sim                                   | Adiciona arquivos do contexto de construção ao sistema de arquivos de imagem.                                 |
+| `ADD`         | ✅ Sim                                   | Semelhante à cópia, com recursos adicionais (URLs, extração de alcatrão).                                     |
+| `LABEL`       | ❌ No                                    | Adiciona apenas metadados; não altera o conteúdo do sistema de arquivos.                                      |
+| `ENV`         | ❌ No                                    | Define variáveis ​​de ambiente; armazenado como metadados.                                                    |
+| `ARG`         | ❌ No                                    | Apenas tempo de construção; não afeta a imagem final, a menos que seja usado posteriormente.                  |
+| `WORKDIR`     | ❌ No                                    | Diretório de trabalho de alterações; Apenas metadados.                                                        |
+| `USER`        | ❌ No                                    | Define o usuário; Apenas metadados.                                                                           |
+| `EXPOSE`      | ❌ No                                    | Declara portos expostos; Apenas metadados.                                                                    |
+| `ENTRYPOINT`  | ❌ No                                    | Define como o contêiner inicia; Configuração de metadados.                                                    |
+| `CMD`         | ❌ No                                    | Comando padrão ou args; Apenas metadados.                                                                     |
+| `VOLUME`      | ✅ Sim / parcial                         | Declara pontos de montagem; metadados + volumes no tempo de execução; tem implicações do sistema de arquivos. |
+| `HEALTHCHECK` | ❌ No                                    | Define a config de verificação de saúde; armazenado como metadados.                                           |
+| `STOPSIGNAL`  | ❌ No                                    | Define o sinal para parar o contêiner; Apenas metadados.                                                      |
+| `SHELL`       | ❌ No                                    | Muda o shell para mais tarde`RUN`; Apenas metadados.                                                          |
+| `ONBUILD`     | ❌ No                                    | Gatilhos para futuras construções; Apenas metadados.                                                          |
+
+**🔎 Insights -chave**
+
+-   A maioria das instruções do Dockerfile**Crie uma nova camada de imagem**- Até mudanças de metadados (`CMD`,`EXPOSE`, etc.) são armazenados como parte da configuração final da imagem.
+-   **Camadas de peso pesado**venha de instruções que**modifique o sistema de arquivos**(`RUN`,`COPY`,`ADD`).
+-   **Camadas leves/metadadas**vêm de instruções como`ENV`,`CMD`,`LABEL`.
+-   **`ARG`é especial**: Existe apenas no tempo de construção e é descartado na imagem final, a menos que seja usado em outras instruções.
+-   Para minimizar o tamanho da imagem:
+    -   Combine múltiplas`RUN`comanda em um.
+    -   Usar`.dockerignore`Para evitar copiar arquivos desnecessários.
+    -   Encomende instruções para maximizar o Docker**construir eficiência de cache**.
+
+* * *
+
+#### 🐳 Dockerfile
+
+##### 🔎 O que é um Dockerfile?
+
+UM**Dockerfile**é a**arquivo de texto declarativo**que contém uma sequência de**construir instruções**Para construir uma imagem do docker.
+
+Cada instrução especifica como configurar a imagem: qual base usar, quais arquivos copiar, quais comandos para executar, qual ambiente definir e como o contêiner resultante deve se comportar no tempo de execução.
+
+É essencialmente o**receita**Para construir imagens imutáveis ​​e reprodutíveis de contêineres.
+
+🧩 Características -chave
+
+-   **Declarativo**: Em vez de executar etapas manuais, você declara o estado desejado da imagem.
+-   **Em camadas**: Cada instrução pode produzir uma camada de imagem, que permite cache, reutilização e distribuição eficiente.
+-   **Portátil**: Dockerfiles garantem consistência entre ambientes (desenvolvimento, estadiamento, produção).
+-   **Composível**: Com compilações em vários estágios, você pode encadear múltiplos`FROM`Declarações a otimizar para imagens menores e prontas para a produção.
+
+##### 🛠️ Instruções centrais
+
+Algumas das instruções mais comuns incluem:
+
+-   `FROM`: Especifica a imagem base.
+-   `RUN`: Executa comandos para instalar ou configurar o software.
+-   `COPY`/`ADD`: move arquivos do contexto de construção para a imagem.
+-   `ENV`,`WORKDIR`,`USER`: Define variáveis ​​de ambiente, diretórios e contexto de execução.
+-   `CMD`/`ENTRYPOINT`: Define comandos ou processos padrão quando o contêiner iniciar.
+-   `EXPOSE`,`VOLUME`,`HEALTHCHECK`: Configurar redes, armazenamento persistente e monitoramento.
+
+##### 🚀 Por que isso importa
+
+-   **Reprodutibilidade**: Mesmo Dockerfile → Mesma imagem → O mesmo comportamento em todos os lugares.
+-   **Automação**: Ativa os pipelines CI/CD para construir, testar e implantar contêineres automaticamente.
+-   **Otimização**: Dockerfiles devidamente estruturados minimizam o tamanho da imagem e aceleram as compilações.
+-   **Conformidade**: Imagens padronizadas com dockerfiles fixos simplificam a auditoria, patching e governança.
+
+✅ Em resumo:
+
+UM**Dockerfile**é o**Blueprint**Para imagens do Docker - a base da entrega de aplicativos em contêiner.
+
+**Exemplo de Dockerfile**
+
+```dockerfile
+# syntax=docker/dockerfile:1
+FROM nginx:latest
+COPY ./html /usr/share/nginx/html
+EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]
+```
+
 * * *
 
 #### 🧩 Docker Compose
 
-Ferramenta para definir e executar**Aplicativos multi-containers**via yaml:
+##### 📘 Docker Compose Command Reference
 
-**Exemplo de Docker-compose.yml**
+Docker Compose é uma ferramenta para definir e gerenciar aplicativos do Docker multi-container usando um arquivo YAML (`docker-compose.yml`).
+
+Abaixo está uma tabela estruturada dos principais comandos e seus propósitos.
+
+**📊 Tabela: Docker Compose Commands**
+
+| Comando                         | Propósito                                                                               | Exemplo                                                                  |
+| ------------------------------- | --------------------------------------------------------------------------------------- | ------------------------------------------------------------------------ |
+| ▶️**`docker compose up`**       | Construir, (re) criar, iniciar e anexar a recipientes definidos em`docker-compose.yml`. | `docker compose up -d`                                                   |
+| ⏹️**`docker compose down`**     | Pare e remova recipientes, redes, volumes e imagens criadas por`up`.                    | `docker compose down --volumes`                                          |
+| 🔄**`docker compose restart`**  | Reinicie os serviços de corrida.                                                        | `docker compose restart web`                                             |
+| 🟢**`docker compose start`**    | Comece os contêineres existentes sem recriá -los.                                       | `docker compose start db`                                                |
+| 🔴**`docker compose stop`**     | Pare de executar recipientes sem removê -los.                                           | `docker compose stop db`                                                 |
+| 🧹**`docker compose rm`**       | Remova os contêineres de serviço parado.                                                | `docker compose rm -f`                                                   |
+| 🏗️**`docker compose build`**   | Construir ou reconstruir imagens de serviço.                                            | `docker compose build web`                                               |
+| 📥**`docker compose pull`**     | Puxe imagens de serviço de um registro.                                                 | `docker compose pull redis`                                              |
+| 📤**`docker compose push`**     | Empurre imagens de serviço para um registro.                                            | `docker compose push api`                                                |
+| 📄**`docker compose config`**   | Validar e visualizar o arquivo de composição.                                           | `docker compose config`                                                  |
+| 📋**`docker compose ps`**       | Contêineres de lista gerenciados pela composição.                                       | `docker compose ps`                                                      |
+| 📊**`docker compose top`**      | Exibir processos de execução de contêineres.                                            | `docker compose top`                                                     |
+| 📜**`docker compose logs`**     | Visualize logs de saída de serviços.                                                    | `docker compose logs -f api`                                             |
+| 🔍**`docker compose exec`**     | Execute um comando em um contêiner de serviço em execução.                              | `docker compose exec db psql -U postgres`                                |
+| 🐚**`docker compose run`**      | Execute comandos únicos em um novo contêiner.                                           | `docker compose run web sh`                                              |
+| 🔧**`docker compose override`** | Usar`-f`Para especificar vários arquivos de composição (substituídos).                  | `docker compose -f docker-compose.yml -f docker-compose.override.yml up` |
+| 🌐**Networking**                | As redes são criadas automaticamente; pode ser declarado explicitamente em Yaml.        | `docker network ls`                                                      |
+| 📦**Volumes**                   | Gerenciar dados persistentes; pode ser declarado no YAML e usado entre os serviços.     | `docker volume ls`                                                       |
+
+##### 🔑 Notas -chave
+
+-   **`up`vs.`start`**:`up`Construa/recria recipientes,`start`apenas executa os existentes.
+-   **`run`vs.`exec`**:`run`Lança a_novo_recipiente,`exec`corre dentro de um existente.
+-   **Validação de configuração**: Sempre corra`docker compose config`Para verificar se há erros de sintaxe.
+-   **Modo de destacar**: Usar`-d`para executar serviços em segundo plano.
+
+##### **📄`docker-compose.yml`**
 
 ```yaml
-version: "3.9"
+version: "3.9"  # Compose file format
+
 services:
   web:
     image: nginx:latest
+    container_name: my-nginx
     ports:
-      - "8080:80"
-  app:
-    build: ./app
+      - "8080:80"             # host:container
+    volumes:
+      - ./html:/usr/share/nginx/html:ro
+    networks:
+      - app-network
+
+  api:
+    build:
+      context: ./api          # build from Dockerfile in ./api
+      dockerfile: Dockerfile
+    container_name: my-api
     environment:
-      - DB_HOST=db
+      - NODE_ENV=production
+      - API_KEY=${API_KEY}    # read from .env file
+    depends_on:
+      - db
+    ports:
+      - "3000:3000"
+    networks:
+      - app-network
+
   db:
     image: postgres:15
+    container_name: my-postgres
+    restart: always
     environment:
-      - POSTGRES_PASSWORD=secret
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: secret
+      POSTGRES_DB: appdb
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    networks:
+      - app-network
+
+volumes:
+  db-data:
+
+networks:
+  app-network:
+    driver: bridge
+
 ```
 
-Correr:
+**🔎 Explicação**
+
+-   **`services`**: Define recipientes (`web`,`api`,`db`) que compõem o aplicativo.
+-   **`ports`**: Mapas portas host para portas de contêiner (`8080:80`).
+-   **`volumes`**:
+-   Volume nomeado (`db-data`) para dados persistentes de banco de dados.
+-   Montagem de ligação (`./html:/usr/share/nginx/html`) para servir conteúdo estático.
+-   **`build`**: Permite a criação de uma imagem personalizada a partir de um Dockerfile.
+-   **`depends_on`**: Garante que o pedido de inicialização do serviço (`api`espera por`db`).
+-   **`networks`**: Define uma rede virtual isolada para comunicação.
+
+**🚀 Uso**
+
+Iniciar no modo destacado
 
 ```sh
 docker compose up -d
-docker compose ps
-docker compose logs -f
+docker compose logs -f api
+docker compose down -v
 ```
 
 #### Docker + Containerd + Shim + Runc Architecture
@@ -3773,27 +3998,97 @@ docker history nginx:latest
 
 ############ MANAGE CONTAINERS ############
 
-# create container
-docker run hello-world
-docker run -it ubuntu bash
-
-# list containers
+# list containers running
 docker container ls
-docker container ls -a
 docker ps
+
+# list all containers
+docker container ls -a
 docker ps -a
 
-# get size of containers
+# list containers id
+docker container ls -q
+
+# list lçast created container
+docker container ls -l
+
+# list containers with size
 docker ps -s
 docker ps --size --format "table {{.ID}}\t{{.Image}}\t{{.Names}}\t{{.Size}}"
 
-############ OTHERS COMMANDS ############
+# create container
+docker container run hello-world
+
+# create container as daemon
+docker container run -d --name my-nginx -p 8080:80 nginx:latest
+
+# create container and run interactively
+docker container run -it ubuntu bash
+
+# docker container port
+docker container port my-nginx
+
+# create container and expose port 80 to host port 8080
+docker container run -d --name my-nginx -p 8080:80 nginx:latest
+
+# create container and publish all exposed ports to random ports
+docker container run -d --name my-nginx -P nginx:latest
+
+# create container and expose tcp port 8080 and udp port 8080 to host
+docker container run -d --name my-nginx -p 8080:80/tcp -p 8080:80/udp nginx:latest
+
+# create a container and expose port 8888
+docker container run -d --name my-nginx -p 9082:80 --expose 8888 nginx:latest
+
+# create container in detached mode
+docker container run -d -it --name alpine alpine
+
+# pause container
+docker container pause <container_id|name>
+
+# unpause container
+docker container unpause <container_id|name>
+
+# stop container
+docker container stop <container_id|name>
+
+# start container
+docker container start <container_id|name>
+
+# remove container
+docker container rm <container_id|name>
+
+# remove container force
+docker container rm -f <container_id|name>
+
+# prune all stopped containers
+docker container prune
+
+# remove all containers
+docker container rm -f $(docker container ps -a -q)
+
+# inspect container
+docker container inspect <container_id|name>
 
 # get PID of container
-docker inspect --format '{{.State.Pid}}' <container_id|name>
+docker container inspect --format '{{.State.Pid}}' <container_id|name>
 
-# get ID of <container_id|name>
-docker inspect --format '{{.Id}}' <container_id|name>
+# get ID of container
+docker container inspect --format '{{.Id}}' <container_id|name>
+docker container inspect --format '{{.Id}}' <container_id|name>
+
+# execute command in container
+docker container exec -it <container_id|name> bash
+docker container exec -it <container_id|name> ls /
+docker container exec -it <container_id|name> sh -c "echo 'Hello from container'"
+
+# copy file to container
+docker container cp /etc/hosts <container_id|name>:/etc/hosts
+
+# copy file from container
+docker container cp <container_id|name>:/etc/hosts /tmp/container-hosts
+
+############ OTHERS COMMANDS ############
 
 # inspect namespaces
 ls -l /proc/<PID>/ns
@@ -3813,7 +4108,7 @@ cat /sys/fs/cgroup/system.slice/docker-<FULL_ID_CONTAINER>.scope/cgroup.procs
 
 * * *
 
-<a name="topic-352.4"></a>
+`<a name="topic-352.4"></a>`
 
 ### 🗂️ 352.4 Plataformas de orquestração de contêineres
 
@@ -3834,13 +4129,13 @@ cat /sys/fs/cgroup/system.slice/docker-<FULL_ID_CONTAINER>.scope/cgroup.procs
 
 * * *
 
-<a name="topic-353"></a>
+`<a name="topic-353"></a>`
 
 ## ☁️ Tópico 353: VM Deployment and Provisioning
 
 * * *
 
-<a name="topic-353.1"></a>
+`<a name="topic-353.1"></a>`
 
 ### ☁️ 353.1 Ferramentas de gerenciamento em nuvem
 
@@ -3877,7 +4172,7 @@ Terraform
 
 * * *
 
-<a name="topic-353.2"></a>
+`<a name="topic-353.2"></a>`
 
 ### 📦 353.2 Packer
 
@@ -3911,7 +4206,7 @@ packer
 
 * * *
 
-<a name="topic-353.3"></a>
+`<a name="topic-353.3"></a>`
 
 ### ☁️ 353.3 Cloud-Init
 
@@ -3950,7 +4245,7 @@ user-data
 
 * * *
 
-<a name="topic-353.4"></a>
+`<a name="topic-353.4"></a>`
 
 ### 📦 353.4 Vagrant
 
@@ -4227,6 +4522,10 @@ Link do projeto:<https://github.com/marcossilvestrini/learning-lpic-3-305-300>
     -   [Configuração de daemon](https://docs.docker.com/engine/daemon/)
     -   [Imagens do Docker](https://docs.docker.com/engine/storage/drivers/#images-and-layers)
     -   [Docker Hub](https://hub.docker.com/)
+    -   [Armazenamento no Docker](https://docs.docker.com/storage/)
+    -   [Volumes](https://docs.docker.com/storage/volumes/)
+    -   [Montagens de ligação](https://docs.docker.com/storage/bind-mounts/)
+    -   [Drivers de armazenamento](https://docs.docker.com/storage/storagedriver/select-storage-driver/)
     -   [TestContainers](https://testcontainers.com/)
 -   [OpenStack Docs](<>)
 
