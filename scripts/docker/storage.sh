@@ -10,7 +10,7 @@ MULTILINE-COMMENT
 set -euo pipefail
 IFS=$'\n\t'
 
-log()   { echo -e "[INFO] $*"; }
+log()   { echo -e "[INFO] $*" >&2; }
 warn()  { echo -e "[WARN] $*" >&2; }
 error() { echo -e "[ERROR] $*" >&2; }
 
@@ -75,7 +75,7 @@ cleanup_all() {
     local disk="$1"
     log "Cleaning up any existing filesystems on $disk..."
 
-    mapfile -t partitions < <(lsblk -pn -o NAME,TYPE "$disk" | awk '$2=="part"{print $1}')
+    mapfile -t partitions < <(lsblk -prn -o NAME,TYPE "$disk" | awk '$2=="part"{print $1}')
     for part in "${partitions[@]}"; do
         sudo umount "$part" 2>/dev/null || true
         sudo wipefs -a "$part" 2>/dev/null || true
@@ -89,11 +89,13 @@ create_btrfs_partition() {
     log "Partitioning $disk with a single Btrfs-ready partition (Docker labs)..."
     warn "This will ERASE all data on $disk."
 
-    sudo wipefs -a "$disk"
-    echo -e "g\nn\n1\n\n\n\nw\n" | sudo fdisk "$disk"
+    sudo wipefs -a "$disk" >&2
+    {
+        echo -e "g\nn\n1\n\n\n\nw\n"
+    } | sudo fdisk "$disk" >&2
 
     if command -v partprobe &>/dev/null; then
-        sudo partprobe "$disk"
+        sudo partprobe "$disk" >&2
     else
         warn "partprobe not available; waiting for kernel partition refresh"
     fi
@@ -102,7 +104,7 @@ create_btrfs_partition() {
 
     local partition=""
     for _ in $(seq 1 10); do
-        partition=$(lsblk -pn -o NAME "$disk" | awk 'NR==2')
+        partition=$(lsblk -prn -o NAME,TYPE "$disk" | awk '$2=="part"{print $1; exit}')
         if [[ -n "$partition" && -b "$partition" ]]; then
             break
         fi
