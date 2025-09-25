@@ -6186,6 +6186,138 @@ docker compose down -v
         </tr>
       </tbody>
     </table>
+    <h4 id="docker-storage"><a class="anchor" aria-hidden="true" tabindex="-1" href="#docker-storage"><span class="octicon octicon-link"></span></a>Docker Storage</h4>
+    <h5 id="-core-concepts"><a class="anchor" aria-hidden="true" tabindex="-1" href="#-core-concepts"><span class="octicon octicon-link"></span></a>🧱 Core Concepts</h5>
+    <table>
+      <thead>
+        <tr>
+          <th>🔍 Focus</th>
+          <th>Details</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Union FS</td>
+          <td>Read-only image layers + the container's writable layer form a union filesystem; removing the container drops ephemeral changes.</td>
+        </tr>
+        <tr>
+          <td>Data Root</td>
+          <td>Storage drivers persist data under <code>/var/lib/docker/&#x3C;driver>/</code>; inspect the active driver via <code>docker info --format "{{.Driver}}"</code>.</td>
+        </tr>
+        <tr>
+          <td>Persistence</td>
+          <td>Move stateful data to volumes, bind mounts, or tmpfs mounts (<code>--mount type=tmpfs</code>) to survive container recreation.</td>
+        </tr>
+      </tbody>
+    </table>
+    <h5 id="️-storage-drivers"><a class="anchor" aria-hidden="true" tabindex="-1" href="#️-storage-drivers"><span class="octicon octicon-link"></span></a>⚙️ Storage Drivers</h5>
+    <table>
+      <thead>
+        <tr>
+          <th>Driver</th>
+          <th>When to use</th>
+          <th>Notes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>overlay2</td>
+          <td>Default on modern Linux kernels.</td>
+          <td>Fast copy-on-write; backing filesystem must support <code>d_type</code>.</td>
+        </tr>
+        <tr>
+          <td>fuse-overlayfs</td>
+          <td>Rootless or user-namespace deployments.</td>
+          <td>Adds a thin FUSE layer; enables non-root workflows.</td>
+        </tr>
+        <tr>
+          <td>btrfs / zfs</td>
+          <td>Need native snapshots, quotas, compression.</td>
+          <td>Provision dedicated pools and use platform tooling for management.</td>
+        </tr>
+        <tr>
+          <td>devicemapper (direct-lvm) / aufs</td>
+          <td>Legacy setups only.</td>
+          <td>Maintenance mode; plan migrations to overlay2.</td>
+        </tr>
+        <tr>
+          <td>windowsfilter</td>
+          <td>Windows container images.</td>
+          <td>Use LCOW/WSL 2 to expose overlay2 for Linux workloads on Windows hosts.</td>
+        </tr>
+      </tbody>
+    </table>
+    <h5 id="-selecting-the-driver"><a class="anchor" aria-hidden="true" tabindex="-1" href="#-selecting-the-driver"><span class="octicon octicon-link"></span></a>🧭 Selecting the Driver</h5>
+    <ul>
+      <li>Confirm kernel modules (<code>modprobe overlay</code>) and filesystem prerequisites before switching drivers.</li>
+      <li>Match driver features to workloads: many small layers favor <code>overlay2</code>; filesystem-level snapshots may justify <code>btrfs</code> or <code>zfs</code>.</li>
+      <li>Stick to provider defaults on Docker Desktop, EKS, GKE, etc., to stay within support boundaries.</li>
+      <li>Keep <code>/var/lib/docker</code> on reliable, low-latency storage—copy-on-write drivers amplify slow disks.</li>
+    </ul>
+    <h5 id="-volumes"><a class="anchor" aria-hidden="true" tabindex="-1" href="#-volumes"><span class="octicon octicon-link"></span></a>📦 Volumes</h5>
+    <table>
+      <thead>
+        <tr>
+          <th>Scenario</th>
+          <th>Command</th>
+          <th>Why it matters</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Create named volume</td>
+          <td><code>docker volume create --name appdata</code></td>
+          <td>Prepare reusable storage with labels, driver options, or size limits.</td>
+        </tr>
+        <tr>
+          <td>List existing volumes</td>
+          <td><code>docker volume ls</code></td>
+          <td>Inventory Engine-managed data sources before deployment.</td>
+        </tr>
+        <tr>
+          <td>Inspect configuration</td>
+          <td><code>docker volume inspect appdata</code></td>
+          <td>Review mountpoints, driver defaults, and labels for troubleshooting.</td>
+        </tr>
+        <tr>
+          <td>Attach to container</td>
+          <td><code>docker run --mount type=volume,src=appdata,dst=/var/lib/app</code></td>
+          <td>Persist and share data across container restarts and replicas.</td>
+        </tr>
+        <tr>
+          <td>Backup or migrate</td>
+          <td><code>docker run --rm --volumes-from app -v $PWD:/backup busybox tar -cvf /backup/app.tar /var/lib/app</code></td>
+          <td>Snapshot volume contents for disaster recovery or stage migrations.</td>
+        </tr>
+        <tr>
+          <td>Cleanup unused</td>
+          <td><code>docker volume rm appdata</code> / <code>docker volume prune</code></td>
+          <td>Reclaim disk space from orphaned volumes.</td>
+        </tr>
+      </tbody>
+    </table>
+    <ul>
+      <li>Named volumes outlive container deletion; anonymous volumes are removed when the last consumer is gone—track them with <code>docker volume ls -f dangling=true</code>.</li>
+      <li>The local driver accepts options (<code>docker volume create --driver local --opt type=nfs --opt device=:/data --opt o=addr=10.0.0.10</code>) for NFS, CIFS, tmpfs and more.</li>
+      <li>External drivers (NetApp, Portworx, cloud CSI plugins) are set per volume via <code>--driver</code> or in Compose/Swarm stacks under <code>driver</code>/<code>driver_opts</code>.</li>
+      <li>Compose stacks declare volumes at the top-level (<code>volumes: { appdata: {} }</code>) and then mount them in services (<code>services.app.volumes</code>), keeping configuration versioned.</li>
+      <li>Prefer the <code>--mount</code> syntax for clarity; it prevents ambiguous parsing present with the legacy <code>-v</code> flag.</li>
+      <li>For stateful workloads, pair volumes with schedules for <code>docker run --rm ... tar</code> or storage-native snapshots so restores are tested and automated.</li>
+    </ul>
+    <h5 id="️-bind-mounts"><a class="anchor" aria-hidden="true" tabindex="-1" href="#️-bind-mounts"><span class="octicon octicon-link"></span></a>🗂️ Bind Mounts</h5>
+    <ul>
+      <li>Reuse existing host paths (<code>/data/app</code> -> <code>/service/data</code>) with full control over layout and lifecycle.</li>
+      <li>Perfect for development sync or leveraging pre-seeded host data.</li>
+      <li>Watch portability: absolute paths and permission semantics differ across Linux, macOS, and Windows.</li>
+      <li>Combine with flags like <code>:ro</code>, <code>:z</code>, or <code>:shared</code> to match security and sharing needs.</li>
+    </ul>
+    <h5 id="-good-practices"><a class="anchor" aria-hidden="true" tabindex="-1" href="#-good-practices"><span class="octicon octicon-link"></span></a>✅ Good Practices</h5>
+    <ul>
+      <li>Standardize mount locations with environment variables or Compose defaults to simplify automation.</li>
+      <li>Pair Docker-managed volumes with external backup or snapshot tooling—Docker does not protect the data.</li>
+      <li>Audit disk usage using <code>docker system df</code> and schedule cleanup of orphaned layers and volumes.</li>
+      <li>Document required mounts in Compose/Stack files (<code>volumes:</code>) so teams reproduce the storage layout consistently.</li>
+    </ul>
     <h4 id="️-3523-important-commands"><a class="anchor" aria-hidden="true" tabindex="-1" href="#️-3523-important-commands"><span class="octicon octicon-link"></span></a>🛠️ 352.3 Important Commands</h4>
     <h5 id="-docker"><a class="anchor" aria-hidden="true" tabindex="-1" href="#-docker"><span class="octicon octicon-link"></span></a>🐳 docker</h5>
     <pre class="language-sh"><code class="language-sh code-highlight"><span class="code-line line-number" line="1"><span class="token comment">############ FILES ############</span>
