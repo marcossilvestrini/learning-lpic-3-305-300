@@ -2078,6 +2078,65 @@ docker compose down -v
 | Footprint              | Heavier, more tooling               | Lightweight, efficient             |
 | Ecosystem              | Rich developer tools                | CNCF project, Kubernetes default   |
 
+#### Docker Storage
+
+##### 🧱 Core Concepts
+
+| 🔍 Focus | Details |
+| --- | --- |
+| Union FS | Read-only image layers + the container's writable layer form a union filesystem; removing the container drops ephemeral changes. |
+| Data Root | Storage drivers persist data under `/var/lib/docker/<driver>/`; inspect the active driver via `docker info --format "{{.Driver}}"`. |
+| Persistence | Move stateful data to volumes, bind mounts, or tmpfs mounts (`--mount type=tmpfs`) to survive container recreation. |
+
+##### ⚙️ Storage Drivers
+
+| Driver | When to use | Notes |
+| --- | --- | --- |
+| overlay2 | Default on modern Linux kernels. | Fast copy-on-write; backing filesystem must support `d_type`. |
+| fuse-overlayfs | Rootless or user-namespace deployments. | Adds a thin FUSE layer; enables non-root workflows. |
+| btrfs / zfs | Need native snapshots, quotas, compression. | Provision dedicated pools and use platform tooling for management. |
+| devicemapper (direct-lvm) / aufs | Legacy setups only. | Maintenance mode; plan migrations to overlay2. |
+| windowsfilter | Windows container images. | Use LCOW/WSL 2 to expose overlay2 for Linux workloads on Windows hosts. |
+
+##### 🧭 Selecting the Driver
+
+* Confirm kernel modules (`modprobe overlay`) and filesystem prerequisites before switching drivers.
+* Match driver features to workloads: many small layers favor `overlay2`; filesystem-level snapshots may justify `btrfs` or `zfs`.
+* Stick to provider defaults on Docker Desktop, EKS, GKE, etc., to stay within support boundaries.
+* Keep `/var/lib/docker` on reliable, low-latency storage—copy-on-write drivers amplify slow disks.
+
+##### 📦 Volumes
+
+| Scenario | Command | Why it matters |
+| --- | --- | --- |
+| Create named volume | `docker volume create --name appdata` | Prepare reusable storage with labels, driver options, or size limits. |
+| List existing volumes | `docker volume ls` | Inventory Engine-managed data sources before deployment. |
+| Inspect configuration | `docker volume inspect appdata` | Review mountpoints, driver defaults, and labels for troubleshooting. |
+| Attach to container | `docker run --mount type=volume,src=appdata,dst=/var/lib/app` | Persist and share data across container restarts and replicas. |
+| Backup or migrate | `docker run --rm --volumes-from app -v $PWD:/backup busybox tar -cvf /backup/app.tar /var/lib/app` | Snapshot volume contents for disaster recovery or stage migrations. |
+| Cleanup unused | `docker volume rm appdata` / `docker volume prune` | Reclaim disk space from orphaned volumes. |
+
+* Named volumes outlive container deletion; anonymous volumes are removed when the last consumer is gone—track them with `docker volume ls -f dangling=true`.
+* The local driver accepts options (`docker volume create --driver local --opt type=nfs --opt device=:/data --opt o=addr=10.0.0.10`) for NFS, CIFS, tmpfs and more.
+* External drivers (NetApp, Portworx, cloud CSI plugins) are set per volume via `--driver` or in Compose/Swarm stacks under `driver`/`driver_opts`.
+* Compose stacks declare volumes at the top-level (`volumes: { appdata: {} }`) and then mount them in services (`services.app.volumes`), keeping configuration versioned.
+* Prefer the `--mount` syntax for clarity; it prevents ambiguous parsing present with the legacy `-v` flag.
+* For stateful workloads, pair volumes with schedules for `docker run --rm ... tar` or storage-native snapshots so restores are tested and automated.
+
+##### 🗂️ Bind Mounts
+
+* Reuse existing host paths (`/data/app` -> `/service/data`) with full control over layout and lifecycle.
+* Perfect for development sync or leveraging pre-seeded host data.
+* Watch portability: absolute paths and permission semantics differ across Linux, macOS, and Windows.
+* Combine with flags like `:ro`, `:z`, or `:shared` to match security and sharing needs.
+
+##### ✅ Good Practices
+
+* Standardize mount locations with environment variables or Compose defaults to simplify automation.
+* Pair Docker-managed volumes with external backup or snapshot tooling—Docker does not protect the data.
+* Audit disk usage using `docker system df` and schedule cleanup of orphaned layers and volumes.
+* Document required mounts in Compose/Stack files (`volumes:`) so teams reproduce the storage layout consistently.
+
 #### 🛠️ 352.3 Important Commands
 
 ##### 🐳 docker
