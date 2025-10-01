@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8">
+  <title>LPIC-3 305 — Virtualization & Containerization</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    :root { --maxw: 980px; --radius: 12px; --shadow: 0 6px 24px rgba(0,0,0,.08); }
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Arial, sans-serif; color: #0f172a; background: #0b1020; }
+    header.hero { padding: 72px 20px; background: radial-gradient(1200px 600px at 80% -10%, #2dd4bf22, transparent 60%), radial-gradient(1000px 500px at -20% 0%, #60a5fa22, transparent 60%), linear-gradient(180deg, #0b1020 0%, #0b1226 100%); border-bottom: 1px solid #1f2937; }
+    .wrap { max-width: var(--maxw); margin: 0 auto; }
+    .badge { display:inline-block; padding:6px 10px; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#67e8f9; border:1px solid #164e63; border-radius:999px; background:#042f2e; }
+    h1 { margin: 16px 0 8px; font-size: clamp(32px, 5vw, 48px); color: #e2e8f0; line-height: 1.1; }
+    p.lead { margin:0; max-width:60ch; color:#cbd5e1; font-size: clamp(16px, 2.4vw, 18px); }
+    .cta { margin-top: 28px; display:flex; gap:12px; flex-wrap:wrap; }
+    .btn { padding:12px 18px; border-radius:10px; border:1px solid #334155; background:#0ea5e9; color:#00131f; text-decoration:none; font-weight:600; box-shadow: var(--shadow); }
+    .btn.secondary { background:#0b1226; color:#e2e8f0; }
+    main { padding: 36px 20px 64px; }
+    section.card { background:#0f172a; border:1px solid #1f2937; border-radius: var(--radius); box-shadow: var(--shadow); padding:22px; margin: 16px 0; }
+    h2 { margin:0 0 12px; color:#e5e7eb; font-size: 22px; }
+    p, li { color:#cbd5e1; }
+    ul { margin:10px 0 0 18px; }
+    .grid { display:grid; gap:16px; grid-template-columns: repeat(12, 1fr); }
+    .col-4 { grid-column: span 12; }
+    .col-8 { grid-column: span 12; }
+    @media (min-width: 900px){ .col-4 { grid-column: span 4; } .col-8 { grid-column: span 8; } }
+    footer { padding: 24px 20px; border-top:1px solid #1f2937; color:#94a3b8; text-align:center; font-size:14px; }
+    code, .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace; }
+    .pill { display:inline-block; padding:6px 10px; border-radius:999px; border:1px solid #334155; background:#0b1226; color:#93c5fd; font-size:12px; margin-right:6px; }
+    .kpi { display:flex; gap:14px; flex-wrap:wrap; margin-top:10px; }
+    .kpi div { background:#0b1226; border:1px solid #1f2937; padding:12px 14px; border-radius:10px; min-width:160px; }
+    .kpi b { color:#e2e8f0; font-size:18px; display:block; }
+    pre, pre * {
+        background: #1e293b !important;
+        color: #f1f5f9 !important; /* cor clara, legível */
+        font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+        padding: 14px;
+        border-radius: 8px;
+        overflow-x: auto;
+        white-space: pre-wrap; /* quebra linha automática */
+        word-wrap: break-word;
+    }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <div class="wrap">
+      <span class="badge">Trilha de Certificação</span>
+      <h1>LPIC-3 305 — Virtualization & Containerization</h1>
+      <p class="lead">Landing page corporativa para acelerar decisão, habilitar alinhamento de stakeholders e orquestrar a jornada rumo ao nível sênior em virtualização e contêineres no ecossistema Linux.</p>
+      <div class="cta">
+        <a class="btn" href="#conteudo">Ver Conteúdo Programático</a>
+        <a class="btn secondary" href="#implementacao">Deploy no Docker/Nginx</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section id="implementacao" class="card">
+      <h2>Deploy — Nginx em Docker</h2>
+      <p>Checklist de <span class="mono">time-to-live</span> imediato:</p>
+      <pre>
+# 1) Salve este arquivo como: index.html
+# 2) Execute o container mapeando o volume estático do Nginx
+docker run -d --name lpic305 -p 8080:80 \
+  -v $(pwd)/index.html:/usr/share/nginx/html/index.html:ro \
+  nginx:alpine
+
+# Acesse: http://localhost:8080
+      </pre>
+      <p>Para hardening: utilize <span class="mono">nginx:stable-alpine</span>, desabilite <em>autoindex</em>, e sirva via TLS atrás de um reverse proxy corporativo.</p>
+    </section>
+  </main>
+
+  <footer>
+    © <span id="y"></span> LPIC-3 305 — Página informativa. Não oficial. Para uso educacional interno.
+  </footer>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

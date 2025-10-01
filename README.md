@@ -95,7 +95,7 @@
 
 ---
 
-`<a name="about-the-project"></a>`
+<a name="about-the-project"></a>
 
 ## 📖 About Project
 
@@ -113,13 +113,13 @@
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-`<a name="getting-started"></a>`
+<a name="getting-started"></a>
 
 ## 🚀 Getting Started
 
 For starting the learning, see the documentation above.
 
-`<a name="prerequisites"></a>`
+<a name="prerequisites"></a>
 
 ### 🛠️ Prerequisites
 
@@ -128,7 +128,7 @@ For starting the learning, see the documentation above.
 * [Vagrant VMWare Utility](https://developer.hashicorp.com/vagrant/install/vmware)
 * [Vagrant](https://developer.hashicorp.com/vagrant/install)
 
-`<a name="installation"></a>`
+<a name="installation"></a>
 
 ### 💾 Installation
 
@@ -152,7 +152,7 @@ Customize network configuration in files [configs/network](configs/network/).
 
 ---
 
-`<a name="usage"></a>`
+<a name="usage"></a>
 
 ## 📝 Usage
 
@@ -193,7 +193,7 @@ vagrant/destroy.ps1
 
 ---
 
-`<a name="roadmap"></a>`
+<a name="roadmap"></a>
 
 ## 🛣️ Roadmap
 
@@ -206,7 +206,7 @@ vagrant/destroy.ps1
 
 ---
 
-`<a name="freedoms"></a>`
+<a name="freedoms"></a>
 
 ## 🗽 Four Essential Freedoms
 
@@ -234,7 +234,7 @@ man COMMAND
 
 ---
 
-`<a name="topic-351"></a>`
+<a name="topic-351"></a>
 
 ## 🖥️ Topic 351: Full Virtualization
 
@@ -242,7 +242,7 @@ man COMMAND
 
 ---
 
-`<a name="topic-351.1"></a>`
+<a name="topic-351.1"></a>
 
 ### 🧠 351.1 Virtualization Concepts and Theory
 
@@ -587,7 +587,7 @@ Despite this drawback, emulation remains valuable for running legacy software, t
 
 ---
 
-`<a name="topic-351.2"></a>`
+<a name="topic-351.2"></a>
 
 ### 🐧 351.2 Xen
 
@@ -923,7 +923,7 @@ xl cd-eject lpic3-hvm-guest-ubuntu xvdb
 
 ---
 
-`<a name="topic-351.3"></a>`
+<a name="topic-351.3"></a>
 
 ### 🖥️ 351.3 QEMU
 
@@ -1216,7 +1216,7 @@ qemu-system-x86_x64
 
 ---
 
-`<a name="topic-351.4"></a>`
+<a name="topic-351.4"></a>
 
 ### 🏢 351.4 Libvirt Virtual Machine Management
 
@@ -1596,7 +1596,7 @@ less /etc/libvirt/qemu/debian-server01.xml
 
 ---
 
-`<a name="topic-351.5"></a>`
+<a name="topic-351.5"></a>
 
 ### 💾 351.5 Virtual Machine Disk Image Management
 
@@ -1887,13 +1887,13 @@ The generated package has the .ova extension and contains the following files:
 
 ---
 
-`<a name="topic-352"></a>`
+<a name="topic-352"></a>
 
 ## 📦 Topic 352: container Virtualization
 
 ---
 
-`<a name="topic-352.1"></a>`
+<a name="topic-352.1"></a>
 
 ### 🧠 352.1  container Virtualization Concepts
 
@@ -2924,7 +2924,7 @@ sudo runc run mycontainer
 
 ---
 
-`<a name="topic-352.2"></a>`
+<a name="topic-352.2"></a>
 
 ### 📦 352.2 LXC
 
@@ -3576,7 +3576,7 @@ lxc launch 1u1u1u1u1u1 rockylinux9-2 -p production
 
 ---
 
-`<a name="topic-352.3"></a>`
+<a name="topic-352.3"></a>
 
 ### 🐳 352.3 Docker
 
@@ -3977,7 +3977,7 @@ docker compose down -v
 | --- | --- |
 | Union FS | Read-only image layers + the container's writable layer form a union filesystem; removing the container drops ephemeral changes. |
 | Data Root | Storage drivers persist data under `/var/lib/docker/<driver>/`; inspect the active driver via `docker info --format "{{.Driver}}"`. |
-| Persistence | Move stateful data to volumes, bind mounts, or tmpfs mounts (`--mount type=tmpfs`) to survive container recreation. |
+| Persistence | Move stateful data to **volumes** (persistent), **bind mounts** (host path), or **tmpfs mounts** (in-memory, ephemeral) to survive container recreation or optimize performance. |
 
 ##### ⚙️ Storage Drivers
 
@@ -3996,37 +3996,65 @@ docker compose down -v
 * Stick to provider defaults on Docker Desktop, EKS, GKE, etc., to stay within support boundaries.
 * Keep `/var/lib/docker` on reliable, low-latency storage—copy-on-write drivers amplify slow disks.
 
-##### 📦 Volumes
 
-| Scenario | Command | Why it matters |
-| --- | --- | --- |
-| Create named volume | `docker volume create --name appdata` | Prepare reusable storage with labels, driver options, or size limits. |
-| List existing volumes | `docker volume ls` | Inventory Engine-managed data sources before deployment. |
-| Inspect configuration | `docker volume inspect appdata` | Review mountpoints, driver defaults, and labels for troubleshooting. |
-| Attach to container | `docker run --mount type=volume,src=appdata,dst=/var/lib/app` | Persist and share data across container restarts and replicas. |
-| Backup or migrate | `docker run --rm --volumes-from app -v $PWD:/backup busybox tar -cvf /backup/app.tar /var/lib/app` | Snapshot volume contents for disaster recovery or stage migrations. |
-| Cleanup unused | `docker volume rm appdata` / `docker volume prune` | Reclaim disk space from orphaned volumes. |
+##### 📦 Docker Storage Types
 
-* Named volumes outlive container deletion; anonymous volumes are removed when the last consumer is gone—track them with `docker volume ls -f dangling=true`.
-* The local driver accepts options (`docker volume create --driver local --opt type=nfs --opt device=:/data --opt o=addr=10.0.0.10`) for NFS, CIFS, tmpfs and more.
-* External drivers (NetApp, Portworx, cloud CSI plugins) are set per volume via `--driver` or in Compose/Swarm stacks under `driver`/`driver_opts`.
-* Compose stacks declare volumes at the top-level (`volumes: { appdata: {} }`) and then mount them in services (`services.app.volumes`), keeping configuration versioned.
-* Prefer the `--mount` syntax for clarity; it prevents ambiguous parsing present with the legacy `-v` flag.
-* For stateful workloads, pair volumes with schedules for `docker run --rm ... tar` or storage-native snapshots so restores are tested and automated.
+**Volumes:**
 
-##### 🗂️ Bind Mounts
+* Managed by Docker, located outside the container's writable layer (`/var/lib/docker/volumes`).
+* Persist after container removal, can be shared between containers.
+* Used for data that must survive the container lifecycle.
+* Examples:
+  * Create volume: `docker volume create data`
+  * Use volume: `docker run -v data:/app/data ...`
 
-* Reuse existing host paths (`/data/app` -> `/service/data`) with full control over layout and lifecycle.
-* Perfect for development sync or leveraging pre-seeded host data.
-* Watch portability: absolute paths and permission semantics differ across Linux, macOS, and Windows.
-* Combine with flags like `:ro`, `:z`, or `:shared` to match security and sharing needs.
+**Bind Mounts:**
 
-##### ✅ Good Practices
+* Mount a host directory/file directly into the container.
+* Useful for development, code sync, or accessing existing host data.
+* Less portable (absolute paths, host permissions).
+* Examples:
+  * `docker run -v /home/user/app:/app ...`
+  * `docker run --mount type=bind,source=/data,target=/app/data ...`
 
-* Standardize mount locations with environment variables or Compose defaults to simplify automation.
-* Pair Docker-managed volumes with external backup or snapshot tooling—Docker does not protect the data.
-* Audit disk usage using `docker system df` and schedule cleanup of orphaned layers and volumes.
-* Document required mounts in Compose/Stack files (`volumes:`) so teams reproduce the storage layout consistently.
+**Tmpfs Mounts:**
+
+* In-memory mount (RAM), does not persist after container stops or restarts.
+* Ideal for temporary data, caches, or sensitive information.
+* Nothing is written to disk, maximum performance.
+* Examples:
+  * `docker run --mount type=tmpfs,target=/tmp/cache ...`
+  * `docker run --tmpfs /tmp/cache ...`
+
+**Quick summary:**
+
+| Type       | Persistence | Location | Portability | Typical use         |
+|------------|-------------|----------|-------------|---------------------|
+| Volume     | Yes         | Docker   | High        | App data, databases |
+| Bind mount | Optional    | Host     | Low         | Dev, integration    |
+| Tmpfs      | No          | RAM      | High        | Cache, ephemeral    |
+
+##### 🛠️ Usage examples
+
+```sh
+# Persistent volume
+docker run -d --name pg -v pgdata:/var/lib/postgresql/data postgres:16
+
+# Bind mount
+docker run -d -v /home/user/html:/usr/share/nginx/html nginx:latest
+
+# Tmpfs mount
+docker run -d --mount type=tmpfs,target=/tmp nginx:latest
+docker run -d --tmpfs /tmp nginx:latest
+```
+
+##### ✅ Best practices
+
+* Prefer volumes for persistent and backup data.
+* Use tmpfs for sensitive or temporary data.
+* Document volumes and mounts in Compose/Stack files.
+* Monitor disk usage with `docker system df` and clean up orphaned volumes.
+* Always check the [official Docker Storage documentation](https://docs.docker.com/storage/) and [storage drivers](https://docs.docker.com/storage/storagedriver/select-storage-driver/).
 
 #### 🛠️ 352.3 Important Commands
 
@@ -4082,7 +4110,7 @@ docker ps -a
 # list containers id
 docker container ls -q
 
-# list lçast created container
+# list last created container
 docker container ls -l
 
 # list containers with size
@@ -4161,6 +4189,54 @@ docker container cp /etc/hosts <container_id|name>:/etc/hosts
 # copy file from container
 docker container cp <container_id|name>:/etc/hosts /tmp/container-hosts
 
+############ MANAGE STORAGE #############
+
+# Docker Storage Files
+/var/lib/docker/overlay/
+/var/lib/docker/containers/
+/var/lib/docker/volumes/
+
+# list volumes
+docker volume ls
+
+# create volume
+docker volume create my-volume
+
+# inspect volume
+docker volume inspect my-volume
+
+# remove volume
+docker volume rm my-volume
+
+# prune all unused volumes
+docker volume prune
+
+# create container with bind mount
+docker container run -d --name my-nginx -p 8080:80 --mount type=bind,source=/home/vagrant/html,target=/usr/share/nginx/html nginx:latest
+docker container run -d --name my-nginx -p 8080:80 --volume /home/vagrant/html:/usr/share/nginx/html nginx:latest
+docker container run -d --name my-nginx -p 8080:80 -v /home/vagrant/html:/usr/share/nginx/html nginx:latest
+docker container run -d --name my-nginx -p 8080:80 -v /home/vagrant/html:/usr/share/nginx/html:ro nginx:latest
+
+# create container with volume
+docker container run -d --name my-nginx -p 8080:80 --mount type=volume,source=my-volume,target=/usr/share/nginx/html nginx:latest
+docker container run -d --name my-nginx -p 8080:80 --volume my-volume:/usr/share/nginx/html nginx:latest
+
+# create a container with volume-from another container
+docker container run -d --name my-nginx2 -p 8086:80 --volumes-from my-nginx1 nginx:latest
+
+# create container with tmpfs mount
+docker container run -d --name my-nginx -p 8080:80 --mount type=tmpfs,target=/usr/share/nginx/html nginx:latest
+docker container run -d --name my-nginx -p 8080:80 --tmpfs /usr/share/nginx/html nginx:latest
+
+# remove volume
+docker volume rm my-volume
+
+# remove volumes not used by any containers
+docker volume prune
+
+# remove all volumes
+docker volume rm $(docker volume ls -q)
+
 ############ OTHERS COMMANDS ############
 
 # inspect namespaces
@@ -4181,7 +4257,7 @@ cat /sys/fs/cgroup/system.slice/docker-<FULL_ID_CONTAINER>.scope/cgroup.procs
 
 ---
 
-`<a name="topic-352.4"></a>`
+<a name="topic-352.4"></a>
 
 ### 🗂️ 352.4 container Orchestration Platforms
 
@@ -4202,13 +4278,13 @@ cat /sys/fs/cgroup/system.slice/docker-<FULL_ID_CONTAINER>.scope/cgroup.procs
 
 ---
 
-`<a name="topic-353"></a>`
+<a name="topic-353"></a>
 
 ## ☁️ Topic 353: VM Deployment and Provisioning
 
 ---
 
-`<a name="topic-353.1"></a>`
+<a name="topic-353.1"></a>
 
 ### ☁️ 353.1  Cloud Management Tools
 
@@ -4245,7 +4321,7 @@ Terraform
 
 ---
 
-`<a name="topic-353.2"></a>`
+<a name="topic-353.2"></a>
 
 ### 📦 353.2 Packer
 
@@ -4279,7 +4355,7 @@ packer
 
 ---
 
-`<a name="topic-353.3"></a>`
+<a name="topic-353.3"></a>
 
 ### ☁️ 353.3 cloud-init
 
@@ -4318,7 +4394,7 @@ user-data
 
 ---
 
-`<a name="topic-353.4"></a>`
+<a name="topic-353.4"></a>
 
 ### 📦 353.4 Vagrant
 
