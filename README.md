@@ -3996,7 +3996,6 @@ docker compose down -v
 * Stick to provider defaults on Docker Desktop, EKS, GKE, etc., to stay within support boundaries.
 * Keep `/var/lib/docker` on reliable, low-latency storage—copy-on-write drivers amplify slow disks.
 
-
 ##### 📦 Docker Storage Types
 
 **Volumes:**
