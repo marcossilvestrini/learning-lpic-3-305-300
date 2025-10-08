@@ -6254,6 +6254,7 @@ docker compose down -v
       <li>Stick to provider defaults on Docker Desktop, EKS, GKE, etc., to stay within support boundaries.</li>
       <li>Keep <code>/var/lib/docker</code> on reliable, low-latency storage—copy-on-write drivers amplify slow disks.</li>
     </ul>
+    <p>For testing volume drivers use script: <a href="scripts/docker/docker-storage-driver.sh">docker-storage-driver.sh</a>.</p>
     <h5 id="-docker-storage-types"><a class="anchor" aria-hidden="true" tabindex="-1" href="#-docker-storage-types"><span class="octicon octicon-link"></span></a>📦 Docker Storage Types</h5>
     <p><strong>Volumes:</strong></p>
     <ul>
@@ -6354,6 +6355,7 @@ docker run -d --tmpfs /tmp nginx:latest
       <li>Monitor disk usage with <code>docker system df</code> and clean up orphaned volumes.</li>
       <li>Always check the <a href="https://docs.docker.com/storage/">official Docker Storage documentation</a> and <a href="https://docs.docker.com/storage/storagedriver/select-storage-driver/">storage drivers</a>.</li>
     </ul>
+    <p>For testing storage volumes use script: <a href="scripts/docker/docker-storage-volumes.sh">docker-storage-volumes.sh</a>.</p>
     <h4 id="️-3523-important-commands"><a class="anchor" aria-hidden="true" tabindex="-1" href="#️-3523-important-commands"><span class="octicon octicon-link"></span></a>🛠️ 352.3 Important Commands</h4>
     <h5 id="-docker"><a class="anchor" aria-hidden="true" tabindex="-1" href="#-docker"><span class="octicon octicon-link"></span></a>🐳 docker</h5>
     <pre class="language-sh"><code class="language-sh code-highlight"><span class="code-line line-number" line="1"><span class="token comment">############ FILES ############</span>
@@ -6532,18 +6534,42 @@ docker run -d --tmpfs /tmp nginx:latest
 </span><span class="code-line line-number" line="174"><span class="token comment"># remove all volumes</span>
 </span><span class="code-line line-number" line="175"><span class="token function">docker</span> volume <span class="token function">rm</span> <span class="token variable"><span class="token variable">$(</span><span class="token function">docker</span> volume <span class="token function">ls</span> <span class="token parameter variable">-q</span><span class="token variable">)</span></span>
 </span><span class="code-line line-number" line="176">
-</span><span class="code-line line-number" line="177"><span class="token comment">############ OTHERS COMMANDS ############</span>
+</span><span class="code-line line-number" line="177"><span class="token comment">########### MANAGE LOGS ############</span>
 </span><span class="code-line line-number" line="178">
-</span><span class="code-line line-number" line="179"><span class="token comment"># inspect namespaces</span>
-</span><span class="code-line line-number" line="180"><span class="token function">ls</span> <span class="token parameter variable">-l</span> /proc/<span class="token operator">&#x3C;</span>PID<span class="token operator">></span>/ns
-</span><span class="code-line line-number" line="181"><span class="token function">sudo</span> lsns <span class="token parameter variable">-p</span> <span class="token operator">&#x3C;</span>PID<span class="token operator">></span>
-</span><span class="code-line line-number" line="182"><span class="token function">ps</span> <span class="token parameter variable">-o</span> pid,ppid,cmd,netns,mntns,pidns,utsns <span class="token operator">&#x3C;</span>PID<span class="token operator">></span>
-</span><span class="code-line line-number" line="183">
-</span><span class="code-line line-number" line="184"><span class="token comment"># inspect cgroups</span>
-</span><span class="code-line line-number" line="185">lscgroup <span class="token operator">|</span> <span class="token function">grep</span> <span class="token operator">&#x3C;</span>PID<span class="token operator">></span> <span class="token comment"># cgroup v1</span>
-</span><span class="code-line line-number" line="186"><span class="token function">cat</span> /proc/<span class="token operator">&#x3C;</span>PID<span class="token operator">></span>/cgroup <span class="token comment"># cgroup v2</span>
-</span><span class="code-line line-number" line="187"><span class="token function">ls</span> <span class="token parameter variable">-l</span> /sys/fs/cgroup/system.slice/docker-<span class="token operator">&#x3C;</span>FULL_ID_CONTAINER<span class="token operator">></span>.scope
-</span><span class="code-line line-number" line="188"><span class="token function">cat</span> /sys/fs/cgroup/system.slice/docker-<span class="token operator">&#x3C;</span>FULL_ID_CONTAINER<span class="token operator">></span>.scope/cgroup.procs
+</span><span class="code-line line-number" line="179"><span class="token comment"># view container logs</span>
+</span><span class="code-line line-number" line="180"><span class="token function">docker</span> container logs <span class="token operator">&#x3C;</span>container_id<span class="token operator">|</span>name<span class="token operator">></span>
+</span><span class="code-line line-number" line="181">
+</span><span class="code-line line-number" line="182"><span class="token comment"># follow container logs</span>
+</span><span class="code-line line-number" line="183"><span class="token function">docker</span> container logs <span class="token parameter variable">-f</span> <span class="token operator">&#x3C;</span>container_id<span class="token operator">|</span>name<span class="token operator">></span>
+</span><span class="code-line line-number" line="184">
+</span><span class="code-line line-number" line="185"><span class="token comment"># docker system events</span>
+</span><span class="code-line line-number" line="186"><span class="token function">docker</span> system events <span class="token parameter variable">--since</span> <span class="token string">"2h"</span>
+</span><span class="code-line line-number" line="187"><span class="token function">docker</span> system events <span class="token parameter variable">--since</span> <span class="token string">"20h"</span> <span class="token parameter variable">--filter</span> <span class="token string">'container=&#x3C;container_id|name>'</span>
+</span><span class="code-line line-number" line="188"><span class="token function">docker</span> system events <span class="token parameter variable">--since</span> <span class="token string">"20h"</span> <span class="token parameter variable">--filter</span> <span class="token assign-left variable">type</span><span class="token operator">=</span>container  <span class="token parameter variable">--filter</span> <span class="token string">'event=start'</span> <span class="token parameter variable">--filter</span> <span class="token string">'event=stop'</span>
+</span><span class="code-line line-number" line="189">
+</span><span class="code-line line-number" line="190"><span class="token comment"># docker stats</span>
+</span><span class="code-line line-number" line="191"><span class="token function">docker</span> container stats
+</span><span class="code-line line-number" line="192"><span class="token function">docker</span> container stats <span class="token operator">&#x3C;</span>container_id<span class="token operator">|</span>name<span class="token operator">></span>
+</span><span class="code-line line-number" line="193">
+</span><span class="code-line line-number" line="194"><span class="token comment"># docker top</span>
+</span><span class="code-line line-number" line="195"><span class="token function">docker</span> container <span class="token function">top</span> <span class="token operator">&#x3C;</span>container_id<span class="token operator">|</span>name<span class="token operator">></span>
+</span><span class="code-line line-number" line="196">
+</span><span class="code-line line-number" line="197"><span class="token comment">########### DOCKER NETWORKING ###########</span>
+</span><span class="code-line line-number" line="198">
+</span><span class="code-line line-number" line="199">
+</span><span class="code-line line-number" line="200">
+</span><span class="code-line line-number" line="201"><span class="token comment">############ OTHERS COMMANDS ############</span>
+</span><span class="code-line line-number" line="202">
+</span><span class="code-line line-number" line="203"><span class="token comment"># inspect namespaces</span>
+</span><span class="code-line line-number" line="204"><span class="token function">ls</span> <span class="token parameter variable">-l</span> /proc/<span class="token operator">&#x3C;</span>PID<span class="token operator">></span>/ns
+</span><span class="code-line line-number" line="205"><span class="token function">sudo</span> lsns <span class="token parameter variable">-p</span> <span class="token operator">&#x3C;</span>PID<span class="token operator">></span>
+</span><span class="code-line line-number" line="206"><span class="token function">ps</span> <span class="token parameter variable">-o</span> pid,ppid,cmd,netns,mntns,pidns,utsns <span class="token operator">&#x3C;</span>PID<span class="token operator">></span>
+</span><span class="code-line line-number" line="207">
+</span><span class="code-line line-number" line="208"><span class="token comment"># inspect cgroups</span>
+</span><span class="code-line line-number" line="209">lscgroup <span class="token operator">|</span> <span class="token function">grep</span> <span class="token operator">&#x3C;</span>PID<span class="token operator">></span> <span class="token comment"># cgroup v1</span>
+</span><span class="code-line line-number" line="210"><span class="token function">cat</span> /proc/<span class="token operator">&#x3C;</span>PID<span class="token operator">></span>/cgroup <span class="token comment"># cgroup v2</span>
+</span><span class="code-line line-number" line="211"><span class="token function">ls</span> <span class="token parameter variable">-l</span> /sys/fs/cgroup/system.slice/docker-<span class="token operator">&#x3C;</span>FULL_ID_CONTAINER<span class="token operator">></span>.scope
+</span><span class="code-line line-number" line="212"><span class="token function">cat</span> /sys/fs/cgroup/system.slice/docker-<span class="token operator">&#x3C;</span>FULL_ID_CONTAINER<span class="token operator">></span>.scope/cgroup.procs
 </span></code><div onclick="copied(this)" data-code="############ FILES ############
 /var/lib/docker
 /etc/docker/daemon.json
@@ -6719,6 +6745,30 @@ docker volume prune
 
 # remove all volumes
 docker volume rm $(docker volume ls -q)
+
+########### MANAGE LOGS ############
+
+# view container logs
+docker container logs <container_id|name>
+
+# follow container logs
+docker container logs -f <container_id|name>
+
+# docker system events
+docker system events --since &#x22;2h&#x22;
+docker system events --since &#x22;20h&#x22; --filter &#x27;container=<container_id|name>&#x27;
+docker system events --since &#x22;20h&#x22; --filter type=container  --filter &#x27;event=start&#x27; --filter &#x27;event=stop&#x27;
+
+# docker stats
+docker container stats
+docker container stats <container_id|name>
+
+# docker top
+docker container top <container_id|name>
+
+########### DOCKER NETWORKING ###########
+
+
 
 ############ OTHERS COMMANDS ############
 
@@ -7180,6 +7230,8 @@ Vagrantfile
           <li><a href="https://docs.docker.com/storage/bind-mounts/">Bind Mounts</a></li>
           <li><a href="https://docs.docker.com/storage/storagedriver/select-storage-driver/">Storage Drivers</a></li>
           <li><a href="https://testcontainers.com/">Testcontainers</a></li>
+          <li><a href="https://docs.docker.com/network/">Docker Networking</a></li>
+          <li><a href="https://docs.docker.com/network/drivers">Docker Network Drivers</a></li>
         </ul>
       </li>
       <li>
