@@ -6327,7 +6327,7 @@ docker compose down -v
         </tr>
       </tbody>
     </table>
-    <h5 id="️-usage-examples"><a class="anchor" aria-hidden="true" tabindex="-1" href="#️-usage-examples"><span class="octicon octicon-link"></span></a>🛠️ Usage examples</h5>
+    <h5 id="️-storage-types-usage-examples"><a class="anchor" aria-hidden="true" tabindex="-1" href="#️-storage-types-usage-examples"><span class="octicon octicon-link"></span></a>🛠️ Storage Types Usage examples</h5>
     <pre class="language-sh"><code class="language-sh code-highlight"><span class="code-line line-number" line="1"><span class="token comment"># Persistent volume</span>
 </span><span class="code-line line-number" line="2"><span class="token function">docker</span> run <span class="token parameter variable">-d</span> <span class="token parameter variable">--name</span> pg <span class="token parameter variable">-v</span> pgdata:/var/lib/postgresql/data postgres:16
 </span><span class="code-line line-number" line="3">
@@ -6347,7 +6347,7 @@ docker run -d -v /home/user/html:/usr/share/nginx/html nginx:latest
 docker run -d --mount type=tmpfs,target=/tmp nginx:latest
 docker run -d --tmpfs /tmp nginx:latest
 " class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
-    <h5 id="-best-practices"><a class="anchor" aria-hidden="true" tabindex="-1" href="#-best-practices"><span class="octicon octicon-link"></span></a>✅ Best practices</h5>
+    <h5 id="-docker-storage-best-practices"><a class="anchor" aria-hidden="true" tabindex="-1" href="#-docker-storage-best-practices"><span class="octicon octicon-link"></span></a>✅ Docker Storage Best practices</h5>
     <ul>
       <li>Prefer volumes for persistent and backup data.</li>
       <li>Use tmpfs for sensitive or temporary data.</li>
@@ -6356,6 +6356,152 @@ docker run -d --tmpfs /tmp nginx:latest
       <li>Always check the <a href="https://docs.docker.com/storage/">official Docker Storage documentation</a> and <a href="https://docs.docker.com/storage/storagedriver/select-storage-driver/">storage drivers</a>.</li>
     </ul>
     <p>For testing storage volumes use script: <a href="scripts/docker/docker-storage-volumes.sh">docker-storage-volumes.sh</a>.</p>
+    <h4 id="docker-networking"><a class="anchor" aria-hidden="true" tabindex="-1" href="#docker-networking"><span class="octicon octicon-link"></span></a>Docker Networking</h4>
+    <h5 id="-core-concepts-1"><a class="anchor" aria-hidden="true" tabindex="-1" href="#-core-concepts-1"><span class="octicon octicon-link"></span></a>🌐 Core Concepts</h5>
+    <table>
+      <thead>
+        <tr>
+          <th>🔍 Focus</th>
+          <th>Details</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>User-defined networks</td>
+          <td>Create isolated topologies (<code>docker network create</code>) and attach/detach containers on demand with <code>docker network connect</code> or the <code>--network</code> flag.</td>
+        </tr>
+        <tr>
+          <td>Network stack sharing</td>
+          <td>By default each container gets its own namespace; <code>--network container:&#x3C;id></code> reuses another container's stack but disables flags like <code>--publish</code>, <code>--dns</code>, and <code>--hostname</code>.</td>
+        </tr>
+        <tr>
+          <td>Embedded DNS</td>
+          <td>Docker injects an internal DNS server per network; container names and <code>--network-alias</code> entries resolve automatically and fall back to the host resolver for external lookups.</td>
+        </tr>
+        <tr>
+          <td>Gateway priority</td>
+          <td>When a container joins multiple networks, Docker selects the default route via the highest <code>--gw-priority</code>; override IPs with <code>--ip</code> / <code>--ip6</code> for deterministic addressing.</td>
+        </tr>
+      </tbody>
+    </table>
+    <h5 id="-default-drivers"><a class="anchor" aria-hidden="true" tabindex="-1" href="#-default-drivers"><span class="octicon octicon-link"></span></a>🚍 Default Drivers</h5>
+    <table>
+      <thead>
+        <tr>
+          <th>Driver</th>
+          <th>Use when</th>
+          <th>Highlights</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>bridge</td>
+          <td>Standalone workloads on a single host need simple east-west traffic.</td>
+          <td>Default <code>bridge</code> network ships with Docker; create user-defined bridges for DNS, isolation, and per-project scoping.</td>
+        </tr>
+        <tr>
+          <td>host</td>
+          <td>You need native host networking with zero isolation.</td>
+          <td>Shares the host stack; no port mapping needed; ideal for high-throughput or port-dynamic workloads.</td>
+        </tr>
+        <tr>
+          <td>overlay</td>
+          <td>Services must span multiple Docker hosts or Swarm nodes.</td>
+          <td>VXLAN-backed; requires the Swarm control plane (or external KV store) to coordinate networks across engines.</td>
+        </tr>
+        <tr>
+          <td>macvlan</td>
+          <td>Containers must appear as physical devices on the LAN.</td>
+          <td>Assigns unique MAC/IP pairs from the parent interface; great for legacy integrations or strict VLAN segmentation.</td>
+        </tr>
+        <tr>
+          <td>ipvlan</td>
+          <td>Underlay restricts MAC addresses but permits L3 routing.</td>
+          <td>Provides per-container IPv4/IPv6 without extra MACs; supports L2 (<code>ipvlan -l2</code>) and L3 modes with VLAN tagging.</td>
+        </tr>
+        <tr>
+          <td>none</td>
+          <td>Full isolation is required.</td>
+          <td>Removes the network stack entirely; manual namespace wiring only (not supported for Swarm services).</td>
+        </tr>
+        <tr>
+          <td>Plugins</td>
+          <td>Built-in drivers fall short of SDN or vendor needs.</td>
+          <td>Install third-party network plugins from the Docker ecosystem to integrate with specialized fabrics.</td>
+        </tr>
+      </tbody>
+    </table>
+    <h5 id="️-working-with-networks"><a class="anchor" aria-hidden="true" tabindex="-1" href="#️-working-with-networks"><span class="octicon octicon-link"></span></a>🕹️ Working with Networks</h5>
+    <ul>
+      <li>Scope infrastructure with user-defined bridges for app components, overlays for distributed stacks, or L2-style macvlan/ipvlan for direct LAN presence.</li>
+      <li>Combine frontend/backend networks per container; set <code>--internal</code> on a bridge to block egress while still allowing service-to-service traffic.</li>
+      <li>Inspect connectivity with <code>docker network ls</code>, <code>docker network inspect</code>, and <code>docker exec &#x3C;ctr> ip addr</code> to validate namespace wiring.</li>
+      <li>Clean up unused networks regularly with <code>docker network prune</code> to avoid stale subnets and orphaned config.</li>
+    </ul>
+    <h5 id="-published-ports--access"><a class="anchor" aria-hidden="true" tabindex="-1" href="#-published-ports--access"><span class="octicon octicon-link"></span></a>🚦 Published Ports &#x26; Access</h5>
+    <ul>
+      <li>Bridge networks keep ports private unless you publish them with <code>-p</code> / <code>--publish</code>; include <code>127.0.0.1:</code> (or <code>[::1]:</code> for IPv6) to restrict exposure to the host only.</li>
+      <li>Port publishing is not required for container-to-container access on the same user-defined bridge—DNS and the internal IP suffice.</li>
+      <li>Overlay and macvlan drivers bypass the userland proxy; plan upstream firewalls or routing accordingly.</li>
+    </ul>
+    <h5 id="-addressing--dns"><a class="anchor" aria-hidden="true" tabindex="-1" href="#-addressing--dns"><span class="octicon octicon-link"></span></a>🔐 Addressing &#x26; DNS</h5>
+    <ul>
+      <li>IPv4 is enabled by default on new networks; add <code>--ipv6</code> to provision dual-stack ranges and use <code>--ip</code> / <code>--ip6</code> to pin addresses.</li>
+      <li>Each join operation can supply extra identities via <code>--alias</code>; Docker advertises them through the embedded DNS service.</li>
+      <li>Override resolvers per container using <code>--dns</code>, <code>--dns-search</code>, or <code>--dns-option</code>, or import extra hosts with <code>--add-host</code>.</li>
+      <li>Containers inherit a curated <code>/etc/hosts</code>; host-level entries are not synced automatically.</li>
+    </ul>
+    <h5 id="️-docker-network-usage-examples"><a class="anchor" aria-hidden="true" tabindex="-1" href="#️-docker-network-usage-examples"><span class="octicon octicon-link"></span></a>🛠️ Docker Network Usage examples</h5>
+    <pre class="language-sh"><code class="language-sh code-highlight"><span class="code-line line-number" line="1"><span class="token comment"># Create dedicated frontend and backend bridges</span>
+</span><span class="code-line line-number" line="2"><span class="token function">docker</span> network create <span class="token parameter variable">--driver</span> bridge frontend_net
+</span><span class="code-line line-number" line="3"><span class="token function">docker</span> network create <span class="token parameter variable">--driver</span> bridge <span class="token parameter variable">--internal</span> backend_net
+</span><span class="code-line line-number" line="4">
+</span><span class="code-line line-number" line="5"><span class="token comment"># Launch services with deterministic addressing and aliases</span>
+</span><span class="code-line line-number" line="6"><span class="token function">docker</span> run <span class="token parameter variable">-d</span> <span class="token parameter variable">--name</span> api <span class="token punctuation">\</span>
+</span><span class="code-line line-number" line="7">  <span class="token parameter variable">--network</span> backend_net <span class="token parameter variable">--ip</span> <span class="token number">10.18</span>.0.10 <span class="token punctuation">\</span>
+</span><span class="code-line line-number" line="8">  --network-alias api.internal <span class="token punctuation">\</span>
+</span><span class="code-line line-number" line="9">  ghcr.io/example/api:latest
+</span><span class="code-line line-number" line="10">
+</span><span class="code-line line-number" line="11"><span class="token function">docker</span> run <span class="token parameter variable">-d</span> <span class="token parameter variable">--name</span> web <span class="token punctuation">\</span>
+</span><span class="code-line line-number" line="12">  <span class="token parameter variable">--network</span> frontend_net <span class="token punctuation">\</span>
+</span><span class="code-line line-number" line="13">  <span class="token parameter variable">--network</span> backend_net <span class="token parameter variable">--alias</span> web-backend <span class="token punctuation">\</span>
+</span><span class="code-line line-number" line="14">  <span class="token parameter variable">-p</span> <span class="token number">443</span>:8443 <span class="token punctuation">\</span>
+</span><span class="code-line line-number" line="15">  ghcr.io/example/web:latest
+</span><span class="code-line line-number" line="16">
+</span><span class="code-line line-number" line="17"><span class="token comment"># Attach a troubleshooting container temporarily</span>
+</span><span class="code-line line-number" line="18"><span class="token function">docker</span> run <span class="token parameter variable">-it</span> <span class="token parameter variable">--rm</span> <span class="token punctuation">\</span>
+</span><span class="code-line line-number" line="19">  <span class="token parameter variable">--network</span> container:web <span class="token punctuation">\</span>
+</span><span class="code-line line-number" line="20">  alpine:latest <span class="token function">sh</span>
+</span></code><div onclick="copied(this)" data-code="# Create dedicated frontend and backend bridges
+docker network create --driver bridge frontend_net
+docker network create --driver bridge --internal backend_net
+
+# Launch services with deterministic addressing and aliases
+docker run -d --name api \
+  --network backend_net --ip 10.18.0.10 \
+  --network-alias api.internal \
+  ghcr.io/example/api:latest
+
+docker run -d --name web \
+  --network frontend_net \
+  --network backend_net --alias web-backend \
+  -p 443:8443 \
+  ghcr.io/example/web:latest
+
+# Attach a troubleshooting container temporarily
+docker run -it --rm \
+  --network container:web \
+  alpine:latest sh
+" class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+    <h5 id="-docker-network-best-practices"><a class="anchor" aria-hidden="true" tabindex="-1" href="#-docker-network-best-practices"><span class="octicon octicon-link"></span></a>✅ Docker Network Best practices</h5>
+    <ul>
+      <li>Model network boundaries early; document which containers share bridges, overlays, or macvlan segments.</li>
+      <li>Use <code>--internal</code> or firewalls to block unintended egress, and prefer network-level isolation over ad-hoc port publishing.</li>
+      <li>When mixing drivers, verify default routes (<code>ip route</code>) to ensure the correct gateway won the <code>--gw-priority</code>.</li>
+      <li>Monitor subnet allocation conflicts when multiple hosts create networks; explicitly set <code>--subnet</code> / <code>--gateway</code> for predictable CIDRs.</li>
+      <li>Cross-check the official docs for updates: <a href="https://docs.docker.com/network/">Networking overview</a> and <a href="https://docs.docker.com/engine/network/drivers/">Network drivers</a>.</li>
+    </ul>
+    <p>For testing docker network use script: <a href="scripts/docker/docker-network.sh">docker-network.sh</a>.</p>
     <h4 id="️-3523-important-commands"><a class="anchor" aria-hidden="true" tabindex="-1" href="#️-3523-important-commands"><span class="octicon octicon-link"></span></a>🛠️ 352.3 Important Commands</h4>
     <h5 id="-docker"><a class="anchor" aria-hidden="true" tabindex="-1" href="#-docker"><span class="octicon octicon-link"></span></a>🐳 docker</h5>
     <pre class="language-sh"><code class="language-sh code-highlight"><span class="code-line line-number" line="1"><span class="token comment">############ FILES ############</span>
@@ -6438,138 +6584,186 @@ docker run -d --tmpfs /tmp nginx:latest
 </span><span class="code-line line-number" line="78"><span class="token comment"># create a container and expose port 8888</span>
 </span><span class="code-line line-number" line="79"><span class="token function">docker</span> container run <span class="token parameter variable">-d</span> <span class="token parameter variable">--name</span> my-nginx <span class="token parameter variable">-p</span> <span class="token number">9082</span>:80 <span class="token parameter variable">--expose</span> <span class="token number">8888</span> nginx:latest
 </span><span class="code-line line-number" line="80">
-</span><span class="code-line line-number" line="81"><span class="token comment"># create container in detached mode</span>
-</span><span class="code-line line-number" line="82"><span class="token function">docker</span> container run <span class="token parameter variable">-d</span> <span class="token parameter variable">-it</span> <span class="token parameter variable">--name</span> alpine alpine
+</span><span class="code-line line-number" line="81"><span class="token comment"># create a container and define hostname, dns</span>
+</span><span class="code-line line-number" line="82"><span class="token function">docker</span> container run <span class="token parameter variable">-dit</span> <span class="token parameter variable">--name</span> ubuntu <span class="token parameter variable">--dns</span><span class="token operator">=</span><span class="token number">8.8</span>.8.8 <span class="token parameter variable">--dns</span><span class="token operator">=</span><span class="token number">1.1</span>.1.1 <span class="token parameter variable">--hostname</span> ubuntu ubuntu
 </span><span class="code-line line-number" line="83">
-</span><span class="code-line line-number" line="84"><span class="token comment"># pause container</span>
-</span><span class="code-line line-number" line="85"><span class="token function">docker</span> container pause <span class="token operator">&#x3C;</span>container_id<span class="token operator">|</span>name<span class="token operator">></span>
+</span><span class="code-line line-number" line="84"><span class="token comment"># create container in detached mode</span>
+</span><span class="code-line line-number" line="85"><span class="token function">docker</span> container run <span class="token parameter variable">-d</span> <span class="token parameter variable">-it</span> <span class="token parameter variable">--name</span> alpine alpine
 </span><span class="code-line line-number" line="86">
-</span><span class="code-line line-number" line="87"><span class="token comment"># unpause container</span>
-</span><span class="code-line line-number" line="88"><span class="token function">docker</span> container unpause <span class="token operator">&#x3C;</span>container_id<span class="token operator">|</span>name<span class="token operator">></span>
+</span><span class="code-line line-number" line="87"><span class="token comment"># pause container</span>
+</span><span class="code-line line-number" line="88"><span class="token function">docker</span> container pause <span class="token operator">&#x3C;</span>container_id<span class="token operator">|</span>name<span class="token operator">></span>
 </span><span class="code-line line-number" line="89">
-</span><span class="code-line line-number" line="90"><span class="token comment"># stop container</span>
-</span><span class="code-line line-number" line="91"><span class="token function">docker</span> container stop <span class="token operator">&#x3C;</span>container_id<span class="token operator">|</span>name<span class="token operator">></span>
+</span><span class="code-line line-number" line="90"><span class="token comment"># unpause container</span>
+</span><span class="code-line line-number" line="91"><span class="token function">docker</span> container unpause <span class="token operator">&#x3C;</span>container_id<span class="token operator">|</span>name<span class="token operator">></span>
 </span><span class="code-line line-number" line="92">
-</span><span class="code-line line-number" line="93"><span class="token comment"># start container</span>
-</span><span class="code-line line-number" line="94"><span class="token function">docker</span> container start <span class="token operator">&#x3C;</span>container_id<span class="token operator">|</span>name<span class="token operator">></span>
+</span><span class="code-line line-number" line="93"><span class="token comment"># stop container</span>
+</span><span class="code-line line-number" line="94"><span class="token function">docker</span> container stop <span class="token operator">&#x3C;</span>container_id<span class="token operator">|</span>name<span class="token operator">></span>
 </span><span class="code-line line-number" line="95">
-</span><span class="code-line line-number" line="96"><span class="token comment"># remove container</span>
-</span><span class="code-line line-number" line="97"><span class="token function">docker</span> container <span class="token function">rm</span> <span class="token operator">&#x3C;</span>container_id<span class="token operator">|</span>name<span class="token operator">></span>
+</span><span class="code-line line-number" line="96"><span class="token comment"># start container</span>
+</span><span class="code-line line-number" line="97"><span class="token function">docker</span> container start <span class="token operator">&#x3C;</span>container_id<span class="token operator">|</span>name<span class="token operator">></span>
 </span><span class="code-line line-number" line="98">
-</span><span class="code-line line-number" line="99"><span class="token comment"># remove container force</span>
-</span><span class="code-line line-number" line="100"><span class="token function">docker</span> container <span class="token function">rm</span> <span class="token parameter variable">-f</span> <span class="token operator">&#x3C;</span>container_id<span class="token operator">|</span>name<span class="token operator">></span>
+</span><span class="code-line line-number" line="99"><span class="token comment"># remove container</span>
+</span><span class="code-line line-number" line="100"><span class="token function">docker</span> container <span class="token function">rm</span> <span class="token operator">&#x3C;</span>container_id<span class="token operator">|</span>name<span class="token operator">></span>
 </span><span class="code-line line-number" line="101">
-</span><span class="code-line line-number" line="102"><span class="token comment"># prune all stopped containers</span>
-</span><span class="code-line line-number" line="103"><span class="token function">docker</span> container prune
+</span><span class="code-line line-number" line="102"><span class="token comment"># remove container force</span>
+</span><span class="code-line line-number" line="103"><span class="token function">docker</span> container <span class="token function">rm</span> <span class="token parameter variable">-f</span> <span class="token operator">&#x3C;</span>container_id<span class="token operator">|</span>name<span class="token operator">></span>
 </span><span class="code-line line-number" line="104">
-</span><span class="code-line line-number" line="105"><span class="token comment"># remove all containers</span>
-</span><span class="code-line line-number" line="106"><span class="token function">docker</span> container <span class="token function">rm</span> <span class="token parameter variable">-f</span> <span class="token variable"><span class="token variable">$(</span><span class="token function">docker</span> container <span class="token function">ps</span> <span class="token parameter variable">-a</span> <span class="token parameter variable">-q</span><span class="token variable">)</span></span>
+</span><span class="code-line line-number" line="105"><span class="token comment"># prune all stopped containers</span>
+</span><span class="code-line line-number" line="106"><span class="token function">docker</span> container prune
 </span><span class="code-line line-number" line="107">
-</span><span class="code-line line-number" line="108"><span class="token comment"># inspect container</span>
-</span><span class="code-line line-number" line="109"><span class="token function">docker</span> container inspect <span class="token operator">&#x3C;</span>container_id<span class="token operator">|</span>name<span class="token operator">></span>
+</span><span class="code-line line-number" line="108"><span class="token comment"># remove all containers</span>
+</span><span class="code-line line-number" line="109"><span class="token function">docker</span> container <span class="token function">rm</span> <span class="token parameter variable">-f</span> <span class="token variable"><span class="token variable">$(</span><span class="token function">docker</span> container <span class="token function">ps</span> <span class="token parameter variable">-a</span> <span class="token parameter variable">-q</span><span class="token variable">)</span></span>
 </span><span class="code-line line-number" line="110">
-</span><span class="code-line line-number" line="111"><span class="token comment"># get PID of container</span>
-</span><span class="code-line line-number" line="112"><span class="token function">docker</span> container inspect <span class="token parameter variable">--format</span> <span class="token string">'{{.State.Pid}}'</span> <span class="token operator">&#x3C;</span>container_id<span class="token operator">|</span>name<span class="token operator">></span>
+</span><span class="code-line line-number" line="111"><span class="token comment"># inspect container</span>
+</span><span class="code-line line-number" line="112"><span class="token function">docker</span> container inspect <span class="token operator">&#x3C;</span>container_id<span class="token operator">|</span>name<span class="token operator">></span>
 </span><span class="code-line line-number" line="113">
-</span><span class="code-line line-number" line="114"><span class="token comment"># get ID of container</span>
-</span><span class="code-line line-number" line="115"><span class="token function">docker</span> container inspect <span class="token parameter variable">--format</span> <span class="token string">'{{.Id}}'</span> <span class="token operator">&#x3C;</span>container_id<span class="token operator">|</span>name<span class="token operator">></span>
-</span><span class="code-line line-number" line="116"><span class="token function">docker</span> container inspect <span class="token parameter variable">--format</span> <span class="token string">'{{.Id}}'</span> <span class="token operator">&#x3C;</span>container_id<span class="token operator">|</span>name<span class="token operator">></span>
-</span><span class="code-line line-number" line="117">
-</span><span class="code-line line-number" line="118"><span class="token comment"># execute command in container</span>
-</span><span class="code-line line-number" line="119"><span class="token function">docker</span> container <span class="token builtin class-name">exec</span> <span class="token parameter variable">-it</span> <span class="token operator">&#x3C;</span>container_id<span class="token operator">|</span>name<span class="token operator">></span> <span class="token function">bash</span>
-</span><span class="code-line line-number" line="120"><span class="token function">docker</span> container <span class="token builtin class-name">exec</span> <span class="token parameter variable">-it</span> <span class="token operator">&#x3C;</span>container_id<span class="token operator">|</span>name<span class="token operator">></span> <span class="token function">ls</span> /
-</span><span class="code-line line-number" line="121"><span class="token function">docker</span> container <span class="token builtin class-name">exec</span> <span class="token parameter variable">-it</span> <span class="token operator">&#x3C;</span>container_id<span class="token operator">|</span>name<span class="token operator">></span> <span class="token function">sh</span> <span class="token parameter variable">-c</span> <span class="token string">"echo 'Hello from container'"</span>
-</span><span class="code-line line-number" line="122">
-</span><span class="code-line line-number" line="123"><span class="token comment"># copy file to container</span>
-</span><span class="code-line line-number" line="124"><span class="token function">docker</span> container <span class="token function">cp</span> /etc/hosts <span class="token operator">&#x3C;</span>container_id<span class="token operator">|</span>name<span class="token operator">></span>:/etc/hosts
+</span><span class="code-line line-number" line="114"><span class="token comment"># get PID of container</span>
+</span><span class="code-line line-number" line="115"><span class="token function">docker</span> container inspect <span class="token parameter variable">--format</span> <span class="token string">'{{.State.Pid}}'</span> <span class="token operator">&#x3C;</span>container_id<span class="token operator">|</span>name<span class="token operator">></span>
+</span><span class="code-line line-number" line="116">
+</span><span class="code-line line-number" line="117"><span class="token comment"># get ID of container</span>
+</span><span class="code-line line-number" line="118"><span class="token function">docker</span> container inspect <span class="token parameter variable">--format</span> <span class="token string">'{{.Id}}'</span> <span class="token operator">&#x3C;</span>container_id<span class="token operator">|</span>name<span class="token operator">></span>
+</span><span class="code-line line-number" line="119"><span class="token function">docker</span> container inspect <span class="token parameter variable">--format</span> <span class="token string">'{{.Id}}'</span> <span class="token operator">&#x3C;</span>container_id<span class="token operator">|</span>name<span class="token operator">></span>
+</span><span class="code-line line-number" line="120">
+</span><span class="code-line line-number" line="121"><span class="token comment"># execute command in container</span>
+</span><span class="code-line line-number" line="122"><span class="token function">docker</span> container <span class="token builtin class-name">exec</span> <span class="token parameter variable">-it</span> <span class="token operator">&#x3C;</span>container_id<span class="token operator">|</span>name<span class="token operator">></span> <span class="token function">bash</span>
+</span><span class="code-line line-number" line="123"><span class="token function">docker</span> container <span class="token builtin class-name">exec</span> <span class="token parameter variable">-it</span> <span class="token operator">&#x3C;</span>container_id<span class="token operator">|</span>name<span class="token operator">></span> <span class="token function">ls</span> /
+</span><span class="code-line line-number" line="124"><span class="token function">docker</span> container <span class="token builtin class-name">exec</span> <span class="token parameter variable">-it</span> <span class="token operator">&#x3C;</span>container_id<span class="token operator">|</span>name<span class="token operator">></span> <span class="token function">sh</span> <span class="token parameter variable">-c</span> <span class="token string">"echo 'Hello from container'"</span>
 </span><span class="code-line line-number" line="125">
-</span><span class="code-line line-number" line="126"><span class="token comment"># copy file from container</span>
-</span><span class="code-line line-number" line="127"><span class="token function">docker</span> container <span class="token function">cp</span> <span class="token operator">&#x3C;</span>container_id<span class="token operator">|</span>name<span class="token operator">></span>:/etc/hosts /tmp/container-hosts
+</span><span class="code-line line-number" line="126"><span class="token comment"># copy file to container</span>
+</span><span class="code-line line-number" line="127"><span class="token function">docker</span> container <span class="token function">cp</span> /etc/hosts <span class="token operator">&#x3C;</span>container_id<span class="token operator">|</span>name<span class="token operator">></span>:/etc/hosts
 </span><span class="code-line line-number" line="128">
-</span><span class="code-line line-number" line="129"><span class="token comment">############ MANAGE STORAGE #############</span>
-</span><span class="code-line line-number" line="130">
-</span><span class="code-line line-number" line="131"><span class="token comment"># Docker Storage Files</span>
-</span><span class="code-line line-number" line="132">/var/lib/docker/overlay/
-</span><span class="code-line line-number" line="133">/var/lib/docker/containers/
-</span><span class="code-line line-number" line="134">/var/lib/docker/volumes/
-</span><span class="code-line line-number" line="135">
-</span><span class="code-line line-number" line="136"><span class="token comment"># list volumes</span>
-</span><span class="code-line line-number" line="137"><span class="token function">docker</span> volume <span class="token function">ls</span>
+</span><span class="code-line line-number" line="129"><span class="token comment"># copy file from container</span>
+</span><span class="code-line line-number" line="130"><span class="token function">docker</span> container <span class="token function">cp</span> <span class="token operator">&#x3C;</span>container_id<span class="token operator">|</span>name<span class="token operator">></span>:/etc/hosts /tmp/container-hosts
+</span><span class="code-line line-number" line="131">
+</span><span class="code-line line-number" line="132"><span class="token comment">############ MANAGE STORAGE #############</span>
+</span><span class="code-line line-number" line="133">
+</span><span class="code-line line-number" line="134"><span class="token comment"># Docker Storage Files</span>
+</span><span class="code-line line-number" line="135">/var/lib/docker/overlay/
+</span><span class="code-line line-number" line="136">/var/lib/docker/containers/
+</span><span class="code-line line-number" line="137">/var/lib/docker/volumes/
 </span><span class="code-line line-number" line="138">
-</span><span class="code-line line-number" line="139"><span class="token comment"># create volume</span>
-</span><span class="code-line line-number" line="140"><span class="token function">docker</span> volume create my-volume
+</span><span class="code-line line-number" line="139"><span class="token comment"># list volumes</span>
+</span><span class="code-line line-number" line="140"><span class="token function">docker</span> volume <span class="token function">ls</span>
 </span><span class="code-line line-number" line="141">
-</span><span class="code-line line-number" line="142"><span class="token comment"># inspect volume</span>
-</span><span class="code-line line-number" line="143"><span class="token function">docker</span> volume inspect my-volume
+</span><span class="code-line line-number" line="142"><span class="token comment"># create volume</span>
+</span><span class="code-line line-number" line="143"><span class="token function">docker</span> volume create my-volume
 </span><span class="code-line line-number" line="144">
-</span><span class="code-line line-number" line="145"><span class="token comment"># remove volume</span>
-</span><span class="code-line line-number" line="146"><span class="token function">docker</span> volume <span class="token function">rm</span> my-volume
+</span><span class="code-line line-number" line="145"><span class="token comment"># inspect volume</span>
+</span><span class="code-line line-number" line="146"><span class="token function">docker</span> volume inspect my-volume
 </span><span class="code-line line-number" line="147">
-</span><span class="code-line line-number" line="148"><span class="token comment"># prune all unused volumes</span>
-</span><span class="code-line line-number" line="149"><span class="token function">docker</span> volume prune
+</span><span class="code-line line-number" line="148"><span class="token comment"># remove volume</span>
+</span><span class="code-line line-number" line="149"><span class="token function">docker</span> volume <span class="token function">rm</span> my-volume
 </span><span class="code-line line-number" line="150">
-</span><span class="code-line line-number" line="151"><span class="token comment"># create container with bind mount</span>
-</span><span class="code-line line-number" line="152"><span class="token function">docker</span> container run <span class="token parameter variable">-d</span> <span class="token parameter variable">--name</span> my-nginx <span class="token parameter variable">-p</span> <span class="token number">8080</span>:80 <span class="token parameter variable">--mount</span> <span class="token assign-left variable">type</span><span class="token operator">=</span>bind,source<span class="token operator">=</span>/home/vagrant/html,target<span class="token operator">=</span>/usr/share/nginx/html nginx:latest
-</span><span class="code-line line-number" line="153"><span class="token function">docker</span> container run <span class="token parameter variable">-d</span> <span class="token parameter variable">--name</span> my-nginx <span class="token parameter variable">-p</span> <span class="token number">8080</span>:80 <span class="token parameter variable">--volume</span> /home/vagrant/html:/usr/share/nginx/html nginx:latest
-</span><span class="code-line line-number" line="154"><span class="token function">docker</span> container run <span class="token parameter variable">-d</span> <span class="token parameter variable">--name</span> my-nginx <span class="token parameter variable">-p</span> <span class="token number">8080</span>:80 <span class="token parameter variable">-v</span> /home/vagrant/html:/usr/share/nginx/html nginx:latest
-</span><span class="code-line line-number" line="155"><span class="token function">docker</span> container run <span class="token parameter variable">-d</span> <span class="token parameter variable">--name</span> my-nginx <span class="token parameter variable">-p</span> <span class="token number">8080</span>:80 <span class="token parameter variable">-v</span> /home/vagrant/html:/usr/share/nginx/html:ro nginx:latest
-</span><span class="code-line line-number" line="156">
-</span><span class="code-line line-number" line="157"><span class="token comment"># create container with volume</span>
-</span><span class="code-line line-number" line="158"><span class="token function">docker</span> container run <span class="token parameter variable">-d</span> <span class="token parameter variable">--name</span> my-nginx <span class="token parameter variable">-p</span> <span class="token number">8080</span>:80 <span class="token parameter variable">--mount</span> <span class="token assign-left variable">type</span><span class="token operator">=</span>volume,source<span class="token operator">=</span>my-volume,target<span class="token operator">=</span>/usr/share/nginx/html nginx:latest
-</span><span class="code-line line-number" line="159"><span class="token function">docker</span> container run <span class="token parameter variable">-d</span> <span class="token parameter variable">--name</span> my-nginx <span class="token parameter variable">-p</span> <span class="token number">8080</span>:80 <span class="token parameter variable">--volume</span> my-volume:/usr/share/nginx/html nginx:latest
-</span><span class="code-line line-number" line="160">
-</span><span class="code-line line-number" line="161"><span class="token comment"># create a container with volume-from another container</span>
-</span><span class="code-line line-number" line="162"><span class="token function">docker</span> container run <span class="token parameter variable">-d</span> <span class="token parameter variable">--name</span> my-nginx2 <span class="token parameter variable">-p</span> <span class="token number">8086</span>:80 --volumes-from my-nginx1 nginx:latest
+</span><span class="code-line line-number" line="151"><span class="token comment"># prune all unused volumes</span>
+</span><span class="code-line line-number" line="152"><span class="token function">docker</span> volume prune
+</span><span class="code-line line-number" line="153">
+</span><span class="code-line line-number" line="154"><span class="token comment"># create container with bind mount</span>
+</span><span class="code-line line-number" line="155"><span class="token function">docker</span> container run <span class="token parameter variable">-d</span> <span class="token parameter variable">--name</span> my-nginx <span class="token parameter variable">-p</span> <span class="token number">8080</span>:80 <span class="token parameter variable">--mount</span> <span class="token assign-left variable">type</span><span class="token operator">=</span>bind,source<span class="token operator">=</span>/home/vagrant/html,target<span class="token operator">=</span>/usr/share/nginx/html nginx:latest
+</span><span class="code-line line-number" line="156"><span class="token function">docker</span> container run <span class="token parameter variable">-d</span> <span class="token parameter variable">--name</span> my-nginx <span class="token parameter variable">-p</span> <span class="token number">8080</span>:80 <span class="token parameter variable">--volume</span> /home/vagrant/html:/usr/share/nginx/html nginx:latest
+</span><span class="code-line line-number" line="157"><span class="token function">docker</span> container run <span class="token parameter variable">-d</span> <span class="token parameter variable">--name</span> my-nginx <span class="token parameter variable">-p</span> <span class="token number">8080</span>:80 <span class="token parameter variable">-v</span> /home/vagrant/html:/usr/share/nginx/html nginx:latest
+</span><span class="code-line line-number" line="158"><span class="token function">docker</span> container run <span class="token parameter variable">-d</span> <span class="token parameter variable">--name</span> my-nginx <span class="token parameter variable">-p</span> <span class="token number">8080</span>:80 <span class="token parameter variable">-v</span> /home/vagrant/html:/usr/share/nginx/html:ro nginx:latest
+</span><span class="code-line line-number" line="159">
+</span><span class="code-line line-number" line="160"><span class="token comment"># create container with volume</span>
+</span><span class="code-line line-number" line="161"><span class="token function">docker</span> container run <span class="token parameter variable">-d</span> <span class="token parameter variable">--name</span> my-nginx <span class="token parameter variable">-p</span> <span class="token number">8080</span>:80 <span class="token parameter variable">--mount</span> <span class="token assign-left variable">type</span><span class="token operator">=</span>volume,source<span class="token operator">=</span>my-volume,target<span class="token operator">=</span>/usr/share/nginx/html nginx:latest
+</span><span class="code-line line-number" line="162"><span class="token function">docker</span> container run <span class="token parameter variable">-d</span> <span class="token parameter variable">--name</span> my-nginx <span class="token parameter variable">-p</span> <span class="token number">8080</span>:80 <span class="token parameter variable">--volume</span> my-volume:/usr/share/nginx/html nginx:latest
 </span><span class="code-line line-number" line="163">
-</span><span class="code-line line-number" line="164"><span class="token comment"># create container with tmpfs mount</span>
-</span><span class="code-line line-number" line="165"><span class="token function">docker</span> container run <span class="token parameter variable">-d</span> <span class="token parameter variable">--name</span> my-nginx <span class="token parameter variable">-p</span> <span class="token number">8080</span>:80 <span class="token parameter variable">--mount</span> <span class="token assign-left variable">type</span><span class="token operator">=</span>tmpfs,target<span class="token operator">=</span>/usr/share/nginx/html nginx:latest
-</span><span class="code-line line-number" line="166"><span class="token function">docker</span> container run <span class="token parameter variable">-d</span> <span class="token parameter variable">--name</span> my-nginx <span class="token parameter variable">-p</span> <span class="token number">8080</span>:80 <span class="token parameter variable">--tmpfs</span> /usr/share/nginx/html nginx:latest
-</span><span class="code-line line-number" line="167">
-</span><span class="code-line line-number" line="168"><span class="token comment"># remove volume</span>
-</span><span class="code-line line-number" line="169"><span class="token function">docker</span> volume <span class="token function">rm</span> my-volume
+</span><span class="code-line line-number" line="164"><span class="token comment"># create a container with volume-from another container</span>
+</span><span class="code-line line-number" line="165"><span class="token function">docker</span> container run <span class="token parameter variable">-d</span> <span class="token parameter variable">--name</span> my-nginx2 <span class="token parameter variable">-p</span> <span class="token number">8086</span>:80 --volumes-from my-nginx1 nginx:latest
+</span><span class="code-line line-number" line="166">
+</span><span class="code-line line-number" line="167"><span class="token comment"># create container with tmpfs mount</span>
+</span><span class="code-line line-number" line="168"><span class="token function">docker</span> container run <span class="token parameter variable">-d</span> <span class="token parameter variable">--name</span> my-nginx <span class="token parameter variable">-p</span> <span class="token number">8080</span>:80 <span class="token parameter variable">--mount</span> <span class="token assign-left variable">type</span><span class="token operator">=</span>tmpfs,target<span class="token operator">=</span>/usr/share/nginx/html nginx:latest
+</span><span class="code-line line-number" line="169"><span class="token function">docker</span> container run <span class="token parameter variable">-d</span> <span class="token parameter variable">--name</span> my-nginx <span class="token parameter variable">-p</span> <span class="token number">8080</span>:80 <span class="token parameter variable">--tmpfs</span> /usr/share/nginx/html nginx:latest
 </span><span class="code-line line-number" line="170">
-</span><span class="code-line line-number" line="171"><span class="token comment"># remove volumes not used by any containers</span>
-</span><span class="code-line line-number" line="172"><span class="token function">docker</span> volume prune
+</span><span class="code-line line-number" line="171"><span class="token comment"># remove volume</span>
+</span><span class="code-line line-number" line="172"><span class="token function">docker</span> volume <span class="token function">rm</span> my-volume
 </span><span class="code-line line-number" line="173">
-</span><span class="code-line line-number" line="174"><span class="token comment"># remove all volumes</span>
-</span><span class="code-line line-number" line="175"><span class="token function">docker</span> volume <span class="token function">rm</span> <span class="token variable"><span class="token variable">$(</span><span class="token function">docker</span> volume <span class="token function">ls</span> <span class="token parameter variable">-q</span><span class="token variable">)</span></span>
+</span><span class="code-line line-number" line="174"><span class="token comment"># remove volumes not used by any containers</span>
+</span><span class="code-line line-number" line="175"><span class="token function">docker</span> volume prune
 </span><span class="code-line line-number" line="176">
-</span><span class="code-line line-number" line="177"><span class="token comment">########### MANAGE LOGS ############</span>
-</span><span class="code-line line-number" line="178">
-</span><span class="code-line line-number" line="179"><span class="token comment"># view container logs</span>
-</span><span class="code-line line-number" line="180"><span class="token function">docker</span> container logs <span class="token operator">&#x3C;</span>container_id<span class="token operator">|</span>name<span class="token operator">></span>
+</span><span class="code-line line-number" line="177"><span class="token comment"># remove all volumes</span>
+</span><span class="code-line line-number" line="178"><span class="token function">docker</span> volume <span class="token function">rm</span> <span class="token variable"><span class="token variable">$(</span><span class="token function">docker</span> volume <span class="token function">ls</span> <span class="token parameter variable">-q</span><span class="token variable">)</span></span>
+</span><span class="code-line line-number" line="179">
+</span><span class="code-line line-number" line="180"><span class="token comment">########### MANAGE LOGS ############</span>
 </span><span class="code-line line-number" line="181">
-</span><span class="code-line line-number" line="182"><span class="token comment"># follow container logs</span>
-</span><span class="code-line line-number" line="183"><span class="token function">docker</span> container logs <span class="token parameter variable">-f</span> <span class="token operator">&#x3C;</span>container_id<span class="token operator">|</span>name<span class="token operator">></span>
+</span><span class="code-line line-number" line="182"><span class="token comment"># view container logs</span>
+</span><span class="code-line line-number" line="183"><span class="token function">docker</span> container logs <span class="token operator">&#x3C;</span>container_id<span class="token operator">|</span>name<span class="token operator">></span>
 </span><span class="code-line line-number" line="184">
-</span><span class="code-line line-number" line="185"><span class="token comment"># docker system events</span>
-</span><span class="code-line line-number" line="186"><span class="token function">docker</span> system events <span class="token parameter variable">--since</span> <span class="token string">"2h"</span>
-</span><span class="code-line line-number" line="187"><span class="token function">docker</span> system events <span class="token parameter variable">--since</span> <span class="token string">"20h"</span> <span class="token parameter variable">--filter</span> <span class="token string">'container=&#x3C;container_id|name>'</span>
-</span><span class="code-line line-number" line="188"><span class="token function">docker</span> system events <span class="token parameter variable">--since</span> <span class="token string">"20h"</span> <span class="token parameter variable">--filter</span> <span class="token assign-left variable">type</span><span class="token operator">=</span>container  <span class="token parameter variable">--filter</span> <span class="token string">'event=start'</span> <span class="token parameter variable">--filter</span> <span class="token string">'event=stop'</span>
-</span><span class="code-line line-number" line="189">
-</span><span class="code-line line-number" line="190"><span class="token comment"># docker stats</span>
-</span><span class="code-line line-number" line="191"><span class="token function">docker</span> container stats
-</span><span class="code-line line-number" line="192"><span class="token function">docker</span> container stats <span class="token operator">&#x3C;</span>container_id<span class="token operator">|</span>name<span class="token operator">></span>
-</span><span class="code-line line-number" line="193">
-</span><span class="code-line line-number" line="194"><span class="token comment"># docker top</span>
-</span><span class="code-line line-number" line="195"><span class="token function">docker</span> container <span class="token function">top</span> <span class="token operator">&#x3C;</span>container_id<span class="token operator">|</span>name<span class="token operator">></span>
+</span><span class="code-line line-number" line="185"><span class="token comment"># follow container logs</span>
+</span><span class="code-line line-number" line="186"><span class="token function">docker</span> container logs <span class="token parameter variable">-f</span> <span class="token operator">&#x3C;</span>container_id<span class="token operator">|</span>name<span class="token operator">></span>
+</span><span class="code-line line-number" line="187">
+</span><span class="code-line line-number" line="188"><span class="token comment"># docker system events</span>
+</span><span class="code-line line-number" line="189"><span class="token function">docker</span> system events <span class="token parameter variable">--since</span> <span class="token string">"2h"</span>
+</span><span class="code-line line-number" line="190"><span class="token function">docker</span> system events <span class="token parameter variable">--since</span> <span class="token string">"20h"</span> <span class="token parameter variable">--filter</span> <span class="token string">'container=&#x3C;container_id|name>'</span>
+</span><span class="code-line line-number" line="191"><span class="token function">docker</span> system events <span class="token parameter variable">--since</span> <span class="token string">"20h"</span> <span class="token parameter variable">--filter</span> <span class="token assign-left variable">type</span><span class="token operator">=</span>container  <span class="token parameter variable">--filter</span> <span class="token string">'event=start'</span> <span class="token parameter variable">--filter</span> <span class="token string">'event=stop'</span>
+</span><span class="code-line line-number" line="192">
+</span><span class="code-line line-number" line="193"><span class="token comment"># docker stats</span>
+</span><span class="code-line line-number" line="194"><span class="token function">docker</span> container stats
+</span><span class="code-line line-number" line="195"><span class="token function">docker</span> container stats <span class="token operator">&#x3C;</span>container_id<span class="token operator">|</span>name<span class="token operator">></span>
 </span><span class="code-line line-number" line="196">
-</span><span class="code-line line-number" line="197"><span class="token comment">########### DOCKER NETWORKING ###########</span>
-</span><span class="code-line line-number" line="198">
+</span><span class="code-line line-number" line="197"><span class="token comment"># docker top</span>
+</span><span class="code-line line-number" line="198"><span class="token function">docker</span> container <span class="token function">top</span> <span class="token operator">&#x3C;</span>container_id<span class="token operator">|</span>name<span class="token operator">></span>
 </span><span class="code-line line-number" line="199">
-</span><span class="code-line line-number" line="200">
-</span><span class="code-line line-number" line="201"><span class="token comment">############ OTHERS COMMANDS ############</span>
-</span><span class="code-line line-number" line="202">
-</span><span class="code-line line-number" line="203"><span class="token comment"># inspect namespaces</span>
-</span><span class="code-line line-number" line="204"><span class="token function">ls</span> <span class="token parameter variable">-l</span> /proc/<span class="token operator">&#x3C;</span>PID<span class="token operator">></span>/ns
-</span><span class="code-line line-number" line="205"><span class="token function">sudo</span> lsns <span class="token parameter variable">-p</span> <span class="token operator">&#x3C;</span>PID<span class="token operator">></span>
-</span><span class="code-line line-number" line="206"><span class="token function">ps</span> <span class="token parameter variable">-o</span> pid,ppid,cmd,netns,mntns,pidns,utsns <span class="token operator">&#x3C;</span>PID<span class="token operator">></span>
-</span><span class="code-line line-number" line="207">
-</span><span class="code-line line-number" line="208"><span class="token comment"># inspect cgroups</span>
-</span><span class="code-line line-number" line="209">lscgroup <span class="token operator">|</span> <span class="token function">grep</span> <span class="token operator">&#x3C;</span>PID<span class="token operator">></span> <span class="token comment"># cgroup v1</span>
-</span><span class="code-line line-number" line="210"><span class="token function">cat</span> /proc/<span class="token operator">&#x3C;</span>PID<span class="token operator">></span>/cgroup <span class="token comment"># cgroup v2</span>
-</span><span class="code-line line-number" line="211"><span class="token function">ls</span> <span class="token parameter variable">-l</span> /sys/fs/cgroup/system.slice/docker-<span class="token operator">&#x3C;</span>FULL_ID_CONTAINER<span class="token operator">></span>.scope
-</span><span class="code-line line-number" line="212"><span class="token function">cat</span> /sys/fs/cgroup/system.slice/docker-<span class="token operator">&#x3C;</span>FULL_ID_CONTAINER<span class="token operator">></span>.scope/cgroup.procs
+</span><span class="code-line line-number" line="200"><span class="token comment">########### DOCKER NETWORKING ###########</span>
+</span><span class="code-line line-number" line="201">
+</span><span class="code-line line-number" line="202"><span class="token comment"># list networks</span>
+</span><span class="code-line line-number" line="203"><span class="token function">docker</span> network <span class="token function">ls</span>
+</span><span class="code-line line-number" line="204">
+</span><span class="code-line line-number" line="205"><span class="token comment"># inspect network</span>
+</span><span class="code-line line-number" line="206"><span class="token function">docker</span> network inspect bridge
+</span><span class="code-line line-number" line="207"><span class="token function">docker</span> network inspect <span class="token parameter variable">--format</span> <span class="token string">'{{json .Containers}}'</span> bridge <span class="token operator">|</span> jq
+</span><span class="code-line line-number" line="208">
+</span><span class="code-line line-number" line="209"><span class="token comment"># create network</span>
+</span><span class="code-line line-number" line="210"><span class="token function">docker</span> network create my-bridge
+</span><span class="code-line line-number" line="211">
+</span><span class="code-line line-number" line="212"><span class="token comment"># create network with specific driver</span>
+</span><span class="code-line line-number" line="213"><span class="token function">docker</span> network create <span class="token parameter variable">--driver</span> bridge my-bridge
+</span><span class="code-line line-number" line="214">
+</span><span class="code-line line-number" line="215"><span class="token comment"># create network with specific subnet</span>
+</span><span class="code-line line-number" line="216"><span class="token function">docker</span> network create <span class="token parameter variable">--subnet</span> <span class="token number">192.168</span>.1.0/24 my-bridge
+</span><span class="code-line line-number" line="217">
+</span><span class="code-line line-number" line="218"><span class="token comment"># remove network</span>
+</span><span class="code-line line-number" line="219"><span class="token function">docker</span> network <span class="token function">rm</span> my-bridge
+</span><span class="code-line line-number" line="220">
+</span><span class="code-line line-number" line="221"><span class="token comment"># prune all unused networks</span>
+</span><span class="code-line line-number" line="222"><span class="token function">docker</span> network prune
+</span><span class="code-line line-number" line="223">
+</span><span class="code-line line-number" line="224"><span class="token comment"># connect container to network</span>
+</span><span class="code-line line-number" line="225"><span class="token function">docker</span> network connect my-bridge <span class="token operator">&#x3C;</span>container_id<span class="token operator">|</span>name<span class="token operator">></span>
+</span><span class="code-line line-number" line="226">
+</span><span class="code-line line-number" line="227"><span class="token comment"># create a network and define: subnet,gateway,bridge name</span>
+</span><span class="code-line line-number" line="228"><span class="token function">docker</span> network create <span class="token punctuation">\</span>
+</span><span class="code-line line-number" line="229">  <span class="token parameter variable">--driver</span> bridge <span class="token punctuation">\</span>
+</span><span class="code-line line-number" line="230">  <span class="token parameter variable">--subnet</span> <span class="token number">192.168</span>.3.0/24 <span class="token punctuation">\</span>
+</span><span class="code-line line-number" line="231">  <span class="token parameter variable">--gateway</span> <span class="token number">192.168</span>.3.1 <span class="token punctuation">\</span>
+</span><span class="code-line line-number" line="232">  <span class="token parameter variable">--opt</span> <span class="token string">"com.docker.network.bridge.name"</span><span class="token operator">=</span><span class="token string">"br-mybridge"</span> <span class="token punctuation">\</span>
+</span><span class="code-line line-number" line="233">  my-bridge3
+</span><span class="code-line line-number" line="234">
+</span><span class="code-line line-number" line="235"><span class="token comment"># create a container and connect it to a specific network</span>
+</span><span class="code-line line-number" line="236"><span class="token function">docker</span> container run <span class="token parameter variable">-d</span> <span class="token parameter variable">--name</span> my-nginx <span class="token parameter variable">--network</span> my-bridge3 <span class="token parameter variable">-p</span>
+</span><span class="code-line line-number" line="237">
+</span><span class="code-line line-number" line="238"><span class="token comment"># disconnect container from network</span>
+</span><span class="code-line line-number" line="239"><span class="token function">docker</span> network disconnect my-bridge <span class="token operator">&#x3C;</span>container_id<span class="token operator">|</span>name<span class="token operator">></span>
+</span><span class="code-line line-number" line="240">
+</span><span class="code-line line-number" line="241"><span class="token comment"># create a network with specific options</span>
+</span><span class="code-line line-number" line="242"><span class="token function">docker</span> network create <span class="token punctuation">\</span>
+</span><span class="code-line line-number" line="243">  <span class="token parameter variable">--driver</span> bridge <span class="token punctuation">\</span>
+</span><span class="code-line line-number" line="244">  <span class="token parameter variable">--opt</span> <span class="token assign-left variable">com.docker.network.bridge.enable_icc</span><span class="token operator">=</span>false <span class="token punctuation">\</span>
+</span><span class="code-line line-number" line="245">  <span class="token parameter variable">--opt</span> <span class="token assign-left variable">com.docker.network.bridge.enable_ip_masquerade</span><span class="token operator">=</span>true <span class="token punctuation">\</span>
+</span><span class="code-line line-number" line="246">  <span class="token parameter variable">--opt</span> <span class="token assign-left variable">com.docker.network.bridge.host_binding_ipv4</span><span class="token operator">=</span><span class="token string">"192.168.1.1"</span> <span class="token punctuation">\</span>
+</span><span class="code-line line-number" line="247">  my-bridge
+</span><span class="code-line line-number" line="248">
+</span><span class="code-line line-number" line="249"><span class="token comment">############ OTHERS COMMANDS ############</span>
+</span><span class="code-line line-number" line="250">
+</span><span class="code-line line-number" line="251"><span class="token comment"># inspect namespaces</span>
+</span><span class="code-line line-number" line="252"><span class="token function">ls</span> <span class="token parameter variable">-l</span> /proc/<span class="token operator">&#x3C;</span>PID<span class="token operator">></span>/ns
+</span><span class="code-line line-number" line="253"><span class="token function">sudo</span> lsns <span class="token parameter variable">-p</span> <span class="token operator">&#x3C;</span>PID<span class="token operator">></span>
+</span><span class="code-line line-number" line="254"><span class="token function">ps</span> <span class="token parameter variable">-o</span> pid,ppid,cmd,netns,mntns,pidns,utsns <span class="token operator">&#x3C;</span>PID<span class="token operator">></span>
+</span><span class="code-line line-number" line="255">
+</span><span class="code-line line-number" line="256"><span class="token comment"># inspect cgroups</span>
+</span><span class="code-line line-number" line="257">lscgroup <span class="token operator">|</span> <span class="token function">grep</span> <span class="token operator">&#x3C;</span>PID<span class="token operator">></span> <span class="token comment"># cgroup v1</span>
+</span><span class="code-line line-number" line="258"><span class="token function">cat</span> /proc/<span class="token operator">&#x3C;</span>PID<span class="token operator">></span>/cgroup <span class="token comment"># cgroup v2</span>
+</span><span class="code-line line-number" line="259"><span class="token function">ls</span> <span class="token parameter variable">-l</span> /sys/fs/cgroup/system.slice/docker-<span class="token operator">&#x3C;</span>FULL_ID_CONTAINER<span class="token operator">></span>.scope
+</span><span class="code-line line-number" line="260"><span class="token function">cat</span> /sys/fs/cgroup/system.slice/docker-<span class="token operator">&#x3C;</span>FULL_ID_CONTAINER<span class="token operator">></span>.scope/cgroup.procs
 </span></code><div onclick="copied(this)" data-code="############ FILES ############
 /var/lib/docker
 /etc/docker/daemon.json
@@ -6649,6 +6843,9 @@ docker container run -d --name my-nginx -p 8080:80/tcp -p 8080:80/udp nginx:late
 
 # create a container and expose port 8888
 docker container run -d --name my-nginx -p 9082:80 --expose 8888 nginx:latest
+
+# create a container and define hostname, dns
+docker container run -dit --name ubuntu --dns=8.8.8.8 --dns=1.1.1.1 --hostname ubuntu ubuntu
 
 # create container in detached mode
 docker container run -d -it --name alpine alpine
@@ -6768,7 +6965,52 @@ docker container top <container_id|name>
 
 ########### DOCKER NETWORKING ###########
 
+# list networks
+docker network ls
 
+# inspect network
+docker network inspect bridge
+docker network inspect --format &#x27;{{json .Containers}}&#x27; bridge | jq
+
+# create network
+docker network create my-bridge
+
+# create network with specific driver
+docker network create --driver bridge my-bridge
+
+# create network with specific subnet
+docker network create --subnet 192.168.1.0/24 my-bridge
+
+# remove network
+docker network rm my-bridge
+
+# prune all unused networks
+docker network prune
+
+# connect container to network
+docker network connect my-bridge <container_id|name>
+
+# create a network and define: subnet,gateway,bridge name
+docker network create \
+  --driver bridge \
+  --subnet 192.168.3.0/24 \
+  --gateway 192.168.3.1 \
+  --opt &#x22;com.docker.network.bridge.name&#x22;=&#x22;br-mybridge&#x22; \
+  my-bridge3
+
+# create a container and connect it to a specific network
+docker container run -d --name my-nginx --network my-bridge3 -p
+
+# disconnect container from network
+docker network disconnect my-bridge <container_id|name>
+
+# create a network with specific options
+docker network create \
+  --driver bridge \
+  --opt com.docker.network.bridge.enable_icc=false \
+  --opt com.docker.network.bridge.enable_ip_masquerade=true \
+  --opt com.docker.network.bridge.host_binding_ipv4=&#x22;192.168.1.1&#x22; \
+  my-bridge
 
 ############ OTHERS COMMANDS ############
 
