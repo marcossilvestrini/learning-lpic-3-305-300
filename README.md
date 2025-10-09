@@ -4035,7 +4035,7 @@ For testing volume drivers use script: [docker-storage-driver.sh](scripts/docker
 | Bind mount | Optional    | Host     | Low         | Dev, integration    |
 | Tmpfs      | No          | RAM      | High        | Cache, ephemeral    |
 
-##### 🛠️ Usage examples
+##### 🛠️ Storage Types Usage examples
 
 ```sh
 # Persistent volume
@@ -4049,7 +4049,7 @@ docker run -d --mount type=tmpfs,target=/tmp nginx:latest
 docker run -d --tmpfs /tmp nginx:latest
 ```
 
-##### ✅ Best practices
+##### ✅ Docker Storage Best practices
 
 * Prefer volumes for persistent and backup data.
 * Use tmpfs for sensitive or temporary data.
@@ -4058,6 +4058,84 @@ docker run -d --tmpfs /tmp nginx:latest
 * Always check the [official Docker Storage documentation](https://docs.docker.com/storage/) and [storage drivers](https://docs.docker.com/storage/storagedriver/select-storage-driver/).
 
 For testing storage volumes use script: [docker-storage-volumes.sh](scripts/docker/docker-storage-volumes.sh).
+
+#### Docker Networking
+
+##### 🌐 Core Concepts
+
+| 🔍 Focus | Details |
+| --- | --- |
+| User-defined networks | Create isolated topologies (`docker network create`) and attach/detach containers on demand with `docker network connect` or the `--network` flag. |
+| Network stack sharing | By default each container gets its own namespace; `--network container:<id>` reuses another container's stack but disables flags like `--publish`, `--dns`, and `--hostname`. |
+| Embedded DNS | Docker injects an internal DNS server per network; container names and `--network-alias` entries resolve automatically and fall back to the host resolver for external lookups. |
+| Gateway priority | When a container joins multiple networks, Docker selects the default route via the highest `--gw-priority`; override IPs with `--ip` / `--ip6` for deterministic addressing. |
+
+##### 🚍 Default Drivers
+
+| Driver | Use when | Highlights |
+| --- | --- | --- |
+| bridge | Standalone workloads on a single host need simple east-west traffic. | Default `bridge` network ships with Docker; create user-defined bridges for DNS, isolation, and per-project scoping. |
+| host | You need native host networking with zero isolation. | Shares the host stack; no port mapping needed; ideal for high-throughput or port-dynamic workloads. |
+| overlay | Services must span multiple Docker hosts or Swarm nodes. | VXLAN-backed; requires the Swarm control plane (or external KV store) to coordinate networks across engines. |
+| macvlan | Containers must appear as physical devices on the LAN. | Assigns unique MAC/IP pairs from the parent interface; great for legacy integrations or strict VLAN segmentation. |
+| ipvlan | Underlay restricts MAC addresses but permits L3 routing. | Provides per-container IPv4/IPv6 without extra MACs; supports L2 (`ipvlan -l2`) and L3 modes with VLAN tagging. |
+| none | Full isolation is required. | Removes the network stack entirely; manual namespace wiring only (not supported for Swarm services). |
+| Plugins | Built-in drivers fall short of SDN or vendor needs. | Install third-party network plugins from the Docker ecosystem to integrate with specialized fabrics. |
+
+##### 🕹️ Working with Networks
+
+* Scope infrastructure with user-defined bridges for app components, overlays for distributed stacks, or L2-style macvlan/ipvlan for direct LAN presence.
+* Combine frontend/backend networks per container; set `--internal` on a bridge to block egress while still allowing service-to-service traffic.
+* Inspect connectivity with `docker network ls`, `docker network inspect`, and `docker exec <ctr> ip addr` to validate namespace wiring.
+* Clean up unused networks regularly with `docker network prune` to avoid stale subnets and orphaned config.
+
+##### 🚦 Published Ports & Access
+
+* Bridge networks keep ports private unless you publish them with `-p` / `--publish`; include `127.0.0.1:` (or `[::1]:` for IPv6) to restrict exposure to the host only.
+* Port publishing is not required for container-to-container access on the same user-defined bridge—DNS and the internal IP suffice.
+* Overlay and macvlan drivers bypass the userland proxy; plan upstream firewalls or routing accordingly.
+
+##### 🔐 Addressing & DNS
+
+* IPv4 is enabled by default on new networks; add `--ipv6` to provision dual-stack ranges and use `--ip` / `--ip6` to pin addresses.
+* Each join operation can supply extra identities via `--alias`; Docker advertises them through the embedded DNS service.
+* Override resolvers per container using `--dns`, `--dns-search`, or `--dns-option`, or import extra hosts with `--add-host`.
+* Containers inherit a curated `/etc/hosts`; host-level entries are not synced automatically.
+
+##### 🛠️ Docker Network Usage examples
+
+```sh
+# Create dedicated frontend and backend bridges
+docker network create --driver bridge frontend_net
+docker network create --driver bridge --internal backend_net
+
+# Launch services with deterministic addressing and aliases
+docker run -d --name api \
+  --network backend_net --ip 10.18.0.10 \
+  --network-alias api.internal \
+  ghcr.io/example/api:latest
+
+docker run -d --name web \
+  --network frontend_net \
+  --network backend_net --alias web-backend \
+  -p 443:8443 \
+  ghcr.io/example/web:latest
+
+# Attach a troubleshooting container temporarily
+docker run -it --rm \
+  --network container:web \
+  alpine:latest sh
+```
+
+##### ✅ Docker Network Best practices
+
+* Model network boundaries early; document which containers share bridges, overlays, or macvlan segments.
+* Use `--internal` or firewalls to block unintended egress, and prefer network-level isolation over ad-hoc port publishing.
+* When mixing drivers, verify default routes (`ip route`) to ensure the correct gateway won the `--gw-priority`.
+* Monitor subnet allocation conflicts when multiple hosts create networks; explicitly set `--subnet` / `--gateway` for predictable CIDRs.
+* Cross-check the official docs for updates: [Networking overview](https://docs.docker.com/network/) and [Network drivers](https://docs.docker.com/engine/network/drivers/).
+
+For testing docker network use script: [docker-network.sh](scripts/docker/docker-network.sh).
 
 #### 🛠️ 352.3 Important Commands
 
@@ -4143,6 +4221,9 @@ docker container run -d --name my-nginx -p 8080:80/tcp -p 8080:80/udp nginx:late
 
 # create a container and expose port 8888
 docker container run -d --name my-nginx -p 9082:80 --expose 8888 nginx:latest
+
+# create a container and define hostname, dns
+docker container run -dit --name ubuntu --dns=8.8.8.8 --dns=1.1.1.1 --hostname ubuntu ubuntu
 
 # create container in detached mode
 docker container run -d -it --name alpine alpine
@@ -4262,7 +4343,52 @@ docker container top <container_id|name>
 
 ########### DOCKER NETWORKING ###########
 
+# list networks
+docker network ls
 
+# inspect network
+docker network inspect bridge
+docker network inspect --format '{{json .Containers}}' bridge | jq
+
+# create network
+docker network create my-bridge
+
+# create network with specific driver
+docker network create --driver bridge my-bridge
+
+# create network with specific subnet
+docker network create --subnet 192.168.1.0/24 my-bridge
+
+# remove network
+docker network rm my-bridge
+
+# prune all unused networks
+docker network prune
+
+# connect container to network
+docker network connect my-bridge <container_id|name>
+
+# create a network and define: subnet,gateway,bridge name
+docker network create \
+  --driver bridge \
+  --subnet 192.168.3.0/24 \
+  --gateway 192.168.3.1 \
+  --opt "com.docker.network.bridge.name"="br-mybridge" \
+  my-bridge3
+
+# create a container and connect it to a specific network
+docker container run -d --name my-nginx --network my-bridge3 -p
+
+# disconnect container from network
+docker network disconnect my-bridge <container_id|name>
+
+# create a network with specific options
+docker network create \
+  --driver bridge \
+  --opt com.docker.network.bridge.enable_icc=false \
+  --opt com.docker.network.bridge.enable_ip_masquerade=true \
+  --opt com.docker.network.bridge.host_binding_ipv4="192.168.1.1" \
+  my-bridge
 
 ############ OTHERS COMMANDS ############
 

@@ -52,7 +52,9 @@ if echo "$RELEASE_INFO" | grep -qiE "debian|ubuntu"; then
       tree whois \
       ca-certificates curl gnupg lsb-release \
       cgroup-tools \
-      jq yq
+      jq yq \
+      bridge-utils
+
   sudo apt clean
   sudo apt autoremove -yqq
 
