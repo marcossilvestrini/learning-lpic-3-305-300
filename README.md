@@ -4178,6 +4178,24 @@ docker image prune -a
 # docker history
 docker history nginx:latest
 
+# docker push image to registry
+docker push acme/my-final-image:1.0
+
+# create image from dockerfile
+docker build -t acme/my-base-image:1.0 .
+docker build -t acme/my-final-image:1.0 -f Dockerfile.final .
+docker build -t acme/my-final-image:1.0 --build-arg BASE_IMAGE=acme/my-base-image:1.0 .
+
+# create a new tag for an image
+docker tag nginx:latest acme/nginx:1.1
+
+# send image to tar file
+docker save -o nginx-latest.tar nginx:latest
+
+# load image from tar file
+docker load -i nginx-latest.tar
+
+
 ############ MANAGE CONTAINERS ############
 
 # list containers running

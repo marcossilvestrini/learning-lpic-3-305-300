@@ -1,0 +1,58 @@
+version: "3.9"
+
+services:
+  postgres:
+    build:
+      context: ./postgres
+      dockerfile: Dockerfile
+    image: lab/postgres:latest
+    container_name: pg-lab
+    env_file: .env
+    ports:
+      - "${POSTGRES_PORT:-5432}:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-app} -d ${POSTGRES_DB:-appdb}"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    networks:
+      - appnet
+
+  mcp:
+    build:
+      context: ./mcp
+      dockerfile: Dockerfile
+    image: lab/mcp:latest
+    container_name: mcp-lab
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      PGHOST: postgres
+      PGPORT: 5432
+      PGDATABASE: ${POSTGRES_DB:-appdb}
+      PGUSER: ${POSTGRES_USER:-app}
+      PGPASSWORD: ${POSTGRES_PASSWORD:-secret}
+      MCP_LISTEN_HOST: 0.0.0.0
+      MCP_LISTEN_PORT: 8080
+      # Whitelist básica (regex) — ajuste conforme necessidade:
+      MCP_QUERY_ALLOW: '^\s*select\b'
+      MCP_EXEC_ALLOW: '^\s*(insert|update|delete|with)\b'
+    ports:
+      - "${MCP_PORT:-8080}:8080"
+    healthcheck:
+      test: ["CMD-SHELL", "wget -qO- http://127.0.0.1:8080/health || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 12
+    networks:
+      - appnet
+
+volumes:
+  pgdata:
+
+networks:
+  appnet:
+    driver: bridge
