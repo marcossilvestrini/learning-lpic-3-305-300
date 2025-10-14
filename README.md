@@ -3753,166 +3753,79 @@ docker ps --size --format "table {{.ID}}\t{{.Image}}\t{{.Names}}\t{{.Size}}"
 
 #### 🐳 Dockerfile
 
-##### 🔎 What is a Dockerfile?
+A **Dockerfile** is a declarative text file that contains a sequence of instructions to build a Docker image. It's the blueprint for creating reproducible, portable, and automated containerized environments.
 
-A **Dockerfile** is a **declarative text file** that contains a sequence of **build instructions** for constructing a Docker image. 
+##### ✨ Key Concepts
 
-Each instruction specifies how to configure the image: what base to use, which files to copy, what commands to run, what environment to set, and how the resulting container should behave at runtime.
+| Concept | Description |
+| :--- | :--- |
+| 📜 **Declarative Script** | A simple text file with line-by-line instructions for assembling an image. |
+| 겹 **Layered Architecture** | Each instruction in a Dockerfile creates a new layer in the image. Layers are stacked and are read-only. |
+| ⚡ **Build Cache** | Docker caches the result of each layer. If a layer and its dependencies haven't changed, Docker reuses the cached layer, making builds significantly faster. |
+| 📦 **Build Context** | The set of files at a specified `PATH` or `URL` that are sent to the Docker daemon during a build. Use a `.dockerignore` file to exclude unnecessary files. |
+| 🏗️ **Multi-Stage Builds** | A powerful feature that allows you to use multiple `FROM` instructions in a single Dockerfile. This helps to separate build-time dependencies from runtime dependencies, resulting in smaller and more secure production images. |
 
-It is essentially the **recipe** for building immutable, reproducible container images.
+---
 
-🧩 Key Characteristics
+##### 📝 Core Instructions
 
-* **Declarative** : Instead of running manual steps, you declare the desired state of the image.
-* **Layered** : Each instruction can produce an image layer, which allows caching, reusability, and efficient distribution.
-* **Portable** : Dockerfiles ensure consistency across environments (development, staging, production).
-* **Composable** : With multi-stage builds, you can chain multiple `FROM` statements to optimize for smaller, production-ready images.
+The following table summarizes the most common Dockerfile instructions.
 
-##### 🛠️ Core Instructions
+| Instruction | Purpose | Example |
+| :--- | :--- | :--- |
+| 🏁 **`FROM`** | Specifies the base image for subsequent instructions. Must be the first instruction. | `FROM ubuntu:22.04` |
+| 🏷️ **`LABEL`** | Adds metadata to an image as key-value pairs. | `LABEL version="1.0" maintainer="me@example.com"` |
+| 🏃 **`RUN`** | Executes any commands in a new layer on top of the current image and commits the results. | `RUN apt-get update && apt-get install -y nginx` |
+| 🚀 **`CMD`** | Provides defaults for an executing container. There can only be one `CMD`. | `CMD ["nginx", "-g", "daemon off;"]` |
+| 🚪 **`ENTRYPOINT`** | Configures a container that will run as an executable. | `ENTRYPOINT ["/usr/sbin/nginx"]` |
+| 🌐 **`EXPOSE`** | Informs Docker that the container listens on the specified network ports at runtime. | `EXPOSE 80` |
+| 🌳 **`ENV`** | Sets environment variables. | `ENV APP_VERSION=1.0` |
+| 📂 **`COPY`** | Copies new files or directories from the build context to the filesystem of the image. | `COPY ./app /app` |
+| 🔗 **`ADD`** | Similar to `COPY`, but with more features like remote URL support and tar extraction. | `ADD http://example.com/big.tar.xz /usr/src` |
+| 👤 **`USER`** | Sets the user name (or UID) and optionally the user group (or GID) to use when running the image. | `USER appuser` |
+| 📁 **`WORKDIR`** | Sets the working directory for any `RUN`, `CMD`, `ENTRYPOINT`, `COPY`, and `ADD` instructions. | `WORKDIR /app` |
+| 💾 **`VOLUME`** | Creates a mount point with the specified name and marks it as holding externally mounted volumes. | `VOLUME /var/lib/mysql` |
+| 🏗️ **`ONBUILD`** | Adds to the image a trigger instruction to be executed at a later time, when the image is used as the base for another build. | `ONBUILD COPY . /app/src` |
+| 💊 **`HEALTHCHECK`** | Tells Docker how to test a container to check that it is still working. | `HEALTHCHECK --interval=5m --timeout=3s CMD curl -f http://localhost/ || exit 1` |
+| 🐚 **`SHELL`** | Allows the default shell used for the shell form of commands to be overridden. | `SHELL ["/bin/bash", "-c"]` |
 
-Some of the most common instructions include:
+---
 
-* `FROM`: specifies the base image.
-* `RUN`: executes commands to install or configure software.
-* `COPY` / `ADD`: moves files from the build context into the image.
-* `ENV`, `WORKDIR`, `USER`: sets environment variables, directories, and execution context.
-* `CMD` / `ENTRYPOINT`: defines default commands or processes when the container starts.
-* `EXPOSE`, `VOLUME`, `HEALTHCHECK`: configure networking, persistent storage, and monitoring.
+##### ⭐ Best Practices for Writing Dockerfiles
 
-##### 🚀 Why It Matters
+Following best practices is crucial for creating efficient, secure, and maintainable images.
 
-* **Reproducibility** : Same Dockerfile → same image → same behavior everywhere.
-* **Automation** : Enables CI/CD pipelines to build, test, and deploy containers automatically.
-* **Optimization** : Properly structured Dockerfiles minimize image size and speed up builds.
-* **Compliance** : Standardized images with fixed Dockerfiles simplify auditing, patching, and governance.
-
-✅ In short:
-
-A **Dockerfile** is the **blueprint** for Docker images — the foundation of containerized application delivery.
+| Guideline | Description |
+| :--- | :--- |
+| 🤏 **Keep it Small** | Start with a minimal base image (like `alpine` or `distroless`). Don't install unnecessary packages to reduce size and attack surface. |
+| ♻️ **Leverage Build Cache** | Order your Dockerfile instructions from least to most frequently changing. Place `COPY` and `ADD` instructions as late as possible to avoid cache invalidation. |
+| 🏗️ **Use Multi-Stage Builds** | Separate your build environment from your runtime environment. This dramatically reduces the size of your final image by excluding build tools and dependencies. |
+| 🚫 **Use `.dockerignore`** | Exclude files and directories that are not necessary for the build (e.g., `.git`, `node_modules`, local test scripts) to keep the build context small and avoid sending sensitive data. |
+| 📦 **Combine `RUN` Instructions** | Chain related commands using `&&` to create a single layer. For example, combine `apt-get update` with `apt-get install` and clean up afterwards (`rm -rf /var/lib/apt/lists/*`). |
+| 📌 **Pin Versions** | Pin versions for base images (`ubuntu:22.04`) and packages (`nginx=1.21.6-1~bullseye`) to ensure reproducible builds and avoid unexpected changes. |
+| 👤 **Run as Non-Root** | Create a dedicated user and group with `RUN useradd`, and use the `USER` instruction to switch to that user. This improves security by avoiding running containers with root privileges. |
+| 🚀 **`CMD` vs `ENTRYPOINT`** | Use `ENTRYPOINT` for the main executable of the image and `CMD` to specify default arguments. This makes the image behave like a binary. |
+| 💬 **Sort Multi-line Arguments** | Sort multi-line arguments alphanumerically (e.g., in a long `RUN apt-get install` command) to make the Dockerfile easier to read and maintain. |
+| 📝 **Be Explicit** | Use `COPY` instead of `ADD` when the extra magic of `ADD` (like tar extraction or URL fetching) is not needed. It's more transparent. |
 
 **Dockerfile example**
 
 ```dockerfile
 # syntax=docker/dockerfile:1
-FROM nginx:latest
+
+# ---- Base Stage ----
+FROM ubuntu:22.04 AS base
+RUN apt-get update && apt-get install -y --no-install-recommends nginx \
+    && rm -rf /var/lib/apt/lists/*
+
+# ---- Production Stage ----
+FROM base AS production
 COPY ./html /usr/share/nginx/html
 EXPOSE 80
 CMD ["nginx", "-g", "daemon off;"]
 ```
 
 ---
-
-#### 🧩 Docker Compose
-
-##### 📘 Docker Compose Command Reference
-
-Docker Compose is a tool for defining and managing multi-container Docker applications using a YAML file (`docker-compose.yml`). 
-
-Below is a structured table of the main commands and their purposes.
-
-**📊 Table: Docker Compose Commands**
-
-| Command                                 | Purpose                                                                               | Example                                                                    |
-| --------------------------------------- | ------------------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
-| ▶️**`docker compose up`**           | Build, (re)create, start, and attach to containers defined in `docker-compose.yml`. | `docker compose up -d`                                                   |
-| ⏹️**`docker compose down`**         | Stop and remove containers, networks, volumes, and images created by `up`.          | `docker compose down --volumes`                                          |
-| 🔄**`docker compose restart`**  | Restart running services.                                                             | `docker compose restart web`                                             |
-| 🟢**`docker compose start`**    | Start existing containers without recreating them.                                    | `docker compose start db`                                                |
-| 🔴**`docker compose stop`**     | Stop running containers without removing them.                                        | `docker compose stop db`                                                 |
-| 🧹**`docker compose rm`**       | Remove stopped service containers.                                                    | `docker compose rm -f`                                                   |
-| 🏗️**`docker compose build`**        | Build or rebuild service images.                                                      | `docker compose build web`                                               |
-| 📥**`docker compose pull`**     | Pull service images from a registry.                                                  | `docker compose pull redis`                                              |
-| 📤**`docker compose push`**     | Push service images to a registry.                                                    | `docker compose push api`                                                |
-| 📄**`docker compose config`**   | Validate and view the Compose file.                                                   | `docker compose config`                                                  |
-| 📋**`docker compose ps`**       | List containers managed by Compose.                                                   | `docker compose ps`                                                      |
-| 📊**`docker compose top`**      | Display running processes of containers.                                              | `docker compose top`                                                     |
-| 📜**`docker compose logs`**     | View output logs from services.                                                       | `docker compose logs -f api`                                             |
-| 🔍**`docker compose exec`**     | Run a command in a running service container.                                         | `docker compose exec db psql -U postgres`                                |
-| 🐚**`docker compose run`**      | Run one-off commands in a new container.                                              | `docker compose run web sh`                                              |
-| 🔧**`docker compose override`** | Use `-f`to specify multiple Compose files (overrides).                              | `docker compose -f docker-compose.yml -f docker-compose.override.yml up` |
-| 🌐**Networking**                  | Networks are auto-created; can be declared explicitly in YAML.                        | `docker network ls`                                                      |
-| 📦**Volumes**                     | Manage persistent data; can be declared in YAML and used across services.             | `docker volume ls`                                                       |
-
-##### 🔑 Key Notes
-
-* **`up` vs `start`** : `up` builds/recreates containers, `start` only runs existing ones.
-* **`run` vs `exec`** : `run` launches a *new* container, `exec` runs inside an existing one.
-* **Config validation** : Always run `docker compose config` to check for syntax errors.
-* **Detach mode** : Use `-d` to run services in background.
-
-##### **📄 `docker-compose.yml`**
-
-```yaml
-version: "3.9"  # Compose file format
-
-services:
-  web:
-    image: nginx:latest
-    container_name: my-nginx
-    ports:
-      - "8080:80"             # host:container
-    volumes:
-      - ./html:/usr/share/nginx/html:ro
-    networks:
-      - app-network
-
-  api:
-    build:
-      context: ./api          # build from Dockerfile in ./api
-      dockerfile: Dockerfile
-    container_name: my-api
-    environment:
-      - NODE_ENV=production
-      - API_KEY=${API_KEY}    # read from .env file
-    depends_on:
-      - db
-    ports:
-      - "3000:3000"
-    networks:
-      - app-network
-
-  db:
-    image: postgres:15
-    container_name: my-postgres
-    restart: always
-    environment:
-      POSTGRES_USER: admin
-      POSTGRES_PASSWORD: secret
-      POSTGRES_DB: appdb
-    volumes:
-      - db-data:/var/lib/postgresql/data
-    networks:
-      - app-network
-
-volumes:
-  db-data:
-
-networks:
-  app-network:
-    driver: bridge
-
-```
-
-**🔎 Explanation**
-
-* **`services`** : Defines containers (`web`, `api`, `db`) that make up the app.
-* **`ports`** : Maps host ports to container ports (`8080:80`).
-* **`volumes`** :
-* Named volume (`db-data`) for persistent DB data.
-* Bind mount (`./html:/usr/share/nginx/html`) to serve static content.
-* **`build`** : Allows building a custom image from a Dockerfile.
-* **`depends_on`** : Ensures service startup order (`api` waits for `db`).
-* **`networks`** : Defines an isolated virtual network for communication.
-
-**🚀 Usage**
-
-Start in detached mode
-
-```sh
-docker compose up -d
-docker compose logs -f api
-docker compose down -v
-```
 
 #### Docker + containerd + shim + runc Architecture
 
@@ -4136,6 +4049,96 @@ docker run -it --rm \
 * Cross-check the official docs for updates: [Networking overview](https://docs.docker.com/network/) and [Network drivers](https://docs.docker.com/engine/network/drivers/).
 
 For testing docker network use script: [docker-network.sh](scripts/docker/docker-network.sh).
+
+#### 🐳 Docker Registry
+
+##### 📘 What is a Docker Registry?
+
+A Docker Registry is a stateless, highly scalable server-side application that stores and lets you distribute Docker images. It's the central place where you can push your images after building them and pull them to run on other machines.
+
+##### Key Concepts
+
+* **Registry**: The storage system that contains repositories of images. Examples: Docker Hub, AWS ECR, a self-hosted registry.
+* **Repository**: A collection of related Docker images, often different versions of the same application or service (e.g., the `nginx` repository).
+* **Tag**: A label applied to an image within a repository to identify a specific version (e.g., `1.27`, `latest`).
+* **Image Name**: The full name of an image follows the format: `[registry-host]/[username-or-org]/[repository]:[tag]`.
+  * If `registry-host` is omitted, it defaults to Docker Hub (`docker.io`).
+  * If `tag` is omitted, it defaults to `latest`.
+
+##### Types of Registries
+
+1. **Public Registries**:
+    * **Docker Hub**: The default and largest public registry.
+    * **Quay.io**: Another popular public and private registry by Red Hat.
+    * **GitHub Container Registry (GHCR)**: Integrated with GitHub repositories and Actions.
+
+2. **Private Registries**:
+    * **Self-Hosted**:
+        * **Docker Registry Image**: A simple, official image to run your own basic registry.
+        * **Harbor**: An enterprise-grade open-source registry with security scanning, access control, and replication.
+        * **JFrog Artifactory**: A universal artifact manager that supports Docker images.
+    * **Cloud-Hosted**:
+        * **Amazon Elastic Container Registry (ECR)**
+        * **Google Artifact Registry (formerly GCR)**
+        * **Azure Container Registry (ACR)**
+
+##### Running a Local Registry
+
+You can easily run a private registry locally for testing or development using Docker's official `registry` image.
+
+1. **Start the local registry container:**
+
+    ```sh
+    docker run -d -p 5000:5000 -v /var/lib/registry-data:/var/lib/registry --restart=always --name registry registry:2
+    ```
+
+    This starts a registry listening on `localhost:5000`.
+
+2. **Tag an image to point to the local registry:**
+    Before you can push an image to this registry, you need to tag it with the registry's host and port.
+
+    ```sh
+    # Pull an image (e.g., alpine)
+    docker pull alpine
+    
+    # Tag it for your local registry
+    docker tag alpine localhost:5000/my-alpine
+    ```
+
+3. **Push the image to the local registry:**
+
+    ```sh
+    docker push localhost:5000/my-alpine
+    ```
+
+4. **Pull the image from the local registry:**
+    You can now pull this image on any machine that can access `localhost:5000`.
+
+    ```sh
+    # First, remove the local copies to simulate pulling from scratch
+    docker image rm alpine
+    docker image rm localhost:5000/my-alpine
+    
+    # Now, pull from your local registry
+    docker pull localhost:5000/my-alpine
+    ```
+
+5. **Access the registry API:**
+    You can interact with the registry using its HTTP API. For example, to list repositories:
+
+    ```sh
+    curl -X GET http://localhost:5000/v2/_catalog
+    ```
+
+### 🚀 Core Commands
+
+| Command           | Description                                       | Example                                         |
+| ----------------- | ------------------------------------------------- | ----------------------------------------------- |
+| `docker login`    | Log in to a Docker registry.                      | `docker login myregistry.example.com`           |
+| `docker logout`   | Log out from a Docker registry.                   | `docker logout`                                 |
+| `docker pull`     | Pull an image or a repository from a registry.    | `docker pull ubuntu:22.04`                      |
+| `docker push`     | Push an image or a repository to a registry.      | `docker push myregistry.com/myapp:1.0`          |
+| `docker search`   | Search Docker Hub for images.                     | `docker search nginx`                           |
 
 #### 🛠️ 352.3 Important Commands
 
@@ -4446,6 +4449,120 @@ cat /sys/fs/cgroup/system.slice/docker-<FULL_ID_CONTAINER>.scope/cgroup.procs
 <p align="right">(<a href="#topic-352.4">back to sub topic 352.4</a>)</p>
 <p align="right">(<a href="#topic-352">back to topic 352</a>)</p>
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+---
+
+#### 🧩 Docker Compose
+
+##### 📘 Docker Compose Command Reference
+
+Docker Compose is a tool for defining and managing multi-container Docker applications using a YAML file (`docker-compose.yml`). 
+
+Below is a structured table of the main commands and their purposes.
+
+**📊 Table: Docker Compose Commands**
+
+| Command                                 | Purpose                                                                               | Example                                                                    |
+| --------------------------------------- | ------------------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
+| ▶️**`docker compose up`**           | Build, (re)create, start, and attach to containers defined in `docker-compose.yml`. | `docker compose up -d`                                                   |
+| ⏹️**`docker compose down`**         | Stop and remove containers, networks, volumes, and images created by `up`.          | `docker compose down --volumes`                                          |
+| 🔄**`docker compose restart`**  | Restart running services.                                                             | `docker compose restart web`                                             |
+| 🟢**`docker compose start`**    | Start existing containers without recreating them.                                    | `docker compose start db`                                                |
+| 🔴**`docker compose stop`**     | Stop running containers without removing them.                                        | `docker compose stop db`                                                 |
+| 🧹**`docker compose rm`**       | Remove stopped service containers.                                                    | `docker compose rm -f`                                                   |
+| 🏗️**`docker compose build`**        | Build or rebuild service images.                                                      | `docker compose build web`                                               |
+| 📥**`docker compose pull`**     | Pull service images from a registry.                                                  | `docker compose pull redis`                                              |
+| 📤**`docker compose push`**     | Push service images to a registry.                                                    | `docker compose push api`                                                |
+| 📄**`docker compose config`**   | Validate and view the Compose file.                                                   | `docker compose config`                                                  |
+| 📋**`docker compose ps`**       | List containers managed by Compose.                                                   | `docker compose ps`                                                      |
+| 📊**`docker compose top`**      | Display running processes of containers.                                              | `docker compose top`                                                     |
+| 📜**`docker compose logs`**     | View output logs from services.                                                       | `docker compose logs -f api`                                             |
+| 🔍**`docker compose exec`**     | Run a command in a running service container.                                         | `docker compose exec db psql -U postgres`                                |
+| 🐚**`docker compose run`**      | Run one-off commands in a new container.                                              | `docker compose run web sh`                                              |
+| 🔧**`docker compose override`** | Use `-f`to specify multiple Compose files (overrides).                              | `docker compose -f docker-compose.yml -f docker-compose.override.yml up` |
+| 🌐**Networking**                  | Networks are auto-created; can be declared explicitly in YAML.                        | `docker network ls`                                                      |
+| 📦**Volumes**                     | Manage persistent data; can be declared in YAML and used across services.             | `docker volume ls`                                                       |
+
+##### 🔑 Key Notes
+
+* **`up` vs `start`** : `up` builds/recreates containers, `start` only runs existing ones.
+* **`run` vs `exec`** : `run` launches a *new* container, `exec` runs inside an existing one.
+* **Config validation** : Always run `docker compose config` to check for syntax errors.
+* **Detach mode** : Use `-d` to run services in background.
+
+##### **📄 `docker-compose.yml`**
+
+```yaml
+version: "3.9"  # Compose file format
+
+services:
+  web:
+    image: nginx:latest
+    container_name: my-nginx
+    ports:
+      - "8080:80"             # host:container
+    volumes:
+      - ./html:/usr/share/nginx/html:ro
+    networks:
+      - app-network
+
+  api:
+    build:
+      context: ./api          # build from Dockerfile in ./api
+      dockerfile: Dockerfile
+    container_name: my-api
+    environment:
+      - NODE_ENV=production
+      - API_KEY=${API_KEY}    # read from .env file
+    depends_on:
+      - db
+    ports:
+      - "3000:3000"
+    networks:
+      - app-network
+
+  db:
+    image: postgres:15
+    container_name: my-postgres
+    restart: always
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: secret
+      POSTGRES_DB: appdb
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    networks:
+      - app-network
+
+volumes:
+  db-data:
+
+networks:
+  app-network:
+    driver: bridge
+
+```
+
+**🔎 Explanation**
+
+* **`services`** : Defines containers (`web`, `api`, `db`) that make up the app.
+* **`ports`** : Maps host ports to container ports (`8080:80`).
+* **`volumes`** :
+* Named volume (`db-data`) for persistent DB data.
+* Bind mount (`./html:/usr/share/nginx/html`) to serve static content.
+* **`build`** : Allows building a custom image from a Dockerfile.
+* **`depends_on`** : Ensures service startup order (`api` waits for `db`).
+* **`networks`** : Defines an isolated virtual network for communication.
+
+**🚀 Usage**
+
+Start in detached mode
+
+```sh
+docker compose up -d
+docker compose logs -f api
+docker compose down -v
+```
 
 ---
 
@@ -4850,6 +4967,9 @@ Project Link: [https://github.com/marcossilvestrini/learning-lpic-3-305-300](htt
   * [Testcontainers](https://testcontainers.com/)
   * [Docker Networking](https://docs.docker.com/network/)
   * [Docker Network Drivers](https://docs.docker.com/network/drivers)
+  * [Dockerfile](https://docs.docker.com/reference/dockerfile)
+  * [Dockerfile Best Practices](https://docs.docker.com/build/building/best-practices/)
+  * [The Twelve-Factor App - Processes](https://12factor.net/processes)
 
 * [Openstack Docs]()
 
@@ -4885,3 +5005,5 @@ Project Link: [https://github.com/marcossilvestrini/learning-lpic-3-305-300](htt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/marcossilvestrini
 [def]: https://httpd.apache.org/docs/2.4/mod/directives.html
+l
+
