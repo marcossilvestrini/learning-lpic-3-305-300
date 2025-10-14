@@ -210,6 +210,9 @@
   * [Testcontainers](https://testcontainers.com/)
   * [Docker Networking](https://docs.docker.com/network/)
   * [Docker Network Drivers](https://docs.docker.com/network/drivers)
+  * [Dockerfile](https://docs.docker.com/reference/dockerfile)
+  * [Dockerfile Best Practices](https://docs.docker.com/build/building/best-practices/)
+  * [The Twelve-Factor App - Processes](https://12factor.net/processes)
 
 * [Openstack Docs]()
 
@@ -245,4 +248,6 @@
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/marcossilvestrini
 [def]: https://httpd.apache.org/docs/2.4/mod/directives.html
+l
+
 
