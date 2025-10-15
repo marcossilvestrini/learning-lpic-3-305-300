@@ -196,7 +196,6 @@
   * [LXD Profiles](https://documentation.ubuntu.com/lxd/to/latest/profiles/)
   * [LXD Instances](https://documentation.ubuntu.com/lxd/en/stable-4.0/instances/)
 * [Docker](https://www.docker.com/)
-
   * [Docker Overview](https://docs.docker.com/get-started/overview/)
   * [Containerd x Docker](https://www.docker.com/blog/containerd-vs-docker/)
   * [Install](https://docs.docker.com/engine/install/)
@@ -213,6 +212,12 @@
   * [Dockerfile](https://docs.docker.com/reference/dockerfile)
   * [Dockerfile Best Practices](https://docs.docker.com/build/building/best-practices/)
   * [The Twelve-Factor App - Processes](https://12factor.net/processes)
+* [Container Orchestration]()
+  * [Container Orchestration by IBM](https://www.ibm.com/br-pt/topics/container-orchestration)
+  * [Container Orchestration by AWS](https://aws.amazon.com/pt/what-is/container-orchestration)
+  * [Container Orchestration by RedHat](https://www.redhat.com/pt-br/topics/containers/what-is-container-orchestration)
+  * [Container Orchestration by Google Cloud](https://cloud.google.com/discover/what-is-container-orchestration?hl=pt-br)
+  * [Dokcer Compose](https://docs.docker.com/compose/)
 
 * [Openstack Docs]()
 
