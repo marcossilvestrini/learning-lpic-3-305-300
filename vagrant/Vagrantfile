@@ -136,9 +136,6 @@ Vagrant.configure("2") do |config|
     
     # STORAGE
     docker.vm.provision "shell", name: "[storage]", path: File.join(scripts_path, "docker/storage.sh"), privileged: false
-
-    # DOCKER SWARM INIT MANAGER
-    docker.vm.provision "shell", name: "[swarm-init-manager]", path: File.join(scripts_path, "docker/swarm-init-manager.sh"), privileged: true, run: "always"
         
   end
   # END INSTANCE DOCKER 1
@@ -184,9 +181,6 @@ Vagrant.configure("2") do |config|
     
     # STORAGE
     docker.vm.provision "shell", name: "[storage]", path: File.join(scripts_path, "docker/storage.sh"), privileged: false
-
-    # DOCKER SWARM JOIN WORKER
-    docker.vm.provision "shell", name: "[swarm-join-worker]", path: File.join(scripts_path, "docker/swarm-join-worker.sh"), privileged: true, run: "always"
         
   end
   # END INSTANCE DOCKER

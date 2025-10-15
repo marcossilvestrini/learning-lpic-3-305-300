@@ -1,0 +1,39 @@
+services:
+  
+  wordpress:
+    image: wordpress:latest
+    container_name: wordpress
+    volumes:
+      - wordpress-html:/var/www/html
+    ports:
+      - "8080:80"
+      - "443:443"
+    environment:
+      WORDPRESS_DB_HOST: mariadb
+      WORDPRESS_DB_USER: wordpress
+      WORDPRESS_DB_PASSWORD: mypassword
+      WORDPRESS_DB_NAME: wordpress
+    networks:
+      - wordpress-network
+    depends_on:
+      - mariadb
+
+  mariadb:
+    image: mariadb:latest
+    container_name: mariadb
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: wordpress
+      MYSQL_USER: wordpress
+      MYSQL_PASSWORD: mypassword
+    volumes:
+      - dbdata:/var/lib/mysql
+    networks:
+      - wordpress-network
+
+networks:
+  wordpress-network:
+
+volumes:
+  wordpress-html:
+  dbdata:
