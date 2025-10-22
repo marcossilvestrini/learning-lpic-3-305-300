@@ -1,26 +1,35 @@
 services:
-  
+  nginx:
+    image: nginx:latest
+    ports:
+      - "0.0.0.0:8080:80"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+    networks:
+      - wordpress-network
+    depends_on:
+      - wordpress
+
   wordpress:
     image: wordpress:latest
-    container_name: wordpress
     volumes:
       - wordpress-html:/var/www/html
-    ports:
-      - "8080:80"
-      - "443:443"
     environment:
       WORDPRESS_DB_HOST: mariadb
       WORDPRESS_DB_USER: wordpress
       WORDPRESS_DB_PASSWORD: mypassword
       WORDPRESS_DB_NAME: wordpress
+      WORDPRESS_HOME: http://192.168.0.131:8080
+      WORDPRESS_SITEURL: http://192.168.0.131:8080
     networks:
       - wordpress-network
     depends_on:
       - mariadb
+    deploy:
+      replicas: 2
 
   mariadb:
     image: mariadb:latest
-    container_name: mariadb
     environment:
       MYSQL_ROOT_PASSWORD: rootpassword
       MYSQL_DATABASE: wordpress
