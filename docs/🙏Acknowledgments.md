@@ -217,7 +217,11 @@
   * [Container Orchestration by AWS](https://aws.amazon.com/pt/what-is/container-orchestration)
   * [Container Orchestration by RedHat](https://www.redhat.com/pt-br/topics/containers/what-is-container-orchestration)
   * [Container Orchestration by Google Cloud](https://cloud.google.com/discover/what-is-container-orchestration?hl=pt-br)
-  * [Dokcer Compose](https://docs.docker.com/compose/)
+  * [Docker Compose](https://docs.docker.com/compose/)
+  * [Docker Swarm](https://docs.docker.com/engine/swarm/)
+    * [Keys Concepts](https://docs.docker.com/engine/swarm/key-concepts/)
+    * [Nodes](https://docs.docker.com/engine/swarm/how-swarm-mode-works/nodes/)
+    * [Services](https://docs.docker.com/engine/swarm/how-swarm-mode-works/services/)
 
 * [Openstack Docs]()
 
@@ -253,6 +257,4 @@
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/marcossilvestrini
 [def]: https://httpd.apache.org/docs/2.4/mod/directives.html
-l
-
 
