@@ -4130,7 +4130,7 @@ You can easily run a private registry locally for testing or development using D
     curl -X GET http://localhost:5000/v2/_catalog
     ```
 
-### 🚀 Core Commands
+##### 🚀 Core Commands
 
 | Command           | Description                                       | Example                                         |
 | ----------------- | ------------------------------------------------- | ----------------------------------------------- |
@@ -4139,6 +4139,8 @@ You can easily run a private registry locally for testing or development using D
 | `docker pull`     | Pull an image or a repository from a registry.    | `docker pull ubuntu:22.04`                      |
 | `docker push`     | Push an image or a repository to a registry.      | `docker push myregistry.com/myapp:1.0`          |
 | `docker search`   | Search Docker Hub for images.                     | `docker search nginx`                           |
+
+For testing docker registry use script: [docker-registry-lab.sh](scripts/docker/docker-registry-lab.sh).
 
 #### 🛠️ 352.3 Important Commands
 
@@ -4563,6 +4565,61 @@ docker compose up -d
 docker compose logs -f api
 docker compose down -v
 ```
+
+For testing docker compose use examples of services in [apps](apps/).
+
+#### Docker Swarm
+
+![swarm-nodes](images/swarm-nodes.png)
+*Swarm architecture with manager and worker nodes*
+
+![swarm-services](images/swarm-services.png)
+*Swarm services with multiple replicas*
+
+Docker Swarm is Docker's native orchestration tool that allows you to manage a cluster of Docker hosts as a single virtual system. It facilitates the deployment, management, and scaling of containerized applications across multiple machines.
+
+##### Docker Swarm Key Concepts
+
+| Concept | Description |
+| :--- | :--- |
+| 🌐 **Swarm** | A cluster of Docker hosts running in swarm mode. |
+| 🤖 **Node** | A Docker host participating in the swarm. Nodes can be either managers or workers. |
+| 👑 **Manager Node** | Responsible for managing the swarm's state, scheduling tasks, and maintaining the desired state of the cluster. |
+| 👷 **Worker Node** | Executes tasks assigned by manager nodes, running the actual containers. |
+| 🚀 **Service** | An abstract definition of a computational resource (e.g., an Nginx web server) that can be scaled and updated independently. |
+| 📝 **Task** | A running container that is part of a service. |
+
+##### ✨ Main characteristics
+
+| Feature | Description |
+| :--- | :--- |
+| ⬆️ **High availability** | Distributes services across multiple nodes, ensuring applications remain available even if a node fails. |
+| ⚖️ **Scalability** | Easily scale services up or down to handle varying workloads. |
+| 🔄 **Load Balancing** | Built-in load balancing distributes requests evenly among service replicas. |
+| 🚀 **Rolling Updates** | Perform updates to services with zero downtime. |
+| 😊 **Ease of use** | Integrated directly into Docker Engine, making it relatively simple to set up and manage compared to other orchestrators. |
+
+##### 🐳 Swarm Management Commands
+
+| Command | Description | Example |
+| :--- | :--- | :--- |
+| 👑 **`docker swarm init`** | Initializes a new swarm on the current node, making it the manager. | `docker swarm init --advertise-addr 192.168.1.10` |
+| 👷 **`docker swarm join`** | Joins a node to an existing swarm as a worker or manager. | `docker swarm join --token <TOKEN> 192.168.1.10:2377` |
+| 👋 **`docker swarm leave`** | Removes the current node from the swarm. | `docker swarm leave --force` |
+| 📜 **`docker node ls`** | Lists all nodes in the swarm. | `docker node ls` |
+
+##### 🚀 Service Management Commands
+
+| Command | Description | Example |
+| :--- | :--- | :--- |
+| ✨ **`docker service create`** | Creates a new service in the swarm. | `docker service create --name web -p 80:80 --replicas 3 nginx` |
+| ⚖️ **`docker service scale`** | Scales one or more replicated services. | `docker service scale web=5` |
+| 🔄 **`docker service update`** | Updates a service's configuration. | `docker service update --image nginx:latest web` |
+| 🗑️ **`docker service rm`** | Removes a service from the swarm. | `docker service rm web` |
+| 📜 **`docker service ls`** | Lists all services in the swarm. | `docker service ls` |
+| 📝 **`docker service ps`** | Lists the tasks of one or more services. | `docker service ps web` |
+
+For testing docker swarm use script: [docker-swarm.sh](scripts/docker/docker-swarm.sh).
 
 ---
 
