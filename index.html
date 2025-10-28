@@ -6536,7 +6536,7 @@ docker pull localhost:5000/my-alpine
 " class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
       </li>
     </ol>
-    <h3 id="-core-commands"><a class="anchor" aria-hidden="true" tabindex="-1" href="#-core-commands"><span class="octicon octicon-link"></span></a>🚀 Core Commands</h3>
+    <h5 id="-core-commands"><a class="anchor" aria-hidden="true" tabindex="-1" href="#-core-commands"><span class="octicon octicon-link"></span></a>🚀 Core Commands</h5>
     <table>
       <thead>
         <tr>
@@ -6573,6 +6573,7 @@ docker pull localhost:5000/my-alpine
         </tr>
       </tbody>
     </table>
+    <p>For testing docker registry use script: <a href="scripts/docker/docker-registry-lab.sh">docker-registry-lab.sh</a>.</p>
     <h4 id="️-3523-important-commands"><a class="anchor" aria-hidden="true" tabindex="-1" href="#️-3523-important-commands"><span class="octicon octicon-link"></span></a>🛠️ 352.3 Important Commands</h4>
     <h5 id="-docker"><a class="anchor" aria-hidden="true" tabindex="-1" href="#-docker"><span class="octicon octicon-link"></span></a>🐳 docker</h5>
     <pre class="language-sh"><code class="language-sh code-highlight"><span class="code-line line-number" line="1"><span class="token comment">############ FILES ############</span>
@@ -7382,6 +7383,158 @@ networks:
 docker compose logs -f api
 docker compose down -v
 " class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+    <p>For testing docker compose use examples of services in <a href="apps/">apps</a>.</p>
+    <h4 id="docker-swarm"><a class="anchor" aria-hidden="true" tabindex="-1" href="#docker-swarm"><span class="octicon octicon-link"></span></a>Docker Swarm</h4>
+    <p>
+      <img src="images/swarm-nodes.png" alt="swarm-nodes">
+      <em>Swarm architecture with manager and worker nodes</em>
+    </p>
+    <p>
+      <img src="images/swarm-services.png" alt="swarm-services">
+      <em>Swarm services with multiple replicas</em>
+    </p>
+    <p>Docker Swarm is Docker's native orchestration tool that allows you to manage a cluster of Docker hosts as a single virtual system. It facilitates the deployment, management, and scaling of containerized applications across multiple machines.</p>
+    <h5 id="docker-swarm-key-concepts"><a class="anchor" aria-hidden="true" tabindex="-1" href="#docker-swarm-key-concepts"><span class="octicon octicon-link"></span></a>Docker Swarm Key Concepts</h5>
+    <table>
+      <thead>
+        <tr>
+          <th align="left">Concept</th>
+          <th align="left">Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td align="left">🌐 <strong>Swarm</strong></td>
+          <td align="left">A cluster of Docker hosts running in swarm mode.</td>
+        </tr>
+        <tr>
+          <td align="left">🤖 <strong>Node</strong></td>
+          <td align="left">A Docker host participating in the swarm. Nodes can be either managers or workers.</td>
+        </tr>
+        <tr>
+          <td align="left">👑 <strong>Manager Node</strong></td>
+          <td align="left">Responsible for managing the swarm's state, scheduling tasks, and maintaining the desired state of the cluster.</td>
+        </tr>
+        <tr>
+          <td align="left">👷 <strong>Worker Node</strong></td>
+          <td align="left">Executes tasks assigned by manager nodes, running the actual containers.</td>
+        </tr>
+        <tr>
+          <td align="left">🚀 <strong>Service</strong></td>
+          <td align="left">An abstract definition of a computational resource (e.g., an Nginx web server) that can be scaled and updated independently.</td>
+        </tr>
+        <tr>
+          <td align="left">📝 <strong>Task</strong></td>
+          <td align="left">A running container that is part of a service.</td>
+        </tr>
+      </tbody>
+    </table>
+    <h5 id="-main-characteristics"><a class="anchor" aria-hidden="true" tabindex="-1" href="#-main-characteristics"><span class="octicon octicon-link"></span></a>✨ Main characteristics</h5>
+    <table>
+      <thead>
+        <tr>
+          <th align="left">Feature</th>
+          <th align="left">Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td align="left">⬆️ <strong>High availability</strong></td>
+          <td align="left">Distributes services across multiple nodes, ensuring applications remain available even if a node fails.</td>
+        </tr>
+        <tr>
+          <td align="left">⚖️ <strong>Scalability</strong></td>
+          <td align="left">Easily scale services up or down to handle varying workloads.</td>
+        </tr>
+        <tr>
+          <td align="left">🔄 <strong>Load Balancing</strong></td>
+          <td align="left">Built-in load balancing distributes requests evenly among service replicas.</td>
+        </tr>
+        <tr>
+          <td align="left">🚀 <strong>Rolling Updates</strong></td>
+          <td align="left">Perform updates to services with zero downtime.</td>
+        </tr>
+        <tr>
+          <td align="left">😊 <strong>Ease of use</strong></td>
+          <td align="left">Integrated directly into Docker Engine, making it relatively simple to set up and manage compared to other orchestrators.</td>
+        </tr>
+      </tbody>
+    </table>
+    <h5 id="-swarm-management-commands"><a class="anchor" aria-hidden="true" tabindex="-1" href="#-swarm-management-commands"><span class="octicon octicon-link"></span></a>🐳 Swarm Management Commands</h5>
+    <table>
+      <thead>
+        <tr>
+          <th align="left">Command</th>
+          <th align="left">Description</th>
+          <th align="left">Example</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td align="left">👑 <strong><code>docker swarm init</code></strong></td>
+          <td align="left">Initializes a new swarm on the current node, making it the manager.</td>
+          <td align="left"><code>docker swarm init --advertise-addr 192.168.1.10</code></td>
+        </tr>
+        <tr>
+          <td align="left">👷 <strong><code>docker swarm join</code></strong></td>
+          <td align="left">Joins a node to an existing swarm as a worker or manager.</td>
+          <td align="left"><code>docker swarm join --token &#x3C;TOKEN> 192.168.1.10:2377</code></td>
+        </tr>
+        <tr>
+          <td align="left">👋 <strong><code>docker swarm leave</code></strong></td>
+          <td align="left">Removes the current node from the swarm.</td>
+          <td align="left"><code>docker swarm leave --force</code></td>
+        </tr>
+        <tr>
+          <td align="left">📜 <strong><code>docker node ls</code></strong></td>
+          <td align="left">Lists all nodes in the swarm.</td>
+          <td align="left"><code>docker node ls</code></td>
+        </tr>
+      </tbody>
+    </table>
+    <h5 id="-service-management-commands"><a class="anchor" aria-hidden="true" tabindex="-1" href="#-service-management-commands"><span class="octicon octicon-link"></span></a>🚀 Service Management Commands</h5>
+    <table>
+      <thead>
+        <tr>
+          <th align="left">Command</th>
+          <th align="left">Description</th>
+          <th align="left">Example</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td align="left">✨ <strong><code>docker service create</code></strong></td>
+          <td align="left">Creates a new service in the swarm.</td>
+          <td align="left"><code>docker service create --name web -p 80:80 --replicas 3 nginx</code></td>
+        </tr>
+        <tr>
+          <td align="left">⚖️ <strong><code>docker service scale</code></strong></td>
+          <td align="left">Scales one or more replicated services.</td>
+          <td align="left"><code>docker service scale web=5</code></td>
+        </tr>
+        <tr>
+          <td align="left">🔄 <strong><code>docker service update</code></strong></td>
+          <td align="left">Updates a service's configuration.</td>
+          <td align="left"><code>docker service update --image nginx:latest web</code></td>
+        </tr>
+        <tr>
+          <td align="left">🗑️ <strong><code>docker service rm</code></strong></td>
+          <td align="left">Removes a service from the swarm.</td>
+          <td align="left"><code>docker service rm web</code></td>
+        </tr>
+        <tr>
+          <td align="left">📜 <strong><code>docker service ls</code></strong></td>
+          <td align="left">Lists all services in the swarm.</td>
+          <td align="left"><code>docker service ls</code></td>
+        </tr>
+        <tr>
+          <td align="left">📝 <strong><code>docker service ps</code></strong></td>
+          <td align="left">Lists the tasks of one or more services.</td>
+          <td align="left"><code>docker service ps web</code></td>
+        </tr>
+      </tbody>
+    </table>
+    <p>For testing docker swarm use script: <a href="scripts/docker/docker-swarm.sh">docker-swarm.sh</a>.</p>
     <hr>
     <p><a name="topic-353"></a></p>
     <h2 id="️-topic-353-vm-deployment-and-provisioning"><a class="anchor" aria-hidden="true" tabindex="-1" href="#️-topic-353-vm-deployment-and-provisioning"><span class="octicon octicon-link"></span></a>☁️ Topic 353: VM Deployment and Provisioning</h2>
