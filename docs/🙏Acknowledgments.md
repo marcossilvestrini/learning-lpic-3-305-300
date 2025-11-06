@@ -222,6 +222,8 @@
     * [Keys Concepts](https://docs.docker.com/engine/swarm/key-concepts/)
     * [Nodes](https://docs.docker.com/engine/swarm/how-swarm-mode-works/nodes/)
     * [Services](https://docs.docker.com/engine/swarm/how-swarm-mode-works/services/)
+    * [Docker Swarm Stack](https://docs.docker.com/engine/swarm/stack-deploy/)
+  * [Play with Docker Swarm](https://labs.play-with-docker.com/)
 
 * [Openstack Docs]()
 

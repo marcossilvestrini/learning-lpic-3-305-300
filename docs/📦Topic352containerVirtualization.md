@@ -2677,7 +2677,7 @@ docker compose down -v
 
 For testing docker compose use examples of services in [apps](apps/).
 
-#### Docker Swarm
+#### 🌐 Docker Swarm
 
 ![\swarm-nodes](../images/swarm-nodes.png)
 *Swarm architecture with manager and worker nodes*
@@ -2729,6 +2729,73 @@ Docker Swarm is Docker's native orchestration tool that allows you to manage a c
 | 📝 **`docker service ps`** | Lists the tasks of one or more services. | `docker service ps web` |
 
 For testing docker swarm use script: [\docker-swarm.sh](../scripts/docker/docker-swarm.sh).
+
+#### 🛠️ 352.4 Important Commands
+
+```sh
+# initialize a new swarm
+docker swarm init --advertise-addr 192.168.1.131
+
+# list nodes in the swarm
+docker node ls
+
+# join a node to an existing swarm
+docker swarm join --token <TOKEN> 192.168.1.131:2377
+
+# leave the swarm
+docker swarm leave --force
+
+# promote a node to manager
+docker node promote <NODE_ID_OR_NAME>
+
+# demote a node to worker
+docker node demote <NODE_ID_OR_NAME>
+
+# inspect a node
+docker node inspect <NODE_ID_OR_NAME>
+docker node inspect  --format '{{json .Spec.Role}}' lpic3-topic-352-docker-1
+docker node inspect --format '{{json .Spec}}' lpic3-topic-352-docker-2  | jq
+docker node inspect --format '{{json .Status}}' lpic3-topic-352-docker-1 | jq
+
+# remove a node from the swarm
+docker node rm <NODE_ID_OR_NAME>
+# remove all nodes
+docker node rm $(docker node ls -q)
+
+# create a service
+docker service create --name registry --publish published=5000,target=5000 registry:2
+
+# list services
+docker service ls
+
+# inspect a service
+docker service inspect <SERVICE_ID_OR_NAME>
+docker service inspect --format '{{json .Spec}}' registry
+
+# remove a service
+docker service rm <SERVICE_ID_OR_NAME>
+
+# scale a service
+docker service scale <SERVICE_ID_OR_NAME>=<NUMBER_OF_REPLICAS>
+docker service scale registry=3
+
+# update a service
+docker service update --image registry:2 registry
+
+# list tasks of a service
+docker service ps <SERVICE_ID_OR_NAME>  
+docker service ps registry
+
+# inspect a task
+docker inspect <TASK_ID>
+docker inspect <TASK_ID> --format '{{json .Status}}' | jq
+docker inspect <TASK_ID> --format '{{json .Spec}}' | jq
+
+# remove all services
+docker service rm $(docker service ls -q)
+
+
+```
 
 ---
 
