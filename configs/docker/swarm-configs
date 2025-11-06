@@ -1,11 +1,11 @@
 # ===============================
 # Docker Swarm Contract (auto)
-# Generated: 2025-10-27T21:38:48-03:00
+# Generated: 2025-11-05T23:53:11+00:00
 # ===============================
 SWARM_MANAGER_IP="192.168.0.131"
 SWARM_MANAGER_PORT="2377"
-SWARM_MANAGER_TOKEN="SWMTKN-1-3h5v3vokwkmt6kwhkm6jyvilzepdaekh8008gxql75yjpnonc8-d51dwhjtkm2b4pvdb0tmfjabt"
-SWARM_WORKER_TOKEN="SWMTKN-1-3h5v3vokwkmt6kwhkm6jyvilzepdaekh8008gxql75yjpnonc8-5utqt8iux6p8zxam1j76n1xpm"
+SWARM_MANAGER_TOKEN="SWMTKN-1-2parzljbepnk70h2vzu4dbmyefp8asn2rcsm7c1nnc9rbnsjsq-0nbvhe5usdp9sihux0ouqbc9x"
+SWARM_WORKER_TOKEN="SWMTKN-1-2parzljbepnk70h2vzu4dbmyefp8asn2rcsm7c1nnc9rbnsjsq-1lqpy1479ele5ujdep4czpl1l"
 
 # Ready-to-use commands (for reference)
 SWARM_MANAGER_JOIN_CMD="docker swarm join --token $SWARM_MANAGER_TOKEN $SWARM_MANAGER_IP:$SWARM_MANAGER_PORT"
