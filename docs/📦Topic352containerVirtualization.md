@@ -2733,6 +2733,8 @@ For testing docker swarm use script: [\docker-swarm.sh](../scripts/docker/docker
 #### 🛠️ 352.4 Important Commands
 
 ```sh
+
+#------------- SWARM MANAGEMENT COMMANDS ------------
 # initialize a new swarm
 docker swarm init --advertise-addr 192.168.1.131
 
@@ -2762,11 +2764,18 @@ docker node rm <NODE_ID_OR_NAME>
 # remove all nodes
 docker node rm $(docker node ls -q)
 
+#------------- SERVICE MANAGEMENT COMMANDS ------------
 # create a service
 docker service create --name registry --publish published=5000,target=5000 registry:2
+docker service create --name web --replicas 3 --publish published=8080,target=80 nginx:latest
 
 # list services
 docker service ls
+
+# logs of a service
+docker service logs <SERVICE_ID_OR_NAME>
+docker service logs -f <SERVICE_ID_OR_NAME>
+docker service logs -f registry
 
 # inspect a service
 docker service inspect <SERVICE_ID_OR_NAME>
@@ -2780,11 +2789,14 @@ docker service scale <SERVICE_ID_OR_NAME>=<NUMBER_OF_REPLICAS>
 docker service scale registry=3
 
 # update a service
-docker service update --image registry:2 registry
+docker service update --image registry:3 registry
 
 # list tasks of a service
 docker service ps <SERVICE_ID_OR_NAME>  
 docker service ps registry
+
+# list all tasks
+docker service ps $(docker service ls -q)
 
 # inspect a task
 docker inspect <TASK_ID>
@@ -2794,7 +2806,31 @@ docker inspect <TASK_ID> --format '{{json .Spec}}' | jq
 # remove all services
 docker service rm $(docker service ls -q)
 
+#------------- STACK MANAGEMENT COMMANDS ------------
+# validate a stack file
+docker stack config --compose-file docker-compose.yml
 
+# deploy a stack
+docker stack deploy -c docker-compose.yml mystack
+
+# list stacks
+docker stack ls
+
+# list services in a stack
+docker stack services mystack
+
+# list tasks in a stack
+docker stack ps mystack
+docker stack ps mystack --filter "desired-state=running"
+
+# scale a service in a stack
+docker service scale mystack_web=5
+
+# remove a stack
+docker stack rm mystack 
+
+# remove all stacks
+docker stack rm $(docker stack ls -q)
 ```
 
 ---
