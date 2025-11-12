@@ -224,6 +224,11 @@
     * [Services](https://docs.docker.com/engine/swarm/how-swarm-mode-works/services/)
     * [Docker Swarm Stack](https://docs.docker.com/engine/swarm/stack-deploy/)
   * [Play with Docker Swarm](https://labs.play-with-docker.com/)
+  * [Kubernetes](https://kubernetes.io/)
+    * [Kubernetes](https://kubernetes.io/)
+    * [Components](https://kubernetes.io/docs/concepts/overview/components/)
+    * [Architecture](https://kubernetes.io/docs/concepts/architecture/)
+    * [Red Hat Site](https://www.redhat.com/pt-br/topics/containers/kubernetes-architecture)
 
 * [Openstack Docs]()
 
