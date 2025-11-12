@@ -4621,6 +4621,91 @@ Docker Swarm is Docker's native orchestration tool that allows you to manage a c
 
 For testing docker swarm use script: [docker-swarm.sh](scripts/docker/docker-swarm.sh).
 
+#### ☸️ Kubernetes
+
+Kubernetes, also known as K8s, is an open-source platform for automating the deployment, scaling, and management of containerized applications. It groups containers that make up an application into logical units for easy management and discovery.
+
+##### 🏛️ Kubernetes Architecture
+
+![Kubernetes Architecture](images/k8s-components.png)
+
+A Kubernetes cluster consists of a set of worker machines, called **nodes**, that run containerized applications. Every cluster has at least one worker node. The worker node(s) host the **Pods** which are the components of the application workload. The **control plane** manages the worker nodes and the Pods in the cluster.
+
+###### ✈️ Control Plane Components
+
+The control plane's components make global decisions about the cluster (for example, scheduling), as well as detecting and responding to cluster events.
+
+| Component | Description |
+| :--- | :--- |
+| **kube-apiserver** | The API server is a component of the Kubernetes control plane that exposes the Kubernetes API. The API server is the front end for the Kubernetes control plane. |
+| **etcd** | Consistent and highly-available key-value store used as Kubernetes' backing store for all cluster data. |
+| **kube-scheduler** | Watches for newly created Pods with no assigned node, and selects a node for them to run on. |
+| **kube-controller-manager** | Runs controller processes. Logically, each controller is a separate process, but to reduce complexity, they are all compiled into a single binary and run in a single process. |
+| **cloud-controller-manager** | A Kubernetes control plane component that embeds cloud-specific control logic. The cloud controller manager lets you link your cluster into your cloud provider's API, and separates out the components that interact with that cloud platform from components that only interact with your cluster. |
+
+###### 👷 Node Components
+
+Node components run on every node, maintaining running pods and providing the Kubernetes runtime environment.
+
+| Component | Description |
+| :--- | :--- |
+| **kubelet** | An agent that runs on each node in the cluster. It makes sure that containers are running in a Pod. |
+| **kube-proxy** | A network proxy that runs on each node in your cluster, implementing part of the Kubernetes Service concept. |
+| **Container runtime** | The software that is responsible for running containers. Kubernetes supports several container runtimes: Docker, containerd, CRI-O, and any other implementation of the Kubernetes CRI (Container Runtime Interface). |
+
+##### 📦 Kubernetes Objects
+
+Kubernetes objects are persistent entities in the Kubernetes system. Kubernetes uses these entities to represent the state of your cluster.
+
+| Object | Description |
+| :--- | :--- |
+| **Pod** | The smallest and simplest unit in the Kubernetes object model that you create or deploy. A Pod represents a set of running containers on your cluster. |
+| **Service** | An abstract way to expose an application running on a set of Pods as a network service. |
+| **Volume** | A directory containing data, accessible to the containers in a Pod. |
+| **Namespace** | A way to divide cluster resources between multiple users. |
+| **Deployment** | Provides declarative updates for Pods and ReplicaSets. You describe a desired state in a Deployment, and the Deployment Controller changes the actual state to the desired state at a controlled rate. |
+| **ReplicaSet** | Ensures that a specified number of pod replicas are running at any given time. |
+| **StatefulSet** | Manages the deployment and scaling of a set of Pods, and provides guarantees about the ordering and uniqueness of these Pods. |
+| **DaemonSet** | Ensures that all (or some) Nodes run a copy of a Pod. |
+| **Job** | Creates one or more Pods and ensures that a specified number of them successfully terminate. |
+| **CronJob** | Creates Jobs on a time-based schedule. |
+
+#### ⎈ Helm
+
+Helm is a package manager for Kubernetes. It helps you manage Kubernetes applications — Helm Charts help you define, install, and upgrade even the most complex Kubernetes application.
+
+##### 🎯 Key Concepts
+
+| Concept | Description |
+| :--- | :--- |
+| **Chart** | A Helm package. It contains all of the resource definitions necessary to run an application, tool, or service inside of a Kubernetes cluster. |
+| **Repository** | A place where charts can be collected and shared. |
+| **Release** | An instance of a chart running in a Kubernetes cluster. One chart can often be installed many times into the same cluster. And each time it is installed, a new *release* is created. |
+
+##### 🚀 Core Commands
+
+| Command | Description | Example |
+| :--- | :--- | :--- |
+| `helm search` | Search for charts in a repository. | `helm search repo stable` |
+| `helm install` | Install a chart. | `helm install my-release stable/mysql` |
+| `helm upgrade` | Upgrade a release. | `helm upgrade my-release stable/mysql` |
+| `helm uninstall` | Uninstall a release. | `helm uninstall my-release` |
+| `helm list` | List releases. | `helm list` |
+
+#### 🏗️ Other Orchestration Platforms
+
+##### OpenShift
+
+**OpenShift** is a family of containerization software products developed by Red Hat. Its flagship product is the OpenShift Container Platform — an on-premises platform as a service built around Docker containers orchestrated and managed by Kubernetes on a foundation of Red Hat Enterprise Linux.
+
+##### Rancher
+
+**Rancher** is a complete software stack for teams adopting containers. It addresses the operational and security challenges of managing multiple Kubernetes clusters across any infrastructure, while providing DevOps teams with integrated tools for running containerized workloads.
+
+##### Mesosphere DC/OS
+
+**Mesosphere DC/OS** (the Datacenter Operating System) is a distributed operating system based on the Apache Mesos distributed systems kernel. It can manage multiple machines in a datacenter or cloud as if they’re a single computer. It provides a highly elastic, and highly scalable way of deploying applications, services, and big data infrastructure on shared resources.
+
 #### 🛠️ 352.4 Important Commands
 
 ```sh
@@ -5141,6 +5226,11 @@ Project Link: [https://github.com/marcossilvestrini/learning-lpic-3-305-300](htt
     * [Services](https://docs.docker.com/engine/swarm/how-swarm-mode-works/services/)
     * [Docker Swarm Stack](https://docs.docker.com/engine/swarm/stack-deploy/)
   * [Play with Docker Swarm](https://labs.play-with-docker.com/)
+  * [Kubernetes](https://kubernetes.io/)
+    * [Kubernetes](https://kubernetes.io/)
+    * [Components](https://kubernetes.io/docs/concepts/overview/components/)
+    * [Architecture](https://kubernetes.io/docs/concepts/architecture/)
+    * [Red Hat Site](https://www.redhat.com/pt-br/topics/containers/kubernetes-architecture)
 
 * [Openstack Docs]()
 
