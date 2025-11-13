@@ -229,6 +229,9 @@
     * [Components](https://kubernetes.io/docs/concepts/overview/components/)
     * [Architecture](https://kubernetes.io/docs/concepts/architecture/)
     * [Red Hat Site](https://www.redhat.com/pt-br/topics/containers/kubernetes-architecture)
+    * [Minikube](https://minikube.sigs.k8s.io/docs/start/)
+    * [Kind](https://kind.sigs.k8s.io/docs/user/quick-start/)
+    * [Play with Kubernetes](https://labs.play-with-k8s.com/)
 
 * [Openstack Docs]()
 
