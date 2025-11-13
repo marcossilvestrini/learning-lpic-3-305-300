@@ -94,85 +94,143 @@ Vagrant.configure("2") do |config|
   # end
   # # END INSTANCE CONTAINER
   
-  # BEGIN INSTANCE DOCKER 1
-  config.vm.define "#{vm_name}-docker-1" do |docker|
+  # # BEGIN INSTANCE DOCKER 1
+  # config.vm.define "#{vm_name}-docker-1" do |docker|
 
-    # hostname
-    docker.vm.hostname = "#{vm_name}-docker-1"
+  #   # hostname
+  #   docker.vm.hostname = "#{vm_name}-docker-1"
 
-    # STORAGE
-    # Parametrização do tamanho do disco
-    disk_size = "200GB"
-    docker.vm.disk :disk, size: disk_size, name: "docker_storage", primary: false
+  #   # STORAGE
+  #   # Parametrização do tamanho do disco
+  #   disk_size = "200GB"
+  #   docker.vm.disk :disk, size: disk_size, name: "docker_storage", primary: false
 
-    # VMware Workstation configuration
-    # Parametrização de recursos
-    mem_size = "32000" # MB
-    num_vcpus = "8"
-    clone_dir = "E:\\Servers\\VMWare\\#{vm_name}-docker-1"
-    docker.vm.provider "vmware_workstation" do |vmware|
-      vmware.linked_clone = true
-      vmware.clone_directory = clone_dir
-      vmware.whitelist_verified = true
-      vmware.gui = true
-      #vmware.vmx["virtualHW.version"] = "10"
-      vmware.vmx["displayName"] = "#{vm_name}-docker-1"
-      vmware.vmx["memsize"] = mem_size
-      vmware.vmx["numvcpus"] = num_vcpus
-      vmware.vmx["cpuid.coresPerSocket"] = "1"
-      vmware.vmx["vhv.enable"] = "TRUE"  # Enable virtualization engine (nested virtualization)
-    end
+  #   # VMware Workstation configuration
+  #   # Parametrização de recursos
+  #   mem_size = "32000" # MB
+  #   num_vcpus = "8"
+  #   clone_dir = "E:\\Servers\\VMWare\\#{vm_name}-docker-1"
+  #   docker.vm.provider "vmware_workstation" do |vmware|
+  #     vmware.linked_clone = true
+  #     vmware.clone_directory = clone_dir
+  #     vmware.whitelist_verified = true
+  #     vmware.gui = true
+  #     #vmware.vmx["virtualHW.version"] = "10"
+  #     vmware.vmx["displayName"] = "#{vm_name}-docker-1"
+  #     vmware.vmx["memsize"] = mem_size
+  #     vmware.vmx["numvcpus"] = num_vcpus
+  #     vmware.vmx["cpuid.coresPerSocket"] = "1"
+  #     vmware.vmx["vhv.enable"] = "TRUE"  # Enable virtualization engine (nested virtualization)
+  #   end
 
-    # VirtualBox provider configuration
-    docker.vm.provider "virtualbox" do |vb|
-      vb.gui = true
-      vb.name = "#{vm_name}-docker-1"
-      vb.memory = mem_size
-      vb.cpus = num_vcpus
-      vb.customize ["modifyvm", :id, "--nested-hw-virt", "on"]
-    end
+  #   # VirtualBox provider configuration
+  #   docker.vm.provider "virtualbox" do |vb|
+  #     vb.gui = true
+  #     vb.name = "#{vm_name}-docker-1"
+  #     vb.memory = mem_size
+  #     vb.cpus = num_vcpus
+  #     vb.customize ["modifyvm", :id, "--nested-hw-virt", "on"]
+  #   end
 
-    # NETWORK CONFIGURATION    
-    docker.vm.network "public_network", mode: "bridge", auto_config: false
-    docker.vm.provision "shell", name: "[configure-network]", path: File.join(scripts_path, "docker/network.sh"), privileged: true
+  #   # NETWORK CONFIGURATION    
+  #   docker.vm.network "public_network", mode: "bridge", auto_config: false
+  #   docker.vm.provision "shell", name: "[configure-network]", path: File.join(scripts_path, "docker/network.sh"), privileged: true
 
-    # CLOUD-INIT
-    docker.vm.provision "shell", name: "[cloud-init]", path: File.join(scripts_path, "docker/cloud-init.sh"), privileged: false
+  #   # CLOUD-INIT
+  #   docker.vm.provision "shell", name: "[cloud-init]", path: File.join(scripts_path, "docker/cloud-init.sh"), privileged: false
 
-    # RESTART VM
-    docker.vm.provision :reload  
+  #   # RESTART VM
+  #   docker.vm.provision :reload  
     
-    # STORAGE
-    docker.vm.provision "shell", name: "[storage]", path: File.join(scripts_path, "docker/storage.sh"), privileged: false
+  #   # STORAGE
+  #   docker.vm.provision "shell", name: "[storage]", path: File.join(scripts_path, "docker/storage.sh"), privileged: false
 
-    # DOCKER SWARM INIT MANAGER
-    docker.vm.provision "shell", name: "[swarm-init-manager]", path: File.join(scripts_path, "docker/swarm-init-manager.sh"), privileged: true, run: "always"
+  #   # DOCKER SWARM INIT MANAGER
+  #   docker.vm.provision "shell", name: "[swarm-init-manager]", path: File.join(scripts_path, "docker/swarm-init-manager.sh"), privileged: true, run: "always"
         
-  end
-  # END INSTANCE DOCKER 1
-  # BEGIN INSTANCE DOCKER 2
-  config.vm.define "#{vm_name}-docker-2" do |docker|
+  # end
+  # # END INSTANCE DOCKER 1
+  
+  # # BEGIN INSTANCE DOCKER 2
+  # config.vm.define "#{vm_name}-docker-2" do |docker|
+
+  #   # hostname
+  #   docker.vm.hostname = "#{vm_name}-docker-2"
+
+  #   # STORAGE
+  #   # Parametrização do tamanho do disco
+  #   disk_size = "200GB"
+  #   docker.vm.disk :disk, size: disk_size, name: "docker_storage", primary: false
+
+  #   # VMware Workstation configuration
+  #   # Parametrização de recursos
+  #   mem_size = "32000" # MB
+  #   num_vcpus = "8"
+  #   clone_dir = "E:\\Servers\\VMWare\\#{vm_name}-docker-2"
+  #   docker.vm.provider "vmware_workstation" do |vmware|
+  #     vmware.linked_clone = true
+  #     vmware.clone_directory = clone_dir
+  #     vmware.whitelist_verified = true
+  #     vmware.gui = true
+  #     #vmware.vmx["virtualHW.version"] = "10"
+  #     vmware.vmx["displayName"] = "#{vm_name}-docker-2"
+  #     vmware.vmx["memsize"] = mem_size
+  #     vmware.vmx["numvcpus"] = num_vcpus
+  #     vmware.vmx["cpuid.coresPerSocket"] = "1"
+  #     vmware.vmx["vhv.enable"] = "TRUE"  # Enable virtualization engine (nested virtualization)
+  #   end
+
+  #   # VirtualBox provider configuration
+  #   docker.vm.provider "virtualbox" do |vb|
+  #     vb.gui = true
+  #     vb.name = "#{vm_name}-docker-2"
+  #     vb.memory = mem_size
+  #     vb.cpus = num_vcpus
+  #     vb.customize ["modifyvm", :id, "--nested-hw-virt", "on"]
+  #   end
+
+  #   # NETWORK CONFIGURATION    
+  #   docker.vm.network "public_network", mode: "bridge", auto_config: false
+  #   docker.vm.provision "shell", name: "[configure-network]", path: File.join(scripts_path, "docker/network-docker-2.sh"), privileged: true
+
+  #   # CLOUD-INIT
+  #   docker.vm.provision "shell", name: "[cloud-init]", path: File.join(scripts_path, "docker/cloud-init.sh"), privileged: false
+
+  #   # RESTART VM
+  #   docker.vm.provision :reload  
+    
+  #   # STORAGE
+  #   docker.vm.provision "shell", name: "[storage]", path: File.join(scripts_path, "docker/storage.sh"), privileged: false
+
+  #   # DOCKER SWARM JOIN WORKER
+  #   docker.vm.provision "shell", name: "[swarm-join-worker]", path: File.join(scripts_path, "docker/swarm-join-worker.sh"), privileged: true, run: "always"
+        
+  # end
+  # # END INSTANCE DOCKER 2
+
+  # BEGIN INSTANCE KUBERNETES
+  config.vm.define "#{vm_name}-kubernetes" do |kubernetes|
 
     # hostname
-    docker.vm.hostname = "#{vm_name}-docker-2"
+    kubernetes.vm.hostname = "#{vm_name}-kubernetes"
 
     # STORAGE
-    # Parametrização do tamanho do disco
+    # Parameters for disk size
     disk_size = "200GB"
-    docker.vm.disk :disk, size: disk_size, name: "docker_storage", primary: false
+    kubernetes.vm.disk :disk, size: disk_size, name: "kubernetes_storage", primary: false
 
     # VMware Workstation configuration
-    # Parametrização de recursos
+    # Parameters for resources    
     mem_size = "32000" # MB
     num_vcpus = "8"
-    clone_dir = "E:\\Servers\\VMWare\\#{vm_name}-docker-2"
-    docker.vm.provider "vmware_workstation" do |vmware|
+    clone_dir = "E:\\Servers\\VMWare\\#{vm_name}-kubernetes"
+    kubernetes.vm.provider "vmware_workstation" do |vmware|
       vmware.linked_clone = true
       vmware.clone_directory = clone_dir
       vmware.whitelist_verified = true
       vmware.gui = true
       #vmware.vmx["virtualHW.version"] = "10"
-      vmware.vmx["displayName"] = "#{vm_name}-docker-2"
+      vmware.vmx["displayName"] = "#{vm_name}-kubernetes"
       vmware.vmx["memsize"] = mem_size
       vmware.vmx["numvcpus"] = num_vcpus
       vmware.vmx["cpuid.coresPerSocket"] = "1"
@@ -180,30 +238,29 @@ Vagrant.configure("2") do |config|
     end
 
     # VirtualBox provider configuration
-    docker.vm.provider "virtualbox" do |vb|
+    kubernetes.vm.provider "virtualbox" do |vb|
       vb.gui = true
-      vb.name = "#{vm_name}-docker-2"
+      vb.name = "#{vm_name}-kubernetes"
       vb.memory = mem_size
       vb.cpus = num_vcpus
       vb.customize ["modifyvm", :id, "--nested-hw-virt", "on"]
     end
 
     # NETWORK CONFIGURATION    
-    docker.vm.network "public_network", mode: "bridge", auto_config: false
-    docker.vm.provision "shell", name: "[configure-network]", path: File.join(scripts_path, "docker/network-docker-2.sh"), privileged: true
+    kubernetes.vm.network "public_network", mode: "bridge", auto_config: false
+    kubernetes.vm.provision "shell", name: "[configure-network]", path: File.join(scripts_path, "kubernetes/network-kubernetes.sh"), privileged: true
 
     # CLOUD-INIT
-    docker.vm.provision "shell", name: "[cloud-init]", path: File.join(scripts_path, "docker/cloud-init.sh"), privileged: false
-
+    kubernetes.vm.provision "shell", name: "[cloud-init]", path: File.join(scripts_path, "kubernetes/cloud-init.sh"), privileged: false
     # RESTART VM
-    docker.vm.provision :reload  
+    kubernetes.vm.provision :reload  
     
     # STORAGE
-    docker.vm.provision "shell", name: "[storage]", path: File.join(scripts_path, "docker/storage.sh"), privileged: false
+    kubernetes.vm.provision "shell", name: "[storage]", path: File.join(scripts_path, "kubernetes/storage.sh"), privileged: false
 
     # DOCKER SWARM JOIN WORKER
-    docker.vm.provision "shell", name: "[swarm-join-worker]", path: File.join(scripts_path, "docker/swarm-join-worker.sh"), privileged: true, run: "always"
+    kubernetes.vm.provision "shell", name: "[kubernetes]", path: File.join(scripts_path, "kubernetes/kubernetes.sh"), privileged: true
         
   end
-  # END INSTANCE DOCKER
+  # END INSTANCE KUBERNETES  
 end

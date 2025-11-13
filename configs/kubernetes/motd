@@ -1,0 +1,30 @@
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~ __  __     __  __     ______     ______     ______     __   __     ______     ______   ______     ______   ~
+~/\ \/ /    /\ \/\ \   /\  == \   /\  ___\   /\  == \   /\ "-.\ \   /\  ___\   /\__  _\ /\  ___\   /\  ___\  ~
+~\ \  _"-.  \ \ \_\ \  \ \  __<   \ \  __\   \ \  __<   \ \ \-.  \  \ \  __\   \/_/\ \/ \ \  __\   \ \___  \ ~
+~ \ \_\ \_\  \ \_____\  \ \_____\  \ \_____\  \ \_\ \_\  \ \_\\"\_\  \ \_____\    \ \_\  \ \_____\  \/\_____\~
+~  \/_/\/_/   \/_____/   \/_____/   \/_____/   \/_/ /_/   \/_/ \/_/   \/_____/     \/_/   \/_____/   \/_____/~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Welcome to the Kubernetes learning environment!
+
+This cluster is set up for you to explore and learn. Here are a few tips to get you started:
+
+1.  **Check the cluster status:**
+    `kubectl cluster-info`
+
+2.  **List the nodes in the cluster:**
+    `kubectl get nodes`
+
+3.  **Deploy your first application (e.g., nginx):**
+    `kubectl create deployment nginx --image=nginx`
+
+4.  **Expose your application:**
+    `kubectl expose deployment nginx --port=80 --type=NodePort`
+
+5.  **Check the status of your application:**
+    `kubectl get pods`
+    `kubectl get services`
+
+Have fun exploring Kubernetes!
