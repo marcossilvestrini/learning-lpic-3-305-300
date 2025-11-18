@@ -2916,6 +2916,77 @@ docker stack rm mystack
 
 # remove all stacks
 docker stack rm $(docker stack ls -q)
+
+# ------------- MINIKUBE ------------
+# start minikube
+minikube start
+
+# stop minikube
+minikube stop
+
+# delete minikube
+minikube delete
+
+#------------- KUBERNETES COMMANDS ------------
+# get kubernetes cluster info
+kubectl cluster-info
+
+# Management nodes
+
+# get nodes
+kubectl get nodes
+
+# Manage pods and deployments
+
+# run a pod
+kubectl run nginx-example --image=nginx:latest
+
+# get pods
+kubectl get pods
+
+# get deployments
+kubectl get deployments
+
+# describe a pod
+kubectl describe pod <POD_NAME>
+
+# describe a deployment
+kubectl describe deployment <DEPLOYMENT_NAME>
+
+# generate a yaml file for a pod
+kubectl run nginx-example-1 --image=nginx:latest  --dry-run=client -o yaml > configs/kubernetes/manifests/nginx-pod.yaml
+
+# generate a yaml file for a deployment
+kubectl create deployment nginx-example-2 --image=nginx:latest  --dry-run=client -o yaml > configs/kubernetes/manifests/nginx-deployment.yaml
+
+# create a resource from a configuration file
+kubectl create -f nginx-deployment.yaml
+
+# apply a configuration file
+kubectl apply -f nginx-deployment.yaml
+
+# delete a resource from a configuration file
+kubectl delete -f nginx-deployment.yaml
+
+# scale a deployment
+kubectl scale deployment nginx-example-2 --replicas=5
+
+#------------- HELM COMMANDS ------------
+# search for charts in a repository
+helm search repo stable
+
+# install a chart
+helm install my-release stable/mysql
+
+# upgrade a release
+helm upgrade my-release stable/mysql
+
+# uninstall a release
+helm uninstall my-release
+
+# list releases
+helm list -A
+
 ```
 
 ---
