@@ -207,4 +207,45 @@ else
   fi
 fi
 
+# ===========================
+# Install Docker Engine
+# ===========================
+echo "🔷 Installing Docker Engine..."
+
+# ----------------------
+# Docker repository/key
+# ----------------------
+sudo rm -f /usr/share/keyrings/docker-archive-keyring.gpg 2>/dev/null || true
+sudo install -m 0755 -d /etc/apt/keyrings
+
+# Download key only if missing; avoid overwrite prompt
+if [ ! -s /etc/apt/keyrings/docker.gpg ]; then
+  curl -fsSL https://download.docker.com/linux/debian/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+  sudo chmod 0644 /etc/apt/keyrings/docker.gpg
+fi
+
+# Ensure repository line exists exactly once
+sudo rm -f /etc/apt/sources.list.d/docker.list
+sudo sed -i '/download\.docker\.com\/linux\/debian/d' /etc/apt/sources.list || true
+CODENAME=$(. /etc/os-release && echo "$VERSION_CODENAME")
+ARCH=$(dpkg --print-architecture)
+echo "deb [arch=${ARCH} signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/debian ${CODENAME} stable" | \
+  sudo tee /etc/apt/sources.list.d/docker.list >/dev/null
+
+sudo apt-get update -y -o=Dpkg::Use-Pty=0
+sudo apt-get install -y -o=Dpkg::Use-Pty=0 \
+    docker-ce \
+    docker-ce-cli \
+    containerd.io \
+    docker-buildx-plugin \
+    docker-compose-plugin
+
+sudo systemctl enable docker.service containerd.service
+sudo systemctl start docker.service containerd.service
+
+sudo groupadd docker 2>/dev/null || true
+sudo usermod -aG docker vagrant || true
+# IMPORTANT: do not run "newgrp docker" (it spawns a subshell and can appear to hang)
+echo "INFO: 'newgrp docker' skipped to avoid subshell. Re-login to apply group membership."
+
 # End of script

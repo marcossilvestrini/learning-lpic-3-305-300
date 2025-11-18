@@ -138,11 +138,12 @@ rm kubectl
 
 # Install kubecolor
 echo "  -> Installing kubecolor..."
-KUBECOLOR_VERSION="v0.5.3"
-curl -LO "https://github.com/hidetatz/kubecolor/releases/download/${KUBECOLOR_VERSION}/kubecolor_${KUBECOLOR_VERSION}_Linux_x86_64.tar.gz"
+KUBECOLOR_VERSION="0.0.25"
+curl -LO "https://github.com/hidetatz/kubecolor/releases/download/v${KUBECOLOR_VERSION}/kubecolor_${KUBECOLOR_VERSION}_Linux_x86_64.tar.gz"         
 tar -zxvf "kubecolor_${KUBECOLOR_VERSION}_Linux_x86_64.tar.gz"
 sudo install -o root -g root -m 0755 kubecolor /usr/local/bin/kubecolor
-rm "kubecolor_${KUBECOLOR_VERSION}_Linux_x86_64.tar.gz" kubecolor
+rm "kubecolor_${KUBECOLOR_VERSION}_Linux_x86_64.tar.gz" kubecolor README.md LICENSE
+
 
 # Install Minikube
 echo "  -> Installing Minikube..."
@@ -153,9 +154,9 @@ rm minikube-linux-amd64
 # Install Kind
 echo "  -> Installing Kind..."
 # For AMD64 / x86_64
-[ $(uname -m) = x86_64 ] && curl -Lo ./kind https://kind.sigs.k8s.io/dl/v0.22.0/kind-linux-amd64
+[ $(uname -m) = x86_64 ] && curl -Lo ./kind https://kind.sigs.k8s.io/dl/v0.30.0/kind-linux-amd64
 # For ARM64
-[ $(uname -m) = aarch64 ] && curl -Lo ./kind https://kind.sigs.k8s.io/dl/v0.22.0/kind-linux-arm64
+[ $(uname -m) = aarch64 ] && curl -Lo ./kind https://kind.sigs.k8s.io/dl/v0.30.0/kind-linux-arm64
 chmod +x ./kind
 sudo mv ./kind /usr/local/bin/kind
 
@@ -169,4 +170,3 @@ rm get_helm.sh
 echo "✅ Kubernetes tools installation is complete."
 
 echo "ℹ️ Please log out and log back in to use the new shell."
-

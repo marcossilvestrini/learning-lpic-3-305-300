@@ -40,3 +40,6 @@ os-images/*
 
 # packages
 packages/
+
+# kubernetes
+configs/kubernetes/kubeconfig-*.yaml

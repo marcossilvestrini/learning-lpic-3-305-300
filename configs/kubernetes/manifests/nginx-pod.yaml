@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    run: nginx-example-1
+  name: nginx-example-1
+spec:
+  containers:
+  - image: nginx:latest
+    name: nginx-example-1
+    ports:
+    - containerPort: 8081
+    imagePullPolicy: Always
+    resources:
+      limits:
+        memory: "128Mi"
+        cpu: "500m"
+      requests:
+        memory: "64Mi"
+        cpu: "250m"
+  
