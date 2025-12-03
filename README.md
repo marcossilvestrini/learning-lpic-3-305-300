@@ -4672,7 +4672,9 @@ Kubernetes objects are persistent entities in the Kubernetes system. Kubernetes 
 
 #### ⎈ Helm
 
-Helm is a package manager for Kubernetes. It helps you manage Kubernetes applications — Helm Charts help you define, install, and upgrade even the most complex Kubernetes application.
+Helm is a package manager for Kubernetes.
+
+It helps you manage Kubernetes applications — Helm Charts help you define, install, and upgrade even the most complex Kubernetes application.
 
 ##### 🎯 Key Concepts
 
@@ -4682,7 +4684,7 @@ Helm is a package manager for Kubernetes. It helps you manage Kubernetes applica
 | **Repository** | A place where charts can be collected and shared. |
 | **Release** | An instance of a chart running in a Kubernetes cluster. One chart can often be installed many times into the same cluster. And each time it is installed, a new *release* is created. |
 
-##### 🚀 Core Commands
+##### 🚀 Core Commands Kubernetes
 
 | Command | Description | Example |
 | :--- | :--- | :--- |
@@ -4818,6 +4820,11 @@ minikube stop
 # delete minikube
 minikube delete
 
+# dashboard
+minikube dashboard
+minikube dashboard -p lpic3
+
+
 #------------- KUBERNETES COMMANDS ------------
 # get kubernetes cluster info
 kubectl cluster-info
@@ -4877,7 +4884,6 @@ helm uninstall my-release
 
 # list releases
 helm list -A
-
 ```
 
 ---

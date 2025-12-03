@@ -148,3 +148,7 @@ echo -e "\033]6;1;bg;blue;brightness;33\a"
 # kubernetes
 minikube update-context -p lpic3
 alias k='kubectl'
+alias kgp='kubectl get pods'
+alias kgs='kubectl get svc'
+alias kga='kubectl get all'
+
