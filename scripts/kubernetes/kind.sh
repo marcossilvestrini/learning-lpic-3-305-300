@@ -37,6 +37,7 @@ PROJECT_ROOT="$(cd "${SCRIPT_DIR}/../.." &> /dev/null && pwd)"
 
 # Define the cluster name
 CLUSTER_NAME="lpic3"
+clear
 
 # Define the output path for the kubeconfig
 KUBECONFIG_PATH="${PROJECT_ROOT}/configs/kubernetes/kubeconfig-kind-cluster.yaml"

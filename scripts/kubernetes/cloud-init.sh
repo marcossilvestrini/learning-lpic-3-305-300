@@ -19,6 +19,7 @@ export NEEDRESTART_MODE=a
 # Working directory
 # ===========================
 cd /home/vagrant || exit 1
+clear
 
 # ===========================
 # OS detection

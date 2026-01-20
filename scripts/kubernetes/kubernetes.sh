@@ -33,6 +33,7 @@ echo "🟢 Detected Debian or Ubuntu distribution."
 # ===========================
 # Install dependencies
 # ===========================
+clear
 echo "🔷 Installing dependencies: zsh, curl, git..."
 sudo apt-get update -yqq
 sudo apt-get install -yqq zsh curl git
@@ -126,10 +127,6 @@ echo "✅ Zsh and Oh My Zsh configuration is complete for all specified users."
 # =======================================
 echo "🔷 Installing Kubernetes tools..."
 
-# Install prerequisites for Minikube
-echo "  -> Installing prerequisites for Minikube (socat, conntrack)..."
-sudo apt-get install -yqq socat conntrack
-
 # Install kubectl
 echo "  -> Installing kubectl..."
 curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
@@ -146,6 +143,8 @@ rm "kubecolor_${KUBECOLOR_VERSION}_Linux_x86_64.tar.gz" kubecolor README.md LICE
 
 
 # Install Minikube
+echo "  -> Installing prerequisites for Minikube (socat, conntrack)..."
+sudo apt-get install -yqq socat conntrack
 echo "  -> Installing Minikube..."
 curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
 sudo install minikube-linux-amd64 /usr/local/bin/minikube

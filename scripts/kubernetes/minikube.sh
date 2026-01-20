@@ -32,6 +32,7 @@ set -e
 
 # Define the cluster name
 CLUSTER_NAME="lpic3"
+clear
 
 # Define user-specific paths
 HOME_DIR=$(getent passwd "$USER" | cut -d: -f6)
