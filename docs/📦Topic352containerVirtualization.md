@@ -2979,11 +2979,25 @@ kubectl delete -f nginx-deployment.yaml
 kubectl scale deployment nginx-example-2 --replicas=5
 
 #------------- HELM COMMANDS ------------
+
+# list repositories
+helm repo list
+
+# add a repository
+helm repo add stable https://charts.helm.sh/stable
+
+# update repositories
+helm repo update
+
+# delete a repository
+helm repo remove stable
+
 # search for charts in a repository
 helm search repo stable
 
 # install a chart
 helm install my-release stable/mysql
+helm install mysql -n mysql  --create-namespace stable/mysql --values values.yaml
 
 # upgrade a release
 helm upgrade my-release stable/mysql
@@ -2993,6 +3007,12 @@ helm uninstall my-release
 
 # list releases
 helm list -A
+
+# fetch chart
+helm fetch stable/mysql
+
+# fetch values of a release
+helm get values my-release
 ```
 
 ---
