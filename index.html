@@ -7880,20 +7880,40 @@ docker compose down -v
 </span><span class="code-line line-number" line="157">kubectl scale deployment nginx-example-2 <span class="token parameter variable">--replicas</span><span class="token operator">=</span><span class="token number">5</span>
 </span><span class="code-line line-number" line="158">
 </span><span class="code-line line-number" line="159"><span class="token comment">#------------- HELM COMMANDS ------------</span>
-</span><span class="code-line line-number" line="160"><span class="token comment"># search for charts in a repository</span>
-</span><span class="code-line line-number" line="161">helm search repo stable
-</span><span class="code-line line-number" line="162">
-</span><span class="code-line line-number" line="163"><span class="token comment"># install a chart</span>
-</span><span class="code-line line-number" line="164">helm <span class="token function">install</span> my-release stable/mysql
-</span><span class="code-line line-number" line="165">
-</span><span class="code-line line-number" line="166"><span class="token comment"># upgrade a release</span>
-</span><span class="code-line line-number" line="167">helm upgrade my-release stable/mysql
-</span><span class="code-line line-number" line="168">
-</span><span class="code-line line-number" line="169"><span class="token comment"># uninstall a release</span>
-</span><span class="code-line line-number" line="170">helm uninstall my-release
-</span><span class="code-line line-number" line="171">
-</span><span class="code-line line-number" line="172"><span class="token comment"># list releases</span>
-</span><span class="code-line line-number" line="173">helm list <span class="token parameter variable">-A</span>
+</span><span class="code-line line-number" line="160">
+</span><span class="code-line line-number" line="161"><span class="token comment"># list repositories</span>
+</span><span class="code-line line-number" line="162">helm repo list
+</span><span class="code-line line-number" line="163">
+</span><span class="code-line line-number" line="164"><span class="token comment"># add a repository</span>
+</span><span class="code-line line-number" line="165">helm repo <span class="token function">add</span> stable https://charts.helm.sh/stable
+</span><span class="code-line line-number" line="166">
+</span><span class="code-line line-number" line="167"><span class="token comment"># update repositories</span>
+</span><span class="code-line line-number" line="168">helm repo update
+</span><span class="code-line line-number" line="169">
+</span><span class="code-line line-number" line="170"><span class="token comment"># delete a repository</span>
+</span><span class="code-line line-number" line="171">helm repo remove stable
+</span><span class="code-line line-number" line="172">
+</span><span class="code-line line-number" line="173"><span class="token comment"># search for charts in a repository</span>
+</span><span class="code-line line-number" line="174">helm search repo stable
+</span><span class="code-line line-number" line="175">
+</span><span class="code-line line-number" line="176"><span class="token comment"># install a chart</span>
+</span><span class="code-line line-number" line="177">helm <span class="token function">install</span> my-release stable/mysql
+</span><span class="code-line line-number" line="178">helm <span class="token function">install</span> mysql <span class="token parameter variable">-n</span> mysql  --create-namespace stable/mysql <span class="token parameter variable">--values</span> values.yaml
+</span><span class="code-line line-number" line="179">
+</span><span class="code-line line-number" line="180"><span class="token comment"># upgrade a release</span>
+</span><span class="code-line line-number" line="181">helm upgrade my-release stable/mysql
+</span><span class="code-line line-number" line="182">
+</span><span class="code-line line-number" line="183"><span class="token comment"># uninstall a release</span>
+</span><span class="code-line line-number" line="184">helm uninstall my-release
+</span><span class="code-line line-number" line="185">
+</span><span class="code-line line-number" line="186"><span class="token comment"># list releases</span>
+</span><span class="code-line line-number" line="187">helm list <span class="token parameter variable">-A</span>
+</span><span class="code-line line-number" line="188">
+</span><span class="code-line line-number" line="189"><span class="token comment"># fetch chart</span>
+</span><span class="code-line line-number" line="190">helm fetch stable/mysql
+</span><span class="code-line line-number" line="191">
+</span><span class="code-line line-number" line="192"><span class="token comment"># fetch values of a release</span>
+</span><span class="code-line line-number" line="193">helm get values my-release
 </span></code><div onclick="copied(this)" data-code="
 #------------- SWARM MANAGEMENT COMMANDS ------------
 # initialize a new swarm
@@ -8053,11 +8073,25 @@ kubectl delete -f nginx-deployment.yaml
 kubectl scale deployment nginx-example-2 --replicas=5
 
 #------------- HELM COMMANDS ------------
+
+# list repositories
+helm repo list
+
+# add a repository
+helm repo add stable https://charts.helm.sh/stable
+
+# update repositories
+helm repo update
+
+# delete a repository
+helm repo remove stable
+
 # search for charts in a repository
 helm search repo stable
 
 # install a chart
 helm install my-release stable/mysql
+helm install mysql -n mysql  --create-namespace stable/mysql --values values.yaml
 
 # upgrade a release
 helm upgrade my-release stable/mysql
@@ -8067,6 +8101,12 @@ helm uninstall my-release
 
 # list releases
 helm list -A
+
+# fetch chart
+helm fetch stable/mysql
+
+# fetch values of a release
+helm get values my-release
 " class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
     <hr>
     <p><a name="topic-353"></a></p>
