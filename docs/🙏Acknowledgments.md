@@ -232,15 +232,13 @@
     * [Minikube](https://minikube.sigs.k8s.io/docs/start/)
     * [Kind](https://kind.sigs.k8s.io/docs/user/quick-start/)
     * [Play with Kubernetes](https://labs.play-with-k8s.com/)
-
+* [Cloud]()
+  * [Red Hat - Cloud Computing](https://www.redhat.com/pt-br/topics/cloud)  
 * [Openstack Docs]()
-
   * [RedHat](https://www.redhat.com/pt-br/topics/openstack)
 * [Open vSwitch]()
-
   * [OVS Doc 4Linux](https://blog.4linux.com.br/open-vswitch-o-que-e-o-que-come-onde-vive)
 * [LPIC-3 305-300 Exam]()
-
   * [LPIC-3 305-300 Objectives](https://www.lpi.org/our-certifications/exam-305-objectives/)
   * [LPIC-3 305-300 Wiki](https://wiki.lpi.org/wiki/LPIC-305_Objectives_V3.0)
   * [LPIC-3 305-300 Learning Material](https://cursos.linuxsemfronteiras.com.br/courses/preparatorio-para-certificacao-lpic-3-305/)
