@@ -1,0 +1,93 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+# Enable experimental features
+ENV["VAGRANT_EXPERIMENTAL"] = "Disks"
+
+# Plugins
+required_plugins = ["vagrant-vmware-desktop", "vagrant-reload", "vagrant-disksize"]
+required_plugins.each do |plugin|
+  unless Vagrant.has_plugin?(plugin)
+    system "vagrant plugin install #{plugin}"
+    puts "Installed the #{plugin} plugin."
+  end
+end
+
+Vagrant.configure("2") do |config|
+
+  # LOCAL VARIABLES
+  vm_name = "lpic3-topic-353"
+  box_name = "generic/debian12"
+  scripts_path = "../scripts/"
+  configs_path = "../configs/"
+  security_path = "../security/"  
+
+  # BOX
+  config.vm.box = box_name
+  config.vm.box_download_insecure = true
+
+  # MOUNTS
+  config.vm.synced_folder ".", "/vagrant", disabled: true
+  config.vm.synced_folder scripts_path, "/home/vagrant/scripts"
+  config.vm.synced_folder configs_path, "/home/vagrant/configs"
+  config.vm.synced_folder security_path, "/home/vagrant/security"  
+
+
+  # BEGIN INSTANCE CLOUD
+  config.vm.define "#{vm_name}-cloud" do |cloud|
+
+    # hostname
+    cloud.vm.hostname = "#{vm_name}-cloud"
+
+    # STORAGE
+    # Parametrização do tamanho do disco
+    disk_size = "200GB"
+    cloud.vm.disk :disk, size: disk_size, name: "cloud_storage", primary: false
+
+    # VMware Workstation configuration
+    mem_size = "16000" # MB
+    num_vcpus = "4"
+    clone_dir = "E:\\Servers\\VMWare\\#{vm_name}-cloud"
+    cloud.vm.provider "vmware_workstation" do |vmware|
+      vmware.linked_clone = true
+      vmware.clone_directory = clone_dir
+      vmware.whitelist_verified = true
+      vmware.gui = true
+      #vmware.vmx["virtualHW.version"] = "10"
+      vmware.vmx["displayName"] = "#{vm_name}-cloud"
+      vmware.vmx["memsize"] = mem_size
+      vmware.vmx["numvcpus"] = num_vcpus
+      vmware.vmx["cpuid.coresPerSocket"] = "1"
+      vmware.vmx["vhv.enable"] = "TRUE"  # Enable virtualization engine (nested virtualization)
+      # vmware.vmx["hypervisor.cpuid.v0"] = "FALSE"  # Ensure guest OS can see CPU features
+      # vmware.vmx["monitor.virtual_mmu"] = "hardware"  # Use hardware memory management unit
+      # vmware.vmx["monitor.virtual_exec"] = "hardware"  # Use hardware execution virtualization
+    end
+
+    # VirtualBox provider configuration
+    cloud.vm.provider "virtualbox" do |vb|
+      vb.gui = true
+      vb.name = "#{vm_name}-cloud"
+      vb.memory = mem_size
+      vb.cpus = num_vcpus
+      vb.customize ["modifyvm", :id, "--nested-hw-virt", "on"]
+    end
+
+    # NETWORK CONFIGURATION
+    # Provisionamento de rede
+    cloud.vm.network "public_network", mode: "bridge", auto_config: false
+    cloud.vm.provision "shell", name: "[configure-network]", path: File.join(scripts_path, "cloud/network.sh"), privileged: true
+
+    # CLOUD-INIT
+    cloud.vm.provision "shell", name: "[cloud-init]", path: File.join(scripts_path, "cloud/cloud-init.sh"), privileged: false
+
+    # STORAGE
+    cloud.vm.provision "shell", name: "[storage]", path: File.join(scripts_path, "cloud/storage.sh"), privileged: false
+
+    # RESTART VM
+    cloud.vm.provision :reload
+    
+  end
+  # END INSTANCE CLOUD
+  
+end

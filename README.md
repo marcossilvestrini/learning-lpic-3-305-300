@@ -4937,49 +4937,74 @@ OpenStack
 Terraform
 ```
 
-### Cloud Definition
+#### Cloud Definition
 
 Cloud is a model for distributed computing that provides on-demand access to a shared pool of configurable computing resources (networks, servers, storage, applications, and services) via the internet, provisioned and released rapidly with minimal management effort. 
 
-### Cloud Computing Definition
+#### Cloud Computing Definition
 
 Cloud Computing is the paradigm for delivering IT services through the internet, where computing resources are dynamically allocated based on demand. Instead of investing in local infrastructure, users and organizations access computing power, storage, and applications through subscription or pay-per-use models, with automatic scalability and centralized management.
 
-### Types of cloud
+>Cloud computing is the execution of workloads in clouds.
 
-#### Public Cloud
+>Clouds are IT environments that abstract, aggregate, and share scalable resources across a network. 
+
+>Cloud computing and clouds are not technologies in themselves. 
+
+>Cloud computing is an action, the execution of a workload in a cloud. 
+
+>Clouds are environments, locations where applications run. 
+
+>Technologies are things, such as software programs and hardware equipment used to create and use clouds.
+
+#### Types of cloud
+
+##### Public Cloud
 
 Public cloud refers to cloud computing services offered by third-party providers over the public internet, making them available to anyone who wants to use or purchase them. Examples include Amazon Web Services (AWS), Microsoft Azure, and Google Cloud Platform (GCP). 
 
-#### Private Cloud
-
+##### Private Cloud
 Private cloud is a cloud computing environment dedicated to a single organization, either hosted on-premises or by a third-party provider. It offers enhanced security, control, and customization compared to public clouds. 
 
-#### Hybrid Cloud
+##### Hybrid Cloud
 
 Hybrid cloud combines public and private cloud environments, allowing data and applications to be shared between them. This approach provides greater flexibility, scalability, and cost-efficiency. 
 
-#### Multi-Cloud
+##### Multi-Cloud
 
 Multi-cloud refers to the use of multiple cloud computing services from different providers within a single architecture. This strategy helps avoid vendor lock-in, enhances redundancy, and allows organizations to leverage the best features of each cloud provider.
 
-### IaaS, PaaS, SaaS
+#### IaaS, PaaS, SaaS
 
-#### IaaS (Infrastructure as a Service)
+##### IaaS (Infrastructure as a Service)
 
 IaaS provides virtualized computing resources on demand (virtual machines, block and object storage, networking, GPUs). By 2026, IaaS has evolved to include AI-ready infrastructure, automated bare-metal provisioning, and native integration with observability, security, and real-time compliance solutions.
 
-#### PaaS (Platform as a Service)
+##### PaaS (Platform as a Service)
 
 PaaS offers a managed platform for application development, deployment, and operation without managing underlying infrastructure. In 2026, PaaS includes serverless functions, managed databases, API gateways, native CI/CD, and event-driven and microservices architectures with automatic scaling.
 
-#### SaaS (Software as a Service)
+##### SaaS (Software as a Service)
 
 SaaS delivers software applications via web, accessible through browsers or native clients, with subscription-based models. In 2026, SaaS integrates artificial intelligence for automation and insights, provides extensible customization, open APIs for integration, and supports rigorous compliance with zero-trust security.
 
 #### OpenStack
 
 OpenStack is an open-source cloud computing platform that provides IaaS capabilities for private and hybrid cloud environments. In 2026, OpenStack maintains its relevance in corporate datacenters and private cloud providers, offering a complete service stack (Nova for compute, Cinder for block storage, Swift for object storage, Neutron for networking) with advanced support for Kubernetes containers, automatic load balancing, and integration with enterprise-grade security and compliance solutions.
+
+#### Apache CloudStack
+
+Apache CloudStack is an open-source cloud computing software platform that provides IaaS capabilities for building and managing public and private clouds.
+
+CloudStack continues to be a reliable choice for service providers and enterprises, offering features such as multi-tenancy, advanced networking (SDN), and support for various hypervisors (KVM, XenServer, VMware) with enhanced integration for container orchestration and edge computing.
+
+#### Eucalyptus
+
+Eucalyptus is an open-source cloud computing platform that provides IaaS capabilities for building and managing private and hybrid clouds. It is designed to be compatible with Amazon Web Services (AWS) APIs, allowing users to run applications on Eucalyptus that are already deployed on AWS.
+
+#### OpenNebula
+
+OpenNebula is an open-source cloud computing platform that provides IaaS capabilities for building and managing private, public, and hybrid clouds. It focuses on simplicity and flexibility, allowing users to deploy and manage virtualized data centers with support for various hypervisors (KVM, VMware) and container technologies (LXC, Docker). OpenNebula continues to evolve with features such as edge computing support, enhanced networking capabilities, and integration with modern DevOps tools.
 
 #### Terraform
 
@@ -5374,7 +5399,15 @@ Project Link: [https://github.com/marcossilvestrini/learning-lpic-3-305-300](htt
 * [Cloud]()
   * [Red Hat - Cloud Computing](https://www.redhat.com/pt-br/topics/cloud)  
 * [Openstack Docs]()
-  * [RedHat](https://www.redhat.com/pt-br/topics/openstack)
+  * [OpenStack](https://www.openstack.org/)
+  * [RedHat](https://www.redhat.com/pt-br/topics/openstack)  
+  * [The OpenStack Landskape](https://www.openstack.org/software/)
+  * [Componentes do OpenStack](https://www.openstack.org/software/project-navigator/openstack-components)
+  * [Apache CloudStack](https://cloudstack.apache.org/)
+  * [Eucalyptus](https://www.eucalyptus.cloud/)
+  * [Eucalyptus - Componentes](https://docs.eucalyptus.cloud/eucalyptus/5/admin_guide/managing_system/system_concepts/)
+  * [Open Nebula](https://opennebula.io/)
+
 * [Open vSwitch]()
   * [OVS Doc 4Linux](https://blog.4linux.com.br/open-vswitch-o-que-e-o-que-come-onde-vive)
 * [LPIC-3 305-300 Exam]()
