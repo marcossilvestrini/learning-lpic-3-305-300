@@ -78,6 +78,8 @@ SaaS delivers software applications via web, accessible through browsers or nati
 
 #### OpenStack
 
+![openstack-lasndscape](/images/openstack-landscape.png)
+
 OpenStack is an open-source cloud computing platform that provides IaaS capabilities for private and hybrid cloud environments. In 2026, OpenStack maintains its relevance in corporate datacenters and private cloud providers, offering a complete service stack (Nova for compute, Cinder for block storage, Swift for object storage, Neutron for networking) with advanced support for Kubernetes containers, automatic load balancing, and integration with enterprise-grade security and compliance solutions.
 
 #### Apache CloudStack
@@ -94,9 +96,48 @@ Eucalyptus is an open-source cloud computing platform that provides IaaS capabil
 
 OpenNebula is an open-source cloud computing platform that provides IaaS capabilities for building and managing private, public, and hybrid clouds. It focuses on simplicity and flexibility, allowing users to deploy and manage virtualized data centers with support for various hypervisors (KVM, VMware) and container technologies (LXC, Docker). OpenNebula continues to evolve with features such as edge computing support, enhanced networking capabilities, and integration with modern DevOps tools.
 
+#### IaC 
+
+Infrastructure as Code (IaC) is the practice of managing and provisioning computing infrastructure through machine-readable definition files, rather than through physical hardware configuration or interactive configuration tools. IaC has become a fundamental practice in DevOps and cloud-native environments, enabling automated, consistent, and repeatable infrastructure deployment across multiple cloud providers and on-premises environments.
+
 #### Terraform
 
 Terraform is an open-source Infrastructure as Code (IaC) tool that enables infrastructure definition and provisioning in a declarative and versioned manner. By 2026, Terraform is the de facto standard for infrastructure management in multicloud environments (AWS, Azure, GCP, OpenStack, etc.), with robust support for distributed state, policy as code, reusable modules, and native integration with CI/CD pipelines, GitOps, and compliance automation.
+
+##### Terraform Key Concepts
+
+| Concept | Description |
+| :--- | :--- |
+| **Provider** | A plugin that enables interaction with cloud providers and services (e.g., AWS, Azure, GCP). |
+| **Resource** | A component of your infrastructure (e.g., virtual machines, networks, storage). |
+| **Module** | A container for multiple resources
+| **State** | A snapshot of your infrastructure, stored in a file or remote backend, used to track resource changes. |
+| **Plan** | A preview of changes that Terraform will make to your infrastructure. |
+| **Apply** | The command that executes the changes defined in the plan to your infrastructure. |
+
+##### Terraform Basic Workflow
+
+1. **Write Configuration**: Define your infrastructure using HashiCorp Configuration Language (HCL) in `.tf` files.
+2. **Initialize**: Run `terraform init` to initialize the working directory and download necessary provider plugins.
+3. **Plan**: Execute `terraform plan` to create an execution plan, showing what actions Terraform will take to achieve the desired state.
+4. **Apply**: Use `terraform apply` to apply the changes and create or modify resources in your infrastructure.
+5. **Destroy**: Use `terraform destroy` to remove all resources managed by Terraform.
+
+##### Terraform Example
+
+```hcl
+provider "aws" {
+  region = "us-west-2"
+  profile = "my-profile"
+}
+resource "aws_instance" "web" {
+  ami           = "ami-12345678"
+  instance_type = "t2.micro"
+  tags = {
+    Name = "MyWebServer"
+  }
+}
+```
 
 <p align="right">(<a href="#topic-353.1">back to sub topic 353.1</a>)</p>
 <p align="right">(<a href="#topic-353">back to topic 353</a>)</p>
