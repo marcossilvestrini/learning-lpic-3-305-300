@@ -8170,6 +8170,9 @@ Terraform
     <h5 id="saas-software-as-a-service"><a class="anchor" aria-hidden="true" tabindex="-1" href="#saas-software-as-a-service"><span class="octicon octicon-link"></span></a>SaaS (Software as a Service)</h5>
     <p>SaaS delivers software applications via web, accessible through browsers or native clients, with subscription-based models. In 2026, SaaS integrates artificial intelligence for automation and insights, provides extensible customization, open APIs for integration, and supports rigorous compliance with zero-trust security.</p>
     <h4 id="openstack"><a class="anchor" aria-hidden="true" tabindex="-1" href="#openstack"><span class="octicon octicon-link"></span></a>OpenStack</h4>
+    <p>
+      <img src="/images/openstack-landscape.png" alt="openstack-lasndscape">
+    </p>
     <p>OpenStack is an open-source cloud computing platform that provides IaaS capabilities for private and hybrid cloud environments. In 2026, OpenStack maintains its relevance in corporate datacenters and private cloud providers, offering a complete service stack (Nova for compute, Cinder for block storage, Swift for object storage, Neutron for networking) with advanced support for Kubernetes containers, automatic load balancing, and integration with enterprise-grade security and compliance solutions.</p>
     <h4 id="apache-cloudstack"><a class="anchor" aria-hidden="true" tabindex="-1" href="#apache-cloudstack"><span class="octicon octicon-link"></span></a>Apache CloudStack</h4>
     <p>Apache CloudStack is an open-source cloud computing software platform that provides IaaS capabilities for building and managing public and private clouds.</p>
@@ -8178,8 +8181,77 @@ Terraform
     <p>Eucalyptus is an open-source cloud computing platform that provides IaaS capabilities for building and managing private and hybrid clouds. It is designed to be compatible with Amazon Web Services (AWS) APIs, allowing users to run applications on Eucalyptus that are already deployed on AWS.</p>
     <h4 id="opennebula"><a class="anchor" aria-hidden="true" tabindex="-1" href="#opennebula"><span class="octicon octicon-link"></span></a>OpenNebula</h4>
     <p>OpenNebula is an open-source cloud computing platform that provides IaaS capabilities for building and managing private, public, and hybrid clouds. It focuses on simplicity and flexibility, allowing users to deploy and manage virtualized data centers with support for various hypervisors (KVM, VMware) and container technologies (LXC, Docker). OpenNebula continues to evolve with features such as edge computing support, enhanced networking capabilities, and integration with modern DevOps tools.</p>
+    <h4 id="iac"><a class="anchor" aria-hidden="true" tabindex="-1" href="#iac"><span class="octicon octicon-link"></span></a>IaC</h4>
+    <p>Infrastructure as Code (IaC) is the practice of managing and provisioning computing infrastructure through machine-readable definition files, rather than through physical hardware configuration or interactive configuration tools. IaC has become a fundamental practice in DevOps and cloud-native environments, enabling automated, consistent, and repeatable infrastructure deployment across multiple cloud providers and on-premises environments.</p>
     <h4 id="terraform"><a class="anchor" aria-hidden="true" tabindex="-1" href="#terraform"><span class="octicon octicon-link"></span></a>Terraform</h4>
     <p>Terraform is an open-source Infrastructure as Code (IaC) tool that enables infrastructure definition and provisioning in a declarative and versioned manner. By 2026, Terraform is the de facto standard for infrastructure management in multicloud environments (AWS, Azure, GCP, OpenStack, etc.), with robust support for distributed state, policy as code, reusable modules, and native integration with CI/CD pipelines, GitOps, and compliance automation.</p>
+    <h5 id="terraform-key-concepts"><a class="anchor" aria-hidden="true" tabindex="-1" href="#terraform-key-concepts"><span class="octicon octicon-link"></span></a>Terraform Key Concepts</h5>
+    <table>
+      <thead>
+        <tr>
+          <th align="left">Concept</th>
+          <th align="left">Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td align="left"><strong>Provider</strong></td>
+          <td align="left">A plugin that enables interaction with cloud providers and services (e.g., AWS, Azure, GCP).</td>
+        </tr>
+        <tr>
+          <td align="left"><strong>Resource</strong></td>
+          <td align="left">A component of your infrastructure (e.g., virtual machines, networks, storage).</td>
+        </tr>
+        <tr>
+          <td align="left"><strong>Module</strong></td>
+          <td align="left">A container for multiple resources</td>
+        </tr>
+        <tr>
+          <td align="left"><strong>State</strong></td>
+          <td align="left">A snapshot of your infrastructure, stored in a file or remote backend, used to track resource changes.</td>
+        </tr>
+        <tr>
+          <td align="left"><strong>Plan</strong></td>
+          <td align="left">A preview of changes that Terraform will make to your infrastructure.</td>
+        </tr>
+        <tr>
+          <td align="left"><strong>Apply</strong></td>
+          <td align="left">The command that executes the changes defined in the plan to your infrastructure.</td>
+        </tr>
+      </tbody>
+    </table>
+    <h5 id="terraform-basic-workflow"><a class="anchor" aria-hidden="true" tabindex="-1" href="#terraform-basic-workflow"><span class="octicon octicon-link"></span></a>Terraform Basic Workflow</h5>
+    <ol>
+      <li><strong>Write Configuration</strong>: Define your infrastructure using HashiCorp Configuration Language (HCL) in <code>.tf</code> files.</li>
+      <li><strong>Initialize</strong>: Run <code>terraform init</code> to initialize the working directory and download necessary provider plugins.</li>
+      <li><strong>Plan</strong>: Execute <code>terraform plan</code> to create an execution plan, showing what actions Terraform will take to achieve the desired state.</li>
+      <li><strong>Apply</strong>: Use <code>terraform apply</code> to apply the changes and create or modify resources in your infrastructure.</li>
+      <li><strong>Destroy</strong>: Use <code>terraform destroy</code> to remove all resources managed by Terraform.</li>
+    </ol>
+    <h5 id="terraform-example"><a class="anchor" aria-hidden="true" tabindex="-1" href="#terraform-example"><span class="octicon octicon-link"></span></a>Terraform Example</h5>
+    <pre class="language-hcl"><code class="language-hcl code-highlight"><span class="code-line line-number" line="1"><span class="token keyword">provider<span class="token type variable"> "aws" </span></span><span class="token punctuation">{</span>
+</span><span class="code-line line-number" line="2">  <span class="token property">region</span> <span class="token punctuation">=</span> <span class="token string">"us-west-2"</span>
+</span><span class="code-line line-number" line="3">  <span class="token property">profile</span> <span class="token punctuation">=</span> <span class="token string">"my-profile"</span>
+</span><span class="code-line line-number" line="4"><span class="token punctuation">}</span>
+</span><span class="code-line line-number" line="5"><span class="token keyword">resource <span class="token type variable">"aws_instance"</span></span> <span class="token string">"web"</span> <span class="token punctuation">{</span>
+</span><span class="code-line line-number" line="6">  <span class="token property">ami</span>           <span class="token punctuation">=</span> <span class="token string">"ami-12345678"</span>
+</span><span class="code-line line-number" line="7">  <span class="token property">instance_type</span> <span class="token punctuation">=</span> <span class="token string">"t2.micro"</span>
+</span><span class="code-line line-number" line="8">  <span class="token property">tags</span> <span class="token punctuation">=</span> <span class="token punctuation">{</span>
+</span><span class="code-line line-number" line="9">    <span class="token property">Name</span> <span class="token punctuation">=</span> <span class="token string">"MyWebServer"</span>
+</span><span class="code-line line-number" line="10">  <span class="token punctuation">}</span>
+</span><span class="code-line line-number" line="11"><span class="token punctuation">}</span>
+</span></code><div onclick="copied(this)" data-code="provider &#x22;aws&#x22; {
+  region = &#x22;us-west-2&#x22;
+  profile = &#x22;my-profile&#x22;
+}
+resource &#x22;aws_instance&#x22; &#x22;web&#x22; {
+  ami           = &#x22;ami-12345678&#x22;
+  instance_type = &#x22;t2.micro&#x22;
+  tags = {
+    Name = &#x22;MyWebServer&#x22;
+  }
+}
+" class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
     <p align="right">(<a href="#topic-353.1">back to sub topic 353.1</a>)</p>
     <p align="right">(<a href="#topic-353">back to topic 353</a>)</p>
     <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -8635,6 +8707,35 @@ Vagrantfile
           <li><a href="https://www.eucalyptus.cloud/">Eucalyptus</a></li>
           <li><a href="https://docs.eucalyptus.cloud/eucalyptus/5/admin_guide/managing_system/system_concepts/">Eucalyptus - Componentes</a></li>
           <li><a href="https://opennebula.io/">Open Nebula</a></li>
+        </ul>
+      </li>
+      <li>
+        <p><a href="">IaC - Infrastructure as Code</a></p>
+        <ul>
+          <li><a href="https://www.terraform.io/">Terraform</a></li>
+          <li><a href="https://developer.hashicorp.com/terraform/tutorials/aws-get-started/aws-build">AWS/Terraform Get Started</a></li>
+          <li><a href="https://containersolutions.github.io/terraform-examples/">Terraform Examples</a></li>
+        </ul>
+      </li>
+      <li>
+        <p><a href="https://www.packer.io/">Packer</a></p>
+        <ul>
+          <li><a href="https://developer.hashicorp.com/packer">Packer Getting Started</a></li>
+          <li><a href="https://www.packer.io/docs/templates">Packer Templates</a></li>
+        </ul>
+      </li>
+      <li>
+        <p><a href="">cloud-init</a></p>
+        <ul>
+          <li><a href="https://cloud-init.io/">cloud-init Documentation</a></li>
+          <li><a href="https://cloudinit.readthedocs.io/en/latest/topics/examples.html">cloud-init Examples</a></li>
+        </ul>
+      </li>
+      <li>
+        <p><a href="https://developer.hashicorp.com/vagrant">Vagrant</a></p>
+        <ul>
+          <li><a href="https://developer.hashicorp.com/vagrant/docs">Vagrant Documentation</a></li>
+          <li><a href="https://portal.cloud.hashicorp.com/vagrant/discover">Vagrant Boxes</a></li>
         </ul>
       </li>
       <li>
