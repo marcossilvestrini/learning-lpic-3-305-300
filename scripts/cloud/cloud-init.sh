@@ -34,8 +34,12 @@ RELEASE_INFO=$(cat /etc/*release 2>/dev/null)
 ensure_contrib() {
   local file="$1"
   [ -f "$file" ] || return 0
-  # Add "contrib" after "main" only on lines that start with "deb" and do not already contain "contrib"
-  sudo sed -r -i'.BAK' '/^\s*deb\s/ { /contrib/! s/(\bmain\b)([[:space:]].*)?/\1 contrib\2/ }' "$file"
+  sudo sed -r -i'.BAK' \
+    '/^\s*deb\s/ {
+       /contrib/! {
+         /apt\.releases\.hashicorp\.com|packages\.opentofu\.org/! s/(\bmain\b)([[:space:]].*)?/\1 contrib\2/
+       }
+     }' "$file"
 }
 
 # -------------------------------------------------
@@ -55,9 +59,6 @@ if echo "$RELEASE_INFO" | grep -qiE "debian|ubuntu"; then
       cgroup-tools \
       jq yq \
       bridge-utils
-
-  sudo apt clean
-  sudo apt autoremove -yqq
 
   # User environment
   sudo cp -f configs/commons/.bashrc_debian .bashrc
@@ -103,6 +104,119 @@ if echo "$RELEASE_INFO" | grep -qiE "debian|ubuntu"; then
 
   # Enable ZFS services (idempotent)
   sudo systemctl enable zfs-import-cache zfs-import-scan zfs-mount zfs.target >/dev/null 2>&1 || true
+
+  # --------------------------
+  # Terraform & Packer
+  # --------------------------
+  echo "🔷 Installing  Terraform and Packer..."
+
+  # Add key GPG of HashiCorp non-interactively
+  wget -O- https://apt.releases.hashicorp.com/gpg | \
+  gpg --dearmor | \
+  sudo tee /usr/share/keyrings/hashicorp-archive-keyring.gpg > /dev/null
+  
+  # Verify the GPG key's fingerprint.
+  gpg --no-default-keyring \
+    --keyring /usr/share/keyrings/hashicorp-archive-keyring.gpg \
+    --fingerprint
+
+  # Add HashiCorp repository
+  echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(grep -oP '(?<=UBUNTU_CODENAME=).*' /etc/os-release || lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/hashicorp.list
+
+  # Refresh indexes
+  sudo apt update -yqq
+
+  # Install Terraform and Packer
+  echo "Install Terraform and Packer..."
+  sudo apt install -yqq terraform packer
+
+  # ----------------------
+  # OpenTofu
+  # ----------------------
+  echo "🔷 Installing OpenTofu..."
+
+  # Add OpenTofu keys non-interactively
+  sudo install -m 0755 -d /etc/apt/keyrings
+
+  # Principal key for the repo
+  curl -fsSL https://get.opentofu.org/opentofu.gpg \
+    | sudo tee /etc/apt/keyrings/opentofu.gpg >/dev/null
+
+  # Repository signing key
+  curl -fsSL https://packages.opentofu.org/opentofu/tofu/gpgkey \
+    | sudo gpg --no-tty --batch --dearmor \
+    -o /etc/apt/keyrings/opentofu-repo.gpg >/dev/null
+
+  # Set permissions
+  sudo chmod a+r /etc/apt/keyrings/opentofu.gpg /etc/apt/keyrings/opentofu-repo.gpg
+
+  # Add OpenTofu repository
+  cat <<EOF | sudo tee /etc/apt/sources.list.d/opentofu.list >/dev/null
+  deb [signed-by=/etc/apt/keyrings/opentofu.gpg,/etc/apt/keyrings/opentofu-repo.gpg] https://packages.opentofu.org/opentofu/tofu/any/ any main
+  deb-src [signed-by=/etc/apt/keyrings/opentofu.gpg,/etc/apt/keyrings/opentofu-repo.gpg] https://packages.opentofu.org/opentofu/tofu/any/ any main
+EOF
+
+  # Refresh indexes
+  sudo apt update -yqq
+
+  # Pre-install tofu to avoid conflicts
+  sudo apt install -yqq tofu
+
+  # Log installation results
+  echo "✅ Verifying IaC tools installation:"
+  for tool in terraform tofu packer; do
+    if command -v $tool &> /dev/null; then
+      echo "  - $tool: Installed ($(command -v $tool))"
+    else
+      echo "  - $tool: Installation failed"
+    fi
+  done
+
+  # ===========================
+  # Install Docker Engine
+  # ===========================
+  echo "🔷 Installing Docker Engine..."
+
+  # ----------------------
+  # Docker repository/key
+  # ----------------------
+  sudo rm -f /usr/share/keyrings/docker-archive-keyring.gpg 2>/dev/null || true
+  sudo install -m 0755 -d /etc/apt/keyrings
+
+  # Download key only if missing; avoid overwrite prompt
+  if [ ! -s /etc/apt/keyrings/docker.gpg ]; then
+    curl -fsSL https://download.docker.com/linux/debian/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+    sudo chmod 0644 /etc/apt/keyrings/docker.gpg
+  fi
+
+  # Ensure repository line exists exactly once
+  sudo rm -f /etc/apt/sources.list.d/docker.list
+  sudo sed -i '/download\.docker\.com\/linux\/debian/d' /etc/apt/sources.list || true
+  CODENAME=$(. /etc/os-release && echo "$VERSION_CODENAME")
+  ARCH=$(dpkg --print-architecture)
+  echo "deb [arch=${ARCH} signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/debian ${CODENAME} stable" | \
+    sudo tee /etc/apt/sources.list.d/docker.list >/dev/null
+
+  sudo apt-get update -y -o=Dpkg::Use-Pty=0
+  sudo apt-get install -y -o=Dpkg::Use-Pty=0 \
+      docker-ce \
+      docker-ce-cli \
+      containerd.io \
+      docker-buildx-plugin \
+      docker-compose-plugin \
+      gnupg software-properties-common
+
+  sudo systemctl enable docker.service containerd.service
+  sudo systemctl start docker.service containerd.service
+
+  sudo groupadd docker 2>/dev/null || true
+  sudo usermod -aG docker vagrant || true
+  # IMPORTANT: do not run "newgrp docker" (it spawns a subshell and can appear to hang)
+  echo "INFO: 'newgrp docker' skipped to avoid subshell. Re-login to apply group membership."
+
+  # Clean up APT
+  sudo apt clean
+  sudo apt autoremove -yqq
 
 # -------------------------------------------------
 # Oracle Linux
@@ -207,46 +321,4 @@ else
     echo "Added entry: $IPV4 $HOSTNAME"
   fi
 fi
-
-# ===========================
-# Install Docker Engine
-# ===========================
-echo "🔷 Installing Docker Engine..."
-
-# ----------------------
-# Docker repository/key
-# ----------------------
-sudo rm -f /usr/share/keyrings/docker-archive-keyring.gpg 2>/dev/null || true
-sudo install -m 0755 -d /etc/apt/keyrings
-
-# Download key only if missing; avoid overwrite prompt
-if [ ! -s /etc/apt/keyrings/docker.gpg ]; then
-  curl -fsSL https://download.docker.com/linux/debian/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
-  sudo chmod 0644 /etc/apt/keyrings/docker.gpg
-fi
-
-# Ensure repository line exists exactly once
-sudo rm -f /etc/apt/sources.list.d/docker.list
-sudo sed -i '/download\.docker\.com\/linux\/debian/d' /etc/apt/sources.list || true
-CODENAME=$(. /etc/os-release && echo "$VERSION_CODENAME")
-ARCH=$(dpkg --print-architecture)
-echo "deb [arch=${ARCH} signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/debian ${CODENAME} stable" | \
-  sudo tee /etc/apt/sources.list.d/docker.list >/dev/null
-
-sudo apt-get update -y -o=Dpkg::Use-Pty=0
-sudo apt-get install -y -o=Dpkg::Use-Pty=0 \
-    docker-ce \
-    docker-ce-cli \
-    containerd.io \
-    docker-buildx-plugin \
-    docker-compose-plugin
-
-sudo systemctl enable docker.service containerd.service
-sudo systemctl start docker.service containerd.service
-
-sudo groupadd docker 2>/dev/null || true
-sudo usermod -aG docker vagrant || true
-# IMPORTANT: do not run "newgrp docker" (it spawns a subshell and can appear to hang)
-echo "INFO: 'newgrp docker' skipped to avoid subshell. Re-login to apply group membership."
-
 # End of script
