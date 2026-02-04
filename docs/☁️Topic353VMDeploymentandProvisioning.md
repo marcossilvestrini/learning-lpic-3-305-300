@@ -159,10 +159,104 @@ resource "aws_instance" "web" {
 * Create and maintain template files
 * Build images from template files using different builders
 
+#### 🧰 About Packer
+
+Packer is a tool for creating identical machine images for multiple platforms from a single source configuration. 
+
+It is designed to be a lightweight, fast, and flexible tool that can be used to build images for various cloud providers and virtualization platforms.
+
+#### ✅ Packer Features
+
+* **Multi-Platform Support**: Packer supports a wide range of platforms, including AWS, Azure, Google Cloud, VMware, VirtualBox, Docker, LXC/LXD, and more.
+* **Declarative Configuration**: Packer uses JSON or HCL (HashiCorp Configuration Language) templates to define the image-building process, making it easy to version control and share configurations.
+* **Provisioners**: Packer supports various provisioners, such as shell scripts, Ansible, Chef, Puppet, and Salt, allowing users to customize the images during the build process.
+* **Parallel Builds**: Packer can build images for multiple platforms simultaneously, reducing the time required to create images for different environments.
+* **Extensibility**: Packer has a plugin architecture that allows users to create custom builders and provisioners to extend its functionality.
+* **Integration with CI/CD**: Packer can be integrated into continuous integration and continuous deployment (CI/CD) pipelines, enabling automated image creation and deployment.
+
+#### 📦 Packer workflow functionality diagram
+
+1. conect to a builder (e.g., AWS, Azure, Docker)
+2. start a temporary instance or container
+3. run provisioners to customize the instance
+4. create an image from the customized instance
+5. stop the instance or container
+6. execute post-processors (optional)
+
+#### Template Components
+
+* **Builders**: Define the target platform and configuration for the machine image. Examples include `amazon-ebs`, `googlecompute`, `docker`, `lxc`, etc.
+* **Provisioners**: Specify the steps to customize the image during the build process. Examples include `shell`, `ansible`, `chef`, `puppet`, etc. 
+* **Post-Processors**: Optional steps to modify or export the built image after the build process. Examples include `compress`, `docker-tag`, `vagrant`, etc.
+
+#### Packer Example Templates
+
+##### Template Docker
+
+```hcl
+packer {
+  required_plugins {
+    docker = {
+      version = ">= 1.0.0"
+      source  = "github.com/hashicorp/docker"
+    }
+  }
+}
+source "docker" "nginx" {
+  image = "nginx:latest"
+  commit = true
+}
+build {
+  sources = ["source.docker.nginx"]
+
+  provisioner "shell" {
+    inline = [
+      "apt-get update",
+      "apt-get install -y curl",
+    ]
+  }
+}
+post-processor "docker-tag" {
+  repository = "my-nginx"
+  tag        = "latest"
+}
+```
+
+##### Template LXD
+
+```hcl
+packer {
+  required_plugins {
+    lxd = {
+      version = ">= 1.0.0"
+      source  = "github.com/hashicorp/lxd"
+    }
+  }
+}
+source "lxd" "ubuntu" {
+  image = "ubuntu/20.04"
+  name  = "ubuntu-20.04-packer"
+}
+build {
+  sources = ["source.lxd.ubuntu"]
+
+  provisioner "shell" {
+    inline = [
+      "sudo apt-get update",
+      "sudo apt-get install -y nginx",
+    ]
+  }
+}
+post-processor "lxd-export" {
+  output = "ubuntu-20.04-nginx.tar.gz"
+}
+```
+
 #### 📋 353.2 Cited Objects
 
 ```sh
 packer
+hcl2
 ```
 
 #### 🛠️ 353.2 Important Commands
@@ -170,7 +264,28 @@ packer
 ##### 📦 packer
 
 ```sh
-# examples
+# list available plugins
+packer plugins installed
+
+# install plugins
+packer plugins install github.com/hashicorp/docker
+packer init .
+packer init template.pkr.hcl
+
+# get a plugins required by a template
+packer plugins required template.pkr.hcl
+
+# validate a template file
+packer validate template.pkr.hcl
+
+# build an image from a template file
+packer build template.pkr.hcl
+
+# inspect a built image
+packer inspect template.pkr.hcl
+
+# list available builders and provisioners
+packer plugins
 ```
 
 <p align="right">(<a href="#topic-353.2">back to sub topic 353.2</a>)</p>
