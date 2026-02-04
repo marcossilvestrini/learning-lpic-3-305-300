@@ -2,9 +2,9 @@
 
 : <<'MULTILINE-COMMENT'
     📝 Requirements: none
-    📚 Description: Script to configure Cloud environment and install ZFS on Debian/Ubuntu systems
+    📚 Description: Script to configure Packer environment and install ZFS on Debian/Ubuntu systems
     👤 Author: Marcos Silvestrini
-    📅 Date: 27/02/2026
+    📅 Date: 03/02/2026
 MULTILINE-COMMENT
 
 # ===========================
@@ -58,7 +58,9 @@ if echo "$RELEASE_INFO" | grep -qiE "debian|ubuntu"; then
       ca-certificates curl gnupg lsb-release \
       cgroup-tools \
       jq yq \
-      bridge-utils
+      bridge-utils \
+      snapd \
+      lxc
 
   # User environment
   sudo cp -f configs/commons/.bashrc_debian .bashrc
@@ -106,9 +108,27 @@ if echo "$RELEASE_INFO" | grep -qiE "debian|ubuntu"; then
   sudo systemctl enable zfs-import-cache zfs-import-scan zfs-mount zfs.target >/dev/null 2>&1 || true
 
   # --------------------------
-  # Terraform
+  # LXD
   # --------------------------
-  echo "🔷 Installing  Terraform..."
+  echo "🔷 Installing LXD from Snap..."
+
+  # Enable and start snap service
+  sudo systemctl enable --now snapd.socket
+  sudo ln -s /var/lib/snapd/snap /snap || true
+
+  # Remove old LXD versions (APT)
+  sudo apt remove --purge -y lxd lxd-client || true
+
+  # Install latest LXD from Snap
+  sudo snap install lxd --channel=latest/stable
+
+  # Add user 'vagrant' to 'lxd' group
+  sudo usermod -aG lxd vagrant
+
+  # --------------------------
+  # Packer
+  # --------------------------
+  echo "🔷 Installing  Terraform and Packer..."
 
   # Add key GPG of HashiCorp non-interactively
   wget -O- https://apt.releases.hashicorp.com/gpg | \
@@ -127,51 +147,13 @@ if echo "$RELEASE_INFO" | grep -qiE "debian|ubuntu"; then
   sudo apt update -yqq
 
   # Install Terraform and Packer
-  echo "Install Terraform ..."
-  sudo apt install -yqq terraform
+  echo "Install Packer..."
+  sudo apt install -yqq packer
 
-  # ----------------------
-  # OpenTofu
-  # ----------------------
-  echo "🔷 Installing OpenTofu..."
-
-  # Add OpenTofu keys non-interactively
-  sudo install -m 0755 -d /etc/apt/keyrings
-
-  # Principal key for the repo
-  curl -fsSL https://get.opentofu.org/opentofu.gpg \
-    | sudo tee /etc/apt/keyrings/opentofu.gpg >/dev/null
-
-  # Repository signing key
-  curl -fsSL https://packages.opentofu.org/opentofu/tofu/gpgkey \
-    | sudo gpg --no-tty --batch --dearmor \
-    -o /etc/apt/keyrings/opentofu-repo.gpg >/dev/null
-
-  # Set permissions
-  sudo chmod a+r /etc/apt/keyrings/opentofu.gpg /etc/apt/keyrings/opentofu-repo.gpg
-
-  # Add OpenTofu repository
-  cat <<EOF | sudo tee /etc/apt/sources.list.d/opentofu.list >/dev/null
-  deb [signed-by=/etc/apt/keyrings/opentofu.gpg,/etc/apt/keyrings/opentofu-repo.gpg] https://packages.opentofu.org/opentofu/tofu/any/ any main
-  deb-src [signed-by=/etc/apt/keyrings/opentofu.gpg,/etc/apt/keyrings/opentofu-repo.gpg] https://packages.opentofu.org/opentofu/tofu/any/ any main
-EOF
-
-  # Refresh indexes
-  sudo apt update -yqq
-
-  # Pre-install tofu to avoid conflicts
-  sudo apt install -yqq tofu
-
-  # Log installation results
-  echo "✅ Verifying IaC tools installation:"
-  for tool in terraform tofu; do
-    if command -v $tool &> /dev/null; then
-      echo "  - $tool: Installed ($(command -v $tool))"
-    else
-      echo "  - $tool: Installation failed"
-    fi
-  done
-
+  # Install packer plugins (idempotent)
+  packer plugins install github.com/hashicorp/docker
+  packer plugins install github.com/hashicorp/lxd
+    
   # ===========================
   # Install Docker Engine
   # ===========================

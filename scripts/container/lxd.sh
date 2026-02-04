@@ -15,7 +15,6 @@ MULTILINE-COMMENT
 set -euo pipefail
 IFS=$'\n\t'
 
-
 LAB_INSTANCE="lxd-lab"
 LAB_STATE="/tmp/lxd-lab"
 INSTANCE_TYPE="container" # or "vm"

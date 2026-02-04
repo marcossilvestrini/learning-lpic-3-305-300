@@ -142,9 +142,6 @@ Vagrant.configure("2") do |config|
 
     # RESTART VM
     packer.vm.provision :reload
-
-    # LXD AUTO-SETUP
-    packer.vm.provision "shell", name: "[lxd-setup]", path: File.join(scripts_path, "container/lxd-init.sh"), privileged: true, run: "always"
     
   end
   # END INSTANCE PACKER
