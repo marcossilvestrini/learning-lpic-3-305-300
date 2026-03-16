@@ -43,3 +43,7 @@ packages/
 
 # kubernetes
 configs/kubernetes/kubeconfig-*.yaml
+
+# packer
+
+confis/packer/templates/*.tar.gz
