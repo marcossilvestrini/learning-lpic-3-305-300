@@ -5164,6 +5164,56 @@ post-processor "lxd-export" {
 }
 ```
 
+##### Template Amazon
+
+```hcl2
+{
+   "variables": {
+      "aws_access_key": "FOO",
+      "aws_secret_key": "BAR"
+   },
+   "builders": [
+      {
+	      "type": "amazon-ebs",
+	      "access_key": "{{user `aws_access_key`}}",
+	      "secret_key": "{{user `aws_secret_key`}}",
+	      "region": "sa-east-1",
+	      "instance_type": "t2.micro",
+	      "source_ami": "ami-0e7dc6a7bf702d57f",
+	      "ami_name": "packer-ami-{{timestamp}}",
+	      "ssh_username": "ubuntu"
+      }
+   ],
+   "provisioners": [
+      {
+	      "type": "file",
+	      "source": "index.html",
+	      "destination": "~/"
+      },
+      {
+	      "type": "shell",
+	      "inline": 
+	      [
+		      "sudo apt update -y",
+		      "sudo apt install nginx -y",
+		      "sudo cp ~/index.html /var/www/html/"
+	      ]
+      }
+   ],
+   "post-processors": [
+	   {
+		   "type": "vagrant"
+	   },
+	   {
+		   "type": "compress",
+		   "output": "vagrant.tgz"
+	   }
+   ]
+
+}
+
+```
+
 #### 📋 353.2 Cited Objects
 
 ```sh

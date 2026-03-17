@@ -4,15 +4,14 @@
             "type": "lxd",
             "image": "images:debian/13",
             "name": "lxd-example",
-            "init_sleep": "60"
+            "init_sleep": "10"
         }
     ],
     "provisioners": [
         {
             "type": "shell",
             "inline": 
-	    [
-		"sleep 30",
+	    [		
         "dhclient",
 		"rm /etc/resolv.conf",
 		"echo \"nameserver 8.8.8.8\" > /etc/resolv.conf",
