@@ -8266,6 +8266,12 @@ resource &#x22;aws_instance&#x22; &#x22;web&#x22; {
       <li>Create and maintain template files</li>
       <li>Build images from template files using different builders</li>
     </ul>
+    <h4 id="-3532-cited-objects"><a class="anchor" aria-hidden="true" tabindex="-1" href="#-3532-cited-objects"><span class="octicon octicon-link"></span></a>📋 353.2 Cited Objects</h4>
+    <pre class="language-sh"><code class="language-sh code-highlight"><span class="code-line line-number" line="1">packer
+</span><span class="code-line line-number" line="2">hcl2
+</span></code><div onclick="copied(this)" data-code="packer
+hcl2
+" class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
     <h4 id="-about-packer"><a class="anchor" aria-hidden="true" tabindex="-1" href="#-about-packer"><span class="octicon octicon-link"></span></a>🧰 About Packer</h4>
     <p>Packer is a tool for creating identical machine images for multiple platforms from a single source configuration.</p>
     <p>It is designed to be a lightweight, fast, and flexible tool that can be used to build images for various cloud providers and virtualization platforms.</p>
@@ -8400,11 +8406,97 @@ post-processor &#x22;lxd-export&#x22; {
   output = &#x22;ubuntu-20.04-nginx.tar.gz&#x22;
 }
 " class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
-    <h4 id="-3532-cited-objects"><a class="anchor" aria-hidden="true" tabindex="-1" href="#-3532-cited-objects"><span class="octicon octicon-link"></span></a>📋 353.2 Cited Objects</h4>
-    <pre class="language-sh"><code class="language-sh code-highlight"><span class="code-line line-number" line="1">packer
-</span><span class="code-line line-number" line="2">hcl2
-</span></code><div onclick="copied(this)" data-code="packer
-hcl2
+    <h5 id="template-amazon"><a class="anchor" aria-hidden="true" tabindex="-1" href="#template-amazon"><span class="octicon octicon-link"></span></a>Template Amazon</h5>
+    <pre><code class="language-hcl2 code-highlight"><span class="code-line line-number" line="1">{
+</span><span class="code-line line-number" line="2">   "variables": {
+</span><span class="code-line line-number" line="3">      "aws_access_key": "FOO",
+</span><span class="code-line line-number" line="4">      "aws_secret_key": "BAR"
+</span><span class="code-line line-number" line="5">   },
+</span><span class="code-line line-number" line="6">   "builders": [
+</span><span class="code-line line-number" line="7">      {
+</span><span class="code-line line-number" line="8">	      "type": "amazon-ebs",
+</span><span class="code-line line-number" line="9">	      "access_key": "{{user `aws_access_key`}}",
+</span><span class="code-line line-number" line="10">	      "secret_key": "{{user `aws_secret_key`}}",
+</span><span class="code-line line-number" line="11">	      "region": "sa-east-1",
+</span><span class="code-line line-number" line="12">	      "instance_type": "t2.micro",
+</span><span class="code-line line-number" line="13">	      "source_ami": "ami-0e7dc6a7bf702d57f",
+</span><span class="code-line line-number" line="14">	      "ami_name": "packer-ami-{{timestamp}}",
+</span><span class="code-line line-number" line="15">	      "ssh_username": "ubuntu"
+</span><span class="code-line line-number" line="16">      }
+</span><span class="code-line line-number" line="17">   ],
+</span><span class="code-line line-number" line="18">   "provisioners": [
+</span><span class="code-line line-number" line="19">      {
+</span><span class="code-line line-number" line="20">	      "type": "file",
+</span><span class="code-line line-number" line="21">	      "source": "index.html",
+</span><span class="code-line line-number" line="22">	      "destination": "~/"
+</span><span class="code-line line-number" line="23">      },
+</span><span class="code-line line-number" line="24">      {
+</span><span class="code-line line-number" line="25">	      "type": "shell",
+</span><span class="code-line line-number" line="26">	      "inline": 
+</span><span class="code-line line-number" line="27">	      [
+</span><span class="code-line line-number" line="28">		      "sudo apt update -y",
+</span><span class="code-line line-number" line="29">		      "sudo apt install nginx -y",
+</span><span class="code-line line-number" line="30">		      "sudo cp ~/index.html /var/www/html/"
+</span><span class="code-line line-number" line="31">	      ]
+</span><span class="code-line line-number" line="32">      }
+</span><span class="code-line line-number" line="33">   ],
+</span><span class="code-line line-number" line="34">   "post-processors": [
+</span><span class="code-line line-number" line="35">	   {
+</span><span class="code-line line-number" line="36">		   "type": "vagrant"
+</span><span class="code-line line-number" line="37">	   },
+</span><span class="code-line line-number" line="38">	   {
+</span><span class="code-line line-number" line="39">		   "type": "compress",
+</span><span class="code-line line-number" line="40">		   "output": "vagrant.tgz"
+</span><span class="code-line line-number" line="41">	   }
+</span><span class="code-line line-number" line="42">   ]
+</span><span class="code-line line-number" line="43">
+</span><span class="code-line line-number" line="44">}
+</span><span class="code-line line-number" line="45">
+</span></code><div onclick="copied(this)" data-code="{
+   &#x22;variables&#x22;: {
+      &#x22;aws_access_key&#x22;: &#x22;FOO&#x22;,
+      &#x22;aws_secret_key&#x22;: &#x22;BAR&#x22;
+   },
+   &#x22;builders&#x22;: [
+      {
+	      &#x22;type&#x22;: &#x22;amazon-ebs&#x22;,
+	      &#x22;access_key&#x22;: &#x22;{{user &#x60;aws_access_key&#x60;}}&#x22;,
+	      &#x22;secret_key&#x22;: &#x22;{{user &#x60;aws_secret_key&#x60;}}&#x22;,
+	      &#x22;region&#x22;: &#x22;sa-east-1&#x22;,
+	      &#x22;instance_type&#x22;: &#x22;t2.micro&#x22;,
+	      &#x22;source_ami&#x22;: &#x22;ami-0e7dc6a7bf702d57f&#x22;,
+	      &#x22;ami_name&#x22;: &#x22;packer-ami-{{timestamp}}&#x22;,
+	      &#x22;ssh_username&#x22;: &#x22;ubuntu&#x22;
+      }
+   ],
+   &#x22;provisioners&#x22;: [
+      {
+	      &#x22;type&#x22;: &#x22;file&#x22;,
+	      &#x22;source&#x22;: &#x22;index.html&#x22;,
+	      &#x22;destination&#x22;: &#x22;~/&#x22;
+      },
+      {
+	      &#x22;type&#x22;: &#x22;shell&#x22;,
+	      &#x22;inline&#x22;: 
+	      [
+		      &#x22;sudo apt update -y&#x22;,
+		      &#x22;sudo apt install nginx -y&#x22;,
+		      &#x22;sudo cp ~/index.html /var/www/html/&#x22;
+	      ]
+      }
+   ],
+   &#x22;post-processors&#x22;: [
+	   {
+		   &#x22;type&#x22;: &#x22;vagrant&#x22;
+	   },
+	   {
+		   &#x22;type&#x22;: &#x22;compress&#x22;,
+		   &#x22;output&#x22;: &#x22;vagrant.tgz&#x22;
+	   }
+   ]
+
+}
+
 " class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
     <h4 id="️-3532-important-commands"><a class="anchor" aria-hidden="true" tabindex="-1" href="#️-3532-important-commands"><span class="octicon octicon-link"></span></a>🛠️ 353.2 Important Commands</h4>
     <h5 id="-packer"><a class="anchor" aria-hidden="true" tabindex="-1" href="#-packer"><span class="octicon octicon-link"></span></a>📦 packer</h5>
@@ -8480,10 +8572,93 @@ packer plugins
 user-data
 /var/lib/cloud/
 " class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+    <h3 id="understanding-cloud-init"><a class="anchor" aria-hidden="true" tabindex="-1" href="#understanding-cloud-init"><span class="octicon octicon-link"></span></a>Understanding cloud-init</h3>
+    <p>Tool used for customizing cloud instances at boot time. It is typically used to perform initial setup tasks such as configuring network interfaces, setting up user accounts, installing software packages, and running custom scripts.</p>
+    <h4 id="sources-of-cloud-init-data"><a class="anchor" aria-hidden="true" tabindex="-1" href="#sources-of-cloud-init-data"><span class="octicon octicon-link"></span></a>Sources of cloud-init data</h4>
+    <table>
+      <thead>
+        <tr>
+          <th>Source</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>meta-data\vendor-data</strong></td>
+          <td>Customizations provided by the platform managing the VM, such as the Cloud platform.</td>
+        </tr>
+        <tr>
+          <td><strong>user-data</strong></td>
+          <td>User-defined instructions primarily using YAML format or shell scripts.</td>
+        </tr>
+        <tr>
+          <td><strong>Configuration Files</strong></td>
+          <td>Instructions can also be provided through configuration files in YAML or Script format.</td>
+        </tr>
+        <tr>
+          <td><strong>Datasource</strong></td>
+          <td>Determines the origin of the information necessary for instance configuration (meta-data/user-data).</td>
+        </tr>
+      </tbody>
+    </table>
+    <h4 id="modules-in-cloud-init"><a class="anchor" aria-hidden="true" tabindex="-1" href="#modules-in-cloud-init"><span class="octicon octicon-link"></span></a>Modules in cloud-init</h4>
+    <p>Below are some of the commonly used cloud-init modules, which are responsible for executing specific tasks during the instance initialization process:</p>
+    <table>
+      <thead>
+        <tr>
+          <th>Module</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>bootcmd</strong></td>
+          <td>Commands that run at every boot, before any other cloud-init modules.</td>
+        </tr>
+        <tr>
+          <td><strong>runcmd</strong></td>
+          <td>Commands that run at the end of the cloud-init process, after all other modules have completed.</td>
+        </tr>
+        <tr>
+          <td><strong>users</strong></td>
+          <td>Used to create and manage user accounts, including setting up SSH keys for secure logins.</td>
+        </tr>
+        <tr>
+          <td><strong>packages</strong></td>
+          <td>Used to install software packages from the distribution's repository.</td>
+        </tr>
+        <tr>
+          <td><strong>disk_setup</strong></td>
+          <td>Used to create, resize, and mount file systems on the instance's disks.</td>
+        </tr>
+        <tr>
+          <td><strong>write_files</strong></td>
+          <td>Used to write files to the instance's file system, which can be used for configuration or other purposes.</td>
+        </tr>
+      </tbody>
+    </table>
+    <h4 id="cloud-init-configuration-files-and-directories"><a class="anchor" aria-hidden="true" tabindex="-1" href="#cloud-init-configuration-files-and-directories"><span class="octicon octicon-link"></span></a>Cloud-Init Configuration Files and Directories</h4>
+    <ul>
+      <li>/etc/cloud/ – Main Configuration Files
+        <ul>
+          <li>cloud.cfg – The primary configuration file for Cloud-Init</li>
+          <li>cloud.cfg.d/ – Directory containing additional configuration files that are merged with the cloud.cfg file</li>
+        </ul>
+      </li>
+      <li>/var/log/cloud-init.log – Log file containing detailed records of Cloud-Init activities during instance initialization</li>
+      <li>/var/log/cloud-init-output.log – Logs the console output generated by initialization scripts executed by Cloud-Init</li>
+      <li>/var/lib/cloud/ – Directory containing data and information generated by Cloud-Init during instance initialization
+        <ul>
+          <li>/var/lib/cloud/instance/ – Directory containing files and metadata related to the running instance</li>
+        </ul>
+      </li>
+    </ul>
     <h4 id="️-3533-important-commands"><a class="anchor" aria-hidden="true" tabindex="-1" href="#️-3533-important-commands"><span class="octicon octicon-link"></span></a>🛠️ 353.3 Important Commands</h4>
     <h5 id="-cloud-init"><a class="anchor" aria-hidden="true" tabindex="-1" href="#-cloud-init"><span class="octicon octicon-link"></span></a>📝 cloud-init</h5>
-    <pre class="language-sh"><code class="language-sh code-highlight"><span class="code-line line-number" line="1"><span class="token comment"># examples</span>
-</span></code><div onclick="copied(this)" data-code="# examples
+    <pre class="language-sh"><code class="language-sh code-highlight"><span class="code-line line-number" line="1"><span class="token comment"># clear cloud-init state and logs</span>
+</span><span class="code-line line-number" line="2"><span class="token function">sudo</span> cloud-init clean
+</span></code><div onclick="copied(this)" data-code="# clear cloud-init state and logs
+sudo cloud-init clean
 " class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
     <p align="right">(<a href="#topic-353.3">back to sub topic 353.3</a>)</p>
     <p align="right">(<a href="#topic%20353">back to topic 353</a>)</p>
@@ -8906,6 +9081,7 @@ Vagrantfile
         <p><a href="">cloud-init</a></p>
         <ul>
           <li><a href="https://cloud-init.io/">cloud-init Documentation</a></li>
+          <li><a href="https://docs.cloud-init.io/en/latest/reference/modules.html">cloud-init Modules</a></li>
           <li><a href="https://cloudinit.readthedocs.io/en/latest/topics/examples.html">cloud-init Examples</a></li>
         </ul>
       </li>
