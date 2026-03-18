@@ -204,7 +204,7 @@ EOF
       containerd.io \
       docker-buildx-plugin \
       docker-compose-plugin \
-      gnupg software-properties-common
+      gnupg software-properties-common      
 
   sudo systemctl enable docker.service containerd.service
   sudo systemctl start docker.service containerd.service
