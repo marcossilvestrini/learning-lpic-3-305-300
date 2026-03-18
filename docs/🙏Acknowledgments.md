@@ -252,6 +252,7 @@
   * [Packer Templates](https://www.packer.io/docs/templates)
 * [cloud-init]()
   * [cloud-init Documentation](https://cloud-init.io/)
+  * [cloud-init Modules](https://docs.cloud-init.io/en/latest/reference/modules.html)
   * [cloud-init Examples](https://cloudinit.readthedocs.io/en/latest/topics/examples.html)  
 * [Vagrant](https://developer.hashicorp.com/vagrant)
   * [Vagrant Documentation](https://developer.hashicorp.com/vagrant/docs)
