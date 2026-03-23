@@ -1,5 +1,6 @@
 # Force PowerShell to use UTF-8 encoding
-[Console]::OutputEncoding = [System.Text.UTF8Encoding]::new()
+[Console]::OutputEncoding = [System.Text.Encoding]::UTF8
+$OutputEncoding = [System.Text.Encoding]::UTF8
 
 # Set working directory to script location
 $WORKDIR = $PSScriptRoot
