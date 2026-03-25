@@ -115,9 +115,7 @@ Vagrant.configure("2") do |config|
       vmware.vmx["numvcpus"] = num_vcpus
       vmware.vmx["cpuid.coresPerSocket"] = "1"
       vmware.vmx["vhv.enable"] = "TRUE"  # Enable virtualization engine (nested virtualization)
-      # vmware.vmx["hypervisor.cpuid.v0"] = "FALSE"  # Ensure guest OS can see CPU features
-      # vmware.vmx["monitor.virtual_mmu"] = "hardware"  # Use hardware memory management unit
-      # vmware.vmx["monitor.virtual_exec"] = "hardware"  # Use hardware execution virtualization
+      
     end
 
     # VirtualBox provider configuration
@@ -149,12 +147,17 @@ Vagrant.configure("2") do |config|
   end
   # END INSTANCE PACKER
 
-# BEGIN INSTANCE CLOUD-INIT
-    # BOX
-    config.vm.box = "bento/ubuntu-18.04"
-    config.vm.box_version = "202303.13.0"
-    config.vm.box_download_insecure = true
+# BEGIN INSTANCE CLOUD-INIT    
     config.vm.define "#{vm_name}-cloud-init" do |cloud_init|
+
+    # BOX
+    cloud_init.vm.box = "bento/ubuntu-18.04"
+    cloud_init.vm.box_version = "202303.13.0"
+    cloud_init.vm.box_download_insecure = true
+
+    # STORAGE    
+    disk_size = "200GB"
+    cloud_init.vm.disk :disk, size: disk_size, name: "cloud_init_storage", primary: false
 
     # hostname
     cloud_init.vm.hostname = "#{vm_name}-cloud-init"
@@ -173,10 +176,7 @@ Vagrant.configure("2") do |config|
       vmware.vmx["memsize"] = mem_size
       vmware.vmx["numvcpus"] = num_vcpus
       vmware.vmx["cpuid.coresPerSocket"] = "1"
-      vmware.vmx["vhv.enable"] = "TRUE"  # Enable virtualization engine (nested virtualization)
-      # vmware.vmx["hypervisor.cpuid.v0"] = "FALSE"  # Ensure guest OS can see CPU features
-      # vmware.vmx["monitor.virtual_mmu"] = "hardware"  # Use hardware memory management unit
-      # vmware.vmx["monitor.virtual_exec"] = "hardware"  # Use hardware execution virtualization
+      vmware.vmx["vhv.enable"] = "TRUE"  # Enable virtualization engine (nested virtualization)      
     end
 
     # VirtualBox provider configuration
