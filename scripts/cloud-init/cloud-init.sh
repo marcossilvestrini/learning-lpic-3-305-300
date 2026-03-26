@@ -72,22 +72,23 @@ if echo "$RELEASE_INFO" | grep -qiE "debian|ubuntu"; then
   sudo cp -f configs/commons/.vimrc .vimrc
   sudo cp -f configs/commons/.vimrc /root/.vimrc
   
-  # # ===========================
-  # # cloud-init configuration 
-  # # ===========================
-  # sudo apt install -yq cloud-init
-  # sudo cp -f configs/cloud-init/99_fake-cloud.cfg /etc/cloud/cloud.cfg.d
-  # sudo cp -f configs/cloud-init/13_disk.cfg /etc/cloud/cloud.cfg.d
-  # sudo cp -f configs/cloud-init/12_users.cfg /etc/cloud/cloud.cfg.d
-  # sudo cp -f configs/cloud-init/11_packages.cfg /etc/cloud/cloud.cfg.d
-  # sudo cp -f configs/cloud-init/10_commands.cfg /etc/cloud/cloud.cfg.d
-  # sudo cp -f configs/cloud-init/9_hostname.cfg /etc/cloud/cloud.cfg.d
-  # sudo chmod 644 /etc/cloud/cloud.cfg.d/*.cfg
+  # ===========================
+  # cloud-init configuration 
+  # ===========================
+  sudo apt install -yq cloud-init
+  sudo cp -f configs/cloud-init/99_fake-cloud.cfg /etc/cloud/cloud.cfg.d
+  sudo cp -f configs/cloud-init/14_network.cfg /etc/cloud/cloud.cfg.d
+  sudo cp -f configs/cloud-init/13_disk.cfg /etc/cloud/cloud.cfg.d
+  sudo cp -f configs/cloud-init/12_users.cfg /etc/cloud/cloud.cfg.d
+  sudo cp -f configs/cloud-init/11_packages.cfg /etc/cloud/cloud.cfg.d
+  sudo cp -f configs/cloud-init/10_commands.cfg /etc/cloud/cloud.cfg.d
+  sudo cp -f configs/cloud-init/9_hostname.cfg /etc/cloud/cloud.cfg.d
+  sudo chmod 644 /etc/cloud/cloud.cfg.d/*.cfg
 
-  # # Reset cloud-init state after all local configs are in place.
-  # # Do not start the service manually here; let it run on next boot
-  # # with the datasource configuration already applied.
-  # sudo cloud-init clean --logs
+  # Reset cloud-init state after all local configs are in place.
+  # Do not start the service manually here; let it run on next boot
+  # with the datasource configuration already applied.
+  sudo cloud-init clean --logs
   # sudo systemctl enable cloud-init
   
 
@@ -157,18 +158,17 @@ else
 fi
 
 # Restart SSH services
-sudo systemctl restart sshd
-sudo systemctl restart ssh || true
+sudo systemctl restart ssh
 
 # Pre-accept SSH host key with timeout to avoid blocking
-ssh -o ConnectTimeout=5 -o StrictHostKeyChecking=accept-new -i /home/vagrant/.ssh/skynet-key-ecdsa vagrant@192.168.0.131 exit || true
+ssh -o ConnectTimeout=5 -o StrictHostKeyChecking=accept-new -i /home/vagrant/.ssh/skynet-key-ecdsa vagrant@192.168.0.135 exit || true
 
 # ===========================
 # SSH client configuration
 # ===========================
 mkdir -p /home/vagrant/.ssh
 tee /home/vagrant/.ssh/config > /dev/null <<EOF
-Host 192.168.0.133
+Host 192.168.0.135
     User vagrant
     IdentityFile /home/vagrant/.ssh/skynet-key-ecdsa
     StrictHostKeyChecking accept-new
