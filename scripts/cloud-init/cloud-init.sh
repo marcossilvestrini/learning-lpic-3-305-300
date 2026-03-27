@@ -75,21 +75,20 @@ if echo "$RELEASE_INFO" | grep -qiE "debian|ubuntu"; then
   # ===========================
   # cloud-init configuration 
   # ===========================
-  sudo apt install -yq cloud-init
-  sudo cp -f configs/cloud-init/99_fake-cloud.cfg /etc/cloud/cloud.cfg.d
-  sudo cp -f configs/cloud-init/14_network.cfg /etc/cloud/cloud.cfg.d
-  sudo cp -f configs/cloud-init/13_disk.cfg /etc/cloud/cloud.cfg.d
-  sudo cp -f configs/cloud-init/12_users.cfg /etc/cloud/cloud.cfg.d
-  sudo cp -f configs/cloud-init/11_packages.cfg /etc/cloud/cloud.cfg.d
-  sudo cp -f configs/cloud-init/10_commands.cfg /etc/cloud/cloud.cfg.d
-  sudo cp -f configs/cloud-init/9_hostname.cfg /etc/cloud/cloud.cfg.d
-  sudo chmod 644 /etc/cloud/cloud.cfg.d/*.cfg
+  # sudo apt install -yq cloud-init
+  # sudo cp -f configs/cloud-init/99_fake-cloud.cfg /etc/cloud/cloud.cfg.d
+  # sudo cp -f configs/cloud-init/14_network.cfg /etc/cloud/cloud.cfg.d
+  # sudo cp -f configs/cloud-init/13_disk.cfg /etc/cloud/cloud.cfg.d
+  # sudo cp -f configs/cloud-init/12_users.cfg /etc/cloud/cloud.cfg.d
+  # sudo cp -f configs/cloud-init/11_packages.cfg /etc/cloud/cloud.cfg.d
+  # sudo cp -f configs/cloud-init/10_commands.cfg /etc/cloud/cloud.cfg.d
+  # sudo cp -f configs/cloud-init/9_hostname.cfg /etc/cloud/cloud.cfg.d
+  # sudo chmod 644 /etc/cloud/cloud.cfg.d/*.cfg
 
-  # Reset cloud-init state after all local configs are in place.
-  # Do not start the service manually here; let it run on next boot
-  # with the datasource configuration already applied.
-  sudo cloud-init clean --logs
-  # sudo systemctl enable cloud-init
+  # # Reset cloud-init state after all local configs are in place.
+  # # Do not start the service manually here; let it run on next boot
+  # # with the datasource configuration already applied.
+  # sudo cloud-init clean --logs
   
 
 # -------------------------------------------------
