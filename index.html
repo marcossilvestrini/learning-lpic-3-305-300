@@ -8573,7 +8573,7 @@ user-data
 /var/lib/cloud/
 " class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
     <h3 id="understanding-cloud-init"><a class="anchor" aria-hidden="true" tabindex="-1" href="#understanding-cloud-init"><span class="octicon octicon-link"></span></a>Understanding cloud-init</h3>
-    <p>Tool used for customizing cloud instances at boot time. It is typically used to perform initial setup tasks such as configuring network interfaces, setting up user accounts, installing software packages, and running custom scripts.</p>
+    <p>Tool used for customizing cloud instances at boot time.<br>It is typically used to perform initial setup tasks such as configuring network interfaces, setting up user accounts, installing software packages, and running custom scripts.</p>
     <h4 id="sources-of-cloud-init-data"><a class="anchor" aria-hidden="true" tabindex="-1" href="#sources-of-cloud-init-data"><span class="octicon octicon-link"></span></a>Sources of cloud-init data</h4>
     <table>
       <thead>
@@ -8632,6 +8632,10 @@ user-data
           <td>Used to create, resize, and mount file systems on the instance's disks.</td>
         </tr>
         <tr>
+          <td><strong>network</strong></td>
+          <td>Used to configure network interfaces and settings for the instance.</td>
+        </tr>
+        <tr>
           <td><strong>write_files</strong></td>
           <td>Used to write files to the instance's file system, which can be used for configuration or other purposes.</td>
         </tr>
@@ -8684,10 +8688,208 @@ sudo cloud-init clean
 </span></code><div onclick="copied(this)" data-code="vagrant
 Vagrantfile
 " class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+    <h4 id="-about-vagrant"><a class="anchor" aria-hidden="true" tabindex="-1" href="#-about-vagrant"><span class="octicon octicon-link"></span></a>🧰 About Vagrant</h4>
+    <p>Vagrant is an open-source tool for building and managing virtual machine environments in a single workflow.<br>It provides a simple and easy-to-use command-line interface for creating and configuring lightweight, reproducible, and portable development environments.</p>
+    <h5 id="vagrant-architecture-and-concepts"><a class="anchor" aria-hidden="true" tabindex="-1" href="#vagrant-architecture-and-concepts"><span class="octicon octicon-link"></span></a>Vagrant Architecture and Concepts</h5>
+    <p>Vagrant uses a declarative configuration file called <code>Vagrantfile</code> to define the virtual machine environment.<br>The <code>Vagrantfile</code> specifies the base box to use, the virtual machine provider (e.g., VirtualBox, VMware, Hyper-V), and any additional configuration such as networking, shared folders, and provisioning scripts.</p>
+    <h5 id="vagrant-providers"><a class="anchor" aria-hidden="true" tabindex="-1" href="#vagrant-providers"><span class="octicon octicon-link"></span></a>Vagrant Providers</h5>
+    <p>A Vagrant provider is a plugin that allows Vagrant to manage virtual machines using a specific virtualization technology.<br>Common providers include:</p>
+    <ul>
+      <li><strong>VirtualBox</strong>: A free and open-source virtualization platform that is widely used for local development environments.</li>
+      <li><strong>VMware</strong>: A commercial virtualization platform that offers advanced features and performance for enterprise environments.</li>
+      <li><strong>Hyper-V</strong>: A virtualization platform developed by Microsoft, available on Windows operating systems.</li>
+      <li><strong>Docker</strong>: A containerization platform that allows Vagrant to manage containerized environments.</li>
+    </ul>
+    <h5 id="vagrant-plugins"><a class="anchor" aria-hidden="true" tabindex="-1" href="#vagrant-plugins"><span class="octicon octicon-link"></span></a>Vagrant Plugins</h5>
+    <p>Vagrant plugins are extensions that add functionality to Vagrant.<br>Examples of Vagrant plugins include:</p>
+    <ul>
+      <li><strong>vagrant-vbguest</strong>: Automatically installs the VirtualBox Guest Additions on the guest machine, improving performance and enabling features such as shared folders and clipboard sharing.</li>
+      <li><strong>vagrant-hostmanager</strong>: Manages the host's <code>/etc/hosts</code> file to allow easy access to Vagrant machines by name.</li>
+      <li><strong>vagrant-disksize</strong>: Allows resizing of the virtual machine's disk size during provisioning.</li>
+    </ul>
+    <h5 id="vagrant-provisioning"><a class="anchor" aria-hidden="true" tabindex="-1" href="#vagrant-provisioning"><span class="octicon octicon-link"></span></a>Vagrant Provisioning</h5>
+    <p>Vagrant provisioning is the process of configuring the virtual machine after it has been created.<br>Provisioning can be done using various provisioners, such as:</p>
+    <ul>
+      <li><strong>File Provisioner</strong>: Used to copy files from the host machine to the guest machine during provisioning.</li>
+      <li><strong>Shell Provisioner</strong>: Used to run shell scripts on the guest machine during provisioning, allowing for tasks such as installing software packages, configuring services, and setting up the environment.</li>
+      <li><strong>Ansible Provisioner</strong>: Used to run Ansible playbooks on the guest machine during provisioning, allowing for more complex configuration management and automation.</li>
+      <li><strong>Puppet Provisioner</strong>: Used to run Puppet manifests on the guest machine during provisioning, allowing for configuration management and automation using Puppet.</li>
+      <li><strong>Chef Provisioner</strong>: Used to run Chef recipes on the guest machine during provisioning, allowing for configuration management and automation using Chef.</li>
+    </ul>
+    <h5 id="vagrant-boxes"><a class="anchor" aria-hidden="true" tabindex="-1" href="#vagrant-boxes"><span class="octicon octicon-link"></span></a>Vagrant Boxes</h5>
+    <p>A Vagrant box is a pre-packaged virtual machine image that serves as the base for creating new virtual machine instances.<br>Boxes can be retrieved from the Vagrant Cloud (formerly known as Atlas).<br>Vagrant Cloud is a platform for sharing and distributing Vagrant boxes, allowing users to easily find and use pre-configured environments for their development needs.</p>
+    <h4 id="vagrantfile-example"><a class="anchor" aria-hidden="true" tabindex="-1" href="#vagrantfile-example"><span class="octicon octicon-link"></span></a>Vagrantfile Example</h4>
+    <pre class="language-ruby"><code class="language-ruby code-highlight"><span class="code-line line-number" line="1">Vagrant<span class="token punctuation">.</span>configure<span class="token punctuation">(</span><span class="token string-literal"><span class="token string">"2"</span></span><span class="token punctuation">)</span> <span class="token keyword">do</span> <span class="token operator">|</span>config<span class="token operator">|</span>
+</span><span class="code-line line-number" line="2">  <span class="token comment"># Define the base box to use</span>
+</span><span class="code-line line-number" line="3">  config<span class="token punctuation">.</span>vm<span class="token punctuation">.</span>box <span class="token operator">=</span> <span class="token string-literal"><span class="token string">"ubuntu/bionic64"</span></span>
+</span><span class="code-line line-number" line="4">  <span class="token comment"># Configure the virtual machine provider</span>
+</span><span class="code-line line-number" line="5">  config<span class="token punctuation">.</span>vm<span class="token punctuation">.</span>provider <span class="token string-literal"><span class="token string">"virtualbox"</span></span> <span class="token keyword">do</span> <span class="token operator">|</span>vb<span class="token operator">|</span>
+</span><span class="code-line line-number" line="6">    vb<span class="token punctuation">.</span>memory <span class="token operator">=</span> <span class="token string-literal"><span class="token string">"1024"</span></span>
+</span><span class="code-line line-number" line="7">    vb<span class="token punctuation">.</span>cpus <span class="token operator">=</span> <span class="token number">2</span>
+</span><span class="code-line line-number" line="8">  <span class="token keyword">end</span>
+</span><span class="code-line line-number" line="9">  <span class="token comment"># Configure a private network</span>
+</span><span class="code-line line-number" line="10">  config<span class="token punctuation">.</span>vm<span class="token punctuation">.</span>network <span class="token string-literal"><span class="token string">"private_network"</span></span><span class="token punctuation">,</span> <span class="token symbol">ip</span><span class="token operator">:</span> <span class="token string-literal"><span class="token string">"192.168.33.10"</span></span><span class="token punctuation">,</span> <span class="token symbol">netmask</span><span class="token operator">:</span> <span class="token string-literal"><span class="token string">"255.255.255.0"</span></span>
+</span><span class="code-line line-number" line="11">  
+</span><span class="code-line line-number" line="12">  <span class="token comment"># Configure a shared folder</span>
+</span><span class="code-line line-number" line="13">  config<span class="token punctuation">.</span>vm<span class="token punctuation">.</span>synced_folder <span class="token string-literal"><span class="token string">"./data"</span></span><span class="token punctuation">,</span> <span class="token string-literal"><span class="token string">"/vagrant_data"</span></span>
+</span><span class="code-line line-number" line="14">  <span class="token comment"># Provision the virtual machine using a shell script</span>
+</span><span class="code-line line-number" line="15">  config<span class="token punctuation">.</span>vm<span class="token punctuation">.</span>provision <span class="token string-literal"><span class="token string">"shell"</span></span><span class="token punctuation">,</span> <span class="token symbol">inline</span><span class="token operator">:</span> <span class="token string-literal heredoc-string"><span class="token delimiter"><span class="token punctuation">&#x3C;&#x3C;-</span><span class="token symbol">SHELL</span></span><span class="token string">
+</span></span></span><span class="code-line line-number" line="16"><span class="token string-literal heredoc-string"><span class="token string">    apt-get update
+</span></span></span><span class="code-line line-number" line="17"><span class="token string-literal heredoc-string"><span class="token string">    apt-get install -y nginx
+</span></span></span><span class="code-line line-number" line="18"><span class="token string-literal heredoc-string"><span class="token string">  </span><span class="token delimiter"><span class="token symbol">SHELL</span></span></span>
+</span><span class="code-line line-number" line="19"><span class="token keyword">end</span>
+</span></code><div onclick="copied(this)" data-code="Vagrant.configure(&#x22;2&#x22;) do |config|
+  # Define the base box to use
+  config.vm.box = &#x22;ubuntu/bionic64&#x22;
+  # Configure the virtual machine provider
+  config.vm.provider &#x22;virtualbox&#x22; do |vb|
+    vb.memory = &#x22;1024&#x22;
+    vb.cpus = 2
+  end
+  # Configure a private network
+  config.vm.network &#x22;private_network&#x22;, ip: &#x22;192.168.33.10&#x22;, netmask: &#x22;255.255.255.0&#x22;
+  
+  # Configure a shared folder
+  config.vm.synced_folder &#x22;./data&#x22;, &#x22;/vagrant_data&#x22;
+  # Provision the virtual machine using a shell script
+  config.vm.provision &#x22;shell&#x22;, inline: <<-SHELL
+    apt-get update
+    apt-get install -y nginx
+  SHELL
+end
+" class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+    <h4 id="install-vagrant"><a class="anchor" aria-hidden="true" tabindex="-1" href="#install-vagrant"><span class="octicon octicon-link"></span></a>Install vagrant</h4>
+    <pre class="language-sh"><code class="language-sh code-highlight"><span class="code-line line-number" line="1"><span class="token comment"># on Debian/Ubuntu</span>
+</span><span class="code-line line-number" line="2"><span class="token function">wget</span> <span class="token parameter variable">-q</span> https://releases.hashicorp.com/vagrant/2.4.9/vagrant_2.4.9-1_amd64.deb
+</span><span class="code-line line-number" line="3"><span class="token function">sudo</span> dpkg <span class="token parameter variable">-i</span> vagrant_2.4.9-1_amd64.deb
+</span><span class="code-line line-number" line="4"><span class="token function">sudo</span> <span class="token function">apt-get</span> <span class="token function">install</span> <span class="token parameter variable">-f</span> 
+</span></code><div onclick="copied(this)" data-code="# on Debian/Ubuntu
+wget -q https://releases.hashicorp.com/vagrant/2.4.9/vagrant_2.4.9-1_amd64.deb
+sudo dpkg -i vagrant_2.4.9-1_amd64.deb
+sudo apt-get install -f 
+" class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+    <h4 id="install-vagrant-plugins"><a class="anchor" aria-hidden="true" tabindex="-1" href="#install-vagrant-plugins"><span class="octicon octicon-link"></span></a>Install Vagrant Plugins</h4>
+    <pre class="language-sh"><code class="language-sh code-highlight"><span class="code-line line-number" line="1">vagrant plugin <span class="token function">install</span> vagrant-vbguest
+</span><span class="code-line line-number" line="2">vagrant plugin <span class="token function">install</span> vagrant-hostmanager
+</span><span class="code-line line-number" line="3">vagrant plugin <span class="token function">install</span> vagrant-disksize
+</span></code><div onclick="copied(this)" data-code="vagrant plugin install vagrant-vbguest
+vagrant plugin install vagrant-hostmanager
+vagrant plugin install vagrant-disksize
+" class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
     <h4 id="️-3534-important-commands"><a class="anchor" aria-hidden="true" tabindex="-1" href="#️-3534-important-commands"><span class="octicon octicon-link"></span></a>🛠️ 353.4 Important Commands</h4>
     <h5 id="-vagrant"><a class="anchor" aria-hidden="true" tabindex="-1" href="#-vagrant"><span class="octicon octicon-link"></span></a>📦 vagrant</h5>
-    <pre class="language-sh"><code class="language-sh code-highlight"><span class="code-line line-number" line="1"><span class="token comment"># examples</span>
-</span></code><div onclick="copied(this)" data-code="# examples
+    <pre class="language-sh"><code class="language-sh code-highlight"><span class="code-line line-number" line="1"><span class="token comment"># vagrant plugins</span>
+</span><span class="code-line line-number" line="2">vagrant plugin list
+</span><span class="code-line line-number" line="3">vagrant plugin <span class="token function">install</span> vagrant-vbguest
+</span><span class="code-line line-number" line="4">vagrant plugin uninstall vagrant-vbguest
+</span><span class="code-line line-number" line="5">
+</span><span class="code-line line-number" line="6"><span class="token comment"># vagrant box</span>
+</span><span class="code-line line-number" line="7">vagrant box list
+</span><span class="code-line line-number" line="8">vagrant box <span class="token function">add</span> ubuntu/jammy64
+</span><span class="code-line line-number" line="9">vagrant box remove ubuntu/jammy64
+</span><span class="code-line line-number" line="10">
+</span><span class="code-line line-number" line="11"><span class="token comment"># init a new vagrant environment</span>
+</span><span class="code-line line-number" line="12">vagrant init ubuntu/jammy64
+</span><span class="code-line line-number" line="13">
+</span><span class="code-line line-number" line="14"><span class="token comment"># init a new vagrant environment with minimum output</span>
+</span><span class="code-line line-number" line="15">vagrant init <span class="token parameter variable">-m</span> ubuntu/jammy64
+</span><span class="code-line line-number" line="16">
+</span><span class="code-line line-number" line="17"><span class="token comment"># vagrant validate the Vagrantfile</span>
+</span><span class="code-line line-number" line="18">vagrant validate
+</span><span class="code-line line-number" line="19">
+</span><span class="code-line line-number" line="20"><span class="token comment"># status of the vagrant environment</span>
+</span><span class="code-line line-number" line="21">vagrant status
+</span><span class="code-line line-number" line="22">vagrant global-status
+</span><span class="code-line line-number" line="23">
+</span><span class="code-line line-number" line="24"><span class="token comment"># vagrant up the machine</span>
+</span><span class="code-line line-number" line="25">vagrant up
+</span><span class="code-line line-number" line="26">vagrant up <span class="token parameter variable">--provider</span><span class="token operator">=</span>virtualbox
+</span><span class="code-line line-number" line="27">vagrant up <span class="token operator">&#x3C;</span>machine-name<span class="token operator">></span>
+</span><span class="code-line line-number" line="28">
+</span><span class="code-line line-number" line="29"><span class="token comment"># vagrant suspends the machine</span>
+</span><span class="code-line line-number" line="30">vagrant <span class="token function">suspend</span>
+</span><span class="code-line line-number" line="31">
+</span><span class="code-line line-number" line="32"><span class="token comment"># vagrant resumes the machine</span>
+</span><span class="code-line line-number" line="33">vagrant resume
+</span><span class="code-line line-number" line="34">
+</span><span class="code-line line-number" line="35"><span class="token comment"># vagrant halts the machine</span>
+</span><span class="code-line line-number" line="36">vagrant <span class="token function">halt</span>
+</span><span class="code-line line-number" line="37">vagrant <span class="token function">halt</span> <span class="token operator">&#x3C;</span>machine-name<span class="token operator">></span>
+</span><span class="code-line line-number" line="38">
+</span><span class="code-line line-number" line="39"><span class="token comment"># vagrant ssh into the machine</span>
+</span><span class="code-line line-number" line="40">vagrant <span class="token function">ssh</span>
+</span><span class="code-line line-number" line="41">vagrant <span class="token function">ssh</span> <span class="token operator">&#x3C;</span>machine-name<span class="token operator">></span>
+</span><span class="code-line line-number" line="42">
+</span><span class="code-line line-number" line="43"><span class="token comment"># vagrant destroys the machine</span>
+</span><span class="code-line line-number" line="44">vagrant destroy
+</span><span class="code-line line-number" line="45">vagrant destroy <span class="token parameter variable">-f</span>
+</span><span class="code-line line-number" line="46">vagrant destroy <span class="token operator">&#x3C;</span>machine-name<span class="token operator">></span>
+</span><span class="code-line line-number" line="47">
+</span><span class="code-line line-number" line="48"><span class="token comment"># vagrant provision the machine</span>
+</span><span class="code-line line-number" line="49">vagrant provision
+</span><span class="code-line line-number" line="50">vagrant provision <span class="token operator">&#x3C;</span>machine-name<span class="token operator">></span>
+</span><span class="code-line line-number" line="51">
+</span><span class="code-line line-number" line="52"><span class="token comment"># vagrant reload the machine</span>
+</span><span class="code-line line-number" line="53">vagrant reload
+</span><span class="code-line line-number" line="54">vagrant reload <span class="token operator">&#x3C;</span>machine-name<span class="token operator">></span>
+</span><span class="code-line line-number" line="55">
+</span><span class="code-line line-number" line="56">
+</span></code><div onclick="copied(this)" data-code="# vagrant plugins
+vagrant plugin list
+vagrant plugin install vagrant-vbguest
+vagrant plugin uninstall vagrant-vbguest
+
+# vagrant box
+vagrant box list
+vagrant box add ubuntu/jammy64
+vagrant box remove ubuntu/jammy64
+
+# init a new vagrant environment
+vagrant init ubuntu/jammy64
+
+# init a new vagrant environment with minimum output
+vagrant init -m ubuntu/jammy64
+
+# vagrant validate the Vagrantfile
+vagrant validate
+
+# status of the vagrant environment
+vagrant status
+vagrant global-status
+
+# vagrant up the machine
+vagrant up
+vagrant up --provider=virtualbox
+vagrant up <machine-name>
+
+# vagrant suspends the machine
+vagrant suspend
+
+# vagrant resumes the machine
+vagrant resume
+
+# vagrant halts the machine
+vagrant halt
+vagrant halt <machine-name>
+
+# vagrant ssh into the machine
+vagrant ssh
+vagrant ssh <machine-name>
+
+# vagrant destroys the machine
+vagrant destroy
+vagrant destroy -f
+vagrant destroy <machine-name>
+
+# vagrant provision the machine
+vagrant provision
+vagrant provision <machine-name>
+
+# vagrant reload the machine
+vagrant reload
+vagrant reload <machine-name>
+
+
 " class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
     <p align="right">(<a href="#topic-353.4">back to sub topic 353.4</a>)</p>
     <p align="right">(<a href="#topic%20353">back to topic 353</a>)</p>
@@ -9090,6 +9292,10 @@ Vagrantfile
         <ul>
           <li><a href="https://developer.hashicorp.com/vagrant/docs">Vagrant Documentation</a></li>
           <li><a href="https://portal.cloud.hashicorp.com/vagrant/discover">Vagrant Boxes</a></li>
+          <li><a href="https://developer.hashicorp.com/vagrant/docs/providers">Vagrant Providers</a></li>
+          <li><a href="https://developer.hashicorp.com/vagrant/docs/plugins">Vagrant Plugins</a></li>
+          <li><a href="https://github.com/hashicorp/vagrant/wiki/Available-Vagrant-Plugins">Available Vagrant Plugins</a></li>
+          <li><a href="https://app.vagrantup.com/boxes/search">Vagrant Boxes Search</a></li>
         </ul>
       </li>
       <li>
