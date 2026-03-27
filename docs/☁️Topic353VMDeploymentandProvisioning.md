@@ -369,7 +369,8 @@ user-data
 
 ### Understanding cloud-init
 
-Tool used for customizing cloud instances at boot time. It is typically used to perform initial setup tasks such as configuring network interfaces, setting up user accounts, installing software packages, and running custom scripts.
+Tool used for customizing cloud instances at boot time.  
+It is typically used to perform initial setup tasks such as configuring network interfaces, setting up user accounts, installing software packages, and running custom scripts.
 
 #### Sources of cloud-init data
 
@@ -391,6 +392,7 @@ Below are some of the commonly used cloud-init modules, which are responsible fo
 | **users** | Used to create and manage user accounts, including setting up SSH keys for secure logins. |
 | **packages** | Used to install software packages from the distribution's repository. |
 | **disk_setup** | Used to create, resize, and mount file systems on the instance's disks. |
+| **network** | Used to configure network interfaces and settings for the instance. |
 | **write_files** | Used to write files to the instance's file system, which can be used for configuration or other purposes. |
 
 #### Cloud-Init Configuration Files and Directories
@@ -445,12 +447,153 @@ vagrant
 Vagrantfile
 ```
 
+#### 🧰 About Vagrant
+
+Vagrant is an open-source tool for building and managing virtual machine environments in a single workflow.  
+It provides a simple and easy-to-use command-line interface for creating and configuring lightweight, reproducible, and portable development environments.
+
+##### Vagrant Architecture and Concepts
+
+Vagrant uses a declarative configuration file called `Vagrantfile` to define the virtual machine environment.  
+The `Vagrantfile` specifies the base box to use, the virtual machine provider (e.g., VirtualBox, VMware, Hyper-V), and any additional configuration such as networking, shared folders, and provisioning scripts.
+
+##### Vagrant Providers
+
+A Vagrant provider is a plugin that allows Vagrant to manage virtual machines using a specific virtualization technology.  
+Common providers include:
+* **VirtualBox**: A free and open-source virtualization platform that is widely used for local development environments.
+* **VMware**: A commercial virtualization platform that offers advanced features and performance for enterprise environments.
+* **Hyper-V**: A virtualization platform developed by Microsoft, available on Windows operating systems.
+* **Docker**: A containerization platform that allows Vagrant to manage containerized environments.
+
+##### Vagrant Plugins
+
+Vagrant plugins are extensions that add functionality to Vagrant.  
+Examples of Vagrant plugins include:
+* **vagrant-vbguest**: Automatically installs the VirtualBox Guest Additions on the guest machine, improving performance and enabling features such as shared folders and clipboard sharing.
+* **vagrant-hostmanager**: Manages the host's `/etc/hosts` file to allow easy access to Vagrant machines by name.
+* **vagrant-disksize**: Allows resizing of the virtual machine's disk size during provisioning. 
+
+##### Vagrant Provisioning
+
+Vagrant provisioning is the process of configuring the virtual machine after it has been created.  
+Provisioning can be done using various provisioners, such as:
+* **File Provisioner**: Used to copy files from the host machine to the guest machine during provisioning.
+* **Shell Provisioner**: Used to run shell scripts on the guest machine during provisioning, allowing for tasks such as installing software packages, configuring services, and setting up the environment.
+* **Ansible Provisioner**: Used to run Ansible playbooks on the guest machine during provisioning, allowing for more complex configuration management and automation.
+* **Puppet Provisioner**: Used to run Puppet manifests on the guest machine during provisioning, allowing for configuration management and automation using Puppet.
+* **Chef Provisioner**: Used to run Chef recipes on the guest machine during provisioning, allowing for configuration management and automation using Chef.
+
+##### Vagrant Boxes
+
+A Vagrant box is a pre-packaged virtual machine image that serves as the base for creating new virtual machine instances.  
+Boxes can be retrieved from the Vagrant Cloud (formerly known as Atlas).  
+Vagrant Cloud is a platform for sharing and distributing Vagrant boxes, allowing users to easily find and use pre-configured environments for their development needs.
+
+#### Vagrantfile Example
+
+```ruby
+Vagrant.configure("2") do |config|
+  # Define the base box to use
+  config.vm.box = "ubuntu/bionic64"
+  # Configure the virtual machine provider
+  config.vm.provider "virtualbox" do |vb|
+    vb.memory = "1024"
+    vb.cpus = 2
+  end
+  # Configure a private network
+  config.vm.network "private_network", ip: "192.168.33.10", netmask: "255.255.255.0"
+  
+  # Configure a shared folder
+  config.vm.synced_folder "./data", "/vagrant_data"
+  # Provision the virtual machine using a shell script
+  config.vm.provision "shell", inline: <<-SHELL
+    apt-get update
+    apt-get install -y nginx
+  SHELL
+end
+```
+
+#### Install vagrant
+
+```sh
+# on Debian/Ubuntu
+wget -q https://releases.hashicorp.com/vagrant/2.4.9/vagrant_2.4.9-1_amd64.deb
+sudo dpkg -i vagrant_2.4.9-1_amd64.deb
+sudo apt-get install -f 
+```
+
+#### Install Vagrant Plugins
+
+```sh
+vagrant plugin install vagrant-vbguest
+vagrant plugin install vagrant-hostmanager
+vagrant plugin install vagrant-disksize
+```
+
+
+
 #### 🛠️ 353.4 Important Commands
 
 ##### 📦 vagrant
 
 ```sh
-# examples
+# vagrant plugins
+vagrant plugin list
+vagrant plugin install vagrant-vbguest
+vagrant plugin uninstall vagrant-vbguest
+
+# vagrant box
+vagrant box list
+vagrant box add ubuntu/jammy64
+vagrant box remove ubuntu/jammy64
+
+# init a new vagrant environment
+vagrant init ubuntu/jammy64
+
+# init a new vagrant environment with minimum output
+vagrant init -m ubuntu/jammy64
+
+# vagrant validate the Vagrantfile
+vagrant validate
+
+# status of the vagrant environment
+vagrant status
+vagrant global-status
+
+# vagrant up the machine
+vagrant up
+vagrant up --provider=virtualbox
+vagrant up <machine-name>
+
+# vagrant suspends the machine
+vagrant suspend
+
+# vagrant resumes the machine
+vagrant resume
+
+# vagrant halts the machine
+vagrant halt
+vagrant halt <machine-name>
+
+# vagrant ssh into the machine
+vagrant ssh
+vagrant ssh <machine-name>
+
+# vagrant destroys the machine
+vagrant destroy
+vagrant destroy -f
+vagrant destroy <machine-name>
+
+# vagrant provision the machine
+vagrant provision
+vagrant provision <machine-name>
+
+# vagrant reload the machine
+vagrant reload
+vagrant reload <machine-name>
+
+
 ```
 
 <p align="right">(<a href="#topic-353.4">back to sub topic 353.4</a>)</p>

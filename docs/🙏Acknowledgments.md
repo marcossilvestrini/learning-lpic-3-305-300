@@ -257,7 +257,10 @@
 * [Vagrant](https://developer.hashicorp.com/vagrant)
   * [Vagrant Documentation](https://developer.hashicorp.com/vagrant/docs)
   * [Vagrant Boxes](https://portal.cloud.hashicorp.com/vagrant/discover)  
-
+  * [Vagrant Providers](https://developer.hashicorp.com/vagrant/docs/providers)
+  * [Vagrant Plugins](https://developer.hashicorp.com/vagrant/docs/plugins)
+  * [Available Vagrant Plugins](https://github.com/hashicorp/vagrant/wiki/Available-Vagrant-Plugins)
+  * [Vagrant Boxes Search](https://app.vagrantup.com/boxes/search)   
 * [Open vSwitch]()
   * [OVS Doc 4Linux](https://blog.4linux.com.br/open-vswitch-o-que-e-o-que-come-onde-vive)
 * [LPIC-3 305-300 Exam]()
