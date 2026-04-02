@@ -10,12 +10,12 @@
 
 ---
 
-[MIT License][license-url]
-[Forks][forks-url]
-[Stargazers][stars-url]
-[Contributors][contributors-url]
-[Issues][issues-url]
-[LinkedIn][linkedin-url]
+[![MIT License][license-shield]][license-url]
+[![Forks][forks-shield]][forks-url]
+[![Stargazers][stars-shield]][stars-url]
+[![Contributors][contributors-shield]][contributors-url]
+[![Issues][issues-shield]][issues-url]
+[![LinkedIn][linkedin-shield]][linkedin-url]
 ------------------------
 
 # 📚 LEARNING LPIC-3 305-300
@@ -5477,6 +5477,7 @@ vagrant global-status
 vagrant up
 vagrant up --provider=virtualbox
 vagrant up <machine-name>
+vagrant up --provision
 
 # vagrant suspends the machine
 vagrant suspend
@@ -5502,8 +5503,12 @@ vagrant provision
 vagrant provision <machine-name>
 
 # vagrant reload the machine
-vagrant reload
+vagrant reload --provision
 vagrant reload <machine-name>
+
+# list ports forwarded by vagrant
+vagrant port
+vagrant port <machine-name>
 
 
 ```

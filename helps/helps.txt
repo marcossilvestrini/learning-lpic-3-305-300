@@ -123,3 +123,14 @@ Example:
 - Modify home_path (file environment.rb)
 - Copy folder to new @home_path
 ------------------------------------------
+
+
+------------------------------------------
+# README LINKS
+------------------------------------------
+[![MIT License][license-shield]][license-url]
+[![Forks][forks-shield]][forks-url]
+[![Stargazers][stars-shield]][stars-url]
+[![Contributors][contributors-shield]][contributors-url]
+[![Issues][issues-shield]][issues-url]
+[![LinkedIn][linkedin-shield]][linkedin-url]
