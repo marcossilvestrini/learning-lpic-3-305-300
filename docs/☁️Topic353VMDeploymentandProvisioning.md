@@ -565,6 +565,7 @@ vagrant global-status
 vagrant up
 vagrant up --provider=virtualbox
 vagrant up <machine-name>
+vagrant up --provision
 
 # vagrant suspends the machine
 vagrant suspend
@@ -590,8 +591,12 @@ vagrant provision
 vagrant provision <machine-name>
 
 # vagrant reload the machine
-vagrant reload
+vagrant reload --provision
 vagrant reload <machine-name>
+
+# list ports forwarded by vagrant
+vagrant port
+vagrant port <machine-name>
 
 
 ```
