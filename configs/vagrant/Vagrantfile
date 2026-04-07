@@ -1,0 +1,30 @@
+Vagrant.configure("2") do |config|
+
+  config.vm.box = "ubuntu/jammy64"
+  config.vbguest.auto_update = false
+  config.vm.provider "virtualbox" do |vb|
+     vb.memory = "1024"
+     vb.cpus = 2
+     # Habilita o Nested VT-x para a VM que o Vagrant vai criar
+     # vb.customize ["modifyvm", :id, "--nested-hw-virt", "on"]
+     # Garante que a interface de paravirtualização seja KVM (melhor para Linux)
+     # vb.customize ["modifyvm", :id, "--paravirt-provider", "kvm"]
+  end
+  config.vm.provision "shell" do |shell|
+     shell.inline = "apt-get update -y"
+     shell.inline = "apt-get install apache2 -y"
+  end
+  # config.vm.provision "file", source: "index.html", destination: "/home/vagrant/"
+  # config.vm.provision "shell", path: "install.sh"
+  config.vm.synced_folder "./www-docs/", "/var/www/html/"
+  
+  config.vm.network "forwarded_port", guest: 80, host: 8080
+  
+  config.vm.hostname = "lpic3-305"
+  config.vm.network "private_network", ip: "192.168.60.100"
+  # config.vm.network "public_network"
+  
+  config.vm.disk :disk, size: "45GB", primary: true
+  config.vm.disk :disk, size: "10GB", name: "extra_storage"
+  
+end

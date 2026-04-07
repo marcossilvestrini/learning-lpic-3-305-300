@@ -1,0 +1,6 @@
+#!/bin/bash
+sudo echo "VM criada as $(date)" >> /etc/CREATION-TIME
+
+# Instalacao do index.html
+sudo mv /home/vagrant/index.html /var/www/html/
+sudo chown www-data:www-data /var/www/html/index.html

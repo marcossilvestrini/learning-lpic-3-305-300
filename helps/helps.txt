@@ -19,6 +19,9 @@ sshpass -f "/path/to/passwordfile" scp -r user@example.com:/some/remote/path /so
 # Copy files in vagrant remote machines
 vagrant scp ~/vagrant-protheus-core/install/license.zip ol8-protheus:/totvs/install
 
+# enable nested virtualization vm VirtualBox
+$VBoxManage modifyvm "vagrant_default_1775517585878_82209" --nested-hw-virt on
+
 # Set Timezone
 sudo timedatectl set-timezone America/Sao_Paulo
 
@@ -123,7 +126,6 @@ Example:
 - Modify home_path (file environment.rb)
 - Copy folder to new @home_path
 ------------------------------------------
-
 
 ------------------------------------------
 # README LINKS
