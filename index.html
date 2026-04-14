@@ -109,14 +109,15 @@ svg { z-index: 99; position: fixed; border: 0px; top: 0px; right: 0; }
       <a href="https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/slack.yml"><img src="https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/slack.yml/badge.svg" alt="Slack Notification"></a>
     </p>
     <hr>
-    <h2 id="-1">
-      <a aria-hidden="true" tabindex="-1" href="#-1"><span class="icon icon-link"></span></a><a href="https://github.com/marcossilvestrini/learning-lpic-3-305-300/blob/main/LICENSE"><img src="https://img.shields.io/github/license/marcossilvestrini/learning-lpic-3-305-300.svg?style=for-the-badge" alt="MIT License"></a>
+    <p>
+      <a href="https://github.com/marcossilvestrini/learning-lpic-3-305-300/blob/main/LICENSE"><img src="https://img.shields.io/github/license/marcossilvestrini/learning-lpic-3-305-300.svg?style=for-the-badge" alt="MIT License"></a>
       <a href="https://github.com/marcossilvestrini/learning-lpic-3-305-300/network/members"><img src="https://img.shields.io/github/forks/marcossilvestrini/learning-lpic-3-305-300.svg?style=for-the-badge" alt="Forks"></a>
       <a href="https://github.com/marcossilvestrini/learning-lpic-3-305-300/stargazers"><img src="https://img.shields.io/github/stars/marcossilvestrini/learning-lpic-3-305-300.svg?style=for-the-badge" alt="Stargazers"></a>
       <a href="https://github.com/marcossilvestrini/learning-lpic-3-305-300/graphs/contributors"><img src="https://img.shields.io/github/contributors/marcossilvestrini/learning-lpic-3-305-300.svg?style=for-the-badge" alt="Contributors"></a>
       <a href="https://github.com/marcossilvestrini/learning-lpic-3-305-300/issues"><img src="https://img.shields.io/github/issues/marcossilvestrini/learning-lpic-3-305-300.svg?style=for-the-badge" alt="Issues"></a>
       <a href="https://linkedin.com/in/marcossilvestrini"><img src="https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&#x26;logo=linkedin&#x26;colorB=555" alt="LinkedIn"></a>
-    </h2>
+    </p>
+    <hr>
     <h1 id="-learning-lpic-3-305-300"><a class="anchor" aria-hidden="true" tabindex="-1" href="#-learning-lpic-3-305-300"><span class="octicon octicon-link"></span></a>📚 LEARNING LPIC-3 305-300</h1>
     <p>
       <a href="./README.md"><img src="https://img.shields.io/badge/lang-English-blue?logo=readme&#x26;logoColor=white" alt="English"></a>
@@ -145,7 +146,7 @@ svg { z-index: 99; position: fixed; border: 0px; top: 0px; right: 0; }
         <li><a href="#getting-started">Getting Started</a>
           <ul>
             <li><a href="#prerequisites">Prerequisites</a></li>
-            <li><a href="#installation">installation</a></li>
+            <li><a href="#installation">Installation</a></li>
           </ul>
         </li>
         <li><a href="#usage">Usage</a></li>
@@ -162,10 +163,10 @@ svg { z-index: 99; position: fixed; border: 0px; top: 0px; right: 0; }
         </li>
         <li><a href="#topic-352">Topic 352: container Virtualization</a>
           <ul>
-            <li><a href="#topic-352.1">352.1 container Virtualization Concepts</a></li>
+            <li><a href="#topic-352.1">352.1 Container Virtualization Concepts</a></li>
             <li><a href="#topic-352.2">352.2 LXC</a></li>
             <li><a href="#topic-352.3">352.3 Docker</a></li>
-            <li><a href="#topic-352.4">352.4 container Orchestration Platforms</a></li>
+            <li><a href="#topic-352.4">352.4 Container Orchestration Platforms</a></li>
           </ul>
         </li>
         <li><a href="#topic-353">Topic 353: VM Deployment and Provisioning</a>
@@ -272,7 +273,7 @@ vagrant/destroy.ps1
       <li class="task-list-item"><input type="checkbox" checked disabled> Create scripts for provisioning labs</li>
       <li class="task-list-item"><input type="checkbox" checked disabled> Create examples about Topic 351</li>
       <li class="task-list-item"><input type="checkbox" checked disabled> Create examples about Topic 352</li>
-      <li class="task-list-item"><input type="checkbox" disabled> Create examples about Topic 353</li>
+      <li class="task-list-item"><input type="checkbox" checked disabled> Create examples about Topic 353</li>
       <li class="task-list-item"><input type="checkbox" disabled> Upload simulated itexam</li>
     </ul>
     <hr>
@@ -280,28 +281,25 @@ vagrant/destroy.ps1
     <h2 id="-four-essential-freedoms"><a class="anchor" aria-hidden="true" tabindex="-1" href="#-four-essential-freedoms"><span class="octicon octicon-link"></span></a>🗽 Four Essential Freedoms</h2>
     <blockquote>
       <p>
-        0.The freedom to run the program as you wish, for any purpose (freedom 0).
-        1.The freedom to study how the program works, and change it so it does
+        <strong>0</strong>: The freedom to run the program as you wish, for any purpose (freedom 0).<br><strong>1</strong>: The freedom to study how the program works, and change it so it does
         your computing as you wish (freedom 1).
-        Access to the source code is a precondition for this.
-        2.The freedom to redistribute copies so you can help others (freedom 2).
-        3.freedom to distribute copies of your modified versions to others (freedom 3).
+        Access to the source code is a precondition for this.<br><strong>2</strong>: The freedom to redistribute copies so you can help others (freedom 2).<br><strong>3</strong>: The freedom to distribute copies of your modified versions to others (freedom 3).
       </p>
     </blockquote>
     <hr>
     <h2 id="-inspect-commands"><a class="anchor" aria-hidden="true" tabindex="-1" href="#-inspect-commands"><span class="octicon octicon-link"></span></a>🔍 Inspect commands</h2>
-    <pre class="language-sh"><code class="language-sh code-highlight"><span class="code-line line-number" line="1"><span class="token builtin class-name">type</span> COMMAND
-</span><span class="code-line line-number" line="2"><span class="token function">apropos</span> COMMAND
-</span><span class="code-line line-number" line="3">whatis COMMAND <span class="token parameter variable">--long</span>
-</span><span class="code-line line-number" line="4"><span class="token function">whereis</span> COMMAND
-</span><span class="code-line line-number" line="5">COMMAND --help, <span class="token parameter variable">--h</span>
-</span><span class="code-line line-number" line="6"><span class="token function">man</span> COMMAND
-</span></code><div onclick="copied(this)" data-code="type COMMAND
-apropos COMMAND
-whatis COMMAND --long
-whereis COMMAND
-COMMAND --help, --h
-man COMMAND
+    <pre class="language-sh"><code class="language-sh code-highlight"><span class="code-line line-number" line="1"><span class="token builtin class-name">type</span> COMMAND <span class="token comment"># check if command is an alias, function, builtin or file</span>
+</span><span class="code-line line-number" line="2"><span class="token function">apropos</span> COMMAND <span class="token comment"># search for COMMAND in manual page descriptions </span>
+</span><span class="code-line line-number" line="3">whatis COMMAND <span class="token parameter variable">--long</span> <span class="token comment"># search for COMMAND in manual page descriptions with long output</span>
+</span><span class="code-line line-number" line="4"><span class="token function">whereis</span> COMMAND <span class="token comment"># locate the binary, source and manual page files for COMMAND</span>
+</span><span class="code-line line-number" line="5">COMMAND --help, <span class="token parameter variable">--h</span> <span class="token comment"># display help information for COMMAND</span>
+</span><span class="code-line line-number" line="6"><span class="token function">man</span> COMMAND <span class="token comment"># display the manual page for COMMAND</span>
+</span></code><div onclick="copied(this)" data-code="type COMMAND # check if command is an alias, function, builtin or file
+apropos COMMAND # search for COMMAND in manual page descriptions 
+whatis COMMAND --long # search for COMMAND in manual page descriptions with long output
+whereis COMMAND # locate the binary, source and manual page files for COMMAND
+COMMAND --help, --h # display help information for COMMAND
+man COMMAND # display the manual page for COMMAND
 " class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
     <p align="right">(<a href="#readme-top">back to top</a>)</p>
     <hr>
