@@ -1,0 +1,140 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+# ENABLE EXPERIMENTAL FEATURES
+ENV["VAGRANT_EXPERIMENTAL"] = "Disks"
+
+# PLUGINS
+required_plugins = ["vagrant-vmware-desktop", "vagrant-reload", "vagrant-disksize"]
+required_plugins.each do |plugin|
+  unless Vagrant.has_plugin?(plugin)
+    system "vagrant plugin install #{plugin}"
+    puts "Installed the #{plugin} plugin."
+  end
+end
+
+Vagrant.configure("2") do |config|
+
+  # LOCAL VARIABLES
+  vm_name = "lpic3-topic-351"
+  box_name = "generic/debian12"
+  scripts_path = "../scripts/"
+  configs_path = "../configs/"
+  security_path = "../security/"
+  isos_path = "../isos/"
+  os_images_path = "../os-images/"
+
+  # BOX
+  config.vm.box = box_name
+  config.vm.box_download_insecure = true
+
+  # MOUNTS
+  config.vm.synced_folder ".", "/vagrant", disabled: true
+  config.vm.synced_folder scripts_path, "/home/vagrant/scripts"
+  config.vm.synced_folder configs_path, "/home/vagrant/configs"
+  config.vm.synced_folder security_path, "/home/vagrant/security"
+  config.vm.synced_folder isos_path, "/home/vagrant/isos"
+  config.vm.synced_folder os_images_path, "/home/vagrant/os-images"
+
+  # BEGIN INSTANCE XEN
+  config.vm.define "#{vm_name}-xen" do |xen|
+
+    # HOSTNAME
+    xen.vm.hostname = "#{vm_name}-xen"
+
+    # STORAGE
+    disk_size = "200GB"
+    xen.vm.disk :disk, size: disk_size, name: "xen_storage", primary: false
+
+    # VMWARE WORKSTATION CONFIGURATION
+    mem_size = "65536" # MB
+    num_vcpus = "16"
+    clone_dir_xen = "E:\\Servers\\VMWare\\#{vm_name}-xen"
+    xen.vm.provider "vmware_workstation" do |vmware|
+      vmware.linked_clone = true
+      vmware.clone_directory = clone_dir_xen
+      vmware.whitelist_verified = true
+      vmware.gui = true
+      #vmware.vmx["virtualHW.version"] = "10"
+      vmware.vmx["displayName"] = "#{vm_name}-xen"
+      vmware.vmx["memsize"] = mem_size
+      vmware.vmx["numvcpus"] = num_vcpus
+      vmware.vmx["cpuid.coresPerSocket"] = "1"
+      vmware.vmx["vhv.enable"] = "TRUE"  # Enable virtualization engine (nested virtualization)
+      # vmware.vmx["hypervisor.cpuid.v0"] = "FALSE"  # Ensure guest OS can see CPU features
+      # vmware.vmx["monitor.virtual_mmu"] = "hardware"  # Use hardware memory management unit
+      # vmware.vmx["monitor.virtual_exec"] = "hardware"  # Use hardware execution virtualization
+    end
+
+    # NETWORK CONFIGURATION
+    xen.vm.network "public_network", mode: "bridge", auto_config: false
+    xen.vm.provision "shell", name: "[configure-network]", path: File.join(scripts_path, "xen/network.sh"), privileged: true
+
+    # CLOUD-INIT
+    xen.vm.provision "shell", name: "[cloud-init]", path: File.join(scripts_path, "xen/cloud-init.sh"), privileged: false
+
+    # XEN SERVER SETUP
+    xen.vm.provision "shell", name: "[xen-debian]", path: File.join(scripts_path, "xen/debian.sh"), privileged: true
+
+    # STORAGE CONFIGURATION
+    xen.vm.provision "shell", name: "[xen-storage]", path: File.join(scripts_path, "xen/storage.sh"), privileged: true
+
+    # HVM CONFIGURATION
+    xen.vm.provision "shell", name: "[xen-hvm]", path: File.join(scripts_path, "xen/hvm.sh"), privileged: true
+
+    # LIBVIRT CONFIGURATION
+    xen.vm.provision "shell", name: "[xen-libvirt]", path: File.join(scripts_path, "xen/libvirt.sh"), privileged: true
+
+    # RESTART VM
+    xen.vm.provision :reload
+  end
+  # END INSTANCE XEN
+
+  # BEGIN INSTANCE KVM
+  config.vm.define "#{vm_name}-kvm" do |kvm|
+
+    # HOSTNAME
+    kvm.vm.hostname = "#{vm_name}-kvm"
+
+    # STORAGE
+    disk_size_kvm = "200GB"
+    kvm.vm.disk :disk, size: disk_size_kvm, name: "kvm_storage", primary: false
+
+    # VMWARE WORKSTATION CONFIGURATION
+    mem_size_kvm = "32768" # MB
+    num_vcpus_kvm = "8"
+    clone_dir_kvm = "E:\\Servers\\VMWare\\#{vm_name}-kvm"
+    kvm.vm.provider "vmware_workstation" do |vmware|
+      vmware.linked_clone = false
+      vmware.clone_directory = clone_dir_kvm
+      vmware.whitelist_verified = true
+      vmware.gui = true
+      #vmware.vmx["virtualHW.version"] = "10"
+      vmware.vmx["displayName"] = "#{vm_name}-kvm"
+      vmware.vmx["memsize"] = mem_size_kvm
+      vmware.vmx["numvcpus"] = num_vcpus_kvm
+      vmware.vmx["cpuid.coresPerSocket"] = "2"
+      vmware.vmx["vhv.enable"] = "TRUE"  # Enable virtualization engine (nested virtualization)
+    end
+
+    # NETWORK CONFIGURATION
+    kvm.vm.network "public_network", mode: "bridge", auto_config: false
+    kvm.vm.provision "shell", name: "[configure-network]", path: File.join(scripts_path, "kvm/network.sh"), privileged: true
+
+    # CLOUD-INIT
+    kvm.vm.provision "shell", name: "[cloud-init]", path: File.join(scripts_path, "kvm/cloud-init.sh"), privileged: false
+
+    # QEMU CONFIGURATION
+    kvm.vm.provision "shell", name: "[qemu]", path: File.join(scripts_path, "kvm/qemu.sh"), privileged: true
+
+    # LIBVIRT CONFIGURATION
+    kvm.vm.provision "shell", name: "[libvirt]", path: File.join(scripts_path, "kvm/libvirt.sh"), privileged: true
+
+    # STORAGE CONFIGURATION
+    kvm.vm.provision "shell", name: "[kvm-storage]", path: File.join(scripts_path, "kvm/storage.sh"), privileged: false
+
+    # RESTART VM
+    kvm.vm.provision :reload
+  end
+  # end INSTANCE KVM
+end

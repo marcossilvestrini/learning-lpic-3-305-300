@@ -1,4 +1,4 @@
-# 🗂️ Summary
+﻿# 🗂️ Summary
 
 <details>
   <summary><b>TABLE OF CONTENT</b></summary>
@@ -10,7 +10,7 @@
       <a href="#getting-started">Getting Started</a>
       <ul>
         <li><a href="#prerequisites">Prerequisites</a></li>
-        <li><a href="#installation">installation</a></li>
+        <li><a href="#installation">Installation</a></li>
       </ul>
     </li>
     <li><a href="#usage">Usage</a></li>
@@ -29,10 +29,10 @@
     <li>
       <a href="#topic-352">Topic 352: container Virtualization</a>
       <ul>
-        <li><a href="#topic-352.1">352.1 container Virtualization Concepts</a></li>
+        <li><a href="#topic-352.1">352.1 Container Virtualization Concepts</a></li>
         <li><a href="#topic-352.2">352.2 LXC</a></li>
         <li><a href="#topic-352.3">352.3 Docker</a></li>
-        <li><a href="#topic-352.4">352.4 container Orchestration Platforms</a></li>
+        <li><a href="#topic-352.4">352.4 Container Orchestration Platforms</a></li>
       </ul>
     </li>
     <li>

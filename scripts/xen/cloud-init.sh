@@ -49,7 +49,7 @@ if echo "$RELEASE_INFO" | grep -q -i "debian\|ubuntu"; then
     chmod 600 ~/.vnc/passwd
     vncserver || { echo "❌ Failed to start VNC server"; exit 1; }
     vncserver -kill :1
-    killall Xtightvnc > /dev/null 2>&1
+    killall Xtightvnc > /dev/null 2>&1 || true
     sudo cp configs/vnc/vncserver@.service /etc/systemd/system/vncserver@:1.service
     sudo systemctl daemon-reload
     sudo systemctl enable vncserver@:1.service

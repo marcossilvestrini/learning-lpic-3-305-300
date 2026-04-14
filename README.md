@@ -16,7 +16,8 @@
 [![Contributors][contributors-shield]][contributors-url]
 [![Issues][issues-shield]][issues-url]
 [![LinkedIn][linkedin-shield]][linkedin-url]
-------------------------
+
+---
 
 # 📚 LEARNING LPIC-3 305-300
 
@@ -53,7 +54,7 @@
       <a href="#getting-started">Getting Started</a>
       <ul>
         <li><a href="#prerequisites">Prerequisites</a></li>
-        <li><a href="#installation">installation</a></li>
+        <li><a href="#installation">Installation</a></li>
       </ul>
     </li>
     <li><a href="#usage">Usage</a></li>
@@ -72,10 +73,10 @@
     <li>
       <a href="#topic-352">Topic 352: container Virtualization</a>
       <ul>
-        <li><a href="#topic-352.1">352.1 container Virtualization Concepts</a></li>
+        <li><a href="#topic-352.1">352.1 Container Virtualization Concepts</a></li>
         <li><a href="#topic-352.2">352.2 LXC</a></li>
         <li><a href="#topic-352.3">352.3 Docker</a></li>
-        <li><a href="#topic-352.4">352.4 container Orchestration Platforms</a></li>
+        <li><a href="#topic-352.4">352.4 Container Orchestration Platforms</a></li>
       </ul>
     </li>
     <li>
@@ -201,7 +202,7 @@ vagrant/destroy.ps1
 * [X] Create scripts for provisioning labs
 * [X] Create examples about Topic 351
 * [X] Create examples about Topic 352
-* [ ] Create examples about Topic 353
+* [X] Create examples about Topic 353
 * [ ] Upload simulated itexam
 
 ---
@@ -210,24 +211,24 @@ vagrant/destroy.ps1
 
 ## 🗽 Four Essential Freedoms
 
-> 0.The freedom to run the program as you wish, for any purpose (freedom 0).
-> 1.The freedom to study how the program works, and change it so it does
+> **0**: The freedom to run the program as you wish, for any purpose (freedom 0).  
+> **1**: The freedom to study how the program works, and change it so it does
 > your computing as you wish (freedom 1).
-> Access to the source code is a precondition for this.
-> 2.The freedom to redistribute copies so you can help others (freedom 2).
-> 3.freedom to distribute copies of your modified versions to others (freedom 3).
+> Access to the source code is a precondition for this.  
+> **2**: The freedom to redistribute copies so you can help others (freedom 2).  
+> **3**: The freedom to distribute copies of your modified versions to others (freedom 3).
 
 ---
 
 ## 🔍 Inspect commands
 
 ```sh
-type COMMAND
-apropos COMMAND
-whatis COMMAND --long
-whereis COMMAND
-COMMAND --help, --h
-man COMMAND
+type COMMAND # check if command is an alias, function, builtin or file
+apropos COMMAND # search for COMMAND in manual page descriptions 
+whatis COMMAND --long # search for COMMAND in manual page descriptions with long output
+whereis COMMAND # locate the binary, source and manual page files for COMMAND
+COMMAND --help, --h # display help information for COMMAND
+man COMMAND # display the manual page for COMMAND
 ```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>

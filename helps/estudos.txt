@@ -1,0 +1,4 @@
+# Xen Settings
+/etc/xen/
+/etc/xen/xl.conf - Main general configuration file for Xen
+/etc/xen/oxenstored.conf - Xenstore configurations
