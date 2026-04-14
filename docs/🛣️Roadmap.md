@@ -1,4 +1,4 @@
-﻿# 🛣️ Roadmap
+# 🛣️ Roadmap
 
 * [X] Create repository
 * [X] Create scripts for provisioning labs

@@ -1,4 +1,4 @@
-﻿# 🗂️ Summary
+# 🗂️ Summary
 
 <details>
   <summary><b>TABLE OF CONTENT</b></summary>
