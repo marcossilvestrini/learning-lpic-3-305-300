@@ -87,6 +87,76 @@ function Write-ContentUtf8 {
   catch { Set-Content -Path $Path -Value $Content -Encoding UTF8 -Force }
 }
 
+function Get-SectionFileMapByNormalizedTitle {
+  param([Parameter(Mandatory)][object[]]$Sections)
+  $map = @{}
+  foreach ($section in $Sections) {
+    $normTitle = Normalize-Title -S $section.Title
+    $map[$normTitle] = $section.File
+  }
+  return $map
+}
+
+function Resolve-SummaryAnchorTarget {
+  param(
+    [Parameter(Mandatory)][string]$Anchor,
+    [Parameter(Mandatory)][hashtable]$FilesByNormTitle
+  )
+
+  $a = $Anchor.ToLowerInvariant()
+  $gettingStarted = $FilesByNormTitle['getting started']
+  $topic351 = $FilesByNormTitle['topic 351: full virtualization']
+  $topic352 = $FilesByNormTitle['topic 352: container virtualization']
+  $topic353 = $FilesByNormTitle['topic 353: vm deployment and provisioning']
+
+  switch -Regex ($a) {
+    '^about-the-project$' { return $FilesByNormTitle['about project'] }
+    '^getting-started$'   { return $gettingStarted }
+    '^prerequisites$'     { if ($gettingStarted) { return "$gettingStarted#prerequisites" } }
+    '^installation$'      { if ($gettingStarted) { return "$gettingStarted#installation" } }
+    '^usage$'             { return $FilesByNormTitle['usage'] }
+    '^roadmap$'           { return $FilesByNormTitle['roadmap'] }
+    '^freedoms$'          { return $FilesByNormTitle['four essential freedoms'] }
+    '^topic-351$'         { return $topic351 }
+    '^topic-351\.\d+$'    { if ($topic351) { return "$topic351#$a" } }
+    '^topic-352$'         { return $topic352 }
+    '^topic-352\.\d+$'    { if ($topic352) { return "$topic352#$a" } }
+    '^topic-353$'         { return $topic353 }
+    '^topic-353\.\d+$'    { if ($topic353) { return "$topic353#$a" } }
+    '^license$'           { return $FilesByNormTitle['license'] }
+    '^contact$'           { return $FilesByNormTitle['contact'] }
+    '^acknowledgments$'   { return $FilesByNormTitle['acknowledgments'] }
+    default               { return $null }
+  }
+}
+
+function Repair-SummaryTocLinks {
+  param(
+    [Parameter(Mandatory)][string]$SummarySectionPath,
+    [Parameter(Mandatory)][object[]]$Sections
+  )
+
+  if (-not (Test-Path -Path $SummarySectionPath)) { return }
+
+  $filesByNorm = Get-SectionFileMapByNormalizedTitle -Sections $Sections
+  $content = Get-Content -Path $SummarySectionPath -Raw -Encoding UTF8
+
+  $updated = [Regex]::Replace($content, 'href="#([^"]+)"', {
+    param($m)
+    $anchor = $m.Groups[1].Value
+    $target = Resolve-SummaryAnchorTarget -Anchor $anchor -FilesByNormTitle $filesByNorm
+    if ([string]::IsNullOrWhiteSpace($target)) {
+      return $m.Value
+    }
+    return "href=""$target"""
+  })
+
+  if ($updated -ne $content) {
+    Write-ContentUtf8 -Path $SummarySectionPath -Content $updated
+    Write-Host "[DEBUG] Summary TOC links fixed: $SummarySectionPath"
+  }
+}
+
 function Invoke-ReadmeForcedSplit {
   param(
     [Parameter(Mandatory)][string]$SourceFile,
@@ -156,6 +226,13 @@ Write-Host "[DEBUG] Processing: $sourceFile"
 $sections = @()
 Invoke-ReadmeForcedSplit -SourceFile $sourceFile -DestinationDir $destinationDir -SectionRefs ([ref]$sections)
 Write-Host "README.md processed successfully."
+
+# ---- Fix TOC links in generated docs Summary section
+$summarySection = $sections | Where-Object { (Normalize-Title -S $_.Title) -eq 'summary' } | Select-Object -First 1
+if ($summarySection) {
+  $summarySectionPath = Join-Path $destinationDir $summarySection.File
+  Repair-SummaryTocLinks -SummarySectionPath $summarySectionPath -Sections $sections
+}
 
 # ---- Generate SUMMARY.md
 $summaryLines = @('# Summary', '')
