@@ -786,7 +786,7 @@ xen-create-image \
 
 ```sh
 # list image
-xen-list-image
+xen-list-images
 ```
 
 ##### ❌ xen-delete-image
@@ -800,55 +800,57 @@ xen-delete-image lpic3-pv-guest --lvm=vg_xen
 
 ```sh
 # list xenstore infos
-xenstore-ls
+sudo xenstore-ls
 ```
 
 ##### ⚙️ xl
 
 ```sh
+# xl requires privileged access to Xen control interfaces (Dom0)
+# run all xl operations with sudo
+
 # view xen information
-xl infos
+sudo xl info
 
 # list Domains
-xl list
-xl list lpic3-hvm-guest
-xl list lpic3-hvm-guest -l
-
-# uptime Domains
-xl uptime
-
-# pause Domain
-xl pause 2
-xl pause lpic3-hvm-guest
-
-# save state Domains
-xl -v save lpic3-hvm-guest ~root/image-lpic3-hvm-guest.save
-
-# restore Domain
-xl restore /root/image-lpic3-hvm-guest.save
-
-# get Domain name
-xl domname 2
-
-# view dmesg information
-xl dmesg
-
-# monitoring domain
-xl top
-xentop
-xen top
-
-# Limit mem Dom0
-xl mem-set 0 2048
-
-# Limit cpu (not permanent after boot)
-xl vcpu-set 0 2
+sudo xl list
+sudo xl list lpic3-hvm-guest
+sudo xl list lpic3-hvm-guest -l
 
 # create DomainU - virtual machine
-xl create /etc/xen/lpic3-pv-guest.cfg
+sudo xl create /etc/xen/lpic3-pv-guest.cfg
 
 # create DomainU virtual machine and connect to guest
-xl create -c /etc/xen/lpic3-pv-guest.cfg
+sudo xl create -c /etc/xen/lpic3-pv-guest.cfg
+
+# uptime Domains
+sudo xl uptime
+
+# pause Domain
+sudo xl pause 2
+sudo xl pause lpic3-hvm-guest
+
+# save state Domains
+sudo xl -v save lpic3-hvm-guest ~root/image-lpic3-hvm-guest.save
+
+# restore Domain
+sudo xl restore /root/image-lpic3-hvm-guest.save
+
+# get Domain name
+sudo xl domname 2
+
+# view dmesg information
+sudo xl dmesg
+
+# monitoring domain
+sudo xl top
+xentop
+
+# Limit mem Dom0
+sudo xl mem-set 0 2048
+
+# Limit cpu (not permanent after boot)
+sudo xl vcpu-set 0 2
 
 ##----------------------------------------------
 # create DomainU virtual machine HVM
@@ -863,59 +865,59 @@ ssh -l vagrant -L 5900:localhost:5900  192.168.0.130
 ## set boot for cdrom: boot = "d"
 
 ## create domain hvm
-xl create /etc/xen/lpic3-hvm-guest.cfg
+sudo xl create /etc/xen/lpic3-hvm-guest.cfg
 
 ## open vcn connection in your vnc client with localhost
 ## for view install details
 
-## after installation finished, destroy domain: xl destroy <id_or_name>
+## after installation finished, destroy domain: sudo xl destroy <id_or_name>
 
 ## set /etc/xen/lpic3-hvm-guest.cfg: boot for hard disc: boot = "c"
 
 ## create domain hvm
-xl create /etc/xen/lpic3-hvm-guest.cfg
+sudo xl create /etc/xen/lpic3-hvm-guest.cfg
 
 ## access domain hvm
-xl console <id_or_name>
+sudo xl console <id_or_name>
 ##----------------------------------------------
 
 # connect in domain guest
-xl console <id>|<name> (press enter)
-xl console 1
-xl console lpic3-pv-guest
+sudo xl console <id>|<name> (press enter)
+sudo xl console 1
+sudo xl console lpic3-pv-guest
 
 #How do I exit domU "xl console" session
 #Press ctrl+] or if you're using Putty press ctrl+5.
 
 # Poweroff domain
-xl shutdown lpic3-pv-guest
+sudo xl shutdown lpic3-pv-guest
 
 # destroy domain
-xl destroy lpic3-pv-guest
+sudo xl destroy lpic3-pv-guest
 
 # reboot domain
-xl reboot lpic3-pv-guest
+sudo xl reboot lpic3-pv-guest
 
 # list block devices
-xl block-list 1
-xl block-list lpic3-pv-guest
+sudo xl block-list 1
+sudo xl block-list lpic3-pv-guest
 
 # detach block devices
-xl block-detach lpic3-hvm-guest hdc
-xl block-detach 2 xvdc
+sudo xl block-detach lpic3-hvm-guest hdc
+sudo xl block-detach 2 xvdc
 
 # attach block devices
 
 ## hard disk devices
-xl block-attach lpic3-hvm-guest-ubuntu 'phy:/dev/vg_xen/lpic3-hvm-guest-disk2,xvde,w'
+sudo xl block-attach lpic3-hvm-guest-ubuntu 'phy:/dev/vg_xen/lpic3-hvm-guest-disk2,xvde,w'
 
 ## cdrom
-xl block-attach lpic3-hvm-guest 'file:/home/vagrant/isos/ubuntu/seed.iso,xvdc:cdrom,r'
-xl block-attach 2 'file:/home/vagrant/isos/ubuntu/seed.iso,xvdc:cdrom,r'
+sudo xl block-attach lpic3-hvm-guest 'file:/home/vagrant/isos/ubuntu/seed.iso,xvdc:cdrom,r'
+sudo xl block-attach 2 'file:/home/vagrant/isos/ubuntu/seed.iso,xvdc:cdrom,r'
 
 # insert and eject cdrom devices
-xl cd-insert lpic3-hvm-guest-ubuntu xvdb  /home/vagrant/isos/ubuntu/ubuntu-24.04.1-live-server-amd64.iso
-xl cd-eject lpic3-hvm-guest-ubuntu xvdb
+sudo xl cd-insert lpic3-hvm-guest-ubuntu xvdb  /home/vagrant/isos/ubuntu/ubuntu-24.04.1-live-server-amd64.iso
+sudo xl cd-eject lpic3-hvm-guest-ubuntu xvdb
 ```
 
 <p align="right">(<a href="#topic-351.2">back to sub Topic 351.2</a>)</p>

@@ -8,19 +8,19 @@ cd configs/xen/hvm/debian
 python3 -m http.server 8000
 
 # create a domain
-xl create configs/xen/hvm/debian/lpic3-hvm-guest-debian.cfg
+sudo xl create configs/xen/hvm/debian/lpic3-hvm-guest-debian.cfg
 
 # observe the installation
-xl console <domain_id> # or open a client vnc connection
+sudo xl console <domain_id> # or open a client vnc connection
 
 # pass auto instalation(select advanced settings, automated installation)
 preseed/file=/cdrom/preseed.cfg
 
 # after create, domain has power off...recreate it for use
-xl create configs/xen/hvm/ubuntu/lpic3-hvm-guest-ubuntu.cfg
+sudo xl create configs/xen/hvm/debian/lpic3-hvm-guest-debian.cfg
 
 # access domain
-xl console <domain_id>
+sudo xl console <domain_id>
 # press enter if freezing display
 ```
 

@@ -111,7 +111,7 @@ main_menu() {
     echo "==============================="
 }
 
-if [[ "$EUID" -ne 0 ]]; then abort "Run as root."; fi
+if [[ "$EUID" -ne 0 ]]; then abort "Run as root (example: sudo ./scripts/xen/xen.sh)."; fi
 prepare_host
 
 while true; do
