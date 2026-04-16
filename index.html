@@ -826,9 +826,9 @@ xen-create-image \
 " class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
     <h5 id="-xen-list-images"><a class="anchor" aria-hidden="true" tabindex="-1" href="#-xen-list-images"><span class="octicon octicon-link"></span></a>📄 xen-list-images</h5>
     <pre class="language-sh"><code class="language-sh code-highlight"><span class="code-line line-number" line="1"><span class="token comment"># list image</span>
-</span><span class="code-line line-number" line="2">xen-list-image
+</span><span class="code-line line-number" line="2">xen-list-images
 </span></code><div onclick="copied(this)" data-code="# list image
-xen-list-image
+xen-list-images
 " class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
     <h5 id="-xen-delete-image"><a class="anchor" aria-hidden="true" tabindex="-1" href="#-xen-delete-image"><span class="octicon octicon-link"></span></a>❌ xen-delete-image</h5>
     <pre class="language-sh"><code class="language-sh code-highlight"><span class="code-line line-number" line="1"><span class="token comment"># delete a pv image</span>
@@ -838,231 +838,265 @@ xen-delete-image lpic3-pv-guest --lvm=vg_xen
 " class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
     <h5 id="️-xenstore-ls"><a class="anchor" aria-hidden="true" tabindex="-1" href="#️-xenstore-ls"><span class="octicon octicon-link"></span></a>🗄️ xenstore-ls</h5>
     <pre class="language-sh"><code class="language-sh code-highlight"><span class="code-line line-number" line="1"><span class="token comment"># list xenstore infos</span>
-</span><span class="code-line line-number" line="2">xenstore-ls
+</span><span class="code-line line-number" line="2"><span class="token function">sudo</span> xenstore-ls
 </span></code><div onclick="copied(this)" data-code="# list xenstore infos
-xenstore-ls
+sudo xenstore-ls
 " class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
     <h5 id="️-xl"><a class="anchor" aria-hidden="true" tabindex="-1" href="#️-xl"><span class="octicon octicon-link"></span></a>⚙️ xl</h5>
-    <pre class="language-sh"><code class="language-sh code-highlight"><span class="code-line line-number" line="1"><span class="token comment"># view xen information</span>
-</span><span class="code-line line-number" line="2">xl infos
+    <pre class="language-sh"><code class="language-sh code-highlight"><span class="code-line line-number" line="1"><span class="token comment"># xl requires privileged access to Xen control interfaces (Dom0)</span>
+</span><span class="code-line line-number" line="2"><span class="token comment"># run all xl operations with sudo</span>
 </span><span class="code-line line-number" line="3">
-</span><span class="code-line line-number" line="4"><span class="token comment"># list Domains</span>
-</span><span class="code-line line-number" line="5">xl list
-</span><span class="code-line line-number" line="6">xl list lpic3-hvm-guest
-</span><span class="code-line line-number" line="7">xl list lpic3-hvm-guest <span class="token parameter variable">-l</span>
-</span><span class="code-line line-number" line="8">
-</span><span class="code-line line-number" line="9"><span class="token comment"># uptime Domains</span>
-</span><span class="code-line line-number" line="10">xl <span class="token function">uptime</span>
+</span><span class="code-line line-number" line="4"><span class="token comment"># view xen information</span>
+</span><span class="code-line line-number" line="5"><span class="token function">sudo</span> xl info
+</span><span class="code-line line-number" line="6">
+</span><span class="code-line line-number" line="7"><span class="token comment"># list Domains</span>
+</span><span class="code-line line-number" line="8"><span class="token function">sudo</span> xl list
+</span><span class="code-line line-number" line="9"><span class="token function">sudo</span> xl list lpic3-hvm-guest
+</span><span class="code-line line-number" line="10"><span class="token function">sudo</span> xl list lpic3-hvm-guest <span class="token parameter variable">-l</span>
 </span><span class="code-line line-number" line="11">
-</span><span class="code-line line-number" line="12"><span class="token comment"># pause Domain</span>
-</span><span class="code-line line-number" line="13">xl pause <span class="token number">2</span>
-</span><span class="code-line line-number" line="14">xl pause lpic3-hvm-guest
-</span><span class="code-line line-number" line="15">
-</span><span class="code-line line-number" line="16"><span class="token comment"># save state Domains</span>
-</span><span class="code-line line-number" line="17">xl <span class="token parameter variable">-v</span> save lpic3-hvm-guest ~root/image-lpic3-hvm-guest.save
-</span><span class="code-line line-number" line="18">
-</span><span class="code-line line-number" line="19"><span class="token comment"># restore Domain</span>
-</span><span class="code-line line-number" line="20">xl restore /root/image-lpic3-hvm-guest.save
-</span><span class="code-line line-number" line="21">
-</span><span class="code-line line-number" line="22"><span class="token comment"># get Domain name</span>
-</span><span class="code-line line-number" line="23">xl domname <span class="token number">2</span>
+</span><span class="code-line line-number" line="12"><span class="token comment"># create DomainU - virtual machine</span>
+</span><span class="code-line line-number" line="13"><span class="token function">sudo</span> xl create /etc/xen/lpic3-pv-guest.cfg
+</span><span class="code-line line-number" line="14">
+</span><span class="code-line line-number" line="15"><span class="token comment"># create DomainU virtual machine and connect to guest</span>
+</span><span class="code-line line-number" line="16"><span class="token function">sudo</span> xl create <span class="token parameter variable">-c</span> /etc/xen/lpic3-pv-guest.cfg
+</span><span class="code-line line-number" line="17">
+</span><span class="code-line line-number" line="18"><span class="token comment"># uptime Domains</span>
+</span><span class="code-line line-number" line="19"><span class="token function">sudo</span> xl <span class="token function">uptime</span>
+</span><span class="code-line line-number" line="20">
+</span><span class="code-line line-number" line="21"><span class="token comment"># pause Domain</span>
+</span><span class="code-line line-number" line="22"><span class="token function">sudo</span> xl pause <span class="token number">2</span>
+</span><span class="code-line line-number" line="23"><span class="token function">sudo</span> xl pause lpic3-hvm-guest
 </span><span class="code-line line-number" line="24">
-</span><span class="code-line line-number" line="25"><span class="token comment"># view dmesg information</span>
-</span><span class="code-line line-number" line="26">xl <span class="token function">dmesg</span>
+</span><span class="code-line line-number" line="25"><span class="token comment"># save state Domains</span>
+</span><span class="code-line line-number" line="26"><span class="token function">sudo</span> xl <span class="token parameter variable">-v</span> save lpic3-hvm-guest ~root/image-lpic3-hvm-guest.save
 </span><span class="code-line line-number" line="27">
-</span><span class="code-line line-number" line="28"><span class="token comment"># monitoring domain</span>
-</span><span class="code-line line-number" line="29">xl <span class="token function">top</span>
-</span><span class="code-line line-number" line="30">xentop
-</span><span class="code-line line-number" line="31">xen <span class="token function">top</span>
-</span><span class="code-line line-number" line="32">
-</span><span class="code-line line-number" line="33"><span class="token comment"># Limit mem Dom0</span>
-</span><span class="code-line line-number" line="34">xl mem-set <span class="token number">0</span> <span class="token number">2048</span>
-</span><span class="code-line line-number" line="35">
-</span><span class="code-line line-number" line="36"><span class="token comment"># Limit cpu (not permanent after boot)</span>
-</span><span class="code-line line-number" line="37">xl vcpu-set <span class="token number">0</span> <span class="token number">2</span>
-</span><span class="code-line line-number" line="38">
-</span><span class="code-line line-number" line="39"><span class="token comment"># create DomainU - virtual machine</span>
-</span><span class="code-line line-number" line="40">xl create /etc/xen/lpic3-pv-guest.cfg
-</span><span class="code-line line-number" line="41">
-</span><span class="code-line line-number" line="42"><span class="token comment"># create DomainU virtual machine and connect to guest</span>
-</span><span class="code-line line-number" line="43">xl create <span class="token parameter variable">-c</span> /etc/xen/lpic3-pv-guest.cfg
-</span><span class="code-line line-number" line="44">
-</span><span class="code-line line-number" line="45"><span class="token comment">##----------------------------------------------</span>
-</span><span class="code-line line-number" line="46"><span class="token comment"># create DomainU virtual machine HVM</span>
-</span><span class="code-line line-number" line="47">
-</span><span class="code-line line-number" line="48"><span class="token comment">## create logical volume</span>
-</span><span class="code-line line-number" line="49">lvcreate <span class="token parameter variable">-l</span> +20%FREE <span class="token parameter variable">-n</span> lpic3-hvm-guest-disk  vg_xen
-</span><span class="code-line line-number" line="50">
-</span><span class="code-line line-number" line="51"><span class="token comment">## create a ssh tunel for vnc</span>
-</span><span class="code-line line-number" line="52"><span class="token function">ssh</span> <span class="token parameter variable">-l</span> vagrant <span class="token parameter variable">-L</span> <span class="token number">5900</span>:localhost:5900  <span class="token number">192.168</span>.0.130
-</span><span class="code-line line-number" line="53">
-</span><span class="code-line line-number" line="54"><span class="token comment">## configure /etc/xen/lpic3-hvm-guest.cfg</span>
-</span><span class="code-line line-number" line="55"><span class="token comment">## set boot for cdrom: boot = "d"</span>
-</span><span class="code-line line-number" line="56">
-</span><span class="code-line line-number" line="57"><span class="token comment">## create domain hvm</span>
-</span><span class="code-line line-number" line="58">xl create /etc/xen/lpic3-hvm-guest.cfg
-</span><span class="code-line line-number" line="59">
-</span><span class="code-line line-number" line="60"><span class="token comment">## open vcn connection in your vnc client with localhost</span>
-</span><span class="code-line line-number" line="61"><span class="token comment">## for view install details</span>
+</span><span class="code-line line-number" line="28"><span class="token comment"># restore Domain</span>
+</span><span class="code-line line-number" line="29"><span class="token function">sudo</span> xl restore /root/image-lpic3-hvm-guest.save
+</span><span class="code-line line-number" line="30">
+</span><span class="code-line line-number" line="31"><span class="token comment"># get Domain name</span>
+</span><span class="code-line line-number" line="32"><span class="token function">sudo</span> xl domname <span class="token number">2</span>
+</span><span class="code-line line-number" line="33">
+</span><span class="code-line line-number" line="34"><span class="token comment"># view dmesg information</span>
+</span><span class="code-line line-number" line="35"><span class="token function">sudo</span> xl <span class="token function">dmesg</span>
+</span><span class="code-line line-number" line="36">
+</span><span class="code-line line-number" line="37"><span class="token comment"># monitoring domain</span>
+</span><span class="code-line line-number" line="38"><span class="token function">sudo</span> xl <span class="token function">top</span>
+</span><span class="code-line line-number" line="39">xentop
+</span><span class="code-line line-number" line="40">
+</span><span class="code-line line-number" line="41"><span class="token comment"># Limit mem Dom0</span>
+</span><span class="code-line line-number" line="42"><span class="token function">sudo</span> xl mem-set <span class="token number">0</span> <span class="token number">2048</span>
+</span><span class="code-line line-number" line="43">
+</span><span class="code-line line-number" line="44"><span class="token comment"># Limit cpu (not permanent after boot)</span>
+</span><span class="code-line line-number" line="45"><span class="token function">sudo</span> xl vcpu-set <span class="token number">0</span> <span class="token number">2</span>
+</span><span class="code-line line-number" line="46">
+</span><span class="code-line line-number" line="47"><span class="token comment">##----------------------------------------------</span>
+</span><span class="code-line line-number" line="48"><span class="token comment"># create DomainU virtual machine HVM</span>
+</span><span class="code-line line-number" line="49">
+</span><span class="code-line line-number" line="50"><span class="token comment">## create logical volume</span>
+</span><span class="code-line line-number" line="51">lvcreate <span class="token parameter variable">-l</span> +20%FREE <span class="token parameter variable">-n</span> lpic3-hvm-guest-disk vg_xen
+</span><span class="code-line line-number" line="52">
+</span><span class="code-line line-number" line="53"><span class="token comment">## optional: create a ssh tunnel for VNC (secondary view only)</span>
+</span><span class="code-line line-number" line="54"><span class="token function">ssh</span> <span class="token parameter variable">-l</span> vagrant <span class="token parameter variable">-L</span> <span class="token number">5900</span>:localhost:5900 <span class="token number">192.168</span>.0.130
+</span><span class="code-line line-number" line="55">
+</span><span class="code-line line-number" line="56"><span class="token comment">## extract installer kernel/initrd from ISO (one-time)</span>
+</span><span class="code-line line-number" line="57"><span class="token function">mkdir</span> <span class="token parameter variable">-p</span> /var/lib/xen/boot/debian12 /mnt/debian-iso
+</span><span class="code-line line-number" line="58"><span class="token function">mount</span> <span class="token parameter variable">-o</span> loop /home/vagrant/isos/debian/debian-12.8.0-amd64-DVD-1.iso /mnt/debian-iso
+</span><span class="code-line line-number" line="59"><span class="token function">cp</span> <span class="token parameter variable">-f</span> /mnt/debian-iso/install.amd/vmlinuz /var/lib/xen/boot/debian12/
+</span><span class="code-line line-number" line="60"><span class="token function">cp</span> <span class="token parameter variable">-f</span> /mnt/debian-iso/install.amd/initrd.gz /var/lib/xen/boot/debian12/
+</span><span class="code-line line-number" line="61"><span class="token function">umount</span> /mnt/debian-iso
 </span><span class="code-line line-number" line="62">
-</span><span class="code-line line-number" line="63"><span class="token comment">## after installation finished, destroy domain: xl destroy &#x3C;id_or_name></span>
-</span><span class="code-line line-number" line="64">
-</span><span class="code-line line-number" line="65"><span class="token comment">## set /etc/xen/lpic3-hvm-guest.cfg: boot for hard disc: boot = "c"</span>
+</span><span class="code-line line-number" line="63"><span class="token comment">## start HTTP server to publish preseed.cfg</span>
+</span><span class="code-line line-number" line="64"><span class="token builtin class-name">cd</span> configs/xen/hvm/debian
+</span><span class="code-line line-number" line="65">python3 <span class="token parameter variable">-m</span> http.server <span class="token number">8000</span>
 </span><span class="code-line line-number" line="66">
-</span><span class="code-line line-number" line="67"><span class="token comment">## create domain hvm</span>
-</span><span class="code-line line-number" line="68">xl create /etc/xen/lpic3-hvm-guest.cfg
+</span><span class="code-line line-number" line="67"><span class="token comment">## optional: validate that preseed.cfg is reachable</span>
+</span><span class="code-line line-number" line="68"><span class="token function">curl</span> http://192.168.0.130:8000/preseed.cfg
 </span><span class="code-line line-number" line="69">
-</span><span class="code-line line-number" line="70"><span class="token comment">## access domain hvm</span>
-</span><span class="code-line line-number" line="71">xl console <span class="token operator">&#x3C;</span>id_or_name<span class="token operator">></span>
-</span><span class="code-line line-number" line="72"><span class="token comment">##----------------------------------------------</span>
-</span><span class="code-line line-number" line="73">
-</span><span class="code-line line-number" line="74"><span class="token comment"># connect in domain guest</span>
-</span><span class="code-line line-number" line="75">xl console <span class="token operator">&#x3C;</span>id<span class="token operator">>|</span><span class="token operator">&#x3C;</span>name<span class="token operator">></span> <span class="token punctuation">(</span>press enter<span class="token punctuation">)</span>
-</span><span class="code-line line-number" line="76">xl console <span class="token number">1</span>
-</span><span class="code-line line-number" line="77">xl console lpic3-pv-guest
-</span><span class="code-line line-number" line="78">
-</span><span class="code-line line-number" line="79"><span class="token comment">#How do I exit domU "xl console" session</span>
-</span><span class="code-line line-number" line="80"><span class="token comment">#Press ctrl+] or if you're using Putty press ctrl+5.</span>
-</span><span class="code-line line-number" line="81">
-</span><span class="code-line line-number" line="82"><span class="token comment"># Poweroff domain</span>
-</span><span class="code-line line-number" line="83">xl <span class="token function">shutdown</span> lpic3-pv-guest
-</span><span class="code-line line-number" line="84">
-</span><span class="code-line line-number" line="85"><span class="token comment"># destroy domain</span>
-</span><span class="code-line line-number" line="86">xl destroy lpic3-pv-guest
-</span><span class="code-line line-number" line="87">
-</span><span class="code-line line-number" line="88"><span class="token comment"># reboot domain</span>
-</span><span class="code-line line-number" line="89">xl <span class="token function">reboot</span> lpic3-pv-guest
+</span><span class="code-line line-number" line="70"><span class="token comment">## create HVM domain and attach to the Xen serial console</span>
+</span><span class="code-line line-number" line="71"><span class="token function">sudo</span> xl create configs/xen/hvm/debian/lpic3-hvm-guest-debian-auto.cfg <span class="token parameter variable">-c</span>
+</span><span class="code-line line-number" line="72">
+</span><span class="code-line line-number" line="73"><span class="token comment">## reconnect later, if needed</span>
+</span><span class="code-line line-number" line="74"><span class="token function">sudo</span> xl console <span class="token operator">&#x3C;</span>id_or_name<span class="token operator">></span>
+</span><span class="code-line line-number" line="75">
+</span><span class="code-line line-number" line="76"><span class="token comment">## note:</span>
+</span><span class="code-line line-number" line="77"><span class="token comment">## the unattended installer was configured for text mode on ttyS0</span>
+</span><span class="code-line line-number" line="78"><span class="token comment">## so the active installation appears in xl console, not in VNC</span>
+</span><span class="code-line line-number" line="79"><span class="token comment">## VNC may show only the guest VGA framebuffer or early boot messages</span>
+</span><span class="code-line line-number" line="80">
+</span><span class="code-line line-number" line="81"><span class="token comment">## after installation finished, destroy domain if still running:</span>
+</span><span class="code-line line-number" line="82"><span class="token function">sudo</span> xl destroy <span class="token operator">&#x3C;</span>id_or_name<span class="token operator">></span>
+</span><span class="code-line line-number" line="83">
+</span><span class="code-line line-number" line="84"><span class="token comment">## create HVM domain from installed disk</span>
+</span><span class="code-line line-number" line="85"><span class="token operator">!</span><span class="token punctuation">[</span><span class="token number">1776302514356</span><span class="token punctuation">]</span><span class="token punctuation">(</span>image/README/1776302514356.png<span class="token punctuation">)</span>
+</span><span class="code-line line-number" line="86">
+</span><span class="code-line line-number" line="87"><span class="token comment">## access runtime domain</span>
+</span><span class="code-line line-number" line="88"><span class="token function">sudo</span> xl console <span class="token operator">&#x3C;</span>id_or_name<span class="token operator">></span>
+</span><span class="code-line line-number" line="89"><span class="token comment">##----------------------------------------------</span>
 </span><span class="code-line line-number" line="90">
-</span><span class="code-line line-number" line="91"><span class="token comment"># list block devices</span>
-</span><span class="code-line line-number" line="92">xl block-list <span class="token number">1</span>
-</span><span class="code-line line-number" line="93">xl block-list lpic3-pv-guest
-</span><span class="code-line line-number" line="94">
-</span><span class="code-line line-number" line="95"><span class="token comment"># detach block devices</span>
-</span><span class="code-line line-number" line="96">xl block-detach lpic3-hvm-guest hdc
-</span><span class="code-line line-number" line="97">xl block-detach <span class="token number">2</span> xvdc
+</span><span class="code-line line-number" line="91"><span class="token comment"># connect in domain guest</span>
+</span><span class="code-line line-number" line="92"><span class="token function">sudo</span> xl console <span class="token operator">&#x3C;</span>id<span class="token operator">>|</span><span class="token operator">&#x3C;</span>name<span class="token operator">></span> <span class="token punctuation">(</span>press enter<span class="token punctuation">)</span>
+</span><span class="code-line line-number" line="93"><span class="token function">sudo</span> xl console <span class="token number">1</span>
+</span><span class="code-line line-number" line="94"><span class="token function">sudo</span> xl console lpic3-pv-guest
+</span><span class="code-line line-number" line="95">
+</span><span class="code-line line-number" line="96"><span class="token comment">#How do I exit domU "xl console" session</span>
+</span><span class="code-line line-number" line="97"><span class="token comment">#Press ctrl+] or if you're using Putty press ctrl+5.</span>
 </span><span class="code-line line-number" line="98">
-</span><span class="code-line line-number" line="99"><span class="token comment"># attach block devices</span>
-</span><span class="code-line line-number" line="100">
-</span><span class="code-line line-number" line="101"><span class="token comment">## hard disk devices</span>
-</span><span class="code-line line-number" line="102">xl block-attach lpic3-hvm-guest-ubuntu <span class="token string">'phy:/dev/vg_xen/lpic3-hvm-guest-disk2,xvde,w'</span>
-</span><span class="code-line line-number" line="103">
-</span><span class="code-line line-number" line="104"><span class="token comment">## cdrom</span>
-</span><span class="code-line line-number" line="105">xl block-attach lpic3-hvm-guest <span class="token string">'file:/home/vagrant/isos/ubuntu/seed.iso,xvdc:cdrom,r'</span>
-</span><span class="code-line line-number" line="106">xl block-attach <span class="token number">2</span> <span class="token string">'file:/home/vagrant/isos/ubuntu/seed.iso,xvdc:cdrom,r'</span>
+</span><span class="code-line line-number" line="99"><span class="token comment"># Poweroff domain</span>
+</span><span class="code-line line-number" line="100"><span class="token function">sudo</span> xl <span class="token function">shutdown</span> lpic3-pv-guest
+</span><span class="code-line line-number" line="101">
+</span><span class="code-line line-number" line="102"><span class="token comment"># destroy domain</span>
+</span><span class="code-line line-number" line="103"><span class="token function">sudo</span> xl destroy lpic3-pv-guest
+</span><span class="code-line line-number" line="104">
+</span><span class="code-line line-number" line="105"><span class="token comment"># reboot domain</span>
+</span><span class="code-line line-number" line="106"><span class="token function">sudo</span> xl <span class="token function">reboot</span> lpic3-pv-guest
 </span><span class="code-line line-number" line="107">
-</span><span class="code-line line-number" line="108"><span class="token comment"># insert and eject cdrom devices</span>
-</span><span class="code-line line-number" line="109">xl cd-insert lpic3-hvm-guest-ubuntu xvdb  /home/vagrant/isos/ubuntu/ubuntu-24.04.1-live-server-amd64.iso
-</span><span class="code-line line-number" line="110">xl cd-eject lpic3-hvm-guest-ubuntu xvdb
-</span></code><div onclick="copied(this)" data-code="# view xen information
-xl infos
+</span><span class="code-line line-number" line="108"><span class="token comment"># list block devices</span>
+</span><span class="code-line line-number" line="109"><span class="token function">sudo</span> xl block-list <span class="token number">1</span>
+</span><span class="code-line line-number" line="110"><span class="token function">sudo</span> xl block-list lpic3-pv-guest
+</span><span class="code-line line-number" line="111">
+</span><span class="code-line line-number" line="112"><span class="token comment"># detach block devices</span>
+</span><span class="code-line line-number" line="113"><span class="token function">sudo</span> xl block-detach lpic3-hvm-guest hdc
+</span><span class="code-line line-number" line="114"><span class="token function">sudo</span> xl block-detach <span class="token number">2</span> xvdc
+</span><span class="code-line line-number" line="115">
+</span><span class="code-line line-number" line="116"><span class="token comment"># attach block devices</span>
+</span><span class="code-line line-number" line="117">
+</span><span class="code-line line-number" line="118"><span class="token comment">## hard disk devices</span>
+</span><span class="code-line line-number" line="119"><span class="token function">sudo</span> xl block-attach lpic3-hvm-guest-ubuntu <span class="token string">'phy:/dev/vg_xen/lpic3-hvm-guest-disk2,xvde,w'</span>
+</span><span class="code-line line-number" line="120">
+</span><span class="code-line line-number" line="121"><span class="token comment">## cdrom</span>
+</span><span class="code-line line-number" line="122"><span class="token function">sudo</span> xl block-attach lpic3-hvm-guest <span class="token string">'file:/home/vagrant/isos/ubuntu/seed.iso,xvdc:cdrom,r'</span>
+</span><span class="code-line line-number" line="123"><span class="token function">sudo</span> xl block-attach <span class="token number">2</span> <span class="token string">'file:/home/vagrant/isos/ubuntu/seed.iso,xvdc:cdrom,r'</span>
+</span><span class="code-line line-number" line="124">
+</span><span class="code-line line-number" line="125"><span class="token comment"># insert and eject cdrom devices</span>
+</span><span class="code-line line-number" line="126"><span class="token function">sudo</span> xl cd-insert lpic3-hvm-guest-ubuntu xvdb  /home/vagrant/isos/ubuntu/ubuntu-24.04.1-live-server-amd64.iso
+</span><span class="code-line line-number" line="127"><span class="token function">sudo</span> xl cd-eject lpic3-hvm-guest-ubuntu xvdb
+</span></code><div onclick="copied(this)" data-code="# xl requires privileged access to Xen control interfaces (Dom0)
+# run all xl operations with sudo
+
+# view xen information
+sudo xl info
 
 # list Domains
-xl list
-xl list lpic3-hvm-guest
-xl list lpic3-hvm-guest -l
-
-# uptime Domains
-xl uptime
-
-# pause Domain
-xl pause 2
-xl pause lpic3-hvm-guest
-
-# save state Domains
-xl -v save lpic3-hvm-guest ~root/image-lpic3-hvm-guest.save
-
-# restore Domain
-xl restore /root/image-lpic3-hvm-guest.save
-
-# get Domain name
-xl domname 2
-
-# view dmesg information
-xl dmesg
-
-# monitoring domain
-xl top
-xentop
-xen top
-
-# Limit mem Dom0
-xl mem-set 0 2048
-
-# Limit cpu (not permanent after boot)
-xl vcpu-set 0 2
+sudo xl list
+sudo xl list lpic3-hvm-guest
+sudo xl list lpic3-hvm-guest -l
 
 # create DomainU - virtual machine
-xl create /etc/xen/lpic3-pv-guest.cfg
+sudo xl create /etc/xen/lpic3-pv-guest.cfg
 
 # create DomainU virtual machine and connect to guest
-xl create -c /etc/xen/lpic3-pv-guest.cfg
+sudo xl create -c /etc/xen/lpic3-pv-guest.cfg
+
+# uptime Domains
+sudo xl uptime
+
+# pause Domain
+sudo xl pause 2
+sudo xl pause lpic3-hvm-guest
+
+# save state Domains
+sudo xl -v save lpic3-hvm-guest ~root/image-lpic3-hvm-guest.save
+
+# restore Domain
+sudo xl restore /root/image-lpic3-hvm-guest.save
+
+# get Domain name
+sudo xl domname 2
+
+# view dmesg information
+sudo xl dmesg
+
+# monitoring domain
+sudo xl top
+xentop
+
+# Limit mem Dom0
+sudo xl mem-set 0 2048
+
+# Limit cpu (not permanent after boot)
+sudo xl vcpu-set 0 2
 
 ##----------------------------------------------
 # create DomainU virtual machine HVM
 
 ## create logical volume
-lvcreate -l +20%FREE -n lpic3-hvm-guest-disk  vg_xen
+lvcreate -l +20%FREE -n lpic3-hvm-guest-disk vg_xen
 
-## create a ssh tunel for vnc
-ssh -l vagrant -L 5900:localhost:5900  192.168.0.130
+## optional: create a ssh tunnel for VNC (secondary view only)
+ssh -l vagrant -L 5900:localhost:5900 192.168.0.130
 
-## configure /etc/xen/lpic3-hvm-guest.cfg
-## set boot for cdrom: boot = &#x22;d&#x22;
+## extract installer kernel/initrd from ISO (one-time)
+mkdir -p /var/lib/xen/boot/debian12 /mnt/debian-iso
+mount -o loop /home/vagrant/isos/debian/debian-12.8.0-amd64-DVD-1.iso /mnt/debian-iso
+cp -f /mnt/debian-iso/install.amd/vmlinuz /var/lib/xen/boot/debian12/
+cp -f /mnt/debian-iso/install.amd/initrd.gz /var/lib/xen/boot/debian12/
+umount /mnt/debian-iso
 
-## create domain hvm
-xl create /etc/xen/lpic3-hvm-guest.cfg
+## start HTTP server to publish preseed.cfg
+cd configs/xen/hvm/debian
+python3 -m http.server 8000
 
-## open vcn connection in your vnc client with localhost
-## for view install details
+## optional: validate that preseed.cfg is reachable
+curl http://192.168.0.130:8000/preseed.cfg
 
-## after installation finished, destroy domain: xl destroy <id_or_name>
+## create HVM domain and attach to the Xen serial console
+sudo xl create configs/xen/hvm/debian/lpic3-hvm-guest-debian-auto.cfg -c
 
-## set /etc/xen/lpic3-hvm-guest.cfg: boot for hard disc: boot = &#x22;c&#x22;
+## reconnect later, if needed
+sudo xl console <id_or_name>
 
-## create domain hvm
-xl create /etc/xen/lpic3-hvm-guest.cfg
+## note:
+## the unattended installer was configured for text mode on ttyS0
+## so the active installation appears in xl console, not in VNC
+## VNC may show only the guest VGA framebuffer or early boot messages
 
-## access domain hvm
-xl console <id_or_name>
+## after installation finished, destroy domain if still running:
+sudo xl destroy <id_or_name>
+
+## create HVM domain from installed disk
+![1776302514356](image/README/1776302514356.png)
+
+## access runtime domain
+sudo xl console <id_or_name>
 ##----------------------------------------------
 
 # connect in domain guest
-xl console <id>|<name> (press enter)
-xl console 1
-xl console lpic3-pv-guest
+sudo xl console <id>|<name> (press enter)
+sudo xl console 1
+sudo xl console lpic3-pv-guest
 
 #How do I exit domU &#x22;xl console&#x22; session
 #Press ctrl+] or if you&#x27;re using Putty press ctrl+5.
 
 # Poweroff domain
-xl shutdown lpic3-pv-guest
+sudo xl shutdown lpic3-pv-guest
 
 # destroy domain
-xl destroy lpic3-pv-guest
+sudo xl destroy lpic3-pv-guest
 
 # reboot domain
-xl reboot lpic3-pv-guest
+sudo xl reboot lpic3-pv-guest
 
 # list block devices
-xl block-list 1
-xl block-list lpic3-pv-guest
+sudo xl block-list 1
+sudo xl block-list lpic3-pv-guest
 
 # detach block devices
-xl block-detach lpic3-hvm-guest hdc
-xl block-detach 2 xvdc
+sudo xl block-detach lpic3-hvm-guest hdc
+sudo xl block-detach 2 xvdc
 
 # attach block devices
 
 ## hard disk devices
-xl block-attach lpic3-hvm-guest-ubuntu &#x27;phy:/dev/vg_xen/lpic3-hvm-guest-disk2,xvde,w&#x27;
+sudo xl block-attach lpic3-hvm-guest-ubuntu &#x27;phy:/dev/vg_xen/lpic3-hvm-guest-disk2,xvde,w&#x27;
 
 ## cdrom
-xl block-attach lpic3-hvm-guest &#x27;file:/home/vagrant/isos/ubuntu/seed.iso,xvdc:cdrom,r&#x27;
-xl block-attach 2 &#x27;file:/home/vagrant/isos/ubuntu/seed.iso,xvdc:cdrom,r&#x27;
+sudo xl block-attach lpic3-hvm-guest &#x27;file:/home/vagrant/isos/ubuntu/seed.iso,xvdc:cdrom,r&#x27;
+sudo xl block-attach 2 &#x27;file:/home/vagrant/isos/ubuntu/seed.iso,xvdc:cdrom,r&#x27;
 
 # insert and eject cdrom devices
-xl cd-insert lpic3-hvm-guest-ubuntu xvdb  /home/vagrant/isos/ubuntu/ubuntu-24.04.1-live-server-amd64.iso
-xl cd-eject lpic3-hvm-guest-ubuntu xvdb
+sudo xl cd-insert lpic3-hvm-guest-ubuntu xvdb  /home/vagrant/isos/ubuntu/ubuntu-24.04.1-live-server-amd64.iso
+sudo xl cd-eject lpic3-hvm-guest-ubuntu xvdb
 " class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
     <p align="right">(<a href="#topic-351.2">back to sub Topic 351.2</a>)</p>
     <p align="right">(<a href="#topic-351">back to Topic 351</a>)</p>
