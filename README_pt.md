@@ -844,21 +844,27 @@ lvcreate -l +20%FREE -n lpic3-hvm-guest-disk  vg_xen
 ## create a ssh tunel for vnc
 ssh -l vagrant -L 5900:localhost:5900  192.168.0.130
 
-## configure /etc/xen/lpic3-hvm-guest.cfg
-## set boot for cdrom: boot = "d"
+## extract installer kernel/initrd from ISO (one-time)
+mkdir -p /var/lib/xen/boot/debian12 /mnt/debian-iso
+mount -o loop /home/vagrant/isos/debian/debian-12.8.0-amd64-DVD-1.iso /mnt/debian-iso
+cp -f /mnt/debian-iso/install.amd/vmlinuz /var/lib/xen/boot/debian12/
+cp -f /mnt/debian-iso/install.amd/initrd.gz /var/lib/xen/boot/debian12/
+umount /mnt/debian-iso
+
+## start HTTP server to publish preseed.cfg
+cd configs/xen/hvm/debian
+python3 -m http.server 8000
 
 ## create domain hvm
-xl create /etc/xen/lpic3-hvm-guest.cfg
+xl create /etc/xen/lpic3-hvm-guest-debian-auto.cfg
 
 ## open vcn connection in your vnc client with localhost
 ## for view install details
 
 ## after installation finished, destroy domain: xl destroy <id_or_name>
 
-## set /etc/xen/lpic3-hvm-guest.cfg: boot for hard disc: boot = "c"
-
 ## create domain hvm
-xl create /etc/xen/lpic3-hvm-guest.cfg
+xl create /etc/xen/lpic3-hvm-guest-debian.cfg
 
 ## access domain hvm
 xl console <id_or_name>

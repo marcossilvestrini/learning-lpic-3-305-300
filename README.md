@@ -856,28 +856,43 @@ sudo xl vcpu-set 0 2
 # create DomainU virtual machine HVM
 
 ## create logical volume
-lvcreate -l +20%FREE -n lpic3-hvm-guest-disk  vg_xen
+lvcreate -l +20%FREE -n lpic3-hvm-guest-disk vg_xen
 
-## create a ssh tunel for vnc
-ssh -l vagrant -L 5900:localhost:5900  192.168.0.130
+## optional: create a ssh tunnel for VNC (secondary view only)
+ssh -l vagrant -L 5900:localhost:5900 192.168.0.130
 
-## configure /etc/xen/lpic3-hvm-guest.cfg
-## set boot for cdrom: boot = "d"
+## extract installer kernel/initrd from ISO (one-time)
+mkdir -p /var/lib/xen/boot/debian12 /mnt/debian-iso
+mount -o loop /home/vagrant/isos/debian/debian-12.8.0-amd64-DVD-1.iso /mnt/debian-iso
+cp -f /mnt/debian-iso/install.amd/vmlinuz /var/lib/xen/boot/debian12/
+cp -f /mnt/debian-iso/install.amd/initrd.gz /var/lib/xen/boot/debian12/
+umount /mnt/debian-iso
 
-## create domain hvm
-sudo xl create /etc/xen/lpic3-hvm-guest.cfg
+## start HTTP server to publish preseed.cfg
+cd configs/xen/hvm/debian
+python3 -m http.server 8000
 
-## open vcn connection in your vnc client with localhost
-## for view install details
+## optional: validate that preseed.cfg is reachable
+curl http://192.168.0.130:8000/preseed.cfg
 
-## after installation finished, destroy domain: sudo xl destroy <id_or_name>
+## create HVM domain and attach to the Xen serial console
+sudo xl create configs/xen/hvm/debian/lpic3-hvm-guest-debian-auto.cfg -c
 
-## set /etc/xen/lpic3-hvm-guest.cfg: boot for hard disc: boot = "c"
+## reconnect later, if needed
+sudo xl console <id_or_name>
 
-## create domain hvm
-sudo xl create /etc/xen/lpic3-hvm-guest.cfg
+## note:
+## the unattended installer was configured for text mode on ttyS0
+## so the active installation appears in xl console, not in VNC
+## VNC may show only the guest VGA framebuffer or early boot messages
 
-## access domain hvm
+## after installation finished, destroy domain if still running:
+sudo xl destroy <id_or_name>
+
+## create HVM domain from installed disk
+![1776302514356](image/README/1776302514356.png)
+
+## access runtime domain
 sudo xl console <id_or_name>
 ##----------------------------------------------
 

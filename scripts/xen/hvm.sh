@@ -28,3 +28,4 @@ cp -f configs/xen/hvm/ubuntu/lpic3-hvm-guest-ubuntu.cfg /etc/xen
 mkisofs -o isos/debian/seed.iso -J -R -V "PRESEED" configs/xen/hvm/debian/preseed.cfg
 isoinfo -i isos/debian/seed.iso -R -l
 cp -f configs/xen/hvm/debian/lpic3-hvm-guest-debian.cfg /etc/xen
+cp -f configs/xen/hvm/debian/lpic3-hvm-guest-debian-auto.cfg /etc/xen
