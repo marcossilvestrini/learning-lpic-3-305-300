@@ -547,7 +547,7 @@ xen-create-image \
 
 ```sh
 # list image
-xen-list-image
+xen-list-images
 ```
 
 ##### ❌ xen-delete-image
@@ -572,10 +572,17 @@ sudo xenstore-ls
 
 # view xen information
 sudo xl info
+
 # list Domains
 sudo xl list
 sudo xl list lpic3-hvm-guest
 sudo xl list lpic3-hvm-guest -l
+
+# create DomainU - virtual machine
+sudo xl create /etc/xen/lpic3-pv-guest.cfg
+
+# create DomainU virtual machine and connect to guest
+sudo xl create -c /etc/xen/lpic3-pv-guest.cfg
 
 # uptime Domains
 sudo xl uptime
@@ -606,20 +613,14 @@ sudo xl mem-set 0 2048
 # Limit cpu (not permanent after boot)
 sudo xl vcpu-set 0 2
 
-# create DomainU - virtual machine
-sudo xl create /etc/xen/lpic3-pv-guest.cfg
-
-# create DomainU virtual machine and connect to guest
-sudo xl create -c /etc/xen/lpic3-pv-guest.cfg
-
 ##----------------------------------------------
 # create DomainU virtual machine HVM
 
 ## create logical volume
-lvcreate -l +20%FREE -n lpic3-hvm-guest-disk  vg_xen
+lvcreate -l +20%FREE -n lpic3-hvm-guest-disk vg_xen
 
-## create a ssh tunel for vnc
-ssh -l vagrant -L 5900:localhost:5900  192.168.0.130
+## optional: create a ssh tunnel for VNC (secondary view only)
+ssh -l vagrant -L 5900:localhost:5900 192.168.0.130
 
 ## extract installer kernel/initrd from ISO (one-time)
 mkdir -p /var/lib/xen/boot/debian12 /mnt/debian-iso
@@ -632,18 +633,27 @@ umount /mnt/debian-iso
 cd configs/xen/hvm/debian
 python3 -m http.server 8000
 
-## create domain hvm
-sudo xl create /etc/xen/lpic3-hvm-guest-debian-auto.cfg
+## optional: validate that preseed.cfg is reachable
+curl http://192.168.0.130:8000/preseed.cfg
 
-## open vcn connection in your vnc client with localhost
-## for view install details
+## create HVM domain and attach to the Xen serial console
+sudo xl create configs/xen/hvm/debian/lpic3-hvm-guest-debian-auto.cfg -c
 
-## after installation finished, destroy domain: sudo xl destroy <id_or_name>
+## reconnect later, if needed
+sudo xl console <id_or_name>
 
-## create domain hvm
-sudo xl create /etc/xen/lpic3-hvm-guest-debian.cfg
+## note:
+## the unattended installer was configured for text mode on ttyS0
+## so the active installation appears in xl console, not in VNC
+## VNC may show only the guest VGA framebuffer or early boot messages
 
-## access domain hvm
+## after installation finished, destroy domain if still running:
+sudo xl destroy <id_or_name>
+
+## create HVM domain from installed disk
+![1776302514356](image/README/1776302514356.png)
+
+## access runtime domain
 sudo xl console <id_or_name>
 ##----------------------------------------------
 
