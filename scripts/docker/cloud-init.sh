@@ -50,6 +50,7 @@ if echo "$RELEASE_INFO" | grep -qiE "debian|ubuntu"; then
       lvm2 \
       btrfs-progs \
       tree whois \
+      neofetch \
       ca-certificates curl gnupg lsb-release \
       cgroup-tools \
       jq yq \

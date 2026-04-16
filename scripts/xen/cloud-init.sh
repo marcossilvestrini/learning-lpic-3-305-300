@@ -31,7 +31,8 @@ if echo "$RELEASE_INFO" | grep -q -i "debian\|ubuntu"; then
         tree \
         xfce4 xfce4-goodies \
         tightvncserver dbus-x11 \
-        cloud-utils genisoimage cloud-init whois
+        cloud-utils genisoimage cloud-init whois \
+        neofetch
 
     # 📝 Set user profile and bash/vim configuration
     sudo cp -f configs/commons/.bashrc_debian .bashrc

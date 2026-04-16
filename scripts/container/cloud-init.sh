@@ -32,6 +32,7 @@ if echo "$RELEASE_INFO" | grep -q -i "debian\|ubuntu"; then
         lvm2 \
         btrfs-progs \
         tree whois \
+        neofetch \
         xfce4 xfce4-goodies \
         tightvncserver dbus-x11 \
         bridge-utils \

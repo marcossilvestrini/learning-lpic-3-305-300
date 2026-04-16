@@ -27,6 +27,7 @@ if echo "$RELEASE_INFO" | grep -q -i "debian\|ubuntu"; then
         dos2unix \
         lvm2 \
         tree whois \
+        neofetch \
         xfce4 xfce4-goodies \
         tightvncserver dbus-x11 \
         bridge-utils \

@@ -123,6 +123,33 @@ export PS1="\[\e[31m\][\[\e[m\]\[\e[38;5;172m\]\u\[\e[m\]@\[\e[38;5;153m\]\h\[\e
 # Timezone
 export TZ='America/Sao_Paulo'
 
+# Custom MOTD banner
+if command -v neofetch >/dev/null 2>&1; then
+    neofetch
+fi
+
+if [ -t 1 ] && [ -n "${TERM:-}" ] && [ "$TERM" != "dumb" ]; then
+    c_border='\033[1;36m'
+    c_title='\033[1;97m'
+    c_name='\033[1;93m'
+    c_year='\033[1;92m'
+    c_reset='\033[0m'
+else
+    c_border=''
+    c_title=''
+    c_name=''
+    c_year=''
+    c_reset=''
+fi
+
+printf '\n'
+printf "${c_border}+--------------------------------------+${c_reset}\n"
+printf "${c_border}| ${c_title}%-36s${c_border} |${c_reset}\n" "LPIC 3 305-300"
+printf "${c_border}| ${c_name}%-36s${c_border} |${c_reset}\n" "MARCOS SILVESTRINI"
+printf "${c_border}| ${c_year}%-36s${c_border} |${c_reset}\n" "2026"
+printf "${c_border}+--------------------------------------+${c_reset}\n\n"
+
 # vnc
 # killall Xtightvnc  > /dev/null 2>&1
 # vncserver
+
