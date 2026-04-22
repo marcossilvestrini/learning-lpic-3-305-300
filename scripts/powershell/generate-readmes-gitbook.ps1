@@ -242,12 +242,13 @@ Write-Host "[DEBUG] SUMMARY.md generated: $summaryPath"
 
 # ---- Generate .gitbook.yaml
 $gitbookYaml = @"
-root: docs
+root: ./
 title: "LPIC 305-300"
 description: "Study guide for LPIC-3 Virtualization certification"
 language: "en"
 structure:
-  summary: ../SUMMARY.md
+  readme: README.md
+  summary: SUMMARY.md
 "@
 Write-ContentUtf8 -Path $gitbookYamlPath -Content $gitbookYaml
 Write-Host "[DEBUG] .gitbook.yaml generated: $gitbookYamlPath"

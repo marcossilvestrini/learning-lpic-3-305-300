@@ -1,4 +1,4 @@
-# 🔍 Inspect commands
+﻿# 🔍 Inspect commands
 
 ```sh
 type COMMAND # check if command is an alias, function, builtin or file

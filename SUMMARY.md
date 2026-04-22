@@ -1,4 +1,4 @@
-# Summary
+﻿# Summary
 
 - [🗂️ Summary](docs/🗂️Summary.md)
 - [📖 About Project](docs/📖AboutProject.md)
