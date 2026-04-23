@@ -1001,7 +1001,7 @@ It turns the Linux kernel into a hypervisor by exposing virtualization capabilit
 
 Key responsibilities of KVM:
 
-* Uses CPU virtualization extensions (Intel VT-x / AMD-V) for accelerated guest execution.
+* Uses CPU virtualization extensions (Intel VT-x / AMD-V) for accelerated guest execution. This caracteristic is often referred to as hardware-assisted virtualization (HVM).
 * Provides kernel-level support for guest privilege transitions (guest mode vs host mode).
 * Handles low-level virtualization mechanisms such as vCPU execution and interrupt virtualization.
 * Exposes an API to userspace VMMs (like QEMU) via ioctls on `/dev/kvm`.
