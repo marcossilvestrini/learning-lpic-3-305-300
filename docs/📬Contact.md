@@ -1,4 +1,4 @@
-﻿# 📬 Contact
+# 📬 Contact
 
 Marcos Silvestrini - <marcos.silvestrini@gmail.com>
 [![Twitter](https://img.shields.io/twitter/url/https/twitter.com/mrsilvestrini.svg?style=social&label=Follow%20%40mrsilvestrini)](https://twitter.com/mrsilvestrini)
