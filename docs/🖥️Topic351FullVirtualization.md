@@ -855,11 +855,20 @@ ip link add br0 type bridge
 ##### 🌉 brctl
 
 ```sh
-# list links
-ip link show
+# list bridges
+brctl show
 
 # create bridge
-ip link add br0 type bridge
+brctl addbr br0
+ip link set br0 up
+
+# add interface to bridge
+brctl addif br0 eth0
+
+# remove interface / remove bridge
+brctl delif br0 eth0
+ip link set br0 down
+brctl delbr br0
 ```
 
 ##### 💾 qemu-img
