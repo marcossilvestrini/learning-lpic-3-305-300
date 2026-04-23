@@ -15,13 +15,13 @@ cd configs/xen/hvm/debian
 python3 -m http.server 8000
 
 # 3) Create domain with unattended install profile
-sudo xl create configs/xen/hvm/debian/lpic3-hvm-guest-debian-auto.cfg
+sudo xl create configs/xen/hvm/debian/lpic3-hvm-guest-debian-auto.cfg -c
 
 # 4) Observe installation
 sudo xl console <domain_id> # or VNC
 
 # 5) After installation, boot with runtime profile (disk only)
-sudo xl create configs/xen/hvm/debian/lpic3-hvm-guest-debian.cfg
+sudo xl create configs/xen/hvm/debian/lpic3-hvm-guest-debian.cfg -c
 sudo xl console <domain_id>
 ```
 
