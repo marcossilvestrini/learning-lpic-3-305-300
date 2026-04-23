@@ -1136,6 +1136,105 @@ ip
 brctl
 tunctl
 " class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+    <h4 id="understanding-kvm-and-qemu"><a class="anchor" aria-hidden="true" tabindex="-1" href="#understanding-kvm-and-qemu"><span class="octicon octicon-link"></span></a>Understanding KVM and QEMU</h4>
+    <p>
+      In this section, we study virtualization on Linux by understanding the role of each component:
+      what QEMU does, what KVM does, and why both are typically used together in production.
+    </p>
+    <h5 id="what-is-qemu"><a class="anchor" aria-hidden="true" tabindex="-1" href="#what-is-qemu"><span class="octicon octicon-link"></span></a>What is QEMU?</h5>
+    <p>
+      QEMU (Quick Emulator) is a userspace virtual machine monitor and hardware emulator.
+      It is responsible for creating and managing the virtual machine process and exposing virtual devices to the guest.
+    </p>
+    <p>Key responsibilities of QEMU:</p>
+    <ul>
+      <li>Emulates or virtualizes CPU execution for guest systems.</li>
+      <li>Provides virtual hardware (disk controllers, NICs, display, USB, PCI devices, etc.).</li>
+      <li>Loads guest firmware/boot media and starts guest boot.</li>
+      <li>Handles VM resources and runtime controls (snapshots, monitor commands, migration hooks).</li>
+      <li>Supports many machine architectures (x86_64, aarch64, ppc64, and others).</li>
+    </ul>
+    <p>
+      When QEMU runs without hardware acceleration, guest CPU instructions are translated in software (TCG),
+      which is flexible but slower.
+    </p>
+    <h5 id="what-is-kvm"><a class="anchor" aria-hidden="true" tabindex="-1" href="#what-is-kvm"><span class="octicon octicon-link"></span></a>What is KVM?</h5>
+    <p>
+      KVM (Kernel-based Virtual Machine) is a Linux kernel virtualization framework.
+      It turns the Linux kernel into a hypervisor by exposing virtualization capabilities through <code>/dev/kvm</code>.
+    </p>
+    <p>Key responsibilities of KVM:</p>
+    <ul>
+      <li>Uses CPU virtualization extensions (Intel VT-x / AMD-V) for accelerated guest execution. This caracteristic is often referred to as hardware-assisted virtualization (HVM).</li>
+      <li>Provides kernel-level support for guest privilege transitions (guest mode vs host mode).</li>
+      <li>Handles low-level virtualization mechanisms such as vCPU execution and interrupt virtualization.</li>
+      <li>Exposes an API to userspace VMMs (like QEMU) via ioctls on <code>/dev/kvm</code>.</li>
+    </ul>
+    <p>KVM by itself is not a full VM manager with rich device models; it is the acceleration/hypervisor layer.</p>
+    <h5 id="how-qemu-and-kvm-work-together"><a class="anchor" aria-hidden="true" tabindex="-1" href="#how-qemu-and-kvm-work-together"><span class="octicon octicon-link"></span></a>How QEMU and KVM Work Together</h5>
+    <p>In the common Linux stack, QEMU is the userspace VMM and KVM is the kernel acceleration backend:</p>
+    <ul>
+      <li>QEMU creates the VM and virtual devices.</li>
+      <li>QEMU asks KVM to run vCPUs with hardware acceleration.</li>
+      <li>KVM executes guest CPU code near-native speed.</li>
+      <li>QEMU still handles emulated I/O and device models.</li>
+    </ul>
+    <p>Practical result:</p>
+    <ul>
+      <li><code>qemu-system-x86_64</code> without <code>-enable-kvm</code> works as emulation (slower, but useful for cross-arch/labs).</li>
+      <li><code>qemu-system-x86_64 -enable-kvm</code> uses hardware acceleration (faster, typical for real workloads).</li>
+    </ul>
+    <h5 id="kvm-vs-qemu-quick-comparison"><a class="anchor" aria-hidden="true" tabindex="-1" href="#kvm-vs-qemu-quick-comparison"><span class="octicon octicon-link"></span></a>KVM vs QEMU (Quick Comparison)</h5>
+    <table>
+      <thead>
+        <tr>
+          <th align="left">Aspect</th>
+          <th align="left"><strong>QEMU</strong></th>
+          <th align="left"><strong>KVM</strong></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td align="left">Type</td>
+          <td align="left">Userspace VMM / emulator</td>
+          <td align="left">Kernel virtualization framework</td>
+        </tr>
+        <tr>
+          <td align="left">Runs in</td>
+          <td align="left">User space</td>
+          <td align="left">Linux kernel</td>
+        </tr>
+        <tr>
+          <td align="left">Main role</td>
+          <td align="left">VM lifecycle + device emulation</td>
+          <td align="left">CPU/memory virtualization acceleration</td>
+        </tr>
+        <tr>
+          <td align="left">Depends on</td>
+          <td align="left">Can run alone (TCG emulation)</td>
+          <td align="left">Needs a userspace VMM (commonly QEMU)</td>
+        </tr>
+        <tr>
+          <td align="left">Hardware emulation</td>
+          <td align="left">Yes</td>
+          <td align="left">No (not a device emulator)</td>
+        </tr>
+        <tr>
+          <td align="left">Performance impact</td>
+          <td align="left">Higher overhead alone</td>
+          <td align="left">Near-native CPU execution with VT-x/AMD-V</td>
+        </tr>
+        <tr>
+          <td align="left">Typical usage</td>
+          <td align="left"><code>qemu-system-*</code> commands</td>
+          <td align="left">Enabled through <code>/dev/kvm</code> and <code>-enable-kvm</code></td>
+        </tr>
+      </tbody>
+    </table>
+    <p>
+      In short: QEMU gives the VM its virtual machine "shape" (devices and runtime),
+      while KVM gives the VM fast hardware-assisted execution.
+    </p>
     <h4 id="️-3513-important-commands"><a class="anchor" aria-hidden="true" tabindex="-1" href="#️-3513-important-commands"><span class="octicon octicon-link"></span></a>🛠️ 351.3 Important Commands</h4>
     <h5 id="-3513-others-commands"><a class="anchor" aria-hidden="true" tabindex="-1" href="#-3513-others-commands"><span class="octicon octicon-link"></span></a>📝 351.3 Others Commands</h5>
     <h5 id="-check-kvm-module"><a class="anchor" aria-hidden="true" tabindex="-1" href="#-check-kvm-module"><span class="octicon octicon-link"></span></a>🧪 check kvm module</h5>
@@ -1154,44 +1253,32 @@ ls -l /dev/kvm
 hostnamectl
 systemd-detect-virt
 " class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
-    <pre class="language-sh"><code class="language-sh code-highlight"><span class="code-line line-number" line="1"><span class="token comment"># check if kvm is enabled</span>
-</span><span class="code-line line-number" line="2"><span class="token function">egrep</span> <span class="token parameter variable">-o</span> <span class="token string">'(vmx|svm)'</span> /proc/cpuinfo
-</span><span class="code-line line-number" line="3">lscpu <span class="token operator">|</span><span class="token function">grep</span> Virtualization
-</span><span class="code-line line-number" line="4">lsmod<span class="token operator">|</span><span class="token function">grep</span> kvm
-</span><span class="code-line line-number" line="5"><span class="token function">ls</span> <span class="token parameter variable">-l</span> /dev/kvm
+    <pre class="language-sh"><code class="language-sh code-highlight"><span class="code-line line-number" line="1"><span class="token comment"># check kernel infos</span>
+</span><span class="code-line line-number" line="2"><span class="token function">uname</span> <span class="token parameter variable">-a</span>
+</span><span class="code-line line-number" line="3">
+</span><span class="code-line line-number" line="4"><span class="token comment"># check root device</span>
+</span><span class="code-line line-number" line="5">findmnt /
 </span><span class="code-line line-number" line="6">
-</span><span class="code-line line-number" line="7"><span class="token comment"># check kernel infos</span>
-</span><span class="code-line line-number" line="8"><span class="token function">uname</span> <span class="token parameter variable">-a</span>
-</span><span class="code-line line-number" line="9">
-</span><span class="code-line line-number" line="10"><span class="token comment"># check root device</span>
-</span><span class="code-line line-number" line="11">findmnt /
-</span><span class="code-line line-number" line="12">
-</span><span class="code-line line-number" line="13"><span class="token comment"># mount a qcow2 image</span>
-</span><span class="code-line line-number" line="14"><span class="token comment">## Example 1:</span>
-</span><span class="code-line line-number" line="15"><span class="token function">mkdir</span> <span class="token parameter variable">-p</span> /mnt/qemu
-</span><span class="code-line line-number" line="16">guestmount <span class="token parameter variable">-a</span> os-images/Debian_12.0.0_VMM/Debian_12.0.0.qcow2 <span class="token parameter variable">-i</span> /mnt/qemu/
-</span><span class="code-line line-number" line="17">
-</span><span class="code-line line-number" line="18"><span class="token comment">## Example 2:</span>
-</span><span class="code-line line-number" line="19"><span class="token function">sudo</span> guestfish <span class="token parameter variable">--rw</span> <span class="token parameter variable">-a</span> os-images/Debian_12.0.0_VMM/Debian_12.0.0.qcow2
-</span><span class="code-line line-number" line="20">run
-</span><span class="code-line line-number" line="21">list-filesystems
-</span><span class="code-line line-number" line="22">
-</span><span class="code-line line-number" line="23"><span class="token comment"># run commands in qcow2 images</span>
-</span><span class="code-line line-number" line="24"><span class="token comment">## Example 1:</span>
-</span><span class="code-line line-number" line="25">virt-customize <span class="token parameter variable">-a</span>  os-images/Debian_12.0.0_VMM/Debian_12.0.0.qcow2  --run-command <span class="token string">'echo hello >/root/hello.txt'</span>
-</span><span class="code-line line-number" line="26"><span class="token comment">## Example 2:</span>
-</span><span class="code-line line-number" line="27"><span class="token function">sudo</span> virt-customize <span class="token parameter variable">-a</span> os-images/Debian_12.0.0_VMM/Debian_12.0.0.qcow2 <span class="token punctuation">\</span>
-</span><span class="code-line line-number" line="28">  --run-command <span class="token string">'echo -e "auto ens3\niface ens3 inet dhcp" > /etc/network/interfaces.d/ens3.cfg'</span>
-</span><span class="code-line line-number" line="29">
-</span><span class="code-line line-number" line="30"><span class="token comment"># generate mac </span>
-</span><span class="code-line line-number" line="31"><span class="token builtin class-name">printf</span> <span class="token string">'DE:AD:BE:EF:%02X:%02X\n'</span> <span class="token variable"><span class="token variable">$((</span>RANDOM<span class="token operator">%</span><span class="token number">256</span><span class="token variable">))</span></span> <span class="token variable"><span class="token variable">$((</span>RANDOM<span class="token operator">%</span><span class="token number">256</span><span class="token variable">))</span></span>
-</span></code><div onclick="copied(this)" data-code="# check if kvm is enabled
-egrep -o &#x27;(vmx|svm)&#x27; /proc/cpuinfo
-lscpu |grep Virtualization
-lsmod|grep kvm
-ls -l /dev/kvm
-
-# check kernel infos
+</span><span class="code-line line-number" line="7"><span class="token comment"># mount a qcow2 image</span>
+</span><span class="code-line line-number" line="8"><span class="token comment">## Example 1:</span>
+</span><span class="code-line line-number" line="9"><span class="token function">mkdir</span> <span class="token parameter variable">-p</span> /mnt/qemu
+</span><span class="code-line line-number" line="10">guestmount <span class="token parameter variable">-a</span> os-images/Debian_12.0.0_VMM/Debian_12.0.0.qcow2 <span class="token parameter variable">-i</span> /mnt/qemu/
+</span><span class="code-line line-number" line="11">
+</span><span class="code-line line-number" line="12"><span class="token comment">## Example 2:</span>
+</span><span class="code-line line-number" line="13"><span class="token function">sudo</span> guestfish <span class="token parameter variable">--rw</span> <span class="token parameter variable">-a</span> os-images/Debian_12.0.0_VMM/Debian_12.0.0.qcow2
+</span><span class="code-line line-number" line="14">run
+</span><span class="code-line line-number" line="15">list-filesystems
+</span><span class="code-line line-number" line="16">
+</span><span class="code-line line-number" line="17"><span class="token comment"># run commands in qcow2 images</span>
+</span><span class="code-line line-number" line="18"><span class="token comment">## Example 1:</span>
+</span><span class="code-line line-number" line="19">virt-customize <span class="token parameter variable">-a</span>  os-images/Debian_12.0.0_VMM/Debian_12.0.0.qcow2  --run-command <span class="token string">'echo hello >/root/hello.txt'</span>
+</span><span class="code-line line-number" line="20"><span class="token comment">## Example 2:</span>
+</span><span class="code-line line-number" line="21"><span class="token function">sudo</span> virt-customize <span class="token parameter variable">-a</span> os-images/Debian_12.0.0_VMM/Debian_12.0.0.qcow2 <span class="token punctuation">\</span>
+</span><span class="code-line line-number" line="22">  --run-command <span class="token string">'echo -e "auto ens3\niface ens3 inet dhcp" > /etc/network/interfaces.d/ens3.cfg'</span>
+</span><span class="code-line line-number" line="23">
+</span><span class="code-line line-number" line="24"><span class="token comment"># generate mac </span>
+</span><span class="code-line line-number" line="25"><span class="token builtin class-name">printf</span> <span class="token string">'DE:AD:BE:EF:%02X:%02X\n'</span> <span class="token variable"><span class="token variable">$((</span>RANDOM<span class="token operator">%</span><span class="token number">256</span><span class="token variable">))</span></span> <span class="token variable"><span class="token variable">$((</span>RANDOM<span class="token operator">%</span><span class="token number">256</span><span class="token variable">))</span></span>
+</span></code><div onclick="copied(this)" data-code="# check kernel infos
 uname -a
 
 # check root device
@@ -1230,16 +1317,34 @@ ip link show
 ip link add br0 type bridge
 " class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
     <h5 id="-brctl"><a class="anchor" aria-hidden="true" tabindex="-1" href="#-brctl"><span class="octicon octicon-link"></span></a>🌉 brctl</h5>
-    <pre class="language-sh"><code class="language-sh code-highlight"><span class="code-line line-number" line="1"><span class="token comment"># list links</span>
-</span><span class="code-line line-number" line="2"><span class="token function">ip</span> <span class="token function">link</span> show
+    <pre class="language-sh"><code class="language-sh code-highlight"><span class="code-line line-number" line="1"><span class="token comment"># list bridges</span>
+</span><span class="code-line line-number" line="2">brctl show
 </span><span class="code-line line-number" line="3">
 </span><span class="code-line line-number" line="4"><span class="token comment"># create bridge</span>
-</span><span class="code-line line-number" line="5"><span class="token function">ip</span> <span class="token function">link</span> <span class="token function">add</span> br0 <span class="token builtin class-name">type</span> bridge
-</span></code><div onclick="copied(this)" data-code="# list links
-ip link show
+</span><span class="code-line line-number" line="5">brctl addbr br0
+</span><span class="code-line line-number" line="6"><span class="token function">ip</span> <span class="token function">link</span> <span class="token builtin class-name">set</span> br0 up
+</span><span class="code-line line-number" line="7">
+</span><span class="code-line line-number" line="8"><span class="token comment"># add interface to bridge</span>
+</span><span class="code-line line-number" line="9">brctl addif br0 eth0
+</span><span class="code-line line-number" line="10">
+</span><span class="code-line line-number" line="11"><span class="token comment"># remove interface / remove bridge</span>
+</span><span class="code-line line-number" line="12">brctl delif br0 eth0
+</span><span class="code-line line-number" line="13"><span class="token function">ip</span> <span class="token function">link</span> <span class="token builtin class-name">set</span> br0 down
+</span><span class="code-line line-number" line="14">brctl delbr br0
+</span></code><div onclick="copied(this)" data-code="# list bridges
+brctl show
 
 # create bridge
-ip link add br0 type bridge
+brctl addbr br0
+ip link set br0 up
+
+# add interface to bridge
+brctl addif br0 eth0
+
+# remove interface / remove bridge
+brctl delif br0 eth0
+ip link set br0 down
+brctl delbr br0
 " class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
     <h5 id="-qemu-img"><a class="anchor" aria-hidden="true" tabindex="-1" href="#-qemu-img"><span class="octicon octicon-link"></span></a>💾 qemu-img</h5>
     <pre class="language-sh"><code class="language-sh code-highlight"><span class="code-line line-number" line="1"><span class="token comment"># create image</span>
