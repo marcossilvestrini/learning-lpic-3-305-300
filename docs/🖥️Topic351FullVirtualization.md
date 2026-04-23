@@ -734,6 +734,70 @@ brctl
 tunctl
 ```
 
+#### Understanding KVM and QEMU
+
+In this section, we study virtualization on Linux by understanding the role of each component:
+what QEMU does, what KVM does, and why both are typically used together in production.
+
+##### What is QEMU?
+
+QEMU (Quick Emulator) is a userspace virtual machine monitor and hardware emulator.
+It is responsible for creating and managing the virtual machine process and exposing virtual devices to the guest.
+
+Key responsibilities of QEMU:
+
+* Emulates or virtualizes CPU execution for guest systems.
+* Provides virtual hardware (disk controllers, NICs, display, USB, PCI devices, etc.).
+* Loads guest firmware/boot media and starts guest boot.
+* Handles VM resources and runtime controls (snapshots, monitor commands, migration hooks).
+* Supports many machine architectures (x86_64, aarch64, ppc64, and others).
+
+When QEMU runs without hardware acceleration, guest CPU instructions are translated in software (TCG),
+which is flexible but slower.
+
+##### What is KVM?
+
+KVM (Kernel-based Virtual Machine) is a Linux kernel virtualization framework.
+It turns the Linux kernel into a hypervisor by exposing virtualization capabilities through `/dev/kvm`.
+
+Key responsibilities of KVM:
+
+* Uses CPU virtualization extensions (Intel VT-x / AMD-V) for accelerated guest execution. This caracteristic is often referred to as hardware-assisted virtualization (HVM).
+* Provides kernel-level support for guest privilege transitions (guest mode vs host mode).
+* Handles low-level virtualization mechanisms such as vCPU execution and interrupt virtualization.
+* Exposes an API to userspace VMMs (like QEMU) via ioctls on `/dev/kvm`.
+
+KVM by itself is not a full VM manager with rich device models; it is the acceleration/hypervisor layer.
+
+##### How QEMU and KVM Work Together
+
+In the common Linux stack, QEMU is the userspace VMM and KVM is the kernel acceleration backend:
+
+* QEMU creates the VM and virtual devices.
+* QEMU asks KVM to run vCPUs with hardware acceleration.
+* KVM executes guest CPU code near-native speed.
+* QEMU still handles emulated I/O and device models.
+
+Practical result:
+
+* `qemu-system-x86_64` without `-enable-kvm` works as emulation (slower, but useful for cross-arch/labs).
+* `qemu-system-x86_64 -enable-kvm` uses hardware acceleration (faster, typical for real workloads).
+
+##### KVM vs QEMU (Quick Comparison)
+
+| Aspect | **QEMU** | **KVM** |
+| :--- | :--- | :--- |
+| Type | Userspace VMM / emulator | Kernel virtualization framework |
+| Runs in | User space | Linux kernel |
+| Main role | VM lifecycle + device emulation | CPU/memory virtualization acceleration |
+| Depends on | Can run alone (TCG emulation) | Needs a userspace VMM (commonly QEMU) |
+| Hardware emulation | Yes | No (not a device emulator) |
+| Performance impact | Higher overhead alone | Near-native CPU execution with VT-x/AMD-V |
+| Typical usage | `qemu-system-*` commands | Enabled through `/dev/kvm` and `-enable-kvm` |
+
+In short: QEMU gives the VM its virtual machine "shape" (devices and runtime),
+while KVM gives the VM fast hardware-assisted execution.
+
 #### 🛠️ 351.3 Important Commands
 
 ##### 📝 351.3 Others Commands
@@ -751,12 +815,6 @@ systemd-detect-virt
 ```
 
 ```sh
-# check if kvm is enabled
-egrep -o '(vmx|svm)' /proc/cpuinfo
-lscpu |grep Virtualization
-lsmod|grep kvm
-ls -l /dev/kvm
-
 # check kernel infos
 uname -a
 
