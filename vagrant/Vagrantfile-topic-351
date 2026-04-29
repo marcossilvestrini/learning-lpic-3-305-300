@@ -84,6 +84,7 @@ Vagrant.configure("2") do |config|
 
     # LIBVIRT CONFIGURATION
     xen.vm.provision "shell", name: "[xen-libvirt]", path: File.join(scripts_path, "xen/libvirt.sh"), privileged: true
+    xen.vm.provision "shell", name: "[fix-libvirt-qemu]", path: File.join(scripts_path, "xen/fix-libvirt-qemu.sh"), privileged: true
 
     # RESTART VM
     xen.vm.provision :reload

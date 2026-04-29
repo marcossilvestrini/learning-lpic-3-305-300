@@ -1142,8 +1142,8 @@ qemu-system-x86_64 \
 
 # create vm with ISO using vnc in no gui servers \ ssh connections
 
-## create ssh tunel in host
- ssh -l vagrant -L 5902:localhost:5902  192.168.0.131
+## create ssh tunel in host - for use VNC viewer in local machine with -vnc :2
+ssh -l vagrant -L 5902:localhost:5902  192.168.0.131
 
 ## create vm 
 qemu-system-x86_64 \
@@ -1289,7 +1289,7 @@ delvm snapshot-01
 For enable, use:
 
 ```sh
-qemu-system-x86_x64
+qemu-system-x86_64 \
  -chardev socket,path=/tmp/qga.sock,server=on,wait=off,id=qga0 \
  -device virtio-serial \
  -device virtserialport,chardev=qga0,name=org.qemu.guest_agent.0

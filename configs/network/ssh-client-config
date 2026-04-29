@@ -1,0 +1,5 @@
+Host 192.168.0.130
+    User vagrant
+    IdentityFile /home/vagrant/.ssh/skynet-key-ecdsa
+    StrictHostKeyChecking accept-new
+    UserKnownHostsFile /home/vagrant/.ssh/known_hosts

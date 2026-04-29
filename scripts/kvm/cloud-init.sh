@@ -28,6 +28,9 @@ if echo "$RELEASE_INFO" | grep -q -i "debian\|ubuntu"; then
         lvm2 \
         tree whois \
         neofetch \
+        openssh-server \
+        xauth x11-apps x11-xserver-utils \
+        xorg xinit lightdm \
         xfce4 xfce4-goodies \
         tightvncserver dbus-x11 \
         bridge-utils \
@@ -42,10 +45,18 @@ if echo "$RELEASE_INFO" | grep -q -i "debian\|ubuntu"; then
     sudo cp -f configs/commons/.vimrc .vimrc
     sudo cp -f configs/commons/.vimrc /root/.vimrc
 
+    # Prepare user X11 session for both local display manager and VNC
+    cp -f configs/kvm/xsession /home/vagrant/.xsession
+    chmod 755 /home/vagrant/.xsession
+    chown vagrant:vagrant /home/vagrant/.xsession
+
     # Configure VNC server for vagrant user
     touch .Xresources
     PASSWORD="vagrant"
     mkdir -p .vnc
+    cp -f configs/vnc/xstartup_2 /home/vagrant/.vnc/xstartup
+    chmod 755 /home/vagrant/.vnc/xstartup
+    chown vagrant:vagrant /home/vagrant/.vnc/xstartup
     echo -e "$PASSWORD\n$PASSWORD" | vncpasswd -f >~/.vnc/passwd
     chmod 600 ~/.vnc/passwd
     vncserver
@@ -55,6 +66,8 @@ if echo "$RELEASE_INFO" | grep -q -i "debian\|ubuntu"; then
     sudo systemctl daemon-reload
     sudo systemctl enable vncserver@:1.service
     sudo systemctl start vncserver@:1.service
+    sudo systemctl enable lightdm
+    sudo systemctl start lightdm
 
 elif echo "$RELEASE_INFO" | grep -q -i "oracle"; then
     # Oracle Linux detected
@@ -85,6 +98,9 @@ fi
 sudo cp -f configs/commons/01-sshd-custom.conf /etc/ssh/sshd_config.d
 sudo chmod 644 /etc/ssh/sshd_config.d/01-sshd-custom.conf
 
+# Validate SSH configuration before restart
+sudo sshd -t
+
 # -------------------------------------------------
 # Copy SSH keys and ensure permissions
 # -------------------------------------------------
@@ -107,8 +123,11 @@ else
 fi
 
 # Restart SSH service to apply new settings
-sudo systemctl restart sshd
-sudo systemctl restart ssh
+sudo systemctl restart ssh || true
+sudo systemctl restart sshd || true
+
+# Show effective SSH X11 settings in provision logs
+sudo sshd -T | grep -E 'x11forwarding|x11uselocalhost|x11displayoffset|allowtcpforwarding|allowagentforwarding' || true
 
 # Pre-accept SSH host key to avoid prompts during virsh usage
 ssh -o StrictHostKeyChecking=accept-new -i /home/vagrant/.ssh/skynet-key-ecdsa vagrant@192.168.0.130 exit
@@ -117,13 +136,7 @@ ssh -o StrictHostKeyChecking=accept-new -i /home/vagrant/.ssh/skynet-key-ecdsa v
 # Configure SSH client for vagrant user with key
 # -------------------------------------------------
 mkdir -p /home/vagrant/.ssh
-tee /home/vagrant/.ssh/config > /dev/null <<EOF
-Host 192.168.0.130
-    User vagrant
-    IdentityFile /home/vagrant/.ssh/skynet-key-ecdsa
-    StrictHostKeyChecking accept-new
-    UserKnownHostsFile /home/vagrant/.ssh/known_hosts
-EOF
+cp -f configs/network/ssh-client-config /home/vagrant/.ssh/config
 
 chown vagrant:vagrant /home/vagrant/.ssh/config
 chmod 600 /home/vagrant/.ssh/config
