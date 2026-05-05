@@ -1385,8 +1385,8 @@ qemu-img info os-images/Debian_12.0.0_VMM/Debian_12.0.0.qcow2
 </span><span class="code-line line-number" line="10">
 </span><span class="code-line line-number" line="11"><span class="token comment"># create vm with ISO using vnc in no gui servers \ ssh connections</span>
 </span><span class="code-line line-number" line="12">
-</span><span class="code-line line-number" line="13"><span class="token comment">## create ssh tunel in host</span>
-</span><span class="code-line line-number" line="14"> <span class="token function">ssh</span> <span class="token parameter variable">-l</span> vagrant <span class="token parameter variable">-L</span> <span class="token number">5902</span>:localhost:5902  <span class="token number">192.168</span>.0.131
+</span><span class="code-line line-number" line="13"><span class="token comment">## create ssh tunel in host - for use VNC viewer in local machine with -vnc :2</span>
+</span><span class="code-line line-number" line="14"><span class="token function">ssh</span> <span class="token parameter variable">-l</span> vagrant <span class="token parameter variable">-L</span> <span class="token number">5902</span>:localhost:5902  <span class="token number">192.168</span>.0.131
 </span><span class="code-line line-number" line="15">
 </span><span class="code-line line-number" line="16"><span class="token comment">## create vm </span>
 </span><span class="code-line line-number" line="17">qemu-system-x86_64 <span class="token punctuation">\</span>
@@ -1499,8 +1499,8 @@ qemu-system-x86_64 \
 
 # create vm with ISO using vnc in no gui servers \ ssh connections
 
-## create ssh tunel in host
- ssh -l vagrant -L 5902:localhost:5902  192.168.0.131
+## create ssh tunel in host - for use VNC viewer in local machine with -vnc :2
+ssh -l vagrant -L 5902:localhost:5902  192.168.0.131
 
 ## create vm 
 qemu-system-x86_64 \
@@ -1656,11 +1656,11 @@ delvm snapshot-01
 " class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
     <h4 id="-guest-agent"><a class="anchor" aria-hidden="true" tabindex="-1" href="#-guest-agent"><span class="octicon octicon-link"></span></a>🤖 Guest Agent</h4>
     <p>For enable, use:</p>
-    <pre class="language-sh"><code class="language-sh code-highlight"><span class="code-line line-number" line="1">qemu-system-x86_x64
+    <pre class="language-sh"><code class="language-sh code-highlight"><span class="code-line line-number" line="1">qemu-system-x86_64 <span class="token punctuation">\</span>
 </span><span class="code-line line-number" line="2"> <span class="token parameter variable">-chardev</span> socket,path<span class="token operator">=</span>/tmp/qga.sock,server<span class="token operator">=</span>on,wait<span class="token operator">=</span>off,id<span class="token operator">=</span>qga0 <span class="token punctuation">\</span>
 </span><span class="code-line line-number" line="3"> <span class="token parameter variable">-device</span> virtio-serial <span class="token punctuation">\</span>
 </span><span class="code-line line-number" line="4"> <span class="token parameter variable">-device</span> virtserialport,chardev<span class="token operator">=</span>qga0,name<span class="token operator">=</span>org.qemu.guest_agent.0
-</span></code><div onclick="copied(this)" data-code="qemu-system-x86_x64
+</span></code><div onclick="copied(this)" data-code="qemu-system-x86_64 \
  -chardev socket,path=/tmp/qga.sock,server=on,wait=off,id=qga0 \
  -device virtio-serial \
  -device virtserialport,chardev=qga0,name=org.qemu.guest_agent.0
