@@ -1169,7 +1169,7 @@ virsh pool-info default
 virsh pool-define-as --name default --type dir --target /var/lib/libvirt/images
 
 # create a storage pool with dumpxml
-virsh pool-create --file configs/kvm/libvirt/pool-default.xml
+virsh pool-create --overwrite --file configs/kvm/libvirt/pool.xml
 
 # start storage pool
 virsh pool-start default
