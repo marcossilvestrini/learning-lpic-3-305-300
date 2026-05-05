@@ -1,5 +1,6 @@
-<domain type='xen'>
+<domain type='xen' id='8'>
   <name>debian-server01</name>
+  <uuid>d45a8eeb-6d7c-4d62-8c6d-d4ae18550774</uuid>
   <memory unit='KiB'>2097152</memory>
   <currentMemory unit='KiB'>2097152</currentMemory>
   <vcpu placement='static'>2</vcpu>
@@ -10,6 +11,7 @@
   <features>
     <acpi/>
     <apic/>
+    <pae/>
   </features>
   <clock offset='utc'/>
   <on_poweroff>destroy</on_poweroff>
@@ -22,19 +24,34 @@
       <source file='/home/vagrant/os-images/Debian_12.0.0_VMM/Debian_12.0.0-xen-serial.qcow2'/>
       <target dev='xvda' bus='xen'/>
     </disk>
+    <controller type='xenbus' index='0'/>
     <interface type='bridge'>
       <mac address='52:54:00:35:10:01'/>
       <source bridge='xenbr0'/>
+      <target dev='vif8.0-emu'/>
       <model type='e1000'/>
     </interface>
     <serial type='pty'>
+      <source path='/dev/pts/1'/>
       <target type='isa-serial' port='0'>
         <model name='isa-serial'/>
       </target>
+      <alias name='serial0'/>
     </serial>
-    <console type='pty'>
+    <console type='pty' tty='/dev/pts/1'>
+      <source path='/dev/pts/1'/>
       <target type='serial' port='0'/>
+      <alias name='serial0'/>
     </console>
-    <graphics type='vnc' port='-1' autoport='no'/>
+    <input type='mouse' bus='ps2'/>
+    <input type='keyboard' bus='ps2'/>
+    <graphics type='vnc' autoport='no' listen='127.0.0.1'>
+      <listen type='address' address='127.0.0.1'/>
+    </graphics>
+    <video>
+      <model type='cirrus' vram='8192' heads='1' primary='yes'/>
+    </video>
+    <memballoon model='xen'/>
   </devices>
 </domain>
+

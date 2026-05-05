@@ -47,6 +47,7 @@ chown root:root /usr/lib/xen/boot/* || true
 echo "[2/4] Installing wrapper at /usr/libexec/xen-qemu-system-i386 (idempotent)"
 ORIG1=/usr/libexec/xen-qemu-system-i386.orig
 WRAPPER1=/usr/libexec/xen-qemu-system-i386
+mkdir -p "$(dirname "$WRAPPER1")"
 
 if [ ! -f "$ORIG1" ] && [ -f "$WRAPPER1" ]; then
   cp -a "$WRAPPER1" "$ORIG1"
@@ -78,6 +79,7 @@ chmod 755 /usr/libexec/xen-qemu-system-i386
 echo "[3/4] Installing wrapper at /usr/lib/xen/bin/qemu-system-i386 (idempotent)"
 ORIG2=/usr/lib/xen/bin/qemu-system-i386.orig
 WRAPPER2=/usr/lib/xen/bin/qemu-system-i386
+mkdir -p "$(dirname "$WRAPPER2")"
 
 if [ ! -f "$ORIG2" ] && [ -f "$WRAPPER2" ]; then
   cp -a "$WRAPPER2" "$ORIG2"
@@ -87,6 +89,9 @@ fi
 cat > /usr/lib/xen/bin/qemu-system-i386 <<'W2'
 #!/usr/bin/env bash
 REAL="/usr/lib/xen/bin/qemu-system-i386.orig"
+if [ ! -x "$REAL" ] && [ -x /usr/libexec/xen-qemu-system-i386 ]; then
+  REAL="/usr/libexec/xen-qemu-system-i386"
+fi
 args=()
 has_L=false
 skip_next=false
@@ -103,6 +108,10 @@ if [ "$has_L" = false ]; then
 fi
 # minimal debug log
 echo "$(date +'%F %T'): qemu-wrapper args:${args[*]}" >> /var/log/qemu-xen-wrapper.log 2>/dev/null || true
+if [ ! -x "$REAL" ]; then
+  echo "No executable QEMU backend found for Xen wrapper." >&2
+  exit 127
+fi
 exec "$REAL" "${args[@]}"
 W2
 
