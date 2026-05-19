@@ -34,7 +34,7 @@ timeline
 * Understand and analyze control groups
 * Understand and analyze capabilities
 * Understand the role of seccomp, SELinux and AppArmor for container virtualization
-* Understand how LXC and Docker leverage namespaces, cgroups, capabilities, seccomp and MAC
+* Understand how LXC and Docker leverage namespaces, cgroups, capabilities, seccomp and MAC(Mandatory Access Control [ SELinux,AppArmor ])
 * Understand the principle of runc
 * Understand the principle of CRI-O and containerd
 * Awareness of the OCI runtime and image specifications
@@ -178,6 +178,49 @@ For stronger isolation, consider alternatives like:
 * Linux containers (LXC, Docker)
 * Virtual machines (KVM, QEMU)
 * Kernel namespaces and cgroups
+
+##### 🧪 Test chroot bash
+
+```sh
+# create chroot environment
+sudo mkdir -p /mnt/chroot/{bin,lib,lib64,usr,dev,proc,sys,run,tmp}
+
+# copy bash and its dependencies 
+sudo cp /bin/bash /mnt/chroot/bin/
+
+# find dependencies of bash and copy them to chroot
+ldd /bin/bash
+
+# copy dependencies to chroot
+# ldd /bin/bash | awk '{print $3}' | grep '^/' | xargs -I '{}' sudo cp -v '{}' /mnt/chroot/'{}'
+sudo cp /lib/x86_64-linux-gnu/libtinfo.so.6 /mnt/chroot/lib/x86_64-linux-gnu/
+sudo cp /lib/x86_64-linux-gnu/libc.so.6 /mnt/chroot/lib/x86_64-linux-gnu/
+sudo cp /lib64/ld-linux-x86-64.so.2 /mnt/chroot/lib64/
+
+
+# mount necessary filesystems
+sudo mount --bind /dev /mnt/chroot/dev
+sudo mount -t proc proc /mnt/chroot/proc
+sudo mount -t sysfs sys /mnt/chroot/sys
+sudo mount -t tmpfs tmpfs /mnt/chroot/run
+
+
+# enter chroot environment
+sudo chroot /mnt/chroot /bin/bash
+
+# test chroot
+echo "Hello from chroot!"
+pwd
+
+# umount filesystems after exit
+sudo umount /mnt/chroot/run
+sudo umount /mnt/chroot/sys
+sudo umount /mnt/chroot/proc
+sudo umount /mnt/chroot/dev
+
+# delete chroot environment
+sudo rm -rf /mnt/chroot
+```
 
 ##### 🧪 Test chroot with debootstrap
 
