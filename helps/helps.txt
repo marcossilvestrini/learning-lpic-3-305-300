@@ -136,3 +136,21 @@ Example:
 [![Contributors][contributors-shield]][contributors-url]
 [![Issues][issues-shield]][issues-url]
 [![LinkedIn][linkedin-shield]][linkedin-url]
+
+------------------------------------------
+# Acesso minio
+------------------------------------------
+http://192.168.0.130:9001
+------------------------------------------
+
+------------------------------------------
+# Acesso LXD UI
+------------------------------------------
+https://192.168.0.130:8443/
+------------------------------------------
+
+------------------------------------------
+# Configurar LXD login
+------------------------------------------
+if ! lxc auth group show admins ; then lxc auth group create admins ; lxc auth group permission add admins server admin ; fi ; lxc auth identity create tls/lxd-ui --group admins
+------------------------------------------
