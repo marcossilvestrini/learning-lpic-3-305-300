@@ -2160,6 +2160,7 @@ For stronger isolation, consider alternatives like:
 ```sh
 # create chroot environment
 sudo mkdir -p /mnt/chroot/{bin,lib,lib64,usr,dev,proc,sys,run,tmp}
+sudo chmod 1777 /mnt/chroot/tmp
 
 # copy bash and its dependencies 
 sudo cp /bin/bash /mnt/chroot/bin/
@@ -2173,13 +2174,11 @@ sudo cp /lib/x86_64-linux-gnu/libtinfo.so.6 /mnt/chroot/lib/x86_64-linux-gnu/
 sudo cp /lib/x86_64-linux-gnu/libc.so.6 /mnt/chroot/lib/x86_64-linux-gnu/
 sudo cp /lib64/ld-linux-x86-64.so.2 /mnt/chroot/lib64/
 
-
 # mount necessary filesystems
 sudo mount --bind /dev /mnt/chroot/dev
 sudo mount -t proc proc /mnt/chroot/proc
 sudo mount -t sysfs sys /mnt/chroot/sys
 sudo mount -t tmpfs tmpfs /mnt/chroot/run
-
 
 # enter chroot environment
 sudo chroot /mnt/chroot /bin/bash
@@ -2308,9 +2307,9 @@ Used in conjunction with namespaces and cgroups to lock down what a containerize
 
 ##### 🧠 Summary for Beginners
 
-> ✅ Namespaces isolate what a container can see
-> ✅ Cgroups control what it can use
-> ✅ Capabilities and security modules define what it can do
+> ✅ Namespaces isolate what a container can see  
+> ✅ Cgroups control what it can use  
+> ✅ Capabilities and security modules define what it can do  
 
 Together, these kernel features form the technical backbone of container isolation — enabling high-density, secure, and efficient application deployment without full VMs.
 
