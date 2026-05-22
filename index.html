@@ -3640,58 +3640,6 @@ cat /sys/fs/cgroup/lab-memory/memory.events
 </span><span class="code-line line-number" line="15">
 </span><span class="code-line line-number" line="16"><span class="token comment"># check CPU usage and cgroup status</span>
 </span><span class="code-line line-number" line="17"><span class="token function">cat</span> /sys/fs/cgroup/lab-cpu/cpu.stat
-</span><span class="code-line line-number" line="18">
-</span><span class="code-line line-number" line="19"><span class="token comment">##### 🧪 Lab Cgroups</span>
-</span><span class="code-line line-number" line="20">
-</span><span class="code-line line-number" line="21">Use this script <span class="token keyword">for</span> lab: <span class="token punctuation">[</span>cgroups.sh<span class="token punctuation">]</span><span class="token punctuation">(</span>scripts/container/cgroups.sh<span class="token punctuation">)</span>
-</span><span class="code-line line-number" line="22">
-</span><span class="code-line line-number" line="23"><span class="token punctuation">[</span><span class="token operator">!</span><span class="token punctuation">[</span>asciicast<span class="token punctuation">]</span><span class="token punctuation">(</span>https://asciinema.org/a/WbudWJpHKPzBWMh8CGRxCIpZf.svg<span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">(</span>https://asciinema.org/a/WbudWJpHKPzBWMh8CGRxCIpZf<span class="token punctuation">)</span>
-</span><span class="code-line line-number" line="24">
-</span><span class="code-line line-number" line="25">---
-</span><span class="code-line line-number" line="26">
-</span><span class="code-line line-number" line="27"><span class="token comment">#### 🛡️ Understanding Capabilities</span>
-</span><span class="code-line line-number" line="28">
-</span><span class="code-line line-number" line="29">❓ What Are Linux Capabilities?
-</span><span class="code-line line-number" line="30">
-</span><span class="code-line line-number" line="31">Traditionally <span class="token keyword">in</span> Linux, the root user has unrestricted access to the system. Linux capabilities were introduced to <span class="token builtin class-name">break</span> down these all-powerful privileges into smaller, discrete permissions, allowing processes to perform specific privileged operations without requiring full root access.
-</span><span class="code-line line-number" line="32">
-</span><span class="code-line line-number" line="33">This enhances system security by enforcing the principle of least privilege.
-</span><span class="code-line line-number" line="34">
-</span><span class="code-line line-number" line="35"><span class="token operator">|</span> 🔐 Capability            <span class="token operator">|</span> 📋 Description                                      <span class="token operator">|</span>
-</span><span class="code-line line-number" line="36"><span class="token operator">|</span> ------------------------ <span class="token operator">|</span> --------------------------------------------------- <span class="token operator">|</span>
-</span><span class="code-line line-number" line="37"><span class="token operator">|</span> <span class="token variable"><span class="token variable">`</span>CAP_CHOWN<span class="token variable">`</span></span>            <span class="token operator">|</span> Change <span class="token function">file</span> owner regardless of permissions         <span class="token operator">|</span>
-</span><span class="code-line line-number" line="38"><span class="token operator">|</span> <span class="token variable"><span class="token variable">`</span>CAP_NET_BIND_SERVICE<span class="token variable">`</span></span> <span class="token operator">|</span> Bind to ports below <span class="token number">1024</span> <span class="token punctuation">(</span>e.g., <span class="token number">80</span>, <span class="token number">443</span><span class="token punctuation">)</span>            <span class="token operator">|</span>
-</span><span class="code-line line-number" line="39"><span class="token operator">|</span> <span class="token variable"><span class="token variable">`</span>CAP_SYS_TIME<span class="token variable">`</span></span>         <span class="token operator">|</span> Set system clock                                    <span class="token operator">|</span>
-</span><span class="code-line line-number" line="40"><span class="token operator">|</span> <span class="token variable"><span class="token variable">`</span>CAP_SYS_ADMIN<span class="token variable">`</span></span>        <span class="token operator">|</span> ⚠️ Very powerful – includes mount, BPF, and <span class="token function">more</span> <span class="token operator">|</span>
-</span><span class="code-line line-number" line="41"><span class="token operator">|</span> <span class="token variable"><span class="token variable">`</span>CAP_NET_RAW<span class="token variable">`</span></span>          <span class="token operator">|</span> Use raw sockets <span class="token punctuation">(</span>e.g., ping, <span class="token function">traceroute</span><span class="token punctuation">)</span>            <span class="token operator">|</span>
-</span><span class="code-line line-number" line="42"><span class="token operator">|</span> <span class="token variable"><span class="token variable">`</span>CAP_SYS_PTRACE<span class="token variable">`</span></span>       <span class="token operator">|</span> Trace other processes <span class="token punctuation">(</span>debugging<span class="token punctuation">)</span>                   <span class="token operator">|</span>
-</span><span class="code-line line-number" line="43"><span class="token operator">|</span> <span class="token variable"><span class="token variable">`</span>CAP_KILL<span class="token variable">`</span></span>             <span class="token operator">|</span> Send signals to any process                         <span class="token operator">|</span>
-</span><span class="code-line line-number" line="44"><span class="token operator">|</span> <span class="token variable"><span class="token variable">`</span>CAP_DAC_OVERRIDE<span class="token variable">`</span></span>     <span class="token operator">|</span> Modify files and directories without permission     <span class="token operator">|</span>
-</span><span class="code-line line-number" line="45"><span class="token operator">|</span> <span class="token variable"><span class="token variable">`</span>CAP_SETUID<span class="token variable">`</span></span>           <span class="token operator">|</span> Change user ID <span class="token punctuation">(</span><span class="token environment constant">UID</span><span class="token punctuation">)</span> of the process                 <span class="token operator">|</span>
-</span><span class="code-line line-number" line="46"><span class="token operator">|</span> <span class="token variable"><span class="token variable">`</span>CAP_NET_ADMIN<span class="token variable">`</span></span>        <span class="token operator">|</span> Manage network interfaces, routing, etc.            <span class="token operator">|</span>
-</span><span class="code-line line-number" line="47">
-</span><span class="code-line line-number" line="48">🔐 Some Linux Capabilities Types
-</span><span class="code-line line-number" line="49">
-</span><span class="code-line line-number" line="50"><span class="token operator">|</span> Capability Type              <span class="token operator">|</span> Description                                                               <span class="token operator">|</span>
-</span><span class="code-line line-number" line="51"><span class="token operator">|</span> ---------------------------- <span class="token operator">|</span> ------------------------------------------------------------------------- <span class="token operator">|</span>
-</span><span class="code-line line-number" line="52"><span class="token operator">|</span> **CapInh <span class="token punctuation">(</span>Inherited<span class="token punctuation">)</span>** <span class="token operator">|</span> Capabilities inherited from the parent process.                           <span class="token operator">|</span>
-</span><span class="code-line line-number" line="53"><span class="token operator">|</span> **CapPrm <span class="token punctuation">(</span>Permitted<span class="token punctuation">)</span>** <span class="token operator">|</span> Capabilities that the process is allowed to have.                         <span class="token operator">|</span>
-</span><span class="code-line line-number" line="54"><span class="token operator">|</span> **CapEff <span class="token punctuation">(</span>Effective<span class="token punctuation">)</span>** <span class="token operator">|</span> Capabilities that the process is currently using.                         <span class="token operator">|</span>
-</span><span class="code-line line-number" line="55"><span class="token operator">|</span> **CapBnd <span class="token punctuation">(</span>Bounding<span class="token punctuation">)</span>**  <span class="token operator">|</span> Restricts the maximum <span class="token builtin class-name">set</span> of effective capabilities a process can obtain. <span class="token operator">|</span>
-</span><span class="code-line line-number" line="56"><span class="token operator">|</span> **CapAmb <span class="token punctuation">(</span>Ambient<span class="token punctuation">)</span>**   <span class="token operator">|</span> Allows a process to explicitly define its own effective capabilities.     <span class="token operator">|</span>
-</span><span class="code-line line-number" line="57">
-</span><span class="code-line line-number" line="58">📦 Capabilities <span class="token keyword">in</span> containers and Pods
-</span><span class="code-line line-number" line="59">containers typically <span class="token keyword">do</span> not run as full root, but instead receive a limited <span class="token builtin class-name">set</span> of capabilities by default depending on the runtime.
-</span><span class="code-line line-number" line="60">
-</span><span class="code-line line-number" line="61">Capabilities can be added or dropped <span class="token keyword">in</span> Kubernetes using the securityContext.
-</span><span class="code-line line-number" line="62">
-</span><span class="code-line line-number" line="63">📄 Kubernetes example:
-</span><span class="code-line line-number" line="64">
-</span><span class="code-line line-number" line="65">```yaml
-</span><span class="code-line line-number" line="66">securityContext:
-</span><span class="code-line line-number" line="67">  capabilities:
-</span><span class="code-line line-number" line="68">    drop: <span class="token punctuation">[</span><span class="token string">"ALL"</span><span class="token punctuation">]</span>
-</span><span class="code-line line-number" line="69">    add: <span class="token punctuation">[</span><span class="token string">"NET_BIND_SERVICE"</span><span class="token punctuation">]</span>
 </span></code><div onclick="copied(this)" data-code="# create a group
 sudo mkdir /sys/fs/cgroup/lab-cpu
 
@@ -3709,55 +3657,107 @@ top -p $(cat /sys/fs/cgroup/lab-cpu/cgroup.procs)
 
 # check CPU usage and cgroup status
 cat /sys/fs/cgroup/lab-cpu/cpu.stat
-
-##### 🧪 Lab Cgroups
-
-Use this script for lab: [cgroups.sh](scripts/container/cgroups.sh)
-
-[![asciicast](https://asciinema.org/a/WbudWJpHKPzBWMh8CGRxCIpZf.svg)](https://asciinema.org/a/WbudWJpHKPzBWMh8CGRxCIpZf)
-
----
-
-#### 🛡️ Understanding Capabilities
-
-❓ What Are Linux Capabilities?
-
-Traditionally in Linux, the root user has unrestricted access to the system. Linux capabilities were introduced to break down these all-powerful privileges into smaller, discrete permissions, allowing processes to perform specific privileged operations without requiring full root access.
-
-This enhances system security by enforcing the principle of least privilege.
-
-| 🔐 Capability            | 📋 Description                                      |
-| ------------------------ | --------------------------------------------------- |
-| &#x60;CAP_CHOWN&#x60;            | Change file owner regardless of permissions         |
-| &#x60;CAP_NET_BIND_SERVICE&#x60; | Bind to ports below 1024 (e.g., 80, 443)            |
-| &#x60;CAP_SYS_TIME&#x60;         | Set system clock                                    |
-| &#x60;CAP_SYS_ADMIN&#x60;        | ⚠️ Very powerful – includes mount, BPF, and more |
-| &#x60;CAP_NET_RAW&#x60;          | Use raw sockets (e.g., ping, traceroute)            |
-| &#x60;CAP_SYS_PTRACE&#x60;       | Trace other processes (debugging)                   |
-| &#x60;CAP_KILL&#x60;             | Send signals to any process                         |
-| &#x60;CAP_DAC_OVERRIDE&#x60;     | Modify files and directories without permission     |
-| &#x60;CAP_SETUID&#x60;           | Change user ID (UID) of the process                 |
-| &#x60;CAP_NET_ADMIN&#x60;        | Manage network interfaces, routing, etc.            |
-
-🔐 Some Linux Capabilities Types
-
-| Capability Type              | Description                                                               |
-| ---------------------------- | ------------------------------------------------------------------------- |
-| **CapInh (Inherited)** | Capabilities inherited from the parent process.                           |
-| **CapPrm (Permitted)** | Capabilities that the process is allowed to have.                         |
-| **CapEff (Effective)** | Capabilities that the process is currently using.                         |
-| **CapBnd (Bounding)**  | Restricts the maximum set of effective capabilities a process can obtain. |
-| **CapAmb (Ambient)**   | Allows a process to explicitly define its own effective capabilities.     |
-
-📦 Capabilities in containers and Pods
-containers typically do not run as full root, but instead receive a limited set of capabilities by default depending on the runtime.
-
-Capabilities can be added or dropped in Kubernetes using the securityContext.
-
-📄 Kubernetes example:
-
-&#x60;&#x60;&#x60;yaml
-securityContext:
+" class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+    <h5 id="-lab-cgroups"><a class="anchor" aria-hidden="true" tabindex="-1" href="#-lab-cgroups"><span class="octicon octicon-link"></span></a>🧪 Lab Cgroups</h5>
+    <p>Use this script for lab: <a href="scripts/container/cgroups.sh">cgroups.sh</a></p>
+    <p><a href="https://asciinema.org/a/WbudWJpHKPzBWMh8CGRxCIpZf"><img src="https://asciinema.org/a/WbudWJpHKPzBWMh8CGRxCIpZf.svg" alt="asciicast"></a></p>
+    <hr>
+    <h4 id="️-understanding-capabilities"><a class="anchor" aria-hidden="true" tabindex="-1" href="#️-understanding-capabilities"><span class="octicon octicon-link"></span></a>🛡️ Understanding Capabilities</h4>
+    <p>❓ What Are Linux Capabilities?</p>
+    <p>Traditionally in Linux, the root user has unrestricted access to the system. Linux capabilities were introduced to break down these all-powerful privileges into smaller, discrete permissions, allowing processes to perform specific privileged operations without requiring full root access.</p>
+    <p>This enhances system security by enforcing the principle of least privilege.</p>
+    <table>
+      <thead>
+        <tr>
+          <th>🔐 Capability</th>
+          <th>📋 Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>CAP_CHOWN</code></td>
+          <td>Change file owner regardless of permissions</td>
+        </tr>
+        <tr>
+          <td><code>CAP_NET_BIND_SERVICE</code></td>
+          <td>Bind to ports below 1024 (e.g., 80, 443)</td>
+        </tr>
+        <tr>
+          <td><code>CAP_SYS_TIME</code></td>
+          <td>Set system clock</td>
+        </tr>
+        <tr>
+          <td><code>CAP_SYS_ADMIN</code></td>
+          <td>⚠️ Very powerful – includes mount, BPF, and more</td>
+        </tr>
+        <tr>
+          <td><code>CAP_NET_RAW</code></td>
+          <td>Use raw sockets (e.g., ping, traceroute)</td>
+        </tr>
+        <tr>
+          <td><code>CAP_SYS_PTRACE</code></td>
+          <td>Trace other processes (debugging)</td>
+        </tr>
+        <tr>
+          <td><code>CAP_KILL</code></td>
+          <td>Send signals to any process</td>
+        </tr>
+        <tr>
+          <td><code>CAP_DAC_OVERRIDE</code></td>
+          <td>Modify files and directories without permission</td>
+        </tr>
+        <tr>
+          <td><code>CAP_SETUID</code></td>
+          <td>Change user ID (UID) of the process</td>
+        </tr>
+        <tr>
+          <td><code>CAP_NET_ADMIN</code></td>
+          <td>Manage network interfaces, routing, etc.</td>
+        </tr>
+      </tbody>
+    </table>
+    <p>🔐 Some Linux Capabilities Types</p>
+    <table>
+      <thead>
+        <tr>
+          <th>Capability Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>CapInh (Inherited)</strong></td>
+          <td>Capabilities inherited from the parent process.</td>
+        </tr>
+        <tr>
+          <td><strong>CapPrm (Permitted)</strong></td>
+          <td>Capabilities that the process is allowed to have.</td>
+        </tr>
+        <tr>
+          <td><strong>CapEff (Effective)</strong></td>
+          <td>Capabilities that the process is currently using.</td>
+        </tr>
+        <tr>
+          <td><strong>CapBnd (Bounding)</strong></td>
+          <td>Restricts the maximum set of effective capabilities a process can obtain.</td>
+        </tr>
+        <tr>
+          <td><strong>CapAmb (Ambient)</strong></td>
+          <td>Allows a process to explicitly define its own effective capabilities.</td>
+        </tr>
+      </tbody>
+    </table>
+    <p>
+      📦 Capabilities in containers and Pods
+      containers typically do not run as full root, but instead receive a limited set of capabilities by default depending on the runtime.
+    </p>
+    <p>Capabilities can be added or dropped in Kubernetes using the securityContext.</p>
+    <p>📄 Kubernetes example:</p>
+    <pre class="language-yaml"><code class="language-yaml code-highlight"><span class="code-line line-number" line="1"><span class="token key atrule">securityContext</span><span class="token punctuation">:</span>
+</span><span class="code-line line-number" line="2">  <span class="token key atrule">capabilities</span><span class="token punctuation">:</span>
+</span><span class="code-line line-number" line="3">    <span class="token key atrule">drop</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">"ALL"</span><span class="token punctuation">]</span>
+</span><span class="code-line line-number" line="4">    <span class="token key atrule">add</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">"NET_BIND_SERVICE"</span><span class="token punctuation">]</span>
+</span></code><div onclick="copied(this)" data-code="securityContext:
   capabilities:
     drop: [&#x22;ALL&#x22;]
     add: [&#x22;NET_BIND_SERVICE&#x22;]
