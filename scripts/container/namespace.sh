@@ -15,7 +15,6 @@ LANG=C
 
 CHROOT_DIR="/mnt/myenv"
 UTILS=(bash ls ps mkdir cat sh uname touch hostname ip id whoami)
-TEARDOWN_LOG="/tmp/ns_teardown.log"
 
 log()   { echo -e "[INFO] 💻 $*"; }
 warn()  { echo -e "[WARN] ⚠️ $*" >&2; }

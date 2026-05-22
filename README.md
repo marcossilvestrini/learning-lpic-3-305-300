@@ -2299,11 +2299,11 @@ By dropping unnecessary capabilities, containers can run with only what they nee
 
 Used in conjunction with namespaces and cgroups to lock down what a containerized process can do:
 
-| Feature            | Description                                                 |
-| ------------------ | ----------------------------------------------------------- |
-| **seccomp**  | Whitelist or block Linux system calls (syscalls)            |
-| **AppArmor** | Apply per-application security profiles                     |
-| **SELinux**  | Enforce Mandatory Access Control with tight system policies |
+| Feature | Main Role | Container Security Purpose |
+| --- | --- | --- |
+| **seccomp** | Filters Linux syscalls | Limits what kernel operations a containerized process can request |
+| **AppArmor** | Path-based Mandatory Access Control | Restricts what files, capabilities and resources a process profile can access |
+| **SELinux** | Label-based Mandatory Access Control | Enforces policy decisions based on security labels assigned to processes and objects |
 
 ##### 🧠 Summary for Beginners
 
@@ -2313,9 +2313,50 @@ Used in conjunction with namespaces and cgroups to lock down what a containerize
 
 Together, these kernel features form the technical backbone of container isolation — enabling high-density, secure, and efficient application deployment without full VMs.
 
-##### 🧪 Lab Namespaces
+##### 🧪 Test namespaces with unshare
 
-Use this script for lab: [namespace.sh](scripts/container/namespace.sh)
+```sh
+# create new namespaces and run bash
+sudo unshare \
+  --fork \
+  --pid \
+  --mount \
+  --uts \
+  --ipc \
+  --net \
+  --mount-proc \
+  /bin/bash
+
+# check hostname (UTS namespace)
+hostname ns-lab
+hostname
+
+# check PID namespace
+ps auxf
+
+# check network namespace
+ip addr
+ip link set lo up
+ip addr
+
+# test mount namespace
+mkdir /tmp/ns-test
+mount -t tmpfs tmpfs /tmp/ns-test
+touch /tmp/ns-test/file
+ls /tmp/ns-test
+
+# exit namespace shell
+exit
+
+# sumary of namespaces used
+--pid: processes see their own PID space (PID 1 inside the namespace)
+--mount: processes have their own filesystem view (can mount/unmount without affecting host)
+--uts: processes have their own hostname/domainname (can set hostname without affecting host)
+--ipc: processes have their own inter-process communication (shared memory, semaphores)
+--net: processes have their own network stack (interfaces, IPs, routing)
+```
+
+##### 🧪 Lab namespaces
 
 [![asciicast](https://asciinema.org/a/8H6iczCMO24VgjWqwCcXEKWBG.svg)](https://asciinema.org/a/8H6iczCMO24VgjWqwCcXEKWBG)
 
@@ -2468,6 +2509,55 @@ Behind the scenes, this creates cgroup rules for memory and CPU limits for the c
 | **Hierarchy**   | Cgroups are structured in a parent-child tree                            |
 | **Delegation**  | Systemd and user services may manage subtrees of cgroups                 |
 
+##### 🧪 Test cgroups
+
+Example using cgroups v2 to limit memory usage:
+
+```sh
+# create a new cgroup for memory control
+sudo mkdir -p /sys/fs/cgroup/lab-memory
+echo 50M | sudo tee /sys/fs/cgroup/lab-memory/memory.max
+echo 0 | sudo tee /sys/fs/cgroup/lab-memory/memory.swap.max
+
+# move current shell into the cgroup
+bash -c '
+  echo $$ | sudo tee /sys/fs/cgroup/lab-memory/cgroup.procs
+  python3 -c '"'"'
+import mmap,time
+blocks=[]
+for i in range(200):
+    m=mmap.mmap(-1, 1024*1024)
+    m.write(b"x" * 1024*1024)
+    blocks.append(m)
+    time.sleep(0.05)
+'"'"'
+'
+
+# view memory usage and cgroup status
+cat /sys/fs/cgroup/lab-memory/memory.events
+```
+
+CPU limit example:
+
+```sh
+# create a group
+sudo mkdir /sys/fs/cgroup/lab-cpu
+
+# set CPU limit to 50ms per 100ms (50% of CPU)
+echo "50000 100000" | sudo tee /sys/fs/cgroup/lab-cpu/cpu.max
+
+# open terminal inside the cgroup
+echo $$ | sudo tee /sys/fs/cgroup/lab-cpu/cgroup.procs
+
+# run a CPU-intensive process
+yes > /dev/null
+
+# monitor CPU usage with top or htop in another terminal
+top -p $(cat /sys/fs/cgroup/lab-cpu/cgroup.procs)
+
+# check CPU usage and cgroup status
+cat /sys/fs/cgroup/lab-cpu/cpu.stat
+
 ##### 🧪 Lab Cgroups
 
 Use this script for lab: [cgroups.sh](scripts/container/cgroups.sh)
@@ -2523,6 +2613,29 @@ securityContext:
 
 🔐 This ensures the container starts with zero privileges and receives only what is needed.
 
+##### 🧪 Test capabilities
+
+```sh
+# try to create a http server
+python3 -m http.server 80
+# error: Permission denied (because binding to port 80 requires CAP_NET_BIND_SERVICE)
+
+# check python path
+which python3
+
+# add capability to allow binding to port 80
+sudo setcap 'cap_net_bind_service=+ep' $(readlink -f $(which python3))
+
+# check capabilities of python3
+getcap $(readlink -f $(which python3))
+
+# try to create a http server again
+python3 -m http.server 80
+
+# remove capability
+sudo setcap -r $(readlink -f $(which python3))
+```
+
 ##### 🧪 Lab Capabilities
 
 Use this script for lab: [capabilities.sh](scripts/container/capabilities.sh)
@@ -2565,6 +2678,35 @@ seccomp-tools
 /etc/docker/seccomp.json
 ```
 
+##### 🧪 Test seccomp
+
+```sh
+# check if seccomp is supported
+grep SECCOMP /boot/config-$(uname -r)
+
+# create a seccomp profile to block chmod syscalls
+cat > /tmp/seccomp-deny-chmod.json <<'EOF'
+{
+  "defaultAction": "SCMP_ACT_ALLOW",
+  "syscalls": [
+    {
+      "names": ["chmod", "fchmod", "fchmodat"],
+      "action": "SCMP_ACT_ERRNO"
+    }
+  ]
+}
+EOF
+
+# test without seccomp 
+docker run --rm alpine sh -c 'touch /tmp/a && chmod 600 /tmp/a && echo OK'
+
+# test with seccomp profile
+docker run --rm \
+  --security-opt seccomp=/tmp/seccomp-deny-chmod.json \
+  alpine sh -c 'touch /tmp/a && chmod 600 /tmp/a && echo OK'
+# expected: chmod: /tmp/a: Operation not permitted
+```
+
 #### 🦺AppArmor
 
 **What is it?**
@@ -2598,6 +2740,45 @@ Logs
 
 ```sh
 /var/log/syslog (search for apparmor)
+```
+
+##### 🧪 Test AppArmor
+
+```sh
+# check if AppArmor is supported
+aa-status
+cat /sys/module/apparmor/parameters/enabled
+
+# create a simple AppArmor profile to block access to /tmp/secret
+cat > /tmp/apparmor-block-tmp-secret <<'EOF'
+#include <tunables/global>
+
+profile block-tmp-secret flags=(attach_disconnected,mediate_deleted) {
+  #include <abstractions/base>
+
+  file,
+  capability,
+
+  /tmp/secret w,
+  deny /tmp/secret r,
+}
+EOF
+
+# load the profile
+sudo apparmor_parser -r /tmp/apparmor-block-tmp-secret
+
+# confirm profile is loaded
+sudo aa-status | grep block-tmp-secret
+
+
+# test without AppArmor
+docker run --rm alpine sh -c 'echo secret > /tmp/secret && cat /tmp/secret'
+
+# test with AppArmor profile
+docker run --rm \
+  --security-opt apparmor=block-tmp-secret \
+  alpine sh -c 'echo secret > /tmp/secret && cat /tmp/secret'
+# expected: cat: /tmp/secret: Permission denied
 ```
 
 #### 🔒SELinux (Security-Enhanced Linux)
