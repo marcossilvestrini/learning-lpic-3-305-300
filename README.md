@@ -2557,6 +2557,7 @@ top -p $(cat /sys/fs/cgroup/lab-cpu/cgroup.procs)
 
 # check CPU usage and cgroup status
 cat /sys/fs/cgroup/lab-cpu/cpu.stat
+```
 
 ##### 🧪 Lab Cgroups
 
