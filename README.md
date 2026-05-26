@@ -140,7 +140,8 @@ git clone https://github.com/marcossilvestrini/learning-lpic-3-305-300.git
 cd learning-lpic-3-305-300
 ```
 
-Customize a template *Vagrantfile-topic-XXX*. This file contains a vms configuration for labs. Example:
+Customize a template *Vagrantfile-topic-XXX*. This file contains a vms configuration for labs.  
+Example:
 
 * File [Vagrantfile-topic-351](vagrant/Vagrantfile-topic-351)
   * vm.clone_directory = "<your_driver_letter>:\\`<folder>`\\<to_machine>\\#{VM_NAME}-instance-1"
@@ -2553,7 +2554,8 @@ echo $$ | sudo tee /sys/fs/cgroup/lab-cpu/cgroup.procs
 yes > /dev/null
 
 # monitor CPU usage with top or htop in another terminal
-top -p $(cat /sys/fs/cgroup/lab-cpu/cgroup.procs)
+top -p "$(paste -sd, /sys/fs/cgroup/lab-cpu/cgroup.procs)"
+htop -p "$(paste -sd, /sys/fs/cgroup/lab-cpu/cgroup.procs)"
 
 # check CPU usage and cgroup status
 cat /sys/fs/cgroup/lab-cpu/cpu.stat
@@ -2828,8 +2830,8 @@ ps -eZ # Processes
 | Technology                  | Purpose / What It Does                                                                               | Main Differences                                                                                | Example in containers                                                                        |
 | --------------------------- | ---------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
 | **chroot 🏠**         | Changes the apparent root directory for a process. Isolates filesystem.                              | Simple filesystem isolation; does**not** restrict resources, privileges, or system calls. | Docker uses `chroot` internally for building minimal images, but not for strong isolation. |
-| **cgroups 📊**        | Controls and limits resource usage (CPU, memory, disk I/O, etc.) per group of processes.             | Kernel feature; fine-grained resource control, not isolation.                                   | Docker and Kubernetes use cgroups to limit CPU/mem per container/pod.                        |
 | **namespaces 🌐**     | Isolate system resources: PID, mount, UTS, network, user, IPC, time.                                 | Kernel feature; provides different kinds of isolation.                                          | Each container runs in its own set of namespaces (PID, net, mount, etc).                     |
+| **cgroups 📊**        | Controls and limits resource usage (CPU, memory, disk I/O, etc.) per group of processes.             | Kernel feature; fine-grained resource control, not isolation.                                   | Docker and Kubernetes use cgroups to limit CPU/mem per container/pod.                        |
 | **capabilities 🛡️** | Split root privileges into fine-grained units (e.g., net\_admin, sys\_admin).                        | More granular than all-or-nothing root/non-root; can drop or grant specific privileges.         | Docker containers usually run with reduced capabilities (drop dangerous ones).               |
 | **seccomp 🧱**        | Filter/restrict which syscalls a process can make (whitelisting/blacklisting).                       | Very focused: blocks kernel syscalls; cannot block all actions.                                 | Docker’s default profile blocks dangerous syscalls (e.g.,`ptrace`, `mount`).            |
 | **AppArmor 🐧**       | Mandatory Access Control (MAC) framework: restricts programs' file/network access via profiles.      | Profile-based, easier to manage than SELinux; less fine-grained in some cases.                  | Ubuntu-based containers often use AppArmor for container process profiles.                   |
@@ -2848,41 +2850,36 @@ Summary
 
 ##### Overview and Roles
 
-* **OCI (Open container Initiative) 🏛️**
-
-  A foundation creating open standards for **container images** and  **runtimes** .
-
+* **[OCI (Open container Initiative) 🏛️](https://opencontainers.org/)**
+  A foundation creating open standards for **container images** and  **runtimes**.  
   *Defines how images are formatted, stored, and how containers are started/stopped (runtime spec).*
-* **runc ⚙️**
 
-  A universal, low-level, lightweight CLI tool that can run containers according to the OCI runtime specification.
+* **[runc ⚙️](https://github.com/opencontainers/runc)**
+  A universal, low-level, lightweight CLI tool that can run containers according to the OCI runtime specification.  
+  *“The engine” that turns an image + configuration into an actual running Linux container.*  
+  Responsible for creating namespaces, cgroups, capabilities, seccomp, and executing the container process.
 
-  *“The engine” that turns an image + configuration into an actual running Linux container.*
-* **containerd 🏋️**
-
-  A core container runtime daemon for managing the complete container lifecycle: **pulling images, managing storage, running containers** (calls runc), networking plugins, etc.
-
+* **[containerd 🏋️](https://github.com/containerd/containerd)**
+  A core container runtime daemon for managing the complete container lifecycle: **pulling images, managing storage, running containers** (calls runc), networking plugins, etc.  
   *Used by Docker, Kubernetes, nerdctl, and other tools as their main container runtime backend.*
-* **CRI (container Runtime Interface) 🔌**
 
-  A Kubernetes-specific gRPC API to connect Kubernetes with container runtimes.
-
+* **[CRI (container Runtime Interface) 🔌](https://kubernetes.io/docs/concepts/containers/cri/)**
+  A Kubernetes-specific gRPC API to connect Kubernetes with container runtimes.  
   *Not used outside Kubernetes, but enables K8s to talk to containerd, CRI-O, etc.*
-* **CRI-O 🥤**
 
-  A lightweight, Kubernetes-focused runtime that **only** runs OCI containers, using runc under the hood.
-
+* **[CRI-O 🥤](https://github.com/cri-o/cri-o)**
+  A lightweight, Kubernetes-focused runtime that **only** runs OCI containers, using runc under the hood.  
   *Mostly used in Kubernetes, but demonstrates how to build a minimal container runtime focused on open standards.*
 
 ##### 🏷️ Comparison Table: OCI, runc, containerd, CRI, CRI-O
 
-| Component            | Emoji | What Is It?                           | Who Uses It?                            | Example Usage                                                                |
-| -------------------- | ----- | ------------------------------------- | --------------------------------------- | ---------------------------------------------------------------------------- |
-| **OCI**        | 🏛️  | Standards/specifications              | Docker, Podman, CRI-O, containerd, runc | Ensures images/containers are compatible across tools                        |
-| **runc**       | ⚙️  | container runtime (CLI)               | containerd, CRI-O, Docker, Podman       | Directly running a container from a bundle (e.g.`runc run`)                |
-| **containerd** | 🏋️  | container runtime daemon              | Docker, Kubernetes, nerdctl             | Handles pulling images, managing storage/network, starts containers via runc |
-| **CRI**        | 🔌    | K8s runtime interface (API)           | Kubernetes only                         | Lets kubelet talk to containerd/CRI-O                                        |
-| **CRI-O**      | 🥤    | Lightweight container runtime for K8s | Kubernetes, OpenShift                   | Used as K8s container engine                                                 |
+| Component            | What Is It?                           | Who Uses It?                            | Example Usage                                                                |
+| -------------------- | ------------------------------------- | --------------------------------------- | ---------------------------------------------------------------------------- |
+| **OCI**              | Standards/specifications              | Docker, Podman, CRI-O, containerd, runc | Ensures images/containers are compatible across tools                        |
+| **runc**             | container runtime (CLI)               | containerd, CRI-O, Docker, Podman       | Directly running a container from a bundle (e.g.`runc run`)                  |
+| **containerd**       | container runtime daemon              | Docker, Kubernetes, nerdctl             | Handles pulling images, managing storage/network, starts containers via runc |
+| **CRI**              | K8s runtime interface (API)           | Kubernetes only                         | Lets kubelet talk to containerd/CRI-O                                        |
+| **CRI-O**            | Lightweight container runtime for K8s | Kubernetes, OpenShift                   | Used as K8s container engine                                                 |
 
 ---
 
@@ -3046,12 +3043,12 @@ For containerd, you can use this script: [containerd.sh](scripts/container/conta
 
 | Project                   | Category       | Isolation             | Daemon? | Main Use               | Rootless | Notes                       |
 | ------------------------- | -------------- | --------------------- | ------- | ---------------------- | -------- | --------------------------- |
-| **Podman**          | Orchestration  | container             | No      | Manage containers      | Yes      | Docker-like CLI             |
-| **Buildah**         | Build          | N/A                   | No      | Build images           | Yes      | For CI/CD, no container run |
-| **Skopeo**          | Image transfer | N/A                   | No      | Move/check images      | Yes      | No container execution      |
-| **OpenVZ**          | Virtualization | container/VPS         | Yes     | Lightweight VPS        | No       | Kernel shared, legacy tech  |
-| **crun**            | OCI Runtime    | container             | No      | Fast container runtime | Yes      | Faster than runc            |
-| **Kata containers** | Runtime/VM     | MicroVM per container | No      | Strong isolation       | Yes      | VM-level security           |
+| **Podman**                | Orchestration  | container             | No      | Manage containers      | Yes      | Docker-like CLI             |
+| **Buildah**               | Build          | N/A                   | No      | Build images           | Yes      | For CI/CD, no container run |
+| **Skopeo**                | Image transfer | N/A                   | No      | Move/check images      | Yes      | No container execution      |
+| **OpenVZ**                | Virtualization | container/VPS         | Yes     | Lightweight VPS        | No       | Kernel shared, legacy tech  |
+| **crun**                  | OCI Runtime    | container             | No      | Fast container runtime | Yes      | Faster than runc            |
+| **Kata containers**       | Runtime/VM     | MicroVM per container | No      | Strong isolation       | Yes      | VM-level security           |
 
 ---
 

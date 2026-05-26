@@ -29,6 +29,7 @@ if echo "$RELEASE_INFO" | grep -q -i "debian\|ubuntu"; then
     sudo apt update -yqq
     sudo apt install -yqq \
         dos2unix \
+        htop \
         lvm2 \
         btrfs-progs \
         tree whois \
@@ -45,7 +46,8 @@ if echo "$RELEASE_INFO" | grep -q -i "debian\|ubuntu"; then
         cgroup-tools \
         runc \
         snapd \
-        lxc
+        lxc \
+        apparmor apparmor-utils apparmor-profiles
     # clean up apt cache
     sudo apt clean
     sudo apt autoremove -yqq
@@ -71,19 +73,6 @@ if echo "$RELEASE_INFO" | grep -q -i "debian\|ubuntu"; then
     sudo systemctl daemon-reload
     sudo systemctl enable vncserver@:1.service
     sudo systemctl start vncserver@:1.service
-
-    # Enable and start snap service
-    sudo systemctl enable --now snapd.socket
-    sudo ln -s /var/lib/snapd/snap /snap || true
-
-    # Remove old LXD versions (APT)
-    sudo apt remove --purge -y lxd lxd-client || true
-
-    # Install latest LXD from Snap
-    sudo snap install lxd --channel=latest/stable
-
-    # Add user 'vagrant' to 'lxd' group
-    sudo usermod -aG lxd vagrant
 
 elif echo "$RELEASE_INFO" | grep -q -i "oracle"; then
     # Oracle Linux detected

@@ -11,6 +11,7 @@ MULTILINE-COMMENT
 set -euo pipefail
 IFS=$'\n\t'
 export PATH=$PATH:/snap/bin
+LXD_SNAP_CHANNEL="${LXD_SNAP_CHANNEL:-5.21/stable}"
 
 # ========== LOGGING ==========
 log()   { echo -e "🌟 [INFO] $*"; }
@@ -31,19 +32,46 @@ fi
 
 log "Debian/Ubuntu detected. Proceeding with LXD setup..."
 
+# ========== SNAPD SETUP ==========
+ensure_snapd() {
+    if ! command -v snap >/dev/null; then
+        log "snap command not found. Installing snapd..."
+        apt-get update -qq
+        apt-get install -y -qq snapd || abort "Failed to install snapd."
+    fi
+
+    systemctl enable --now snapd.socket || abort "Failed to enable snapd.socket."
+    systemctl start snapd.service >/dev/null 2>&1 || true
+    ln -s /var/lib/snapd/snap /snap 2>/dev/null || true
+
+    snap wait system seed.loaded >/dev/null 2>&1 || true
+
+    log "Refreshing snapd before installing LXD..."
+    if snap list snapd >/dev/null 2>&1; then
+        snap refresh snapd || warn "Could not refresh snapd snap. Continuing with installed snapd."
+    else
+        snap install snapd || warn "Could not install snapd snap. Continuing with packaged snapd."
+    fi
+
+    systemctl restart snapd.socket >/dev/null 2>&1 || true
+    systemctl restart snapd.service >/dev/null 2>&1 || true
+    snap wait system seed.loaded >/dev/null 2>&1 || true
+}
+
 # ========== LXD INSTALL ==========
 if ! command -v lxc >/dev/null; then
     log "LXD not found in PATH. Trying to install via Snap..."
-    snap install lxd --channel=latest/stable || abort "Failed to install LXD via Snap!"
+    ensure_snapd
+    snap install lxd --channel="$LXD_SNAP_CHANNEL" || abort "Failed to install LXD via Snap channel $LXD_SNAP_CHANNEL!"
 else
-    log "LXD already installed (Snap)."
+    log "LXD already installed."
 fi
 
 # ========== LXD INIT ==========
-if ! cat configs/container/lxd/lxd-init.yaml | lxd init --preseed 2>&1 | tee /tmp/lxd-init.log | grep -qi 'error'; then
+if lxd init --preseed < configs/container/lxd/lxd-init.yaml > /tmp/lxd-init.log 2>&1; then
     log "LXD initialized successfully with preseed. 🎉"
 else
-    warn "Check /tmp/lxd-init.log for details. Initialization may have failed."
+    warn "LXD initialization may have failed. Check /tmp/lxd-init.log for details."
 fi
 
 # ========== LXD SERVICE ==========
@@ -79,7 +107,7 @@ log "LXD MinIO S3 backend configured at :8555"
 if ! lsmod | grep -q zfs; then
     log "Loading ZFS kernel module..."
     sudo /sbin/modprobe zfs || {
-        error "Failed to load ZFS kernel module. Ensure ZFS is installed."
+        abort "Failed to load ZFS kernel module. Ensure ZFS is installed."
         exit 1
     }
 fi

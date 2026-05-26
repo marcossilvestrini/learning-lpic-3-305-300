@@ -48,6 +48,7 @@ if echo "$RELEASE_INFO" | grep -qiE "debian|ubuntu"; then
   sudo apt update -yqq
   sudo apt install -yqq \
       dos2unix \
+      htop \
       lvm2 \
       btrfs-progs \
       tree whois \
@@ -55,7 +56,8 @@ if echo "$RELEASE_INFO" | grep -qiE "debian|ubuntu"; then
       ca-certificates curl gnupg lsb-release \
       cgroup-tools \
       jq yq \
-      bridge-utils
+      bridge-utils \
+      apparmor apparmor-utils apparmor-profiles
 
   sudo apt clean
   sudo apt autoremove -yqq

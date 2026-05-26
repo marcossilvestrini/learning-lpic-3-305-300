@@ -75,7 +75,10 @@ plugins=(
 
 source $ZSH/oh-my-zsh.sh
 # User configuration
-cat motd
+if [ -f "$HOME/motd" ]; then
+  cat "$HOME/motd"
+fi
+echo "Silvestrini - $(date +%d/%m/%Y)"
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
@@ -151,4 +154,3 @@ alias k='kubectl'
 alias kgp='kubectl get pods'
 alias kgs='kubectl get svc'
 alias kga='kubectl get all'
-
