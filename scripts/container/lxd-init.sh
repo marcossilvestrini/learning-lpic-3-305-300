@@ -12,6 +12,8 @@ set -euo pipefail
 IFS=$'\n\t'
 export PATH=$PATH:/snap/bin
 LXD_SNAP_CHANNEL="${LXD_SNAP_CHANNEL:-5.21/stable}"
+LXD_SETUP_COOLDOWN_SECONDS="${LXD_SETUP_COOLDOWN_SECONDS:-60}"
+LXD_SETUP_RUN_STAMP="${LXD_SETUP_RUN_STAMP:-/run/lpic3-lxd-init.last-run}"
 
 # ========== LOGGING ==========
 log()   { echo -e "🌟 [INFO] $*"; }
@@ -31,6 +33,17 @@ if [[ $RELEASE_INFO != *"Debian"* && $RELEASE_INFO != *"Ubuntu"* ]]; then
 fi
 
 log "Debian/Ubuntu detected. Proceeding with LXD setup..."
+
+# Avoid duplicate execution caused by Vagrant reload/provision re-entry while
+# keeping this provisioner marked as run: "always" for later vagrant up runs.
+if [[ "$LXD_SETUP_COOLDOWN_SECONDS" -gt 0 && -f "$LXD_SETUP_RUN_STAMP" ]]; then
+    LAST_RUN="$(cat "$LXD_SETUP_RUN_STAMP" 2>/dev/null || echo 0)"
+    NOW="$(date +%s)"
+    if [[ "$LAST_RUN" =~ ^[0-9]+$ && $((NOW - LAST_RUN)) -lt "$LXD_SETUP_COOLDOWN_SECONDS" ]]; then
+        log "LXD setup ran $((NOW - LAST_RUN)) seconds ago. Skipping duplicate provisioner run."
+        exit 0
+    fi
+fi
 
 # ========== SNAPD SETUP ==========
 ensure_snapd() {
@@ -113,14 +126,6 @@ if ! lsmod | grep -q zfs; then
 fi
 log "ZFS kernel module loaded successfully."
 
-# ========== LXD GROUP ==========
-if ! getent group lxd | grep -qw vagrant; then
-    log "Adding 'vagrant' to group 'lxd'..."
-    usermod -aG lxd vagrant || warn "Failed to add vagrant to lxd group."
-else
-    log "User 'vagrant' already in group 'lxd'."
-fi
-
 # ========== LXD UI SETUP ==========
 log "Enabling LXD UI..."
 
@@ -166,3 +171,4 @@ fi
 # log "LXD profile configuration created successfully. 🚀"
 
 log "✅ LXD environment setup complete!"
+date +%s > "$LXD_SETUP_RUN_STAMP" || warn "Failed to write LXD setup run stamp."

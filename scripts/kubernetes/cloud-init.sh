@@ -56,11 +56,21 @@ if echo "$RELEASE_INFO" | grep -qiE "debian|ubuntu"; then
       ca-certificates curl gnupg lsb-release \
       cgroup-tools \
       jq yq \
+      qemu-kvm \
+      libvirt-daemon-system \
+      libvirt-clients \
+      virtinst \
       bridge-utils \
       apparmor apparmor-utils apparmor-profiles
 
   sudo apt clean
   sudo apt autoremove -yqq
+
+  # KVM/libvirt is required by Minikube's kvm2 driver.
+  sudo systemctl enable --now libvirtd.service >/dev/null 2>&1 || \
+    sudo systemctl enable --now libvirtd.socket >/dev/null 2>&1 || true
+  sudo systemctl enable --now virtlogd.socket virtlockd.socket >/dev/null 2>&1 || true
+  sudo usermod -aG libvirt,kvm vagrant || true
 
   # User environment
   sudo cp -f configs/commons/.bashrc_debian .bashrc

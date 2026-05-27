@@ -1,0 +1,123 @@
+# apiVersion: v1
+# kind: Pod
+# metadata:
+#   name: ubuntu-kata-vm
+# spec:
+#   runtimeClassName: kata-qemu
+#   containers:
+#   - name: ubuntu
+#     image: ubuntu
+#     command: ["/bin/sleep", "3600"]
+
+# Cluster
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: cp-svc
+  labels:
+    app: cp-kata
+spec:
+  ports:
+  - port: 6443
+    name: api
+  clusterIP: None
+  selector:
+    app: cp-kata
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: cp-kata
+spec:
+  serviceName: "cp-svc"
+  replicas: 3
+  selector:
+    matchLabels:
+      app: cp-kata
+  template:
+    metadata:
+      labels:
+        app: cp-kata
+    spec:
+      runtimeClassName: kata-qemu
+      containers:
+      - name: master-node
+        image: ubuntu:22.04
+        securityContext:
+          privileged: true
+        resources:
+          requests:
+            cpu: "2"
+            memory: "2Gi"
+          limits:
+            cpu: "2"
+            memory: "2Gi"
+        
+        # --- READINESS PROBE (Resolve a Race Condition) ---
+        readinessProbe:
+          exec:
+            command:
+            - /bin/bash
+            - -c
+            - "curl -s -k https://localhost:6443/healthz | grep ok"
+          initialDelaySeconds: 40  # Espera o download/instalação pacotes
+          periodSeconds: 10
+          failureThreshold: 30
+        
+        command: ["/bin/bash", "-c"]
+        args:
+        - |
+          export DEBIAN_FRONTEND=noninteractive
+          
+          TOKEN="abcdef.0123456789abcdef"
+          CERT_KEY="a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2"
+          ENDPOINT="cp-kata-0.cp-svc.default.svc.cluster.local:6443"
+
+          echo "Configurando Kernel e Rede..."
+          sysctl -w net.ipv4.ip_forward=1
+          
+          echo "Instalando dependências base..."
+          apt-get update && apt-get install -y apt-transport-https ca-certificates curl containerd gpg kmod iptables iproute2
+          
+          echo "Iniciando Containerd manualmente..."
+          nohup containerd > /var/log/containerd.log 2>&1 &
+          sleep 5
+          
+          echo "Instalando Kubernetes..."
+          mkdir -p -m 755 /etc/apt/keyrings
+          curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.30/deb/Release.key | gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg
+          echo 'deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.30/deb/ /' | tee /etc/apt/sources.list.d/kubernetes.list
+          apt-get update && apt-get install -y kubelet kubeadm kubectl
+
+          echo "Iniciando Kubelet em modo forçado (bypass systemd)..."
+          (while true; do kubelet --kubeconfig=/etc/kubernetes/kubelet.conf --config=/var/lib/kubelet/config.yaml --container-runtime-endpoint=unix:///run/containerd/containerd.sock > /var/log/kubelet.log 2>&1; sleep 3; done) &
+          
+          if [[ "$HOSTNAME" == "cp-kata-0" ]]; then
+            echo "--- SOU O LÍDER (0) - INICIANDO O CLUSTER ---"
+            
+            kubeadm init \
+              --control-plane-endpoint="$ENDPOINT" \
+              --token="$TOKEN" \
+              --certificate-key="$CERT_KEY" \
+              --upload-certs \
+              --pod-network-cidr=10.244.0.0/16 \
+              --ignore-preflight-errors=NumCPU,SystemVerification,Service-Kubelet,FileContent--proc-sys-net-ipv4-ip_forward
+            
+            sleep infinity
+          else
+            echo "--- SOU A RÉPLICA ($HOSTNAME) - AGUARDANDO LÍDER ---"
+            
+            while ! curl -s -k https://$ENDPOINT/healthz | grep "ok" > /dev/null; do
+              sleep 5
+            done
+            
+            kubeadm join "$ENDPOINT" \
+              --token="$TOKEN" \
+              --discovery-token-unsafe-skip-ca-verification \
+              --control-plane \
+              --certificate-key="$CERT_KEY" \
+              --ignore-preflight-errors=NumCPU,SystemVerification,Service-Kubelet,FileContent--proc-sys-net-ipv4-ip_forward
+            
+            sleep infinity
+          fi

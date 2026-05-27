@@ -117,8 +117,8 @@ Vagrant.configure("2") do |config|
 
     # VMware Workstation configuration
     # Parametrização de recursos
-    mem_size = "32000" # MB
-    num_vcpus = "8"
+    mem_size = "17000" # MB
+    num_vcpus = "4"
     clone_dir = "E:\\Servers\\VMWare\\#{vm_name}-docker-1"
     docker.vm.provider "vmware_workstation" do |vmware|
       vmware.linked_clone = true
@@ -174,8 +174,8 @@ Vagrant.configure("2") do |config|
 
     # VMware Workstation configuration
     # Parametrização de recursos
-    mem_size = "32000" # MB
-    num_vcpus = "8"
+    mem_size = "17000" # MB
+    num_vcpus = "4"
     clone_dir = "E:\\Servers\\VMWare\\#{vm_name}-docker-2"
     docker.vm.provider "vmware_workstation" do |vmware|
       vmware.linked_clone = true
@@ -231,8 +231,8 @@ Vagrant.configure("2") do |config|
 
     # VMware Workstation configuration
     # Parameters for resources    
-    mem_size = "32000" # MB
-    num_vcpus = "8"
+    mem_size = "64000" # MB
+    num_vcpus = "12"
     clone_dir = "E:\\Servers\\VMWare\\#{vm_name}-kubernetes"
     kubernetes.vm.provider "vmware_workstation" do |vmware|
       vmware.linked_clone = true
