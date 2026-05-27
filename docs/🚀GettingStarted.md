@@ -22,7 +22,8 @@ git clone https://github.com/marcossilvestrini/learning-lpic-3-305-300.git
 cd learning-lpic-3-305-300
 ```
 
-Customize a template *Vagrantfile-topic-XXX*. This file contains a vms configuration for labs. Example:
+Customize a template *Vagrantfile-topic-XXX*. This file contains a vms configuration for labs.  
+Example:
 
 * File [\Vagrantfile-topic-351](../vagrant/Vagrantfile-topic-351)
   * vm.clone_directory = "<your_driver_letter>:\\`<folder>`\\<to_machine>\\#{VM_NAME}-instance-1"
