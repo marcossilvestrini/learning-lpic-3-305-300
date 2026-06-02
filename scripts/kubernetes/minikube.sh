@@ -49,6 +49,12 @@ RESET_CLUSTER="${RESET_CLUSTER:-true}"
 CLEAN_DOCKER_HOST="${CLEAN_DOCKER_HOST:-false}"
 MINIKUBE_ADDONS="${MINIKUBE_ADDONS:-metrics-server dashboard ingress portainer metallb}"
 METALLB_IP_RANGE="${METALLB_IP_RANGE:-}"
+PORTAINER_NAMESPACE="${PORTAINER_NAMESPACE:-portainer}"
+PORTAINER_SERVICE_NAME="${PORTAINER_SERVICE_NAME:-portainer}"
+PORTAINER_FORWARD_SERVICE_NAME="${PORTAINER_FORWARD_SERVICE_NAME:-portainer-forward}"
+PORTAINER_FORWARD_BIND_ADDRESS="${PORTAINER_FORWARD_BIND_ADDRESS:-0.0.0.0}"
+PORTAINER_FORWARD_HTTP_PORT="${PORTAINER_FORWARD_HTTP_PORT:-9000}"
+PORTAINER_FORWARD_HTTPS_PORT="${PORTAINER_FORWARD_HTTPS_PORT:-9443}"
 export LIBVIRT_DEFAULT_URI="${LIBVIRT_DEFAULT_URI:-qemu:///system}"
 
 # Define user-specific paths
@@ -62,6 +68,18 @@ KUBECONFIG_PATH="$HOME_DIR/configs/kubernetes/kubeconfig-minikube-cluster.yaml"
 
 # Ensure the target directory for the kubeconfig exists
 mkdir -p "$(dirname "$KUBECONFIG_PATH")"
+
+get_primary_ipv4() {
+    local vm_ip
+
+    vm_ip="$(ip -4 route get 1.1.1.1 2>/dev/null | awk '{for (i = 1; i <= NF; i++) if ($i == "src") { print $(i + 1); exit }}')"
+    if [ -n "$vm_ip" ]; then
+        echo "$vm_ip"
+        return 0
+    fi
+
+    hostname -I 2>/dev/null | awk '{print $1}'
+}
 
 validate_kvm2() {
     if [ "$MINIKUBE_DRIVER" != "kvm2" ]; then
@@ -94,6 +112,7 @@ validate_kvm2
 
 reset_minikube_profile() {
     log "Deleting existing Minikube profile '$CLUSTER_NAME' if present..."
+    sudo systemctl stop "${PORTAINER_FORWARD_SERVICE_NAME}.service" >/dev/null 2>&1 || true
     minikube delete -p "$CLUSTER_NAME" || true
 
     if [ "$CLEAN_DOCKER_HOST" = "true" ]; then
@@ -183,6 +202,54 @@ EOF
     fi
 }
 
+configure_portainer_forward() {
+    local service_unit
+
+    if ! kubectl --context "$CLUSTER_NAME" get namespace "$PORTAINER_NAMESPACE" >/dev/null 2>&1; then
+        warn "Portainer namespace '$PORTAINER_NAMESPACE' not found. Skipping Portainer forward."
+        return 0
+    fi
+
+    if ! kubectl --context "$CLUSTER_NAME" -n "$PORTAINER_NAMESPACE" get svc "$PORTAINER_SERVICE_NAME" >/dev/null 2>&1; then
+        warn "Portainer service '$PORTAINER_SERVICE_NAME' not found in namespace '$PORTAINER_NAMESPACE'. Skipping Portainer forward."
+        return 0
+    fi
+
+    log "Restarting Portainer deployment to refresh the initial setup window..."
+    kubectl --context "$CLUSTER_NAME" -n "$PORTAINER_NAMESPACE" rollout restart deployment/"$PORTAINER_SERVICE_NAME" >/dev/null 2>&1 || \
+        warn "Could not restart Portainer deployment. Continuing with port-forward."
+    kubectl --context "$CLUSTER_NAME" -n "$PORTAINER_NAMESPACE" rollout status deployment/"$PORTAINER_SERVICE_NAME" --timeout=180s >/dev/null 2>&1 || \
+        warn "Portainer rollout did not complete within the timeout. Port-forward will still be installed."
+
+    service_unit="/etc/systemd/system/${PORTAINER_FORWARD_SERVICE_NAME}.service"
+    log "Installing Portainer forward service: $service_unit"
+
+    sudo tee "$service_unit" >/dev/null <<EOF
+[Unit]
+Description=Portainer kubectl port-forward
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=vagrant
+Group=vagrant
+Environment=KUBECONFIG=$KUBECONFIG_PATH
+ExecStart=/usr/local/bin/kubectl --kubeconfig=$KUBECONFIG_PATH -n $PORTAINER_NAMESPACE port-forward --address=$PORTAINER_FORWARD_BIND_ADDRESS svc/$PORTAINER_SERVICE_NAME $PORTAINER_FORWARD_HTTP_PORT:$PORTAINER_FORWARD_HTTP_PORT $PORTAINER_FORWARD_HTTPS_PORT:$PORTAINER_FORWARD_HTTPS_PORT
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
+EOF
+
+    sudo systemctl daemon-reload
+    sudo systemctl enable --now "${PORTAINER_FORWARD_SERVICE_NAME}.service" >/dev/null 2>&1 || \
+        abort "Failed to enable Portainer forward service."
+
+    log "Portainer is now exposed on the Vagrant VM at http://<vm-ip>:$PORTAINER_FORWARD_HTTP_PORT and https://<vm-ip>:$PORTAINER_FORWARD_HTTPS_PORT"
+}
+
 enable_addons() {
     local addon
 
@@ -192,6 +259,8 @@ enable_addons() {
 
         if [ "$addon" = "metallb" ]; then
             configure_metallb
+        elif [ "$addon" = "portainer" ]; then
+            configure_portainer_forward
         fi
     done
 }
@@ -202,6 +271,8 @@ enable_addons
 echo "Generating kubeconfig and saving to $KUBECONFIG_PATH..."
 kubectl config view --context="$CLUSTER_NAME" --flatten --raw > "$KUBECONFIG_PATH"
 
+VM_IP="$(get_primary_ipv4)"
+
 echo "✅ Minikube cluster '$CLUSTER_NAME' created successfully."
 echo "✅ Kubeconfig with admin access saved to $KUBECONFIG_PATH"
 
@@ -210,3 +281,4 @@ echo "Cluster status:"
 minikube status -p "$CLUSTER_NAME"
 kubectl --context "$CLUSTER_NAME" get nodes -o wide
 minikube profile list
+echo "✅ Portainer is exposed on the Vagrant VM at http://${VM_IP}:9000 and https://${VM_IP}:9443"
