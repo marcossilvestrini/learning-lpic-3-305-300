@@ -1004,7 +1004,7 @@ For containerd, you can use this script: [\containerd.sh](../scripts/container/c
 
 ---
 
-#### 🚀 Podman, Buildah, Skopeo, OpenVZ, crun & Kata containers – Fast Track
+#### 🚀 Podman, Buildah, Skopeo, OpenVZ, crun & Kata containers
 
 ---
 
@@ -1013,7 +1013,7 @@ For containerd, you can use this script: [\containerd.sh](../scripts/container/c
 * **What is it?** A container manager compatible with Docker CLI, but **daemonless** and can run  **rootless** .
 * **Use:** Create, run, stop, and inspect containers and pods.
 * **Highlights:** No central daemon, safer for multi-user, integrates with systemd.
-* [More info]()
+* [More info](https://podman.io/)
 
 ---
 
@@ -1031,7 +1031,7 @@ For containerd, you can use this script: [\containerd.sh](../scripts/container/c
 * **What is it?** Utility to **inspect, copy, and move container images** between registries **without pulling or running** them.
 * **Use:** Move images, check signatures and metadata.
 * **Highlights:** No daemon, ideal for automation and security.
-* [More info]()
+* [More info](https://skopeo.org/)
 
 ---
 
@@ -1089,13 +1089,16 @@ For containerd, you can use this script: [\containerd.sh](../scripts/container/c
 ##### 🔗 unshare
 
 ```sh
+# create rootfs with debootstrap
+sudo apt install -y debootstrap
+sudo debootstrap stable ~vagrant/debian http://deb.debian.org/debian
 # create a new namespaces and run a command in it
 unshare --mount --uts --ipc --user --pid --net  --map-root-user --mount-proc --fork chroot ~vagrant/debian bash
 # mount /proc for test
-#mount -t proc proc /proc
-#ps -aux
-#ip addr show
-#umount /proc
+mount -t proc proc /proc
+ps -aux
+ip addr show
+umount /proc
 ```
 
 ##### 🔍 lsns
@@ -1118,18 +1121,30 @@ ps -o pid,pidns,netns,ipcns,utsns,userns,args -p 3669
 ##### 🚪 nsenter
 
 ```sh
-# get PID docker container
+# get <PID_CRIO_CONTAINER>
+crictl ps
+CID=$(sudo crictl ps -q --name <CONTAINER>)
+PID=$(sudo crictl inspect -o go-template --template '{{.info.pid}}' "$CID")
+
+# get <PID_DOCKER_CONTAINER> with docker
+docker ps
+CID=$(docker ps -q --filter "name=<CONTAINER>")
+PID=$(docker inspect -f '{{.State.Pid}}' <CONTAINER>)
+
 # execute a command in namespace Network
-sudo nsenter -t 3669 -n ip link show
+sudo nsenter -t <PID_DOCKER_CONTAINER> -n ip link show
 
 # execute a command in namespace UTS
-sudo nsenter -t 3669 -u hostname
+sudo nsenter -t <PID_DOCKER_CONTAINER> -u hostname
 
 # execute a command in namespace mount
-nsenter -t 3669 -m ls
+nsenter -t <PID_DOCKER_CONTAINER> -m ls
+
+# execute a command in multiple namespaces
+sudo nsenter -t <PID_DOCKER_CONTAINER> -m -u -i -n -p -- bash
 
 # execute a command in all namespaces
-sudo nsenter -t 3669 -a ps
+sudo nsenter -t <PID_DOCKER_CONTAINER> -a -- bash
 ```
 
 ##### 🌐 252.1 ip
@@ -1205,7 +1220,7 @@ grep Cap /proc/<PID>/status
 ##### 🛡️ capsh - capability shell wrapper
 
 ```sh
-# use grep Cap /proc/<PID>/statusfor get hexadecimal value(Example CApEff=0000000000002000)
+# use grep Cap /proc/<PID>/status for get hexadecimal value(Example CApEff=0000000000002000)
 capsh --decode=0000000000002000
 ```
 
