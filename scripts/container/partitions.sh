@@ -85,7 +85,15 @@ create_partitions() {
     # Limpando partições anteriores (apenas para LAB! ⚠️)
     warn "This will ERASE all partitions on $disk (lab only)!"
     sudo wipefs -a "$disk"
-    echo -e "g\nn\n1\n\n+40G\nt\n8e\nn\n2\n\n+40G\nt\n2\n42\nn\n3\n\n\n\nt\n3\nbf\nw\n" | sudo fdisk "$disk"
+
+    # Usando sfdisk para um particionamento declarativo e robusto
+    sudo sfdisk "$disk" <<EOF
+label: gpt
+size=40G, type=E6D6D379-F507-44C2-A23C-238F2A3DF928
+size=40G, type=0FC63DAF-8483-4772-8E79-3D69D8477DE4
+type=6A9608AD-7306-4314-8454-5875C9A30025
+EOF
+
     sudo partprobe "$disk"
     log "Partitions created: $(lsblk -l $disk | grep part)"
 }
@@ -171,7 +179,7 @@ summary() {
 }
 
 # ===== MAIN FLOW =====
-install_if_missing fdisk util-linux
+install_if_missing sfdisk util-linux
 install_if_missing mkfs.btrfs btrfs-progs
 install_if_missing mkfs.xfs xfsprogs
 

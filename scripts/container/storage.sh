@@ -98,8 +98,14 @@ create_partitions() {
     log "Partitioning $disk for LVM, Btrfs, and ZFS (stateless/lab reset)..."
     warn "This will ERASE all partitions and filesystems on $disk (lab only)!"
     sudo wipefs -a "$disk"
-    # Create partitions: 1 (LVM, 40G), 2 (Btrfs, 40G), 3 (ZFS, rest)
-    echo -e "g\nn\n1\n\n+40G\nt\n8e\nn\n2\n\n+40G\nt\n2\n42\nn\n3\n\n\n\nt\n3\nbf\nw\n" | sudo fdisk "$disk"
+    # Usando sfdisk para particionamento robusto com GUIDs explícitos
+    sudo sfdisk "$disk" <<EOF
+label: gpt
+size=40G, type=E6D6D379-F507-44C2-A23C-238F2A3DF928
+size=40G, type=0FC63DAF-8483-4772-8E79-3D69D8477DE4
+type=6A9608AD-7306-4314-8454-5875C9A30025
+EOF
+
     sudo partprobe "$disk"
     # Wait for devices to be available and for udev to settle
     sudo udevadm settle
@@ -132,7 +138,7 @@ summary() {
 }
 
 # ===== MAIN FLOW =====
-install_if_missing fdisk util-linux
+install_if_missing sfdisk util-linux
 
 # ZFS - Check if zfsutils-linux is installed
 install_if_missing_zfs
