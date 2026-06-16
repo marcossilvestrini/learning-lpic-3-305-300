@@ -1,98 +1,64 @@
 name: Translate README
 
 on:
+  workflow_dispatch:
   push:
     branches:
       - main
       - master
+    paths:
+      - README.md
+
+permissions:
+  contents: write
+
 jobs:
-  build:
+  translate-readme:
     runs-on: ubuntu-latest
+    env:
+      CROWDIN_PROJECT_ID: ${{ secrets.CROWDIN_PROJECT_ID }}
+      CROWDIN_PERSONAL_TOKEN: ${{ secrets.CROWDIN_PERSONAL_TOKEN }}
+
     steps:
-      - uses: actions/checkout@v2
-      - name: Setup Node.js
-        uses: actions/setup-node@v1
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Upload README source to Crowdin
+        uses: crowdin/github-action@v2
         with:
-          node-version: 12.x
-      # ISO Langusge Codes: https://cloud.google.com/translate/docs/languages  
-      - name: Adding README - Portuguese
-        uses: dephraiim/translate-readme@main
+          upload_sources: true
+          upload_translations: false
+          download_translations: false
+          push_sources: false
+          push_translations: false
+          create_pull_request: false
+
+      - name: Pre-translate README to Portuguese
+        uses: crowdin/github-action@v2
         with:
-          LANG: pt
+          command: pre-translate
+          command_args: "-l pt-BR --method mt"
 
-      # - name: Adding README - Espanish
-      #   uses: dephraiim/translate-readme@main
-      #   with:
-      #     LANG: es
+      - name: Download Portuguese README from Crowdin
+        uses: crowdin/github-action@v2
+        with:
+          upload_sources: false
+          upload_translations: false
+          download_translations: true
+          download_language: pt-BR
+          push_sources: false
+          push_translations: false
+          create_pull_request: false
 
-      # - name: Adding README - Japonese
-      #   uses: dephraiim/translate-readme@main
-      #   with:
-      #     LANG: ja
-
-      # - name: Adding README - Chinese Traditional
-      #   uses: dephraiim/translate-readme@main
-      #   with:
-      #     LANG: zh-TW 
-
-      # - name: Adding README - Arabic
-      #   uses: dephraiim/translate-readme@main
-      #   with:
-      #     LANG: ar
-
-      # - name: Adding README - French
-      #   uses: dephraiim/translate-readme@main
-      #   with:
-      #     LANG: fr
-
-# jobs:
-#     translate:
-#         runs-on: ubuntu-latest
-#         steps:
-#             - name: Checkout
-#               uses: actions/checkout@v4
-#               with:
-#                 fetch-depth: 3
-
-#             - name: Auto Translate
-#               uses: Lin-jun-xiang/action-translate-readme@v2 # Based on the tag
-#               with:
-#                 token: ${{ secrets.ACTION_TRANSLATE }} # Based on step2 name
-#                 # zhipuai: ${{ secrets.zhipuai_api_key }} # Optional: Based on step3
-#                 # openai: ${{ secrets.OPENAI_API_KEY }}  # Optional: Based on step3
-#                 #langs: "pt,es,ja,zh-TW,French,Arabic" # You can define any langs
-#                 langs: "pt" # You can define any langs
-
-# jobs:
-#   build:
-#     runs-on: ubuntu-latest
-#     steps:
-#       - uses: actions/checkout@v2
-#       - name: Setup Node.js
-#         uses: actions/setup-node@v1
-#         with:
-#           node-version: 12.x
-#       # ISO Langusge Codes: https://cloud.google.com/translate/docs/languages  
-#       - name: Adding README - Portuguese
-#         uses: kubbot/auto-translate-readme@main
-#         with:
-#           LANG: pt
-#       - name: Adding README - Chinese Traditional
-#         uses: kubbot/auto-translate-readme@main
-#         with:
-#           LANG: zh-TW
-#       - name: Adding README - Hindi
-#         uses: kubbot/auto-translate-readme@main
-#         with:
-#           LANG: hi
-#       - name: Adding README - Arabic
-#         uses: kubbot/auto-translate-readme@main
-#         with:
-#           LANG: ar
-#       - name: Adding README - French
-#         uses: kubbot/auto-translate-readme@main
-#         with:
-#           LANG: fr
-
-# 2026
-# https://github.com/FidelusAleksander/ai-translate-action
+      - name: Commit translated README
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          # Verifica se o arquivo README_pt.md realmente mudou antes de tentar o commit
+          git add README_pt.md
+          if git diff --staged --quiet; then
+            echo "No translation changes to commit"
+          else
+            git commit -m "docs: update Portuguese README"
+            git push
+          fi
