@@ -1,0 +1,44 @@
+Term,Definition
+LPIC-3,Certification Name
+305-300,Exam Code
+LPI,Organization
+Xen,Hypervisor
+QEMU,Emulator
+KVM,Hypervisor
+libvirt,Management API
+VMware,Brand
+VirtualBox,Brand
+Hyper-V,Brand
+LXC,Container Tech
+LXD,Container Tech
+Docker,Brand
+Podman,Brand
+Kubernetes,Orchestrator
+K8s,Short name
+Vagrant,Tool
+Terraform,IaC Tool
+Packer,Tool
+Ansible,Tool
+virsh,Command
+xl,Command
+qemu-img,Command
+guestfish,Command
+guestmount,Command
+virt-customize,Command
+virt-df,Command
+virt-inspector,Command
+virt-cat,Command
+ip link,Command
+brctl,Command
+tunctl,Command
+systemd-machined,System Service
+debootstrap,Command
+unshare,Command
+nsenter,Command
+capsh,Command
+aa-status,Command
+sestatus,Command
+crictl,Command
+kubectl,Command
+helm,Command
+cloud-init,Tool
