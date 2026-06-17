@@ -1,117 +1,117 @@
-# Fedora Administration Guide
+# Oracle Linux Administration Guide
 
-![Fedora](https://user-images.githubusercontent.com/62715900/159807707-b5c2ec6a-491d-49f1-ba17-77441b99ae68.png)
+![Oracle Linux](https://user-images.githubusercontent.com/62715900/120249678-08762780-c252-11eb-8756-529136b9e546.png)
 
-Fedora is the upstream innovation hub for the Red Hat ecosystem, delivering a
-rapid six-month cadence and modern tooling. Use this guide to keep Fedora Workstation
-and Server deployments consistent and maintainable.
+Oracle Linux provides an enterprise-grade platform built on RHEL sources with
+optional Unbreakable Enterprise Kernel (UEK), Ksplice zero-downtime updates,
+and tight Oracle Cloud integration. This guide outlines day-to-day operations
+for Oracle Linux environments.
 
 ## Snapshot
 
-- **Base family:** Fedora Linux (Workstation, Server, IoT, Kinoite, Silverblue)
-- **Release cadence:** ~6 months; each release supported for 13 months
-- **Package formats:** RPM/DNF, Flatpak, OCI images (Toolbx, Podman)
-- **Default desktop:** GNOME on Wayland (Workstation spin)
-- **Installer:** Anaconda with kickstart automation support
+- **Base family:** RHEL-compatible (Oracle Linux, UEK & Red Hat Compatible Kernel)
+- **Support model:** Free to use and distribute; paid support adds Ksplice/OCM
+- **Release cadence:** Aligns with RHEL minor releases; UEK updates more frequent
+- **Primary targets:** Oracle Cloud Infrastructure (OCI), Oracle DB workloads,
+  enterprise virtualization
 
 ## Package Ecosystem
 
 ### Core Tools
 
-- `dnf` — package management with modular streams and groups.
-- `rpm` — low-level querying, verification, and manual installs.
-- `flatpak` — sandboxed desktop applications from Flathub/Fedora remotes.
-- `toolbx` — containerized development environments backed by OCI images.
+- `dnf` and `yum` — primary package managers (Oracle Linux 8+ uses `dnf`).
+- `rpm` — low-level package queries and verification.
+- ULN (Unbreakable Linux Network) — subscription repos for Oracle customers.
+- Additional repos under `/etc/yum.repos.d/oracle*.repo` (CodeReady, EPEL, etc.).
 
 ### Daily Package Tasks
 
-| Goal              | Command                                                                                                           | Notes                                                                 |
-| ----------------- | ----------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------- |
-| Refresh metadata  | `sudo dnf makecache`                                                                                              | Fedora auto-refreshes when needed.                    |
-| Upgrade workspace | `sudo dnf upgrade --refresh`                                                                                      | Recommended weekly; reboots pick up kernel updates.   |
-| Install packages  | `sudo dnf install pkg`                                                                                            | Use `dnf group list` / `dnf group install` for comps. |
-| Remove packages   | `sudo dnf remove pkg`                                                                                             | `dnf autoremove` prunes orphans.                      |
-| Query packages    | `dnf info pkg`, `dnf repoquery --whatprovides /usr/bin/foo`                                                       |                                                                       |
-| Flatpak workflow  | `flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo` → `flatpak install app` |                                                                       |
+| Goal              | Command                                    | Notes                                                                                      |
+| ----------------- | ------------------------------------------ | ------------------------------------------------------------------------------------------ |
+| Sync repositories | `sudo dnf makecache`                       | ULN-enabled systems use `uln-yum-mirror`.                                  |
+| Apply updates     | `sudo dnf update`                          | Combine with `sudo ksplice uptrack-upgrade` for live patching.             |
+| Install software  | `sudo dnf install pkg`                     | Add `--enablerepo=ol8_codeready_builder` etc. when needed. |
+| Remove software   | `sudo dnf remove pkg`                      | `dnf autoremove` cleans dependencies.                                      |
+| Work with RPMs    | `sudo rpm -ivh package.rpm`, `rpm -qi pkg` | Validate with `rpm -K package.rpm`.                                        |
 
-### Fedora Repositories
+### Repository Notes
 
-- Official repos configured in `/etc/yum.repos.d/fedora*.repo`.
-- Enable additional codecs via `rpmfusion-free`/`rpmfusion-nonfree`.
-- Use `copr` for community builds: `sudo dnf install dnf-plugins-core`,
-  then `sudo dnf copr enable user/project`.
+- Register with ULN: `sudo uln_register`.
+- Add UEK channels: enable `ol8_UEKR7` (or version-specific) repo.
+- Third-party packages: enable `EPEL` via `sudo dnf install oracle-epel-release`.
 
 ## Base Configuration
 
-1. Apply updates: `sudo dnf upgrade --refresh`.
-2. Enable automatic updates (optional): `sudo systemctl enable --now dnf-automatic.timer`.
-3. Configure firewall: `sudo firewall-cmd --permanent --add-service=ssh`.
-4. Time sync via `chrony` (enabled by default).
-5. User management: `sudo useradd -G wheel username`; set password with `passwd`.
+1. Update base system: `sudo dnf update -y && sudo reboot`.
+2. Select kernel at boot: `sudo grubby --set-default /boot/vmlinuz-<kernel>`.
+3. Enable Ksplice (subscription): `sudo ksplice uptrack-install`.
+4. Configure firewall: `sudo systemctl enable --now firewalld`;
+   allow services with `sudo firewall-cmd --permanent --add-service=ssh`.
+5. Harden SSH and add administrative users (`wheel` group).
 
 ## System Management
 
-### Services and Logs
+### Services & Logs
 
-- Manage services: `systemctl status`, `systemctl enable`, `systemctl restart`.
-- Logs: `journalctl -xe`, `journalctl -u service`.
-- Inspect boot issues with `journalctl -b -1`.
+- systemd operations: `systemctl status`, `systemctl enable`, `systemctl restart`.
+- Logs: `journalctl -u service`, `/var/log/messages`, `/var/log/secure`.
+- SELinux: Enforcing by default; check with `sestatus` and manage booleans using
+  `sudo setsebool -P`.
 
 ### Storage
 
-- Btrfs is default on Workstation; use `btrfs filesystem df` and snapshots with
-  `snapper` (install via `sudo dnf install snapper`).
-- For XFS/ext4 servers, leverage LVM (`lvm lvcreate`, `lvextend`) and `xfs_growfs`.
+- OCFS2/ASM for Oracle DB: packages under `oraclelinux-developer-release`.
+- LVM workflows (`pvcreate`, `vgcreate`, `lvcreate`, `lvextend`), filesystem
+  growth via `xfs_growfs` or `resize2fs`.
+- iSCSI utilities: `sudo dnf install iscsi-initiator-utils`.
 
 ### Networking
 
-- NetworkManager CLI: `nmcli device status`, `nmcli connection add`.
-- Manage firewall zones: `firewall-cmd --get-active-zones`, `--change-interface`.
-- SELinux enforcement: `sestatus`, `sudo secedit` (policycoreutils) for contexts.
-
-### Containers & Dev
-
-- `podman` for rootless containers (`podman run --rm -it image`).
-- `buildah` builds OCI images; `skopeo` inspects/transfers images.
-- Toolbox: `toolbox enter`, `toolbox create --release 39`.
+- Network scripts: `/etc/sysconfig/network-scripts/ifcfg-*`.
+- NetworkManager CLI: `nmcli connection show`, `nmcli connection add`.
+- FirewallD zones: `firewall-cmd --get-zones`, adjust per interface.
+- High availability: leverage `corosync`, `pacemaker`, and Oracle Clusterware.
 
 ## Server Role Playbooks
 
-### Web & Application
+### Oracle Database Hosts
 
-- **Apache:** `sudo dnf install httpd`; configure in `/etc/httpd/conf.d/`.
-- **Nginx:** `sudo dnf install nginx`; config in `/etc/nginx/conf.d/`.
-- **Python apps:** `sudo dnf install python3-pip`, use `pipx` or virtualenv inside `toolbox`.
+- Install prerequisites: `sudo dnf install oracle-database-preinstall-19c`.
+- Configure hugepages, shared memory, and ASM disks per install guides.
+- Use `oracleasm configure` and `oracleasm createdisk` for ASM storage.
 
-### Databases
+### Web & Application Servers
 
-- **MariaDB:** `sudo dnf install mariadb-server`; enable with
-  `sudo systemctl enable --now mariadb`.
-- **PostgreSQL:** module-based install, e.g. `sudo dnf install @postgresql:15/server`;
-  initialize with `sudo postgresql-setup --initdb`.
-- **SQLite:** included by default for lightweight storage.
+- **Apache:** `sudo dnf install httpd`; config under `/etc/httpd/conf.d`.
+- **Nginx:** enable EPEL/CodeReady, `sudo dnf install nginx`.
+- **Tomcat/Java:** `sudo dnf install tomcat`, manage with `systemctl`.
 
-### File & Directory Services
+### Filesystem & Shares
 
+- **NFS:** `sudo dnf install nfs-utils`; exports in `/etc/exports`.
 - **Samba:** `sudo dnf install samba samba-client`; configure `/etc/samba/smb.conf`,
-  set SELinux contexts with `sudo setsebool -P samba_enable_home_dirs on`.
-- **NFS:** `sudo dnf install nfs-utils`; manage exports via `/etc/exports`.
-- **FreeIPA:** `sudo dnf install freeipa-server` for identity management labs.
+  adjust SELinux contexts (`sudo chcon -t samba_share_t /share`).
+- **iSCSI target:** `sudo dnf install targetcli-fb`; configure via `sudo targetcli`.
 
-## Monitoring and Troubleshooting
+### Management & Monitoring
 
-- Resource checks: `top`, `htop`, `bpytop`, `systemd-cgtop`.
-- Security: `sudo auditctl -l`, `ausearch`, `sealert`.
-- Networking: `ss`, `nmcli`, `nmtui`, `tcpdump`, `nmap`.
-- Dracut rebuild for initramfs: `sudo dracut -f`.
-- Kernel issues: `sudo journalctl -k`, install `kernel-debug` for advanced tracing.
+- **Oracle Enterprise Manager agents:** install via OEM console packages.
+- **OCI CLI/SDK:** `sudo dnf install oraclelinux-oci-cli`.
+- **Glance** at metrics with `dnf install sysstat`, `pcp`, `netdata`.
+
+## Troubleshooting Toolkit
+
+- Kernel issues: `journalctl -k`, `sudo ksplice diagnose`.
+- Performance: `tuned-adm profile throughput-performance`, `perf top`.
+- Security: `sudo ausearch -m avc`, `sudo sealert -a /var/log/audit/audit.log`.
+- Package drift: `rpm -Va`, `sudo dnf history list`, `sudo dnf history undo <id>`.
 
 ## Further Reading
 
-- Fedora Docs: <https://docs.fedoraproject.org/>
-- Fedora Magazine (how-tos): <https://fedoramagazine.org/>
-- Fedora Quick Docs: <https://docs.fedoraproject.org/en-US/quick-docs/>
-- Fedora Security Guide: <https://docs.fedoraproject.org/en-US/Fedora_Security_Guide/>
+- Oracle Linux Documentation: <https://docs.oracle.com/en/operating-systems/oracle-linux/>
+- Ksplice User Guide: <https://docs.oracle.com/cd/E37670_01/>
+- Oracle Database on Linux: <https://docs.oracle.com/en/database/>
+- Oracle Linux Yum Server: <https://yum.oracle.com/>
 
 ## Maintainer
 
