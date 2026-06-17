@@ -1,50 +1,132 @@
-# Linux Distribution Families
+# CentOS Stream Administration Guide
 
-Linux distributions (distros) package the Linux kernel with userland tools, package management, init systems, and opinionated defaults to create complete operating systems. Although there are hundreds of active distros, most inherit from a small set of base families that determine how software is packaged, how updates are delivered, and how administrators maintain the system.
+![CentOS](https://user-images.githubusercontent.com/62715900/96582746-2047ff00-12b2-11eb-82e4-bd121ae654e1.png)
 
-## Debian-Based
+CentOS Stream tracks just ahead of Red Hat Enterprise Linux (RHEL), making it
+ideal for previewing upcoming enterprise updates while maintaining API
+stability. This guide summarizes the workflows required to run CentOS in
+production-like environments.
 
-- **Key examples:** Debian, Ubuntu, Linux Mint, Pop!\_OS
-- **Package format:** `.deb` packages managed through APT/DPKG
-- **Traits:** Emphasis on stability (Debian Stable) with variants for cutting-edge releases (Ubuntu interim releases). Extensive repository ecosystem and strong community support. Widely used in servers, desktops, and embedded environments.
+## Snapshot
 
-## RPM-Based
+- **Base family:** RHEL rolling preview (Stream 8/9)
+- **Kernel:** Enterprise Linux kernel with backported fixes
+- **Release cadence:** Continuous minor updates; point-in-time ISOs available
+- **Primary targets:** Application servers, CI/CD validation, homelabs
+- **Subscription:** No subscription required; integrates seamlessly with RHEL
 
-- **Key examples:** Red Hat Enterprise Linux (RHEL), Fedora, CentOS Stream, openSUSE
-- **Package format:** `.rpm` packages using tools like DNF, YUM, or Zypper
-- **Traits:** Well-suited for enterprise and data center workloads. RHEL and its rebuilds focus on long-term support, while Fedora provides rapid innovation. openSUSE offers both stable (Leap) and rolling (Tumbleweed) options.
+## Package Ecosystem
 
-## Arch Family
+### Core Tools
 
-- **Key examples:** Arch Linux, Manjaro, EndeavourOS
-- **Package format:** Pacman-managed packages with optional AUR source builds
-- **Traits:** Rolling release model with minimal defaults aimed at advanced users. Highly customizable installations and strong documentation via the Arch Wiki.
+- `dnf` — primary package manager with modularity support.
+- `yum` — compatibility wrapper (points to `dnf` on CentOS Stream 8+).
+- `rpm` — low-level tooling to query and verify individual packages.
+- Repositories live in `/etc/yum.repos.d/*.repo`.
 
-## Gentoo and Source-Based
+### Daily Package Tasks
 
-- **Key examples:** Gentoo, Funtoo, Chromium OS builds
-- **Package format:** Source code compiled via Portage (ebuilds)
-- **Traits:** Maximum control over compile-time options and system footprint. Significant setup time but offers fine-grained optimization and understanding of system internals.
+| Goal             | Command                                    | Notes                                                                    |
+| ---------------- | ------------------------------------------ | ------------------------------------------------------------------------ |
+| Refresh metadata | `sudo dnf makecache`                       | `sudo dnf clean all` clears stale caches.                |
+| Apply updates    | `sudo dnf update`                          | Use `--security` to limit to errata.                     |
+| Install software | `sudo dnf install pkg`                     | Add `--enablerepo=<repo>` for optional channels.         |
+| Remove software  | `sudo dnf remove pkg`                      | `autoremove` prunes unused dependencies.                 |
+| Query packages   | `dnf info pkg`, `dnf list installed`       | `dnf provides /path/file` resolves owning package.       |
+| Work with RPMs   | `sudo rpm -ivh package.rpm`, `rpm -ql pkg` | Verify signatures: `rpm -K package.rpm`. |
 
-## Slackware Lineage
+### Repository Hygiene
 
-- **Key examples:** Slackware, Salix
-- **Package format:** TGZ/TXZ packages with manual dependency handling
-- **Traits:** Traditional Unix philosophy with minimal automation. Used for learning or highly controlled environments where administrators prefer manual configuration.
+- Enable AppStream modules: `sudo dnf module list`, `sudo dnf module enable postgresql:14`.
+- Install EPEL: `sudo dnf install epel-release`.
+- Mirror locally using `createrepo_c` and `dnf reposync`.
 
-## Independent and Niche Distros
+## Base Configuration
 
-- **Examples:** NixOS (Nix packages), Alpine Linux (APK), Clear Linux (bundles), Void Linux (XBPS)
-- **Traits:** Each introduces unique design goals—immutable infrastructure, container-focused deployments, or experimental package managers. They often target specialized workloads or developer communities.
+1. Update first: `sudo dnf update -y && sudo reboot`.
+2. Configure SELinux (default enforcing). Status via `sestatus`.
+3. Time sync with `chrony`: `sudo timedatectl set-timezone`, `chronyc sources`.
+4. Enable firewall: `sudo systemctl enable --now firewalld`, manage with
+   `sudo firewall-cmd --permanent --add-service=http`.
+5. Add administrative users: `sudo useradd --groups wheel name`
+   and `sudo passwd name`.
 
-## Choosing a Base
+## System Management
 
-When selecting a distro, consider:
+### Services and Logs
 
-- **Support lifecycle:** Enterprise platforms prioritize long-term stability; rolling releases deliver the latest software.
-- **Package management tooling:** Familiarity with `apt`, `dnf`, `pacman`, or other managers influences maintenance workflows.
-- **Ecosystem and community:** Larger families provide more documentation, third-party packages, and vendor support.
-- **Use case:** Servers, desktops, IoT devices, and containers each benefit from different defaults and footprints.
+- `systemctl status service`, `systemctl enable`, `systemctl restart`.
+- Logs: `journalctl -u service`, `journalctl --since "yesterday"`.
+- Persistent logs enabled by default in `/var/log/journal/`.
 
-Understanding the base family clarifies the package format, update cadence, and administrative tooling you will inherit, making it easier to evaluate derivatives or migrate between distributions.
+### Storage
 
+- Manage partitions with `parted` or `gdisk`; filesystems via `mkfs.xfs`,
+  `mkfs.ext4`.
+- LVM workflow: `pvcreate`, `vgcreate`, `lvcreate`, `lvextend`, `xfs_growfs`.
+- Automount via `/etc/fstab`; test with `sudo mount -a`.
+
+### Networking
+
+- Configuration files: `/etc/NetworkManager/system-connections/` (nmcli) or
+  `/etc/sysconfig/network-scripts/` (legacy).
+- Commands: `nmcli device status`, `nmcli connection modify`.
+- Firewall: `firewall-cmd --list-services`, `--add-rich-rule`.
+- SELinux ports: `sudo semanage port -l`, `sudo semanage port -a`.
+
+## Server Role Playbooks
+
+### Web Stack
+
+- **Apache HTTP Server:** `sudo dnf install httpd`; config in `/etc/httpd/conf`
+  with vhosts under `/etc/httpd/conf.d/`. Manage service with
+  `sudo systemctl enable --now httpd`.
+- **Nginx:** enable EPEL, then `sudo dnf install nginx`. Server blocks in
+  `/etc/nginx/conf.d/`. Validate config: `sudo nginx -t`.
+- **TLS:** `sudo dnf install certbot python3-certbot-apache|nginx`, request
+  certs with `sudo certbot --apache`.
+
+### Databases
+
+- **MariaDB:** `sudo dnf install mariadb-server`; secure with
+  `sudo mysql_secure_installation`.
+- **PostgreSQL:** enable desired module (`postgresql:13`, `postgresql:14`), then
+  `sudo dnf install @postgresql:14`. Initialize with `sudo postgresql-setup --initdb`.
+- **Backup:** `mysqldump`, `mariabackup`, `pg_dump`, `pg_basebackup`.
+
+### Filesystem & Sharing
+
+- **NFS Server:** `sudo dnf install nfs-utils`; exports in `/etc/exports`,
+  apply with `sudo exportfs -ra`, manage services `nfs-server`, `rpcbind`.
+- **NFS Client:** `sudo dnf install nfs-utils`; mount with
+  `sudo mount -t nfs server:/share /mnt/share`.
+- **Samba:** `sudo dnf install samba samba-common`; configure `/etc/samba/smb.conf`.
+  Create users via `sudo smbpasswd -a user`, set SELinux context with
+  `sudo chcon -t samba_share_t /share`.
+
+### Directory Services
+
+- **FreeIPA client:** `sudo dnf install freeipa-client`, enroll with
+  `sudo ipa-client-install`.
+- **OpenLDAP:** `sudo dnf install openldap-servers openldap-clients`;
+  start `slapd`, configure using `ldapmodify` and LDIF files.
+
+## Monitoring and Troubleshooting
+
+- Resource usage: `top`, `htop`, `dstat`, `glances`.
+- SELinux troubleshooting: `sudo sealert -a /var/log/audit/audit.log`.
+- Network: `ss -tulpn`, `sudo tcpdump`, `nmap`, `chronyc tracking`.
+- Package verification: `rpm -Va`, `dnf repoquery --duplicates`.
+- System snapshots: `sudo dnf install timeshift` (desktop) or leverage LVM
+  snapshots/Btrfs (Stream 9 default).
+
+## References
+
+- CentOS Stream Docs: <https://centos.org/centos-stream/>
+- RHEL System Roles: <https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/>
+- SELinux Project: <https://selinuxproject.org/>
+- EPEL Overview: <https://fedoraproject.org/wiki/EPEL>
+
+## Maintainer
+
+- Marcos Silvestrini — marcos.silvestrini@gmail.com
