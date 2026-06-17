@@ -55,4 +55,5 @@ jobs:
           # A Action agora faz o commit e push automaticamente
           push_translations: true
           commit_message: "docs: update Portuguese README (automated)"
+          localization_branch_name: ${{ github.ref_name }}
           create_pull_request: false
