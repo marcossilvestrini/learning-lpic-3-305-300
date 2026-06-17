@@ -1,9 +1,9 @@
 <h1><a name="readme-top"></a></h1>
 
-[![Criar Release](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/release.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/release.yml)
-[![Traduzir README](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/translate.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/translate.yml)
-[![Gerar HTML e PDF](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/generate-html.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/generate-html.yml)
-[! Deploy Webpage](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/deploy-webpage.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/deploy-webpage.yml)
+[![Create Release](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/release.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/release.yml)
+[![Translate README](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/translate.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/translate.yml)
+[![Generate HTML e PDF](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/generate-html.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/generate-html.yml)
+[![Deploy Webpage](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/deploy-webpage.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/deploy-webpage.yml)
 [![Generate GitBook Docs](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/generate-docs.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/generate-docs.yml)
 [![PSScriptAnalyzer](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/powershell.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/powershell.yml)
 [![Slack Notification](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/slack.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/slack.yml)
@@ -60,7 +60,7 @@
       <ul>
         <li><a href="#topic-351.1">351.1 Conceitos de Virtualização e Teoria </a></li>
         <li><a href="#topic-351.2">351.2 Xen</a></li>
-        <li><a href="#topic-351.3">351.3 QEMAS</a></li>
+        <li><a href="#topic-351.3">351.3 QEMU</a></li>
         <li><a href="#topic-351.4">351.4 Máquina Virtual Libvirt</a></li>
         <li><a href="#topic-351.5">351.5 de Gerenciamento de Imagens da Máquina Virtual</a></li>
       </ul>
@@ -99,7 +99,7 @@
 > Instalação e configuração de alguns pacotes também serão cobertas por
 > Ao fazer isso, você pode dar a toda a comunidade uma oportunidade de se beneficiar de suas alterações.
 > O acesso ao código fonte é uma condição prévia para isso.
-> Use vagrant para mais máquinas e execute laboratórios e pratique o conteúdo neste artigo.
+> Use `Vagrant` for up machines and execute labs and practice content in this article.
 > Publiquei na pasta Vagrant um Vagrantfile com o que é necessário
 > para que você carregue um ambiente para estudos
 
