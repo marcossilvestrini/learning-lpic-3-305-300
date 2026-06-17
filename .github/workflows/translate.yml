@@ -33,13 +33,17 @@ jobs:
           push_translations: false
           create_pull_request: false
 
-      - name: Pre-translate README to Portuguese
+      - name: Pre-translate and Push translations to Repo
         uses: crowdin/github-action@v2
         with:
           command: pre-translate
-          command_args: "-l pt-BR --method mt"
+          # Alterado de 'mt' para 'tm' para evitar o erro de engine-id. 
+          # Se quiser usar MT, use: "-l pt-BR --method mt --engine-id SEU_ID"
+          # Usamos 'tm' (Translation Memory) em vez de 'mt' (Machine Translation)
+          # para evitar a necessidade de configurar um motor de IA pago.
+          command_args: "-l pt-BR --method tm"
 
-      - name: Download Portuguese README from Crowdin
+      - name: Download and Commit translations
         uses: crowdin/github-action@v2
         with:
           upload_sources: false
@@ -47,18 +51,7 @@ jobs:
           download_translations: true
           download_language: pt-BR
           push_sources: false
-          push_translations: false
+          # A Action agora faz o commit e push automaticamente
+          push_translations: true
+          commit_message: "docs: update Portuguese README (automated)"
           create_pull_request: false
-
-      - name: Commit translated README
-        run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          # Verifica se o arquivo README_pt.md realmente mudou antes de tentar o commit
-          git add README_pt.md
-          if git diff --staged --quiet; then
-            echo "No translation changes to commit"
-          else
-            git commit -m "docs: update Portuguese README"
-            git push
-          fi
