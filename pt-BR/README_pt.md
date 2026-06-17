@@ -1,244 +1,431 @@
-# PostgreSQL + MCP (Micro Control Plane) Lab
+# Criando VMs Xen Remotamente com Libvirt
 
-## Overview
+Este diretório contém exemplos de XML para criar domínios libvirt. O caso mais importante para o lab é criar uma VM HVM no host Xen usando `virsh` a partir de outro host, normalmente a VM `lpic3-topic-351-kvm`.
 
-This lab demonstrates an integration between PostgreSQL and a Micro Control Plane (MCP) built with Node.js and exposed through a REST API.
-
-The environment runs fully containerized with Docker, delivering hands-on experience with:
-
-- Multi-service Docker builds
-- Container-to-container networking on a dedicated bridge network
-- Automated database initialization and seed data injection
-- A RESTful MCP API for query execution and data manipulation
-- Health checks, observability, and controlled SQL execution
-
----
-
-## Architecture
-
-```mermaid
-flowchart LR
-    subgraph DockerNetwork["Docker Bridge Network: appnet"]
-        A[Client via HTTP/cURL] -->|REST API| B[MCP Server]
-        B -->|pg protocol| C[(PostgreSQL Database)]
-    end
-```
-
-**Components:**
-
-- **PostgreSQL** - hosts the `demo` schema with tables for users, products, and orders.
-- **MCP Server** - provides REST endpoints to query and manipulate PostgreSQL data.
-- **Makefile** - orchestrates Docker Compose operations and wraps common API calls.
-
----
-
-## Project Structure
+## Topologia do Lab
 
 ```text
-app-mcp-postgres/
-|-- docker-compose.yaml
-|-- .env
-|-- .env.example
-|-- Makefile
-|-- mcp/
-|   |-- Dockerfile
-|   |-- .dockerignore
-|   |-- package.json
-|   `-- src/
-|       `-- server.js
-`-- postgres/
-    |-- Dockerfile
-    `-- init/
-        |-- 00_create_schema.sql
-        `-- 01_seed_data.sql
+lpic3-topic-351-kvm
+  Cliente libvirt/virsh
+  Usa URI xen+ssh://...
+  Possui os XMLs em configs/kvm/libvirt/
+
+lpic3-topic-351-xen
+  Host Xen / Dom0
+  Executa libvirtd com driver Xen
+  Executa QEMU device model para VMs HVM
 ```
 
----
+O fluxo é:
 
-## Environment Variables (`.env`)
+1. Preparar o host Xen com Xen, bridge `xenbr0`, libvirt e wrapper QEMU.
+2. Preparar uma imagem QCOW2 específica para Xen/libvirt remoto.
+3. Criar a VM a partir de `configs/kvm/libvirt/xen-debian-server01.xml`.
+4. Acessar a VM por `virsh console` ou SSH.
 
-```env
-POSTGRES_USER=app
-POSTGRES_PASSWORD=secret
-POSTGRES_DB=appdb
-POSTGRES_PORT=5432
-MCP_PORT=8080
+## Arquivos Envolvidos
+
+| Arquivo                                       | Função                                                       |
+| --------------------------------------------- | ------------------------------------------------------------ |
+| `scripts/xen/fix-libvirt-qemu.sh`             | Prepara ROMs e wrappers QEMU no host Xen                     |
+| `scripts/xen/libvirt.sh`                      | Instala/configura libvirt no host Xen                        |
+| `scripts/xen/network.sh`                      | Configura a bridge Xen `xenbr0`                              |
+| `configs/kvm/libvirt/xen-debian-server01.xml` | XML do domínio Xen HVM criado remotamente com libvirt        |
+| `scripts/kvm/libvirt.sh`                      | Instala/configura libvirt no host KVM cliente                |
+| `scripts/kvm/storage.sh`                      | Configura storage pools locais no host KVM                   |
+| `scripts/kvm/prepare-debian-xen-overlay.sh`   | Cria/customiza overlay QCOW2 para console serial, DHCP e SSH |
+| `helps/libvirt_xen_fix.md`                    | Histórico do problema de QEMU/ROM/VNC e solução inicial      |
+
+## Problema Resolvido
+
+Ao criar uma VM Xen HVM remotamente com libvirt, o QEMU device model pode falhar com erros como:
+
+```text
+error: internal error: libxenlight failed to create new domain 'debian-server01'
+qemu-system-i386: -device cirrus-vga,vgamem_mb=8: failed to find romfile "vgabios-cirrus.bin"
 ```
 
----
+A causa é que o QEMU chamado pelo driver Xen/libvirt não encontra os ROMs de vídeo/rede no path esperado. Neste lab, `scripts/xen/fix-libvirt-qemu.sh` resolve isso copiando ROMs para `/usr/lib/xen/boot` e instalando wrappers que injetam:
 
-## Docker Compose Services
+```text
+-L /usr/lib/xen/boot
+```
 
-| Service  | Description                                                                                  | Key Ports |
-| -------- | -------------------------------------------------------------------------------------------- | --------- |
-| postgres | PostgreSQL container seeded with the demo schema and data                                    | 5432      |
-| mcp      | Node.js REST gateway for SQL query/exec (via `pg` driver) | 8080      |
+O wrapper também remove `-vnc` para evitar erro de keymap/VNC no device model. Por isso o acesso principal à VM deve ser feito por console serial.
 
----
+## Preparar o Host Xen
 
-## Build & Run
+Execute no host Xen, normalmente `lpic3-topic-351-xen`:
 
 ```bash
-make up
+cd /home/vagrant
+
+sudo bash scripts/xen/network.sh
+sudo bash scripts/xen/libvirt.sh
+sudo bash scripts/xen/fix-libvirt-qemu.sh
 ```
 
-This builds and starts both containers, initializes the database, and exposes the MCP API on `http://localhost:8080`.
-
-To verify container status:
+Valide:
 
 ```bash
-make ps
+ip addr show xenbr0
+systemctl status libvirtd --no-pager
+ls -l /usr/lib/xen/boot
+ls -l /usr/lib/xen/bin/qemu-system-i386
 ```
 
-View combined logs:
+O wrapper grava um log simples em:
 
 ```bash
-make logs
+sudo tail -f /var/log/qemu-xen-wrapper.log
 ```
 
----
+## Preparar o Host KVM Cliente
 
-## Health Check
+Execute no host que vai chamar o Xen remotamente, normalmente `lpic3-topic-351-kvm`:
 
 ```bash
-make mcp-health
+cd /home/vagrant
+
+sudo bash scripts/kvm/libvirt.sh
+sudo bash scripts/kvm/storage.sh
 ```
 
-Expected output:
-
-```json
-{
-  "status": "ok",
-  "db": "connected",
-  "probe": true
-}
-```
-
----
-
-## Querying via MCP
-
-All SQL operations (read/write) are executed through the MCP, not directly via `psql`. Two REST endpoints are exposed:
-
-| Endpoint | Method | Purpose                           | Restriction                          |
-| -------- | ------ | --------------------------------- | ------------------------------------ |
-| /query   | POST   | Executes SELECT statements        | Regex enforced via `MCP_QUERY_ALLOW` |
-| /exec    | POST   | Executes INSERT / UPDATE / DELETE | Regex enforced via `MCP_EXEC_ALLOW`  |
-
-**Example: SELECT via `/query`**
+Valide pools locais:
 
 ```bash
-make mcp-query
+virsh pool-list --all
+virsh vol-info --pool os-images Debian_12.0.0.qcow2
 ```
 
-Equivalent `curl`:
+## Preparar a Imagem Overlay para Xen
+
+Não altere a imagem base `Debian_12.0.0.qcow2`, pois ela pode ser usada por outros labs. Use um overlay:
 
 ```bash
-curl -fsS -X POST http://localhost:8080/query \
-  -H 'Content-Type: application/json' \
-  -d '{"sql":"SELECT count(*) AS users FROM demo.users"}'
+sudo bash scripts/kvm/prepare-debian-xen-overlay.sh
 ```
 
-**Example: Bulk insert via `/exec`**
+Por padrão, o script usa:
+
+```text
+BASE_IMAGE=/home/vagrant/os-images/Debian_12.0.0_VMM/Debian_12.0.0.qcow2
+OVERLAY_IMAGE=/home/vagrant/os-images/Debian_12.0.0_VMM/Debian_12.0.0-xen-serial.qcow2
+GUEST_IFACE=enX0
+```
+
+Ele configura no overlay:
+
+- `console=tty0 console=ttyS0,115200n8` no GRUB.
+- `serial-getty@ttyS0.service` para login via `virsh console`.
+- Chaves de host SSH com `ssh-keygen -A`.
+- `ssh.service` habilitado.
+- DHCP automático na interface `enX0`.
+
+Se o nome da interface mudar, rode com outro valor:
 
 ```bash
-make mcp-bulk-users N=25
+sudo GUEST_IFACE=eth0 bash scripts/kvm/prepare-debian-xen-overlay.sh
 ```
 
-Equivalent `curl` (creating three demo users):
+Importante: execute `virt-customize` somente com a VM desligada. Nunca customize um QCOW2 que está em uso por uma VM ativa.
+
+## XML da VM Xen
+
+O arquivo principal é:
+
+```text
+configs/kvm/libvirt/xen-debian-server01.xml
+```
+
+Pontos importantes:
+
+```xml
+<domain type='xen'>
+```
+
+Usa o driver Xen remoto.
+
+```xml
+<emulator>/usr/lib/xen/bin/qemu-system-i386</emulator>
+```
+
+Aponta para o wrapper preparado no host Xen.
+
+```xml
+<source file='/home/vagrant/os-images/Debian_12.0.0_VMM/Debian_12.0.0-xen-serial.qcow2'/>
+```
+
+Usa o overlay customizado, não a imagem base.
+
+```xml
+<interface type='bridge'>
+  <mac address='52:54:00:35:10:01'/>
+  <source bridge='xenbr0'/>
+  <model type='e1000'/>
+</interface>
+```
+
+Conecta a VM na bridge Xen `xenbr0`.
+
+```xml
+<serial type='pty'>
+<console type='pty'>
+```
+
+Expõe console serial para `virsh console`.
+
+```xml
+<graphics type='vnc' port='-1' autoport='no'/>
+```
+
+O XML ainda contém graphics, mas o wrapper remove `-vnc` do comando real do QEMU. Use console serial como caminho principal.
+
+## Criar a VM Remotamente
+
+No host KVM cliente:
 
 ```bash
-curl -fsS -X POST http://localhost:8080/exec \
-  -H 'Content-Type: application/json' \
-  --data-binary '{"sql":"INSERT INTO demo.users(full_name,email) SELECT CONCAT(''bulk user '', gs), CONCAT(''bulk-'', gs, ''-'', to_char(clock_timestamp(), ''yyyymmddhh24missms''), ''@example.com'') FROM generate_series(1, 3) AS gs","params":[]}'
+export LIBVIRT_DEFAULT_URI='xen+ssh://vagrant@192.168.0.130'
+virsh create configs/kvm/libvirt/xen-debian-server01.xml
 ```
 
-**Example: Targeted delete via `/exec`**
+Se precisar informar chave SSH explicitamente:
 
 ```bash
-make mcp-delete-one PATTERN='bulk-%'
-make mcp-delete-n N=10 PATTERN='bulk-%'
+export LIBVIRT_DEFAULT_URI='xen+ssh://vagrant@192.168.0.130?keyfile=/home/vagrant/.ssh/skynet-key-ecdsa'
+virsh create configs/kvm/libvirt/xen-debian-server01.xml
 ```
 
-Both targets default to the `bulk-%` pattern when `PATTERN` is omitted.
-
-**Custom example: UPDATE via `/exec`**
+Valide:
 
 ```bash
-curl -fsS -X POST http://localhost:8080/exec \
-  -H 'Content-Type: application/json' \
-  -d '{"sql":"UPDATE demo.users SET full_name = $1 WHERE email = $2","params":["Renamed User","user1@example.com"]}'
+virsh list
+virsh domstate debian-server01
+virsh domiflist debian-server01
 ```
 
-**Demo convenience endpoint**
+Resultado esperado para rede:
 
-The MCP also exposes `GET /demo/users` to return the 25 most recent users for quick inspections.
+```text
+Interface    Type     Source   Model   MAC
+-----------------------------------------------------------
+vifX.0-emu   bridge   xenbr0   e1000   52:54:00:35:10:01
+```
 
----
-
-## Database Schema Overview
-
-| Table              | Description                                                                         |
-| ------------------ | ----------------------------------------------------------------------------------- |
-| `demo.users`       | Application users (name, email, created_at) |
-| `demo.products`    | Product catalog with prices                                                         |
-| `demo.orders`      | Orders associated with users                                                        |
-| `demo.order_items` | Line items linking orders and products                                              |
-
----
-
-## Security Controls
-
-| Mechanism                              | Description                                                                                                                           |
-| -------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- |
-| Regex SQL Whitelisting                 | Controlled via `MCP_QUERY_ALLOW` and `MCP_EXEC_ALLOW` environment variables                                                           |
-| Parameterised Statements               | `/exec` operations support positional parameters (`$1`, `$2`, ...) |
-| Least Privilege                        | PostgreSQL user `app` with limited DML rights                                                                                         |
-| Health & Isolation | Dedicated Docker network (`appnet`) and container-level health checks                                              |
-
----
-
-## Makefile Commands
-
-| Command                                      | Description                                                                           |
-| -------------------------------------------- | ------------------------------------------------------------------------------------- |
-| `make help`                                  | Show all available commands and examples                                              |
-| `make up`                                    | Build and start all Docker containers                                                 |
-| `make down`                                  | Stop and remove all containers and volumes                                            |
-| `make ps`                                    | List running containers                                                               |
-| `make logs`                                  | Tail real-time logs from all services                                                 |
-| `make mcp-health`                            | Check MCP `/health` endpoint status                                                   |
-| `make mcp-query`                             | Execute demo `SELECT count(*) FROM demo.users` query                                  |
-| `make mcp-bulk-users N=<int>`                | Insert `N` random users via MCP (default prefix `bulk`)            |
-| `make mcp-delete-one PATTERN='bulk-%'`       | Delete the most recent user matching the pattern                                      |
-| `make mcp-delete-n N=<int> PATTERN='bulk-%'` | Delete the `N` most recent users matching the pattern                                 |
-| `make mcp-tables`                            | List all tables in schema `demo`                                                      |
-| `make mcp-counts`                            | Show row count per table (`users`, `orders`, etc.) |
-| `make mcp-users`                             | Show the last 10 users                                                                |
-| `make mcp-orders`                            | Show the last 10 orders                                                               |
-| `make mcp-items`                             | Show the latest order items                                                           |
-| `make mcp-show`                              | Run tables, counts, users, orders, and items sequentially                             |
-| `make clean`                                 | Remove unused Docker resources                                                        |
-| `make rebuild`                               | Rebuild (down + up) all containers                                 |
-
----
-
-## Teardown
+No host Xen, também é possível conferir com:
 
 ```bash
-make down
+sudo xl list
+sudo tail -n 100 /var/log/qemu-xen-wrapper.log
+sudo ls -l /var/log/xen/
 ```
 
-Optionally clear dangling Docker artefacts:
+## Acessar o Console
+
+No host cliente:
 
 ```bash
-make clean
+virsh console debian-server01
 ```
 
----
+Se conectar e a tela ficar parada, pressione `Enter`.
 
-## Author & Versioning
+Para sair do console:
 
-Author: Marcos Silvestrini  
-Version: 1.0 (October 2025)  
-License: MIT
+```text
+Ctrl + ] ou Ctrl + 5
+```
+
+O login aparece em `ttyS0` quando o overlay foi preparado corretamente:
+
+```text
+Debian GNU/Linux 12 debian ttyS0
+
+debian login:
+```
+
+## Validar Rede Dentro da VM
+
+Dentro da VM:
+
+```bash
+ip link
+ip addr
+ip route
+ping 1.1.1.1
+ping google.com
+```
+
+Se a interface existir mas estiver `DOWN`, suba manualmente para teste:
+
+```bash
+sudo ip link set enX0 up
+sudo dhclient enX0
+```
+
+Depois de aplicar `scripts/kvm/prepare-debian-xen-overlay.sh`, a interface deve subir automaticamente via `/etc/network/interfaces.d/enX0.cfg`.
+
+## Validar SSH
+
+Dentro da VM:
+
+```bash
+sudo systemctl status ssh --no-pager
+sudo journalctl -u ssh -b --no-pager
+sudo sshd -t
+```
+
+Se aparecer:
+
+```text
+sshd: no hostkeys available -- exiting.
+```
+
+gere as chaves:
+
+```bash
+sudo ssh-keygen -A
+sudo systemctl reset-failed ssh
+sudo systemctl restart ssh
+```
+
+O script `scripts/kvm/prepare-debian-xen-overlay.sh` já executa `ssh-keygen -A` no overlay.
+
+## Desligar e Recriar
+
+Para destruir uma VM transitória criada com `virsh create`:
+
+```bash
+virsh destroy debian-server01
+```
+
+Para recriar:
+
+```bash
+virsh create configs/kvm/libvirt/xen-debian-server01.xml
+```
+
+Se ela tiver sido definida persistentemente:
+
+```bash
+virsh undefine debian-server01
+```
+
+## Troubleshooting
+
+### `failed to find romfile "vgabios-cirrus.bin"`
+
+Rode no host Xen:
+
+```bash
+sudo bash scripts/xen/fix-libvirt-qemu.sh
+```
+
+Valide:
+
+```bash
+ls -l /usr/lib/xen/boot/vgabios-*
+```
+
+### `virsh console` conecta mas parece congelado
+
+Isso ocorre quando a VM HVM não envia saída para `ttyS0`. Prepare o overlay:
+
+```bash
+virsh destroy debian-server01
+sudo bash scripts/kvm/prepare-debian-xen-overlay.sh
+virsh create configs/kvm/libvirt/xen-debian-server01.xml
+virsh console debian-server01
+```
+
+### XML mostra VNC, mas não abre console gráfico
+
+O wrapper remove `-vnc` do comando real do QEMU. Isso foi feito para evitar erro de keymap/VNC no device model Xen. Use `virsh console`.
+
+Confira o comando real:
+
+```bash
+sudo tail -n 20 /var/log/qemu-xen-wrapper.log
+```
+
+Você deve ver algo parecido com:
+
+```text
+-display none -serial pty ... -machine xenfv ...
+```
+
+### A VM só mostra `lo` em `ip link`
+
+O XML não criou NIC ou a VM foi criada com uma versão antiga do XML. Confira:
+
+```bash
+virsh domiflist debian-server01
+```
+
+O XML deve conter:
+
+```xml
+<interface type='bridge'>
+  <source bridge='xenbr0'/>
+  <model type='e1000'/>
+</interface>
+```
+
+### A NIC existe, mas vem `DOWN`
+
+Teste manual:
+
+```bash
+sudo ip link set enX0 up
+sudo dhclient enX0
+```
+
+Depois prepare o overlay para persistir DHCP:
+
+```bash
+virsh destroy debian-server01
+sudo bash scripts/kvm/prepare-debian-xen-overlay.sh
+virsh create configs/kvm/libvirt/xen-debian-server01.xml
+```
+
+### `pool has no config file`
+
+Isso acontece quando um pool foi criado com `virsh pool-create`, que cria pool transitório. Para pool persistente:
+
+```bash
+virsh pool-destroy default
+virsh pool-define --file configs/kvm/libvirt/storage-pool-default.xml
+virsh pool-start default
+virsh pool-autostart default
+```
+
+Não use `--overwrite` em pool `type='dir'`, porque isso força caminho de formatação e o libvirt passa a esperar um source device.
+
+## Estado Esperado
+
+Com tudo configurado, estes comandos devem funcionar:
+
+```bash
+virsh create configs/kvm/libvirt/xen-debian-server01.xml
+virsh list
+virsh domiflist debian-server01
+virsh console debian-server01
+```
+
+Dentro da VM:
+
+```bash
+ip addr
+ping 1.1.1.1
+ping google.com
+systemctl status ssh --no-pager
+```
+
+Resultado final esperado:
+
+- VM `debian-server01` em estado `running`.
+- Console serial funcional em `ttyS0`.
+- Interface `enX0` ligada ao bridge `xenbr0`.
+- DHCP funcional.
+- SSH com host keys geradas e serviço ativo.
