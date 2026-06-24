@@ -3609,7 +3609,7 @@ sudo lxd init --auto
 sudo cat lxd-init.yaml | lxd init --preseed
 
 # check lxd version
-sudo lxd --version
+lxd --version
 
 # check lxd status
 systemctl status lxd
@@ -3738,13 +3738,13 @@ ls /mnt/lxd-rootfs/centos-9/
 ### LXD INSTANCES MANAGEMENT ###
 
 # create a new container from image
-lxc launch images:ubuntu/jammy ubuntu-lxd
+lxc launch  ubuntu:24.04 ubuntu-lxd
 lxc launch images:debian/12 debian12lxc
-lxc launch images:fedora/41 fedora41
-lxc launch images:opensuse/15.6 opensuse15
+lxc launch images:fedora/44/cloud fedora44
+lxc launch images:opensuse/16.0 opensuse16
 
 # create a new container from image with storage pool
-lxc launch images:alpine/3.19 alpine --storage lpic3-lvm
+lxc launch images:alpine/3.24/cloud alpine --storage lpic3-lvm
 lxc launch images:kali kali --storage lpic3-zfs
 
 # create a new container from image local
