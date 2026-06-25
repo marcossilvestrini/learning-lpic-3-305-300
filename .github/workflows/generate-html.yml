@@ -32,12 +32,10 @@ jobs:
           github-corners: "https://github.com/marcossilvestrini/${{ steps.repo_name.outputs.name }}"
           favicon: data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌐</text></svg>
 
-      - name: HTML to PDF
-        uses: fifsky/html-to-pdf-action@master
-        with:
-          htmlFile: ./index.html
-          outputFile: "./${{ steps.repo_name.outputs.name }}.pdf"
-          pdfOptions: '{"format": "A4", "margin": {"top": "10mm", "left": "10mm", "right": "10mm", "bottom": "10mm"}}'
+      - name: Generate PDF from Markdown
+        run: |
+          npx md-to-pdf README.md
+          mv README.pdf "./${{ steps.repo_name.outputs.name }}.pdf"
 
       - name: Commit and push PDF and HTML to docs branch
         run: |
