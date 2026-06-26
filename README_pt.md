@@ -6146,7 +6146,7 @@ Link do Projeto: [https://github.com/marcossilvestrini/learning-lpic-3-305-300](
 
 ---
 
-<!-- MARKDOWN LINKS & IMAGES -->
+<!-- MARKDOWN LINKS  & IMAGES -->
 
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 
