@@ -3989,6 +3989,9 @@ FROM alpine
 RUN apk add --no-cache bash
 ```
 
+![docker-image-layers-01](images/docker-image-layers-01.png)
+![docker-image-layers-02](images/docker-image-layers-02.png)
+
 The second image I have a my-base-image:1.0 and add two layers, generating a new image with name acme/my-final-image:1.0.
 
 ```dockerfile
@@ -3999,7 +4002,8 @@ RUN chmod +x /app/hello.sh
 CMD /app/hello.sh
 ```
 
-![docker-image-layers](images/docker-image-layers.png)
+![docker-image-layers-03](images/docker-image-layers-03.png)
+![docker-image-layers-04](images/docker-image-layers-04.png)
 
 ##### Docker image Copy-on-Write (CoW)
 
