@@ -34,7 +34,7 @@ jobs:
 
       - name: Generate PDF from Markdown
         run: |
-          npx md-to-pdf README.md
+          npx md-to-pdf README.md --launch-options '{"args": ["--no-sandbox", "--disable-setuid-sandbox"]}'
           mv README.pdf "./${{ steps.repo_name.outputs.name }}.pdf"
 
       - name: Commit and push PDF and HTML to docs branch
