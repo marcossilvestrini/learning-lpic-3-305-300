@@ -1,10 +1,8 @@
 # ☁️ Topic 353: VM Deployment and Provisioning
 
----
+***
 
-<a name="topic-353.1"></a>
-
-### ☁️ 353.1  Cloud Management Tools
+### ☁️ 353.1 Cloud Management Tools
 
 **Weight:** 2
 
@@ -27,58 +25,59 @@ Terraform
 
 #### Cloud Definition
 
-Cloud is a model for distributed computing that provides on-demand access to a shared pool of configurable computing resources (networks, servers, storage, applications, and services) via the internet, provisioned and released rapidly with minimal management effort. 
+Cloud is a model for distributed computing that provides on-demand access to a shared pool of configurable computing resources (networks, servers, storage, applications, and services) via the internet, provisioned and released rapidly with minimal management effort.
 
 #### Cloud Computing Definition
 
 Cloud Computing is the paradigm for delivering IT services through the internet, where computing resources are dynamically allocated based on demand. Instead of investing in local infrastructure, users and organizations access computing power, storage, and applications through subscription or pay-per-use models, with automatic scalability and centralized management.
 
->Cloud computing is the execution of workloads in clouds.
+> Cloud computing is the execution of workloads in clouds.
 
->Clouds are IT environments that abstract, aggregate, and share scalable resources across a network. 
+> Clouds are IT environments that abstract, aggregate, and share scalable resources across a network.
 
->Cloud computing and clouds are not technologies in themselves. 
+> Cloud computing and clouds are not technologies in themselves.
 
->Cloud computing is an action, the execution of a workload in a cloud. 
+> Cloud computing is an action, the execution of a workload in a cloud.
 
->Clouds are environments, locations where applications run. 
+> Clouds are environments, locations where applications run.
 
->Technologies are things, such as software programs and hardware equipment used to create and use clouds.
+> Technologies are things, such as software programs and hardware equipment used to create and use clouds.
 
 #### Types of cloud
 
-##### Public Cloud
+**Public Cloud**
 
-Public cloud refers to cloud computing services offered by third-party providers over the public internet, making them available to anyone who wants to use or purchase them. Examples include Amazon Web Services (AWS), Microsoft Azure, and Google Cloud Platform (GCP). 
+Public cloud refers to cloud computing services offered by third-party providers over the public internet, making them available to anyone who wants to use or purchase them. Examples include Amazon Web Services (AWS), Microsoft Azure, and Google Cloud Platform (GCP).
 
-##### Private Cloud
-Private cloud is a cloud computing environment dedicated to a single organization, either hosted on-premises or by a third-party provider. It offers enhanced security, control, and customization compared to public clouds. 
+**Private Cloud**
 
-##### Hybrid Cloud
+Private cloud is a cloud computing environment dedicated to a single organization, either hosted on-premises or by a third-party provider. It offers enhanced security, control, and customization compared to public clouds.
 
-Hybrid cloud combines public and private cloud environments, allowing data and applications to be shared between them. This approach provides greater flexibility, scalability, and cost-efficiency. 
+**Hybrid Cloud**
 
-##### Multi-Cloud
+Hybrid cloud combines public and private cloud environments, allowing data and applications to be shared between them. This approach provides greater flexibility, scalability, and cost-efficiency.
+
+**Multi-Cloud**
 
 Multi-cloud refers to the use of multiple cloud computing services from different providers within a single architecture. This strategy helps avoid vendor lock-in, enhances redundancy, and allows organizations to leverage the best features of each cloud provider.
 
 #### IaaS, PaaS, SaaS
 
-##### IaaS (Infrastructure as a Service)
+**IaaS (Infrastructure as a Service)**
 
 IaaS provides virtualized computing resources on demand (virtual machines, block and object storage, networking, GPUs). By 2026, IaaS has evolved to include AI-ready infrastructure, automated bare-metal provisioning, and native integration with observability, security, and real-time compliance solutions.
 
-##### PaaS (Platform as a Service)
+**PaaS (Platform as a Service)**
 
 PaaS offers a managed platform for application development, deployment, and operation without managing underlying infrastructure. In 2026, PaaS includes serverless functions, managed databases, API gateways, native CI/CD, and event-driven and microservices architectures with automatic scaling.
 
-##### SaaS (Software as a Service)
+**SaaS (Software as a Service)**
 
 SaaS delivers software applications via web, accessible through browsers or native clients, with subscription-based models. In 2026, SaaS integrates artificial intelligence for automation and insights, provides extensible customization, open APIs for integration, and supports rigorous compliance with zero-trust security.
 
 #### OpenStack
 
-![openstack-lasndscape](/images/openstack-landscape.png)
+![openstack-lasndscape](../.gitbook/assets/openstack-landscape.png)
 
 OpenStack is an open-source cloud computing platform that provides IaaS capabilities for private and hybrid cloud environments. In 2026, OpenStack maintains its relevance in corporate datacenters and private cloud providers, offering a complete service stack (Nova for compute, Cinder for block storage, Swift for object storage, Neutron for networking) with advanced support for Kubernetes containers, automatic load balancing, and integration with enterprise-grade security and compliance solutions.
 
@@ -96,7 +95,7 @@ Eucalyptus is an open-source cloud computing platform that provides IaaS capabil
 
 OpenNebula is an open-source cloud computing platform that provides IaaS capabilities for building and managing private, public, and hybrid clouds. It focuses on simplicity and flexibility, allowing users to deploy and manage virtualized data centers with support for various hypervisors (KVM, VMware) and container technologies (LXC, Docker). OpenNebula continues to evolve with features such as edge computing support, enhanced networking capabilities, and integration with modern DevOps tools.
 
-#### IaC 
+#### IaC
 
 Infrastructure as Code (IaC) is the practice of managing and provisioning computing infrastructure through machine-readable definition files, rather than through physical hardware configuration or interactive configuration tools. IaC has become a fundamental practice in DevOps and cloud-native environments, enabling automated, consistent, and repeatable infrastructure deployment across multiple cloud providers and on-premises environments.
 
@@ -104,18 +103,18 @@ Infrastructure as Code (IaC) is the practice of managing and provisioning comput
 
 Terraform is an open-source Infrastructure as Code (IaC) tool that enables infrastructure definition and provisioning in a declarative and versioned manner. By 2026, Terraform is the de facto standard for infrastructure management in multicloud environments (AWS, Azure, GCP, OpenStack, etc.), with robust support for distributed state, policy as code, reusable modules, and native integration with CI/CD pipelines, GitOps, and compliance automation.
 
-##### Terraform Key Concepts
+**Terraform Key Concepts**
 
-| Concept | Description |
-| :--- | :--- |
-| **Provider** | A plugin that enables interaction with cloud providers and services (e.g., AWS, Azure, GCP). |
-| **Resource** | A component of your infrastructure (e.g., virtual machines, networks, storage). |
-| **Module** | A container for multiple resources
-| **State** | A snapshot of your infrastructure, stored in a file or remote backend, used to track resource changes. |
-| **Plan** | A preview of changes that Terraform will make to your infrastructure. |
-| **Apply** | The command that executes the changes defined in the plan to your infrastructure. |
+| Concept      | Description                                                                                            |
+| ------------ | ------------------------------------------------------------------------------------------------------ |
+| **Provider** | A plugin that enables interaction with cloud providers and services (e.g., AWS, Azure, GCP).           |
+| **Resource** | A component of your infrastructure (e.g., virtual machines, networks, storage).                        |
+| **Module**   | A container for multiple resources                                                                     |
+| **State**    | A snapshot of your infrastructure, stored in a file or remote backend, used to track resource changes. |
+| **Plan**     | A preview of changes that Terraform will make to your infrastructure.                                  |
+| **Apply**    | The command that executes the changes defined in the plan to your infrastructure.                      |
 
-##### Terraform Basic Workflow
+**Terraform Basic Workflow**
 
 1. **Write Configuration**: Define your infrastructure using HashiCorp Configuration Language (HCL) in `.tf` files.
 2. **Initialize**: Run `terraform init` to initialize the working directory and download necessary provider plugins.
@@ -123,7 +122,7 @@ Terraform is an open-source Infrastructure as Code (IaC) tool that enables infra
 4. **Apply**: Use `terraform apply` to apply the changes and create or modify resources in your infrastructure.
 5. **Destroy**: Use `terraform destroy` to remove all resources managed by Terraform.
 
-##### Terraform Example
+**Terraform Example**
 
 ```hcl
 provider "aws" {
@@ -139,13 +138,13 @@ resource "aws_instance" "web" {
 }
 ```
 
-<p align="right">(<a href="#topic-353.1">back to sub topic 353.1</a>)</p>
-<p align="right">(<a href="#topic-353">back to topic 353</a>)</p>
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+<p align="right">(<a href="☁️Topic353VMDeploymentandProvisioning.md#topic-353.1">back to sub topic 353.1</a>)</p>
 
----
+<p align="right">(<a href="☁️Topic353VMDeploymentandProvisioning.md#topic-353">back to topic 353</a>)</p>
 
-<a name="topic-353.2"></a>
+<p align="right">(<a href="☁️Topic353VMDeploymentandProvisioning.md#readme-top">back to top</a>)</p>
+
+***
 
 ### 📦 353.2 Packer
 
@@ -165,9 +164,10 @@ resource "aws_instance" "web" {
 packer
 hcl2
 ```
+
 #### 🧰 About Packer
 
-Packer is a tool for creating identical machine images for multiple platforms from a single source configuration. 
+Packer is a tool for creating identical machine images for multiple platforms from a single source configuration.
 
 It is designed to be a lightweight, fast, and flexible tool that can be used to build images for various cloud providers and virtualization platforms.
 
@@ -192,12 +192,12 @@ It is designed to be a lightweight, fast, and flexible tool that can be used to 
 #### Template Components
 
 * **Builders**: Define the target platform and configuration for the machine image. Examples include `amazon-ebs`, `googlecompute`, `docker`, `lxc`, etc.
-* **Provisioners**: Specify the steps to customize the image during the build process. Examples include `shell`, `ansible`, `chef`, `puppet`, etc. 
+* **Provisioners**: Specify the steps to customize the image during the build process. Examples include `shell`, `ansible`, `chef`, `puppet`, etc.
 * **Post-Processors**: Optional steps to modify or export the built image after the build process. Examples include `compress`, `docker-tag`, `vagrant`, etc.
 
 #### Packer Example Templates
 
-##### Template Docker
+**Template Docker**
 
 ```hcl
 packer {
@@ -228,7 +228,7 @@ post-processor "docker-tag" {
 }
 ```
 
-##### Template LXD
+**Template LXD**
 
 ```hcl
 packer {
@@ -258,7 +258,7 @@ post-processor "lxd-export" {
 }
 ```
 
-##### Template Amazon
+**Template Amazon**
 
 ```hcl2
 {
@@ -307,9 +307,10 @@ post-processor "lxd-export" {
 }
 
 ```
+
 #### 🛠️ 353.2 Important Commands
 
-##### 📦 packer
+**📦 packer**
 
 ```sh
 # list available plugins
@@ -336,21 +337,19 @@ packer inspect template.pkr.hcl
 packer plugins
 ```
 
-<p align="right">(<a href="#topic-353.2">back to sub topic 353.2</a>)</p>
-<p align="right">(<a href="#topic 353">back to topic 353</a>)</p>
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+<p align="right">(<a href="☁️Topic353VMDeploymentandProvisioning.md#topic-353.2">back to sub topic 353.2</a>)</p>
 
----
+<p align="right">(<a href="☁️Topic353VMDeploymentandProvisioning.md#topic 353">back to topic 353</a>)</p>
 
-<a name="topic-353.3"></a>
+<p align="right">(<a href="☁️Topic353VMDeploymentandProvisioning.md#readme-top">back to top</a>)</p>
+
+***
 
 ### ☁️ 353.3 cloud-init
 
 **Weight:** 3
 
-**Description:** Candidates should able to use cloud-init to configure virtual machines created from standardized images. This includes adjusting virtual machines to match their available hardware resources, specifically, disk space and volumes.
-Additionally, candidates should be able to configure instances to allow secure SSH logins and install a specific set of software packages.
-Furthermore, candidates should be able to create new system images with cloud-init support.
+**Description:** Candidates should able to use cloud-init to configure virtual machines created from standardized images. This includes adjusting virtual machines to match their available hardware resources, specifically, disk space and volumes. Additionally, candidates should be able to configure instances to allow secure SSH logins and install a specific set of software packages. Furthermore, candidates should be able to create new system images with cloud-init support.
 
 **Key Knowledge Areas:**
 
@@ -369,60 +368,58 @@ user-data
 
 ### Understanding cloud-init
 
-Tool used for customizing cloud instances at boot time.  
+Tool used for customizing cloud instances at boot time.\
 It is typically used to perform initial setup tasks such as configuring network interfaces, setting up user accounts, installing software packages, and running custom scripts.
 
 #### Sources of cloud-init data
 
-| Source | Description |
-|---|---|
-| **meta-data\vendor-data** | Customizations provided by the platform managing the VM, such as the Cloud platform. |
-| **user-data** | User-defined instructions primarily using YAML format or shell scripts. |
-| **Configuration Files** | Instructions can also be provided through configuration files in YAML or Script format. |
-| **Datasource** | Determines the origin of the information necessary for instance configuration (meta-data/user-data). |
+| Source                    | Description                                                                                          |
+| ------------------------- | ---------------------------------------------------------------------------------------------------- |
+| **meta-data\vendor-data** | Customizations provided by the platform managing the VM, such as the Cloud platform.                 |
+| **user-data**             | User-defined instructions primarily using YAML format or shell scripts.                              |
+| **Configuration Files**   | Instructions can also be provided through configuration files in YAML or Script format.              |
+| **Datasource**            | Determines the origin of the information necessary for instance configuration (meta-data/user-data). |
 
 #### Modules in cloud-init
 
 Below are some of the commonly used cloud-init modules, which are responsible for executing specific tasks during the instance initialization process:
 
-| Module | Description |
-|---|---|
-| **bootcmd** | Commands that run at every boot, before any other cloud-init modules. |
-| **runcmd** | Commands that run at the end of the cloud-init process, after all other modules have completed. |
-| **users** | Used to create and manage user accounts, including setting up SSH keys for secure logins. |
-| **packages** | Used to install software packages from the distribution's repository. |
-| **disk_setup** | Used to create, resize, and mount file systems on the instance's disks. |
-| **network** | Used to configure network interfaces and settings for the instance. |
-| **write_files** | Used to write files to the instance's file system, which can be used for configuration or other purposes. |
+| Module           | Description                                                                                               |
+| ---------------- | --------------------------------------------------------------------------------------------------------- |
+| **bootcmd**      | Commands that run at every boot, before any other cloud-init modules.                                     |
+| **runcmd**       | Commands that run at the end of the cloud-init process, after all other modules have completed.           |
+| **users**        | Used to create and manage user accounts, including setting up SSH keys for secure logins.                 |
+| **packages**     | Used to install software packages from the distribution's repository.                                     |
+| **disk\_setup**  | Used to create, resize, and mount file systems on the instance's disks.                                   |
+| **network**      | Used to configure network interfaces and settings for the instance.                                       |
+| **write\_files** | Used to write files to the instance's file system, which can be used for configuration or other purposes. |
 
 #### Cloud-Init Configuration Files and Directories
 
-
-* /etc/cloud/ – Main Configuration Files  
-  * cloud.cfg – The primary configuration file for Cloud-Init  
-  * cloud.cfg.d/ – Directory containing additional configuration files that are merged with the cloud.cfg file  
-* /var/log/cloud-init.log – Log file containing detailed records of Cloud-Init activities during instance initialization  
-* /var/log/cloud-init-output.log – Logs the console output generated by initialization scripts executed by Cloud-Init  
-* /var/lib/cloud/ – Directory containing data and information generated by Cloud-Init during instance initialization  
-  * /var/lib/cloud/instance/ – Directory containing files and metadata related to the running instance  
-
+* /etc/cloud/ – Main Configuration Files
+  * cloud.cfg – The primary configuration file for Cloud-Init
+  * cloud.cfg.d/ – Directory containing additional configuration files that are merged with the cloud.cfg file
+* /var/log/cloud-init.log – Log file containing detailed records of Cloud-Init activities during instance initialization
+* /var/log/cloud-init-output.log – Logs the console output generated by initialization scripts executed by Cloud-Init
+* /var/lib/cloud/ – Directory containing data and information generated by Cloud-Init during instance initialization
+  * /var/lib/cloud/instance/ – Directory containing files and metadata related to the running instance
 
 #### 🛠️ 353.3 Important Commands
 
-##### 📝 cloud-init
+**📝 cloud-init**
 
 ```sh
 # clear cloud-init state and logs
 sudo cloud-init clean
 ```
 
-<p align="right">(<a href="#topic-353.3">back to sub topic 353.3</a>)</p>
-<p align="right">(<a href="#topic 353">back to topic 353</a>)</p>
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+<p align="right">(<a href="☁️Topic353VMDeploymentandProvisioning.md#topic-353.3">back to sub topic 353.3</a>)</p>
 
----
+<p align="right">(<a href="☁️Topic353VMDeploymentandProvisioning.md#topic 353">back to topic 353</a>)</p>
 
-<a name="topic-353.4"></a>
+<p align="right">(<a href="☁️Topic353VMDeploymentandProvisioning.md#readme-top">back to top</a>)</p>
+
+***
 
 ### 📦 353.4 Vagrant
 
@@ -449,45 +446,48 @@ Vagrantfile
 
 #### 🧰 About Vagrant
 
-Vagrant is an open-source tool for building and managing virtual machine environments in a single workflow.  
+Vagrant is an open-source tool for building and managing virtual machine environments in a single workflow.\
 It provides a simple and easy-to-use command-line interface for creating and configuring lightweight, reproducible, and portable development environments.
 
-##### Vagrant Architecture and Concepts
+**Vagrant Architecture and Concepts**
 
-Vagrant uses a declarative configuration file called `Vagrantfile` to define the virtual machine environment.  
+Vagrant uses a declarative configuration file called `Vagrantfile` to define the virtual machine environment.\
 The `Vagrantfile` specifies the base box to use, the virtual machine provider (e.g., VirtualBox, VMware, Hyper-V), and any additional configuration such as networking, shared folders, and provisioning scripts.
 
-##### Vagrant Providers
+**Vagrant Providers**
 
-A Vagrant provider is a plugin that allows Vagrant to manage virtual machines using a specific virtualization technology.  
+A Vagrant provider is a plugin that allows Vagrant to manage virtual machines using a specific virtualization technology.\
 Common providers include:
+
 * **VirtualBox**: A free and open-source virtualization platform that is widely used for local development environments.
 * **VMware**: A commercial virtualization platform that offers advanced features and performance for enterprise environments.
 * **Hyper-V**: A virtualization platform developed by Microsoft, available on Windows operating systems.
 * **Docker**: A containerization platform that allows Vagrant to manage containerized environments.
 
-##### Vagrant Plugins
+**Vagrant Plugins**
 
-Vagrant plugins are extensions that add functionality to Vagrant.  
+Vagrant plugins are extensions that add functionality to Vagrant.\
 Examples of Vagrant plugins include:
+
 * **vagrant-vbguest**: Automatically installs the VirtualBox Guest Additions on the guest machine, improving performance and enabling features such as shared folders and clipboard sharing.
 * **vagrant-hostmanager**: Manages the host's `/etc/hosts` file to allow easy access to Vagrant machines by name.
-* **vagrant-disksize**: Allows resizing of the virtual machine's disk size during provisioning. 
+* **vagrant-disksize**: Allows resizing of the virtual machine's disk size during provisioning.
 
-##### Vagrant Provisioning
+**Vagrant Provisioning**
 
-Vagrant provisioning is the process of configuring the virtual machine after it has been created.  
+Vagrant provisioning is the process of configuring the virtual machine after it has been created.\
 Provisioning can be done using various provisioners, such as:
+
 * **File Provisioner**: Used to copy files from the host machine to the guest machine during provisioning.
 * **Shell Provisioner**: Used to run shell scripts on the guest machine during provisioning, allowing for tasks such as installing software packages, configuring services, and setting up the environment.
 * **Ansible Provisioner**: Used to run Ansible playbooks on the guest machine during provisioning, allowing for more complex configuration management and automation.
 * **Puppet Provisioner**: Used to run Puppet manifests on the guest machine during provisioning, allowing for configuration management and automation using Puppet.
 * **Chef Provisioner**: Used to run Chef recipes on the guest machine during provisioning, allowing for configuration management and automation using Chef.
 
-##### Vagrant Boxes
+**Vagrant Boxes**
 
-A Vagrant box is a pre-packaged virtual machine image that serves as the base for creating new virtual machine instances.  
-Boxes can be retrieved from the Vagrant Cloud (formerly known as Atlas).  
+A Vagrant box is a pre-packaged virtual machine image that serves as the base for creating new virtual machine instances.\
+Boxes can be retrieved from the Vagrant Cloud (formerly known as Atlas).\
 Vagrant Cloud is a platform for sharing and distributing Vagrant boxes, allowing users to easily find and use pre-configured environments for their development needs.
 
 #### Vagrantfile Example
@@ -531,11 +531,9 @@ vagrant plugin install vagrant-hostmanager
 vagrant plugin install vagrant-disksize
 ```
 
-
-
 #### 🛠️ 353.4 Important Commands
 
-##### 📦 vagrant
+**📦 vagrant**
 
 ```sh
 # vagrant plugins
@@ -601,9 +599,10 @@ vagrant port <machine-name>
 
 ```
 
-<p align="right">(<a href="#topic-353.4">back to sub topic 353.4</a>)</p>
-<p align="right">(<a href="#topic 353">back to topic 353</a>)</p>
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+<p align="right">(<a href="☁️Topic353VMDeploymentandProvisioning.md#topic-353.4">back to sub topic 353.4</a>)</p>
 
----
+<p align="right">(<a href="☁️Topic353VMDeploymentandProvisioning.md#topic 353">back to topic 353</a>)</p>
 
+<p align="right">(<a href="☁️Topic353VMDeploymentandProvisioning.md#readme-top">back to top</a>)</p>
+
+***

@@ -1,12 +1,10 @@
 # 📦 Topic 352: container Virtualization
 
----
+***
 
-<a name="topic-352.1"></a>
+### 🧠 352.1 container Virtualization Concepts
 
-### 🧠 352.1  container Virtualization Concepts
-
-![\virtualization-container](../images/virtualization-container.png)
+![\virtualization-container](../.gitbook/assets/virtualization-container.png)
 
 ```mermaid
 timeline
@@ -21,7 +19,7 @@ timeline
     2015 : Kubernetes
 ```
 
----
+***
 
 **Weight:** 7
 
@@ -34,7 +32,7 @@ timeline
 * Understand and analyze control groups
 * Understand and analyze capabilities
 * Understand the role of seccomp, SELinux and AppArmor for container virtualization
-* Understand how LXC and Docker leverage namespaces, cgroups, capabilities, seccomp and MAC(Mandatory Access Control [ SELinux,AppArmor ])
+* Understand how LXC and Docker leverage namespaces, cgroups, capabilities, seccomp and MAC(Mandatory Access Control \[ SELinux,AppArmor ])
 * Understand the principle of runc
 * Understand the principle of CRI-O and containerd
 * Awareness of the OCI runtime and image specifications
@@ -42,7 +40,7 @@ timeline
 * Awareness of podman, buildah and skopeo
 * Awareness of other container virtualization approaches in Linux and other free operating systems, such as rkt, OpenVZ, systemd-nspawn or BSD Jails
 
----
+***
 
 #### 📋 352.1 Cited Objects
 
@@ -56,17 +54,17 @@ capsh
 /proc/[0-9]+/status
 ```
 
----
+***
 
 #### 🧠 Understanding containers
 
-![\container](../images/containers1.png)
+![\container](../.gitbook/assets/containers1.png)
 
 containers are a lightweight virtualization technology that package applications along with their required dependencies — code, libraries, environment variables, and configuration files — into isolated, portable, and reproducible units.
 
 > In simple terms: a container is a self-containerd box that runs your application the same way, anywhere.
 
-##### 💡 What Is a container?
+**💡 What Is a container?**
 
 Unlike Virtual Machines (VMs), containers do not virtualize hardware. Instead, they virtualize the operating system. containers share the same Linux kernel with the host, but each one operates in a fully isolated user space.
 
@@ -80,7 +78,7 @@ Unlike Virtual Machines (VMs), containers do not virtualize hardware. Instead, t
 | Resource efficiency | High                         | Lower                  |
 | Isolation mechanism | Kernel features (namespaces) | Hypervisor             |
 
-##### 🔑 Key Characteristics of containers
+**🔑 Key Characteristics of containers**
 
 🔹 **Lightweight**: Share the host OS kernel, reducing overhead and enabling fast startup.
 
@@ -92,59 +90,57 @@ Unlike Virtual Machines (VMs), containers do not virtualize hardware. Instead, t
 
 🔹 **Scalable**: Perfect fit for microservices and cloud-native architecture.
 
-##### 🧱 Types of containers
+**🧱 Types of containers**
 
 1. System containers
-
    * Designed to run the entire OS, Resemble virtual machines.
    * Support multiple processes and system services (init, syslog).
    * Ideal for legacy or monolithic applications.
    * Example: LXC, libvirt-lxc.
 2. Application containers
-
    * Designed to run a single process.
    * Stateless, ephemeral, and horizontally scalable.
    * Used widely in modern DevOps and Kubernetes environments.
    * Example: Docker, containerd, CRI-O.
 
-##### 🚀 Popular container Runtimes
+**🚀 Popular container Runtimes**
 
-| Runtime              | Description                                                         |
-| -------------------- | ------------------------------------------------------------------- |
+| Runtime        | Description                                                         |
+| -------------- | ------------------------------------------------------------------- |
 | **Docker**     | Most widely adopted CLI/daemon for building and running containers. |
 | **containerd** | Lightweight runtime powering Docker and Kubernetes.                 |
 | **CRI-O**      | Kubernetes-native runtime for OCI containers.                       |
 | **LXC**        | Traditional Linux system containers, closer to full OS.             |
 | **RKT**        | Security-focused runtime (deprecated).                              |
 
-##### 🔐 container Internals and Security Elements
+**🔐 container Internals and Security Elements**
 
-| Component                    | Role                                                  |
-| ---------------------------- | ----------------------------------------------------- |
+| Component              | Role                                                  |
+| ---------------------- | ----------------------------------------------------- |
 | **Namespaces**         | Isolate processes, users, mounts, networks.           |
 | **cgroups**            | Control and limit resource usage (CPU, memory, IO).   |
 | **Capabilities**       | Fine-grained privilege control inside containers.     |
 | **seccomp**            | Restricts allowed syscalls to reduce attack surface.  |
 | **AppArmor / SELinux** | Mandatory Access Control enforcement at kernel level. |
 
----
+***
 
 #### 🧠 Understanding chroot - Change Root Directory in Unix/Linux
 
-![\chroot](../images/chroot.png)
+![\chroot](../.gitbook/assets/chroot.png)
 
-##### What is chroot?
+**What is chroot?**
 
 chroot (short for change root) is a system call and command on Unix-like operating systems that changes the apparent root directory (/) for the current running process and its children. This creates an isolated environment, commonly referred to as a chroot jail.
 
-##### 🧱 Purpose and Use Cases
+**🧱 Purpose and Use Cases**
 
 * 🔒 Isolate applications for security (jailing).
 * 🧪 Create testing environments without impacting the rest of the system.
 * 🛠️ System recovery (e.g., boot into LiveCD and chroot into installed system).
 * 📦 Building software packages in a controlled environment.
 
-##### 📁 Minimum Required Structure
+**📁 Minimum Required Structure**
 
 The chroot environment must have its own essential files and structure:
 
@@ -167,7 +163,7 @@ Use ldd to identify required libraries:
 ldd /bin/bash
 ```
 
-##### 🚨 Limitations and Security Considerations
+**🚨 Limitations and Security Considerations**
 
 * chroot is not a security boundary like containers or VMs.
 * A privileged user (root) inside the jail can potentially break out.
@@ -179,7 +175,7 @@ For stronger isolation, consider alternatives like:
 * Virtual machines (KVM, QEMU)
 * Kernel namespaces and cgroups
 
-##### 🧪 Test chroot bash
+**🧪 Test chroot bash**
 
 ```sh
 # create chroot environment
@@ -221,7 +217,7 @@ sudo umount /mnt/chroot/dev
 sudo rm -rf /mnt/chroot
 ```
 
-##### 🧪 Test chroot with debootstrap
+**🧪 Test chroot with debootstrap**
 
 ```sh
 # download debian files
@@ -229,17 +225,17 @@ sudo debootstrap stable ~vagrant/debian http://deb.debian.org/debian
 sudo chroot ~vagrant/debian bash
 ```
 
-##### :🧪 Lab chroot
+**:🧪 Lab chroot**
 
 Use this script for lab: [\chroot.sh](../scripts/container/chroot.sh)
 
 [![asciicast](https://asciinema.org/a/PWkjazgTXll9678Qy6LLOaKdN.svg)](https://asciinema.org/a/PWkjazgTXll9678Qy6LLOaKdN)
 
----
+***
 
 #### 🧠 Understanding Linux Namespaces
 
-![\linux-namespaces](../images/linux-namespaces2.png)
+![\linux-namespaces](../.gitbook/assets/linux-namespaces2.png)
 
 Namespaces are a core Linux kernel feature that enable process-level isolation. They create separate "views" of global system resources — such as process IDs, networking, filesystems, and users — so that each process group believes it is running in its own system.
 
@@ -247,12 +243,12 @@ Namespaces are a core Linux kernel feature that enable process-level isolation. 
 
 This is the foundation for container isolation.
 
-##### 🔍 What Do Namespaces Isolate?
+**🔍 What Do Namespaces Isolate?**
 
 Each namespace type isolates a specific system resource. Together, they make up the sandbox that a container operates in:
 
-| Namespace             | Isolates...                  | Real-world example                                      |
-| --------------------- | ---------------------------- | ------------------------------------------------------- |
+| Namespace       | Isolates...                  | Real-world example                                      |
+| --------------- | ---------------------------- | ------------------------------------------------------- |
 | **PID**         | Process IDs                  | Processes inside a container see a different PID space  |
 | **Mount**       | Filesystem mount points      | Each container sees its own root filesystem             |
 | **Network**     | Network stack                | containers have isolated IPs, interfaces, and routes    |
@@ -261,9 +257,9 @@ Each namespace type isolates a specific system resource. Together, they make up 
 | **User**        | User and group IDs           | Enables fake root (UID 0) inside the container          |
 | **Cgroup (v2)** | Control group membership     | Ties into resource controls like CPU and memory limits  |
 
-##### 🧪 Visual Analogy
+**🧪 Visual Analogy**
 
-![\linux-namespaces](../images/linux-namespaces.png)
+![\linux-namespaces](../.gitbook/assets/linux-namespaces.png)
 
 Imagine a shared office building:
 
@@ -273,7 +269,7 @@ Imagine a shared office building:
 
 That's exactly how containers experience the system — isolated, yet efficient.
 
-##### 🔧 How containers Use Namespaces
+**🔧 How containers Use Namespaces**
 
 When you run a container (e.g., with Docker or Podman), the runtime creates a new set of namespaces:
 
@@ -290,11 +286,11 @@ This command gives the process:
 
 The result: a lightweight, isolated runtime environment that behaves like a separate system.
 
-##### ⚙️ Complementary Kernel Features
+**⚙️ Complementary Kernel Features**
 
 Namespaces hide resources from containers. But to control how much they can use and what they can do, we need additional mechanisms:
 
-###### 🔩 Cgroups (Control Groups)
+**🔩 Cgroups (Control Groups)**
 
 Cgroups allow the kernel to limit, prioritize, and monitor resource usage across process groups.
 
@@ -307,37 +303,37 @@ Cgroups allow the kernel to limit, prioritize, and monitor resource usage across
 
 🛡️ Prevents the "noisy neighbor" problem by stopping one container from consuming all system resources.
 
-###### 🧱 Capabilities
+**🧱 Capabilities**
 
 Traditional Linux uses a binary privilege model: root (UID 0) can do everything, everyone else is limited.
 
-| Capability               | Allows...                                   |
-| ------------------------ | ------------------------------------------- |
+| Capability             | Allows...                                   |
+| ---------------------- | ------------------------------------------- |
 | `CAP_NET_BIND_SERVICE` | Binding to privileged ports (e.g. 80, 443)  |
 | `CAP_SYS_ADMIN`        | A powerful catch-all for system admin tasks |
 | `CAP_KILL`             | Sending signals to arbitrary processes      |
 
 By dropping unnecessary capabilities, containers can run with only what they need — reducing risk.
 
-##### 🔐 Security Mechanisms
+**🔐 Security Mechanisms**
 
 Used in conjunction with namespaces and cgroups to lock down what a containerized process can do:
 
-| Feature | Main Role | Container Security Purpose |
-| --- | --- | --- |
-| **seccomp** | Filters Linux syscalls | Limits what kernel operations a containerized process can request |
-| **AppArmor** | Path-based Mandatory Access Control | Restricts what files, capabilities and resources a process profile can access |
-| **SELinux** | Label-based Mandatory Access Control | Enforces policy decisions based on security labels assigned to processes and objects |
+| Feature      | Main Role                            | Container Security Purpose                                                           |
+| ------------ | ------------------------------------ | ------------------------------------------------------------------------------------ |
+| **seccomp**  | Filters Linux syscalls               | Limits what kernel operations a containerized process can request                    |
+| **AppArmor** | Path-based Mandatory Access Control  | Restricts what files, capabilities and resources a process profile can access        |
+| **SELinux**  | Label-based Mandatory Access Control | Enforces policy decisions based on security labels assigned to processes and objects |
 
-##### 🧠 Summary for Beginners
+**🧠 Summary for Beginners**
 
-> ✅ Namespaces isolate what a container can see  
-> ✅ Cgroups control what it can use  
-> ✅ Capabilities and security modules define what it can do  
+> ✅ Namespaces isolate what a container can see\
+> ✅ Cgroups control what it can use\
+> ✅ Capabilities and security modules define what it can do
 
 Together, these kernel features form the technical backbone of container isolation — enabling high-density, secure, and efficient application deployment without full VMs.
 
-##### 🧪 Test namespaces with unshare
+**🧪 Test namespaces with unshare**
 
 ```sh
 # create new namespaces and run bash
@@ -380,17 +376,17 @@ exit
 --net: processes have their own network stack (interfaces, IPs, routing)
 ```
 
-##### 🧪 Lab namespaces
+**🧪 Lab namespaces**
 
 [![asciicast](https://asciinema.org/a/8H6iczCMO24VgjWqwCcXEKWBG.svg)](https://asciinema.org/a/8H6iczCMO24VgjWqwCcXEKWBG)
 
----
+***
 
 #### 🧩 Understanding Cgroups (Control Groups)
 
-![\cgroups](../images/cgroups1.png)
+![\cgroups](../.gitbook/assets/cgroups1.png)
 
-##### 📌 Definition
+**📌 Definition**
 
 Control Groups (cgroups) are a Linux kernel feature introduced in 2007 that allow you to limit, account for, and isolate the resource usage (CPU, memory, disk I/O, etc.) of groups of processes.
 
@@ -402,20 +398,20 @@ Namespaces create separate environments for processes (like PID, network, or mou
 
 ⚙️ Key Capabilities
 
-| Feature                     | Description                                              |
-| --------------------------- | -------------------------------------------------------- |
+| Feature               | Description                                              |
+| --------------------- | -------------------------------------------------------- |
 | **Resource Limiting** | Impose limits on how much of a resource a group can use  |
 | **Prioritization**    | Allocate more CPU/IO priority to some groups over others |
 | **Accounting**        | Track usage of resources per group                       |
 | **Control**           | Suspend, resume, or kill processes in bulk               |
 | **Isolation**         | Prevent resource starvation between groups               |
 
-##### 📦 Subsystems (Controllers)
+**📦 Subsystems (Controllers)**
 
 cgroups operate through controllers, each responsible for managing one type of resource:
 
-| Subsystem   | Description                         |
-| ----------- | ----------------------------------- |
+| Subsystem | Description                         |
+| --------- | ----------------------------------- |
 | `cpu`     | Controls CPU scheduling             |
 | `cpuacct` | Generates CPU usage reports         |
 | `memory`  | Limits and accounts memory usage    |
@@ -425,7 +421,7 @@ cgroups operate through controllers, each responsible for managing one type of r
 | `net_cls` | Tags packets for traffic shaping    |
 | `ns`      | Manages namespace access (rare)     |
 
-##### 📂 Filesystem Layout
+**📂 Filesystem Layout**
 
 cgroups are exposed through the virtual filesystem under /sys/fs/cgroup.
 
@@ -464,7 +460,7 @@ In cgroups v2, all resources are managed under a unified hierarchy:
 └── ...
 ```
 
-##### 🧪 Common Usage (v1 and v2 examples)
+**🧪 Common Usage (v1 and v2 examples)**
 
 v1 – Create and assign memory limit:
 
@@ -501,14 +497,14 @@ echo "50000 100000" > /sys/fs/cgroup/mygroup/cpu.max  # 50ms quota per 100ms per
 
 🧭 Process & Group Inspection
 
-| Command                   | Description                     |
-| ------------------------- | ------------------------------- |
+| Command                 | Description                     |
+| ----------------------- | ------------------------------- |
 | `cat /proc/self/cgroup` | Shows current cgroup membership |
 | `cat /proc/PID/cgroup`  | cgroup of another process       |
 | `cat /proc/PID/status`  | Memory and cgroup info          |
 | `ps -o pid,cmd,cgroup`  | Show process-to-cgroup mapping  |
 
-##### 📦 Usage in containers
+**📦 Usage in containers**
 
 container engines like Docker, Podman, and containerd delegate resource control to cgroups (via runc or crun), allowing:
 
@@ -524,16 +520,16 @@ docker run --memory=256m --cpus=1 busybox
 
 Behind the scenes, this creates cgroup rules for memory and CPU limits for the container process.
 
-##### 🧠 Concepts Summary
+**🧠 Concepts Summary**
 
-| Concept               | Explanation                                                              |
-| --------------------- | ------------------------------------------------------------------------ |
+| Concept         | Explanation                                                        |
+| --------------- | ------------------------------------------------------------------ |
 | **Controllers** | Modules like `cpu`, `memory`, `blkio`, etc. apply limits and rules |
-| **Tasks**       | PIDs (processes) assigned to the control group                           |
-| **Hierarchy**   | Cgroups are structured in a parent-child tree                            |
-| **Delegation**  | Systemd and user services may manage subtrees of cgroups                 |
+| **Tasks**       | PIDs (processes) assigned to the control group                     |
+| **Hierarchy**   | Cgroups are structured in a parent-child tree                      |
+| **Delegation**  | Systemd and user services may manage subtrees of cgroups           |
 
-##### 🧪 Test cgroups
+**🧪 Test cgroups**
 
 Example using cgroups v2 to limit memory usage:
 
@@ -584,13 +580,13 @@ htop -p "$(paste -sd, /sys/fs/cgroup/lab-cpu/cgroup.procs)"
 cat /sys/fs/cgroup/lab-cpu/cpu.stat
 ```
 
-##### 🧪 Lab Cgroups
+**🧪 Lab Cgroups**
 
 Use this script for lab: [\cgroups.sh](../scripts/container/cgroups.sh)
 
 [![asciicast](https://asciinema.org/a/WbudWJpHKPzBWMh8CGRxCIpZf.svg)](https://asciinema.org/a/WbudWJpHKPzBWMh8CGRxCIpZf)
 
----
+***
 
 #### 🛡️ Understanding Capabilities
 
@@ -600,31 +596,30 @@ Traditionally in Linux, the root user has unrestricted access to the system. Lin
 
 This enhances system security by enforcing the principle of least privilege.
 
-| 🔐 Capability            | 📋 Description                                      |
-| ------------------------ | --------------------------------------------------- |
-| `CAP_CHOWN`            | Change file owner regardless of permissions         |
-| `CAP_NET_BIND_SERVICE` | Bind to ports below 1024 (e.g., 80, 443)            |
-| `CAP_SYS_TIME`         | Set system clock                                    |
+| 🔐 Capability          | 📋 Description                                   |
+| ---------------------- | ------------------------------------------------ |
+| `CAP_CHOWN`            | Change file owner regardless of permissions      |
+| `CAP_NET_BIND_SERVICE` | Bind to ports below 1024 (e.g., 80, 443)         |
+| `CAP_SYS_TIME`         | Set system clock                                 |
 | `CAP_SYS_ADMIN`        | ⚠️ Very powerful – includes mount, BPF, and more |
-| `CAP_NET_RAW`          | Use raw sockets (e.g., ping, traceroute)            |
-| `CAP_SYS_PTRACE`       | Trace other processes (debugging)                   |
-| `CAP_KILL`             | Send signals to any process                         |
-| `CAP_DAC_OVERRIDE`     | Modify files and directories without permission     |
-| `CAP_SETUID`           | Change user ID (UID) of the process                 |
-| `CAP_NET_ADMIN`        | Manage network interfaces, routing, etc.            |
+| `CAP_NET_RAW`          | Use raw sockets (e.g., ping, traceroute)         |
+| `CAP_SYS_PTRACE`       | Trace other processes (debugging)                |
+| `CAP_KILL`             | Send signals to any process                      |
+| `CAP_DAC_OVERRIDE`     | Modify files and directories without permission  |
+| `CAP_SETUID`           | Change user ID (UID) of the process              |
+| `CAP_NET_ADMIN`        | Manage network interfaces, routing, etc.         |
 
 🔐 Some Linux Capabilities Types
 
-| Capability Type              | Description                                                               |
-| ---------------------------- | ------------------------------------------------------------------------- |
+| Capability Type        | Description                                                               |
+| ---------------------- | ------------------------------------------------------------------------- |
 | **CapInh (Inherited)** | Capabilities inherited from the parent process.                           |
 | **CapPrm (Permitted)** | Capabilities that the process is allowed to have.                         |
 | **CapEff (Effective)** | Capabilities that the process is currently using.                         |
 | **CapBnd (Bounding)**  | Restricts the maximum set of effective capabilities a process can obtain. |
 | **CapAmb (Ambient)**   | Allows a process to explicitly define its own effective capabilities.     |
 
-📦 Capabilities in containers and Pods
-containers typically do not run as full root, but instead receive a limited set of capabilities by default depending on the runtime.
+📦 Capabilities in containers and Pods containers typically do not run as full root, but instead receive a limited set of capabilities by default depending on the runtime.
 
 Capabilities can be added or dropped in Kubernetes using the securityContext.
 
@@ -639,7 +634,7 @@ securityContext:
 
 🔐 This ensures the container starts with zero privileges and receives only what is needed.
 
-##### 🧪 Test capabilities
+**🧪 Test capabilities**
 
 ```sh
 # try to create a http server
@@ -662,7 +657,7 @@ python3 -m http.server 80
 sudo setcap -r $(readlink -f $(which python3))
 ```
 
-##### 🧪 Lab Capabilities
+**🧪 Lab Capabilities**
 
 Use this script for lab: [\capabilities.sh](../scripts/container/capabilities.sh)
 
@@ -704,7 +699,7 @@ seccomp-tools
 /etc/docker/seccomp.json
 ```
 
-##### 🧪 Test seccomp
+**🧪 Test seccomp**
 
 ```sh
 # check if seccomp is supported
@@ -768,7 +763,7 @@ Logs
 /var/log/syslog (search for apparmor)
 ```
 
-##### 🧪 Test AppArmor
+**🧪 Test AppArmor**
 
 ```sh
 # check if AppArmor is supported
@@ -850,15 +845,15 @@ ps -eZ # Processes
 
 #### 🗂️ Linux container Isolation & Security Comparison
 
-| Technology                  | Purpose / What It Does                                                                               | Main Differences                                                                                | Example in containers                                                                        |
-| --------------------------- | ---------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
-| **chroot 🏠**         | Changes the apparent root directory for a process. Isolates filesystem.                              | Simple filesystem isolation; does**not** restrict resources, privileges, or system calls. | Docker uses `chroot` internally for building minimal images, but not for strong isolation. |
-| **namespaces 🌐**     | Isolate system resources: PID, mount, UTS, network, user, IPC, time.                                 | Kernel feature; provides different kinds of isolation.                                          | Each container runs in its own set of namespaces (PID, net, mount, etc).                     |
-| **cgroups 📊**        | Controls and limits resource usage (CPU, memory, disk I/O, etc.) per group of processes.             | Kernel feature; fine-grained resource control, not isolation.                                   | Docker and Kubernetes use cgroups to limit CPU/mem per container/pod.                        |
-| **capabilities 🛡️** | Split root privileges into fine-grained units (e.g., net\_admin, sys\_admin).                        | More granular than all-or-nothing root/non-root; can drop or grant specific privileges.         | Docker containers usually run with reduced capabilities (drop dangerous ones).               |
-| **seccomp 🧱**        | Filter/restrict which syscalls a process can make (whitelisting/blacklisting).                       | Very focused: blocks kernel syscalls; cannot block all actions.                                 | Docker’s default profile blocks dangerous syscalls (e.g.,`ptrace`, `mount`).            |
-| **AppArmor 🐧**       | Mandatory Access Control (MAC) framework: restricts programs' file/network access via profiles.      | Profile-based, easier to manage than SELinux; less fine-grained in some cases.                  | Ubuntu-based containers often use AppArmor for container process profiles.                   |
-| **SELinux 🔒**        | More complex MAC framework, label-based, very fine-grained. Can confine users, processes, and files. | More powerful and complex than AppArmor; enforced on Fedora/RHEL/CentOS.                        | On OpenShift/Kubernetes with RHEL, SELinux labels are used to keep pods separate.            |
+| Technology           | Purpose / What It Does                                                                               | Main Differences                                                                          | Example in containers                                                                      |
+| -------------------- | ---------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------ |
+| **chroot 🏠**        | Changes the apparent root directory for a process. Isolates filesystem.                              | Simple filesystem isolation; does**not** restrict resources, privileges, or system calls. | Docker uses `chroot` internally for building minimal images, but not for strong isolation. |
+| **namespaces 🌐**    | Isolate system resources: PID, mount, UTS, network, user, IPC, time.                                 | Kernel feature; provides different kinds of isolation.                                    | Each container runs in its own set of namespaces (PID, net, mount, etc).                   |
+| **cgroups 📊**       | Controls and limits resource usage (CPU, memory, disk I/O, etc.) per group of processes.             | Kernel feature; fine-grained resource control, not isolation.                             | Docker and Kubernetes use cgroups to limit CPU/mem per container/pod.                      |
+| **capabilities 🛡️** | Split root privileges into fine-grained units (e.g., net\_admin, sys\_admin).                        | More granular than all-or-nothing root/non-root; can drop or grant specific privileges.   | Docker containers usually run with reduced capabilities (drop dangerous ones).             |
+| **seccomp 🧱**       | Filter/restrict which syscalls a process can make (whitelisting/blacklisting).                       | Very focused: blocks kernel syscalls; cannot block all actions.                           | Docker’s default profile blocks dangerous syscalls (e.g.,`ptrace`, `mount`).               |
+| **AppArmor 🐧**      | Mandatory Access Control (MAC) framework: restricts programs' file/network access via profiles.      | Profile-based, easier to manage than SELinux; less fine-grained in some cases.            | Ubuntu-based containers often use AppArmor for container process profiles.                 |
+| **SELinux 🔒**       | More complex MAC framework, label-based, very fine-grained. Can confine users, processes, and files. | More powerful and complex than AppArmor; enforced on Fedora/RHEL/CentOS.                  | On OpenShift/Kubernetes with RHEL, SELinux labels are used to keep pods separate.          |
 
 Summary
 
@@ -871,59 +866,50 @@ Summary
 
 #### 🧩 OCI, runc, containerd, CRI, CRI-O — What They Are in the container Ecosystem
 
-##### Overview and Roles
+**Overview and Roles**
 
-* **[OCI (Open container Initiative) 🏛️](https://opencontainers.org/)**
-  A foundation creating open standards for **container images** and  **runtimes**.  
-  *Defines how images are formatted, stored, and how containers are started/stopped (runtime spec).*
-
-* **[runc ⚙️](https://github.com/opencontainers/runc)**
-  A universal, low-level, lightweight CLI tool that can run containers according to the OCI runtime specification.  
-  *“The engine” that turns an image + configuration into an actual running Linux container.*  
+* [**OCI (Open container Initiative) 🏛️**](https://opencontainers.org/) A foundation creating open standards for **container images** and **runtimes**.\
+  &#xNAN;_&#x44;efines how images are formatted, stored, and how containers are started/stopped (runtime spec)._
+* [**runc ⚙️**](https://github.com/opencontainers/runc) A universal, low-level, lightweight CLI tool that can run containers according to the OCI runtime specification.\
+  &#xNAN;_“The engine” that turns an image + configuration into an actual running Linux container._\
   Responsible for creating namespaces, cgroups, capabilities, seccomp, and executing the container process.
+* [**containerd 🏋️**](https://github.com/containerd/containerd) A core container runtime daemon for managing the complete container lifecycle: **pulling images, managing storage, running containers** (calls runc), networking plugins, etc.\
+  &#xNAN;_&#x55;sed by Docker, Kubernetes, nerdctl, and other tools as their main container runtime backend._
+* [**CRI (container Runtime Interface) 🔌**](https://kubernetes.io/docs/concepts/containers/cri/) A Kubernetes-specific gRPC API to connect Kubernetes with container runtimes.\
+  &#xNAN;_&#x4E;ot used outside Kubernetes, but enables K8s to talk to containerd, CRI-O, etc._
+* [**CRI-O 🥤**](https://github.com/cri-o/cri-o) A lightweight, Kubernetes-focused runtime that **only** runs OCI containers, using runc under the hood.\
+  &#xNAN;_&#x4D;ostly used in Kubernetes, but demonstrates how to build a minimal container runtime focused on open standards._
 
-* **[containerd 🏋️](https://github.com/containerd/containerd)**
-  A core container runtime daemon for managing the complete container lifecycle: **pulling images, managing storage, running containers** (calls runc), networking plugins, etc.  
-  *Used by Docker, Kubernetes, nerdctl, and other tools as their main container runtime backend.*
+**🏷️ Comparison Table: OCI, runc, containerd, CRI, CRI-O**
 
-* **[CRI (container Runtime Interface) 🔌](https://kubernetes.io/docs/concepts/containers/cri/)**
-  A Kubernetes-specific gRPC API to connect Kubernetes with container runtimes.  
-  *Not used outside Kubernetes, but enables K8s to talk to containerd, CRI-O, etc.*
+| Component      | What Is It?                           | Who Uses It?                            | Example Usage                                                                |
+| -------------- | ------------------------------------- | --------------------------------------- | ---------------------------------------------------------------------------- |
+| **OCI**        | Standards/specifications              | Docker, Podman, CRI-O, containerd, runc | Ensures images/containers are compatible across tools                        |
+| **runc**       | container runtime (CLI)               | containerd, CRI-O, Docker, Podman       | Directly running a container from a bundle (e.g.`runc run`)                  |
+| **containerd** | container runtime daemon              | Docker, Kubernetes, nerdctl             | Handles pulling images, managing storage/network, starts containers via runc |
+| **CRI**        | K8s runtime interface (API)           | Kubernetes only                         | Lets kubelet talk to containerd/CRI-O                                        |
+| **CRI-O**      | Lightweight container runtime for K8s | Kubernetes, OpenShift                   | Used as K8s container engine                                                 |
 
-* **[CRI-O 🥤](https://github.com/cri-o/cri-o)**
-  A lightweight, Kubernetes-focused runtime that **only** runs OCI containers, using runc under the hood.  
-  *Mostly used in Kubernetes, but demonstrates how to build a minimal container runtime focused on open standards.*
+***
 
-##### 🏷️ Comparison Table: OCI, runc, containerd, CRI, CRI-O
+**🛠️ Practical Examples (General container World)**
 
-| Component            | What Is It?                           | Who Uses It?                            | Example Usage                                                                |
-| -------------------- | ------------------------------------- | --------------------------------------- | ---------------------------------------------------------------------------- |
-| **OCI**              | Standards/specifications              | Docker, Podman, CRI-O, containerd, runc | Ensures images/containers are compatible across tools                        |
-| **runc**             | container runtime (CLI)               | containerd, CRI-O, Docker, Podman       | Directly running a container from a bundle (e.g.`runc run`)                  |
-| **containerd**       | container runtime daemon              | Docker, Kubernetes, nerdctl             | Handles pulling images, managing storage/network, starts containers via runc |
-| **CRI**              | K8s runtime interface (API)           | Kubernetes only                         | Lets kubelet talk to containerd/CRI-O                                        |
-| **CRI-O**            | Lightweight container runtime for K8s | Kubernetes, OpenShift                   | Used as K8s container engine                                                 |
+*   **Building images:**
 
----
+    Any tool (Docker, Podman, Buildah) can produce images following the **OCI Image Spec** so they’re compatible everywhere.
+*   **Running containers:**
 
-##### 🛠️ Practical Examples (General container World)
+    Both Podman and Docker ultimately use **runc** (via containerd or directly) to create containers.
+*   **Managing many containers:**
 
-* **Building images:**
+    **containerd** can be used on its own (via `ctr` or `nerdctl`) or as a backend for Docker and Kubernetes.
+*   **Plug-and-play runtimes:**
 
-  Any tool (Docker, Podman, Buildah) can produce images following the **OCI Image Spec** so they’re compatible everywhere.
-* **Running containers:**
+    Thanks to **OCI** , you could swap runc for another OCI-compliant runtime (like Kata containers for VMs, gVisor for sandboxing) without changing how you build or manage images.
 
-  Both Podman and Docker ultimately use **runc** (via containerd or directly) to create containers.
-* **Managing many containers:**
+***
 
-  **containerd** can be used on its own (via `ctr` or `nerdctl`) or as a backend for Docker and Kubernetes.
-* **Plug-and-play runtimes:**
-
-  Thanks to  **OCI** , you could swap runc for another OCI-compliant runtime (like Kata containers for VMs, gVisor for sandboxing) without changing how you build or manage images.
-
----
-
-##### 🚢 Typical Stack
+**🚢 Typical Stack**
 
 ```plaintext
 [User CLI / Orchestration]
@@ -939,9 +925,9 @@ Summary
 * **Podman** : User CLI → runc
 * **Kubernetes** : kubelet (CRI) → containerd or CRI-O → runc
 
----
+***
 
-##### 🧠 Summary
+**🧠 Summary**
 
 * **OCI** = Common language for images/runtimes (standards/specs)
 * **runc** = Actual tool that creates and manages container processes
@@ -949,7 +935,7 @@ Summary
 * **CRI** = Only for Kubernetes, to make runtimes pluggable
 * **CRI-O** = Lightweight runtime focused on Kubernetes, built on OCI standards and runc
 
-##### 🧩 Diagram: container Ecosystem
+**🧩 Diagram: container Ecosystem**
 
 ```mermaid
 graph TD
@@ -990,92 +976,92 @@ graph TD
     OCI2 -.-> runc
 ```
 
-##### 🧪 lab runc
+**🧪 lab runc**
 
 For runc lab, you can use this script: [\runc.sh](../scripts/container/runc.sh)
 
 [![asciicast](https://asciinema.org/a/UDVnhKSxPFRXDcwg0HYFkZdlX.svg)](https://asciinema.org/a/UDVnhKSxPFRXDcwg0HYFkZdlX)
 
-##### 🧪 lab containerd
+**🧪 lab containerd**
 
 For containerd, you can use this script: [\containerd.sh](../scripts/container/container.sh)
 
 [![asciicast](https://asciinema.org/a/fCJsiwcL2ePneQX1aafITtoGM.svg)](https://asciinema.org/a/fCJsiwcL2ePneQX1aafITtoGM)
 
----
+***
 
 #### 🚀 Podman, Buildah, Skopeo, OpenVZ, crun & Kata containers
 
----
+***
 
-##### 🐳 **Podman**
+**🐳 Podman**
 
-* **What is it?** A container manager compatible with Docker CLI, but **daemonless** and can run  **rootless** .
+* **What is it?** A container manager compatible with Docker CLI, but **daemonless** and can run **rootless** .
 * **Use:** Create, run, stop, and inspect containers and pods.
 * **Highlights:** No central daemon, safer for multi-user, integrates with systemd.
 * [More info](https://podman.io/)
 
----
+***
 
-##### 📦 **Buildah**
+**📦 Buildah**
 
 * **What is it?** Tool to **build and manipulate container images** (OCI/Docker) without a daemon.
 * **Use:** Building images in CI/CD pipelines or scripting.
 * **Highlights:** Lightweight, rootless support, used by Podman under the hood.
 * [More info](https://www.redhat.com/en/topics/containers/what-is-buildah)
 
----
+***
 
-##### 🔭 **Skopeo**
+**🔭 Skopeo**
 
 * **What is it?** Utility to **inspect, copy, and move container images** between registries **without pulling or running** them.
 * **Use:** Move images, check signatures and metadata.
 * **Highlights:** No daemon, ideal for automation and security.
 * [More info](https://skopeo.org/)
 
----
+***
 
-##### 🏢 **OpenVZ**
+**🏢 OpenVZ**
 
 * **What is it?** **container-based virtualization** solution for Linux (pre-dating modern container tools).
 * **Use:** Lightweight VPS (virtual private servers) sharing the same kernel.
 * **Highlights:** Very efficient, but less isolated than VM (shares kernel).
 * [More info](https://en.wikipedia.org/wiki/OpenVZ)
 
----
+***
 
-##### ⚡ **crun**
+**⚡ crun**
 
 * **What is it?** Ultra-fast, minimal OCI runtime for containers, written in C (not Go).
 * **Use:** Executes containers with minimal overhead.
 * **Highlights:** Faster and lighter than runc, default for Podman on some systems.
 * [More info](https://www.redhat.com/sysadmin/introduction-crun)
 
----
+***
 
-##### 🛡️ **Kata containers**
+**🛡️ Kata containers**
 
 * **What is it?** Open source project combining containers and VMs: each container runs in a lightweight micro-VM.
 * **Use:** Strong isolation for sensitive workloads or multi-tenant environments.
 * **Highlights:** VM-grade security, near-container performance.
 * [More info](https://katacontainers.io/)
 
----
+***
 
-##### 📊 **Comparison Table**
+**📊 Comparison Table**
 
-| Project                   | Category       | Isolation             | Daemon? | Main Use               | Rootless | Notes                       |
-| ------------------------- | -------------- | --------------------- | ------- | ---------------------- | -------- | --------------------------- |
-| **Podman**                | Orchestration  | container             | No      | Manage containers      | Yes      | Docker-like CLI             |
-| **Buildah**               | Build          | N/A                   | No      | Build images           | Yes      | For CI/CD, no container run |
-| **Skopeo**                | Image transfer | N/A                   | No      | Move/check images      | Yes      | No container execution      |
-| **OpenVZ**                | Virtualization | container/VPS         | Yes     | Lightweight VPS        | No       | Kernel shared, legacy tech  |
-| **crun**                  | OCI Runtime    | container             | No      | Fast container runtime | Yes      | Faster than runc            |
-| **Kata containers**       | Runtime/VM     | MicroVM per container | No      | Strong isolation       | Yes      | VM-level security           |
+| Project             | Category       | Isolation             | Daemon? | Main Use               | Rootless | Notes                       |
+| ------------------- | -------------- | --------------------- | ------- | ---------------------- | -------- | --------------------------- |
+| **Podman**          | Orchestration  | container             | No      | Manage containers      | Yes      | Docker-like CLI             |
+| **Buildah**         | Build          | N/A                   | No      | Build images           | Yes      | For CI/CD, no container run |
+| **Skopeo**          | Image transfer | N/A                   | No      | Move/check images      | Yes      | No container execution      |
+| **OpenVZ**          | Virtualization | container/VPS         | Yes     | Lightweight VPS        | No       | Kernel shared, legacy tech  |
+| **crun**            | OCI Runtime    | container             | No      | Fast container runtime | Yes      | Faster than runc            |
+| **Kata containers** | Runtime/VM     | MicroVM per container | No      | Strong isolation       | Yes      | VM-level security           |
 
----
+***
 
-##### ☑️ **Quick Recap**
+**☑️ Quick Recap**
 
 * **Podman:** Modern, daemonless Docker alternative.
 * **Buildah:** Build images, doesn't run containers.
@@ -1086,7 +1072,7 @@ For containerd, you can use this script: [\containerd.sh](../scripts/container/c
 
 #### 🛠️ 352.1 Important Commands
 
-##### 🔗 unshare
+**🔗 unshare**
 
 ```sh
 # create rootfs with debootstrap
@@ -1101,7 +1087,7 @@ ip addr show
 umount /proc
 ```
 
-##### 🔍 lsns
+**🔍 lsns**
 
 ```sh
 # show all namespaces
@@ -1118,7 +1104,7 @@ ps -o pid,pidns,netns,ipcns,utsns,userns,args -p <PID>
 ps -o pid,pidns,netns,ipcns,utsns,userns,args -p 3669
 ```
 
-##### 🚪 nsenter
+**🚪 nsenter**
 
 ```sh
 # get <PID_CRIO_CONTAINER>
@@ -1147,7 +1133,7 @@ sudo nsenter -t <PID_DOCKER_CONTAINER> -m -u -i -n -p -- bash
 sudo nsenter -t <PID_DOCKER_CONTAINER> -a -- bash
 ```
 
-##### 🌐 252.1 ip
+**🌐 252.1 ip**
 
 ```sh
 # create a new network namespace
@@ -1160,14 +1146,14 @@ ip netns list
 sudo ip netns exec lxc1 ip addr show
 ```
 
-##### 📊 stat
+**📊 stat**
 
 ```sh
 # get cgroup version
 stat -fc %T /sys/fs/cgroup
 ```
 
-##### 🛠️ systemctl and systemd
+**🛠️ systemctl and systemd**
 
 ```sh
 # get cgroups of system
@@ -1175,32 +1161,32 @@ systemctl status
 systemd-cgls
 ```
 
-##### 🏗️ cgcreate
+**🏗️ cgcreate**
 
 ```sh
 cgcreate -g memory,cpu:lsf
 ```
 
-##### 🏷️ cgclassify
+**🏷️ cgclassify**
 
 ```sh
 cgclassify -g memory,cpu:lsf <PID>
 ```
 
-##### 🛡️ pscap - List Process Capabilities
+**🛡️ pscap - List Process Capabilities**
 
 ```sh
 # List capabilities of all process
 pscap
 ```
 
-##### 🛡️ getcap /usr/bin/tcpdump
+**🛡️ getcap /usr/bin/tcpdump**
 
 ```sh
 getcap /usr/bin/tcpdump
 ```
 
-##### 🛡️ setcap cap_net_raw=ep /usr/bin/tcpdump
+**🛡️ setcap cap\_net\_raw=ep /usr/bin/tcpdump**
 
 ```sh
 # add capabilities to tcpdump
@@ -1211,20 +1197,20 @@ sudo setcap -r /usr/bin/tcpdump
 sudo setcap '' /usr/bin/tcpdump
 ```
 
-##### 🛡️ check capabilities by process
+**🛡️ check capabilities by process**
 
 ```sh
 grep Cap /proc/<PID>/status
 ```
 
-##### 🛡️ capsh - capability shell wrapper
+**🛡️ capsh - capability shell wrapper**
 
 ```sh
 # use grep Cap /proc/<PID>/status for get hexadecimal value(Example CApEff=0000000000002000)
 capsh --decode=0000000000002000
 ```
 
-##### 🦺 AppArmor - kernel enhancement to confine programs to a limited set of resources
+**🦺 AppArmor - kernel enhancement to confine programs to a limited set of resources**
 
 ```sh
 # check AppArmor status
@@ -1237,7 +1223,7 @@ aa-teardown
 aaparmor_parser
 ```
 
-##### 🔒 SELinux - Security-Enhanced Linux
+**🔒 SELinux - Security-Enhanced Linux**
 
 ```sh
 # check SELinux status
@@ -1250,7 +1236,7 @@ sudo getenforce
 sudo setenforce 1
 ```
 
-##### ⚙️ runc
+**⚙️ runc**
 
 ```sh
 #create a spec file for runc
@@ -1260,15 +1246,15 @@ runc spec
 sudo runc run mycontainer
 ```
 
----
+***
 
-<p align="right">(<a href="#topic-352.1">back to sub topic 352.1</a>)</p>
-<p align="right">(<a href="#topic-352">back to topic 352</a>)</p>
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+<p align="right">(<a href="📦Topic352containerVirtualization.md#topic-352.1">back to sub topic 352.1</a>)</p>
 
----
+<p align="right">(<a href="📦Topic352containerVirtualization.md#topic-352">back to topic 352</a>)</p>
 
-<a name="topic-352.2"></a>
+<p align="right">(<a href="📦Topic352containerVirtualization.md#readme-top">back to top</a>)</p>
+
+***
 
 ### 📦 352.2 LXC
 
@@ -1299,70 +1285,66 @@ lxc (including relevant subcommands)
 
 #### 🧩 LXC & LXD – The Linux System containers Suite
 
----
+***
 
-##### 📦 LXC (Linux containers)
+**📦 LXC (Linux containers)**
 
-* **What is it?**
+*   **What is it?**
 
-  The *core* userspace toolset for managing application and system containers on Linux. Think of LXC as **"chroot on steroids"** – it provides lightweight process isolation using kernel features (namespaces, cgroups, AppArmor, seccomp, etc).
+    The _core_ userspace toolset for managing application and system containers on Linux. Think of LXC as **"chroot on steroids"** – it provides lightweight process isolation using kernel features (namespaces, cgroups, AppArmor, seccomp, etc).
 * **Use:**
-
   * Run full Linux distributions as containers (not just single apps).
   * Useful for testing, legacy apps, or simulating servers.
 * **Highlights:**
-
   * CLI-focused: `lxc-create`, `lxc-start`, `lxc-attach`, etc.
   * Fine-grained control over container resources.
   * No daemon – runs per-container processes.
-* **Best for:**
+*   **Best for:**
 
-  Linux experts who want total control and “bare-metal” feel for containers.
+    Linux experts who want total control and “bare-metal” feel for containers.
 
-##### 🧪 lab LXC
+**🧪 lab LXC**
 
 For LXC lab, you can use this script: [\lxc.sh](../scripts/container/lxc.sh)
 
 [![asciicast](https://asciinema.org/a/CpjDAXRnaKH5kExg9eWSBJGHI.svg)](https://asciinema.org/a/CpjDAXRnaKH5kExg9eWSBJGHI)
 
----
+***
 
-##### 🌐 LXD
+**🌐 LXD**
 
-* **What is it?**
+*   **What is it?**
 
-  **LXD** is a *next-generation* container and VM manager,  **built on top of LXC** . It offers a powerful but user-friendly experience to manage containers and virtual machines via REST API, CLI, or even a Web UI.
+    **LXD** is a _next-generation_ container and VM manager, **built on top of LXC** . It offers a powerful but user-friendly experience to manage containers and virtual machines via REST API, CLI, or even a Web UI.
 * **Use:**
-
   * Manage system containers and virtual machines at scale.
   * Networked “container as a service” with easy orchestration.
 * **Highlights:**
-
   * **REST API** : manage containers/VMs over the network.
   * **Images:** Instant deployment of many Linux distros.
   * **Snapshots, storage pools, clustering, live migration.**
   * Supports running unprivileged containers by default.
-  * CLI: `lxc launch`, `lxc exec`, `lxc snapshot`, etc. *(Yes, same prefix as LXC, but different backend!)*
-* **Best for:**
+  * CLI: `lxc launch`, `lxc exec`, `lxc snapshot`, etc. _(Yes, same prefix as LXC, but different backend!)_
+*   **Best for:**
 
-  DevOps, sysadmins, cloud-native setups, lab environments.
+    DevOps, sysadmins, cloud-native setups, lab environments.
 
-##### 📝 **LXD Storage: Feature Table (per backend)**
+**📝 LXD Storage: Feature Table (per backend)**
 
-| Feature                     | dir | zfs       | btrfs     | lvm/lvmthin  | ceph/cephfs          |
-| --------------------------- | --- | --------- | --------- | ------------ | -------------------- |
-| **Snapshots**         | ❌  | ✅        | ✅        | ✅           | ✅                   |
-| **Thin Provisioning** | ❌  | ✅        | ✅        | ✅ (lvmthin) | ✅                   |
-| **Resizing**          | ❌  | ✅        | ✅        | ✅           | ✅                   |
-| **Quotas**            | ❌  | ✅        | ✅        | ✅ (lvmthin) | ✅                   |
-| **Live Migration**    | ❌  | ✅        | ✅        | ✅           | ✅                   |
-| **Deduplication**     | ❌  | ✅        | ❌        | ❌           | ✅ (Ceph)            |
-| **Compression**       | ❌  | ✅        | ✅        | ❌           | ✅ (Ceph)            |
-| **Encryption**        | ❌  | ✅        | ❌        | ✅ (LUKS)    | ✅                   |
-| **Cluster/Remote**    | ❌  | ❌        | ❌        | ❌           | ✅                   |
-| **Best Use Case**     | Dev | Labs/Prod | Labs/Prod | Labs/Prod    | Clusters, Enterprise |
+| Feature               | dir | zfs       | btrfs     | lvm/lvmthin | ceph/cephfs          |
+| --------------------- | --- | --------- | --------- | ----------- | -------------------- |
+| **Snapshots**         | ❌   | ✅         | ✅         | ✅           | ✅                    |
+| **Thin Provisioning** | ❌   | ✅         | ✅         | ✅ (lvmthin) | ✅                    |
+| **Resizing**          | ❌   | ✅         | ✅         | ✅           | ✅                    |
+| **Quotas**            | ❌   | ✅         | ✅         | ✅ (lvmthin) | ✅                    |
+| **Live Migration**    | ❌   | ✅         | ✅         | ✅           | ✅                    |
+| **Deduplication**     | ❌   | ✅         | ❌         | ❌           | ✅ (Ceph)             |
+| **Compression**       | ❌   | ✅         | ✅         | ❌           | ✅ (Ceph)             |
+| **Encryption**        | ❌   | ✅         | ❌         | ✅ (LUKS)    | ✅                    |
+| **Cluster/Remote**    | ❌   | ❌         | ❌         | ❌           | ✅                    |
+| **Best Use Case**     | Dev | Labs/Prod | Labs/Prod | Labs/Prod   | Clusters, Enterprise |
 
-##### 🔍 **Quick LXD Storage Summary**
+**🔍 Quick LXD Storage Summary**
 
 * **Storage Pools:** Abstracts the backend—multiple pools, different drivers per pool.
 * **Available Drivers:** dir, zfs, btrfs, lvm, lvmthin, ceph, cephfs (more via plugins).
@@ -1373,12 +1355,12 @@ For LXC lab, you can use this script: [\lxc.sh](../scripts/container/lxc.sh)
 * **Security:** Built-in encryption (ZFS, LVM, Ceph), ACLs, backup/restore, etc.
 * **Enterprise-ready:** Suits clustered and high-availability setups.
 
----
+***
 
-##### 📊 LXC vs LXD Comparison Table
+**📊 LXC vs LXD Comparison Table**
 
-| Feature                 | 🏷️ LXC                              | 🌐 LXD                                |
-| ----------------------- | ------------------------------------- | ------------------------------------- |
+| Feature           | 🏷️ LXC                               | 🌐 LXD                                |
+| ----------------- | ------------------------------------- | ------------------------------------- |
 | **Type**          | Low-level userspace container manager | High-level manager (containers + VMs) |
 | **Interface**     | CLI only                              | REST API, CLI, Web UI                 |
 | **Daemon?**       | No (runs as processes)                | Yes (central daemon/service)          |
@@ -1386,93 +1368,93 @@ For LXC lab, you can use this script: [\lxc.sh](../scripts/container/lxc.sh)
 | **Images**        | Template-based                        | Full image repository, many OSes      |
 | **Snapshots**     | Manual                                | Native, integrated                    |
 | **VM support**    | No                                    | Yes (QEMU/KVM)                        |
-| **Use-case**      | Fine-grained control, “bare-metal”  | Scalable, user-friendly, multi-host   |
+| **Use-case**      | Fine-grained control, “bare-metal”    | Scalable, user-friendly, multi-host   |
 | **Security**      | Can be unprivileged, but DIY          | Default unprivileged, more isolation  |
 | **Best for**      | Linux pros, advanced scripting        | DevOps, cloud, teams, self-service    |
 
----
+***
 
-##### ☑️ Quick Recap
+**☑️ Quick Recap**
 
-* **LXC** = The low-level building blocks. Power and flexibility for  *container purists* .
-* **LXD** = Modern, API-driven, scalable platform on top of LXC for *easy* container and VM management (single node or clusters).
+* **LXC** = The low-level building blocks. Power and flexibility for _container purists_ .
+* **LXD** = Modern, API-driven, scalable platform on top of LXC for _easy_ container and VM management (single node or clusters).
 
-##### 🗃️ LXC vs LXD - Storage Support (Summary)
+**🗃️ LXC vs LXD - Storage Support (Summary)**
 
-| Feature                       | **LXC**                          | **LXD**                                                                                                                     |
-| ----------------------------- | -------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
-| **Storage Backends**    | Local filesystem (default only)        | **dir**(filesystem), **zfs** , **btrfs** , **lvm** , **ceph** , **cephfs** ,**lvmthin** |
-| **Storage Pools**       | ❌ (just local paths, no native pools) | ✅ Multiple storage pools, each with different drivers                                                                            |
-| **Snapshots**           | Manual/FS dependent                    | ✅ Native, fast, automatic, scheduled, consistent snapshots                                                                       |
-| **Thin Provisioning**   | ❌ (not supported natively)            | ✅ Supported in ZFS, Btrfs, LVM thin, Ceph                                                                                        |
-| **Quotas**              | ❌                                     | ✅ Supported per container/volume (in ZFS, Btrfs, Ceph, LVMthin)                                                                  |
-| **Live Migration**      | Limited                                | ✅ Live storage migration between hosts, copy-on-write                                                                            |
-| **Encryption**          | ❌                                     | ✅ (ZFS, LVM, Ceph)                                                                                                               |
-| **Custom Volumes**      | ❌                                     | ✅ Create, attach/detach custom storage volumes for containers/VMs                                                                |
-| **Remote Storage**      | ❌                                     | ✅ Ceph, CephFS, NFS, SMB support                                                                                                 |
-| **Filesystem Features** | Host dependent                         | ZFS: dedup, compress, snapshots, send/receive, cache, quotas. LVM: thin, snapshots, etc.                                          |
-| **Resizing**            | Manual (via host)                      | ✅ Volumes and pools can be resized live                                                                                          |
-| **Storage Drivers**     | Basic/local only                       | Extensible plugins, multiple enterprise-ready drivers                                                                             |
+| Feature                 | **LXC**                               | **LXD**                                                                                  |
+| ----------------------- | ------------------------------------- | ---------------------------------------------------------------------------------------- |
+| **Storage Backends**    | Local filesystem (default only)       | **dir**(filesystem), **zfs** , **btrfs** , **lvm** , **ceph** , **cephfs** ,**lvmthin**  |
+| **Storage Pools**       | ❌ (just local paths, no native pools) | ✅ Multiple storage pools, each with different drivers                                    |
+| **Snapshots**           | Manual/FS dependent                   | ✅ Native, fast, automatic, scheduled, consistent snapshots                               |
+| **Thin Provisioning**   | ❌ (not supported natively)            | ✅ Supported in ZFS, Btrfs, LVM thin, Ceph                                                |
+| **Quotas**              | ❌                                     | ✅ Supported per container/volume (in ZFS, Btrfs, Ceph, LVMthin)                          |
+| **Live Migration**      | Limited                               | ✅ Live storage migration between hosts, copy-on-write                                    |
+| **Encryption**          | ❌                                     | ✅ (ZFS, LVM, Ceph)                                                                       |
+| **Custom Volumes**      | ❌                                     | ✅ Create, attach/detach custom storage volumes for containers/VMs                        |
+| **Remote Storage**      | ❌                                     | ✅ Ceph, CephFS, NFS, SMB support                                                         |
+| **Filesystem Features** | Host dependent                        | ZFS: dedup, compress, snapshots, send/receive, cache, quotas. LVM: thin, snapshots, etc. |
+| **Resizing**            | Manual (via host)                     | ✅ Volumes and pools can be resized live                                                  |
+| **Storage Drivers**     | Basic/local only                      | Extensible plugins, multiple enterprise-ready drivers                                    |
 
-##### 📊 Final Storage Comparison Table
+**📊 Final Storage Comparison Table**
 
-|                             | **LXC**  | **LXD**                                          |
-| --------------------------- | -------------- | ------------------------------------------------------ |
-| **Storage Backend**   | Local only     | dir, zfs, btrfs, lvm, lvmthin, ceph, cephfs            |
-| **Storage Pools**     | ❌             | ✅ Multiple, independent, hot-pluggable                |
+|                       | **LXC**        | **LXD**                                               |
+| --------------------- | -------------- | ----------------------------------------------------- |
+| **Storage Backend**   | Local only     | dir, zfs, btrfs, lvm, lvmthin, ceph, cephfs           |
+| **Storage Pools**     | ❌              | ✅ Multiple, independent, hot-pluggable                |
 | **Snapshots**         | Limited/manual | ✅ Fast, automatic, consistent                         |
-| **Thin Provisioning** | ❌             | ✅ (ZFS, Btrfs, LVMthin, Ceph)                         |
-| **Quotas**            | ❌             | ✅                                                     |
+| **Thin Provisioning** | ❌              | ✅ (ZFS, Btrfs, LVMthin, Ceph)                         |
+| **Quotas**            | ❌              | ✅                                                     |
 | **Resizing**          | Manual         | ✅                                                     |
-| **Remote Storage**    | ❌             | ✅ (Ceph, NFS, SMB)                                    |
-| **Custom Volumes**    | ❌             | ✅                                                     |
-| **Cluster Ready**     | ❌             | ✅                                                     |
+| **Remote Storage**    | ❌              | ✅ (Ceph, NFS, SMB)                                    |
+| **Custom Volumes**    | ❌              | ✅                                                     |
+| **Cluster Ready**     | ❌              | ✅                                                     |
 | **Enterprise**        | No             | Yes—HA, backup, migration, security, production ready |
 
-##### 🌐 LXC vs LXD - Network Support (Summary)
+**🌐 LXC vs LXD - Network Support (Summary)**
 
-| Feature                    | **LXC**                     | **LXD**                                                         |
-| -------------------------- | --------------------------------- | --------------------------------------------------------------------- |
-| **Network Types**    | bridge, veth, macvlan, phys, vlan | bridge, ovn, macvlan, sriov, physical, vlan, fan, tunnels             |
-| **Managed Networks** | ❌ Manual (host config)           | ✅ Natively managed via API/CLI, easy to create and edit              |
-| **Network API**      | ❌ CLI commands only              | ✅ REST API, CLI, integration with external tools                     |
-| **Bridge Support**   | ✅ Manual                         | ✅ Automatic and advanced (L2, Open vSwitch, native bridge)           |
-| **NAT & DHCP**       | ❌ Manual (iptables/dnsmasq)      | ✅ Integrated NAT, DHCP, DNS, per-network configurable                |
-| **DNS**              | ❌ Manual                         | ✅ Integrated DNS, custom domains, systemd-resolved integration       |
-| **IPv6**             | ✅ (manual, limited)              | ✅ Full support, auto, DHCPv6, NAT6, routing                          |
-| **VLAN**             | ✅ (manual, host)                 | ✅ Native VLANs, easy configuration                                   |
-| **SR-IOV**           | ❌                                | ✅ Native support                                                     |
-| **Network ACLs**     | ❌                                | ✅ ACLs, forwards, zones, peerings, firewall rules                    |
-| **Clustering**       | ❌                                | ✅ Replicated and managed networks in clusters                        |
+| Feature              | **LXC**                           | **LXD**                                                              |
+| -------------------- | --------------------------------- | -------------------------------------------------------------------- |
+| **Network Types**    | bridge, veth, macvlan, phys, vlan | bridge, ovn, macvlan, sriov, physical, vlan, fan, tunnels            |
+| **Managed Networks** | ❌ Manual (host config)            | ✅ Natively managed via API/CLI, easy to create and edit              |
+| **Network API**      | ❌ CLI commands only               | ✅ REST API, CLI, integration with external tools                     |
+| **Bridge Support**   | ✅ Manual                          | ✅ Automatic and advanced (L2, Open vSwitch, native bridge)           |
+| **NAT & DHCP**       | ❌ Manual (iptables/dnsmasq)       | ✅ Integrated NAT, DHCP, DNS, per-network configurable                |
+| **DNS**              | ❌ Manual                          | ✅ Integrated DNS, custom domains, systemd-resolved integration       |
+| **IPv6**             | ✅ (manual, limited)               | ✅ Full support, auto, DHCPv6, NAT6, routing                          |
+| **VLAN**             | ✅ (manual, host)                  | ✅ Native VLANs, easy configuration                                   |
+| **SR-IOV**           | ❌                                 | ✅ Native support                                                     |
+| **Network ACLs**     | ❌                                 | ✅ ACLs, forwards, zones, peerings, firewall rules                    |
+| **Clustering**       | ❌                                 | ✅ Replicated and managed networks in clusters                        |
 | **Attach/Detach**    | Manual (host)                     | ✅ CLI/API, hotplug, easy for containers/VMs                          |
 | **Security**         | Manual (host)                     | ✅ Isolation, firewall, ACL, firewalld integration, per-network rules |
 | **Custom Routes**    | Manual                            | ✅ Custom routes support, multiple gateways                           |
-| **Network Profiles** | ❌                                | ✅ Reusable network profiles                                          |
+| **Network Profiles** | ❌                                 | ✅ Reusable network profiles                                          |
 | **Monitoring**       | Manual                            | ✅ Status, IPAM, logs, detailed info via CLI/API                      |
 | **Enterprise**       | No                                | Yes—multi-tenant, ACL, clustering, cloud integration                 |
 
-##### 📊 Final Network Comparison Table
+**📊 Final Network Comparison Table**
 
-|                         | **LXC**      | **LXD**                                             |
-| ----------------------- | ------------------ | --------------------------------------------------------- |
+|                   | **LXC**            | **LXD**                                                   |
+| ----------------- | ------------------ | --------------------------------------------------------- |
 | **Network Types** | bridge, veth, vlan | bridge, ovn, macvlan, sriov, physical, vlan, fan, tunnels |
-| **Managed**       | ❌                 | ✅                                                        |
-| **NAT/DHCP/DNS**  | Manual             | ✅ Integrated                                             |
-| **VLAN**          | Manual             | ✅                                                        |
-| **SR-IOV**        | ❌                 | ✅                                                        |
-| **API**           | ❌                 | ✅                                                        |
-| **Clustering**    | ❌                 | ✅                                                        |
-| **Security/ACL**  | Manual             | ✅                                                        |
-| **Profiles**      | ❌                 | ✅                                                        |
+| **Managed**       | ❌                  | ✅                                                         |
+| **NAT/DHCP/DNS**  | Manual             | ✅ Integrated                                              |
+| **VLAN**          | Manual             | ✅                                                         |
+| **SR-IOV**        | ❌                  | ✅                                                         |
+| **API**           | ❌                  | ✅                                                         |
+| **Clustering**    | ❌                  | ✅                                                         |
+| **Security/ACL**  | Manual             | ✅                                                         |
+| **Profiles**      | ❌                  | ✅                                                         |
 | **Enterprise**    | No                 | Yes                                                       |
 
-##### 🧪 lab LXD
+**🧪 lab LXD**
 
 For LXD lab, you can use this script: [\lxd.sh](../scripts/container/lxd.sh)
 
 #### 🛠️ 352.2 Important Commands
 
-##### 📦 lxc
+**📦 lxc**
 
 ```sh
 
@@ -1624,7 +1606,7 @@ lxc-ls -f
 ls .local/share/lxc/unprivileged/
 ```
 
-##### 🌐 lxd
+**🌐 lxd**
 
 ```sh
 # lxd configuration files
@@ -1914,19 +1896,19 @@ lxc profile remove debian12 production
 lxc launch 1u1u1u1u1u1 rockylinux9-2 -p production
 ```
 
-<p align="right">(<a href="#topic-352.2">back to sub topic 352.2</a>)</p>
-<p align="right">(<a href="#topic-352">back to topic 352</a>)</p>
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+<p align="right">(<a href="📦Topic352containerVirtualization.md#topic-352.2">back to sub topic 352.2</a>)</p>
 
----
+<p align="right">(<a href="📦Topic352containerVirtualization.md#topic-352">back to topic 352</a>)</p>
 
-<a name="topic-352.3"></a>
+<p align="right">(<a href="📦Topic352containerVirtualization.md#readme-top">back to top</a>)</p>
+
+***
 
 ### 🐳 352.3 Docker
 
-![\docker-architecture](../images/docker.png)
+![\docker-architecture](../.gitbook/assets/docker.png)
 
-![\docker-runtime](../images/docker-containerd.png)
+![\docker-runtime](../.gitbook/assets/docker-containerd.png)
 
 **Weight:** 9
 
@@ -1954,11 +1936,11 @@ Dockerfile
 
 #### 📖 Definition
 
-Docker is an **open-source container platform** that allows developers and operators to package applications and their dependencies into  **containers** .
+Docker is an **open-source container platform** that allows developers and operators to package applications and their dependencies into **containers** .
 
-These containers ensure  **consistency across environments** , speed up deployments, and reduce infrastructure complexity.
+These containers ensure **consistency across environments** , speed up deployments, and reduce infrastructure complexity.
 
----
+***
 
 #### 🔑 Key Concepts
 
@@ -1968,7 +1950,7 @@ These containers ensure  **consistency across environments** , speed up deployme
 * ⌨️ **Docker CLI** → Command-line tool (`docker`) communicating with the daemon.
 * ☁️ **Docker Hub** → Default registry for storing and distributing images.
 
----
+***
 
 #### 🚀 Advantages
 
@@ -1977,7 +1959,7 @@ These containers ensure  **consistency across environments** , speed up deployme
 * 🛠️ **Rich Ecosystem** → Compose, Swarm, Hub, Desktop UI, registries.
 * 🔄 **DevOps Friendly** → CI/CD integration and IaC alignment.
 
----
+***
 
 #### 📑 Docker Registries
 
@@ -1985,11 +1967,11 @@ These containers ensure  **consistency across environments** , speed up deployme
 * 🏢 **Private Registries** → Harbor, Artifactory, GitHub container Registry.
 * 🔒 Use `docker login` to authenticate, push, and pull images.
 
----
+***
 
 #### Docker Images
 
-![\docker-images](../images/docker-images.png)
+![\docker-images](../.gitbook/assets/docker-images.png)
 
 * Concept: immutable package with app, dependencies, and metadata.
 * Layers and cache: each Dockerfile instruction becomes a reusable layer
@@ -2000,7 +1982,7 @@ These containers ensure  **consistency across environments** , speed up deployme
 * Basic commands: `docker image ls`, `docker pull`, `docker run`, `docker inspect`, `docker history`, `docker tag`, `docker push`, `docker rmi`, `docker image prune -a`, `docker save`/`docker load`.
 * Best practices: minimal base (alpine/distroless), multi-stage builds, pin versions/tags, run as non-root `USER`.
 
-##### Docker Image Layers
+**Docker Image Layers**
 
 In this example, I demonstrate a docker image layers.
 
@@ -2022,9 +2004,7 @@ RUN chmod +x /app/hello.sh
 CMD /app/hello.sh
 ```
 
-![\docker-image-layers](../images/docker-image-layers.png)
-
-##### Docker image Copy-on-Write (CoW)
+**Docker image Copy-on-Write (CoW)**
 
 In this example, I demonstrate a docker image Copy-on-Write (CoW).
 
@@ -2044,7 +2024,7 @@ See the size of the containers.
 docker ps --size --format "table {{.ID}}\t{{.Image}}\t{{.Names}}\t{{.Size}}"
 ```
 
-To demonstrate this, run the following command to write the word 'hello' to a file on the container's writable layer in containers my_container_1, my_container_2, and my_container_3:
+To demonstrate this, run the following command to write the word 'hello' to a file on the container's writable layer in containers my\_container\_1, my\_container\_2, and my\_container\_3:
 
 ```sh
 for i in {1..3}; do docker exec my_container_$i sh -c 'printf hello > /out.txt'; done
@@ -2056,31 +2036,31 @@ Check the size of the containers again.
 docker ps --size --format "table {{.ID}}\t{{.Image}}\t{{.Names}}\t{{.Size}}"
 ```
 
-![\docker-image-cow](../images/docker-image-cow.png)
+![\docker-image-cow](../.gitbook/assets/docker-image-cow.png)
 
-##### 🐳 Dockerfile Image Instructions and Layers
+**🐳 Dockerfile Image Instructions and Layers**
 
 **📊 Table: Instruction vs. Layer Generation**
 
-| Instruction     | Creates a Filesystem Layer? | Notes                                                                              |
-| --------------- | --------------------------- | ---------------------------------------------------------------------------------- |
-| `FROM`        | ❌ No                       | Sets the base image; underlying layers come from it.                               |
-| `RUN`         | ✅ Yes                      | Executes filesystem changes; adds content that persists.                           |
-| `COPY`        | ✅ Yes                      | Adds files from build context into the image filesystem.                           |
-| `ADD`         | ✅ Yes                      | Similar to COPY, with additional features (URLs, tar extraction).                  |
-| `LABEL`       | ❌ No                       | Only adds metadata; doesn’t change filesystem content.                            |
-| `ENV`         | ❌ No                       | Defines environment variables; stored as metadata.                                 |
-| `ARG`         | ❌ No                       | Build-time only; does not affect final image unless used later.                    |
-| `WORKDIR`     | ❌ No                       | Changes working directory; metadata only.                                          |
-| `USER`        | ❌ No                       | Sets the user; metadata only.                                                      |
-| `EXPOSE`      | ❌ No                       | Declares exposed port(s); metadata only.                                           |
-| `ENTRYPOINT`  | ❌ No                       | Defines how container starts; metadata configuration.                              |
-| `CMD`         | ❌ No                       | Default command or args; metadata only.                                            |
-| `VOLUME`      | ✅ Yes / Partial            | Declares mount points; metadata + volumes in runtime; has filesystem implications. |
-| `HEALTHCHECK` | ❌ No                       | Defines health check config; stored as metadata.                                   |
-| `STOPSIGNAL`  | ❌ No                       | Defines signal to stop container; metadata only.                                   |
-| `SHELL`       | ❌ No                       | Changes shell for later `RUN`; metadata only.                                    |
-| `ONBUILD`     | ❌ No                       | Triggers for future builds; metadata only.                                         |
+| Instruction   | Creates a Filesystem Layer? | Notes                                                                              |
+| ------------- | --------------------------- | ---------------------------------------------------------------------------------- |
+| `FROM`        | ❌ No                        | Sets the base image; underlying layers come from it.                               |
+| `RUN`         | ✅ Yes                       | Executes filesystem changes; adds content that persists.                           |
+| `COPY`        | ✅ Yes                       | Adds files from build context into the image filesystem.                           |
+| `ADD`         | ✅ Yes                       | Similar to COPY, with additional features (URLs, tar extraction).                  |
+| `LABEL`       | ❌ No                        | Only adds metadata; doesn’t change filesystem content.                             |
+| `ENV`         | ❌ No                        | Defines environment variables; stored as metadata.                                 |
+| `ARG`         | ❌ No                        | Build-time only; does not affect final image unless used later.                    |
+| `WORKDIR`     | ❌ No                        | Changes working directory; metadata only.                                          |
+| `USER`        | ❌ No                        | Sets the user; metadata only.                                                      |
+| `EXPOSE`      | ❌ No                        | Declares exposed port(s); metadata only.                                           |
+| `ENTRYPOINT`  | ❌ No                        | Defines how container starts; metadata configuration.                              |
+| `CMD`         | ❌ No                        | Default command or args; metadata only.                                            |
+| `VOLUME`      | ✅ Yes / Partial             | Declares mount points; metadata + volumes in runtime; has filesystem implications. |
+| `HEALTHCHECK` | ❌ No                        | Defines health check config; stored as metadata.                                   |
+| `STOPSIGNAL`  | ❌ No                        | Defines signal to stop container; metadata only.                                   |
+| `SHELL`       | ❌ No                        | Changes shell for later `RUN`; metadata only.                                      |
+| `ONBUILD`     | ❌ No                        | Triggers for future builds; metadata only.                                         |
 
 **🔎 Key Insights**
 
@@ -2091,66 +2071,66 @@ docker ps --size --format "table {{.ID}}\t{{.Image}}\t{{.Names}}\t{{.Size}}"
 * To minimize image size:
   * Combine multiple `RUN` commands into one.
   * Use `.dockerignore` to avoid copying unnecessary files.
-  * Order instructions to maximize Docker’s  **build cache efficiency** .
+  * Order instructions to maximize Docker’s **build cache efficiency** .
 
----
+***
 
 #### 🐳 Dockerfile
 
 A **Dockerfile** is a declarative text file that contains a sequence of instructions to build a Docker image. It's the blueprint for creating reproducible, portable, and automated containerized environments.
 
-##### ✨ Key Concepts
+**✨ Key Concepts**
 
-| Concept | Description |
-| :--- | :--- |
-| 📜 **Declarative Script** | A simple text file with line-by-line instructions for assembling an image. |
-| 겹 **Layered Architecture** | Each instruction in a Dockerfile creates a new layer in the image. Layers are stacked and are read-only. |
-| ⚡ **Build Cache** | Docker caches the result of each layer. If a layer and its dependencies haven't changed, Docker reuses the cached layer, making builds significantly faster. |
-| 📦 **Build Context** | The set of files at a specified `PATH` or `URL` that are sent to the Docker daemon during a build. Use a `.dockerignore` file to exclude unnecessary files. |
+| Concept                    | Description                                                                                                                                                                                                                      |
+| -------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 📜 **Declarative Script**  | A simple text file with line-by-line instructions for assembling an image.                                                                                                                                                       |
+| 겹 **Layered Architecture** | Each instruction in a Dockerfile creates a new layer in the image. Layers are stacked and are read-only.                                                                                                                         |
+| ⚡ **Build Cache**          | Docker caches the result of each layer. If a layer and its dependencies haven't changed, Docker reuses the cached layer, making builds significantly faster.                                                                     |
+| 📦 **Build Context**       | The set of files at a specified `PATH` or `URL` that are sent to the Docker daemon during a build. Use a `.dockerignore` file to exclude unnecessary files.                                                                      |
 | 🏗️ **Multi-Stage Builds** | A powerful feature that allows you to use multiple `FROM` instructions in a single Dockerfile. This helps to separate build-time dependencies from runtime dependencies, resulting in smaller and more secure production images. |
 
----
+***
 
-##### 📝 Core Instructions
+**📝 Core Instructions**
 
 The following table summarizes the most common Dockerfile instructions.
 
-| Instruction | Purpose | Example |
-| :--- | :--- | :--- |
-| 🏁 **`FROM`** | Specifies the base image for subsequent instructions. Must be the first instruction. | `FROM ubuntu:22.04` |
-| 🏷️ **`LABEL`** | Adds metadata to an image as key-value pairs. | `LABEL version="1.0" maintainer="me@example.com"` |
-| 🏃 **`RUN`** | Executes any commands in a new layer on top of the current image and commits the results. | `RUN apt-get update && apt-get install -y nginx` |
-| 🚀 **`CMD`** | Provides defaults for an executing container. There can only be one `CMD`. | `CMD ["nginx", "-g", "daemon off;"]` |
-| 🚪 **`ENTRYPOINT`** | Configures a container that will run as an executable. | `ENTRYPOINT ["/usr/sbin/nginx"]` |
-| 🌐 **`EXPOSE`** | Informs Docker that the container listens on the specified network ports at runtime. | `EXPOSE 80` |
-| 🌳 **`ENV`** | Sets environment variables. | `ENV APP_VERSION=1.0` |
-| 📂 **`COPY`** | Copies new files or directories from the build context to the filesystem of the image. | `COPY ./app /app` |
-| 🔗 **`ADD`** | Similar to `COPY`, but with more features like remote URL support and tar extraction. | `ADD http://example.com/big.tar.xz /usr/src` |
-| 👤 **`USER`** | Sets the user name (or UID) and optionally the user group (or GID) to use when running the image. | `USER appuser` |
-| 📁 **`WORKDIR`** | Sets the working directory for any `RUN`, `CMD`, `ENTRYPOINT`, `COPY`, and `ADD` instructions. | `WORKDIR /app` |
-| 💾 **`VOLUME`** | Creates a mount point with the specified name and marks it as holding externally mounted volumes. | `VOLUME /var/lib/mysql` |
-| 🏗️ **`ONBUILD`** | Adds to the image a trigger instruction to be executed at a later time, when the image is used as the base for another build. | `ONBUILD COPY . /app/src` |
-| 💊 **`HEALTHCHECK`** | Tells Docker how to test a container to check that it is still working. | `HEALTHCHECK --interval=5m --timeout=3s CMD curl -f http://localhost/ || exit 1` |
-| 🐚 **`SHELL`** | Allows the default shell used for the shell form of commands to be overridden. | `SHELL ["/bin/bash", "-c"]` |
+| Instruction          | Purpose                                                                                                                       | Example                                                                |
+| -------------------- | ----------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------- |
+| 🏁 **`FROM`**        | Specifies the base image for subsequent instructions. Must be the first instruction.                                          | `FROM ubuntu:22.04`                                                    |
+| 🏷️ **`LABEL`**      | Adds metadata to an image as key-value pairs.                                                                                 | `LABEL version="1.0" maintainer="me@example.com"`                      |
+| 🏃 **`RUN`**         | Executes any commands in a new layer on top of the current image and commits the results.                                     | `RUN apt-get update && apt-get install -y nginx`                       |
+| 🚀 **`CMD`**         | Provides defaults for an executing container. There can only be one `CMD`.                                                    | `CMD ["nginx", "-g", "daemon off;"]`                                   |
+| 🚪 **`ENTRYPOINT`**  | Configures a container that will run as an executable.                                                                        | `ENTRYPOINT ["/usr/sbin/nginx"]`                                       |
+| 🌐 **`EXPOSE`**      | Informs Docker that the container listens on the specified network ports at runtime.                                          | `EXPOSE 80`                                                            |
+| 🌳 **`ENV`**         | Sets environment variables.                                                                                                   | `ENV APP_VERSION=1.0`                                                  |
+| 📂 **`COPY`**        | Copies new files or directories from the build context to the filesystem of the image.                                        | `COPY ./app /app`                                                      |
+| 🔗 **`ADD`**         | Similar to `COPY`, but with more features like remote URL support and tar extraction.                                         | `ADD http://example.com/big.tar.xz /usr/src`                           |
+| 👤 **`USER`**        | Sets the user name (or UID) and optionally the user group (or GID) to use when running the image.                             | `USER appuser`                                                         |
+| 📁 **`WORKDIR`**     | Sets the working directory for any `RUN`, `CMD`, `ENTRYPOINT`, `COPY`, and `ADD` instructions.                                | `WORKDIR /app`                                                         |
+| 💾 **`VOLUME`**      | Creates a mount point with the specified name and marks it as holding externally mounted volumes.                             | `VOLUME /var/lib/mysql`                                                |
+| 🏗️ **`ONBUILD`**    | Adds to the image a trigger instruction to be executed at a later time, when the image is used as the base for another build. | `ONBUILD COPY . /app/src`                                              |
+| 💊 **`HEALTHCHECK`** | Tells Docker how to test a container to check that it is still working.                                                       | \`HEALTHCHECK --interval=5m --timeout=3s CMD curl -f http://localhost/ |
+| 🐚 **`SHELL`**       | Allows the default shell used for the shell form of commands to be overridden.                                                | `SHELL ["/bin/bash", "-c"]`                                            |
 
----
+***
 
-##### ⭐ Best Practices for Writing Dockerfiles
+**⭐ Best Practices for Writing Dockerfiles**
 
 Following best practices is crucial for creating efficient, secure, and maintainable images.
 
-| Guideline | Description |
-| :--- | :--- |
-| 🤏 **Keep it Small** | Start with a minimal base image (like `alpine` or `distroless`). Don't install unnecessary packages to reduce size and attack surface. |
-| ♻️ **Leverage Build Cache** | Order your Dockerfile instructions from least to most frequently changing. Place `COPY` and `ADD` instructions as late as possible to avoid cache invalidation. |
-| 🏗️ **Use Multi-Stage Builds** | Separate your build environment from your runtime environment. This dramatically reduces the size of your final image by excluding build tools and dependencies. |
-| 🚫 **Use `.dockerignore`** | Exclude files and directories that are not necessary for the build (e.g., `.git`, `node_modules`, local test scripts) to keep the build context small and avoid sending sensitive data. |
-| 📦 **Combine `RUN` Instructions** | Chain related commands using `&&` to create a single layer. For example, combine `apt-get update` with `apt-get install` and clean up afterwards (`rm -rf /var/lib/apt/lists/*`). |
-| 📌 **Pin Versions** | Pin versions for base images (`ubuntu:22.04`) and packages (`nginx=1.21.6-1~bullseye`) to ensure reproducible builds and avoid unexpected changes. |
-| 👤 **Run as Non-Root** | Create a dedicated user and group with `RUN useradd`, and use the `USER` instruction to switch to that user. This improves security by avoiding running containers with root privileges. |
-| 🚀 **`CMD` vs `ENTRYPOINT`** | Use `ENTRYPOINT` for the main executable of the image and `CMD` to specify default arguments. This makes the image behave like a binary. |
-| 💬 **Sort Multi-line Arguments** | Sort multi-line arguments alphanumerically (e.g., in a long `RUN apt-get install` command) to make the Dockerfile easier to read and maintain. |
-| 📝 **Be Explicit** | Use `COPY` instead of `ADD` when the extra magic of `ADD` (like tar extraction or URL fetching) is not needed. It's more transparent. |
+| Guideline                         | Description                                                                                                                                                                              |
+| --------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 🤏 **Keep it Small**              | Start with a minimal base image (like `alpine` or `distroless`). Don't install unnecessary packages to reduce size and attack surface.                                                   |
+| ♻️ **Leverage Build Cache**       | Order your Dockerfile instructions from least to most frequently changing. Place `COPY` and `ADD` instructions as late as possible to avoid cache invalidation.                          |
+| 🏗️ **Use Multi-Stage Builds**    | Separate your build environment from your runtime environment. This dramatically reduces the size of your final image by excluding build tools and dependencies.                         |
+| 🚫 **Use `.dockerignore`**        | Exclude files and directories that are not necessary for the build (e.g., `.git`, `node_modules`, local test scripts) to keep the build context small and avoid sending sensitive data.  |
+| 📦 **Combine `RUN` Instructions** | Chain related commands using `&&` to create a single layer. For example, combine `apt-get update` with `apt-get install` and clean up afterwards (`rm -rf /var/lib/apt/lists/*`).        |
+| 📌 **Pin Versions**               | Pin versions for base images (`ubuntu:22.04`) and packages (`nginx=1.21.6-1~bullseye`) to ensure reproducible builds and avoid unexpected changes.                                       |
+| 👤 **Run as Non-Root**            | Create a dedicated user and group with `RUN useradd`, and use the `USER` instruction to switch to that user. This improves security by avoiding running containers with root privileges. |
+| 🚀 **`CMD` vs `ENTRYPOINT`**      | Use `ENTRYPOINT` for the main executable of the image and `CMD` to specify default arguments. This makes the image behave like a binary.                                                 |
+| 💬 **Sort Multi-line Arguments**  | Sort multi-line arguments alphanumerically (e.g., in a long `RUN apt-get install` command) to make the Dockerfile easier to read and maintain.                                           |
+| 📝 **Be Explicit**                | Use `COPY` instead of `ADD` when the extra magic of `ADD` (like tar extraction or URL fetching) is not needed. It's more transparent.                                                    |
 
 **Dockerfile example**
 
@@ -2169,50 +2149,49 @@ EXPOSE 80
 CMD ["nginx", "-g", "daemon off;"]
 ```
 
----
+***
 
 #### Docker + containerd + shim + runc Architecture
 
-![\Docker shim architecture example](../images/docker-shim.png)
+![\Docker shim architecture example](../.gitbook/assets/docker-shim.png)
 
-##### 🔹 Main Components
+**🔹 Main Components**
 
-* **Docker CLI / Docker Daemon (`dockerd`)**
+*   **Docker CLI / Docker Daemon (`dockerd`)**
 
-  The `docker` command communicates with the Docker daemon, which orchestrates container lifecycle, images, networks, and volumes.
-* **containerd**
+    The `docker` command communicates with the Docker daemon, which orchestrates container lifecycle, images, networks, and volumes.
+*   **containerd**
 
-  A high-level container runtime that manages the entire container lifecycle: pulling images, managing storage, networking, and execution.
+    A high-level container runtime that manages the entire container lifecycle: pulling images, managing storage, networking, and execution.
 * **containerd-shim**
-
-  * Acts as the *parent process* of each container once `runc` has done its job.
+  * Acts as the _parent process_ of each container once `runc` has done its job.
   * Keeps **stdin/stdout/stderr** streams open, even if Docker or containerd restarts (so `docker logs` / `kubectl logs` still work).
   * Collects the container exit code and reports it back to the manager.
   * Prevents containers from becoming orphans if the daemon crashes or is restarted.
-* **runc**
+*   **runc**
 
-  A low-level runtime (OCI-compliant) that creates containers using Linux namespaces and cgroups.
+    A low-level runtime (OCI-compliant) that creates containers using Linux namespaces and cgroups.
 
-  After launching the container, `runc` exits, and `containerd-shim` takes over as the parent process.
+    After launching the container, `runc` exits, and `containerd-shim` takes over as the parent process.
 
----
+***
 
-##### 🔹 Execution Flow
+**🔹 Execution Flow**
 
 1. **User** runs `docker run ...` → the **Docker Daemon** is called.
-2. **Docker Daemon** delegates to  **containerd** .
-3. **containerd** spawns  **runc** , which sets up the container.
-4. Once the container starts,  **runc exits** .
-5. **containerd-shim** remains as the  **container’s parent process** , handling logging and exit codes.
+2. **Docker Daemon** delegates to **containerd** .
+3. **containerd** spawns **runc** , which sets up the container.
+4. Once the container starts, **runc exits** .
+5. **containerd-shim** remains as the **container’s parent process** , handling logging and exit codes.
 
----
+***
 
-##### 🔹 Benefits of the Shim Layer
+**🔹 Benefits of the Shim Layer**
 
 * **Resilience** → Containers continue running even if `dockerd` or `containerd` crash or restart.
 * **Logging** → Maintains container log streams for `docker logs` or `kubectl logs`.
 * **Isolation** → Each container has its own shim, simplifying lifecycle management.
-* **Standards Compliance** → Works with the  **OCI runtime spec** , ensuring compatibility.
+* **Standards Compliance** → Works with the **OCI runtime spec** , ensuring compatibility.
 
 #### ⚖️ Docker vs. containerd
 
@@ -2228,25 +2207,25 @@ CMD ["nginx", "-g", "daemon off;"]
 
 #### Docker Storage
 
-##### 🧱 Core Concepts
+**🧱 Core Concepts**
 
-| 🔍 Focus | Details |
-| --- | --- |
-| Union FS | Read-only image layers + the container's writable layer form a union filesystem; removing the container drops ephemeral changes. |
-| Data Root | Storage drivers persist data under `/var/lib/docker/<driver>/`; inspect the active driver via `docker info --format "{{.Driver}}"`. |
+| 🔍 Focus    | Details                                                                                                                                                                          |
+| ----------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Union FS    | Read-only image layers + the container's writable layer form a union filesystem; removing the container drops ephemeral changes.                                                 |
+| Data Root   | Storage drivers persist data under `/var/lib/docker/<driver>/`; inspect the active driver via `docker info --format "{{.Driver}}"`.                                              |
 | Persistence | Move stateful data to **volumes** (persistent), **bind mounts** (host path), or **tmpfs mounts** (in-memory, ephemeral) to survive container recreation or optimize performance. |
 
-##### ⚙️ Storage Drivers
+**⚙️ Storage Drivers**
 
-| Driver | When to use | Notes |
-| --- | --- | --- |
-| overlay2 | Default on modern Linux kernels. | Fast copy-on-write; backing filesystem must support `d_type`. |
-| fuse-overlayfs | Rootless or user-namespace deployments. | Adds a thin FUSE layer; enables non-root workflows. |
-| btrfs / zfs | Need native snapshots, quotas, compression. | Provision dedicated pools and use platform tooling for management. |
-| devicemapper (direct-lvm) / aufs | Legacy setups only. | Maintenance mode; plan migrations to overlay2. |
-| windowsfilter | Windows container images. | Use LCOW/WSL 2 to expose overlay2 for Linux workloads on Windows hosts. |
+| Driver                           | When to use                                 | Notes                                                                   |
+| -------------------------------- | ------------------------------------------- | ----------------------------------------------------------------------- |
+| overlay2                         | Default on modern Linux kernels.            | Fast copy-on-write; backing filesystem must support `d_type`.           |
+| fuse-overlayfs                   | Rootless or user-namespace deployments.     | Adds a thin FUSE layer; enables non-root workflows.                     |
+| btrfs / zfs                      | Need native snapshots, quotas, compression. | Provision dedicated pools and use platform tooling for management.      |
+| devicemapper (direct-lvm) / aufs | Legacy setups only.                         | Maintenance mode; plan migrations to overlay2.                          |
+| windowsfilter                    | Windows container images.                   | Use LCOW/WSL 2 to expose overlay2 for Linux workloads on Windows hosts. |
 
-##### 🧭 Selecting the Driver
+**🧭 Selecting the Driver**
 
 * Confirm kernel modules (`modprobe overlay`) and filesystem prerequisites before switching drivers.
 * Match driver features to workloads: many small layers favor `overlay2`; filesystem-level snapshots may justify `btrfs` or `zfs`.
@@ -2255,7 +2234,7 @@ CMD ["nginx", "-g", "daemon off;"]
 
 For testing volume drivers use script: [\docker-storage-driver.sh](../scripts/docker/docker-storage-driver.sh).
 
-##### 📦 Docker Storage Types
+**📦 Docker Storage Types**
 
 **Volumes:**
 
@@ -2287,12 +2266,12 @@ For testing volume drivers use script: [\docker-storage-driver.sh](../scripts/do
 **Quick summary:**
 
 | Type       | Persistence | Location | Portability | Typical use         |
-|------------|-------------|----------|-------------|---------------------|
+| ---------- | ----------- | -------- | ----------- | ------------------- |
 | Volume     | Yes         | Docker   | High        | App data, databases |
 | Bind mount | Optional    | Host     | Low         | Dev, integration    |
 | Tmpfs      | No          | RAM      | High        | Cache, ephemeral    |
 
-##### 🛠️ Storage Types Usage examples
+**🛠️ Storage Types Usage examples**
 
 ```sh
 # Persistent volume
@@ -2306,7 +2285,7 @@ docker run -d --mount type=tmpfs,target=/tmp nginx:latest
 docker run -d --tmpfs /tmp nginx:latest
 ```
 
-##### ✅ Docker Storage Best practices
+**✅ Docker Storage Best practices**
 
 * Prefer volumes for persistent and backup data.
 * Use tmpfs for sensitive or temporary data.
@@ -2318,48 +2297,48 @@ For testing storage volumes use script: [\docker-storage-volumes.sh](../scripts/
 
 #### Docker Networking
 
-##### 🌐 Core Concepts
+**🌐 Core Concepts**
 
-| 🔍 Focus | Details |
-| --- | --- |
-| User-defined networks | Create isolated topologies (`docker network create`) and attach/detach containers on demand with `docker network connect` or the `--network` flag. |
-| Network stack sharing | By default each container gets its own namespace; `--network container:<id>` reuses another container's stack but disables flags like `--publish`, `--dns`, and `--hostname`. |
-| Embedded DNS | Docker injects an internal DNS server per network; container names and `--network-alias` entries resolve automatically and fall back to the host resolver for external lookups. |
-| Gateway priority | When a container joins multiple networks, Docker selects the default route via the highest `--gw-priority`; override IPs with `--ip` / `--ip6` for deterministic addressing. |
+| 🔍 Focus              | Details                                                                                                                                                                         |
+| --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| User-defined networks | Create isolated topologies (`docker network create`) and attach/detach containers on demand with `docker network connect` or the `--network` flag.                              |
+| Network stack sharing | By default each container gets its own namespace; `--network container:<id>` reuses another container's stack but disables flags like `--publish`, `--dns`, and `--hostname`.   |
+| Embedded DNS          | Docker injects an internal DNS server per network; container names and `--network-alias` entries resolve automatically and fall back to the host resolver for external lookups. |
+| Gateway priority      | When a container joins multiple networks, Docker selects the default route via the highest `--gw-priority`; override IPs with `--ip` / `--ip6` for deterministic addressing.    |
 
-##### 🚍 Default Drivers
+**🚍 Default Drivers**
 
-| Driver | Use when | Highlights |
-| --- | --- | --- |
-| bridge | Standalone workloads on a single host need simple east-west traffic. | Default `bridge` network ships with Docker; create user-defined bridges for DNS, isolation, and per-project scoping. |
-| host | You need native host networking with zero isolation. | Shares the host stack; no port mapping needed; ideal for high-throughput or port-dynamic workloads. |
-| overlay | Services must span multiple Docker hosts or Swarm nodes. | VXLAN-backed; requires the Swarm control plane (or external KV store) to coordinate networks across engines. |
-| macvlan | Containers must appear as physical devices on the LAN. | Assigns unique MAC/IP pairs from the parent interface; great for legacy integrations or strict VLAN segmentation. |
-| ipvlan | Underlay restricts MAC addresses but permits L3 routing. | Provides per-container IPv4/IPv6 without extra MACs; supports L2 (`ipvlan -l2`) and L3 modes with VLAN tagging. |
-| none | Full isolation is required. | Removes the network stack entirely; manual namespace wiring only (not supported for Swarm services). |
-| Plugins | Built-in drivers fall short of SDN or vendor needs. | Install third-party network plugins from the Docker ecosystem to integrate with specialized fabrics. |
+| Driver  | Use when                                                             | Highlights                                                                                                           |
+| ------- | -------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
+| bridge  | Standalone workloads on a single host need simple east-west traffic. | Default `bridge` network ships with Docker; create user-defined bridges for DNS, isolation, and per-project scoping. |
+| host    | You need native host networking with zero isolation.                 | Shares the host stack; no port mapping needed; ideal for high-throughput or port-dynamic workloads.                  |
+| overlay | Services must span multiple Docker hosts or Swarm nodes.             | VXLAN-backed; requires the Swarm control plane (or external KV store) to coordinate networks across engines.         |
+| macvlan | Containers must appear as physical devices on the LAN.               | Assigns unique MAC/IP pairs from the parent interface; great for legacy integrations or strict VLAN segmentation.    |
+| ipvlan  | Underlay restricts MAC addresses but permits L3 routing.             | Provides per-container IPv4/IPv6 without extra MACs; supports L2 (`ipvlan -l2`) and L3 modes with VLAN tagging.      |
+| none    | Full isolation is required.                                          | Removes the network stack entirely; manual namespace wiring only (not supported for Swarm services).                 |
+| Plugins | Built-in drivers fall short of SDN or vendor needs.                  | Install third-party network plugins from the Docker ecosystem to integrate with specialized fabrics.                 |
 
-##### 🕹️ Working with Networks
+**🕹️ Working with Networks**
 
 * Scope infrastructure with user-defined bridges for app components, overlays for distributed stacks, or L2-style macvlan/ipvlan for direct LAN presence.
 * Combine frontend/backend networks per container; set `--internal` on a bridge to block egress while still allowing service-to-service traffic.
 * Inspect connectivity with `docker network ls`, `docker network inspect`, and `docker exec <ctr> ip addr` to validate namespace wiring.
 * Clean up unused networks regularly with `docker network prune` to avoid stale subnets and orphaned config.
 
-##### 🚦 Published Ports & Access
+**🚦 Published Ports & Access**
 
 * Bridge networks keep ports private unless you publish them with `-p` / `--publish`; include `127.0.0.1:` (or `[::1]:` for IPv6) to restrict exposure to the host only.
 * Port publishing is not required for container-to-container access on the same user-defined bridge—DNS and the internal IP suffice.
 * Overlay and macvlan drivers bypass the userland proxy; plan upstream firewalls or routing accordingly.
 
-##### 🔐 Addressing & DNS
+**🔐 Addressing & DNS**
 
 * IPv4 is enabled by default on new networks; add `--ipv6` to provision dual-stack ranges and use `--ip` / `--ip6` to pin addresses.
 * Each join operation can supply extra identities via `--alias`; Docker advertises them through the embedded DNS service.
 * Override resolvers per container using `--dns`, `--dns-search`, or `--dns-option`, or import extra hosts with `--add-host`.
 * Containers inherit a curated `/etc/hosts`; host-level entries are not synced automatically.
 
-##### 🛠️ Docker Network Usage examples
+**🛠️ Docker Network Usage examples**
 
 ```sh
 # Create dedicated frontend and backend bridges
@@ -2384,7 +2363,7 @@ docker run -it --rm \
   alpine:latest sh
 ```
 
-##### ✅ Docker Network Best practices
+**✅ Docker Network Best practices**
 
 * Model network boundaries early; document which containers share bridges, overlays, or macvlan segments.
 * Use `--internal` or firewalls to block unintended egress, and prefer network-level isolation over ad-hoc port publishing.
@@ -2396,11 +2375,11 @@ For testing docker network use script: [\docker-network.sh](../scripts/docker/do
 
 #### 🐳 Docker Registry
 
-##### 📘 What is a Docker Registry?
+**📘 What is a Docker Registry?**
 
 A Docker Registry is a stateless, highly scalable server-side application that stores and lets you distribute Docker images. It's the central place where you can push your images after building them and pull them to run on other machines.
 
-##### Key Concepts
+**Key Concepts**
 
 * **Registry**: The storage system that contains repositories of images. Examples: Docker Hub, AWS ECR, a self-hosted registry.
 * **Repository**: A collection of related Docker images, often different versions of the same application or service (e.g., the `nginx` repository).
@@ -2409,86 +2388,78 @@ A Docker Registry is a stateless, highly scalable server-side application that s
   * If `registry-host` is omitted, it defaults to Docker Hub (`docker.io`).
   * If `tag` is omitted, it defaults to `latest`.
 
-##### Types of Registries
+**Types of Registries**
 
 1. **Public Registries**:
-    * **Docker Hub**: The default and largest public registry.
-    * **Quay.io**: Another popular public and private registry by Red Hat.
-    * **GitHub Container Registry (GHCR)**: Integrated with GitHub repositories and Actions.
-
+   * **Docker Hub**: The default and largest public registry.
+   * **Quay.io**: Another popular public and private registry by Red Hat.
+   * **GitHub Container Registry (GHCR)**: Integrated with GitHub repositories and Actions.
 2. **Private Registries**:
-    * **Self-Hosted**:
-        * **Docker Registry Image**: A simple, official image to run your own basic registry.
-        * **Harbor**: An enterprise-grade open-source registry with security scanning, access control, and replication.
-        * **JFrog Artifactory**: A universal artifact manager that supports Docker images.
-    * **Cloud-Hosted**:
-        * **Amazon Elastic Container Registry (ECR)**
-        * **Google Artifact Registry (formerly GCR)**
-        * **Azure Container Registry (ACR)**
+   * **Self-Hosted**:
+     * **Docker Registry Image**: A simple, official image to run your own basic registry.
+     * **Harbor**: An enterprise-grade open-source registry with security scanning, access control, and replication.
+     * **JFrog Artifactory**: A universal artifact manager that supports Docker images.
+   * **Cloud-Hosted**:
+     * **Amazon Elastic Container Registry (ECR)**
+     * **Google Artifact Registry (formerly GCR)**
+     * **Azure Container Registry (ACR)**
 
-##### Running a Local Registry
+**Running a Local Registry**
 
 You can easily run a private registry locally for testing or development using Docker's official `registry` image.
 
-1. **Start the local registry container:**
+1.  **Start the local registry container:**
 
     ```sh
     docker run -d -p 5000:5000 -v /var/lib/registry-data:/var/lib/registry --restart=always --name registry registry:2
     ```
 
     This starts a registry listening on `localhost:5000`.
-
-2. **Tag an image to point to the local registry:**
-    Before you can push an image to this registry, you need to tag it with the registry's host and port.
+2.  **Tag an image to point to the local registry:** Before you can push an image to this registry, you need to tag it with the registry's host and port.
 
     ```sh
     # Pull an image (e.g., alpine)
     docker pull alpine
-    
+
     # Tag it for your local registry
     docker tag alpine localhost:5000/my-alpine
     ```
-
-3. **Push the image to the local registry:**
+3.  **Push the image to the local registry:**
 
     ```sh
     docker push localhost:5000/my-alpine
     ```
-
-4. **Pull the image from the local registry:**
-    You can now pull this image on any machine that can access `localhost:5000`.
+4.  **Pull the image from the local registry:** You can now pull this image on any machine that can access `localhost:5000`.
 
     ```sh
     # First, remove the local copies to simulate pulling from scratch
     docker image rm alpine
     docker image rm localhost:5000/my-alpine
-    
+
     # Now, pull from your local registry
     docker pull localhost:5000/my-alpine
     ```
-
-5. **Access the registry API:**
-    You can interact with the registry using its HTTP API. For example, to list repositories:
+5.  **Access the registry API:** You can interact with the registry using its HTTP API. For example, to list repositories:
 
     ```sh
     curl -X GET http://localhost:5000/v2/_catalog
     ```
 
-##### 🚀 Core Commands
+**🚀 Core Commands**
 
-| Command           | Description                                       | Example                                         |
-| ----------------- | ------------------------------------------------- | ----------------------------------------------- |
-| `docker login`    | Log in to a Docker registry.                      | `docker login myregistry.example.com`           |
-| `docker logout`   | Log out from a Docker registry.                   | `docker logout`                                 |
-| `docker pull`     | Pull an image or a repository from a registry.    | `docker pull ubuntu:22.04`                      |
-| `docker push`     | Push an image or a repository to a registry.      | `docker push myregistry.com/myapp:1.0`          |
-| `docker search`   | Search Docker Hub for images.                     | `docker search nginx`                           |
+| Command         | Description                                    | Example                                |
+| --------------- | ---------------------------------------------- | -------------------------------------- |
+| `docker login`  | Log in to a Docker registry.                   | `docker login myregistry.example.com`  |
+| `docker logout` | Log out from a Docker registry.                | `docker logout`                        |
+| `docker pull`   | Pull an image or a repository from a registry. | `docker pull ubuntu:22.04`             |
+| `docker push`   | Push an image or a repository to a registry.   | `docker push myregistry.com/myapp:1.0` |
+| `docker search` | Search Docker Hub for images.                  | `docker search nginx`                  |
 
 For testing docker registry use script: [\docker-registry-lab.sh](../scripts/docker/docker-registry-lab.sh).
 
 #### 🛠️ 352.3 Important Commands
 
-##### 🐳 docker
+**🐳 docker**
 
 ```sh
 ############ FILES ############
@@ -2771,13 +2742,13 @@ ls -l /sys/fs/cgroup/system.slice/docker-<FULL_ID_CONTAINER>.scope
 cat /sys/fs/cgroup/system.slice/docker-<FULL_ID_CONTAINER>.scope/cgroup.procs
 ```
 
-<p align="right">(<a href="#topic-352.3">back to sub topic 352.3</a>)</p>
-<p align="right">(<a href="#topic-352">back to topic 352</a>)</p>
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+<p align="right">(<a href="📦Topic352containerVirtualization.md#topic-352.3">back to sub topic 352.3</a>)</p>
 
----
+<p align="right">(<a href="📦Topic352containerVirtualization.md#topic-352">back to topic 352</a>)</p>
 
-<a name="topic-352.4"></a>
+<p align="right">(<a href="📦Topic352containerVirtualization.md#readme-top">back to top</a>)</p>
+
+***
 
 ### 🗂️ 352.4 container Orchestration Platforms
 
@@ -2792,51 +2763,53 @@ cat /sys/fs/cgroup/system.slice/docker-<FULL_ID_CONTAINER>.scope/cgroup.procs
 * Understand the key concepts of Kubernetes and Helm
 * Awareness of OpenShift, Rancher and Mesosphere DC/OS
 
-<p align="right">(<a href="#topic-352.4">back to sub topic 352.4</a>)</p>
-<p align="right">(<a href="#topic-352">back to topic 352</a>)</p>
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+<p align="right">(<a href="📦Topic352containerVirtualization.md#topic-352.4">back to sub topic 352.4</a>)</p>
 
----
+<p align="right">(<a href="📦Topic352containerVirtualization.md#topic-352">back to topic 352</a>)</p>
+
+<p align="right">(<a href="📦Topic352containerVirtualization.md#readme-top">back to top</a>)</p>
+
+***
 
 #### 🧩 Docker Compose
 
-##### 📘 Docker Compose Command Reference
+**📘 Docker Compose Command Reference**
 
-Docker Compose is a tool for defining and managing multi-container Docker applications using a YAML file (`docker-compose.yml`). 
+Docker Compose is a tool for defining and managing multi-container Docker applications using a YAML file (`docker-compose.yml`).
 
 Below is a structured table of the main commands and their purposes.
 
 **📊 Table: Docker Compose Commands**
 
-| Command                                 | Purpose                                                                               | Example                                                                    |
-| --------------------------------------- | ------------------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
-| ▶️**`docker compose up`**           | Build, (re)create, start, and attach to containers defined in `docker-compose.yml`. | `docker compose up -d`                                                   |
-| ⏹️**`docker compose down`**         | Stop and remove containers, networks, volumes, and images created by `up`.          | `docker compose down --volumes`                                          |
-| 🔄**`docker compose restart`**  | Restart running services.                                                             | `docker compose restart web`                                             |
-| 🟢**`docker compose start`**    | Start existing containers without recreating them.                                    | `docker compose start db`                                                |
-| 🔴**`docker compose stop`**     | Stop running containers without removing them.                                        | `docker compose stop db`                                                 |
-| 🧹**`docker compose rm`**       | Remove stopped service containers.                                                    | `docker compose rm -f`                                                   |
-| 🏗️**`docker compose build`**        | Build or rebuild service images.                                                      | `docker compose build web`                                               |
-| 📥**`docker compose pull`**     | Pull service images from a registry.                                                  | `docker compose pull redis`                                              |
-| 📤**`docker compose push`**     | Push service images to a registry.                                                    | `docker compose push api`                                                |
-| 📄**`docker compose config`**   | Validate and view the Compose file.                                                   | `docker compose config`                                                  |
-| 📋**`docker compose ps`**       | List containers managed by Compose.                                                   | `docker compose ps`                                                      |
-| 📊**`docker compose top`**      | Display running processes of containers.                                              | `docker compose top`                                                     |
-| 📜**`docker compose logs`**     | View output logs from services.                                                       | `docker compose logs -f api`                                             |
-| 🔍**`docker compose exec`**     | Run a command in a running service container.                                         | `docker compose exec db psql -U postgres`                                |
-| 🐚**`docker compose run`**      | Run one-off commands in a new container.                                              | `docker compose run web sh`                                              |
-| 🔧**`docker compose override`** | Use `-f`to specify multiple Compose files (overrides).                              | `docker compose -f docker-compose.yml -f docker-compose.override.yml up` |
-| 🌐**Networking**                  | Networks are auto-created; can be declared explicitly in YAML.                        | `docker network ls`                                                      |
-| 📦**Volumes**                     | Manage persistent data; can be declared in YAML and used across services.             | `docker volume ls`                                                       |
+| Command                             | Purpose                                                                             | Example                                                                  |
+| ----------------------------------- | ----------------------------------------------------------------------------------- | ------------------------------------------------------------------------ |
+| ▶️\*\*`docker compose up`\*\*       | Build, (re)create, start, and attach to containers defined in `docker-compose.yml`. | `docker compose up -d`                                                   |
+| ⏹️\*\*`docker compose down`\*\*     | Stop and remove containers, networks, volumes, and images created by `up`.          | `docker compose down --volumes`                                          |
+| 🔄\*\*`docker compose restart`\*\*  | Restart running services.                                                           | `docker compose restart web`                                             |
+| 🟢\*\*`docker compose start`\*\*    | Start existing containers without recreating them.                                  | `docker compose start db`                                                |
+| 🔴\*\*`docker compose stop`\*\*     | Stop running containers without removing them.                                      | `docker compose stop db`                                                 |
+| 🧹\*\*`docker compose rm`\*\*       | Remove stopped service containers.                                                  | `docker compose rm -f`                                                   |
+| 🏗️\*\*`docker compose build`\*\*   | Build or rebuild service images.                                                    | `docker compose build web`                                               |
+| 📥\*\*`docker compose pull`\*\*     | Pull service images from a registry.                                                | `docker compose pull redis`                                              |
+| 📤\*\*`docker compose push`\*\*     | Push service images to a registry.                                                  | `docker compose push api`                                                |
+| 📄\*\*`docker compose config`\*\*   | Validate and view the Compose file.                                                 | `docker compose config`                                                  |
+| 📋\*\*`docker compose ps`\*\*       | List containers managed by Compose.                                                 | `docker compose ps`                                                      |
+| 📊\*\*`docker compose top`\*\*      | Display running processes of containers.                                            | `docker compose top`                                                     |
+| 📜\*\*`docker compose logs`\*\*     | View output logs from services.                                                     | `docker compose logs -f api`                                             |
+| 🔍\*\*`docker compose exec`\*\*     | Run a command in a running service container.                                       | `docker compose exec db psql -U postgres`                                |
+| 🐚\*\*`docker compose run`\*\*      | Run one-off commands in a new container.                                            | `docker compose run web sh`                                              |
+| 🔧\*\*`docker compose override`\*\* | Use `-f`to specify multiple Compose files (overrides).                              | `docker compose -f docker-compose.yml -f docker-compose.override.yml up` |
+| 🌐**Networking**                    | Networks are auto-created; can be declared explicitly in YAML.                      | `docker network ls`                                                      |
+| 📦**Volumes**                       | Manage persistent data; can be declared in YAML and used across services.           | `docker volume ls`                                                       |
 
-##### 🔑 Key Notes
+**🔑 Key Notes**
 
 * **`up` vs `start`** : `up` builds/recreates containers, `start` only runs existing ones.
-* **`run` vs `exec`** : `run` launches a *new* container, `exec` runs inside an existing one.
+* **`run` vs `exec`** : `run` launches a _new_ container, `exec` runs inside an existing one.
 * **Config validation** : Always run `docker compose config` to check for syntax errors.
 * **Detach mode** : Use `-d` to run services in background.
 
-##### **📄 `docker-compose.yml`**
+**📄 `docker-compose.yml`**
 
 ```yaml
 version: "3.9"  # Compose file format
@@ -2914,54 +2887,52 @@ For testing docker compose use examples of services in [apps](apps/).
 
 #### 🌐 Docker Swarm
 
-![\swarm-nodes](../images/swarm-nodes.png)
-*Swarm architecture with manager and worker nodes*
+![\swarm-nodes](../.gitbook/assets/swarm-nodes.png) _Swarm architecture with manager and worker nodes_
 
-![\swarm-services](../images/swarm-services.png)
-*Swarm services with multiple replicas*
+![\swarm-services](../.gitbook/assets/swarm-services.png) _Swarm services with multiple replicas_
 
 Docker Swarm is Docker's native orchestration tool that allows you to manage a cluster of Docker hosts as a single virtual system. It facilitates the deployment, management, and scaling of containerized applications across multiple machines.
 
-##### Docker Swarm Key Concepts
+**Docker Swarm Key Concepts**
 
-| Concept | Description |
-| :--- | :--- |
-| 🌐 **Swarm** | A cluster of Docker hosts running in swarm mode. |
-| 🤖 **Node** | A Docker host participating in the swarm. Nodes can be either managers or workers. |
-| 👑 **Manager Node** | Responsible for managing the swarm's state, scheduling tasks, and maintaining the desired state of the cluster. |
-| 👷 **Worker Node** | Executes tasks assigned by manager nodes, running the actual containers. |
-| 🚀 **Service** | An abstract definition of a computational resource (e.g., an Nginx web server) that can be scaled and updated independently. |
-| 📝 **Task** | A running container that is part of a service. |
+| Concept             | Description                                                                                                                  |
+| ------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
+| 🌐 **Swarm**        | A cluster of Docker hosts running in swarm mode.                                                                             |
+| 🤖 **Node**         | A Docker host participating in the swarm. Nodes can be either managers or workers.                                           |
+| 👑 **Manager Node** | Responsible for managing the swarm's state, scheduling tasks, and maintaining the desired state of the cluster.              |
+| 👷 **Worker Node**  | Executes tasks assigned by manager nodes, running the actual containers.                                                     |
+| 🚀 **Service**      | An abstract definition of a computational resource (e.g., an Nginx web server) that can be scaled and updated independently. |
+| 📝 **Task**         | A running container that is part of a service.                                                                               |
 
-##### ✨ Main characteristics
+**✨ Main characteristics**
 
-| Feature | Description |
-| :--- | :--- |
-| ⬆️ **High availability** | Distributes services across multiple nodes, ensuring applications remain available even if a node fails. |
-| ⚖️ **Scalability** | Easily scale services up or down to handle varying workloads. |
-| 🔄 **Load Balancing** | Built-in load balancing distributes requests evenly among service replicas. |
-| 🚀 **Rolling Updates** | Perform updates to services with zero downtime. |
-| 😊 **Ease of use** | Integrated directly into Docker Engine, making it relatively simple to set up and manage compared to other orchestrators. |
+| Feature                  | Description                                                                                                               |
+| ------------------------ | ------------------------------------------------------------------------------------------------------------------------- |
+| ⬆️ **High availability** | Distributes services across multiple nodes, ensuring applications remain available even if a node fails.                  |
+| ⚖️ **Scalability**       | Easily scale services up or down to handle varying workloads.                                                             |
+| 🔄 **Load Balancing**    | Built-in load balancing distributes requests evenly among service replicas.                                               |
+| 🚀 **Rolling Updates**   | Perform updates to services with zero downtime.                                                                           |
+| 😊 **Ease of use**       | Integrated directly into Docker Engine, making it relatively simple to set up and manage compared to other orchestrators. |
 
-##### 🐳 Swarm Management Commands
+**🐳 Swarm Management Commands**
 
-| Command | Description | Example |
-| :--- | :--- | :--- |
-| 👑 **`docker swarm init`** | Initializes a new swarm on the current node, making it the manager. | `docker swarm init --advertise-addr 192.168.1.10` |
-| 👷 **`docker swarm join`** | Joins a node to an existing swarm as a worker or manager. | `docker swarm join --token <TOKEN> 192.168.1.10:2377` |
-| 👋 **`docker swarm leave`** | Removes the current node from the swarm. | `docker swarm leave --force` |
-| 📜 **`docker node ls`** | Lists all nodes in the swarm. | `docker node ls` |
+| Command                     | Description                                                         | Example                                               |
+| --------------------------- | ------------------------------------------------------------------- | ----------------------------------------------------- |
+| 👑 **`docker swarm init`**  | Initializes a new swarm on the current node, making it the manager. | `docker swarm init --advertise-addr 192.168.1.10`     |
+| 👷 **`docker swarm join`**  | Joins a node to an existing swarm as a worker or manager.           | `docker swarm join --token <TOKEN> 192.168.1.10:2377` |
+| 👋 **`docker swarm leave`** | Removes the current node from the swarm.                            | `docker swarm leave --force`                          |
+| 📜 **`docker node ls`**     | Lists all nodes in the swarm.                                       | `docker node ls`                                      |
 
-##### 🚀 Service Management Commands
+**🚀 Service Management Commands**
 
-| Command | Description | Example |
-| :--- | :--- | :--- |
-| ✨ **`docker service create`** | Creates a new service in the swarm. | `docker service create --name web -p 80:80 --replicas 3 nginx` |
-| ⚖️ **`docker service scale`** | Scales one or more replicated services. | `docker service scale web=5` |
-| 🔄 **`docker service update`** | Updates a service's configuration. | `docker service update --image nginx:latest web` |
-| 🗑️ **`docker service rm`** | Removes a service from the swarm. | `docker service rm web` |
-| 📜 **`docker service ls`** | Lists all services in the swarm. | `docker service ls` |
-| 📝 **`docker service ps`** | Lists the tasks of one or more services. | `docker service ps web` |
+| Command                        | Description                              | Example                                                        |
+| ------------------------------ | ---------------------------------------- | -------------------------------------------------------------- |
+| ✨ **`docker service create`**  | Creates a new service in the swarm.      | `docker service create --name web -p 80:80 --replicas 3 nginx` |
+| ⚖️ **`docker service scale`**  | Scales one or more replicated services.  | `docker service scale web=5`                                   |
+| 🔄 **`docker service update`** | Updates a service's configuration.       | `docker service update --image nginx:latest web`               |
+| 🗑️ **`docker service rm`**    | Removes a service from the swarm.        | `docker service rm web`                                        |
+| 📜 **`docker service ls`**     | Lists all services in the swarm.         | `docker service ls`                                            |
+| 📝 **`docker service ps`**     | Lists the tasks of one or more services. | `docker service ps web`                                        |
 
 For testing docker swarm use script: [\docker-swarm.sh](../scripts/docker/docker-swarm.sh).
 
@@ -2969,50 +2940,50 @@ For testing docker swarm use script: [\docker-swarm.sh](../scripts/docker/docker
 
 Kubernetes, also known as K8s, is an open-source platform for automating the deployment, scaling, and management of containerized applications. It groups containers that make up an application into logical units for easy management and discovery.
 
-##### 🏛️ Kubernetes Architecture
+**🏛️ Kubernetes Architecture**
 
-![\Kubernetes Architecture](../images/k8s-components.png)
+![\Kubernetes Architecture](../.gitbook/assets/k8s-components.png)
 
 A Kubernetes cluster consists of a set of worker machines, called **nodes**, that run containerized applications. Every cluster has at least one worker node. The worker node(s) host the **Pods** which are the components of the application workload. The **control plane** manages the worker nodes and the Pods in the cluster.
 
-###### ✈️ Control Plane Components
+**✈️ Control Plane Components**
 
 The control plane's components make global decisions about the cluster (for example, scheduling), as well as detecting and responding to cluster events.
 
-| Component | Description |
-| :--- | :--- |
-| **kube-apiserver** | The API server is a component of the Kubernetes control plane that exposes the Kubernetes API. The API server is the front end for the Kubernetes control plane. |
-| **etcd** | Consistent and highly-available key-value store used as Kubernetes' backing store for all cluster data. |
-| **kube-scheduler** | Watches for newly created Pods with no assigned node, and selects a node for them to run on. |
-| **kube-controller-manager** | Runs controller processes. Logically, each controller is a separate process, but to reduce complexity, they are all compiled into a single binary and run in a single process. |
+| Component                    | Description                                                                                                                                                                                                                                                                                          |
+| ---------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **kube-apiserver**           | The API server is a component of the Kubernetes control plane that exposes the Kubernetes API. The API server is the front end for the Kubernetes control plane.                                                                                                                                     |
+| **etcd**                     | Consistent and highly-available key-value store used as Kubernetes' backing store for all cluster data.                                                                                                                                                                                              |
+| **kube-scheduler**           | Watches for newly created Pods with no assigned node, and selects a node for them to run on.                                                                                                                                                                                                         |
+| **kube-controller-manager**  | Runs controller processes. Logically, each controller is a separate process, but to reduce complexity, they are all compiled into a single binary and run in a single process.                                                                                                                       |
 | **cloud-controller-manager** | A Kubernetes control plane component that embeds cloud-specific control logic. The cloud controller manager lets you link your cluster into your cloud provider's API, and separates out the components that interact with that cloud platform from components that only interact with your cluster. |
 
-###### 👷 Node Components
+**👷 Node Components**
 
 Node components run on every node, maintaining running pods and providing the Kubernetes runtime environment.
 
-| Component | Description |
-| :--- | :--- |
-| **kubelet** | An agent that runs on each node in the cluster. It makes sure that containers are running in a Pod. |
-| **kube-proxy** | A network proxy that runs on each node in your cluster, implementing part of the Kubernetes Service concept. |
+| Component             | Description                                                                                                                                                                                                           |
+| --------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **kubelet**           | An agent that runs on each node in the cluster. It makes sure that containers are running in a Pod.                                                                                                                   |
+| **kube-proxy**        | A network proxy that runs on each node in your cluster, implementing part of the Kubernetes Service concept.                                                                                                          |
 | **Container runtime** | The software that is responsible for running containers. Kubernetes supports several container runtimes: Docker, containerd, CRI-O, and any other implementation of the Kubernetes CRI (Container Runtime Interface). |
 
-##### 📦 Kubernetes Objects
+**📦 Kubernetes Objects**
 
 Kubernetes objects are persistent entities in the Kubernetes system. Kubernetes uses these entities to represent the state of your cluster.
 
-| Object | Description |
-| :--- | :--- |
-| **Pod** | The smallest and simplest unit in the Kubernetes object model that you create or deploy. A Pod represents a set of running containers on your cluster. |
-| **Service** | An abstract way to expose an application running on a set of Pods as a network service. |
-| **Volume** | A directory containing data, accessible to the containers in a Pod. |
-| **Namespace** | A way to divide cluster resources between multiple users. |
-| **Deployment** | Provides declarative updates for Pods and ReplicaSets. You describe a desired state in a Deployment, and the Deployment Controller changes the actual state to the desired state at a controlled rate. |
-| **ReplicaSet** | Ensures that a specified number of pod replicas are running at any given time. |
-| **StatefulSet** | Manages the deployment and scaling of a set of Pods, and provides guarantees about the ordering and uniqueness of these Pods. |
-| **DaemonSet** | Ensures that all (or some) Nodes run a copy of a Pod. |
-| **Job** | Creates one or more Pods and ensures that a specified number of them successfully terminate. |
-| **CronJob** | Creates Jobs on a time-based schedule. |
+| Object          | Description                                                                                                                                                                                            |
+| --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **Pod**         | The smallest and simplest unit in the Kubernetes object model that you create or deploy. A Pod represents a set of running containers on your cluster.                                                 |
+| **Service**     | An abstract way to expose an application running on a set of Pods as a network service.                                                                                                                |
+| **Volume**      | A directory containing data, accessible to the containers in a Pod.                                                                                                                                    |
+| **Namespace**   | A way to divide cluster resources between multiple users.                                                                                                                                              |
+| **Deployment**  | Provides declarative updates for Pods and ReplicaSets. You describe a desired state in a Deployment, and the Deployment Controller changes the actual state to the desired state at a controlled rate. |
+| **ReplicaSet**  | Ensures that a specified number of pod replicas are running at any given time.                                                                                                                         |
+| **StatefulSet** | Manages the deployment and scaling of a set of Pods, and provides guarantees about the ordering and uniqueness of these Pods.                                                                          |
+| **DaemonSet**   | Ensures that all (or some) Nodes run a copy of a Pod.                                                                                                                                                  |
+| **Job**         | Creates one or more Pods and ensures that a specified number of them successfully terminate.                                                                                                           |
+| **CronJob**     | Creates Jobs on a time-based schedule.                                                                                                                                                                 |
 
 #### ⎈ Helm
 
@@ -3020,35 +2991,35 @@ Helm is a package manager for Kubernetes.
 
 It helps you manage Kubernetes applications — Helm Charts help you define, install, and upgrade even the most complex Kubernetes application.
 
-##### 🎯 Key Concepts
+**🎯 Key Concepts**
 
-| Concept | Description |
-| :--- | :--- |
-| **Chart** | A Helm package. It contains all of the resource definitions necessary to run an application, tool, or service inside of a Kubernetes cluster. |
-| **Repository** | A place where charts can be collected and shared. |
-| **Release** | An instance of a chart running in a Kubernetes cluster. One chart can often be installed many times into the same cluster. And each time it is installed, a new *release* is created. |
+| Concept        | Description                                                                                                                                                                           |
+| -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Chart**      | A Helm package. It contains all of the resource definitions necessary to run an application, tool, or service inside of a Kubernetes cluster.                                         |
+| **Repository** | A place where charts can be collected and shared.                                                                                                                                     |
+| **Release**    | An instance of a chart running in a Kubernetes cluster. One chart can often be installed many times into the same cluster. And each time it is installed, a new _release_ is created. |
 
-##### 🚀 Core Commands Kubernetes
+**🚀 Core Commands Kubernetes**
 
-| Command | Description | Example |
-| :--- | :--- | :--- |
-| `helm search` | Search for charts in a repository. | `helm search repo stable` |
-| `helm install` | Install a chart. | `helm install my-release stable/mysql` |
-| `helm upgrade` | Upgrade a release. | `helm upgrade my-release stable/mysql` |
-| `helm uninstall` | Uninstall a release. | `helm uninstall my-release` |
-| `helm list` | List releases. | `helm list` |
+| Command          | Description                        | Example                                |
+| ---------------- | ---------------------------------- | -------------------------------------- |
+| `helm search`    | Search for charts in a repository. | `helm search repo stable`              |
+| `helm install`   | Install a chart.                   | `helm install my-release stable/mysql` |
+| `helm upgrade`   | Upgrade a release.                 | `helm upgrade my-release stable/mysql` |
+| `helm uninstall` | Uninstall a release.               | `helm uninstall my-release`            |
+| `helm list`      | List releases.                     | `helm list`                            |
 
 #### 🏗️ Other Orchestration Platforms
 
-##### OpenShift
+**OpenShift**
 
 **OpenShift** is a family of containerization software products developed by Red Hat. Its flagship product is the OpenShift Container Platform — an on-premises platform as a service built around Docker containers orchestrated and managed by Kubernetes on a foundation of Red Hat Enterprise Linux.
 
-##### Rancher
+**Rancher**
 
 **Rancher** is a complete software stack for teams adopting containers. It addresses the operational and security challenges of managing multiple Kubernetes clusters across any infrastructure, while providing DevOps teams with integrated tools for running containerized workloads.
 
-##### Mesosphere DC/OS
+**Mesosphere DC/OS**
 
 **Mesosphere DC/OS** (the Datacenter Operating System) is a distributed operating system based on the Apache Mesos distributed systems kernel. It can manage multiple machines in a datacenter or cloud as if they’re a single computer. It provides a highly elastic, and highly scalable way of deploying applications, services, and big data infrastructure on shared resources.
 
@@ -3250,7 +3221,4 @@ helm fetch stable/mysql
 helm get values my-release
 ```
 
----
-
-<a name="topic-353"></a>
-
+***

@@ -1,10 +1,8 @@
 # 🖥️ Topic 351: Full Virtualization
 
-![\Virtualization](../images/virtualization-351.png)
+![\Virtualization](../.gitbook/assets/virtualization-351.png)
 
----
-
-<a name="topic-351.1"></a>
+***
 
 ### 🧠 351.1 Virtualization Concepts and Theory
 
@@ -37,45 +35,45 @@ Migration (P2V, V2V)
 
 #### 🖥️ Hypervisors
 
-##### 🏢 Type 1 Hypervisor (Bare-Metal Hypervisor)
+**🏢 Type 1 Hypervisor (Bare-Metal Hypervisor)**
 
-###### 📄 Type 1 Definition
+**📄 Type 1 Definition**
 
 Runs directly on the host's physical hardware, providing a base layer to manage VMs without the need for a host operating system.
 
-###### 📝 Type 1 Characteristics
+**📝 Type 1 Characteristics**
 
 * ⚡ High performance and efficiency.
 * ⏱️ Lower latency and overhead.
 * 🏢 Often used in enterprise environments and data centers.
 
-###### 💡 Type 1 Examples
+**💡 Type 1 Examples**
 
 * VMware ESXi: A robust and widely used hypervisor in enterprise settings.
 * Microsoft Hyper-V: Integrated with Windows Server, offering strong performance and management features.
 * Xen: An open-source hypervisor used by many cloud service providers.
 * KVM (Kernel-based Virtual Machine): Integrated into the Linux kernel, providing high performance for Linux-based systems.
 
-##### 🏠 Type 2 Hypervisor (Hosted Hypervisor)
+**🏠 Type 2 Hypervisor (Hosted Hypervisor)**
 
-###### 📄 Type 2 Definition
+**📄 Type 2 Definition**
 
 Runs on top of a conventional operating system, relying on the host OS for resource management and device support.
 
-###### 📝 Type 2 Characteristics
+**📝 Type 2 Characteristics**
 
 * 🛠️ Easier to set up and use, especially on personal computers.
 * 🔧 More flexible for development, testing, and smaller-scale deployments.
 * 🐢 Typically less efficient than Type 1 hypervisors due to additional overhead from the host OS.
 
-###### 💡 Type 2 Examples
+**💡 Type 2 Examples**
 
 * VMware Workstation: A powerful hypervisor for running multiple operating systems on a single desktop.
 * Oracle VirtualBox: An open-source hypervisor known for its flexibility and ease of use.
 * Parallels Desktop: Designed for Mac users to run Windows and other operating systems alongside macOS.
 * QEMU (Quick EMUlator): An open-source emulator and virtualizer, often used in conjunction with KVM.
 
-##### ⚖️ Key Differences Between Type 1 and Type 2 Hypervisors
+**⚖️ Key Differences Between Type 1 and Type 2 Hypervisors**
 
 * Deployment Environment:
   * Type 1 hypervisors are commonly deployed in data centers and enterprise environments due to their direct interaction with hardware and high performance.
@@ -87,19 +85,17 @@ Runs on top of a conventional operating system, relying on the host OS for resou
   * Type 1 hypervisors require more complex setup and management but provide advanced features and scalability for large-scale deployments.
   * Type 2 hypervisors are easier to install and use, making them ideal for individual users and smaller projects.
 
-##### 🔄 Migration Types
+**🔄 Migration Types**
 
-In the context of hypervisors, which are technologies used to create and manage virtual machines, the terms P2V migration and V2V migration are common in virtualization environments.
-They refer to processes of migrating systems between different types of platforms.
+In the context of hypervisors, which are technologies used to create and manage virtual machines, the terms P2V migration and V2V migration are common in virtualization environments. They refer to processes of migrating systems between different types of platforms.
 
-##### 🖥️➡️🖥️ P2V - Physical to Virtual Migration
+**🖥️➡️🖥️ P2V - Physical to Virtual Migration**
 
 P2V migration refers to the process of migrating a physical server to a virtual machine.In other words, an operating system and its applications, running on dedicated physical hardware, are "converted" and moved to a virtual machine that runs on a hypervisor (such as VMware, Hyper-V, KVM, etc.).
 
-* Example: You have a physical server running a Windows or Linux system, and you want to move it to a virtual environment, like a cloud infrastructure or an internal virtualization server.
-  The process involves copying the entire system state, including the operating system, drivers, and data, to create an equivalent virtual machine that can run as if it were on the physical hardware.
+* Example: You have a physical server running a Windows or Linux system, and you want to move it to a virtual environment, like a cloud infrastructure or an internal virtualization server. The process involves copying the entire system state, including the operating system, drivers, and data, to create an equivalent virtual machine that can run as if it were on the physical hardware.
 
-##### 🖥️🔁🖥️ V2V  - Virtual to Virtual Migration
+**🖥️🔁🖥️ V2V - Virtual to Virtual Migration**
 
 V2V migration refers to the process of migrating a virtual machine from one hypervisor to another.In this case, you already have a virtual machine running in a virtualized environment (like VMware), and you want to move it to another virtualized environment (for example, to Hyper-V or to a new VMware server).
 
@@ -107,108 +103,106 @@ V2V migration refers to the process of migrating a virtual machine from one hype
 
 #### 🧩 HVM and Paravirtualization
 
-##### ⚙️ Hardware-assisted Virtualization (HVM)
+**⚙️ Hardware-assisted Virtualization (HVM)**
 
-###### 📄 HVM Definition
+**📄 HVM Definition**
 
 HVM leverages hardware extensions provided by modern CPUs to virtualize hardware, enabling the creation and management of VMs with minimal performance overhead.
 
-###### 📝 HVM Key Characteristics
+**📝 HVM Key Characteristics**
 
 * 🖥️ **Hardware Support**: Requires CPU support for virtualization extensions such as Intel VT-x or AMD-V.
 * 🛠️ **Full Virtualization:** VMs can run unmodified guest operating systems, as the hypervisor provides a complete emulation of the hardware environment.
 * ⚡ **Performance:** Typically offers near-native performance because of direct execution of guest code on the CPU.
 * 🔒 **Isolation:** Provides strong isolation between VMs since each VM operates as if it has its own dedicated hardware.
 
-###### 💡 HVM Examples
+**💡 HVM Examples**
 
 VMware ESXi, Microsoft Hyper-V, KVM (Kernel-based Virtual Machine).
 
-###### ✅ HVM Advantages
+**✅ HVM Advantages**
 
 * ✅ **Compatibility:** Can run any operating system without modification.
 * ⚡ **Performance:** High performance due to hardware support.
 * 🔒 **Security:** Enhanced isolation and security features provided by hardware.
 
-###### ❌ HVM Disadvantages
+**❌ HVM Disadvantages**
 
 * 🛠️ **Hardware Dependency:** Requires specific hardware features, limiting compatibility with older systems.
 * 🔧 **Complexity:** May involve more complex configuration and management.
 
-##### 🧩 Paravirtualization
+**🧩 Paravirtualization**
 
-###### 📄 Paravirtualization Definition
+**📄 Paravirtualization Definition**
 
 Paravirtualization involves modifying the guest operating system to be aware of the virtual environment, allowing it to interact more efficiently with the hypervisor.
 
-###### 📝 Paravirtualization Key Characteristics
+**📝 Paravirtualization Key Characteristics**
 
 * 🛠️ **Guest Modification:** Requires changes to the guest operating system to communicate directly with the hypervisor using hypercalls.
 * ⚡ **Performance:** Can be more efficient than traditional full virtualization because it reduces the overhead associated with emulating hardware.
 * 🔗 **Compatibility:** Limited to operating systems that have been modified for paravirtualization.
 
-###### 💡 Paravirtualization Examples
+**💡 Paravirtualization Examples**
 
 Xen with paravirtualized guests, VMware tools in certain configurations, and some KVM configurations.
 
-###### ✅ Paravirtualization Advantages
+**✅ Paravirtualization Advantages**
 
 * ⚡ **Efficiency:** Reduces the overhead of virtualizing hardware, potentially offering better performance for certain workloads.
 * ✅ **Resource Utilization:** More efficient use of system resources due to direct communication between the guest OS and hypervisor.
 
-###### ❌ Paravirtualization Disadvantages
+**❌ Paravirtualization Disadvantages**
 
 * 🛠️ **Guest OS Modification:** Requires modifications to the guest OS, limiting compatibility to supported operating systems.
 * 🔧 **Complexity:** Requires additional complexity in the guest OS for hypercall implementations.
 
-##### ⚖️ Key Differences
+**⚖️ Key Differences**
 
-###### 🖥️ Guest OS Requirements
+**🖥️ Guest OS Requirements**
 
 * **HVM:** Can run unmodified guest operating systems.
 * **Paravirtualization:** Requires guest operating systems to be modified to work with the hypervisor.
 
-###### ⚡ Performance
+**⚡ Performance**
 
 * **HVM:** Typically provides near-native performance due to hardware-assisted execution.
 * **Paravirtualization:** Can offer efficient performance by reducing the overhead of hardware emulation, but relies on modified guest OS.
 
-###### 🧰 Hardware Dependency
+**🧰 Hardware Dependency**
 
 * **HVM:** Requires specific CPU features (Intel VT-x, AMD-V).
 * **Paravirtualization:** Does not require specific CPU features but needs modified guest OS.
 
-###### 🔒 Isolation
+**🔒 Isolation**
 
 * **HVM:** Provides strong isolation using hardware features.
 * **Paravirtualization:** Relies on software-based isolation, which may not be as robust as hardware-based isolation.
 
-###### 🧩 Complexity
+**🧩 Complexity**
 
 * **HVM:** Generally more straightforward to deploy since it supports unmodified OS.
 * **Paravirtualization:** Requires additional setup and modifications to the guest OS, increasing complexity.
 
 #### 🧠 NUMA (Non-Uniform Memory Access)
 
-NUMA (Non-Uniform Memory Access) is a memory architecture used in multiprocessor systems to optimize memory access by processors.
-In a NUMA system, memory is distributed unevenly among processors, meaning that each processor has faster access to a portion of memory (its "local memory") than to memory that is physically further away (referred to as "remote memory") and associated with other processors.
+NUMA (Non-Uniform Memory Access) is a memory architecture used in multiprocessor systems to optimize memory access by processors. In a NUMA system, memory is distributed unevenly among processors, meaning that each processor has faster access to a portion of memory (its "local memory") than to memory that is physically further away (referred to as "remote memory") and associated with other processors.
 
-##### 📝 Key Features of NUMA Architecture
+**📝 Key Features of NUMA Architecture**
 
 1. **Local and Remote Memory**: Each processor has its own local memory, which it can access more quickly. However, it can also access the memory of other processors, although this takes longer.
 2. **Differentiated Latency**: The latency of memory access varies depending on whether the processor is accessing its local memory or the memory of another node. Local memory access is faster, while accessing another node’s memory (remote) is slower.
 3. **Scalability**: NUMA architecture is designed to improve scalability in systems with many processors. As more processors are added, memory is also distributed, avoiding the bottleneck that would occur in a uniform memory access (UMA) architecture.
 
-##### ✅ Advantages of NUMA
+**✅ Advantages of NUMA**
 
 * ⚡ Better Performance in Large Systems: Since each processor has local memory, it can work more efficiently without competing as much with other processors for memory access.
 * 📈 Scalability: NUMA allows systems with many processors and large amounts of memory to scale more effectively compared to a UMA architecture.
 
-##### ❌ Disadvantages
+**❌ Disadvantages**
 
 * 🛠️ Programming Complexity: Programmers need to be aware of which regions of memory are local or remote, optimizing the use of local memory to achieve better performance.
-* 🐢 Potential Performance Penalties: If a processor frequently accesses remote memory, performance may suffer due to higher latency.
-  This architecture is common in high-performance multiprocessor systems, such as servers and supercomputers, where scalability and memory optimization are critical.
+* 🐢 Potential Performance Penalties: If a processor frequently accesses remote memory, performance may suffer due to higher latency. This architecture is common in high-performance multiprocessor systems, such as servers and supercomputers, where scalability and memory optimization are critical.
 
 #### 🆓 Opensource Solutions
 
@@ -219,105 +213,105 @@ In a NUMA system, memory is distributed unevenly among processors, meaning that 
 
 #### 🗂️ Types of Virtualization
 
-##### 🖥️ Hardware Virtualization (Server Virtualization)
+**🖥️ Hardware Virtualization (Server Virtualization)**
 
-###### 📄 HV Definition
+**📄 HV Definition**
 
 Abstracts physical hardware to create virtual machines (VMs) that run separate operating systems and applications.
 
-###### 🛠️ HV Use Cases
+**🛠️ HV Use Cases**
 
 Data centers, cloud computing, server consolidation.
 
-###### 💡 HV Examples
+**💡 HV Examples**
 
 VMware ESXi, Microsoft Hyper-V, KVM.
 
-##### 📦 Operating System Virtualization (containerization)
+**📦 Operating System Virtualization (containerization)**
 
-###### 📄 containerization Definition
+**📄 containerization Definition**
 
 Allows multiple isolated user-space instances (containers) to run on a single OS kernel.
 
-###### 🛠️ containerization Use Cases
+**🛠️ containerization Use Cases**
 
 Microservices architecture, development and testing environments.
 
-###### 💡 containerization Examples
+**💡 containerization Examples**
 
 Docker, Kubernetes, LXC.
 
-##### 🌐 Network Virtualization
+**🌐 Network Virtualization**
 
-###### 📄 Network Virtualization Definition
+**📄 Network Virtualization Definition**
 
 Combines hardware and software network resources into a single, software-based administrative entity.
 
-###### 🛠️ Network Virtualization Use Cases
+**🛠️ Network Virtualization Use Cases**
 
 Software-defined networking (SDN), network function virtualization (NFV).
 
-###### 💡 Network Virtualization Examples
+**💡 Network Virtualization Examples**
 
 VMware NSX, Cisco ACI, OpenStack Neutron.
 
-##### 💾 Storage Virtualization
+**💾 Storage Virtualization**
 
-###### 📄 Storage Virtualization Definition
+**📄 Storage Virtualization Definition**
 
 Pools physical storage from multiple devices into a single virtual storage unit that can be managed centrally.
 
-###### 🛠️ Storage Virtualization Use Cases
+**🛠️ Storage Virtualization Use Cases**
 
 Data management, storage optimization, disaster recovery.
 
-###### 💡 Storage Virtualization Examples
+**💡 Storage Virtualization Examples**
 
 IBM SAN Volume Controller, VMware vSAN, NetApp ONTAP.
 
-##### 🖥️ Desktop Virtualization
+**🖥️ Desktop Virtualization**
 
-###### 📄 Desktop Virtualization Definition
+**📄 Desktop Virtualization Definition**
 
 Allows a desktop operating system to run on a virtual machine hosted on a server.
 
-###### 🛠️ Desktop Virtualization Use Cases
+**🛠️ Desktop Virtualization Use Cases**
 
 Virtual desktop infrastructure (VDI), remote work solutions.
 
-###### 💡 Desktop Virtualization Examples
+**💡 Desktop Virtualization Examples**
 
 Citrix Virtual Apps and Desktops, VMware Horizon, Microsoft Remote Desktop Services.
 
-##### 📱 Application Virtualization
+**📱 Application Virtualization**
 
-###### 📄 Application Virtualization Definition
+**📄 Application Virtualization Definition**
 
 Separates applications from the underlying hardware and operating system, allowing them to run in isolated environments.
 
-###### 🛠️ Application Virtualization Use Cases
+**🛠️ Application Virtualization Use Cases**
 
 Simplified application deployment, compatibility testing.
 
-###### 💡 Application Virtualization Examples
+**💡 Application Virtualization Examples**
 
 VMware ThinApp, Microsoft App-V, Citrix XenApp.
 
-##### 🗃️ Data Virtualization
+**🗃️ Data Virtualization**
 
-###### 📄 Data Virtualization Definition
+**📄 Data Virtualization Definition**
 
 Integrates data from various sources without physically consolidating it, providing a unified view for analysis and reporting.
 
-###### 🛠️ Data Virtualization Use Cases
+**🛠️ Data Virtualization Use Cases**
 
 Business intelligence, real-time data integration.
 
-###### 💡 Data Virtualization Examples
+**💡 Data Virtualization Examples**
 
 Denodo, Red Hat JBoss Data Virtualization, IBM InfoSphere.
 
-##### 🌟 Benefits of Virtualization
+**🌟 Benefits of Virtualization**
 
 * ⚡ Resource Efficiency: Better utilization of physical resources.
 * 💰 Cost Savings: Reduced hardware and operational costs.
@@ -340,22 +334,21 @@ Despite this drawback, emulation remains valuable for running legacy software, t
 
 #### systemd-machined
 
- The systemd-machined service is dedicated to managing virtual machines and containers within the systemd ecosystem.
- It provides essential functionalities for controlling, monitoring, and maintaining virtual instances, offering robust integration and efficiency within Linux environments.
+The systemd-machined service is dedicated to managing virtual machines and containers within the systemd ecosystem. It provides essential functionalities for controlling, monitoring, and maintaining virtual instances, offering robust integration and efficiency within Linux environments.
 
-<p align="right">(<a href="#topic-351.1">back to sub Topic 351.1</a>)</p>
-<p align="right">(<a href="#topic-351">back to Topic 351</a>)</p>
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+<p align="right">(<a href="🖥️Topic351FullVirtualization.md#topic-351.1">back to sub Topic 351.1</a>)</p>
 
----
+<p align="right">(<a href="🖥️Topic351FullVirtualization.md#topic-351">back to Topic 351</a>)</p>
 
-<a name="topic-351.2"></a>
+<p align="right">(<a href="🖥️Topic351FullVirtualization.md#readme-top">back to top</a>)</p>
+
+***
 
 ### 🐧 351.2 Xen
 
-![\xen-architecture](../images/xen-architecture.png)
+![\xen-architecture](../.gitbook/assets/xen-architecture.png)
 
-![\xen-architecture](../images/xen-architecture2.png)
+![\xen-architecture](../.gitbook/assets/xen-architecture2.png)
 
 **Weight:** 3
 
@@ -374,13 +367,12 @@ Despite this drawback, emulation remains valuable for running legacy software, t
 
 #### 🐧 Xen
 
-![\panda](../images/xen-panda.png)
+![\panda](../.gitbook/assets/xen-panda.png)
 
 Xen is an open-source type-1 (bare-metal) hypervisor, which allows multiple operating systems to run concurrently on the same physical hardware.Xen provides a layer between the physical hardware and virtual machines (VMs), enabling efficient resource sharing and isolation.
 
 * **Architecture:** Xen operates with a two-tier system where Domain 0 (Dom0) is the privileged domain with direct hardware access and manages the hypervisor. Other virtual machines, called Domain U (DomU), run guest operating systems and are managed by Dom0.
-* **Types of Virtualization:** Xen supports both paravirtualization (PV), which requires modified guest OS, and hardware-assisted virtualization (HVM), which uses hardware extensions (e.g., Intel VT-x or AMD-V) to run unmodified guest operating systems.
-  Xen is widely used in cloud environments, notably by Amazon Web Services (AWS) and other large-scale cloud providers.
+* **Types of Virtualization:** Xen supports both paravirtualization (PV), which requires modified guest OS, and hardware-assisted virtualization (HVM), which uses hardware extensions (e.g., Intel VT-x or AMD-V) to run unmodified guest operating systems. Xen is widely used in cloud environments, notably by Amazon Web Services (AWS) and other large-scale cloud providers.
 
 #### 🏢 XenSource
 
@@ -399,8 +391,7 @@ Xen Project refers to the open-source community and initiative responsible for d
 
 #### 🗄️ XenStore
 
-Xen Store is a critical component of the Xen Hypervisor.
-Essentially, Xen Store is a distributed key-value database used for communication and information sharing between the Xen hypervisor and the virtual machines (also known as domains) it manages.
+Xen Store is a critical component of the Xen Hypervisor. Essentially, Xen Store is a distributed key-value database used for communication and information sharing between the Xen hypervisor and the virtual machines (also known as domains) it manages.
 
 Here are some key aspects of Xen Store:
 
@@ -411,8 +402,7 @@ Here are some key aspects of Xen Store:
 
 #### 🔗 XAPI
 
-XAPI, or XenAPI, is the application programming interface (API) used to manage the Xen Hypervisor and its virtual machines (VMs).
-XAPI is a key component of XenServer (now known as Citrix Hypervisor) and provides a standardized way to interact with the Xen hypervisor to perform operations such as creating, configuring, monitoring, and controlling VMs.
+XAPI, or XenAPI, is the application programming interface (API) used to manage the Xen Hypervisor and its virtual machines (VMs). XAPI is a key component of XenServer (now known as Citrix Hypervisor) and provides a standardized way to interact with the Xen hypervisor to perform operations such as creating, configuring, monitoring, and controlling VMs.
 
 Here are some important aspects of XAPI:
 
@@ -428,36 +418,30 @@ XAPI is the interface that enables control and automation of the Xen Hypervisor,
 * **Xen:** The core hypervisor technology enabling virtual machines to run on physical hardware.
 * **XenSource:** The company that commercialized Xen, later acquired by Citrix, leading to the development of Citrix XenServer.
 * **Xen Project:** The open-source initiative and community that continues to develop and maintain the Xen hypervisor under the Linux Foundation.
-* **XenStore:**  Xen Store acts as a communication and configuration intermediary between the Xen hypervisor and the VMs, streamlining the operation and management of virtualized environments.
+* **XenStore:** Xen Store acts as a communication and configuration intermediary between the Xen hypervisor and the VMs, streamlining the operation and management of virtualized environments.
 * **XAPI** is the interface that enables control and automation of the Xen Hypervisor, making it easier to manage virtualized environments.
 
 #### 🖥️ Domain0 (Dom0)
 
-Domain0, or Dom0, is the control domain in a Xen architecture. It manages other domains (DomUs) and has direct access to hardware.
-Dom0 runs device drivers, allowing DomUs, which lack direct hardware access, to communicate with devices. Typically, it is a full instance of an operating system, like Linux, and is essential for Xen hypervisor operation.
+Domain0, or Dom0, is the control domain in a Xen architecture. It manages other domains (DomUs) and has direct access to hardware. Dom0 runs device drivers, allowing DomUs, which lack direct hardware access, to communicate with devices. Typically, it is a full instance of an operating system, like Linux, and is essential for Xen hypervisor operation.
 
 #### 💻 DomainU (DomU)
 
-DomUs are non-privileged domains that run virtual machines.
-They are managed by Dom0 and do not have direct access to hardware. DomUs can be configured to run different operating systems and are used for various purposes, such as application servers and development environments. They rely on Dom0 for hardware interaction.
+DomUs are non-privileged domains that run virtual machines. They are managed by Dom0 and do not have direct access to hardware. DomUs can be configured to run different operating systems and are used for various purposes, such as application servers and development environments. They rely on Dom0 for hardware interaction.
 
 #### 🧩 PV-DomU (Paravirtualized DomainU)
 
-PV-DomUs use a technique called paravirtualization. In this model, the DomU operating system is modified to be aware that it runs in a virtualized environment, allowing it to communicate directly with the hypervisor for optimized performance.
-This results in lower overhead and better efficiency compared to full virtualization.
+PV-DomUs use a technique called paravirtualization. In this model, the DomU operating system is modified to be aware that it runs in a virtualized environment, allowing it to communicate directly with the hypervisor for optimized performance. This results in lower overhead and better efficiency compared to full virtualization.
 
 #### ⚙️ HVM-DomU (Hardware Virtual Machine DomainU)
 
-HVM-DomUs are virtual machines that utilize full virtualization, allowing unmodified operating systems to run. The Xen hypervisor provides hardware emulation for these DomUs, enabling them to run any operating system that supports the underlying hardware architecture.
-While this offers greater flexibility, it can result in higher overhead compared to PV-DomUs.
+HVM-DomUs are virtual machines that utilize full virtualization, allowing unmodified operating systems to run. The Xen hypervisor provides hardware emulation for these DomUs, enabling them to run any operating system that supports the underlying hardware architecture. While this offers greater flexibility, it can result in higher overhead compared to PV-DomUs.
 
 #### 🌐 Xen Network
 
-Paravirtualized Network Devices
-![\pv-networking](../images/xen-networking2.png)
+Paravirtualized Network Devices ![\pv-networking](../.gitbook/assets/xen-networking2.png)
 
-Bridging
-![\pv-networking](../images/xen-networking1.png)
+Bridging ![\pv-networking](../.gitbook/assets/xen-networking1.png)
 
 #### 📋 351.2 Cited Objects
 
@@ -515,11 +499,11 @@ cd /etc/xen && mkdir -p auto && cd auto
 ln -s /etc/xen/lpic3-pv-guest /etc/xen/auto/lpic3-pv-guest
 ```
 
-##### vif
+**vif**
 
 In Xen, “vif” stands for Virtual Interface and is used to configure networking for virtual machines (domains).
 
-By specifying “vif” directives in the domain configuration files, administrators can define network interfaces, assign IP addresses, set up VLANs, and configure other networking parameters for virtual machines running on Xen hosts. For example: vif = [‘bridge=xenbr0’], in this case, it connects the VM’s network interface to the Xen bridge named “xenbr0”.
+By specifying “vif” directives in the domain configuration files, administrators can define network interfaces, assign IP addresses, set up VLANs, and configure other networking parameters for virtual machines running on Xen hosts. For example: vif = \[‘bridge=xenbr0’], in this case, it connects the VM’s network interface to the Xen bridge named “xenbr0”.
 
 #### Xen Lab
 
@@ -527,7 +511,7 @@ Use this script for lab provisioning: [\xen.sh](../scripts/xen/xen.sh)
 
 #### 💻 351.2 Important Commands
 
-##### 🏗️ xen-create-image
+**🏗️ xen-create-image**
 
 ```sh
 # create a pv image
@@ -543,28 +527,28 @@ xen-create-image \
   --dist=bookworm
 ```
 
-##### 📄 xen-list-images
+**📄 xen-list-images**
 
 ```sh
 # list image
 xen-list-images
 ```
 
-##### ❌ xen-delete-image
+**❌ xen-delete-image**
 
 ```sh
 # delete a pv image
 xen-delete-image lpic3-pv-guest --lvm=vg_xen
 ```
 
-##### 🗄️ xenstore-ls
+**🗄️ xenstore-ls**
 
 ```sh
 # list xenstore infos
 sudo xenstore-ls
 ```
 
-##### ⚙️ xl
+**⚙️ xl**
 
 ```sh
 # xl requires privileged access to Xen control interfaces (Dom0)
@@ -696,17 +680,17 @@ sudo xl cd-insert lpic3-hvm-guest-ubuntu xvdb  /home/vagrant/isos/ubuntu/ubuntu-
 sudo xl cd-eject lpic3-hvm-guest-ubuntu xvdb
 ```
 
-<p align="right">(<a href="#topic-351.2">back to sub Topic 351.2</a>)</p>
-<p align="right">(<a href="#topic-351">back to Topic 351</a>)</p>
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+<p align="right">(<a href="🖥️Topic351FullVirtualization.md#topic-351.2">back to sub Topic 351.2</a>)</p>
 
----
+<p align="right">(<a href="🖥️Topic351FullVirtualization.md#topic-351">back to Topic 351</a>)</p>
 
-<a name="topic-351.3"></a>
+<p align="right">(<a href="🖥️Topic351FullVirtualization.md#readme-top">back to top</a>)</p>
+
+***
 
 ### 🖥️ 351.3 QEMU
 
-![xen-kvm-qemu](/images/xen-kvm-qemu.png)
+![xen-kvm-qemu](../.gitbook/assets/xen-kvm-qemu.png)
 
 **Weight:** 4
 
@@ -736,13 +720,11 @@ tunctl
 
 #### Understanding KVM and QEMU
 
-In this section, we study virtualization on Linux by understanding the role of each component:
-what QEMU does, what KVM does, and why both are typically used together in production.
+In this section, we study virtualization on Linux by understanding the role of each component: what QEMU does, what KVM does, and why both are typically used together in production.
 
-##### What is QEMU?
+**What is QEMU?**
 
-QEMU (Quick Emulator) is a userspace virtual machine monitor and hardware emulator.
-It is responsible for creating and managing the virtual machine process and exposing virtual devices to the guest.
+QEMU (Quick Emulator) is a userspace virtual machine monitor and hardware emulator. It is responsible for creating and managing the virtual machine process and exposing virtual devices to the guest.
 
 Key responsibilities of QEMU:
 
@@ -750,15 +732,13 @@ Key responsibilities of QEMU:
 * Provides virtual hardware (disk controllers, NICs, display, USB, PCI devices, etc.).
 * Loads guest firmware/boot media and starts guest boot.
 * Handles VM resources and runtime controls (snapshots, monitor commands, migration hooks).
-* Supports many machine architectures (x86_64, aarch64, ppc64, and others).
+* Supports many machine architectures (x86\_64, aarch64, ppc64, and others).
 
-When QEMU runs without hardware acceleration, guest CPU instructions are translated in software (TCG),
-which is flexible but slower.
+When QEMU runs without hardware acceleration, guest CPU instructions are translated in software (TCG), which is flexible but slower.
 
-##### What is KVM?
+**What is KVM?**
 
-KVM (Kernel-based Virtual Machine) is a Linux kernel virtualization framework.
-It turns the Linux kernel into a hypervisor by exposing virtualization capabilities through `/dev/kvm`.
+KVM (Kernel-based Virtual Machine) is a Linux kernel virtualization framework. It turns the Linux kernel into a hypervisor by exposing virtualization capabilities through `/dev/kvm`.
 
 Key responsibilities of KVM:
 
@@ -769,7 +749,7 @@ Key responsibilities of KVM:
 
 KVM by itself is not a full VM manager with rich device models; it is the acceleration/hypervisor layer.
 
-##### How QEMU and KVM Work Together
+**How QEMU and KVM Work Together**
 
 In the common Linux stack, QEMU is the userspace VMM and KVM is the kernel acceleration backend:
 
@@ -783,26 +763,25 @@ Practical result:
 * `qemu-system-x86_64` without `-enable-kvm` works as emulation (slower, but useful for cross-arch/labs).
 * `qemu-system-x86_64 -enable-kvm` uses hardware acceleration (faster, typical for real workloads).
 
-##### KVM vs QEMU (Quick Comparison)
+**KVM vs QEMU (Quick Comparison)**
 
-| Aspect | **QEMU** | **KVM** |
-| :--- | :--- | :--- |
-| Type | Userspace VMM / emulator | Kernel virtualization framework |
-| Runs in | User space | Linux kernel |
-| Main role | VM lifecycle + device emulation | CPU/memory virtualization acceleration |
-| Depends on | Can run alone (TCG emulation) | Needs a userspace VMM (commonly QEMU) |
-| Hardware emulation | Yes | No (not a device emulator) |
-| Performance impact | Higher overhead alone | Near-native CPU execution with VT-x/AMD-V |
-| Typical usage | `qemu-system-*` commands | Enabled through `/dev/kvm` and `-enable-kvm` |
+| Aspect             | **QEMU**                        | **KVM**                                      |
+| ------------------ | ------------------------------- | -------------------------------------------- |
+| Type               | Userspace VMM / emulator        | Kernel virtualization framework              |
+| Runs in            | User space                      | Linux kernel                                 |
+| Main role          | VM lifecycle + device emulation | CPU/memory virtualization acceleration       |
+| Depends on         | Can run alone (TCG emulation)   | Needs a userspace VMM (commonly QEMU)        |
+| Hardware emulation | Yes                             | No (not a device emulator)                   |
+| Performance impact | Higher overhead alone           | Near-native CPU execution with VT-x/AMD-V    |
+| Typical usage      | `qemu-system-*` commands        | Enabled through `/dev/kvm` and `-enable-kvm` |
 
-In short: QEMU gives the VM its virtual machine "shape" (devices and runtime),
-while KVM gives the VM fast hardware-assisted execution.
+In short: QEMU gives the VM its virtual machine "shape" (devices and runtime), while KVM gives the VM fast hardware-assisted execution.
 
 #### 🛠️ 351.3 Important Commands
 
-##### 📝 351.3 Others Commands
+**📝 351.3 Others Commands**
 
-##### 🧪 check kvm module
+**🧪 check kvm module**
 
 ```sh
 # check if kvm is enabled
@@ -842,7 +821,7 @@ sudo virt-customize -a os-images/Debian_12.0.0_VMM/Debian_12.0.0.qcow2 \
 printf 'DE:AD:BE:EF:%02X:%02X\n' $((RANDOM%256)) $((RANDOM%256))
 ```
 
-##### 🌐 ip
+**🌐 ip**
 
 ```sh
 # list links
@@ -852,7 +831,7 @@ ip link show
 ip link add br0 type bridge
 ```
 
-##### 🌉 brctl
+**🌉 brctl**
 
 ```sh
 # list bridges
@@ -871,7 +850,7 @@ ip link set br0 down
 brctl delbr br0
 ```
 
-##### 💾 qemu-img
+**💾 qemu-img**
 
 ```sh
 # create image
@@ -888,7 +867,7 @@ qemu-img convert \
 qemu-img info os-images/Debian_12.0.0_VMM/Debian_12.0.0.qcow2
 ```
 
-##### 🖥️ qemu-system-x86_64
+**🖥️ qemu-system-x86\_64**
 
 ```sh
 # create vm with ISO
@@ -1009,7 +988,7 @@ dhcpclient ens4
 
 #### 🖥️ QEMU Monitor
 
-For initiate QEMU monitor in commandline use **-monitor stdio** param in **qemu-system-x86_64**
+For initiate QEMU monitor in commandline use **-monitor stdio** param in **qemu-system-x86\_64**
 
 ```sh
 qemu-system-x86_64 -monitor stdio
@@ -1056,19 +1035,19 @@ qemu-system-x86_64 \
  -device virtserialport,chardev=qga0,name=org.qemu.guest_agent.0
 ```
 
-<p align="right">(<a href="#topic-351.3">back to sub Topic 351.3</a>)</p>
-<p align="right">(<a href="#topic-351">back to Topic 351</a>)</p>
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+<p align="right">(<a href="🖥️Topic351FullVirtualization.md#topic-351.3">back to sub Topic 351.3</a>)</p>
 
----
+<p align="right">(<a href="🖥️Topic351FullVirtualization.md#topic-351">back to Topic 351</a>)</p>
 
-<a name="topic-351.4"></a>
+<p align="right">(<a href="🖥️Topic351FullVirtualization.md#readme-top">back to top</a>)</p>
+
+***
 
 ### 🏢 351.4 Libvirt Virtual Machine Management
 
-![\libvirt](../images/libvirt.png)
+![\libvirt](../.gitbook/assets/libvirt.png)
 
-![\libvirt-network](../images/libvirt-default-network.jpg)
+![\libvirt-network](../.gitbook/assets/libvirt-default-network.jpg)
 
 **Weight:** 9
 
@@ -1100,7 +1079,7 @@ virsh (including relevant subcommands)
 
 #### 🛠️ 351.4 Important Commands
 
-##### 🖥️ virsh
+**🖥️ virsh**
 
 ```sh
 # using env variable for set virsh uri (local or remotely)
@@ -1389,7 +1368,7 @@ virsh nwfilter-undefine block-icmp
 virsh nwfilter-dumpxml block-icmp
 ```
 
-###### 🏗️ virt-install
+**🏗️ virt-install**
 
 ```sh
 # list os variants
@@ -1436,17 +1415,17 @@ virt-viewer debian-server01
 less /etc/libvirt/qemu/debian-server01.xml
 ```
 
-<p align="right">(<a href="#topic-351.4">back to sub Topic 351.4</a>)</p>
-<p align="right">(<a href="#topic-351">back to Topic 351</a>)</p>
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+<p align="right">(<a href="🖥️Topic351FullVirtualization.md#topic-351.4">back to sub Topic 351.4</a>)</p>
 
----
+<p align="right">(<a href="🖥️Topic351FullVirtualization.md#topic-351">back to Topic 351</a>)</p>
 
-<a name="topic-351.5"></a>
+<p align="right">(<a href="🖥️Topic351FullVirtualization.md#readme-top">back to top</a>)</p>
+
+***
 
 ### 💾 351.5 Virtual Machine Disk Image Management
 
-![\disk-management](../images/virtual-machine-disk.png)
+![\disk-management](../.gitbook/assets/virtual-machine-disk.png)
 
 **Weight:** 3
 
@@ -1484,7 +1463,7 @@ virt-v2v
 
 #### 🛠️ 351.5 Important Commands
 
-##### 💾 351.5.1 qemu-img
+**💾 351.5.1 qemu-img**
 
 ```sh
 # Display detailed information about a disk image
@@ -1528,7 +1507,7 @@ qemu-img snapshot -a 123456789 disk
 qemu-img snapshot -d SNAP1 disk
 ```
 
-##### 🐟 guestfish
+**🐟 guestfish**
 
 ```sh
 # set environment variables for guestfish
@@ -1579,7 +1558,7 @@ edit /etc/hosts
 EOF
 ```
 
-###### 🗂️ guestmount
+**🗂️ guestmount**
 
 ```sh
 # Mount a disk image to a directory
@@ -1593,14 +1572,14 @@ guestmount -a UbuntuServer_24.04.qcow2 -m /dev/sda2 /mnt/ubuntu
 guestmount -d debian-server01 --ro -m  /dev/debian-vg/root /mnt/debian
 ```
 
-###### 🗑️ guestumount
+**🗑️ guestumount**
 
 ```sh
 # Umount a disk image to a directory
 sudo guestunmount /mnt/ubuntu
 ```
 
-##### 📊 virt-df
+**📊 virt-df**
 
 ```sh
 # Show free and used space on virtual machine filesystems
@@ -1608,7 +1587,7 @@ virt-df UbuntuServer_24.04.qcow2 -h
 virt-df -d rocky9-server02 -h
 ```
 
-##### 🗃️ virt-filesystems
+**🗃️ virt-filesystems**
 
 ```sh
 # List filesystems, partitions, and logical volumes in a VM disk image (disk image)
@@ -1618,7 +1597,7 @@ virt-filesystems -a UbuntuServer_24.04.qcow2 --all --long -h
 virt-filesystems -d debian-server01 --all --long -h
 ```
 
-##### 🔍 virt-inspector
+**🔍 virt-inspector**
 
 ```sh
 # Inspect and report on the operating system in a VM disk image
@@ -1626,7 +1605,7 @@ virt-inspector -a UbuntuServer_24.04.qcow2 #(disk)
 virt-inspector -d debian-server01 #(domain) 
 ```
 
-##### 🐱 virt-cat
+**🐱 virt-cat**
 
 ```sh
 # Display the contents of a file inside a VM disk image
@@ -1634,21 +1613,21 @@ virt-cat -a UbuntuServer_24.04.qcow2 /etc/hosts
 virt-cat -d debian-server01 /etc/hosts #(domain)
 ```
 
-##### 🔀 virt-diff
+**🔀 virt-diff**
 
 ```sh
 # Show differences between two VM disk images
 virt-diff -a UbuntuServer_24.04.qcow2 -A Rocky-Linux.qcow2
 ```
 
-##### 🧹 virt-sparsify
+**🧹 virt-sparsify**
 
 ```sh
 # Make a VM disk image smaller by removing unused space
 virt-sparsify UbuntuServer_24.04.qcow2 UbuntuServer_24.04-sparse.qcow2
 ```
 
-##### 📏 virt-resize
+**📏 virt-resize**
 
 ```sh
 # Resize a VM disk image or its partitions
@@ -1659,7 +1638,7 @@ UbuntuServer_24.04.qcow2 UbuntuServer_24.04-expanded.qcow2
 
 ```
 
-##### 📥 virt-copy-in
+**📥 virt-copy-in**
 
 ```sh
 # Copy files from the host into a VM disk image
@@ -1667,48 +1646,48 @@ UbuntuServer_24.04.qcow2 UbuntuServer_24.04-expanded.qcow2
 virt-copy-in -a UbuntuServer_24.04.qcow2 ~vagrant/test-virt-copy-in.txt /home/ubuntu
 ```
 
-##### 📤 virt-copy-out
+**📤 virt-copy-out**
 
 ```sh
 # Copy files from a VM disk image to the host
 virt-copy-out -a UbuntuServer_24.04.qcow2 /home/ubuntu/.bashrc /tmp
 ```
 
-##### 📋 virt-ls
+**📋 virt-ls**
 
 ```sh
 # List files and directories inside a VM disk image
 virt-ls -a UbuntuServer_24.04.qcow2 /home/ubuntu
 ```
 
-##### 🚑 virt-rescue
+**🚑 virt-rescue**
 
 ```sh
 # Launch a rescue shell on a VM disk image for recovery
 virt-rescue -a UbuntuServer_24.04.qcow2
 ```
 
-##### 🧰 virt-sysprep
+**🧰 virt-sysprep**
 
 ```sh
 # Prepare a VM disk image for cloning by removing system-specific data
 virt-sysprep -a UbuntuServer_24.04.qcow2
 ```
 
-##### 🔄 virt-v2v
+**🔄 virt-v2v**
 
 ```sh
 # Convert a VM from a foreign hypervisor to run on KVM
 virt-v2v -i disk input-disk.img -o local -os /var/tmp
 ```
 
-##### 🔄 virt-p2v
+**🔄 virt-p2v**
 
 ```sh
 # Convert a physical machine to use KVM
 ```
 
-##### 💽 virt-p2v-make-disk
+**💽 virt-p2v-make-disk**
 
 ```sh
 # Create a bootable disk image for physical to virtual conversion
@@ -1717,7 +1696,7 @@ sudo virt-p2v-make-disk -o output.img
 
 #### 📝 351.5 Notes
 
-##### 📦 OVF: Open Virtualization Format
+**📦 OVF: Open Virtualization Format**
 
 OVF: An open format that defines a standard for packaging and distributing virtual machines across different environments.
 
@@ -1727,11 +1706,10 @@ The generated package has the .ova extension and contains the following files:
 * Image files: .vmdk, .vhd, .vhdx, .qcow2, .raw
 * Additional files: metadata, snapshots, configuration, hash
 
-<p align="right">(<a href="#topic-351.5">back to sub Topic 351.5</a>)</p>
-<p align="right">(<a href="#topic-351">back to Topic 351</a>)</p>
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+<p align="right">(<a href="🖥️Topic351FullVirtualization.md#topic-351.5">back to sub Topic 351.5</a>)</p>
 
----
+<p align="right">(<a href="🖥️Topic351FullVirtualization.md#topic-351">back to Topic 351</a>)</p>
 
-<a name="topic-352"></a>
+<p align="right">(<a href="🖥️Topic351FullVirtualization.md#readme-top">back to top</a>)</p>
 
+***
