@@ -1,4 +1,4 @@
-# README LPIC3
+# README 
 
 ## &#x20;<a href="#readme-top" id="readme-top"></a>
 

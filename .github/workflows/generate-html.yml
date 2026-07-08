@@ -6,6 +6,7 @@ on:
     branches: [main]
     types:
       - completed
+
 permissions:
   contents: write
 
@@ -31,10 +32,14 @@ jobs:
           output: index.html
           github-corners: "https://github.com/marcossilvestrini/${{ steps.repo_name.outputs.name }}"
           favicon: data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌐</text></svg>
-
+      
+      # As flags evitam o erro fatal do AppArmor (Ubuntu) e o Timeout de 30s de imagens/badges
       - name: Generate PDF from Markdown
         run: |
-          npx md-to-pdf README.md
+          npx --yes md-to-pdf README.md \
+            --launch-options '{"args": ["--no-sandbox", "--disable-setuid-sandbox", "--disable-dev-shm-usage", "--disable-gpu", "--allow-file-access-from-files", "--disable-web-security"]}' \
+            --pdf-options '{"timeout": 0}'
+          
           mv README.pdf "./${{ steps.repo_name.outputs.name }}.pdf"
 
       - name: Commit and push PDF and HTML to docs branch
