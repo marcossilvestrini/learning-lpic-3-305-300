@@ -25,6 +25,7 @@ jobs:
         id: repo_name
         run: echo "name=$(basename $GITHUB_REPOSITORY)" >> $GITHUB_OUTPUT
 
+      # 1. GERA O HTML COM O ESTILO GITHUB (Perfeito, sem alterações)
       - name: Converts Markdown to HTML
         uses: jaywcjlove/markdown-to-html-cli@main
         with:
@@ -32,16 +33,38 @@ jobs:
           output: index.html
           github-corners: "https://github.com/marcossilvestrini/${{ steps.repo_name.outputs.name }}"
           favicon: data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌐</text></svg>
-      
-      # As flags evitam o erro fatal do AppArmor (Ubuntu) e o Timeout de 30s de imagens/badges
-      - name: Generate PDF from Markdown
-        run: |
-          npx --yes md-to-pdf README.md \
-            --launch-options '{"args": ["--no-sandbox", "--disable-setuid-sandbox", "--disable-dev-shm-usage", "--disable-gpu", "--allow-file-access-from-files", "--disable-web-security"]}' \
-            --pdf-options '{"timeout": 0}'
-          
-          mv README.pdf "./${{ steps.repo_name.outputs.name }}.pdf"
 
+      # 2. GERA O PDF DIRETO DO HTML (Sem md-to-pdf e sem erro de 30s)
+      - name: Generate PDF from HTML
+        run: |
+          npm install puppeteer@latest
+          node -e "
+          const puppeteer = require('puppeteer');
+          (async () => {
+            // Inicia o navegador com as travas de segurança do Ubuntu desativadas
+            const browser = await puppeteer.launch({ 
+              args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-dev-shm-usage', '--disable-gpu'] 
+            });
+            const page = await browser.newPage();
+            
+            // 1. ZERA O TIMEOUT DE NAVEGAÇÃO DE VERDADE (Mata o erro de 30000ms na raiz)
+            await page.setDefaultNavigationTimeout(0);
+            
+            // 2. Usa 'load' em vez de 'networkidle0' para ignorar conexões pendentes de badges externos
+            await page.goto('file://' + process.cwd() + '/index.html', { waitUntil: 'load' });
+            
+            // 3. Imprime o PDF mantendo o fundo e as cores do GitHub Markdown
+            await page.pdf({ 
+              path: './${{ steps.repo_name.outputs.name }}.pdf', 
+              format: 'A4', 
+              printBackground: true 
+            });
+            
+            await browser.close();
+          })();
+          "
+
+      # 3. SALVA OS ARQUIVOS NA BRANCH MAIN
       - name: Commit and push PDF and HTML to docs branch
         run: |
           git config --global user.name "github-actions[bot]"

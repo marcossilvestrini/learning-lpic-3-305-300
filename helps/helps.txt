@@ -157,3 +157,10 @@ https://192.168.0.130:8443/
 ------------------------------------------
 if ! lxc auth group show admins ; then lxc auth group create admins ; lxc auth group permission add admins server admin ; fi ; lxc auth identity create tls/lxd-ui --group admins
 ------------------------------------------
+
+------------------------------------------
+# Glossario Tradução
+
+Adicionar novas palavras no import-crowdin_glossary-strings.csv, deletar e importar novamente
+https://crowdin.com/profile/marcossilvestrini/glossaries/704153/terms#
+------------------------------------------
