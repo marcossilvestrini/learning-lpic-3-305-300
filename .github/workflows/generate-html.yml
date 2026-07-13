@@ -25,7 +25,7 @@ jobs:
         id: repo_name
         run: echo "name=$(basename $GITHUB_REPOSITORY)" >> $GITHUB_OUTPUT
 
-      # 1. GERA O HTML COM O ESTILO GITHUB (Perfeito, sem alterações)
+      # 1. GERA O HTML COM O ESTILO GITHUB
       - name: Converts Markdown to HTML
         uses: jaywcjlove/markdown-to-html-cli@main
         with:
@@ -34,7 +34,7 @@ jobs:
           github-corners: "https://github.com/marcossilvestrini/${{ steps.repo_name.outputs.name }}"
           favicon: data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌐</text></svg>
 
-      # 2. GERA O PDF DIRETO DO HTML (Sem md-to-pdf e sem erro de 30s)
+      # 2. GERA O PDF DIRETO DO HTML
       - name: Generate PDF from HTML
         run: |
           npm install puppeteer@latest
