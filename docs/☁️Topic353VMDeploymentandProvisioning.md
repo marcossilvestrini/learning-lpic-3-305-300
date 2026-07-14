@@ -1,0 +1,609 @@
+﻿# ☁️ Topic 353: VM Deployment and Provisioning
+
+---
+
+<a name="topic-353.1"></a>
+
+### ☁️ 353.1  Cloud Management Tools
+
+**Weight:** 2
+
+**Description:** Candidates should understand common offerings in public clouds and have basic feature knowledge of commonly available cloud management tools.
+
+**Key Knowledge Areas:**
+
+* Understand common offerings in public clouds
+* Basic feature knowledge of OpenStack
+* Basic feature knowledge of Terraform
+* Awareness of CloudStack, Eucalyptus and OpenNebula
+
+#### 📋 353.1 Cited Objects
+
+```sh
+IaaS, PaaS, SaaS
+OpenStack
+Terraform
+```
+
+#### Cloud Definition
+
+Cloud is a model for distributed computing that provides on-demand access to a shared pool of configurable computing resources (networks, servers, storage, applications, and services) via the internet, provisioned and released rapidly with minimal management effort. 
+
+#### Cloud Computing Definition
+
+Cloud Computing is the paradigm for delivering IT services through the internet, where computing resources are dynamically allocated based on demand. Instead of investing in local infrastructure, users and organizations access computing power, storage, and applications through subscription or pay-per-use models, with automatic scalability and centralized management.
+
+>Cloud computing is the execution of workloads in clouds.
+
+>Clouds are IT environments that abstract, aggregate, and share scalable resources across a network. 
+
+>Cloud computing and clouds are not technologies in themselves. 
+
+>Cloud computing is an action, the execution of a workload in a cloud. 
+
+>Clouds are environments, locations where applications run. 
+
+>Technologies are things, such as software programs and hardware equipment used to create and use clouds.
+
+#### Types of cloud
+
+##### Public Cloud
+
+Public cloud refers to cloud computing services offered by third-party providers over the public internet, making them available to anyone who wants to use or purchase them. Examples include Amazon Web Services (AWS), Microsoft Azure, and Google Cloud Platform (GCP). 
+
+##### Private Cloud
+Private cloud is a cloud computing environment dedicated to a single organization, either hosted on-premises or by a third-party provider. It offers enhanced security, control, and customization compared to public clouds. 
+
+##### Hybrid Cloud
+
+Hybrid cloud combines public and private cloud environments, allowing data and applications to be shared between them. This approach provides greater flexibility, scalability, and cost-efficiency. 
+
+##### Multi-Cloud
+
+Multi-cloud refers to the use of multiple cloud computing services from different providers within a single architecture. This strategy helps avoid vendor lock-in, enhances redundancy, and allows organizations to leverage the best features of each cloud provider.
+
+#### IaaS, PaaS, SaaS
+
+##### IaaS (Infrastructure as a Service)
+
+IaaS provides virtualized computing resources on demand (virtual machines, block and object storage, networking, GPUs). By 2026, IaaS has evolved to include AI-ready infrastructure, automated bare-metal provisioning, and native integration with observability, security, and real-time compliance solutions.
+
+##### PaaS (Platform as a Service)
+
+PaaS offers a managed platform for application development, deployment, and operation without managing underlying infrastructure. In 2026, PaaS includes serverless functions, managed databases, API gateways, native CI/CD, and event-driven and microservices architectures with automatic scaling.
+
+##### SaaS (Software as a Service)
+
+SaaS delivers software applications via web, accessible through browsers or native clients, with subscription-based models. In 2026, SaaS integrates artificial intelligence for automation and insights, provides extensible customization, open APIs for integration, and supports rigorous compliance with zero-trust security.
+
+#### OpenStack
+
+![openstack-lasndscape](/images/openstack-landscape.png)
+
+OpenStack is an open-source cloud computing platform that provides IaaS capabilities for private and hybrid cloud environments. In 2026, OpenStack maintains its relevance in corporate datacenters and private cloud providers, offering a complete service stack (Nova for compute, Cinder for block storage, Swift for object storage, Neutron for networking) with advanced support for Kubernetes containers, automatic load balancing, and integration with enterprise-grade security and compliance solutions.
+
+#### Apache CloudStack
+
+Apache CloudStack is an open-source cloud computing software platform that provides IaaS capabilities for building and managing public and private clouds.
+
+CloudStack continues to be a reliable choice for service providers and enterprises, offering features such as multi-tenancy, advanced networking (SDN), and support for various hypervisors (KVM, XenServer, VMware) with enhanced integration for container orchestration and edge computing.
+
+#### Eucalyptus
+
+Eucalyptus is an open-source cloud computing platform that provides IaaS capabilities for building and managing private and hybrid clouds. It is designed to be compatible with Amazon Web Services (AWS) APIs, allowing users to run applications on Eucalyptus that are already deployed on AWS.
+
+#### OpenNebula
+
+OpenNebula is an open-source cloud computing platform that provides IaaS capabilities for building and managing private, public, and hybrid clouds. It focuses on simplicity and flexibility, allowing users to deploy and manage virtualized data centers with support for various hypervisors (KVM, VMware) and container technologies (LXC, Docker). OpenNebula continues to evolve with features such as edge computing support, enhanced networking capabilities, and integration with modern DevOps tools.
+
+#### IaC 
+
+Infrastructure as Code (IaC) is the practice of managing and provisioning computing infrastructure through machine-readable definition files, rather than through physical hardware configuration or interactive configuration tools. IaC has become a fundamental practice in DevOps and cloud-native environments, enabling automated, consistent, and repeatable infrastructure deployment across multiple cloud providers and on-premises environments.
+
+#### Terraform
+
+Terraform is an open-source Infrastructure as Code (IaC) tool that enables infrastructure definition and provisioning in a declarative and versioned manner. By 2026, Terraform is the de facto standard for infrastructure management in multicloud environments (AWS, Azure, GCP, OpenStack, etc.), with robust support for distributed state, policy as code, reusable modules, and native integration with CI/CD pipelines, GitOps, and compliance automation.
+
+##### Terraform Key Concepts
+
+| Concept | Description |
+| :--- | :--- |
+| **Provider** | A plugin that enables interaction with cloud providers and services (e.g., AWS, Azure, GCP). |
+| **Resource** | A component of your infrastructure (e.g., virtual machines, networks, storage). |
+| **Module** | A container for multiple resources
+| **State** | A snapshot of your infrastructure, stored in a file or remote backend, used to track resource changes. |
+| **Plan** | A preview of changes that Terraform will make to your infrastructure. |
+| **Apply** | The command that executes the changes defined in the plan to your infrastructure. |
+
+##### Terraform Basic Workflow
+
+1. **Write Configuration**: Define your infrastructure using HashiCorp Configuration Language (HCL) in `.tf` files.
+2. **Initialize**: Run `terraform init` to initialize the working directory and download necessary provider plugins.
+3. **Plan**: Execute `terraform plan` to create an execution plan, showing what actions Terraform will take to achieve the desired state.
+4. **Apply**: Use `terraform apply` to apply the changes and create or modify resources in your infrastructure.
+5. **Destroy**: Use `terraform destroy` to remove all resources managed by Terraform.
+
+##### Terraform Example
+
+```hcl
+provider "aws" {
+  region = "us-west-2"
+  profile = "my-profile"
+}
+resource "aws_instance" "web" {
+  ami           = "ami-12345678"
+  instance_type = "t2.micro"
+  tags = {
+    Name = "MyWebServer"
+  }
+}
+```
+
+<p align="right">(<a href="#topic-353.1">back to sub topic 353.1</a>)</p>
+<p align="right">(<a href="#topic-353">back to topic 353</a>)</p>
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+---
+
+<a name="topic-353.2"></a>
+
+### 📦 353.2 Packer
+
+**Weight:** 2
+
+**Description:** Candidates should be able to use Packer to create system images. This includes running Packer in various public and private cloud environments as well as building container images for LXC/LXD.
+
+**Key Knowledge Areas:**
+
+* Understand the functionality and features of Packer
+* Create and maintain template files
+* Build images from template files using different builders
+
+#### 📋 353.2 Cited Objects
+
+```sh
+packer
+hcl2
+```
+#### 🧰 About Packer
+
+Packer is a tool for creating identical machine images for multiple platforms from a single source configuration. 
+
+It is designed to be a lightweight, fast, and flexible tool that can be used to build images for various cloud providers and virtualization platforms.
+
+#### ✅ Packer Features
+
+* **Multi-Platform Support**: Packer supports a wide range of platforms, including AWS, Azure, Google Cloud, VMware, VirtualBox, Docker, LXC/LXD, and more.
+* **Declarative Configuration**: Packer uses JSON or HCL (HashiCorp Configuration Language) templates to define the image-building process, making it easy to version control and share configurations.
+* **Provisioners**: Packer supports various provisioners, such as shell scripts, Ansible, Chef, Puppet, and Salt, allowing users to customize the images during the build process.
+* **Parallel Builds**: Packer can build images for multiple platforms simultaneously, reducing the time required to create images for different environments.
+* **Extensibility**: Packer has a plugin architecture that allows users to create custom builders and provisioners to extend its functionality.
+* **Integration with CI/CD**: Packer can be integrated into continuous integration and continuous deployment (CI/CD) pipelines, enabling automated image creation and deployment.
+
+#### 📦 Packer workflow functionality diagram
+
+1. conect to a builder (e.g., AWS, Azure, Docker)
+2. start a temporary instance or container
+3. run provisioners to customize the instance
+4. create an image from the customized instance
+5. stop the instance or container
+6. execute post-processors (optional)
+
+#### Template Components
+
+* **Builders**: Define the target platform and configuration for the machine image. Examples include `amazon-ebs`, `googlecompute`, `docker`, `lxc`, etc.
+* **Provisioners**: Specify the steps to customize the image during the build process. Examples include `shell`, `ansible`, `chef`, `puppet`, etc. 
+* **Post-Processors**: Optional steps to modify or export the built image after the build process. Examples include `compress`, `docker-tag`, `vagrant`, etc.
+
+#### Packer Example Templates
+
+##### Template Docker
+
+```hcl
+packer {
+  required_plugins {
+    docker = {
+      version = ">= 1.0.0"
+      source  = "github.com/hashicorp/docker"
+    }
+  }
+}
+source "docker" "nginx" {
+  image = "nginx:latest"
+  commit = true
+}
+build {
+  sources = ["source.docker.nginx"]
+
+  provisioner "shell" {
+    inline = [
+      "apt-get update",
+      "apt-get install -y curl",
+    ]
+  }
+}
+post-processor "docker-tag" {
+  repository = "my-nginx"
+  tag        = "latest"
+}
+```
+
+##### Template LXD
+
+```hcl
+packer {
+  required_plugins {
+    lxd = {
+      version = ">= 1.0.0"
+      source  = "github.com/hashicorp/lxd"
+    }
+  }
+}
+source "lxd" "ubuntu" {
+  image = "ubuntu/20.04"
+  name  = "ubuntu-20.04-packer"
+}
+build {
+  sources = ["source.lxd.ubuntu"]
+
+  provisioner "shell" {
+    inline = [
+      "sudo apt-get update",
+      "sudo apt-get install -y nginx",
+    ]
+  }
+}
+post-processor "lxd-export" {
+  output = "ubuntu-20.04-nginx.tar.gz"
+}
+```
+
+##### Template Amazon
+
+```hcl2
+{
+   "variables": {
+      "aws_access_key": "FOO",
+      "aws_secret_key": "BAR"
+   },
+   "builders": [
+      {
+	      "type": "amazon-ebs",
+	      "access_key": "{{user `aws_access_key`}}",
+	      "secret_key": "{{user `aws_secret_key`}}",
+	      "region": "sa-east-1",
+	      "instance_type": "t2.micro",
+	      "source_ami": "ami-0e7dc6a7bf702d57f",
+	      "ami_name": "packer-ami-{{timestamp}}",
+	      "ssh_username": "ubuntu"
+      }
+   ],
+   "provisioners": [
+      {
+	      "type": "file",
+	      "source": "index.html",
+	      "destination": "~/"
+      },
+      {
+	      "type": "shell",
+	      "inline": 
+	      [
+		      "sudo apt update -y",
+		      "sudo apt install nginx -y",
+		      "sudo cp ~/index.html /var/www/html/"
+	      ]
+      }
+   ],
+   "post-processors": [
+	   {
+		   "type": "vagrant"
+	   },
+	   {
+		   "type": "compress",
+		   "output": "vagrant.tgz"
+	   }
+   ]
+
+}
+
+```
+#### 🛠️ 353.2 Important Commands
+
+##### 📦 packer
+
+```sh
+# list available plugins
+packer plugins installed
+
+# install plugins
+packer plugins install github.com/hashicorp/docker
+packer init .
+packer init template.pkr.hcl
+
+# get a plugins required by a template
+packer plugins required template.pkr.hcl
+
+# validate a template file
+packer validate template.pkr.hcl
+
+# build an image from a template file
+packer build template.pkr.hcl
+
+# inspect a built image
+packer inspect template.pkr.hcl
+
+# list available builders and provisioners
+packer plugins
+```
+
+<p align="right">(<a href="#topic-353.2">back to sub topic 353.2</a>)</p>
+<p align="right">(<a href="#topic 353">back to topic 353</a>)</p>
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+---
+
+<a name="topic-353.3"></a>
+
+### ☁️ 353.3 cloud-init
+
+**Weight:** 3
+
+**Description:** Candidates should able to use cloud-init to configure virtual machines created from standardized images. This includes adjusting virtual machines to match their available hardware resources, specifically, disk space and volumes.
+Additionally, candidates should be able to configure instances to allow secure SSH logins and install a specific set of software packages.
+Furthermore, candidates should be able to create new system images with cloud-init support.
+
+**Key Knowledge Areas:**
+
+* Understanding the features and concepts of cloud-init, including user-data, initializing and configuring cloud-init
+* Use cloud-init to create, resize and mount file systems, configure user accounts, including login credentials such as SSH keys and install software packages from the distribution’s repository
+* Integrate cloud-init into system images
+* Use config drive datasource for testing
+
+#### 📋 353.3 Cited Objects
+
+```sh
+cloud-init
+user-data
+/var/lib/cloud/
+```
+
+### Understanding cloud-init
+
+Tool used for customizing cloud instances at boot time.  
+It is typically used to perform initial setup tasks such as configuring network interfaces, setting up user accounts, installing software packages, and running custom scripts.
+
+#### Sources of cloud-init data
+
+| Source | Description |
+|---|---|
+| **meta-data\vendor-data** | Customizations provided by the platform managing the VM, such as the Cloud platform. |
+| **user-data** | User-defined instructions primarily using YAML format or shell scripts. |
+| **Configuration Files** | Instructions can also be provided through configuration files in YAML or Script format. |
+| **Datasource** | Determines the origin of the information necessary for instance configuration (meta-data/user-data). |
+
+#### Modules in cloud-init
+
+Below are some of the commonly used cloud-init modules, which are responsible for executing specific tasks during the instance initialization process:
+
+| Module | Description |
+|---|---|
+| **bootcmd** | Commands that run at every boot, before any other cloud-init modules. |
+| **runcmd** | Commands that run at the end of the cloud-init process, after all other modules have completed. |
+| **users** | Used to create and manage user accounts, including setting up SSH keys for secure logins. |
+| **packages** | Used to install software packages from the distribution's repository. |
+| **disk_setup** | Used to create, resize, and mount file systems on the instance's disks. |
+| **network** | Used to configure network interfaces and settings for the instance. |
+| **write_files** | Used to write files to the instance's file system, which can be used for configuration or other purposes. |
+
+#### Cloud-Init Configuration Files and Directories
+
+
+* /etc/cloud/ – Main Configuration Files  
+  * cloud.cfg – The primary configuration file for Cloud-Init  
+  * cloud.cfg.d/ – Directory containing additional configuration files that are merged with the cloud.cfg file  
+* /var/log/cloud-init.log – Log file containing detailed records of Cloud-Init activities during instance initialization  
+* /var/log/cloud-init-output.log – Logs the console output generated by initialization scripts executed by Cloud-Init  
+* /var/lib/cloud/ – Directory containing data and information generated by Cloud-Init during instance initialization  
+  * /var/lib/cloud/instance/ – Directory containing files and metadata related to the running instance  
+
+
+#### 🛠️ 353.3 Important Commands
+
+##### 📝 cloud-init
+
+```sh
+# clear cloud-init state and logs
+sudo cloud-init clean
+```
+
+<p align="right">(<a href="#topic-353.3">back to sub topic 353.3</a>)</p>
+<p align="right">(<a href="#topic 353">back to topic 353</a>)</p>
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+---
+
+<a name="topic-353.4"></a>
+
+### 📦 353.4 Vagrant
+
+**Weight:** 3
+
+**Description:** Candidate should be able to use Vagrant to manage virtual machines, including provisioning of the virtual machine.
+
+**Key Knowledge Areas:**
+
+* Understand Vagrant architecture and concepts, including storage and networking
+* Retrieve and use boxes from Atlas
+* Create and run Vagrantfiles
+* Access Vagrant virtual machines
+* Share and synchronize folder between a Vagrant virtual machine and the host system
+* Understand Vagrant provisioning, i.e. File and Shell provisioners
+* Understand multi-machine setup
+
+#### 📋 353.4 Cited Objects
+
+```sh
+vagrant
+Vagrantfile
+```
+
+#### 🧰 About Vagrant
+
+Vagrant is an open-source tool for building and managing virtual machine environments in a single workflow.  
+It provides a simple and easy-to-use command-line interface for creating and configuring lightweight, reproducible, and portable development environments.
+
+##### Vagrant Architecture and Concepts
+
+Vagrant uses a declarative configuration file called `Vagrantfile` to define the virtual machine environment.  
+The `Vagrantfile` specifies the base box to use, the virtual machine provider (e.g., VirtualBox, VMware, Hyper-V), and any additional configuration such as networking, shared folders, and provisioning scripts.
+
+##### Vagrant Providers
+
+A Vagrant provider is a plugin that allows Vagrant to manage virtual machines using a specific virtualization technology.  
+Common providers include:
+* **VirtualBox**: A free and open-source virtualization platform that is widely used for local development environments.
+* **VMware**: A commercial virtualization platform that offers advanced features and performance for enterprise environments.
+* **Hyper-V**: A virtualization platform developed by Microsoft, available on Windows operating systems.
+* **Docker**: A containerization platform that allows Vagrant to manage containerized environments.
+
+##### Vagrant Plugins
+
+Vagrant plugins are extensions that add functionality to Vagrant.  
+Examples of Vagrant plugins include:
+* **vagrant-vbguest**: Automatically installs the VirtualBox Guest Additions on the guest machine, improving performance and enabling features such as shared folders and clipboard sharing.
+* **vagrant-hostmanager**: Manages the host's `/etc/hosts` file to allow easy access to Vagrant machines by name.
+* **vagrant-disksize**: Allows resizing of the virtual machine's disk size during provisioning. 
+
+##### Vagrant Provisioning
+
+Vagrant provisioning is the process of configuring the virtual machine after it has been created.  
+Provisioning can be done using various provisioners, such as:
+* **File Provisioner**: Used to copy files from the host machine to the guest machine during provisioning.
+* **Shell Provisioner**: Used to run shell scripts on the guest machine during provisioning, allowing for tasks such as installing software packages, configuring services, and setting up the environment.
+* **Ansible Provisioner**: Used to run Ansible playbooks on the guest machine during provisioning, allowing for more complex configuration management and automation.
+* **Puppet Provisioner**: Used to run Puppet manifests on the guest machine during provisioning, allowing for configuration management and automation using Puppet.
+* **Chef Provisioner**: Used to run Chef recipes on the guest machine during provisioning, allowing for configuration management and automation using Chef.
+
+##### Vagrant Boxes
+
+A Vagrant box is a pre-packaged virtual machine image that serves as the base for creating new virtual machine instances.  
+Boxes can be retrieved from the Vagrant Cloud (formerly known as Atlas).  
+Vagrant Cloud is a platform for sharing and distributing Vagrant boxes, allowing users to easily find and use pre-configured environments for their development needs.
+
+#### Vagrantfile Example
+
+```ruby
+Vagrant.configure("2") do |config|
+  # Define the base box to use
+  config.vm.box = "ubuntu/bionic64"
+  # Configure the virtual machine provider
+  config.vm.provider "virtualbox" do |vb|
+    vb.memory = "1024"
+    vb.cpus = 2
+  end
+  # Configure a private network
+  config.vm.network "private_network", ip: "192.168.33.10", netmask: "255.255.255.0"
+  
+  # Configure a shared folder
+  config.vm.synced_folder "./data", "/vagrant_data"
+  # Provision the virtual machine using a shell script
+  config.vm.provision "shell", inline: <<-SHELL
+    apt-get update
+    apt-get install -y nginx
+  SHELL
+end
+```
+
+#### Install vagrant
+
+```sh
+# on Debian/Ubuntu
+wget -q https://releases.hashicorp.com/vagrant/2.4.9/vagrant_2.4.9-1_amd64.deb
+sudo dpkg -i vagrant_2.4.9-1_amd64.deb
+sudo apt-get install -f 
+```
+
+#### Install Vagrant Plugins
+
+```sh
+vagrant plugin install vagrant-vbguest
+vagrant plugin install vagrant-hostmanager
+vagrant plugin install vagrant-disksize
+```
+
+
+
+#### 🛠️ 353.4 Important Commands
+
+##### 📦 vagrant
+
+```sh
+# vagrant plugins
+vagrant plugin list
+vagrant plugin install vagrant-vbguest
+vagrant plugin uninstall vagrant-vbguest
+
+# vagrant box
+vagrant box list
+vagrant box add ubuntu/jammy64
+vagrant box remove ubuntu/jammy64
+
+# init a new vagrant environment
+vagrant init ubuntu/jammy64
+
+# init a new vagrant environment with minimum output
+vagrant init -m ubuntu/jammy64
+
+# vagrant validate the Vagrantfile
+vagrant validate
+
+# status of the vagrant environment
+vagrant status
+vagrant global-status
+
+# vagrant up the machine
+vagrant up
+vagrant up --provider=virtualbox
+vagrant up <machine-name>
+vagrant up --provision
+
+# vagrant suspends the machine
+vagrant suspend
+
+# vagrant resumes the machine
+vagrant resume
+
+# vagrant halts the machine
+vagrant halt
+vagrant halt <machine-name>
+
+# vagrant ssh into the machine
+vagrant ssh
+vagrant ssh <machine-name>
+
+# vagrant destroys the machine
+vagrant destroy
+vagrant destroy -f
+vagrant destroy <machine-name>
+
+# vagrant provision the machine
+vagrant provision
+vagrant provision <machine-name>
+
+# vagrant reload the machine
+vagrant reload --provision
+vagrant reload <machine-name>
+
+# list ports forwarded by vagrant
+vagrant port
+vagrant port <machine-name>
+
+
+```
+
+<p align="right">(<a href="#topic-353.4">back to sub topic 353.4</a>)</p>
+<p align="right">(<a href="#topic 353">back to topic 353</a>)</p>
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+---
+
