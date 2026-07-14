@@ -2004,7 +2004,7 @@ These containers ensure  **consistency across environments** , speed up deployme
 
 In this example, I demonstrate a docker image layers.
 
-In the first image we have a base image of alpine and add one layer.
+In the first image we have a base image of alpine and add one layer. Save file as Dockerfile_base.
 
 ```dockerfile
 # syntax=docker/dockerfile:1
@@ -2012,20 +2012,51 @@ FROM alpine
 RUN apk add --no-cache bash
 ```
 
+Build the image from the directory where the Dockerfile is saved. The build context is the current directory, so include `.` at the end:
+
+```sh
+docker build -t acme/my-base-image:1.0 -f Dockerfile_base .
+```
+
+To view the layers of the generated image, run:
+
+```sh
+docker history acme/my-base-image:1.0
+```
+
 ![\docker-image-layers-01](../images/docker-image-layers-01.png)
+
 ![\docker-image-layers-02](../images/docker-image-layers-02.png)
 
 The second image I have a my-base-image:1.0 and add two layers, generating a new image with name acme/my-final-image:1.0.
 
+```sh
+mkdir -p app
+echo -e '#!/bin/bash\n\necho "Hello from my-final-image!"' > /app/hello.sh 
+```
+
 ```dockerfile
 # syntax=docker/dockerfile:1
 FROM acme/my-base-image:1.0
-COPY . /app
+COPY . app/
 RUN chmod +x /app/hello.sh
 CMD /app/hello.sh
 ```
 
+Build the final image from the directory containing the Dockerfile and application files. Include the build context at the end:
+
+```sh
+docker build -t acme/my-final-image:1.0 -f Dockerfile .
+```
+
+To view the layers of the final image, run:
+
+```sh
+docker history acme/my-final-image:1.0
+```
+
 ![\docker-image-layers-03](../images/docker-image-layers-03.png)
+
 ![\docker-image-layers-04](../images/docker-image-layers-04.png)
 
 ##### Docker image Copy-on-Write (CoW)
