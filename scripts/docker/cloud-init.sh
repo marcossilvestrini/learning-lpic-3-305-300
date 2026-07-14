@@ -56,6 +56,7 @@ if echo "$RELEASE_INFO" | grep -qiE "debian|ubuntu"; then
       cgroup-tools \
       jq yq \
       bridge-utils \
+      lolcat \
       apparmor apparmor-utils apparmor-profiles
       
 
