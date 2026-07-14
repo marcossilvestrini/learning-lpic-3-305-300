@@ -1,84 +1,130 @@
-# README LPIC3
+<h1><a name="readme-top"></a></h1>
 
-## &#x20;<a href="#readme-top" id="readme-top"></a>
+[![Create Release](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/release.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/release.yml)
+[![Translate README](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/translate.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/translate.yml)
+[![Generate HTML e PDF](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/generate-html.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/generate-html.yml)
+[![Deploy Webpage](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/deploy-webpage.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/deploy-webpage.yml)
+[![Generate GitBook Docs](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/generate-docs.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/generate-docs.yml)
+[![PSScriptAnalyzer](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/powershell.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/powershell.yml)
+[![Slack Notification](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/slack.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/slack.yml)
 
-[![Create Release](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/release.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/release.yml) [![Translate README](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/translate.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/translate.yml) [![Generate HTML and PDF](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/generate-html.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/generate-html.yml) [![Deploy Webpage](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/deploy-webpage.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/deploy-webpage.yml) [![Generate GitBook Docs](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/generate-docs.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/generate-docs.yml) [![PSScriptAnalyzer](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/powershell.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/powershell.yml) [![Slack Notification](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/slack.yml/badge.svg)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/actions/workflows/slack.yml)
+---
 
-***
+[![MIT License][license-shield]][license-url]
+[![Forks][forks-shield]][forks-url]
+[![Stargazers][stars-shield]][stars-url]
+[![Contributors][contributors-shield]][contributors-url]
+[![Issues][issues-shield]][issues-url]
+[![LinkedIn][linkedin-shield]][linkedin-url]
 
-[![MIT License](https://img.shields.io/github/license/marcossilvestrini/learning-lpic-3-305-300.svg?style=for-the-badge)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/blob/main/LICENSE) [![Forks](https://img.shields.io/github/forks/marcossilvestrini/learning-lpic-3-305-300.svg?style=for-the-badge)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/network/members) [![Stargazers](https://img.shields.io/github/stars/marcossilvestrini/learning-lpic-3-305-300.svg?style=for-the-badge)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/stargazers) [![Contributors](https://img.shields.io/github/contributors/marcossilvestrini/learning-lpic-3-305-300.svg?style=for-the-badge)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/graphs/contributors) [![Issues](https://img.shields.io/github/issues/marcossilvestrini/learning-lpic-3-305-300.svg?style=for-the-badge)](https://github.com/marcossilvestrini/learning-lpic-3-305-300/issues) [![LinkedIn](https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge\&logo=linkedin\&colorB=555)](https://linkedin.com/in/marcossilvestrini)
+---
 
-***
+# 📚 LEARNING LPIC-3 305-300
 
-## 📚 LEARNING LPIC-3 305-300
+[![English](https://img.shields.io/badge/lang-English-blue?logo=readme&logoColor=white)](./README.md)
+[![Português](https://img.shields.io/badge/lang-Português-green?logo=readme&logoColor=white)](README_pt.md)
 
-[![English](https://img.shields.io/badge/lang-English-blue?logo=readme\&logoColor=white)](./) [![Português](https://img.shields.io/badge/lang-Portugu%C3%AAs-green?logo=readme\&logoColor=white)](README_pt.md)
+![LPIC3-305-300](images/lpic3-305-300.jpg)
 
-![LPIC3-305-300](.gitbook/assets/lpic3-305-300.jpg)
+<p align="center"><strong>Explore the docs »</strong>
+    <br />
+    <a href="https://marcossilvestrini.github.io/learning-lpic-3-305-300/">Web Site</a>
+    -
+    <a href="https://github.com/marcossilvestrini/learning-lpic-3-305-300">Code Page</a>
+    -
+    <a href="https://skynet-8.gitbook.io/learning-lpic-3-305-300">Gitbook</a>
+    -
+    <a href="https://github.com/marcossilvestrini/learning-lpic-3-305-300/issues">Report Bug</a>
+    -
+    <a href="https://github.com/marcossilvestrini/learning-lpic-3-305-300/issues">Request Feature</a>
+</p>
 
-<p align="center"><strong>Explore the docs »</strong><br><a href="https://marcossilvestrini.github.io/learning-lpic-3-305-300/">Web Site</a> - <a href="https://github.com/marcossilvestrini/learning-lpic-3-305-300">Code Page</a> - <a href="https://skynet-8.gitbook.io/learning-lpic-3-305-300">Gitbook</a> - <a href="https://github.com/marcossilvestrini/learning-lpic-3-305-300/issues">Report Bug</a> - <a href="https://github.com/marcossilvestrini/learning-lpic-3-305-300/issues">Request Feature</a></p>
+---
 
-***
+## 🗂️ Summary
 
-### 🗂️ Summary
+<details><summary><b>TABLE OF CONTENT</b></summary>
+  <ol>
+    <li><a href="#about-the-project">About The Project</a>
+    </li>
+    <li><a href="#getting-started">Getting Started</a>
+      <ul>
+        <li><a href="#prerequisites">Prerequisites</a></li>
+        <li><a href="#installation">Installation</a></li>
+      </ul>
+    </li>
+    <li><a href="#usage">Usage</a></li>
+    <li><a href="#roadmap">Roadmap</a></li>
+    <li><a href="#freedoms">Four Essential Freedoms</a></li>
+    <li><a href="#topic-351">Topic 351: Full Virtualization</a>
+      <ul>
+        <li><a href="#topic-351.1">351.1 Virtualization Concepts and Theory </a></li>
+        <li><a href="#topic-351.2">351.2 Xen</a></li>
+        <li><a href="#topic-351.3">351.3 QEMU</a></li>
+        <li><a href="#topic-351.4">351.4 Máquina Virtual Libvirt</a></li>
+        <li><a href="#topic-351.5">351.5 de Gerenciamento de Imagens da Máquina Virtual</a></li>
+      </ul>
+    </li>
+    <li><a href="#topic-352">Topic 352: container Virtualization</a>
+      <ul>
+        <li><a href="#topic-352.1">352.1 Container Virtualization Concepts</a></li>
+        <li><a href="#topic-352.2">352.2 LXC</a></li>
+        <li><a href="#topic-352.3">352.3 Docker</a></li>
+        <li><a href="#topic-352.4">352.4 Container Orchestration Platforms</a></li>
+      </ul>
+    </li>
+    <li><a href="#topic-353">Topic 353: VM Deployment and Provisioning</a>
+      <ul>
+        <li><a href="#topic-353.1">353.1 Cloud Management Tools</a></li>
+        <li><a href="#topic-353.2">353.2 Packer</a></li>
+        <li><a href="#topic-353.3">353.3 cloud-init</a></li>
+        <li><a href="#topic-353.4">353.4 Vagrant</a></li>
+      </ul>
+    </li>
+    <li><a href="#license">License</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="#acknowledgments">Acknowledgments</a></li>
+  </ol>
+</details><br>
 
-<details>
+---
 
-<summary>TABLE OF CONTENT</summary>
+<a name="about-the-project"></a>
 
-1. [About The Project](./#about-the-project)
-2. [Getting Started](./#getting-started)
-   - [Prerequisites](./#prerequisites)
-   - [Installation](./#installation)
-3. [Usage](./#usage)
-4. [Roadmap](./#roadmap)
-5. [Four Essential Freedoms](./#freedoms)
-6. [Topic 351: Full Virtualization](./#topic-351)
-   - [351.1 Virtualization Concepts and Theory](./#topic-351.1)
-   - [351.2 Xen](./#topic-351.2)
-   - [351.3 QEMU](./#topic-351.3)
-   - [351.4 Libvirt Virtual Machine](./#topic-351.4)
-   - [351.5 Virtual Machine Disk Image Management](./#topic-351.5)
-7. [Topic 352: container Virtualization](./#topic-352)
-   - [352.1 Container Virtualization Concepts](./#topic-352.1)
-   - [352.2 LXC](./#topic-352.2)
-   - [352.3 Docker](./#topic-352.3)
-   - [352.4 Container Orchestration Platforms](./#topic-352.4)
-8. [Topic 353: VM Deployment and Provisioning](./#topic-353)
-   - [353.1 Cloud Management Tools](./#topic-353.1)
-   - [353.2 Packer](./#topic-353.2)
-   - [353.3 cloud-init](./#topic-353.3)
-   - [353.4 Vagrant](./#topic-353.4)
-9. [License](./#license)
-10. [Contact](./#contact)
-11. [Acknowledgments](./#acknowledgments)
+## 📖 About Project
 
-</details>
+> This project aims to help students or professionals to learn the main concepts of GNULinux
+> and free software
+> Some GNULinux distributions like Debian and RPM will be covered
+> Installation and configuration of some packages will also be covered
+> By doing this you can give the whole community a chance to benefit from your changes.
+> Access to the source code is a precondition for this.
+> Use `Vagrant` for up machines and execute labs and practice content in this article.
+> I have published in folder Vagrant a Vagrantfile with what is necessary
+> for you to upload an environment for studies
 
-<br>
+---
 
-***
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-### 📖 About Project
+<a name="getting-started"></a>
 
-> This project aims to help students or professionals to learn the main concepts of GNULinux and free software Some GNULinux distributions like Debian and RPM will be covered Installation and configuration of some packages will also be covered By doing this you can give the whole community a chance to benefit from your changes. Access to the source code is a precondition for this. Use `Vagrant` for up machines and execute labs and practice content in this article. I have published in folder Vagrant a Vagrantfile with what is necessary for you to upload an environment for studies
-
-***
-
-<p align="right">(<a href="./#readme-top">back to top</a>)</p>
-
-### 🚀 Primeiros passos
+## 🚀 Primeiros passos
 
 Para iniciar o aprendizado, consulte a documentação acima.
 
-#### 🛠️ Pré-requisitos
+<a name="prerequisites"></a>
+
+### 🛠️ Pré-requisitos
 
 - [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
 - [Trabalho VMware](https://blogs.vmware.com/workstation/2024/05/vmware-workstation-pro-now-available-free-for-personal-use.html)
 - [Utilidade VMWare Vagrante](https://developer.hashicorp.com/vagrant/install/vmware)
 - [Vagrant](https://developer.hashicorp.com/vagrant/install)
 
-#### 💾 Instalação
+<a name="installation"></a>
+
+### 💾 Instalação
 
 Clonar o repositório
 
@@ -87,24 +133,27 @@ clone git https://github.com/marcossilvestrini/learning-lpic-3-305-300.git
 cd learning-lpic-3-305-300
 ```
 
-Customize a template _Vagrantfile-topic-XXX_. This file contains a vms configuration for labs.\
+Customize a template _Vagrantfile-topic-XXX_. This file contains a vms configuration for labs.  
 Example:
 
-- File [Vagrantfile-topic-351](vagrant/Vagrantfile-topic-351/)
-  - vm.clone\_directory = "\<your\_driver\_letter>:\\`<folder>`\\\<to\_machine>\\#{VM\_NAME}-instance-1" Example: vm.clone\_directory = "E:\Servers\VMWare\\#{VM\_NAME}-instance-1"
-  - vm.vmx\["memsize"] = ""
-  - vm.vmx\["numvcpus"] = ""
-  - vm.vmx\["cpuid.coresPerSocket"] = ""
+- File [Vagrantfile-topic-351](vagrant/Vagrantfile-topic-351)
+  - vm.clone_directory = "<your_driver_letter>:\\`<folder>`\\<to_machine>\\#{VM_NAME}-instance-1"
+    Example: vm.clone_directory = "E:\\Servers\\VMWare\\#{VM_NAME}-instance-1"
+  - vm.vmx["memsize"] = ""
+  - vm.vmx["numvcpus"] = ""
+  - vm.vmx["cpuid.coresPerSocket"] = ""
 
 Personalizar configuração de rede em arquivos [configs/network](configs/network/).
 
-***
+---
 
-### 📝 Uso
+<a name="usage"></a>
+
+## 📝 Uso
 
 Use este repositório para aprender sobre o exame LPIC-3 305-300
 
-#### ⬆️⬇️ Para cima e para baixo
+### ⬆️⬇️ Para cima e para baixo
 
 Switch a _Vagrantfile-topic-xxx_ template and copy for a new file with name _Vagrantfile_
 
@@ -113,15 +162,16 @@ cd vagrant && vagrant subiu
 cd vagrant && vagrant destruir -f
 ```
 
-#### 🔄 Para reiniciar VMs
+### 🔄 Para reiniciar VMs
 
 ```sh
 cd vagrant && vagrant reload
 ```
 
-**Important:** _If you reboot vms without vagrant, shared folder not mount after boot._
+**Important:**
+_If you reboot vms without vagrant, shared folder not mount after boot._
 
-#### 💻 Use PowerShell para cima e para baixo
+### 💻 Use PowerShell para cima e para baixo
 
 Se você usa a plataforma Windows, eu crio um script powershell para as vms de cima e baixo.
 
@@ -130,15 +180,17 @@ vagrant/up.ps1
 vagrant/destroy.ps1
 ```
 
-#### 🗺️ Tópico de esquema de infraestrutura 351
+### 🗺️ Tópico de esquema de infraestrutura 351
 
-![topic-351](.gitbook/assets/infrastructure-topic-351.png)
+![topic-351](images/infrastructure-topic-351.png)
 
-<p align="right">(<a href="./#readme-top">back to top</a>)</p>
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-***
+---
 
-### :auto-estrada y: Roteiro
+<a name="roadmap"></a>
+
+## :auto-estrada y: Roteiro
 
 - [x] Criar repositório
 - [x] Criar scripts para laboratórios de provisionamento
@@ -147,18 +199,22 @@ vagrant/destroy.ps1
 - [x] Crie exemplos sobre o tópico 353
 - [ ] Upload simulado itexam
 
-***
+---
 
-### :Statue_of_Liberdade: Quatro Liberdades Essenciais
+<a name="freedoms"></a>
 
-> **0**: The freedom to run the program as you wish, for any purpose (freedom 0).\
-> **1**: The freedom to study how the program works, and change it so it does your computing as you wish (freedom 1). Access to the source code is a precondition for this.\
-> **2**: The freedom to redistribute copies so you can help others (freedom 2).\
+## :Statue_of_Liberdade: Quatro Liberdades Essenciais
+
+> **0**: The freedom to run the program as you wish, for any purpose (freedom 0).  
+> **1**: The freedom to study how the program works, and change it so it does
+> your computing as you wish (freedom 1).
+> Access to the source code is a precondition for this.  
+> **2**: The freedom to redistribute copies so you can help others (freedom 2).  
 > **3**: The freedom to distribute copies of your modified versions to others (freedom 3).
 
-***
+---
 
-### 🔍 Inspecionar comandos
+## 🔍 Inspecionar comandos
 
 ```sh
 tipo COMANDO # verifique se o comando é um apelido, função, embutido ou arquivo
@@ -169,17 +225,21 @@ COMANDO --help --h # exibe informações de ajuda para COMANDO
 homem COMANDO # exibe a página manual para COMANDO
 ```
 
-<p align="right">(<a href="./#readme-top">back to top</a>)</p>
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-***
+---
 
-### 🖥️ Tópico 351: Virtualização completa
+<a name="topic-351"></a>
 
-![Virtualization](.gitbook/assets/virtualization-351.png)
+## 🖥️ Tópico 351: Virtualização completa
 
-***
+![Virtualization](images/virtualization-351.png)
 
-#### 🧠 351.1 Conceitos de Virtualização e Teoria
+---
+
+<a name="topic-351.1"></a>
+
+### 🧠 351.1 Conceitos de Virtualização e Teoria
 
 **Peso:** 6
 
@@ -196,7 +256,7 @@ homem COMANDO # exibe a página manual para COMANDO
 - 🌐 Consciência do oVirt, Proxmox, systemd-machined e VirtualBox
 - 🔗 Percepção do Open vSwitch
 
-**📋 351.1 Cited Objects**
+#### 📋 351.1 Cited Objects
 
 ```sh
 Hypervisor
@@ -208,47 +268,47 @@ flags da CPU
 Migração (P2V, V2V)
 ```
 
-**🖥️ Hypervisors**
+#### 🖥️ Hypervisors
 
-**🏢 Type 1 Hypervisor (Bare-Metal Hypervisor)**
+##### 🏢 Type 1 Hypervisor (Bare-Metal Hypervisor)
 
-**📄 Type 1 Definition**
+###### 📄 Type 1 Definition
 
 Executa diretamente no hardware físico do host, fornecendo uma camada base para gerenciar VMs sem a necessidade de um sistema operacional do host.
 
-**📝 Type 1 Characteristics**
+###### 📝 Type 1 Characteristics
 
 - ⚡ Alto desempenho e eficiência.
 - ⏱️ latência e acima da cabeça.
 - 🏢 Frequentemente usado em ambientes corporativos e centros de dados.
 
-**💡 Type 1 Examples**
+###### 💡 Type 1 Examples
 
 - VMware ESXi: Um hipervisor robusto e amplamente utilizado nas configurações da empresa.
 - Microsoft Hyper-V: Integrado com Windows Server, oferecendo um forte desempenho e recursos de gerenciamento.
 - Xen: Um hipervisor de código aberto usado por muitos provedores de serviços de nuvem.
 - KVM (Máquina Virtual baseada em Kernel): Integrada no kernel do Linux, proporcionando alto desempenho para sistemas baseados no Linux.
 
-**🏠 Type 2 Hypervisor (Hosted Hypervisor)**
+##### 🏠 Type 2 Hypervisor (Hosted Hypervisor)
 
-**📄 Type 2 Definition**
+###### 📄 Type 2 Definition
 
 Executa em cima de um sistema operacional convencional, dependendo do sistema operacional host para gerenciamento de recursos e suporte a dispositivos.
 
-**📝 Type 2 Characteristics**
+###### 📝 Type 2 Characteristics
 
 - 🛠️ Mais fácil de configurar e usar, especialmente em computadores pessoais.
 - 🔧 Mais flexível para desenvolvimento, testes e implantações de menor escala.
 - 🐢 Normalmente menos eficiente do que os hipervisores do tipo 1 devido a sobrecarga adicional do sistema operacional host.
 
-**💡 Type 2 Examples**
+###### 💡 Type 2 Examples
 
 - Estação de Trabalho VMware: Um hipervisor poderoso para a execução de vários sistemas operacionais em um único desktop.
 - Oracle VirtualBox: Um hipervisor de código aberto conhecido pela sua flexibilidade e facilidade de uso.
 - Área de trabalho paralela: Desenvolvida para usuários Mac que rodem o Windows e outros sistemas operacionais ao lado do macOS.
 - QUEM (EMUlator rápido): Um emulador e virtualizador de código aberto, muitas vezes usado em conjunto com o KVM.
 
-**⚖️ Key Differences Between Type 1 and Type 2 Hypervisors**
+##### ⚖️ Key Differences Between Type 1 and Type 2 Hypervisors
 
 - Ambiente de implantação:
   - O tipo 1 é comumente implantado em centros de dados e ambientes corporativos devido à sua interação direta com hardware e alto desempenho.
@@ -260,233 +320,237 @@ Executa em cima de um sistema operacional convencional, dependendo do sistema op
   - Hipervisores de tipo 1 requerem uma configuração e gerenciamento mais complexos, mas fornecem recursos avançados e escalabilidade para implantações em grande escala.
   - hipervisores de tipo 2 são mais fáceis de instalar e usar, tornando-os ideais para usuários individuais e projetos menores.
 
-**🔄 Migration Types**
+##### 🔄 Migration Types
 
-No contexto dos hipervisores, que são tecnologias usadas para criar e gerenciar máquinas virtuais, os termos de migração P2V e migração V2V são comuns em ambientes de virtualização. Eles se referem a processos de migração de sistemas entre diferentes tipos de plataformas.
+No contexto dos hipervisores, que são tecnologias usadas para criar e gerenciar máquinas virtuais, os termos de migração P2V e migração V2V são comuns em ambientes de virtualização.
+Eles se referem a processos de migração de sistemas entre diferentes tipos de plataformas.
 
-**🖥️➡️🖥️ P2V - Physical to Virtual Migration**
+##### 🖥️➡️🖥️ P2V - Physical to Virtual Migration
 
 Migração P2V refere-se ao processo de migração de um servidor físico para uma máquina virtual. n outras palavras, um sistema operacional e seus aplicativos, executando em hardware físico dedicado, são "convertidos" e movidos para uma máquina virtual que é executada em um hipervisor (como VMware, Hyper-V, KVM, etc.).
 
-- Exemplo: Você tem um servidor físico rodando um sistema Windows ou Linux, e você quer movê-lo para um ambiente virtual, como uma infraestrutura de nuvem ou um servidor de virtualização interna. O processo envolve a cópia de todo o Estado do sistema, incluindo o sistema operacional, os condutores, e dados, para criar uma máquina virtual equivalente que pode rodar como se estivesse no hardware físico.
+- Exemplo: Você tem um servidor físico rodando um sistema Windows ou Linux, e você quer movê-lo para um ambiente virtual, como uma infraestrutura de nuvem ou um servidor de virtualização interna.
+  O processo envolve a cópia de todo o Estado do sistema, incluindo o sistema operacional, os condutores, e dados, para criar uma máquina virtual equivalente que pode rodar como se estivesse no hardware físico.
 
-**🖥️🔁🖥️ V2V - Virtual to Virtual Migration**
+##### 🖥️🔁🖥️ V2V  - Virtual to Virtual Migration
 
 A migração V2V refere-se ao processo de migração de uma máquina virtual de um hipervisor para outro. Neste caso, você já tem uma máquina virtual executando em um ambiente virtualizado (como VMware), e você quer movê-lo para outro ambiente virtualizado (por exemplo, para o Hyper-V ou para um novo servidor VMware).
 
 - Exemplo: Você tem uma máquina virtual executando em um servidor de virtualização VMware, mas decide migrá-la para uma plataforma Hyper-V. Neste caso, a migração V2V converte a máquina virtual de um formato ou hipervisor para outro, garantindo que ela possa continuar funcionando corretamente.
 
-**🧩 HVM and Paravirtualization**
+#### 🧩 HVM and Paravirtualization
 
-**⚙️ Hardware-assisted Virtualization (HVM)**
+##### ⚙️ Hardware-assisted Virtualization (HVM)
 
-**📄 HVM Definition**
+###### 📄 HVM Definition
 
 HVM aproveita as extensões de hardware fornecidas por CPUs modernas para virtualizar hardware, permitindo a criação e gerenciamento de VMs com sobrecarga mínima de desempenho.
 
-**📝 HVM Key Characteristics**
+###### 📝 HVM Key Characteristics
 
 - 🖥️ **Suporte a hardware**: Requer suporte à CPU para extensões de virtualização, como Intel VT-x ou AMD-V.
 - 🛠️ **Virtualização completa:** VMs podem rodar sistemas operacionais convidados não modificados, pois o hipervisor fornece uma emulação completa do ambiente de hardware.
 - ⚡ **Desempenho:** Normalmente oferece um desempenho quase nativo devido à execução direta do código de convidado na CPU.
 - 🔒 **Isolação:** Fornece um forte isolamento entre as VMs já que cada VM opera como se tivesse seu próprio hardware dedicado.
 
-**💡 HVM Examples**
+###### 💡 HVM Examples
 
 VMware ESXi, Microsoft Hyper-V, KVM (Máquina Virtual Baseada em Kernel).
 
-**✅ HVM Advantages**
+###### ✅ HVM Advantages
 
 - ✅ **Compatibilidade:** Pode executar qualquer sistema operacional sem modificação.
 - ⚡ **Desempenho:** Alto desempenho devido ao suporte ao hardware.
 - 🔒 **Segurança:** Isolamento melhorado e recursos de segurança fornecidos por hardware.
 
-**❌ HVM Disadvantages**
+###### ❌ HVM Disadvantages
 
 - 🛠️ **Dependência de hardware:** Requer recursos de hardware específicos, limitando a compatibilidade com sistemas mais antigos.
 - 🔧 **Complexidade:** Pode envolver configuração e gerenciamento mais complexos.
 
-**🧩 Paravirtualization**
+##### 🧩 Paravirtualization
 
-**📄 Paravirtualization Definition**
+###### 📄 Paravirtualization Definition
 
 Paravirtualização implica modificar o sistema operacional de convidados para estar ciente do ambiente virtual, permitindo-lhe interagir de forma mais eficiente com o hipervisor.
 
-**📝 Paravirtualization Key Characteristics**
+###### 📝 Paravirtualization Key Characteristics
 
 - 🛠️ **Modificação de convidado:** Requer alterações no sistema operacional convidado para se comunicar diretamente com o hipervisor usando hiperchamadas.
 - ⚡ **Performance:** Pode ser mais eficiente do que a tradicional virtualização completa porque reduz a sobrecarga associada a hardware emulador.
 - 🔗 **Compatibilidade:** Limitado aos sistemas operacionais que foram modificados para a paravirtualização.
 
-**💡 Paravirtualization Examples**
+###### 💡 Paravirtualization Examples
 
 Xen com convidados paravirtualizados, ferramentas para VMware em certas configurações e algumas configurações KVM.
 
-**✅ Paravirtualization Advantages**
+###### ✅ Paravirtualization Advantages
 
 - ⚡ **Eficiência:** Reduz a sobrecarga de hardware virtualizando, potencialmente oferecendo melhor desempenho para certas cargas de trabalho.
 - ✅ **Utilização de recursos:** Uso mais eficiente de recursos de sistema devido à comunicação direta entre o SO convidado e o hipervisor.
 
-**❌ Paravirtualization Disadvantages**
+###### ❌ Paravirtualization Disadvantages
 
 - 🛠️ **Modificações do OS convidado:** Requer modificações no sistema operacional convidado, limitando a compatibilidade com os sistemas operacionais suportados.
 - 🔧 **Complexidade:** Requer complexidade adicional no SO convidado para implementações de hiperchamada.
 
-**⚖️ Key Differences**
+##### ⚖️ Key Differences
 
-**🖥️ Guest OS Requirements**
+###### 🖥️ Guest OS Requirements
 
 - **HVM:** Pode executar sistemas operacionais convidados não modificados.
 - **Paravirtualization:** Requer que os sistemas operacionais convidados sejam modificados para trabalhar com o hipervisor.
 
-**⚡ Performance**
+###### ⚡ Performance
 
 - **HVM:** Normalmente fornece um desempenho quase nativo devido à execução assistida pelo hardware.
 - **Paravirtualization:** Pode oferecer desempenho eficiente reduzindo a sobrecarga de emulação de hardware, mas depende do SO de guest modificado.
 
-**🧰 Hardware Dependency**
+###### 🧰 Hardware Dependency
 
 - **HVM:** Requer características específicas da CPU (Intel VT-x, AMD-V).
 - **Paravirtualization:** Não requer características específicas da CPU mas precisa do Sistema Operacional de Convidados modificado.
 
-**🔒 Isolation**
+###### 🔒 Isolation
 
 - **VM:** Fornece um forte isolamento usando recursos de hardware.
 - **Paravirtualização:** Reconhece o isolamento baseado em software, que pode não ser tão robusto quanto o isolamento baseado em hardware.
 
-**🧩 Complexity**
+###### 🧩 Complexity
 
 - **HVM:** Geralmente mais simples de implantar, já que ele suporta sistemas operacionais não modificados.
 - **Paravirtualization:** Requer configuração adicional e modificações no SO convidado, aumentando a complexidade.
 
-**🧠 NUMA (Non-Uniform Memory Access)**
+#### 🧠 NUMA (Non-Uniform Memory Access)
 
-NUMA (Non-Uniform Memory Access) é uma arquitetura de memória usada em sistemas multiprocessadores para otimizar o acesso de memória por processadores. Em um sistema NUMA, a memória é distribuída de forma desigual entre processadores, significa que cada processador tem acesso mais rápido a uma porção de memória (sua "memória local") do que a memória fisicamente mais distante (referida como "memória remota") e associada com outros processadores.
+NUMA (Non-Uniform Memory Access) é uma arquitetura de memória usada em sistemas multiprocessadores para otimizar o acesso de memória por processadores.
+Em um sistema NUMA, a memória é distribuída de forma desigual entre processadores, significa que cada processador tem acesso mais rápido a uma porção de memória (sua "memória local") do que a memória fisicamente mais distante (referida como "memória remota") e associada com outros processadores.
 
-**📝 Key Features of NUMA Architecture**
+##### 📝 Key Features of NUMA Architecture
 
 1. **Memória Local e Remota**: cada processador tem sua própria memória local, que pode acessar mais rapidamente. No entanto, também pode aceder à memória de outros transformadores, embora isso leve mais tempo.
 2. **Latência diferenciada**: a latência do acesso a memória varia dependendo se o processador está acessando sua memória local ou a memória de outro nó. O acesso à memória local é mais rápido, enquanto o acesso à memória de outro nó (remoto) é mais lento.
 3. **Escalabilidade**: arquitetura NUMA foi projetada para melhorar a escalabilidade em sistemas com muitos processadores. À medida que mais processadores são adicionados, a memória também é distribuída, evitando o estrangulamento que ocorreria numa arquitectura uniforme de acesso a memória (UMA).
 
-**✅ Advantages of NUMA**
+##### ✅ Advantages of NUMA
 
 - ⚡ Melhor desempenho em Sistemas Grandes: Como cada processador tem memória local, pode funcionar de forma mais eficiente, sem competir tanto com outros processadores pelo acesso a memória.
 - :chart_increasing : Escalabilidade: NUMA permite que sistemas com muitos processadores e grandes quantidades de memória escalem escala mais eficientemente em comparação com uma arquitetura UMA.
 
-**❌ Disadvantages**
+##### ❌ Disadvantages
 
 - 🛠️ Complexidade de programação: Programadores precisam estar cientes de quais regiões de memória são locais ou remotas, otimizar o uso da memória local para alcançar um melhor desempenho.
-- 🐢 Penalidades sobre desempenho potencial: Se um processador frequentemente acessa a memória remota, o desempenho pode sofrer devido a latência mais alta. Esta arquitetura é comum em sistemas multiprocessadores de alto desempenho, como servidores e supercomputadores, onde a escalabilidade e a otimização de memória são cruciais.
+- 🐢 Penalidades sobre desempenho potencial: Se um processador frequentemente acessa a memória remota, o desempenho pode sofrer devido a latência mais alta.
+  Esta arquitetura é comum em sistemas multiprocessadores de alto desempenho, como servidores e supercomputadores, onde a escalabilidade e a otimização de memória são cruciais.
 
-**🆓 Opensource Solutions**
+#### 🆓 Opensource Solutions
 
 - 🌐 oVirt: [https://www.ovirt.org/](https://www.ovirt.org/)
 - 🌐 Proxmox: [https://www.proxmox.com/en/proxmox-virtual-environment/overview](https://www.proxmox.com/en/proxmox-virtual-environment/overview)
 - 🌐 Oracle VirtualBox: [https://www.virtualbox.org/](https://www.virtualbox.org/)
 - 🌐 Open vSwitch: [https://www.openvswitch.org/](https://www.openvswitch.org/)
 
-**🗂️ Types of Virtualization**
+#### 🗂️ Types of Virtualization
 
-**🖥️ Hardware Virtualization (Server Virtualization)**
+##### 🖥️ Hardware Virtualization (Server Virtualization)
 
-**📄 HV Definition**
+###### 📄 HV Definition
 
 Abstrata hardware físico para criar máquinas virtuais (VMs) que executam sistemas operacionais separados e aplicativos.
 
-**🛠️ HV Use Cases**
+###### 🛠️ HV Use Cases
 
 Centro de dados, computação na nuvem, consolidação do servidor.
 
-**💡 HV Examples**
+###### 💡 HV Examples
 
 VMware ESXi, Microsoft Hyper-V, KVM.
 
-**📦 Operating System Virtualization (containerization)**
+##### 📦 Operating System Virtualization (containerization)
 
-**📄 containerization Definition**
+###### 📄 containerization Definition
 
 Permite que várias instâncias isoladas de espaço de usuário (contêineres) sejam executadas em um núcleo único do SO.
 
-**🛠️ containerization Use Cases**
+###### 🛠️ containerization Use Cases
 
 Arquitetura, desenvolvimento e ambiente de testes, dos microserviços.
 
-**💡 containerization Examples**
+###### 💡 containerization Examples
 
 Docker, Kubernetes, LXC.
 
-**🌐 Network Virtualization**
+##### 🌐 Network Virtualization
 
-**📄 Network Virtualization Definition**
+###### 📄 Network Virtualization Definition
 
 Combina recursos de hardware e software de rede em uma entidade administrativa única, baseada em software.
 
-**🛠️ Network Virtualization Use Cases**
+###### 🛠️ Network Virtualization Use Cases
 
 virtualização de funções de rede (SDN), rede definida por software (NFV).
 
-**💡 Network Virtualization Examples**
+###### 💡 Network Virtualization Examples
 
 VMware NSX, Cisco ACI, OpenStack Neutron.
 
-**💾 Storage Virtualization**
+##### 💾 Storage Virtualization
 
-**📄 Storage Virtualization Definition**
+###### 📄 Storage Virtualization Definition
 
 Armazena físico de vários dispositivos em uma única unidade de armazenamento virtual que pode ser gerenciada centralmente.
 
-**🛠️ Storage Virtualization Use Cases**
+###### 🛠️ Storage Virtualization Use Cases
 
 Gestão de dados, otimização de armazenamento, recuperação de desastres.
 
-**💡 Storage Virtualization Examples**
+###### 💡 Storage Virtualization Examples
 
 IBM SAN Control de volume, VMware vSAN, NetApp ONTAP.
 
-**🖥️ Desktop Virtualization**
+##### 🖥️ Desktop Virtualization
 
-**📄 Desktop Virtualization Definition**
+###### 📄 Desktop Virtualization Definition
 
 Permite que um sistema operacional desktop seja executado em uma máquina virtual hospedada em um servidor.
 
-**🛠️ Desktop Virtualization Use Cases**
+###### 🛠️ Desktop Virtualization Use Cases
 
 Infraestrutura de desktop virtual (VDI), soluções de trabalho remotas.
 
-**💡 Desktop Virtualization Examples**
+###### 💡 Desktop Virtualization Examples
 
 Aplicativos Virtuais e Desktops Citrix, VMware Horizon, Serviços de Desktop Remotos da Microsoft.
 
-**📱 Application Virtualization**
+##### 📱 Application Virtualization
 
-**📄 Application Virtualization Definition**
+###### 📄 Application Virtualization Definition
 
 Separa aplicativos do hardware subjacente e do sistema operacional, permitindo-lhes executar em ambientes isolados.
 
-**🛠️ Application Virtualization Use Cases**
+###### 🛠️ Application Virtualization Use Cases
 
 Implementação simplificada de aplicação, teste de compatibilidade.
 
-**💡 Application Virtualization Examples**
+###### 💡 Application Virtualization Examples
 
 VMware ThinApp, Microsoft App-V, Citrix XenApp.
 
-**🗃️ Data Virtualization**
+##### 🗃️ Data Virtualization
 
-**📄 Data Virtualization Definition**
+###### 📄 Data Virtualization Definition
 
 Integra dados de várias fontes sem os consolidar fisicamente, proporcionando uma visão unificada para análise e relatório.
 
-**🛠️ Data Virtualization Use Cases**
+###### 🛠️ Data Virtualization Use Cases
 
 Inteligência comercial, integração de dados em tempo real.
 
-**💡 Data Virtualization Examples**
+###### 💡 Data Virtualization Examples
 
 Denodo, Chapéu Vermelho JBoss Data Virtualization, IBM InfoSphere.
 
-**🌟 Benefits of Virtualization**
+##### 🌟 Benefits of Virtualization
 
 - ⚡ Eficiência de Recursos: Melhor utilização de recursos físicos.
 - 💰 Economia de custo: Redução de hardware e custos operacionais.
@@ -495,7 +559,7 @@ Denodo, Chapéu Vermelho JBoss Data Virtualization, IBM InfoSphere.
 - 🔄 Recuperação de Disaster : Backup simplificado e processos de recuperação.
 - 🔒 Isolamento: Melhorada a segurança através do isolamento de ambientes.
 
-**Emulation**
+#### Emulation
 
 Emulação envolve simular o comportamento de hardware ou software em uma plataforma diferente do pretendido originalmente.
 
@@ -507,23 +571,24 @@ Este excesso surge porque o sistema emulado precisa de interpretar e traduzir in
 
 Apesar desta desvantagem, a emulação permanece valiosa para executar software legado, testando aplicativos em diferentes plataformas e facilitando o desenvolvimento entre plataformas.
 
-**systemd-machined**
+#### systemd-machined
 
-O serviço de máquina de sistema é dedicado ao gerenciamento de máquinas virtuais e contêineres dentro do ecossistema do sistema. Proporciona funcionalidades essenciais para controlar, monitorizar e manter instâncias virtuais, oferecendo uma integração e eficiência robustas nos ambientes Linux.
+O serviço de máquina de sistema é dedicado ao gerenciamento de máquinas virtuais e contêineres dentro do ecossistema do sistema.
+Proporciona funcionalidades essenciais para controlar, monitorizar e manter instâncias virtuais, oferecendo uma integração e eficiência robustas nos ambientes Linux.
 
-<p align="right">(<a href="./#topic-351.1">back to sub Topic 351.1</a>)</p>
+<p align="right">(<a href="#topic-351.1">back to sub Topic 351.1</a>)</p>
+<p align="right">(<a href="#topic-351">back to Topic 351</a>)</p>
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-<p align="right">(<a href="./#topic-351">back to Topic 351</a>)</p>
+---
 
-<p align="right">(<a href="./#readme-top">back to top</a>)</p>
+<a name="topic-351.2"></a>
 
-***
+### 🐧 351.2 Xen
 
-#### 🐧 351.2 Xen
+![xen-architecture](images/xen-architecture.png)
 
-![xen-architecture](.gitbook/assets/xen-architecture.png)
-
-![xen-architecture](.gitbook/assets/xen-architecture2.png)
+![xen-architecture](images/xen-architecture2.png)
 
 **Peso:** 3
 
@@ -540,23 +605,24 @@ O serviço de máquina de sistema é dedicado ao gerenciamento de máquinas virt
 - Prevenção de Parâmetros Xen Boot
 - Prevenção da utilidade xm
 
-**🐧 Xen**
+#### 🐧 Xen
 
-![panda](.gitbook/assets/xen-panda.png)
+![panda](images/xen-panda.png)
 
 Xen é um hipervisor de tipo open-source (bare-metal), que permite que vários sistemas operacionais sejam executados simultaneamente no mesmo hardware físico. en fornece uma camada entre o hardware físico e as máquinas virtuais (VM), permitindo o compartilhamento eficiente de recursos e o isolamento.
 
 - **Arquitetura:** Xen opera com um sistema de dois níveis onde o Domínio 0 (Dom0) é o domínio privilegiado com acesso direto ao hardware e gerencia o hipervisor. Outras máquinas virtuais, chamadas de Domain U (DomU), sistemas operacionais convidados e são gerenciados por Dom0.
-- **Tipos de Virtualização:** Xen suporta tanto a paravirtualização (PV), que requer um guest OS modificado como a virtualização assistida por hardware (HVM), que usa extensões de hardware (e. ., Intel VT-x ou AMD-V) para executar sistemas operacionais convidados não modificados. Xen é amplamente utilizado em ambientes em nuvem, principalmente pela Amazon Web Services (AWS) e outros provedores de nuvem em grande escala.
+- **Tipos de Virtualização:** Xen suporta tanto a paravirtualização (PV), que requer um guest OS modificado como a virtualização assistida por hardware (HVM), que usa extensões de hardware (e. ., Intel VT-x ou AMD-V) para executar sistemas operacionais convidados não modificados.
+  Xen é amplamente utilizado em ambientes em nuvem, principalmente pela Amazon Web Services (AWS) e outros provedores de nuvem em grande escala.
 
-**🏢 XenSource**
+#### 🏢 XenSource
 
 XenSource foi a empresa fundada pelos desenvolvedores originais do hipervisor Xen na Universidade de Cambridge para comercializar Xen. sua empresa forneceu soluções corporativas com base em Xen e ofereceu ferramentas adicionais e suporte para melhorar as capacidades de Xen para uso empresarial.
 
 - **Aquisição por Citrix**: Em 2007, XenSource foi adquirido por Citrix Systems, Inc. Citrix usou a tecnologia Xen como base para o seu produto Citrix XenServer, que se tornou uma popular plataforma de virtualização de nível empresarial baseada em Xen.
 - **Transição**: Após a aquisição, o projeto Xen continuou como um projeto de código aberto, enquanto Citrix se concentrou em ofertas comerciais como XenServer, aproveitando a tecnologia XenSource.
 
-**🌍 Xen Project**
+#### 🌍 Xen Project
 
 O Projeto Xen refere-se à comunidade de código aberto e à iniciativa responsável pelo desenvolvimento e manutenção do hipervisor Xen após sua comercialização. Ele o Projeto Xen opera sob a Fundação Linux, com foco em construir, melhorar e apoiar o Xen como um esforço colaborativo e orientado para a comunidade.
 
@@ -564,9 +630,10 @@ O Projeto Xen refere-se à comunidade de código aberto e à iniciativa respons�
 - **Contribuidores:** O projeto inclui colaboradores de várias organizações, incluindo principais provedores de nuvem, fornecedores de hardware e desenvolvedores independentes.
 - **XAPI e XenTools:** O Projeto Xen também inclui ferramentas como XAPI (XenAPI), que é usado para gerenciar instalações do hipervisor Xen, e vários outros utilitários para gerenciamento do sistema e otimização.
 
-**🗄️ XenStore**
+#### 🗄️ XenStore
 
-Xen Store é um componente crítico do Hypervisor Xen. Essencialmente, Xen Store é um banco de dados distribuído usado para compartilhamento de informações e comunicação entre o hipervisor Xen e as máquinas virtuais (também conhecidas como domínios) que ele gerencia.
+Xen Store é um componente crítico do Hypervisor Xen.
+Essencialmente, Xen Store é um banco de dados distribuído usado para compartilhamento de informações e comunicação entre o hipervisor Xen e as máquinas virtuais (também conhecidas como domínios) que ele gerencia.
 
 Aqui estão alguns aspectos-chave da Loja Xen:
 
@@ -575,9 +642,10 @@ Aqui estão alguns aspectos-chave da Loja Xen:
 - **Eventos e Notificações:** Xen Store também suporta notificações de eventos. Quando uma chave ou valor específico na Loja Xen é modificado, os domínios interessados podem ser notificados para reagir a essas mudanças. Isso é útil para monitorização e gestão de recursos.
 - API simples: Xen Store fornece uma API simples para leitura e escrita de dados, facilitando a integração de seus aplicativos com o sistema de virtualização Xen.
 
-**🔗 XAPI**
+#### 🔗 XAPI
 
-XAPI, ou XenAPI, é a interface de programação de aplicativos (API) usada para gerenciar o Xen Hypervisor e suas máquinas virtuais (VMs). XAPI é um componente chave do XenServer (agora conhecido como Citrix Hypervisor) e fornece uma maneira padronizada de interagir com o hipervisor Xen para executar operações como a criação, configurando, monitorando e controlando VMs.
+XAPI, ou XenAPI, é a interface de programação de aplicativos (API) usada para gerenciar o Xen Hypervisor e suas máquinas virtuais (VMs).
+XAPI é um componente chave do XenServer (agora conhecido como Citrix Hypervisor) e fornece uma maneira padronizada de interagir com o hipervisor Xen para executar operações como a criação, configurando, monitorando e controlando VMs.
 
 Aqui estão alguns aspectos importantes do XAPI:
 
@@ -588,37 +656,43 @@ Aqui estão alguns aspectos importantes do XAPI:
 
 XAPI é a interface que permite controle e automação do Hypervisor Xen, tornando mais fácil o gerenciamento de ambientes virtualizados.
 
-**📝 Xen Summary**
+#### 📝 Xen Summary
 
 - **Xen:** A tecnologia central de hipervisor que permite que as máquinas virtuais rodem em hardware físico.
 - **XenSource:** A empresa que comercializou Xen, adquirida mais tarde pela Citrix, levando ao desenvolvimento de Citrix XenServer.
 - **Projeto Xen:** A iniciativa e comunidade de código aberto que continua a desenvolver e manter o hipervisor Xen sob a Fundação Linux.
-- **XenStore:** Xen Store acts as a communication and configuration intermediary between the Xen hypervisor and the VMs, streamlining the operation and management of virtualized environments.
+- **XenStore:**  Xen Store acts as a communication and configuration intermediary between the Xen hypervisor and the VMs, streamlining the operation and management of virtualized environments.
 - **XAPI** é a interface que permite controle e automação do Hypervisor Xen, tornando mais fácil o gerenciamento de ambientes virtualizados.
 
-**🖥️ Domain0 (Dom0)**
+#### 🖥️ Domain0 (Dom0)
 
-Domain0 ou Dom0, é o domínio de controle de uma arquitetura Xen. Gerencia outros domínios (Domínios) e tem acesso direto ao hardware. O Dom0 executa drivers do dispositivo, permitindo domínios que não têm acesso direto a hardware, para se comunicar com dispositivos. Normalmente, é uma instância completa de um sistema operacional, como o Linux, e é essencial para a operação do hipervisor Xen.
+Domain0 ou Dom0, é o domínio de controle de uma arquitetura Xen. Gerencia outros domínios (Domínios) e tem acesso direto ao hardware.
+O Dom0 executa drivers do dispositivo, permitindo domínios que não têm acesso direto a hardware, para se comunicar com dispositivos. Normalmente, é uma instância completa de um sistema operacional, como o Linux, e é essencial para a operação do hipervisor Xen.
 
-**💻 DomainU (DomU)**
+#### 💻 DomainU (DomU)
 
-Domínios são domínios não privilegiados que rodam máquinas virtuais. São geridos por Dom0 e não têm acesso directo ao hardware. Os domínios podem ser configurados para executar sistemas operacionais diferentes e são usados para vários fins, como servidores de aplicação e ambientes de desenvolvimento. Eles dependem do Dom0 para a interação de hardware.
+Domínios são domínios não privilegiados que rodam máquinas virtuais.
+São geridos por Dom0 e não têm acesso directo ao hardware. Os domínios podem ser configurados para executar sistemas operacionais diferentes e são usados para vários fins, como servidores de aplicação e ambientes de desenvolvimento. Eles dependem do Dom0 para a interação de hardware.
 
-**🧩 PV-DomU (Paravirtualized DomainU)**
+#### 🧩 PV-DomU (Paravirtualized DomainU)
 
-O PV-DomUs usa uma técnica chamada paravirtualização. Neste modelo, o sistema operacional DomU foi modificado para estar ciente de que ele é executado em um ambiente virtualizado. permitindo que se comunique diretamente com o hipervisor para um desempenho otimizado. Isto resulta numa redução da sobrecarga e numa maior eficiência em comparação com a plena virtualização.
+O PV-DomUs usa uma técnica chamada paravirtualização. Neste modelo, o sistema operacional DomU foi modificado para estar ciente de que ele é executado em um ambiente virtualizado. permitindo que se comunique diretamente com o hipervisor para um desempenho otimizado.
+Isto resulta numa redução da sobrecarga e numa maior eficiência em comparação com a plena virtualização.
 
-**⚙️ HVM-DomU (Hardware Virtual Machine DomainU)**
+#### ⚙️ HVM-DomU (Hardware Virtual Machine DomainU)
 
-HVM-DomUs são máquinas virtuais que utilizam a virtualização total, permitindo que sistemas operacionais não modificados sejam executados. O hipervisor Xen fornece a emulação de hardware para estes DomUs, permitindo que eles executem qualquer sistema operacional que suporte a arquitetura de hardware subjacente. Embora esta proposta ofereça maior flexibilidade, pode resultar em maior ultrapassagem em comparação com o PV-Domínio.
+HVM-DomUs são máquinas virtuais que utilizam a virtualização total, permitindo que sistemas operacionais não modificados sejam executados. O hipervisor Xen fornece a emulação de hardware para estes DomUs, permitindo que eles executem qualquer sistema operacional que suporte a arquitetura de hardware subjacente.
+Embora esta proposta ofereça maior flexibilidade, pode resultar em maior ultrapassagem em comparação com o PV-Domínio.
 
-**🌐 Xen Network**
+#### 🌐 Xen Network
 
-Paravirtualized Network Devices ![pv-networking](.gitbook/assets/xen-networking2.png)
+Paravirtualized Network Devices
+![pv-networking](images/xen-networking2.png)
 
-Bridging ![pv-networking](.gitbook/assets/xen-networking1.png)
+Bridging
+![pv-networking](images/xen-networking1.png)
 
-**📋 351.2 Cited Objects**
+#### 📋 351.2 Cited Objects
 
 ```sh
 Domínio (Domínio), DomainU (Domínio)
@@ -631,7 +705,7 @@ xentop
 oxenstored # Configuração Xenstore
 ```
 
-**📝 351.2 Notes**
+#### 📝 351.2 Notes
 
 ```sh
 
@@ -674,19 +748,19 @@ cd /etc/xen && mkdir -p auto && cd auto
 ln -s /etc/xen/lpic3-pv-guest /etc/xen/auto/lpic3-pv-guest
 ```
 
-**vif**
+##### vif
 
 No Xen, "vif" significa Interface Virtual e é usado para configurar redes para máquinas virtuais (domínios).
 
-Especificando diretivas "vif" nos arquivos de configuração do domínio, os administradores podem definir interfaces de rede, atribuir endereços IP, configurar VLANs e configurar outros parâmetros de rede para máquinas virtuais em execução nos hosts Xen. For example: vif = \[‘bridge=xenbr0’], in this case, it connects the VM’s network interface to the Xen bridge named “xenbr0”.
+Especificando diretivas "vif" nos arquivos de configuração do domínio, os administradores podem definir interfaces de rede, atribuir endereços IP, configurar VLANs e configurar outros parâmetros de rede para máquinas virtuais em execução nos hosts Xen. For example: vif = [‘bridge=xenbr0’], in this case, it connects the VM’s network interface to the Xen bridge named “xenbr0”.
 
-**Xen Lab**
+#### Xen Lab
 
 Use este script para o fornecimento de laboratório: [xen.sh](scripts/xen/xen.sh)
 
-**💻 351.2 Important Commands**
+#### 💻 351.2 Important Commands
 
-**🏗️ xen-create-image**
+##### 🏗️ xen-create-image
 
 ```sh
 # criar uma imagem de pv
@@ -702,28 +776,28 @@ xen-create-image \
   --dist=bookworm
 ```
 
-**📄 xen-list-images**
+##### 📄 xen-list-images
 
 ```sh
 # lista imagem
 xen-list-images
 ```
 
-**❌ xen-delete-image**
+##### ❌ xen-delete-image
 
 ```sh
 # delete a pv image
 xen-delete-image lpic3-pv-guest --lvm=vg_xen
 ```
 
-**🗄️ xenstore-ls**
+##### 🗄️ xenstore-ls
 
 ```sh
 # list xenstore infos
 sudo xenstore-ls
 ```
 
-**⚙️ xl**
+##### ⚙️ xl
 
 ```sh
 # xl requires privileged access to Xen control interfaces (Dom0)
@@ -855,17 +929,17 @@ sudo xl cd-insert lpic3-hvm-guest-ubuntu xvdb  /home/vagrant/isos/ubuntu/ubuntu-
 sudo xl cd-eject lpic3-hvm-guest-ubuntu xvdb
 ```
 
-<p align="right">(<a href="./#topic-351.2">back to sub Topic 351.2</a>)</p>
+<p align="right">(<a href="#topic-351.2">back to sub Topic 351.2</a>)</p>
+<p align="right">(<a href="#topic-351">back to Topic 351</a>)</p>
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-<p align="right">(<a href="./#topic-351">back to Topic 351</a>)</p>
+---
 
-<p align="right">(<a href="./#readme-top">back to top</a>)</p>
+<a name="topic-351.3"></a>
 
-***
+### 🖥️ 351.3 QUEM
 
-#### 🖥️ 351.3 QUEM
-
-![xen-kvm-qemu](.gitbook/assets/xen-kvm-qemu.png)
+![xen-kvm-qemu](/images/xen-kvm-qemu.png)
 
 **Peso:** 4
 
@@ -880,7 +954,7 @@ sudo xl cd-eject lpic3-hvm-guest-ubuntu xvdb
 - Solucionar problemas de instalações da QEM, incluindo redes e armazenamento.
 - Consciência de importantes parâmetros de configuração da QUEM
 
-**📋 351.3 Cited Objects**
+#### 📋 351.3 Cited Objects
 
 ```sh
 Módulos do kernel: kvm, kvm-intel e kvm-amd
@@ -893,13 +967,15 @@ brctl
 tunctl
 ```
 
-**Understanding KVM and QEMU**
+#### Understanding KVM and QEMU
 
-In this section, we study virtualization on Linux by understanding the role of each component: what QEMU does, what KVM does, and why both are typically used together in production.
+In this section, we study virtualization on Linux by understanding the role of each component:
+what QEMU does, what KVM does, and why both are typically used together in production.
 
-**What is QEMU?**
+##### What is QEMU?
 
-A QUEM (Emulador rápido) é um monitor de máquina virtual de aplicativos e emulador de hardware. É responsável pela criação e gestão do processo de máquina virtual e pela exposição dos dispositivos virtuais ao visitante.
+A QUEM (Emulador rápido) é um monitor de máquina virtual de aplicativos e emulador de hardware.
+É responsável pela criação e gestão do processo de máquina virtual e pela exposição dos dispositivos virtuais ao visitante.
 
 Principais responsabilidades da QEMU:
 
@@ -907,13 +983,15 @@ Principais responsabilidades da QEMU:
 - Fornece hardware virtual (controladores de disco, NICs, exibição, USB, dispositivos PCI, etc.).
 - Carrega firmware convidado/boot mídia de convidado e inicia inicialização de convidados.
 - Gerencia os recursos de VM e controles de tempo de execução (snapshots, comandos de monitoramento, hooks de migração).
-- Supports many machine architectures (x86\_64, aarch64, ppc64, and others).
+- Supports many machine architectures (x86_64, aarch64, ppc64, and others).
 
-When QEMU runs without hardware acceleration, guest CPU instructions are translated in software (TCG), which is flexible but slower.
+When QEMU runs without hardware acceleration, guest CPU instructions are translated in software (TCG),
+which is flexible but slower.
 
-**What is KVM?**
+##### What is KVM?
 
-KVM (Máquina Virtual baseada em Kernel) é um framework de virtualização de kernel Linux. Ele transforma o kernel do Linux em um hipervisor, expondo recursos de virtualização através de `/dev/kvm`.
+KVM (Máquina Virtual baseada em Kernel) é um framework de virtualização de kernel Linux.
+Ele transforma o kernel do Linux em um hipervisor, expondo recursos de virtualização através de `/dev/kvm`.
 
 Principais responsabilidades do KVM:
 
@@ -924,7 +1002,7 @@ Principais responsabilidades do KVM:
 
 KVM por si só não é um gerenciador de VM completo com modelos de dispositivo ricos; é a camada de aceleração/hipervisor.
 
-**How QEMU and KVM Work Together**
+##### How QEMU and KVM Work Together
 
 Na pilha comum do Linux, QEMU é a VMM do userspace e KVM é o backend de aceleração do kernel:
 
@@ -938,10 +1016,10 @@ Resultado prático:
 - `qemu-system-x86_64` sem `-enable-kvm` funciona como emulação (mais lento, mas útil para cross-arch/labs).
 - `qemu-system-x86_64 -enable-kvm` usa aceleração de hardware (mais rápido, típico para cargas de trabalho reais).
 
-**KVM vs QEMU (Quick Comparison)**
+##### KVM vs QEMU (Quick Comparison)
 
 | Aspecto               | **QEMU**                                                  | **KVM**                                                                 |
-| --------------------- | --------------------------------------------------------- | ----------------------------------------------------------------------- |
+| :-------------------- | :-------------------------------------------------------- | :---------------------------------------------------------------------- |
 | tipo                  | Userspace VMM / emulador                                  | Quadro de virtualização do kernel                                       |
 | Executa em            | Espaço do usuário                                         | Linux kernel                                                            |
 | Função principal      | VM ciclo de vida + emulação de dispositivo                | Aceleração de virtualização de CPU/memória                              |
@@ -950,13 +1028,14 @@ Resultado prático:
 | Impacto no desempenho | Supervisão mais alta sozinha                              | Execução da CPU próxima-nativa com VT-x/AMD-V                           |
 | Uso típico            | Comandos `qemu-system-*`                                  | Habilitado através de `/dev/kvm` e `-enable-kvm`                        |
 
-In short: QEMU gives the VM its virtual machine "shape" (devices and runtime), while KVM gives the VM fast hardware-assisted execution.
+In short: QEMU gives the VM its virtual machine "shape" (devices and runtime),
+while KVM gives the VM fast hardware-assisted execution.
 
-**🛠️ 351.3 Important Commands**
+#### 🛠️ 351.3 Important Commands
 
-**📝 351.3 Others Commands**
+##### 📝 351.3 Others Commands
 
-**🧪 check kvm module**
+##### 🧪 check kvm module
 
 ```sh
 # verifique se o kvm está habilitado
@@ -996,7 +1075,7 @@ sudo virt-customize -a os-images/Debian_12.0.0_VMM/Debian_12.0.0. cow2 \
 printf 'DE:AD:BE:EF:%02X:%02X\n' $((RANDOM%256)) $((RANDOM%256))
 ```
 
-**🌐 ip**
+##### 🌐 ip
 
 ```sh
 # Lista de links
@@ -1006,7 +1085,7 @@ ip mostra
 ip adiciona o tipo bridge br0
 ```
 
-**🌉 brctl**
+##### 🌉 brctl
 
 ```sh
 # lista pontes
@@ -1025,7 +1104,7 @@ ip define o link br0 down
 brctl delbr br0
 ```
 
-**💾 qemu-img**
+##### 💾 qemu-img
 
 ```sh
 # criar imagem
@@ -1042,7 +1121,7 @@ qemu-img convert \
 qemu-img info imagos-images/Debian_12.0.0_VMM/Debian_12.0.qcow2
 ```
 
-**🖥️ qemu-system-x86\_64**
+##### 🖥️ qemu-system-x86_64
 
 ```sh
 # create vm with ISO
@@ -1161,9 +1240,9 @@ qemu-system-x86_64 \
 dhcpclient ens4
 ```
 
-**🖥️ QEMU Monitor**
+#### 🖥️ QEMU Monitor
 
-For initiate QEMU monitor in commandline use **-monitor stdio** param in **qemu-system-x86\_64**
+For initiate QEMU monitor in commandline use **-monitor stdio** param in **qemu-system-x86_64**
 
 ```sh
 Estdio qemu-system-x86_64 -monitor
@@ -1199,7 +1278,7 @@ loadvm snapshot-01 # restore snapshot
 delvm snapshot-01
 ```
 
-**🤖 Guest Agent**
+#### 🤖 Guest Agent
 
 Para habilitar, use:
 
@@ -1210,19 +1289,19 @@ qemu-system-x86_64 \
  -dispositivo virtserialport,chardev=qga0,name=org.qemu.guest_agent.0
 ```
 
-<p align="right">(<a href="./#topic-351.3">back to sub Topic 351.3</a>)</p>
+<p align="right">(<a href="#topic-351.3">back to sub Topic 351.3</a>)</p>
+<p align="right">(<a href="#topic-351">back to Topic 351</a>)</p>
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-<p align="right">(<a href="./#topic-351">back to Topic 351</a>)</p>
+---
 
-<p align="right">(<a href="./#readme-top">back to top</a>)</p>
+<a name="topic-351.4"></a>
 
-***
+### 🏢 351.4 e Gerenciamento de Máquinas Virtuais Libvirt
 
-#### 🏢 351.4 e Gerenciamento de Máquinas Virtuais Libvirt
+![libvirt](images/libvirt.png)
 
-![libvirt](.gitbook/assets/libvirt.png)
-
-![libvirt-network](.gitbook/assets/libvirt-default-network.jpg)
+![libvirt-network](images/libvirt-default-network.jpg)
 
 **Peso:** 9
 
@@ -1242,7 +1321,7 @@ qemu-system-x86_64 \
 - Compreender arquivos de configuração XML libvirt
 - Prevenção de virtlogd e virtlockd
 
-**📋 351.4 Cited Objects**
+#### 📋 351.4 Cited Objects
 
 ```sh
 libvirtd
@@ -1252,9 +1331,9 @@ libvirtd
 virsh (incluindo subcomandos relevantes) 
 ```
 
-**🛠️ 351.4 Important Commands**
+#### 🛠️ 351.4 Important Commands
 
-**🖥️ virsh**
+##### 🖥️ virsh
 
 ```sh
 # using env variable for set virsh uri (local or remotely)
@@ -1543,7 +1622,7 @@ virsh nwfilter-undefine block-icmp
 virsh nwfilter-dumpxml block-icmp
 ```
 
-**🏗️ virt-install**
+###### 🏗️ virt-install
 
 ```sh
 # lista as variantes
@@ -1590,17 +1669,17 @@ virt-viewer debian-server01
 menos /etc/libvirt/qemu/debian-server01.xml
 ```
 
-<p align="right">(<a href="./#topic-351.4">back to sub Topic 351.4</a>)</p>
+<p align="right">(<a href="#topic-351.4">back to sub Topic 351.4</a>)</p>
+<p align="right">(<a href="#topic-351">back to Topic 351</a>)</p>
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-<p align="right">(<a href="./#topic-351">back to Topic 351</a>)</p>
+---
 
-<p align="right">(<a href="./#readme-top">back to top</a>)</p>
+<a name="topic-351.5"></a>
 
-***
+### 💾 351.5 Gerenciamento de Imagens de Máquina Virtual
 
-#### 💾 351.5 Gerenciamento de Imagens de Máquina Virtual
-
-![disk-management](.gitbook/assets/virtual-machine-disk.png)
+![disk-management](images/virtual-machine-disk.png)
 
 **Peso:** 3
 
@@ -1615,7 +1694,7 @@ menos /etc/libvirt/qemu/debian-server01.xml
 - Migre o conteúdo do disco entre vários formatos de imagem de máquina virtual
 - Consciência do formato de Virtualização Aberta (OVF)
 
-**📋 351.5 Cited Objects**
+#### 📋 351.5 Cited Objects
 
 ```sh
 qemu-img
@@ -1636,9 +1715,9 @@ virt-p2v-make-disk
 virt-v2v
 ```
 
-**🛠️ 351.5 Important Commands**
+#### 🛠️ 351.5 Important Commands
 
-**💾 351.5.1 qemu-img**
+##### 💾 351.5.1 qemu-img
 
 ```sh
 # Display detailed information about a disk image
@@ -1682,7 +1761,7 @@ qemu-img snapshot -a 123456789 disk
 qemu-img snapshot -d SNAP1 disk
 ```
 
-**🐟 guestfish**
+##### 🐟 guestfish
 
 ```sh
 # defina variáveis de ambiente para o guestfish
@@ -1733,7 +1812,7 @@ editar /etc/hosts
 EOF
 ```
 
-**🗂️ guestmount**
+###### 🗂️ guestmount
 
 ```sh
 # Monte uma imagem de disco para um diretório
@@ -1747,14 +1826,14 @@ guestmount -a UbuntuServer_24. 4.qcow2 -m /dev/sda2 /mnt/ubuntu
 guestmount -d debian-server01 --ro -m /dev/debian-vg/root /mnt/debian
 ```
 
-**🗑️ guestumount**
+###### 🗑️ guestumount
 
 ```sh
 # Umount uma imagem de disco em um diretório
 sudo guestunmount /mnt/ubuntu
 ```
 
-**📊 virt-df**
+##### 📊 virt-df
 
 ```sh
 # Mostrar espaço livre e usado no sistema de arquivos de máquina virtual
@@ -1762,7 +1841,7 @@ virt-df UbuntuServer_24.04.qcow2 -h
 virt-df -d rocky9-server02 -h
 ```
 
-**🗃️ virt-filesystems**
+##### 🗃️ virt-filesystems
 
 ```sh
 # Listar sistemas de arquivos, partições e volumes lógicos em uma imagem de disco da VM (imagem de disco)
@@ -1772,7 +1851,7 @@ virt-filesystems - UbuntuServer_24.04. cow2 --all --long -h
 virt-filesystems -d debian-server01 --all --long -h
 ```
 
-**🔍 virt-inspector**
+##### 🔍 virt-inspector
 
 ```sh
 # Inspecionar e reportar sobre o sistema operacional em uma imagem de disco VM
@@ -1780,7 +1859,7 @@ virt-inspector -a UbuntuServer_24.04.qcow2 #(disk)
 virt-inspector -d debian-server01 #(domínio) 
 ```
 
-**🐱 virt-cat**
+##### 🐱 virt-cat
 
 ```sh
 # Exibe o conteúdo de um arquivo dentro de uma imagem de disco VM
@@ -1788,21 +1867,21 @@ virt-cat -a UbuntuServer_24.04.qcow2 /etc/hosts
 virt-cat -d debian-server01 /etc/hosts #(domínio)
 ```
 
-**🔀 virt-diff**
+##### 🔀 virt-diff
 
 ```sh
 # Mostrar diferenças entre duas imagens de disco da VM
 virt-diff -a UbuntuServer_24.04.qcow2 -A Rocky-Linux.qcow2
 ```
 
-**🧹 virt-sparsify**
+##### 🧹 virt-sparsify
 
 ```sh
 # Faça uma imagem de disco da VM menor removendo o espaço não usado
 virt-sparsify UbuntuServer_24.04.qcow2 UbuntuServer_24.04-sparse.qcow2
 ```
 
-**📏 virt-resize**
+##### 📏 virt-resize
 
 ```sh
 # Redimensionar uma imagem de disco VM ou suas partições
@@ -1813,7 +1892,7 @@ UbuntuServer_24.04.qcow2 UbuntuServer_24.04-expanded.qcow2
 
 ```
 
-**📥 virt-copy-in**
+##### 📥 virt-copy-in
 
 ```sh
 # Copiar arquivos do host para uma imagem de disco VM
@@ -1821,57 +1900,57 @@ UbuntuServer_24.04.qcow2 UbuntuServer_24.04-expanded.qcow2
 virt-copy-in -a UbuntuServer_24.04.qcow2 ~vagrant/test-virt-copy-in.txt /home/ubuntu
 ```
 
-**📤 virt-copy-out**
+##### 📤 virt-copy-out
 
 ```sh
 # Copiar arquivos de uma imagem de disco VM para o host
 virt-copy--a UbuntuServer_24.04.qcow2 /home/ubuntu/.bashrc /tmp
 ```
 
-**📋 virt-ls**
+##### 📋 virt-ls
 
 ```sh
 # Lista arquivos e diretórios dentro de uma imagem de disco da VM
 virt-ls -a UbuntuServer_24.04.qcow2 /home/ubuntu
 ```
 
-**🚑 virt-rescue**
+##### 🚑 virt-rescue
 
 ```sh
 # Execute um shell de resgate em uma imagem de disco VM para recuperação
 virt-rescue -a UbuntuServer_24.04.qcow2
 ```
 
-**🧰 virt-sysprep**
+##### 🧰 virt-sysprep
 
 ```sh
 # Prepare uma imagem de disco VM para clonar removendo dados específicos do sistema
 virt-sysprep -a UbuntuServer_24.04.qcow2
 ```
 
-**🔄 virt-v2v**
+##### 🔄 virt-v2v
 
 ```sh
 # Converta uma VM de um hipervisor estrangeiro para rodar em KVM
 virt-v2v -i disco input-disk.img -o local -os /var/tmp
 ```
 
-**🔄 virt-p2v**
+##### 🔄 virt-p2v
 
 ```sh
 # Converter uma máquina física para usar KVM
 ```
 
-**💽 virt-p2v-make-disk**
+##### 💽 virt-p2v-make-disk
 
 ```sh
 # Crie uma imagem de disco bootable para conversão virtual
 sudo virt-p2v-make-disk -o output.img
 ```
 
-**📝 351.5 Notes**
+#### 📝 351.5 Notes
 
-**📦 OVF: Open Virtualization Format**
+##### 📦 OVF: Open Virtualization Format
 
 OVF: Um formato aberto que define um padrão para embalagens e distribuição de máquinas virtuais por diferentes ambientes.
 
@@ -1881,21 +1960,23 @@ O pacote gerado tem a extensão .ova e contém os seguintes arquivos:
 - Arquivos de imagem: .vmdk, .vhd, .vhdx, .qcow2, .raw
 - Arquivos adicionais: metadados, snapshots, configuração, hash
 
-<p align="right">(<a href="./#topic-351.5">back to sub Topic 351.5</a>)</p>
+<p align="right">(<a href="#topic-351.5">back to sub Topic 351.5</a>)</p>
+<p align="right">(<a href="#topic-351">back to Topic 351</a>)</p>
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-<p align="right">(<a href="./#topic-351">back to Topic 351</a>)</p>
+---
 
-<p align="right">(<a href="./#readme-top">back to top</a>)</p>
+<a name="topic-352"></a>
 
-***
+## 📦 Tópico 352: Virtualização do contêiner
 
-### 📦 Tópico 352: Virtualização do contêiner
+---
 
-***
+<a name="topic-352.1"></a>
 
-#### 🧠 352.1 container Virtualization Concepts
+### 🧠 352.1  container Virtualization Concepts
 
-![virtualization-container](.gitbook/assets/virtualization-container.png)
+![virtualization-container](images/virtualization-container.png)
 
 ```mermaid
 timeline
@@ -1910,7 +1991,7 @@ timeline
     2015 : Kubernetes
 ```
 
-***
+---
 
 **Peso:** 7
 
@@ -1923,7 +2004,7 @@ timeline
 - Entenda e analise grupos de controle
 - Entenda e analise os recursos
 - Entenda o papel do seccomp, SELinux e AppArmor para virtualização do contêiner
-- Understand how LXC and Docker leverage namespaces, cgroups, capabilities, seccomp and MAC(Mandatory Access Control \[ SELinux,AppArmor ])
+- Understand how LXC and Docker leverage namespaces, cgroups, capabilities, seccomp and MAC(Mandatory Access Control [ SELinux,AppArmor ])
 - Entender o princípio de runc
 - Entenda o princípio de CRI-O e contêineres
 - Consciência das especificações de tempo de execução e imagem do OCI
@@ -1931,9 +2012,9 @@ timeline
 - Prevenção de podman, buildah e skopeo
 - Prevenção de outras abordagens de virtualização de contêiner em Linux e outros sistemas operacionais livres, como rkt, OpenVZ, systemd-nspawn ou BSD Jails
 
-***
+---
 
-**📋 352.1 Cited Objects**
+#### 📋 352.1 Cited Objects
 
 ```sh
 nsenter
@@ -1945,17 +2026,17 @@ capsh
 /proc/[0-9]+/status
 ```
 
-***
+---
 
-**🧠 Understanding containers**
+#### 🧠 Understanding containers
 
-![container](.gitbook/assets/containers1.png)
+![container](images/containers1.png)
 
 contêineres são uma tecnologia leve de virtualização que empacota aplicativos juntamente com suas dependências necessárias — código, bibliotecas, variáveis de ambiente e arquivos de configuração - em unidades isoladas, portáteis e reprodutíveis.
 
 > Em termos simples: um contêiner é uma caixa de auto-contêiner que executa o aplicativo da mesma forma, em qualquer lugar.
 
-**💡 What Is a container?**
+##### 💡 What Is a container?
 
 Ao contrário das Máquinas Virtuais (VMs), os contêineres não virtualizam hardware. Em vez disso, eles virtualizam o sistema operacional. Os contêineres compartilham o mesmo kernel Linux com o host, mas cada um opera em um espaço completamente isolado do usuário.
 
@@ -1969,7 +2050,7 @@ Ao contrário das Máquinas Virtuais (VMs), os contêineres não virtualizam har
 | Eficiência de recursos  | alta                                                      | Baixo                                |
 | Mecanismo de isolamento | Características do kernel (namespaces) | Hipervisor                           |
 
-**🔑 Key Characteristics of containers**
+##### 🔑 Key Characteristics of containers
 
 🔹 **Leve**: Compartilhe o kernel do host OS, reduzindo a sobrecarga e ativando o início rápido.
 
@@ -1981,20 +2062,22 @@ Ao contrário das Máquinas Virtuais (VMs), os contêineres não virtualizam har
 
 🔹 **Escalável**: Perfeito serve para microserviços e arquitetura nativa da nuvem.
 
-**🧱 Types of containers**
+##### 🧱 Types of containers
 
 1. Contêineres do sistema
+
    - Projetado para executar todo o SO, Resembrulhar máquinas virtuais.
    - Suporte a vários processos e serviços de sistema (init, syslog).
    - Ideal para aplicações legadas ou monolíticas.
    - Example: LXC, libvirt-lxc.
 2. Contêineres de aplicativo
+
    - Projetado para executar um único processo.
    - Stateless, efêmera e horizontalmente escalável.
    - Usada amplamente em ambientes modernos de DevOps e Kubernetes.
    - Exemplo: Docker, containerd, CRI-O.
 
-**🚀 Popular container Runtimes**
+##### 🚀 Popular container Runtimes
 
 | Runtime       | Descrição:                                                                                |
 | ------------- | --------------------------------------------------------------------------------------------------------- |
@@ -2004,7 +2087,7 @@ Ao contrário das Máquinas Virtuais (VMs), os contêineres não virtualizam har
 | **LXC**       | Contêineres tradicionais do sistema Linux, mais próximos do sistema operacional completo. |
 | **RKT**       | Tempo de execução focado na segurança (obsoleto).                      |
 
-**🔐 container Internals and Security Elements**
+##### 🔐 container Internals and Security Elements
 
 | Componente             | Funções                                                                                    |
 | ---------------------- | ------------------------------------------------------------------------------------------ |
@@ -2014,24 +2097,24 @@ Ao contrário das Máquinas Virtuais (VMs), os contêineres não virtualizam har
 | **secom**              | Restringe o syscalls permitido para reduzir a superfície de ataque.        |
 | **AppArmor / SELinux** | Aplicação obrigatória de controle de acesso a nível de kernel.             |
 
-***
+---
 
-**🧠 Understanding chroot - Change Root Directory in Unix/Linux**
+#### 🧠 Understanding chroot - Change Root Directory in Unix/Linux
 
-![chroot](.gitbook/assets/chroot.png)
+![chroot](images/chroot.png)
 
-**What is chroot?**
+##### What is chroot?
 
 o chroot (abreviação de raiz de alteração) é uma chamada e comando do sistema em sistemas operacionais do tipo Unix-qual muda o diretório raiz (/) aparente para o processo de execução atual e seus filhos. Isto cria um ambiente isolado, geralmente referido como uma prisão enraizada.
 
-**🧱 Purpose and Use Cases**
+##### 🧱 Purpose and Use Cases
 
 - 🔒 Aplicativos isolados para segurança (cadeia).
 - 🧪 Cria ambientes de teste sem afetar o resto do sistema.
 - 🛠️ Recuperação do sistema (por exemplo, inicie o LiveCD e o chroot no sistema instalado).
 - 📦 Construindo pacotes de software em um ambiente controlado.
 
-**📁 Minimum Required Structure**
+##### 📁 Minimum Required Structure
 
 O ambiente chroot deve ter os seus próprios ficheiros e estruturas essenciais:
 
@@ -2056,7 +2139,7 @@ Use ldd para identificar bibliotecas necessárias:
 ldd /bin/bash
 ```
 
-**🚨 Limitations and Security Considerations**
+##### 🚨 Limitations and Security Considerations
 
 - o chroot não é um limite de segurança como contêineres ou VMs.
 - Um usuário privilegiado (root) dentro da cadeia pode potencialmente desaparecer.
@@ -2068,7 +2151,7 @@ Para um isolamento mais forte, considere alternativas como:
 - Máquinas virtuais (KVM, QEMU)
 - namespaces e cgrupos do kernel
 
-**🧪 Test chroot bash**
+##### 🧪 Test chroot bash
 
 ```sh
 # create chroot environment
@@ -2110,7 +2193,7 @@ sudo umount /mnt/chroot/dev
 sudo rm -rf /mnt/chroot
 ```
 
-**🧪 Test chroot with debootstrap**
+##### 🧪 Test chroot with debootstrap
 
 ```sh
 # baixar arquivos debian
@@ -2118,17 +2201,17 @@ sudo debootstrap estável ~vagrant/debian http://deb.debian.org/debian
 sudo chroot ~vagrant/debian bash
 ```
 
-**:🧪 Lab chroot**
+##### :🧪 Lab chroot
 
 Usar este script para lab: [chroot.sh](scripts/container/chroot.sh)
 
 [![asciicast](https://asciinema.org/a/PWkjazgTXll9678Qy6LLOaKdN.svg)](https://asciinema.org/a/PWkjazgTXll9678Qy6LLOaKdN)
 
-***
+---
 
-**🧠 Understanding Linux Namespaces**
+#### 🧠 Understanding Linux Namespaces
 
-![linux-namespaces](.gitbook/assets/linux-namespaces2.png)
+![linux-namespaces](images/linux-namespaces2.png)
 
 Namespaces são uma funcionalidade de kernel do Linux principal que permite o isolamento em nível de processo. Eles criam "views" separadas de recursos do sistema global — como IDs de processo, rede, sistemas de arquivos, e usuários — para que cada grupo de processos acredite que está sendo executado em seu próprio sistema.
 
@@ -2136,7 +2219,7 @@ Namespaces são uma funcionalidade de kernel do Linux principal que permite o is
 
 Esta é a base para o isolamento dos contentores.
 
-**🔍 What Do Namespaces Isolate?**
+##### 🔍 What Do Namespaces Isolate?
 
 Cada tipo de namespace isola um recurso específico do sistema. Juntos, eles formam o sandbox em que um recipiente opera:
 
@@ -2150,9 +2233,9 @@ Cada tipo de namespace isola um recurso específico do sistema. Juntos, eles for
 | **Usuário**                        | IDs de usuário e grupo                                      | Habilita o falso root (UID 0) dentro do contêiner |
 | **Cgroup (v2)** | Grupo de controle                                           | Blocos em controles de recursos como CPU e limites de memória        |
 
-**🧪 Visual Analogy**
+##### 🧪 Visual Analogy
 
-![linux-namespaces](.gitbook/assets/linux-namespaces.png)
+![linux-namespaces](images/linux-namespaces.png)
 
 Imagine um edifício de escritório compartilhado:
 
@@ -2162,7 +2245,7 @@ Imagine um edifício de escritório compartilhado:
 
 É assim exatamente como os contêineres experimentam o sistema — isolados, mas eficientes.
 
-**🔧 How containers Use Namespaces**
+##### 🔧 How containers Use Namespaces
 
 Quando você executa um contêiner (por exemplo, com Docker ou Podman), o tempo de execução cria um novo conjunto de namespaces:
 
@@ -2179,11 +2262,11 @@ Este comando dá o processo:
 
 O resultado: um ambiente leve e isolado em tempo de execução que se comporta como um sistema separado.
 
-**⚙️ Complementary Kernel Features**
+##### ⚙️ Complementary Kernel Features
 
 Namespaces esconde recursos de contêineres. Mas para controlar o quanto eles podem utilizar e o que podem fazer, precisamos de mecanismos adicionais:
 
-**🔩 Cgroups (Control Groups)**
+###### 🔩 Cgroups (Control Groups)
 
 Os grupos permitem que o kernel limite, priorize e monitore o uso de recursos entre grupos de processos.
 
@@ -2196,7 +2279,7 @@ Os grupos permitem que o kernel limite, priorize e monitore o uso de recursos en
 
 🛡️ Impede o problema do "vizinho ruidoso" impedindo um contêiner de consumir todos os recursos do sistema.
 
-**🧱 Capabilities**
+###### 🧱 Capabilities
 
 O Linux tradicional usa um modelo de privilégio binário: root (UID 0) pode fazer tudo, todos os outros são limitados.
 
@@ -2208,7 +2291,7 @@ O Linux tradicional usa um modelo de privilégio binário: root (UID 0) pode faz
 
 Ao perder capacidades desnecessárias, os contêineres podem correr apenas com o que precisam — reduzindo o risco.
 
-**🔐 Security Mechanisms**
+##### 🔐 Security Mechanisms
 
 Usado em conjunto com namespaces e cgroups para bloquear o que um processo containerized pode fazer:
 
@@ -2218,15 +2301,15 @@ Usado em conjunto com namespaces e cgroups para bloquear o que um processo conta
 | **AppArmor**   | Controle de acesso obrigatório baseado em caminho  | Restringe que arquivos, recursos e recursos um perfil de processo pode acessar                |
 | **SELinux**    | Controle de Acesso Obrigatório com base em rótulos | Força decisões políticas com base nas etiquetas de segurança atribuídas a processos e objetos |
 
-**🧠 Summary for Beginners**
+##### 🧠 Summary for Beginners
 
-> ✅ Namespaces isolate what a container can see\
-> ✅ Cgroups control what it can use\
+> ✅ Namespaces isolate what a container can see  
+> ✅ Cgroups control what it can use  
 > ✅ Capabilities and security modules define what it can do
 
 Juntos, esses recursos do kernel formam a espinha dorsal técnica do isolamento do contêiner — permitindo a implantação de aplicativos eficiente, segura e com alta densidade sem VM completa.
 
-**🧪 Test namespaces with unshare**
+##### 🧪 Test namespaces with unshare
 
 ```sh
 # create new namespaces and run bash
@@ -2269,17 +2352,17 @@ exit
 --net: processes have their own network stack (interfaces, IPs, routing)
 ```
 
-**🧪 Lab namespaces**
+##### 🧪 Lab namespaces
 
 [![asciicast](https://asciinema.org/a/8H6iczCMO24VgjWqwCcXEKWBG.svg)](https://asciinema.org/a/8H6iczCMO24VgjWqwCcXEKWBG)
 
-***
+---
 
-**🧩 Understanding Cgroups (Control Groups)**
+#### 🧩 Understanding Cgroups (Control Groups)
 
-![cgroups](.gitbook/assets/cgroups1.png)
+![cgroups](images/cgroups1.png)
 
-**📌 Definition**
+##### 📌 Definition
 
 Grupos de Controle (cgroups) são uma funcionalidade de kernel do Linux introduzida em 2007 que permite limitar, conta e isolar o uso de recursos (CPU, memória, disco I/O, etc.) de grupos de processos.
 
@@ -2299,7 +2382,7 @@ Os namespaces criam ambientes separados para processos (como PID, rede ou montag
 | **Controle**              | Suspra, retomar ou encerrar processos em massa                      |
 | **Isolamento**            | Evitar fome de recursos entre grupos                                |
 
-**📦 Subsystems (Controllers)**
+##### 📦 Subsystems (Controllers)
 
 cgroups operam através de controllers, cada um responsável por gerenciar um tipo de recurso:
 
@@ -2314,7 +2397,7 @@ cgroups operam através de controllers, cada um responsável por gerenciar um ti
 | `net_cls`      | Pacotes de marcadores para modelagem de tráfego        |
 | `ns`           | Gerencia acesso ao namespace (raro) |
 
-**📂 Filesystem Layout**
+##### 📂 Filesystem Layout
 
 cgroups são expostos através do sistema de arquivos virtuais em /sys/fs/cgroup.
 
@@ -2353,7 +2436,7 @@ Em cgroups v2, todos os recursos são gerenciados sob uma hierarquia unificada:
 └── ...
 ```
 
-**🧪 Common Usage (v1 and v2 examples)**
+##### 🧪 Common Usage (v1 and v2 examples)
 
 v1 – Criar e atribuir limite de memória:
 
@@ -2397,7 +2480,7 @@ echo "50000 100000" > /sys/fs/cgroup/mygroup/cpu.max # 50ms cota por período de
 | `cat /proc/PID/status`  | Informações da memória e do cgroup        |
 | `ps -o pid,cmd,cgroup`  | Mostrar mapeamento de processo-para-grupo |
 
-**📦 Usage in containers**
+##### 📦 Usage in containers
 
 mecanismos de contêiner como Docker, Podman e containerd delegar controle de recursos para cgroups (via runc ou crun), permitindo:
 
@@ -2413,7 +2496,7 @@ docker run --memory=256m --cpus=1 busybox
 
 Nos bastidores, isto cria regras cgroup para os limites de memória e CPU para o processo de container.
 
-**🧠 Concepts Summary**
+##### 🧠 Concepts Summary
 
 | Conceito          | Explicação                                                                           |
 | ----------------- | ------------------------------------------------------------------------------------ |
@@ -2422,7 +2505,7 @@ Nos bastidores, isto cria regras cgroup para os limites de memória e CPU para o
 | **Hierarchy**     | Cgroups são estruturados em uma árvore dos filhos                                    |
 | **Delegação**     | Sistemas e serviços de usuário podem gerenciar subárvores de cgroups                 |
 
-**🧪 Test cgroups**
+##### 🧪 Test cgroups
 
 Exemplo usando cgroups v2 para limitar o uso de memória:
 
@@ -2473,15 +2556,15 @@ htop -p "$(paste -sd, /sys/fs/cgroup/lab-cpu/cgroup.procs)"
 cat /sys/fs/cgroup/lab-cpu/cpu.stat
 ```
 
-**🧪 Lab Cgroups**
+##### 🧪 Lab Cgroups
 
 Usar este script para lab: [cgroups.sh](scripts/container/cgroups.sh)
 
 [![asciicast](https://asciinema.org/a/WbudWJpHKPzBWMh8CGRxCIpZf.svg)](https://asciinema.org/a/WbudWJpHKPzBWMh8CGRxCIpZf)
 
-***
+---
 
-**🛡️ Understanding Capabilities**
+#### 🛡️ Understanding Capabilities
 
 ❓ Quais são as capacidades Linux?
 
@@ -2512,7 +2595,8 @@ Isto reforça a segurança do sistema através da aplicação do princípio do m
 | **CapBnd (Bound)**     | Restringe o máximo de capacidades efetivas que um processo pode obter.            |
 | **CapAmb (Ambiente)**  | Permite que um processo defina explicitamente suas próprias capacidades efetivas. |
 
-📦 Capabilities in containers and Pods containers typically do not run as full root, but instead receive a limited set of capabilities by default depending on the runtime.
+📦 Capabilities in containers and Pods
+containers typically do not run as full root, but instead receive a limited set of capabilities by default depending on the runtime.
 
 Os recursos podem ser adicionados ou descartados no Kubernetes usando o Contexto de segurança.
 
@@ -2527,7 +2611,7 @@ securityContext:
 
 🔐 Isso garante que o contêiner comece com privilégios zero e recebe apenas o que é necessário.
 
-**🧪 Test capabilities**
+##### 🧪 Test capabilities
 
 ```sh
 # tente criar um servidor http
@@ -2550,13 +2634,13 @@ python3 -m http. erver 80
 sudo setcap -r $(readlink -f $(qual python3))
 ```
 
-**🧪 Lab Capabilities**
+##### 🧪 Lab Capabilities
 
 Usar este script para lab: [capabilities.sh](scripts/container/capabilities.sh)
 
 [![asciicast](https://asciinema.org/a/kCiUGvY0YGA5Mdzbj1NSdfLAx.svg)](https://asciinema.org/a/kCiUGvY0YGA5Mdzbj1NSdfLAx)
 
-**🛡️ Seccomp (Secure Computing Mode)**
+#### 🛡️ Seccomp (Secure Computing Mode)
 
 **O que é isso?**
 
@@ -2592,7 +2676,7 @@ seccomp-tools
 /etc/docker/seccomp.json
 ```
 
-**🧪 Test seccomp**
+##### 🧪 Test seccomp
 
 ```sh
 # Verifique se seccomp é suportado
@@ -2621,7 +2705,7 @@ docker run --rm \
 # esperado: chmod: /tmp/a: Operação não permitida
 ```
 
-**🦺AppArmor**
+#### 🦺AppArmor
 
 **O que é isso?**
 
@@ -2656,7 +2740,7 @@ Registros
 /var/log/syslog (pesquisa por aparentos)
 ```
 
-**🧪 Test AppArmor**
+##### 🧪 Test AppArmor
 
 ```sh
 # check if AppArmor is supported
@@ -2695,7 +2779,7 @@ docker run --rm \
 # expected: cat: /tmp/secret: Permission denied
 ```
 
-**🔒SELinux (Security-Enhanced Linux)**
+#### 🔒SELinux (Security-Enhanced Linux)
 
 **O que é isso?**
 
@@ -2728,7 +2812,7 @@ ps -eZ # Processos
 - Logs: /var/log/auditoria/auditoria.log
 - Políticas: /etc/selinux/
 
-**📋 Summary Table for Common Security Systems**
+#### 📋 Summary Table for Common Security Systems
 
 | SISTEMA  | Focar                   | Complexidade | Localização da política                             | Uso típico           |
 | -------- | ----------------------- | ------------ | --------------------------------------------------- | -------------------- |
@@ -2736,7 +2820,7 @@ ps -eZ # Processos
 | AppArmor | Acesso por programa     | Fácil        | /etc/apparmor.d/                    | Ubuntu, Snap, SUSE   |
 | SELinux  | MAC do sistema completo | Avançado     | /etc/selinux/ + rótulos                             | RHEL, Fedora, CentOS |
 
-**🗂️ Linux container Isolation & Security Comparison**
+#### 🗂️ Linux container Isolation & Security Comparison
 
 | Tecnologia                                             | Propósito / O que faz                                                                                                                                                    | Principais Diferenças                                                                                                           | Exemplo em contêineres                                                                                                        |
 | ------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
@@ -2757,23 +2841,32 @@ Summary
 - seccomp: Restringir superfície de chamada do sistema
 - AppArmor/SELinux: Limitar quais processos podem tocar, mesmo como raiz (MAC).
 
-**🧩 OCI, runc, containerd, CRI, CRI-O — What They Are in the container Ecosystem**
+#### 🧩 OCI, runc, containerd, CRI, CRI-O — What They Are in the container Ecosystem
 
-**Overview and Roles**
+##### Overview and Roles
 
-- [**OCI (Open container Initiative) 🏛️**](https://opencontainers.org/) A foundation creating open standards for **container images** and **runtimes**.\
-  &#xNAN;_&#x44;efines how images are formatted, stored, and how containers are started/stopped (runtime spec)._
-- [**runc ⚙️**](https://github.com/opencontainers/runc) A universal, low-level, lightweight CLI tool that can run containers according to the OCI runtime specification.\
-  &#xNAN;_“The engine” that turns an image + configuration into an actual running Linux container._\
+- **[OCI (Open container Initiative) 🏛️](https://opencontainers.org/)**
+  A foundation creating open standards for **container images** and  **runtimes**.  
+  _Defines how images are formatted, stored, and how containers are started/stopped (runtime spec)._
+
+- **[runc ⚙️](https://github.com/opencontainers/runc)**
+  A universal, low-level, lightweight CLI tool that can run containers according to the OCI runtime specification.  
+  _“The engine” that turns an image + configuration into an actual running Linux container._  
   Responsible for creating namespaces, cgroups, capabilities, seccomp, and executing the container process.
-- [**containerd 🏋️**](https://github.com/containerd/containerd) A core container runtime daemon for managing the complete container lifecycle: **pulling images, managing storage, running containers** (calls runc), networking plugins, etc.\
-  &#xNAN;_&#x55;sed by Docker, Kubernetes, nerdctl, and other tools as their main container runtime backend._
-- [**CRI (container Runtime Interface) 🔌**](https://kubernetes.io/docs/concepts/containers/cri/) A Kubernetes-specific gRPC API to connect Kubernetes with container runtimes.\
-  &#xNAN;_Not used outside Kubernetes, but enables K8s to talk to containerd, CRI-O, etc._
-- [**CRI-O 🥤**](https://github.com/cri-o/cri-o) A lightweight, Kubernetes-focused runtime that **only** runs OCI containers, using runc under the hood.\
-  &#xNAN;_Mostly used in Kubernetes, but demonstrates how to build a minimal container runtime focused on open standards._
 
-**🏷️ Comparison Table: OCI, runc, containerd, CRI, CRI-O**
+- **[containerd 🏋️](https://github.com/containerd/containerd)**
+  A core container runtime daemon for managing the complete container lifecycle: **pulling images, managing storage, running containers** (calls runc), networking plugins, etc.  
+  _Used by Docker, Kubernetes, nerdctl, and other tools as their main container runtime backend._
+
+- **[CRI (container Runtime Interface) 🔌](https://kubernetes.io/docs/concepts/containers/cri/)**
+  A Kubernetes-specific gRPC API to connect Kubernetes with container runtimes.  
+  _Not used outside Kubernetes, but enables K8s to talk to containerd, CRI-O, etc._
+
+- **[CRI-O 🥤](https://github.com/cri-o/cri-o)**
+  A lightweight, Kubernetes-focused runtime that **only** runs OCI containers, using runc under the hood.  
+  _Mostly used in Kubernetes, but demonstrates how to build a minimal container runtime focused on open standards._
+
+##### 🏷️ Comparison Table: OCI, runc, containerd, CRI, CRI-O
 
 | Componente    | O que é isso?                                           | Quem o usa?                             | Exemplo de uso                                                                                   |
 | ------------- | ------------------------------------------------------- | --------------------------------------- | ------------------------------------------------------------------------------------------------ |
@@ -2783,9 +2876,9 @@ Summary
 | **CRI**       | Interface de execução K8s (API)      | Somente Kubernetes                      | Vamos conversar com o kubelet para containerd/CRI-O                                              |
 | **CRI-O**     | Contêiner leve em tempo de execução para K8s            | Kubernetes, OpenShift                   | Usado como motor de contêiner K8s                                                                |
 
-***
+---
 
-**🛠️ Practical Examples (General container World)**
+##### 🛠️ Practical Examples (General container World)
 
 - **Criando imagens:**
 
@@ -2798,11 +2891,11 @@ Summary
   O **containerd** pode ser usado sozinho (via `ctr` ou `nerdctl`) ou como backend para Docker e Kubernetes.
 - **Execução do Plug-and-play:**
 
-  Thanks to **OCI** , you could swap runc for another OCI-compliant runtime (like Kata containers for VMs, gVisor for sandboxing) without changing how you build or manage images.
+  Thanks to  **OCI** , you could swap runc for another OCI-compliant runtime (like Kata containers for VMs, gVisor for sandboxing) without changing how you build or manage images.
 
-***
+---
 
-**🚢 Typical Stack**
+##### 🚢 Typical Stack
 
 ```plaintext
 [User CLI / Orchestration]
@@ -2818,9 +2911,9 @@ Summary
 - **Podman**: User CLI → runc
 - **Kubernetes**: kubelet (CRI) → containerd ou CRI-O → runc
 
-***
+---
 
-**🧠 Summary**
+##### 🧠 Summary
 
 - **OCI** = Idioma comum para imagens/tempos de execução (padrões/especificações)
 - **runc** = Ferramenta atual que cria e gerencia processos contêiner
@@ -2828,7 +2921,7 @@ Summary
 - **CRI** = Somente para o Kubernetes, para tornar o tempo de execução plugável
 - **CRI-O** = Tempo de execução leve focado em Kubernetes, construído em padrões de OCI e runc
 
-**🧩 Diagram: container Ecosystem**
+##### 🧩 Diagram: container Ecosystem
 
 ```mermaid
 graph TD
@@ -2869,79 +2962,79 @@ graph TD
     OCI2 -.-> runc
 ```
 
-**🧪 lab runc**
+##### 🧪 lab runc
 
 Para laboratório de execução, você pode usar este script: [runc.sh](scripts/container/runc.sh)
 
 [![asciicast](https://asciinema.org/a/UDVnhKSxPFRXDcwg0HYFkZdlX.svg)](https://asciinema.org/a/UDVnhKSxPFRXDcwg0HYFkZdlX)
 
-**🧪 lab containerd**
+##### 🧪 lab containerd
 
 Para contêiner, você pode usar este script: [containerd.sh](scripts/container/container.sh)
 
 [![asciicast](https://asciinema.org/a/fCJsiwcL2ePneQX1aafITtoGM.svg)](https://asciinema.org/a/fCJsiwcL2ePneQX1aafITtoGM)
 
-***
+---
 
-**🚀 Podman, Buildah, Skopeo, OpenVZ, crun & Kata containers**
+#### 🚀 Podman, Buildah, Skopeo, OpenVZ, crun & Kata containers
 
-***
+---
 
-**🐳 Podman**
+##### 🐳 **Podman**
 
-- **What is it?** A container manager compatible with Docker CLI, but **daemonless** and can run **rootless** .
+- **What is it?** A container manager compatible with Docker CLI, but **daemonless** and can run  **rootless** .
 - **Usar:** Criar, executar, parar e inspecionar contêineres e pods.
 - **Destaque:** Nenhum daemon central, mais seguro para vários usuários, integra-se com sistema.
 - [Mais informações](https://podman.io/)
 
-***
+---
 
-**📦 Buildah**
+##### 📦 **Buildah**
 
 - **O que é isso?** Ferramenta para **construir e manipular imagens contêineres** (OCI/Docker) sem um daemon.
 - **Usar:** Criando imagens em pipelines de CI/CD ou scripts.
 - **Destaque:** Suporte leve e sem roots, usado por Podman sob o capuz.
 - [Mais informações](https://www.redhat.com/en/topics/containers/what-is-buildah)
 
-***
+---
 
-**🔭 Skopeo**
+##### 🔭 **Skopeo**
 
 - **O que é isso?** Utilitário para **inspecionar, copiar e mover imagens contêineres** entre os registros **sem puxar ou executar**.
 - **Usar:** Mover imagens, verificar assinaturas e metadados.
 - **Destaque:** Sem daemon, ideal para automação e segurança.
 - [Mais informações](https://skopeo.org/)
 
-***
+---
 
-**🏢 OpenVZ**
+##### 🏢 **OpenVZ**
 
 - **Qual é ela?** **virtualização baseada em contêiner** para Linux (ferramentas de contêiner modernas pré-datando).
 - **Usar:** VPS Leve (servidores virtuais) compartilhando o mesmo kernel.
 - **Destaques:** Muito eficiente, mas menos isolada do que a VM (kernel de compartilhamento).
 - [Mais informações](https://en.wikipedia.org/wiki/OpenVZ)
 
-***
+---
 
-**⚡ crun**
+##### ⚡ **crun**
 
 - **O que é isso?** Ultra-rápido, tempo de execução mínimo de OCI para recipientes, escrito em C (não Go).
 - **Usar:** Executa contêineres com sobrecarga mínima.
 - **Destaques:** Mais rápido e mais claro que o runc, padrão para Podman em alguns sistemas.
 - [Mais informações](https://www.redhat.com/sysadmin/introduction-crun)
 
-***
+---
 
-**🛡️ Kata containers**
+##### 🛡️ **Kata containers**
 
 - **O que é isso?** Projeto de código aberto que combina contêineres e VMs: cada contêiner roda em uma microVM leve.
 - **Usar:** Isolamento forte para cargas de trabalho sensíveis ou ambientes multi-tenentes.
 - **Destaques:** Segurança de nível VM, quase desempenho do contêiner.
 - [Mais informações](https://katacontainers.io/)
 
-***
+---
 
-**📊 Comparison Table**
+##### 📊 **Comparison Table**
 
 | Projecto               | categoria               | Isolamento             | Daemon? | Uso principal             | Impecável | Observações                              |
 | ---------------------- | ----------------------- | ---------------------- | ------- | ------------------------- | --------- | ---------------------------------------- |
@@ -2952,9 +3045,9 @@ Para contêiner, você pode usar este script: [containerd.sh](scripts/container/
 | **crun**               | Runtime OCI             | contêiner              | Não     | Limitar tempo de execução | sim       | Mais rápido que o runc                   |
 | **contêineres do Kat** | Executar/VM             | MicroVM por recipiente | Não     | Forte isolamento          | sim       | Segurança a nível VM                     |
 
-***
+---
 
-**☑️ Quick Recap**
+##### ☑️ **Quick Recap**
 
 - **Podman:** Alternativo Docker moderno, desonesto.
 - **Buildah:** Constrói imagens, não executa contêineres.
@@ -2963,9 +3056,9 @@ Para contêiner, você pode usar este script: [containerd.sh](scripts/container/
 - **crun:** Super rápido, leve tempo de execução de OCI.
 - **Kata:** contêineres com o isolamento de nível VM.
 
-**🛠️ 352.1 Important Commands**
+#### 🛠️ 352.1 Important Commands
 
-**🔗 unshare**
+##### 🔗 unshare
 
 ```sh
 # cria rootfs com debootstrap
@@ -2980,7 +3073,7 @@ ip addr show
 /proc
 ```
 
-**🔍 lsns**
+##### 🔍 lsns
 
 ```sh
 # mostrar todos os namespaces
@@ -2997,7 +3090,7 @@ ps -o pid, idns,netns,ipcns,uts,userns,args -p <PID>
 ps com Comissão, pidns,netns,ipcns,uts,userns,args -p 3669
 ```
 
-**🚪 nsenter**
+##### 🚪 nsenter
 
 ```sh
 # get <PID_CRIO_CONTAINER>
@@ -3026,7 +3119,7 @@ sudo nsenter -t <PID_DOCKER_CONTAINER> -m -u -i -n -p -- bash
 sudo nsenter -t <PID_DOCKER_CONTAINER> -a -- bash
 ```
 
-**🌐 252.1 ip**
+##### 🌐 252.1 ip
 
 ```sh
 # criar um novo namespace de rede
@@ -3039,14 +3132,14 @@ ip netns list
 sudo ip netns exec lxc1 ip addr show
 ```
 
-**📊 stat**
+##### 📊 stat
 
 ```sh
 # obter a versão do cgroup
 stat -fc %T /sys/fs/cgroup
 ```
 
-**🛠️ systemctl and systemd**
+##### 🛠️ systemctl and systemd
 
 ```sh
 # obtém cgroups do sistema
@@ -3054,32 +3147,32 @@ systemctl status
 systemd-cgls
 ```
 
-**🏗️ cgcreate**
+##### 🏗️ cgcreate
 
 ```sh
 memória de cgcreate -g, cpu:lsf
 ```
 
-**🏷️ cgclassify**
+##### 🏷️ cgclassify
 
 ```sh
 cgclassify -g memória,cpu:lsf <PID>
 ```
 
-**🛡️ pscap - List Process Capabilities**
+##### 🛡️ pscap - List Process Capabilities
 
 ```sh
 # Lista recursos de todos os processos
 pscap
 ```
 
-**🛡️ getcap /usr/bin/tcpdump**
+##### 🛡️ getcap /usr/bin/tcpdump
 
 ```sh
 getcap /usr/bin/tcpdump
 ```
 
-**🛡️ setcap cap\_net\_raw=ep /usr/bin/tcpdump**
+##### 🛡️ setcap cap_net_raw=ep /usr/bin/tcpdump
 
 ```sh
 # adicionar recursos ao tcpdump
@@ -3090,20 +3183,20 @@ sudo setcap -r /usr/bin/tcpdump
 sudo setcap '' /usr/bin/tcpdump
 ```
 
-**🛡️ check capabilities by process**
+##### 🛡️ check capabilities by process
 
 ```sh
 tirar Limite /proc/<PID>/status
 ```
 
-**🛡️ capsh - capability shell wrapper**
+##### 🛡️ capsh - capability shell wrapper
 
 ```sh
 # use grep Cap /proc/<PID>/status para obter valor hexadecimal (Exemplo CApEff=0000000000002000)
 capsh --decode=000000002000
 ```
 
-**🦺 AppArmor - kernel enhancement to confine programs to a limited set of resources**
+##### 🦺 AppArmor - kernel enhancement to confine programs to a limited set of resources
 
 ```sh
 # Verifique o status de AppArmor
@@ -3116,7 +3209,7 @@ aa-teardown
 aaparmor_parser
 ```
 
-**🔒 SELinux - Security-Enhanced Linux**
+##### 🔒 SELinux - Security-Enhanced Linux
 
 ```sh
 # verifique o status do SELinux
@@ -3129,7 +3222,7 @@ sudo getenforce
 sudo setenforce 1
 ```
 
-**⚙️ runc**
+##### ⚙️ runc
 
 ```sh
 #cria uma especificação para runc
@@ -3139,17 +3232,17 @@ runc spec
 sudo runc run mycontainer
 ```
 
-***
+---
 
-<p align="right">(<a href="./#topic-352.1">back to sub topic 352.1</a>)</p>
+<p align="right">(<a href="#topic-352.1">back to sub topic 352.1</a>)</p>
+<p align="right">(<a href="#topic-352">back to topic 352</a>)</p>
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-<p align="right">(<a href="./#topic-352">back to topic 352</a>)</p>
+---
 
-<p align="right">(<a href="./#readme-top">back to top</a>)</p>
+<a name="topic-352.2"></a>
 
-***
-
-#### 📦 352.2 LXC
+### 📦 352.2 LXC
 
 **Peso:** 6
 
@@ -3165,7 +3258,7 @@ sudo runc run mycontainer
 - Compreender imagens LXC
 - Consciência das ferramentas LXC tradicionais
 
-**📋 352.2 Cited Objects**
+#### 📋 352.2 Cited Objects
 
 ```sh
 lxd
@@ -3176,19 +3269,21 @@ lxc (incluindo subcomandos relevantes)
 /usr/share/lxc/templates
 ```
 
-**🧩 LXC & LXD – The Linux System containers Suite**
+#### 🧩 LXC & LXD – The Linux System containers Suite
 
-***
+---
 
-**📦 LXC (Linux containers)**
+##### 📦 LXC (Linux containers)
 
 - **O que é isso?**
 
   The _core_ userspace toolset for managing application and system containers on Linux. Pense no LXC como **"chroot em steroids"** – ele fornece um processo de isolamento leve usando recursos do kernel (namespaces, cgrupos, AppArmor, seccomp, etc).
 - **Usar:**
+
   - Executar todas as distribuições Linux como contêineres (não apenas um aplicativo).
   - Útil para testes, aplicativos legados ou simulação de servidores.
 - **Destaque:**
+
   - CLI-focused: `lxc-create`, `lxc-start`, `lxc-attach`, etc.
   - Controle de grão fino sobre os recursos de recipientes.
   - Nenhum daemon – roda por processos de contêiner.
@@ -3196,23 +3291,25 @@ lxc (incluindo subcomandos relevantes)
 
   Especialistas em Linux que querem controle total e sinalização "bare-metal" para contêineres.
 
-**🧪 lab LXC**
+##### 🧪 lab LXC
 
 Para o laboratório LXC, você pode usar este script: [lxc.sh](scripts/container/lxc.sh)
 
 [![asciicast](https://asciinema.org/a/CpjDAXRnaKH5kExg9eWSBJGHI.svg)](https://asciinema.org/a/CpjDAXRnaKH5kExg9eWSBJGHI)
 
-***
+---
 
-**🌐 LXD**
+##### 🌐 LXD
 
 - **O que é isso?**
 
-  **LXD** is a _next-generation_ container and VM manager, **built on top of LXC** . Ele oferece uma experiência poderosa, mas amigável para gerenciar contêineres e máquinas virtuais via API REST, CLI ou até mesmo uma interface da web.
+  **LXD** is a _next-generation_ container and VM manager,  **built on top of LXC** . Ele oferece uma experiência poderosa, mas amigável para gerenciar contêineres e máquinas virtuais via API REST, CLI ou até mesmo uma interface da web.
 - **Usar:**
+
   - Gerenciar contêineres de sistema e máquinas virtuais em escala.
   - Redes de "contêiner como serviço" com fácil orquestração.
 - **Destaque:**
+
   - **API REST**: gerenciar contêineres/VMs pela rede.
   - **Imagens:** Implementação instantânea de muitas distrações de Linux.
   - **Snapshots, bancos de armazenamento, agrupamento, migração ao vivo.**
@@ -3222,7 +3319,7 @@ Para o laboratório LXC, você pode usar este script: [lxc.sh](scripts/container
 
   DevOps, sysadmins, configurações nativas na nuvem, ambientes do laboratório.
 
-**📝 LXD Storage: Feature Table (per backend)**
+##### 📝 **LXD Storage: Feature Table (per backend)**
 
 | Funcionalidade           | dir                     | zfs               | btrfs             | lvm/lvmthin                    | cebol/cebolas               |
 | ------------------------ | ----------------------- | ----------------- | ----------------- | ------------------------------ | --------------------------- |
@@ -3237,7 +3334,7 @@ Para o laboratório LXC, você pode usar este script: [lxc.sh](scripts/container
 | **Cluster/Remoto**       | ❌                       | ❌                 | ❌                 | ❌                              | ✅                           |
 | **Melhor uso de caso**   | Desenv. | Laboratórios/Prod | Laboratórios/Prod | Laboratórios/Prod              | Clusters, Empresa           |
 
-**🔍 Quick LXD Storage Summary**
+##### 🔍 **Quick LXD Storage Summary**
 
 - **Bancos de armazenamento:** Abstrata o backend — vários pools, diferentes drivers por pool.
 - **Motoristas disponíveis:** disr, zfs, btrfs, lvm, lvmthin, ceph, cephfs (mais através de plugins).
@@ -3248,9 +3345,9 @@ Para o laboratório LXC, você pode usar este script: [lxc.sh](scripts/container
 - **Segurança:** Criptografia integrada (ZFS, LVM, Ceph), ACLs, backup/restauração, etc.
 - **Pronto para empresas:** Configurações de suportes agrupados e de alta disponibilidade.
 
-***
+---
 
-**📊 LXC vs LXD Comparison Table**
+##### 📊 LXC vs LXD Comparison Table
 
 | Funcionalidade   | 🏷️ LXC                                          | 🌐 LXD                                                          |
 | ---------------- | ------------------------------------------------ | --------------------------------------------------------------- |
@@ -3265,14 +3362,14 @@ Para o laboratório LXC, você pode usar este script: [lxc.sh](scripts/container
 | **Segurança**    | Pode não ter privilégio, mas faça você           | Padrão sem privilégios, mais isolamento                         |
 | **Melhor para**  | Pros Linux, script avançado                      | DevOps, nuvem, equipes, auto-serviço                            |
 
-***
+---
 
-**☑️ Quick Recap**
+##### ☑️ Quick Recap
 
-- **LXC** = Os blocos de construção de baixo nível. Power and flexibility for _container purists_ .
+- **LXC** = Os blocos de construção de baixo nível. Power and flexibility for  _container purists_ .
 - **LXD** = Modern, API-driven, scalable platform on top of LXC for _easy_ container and VM management (single node or clusters).
 
-**🗃️ LXC vs LXD - Storage Support (Summary)**
+##### 🗃️ LXC vs LXD - Storage Support (Summary)
 
 | Funcionalidade                       | **LXC**                                                           | **LXD**                                                                                                                                                       |
 | ------------------------------------ | ----------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -3289,7 +3386,7 @@ Para o laboratório LXC, você pode usar este script: [lxc.sh](scripts/container
 | **Redimensionando**                  | Manual (via host)                              | ✅ Volumes e pools podem ser redimensionados ao vivo                                                                                                           |
 | **Drivers** de armazenamento\*\*     | Apenas básico/local                                               | Plugins extensíveis, vários drivers prontos para empresas                                                                                                     |
 
-**📊 Final Storage Comparison Table**
+##### 📊 Final Storage Comparison Table
 
 |                            | **LXC**         | **LXD**                                                |
 | -------------------------- | --------------- | ------------------------------------------------------ |
@@ -3304,7 +3401,7 @@ Para o laboratório LXC, você pode usar este script: [lxc.sh](scripts/container
 | **O cluster está pronto**  | ❌               | ✅                                                      |
 | **Empresa**                | Não             | Sim — HA, backup, migração, segurança, produção pronta |
 
-**🌐 LXC vs LXD - Network Support (Summary)**
+##### 🌐 LXC vs LXD - Network Support (Summary)
 
 | Funcionalidade                     | **LXC**                                            | **LXD**                                                                      |
 | ---------------------------------- | -------------------------------------------------- | ---------------------------------------------------------------------------- |
@@ -3326,7 +3423,7 @@ Para o laboratório LXC, você pode usar este script: [lxc.sh](scripts/container
 | **Monitorando**                    | Manualmente                                        | ✅ Status, IPAM, logs, informações detalhadas via CLI/API                     |
 | **Empresa**                        | Não                                                | Sim—multi-tenant, ACL, agrupamento, integração na nuvem                      |
 
-**📊 Final Network Comparison Table**
+##### 📊 Final Network Comparison Table
 
 |                   | **LXC**          | **LXD**                                               |
 | ----------------- | ---------------- | ----------------------------------------------------- |
@@ -3341,13 +3438,13 @@ Para o laboratório LXC, você pode usar este script: [lxc.sh](scripts/container
 | **Profiles**      | ❌                | ✅                                                     |
 | **Empresa**       | Não              | sim                                                   |
 
-**🧪 lab LXD**
+##### 🧪 lab LXD
 
 Para o laboratório LXD, você pode usar este script: [lxd.sh](scripts/container/lxd.sh)
 
-**🛠️ 352.2 Important Commands**
+#### 🛠️ 352.2 Important Commands
 
-**📦 lxc**
+##### 📦 lxc
 
 ```sh
 
@@ -3499,7 +3596,7 @@ lxc-ls -f
 ls .local/share/lxc/unprivileged/
 ```
 
-**🌐 lxd**
+##### 🌐 lxd
 
 ```sh
 # lxd configuration files
@@ -3789,19 +3886,19 @@ lxc profile remove debian12 production
 lxc launch 1u1u1u1u1u1 rockylinux9-2 -p production
 ```
 
-<p align="right">(<a href="./#topic-352.2">back to sub topic 352.2</a>)</p>
+<p align="right">(<a href="#topic-352.2">back to sub topic 352.2</a>)</p>
+<p align="right">(<a href="#topic-352">back to topic 352</a>)</p>
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-<p align="right">(<a href="./#topic-352">back to topic 352</a>)</p>
+---
 
-<p align="right">(<a href="./#readme-top">back to top</a>)</p>
+<a name="topic-352.3"></a>
 
-***
+### 🐳 352.3 Docker
 
-#### 🐳 352.3 Docker
+![docker-architecture](images/docker.png)
 
-![docker-architecture](.gitbook/assets/docker.png)
-
-![docker-runtime](.gitbook/assets/docker-containerd.png)
+![docker-runtime](images/docker-containerd.png)
 
 **Peso:** 9
 
@@ -3817,7 +3914,7 @@ lxc launch 1u1u1u1u1u1 rockylinux9-2 -p production
 - Use arquivos Dockerfiles para criar imagens de contêiner
 - Execute um registro Docker usando a imagem Docker do registro
 
-**📋 352.3 Cited Objects**
+#### 📋 352.3 Cited Objects
 
 ```sh
 dockerd
@@ -3827,15 +3924,15 @@ docker
 Dockerfile
 ```
 
-**📖 Definition**
+#### 📖 Definition
 
-Docker is an **open-source container platform** that allows developers and operators to package applications and their dependencies into **containers** .
+Docker is an **open-source container platform** that allows developers and operators to package applications and their dependencies into  **containers** .
 
-These containers ensure **consistency across environments** , speed up deployments, and reduce infrastructure complexity.
+These containers ensure  **consistency across environments** , speed up deployments, and reduce infrastructure complexity.
 
-***
+---
 
-**🔑 Key Concepts**
+#### 🔑 Key Concepts
 
 - 📦 **container** → Lightweight, isolado compartilhando o kernel do host.
 - 🖼️ **Imagem** → Read-only template contendo o aplicativo e as dependências.
@@ -3843,28 +3940,28 @@ These containers ensure **consistency across environments** , speed up deploymen
 - ⌨️ **Docker CLI** → Ferramenta de linha de comando (`docker`) comunicando com o daemon.
 - ☁️ **Docker Hub** → Registro padrão para armazenar e distribuir imagens.
 
-***
+---
 
-**🚀 Advantages**
+#### 🚀 Advantages
 
 - ⚡ **Leve & Rápido** → Muito mais rápido que as máquinas virtuais.
 - 🌍 **Portability** → Executa em qualquer lugar que o Docker é suportado.
 - 🛠️ **Ecosystem** → Compose, Swarm, Hub, Desktop UI, registros.
 - 🔄 **Amizade** → CI/CD de integração e alinhamento IaC.
 
-***
+---
 
-**📑 Docker Registries**
+#### 📑 Docker Registries
 
 - ☁️ **Docker Hub** → Padrão, registro público.
 - 🏢 **Registros privados** → Porto, Artifício, Registro de contêiner do GitHub.
 - 🔒 use `docker login` para autenticar, pressionar e puxar imagens.
 
-***
+---
 
-**Docker Images**
+#### Docker Images
 
-![docker-images](.gitbook/assets/docker-images.png)
+![docker-images](images/docker-images.png)
 
 - Conceito: pacote imutável com aplicativo, dependências e metadados.
 - Camadas e cache: cada instrução Dockerfile se torna uma camada reutilizável
@@ -3875,7 +3972,7 @@ These containers ensure **consistency across environments** , speed up deploymen
 - Comandos básicos: `docker image ls`, `docker pull`, `docker run`, `docker inspect`, `docker history`, `docker history`, `docker tag`, `docker push`, `docker rmi`, `docker image prune -a`, `docker save`/`docker load`.
 - Melhores práticas: base mínima (alpine/destroless), compilações multi-etapas, pin versões/tags, executar como `USER` sem root.
 
-**Docker Image Layers**
+##### Docker Image Layers
 
 Neste exemplo, demonstro uma camada de imagem docker.
 
@@ -3887,7 +3984,8 @@ ROM alpine
 RUN apk add --no-cache bash
 ```
 
-![docker-image-layers-01](.gitbook/assets/docker-image-layers-01.png) ![docker-image-layers-02](.gitbook/assets/docker-image-layers-02.png)
+![docker-image-layers-01](images/docker-image-layers-01.png)
+![docker-image-layers-02](images/docker-image-layers-02.png)
 
 A segunda imagem que tenho uma minha-imagem-base: 1.0 e adicionar duas camadas, gerando uma nova imagem com o nome acme/meu-imagem-final-image:1.0.
 
@@ -3899,9 +3997,10 @@ RUN chmod +x /app/hello.sh
 CMD /app/hello.sh
 ```
 
-![docker-image-layers-03](.gitbook/assets/docker-image-layers-03.png) ![docker-image-layers-04](.gitbook/assets/docker-image-layers-04.png)
+![docker-image-layers-03](images/docker-image-layers-03.png)
+![docker-image-layers-04](images/docker-image-layers-04.png)
 
-**Docker image Copy-on-Write (CoW)**
+##### Docker image Copy-on-Write (CoW)
 
 Neste exemplo, demonstro uma imagem docker Copy-on-Write (CoW).
 
@@ -3921,7 +4020,7 @@ Veja o tamanho dos contêineres.
 docker ps --size --format "table {{.ID}}\t{{.Image}}\t{{.Names}}\t{{.Size}}"
 ```
 
-To demonstrate this, run the following command to write the word 'hello' to a file on the container's writable layer in containers my\_container\_1, my\_container\_2, and my\_container\_3:
+To demonstrate this, run the following command to write the word 'hello' to a file on the container's writable layer in containers my_container_1, my_container_2, and my_container_3:
 
 ```sh
 for i in {1..3}; do docker exec my_container_$i sh -c 'printf hello > /out.txt'; feito
@@ -3933,31 +4032,31 @@ Verifique o tamanho dos contêineres novamente.
 docker ps --size --format "table {{.ID}}\t{{.Image}}\t{{.Names}}\t{{.Size}}"
 ```
 
-![docker-image-cow](.gitbook/assets/docker-image-cow.png)
+![docker-image-cow](images/docker-image-cow.png)
 
-**🐳 Dockerfile Image Instructions and Layers**
+##### 🐳 Dockerfile Image Instructions and Layers
 
 **📊 Tabela: Instrução vs. Geração de camada**
 
 | Instrução    | Criar uma camada de sistema de arquivos? | Observações                                                                                                                      |
 | ------------ | ---------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- |
-| ROM\`        | ❌ Não                                    | Define a imagem base; camadas subjacentes vêm dela.                                                              |
+| ROM\`        | ❌ No                                     | Define a imagem base; camadas subjacentes vêm dela.                                                              |
 | `Executar`   | ✅ Sim                                    | Executa alterações no sistema de arquivos; adiciona conteúdo que persiste.                                       |
 | `COPY`       | ✅ Sim                                    | Adiciona arquivos de contexto de compilação no sistema de arquivos de imagem.                                    |
 | `ADD`        | ✅ Sim                                    | Semelhante ao COPY, com recursos adicionais (URLs, extração de tar).                          |
 | LABEL\`      | ❌ Não                                    | Só adiciona metadados; não altera o conteúdo do sistema de arquivos.                                             |
-| `ENV`        | ❌ Não                                    | Define variáveis de ambiente; armazenadas como metadados.                                                        |
-| `ARG`        | ❌ Não                                    | Somente tempo de construção; não afeta a imagem final a menos que seja usada mais tarde.                         |
-| `WORKDIR`    | ❌ Não                                    | Altera o diretório de trabalho; apenas metadados                                                                                 |
+| `ENV`        | ❌ No                                     | Define variáveis de ambiente; armazenadas como metadados.                                                        |
+| `ARG`        | ❌ No                                     | Somente tempo de construção; não afeta a imagem final a menos que seja usada mais tarde.                         |
+| `WORKDIR`    | ❌ No                                     | Altera o diretório de trabalho; apenas metadados                                                                                 |
 | `USADOR`     | ❌ No                                     | Define o usuário; apenas metadados.                                                                              |
 | `EXPOSE`     | ❌ Não                                    | Declara as portas expostas; apenas os metadados.                                                                 |
 | `ENTRYPOINT` | ❌ Não                                    | Define como o contêiner inicia; configuração de metadados.                                                       |
 | CMD\`        | ❌ Não                                    | Comando padrão ou argumentos; somente metadados.                                                                 |
 | `VOLUME`     | ✅ Sim / Parcial                          | Declara os pontos de montagem; metadados + volumes em tempo de execução; tem implicações no sistema de arquivos. |
-| ALTERAÇÃO\`  | ❌ No                                     | Define a configuração de verificação de saúde; armazenada como metadados.                                        |
-| `STOPSIGNAL` | ❌ No                                     | Define sinal para parar contêiner; apenas metadados.                                                             |
-| AJUDA        | ❌ No                                     | Altera shell para 'RUN' posteriormente; apenas metadados.                                                        |
-| `ONBUILD`    | ❌ No                                     | Gatilhos para futuras compilações; apenas metadados.                                                             |
+| ALTERAÇÃO\`  | ❌ Não                                    | Define a configuração de verificação de saúde; armazenada como metadados.                                        |
+| `STOPSIGNAL` | ❌ Não                                    | Define sinal para parar contêiner; apenas metadados.                                                             |
+| AJUDA        | ❌ Não                                    | Altera shell para 'RUN' posteriormente; apenas metadados.                                                        |
+| `ONBUILD`    | ❌ Não                                    | Gatilhos para futuras compilações; apenas metadados.                                                             |
 
 **🔎 Insights chave**
 
@@ -3968,56 +4067,56 @@ docker ps --size --format "table {{.ID}}\t{{.Image}}\t{{.Names}}\t{{.Size}}"
 - Para minimizar o tamanho da imagem:
   - Combine vários comandos `RUN` em um.
   - Use `.dockerignore` para evitar copiar arquivos desnecessários.
-  - Order instructions to maximize Docker’s **build cache efficiency** .
+  - Order instructions to maximize Docker’s  **build cache efficiency** .
 
-***
+---
 
-**🐳 Dockerfile**
+#### 🐳 Dockerfile
 
 Um **Dockerfile** é um arquivo de texto declarativo que contém uma sequência de instruções para construir uma imagem Docker. É o plano para criar ambientes reprodutíveis, portáteis e contêineres automatizados.
 
-**✨ Key Concepts**
+##### ✨ Key Concepts
 
 | Conceito                      | Descrição:                                                                                                                                                                                                                                                                |
-| ----------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| :---------------------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | 📜 **Script Declarativo**     | Um arquivo de texto simples com instruções linha por linha para montar uma imagem.                                                                                                                                                                                        |
 | 「「**Arquitetura em camadas**  | Cada instrução em um Dockerfile cria uma nova camada na imagem. Camadas estão empilhadas e são somente para leitura.                                                                                                                                      |
 | ⚡ **Construa Cache**          | Docker armazena o resultado de cada camada. Se uma camada e suas dependências não mudaram, o Docker reutiliza a camada em cache, tornando as compilações significativamente mais rápidas.                                                                 |
 | 📦 **Build Context**          | O conjunto de arquivos em um `PATH` especificado ou `URL` que são enviados para o Docker daemon durante uma compilação. Use um arquivo `.dockerignore` para excluir arquivos desnecessários.                                                              |
 | 🏗️ Builds de **Multi-Stage** | Um recurso poderoso que permite a você usar várias instruções `FROM` em um único Dockerfile. Isso ajuda a separar as dependências de tempo de compilação das dependências do tempo de execução, resultando em imagens de produção menores e mais seguras. |
 
-***
+---
 
-**📝 Core Instructions**
+##### 📝 Core Instructions
 
 A tabela a seguir sumariza as instruções mais comuns do Dockerfile.
 
-| Instrução            | Objetivo                                                                                                                                                                | Exemplo                                                                                  |
-| -------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
-| 🏁 **`FROM`**        | Especifica a imagem base para instruções subsequentes. Deve ser a primeira instrução.                                                   | `FROM ubuntu:22.04`                                                                      |
-| 🏷️ **`LABEL`**      | Adiciona metadados a uma imagem como pares de valores-chave.                                                                                            | `LABEL version="1.0" maintainer="me@example.com"`                                        |
-| 🏃 **`RUN`**         | Executa qualquer comando em uma nova camada no topo da imagem atual e submete os resultados.                                                            | `RUN apt-get update && apt-get install -y nginx`                                         |
-| 🚀 **`CMD`**         | Fornece padrões para um contêiner de execução. Pode haver apenas um `CMD`.                                                              | `CMD ["nginx", "-g", "daemon off;"]`                                                     |
-| 🚪 **`ENTRYPOINT`**  | Configura um contêiner que será executado como um executável.                                                                                           | `ENTRYPOINT ["/usr/sbin/nginx"]`                                                         |
-| 🌐 **`EXPOSE`**      | Informa ao Docker que o contêiner escuta nas portas de rede especificadas no tempo de execução.                                                         | `EXPOSE 80`                                                                              |
-| 🌳 **`ENV`**         | Define as variáveis de ambiente.                                                                                                                        | `ENV APP_VERSION=1.0`                                                                    |
-| 📂 **`COPY`**        | Copia novos arquivos ou diretórios do contexto da compilação para o sistema de arquivos da imagem.                                                      | `COPY ./app /app`                                                                        |
-| 🔗 **`ADD`**         | Semelhante ao `COPY`, mas com mais recursos, como suporte de URL remoto e extração de alcatro.                                                          | `ADICIONAR http://example.com/big.tar.xz /usr/src`                                       |
-| 👤 **`USER`**        | Define o nome do usuário (ou UID) e, opcionalmente, o grupo de usuário (ou GID) a ser usado ao executar a imagem. | `USUÁRIO appuser`                                                                        |
-| 📁 **`WORKDIR`**     | Define o diretório de trabalho para quaisquer instruções `RUN`, `CMD`, `ENTRYPOINT`, `COPY`, e `ADD`.                                                   | `WORKDIR /app`                                                                           |
-| 💾 **`VOLUME`**      | Cria um ponto de montagem com o nome especificado e o marca como segurando os volumes montados externamente.                                            | `VOLUME /var/lib/mysql`                                                                  |
-| 🏗️ **`ONBUILD`**    | Adiciona à imagem uma instrução de gatilho a ser executada em um momento posterior, quando a imagem é usada como base para outra compilação.            | `CONSTRUA A COPIAR . /app/src`                                                           |
-| 💊 **`HEALTHCHECK`** | Diz ao Docker como testar um recipiente para verificar se ele ainda está funcionando.                                                                   | \\`HEALTHCHECK --interval=5m --timeout=3s CMD curl -f http://localhost/ |
-| 🐚 **`SHELL`**       | Permite que o shell padrão usado na forma de comandos shell seja substituído.                                                                           | `SHELL ["/bin/bash", "-c"]`                                                              |
+| Instrução            | Objetivo                                                                                                                                                                | Exemplo                                                                                |   |          |
+| :------------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------- | - | -------- |
+| 🏁 **`FROM`**        | Especifica a imagem base para instruções subsequentes. Deve ser a primeira instrução.                                                   | `FROM ubuntu:22.04`                                                                    |   |          |
+| 🏷️ **`LABEL`**      | Adiciona metadados a uma imagem como pares de valores-chave.                                                                                            | `LABEL version="1.0" maintainer="me@example.com"`                                      |   |          |
+| 🏃 **`RUN`**         | Executa qualquer comando em uma nova camada no topo da imagem atual e submete os resultados.                                                            | `RUN apt-get update && apt-get install -y nginx`                                       |   |          |
+| 🚀 **`CMD`**         | Fornece padrões para um contêiner de execução. Pode haver apenas um `CMD`.                                                              | `CMD ["nginx", "-g", "daemon off;"]`                                                   |   |          |
+| 🚪 **`ENTRYPOINT`**  | Configura um contêiner que será executado como um executável.                                                                                           | `ENTRYPOINT ["/usr/sbin/nginx"]`                                                       |   |          |
+| 🌐 **`EXPOSE`**      | Informa ao Docker que o contêiner escuta nas portas de rede especificadas no tempo de execução.                                                         | `EXPOSE 80`                                                                            |   |          |
+| 🌳 **`ENV`**         | Define as variáveis de ambiente.                                                                                                                        | `ENV APP_VERSION=1.0`                                                                  |   |          |
+| 📂 **`COPY`**        | Copia novos arquivos ou diretórios do contexto da compilação para o sistema de arquivos da imagem.                                                      | `COPY ./app /app`                                                                      |   |          |
+| 🔗 **`ADD`**         | Semelhante ao `COPY`, mas com mais recursos, como suporte de URL remoto e extração de alcatro.                                                          | `ADICIONAR http://example.com/big.tar.xz /usr/src`                                     |   |          |
+| 👤 **`USER`**        | Define o nome do usuário (ou UID) e, opcionalmente, o grupo de usuário (ou GID) a ser usado ao executar a imagem. | `USUÁRIO appuser`                                                                      |   |          |
+| 📁 **`WORKDIR`**     | Define o diretório de trabalho para quaisquer instruções `RUN`, `CMD`, `ENTRYPOINT`, `COPY`, e `ADD`.                                                   | `WORKDIR /app`                                                                         |   |          |
+| 💾 **`VOLUME`**      | Cria um ponto de montagem com o nome especificado e o marca como segurando os volumes montados externamente.                                            | `VOLUME /var/lib/mysql`                                                                |   |          |
+| 🏗️ **`ONBUILD`**    | Adiciona à imagem uma instrução de gatilho a ser executada em um momento posterior, quando a imagem é usada como base para outra compilação.            | `CONSTRUA A COPIAR . /app/src`                                                         |   |          |
+| 💊 **`HEALTHCHECK`** | Diz ao Docker como testar um recipiente para verificar se ele ainda está funcionando.                                                                   | \`HEALTHCHECK --interval=5m --timeout=3s CMD curl -f http://localhost/ |   | exit 1\` |
+| 🐚 **`SHELL`**       | Permite que o shell padrão usado na forma de comandos shell seja substituído.                                                                           | `SHELL ["/bin/bash", "-c"]`                                                            |   |          |
 
-***
+---
 
-**⭐ Best Practices for Writing Dockerfiles**
+##### ⭐ Best Practices for Writing Dockerfiles
 
 O acompanhamento das melhores práticas é crucial para a criação de imagens eficientes, seguras e sustentáveis.
 
 | Diretrizes                            | Descrição:                                                                                                                                                                                                                                     |
-| ------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| :------------------------------------ | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | 🤏 **Mantenha isso pequeno**          | Comece com uma imagem base mínima (como `alpine` ou `distroless`). Não instale pacotes desnecessários para reduzir o tamanho e atacar superfície.                                                           |
 | ♻️ **Alavancagem Build Cache**        | Ordene as instruções do seu Dockerfile do menos para as mudanças mais frequentes. Coloque as instruções `COPY` e `ADD` o mais tarde possível para evitar a invalidação do cache.                                               |
 | 🏗️ **Usar Builds Multi-Estágio**     | Separe seu ambiente de construção do ambiente de runtime. Isto reduz drasticamente o tamanho de sua imagem final excluindo ferramentas de compilação e dependências.                                                           |
@@ -4046,13 +4145,13 @@ EXPOSE 80
 CMD ["nginx", "-g", "daemon off;"]
 ```
 
-***
+---
 
-**Docker + containerd + shim + runc Architecture**
+#### Docker + containerd + shim + runc Architecture
 
-![Docker shim architecture example](.gitbook/assets/docker-shim.png)
+![Docker shim architecture example](images/docker-shim.png)
 
-**🔹 Main Components**
+##### 🔹 Main Components
 
 - **Docker CLI / Docker Daemon (`dockerd`)**
 
@@ -4061,6 +4160,7 @@ CMD ["nginx", "-g", "daemon off;"]
 
   Um tempo de execução de um container de alto nível que gerencia todo o ciclo de vida do contentor: puxando imagens, gerenciando armazenamento, rede e execução.
 - **containerd-shim**
+
   - Acts as the _parent process_ of each container once `runc` has done its job.
   - Mantém os fluxos **stdin/stdout/stderr** abertos, mesmo que Docker ou containerd reinicie (então `docker logs` / `kubectl logs` ainda funcione).
   - Coleta o código de saída do contêiner e reporta de volta ao gerenciador.
@@ -4071,26 +4171,26 @@ CMD ["nginx", "-g", "daemon off;"]
 
   Depois de lançar o contêiner, 'runc' sai, e 'containerd-shim' assume como o processo pai.
 
-***
+---
 
-**🔹 Execution Flow**
+##### 🔹 Execution Flow
 
 1. **Usuário** executa `docker run ...` → o **Docker Daemon** é chamado.
-2. **Docker Daemon** delegates to **containerd** .
-3. **containerd** spawns **runc** , which sets up the container.
-4. Once the container starts, **runc exits** .
-5. **containerd-shim** remains as the **container’s parent process** , handling logging and exit codes.
+2. **Docker Daemon** delegates to  **containerd** .
+3. **containerd** spawns  **runc** , which sets up the container.
+4. Once the container starts,  **runc exits** .
+5. **containerd-shim** remains as the  **container’s parent process** , handling logging and exit codes.
 
-***
+---
 
-**🔹 Benefits of the Shim Layer**
+##### 🔹 Benefits of the Shim Layer
 
 - **Resiliência** → contêineres continuam rodando mesmo se `dockerd` ou `containerd` travarem ou reiniciarem.
 - **Logging** → Mantém fluxos de log de contêiner para `docker logs` ou `kubectl logs`.
 - **Isolação** → Cada contêiner tem sua própria sombra, simplificando a gestão do ciclo de vida.
-- **Standards Compliance** → Works with the **OCI runtime spec** , ensuring compatibility.
+- **Standards Compliance** → Works with the  **OCI runtime spec** , ensuring compatibility.
 
-**⚖️ Docker vs. containerd**
+#### ⚖️ Docker vs. containerd
 
 | 🔹 Recurso / Componente | 🐳 Docker (dockerd)                       | 🐋 contêiner                                     |
 | ----------------------- | ------------------------------------------------------------ | ------------------------------------------------ |
@@ -4102,9 +4202,9 @@ CMD ["nginx", "-g", "daemon off;"]
 | Pegada                  | Heavier, mais ferramentas                                    | Leve, eficiente                                  |
 | Eco-sistema             | Ferramentas para desenvolvedores ricos                       | Projeto CNCF, por defeito do Kubernetes          |
 
-**Docker Storage**
+#### Docker Storage
 
-**🧱 Core Concepts**
+##### 🧱 Core Concepts
 
 | 🔍 Foco        | detalhes                                                                                                                                                                                                                                                                               |
 | -------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -4112,7 +4212,7 @@ CMD ["nginx", "-g", "daemon off;"]
 | Raiz dos Dados | Os drivers de armazenamento persistem os dados sob `/var/lib/docker/<driver>/`; inspeciona o driver ativo via `docker info --format "{{.Driver}}"`.                                                                                                                    |
 | Persistência   | Mover dados de estado para **volumes** (persistente), **vincular montagens** (caminho do hove), ou **tmpfs mounts** (in-memory, ephemeral) para sobreviver à recriação do container ou otimizar o desempenho. |
 
-**⚙️ Storage Drivers**
+##### ⚙️ Storage Drivers
 
 | Motorista                                   | Quando usar                                                           | Observações                                                                                                           |
 | ------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- |
@@ -4122,7 +4222,7 @@ CMD ["nginx", "-g", "daemon off;"]
 | apper (diret-lvm) / aufs | Configurações legadas apenas.                         | Modo de manutenção; planejar migrações para a sobreposição.                                           |
 | filtrar                                     | Imagens com contêiner do Windows.                     | Use o LCOW/WSL 2 para expor sobreposição 2 para carregamentos de trabalho Linux nos hosts do Windows. |
 
-**🧭 Selecting the Driver**
+##### 🧭 Selecting the Driver
 
 - Confirme módulos kernel (`overlay`) e pré-requisitos do sistema de arquivos antes de trocar os drivers.
 - Combine as características do driver para cargas de trabalho: muitas camadas pequenas preferem `sobrelay2`; snapshots no sistema de arquivos podem justificar `btrfs` ou `zfs`.
@@ -4131,7 +4231,7 @@ CMD ["nginx", "-g", "daemon off;"]
 
 Para testar script de uso dos drivers de volume: [docker-storage-driver.sh](scripts/docker/docker-storage-driver.sh).
 
-**📦 Docker Storage Types**
+##### 📦 Docker Storage Types
 
 **Volumes:**
 
@@ -4168,7 +4268,7 @@ Para testar script de uso dos drivers de volume: [docker-storage-driver.sh](scri
 | Vincular montagem | Opcional     | Servidor               | baixa         | Desenvolver, integração              |
 | Tmpfs             | Não          | RAM                    | alta          | Cache, efêmera                       |
 
-**🛠️ Storage Types Usage examples**
+##### 🛠️ Storage Types Usage examples
 
 ```sh
 # Volume persistente
@@ -4182,7 +4282,7 @@ docker run -d --mount type=tmpfs, arget=/tmp nginx:latest
 docker run -d --tmpfs /tmp nginx:latest
 ```
 
-**✅ Docker Storage Best practices**
+##### ✅ Docker Storage Best practices
 
 - Preferir volumes para dados persistentes e de backup.
 - Use tmpfs para dados confidenciais ou temporários.
@@ -4192,9 +4292,9 @@ docker run -d --tmpfs /tmp nginx:latest
 
 Para testar o script de uso de volumes de armazenamento: [docker-storage-volumes.sh](scripts/docker/docker-storage-volumes.sh).
 
-**Docker Networking**
+#### Docker Networking
 
-**🌐 Core Concepts**
+##### 🌐 Core Concepts
 
 | 🔍 Foco                           | detalhes                                                                                                                                                                                                |
 | --------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -4203,7 +4303,7 @@ Para testar o script de uso de volumes de armazenamento: [docker-storage-volumes
 | DNS incorporado                   | Docker injeta um servidor DNS interno por rede; nomes de contêiner e '--network-alias' entradas resolvem automaticamente e voltam para o resolvedor de host para pesquisas externas.    |
 | Prioridade do Gateway             | Quando um contêiner se junta a várias redes, o Docker seleciona a rota padrão através da mais alta `--gw-priority`; sobrepõe IPs com `--ip` / `--ip6` para endereço determinístico.     |
 
-**🚍 Default Drivers**
+##### 🚍 Default Drivers
 
 | Motorista    | Usar quando                                                                                                     | Destaques                                                                                                                                               |
 | ------------ | --------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -4215,27 +4315,27 @@ Para testar o script de uso de volumes de armazenamento: [docker-storage-volumes
 | nenhuma      | É necessário um isolamento total.                                                               | Remove totalmente a pilha de rede; apenas mapeamento de nomes manuais (não suportado para serviços da Multidão).     |
 | Complementos | Os motoristas integrados ficam aquém das necessidades do SDN ou do fornecedor.                  | Instalar plugins de rede de terceiros do ecossistema Docker para integrar com tecidos especializados.                                   |
 
-**🕹️ Working with Networks**
+##### 🕹️ Working with Networks
 
 - Estrutura de escopo com pontes definidas pelo usuário para componentes de aplicativo, sobreposições para pilhas distribuídas, ou macvlan/ipvlan de estilo L2 para presença direta em LAN.
 - Combinar redes de frontend/backend por container; configure `--interno` em uma ponte para bloquear o egress enquanto estiver permitindo o tráfego de serviço-para-serviço.
 - Inspecione conectividade com `docker network ls`, `docker network inspect` e `docker exec <ctr> ip addr` para validar a namespace wiring.
 - Limpe redes não utilizadas regularmente com o 'docker network prune' para evitar subnets obsoletos e configurações órfãs.
 
-**🚦 Published Ports & Access**
+##### 🚦 Published Ports & Access
 
 - Redes de ponte mantêm as portas privadas a menos que você as publique com `-p` / `--publish`; inclua `127. .0.1:` (ou `[::1]:` para IPv6) para restringir a exposição apenas ao host.
 - A publicação da porta não é necessária para acesso container-to-container na mesma ponte definida pelo usuário - DNS e o IP interno suficiente.
 - Motores de sobreposição e macvlan ignoram o proxy userland; planejam firewalls a montante ou roteamento em conformidade.
 
-**🔐 Addressing & DNS**
+##### 🔐 Addressing & DNS
 
 - O IPv4 é habilitado por padrão em novas redes; Adicione `--ipv6` para prover intervalos de duplas e use `--ip` / `--ip6` para fixar endereços.
 - Cada operação de adesão pode fornecer identidades extras através de '--alias'; O Docker anuncia-as através do serviço DNS incorporado.
 - Substitui resolvedores por contêiner usando `--dns`, `--dns-search`, ou `--dns-option`, ou importe hosts extras com `--add-host`.
 - Os contêineres herdam um arquivo curado `/etc/hosts`; entradas no nível do host não são sincronizadas automaticamente.
 
-**🛠️ Docker Network Usage examples**
+##### 🛠️ Docker Network Usage examples
 
 ```sh
 # Crie a rede de back-end e frontend
@@ -4260,7 +4360,7 @@ docker run -it --rm \
   alpine:latest sh
 ```
 
-**✅ Docker Network Best practices**
+##### ✅ Docker Network Best practices
 
 - Model limites de rede cedo; documento que os contêineres compartilham pontes, sobreposições ou segmentos macvlan.
 - Use `--internal` ou firewalls para bloquear ataques não intencionais, e prefira o isolamento em nível de rede a publicação de portas ad-hoc.
@@ -4270,13 +4370,13 @@ docker run -it --rm \
 
 Para testar o script de uso da rede docker: [docker-network.sh](scripts/docker/docker-network.sh).
 
-**🐳 Docker Registry**
+#### 🐳 Docker Registry
 
-**📘 What is a Docker Registry?**
+##### 📘 What is a Docker Registry?
 
 Um Docker Registry é um aplicativo do lado do servidor altamente escalável que armazena e permite que você distribua imagens Docker. É o lugar central onde você pode empurrar suas imagens depois de construí-las e puxá-las para rodar em outras máquinas.
 
-**Key Concepts**
+##### Key Concepts
 
 - **Registry**: O sistema de armazenamento que contém repositórios de imagens. Exemplos: Docker Hub, AWS ECR, um registro auto-hospedado.
 - **Repositório**: uma coleção de imagens do Docker relacionadas, muitas vezes versões diferentes do mesmo aplicativo ou serviço (por exemplo, o repositório `nginx`).
@@ -4285,12 +4385,13 @@ Um Docker Registry é um aplicativo do lado do servidor altamente escalável que
   - Se o `registry-host` for omitido, o padrão é Docker Hub (`docker.io`).
   - Se `tag` for omitido, o padrão é `latest`.
 
-**Types of Registries**
+##### Types of Registries
 
 1. **Registros públicos**:
    - **Docker Hub**: O registro padrão e o maior registro público.
    - **Quay.io**: Outro cadastro popular público e privado por Red Hat.
    - **GitHub Container Registry (GHCR)**: Integrado com repositórios e Acções GitHub.
+
 2. **Registros privados**:
    - **Hospedagem Automática**:
      - **Imagem de Registro Docker**: uma imagem simples e oficial para executar seu próprio registro básico.
@@ -4301,7 +4402,7 @@ Um Docker Registry é um aplicativo do lado do servidor altamente escalável que
      - **Registro do Artefato do Google (antigo GCR)**
      - **Azure Container Registry (ACR)**
 
-**Running a Local Registry**
+##### Running a Local Registry
 
 Você pode facilmente executar um registro privado localmente para teste ou desenvolvimento usando a imagem oficial de `registr` do Docker.
 
@@ -4312,7 +4413,9 @@ Você pode facilmente executar um registro privado localmente para teste ou dese
     ```
 
    Isto inicia um registro ouvindo em `localhost:5000`.
-2. **Tag an image to point to the local registry:** Before you can push an image to this registry, you need to tag it with the registry's host and port.
+
+2. **Tag an image to point to the local registry:**
+   Before you can push an image to this registry, you need to tag it with the registry's host and port.
 
     ```sh
     # Pull uma imagem (por exemplo, alpine)
@@ -4321,12 +4424,15 @@ Você pode facilmente executar um registro privado localmente para teste ou dese
     # Tag para o seu registro local
     docker tag alpine localhost:5000/my-alpine
     ```
+
 3. **Envie a imagem para o registro local:**
 
     ```sh
     docker push localhost:5000/meu-alpine
     ```
-4. **Pull the image from the local registry:** You can now pull this image on any machine that can access `localhost:5000`.
+
+4. **Pull the image from the local registry:**
+   You can now pull this image on any machine that can access `localhost:5000`.
 
     ```sh
     # Primeiro, remova as cópias locais para simular a puxação do zero
@@ -4336,13 +4442,15 @@ Você pode facilmente executar um registro privado localmente para teste ou dese
     # Agora, retirar do seu registro local
     docker pull localhost:5000/meu-alpine
     ```
-5. **Access the registry API:** You can interact with the registry using its HTTP API. Por exemplo, para listar repositórios:
+
+5. **Access the registry API:**
+   You can interact with the registry using its HTTP API. Por exemplo, para listar repositórios:
 
     ```sh
     curl -X GET http://localhost:5000/v2/_catalog
     ```
 
-**🚀 Core Commands**
+##### 🚀 Core Commands
 
 | Comando           | Descrição:                                           | Exemplo                                |
 | ----------------- | -------------------------------------------------------------------- | -------------------------------------- |
@@ -4354,9 +4462,9 @@ Você pode facilmente executar um registro privado localmente para teste ou dese
 
 Para testar o script de uso do registro docker: [docker-registry-lab.sh](scripts/docker/docker-registry-lab.sh).
 
-**🛠️ 352.3 Important Commands**
+#### 🛠️ 352.3 Important Commands
 
-**🐳 docker**
+##### 🐳 docker
 
 ```sh
 ############ FILES ############
@@ -4639,15 +4747,15 @@ ls -l /sys/fs/cgroup/system.slice/docker-<FULL_ID_CONTAINER>.scope
 cat /sys/fs/cgroup/system.slice/docker-<FULL_ID_CONTAINER>.scope/cgroup.procs
 ```
 
-<p align="right">(<a href="./#topic-352.3">back to sub topic 352.3</a>)</p>
+<p align="right">(<a href="#topic-352.3">back to sub topic 352.3</a>)</p>
+<p align="right">(<a href="#topic-352">back to topic 352</a>)</p>
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-<p align="right">(<a href="./#topic-352">back to topic 352</a>)</p>
+---
 
-<p align="right">(<a href="./#readme-top">back to top</a>)</p>
+<a name="topic-352.4"></a>
 
-***
-
-#### 🗂️ 352.4 Plataformas de Orquestração
+### 🗂️ 352.4 Plataformas de Orquestração
 
 **Peso:** 3
 
@@ -4660,17 +4768,15 @@ cat /sys/fs/cgroup/system.slice/docker-<FULL_ID_CONTAINER>.scope/cgroup.procs
 - Entender os conceitos-chave do Kubernetes e Elmo
 - Prevenção de OpenShift, Rancher e Mesosfera DC/OS
 
-<p align="right">(<a href="./#topic-352.4">back to sub topic 352.4</a>)</p>
+<p align="right">(<a href="#topic-352.4">back to sub topic 352.4</a>)</p>
+<p align="right">(<a href="#topic-352">back to topic 352</a>)</p>
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-<p align="right">(<a href="./#topic-352">back to topic 352</a>)</p>
+---
 
-<p align="right">(<a href="./#readme-top">back to top</a>)</p>
+#### 🧩 Docker Compose
 
-***
-
-**🧩 Docker Compose**
-
-**📘 Docker Compose Command Reference**
+##### 📘 Docker Compose Command Reference
 
 Docker Compose é uma ferramenta para definir e gerenciar aplicações de multi-contêiner Docker usando arquivo YAML (`docker-compose.yml`).
 
@@ -4699,14 +4805,14 @@ Abaixo está uma tabela estruturada dos principais comandos e seus fins.
 | 🌐**Rede**                          | As redes são criadas automaticamente; podem ser declaradas explicitamente no YAML.                         | `docker network ls`                                                      |
 | 📦**Volumes**                       | Gerenciar dados persistentes; pode ser declarado em YAML e utilizado em todos os serviços.                 | `docker volume ls`                                                       |
 
-**🔑 Key Notes**
+##### 🔑 Key Notes
 
 - **`up` vs `start`** : `up` builds/recriates containers, `start` só roda os já existentes.
 - **`run` vs `exec`** : `run` launches a _new_ container, `exec` runs inside an existing one.
 - **Validação de configuração** : Sempre execute o `docker compose config` para verificar erros de sintaxe.
 - **Modo de Desanexação**: Use `-d` para executar serviços em segundo plano.
 
-**📄 `docker-compose.yml`**
+##### **📄 `docker-compose.yml`**
 
 ```yaml
 version: "3.9"  # Compose file format
@@ -4782,18 +4888,20 @@ docker compõe -v
 
 Para testar o docker compor exemplos de serviços em [apps](apps/).
 
-**🌐 Docker Swarm**
+#### 🌐 Docker Swarm
 
-![swarm-nodes](.gitbook/assets/swarm-nodes.png) _Swarm architecture with manager and worker nodes_
+![swarm-nodes](images/swarm-nodes.png)
+_Swarm architecture with manager and worker nodes_
 
-![swarm-services](.gitbook/assets/swarm-services.png) _Swarm services with multiple replicas_
+![swarm-services](images/swarm-services.png)
+_Swarm services with multiple replicas_
 
 Docker Swarm é a ferramenta de orquestração nativa do Docker que permite que você gerencie um cluster de hosts Docker como um único sistema virtual. Isso facilita a implantação, o gerenciamento e o dimensionamento de aplicativos contêineres em múltiplas máquinas.
 
-**Docker Swarm Key Concepts**
+##### Docker Swarm Key Concepts
 
 | Conceito                 | Descrição:                                                                                                                                                         |
-| ------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| :----------------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | 🌐 **Swarm**             | Um cluster de hosts Docker rodando no modo multidão.                                                                                                               |
 | 🤖 **Node**              | Um anfitrião do Docker participando do enxame. Nós podem ser gerentes ou funcionários.                                                             |
 | 👑 **Nó de Gerente**     | Responsável por gerenciar o estado do enxame, agendar tarefas e manter o estado desejado do cluster.                                                               |
@@ -4801,29 +4909,29 @@ Docker Swarm é a ferramenta de orquestração nativa do Docker que permite que 
 | 🚀 **Serviço**           | Uma definição abstrata de um recurso computacional (por exemplo, um servidor web Nginx) que pode ser escalonado e atualizado independentemente. |
 | 📝 **Tarefa**            | Um recipiente em execução que faz parte de um serviço.                                                                                                             |
 
-**✨ Main characteristics**
+##### ✨ Main characteristics
 
 | Funcionalidade                   | Descrição:                                                                                                                      |
-| -------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
+| :------------------------------- | :---------------------------------------------------------------------------------------------------------------------------------------------- |
 | ⬆️ **Alta disponibilidade**      | Distribui serviços através de vários nós, garantindo que aplicativos permaneçam disponíveis mesmo se um nó falhar.              |
 | ⚖️ **Escalabilidade**            | Redimensione facilmente os serviços para lidar com diferentes cargas de trabalho.                                               |
 | 🔄 **Carregar Balanceamento**    | O balanceamento de carga integrado apresenta solicitações igualmente entre as réplicas do serviço.                              |
 | 🚀 **Atualizações de Rolamento** | Execute atualizações em serviços sem interrupção.                                                                               |
 | 😊 **Facilidade de uso**         | Integrado diretamente no Docker Engine, tornando relativamente fácil de montar e gerir em comparação com outros orquestradores. |
 
-**🐳 Swarm Management Commands**
+##### 🐳 Swarm Management Commands
 
 | Comando                            | Descrição:                                                           | Exemplo                                               |
-| ---------------------------------- | ------------------------------------------------------------------------------------ | ----------------------------------------------------- |
+| :--------------------------------- | :----------------------------------------------------------------------------------- | :---------------------------------------------------- |
 | 👑 **`docker swarm init`**         | Inicializa um novo enxame no nó atual, tornando-o o gerente.         | `docker swarm init --advertise-addr 192.168.1.10`     |
 | 👷 **`junção da multidão docker`** | Junta um nó a uma multidão existente como um trabalhador ou gerente. | `docker swarm join --token <TOKEN> 192.168.1.10:2377` |
 | 👋 **`docker swarm leave`**        | Remove o nó atual do enxame.                                         | `docker swarm leave --force`                          |
 | 📜 **`docker node l`**             | Lista todos os nós do enxame.                                        | `docker node ls`                                      |
 
-**🚀 Service Management Commands**
+##### 🚀 Service Management Commands
 
 | Comando                        | Descrição:                               | Exemplo                                                        |
-| ------------------------------ | -------------------------------------------------------- | -------------------------------------------------------------- |
+| :----------------------------- | :------------------------------------------------------- | :------------------------------------------------------------- |
 | ✨ **`docker service create`**  | Cria um novo serviço no enxame.          | `docker service create --name web -p 80:80 --replicas 3 nginx` |
 | ⚖️ **`docker service scale`**  | Escala um ou mais serviços replicados.   | `docker service scale web=5`                                   |
 | 🔄 **`docker service update`** | Atualiza as configurações do serviço.    | `docker service update --image nginx:última web`               |
@@ -4833,44 +4941,44 @@ Docker Swarm é a ferramenta de orquestração nativa do Docker que permite que 
 
 Para testar o script de uso da multidão docker: [docker-swarm.sh](scripts/docker/docker-swarm.sh).
 
-**☸️ Kubernetes**
+#### ☸️ Kubernetes
 
 O Kubernetes, também conhecido como K8s, é uma plataforma de código aberto para automatizar o implantação, o dimensionamento e o gerenciamento de aplicativos containerizados. O relatório agrupa contentores que constituem uma aplicação em unidades lógicas para facilitar a gestão e a descoberta.
 
-**🏛️ Kubernetes Architecture**
+##### 🏛️ Kubernetes Architecture
 
-![Kubernetes Architecture](.gitbook/assets/k8s-components.png)
+![Kubernetes Architecture](images/k8s-components.png)
 
 Um cluster de Kubernetes consiste em um conjunto de máquinas trabalhadoras, chamadas de **nós**, que executam aplicações containerizadas. Cada cluster possui pelo menos um nó de funcionário. O nó (s) trabalhador hospeda os **Pods** que são os componentes da carga de trabalho da aplicação. O **avião controla** gerencia os nós do trabalhador e dos Pods no cluster.
 
-**✈️ Control Plane Components**
+###### ✈️ Control Plane Components
 
 Os componentes do avião controle tomam decisões globais sobre o cluster (por exemplo, o agendamento), bem como detecção e resposta a eventos de agrupamento.
 
 | Componente                  | Descrição:                                                                                                                                                                                                                                                                                                                                         |
-| --------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| :-------------------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **kube-apiserver**          | O servidor API é um componente do plano de controle do Kubernetes que expõe a API do Kubernetes. O servidor de API é o front-end do avião de controle do Kubernetes.                                                                                                                                                               |
 | **etc**                     | Loja consistente e altamente disponível de valor-chave usada como loja de apoio do Kubernet para todos os dados de agrupamento.                                                                                                                                                                                                                    |
 | **agendador-kube**          | Acompanha para Pods recém-criados sem nó atribuído e seleciona um nó para que eles funcionem.                                                                                                                                                                                                                                                      |
 | **kube-controller-manager** | Executa processos de controlador. Logicamente, cada controlador é um processo separado, mas para reduzir a complexidade, todos são compilados em um único binário e executados em um único processo.                                                                                                                               |
 | **gerenciador-nuvem**       | Um componente de plano de controle do Kubernetes que incorpora lógica de controle específico à nuvem. O gerenciador de controles na nuvem permite que você vincule seu cluster à API do seu provedor de nuvem, e separa os componentes que interagem com essa plataforma na nuvem de componentes que só interagem com seu cluster. |
 
-**👷 Node Components**
+###### 👷 Node Components
 
 Componentes do nó são executados em cada nó, mantendo pods rodando e proporcionando ambiente de tempo de execução do Kubernetes.
 
 | Componente                         | Descrição:                                                                                                                                                                                                                                                                  |
-| ---------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| :--------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | **kubelet**                        | Um agente que executa em cada nó do cluster. Certifique-se de que os contêineres estejam sendo executados em um Pod.                                                                                                                                        |
 | **kube-proxy**                     | Um proxy de rede que é executado em cada nó do seu cluster, implementando parte do conceito de serviço do Kubernetes.                                                                                                                                                       |
 | **Tempo de execução do contêiner** | O software que é responsável pela execução de contêineres. O Kubernetes suporta vários execuções de contêiner: Docker, containerd, CRI-O e qualquer outra implementação do Kubernetes CRI (Container Runtime Interface). |
 
-**📦 Kubernetes Objects**
+##### 📦 Kubernetes Objects
 
 Os objectos Kubernetes são entidades persistentes no sistema Kubernetes. O Kubernetes usa estas entidades para representar o estado do seu cluster.
 
 | Objeto          | Descrição:                                                                                                                                                                                                                     |
-| --------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| :-------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **Pod**         | A unidade menor e mais simples do modelo de objeto Kubernetes que você criou ou implementou. Um Pod representa um conjunto de contêineres em execução no seu cluster.                                          |
 | **Serviço**     | Uma maneira abstrata de expor um aplicativo que está sendo executado em um conjunto de Pods como um serviço de rede.                                                                                                           |
 | **Volume**      | Um diretório contendo dados, acessível para os contêineres em um Pod.                                                                                                                                                          |
@@ -4882,45 +4990,45 @@ Os objectos Kubernetes são entidades persistentes no sistema Kubernetes. O Kube
 | **Trabalho**    | Cria um ou mais Pods e garante que um número especificado deles termine com sucesso.                                                                                                                                           |
 | **CronJob**     | Cria tarefas em um cronograma com base no tempo.                                                                                                                                                                               |
 
-**⎈ Helm**
+#### ⎈ Helm
 
 Helm é um gerenciador de pacotes para o Kubernetes.
 
 Isso ajuda você a gerenciar aplicativos do Kubernetes — Gráficos de Helm ajudam a definir, instalar e atualizar até mesmo o aplicativo mais complexo do Kubernetes.
 
-**🎯 Key Concepts**
+##### 🎯 Key Concepts
 
 | Conceito        | Descrição:                                                                                                                                                                                                             |
-| --------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| :-------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **Gráfico**     | Um pacote de leme Contém todas as definições de recursos necessárias para executar um aplicativo, ferramenta ou serviço dentro de um cluster Kubernetes.                                                               |
 | **Repositório** | Um lugar onde os gráficos podem ser coletados e compartilhados.                                                                                                                                                        |
 | **Versão**      | Uma instância de um gráfico executando num cluster Kubernetes. Um gráfico pode ser instalado muitas vezes no mesmo cluster. And each time it is installed, a new _release_ is created. |
 
-**🚀 Core Commands Kubernetes**
+##### 🚀 Core Commands Kubernetes
 
 | Comando           | Descrição:                                | Exemplo                                  |
-| ----------------- | --------------------------------------------------------- | ---------------------------------------- |
+| :---------------- | :-------------------------------------------------------- | :--------------------------------------- |
 | `malhar pesquisa` | Pesquisar por gráficos em um repositório. | `helm search repo estável`               |
 | `instalar leve`   | Instalar um gráfico.                      | `helm install meu-release estável/mysql` |
 | `olhe melhorado`  | Atualize uma versão.                      | `helm upgrade meu-release estável/mysql` |
 | `helm uninstall`  | Desinstale um lançamento.                 | `helm desinstale meu-lançamento`         |
 | `helm list`       | Lançamentos de listas.                    | `helm list`                              |
 
-**🏗️ Other Orchestration Platforms**
+#### 🏗️ Other Orchestration Platforms
 
-**OpenShift**
+##### OpenShift
 
 O **OpenShift** é uma família de produtos de software de contêiner desenvolvidos pela Red Hat. Seu produto emblemático é a plataforma de contêiner OpenShift — uma plataforma local como um serviço construído em torno de contêineres Docker orquestrado e gerenciado pelo Kubernetes em uma fundação do Red Hat Enterprise Linux.
 
-**Rancher**
+##### Rancher
 
 **Classificação** é uma completa pilha de software para equipes que adotam contêineres. Aborda os desafios operacionais e de segurança da gestão de vários clusters Kubernetes em todas as infra-estruturas, ao fornecer equipes do DevOps ferramentas integradas para a execução de cargas de trabalho containerizadas.
 
-**Mesosphere DC/OS**
+##### Mesosphere DC/OS
 
 **Mesosfera DC/OS** (o sistema operacional Datacenter ) é um sistema operacional distribuído, baseado no kernel de sistemas distribuídos do Apache Mesos. Ele pode gerenciar várias máquinas em um datacenter ou nuvem como se fossem um único computador. Ele proporciona uma forma altamente elástica e altamente escalável de implantar aplicativos, serviços e uma grande infraestrutura de dados em recursos compartilhados.
 
-**🛠️ 352.4 Important Commands**
+#### 🛠️ 352.4 Important Commands
 
 ```sh
 
@@ -5118,13 +5226,17 @@ helm fetch stable/mysql
 helm get values my-release
 ```
 
-***
+---
 
-### ☁️ Tópico 353: Implantação e provisionamento da VM
+<a name="topic-353"></a>
 
-***
+## ☁️ Tópico 353: Implantação e provisionamento da VM
 
-#### ☁️ 353.1 Cloud Management Tools
+---
+
+<a name="topic-353.1"></a>
+
+### ☁️ 353.1  Cloud Management Tools
 
 **Peso:** 2
 
@@ -5137,7 +5249,7 @@ helm get values my-release
 - Conhecimento básico em recursos de Terraform
 - Cuidado com CloudStack, Eucalyptus e OpenNebula
 
-**📋 353.1 Cited Objects**
+#### 📋 353.1 Cited Objects
 
 ```sh
 IaaS, PaaS, SaaS
@@ -5145,11 +5257,11 @@ OpenStack
 Terraform
 ```
 
-**Cloud Definition**
+#### Cloud Definition
 
 Nuvem é um modelo para computação distribuída que fornece acesso sob demanda a um conjunto compartilhado de recursos de computação configuráveis (redes, servidores, armazenamento, aplicativos e serviços) via internet, provisionados e lançados rapidamente com um mínimo de esforço de gerenciamento.
 
-**Cloud Computing Definition**
+#### Cloud Computing Definition
 
 A computação na nuvem é o paradigma para fornecer serviços de TI pela internet, onde os recursos de computação são dinamicamente alocados com base na demanda. Em vez de investir em infraestruturas locais, usuários e organizações acessam o poder de computação, armazenamento, e aplicativos por meio de modelos de assinatura ou pagamento por uso, com escalabilidade automática e gerenciamento centralizado.
 
@@ -5165,70 +5277,70 @@ A computação na nuvem é o paradigma para fornecer serviços de TI pela intern
 
 > Tecnologias são coisas, como programas de software e equipamentos de hardware usados para criar e usar nuvens.
 
-**Types of cloud**
+#### Types of cloud
 
-**Public Cloud**
+##### Public Cloud
 
 Nuvem pública refere-se aos serviços de computação em nuvem oferecidos por provedores de terceiros através da internet pública disponibilizá-las para qualquer pessoa que queira usá-las ou comprá-las. Exemplos incluem Amazon Web Services (AWS), Microsoft Azure e Google Cloud Platform (GCP).
 
-**Private Cloud**
+##### Private Cloud
 
 Nuvem privada é um ambiente de computação em nuvem dedicado a uma única organização, hospedada no local ou por um provedor de terceiros. Oferece maior segurança, controle e personalização em comparação com as nuvens públicas.
 
-**Hybrid Cloud**
+##### Hybrid Cloud
 
 A nuvem híbrida combina ambientes em nuvem pública e privada, permitindo que os dados e aplicativos sejam compartilhados entre eles. Esta abordagem proporciona maior flexibilidade, escalabilidade e eficiência de custos.
 
-**Multi-Cloud**
+##### Multi-Cloud
 
 Multi-nuvem refere-se ao uso de múltiplos serviços de computação em nuvem de diferentes provedores em uma única arquitetura. Essa estratégia ajuda a evitar o bloqueio do fornecedor, melhora a redundância e permite que as organizações aproveitem os melhores recursos de cada provedor de nuvem.
 
-**IaaS, PaaS, SaaS**
+#### IaaS, PaaS, SaaS
 
-**IaaS (Infrastructure as a Service)**
+##### IaaS (Infrastructure as a Service)
 
 IaaS fornece recursos computacionais virtualizados sob demanda (máquinas virtuais, armazenamento de blocos e objetos, rede, GPUs). Em 2026, IaaS evoluiu para incluir infraestrutura pronta para IA, provisionamento automatizado de bare-metal e integração nativa com soluções de observabilidade, segurança e conformidade em tempo real.
 
-**PaaS (Platform as a Service)**
+##### PaaS (Platform as a Service)
 
 O PaaS oferece uma plataforma gerenciada para o desenvolvimento de aplicativos, implantação e operação sem gerenciar a infraestrutura subjacente. Em 2026, o PaaS inclui funções sem servidor, bancos de dados gerenciados, gateways API, CC nativa e arquiteturas de microserviços e orientadas a eventos com escala automática.
 
-**SaaS (Software as a Service)**
+##### SaaS (Software as a Service)
 
 SaaS oferece software aplicações via web, acessível através de navegadores ou clientes nativos, com modelos baseados na assinatura. Em 2026, o SaaS integra inteligência artificial para automação e dicas, fornece personalização extensível, APIs abertas para integração e suporta o cumprimento rigoroso da segurança sem confiança.
 
-**OpenStack**
+#### OpenStack
 
-![openstack-lasndscape](.gitbook/assets/openstack-landscape.png)
+![openstack-lasndscape](/images/openstack-landscape.png)
 
 OpenStack é uma plataforma de computação em nuvem de código aberto que fornece recursos IaaS para ambientes em nuvem privada e híbrida. Em 2026, o OpenStack mantém a sua relevância em datacenters corporativos e provedores de nuvem privada, oferecendo uma pilha de serviços completa (Nova para computador, Cinder para armazenamento de blocos, Rápido para armazenamento de objetos, Neutron para rede) com suporte avançado para contêineres do Kubernetes, equilíbrio de carga automático e integração com soluções de segurança e conformidade de nível empresarial.
 
-**Apache CloudStack**
+#### Apache CloudStack
 
 O Apache CloudStack é uma plataforma de software de código aberto para computação em nuvem que fornece capacidades IaaS para construir e gerenciar nuvens públicas e privadas.
 
 CloudStack continua a ser uma escolha confiável para os prestadores de serviços e empresas, oferecendo recursos como multitenâncias, redes avançadas (SDN), e suporte para vários hipervisores (KVM, XenServer, VMware) com integração aprimorada para orquestração de container e computação de ponta.
 
-**Eucalyptus**
+#### Eucalyptus
 
 Eucalyptus é uma plataforma de computação na nuvem de código aberto que fornece recursos IaaS para a construção e gerenciamento de nuvens privadas e híbridas. Ele foi projetado para ser compatível com a API Amazon Web Services (AWS), permitindo que os usuários executem aplicativos no Eucalyptus que já estão implantados na AWS.
 
-**OpenNebula**
+#### OpenNebula
 
 OpenNebula é uma plataforma de computação na nuvem de código aberto que fornece recursos IaaS para a construção e gerenciamento de nuvens privadas, públicas e híbridas. Ele se concentra na simplicidade e flexibilidade, permitindo que os usuários façam deploy e gerenciem os centros de dados virtualizados com suporte para vários hipervisores (KVM, VMware) e tecnologias de contêiner (LXC, Docker). O OpenNebula continua a evoluir com recursos como suporte de computação de ponta, capacidades de rede melhoradas e integração com ferramentas modernas de DevOps.
 
-**IaC**
+#### IaC
 
 Infra-estrutura como Código (IaC) é prática de gestão e fornecimento de infraestrutura de computação através de arquivos de definição legíveis por máquina, ao invés de por configuração de hardware físico ou de configuração interativa. IaC tornou-se uma prática fundamental em DevOps e ambientes nativos da nuvem, permitindo a implantação automática, consistente e repetível de infraestrutura em vários provedores de nuvem e ambientes no local.
 
-**Terraform**
+#### Terraform
 
 Terraform é uma ferramenta de Infraestrutura de código aberto como Código (CIA) que permite a definição de infraestrutura e o provisionamento de uma forma declarativa e versionada. Por 2026, Terraform é o padrão de fato para gerenciamento de infraestrutura em ambientes multicloud (AWS, Azure, GCP, OpenStack, etc. , com suporte robusto para o estado distribuído, política como código, módulos reutilizáveis e integração nativa com pipelines de CI/CD, GitLab e automação de conformidade.
 
-**Terraform Key Concepts**
+##### Terraform Key Concepts
 
 | Conceito     | Descrição:                                                                                                                         |
-| ------------ | -------------------------------------------------------------------------------------------------------------------------------------------------- |
+| :----------- | :------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **Provedor** | Um plugin que permite a interação com provedores e serviços de nuvem (por exemplo, AWS, Azure, GCP).            |
 | **Recurso**  | Um componente da sua infraestrutura (por exemplo, máquinas virtuais, redes, armazenamento).                     |
 | **Módulo**   | Um recipiente para vários recursos                                                                                                                 |
@@ -5236,7 +5348,7 @@ Terraform é uma ferramenta de Infraestrutura de código aberto como Código (CI
 | **Plano**    | Um prévia das mudanças que Terraform fará em sua infraestrutura.                                                                   |
 | **Aplicar**  | O comando que executa as alterações definidas no plano da sua infraestrutura.                                                      |
 
-**Terraform Basic Workflow**
+##### Terraform Basic Workflow
 
 1. **Configuração de Escrição**: Defina a sua infraestrutura usando Idioma de Configuração da HashiCorp (HCL) em arquivos `.tf`.
 2. **Inicializar**: Execute o `terraform init` para inicializar o diretório de trabalho e baixar os plugins de provedor necessários.
@@ -5244,7 +5356,7 @@ Terraform é uma ferramenta de Infraestrutura de código aberto como Código (CI
 4. **Aplicar**: use `terraform aplicar` para aplicar as mudanças e criar ou modificar recursos em sua infraestrutura.
 5. **Destruir**: use `terraform destroy` para remover todos os recursos gerenciados por Terraforma.
 
-**Terraform Example**
+##### Terraform Example
 
 ```hcl
 provider "aws" {
@@ -5260,15 +5372,15 @@ recurso "aws_instance" "web" {
 }
 ```
 
-<p align="right">(<a href="./#topic-353.1">back to sub topic 353.1</a>)</p>
+<p align="right">(<a href="#topic-353.1">back to sub topic 353.1</a>)</p>
+<p align="right">(<a href="#topic-353">back to topic 353</a>)</p>
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-<p align="right">(<a href="./#topic-353">back to topic 353</a>)</p>
+---
 
-<p align="right">(<a href="./#readme-top">back to top</a>)</p>
+<a name="topic-353.2"></a>
 
-***
-
-#### 📦 353.2 Pacote
+### 📦 353.2 Pacote
 
 **Peso:** 2
 
@@ -5280,20 +5392,20 @@ recurso "aws_instance" "web" {
 - Criar e manter arquivos de modelos
 - Construa imagens a partir de arquivos de modelo usando diferentes construtores
 
-**📋 353.2 Cited Objects**
+#### 📋 353.2 Cited Objects
 
 ```sh
 embalador
 hcl2
 ```
 
-**🧰 About Packer**
+#### 🧰 About Packer
 
 O pacote é uma ferramenta para criar imagens de máquina idênticas para várias plataformas a partir de uma única configuração de fonte.
 
 Foi projetado para ser uma ferramenta leve, rápida e flexível que pode ser usada para construir imagens para vários provedores de nuvem e plataformas de virtualização.
 
-**✅ Packer Features**
+#### ✅ Packer Features
 
 - Suporte à Plataforma de **Multiplicidade**: O Packer suporta uma ampla gama de plataformas, incluindo AWS, Azure, Google Cloud, VMware, VirtualBox, Docker, LXC/LXD e muito mais.
 - **Configuração Declarativa**: o Packer usa modelos JSON ou HCL (HashiCorp Configuration Language) para definir o processo de construção da imagem, tornando fácil o controle de versão e compartilhamento de configurações.
@@ -5302,7 +5414,7 @@ Foi projetado para ser uma ferramenta leve, rápida e flexível que pode ser usa
 - **Extensibilidade**: Packer tem uma arquitetura de plugins que permite que os usuários criem construtores personalizados e provisionistas ampliem sua funcionalidade.
 - **Integração com CI/CD**: O Packer pode ser integrado em pipelines de integração contínua e implantação contínua (CI/CD), permitindo a criação e implantação automatizada de imagem.
 
-**📦 Packer workflow functionality diagram**
+#### 📦 Packer workflow functionality diagram
 
 1. conecte-se a um construtor (por exemplo, AWS, Azure, Docker)
 2. iniciar uma instância temporária ou contêiner
@@ -5311,15 +5423,15 @@ Foi projetado para ser uma ferramenta leve, rápida e flexível que pode ser usa
 5. parar instância ou contêiner
 6. executar pós-processadores (opcional)
 
-**Template Components**
+#### Template Components
 
 - **Construtores**: Defina a plataforma de destino e a configuração para a imagem da máquina. Exemplos incluem `amazon-ebs`, `googlecompute`, `docker`, `lxc`, etc.
 - **Provisões**: Especifique os passos para personalizar a imagem durante o processo de compilação. Exemplos incluem `shell`, `ansible`, `chef`, `puppet`, etc.
 - **pós-processadores**: etapas opcionais para modificar ou exportar a imagem construída após o processo de compilação. Exemplos incluem `compress`, `docker-tag`, `vagrant`, etc.
 
-**Packer Example Templates**
+#### Packer Example Templates
 
-**Template Docker**
+##### Template Docker
 
 ```hcl
 pacote {
@@ -5350,7 +5462,7 @@ pós-processador "docker-tag" {
 }
 ```
 
-**Template LXD**
+##### Template LXD
 
 ```hcl
 packer {
@@ -5380,7 +5492,7 @@ pós-processador "lxd-export" {
 }
 ```
 
-**Template Amazon**
+##### Template Amazon
 
 ```hcl2
 {
@@ -5430,9 +5542,9 @@ pós-processador "lxd-export" {
 
 ```
 
-**🛠️ 353.2 Important Commands**
+#### 🛠️ 353.2 Important Commands
 
-**📦 packer**
+##### 📦 packer
 
 ```sh
 # lista plugins
@@ -5459,19 +5571,21 @@ packer inspeciona template.pkr.hcl
 plugins de embalagem
 ```
 
-<p align="right">(<a href="./#topic-353.2">back to sub topic 353.2</a>)</p>
+<p align="right">(<a href="#topic-353.2">back to sub topic 353.2</a>)</p>
+<p align="right">(<a href="#topic 353">back to topic 353</a>)</p>
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-<p align="right">(<a href="./#topic 353">back to topic 353</a>)</p>
+---
 
-<p align="right">(<a href="./#readme-top">back to top</a>)</p>
+<a name="topic-353.3"></a>
 
-***
-
-#### ☁️ 353.3 cloud-init
+### ☁️ 353.3 cloud-init
 
 **Peso:** 3
 
-**Descrição:** Os candidatos podem usar a cloud-init para configurar as máquinas virtuais criadas a partir de imagens padronizadas. Isso inclui o ajuste de máquinas virtuais para corresponder aos recursos de seu hardware disponível, especificamente, espaço em disco e volumes. Além disso, candidatos devem ser capazes de configurar instâncias para permitir logins SSH seguros e instalar um conjunto específico de pacotes de software. Além disso, os candidatos devem ser capazes de criar novas imagens de sistema com suporte na nuvem.
+**Descrição:** Os candidatos podem usar a cloud-init para configurar as máquinas virtuais criadas a partir de imagens padronizadas. Isso inclui o ajuste de máquinas virtuais para corresponder aos recursos de seu hardware disponível, especificamente, espaço em disco e volumes.
+Além disso, candidatos devem ser capazes de configurar instâncias para permitir logins SSH seguros e instalar um conjunto específico de pacotes de software.
+Além disso, os candidatos devem ser capazes de criar novas imagens de sistema com suporte na nuvem.
 
 **Conhecimento Chave Itens:**
 
@@ -5480,7 +5594,7 @@ plugins de embalagem
 - Integrar a cloud-init às imagens do sistema
 - Use config drive datassource para testar
 
-**📋 353.3 Cited Objects**
+#### 📋 353.3 Cited Objects
 
 ```sh
 cloud-init
@@ -5488,12 +5602,12 @@ user-data
 /var/lib/cloud/
 ```
 
-#### Entendendo cloud-init
+### Entendendo cloud-init
 
-Tool used for customizing cloud instances at boot time.\
+Tool used for customizing cloud instances at boot time.  
 It is typically used to perform initial setup tasks such as configuring network interfaces, setting up user accounts, installing software packages, and running custom scripts.
 
-**Sources of cloud-init data**
+#### Sources of cloud-init data
 
 | fonte                        | Descrição:                                                                                                                     |
 | ---------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -5502,21 +5616,21 @@ It is typically used to perform initial setup tasks such as configuring network 
 | **Arquivos de configuração** | As instruções também podem ser fornecidas através de arquivos de configuração no formato YAML ou Script.                       |
 | **Banco de dados**           | Determina a origem da informação necessária para a configuração da instância (meta-dados/dados do usuário). |
 
-**Modules in cloud-init**
+#### Modules in cloud-init
 
 Abaixo estão alguns dos módulos normalmente utilizados na cloud-init, que são responsáveis pela execução de tarefas específicas durante o processo de inicialização da instância:
 
-| Módulo                                 | Descrição:                                                                                                                |
-| -------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
-| **bootcmd**                            | Comandos que são executados em cada inicialização, antes de qualquer outro módulo na nuvem.                               |
-| **runcmd**                             | Comandos executados no final do processo na nuvem depois que todos os outros módulos tiverem sido concluídos.             |
-| **usuários**                           | Usado para criar e gerenciar contas de usuário, incluindo configurar chaves SSH para logins seguros.                      |
-| **pacotes**                            | Usado para instalar pacotes de software do repositório da distribuição.                                                   |
-| **disk\_setup**  | Usado para criar, redimensionar e montar sistemas de arquivos nos discos da instância.                                    |
-| **rede**                               | Usado para configurar interfaces de rede e configurações para a instância.                                                |
-| **write\_files** | Usado para escrever arquivos no sistema de arquivos da instância, que podem ser usados para configurações ou outros fins. |
+| Módulo                               | Descrição:                                                                                                                |
+| ------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------- |
+| **bootcmd**                          | Comandos que são executados em cada inicialização, antes de qualquer outro módulo na nuvem.                               |
+| **runcmd**                           | Comandos executados no final do processo na nuvem depois que todos os outros módulos tiverem sido concluídos.             |
+| **usuários**                         | Usado para criar e gerenciar contas de usuário, incluindo configurar chaves SSH para logins seguros.                      |
+| **pacotes**                          | Usado para instalar pacotes de software do repositório da distribuição.                                                   |
+| **disk_setup**  | Usado para criar, redimensionar e montar sistemas de arquivos nos discos da instância.                                    |
+| **rede**                             | Usado para configurar interfaces de rede e configurações para a instância.                                                |
+| **write_files** | Usado para escrever arquivos no sistema de arquivos da instância, que podem ser usados para configurações ou outros fins. |
 
-**Cloud-Init Configuration Files and Directories**
+#### Cloud-Init Configuration Files and Directories
 
 - /etc/cloud/ – Arquivos de configuração principal
   - cloud.cfg – O arquivo de configuração primário para Cloud-Init
@@ -5526,24 +5640,24 @@ Abaixo estão alguns dos módulos normalmente utilizados na cloud-init, que são
 - /var/lib/cloud/ – Diretório contendo dados e informações geradas pela Cloud-Init durante a inicialização de instância
   - /var/lib/cloud/instance/ – Diretório contendo arquivos e metadados relacionados à instância em execução
 
-**🛠️ 353.3 Important Commands**
+#### 🛠️ 353.3 Important Commands
 
-**📝 cloud-init**
+##### 📝 cloud-init
 
 ```sh
 # limpar estado da nuvem e registros
 sudo cloud-init clean
 ```
 
-<p align="right">(<a href="./#topic-353.3">back to sub topic 353.3</a>)</p>
+<p align="right">(<a href="#topic-353.3">back to sub topic 353.3</a>)</p>
+<p align="right">(<a href="#topic 353">back to topic 353</a>)</p>
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-<p align="right">(<a href="./#topic 353">back to topic 353</a>)</p>
+---
 
-<p align="right">(<a href="./#readme-top">back to top</a>)</p>
+<a name="topic-353.4"></a>
 
-***
-
-#### 📦 353.4 Vagrante
+### 📦 353.4 Vagrante
 
 **Peso:** 3
 
@@ -5559,26 +5673,26 @@ sudo cloud-init clean
 - Entenda o fornecimento de Andarilho, ou seja, Fornecedores de Arquivos e Shell
 - Compreender configuração de multi-máquina
 
-**📋 353.4 Cited Objects**
+#### 📋 353.4 Cited Objects
 
 ```sh
 vagrant
 Vagrantfile
 ```
 
-**🧰 About Vagrant**
+#### 🧰 About Vagrant
 
-Vagrant is an open-source tool for building and managing virtual machine environments in a single workflow.\
+Vagrant is an open-source tool for building and managing virtual machine environments in a single workflow.  
 It provides a simple and easy-to-use command-line interface for creating and configuring lightweight, reproducible, and portable development environments.
 
-**Vagrant Architecture and Concepts**
+##### Vagrant Architecture and Concepts
 
-Vagrant uses a declarative configuration file called `Vagrantfile` to define the virtual machine environment.\
+Vagrant uses a declarative configuration file called `Vagrantfile` to define the virtual machine environment.  
 The `Vagrantfile` specifies the base box to use, the virtual machine provider (e.g., VirtualBox, VMware, Hyper-V), and any additional configuration such as networking, shared folders, and provisioning scripts.
 
-**Vagrant Providers**
+##### Vagrant Providers
 
-A Vagrant provider is a plugin that allows Vagrant to manage virtual machines using a specific virtualization technology.\
+A Vagrant provider is a plugin that allows Vagrant to manage virtual machines using a specific virtualization technology.  
 Common providers include:
 
 - **VirtualBox**: uma plataforma de virtualização gratuita e de código aberto que é amplamente utilizada em ambientes de desenvolvimento local.
@@ -5586,18 +5700,18 @@ Common providers include:
 - **Hyper-V**: Uma plataforma de virtualização desenvolvida pela Microsoft, disponível em sistemas operacionais Windows.
 - **Docker**: uma plataforma de armazenagem que permite ao Vagrant gerenciar ambientes containerizados.
 
-**Vagrant Plugins**
+##### Vagrant Plugins
 
-Vagrant plugins are extensions that add functionality to Vagrant.\
+Vagrant plugins are extensions that add functionality to Vagrant.  
 Examples of Vagrant plugins include:
 
 - **vagrant-vbguest**: instala automaticamente os Suplementos do VirtualBox Guest na máquina convidada, melhorando o desempenho e permitindo recursos como pastas compartilhadas e compartilhamento de área de transferência.
 - **vagrant-hostmanager**: Gerencia o arquivo `/etc/hosts` do host para permitir fácil acesso a máquinas Vagrant pelo nome.
 - **vagrant-disksize**: Permite o redimensionamento do tamanho do disco da máquina virtual durante o provisionamento.
 
-**Vagrant Provisioning**
+##### Vagrant Provisioning
 
-Vagrant provisioning is the process of configuring the virtual machine after it has been created.\
+Vagrant provisioning is the process of configuring the virtual machine after it has been created.  
 Provisioning can be done using various provisioners, such as:
 
 - **Provisor de Arquivos**: Usado para copiar arquivos da máquina do host para a máquina convidado durante o provisionamento.
@@ -5606,13 +5720,13 @@ Provisioning can be done using various provisioners, such as:
 - **Provisionador de Puppet**: usado para executar Puppet manifestos na máquina convidado durante o provisionamento, permitindo gerenciamento de configuração e automação usando Puppet.
 - **Provisor de Chef**: Usado para executar receitas de Chef na máquina de convidados durante o provisionamento, permitindo gerenciamento de configuração e automação usando o Chef.
 
-**Vagrant Boxes**
+##### Vagrant Boxes
 
-A Vagrant box is a pre-packaged virtual machine image that serves as the base for creating new virtual machine instances.\
-Boxes can be retrieved from the Vagrant Cloud (formerly known as Atlas).\
+A Vagrant box is a pre-packaged virtual machine image that serves as the base for creating new virtual machine instances.  
+Boxes can be retrieved from the Vagrant Cloud (formerly known as Atlas).  
 Vagrant Cloud is a platform for sharing and distributing Vagrant boxes, allowing users to easily find and use pre-configured environments for their development needs.
 
-**Vagrantfile Example**
+#### Vagrantfile Example
 
 ```ruby
 Vagrant.configure("2") do 'noconfig-
@@ -5636,7 +5750,7 @@ Vagrant.configure("2") do 'noconfig-
 end
 ```
 
-**Install vagrant**
+#### Install vagrant
 
 ```sh
 # no Debian/Ubuntu
@@ -5645,7 +5759,7 @@ sudo dpkg -i vagrant_2.4.9-1_amd64.deb
 sudo apt-get install -f 
 ```
 
-**Install Vagrant Plugins**
+#### Install Vagrant Plugins
 
 ```sh
 vagrant plugin install vagrant-vbguest
@@ -5653,9 +5767,9 @@ vagrant plugin install vagrant-hostmanager
 vagrant plugin install vagrant-disksize
 ```
 
-**🛠️ 353.4 Important Commands**
+#### 🛠️ 353.4 Important Commands
 
-**📦 vagrant**
+##### 📦 vagrant
 
 ```sh
 # vagrant plugins
@@ -5721,19 +5835,20 @@ vagrant port <machine-name>
 
 ```
 
-<p align="right">(<a href="./#topic-353.4">back to sub topic 353.4</a>)</p>
+<p align="right">(<a href="#topic-353.4">back to sub topic 353.4</a>)</p>
+<p align="right">(<a href="#topic 353">back to topic 353</a>)</p>
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-<p align="right">(<a href="./#topic 353">back to topic 353</a>)</p>
+---
 
-<p align="right">(<a href="./#readme-top">back to top</a>)</p>
+## 🤝 Contribuindo
 
-***
+Contributions are what make the open source community such an amazing place to
+learn, inspire, and create. Quaisquer contribuições que você faça são **muito apreciadas**.
 
-### 🤝 Contribuindo
-
-Contributions are what make the open source community such an amazing place to learn, inspire, and create. Quaisquer contribuições que você faça são **muito apreciadas**.
-
-If you have a suggestion that would make this better, please fork the repo and create a pull request. Você também pode simplesmente abrir um problema com a tag "aprimoramento". Não se esqueça de dar uma estrela ao projeto! Obrigado novamente!
+If you have a suggestion that would make this better, please fork the repo and
+create a pull request. Você também pode simplesmente abrir um problema com a tag "aprimoramento".
+Não se esqueça de dar uma estrela ao projeto! Obrigado novamente!
 
 1. Fork o Projeto
 2. Crie sua filial de recursos (`git checkout -b feature/AmazingFeature`)
@@ -5741,28 +5856,30 @@ If you have a suggestion that would make this better, please fork the repo and c
 4. Push para o Branch (`git push origin feature/AmazingFeature`)
 5. Abrir um Pull Request
 
-***
+---
 
-### 📄 Licença
+## 📄 Licença
 
 - This project is licensed under the MIT License \* see the LICENSE.md file for details
 
-***
+---
 
-### 📬 Contato
+## 📬 Contato
 
-Marcos Silvestrini - [marcos.silvestrini@gmail.com](mailto:marcos.silvestrini@gmail.com) [![Twitter](https://img.shields.io/twitter/url/https/twitter.com/mrsilvestrini.svg?style=social\&label=Follow%20%40mrsilvestrini)](https://twitter.com/mrsilvestrini)
+Marcos Silvestrini - <marcos.silvestrini@gmail.com>
+[![Twitter](https://img.shields.io/twitter/url/https/twitter.com/mrsilvestrini.svg?style=social&label=Follow%20%40mrsilvestrini)](https://twitter.com/mrsilvestrini)
 
 Link do Projeto: [https://github.com/marcossilvestrini/learning-lpic-3-305-300](https://github.com/marcossilvestrini/learning-lpic-3-305-300)
 
-<p align="right">(<a href="./#readme-top">back to top</a>)</p>
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-***
+---
 
-### 🙏 Agradecimentos
+## 🙏 Agradecimentos
 
-- [Richard Stallman's](http://www.stallman.org/)
-- [GNU](./)
+- [Richard Stallman&#39;s](http://www.stallman.org/)
+- GNU
+
   - [GNU/Linux FAQ por Richard Stallman](https://www.gnu.org/gnu/gnu-linux-faq.html)
   - [GNU](https://www.gnu.org/)
   - [Sistema Operacional GNU](https://www.gnu.org/gnu/thegnuproject.html)
@@ -5774,18 +5891,22 @@ Link do Projeto: [https://github.com/marcossilvestrini/learning-lpic-3-305-300](
   - [Coleção GNU/Linux](https://directory.fsf.org/wiki/Collection:GNU/Linux)
   - [GNU Grub Bootloader](https://www.gnu.org/software/grub/)
   - [GNU Hurd](https://www.gnu.org/software/hurd/hurd/what_is_the_gnu_hurd.html)
-- [Kernel](./)
+- Kernel
+
   - [Kernel](https://www.kernel.org/)
   - [Linux Kernel Man Pages](https://www.kernel.org/doc/man-pages/)
   - [Compilar seu kernel](https://wiki.linuxquestions.org/wiki/How_to_build_and_install_your_own_Linux_kernel)
-- [Linux Standard Base](./)
+- Linux Standard Base
+
   - [Base padrão do Linux](https://en.wikipedia.org/wiki/Linux_Standard_Base)
   - [Padrão de Hierarquia de Sistemas de Arquivos](https://en.wikipedia.org/wiki/Filesystem_Hierarchy_Standard)
   - [Estrutura de Hierarquia de Arquivos](https://refspecs.linuxfoundation.org/FHS_3.0/fhs-3.0.pdf)
-- [Free Software](./)
+- Free Software
+
   - [FSF](https://www.fsf.org)
   - [Diretório de Software Livre](https://directory.fsf.org/wiki/Free_Software_Directory:Free_software_replacements)
-- [License](./)
+- License
+
   - [Software livre](https://www.gnu.org/philosophy/free-sw.html)
   - [Copyleft](https://www.gnu.org/licenses/copyleft.en.html)
   - [GPL](https://www.gnu.org/licenses/quick-guide-gplv3.html)
@@ -5794,21 +5915,24 @@ Link do Projeto: [https://github.com/marcossilvestrini/learning-lpic-3-305-300](
   - [Abrir código inicial](https://opensource.org/)
   - [Creative Commons](https://creativecommons.org/)
   - [Licença LTS](https://en.wikipedia.org/wiki/Long-term_support)
-- [Distros](./)
+- Distros
+
   - [Diretrizes para Software Gratuito Debian](https://www.debian.org/social_contract#guidelines)
   - [Lista de Distribuição Linux](https://en.wikipedia.org/wiki/List_of_Linux_distributions)
   - [Relógio de Distro](https://distrowatch.com/)
   - [Comparação de Distribuições Linux](https://en.wikipedia.org/wiki/Comparison_of_Linux_distributions)
-- [Desktop Environments](./)
+- Desktop Environments
+
   - [X11 Org](https://www.x.org/wiki/)
   - [Wayland](https://wayland.freedesktop.org/)
   - [GNU GNOME](https://www.gnu.org/press/gnome-1.0.html)
   - [GNOME](https://www.gnome.org/)
   - [XFCE](https://xfce.org/)
   - [KDE Plasma](https://kde.org/plasma-desktop/)
-  - [Harmony](https://en.wikipedia.org/wiki/Harmony_\(toolkit\))
-- [Protocols](./)
-  - [HTTP](./)
+  - [Harmony](https://en.wikipedia.org/wiki/Harmony_(toolkit))
+- Protocols
+
+  - HTTP
     - [W3Techs](https://w3techs.com/)
     - [Apache](https://www.apache.org/)
     - [Directivas Apache](https://httpd.apache.org/docs/2.4/mod/directives.html)
@@ -5818,16 +5942,19 @@ Link do Projeto: [https://github.com/marcossilvestrini/learning-lpic-3-305-300](
     - [SSL Config Mozilla](https://ssl-config.mozilla.org/)
   - [xRDP](https://bytexd.com/xrdp-centos/)
   - [NTP](https://www.ntppool.org/en/)
-- [DNS](./)
+- DNS
+
   - [Bind](https://www.isc.org/bind/)
   - [Bind Logging](https://www.zytrax.com/books/dns/ch7/logging.html)
   - [List of DNS record types](https://en.wikipedia.org/wiki/List_of_DNS_record_types)
   - [Lista de tipos de registros DNS](https://en.wikipedia.org/wiki/List_of_DNS_record_types)
-- [Package Manager](./)
+- Package Manager
+
   - [Baixar Pacotes](https://pkgs.org/)
   - [Instalar pacotes](https://installati.one/)
   - [Pacotes de Instalação de Guia](https://installati.one/)
-- [Shell Script](./)
+- Shell Script
+
   - [Bourne Again Shell](https://www.gnu.org/software/bash/manual/)
   - [Shebang](https://bash.cyberciti.biz/guide/Shebang)
   - [Variáveis de ambiente](https://linuxize.com/post/how-to-set-and-list-environment-variables-in-linux/)
@@ -5841,15 +5968,18 @@ Link do Projeto: [https://github.com/marcossilvestrini/learning-lpic-3-305-300](
   - [Vim Tutorial](https://www.openvim.com/)
   - [Tutorial de Scripting Shell Linux](https://bash.cyberciti.biz/guide/Main_Page)
   - [Exemplos de comandos](https://www.geeksforgeeks.org/)
-- [Others Tools](./)
+- Others Tools
+
   - [Bugzila](https://bugzilla.kernel.org/)
   - [Distintivos Github](https://github.com/alexandresanlim/Badges4-README.md-Profile)
-- [Virtualization Definitions](./)
+- Virtualization Definitions
+
   - [Chapéu vermelho](https://www.redhat.com/pt-br/topics/virtualization/what-is-virtualization/)
   - [AWS](https://aws.amazon.com/pt/what-is/virtualization/)
   - [IBM](https://www.ibm.com/topics/virtualization)
   - [OpenSource.com](https://opensource.com/resources/virtualization)
-- [Xen](./)
+- Xen
+
   - [XenServer](https://www.xenserver.com/)
   - [Projeto Wiki Xen](https://wiki.xenproject.org/wiki/Main_Page)
   - [Interfaces de Rede](https://wiki.xenproject.org/wiki/Xen_Networking#Virtual_Network_Interfaces)
@@ -5861,22 +5991,26 @@ Link do Projeto: [https://github.com/marcossilvestrini/learning-lpic-3-305-300](
   - [Guia para Iniciantes do Projeto Xen](https://wiki.xenproject.org/wiki/Xen_Project_Beginners_Guide#Installing_the_Xen_Project_Software)
   - [Livro Louco](https://wiki.xenproject.org/wiki/Book/HelloXenProject/0-Contents)
 - [Unikernels](https://www.lpi.org/blog/2020/10/29/xen-virtualization-and-cloud-computing-05-xen-project-unikernels-and-future/)
+
   - [Unikraft](https://github.com/unikraft/unikraft)
   - [MirageOS](https://mirage.io/docs/hello-world)
   - [HaLVM](https://galois.com/project/halvm/)
   - [Unik](https://github.com/solo-io/unik/blob/master/docs/providers/virtualbox.md)
-- [KVM](./)
+- KVM
+
   - [Documento oficial](https://linux-kvm.org/page/Main_Page)
   - [KVM(Máquinas Virtuais do Kernel pelo RedHat)](https://www.redhat.com/pt-br/topics/virtualization/what-is-KVM)
   - [Ferramentas de Gerenciamento KVM](https://www.linux-kvm.org/page/Management_Tools)
   - [Rede KVM](https://www.linux-kvm.org/page/Networking)
-- [QEMU](./)
+- QEMU
+
   - [Documento oficial](https://www.qemu.org/)
   - [Baixar caixas de imagens](https://www.osboxes.org/)
   - [Baixar imagens linuximas](https://www.linuxvmimages.com/)
   - [Virtio](https://en.wikibooks.org/wiki/QEMU/Devices/Virtio)
   - [Representante convidado](https://wiki.qemu.org/Features/GuestAgent)
-- [Libvirt](./)
+- Libvirt
+
   - [Documento oficial](https://libvirt.org/)
   - [Ativação do Sistema Socket](https://libvirt.org/manpages/libvirtd.html#system-socket-activation)
   - [Conections](https://libvirt.org/uri.html)
@@ -5886,12 +6020,14 @@ Link do Projeto: [https://github.com/marcossilvestrini/learning-lpic-3-305-300](
   - [virtlogd](https://libvirt.org/manpages/virtlogd.html)
   - [virtlockd](https://libvirt.org/manpages/virtlockd.html)
   - [virt-manager](https://virt-manager.org/)
-- [Disk Management](./)
+- Disk Management
+
   - [Disk Images](https://qemu-project.gitlab.io/qemu/system/images.html)
   - [copy-on-write](https://sempreupdate.com.br/linux/tutoriais/sistema-de-arquivos-copy-on-write-saiba-o-que-e-e-quais-as-vantagens-e-desvantagens/)
   - [RAM x QCOW2](https://docs.redhat.com/en/documentation/red_hat_virtualization/4.3/html/technical_reference/qcow2)
   - [Libguestfs](https://libguestfs.org/)
-- [containers](./)
+- containers
+
   - [Contêineres de Documento AWS](https://aws.amazon.com/pt/containers/)
   - [Recipientes de Doc GCP](https://cloud.google.com/learn/what-are-containers?hl=pt-br)
   - [IBM Doc container](https://www.ibm.com/br-pt/topics/containers)
@@ -5918,10 +6054,12 @@ Link do Projeto: [https://github.com/marcossilvestrini/learning-lpic-3-305-300](
   - [OpenVZ](https://openvz.org/)
   - [crun](https://www.redhat.com/en/blog/introduction-crun)
   - [kata](https://katacontainers.io/)
-- [LXC - Linux containers](./)
+- LXC - Linux containers
+
   - [LXC](https://linuxcontainers.org/lxc/introduction/)
   - [Linux contêiner imagens](https://images.linuxcontainers.org/)
-- [LXD](./)
+- LXD
+
   - [Canônica LXD](https://canonical.com/lxd)
   - [LXD Canonical Github](https://github.com/canonical/lxd)
   - [Documentação LXD](https://linuxcontainers.org/lxd/docs/master/)
@@ -5951,7 +6089,7 @@ Link do Projeto: [https://github.com/marcossilvestrini/learning-lpic-3-305-300](
   - [Dockerfile](https://docs.docker.com/reference/dockerfile)
   - [Melhores Práticas](https://docs.docker.com/build/building/best-practices/)
   - [Aplicativo de Doze Fator - Processos](https://12factor.net/processes)
-- [Container Orchestration](./)
+- Container Orchestration
   - [Container Orchestration by IBM](https://www.ibm.com/br-pt/topics/container-orchestration)
   - [Container Orchestration by AWS](https://aws.amazon.com/pt/what-is/container-orchestration)
   - [Container Orchestration by RedHat](https://www.redhat.com/pt-br/topics/containers/what-is-container-orchestration)
@@ -5971,9 +6109,9 @@ Link do Projeto: [https://github.com/marcossilvestrini/learning-lpic-3-305-300](
     - [Minikube](https://minikube.sigs.k8s.io/docs/start/)
     - [Kind](https://kind.sigs.k8s.io/docs/user/quick-start/)
     - [Jogue com o Kubernetes](https://labs.play-with-k8s.com/)
-- [Cloud](./)
+- Cloud
   - [Chapéu Vermelho - Computação na nuvem](https://www.redhat.com/pt-br/topics/cloud)
-- [Openstack Docs](./)
+- Openstack Docs
   - [OpenStack](https://www.openstack.org/)
   - [RedHat](https://www.redhat.com/pt-br/topics/openstack)
   - [A OpenStack Landskape](https://www.openstack.org/software/)
@@ -5982,14 +6120,14 @@ Link do Projeto: [https://github.com/marcossilvestrini/learning-lpic-3-305-300](
   - [Eucalyptus](https://www.eucalyptus.cloud/)
   - [Eucalyptus - Componentes](https://docs.eucalyptus.cloud/eucalyptus/5/admin_guide/managing_system/system_concepts/)
   - [Abrir Nebula](https://opennebula.io/)
-- [IaC - Infrastructure as Code](./)
+- IaC - Infrastructure as Code
   - [Terraform](https://www.terraform.io/)
   - [AWS/Terraform começar](https://developer.hashicorp.com/terraform/tutorials/aws-get-started/aws-build)
   - [Exemplos de Terraform](https://containersolutions.github.io/terraform-examples/)
 - [Packer](https://www.packer.io/)
   - [Começando o pacote](https://developer.hashicorp.com/packer)
   - [Modelos de Pacote](https://www.packer.io/docs/templates)
-- [cloud-init](./)
+- cloud-init
   - [cloud-init Documentation](https://cloud-init.io/)
   - [cloud-init Modules](https://docs.cloud-init.io/en/latest/reference/modules.html)
   - [EXamplos da cloud-init](https://cloudinit.readthedocs.io/en/latest/topics/examples.html)
@@ -6000,14 +6138,32 @@ Link do Projeto: [https://github.com/marcossilvestrini/learning-lpic-3-305-300](
   - [Plugins de perfumes](https://developer.hashicorp.com/vagrant/docs/plugins)
   - [Plugins Vagrantes disponíveis](https://github.com/hashicorp/vagrant/wiki/Available-Vagrant-Plugins)
   - [Busca de caixas perfumadas](https://app.vagrantup.com/boxes/search)
-- [Open vSwitch](./)
+- Open vSwitch
   - [OVS Doc 4Linux](https://blog.4linux.com.br/open-vswitch-o-que-e-o-que-come-onde-vive)
-- [LPIC-3 305-300 Exam](./)
+- LPIC-3 305-300 Exam
   - [LPIC-3 305-300 objectivos](https://www.lpi.org/our-certifications/exam-305-objectives/)
   - [LPIC-3 305-300 Wiki](https://wiki.lpi.org/wiki/LPIC-305_Objectives_V3.0)
   - [LPIC-3 305-300 Material de Aprendizagem](https://cursos.linuxsemfronteiras.com.br/courses/preparatorio-para-certificacao-lpic-3-305/)
   - [LPIC-3 305-300 Exame Simulado por ITexams](https://www.itexams.com/info/305-300)
 
-<p align="right">(<a href="./#readme-top">back to top</a>)</p>
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-***
+---
+
+<!-- MARKDOWN LINKS  & IMAGES -->
+
+<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
+
+[contributors-shield]: https://img.shields.io/github/contributors/marcossilvestrini/learning-lpic-3-305-300.svg?style=for-the-badge
+[contributors-url]: https://github.com/marcossilvestrini/learning-lpic-3-305-300/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/marcossilvestrini/learning-lpic-3-305-300.svg?style=for-the-badge
+[forks-url]: https://github.com/marcossilvestrini/learning-lpic-3-305-300/network/members
+[stars-shield]: https://img.shields.io/github/stars/marcossilvestrini/learning-lpic-3-305-300.svg?style=for-the-badge
+[stars-url]: https://github.com/marcossilvestrini/learning-lpic-3-305-300/stargazers
+[issues-shield]: https://img.shields.io/github/issues/marcossilvestrini/learning-lpic-3-305-300.svg?style=for-the-badge
+[issues-url]: https://github.com/marcossilvestrini/learning-lpic-3-305-300/issues
+[license-shield]: https://img.shields.io/github/license/marcossilvestrini/learning-lpic-3-305-300.svg?style=for-the-badge
+[license-url]: https://github.com/marcossilvestrini/learning-lpic-3-305-300/blob/main/LICENSE
+[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
+[linkedin-url]: https://linkedin.com/in/marcossilvestrini
+[def]: https://httpd.apache.org/docs/2.4/mod/directives.html
