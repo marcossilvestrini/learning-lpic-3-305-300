@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Docker Container - Ambiente de Teste</title>
+    <style>
+        :root {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --accent-blue: #38bdf8;
+            --accent-green: #22c55e;
+            --border-color: #334155;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 800px;
+            width: 100%;
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 2.5rem;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 8px 10px -6px rgba(0, 0, 0, 0.3);
+            text-align: center;
+        }
+
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background-color: rgba(34, 197, 94, 0.1);
+            color: var(--accent-green);
+            border: 1px solid rgba(34, 197, 94, 0.2);
+            padding: 0.5rem 1rem;
+            border-radius: 9999px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            background-color: var(--accent-green);
+            border-radius: 50%;
+            box-shadow: 0 0 8px var(--accent-green);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.2); }
+        }
+
+        h1 {
+            font-size: 2.25rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            background: linear-gradient(to right, #38bdf8, #818cf8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        p.subtitle {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+            text-align: left;
+        }
+
+        .card {
+            background-color: rgba(15, 23, 42, 0.5);
+            border: 1px solid var(--border-color);
+            padding: 1.25rem;
+            border-radius: 12px;
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-2px);
+            border-color: var(--accent-blue);
+        }
+
+        .card-title {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.5rem;
+        }
+
+        .card-value {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .console {
+            background-color: #0b0f19;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 1rem;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.9rem;
+            color: var(--accent-green);
+            text-align: left;
+            overflow-x: auto;
+        }
+
+        footer {
+            margin-top: 2rem;
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+        }
+
+        @media (max-width: 600px) {
+            .container { padding: 1.5rem; }
+            h1 { font-size: 1.75rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="status-badge">
+            <span class="status-dot"></span>
+            Container Operacional & Ativo
+        </div>
+
+        <h1>Servidor Web em Execução</h1>
+        <p class="subtitle">Se você está vendo esta página, sua imagem Docker executou o <i>build</i> e iniciou o serviço HTTP com sucesso!</p>
+
+        <div class="grid">
+            <div class="card">
+                <div class="card-title">Status HTTP</div>
+                <div class="card-value" style="color: var(--accent-green);">200 OK</div>
+            </div>
+            <div class="card">
+                <div class="card-title">Ambiente</div>
+                <div class="card-value">Linux / Container</div>
+            </div>
+            <div class="card">
+                <div class="card-title">Hora do Acesso</div>
+                <div class="card-value" id="client-time">Carregando...</div>
+            </div>
+        </div>
+
+        <div class="console">
+            <p># Log de Verificação Rápida:</p>
+            <p>> Porta de saída mapeada com sucesso.</p>
+            <p>> Arquivos estáticos servidos no diretório raiz.</p>
+            <p id="js-status">> Testando execução de JS no cliente: <span style="color: #f59e0b;">Aguardando...</span></p>
+        </div>
+
+        <footer>
+            Ambiente de Testes & Virtualização • Pronto para homologação
+        </footer>
+    </div>
+
+    <script>
+        // Preenche o horário atual no carregamento
+        function updateTime() {
+            const now = new Date();
+            document.getElementById('client-time').textContent = now.toLocaleTimeString('pt-BR');
+        }
+        
+        updateTime();
+        setInterval(updateTime, 1000);
+
+        // Confirma execução do JS
+        setTimeout(() => {
+            const jsStatus = document.getElementById('js-status');
+            jsStatus.innerHTML = '> Testando execução de JS no cliente: <span style="color: #22c55e;">Aprovado [OK]</span>';
+        }, 800);
+    </script>
+</body>
+</html>

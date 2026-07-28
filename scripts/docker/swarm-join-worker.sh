@@ -48,7 +48,8 @@ load_contract() {
 
 join_worker() {
   local adv_ip="$1"
-  log "Joining swarm as worker (advertise-addr=${adv_ip})..."
+  log "Joining swarm as worker (advertise-addr=${adv_ip})..." 
+  docker swarm leave --force 2>/dev/null || true 
   docker swarm join \
     --token "$SWARM_WORKER_TOKEN" \
     --advertise-addr "$adv_ip" \
