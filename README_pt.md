@@ -4369,26 +4369,45 @@ Para testar o script de uso de volumes de armazenamento: [docker-storage-volumes
 ##### 🛠️ Docker Network Usage examples
 
 ```sh
-# Crie a rede de back-end e frontend
-docker dedicada cria a rede --driver bridge frontend_net
-docker cria a --driver bridge --driver bridge --internal backend_net
+# Create dedicated frontend and backend bridges
+docker network create --driver bridge frontend_net
+docker network create --driver bridge --internal --subnet 10.18.0.0/24 backend_net
 
-# Lançamento de serviços com endereçamento determinístico e aliases
+# Launch API with deterministic addressing and backend alias
 docker run -d --name api \
-  --network backend_net --ip 10. 8.0.10 \
+  --network backend_net --ip 10.18.0.10 \
   --network-alias api.internal \
-  ghcr. o/exemplo/api:latest
+  ghcr.io/mccutchen/go-httpbin:latest
 
+# Launch web on the frontend network
 docker run -d --name web \
   --network frontend_net \
-  --network backend_net --alias web-backend \
-  -p 443:8443 \
-  ghcr. o/exemplo/web: latest
+  --network-alias web.public \
+  -p 8080:80 \
+  nginx:alpine
 
-# Anexar um contêiner de solução de problemas temporariamente
+# Attach web to backend network with a backend-only alias
+docker network connect --alias web-backend backend_net web
+
+# Attach a troubleshooting container temporarily
 docker run -it --rm \
   --network container:web \
   alpine:latest sh
+
+# Tests
+# Test backend API alias
+wget -qO- http://api.internal:8080/get
+
+# Test backend alias assigned to web itself
+wget -qO- http://web-backend
+
+# Test frontend alias assigned to web itself
+wget -qO- http://web.public
+
+# Show DNS resolution
+getent hosts api.internal
+getent hosts web-backend
+getent hosts web.public
 ```
 
 ##### ✅ Docker Network Best practices
