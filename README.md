@@ -4376,24 +4376,43 @@ For testing storage volumes use script: [docker-storage-volumes.sh](scripts/dock
 ```sh
 # Create dedicated frontend and backend bridges
 docker network create --driver bridge frontend_net
-docker network create --driver bridge --internal backend_net
+docker network create --driver bridge --internal --subnet 10.18.0.0/24 backend_net
 
-# Launch services with deterministic addressing and aliases
+# Launch API with deterministic addressing and backend alias
 docker run -d --name api \
   --network backend_net --ip 10.18.0.10 \
   --network-alias api.internal \
-  ghcr.io/example/api:latest
+  ghcr.io/mccutchen/go-httpbin:latest
 
+# Launch web on the frontend network
 docker run -d --name web \
   --network frontend_net \
-  --network backend_net --alias web-backend \
-  -p 443:8443 \
-  ghcr.io/example/web:latest
+  --network-alias web.public \
+  -p 8080:80 \
+  nginx:alpine
+
+# Attach web to backend network with a backend-only alias
+docker network connect --alias web-backend backend_net web
 
 # Attach a troubleshooting container temporarily
 docker run -it --rm \
   --network container:web \
   alpine:latest sh
+
+# Tests
+# Test backend API alias
+wget -qO- http://api.internal:8080/get
+
+# Test backend alias assigned to web itself
+wget -qO- http://web-backend
+
+# Test frontend alias assigned to web itself
+wget -qO- http://web.public
+
+# Show DNS resolution
+getent hosts api.internal
+getent hosts web-backend
+getent hosts web.public
 ```
 
 ##### ✅ Docker Network Best practices
