@@ -7223,7 +7223,7 @@ docker pull localhost:5000/my-alpine
 </span><span class="code-line line-number" line="17"><span class="token function">docker</span> image <span class="token function">ls</span>
 </span><span class="code-line line-number" line="18"><span class="token function">docker</span> images
 </span><span class="code-line line-number" line="19"><span class="token function">docker</span> images <span class="token parameter variable">-a</span>
-</span><span class="code-line line-number" line="20"><span class="token function">docker</span> images <span class="token parameter variable">--format</span> <span class="token string">"{{.Repository}}: {{.Tag}} {{.Size}}"</span>
+</span><span class="code-line line-number" line="20"><span class="token function">docker</span> images <span class="token parameter variable">--format</span> <span class="token string">"Repository: {{.Repository}}<span class="token entity" title="\n">\n</span>Targ: {{.Tag}}<span class="token entity" title="\n">\n</span>Size: {{.Size}}<span class="token entity" title="\n">\n</span>"</span>
 </span><span class="code-line line-number" line="21">
 </span><span class="code-line line-number" line="22"><span class="token comment"># docker image inspect</span>
 </span><span class="code-line line-number" line="23"><span class="token function">docker</span> image inspect nginx:latest
@@ -7501,7 +7501,7 @@ docker pull nginx:latest
 docker image ls
 docker images
 docker images -a
-docker images --format &#x22;{{.Repository}}: {{.Tag}} {{.Size}}&#x22;
+docker images --format &#x22;Repository: {{.Repository}}\nTarg: {{.Tag}}\nSize: {{.Size}}\n&#x22;
 
 # docker image inspect
 docker image inspect nginx:latest
