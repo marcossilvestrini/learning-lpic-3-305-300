@@ -4536,7 +4536,7 @@ docker pull nginx:latest
 docker image ls
 docker images
 docker images -a
-docker images --format "{{.Repository}}: {{.Tag}} {{.Size}}"
+docker images --format "Repository: {{.Repository}}\nTarg: {{.Tag}}\nSize: {{.Size}}\n"
 
 # docker image inspect
 docker image inspect nginx:latest
