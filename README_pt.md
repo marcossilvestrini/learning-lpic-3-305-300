@@ -4834,26 +4834,24 @@ Abaixo está uma tabela estruturada dos principais comandos e seus fins.
 
 **📊 Tabela: Compor Docker**
 
-| Comando                             | Objetivo                                                                                                                   | Exemplo                                                                  |
-| ----------------------------------- | -------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------ |
-| ▶️\*\*`docker compose up`\*\*       | Construir, (re)criar, iniciar e anexar a recipientes definidos em `docker-compose.yml`. | `Docker compõe -d`                                                       |
-| ⏹️\*\*`docker compose down`\*\*     | Parar e remover contêineres, redes, volumes e imagens criadas por `up`.                                    | `docker compõe para baixo --volumes`                                     |
-| 🔄\*\*`docker compose restart`\*\*  | Reinicie os serviços em execução.                                                                          | `Docker compose restart web`                                             |
-| 🟢\*\*`docker compose start`\*\*    | Iniciar contêineres existentes sem recriá-los.                                                             | `Docker compose start db`                                                |
-| 🔴\*\*`docker compose stop`\*\*     | Pare de executar contêineres sem removê-los.                                                               | `docker compose stop db`                                                 |
-| 🧹\*\*`docker compose rm`\*\*       | Remover contêineres de serviço parado.                                                                     | `docker compose rm -f`                                                   |
-| 🏗️\*\*`docker compose build`\*\*   | Crie ou reconstrua imagens de serviço.                                                                     | `Docker compose build web`                                               |
-| 📥\*\*`docker compose pull`\*\*     | Puxe imagens de serviço de um registro.                                                                    | `Docker compõe pull redis`                                               |
-| 📤\*\*`docker compose push`\*\*     | Envie imagens de serviço para um registro.                                                                 | `Docker compose push api`                                                |
-| 📄\*\*`docker compose config`\*\*   | Validar e visualizar o arquivo de componente.                                                              | `docker compose config`                                                  |
-| 📋\*\*`docker compose ps`\*\*       | Listar contêineres gerenciados por Compose.                                                                | `Docker compõe ps`                                                       |
-| 📊\*\*`docker compose top`\*\*      | Exibir processos em execução de contêineres.                                                               | `docker compose top`                                                     |
-| 📜\*\*`docker compose logs`\*\*     | Ver logs de saída dos serviços.                                                                            | `Docker compõe logs -f api`                                              |
-| 🔍\*\*`docker compose exec`\*\*     | Executa um comando em um contêiner de serviço em execução.                                                 | `docker compose exec db psql -U postgres`                                |
-| 🐚\*\*`docker compose run`\*\*      | Executar comandos pontuais num novo contêiner.                                                             | `docker compose run web sh`                                              |
-| 🔧\*\*`docker compose override`\*\* | Use `-f`para especificar vários arquivos de composição (substituições).                 | `docker compose -f docker-compose.yml -f docker-compose.override.yml up` |
-| 🌐**Rede**                          | As redes são criadas automaticamente; podem ser declaradas explicitamente no YAML.                         | `docker network ls`                                                      |
-| 📦**Volumes**                       | Gerenciar dados persistentes; pode ser declarado em YAML e utilizado em todos os serviços.                 | `docker volume ls`                                                       |
+| Comando                          | Objetivo                                                                                                                   | Exemplo                                                                  |
+| -------------------------------- | -------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------ |
+| ▶️ **`docker compose up`**       | Construir, (re)criar, iniciar e anexar a recipientes definidos em `docker-compose.yml`. | `Docker compõe -d`                                                       |
+| ⏹️ **`docker compose down`**     | Parar e remover contêineres, redes, volumes e imagens criadas por `up`.                                    | `docker compõe para baixo --volumes`                                     |
+| 🔄 **`docker compose restart`**  | Reinicie os serviços em execução.                                                                          | `Docker compose restart web`                                             |
+| 🟢 **`docker compose start`**    | Iniciar contêineres existentes sem recriá-los.                                                             | `Docker compose start db`                                                |
+| 🔴 **`docker compose stop`**     | Pare de executar contêineres sem removê-los.                                                               | `docker compose stop db`                                                 |
+| 🧹 **`docker compose rm`**       | Remover contêineres de serviço parado.                                                                     | `docker compose rm -f`                                                   |
+| 🏗️ **`docker compose build`**   | Crie ou reconstrua imagens de serviço.                                                                     | `Docker compose build web`                                               |
+| 📥 **`docker compose pull`**     | Puxe imagens de serviço de um registro.                                                                    | `Docker compõe pull redis`                                               |
+| 📤 **`docker compose push`**     | Envie imagens de serviço para um registro.                                                                 | `Docker compose push api`                                                |
+| 📄 **`docker compose config`**   | Validar e visualizar o arquivo de componente.                                                              | `docker compose config`                                                  |
+| 📋 **`docker compose ps`**       | Listar contêineres gerenciados por Compose.                                                                | `Docker compõe ps`                                                       |
+| 📊 **`docker compose top`**      | Exibir processos em execução de contêineres.                                                               | `docker compose top`                                                     |
+| 📜 **`docker compose logs`**     | Ver logs de saída dos serviços.                                                                            | `Docker compõe logs -f api`                                              |
+| 🔍 **`docker compose exec`**     | Executa um comando em um contêiner de serviço em execução.                                                 | `docker compose exec db psql -U postgres`                                |
+| 🐚 **`docker compose run`**      | Executar comandos pontuais num novo contêiner.                                                             | `docker compose run web sh`                                              |
+| 🔧 **`docker compose override`** | Use `-f`para especificar vários arquivos de composição (substituições).                 | `docker compose -f docker-compose.yml -f docker-compose.override.yml up` |
 
 ##### 🔑 Key Notes
 
@@ -4865,8 +4863,6 @@ Abaixo está uma tabela estruturada dos principais comandos e seus fins.
 ##### **📄 `docker-compose.yml`**
 
 ```yaml
-version: "3.9"  # Compose file format
-
 services:
   web:
     image: nginx:latest
@@ -4920,8 +4916,8 @@ networks:
 - **`serviços`** : Define contêineres (`web`, `api`, `db`) que formam o aplicativo.
 - **`portas`** : Mapeia as portas para as portas do contêiner (`80:80`).
 - **`volumes`** :
-- Volume nomeado (`db-data`) para dados persistentes do BD.
-- Montaria Bind (`./html:/usr/share/nginx/html`) para servir conteúdo estático.
+  - Volume nomeado (`db-data`) para dados persistentes do BD.
+  - Montaria Bind (`./html:/usr/share/nginx/html`) para servir conteúdo estático.
 - **`build`**: Permite construir uma imagem personalizada de um Dockerfile.
 - **`depends_on`** : Garante a ordem de inicialização do serviço (`api` espera por `db`).
 - **`networks`** : Define uma rede virtual isolada para a comunicação.
@@ -4940,10 +4936,10 @@ Para testar o docker compor exemplos de serviços em [apps](apps/).
 
 #### 🌐 Docker Swarm
 
-![swarm-nodes](images/swarm-nodes.png)
+![swarm-nodes](images/swarm-nodes.png)  
 _Swarm architecture with manager and worker nodes_
 
-![swarm-services](images/swarm-services.png)
+![swarm-services](images/swarm-services.png)  
 _Swarm services with multiple replicas_
 
 Docker Swarm é a ferramenta de orquestração nativa do Docker que permite que você gerencie um cluster de hosts Docker como um único sistema virtual. Isso facilita a implantação, o gerenciamento e o dimensionamento de aplicativos contêineres em múltiplas máquinas.
@@ -5005,13 +5001,13 @@ Um cluster de Kubernetes consiste em um conjunto de máquinas trabalhadoras, cha
 
 Os componentes do avião controle tomam decisões globais sobre o cluster (por exemplo, o agendamento), bem como detecção e resposta a eventos de agrupamento.
 
-| Componente                  | Descrição:                                                                                                                                                                                                                                                                                                                                         |
-| :-------------------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **kube-apiserver**          | O servidor API é um componente do plano de controle do Kubernetes que expõe a API do Kubernetes. O servidor de API é o front-end do avião de controle do Kubernetes.                                                                                                                                                               |
-| **etc**                     | Loja consistente e altamente disponível de valor-chave usada como loja de apoio do Kubernet para todos os dados de agrupamento.                                                                                                                                                                                                                    |
-| **agendador-kube**          | Acompanha para Pods recém-criados sem nó atribuído e seleciona um nó para que eles funcionem.                                                                                                                                                                                                                                                      |
-| **kube-controller-manager** | Executa processos de controlador. Logicamente, cada controlador é um processo separado, mas para reduzir a complexidade, todos são compilados em um único binário e executados em um único processo.                                                                                                                               |
-| **gerenciador-nuvem**       | Um componente de plano de controle do Kubernetes que incorpora lógica de controle específico à nuvem. O gerenciador de controles na nuvem permite que você vincule seu cluster à API do seu provedor de nuvem, e separa os componentes que interagem com essa plataforma na nuvem de componentes que só interagem com seu cluster. |
+| Componente                  | Descrição:                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+| :-------------------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **kube-apiserver**          | O servidor API é um componente do plano de controle do Kubernetes que expõe a API do Kubernetes. O servidor de API é o front-end do avião de controle do Kubernetes.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
+| **etc**                     | Loja consistente e altamente disponível de valor-chave usada como loja de apoio do Kubernet para todos os dados de agrupamento.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
+| **agendador-kube**          | Acompanha para Pods recém-criados sem nó atribuído e seleciona um nó para que eles funcionem.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
+| **kube-controller-manager** | **Control Plane component that runs controller processes.** To reduce complexity, dozens of separate controllers are compiled into this single binary and run within a single process. Each controller continuously monitors the cluster state (via `kube-apiserver`) and drives it toward the desired state.<br><br>**Key embedded controllers include:**<br>• **Node Controller:** Manages node health and downtime.<br>• **Deployment & ReplicaSet Controller:** Maintains the correct number of pod replicas.<br>• **EndpointSlice Controller:** Links Kubernetes Services to Pods.<br>• **Namespace Controller:** Manages lifecycle and cleanup of namespaces.<br>• **ServiceAccount Controller:** Creates default accounts for new namespaces. |
+| **gerenciador-nuvem**       | Um componente de plano de controle do Kubernetes que incorpora lógica de controle específico à nuvem. O gerenciador de controles na nuvem permite que você vincule seu cluster à API do seu provedor de nuvem, e separa os componentes que interagem com essa plataforma na nuvem de componentes que só interagem com seu cluster.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
 
 ###### 👷 Node Components
 
@@ -5996,8 +5992,8 @@ Link do Projeto: [https://github.com/marcossilvestrini/learning-lpic-3-305-300](
 
   - [Bind](https://www.isc.org/bind/)
   - [Bind Logging](https://www.zytrax.com/books/dns/ch7/logging.html)
-  - [List of DNS record types](https://en.wikipedia.org/wiki/List_of_DNS_record_types)
   - [Lista de tipos de registros DNS](https://en.wikipedia.org/wiki/List_of_DNS_record_types)
+  - [List of DNS record types](https://en.wikipedia.org/wiki/List_of_DNS_record_types)
 - Package Manager
 
   - [Baixar Pacotes](https://pkgs.org/)
