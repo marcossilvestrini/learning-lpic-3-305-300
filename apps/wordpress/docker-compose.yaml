@@ -9,6 +9,8 @@ services:
       - wordpress-network
     depends_on:
       - wordpress
+    deploy:
+      replicas: 2
 
   wordpress:
     image: wordpress:latest
@@ -38,7 +40,7 @@ services:
     volumes:
       - dbdata:/var/lib/mysql
     networks:
-      - wordpress-network
+      - wordpress-network    
 
 networks:
   wordpress-network:

@@ -1,0 +1,38 @@
+services:
+  # --- STACK LGTM UNIFICADA ---
+  lgtm:
+    image: grafana/otel-lgtm:latest
+    container_name: lgtm-stack
+    ports:
+      - "9000:3000"  # Grafana (Web UI)
+      - "9041:4317"  # OTLP gRPC receiver
+      - "9042:4318"  # OTLP HTTP receiver
+      - "9090:9090"  # Prometheus / Mimir
+      - "9010:3100"  # Loki
+      - "9020:3200"  # Tempo
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+      
+    volumes:
+      - lgtm-data:/data
+      - ./grafana-provisioning/dashboards.yaml:/etc/grafana/provisioning/dashboards/custom-dashboards.yaml:ro
+      - ./grafana-provisioning/dashboards-json:/var/lib/grafana/dashboards-custom:ro
+    networks:
+      - otelemetry
+
+  # --- GERADOR AUTOMÁTICO DE APM ---
+  gerador-apm:
+    image: ghcr.io/open-telemetry/opentelemetry-collector-contrib/telemetrygen:latest
+    container_name: gerador-apm
+    command: ["traces", "--otlp-endpoint=lgtm-stack:4317", "--otlp-insecure", "--rate=1", "--duration=inf"]
+    depends_on:
+      - lgtm
+    networks:
+      - otelemetry
+
+volumes:
+  lgtm-data:
+
+networks:
+  otelemetry:
+    driver: bridge

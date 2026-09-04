@@ -1,0 +1,11 @@
+apiVersion: 1
+providers:
+  - name: 'dashboards-custom'
+    orgId: 1
+    folder: 'Observabilidade Geral'
+    type: file
+    disableDeletion: false
+    editable: true
+    options:
+      path: /var/lib/grafana/dashboards-custom
+      foldersFromFilesStructure: false

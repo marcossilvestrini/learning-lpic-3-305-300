@@ -4841,24 +4841,22 @@ Below is a structured table of the main commands and their purposes.
 
 | Command                                 | Purpose                                                                               | Example                                                                    |
 | --------------------------------------- | ------------------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
-| ▶️**`docker compose up`**           | Build, (re)create, start, and attach to containers defined in `docker-compose.yml`. | `docker compose up -d`                                                   |
-| ⏹️**`docker compose down`**         | Stop and remove containers, networks, volumes, and images created by `up`.          | `docker compose down --volumes`                                          |
-| 🔄**`docker compose restart`**  | Restart running services.                                                             | `docker compose restart web`                                             |
-| 🟢**`docker compose start`**    | Start existing containers without recreating them.                                    | `docker compose start db`                                                |
-| 🔴**`docker compose stop`**     | Stop running containers without removing them.                                        | `docker compose stop db`                                                 |
-| 🧹**`docker compose rm`**       | Remove stopped service containers.                                                    | `docker compose rm -f`                                                   |
-| 🏗️**`docker compose build`**        | Build or rebuild service images.                                                      | `docker compose build web`                                               |
-| 📥**`docker compose pull`**     | Pull service images from a registry.                                                  | `docker compose pull redis`                                              |
-| 📤**`docker compose push`**     | Push service images to a registry.                                                    | `docker compose push api`                                                |
-| 📄**`docker compose config`**   | Validate and view the Compose file.                                                   | `docker compose config`                                                  |
-| 📋**`docker compose ps`**       | List containers managed by Compose.                                                   | `docker compose ps`                                                      |
-| 📊**`docker compose top`**      | Display running processes of containers.                                              | `docker compose top`                                                     |
-| 📜**`docker compose logs`**     | View output logs from services.                                                       | `docker compose logs -f api`                                             |
-| 🔍**`docker compose exec`**     | Run a command in a running service container.                                         | `docker compose exec db psql -U postgres`                                |
-| 🐚**`docker compose run`**      | Run one-off commands in a new container.                                              | `docker compose run web sh`                                              |
-| 🔧**`docker compose override`** | Use `-f`to specify multiple Compose files (overrides).                              | `docker compose -f docker-compose.yml -f docker-compose.override.yml up` |
-| 🌐**Networking**                  | Networks are auto-created; can be declared explicitly in YAML.                        | `docker network ls`                                                      |
-| 📦**Volumes**                     | Manage persistent data; can be declared in YAML and used across services.             | `docker volume ls`                                                       |
+| ▶️ **`docker compose up`**           | Build, (re)create, start, and attach to containers defined in `docker-compose.yml`. | `docker compose up -d`                                                   |
+| ⏹️ **`docker compose down`**         | Stop and remove containers, networks, volumes, and images created by `up`.          | `docker compose down --volumes`                                          |
+| 🔄 **`docker compose restart`**  | Restart running services.                                                             | `docker compose restart web`                                             |
+| 🟢 **`docker compose start`**    | Start existing containers without recreating them.                                    | `docker compose start db`                                                |
+| 🔴 **`docker compose stop`**     | Stop running containers without removing them.                                        | `docker compose stop db`                                                 |
+| 🧹 **`docker compose rm`**       | Remove stopped service containers.                                                    | `docker compose rm -f`                                                   |
+| 🏗️ **`docker compose build`**        | Build or rebuild service images.                                                      | `docker compose build web`                                               |
+| 📥 **`docker compose pull`**     | Pull service images from a registry.                                                  | `docker compose pull redis`                                              |
+| 📤 **`docker compose push`**     | Push service images to a registry.                                                    | `docker compose push api`                                                |
+| 📄 **`docker compose config`**   | Validate and view the Compose file.                                                   | `docker compose config`                                                  |
+| 📋 **`docker compose ps`**       | List containers managed by Compose.                                                   | `docker compose ps`                                                      |
+| 📊 **`docker compose top`**      | Display running processes of containers.                                              | `docker compose top`                                                     |
+| 📜 **`docker compose logs`**     | View output logs from services.                                                       | `docker compose logs -f api`                                             |
+| 🔍 **`docker compose exec`**     | Run a command in a running service container.                                         | `docker compose exec db psql -U postgres`                                |
+| 🐚 **`docker compose run`**      | Run one-off commands in a new container.                                              | `docker compose run web sh`                                              |
+| 🔧 **`docker compose override`** | Use `-f`to specify multiple Compose files (overrides).                              | `docker compose -f docker-compose.yml -f docker-compose.override.yml up` |
 
 ##### 🔑 Key Notes
 
@@ -4870,8 +4868,6 @@ Below is a structured table of the main commands and their purposes.
 ##### **📄 `docker-compose.yml`**
 
 ```yaml
-version: "3.9"  # Compose file format
-
 services:
   web:
     image: nginx:latest
@@ -4925,8 +4921,8 @@ networks:
 * **`services`** : Defines containers (`web`, `api`, `db`) that make up the app.
 * **`ports`** : Maps host ports to container ports (`8080:80`).
 * **`volumes`** :
-* Named volume (`db-data`) for persistent DB data.
-* Bind mount (`./html:/usr/share/nginx/html`) to serve static content.
+  * Named volume (`db-data`) for persistent DB data.
+  * Bind mount (`./html:/usr/share/nginx/html`) to serve static content.
 * **`build`** : Allows building a custom image from a Dockerfile.
 * **`depends_on`** : Ensures service startup order (`api` waits for `db`).
 * **`networks`** : Defines an isolated virtual network for communication.
@@ -4945,10 +4941,10 @@ For testing docker compose use examples of services in [apps](apps/).
 
 #### 🌐 Docker Swarm
 
-![swarm-nodes](images/swarm-nodes.png)
+![swarm-nodes](images/swarm-nodes.png)  
 *Swarm architecture with manager and worker nodes*
 
-![swarm-services](images/swarm-services.png)
+![swarm-services](images/swarm-services.png)  
 *Swarm services with multiple replicas*
 
 Docker Swarm is Docker's native orchestration tool that allows you to manage a cluster of Docker hosts as a single virtual system. It facilitates the deployment, management, and scaling of containerized applications across multiple machines.
@@ -5015,7 +5011,7 @@ The control plane's components make global decisions about the cluster (for exam
 | **kube-apiserver** | The API server is a component of the Kubernetes control plane that exposes the Kubernetes API. The API server is the front end for the Kubernetes control plane. |
 | **etcd** | Consistent and highly-available key-value store used as Kubernetes' backing store for all cluster data. |
 | **kube-scheduler** | Watches for newly created Pods with no assigned node, and selects a node for them to run on. |
-| **kube-controller-manager** | Runs controller processes. Logically, each controller is a separate process, but to reduce complexity, they are all compiled into a single binary and run in a single process. |
+| **kube-controller-manager** | **Control Plane component that runs controller processes.** To reduce complexity, dozens of separate controllers are compiled into this single binary and run within a single process. Each controller continuously monitors the cluster state (via `kube-apiserver`) and drives it toward the desired state.<br><br>**Key embedded controllers include:**<br>• **Node Controller:** Manages node health and downtime.<br>• **Deployment & ReplicaSet Controller:** Maintains the correct number of pod replicas.<br>• **EndpointSlice Controller:** Links Kubernetes Services to Pods.<br>• **Namespace Controller:** Manages lifecycle and cleanup of namespaces.<br>• **ServiceAccount Controller:** Creates default accounts for new namespaces. |
 | **cloud-controller-manager** | A Kubernetes control plane component that embeds cloud-specific control logic. The cloud controller manager lets you link your cluster into your cloud provider's API, and separates out the components that interact with that cloud platform from components that only interact with your cluster. |
 
 ###### 👷 Node Components
