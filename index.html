@@ -7795,94 +7795,84 @@ cat /sys/fs/cgroup/system.slice/docker-<FULL_ID_CONTAINER>.scope/cgroup.procs
       </thead>
       <tbody>
         <tr>
-          <td>▶️**<code>docker compose up</code>**</td>
+          <td>▶️ <strong><code>docker compose up</code></strong></td>
           <td>Build, (re)create, start, and attach to containers defined in <code>docker-compose.yml</code>.</td>
           <td><code>docker compose up -d</code></td>
         </tr>
         <tr>
-          <td>⏹️**<code>docker compose down</code>**</td>
+          <td>⏹️ <strong><code>docker compose down</code></strong></td>
           <td>Stop and remove containers, networks, volumes, and images created by <code>up</code>.</td>
           <td><code>docker compose down --volumes</code></td>
         </tr>
         <tr>
-          <td>🔄**<code>docker compose restart</code>**</td>
+          <td>🔄 <strong><code>docker compose restart</code></strong></td>
           <td>Restart running services.</td>
           <td><code>docker compose restart web</code></td>
         </tr>
         <tr>
-          <td>🟢**<code>docker compose start</code>**</td>
+          <td>🟢 <strong><code>docker compose start</code></strong></td>
           <td>Start existing containers without recreating them.</td>
           <td><code>docker compose start db</code></td>
         </tr>
         <tr>
-          <td>🔴**<code>docker compose stop</code>**</td>
+          <td>🔴 <strong><code>docker compose stop</code></strong></td>
           <td>Stop running containers without removing them.</td>
           <td><code>docker compose stop db</code></td>
         </tr>
         <tr>
-          <td>🧹**<code>docker compose rm</code>**</td>
+          <td>🧹 <strong><code>docker compose rm</code></strong></td>
           <td>Remove stopped service containers.</td>
           <td><code>docker compose rm -f</code></td>
         </tr>
         <tr>
-          <td>🏗️**<code>docker compose build</code>**</td>
+          <td>🏗️ <strong><code>docker compose build</code></strong></td>
           <td>Build or rebuild service images.</td>
           <td><code>docker compose build web</code></td>
         </tr>
         <tr>
-          <td>📥**<code>docker compose pull</code>**</td>
+          <td>📥 <strong><code>docker compose pull</code></strong></td>
           <td>Pull service images from a registry.</td>
           <td><code>docker compose pull redis</code></td>
         </tr>
         <tr>
-          <td>📤**<code>docker compose push</code>**</td>
+          <td>📤 <strong><code>docker compose push</code></strong></td>
           <td>Push service images to a registry.</td>
           <td><code>docker compose push api</code></td>
         </tr>
         <tr>
-          <td>📄**<code>docker compose config</code>**</td>
+          <td>📄 <strong><code>docker compose config</code></strong></td>
           <td>Validate and view the Compose file.</td>
           <td><code>docker compose config</code></td>
         </tr>
         <tr>
-          <td>📋**<code>docker compose ps</code>**</td>
+          <td>📋 <strong><code>docker compose ps</code></strong></td>
           <td>List containers managed by Compose.</td>
           <td><code>docker compose ps</code></td>
         </tr>
         <tr>
-          <td>📊**<code>docker compose top</code>**</td>
+          <td>📊 <strong><code>docker compose top</code></strong></td>
           <td>Display running processes of containers.</td>
           <td><code>docker compose top</code></td>
         </tr>
         <tr>
-          <td>📜**<code>docker compose logs</code>**</td>
+          <td>📜 <strong><code>docker compose logs</code></strong></td>
           <td>View output logs from services.</td>
           <td><code>docker compose logs -f api</code></td>
         </tr>
         <tr>
-          <td>🔍**<code>docker compose exec</code>**</td>
+          <td>🔍 <strong><code>docker compose exec</code></strong></td>
           <td>Run a command in a running service container.</td>
           <td><code>docker compose exec db psql -U postgres</code></td>
         </tr>
         <tr>
-          <td>🐚**<code>docker compose run</code>**</td>
+          <td>🐚 <strong><code>docker compose run</code></strong></td>
           <td>Run one-off commands in a new container.</td>
           <td><code>docker compose run web sh</code></td>
         </tr>
         <tr>
-          <td>🔧**<code>docker compose override</code>**</td>
+          <td>🔧 <strong><code>docker compose override</code></strong></td>
           <td>Use <code>-f</code>to specify multiple Compose files (overrides).</td>
           <td><code>docker compose -f docker-compose.yml -f docker-compose.override.yml up</code></td>
-        </tr>
-        <tr>
-          <td>🌐<strong>Networking</strong></td>
-          <td>Networks are auto-created; can be declared explicitly in YAML.</td>
-          <td><code>docker network ls</code></td>
-        </tr>
-        <tr>
-          <td>📦<strong>Volumes</strong></td>
-          <td>Manage persistent data; can be declared in YAML and used across services.</td>
-          <td><code>docker volume ls</code></td>
         </tr>
       </tbody>
     </table>
@@ -7894,57 +7884,53 @@ cat /sys/fs/cgroup/system.slice/docker-<FULL_ID_CONTAINER>.scope/cgroup.procs
       <li><strong>Detach mode</strong> : Use <code>-d</code> to run services in background.</li>
     </ul>
     <h5 id="-docker-composeyml"><a class="anchor" aria-hidden="true" tabindex="-1" href="#-docker-composeyml"><span class="octicon octicon-link"></span></a><strong>📄 <code>docker-compose.yml</code></strong></h5>
-    <pre class="language-yaml"><code class="language-yaml code-highlight"><span class="code-line line-number" line="1"><span class="token key atrule">version</span><span class="token punctuation">:</span> <span class="token string">"3.9"</span>  <span class="token comment"># Compose file format</span>
-</span><span class="code-line line-number" line="2">
-</span><span class="code-line line-number" line="3"><span class="token key atrule">services</span><span class="token punctuation">:</span>
-</span><span class="code-line line-number" line="4">  <span class="token key atrule">web</span><span class="token punctuation">:</span>
-</span><span class="code-line line-number" line="5">    <span class="token key atrule">image</span><span class="token punctuation">:</span> nginx<span class="token punctuation">:</span>latest
-</span><span class="code-line line-number" line="6">    <span class="token key atrule">container_name</span><span class="token punctuation">:</span> my<span class="token punctuation">-</span>nginx
-</span><span class="code-line line-number" line="7">    <span class="token key atrule">ports</span><span class="token punctuation">:</span>
-</span><span class="code-line line-number" line="8">      <span class="token punctuation">-</span> <span class="token string">"8080:80"</span>             <span class="token comment"># host:container</span>
-</span><span class="code-line line-number" line="9">    <span class="token key atrule">volumes</span><span class="token punctuation">:</span>
-</span><span class="code-line line-number" line="10">      <span class="token punctuation">-</span> ./html<span class="token punctuation">:</span>/usr/share/nginx/html<span class="token punctuation">:</span>ro
-</span><span class="code-line line-number" line="11">    <span class="token key atrule">networks</span><span class="token punctuation">:</span>
-</span><span class="code-line line-number" line="12">      <span class="token punctuation">-</span> app<span class="token punctuation">-</span>network
-</span><span class="code-line line-number" line="13">
-</span><span class="code-line line-number" line="14">  <span class="token key atrule">api</span><span class="token punctuation">:</span>
-</span><span class="code-line line-number" line="15">    <span class="token key atrule">build</span><span class="token punctuation">:</span>
-</span><span class="code-line line-number" line="16">      <span class="token key atrule">context</span><span class="token punctuation">:</span> ./api          <span class="token comment"># build from Dockerfile in ./api</span>
-</span><span class="code-line line-number" line="17">      <span class="token key atrule">dockerfile</span><span class="token punctuation">:</span> Dockerfile
-</span><span class="code-line line-number" line="18">    <span class="token key atrule">container_name</span><span class="token punctuation">:</span> my<span class="token punctuation">-</span>api
-</span><span class="code-line line-number" line="19">    <span class="token key atrule">environment</span><span class="token punctuation">:</span>
-</span><span class="code-line line-number" line="20">      <span class="token punctuation">-</span> NODE_ENV=production
-</span><span class="code-line line-number" line="21">      <span class="token punctuation">-</span> API_KEY=$<span class="token punctuation">{</span>API_KEY<span class="token punctuation">}</span>    <span class="token comment"># read from .env file</span>
-</span><span class="code-line line-number" line="22">    <span class="token key atrule">depends_on</span><span class="token punctuation">:</span>
-</span><span class="code-line line-number" line="23">      <span class="token punctuation">-</span> db
-</span><span class="code-line line-number" line="24">    <span class="token key atrule">ports</span><span class="token punctuation">:</span>
-</span><span class="code-line line-number" line="25">      <span class="token punctuation">-</span> <span class="token string">"3000:3000"</span>
-</span><span class="code-line line-number" line="26">    <span class="token key atrule">networks</span><span class="token punctuation">:</span>
-</span><span class="code-line line-number" line="27">      <span class="token punctuation">-</span> app<span class="token punctuation">-</span>network
-</span><span class="code-line line-number" line="28">
-</span><span class="code-line line-number" line="29">  <span class="token key atrule">db</span><span class="token punctuation">:</span>
-</span><span class="code-line line-number" line="30">    <span class="token key atrule">image</span><span class="token punctuation">:</span> postgres<span class="token punctuation">:</span><span class="token number">15</span>
-</span><span class="code-line line-number" line="31">    <span class="token key atrule">container_name</span><span class="token punctuation">:</span> my<span class="token punctuation">-</span>postgres
-</span><span class="code-line line-number" line="32">    <span class="token key atrule">restart</span><span class="token punctuation">:</span> always
-</span><span class="code-line line-number" line="33">    <span class="token key atrule">environment</span><span class="token punctuation">:</span>
-</span><span class="code-line line-number" line="34">      <span class="token key atrule">POSTGRES_USER</span><span class="token punctuation">:</span> admin
-</span><span class="code-line line-number" line="35">      <span class="token key atrule">POSTGRES_PASSWORD</span><span class="token punctuation">:</span> secret
-</span><span class="code-line line-number" line="36">      <span class="token key atrule">POSTGRES_DB</span><span class="token punctuation">:</span> appdb
-</span><span class="code-line line-number" line="37">    <span class="token key atrule">volumes</span><span class="token punctuation">:</span>
-</span><span class="code-line line-number" line="38">      <span class="token punctuation">-</span> db<span class="token punctuation">-</span>data<span class="token punctuation">:</span>/var/lib/postgresql/data
-</span><span class="code-line line-number" line="39">    <span class="token key atrule">networks</span><span class="token punctuation">:</span>
-</span><span class="code-line line-number" line="40">      <span class="token punctuation">-</span> app<span class="token punctuation">-</span>network
-</span><span class="code-line line-number" line="41">
-</span><span class="code-line line-number" line="42"><span class="token key atrule">volumes</span><span class="token punctuation">:</span>
-</span><span class="code-line line-number" line="43">  <span class="token key atrule">db-data</span><span class="token punctuation">:</span>
-</span><span class="code-line line-number" line="44">
-</span><span class="code-line line-number" line="45"><span class="token key atrule">networks</span><span class="token punctuation">:</span>
-</span><span class="code-line line-number" line="46">  <span class="token key atrule">app-network</span><span class="token punctuation">:</span>
-</span><span class="code-line line-number" line="47">    <span class="token key atrule">driver</span><span class="token punctuation">:</span> bridge
-</span><span class="code-line line-number" line="48">
-</span></code><div onclick="copied(this)" data-code="version: &#x22;3.9&#x22;  # Compose file format
-
-services:
+    <pre class="language-yaml"><code class="language-yaml code-highlight"><span class="code-line line-number" line="1"><span class="token key atrule">services</span><span class="token punctuation">:</span>
+</span><span class="code-line line-number" line="2">  <span class="token key atrule">web</span><span class="token punctuation">:</span>
+</span><span class="code-line line-number" line="3">    <span class="token key atrule">image</span><span class="token punctuation">:</span> nginx<span class="token punctuation">:</span>latest
+</span><span class="code-line line-number" line="4">    <span class="token key atrule">container_name</span><span class="token punctuation">:</span> my<span class="token punctuation">-</span>nginx
+</span><span class="code-line line-number" line="5">    <span class="token key atrule">ports</span><span class="token punctuation">:</span>
+</span><span class="code-line line-number" line="6">      <span class="token punctuation">-</span> <span class="token string">"8080:80"</span>             <span class="token comment"># host:container</span>
+</span><span class="code-line line-number" line="7">    <span class="token key atrule">volumes</span><span class="token punctuation">:</span>
+</span><span class="code-line line-number" line="8">      <span class="token punctuation">-</span> ./html<span class="token punctuation">:</span>/usr/share/nginx/html<span class="token punctuation">:</span>ro
+</span><span class="code-line line-number" line="9">    <span class="token key atrule">networks</span><span class="token punctuation">:</span>
+</span><span class="code-line line-number" line="10">      <span class="token punctuation">-</span> app<span class="token punctuation">-</span>network
+</span><span class="code-line line-number" line="11">
+</span><span class="code-line line-number" line="12">  <span class="token key atrule">api</span><span class="token punctuation">:</span>
+</span><span class="code-line line-number" line="13">    <span class="token key atrule">build</span><span class="token punctuation">:</span>
+</span><span class="code-line line-number" line="14">      <span class="token key atrule">context</span><span class="token punctuation">:</span> ./api          <span class="token comment"># build from Dockerfile in ./api</span>
+</span><span class="code-line line-number" line="15">      <span class="token key atrule">dockerfile</span><span class="token punctuation">:</span> Dockerfile
+</span><span class="code-line line-number" line="16">    <span class="token key atrule">container_name</span><span class="token punctuation">:</span> my<span class="token punctuation">-</span>api
+</span><span class="code-line line-number" line="17">    <span class="token key atrule">environment</span><span class="token punctuation">:</span>
+</span><span class="code-line line-number" line="18">      <span class="token punctuation">-</span> NODE_ENV=production
+</span><span class="code-line line-number" line="19">      <span class="token punctuation">-</span> API_KEY=$<span class="token punctuation">{</span>API_KEY<span class="token punctuation">}</span>    <span class="token comment"># read from .env file</span>
+</span><span class="code-line line-number" line="20">    <span class="token key atrule">depends_on</span><span class="token punctuation">:</span>
+</span><span class="code-line line-number" line="21">      <span class="token punctuation">-</span> db
+</span><span class="code-line line-number" line="22">    <span class="token key atrule">ports</span><span class="token punctuation">:</span>
+</span><span class="code-line line-number" line="23">      <span class="token punctuation">-</span> <span class="token string">"3000:3000"</span>
+</span><span class="code-line line-number" line="24">    <span class="token key atrule">networks</span><span class="token punctuation">:</span>
+</span><span class="code-line line-number" line="25">      <span class="token punctuation">-</span> app<span class="token punctuation">-</span>network
+</span><span class="code-line line-number" line="26">
+</span><span class="code-line line-number" line="27">  <span class="token key atrule">db</span><span class="token punctuation">:</span>
+</span><span class="code-line line-number" line="28">    <span class="token key atrule">image</span><span class="token punctuation">:</span> postgres<span class="token punctuation">:</span><span class="token number">15</span>
+</span><span class="code-line line-number" line="29">    <span class="token key atrule">container_name</span><span class="token punctuation">:</span> my<span class="token punctuation">-</span>postgres
+</span><span class="code-line line-number" line="30">    <span class="token key atrule">restart</span><span class="token punctuation">:</span> always
+</span><span class="code-line line-number" line="31">    <span class="token key atrule">environment</span><span class="token punctuation">:</span>
+</span><span class="code-line line-number" line="32">      <span class="token key atrule">POSTGRES_USER</span><span class="token punctuation">:</span> admin
+</span><span class="code-line line-number" line="33">      <span class="token key atrule">POSTGRES_PASSWORD</span><span class="token punctuation">:</span> secret
+</span><span class="code-line line-number" line="34">      <span class="token key atrule">POSTGRES_DB</span><span class="token punctuation">:</span> appdb
+</span><span class="code-line line-number" line="35">    <span class="token key atrule">volumes</span><span class="token punctuation">:</span>
+</span><span class="code-line line-number" line="36">      <span class="token punctuation">-</span> db<span class="token punctuation">-</span>data<span class="token punctuation">:</span>/var/lib/postgresql/data
+</span><span class="code-line line-number" line="37">    <span class="token key atrule">networks</span><span class="token punctuation">:</span>
+</span><span class="code-line line-number" line="38">      <span class="token punctuation">-</span> app<span class="token punctuation">-</span>network
+</span><span class="code-line line-number" line="39">
+</span><span class="code-line line-number" line="40"><span class="token key atrule">volumes</span><span class="token punctuation">:</span>
+</span><span class="code-line line-number" line="41">  <span class="token key atrule">db-data</span><span class="token punctuation">:</span>
+</span><span class="code-line line-number" line="42">
+</span><span class="code-line line-number" line="43"><span class="token key atrule">networks</span><span class="token punctuation">:</span>
+</span><span class="code-line line-number" line="44">  <span class="token key atrule">app-network</span><span class="token punctuation">:</span>
+</span><span class="code-line line-number" line="45">    <span class="token key atrule">driver</span><span class="token punctuation">:</span> bridge
+</span><span class="code-line line-number" line="46">
+</span></code><div onclick="copied(this)" data-code="services:
   web:
     image: nginx:latest
     container_name: my-nginx
@@ -7995,9 +7981,12 @@ networks:
     <ul>
       <li><strong><code>services</code></strong> : Defines containers (<code>web</code>, <code>api</code>, <code>db</code>) that make up the app.</li>
       <li><strong><code>ports</code></strong> : Maps host ports to container ports (<code>8080:80</code>).</li>
-      <li><strong><code>volumes</code></strong> :</li>
-      <li>Named volume (<code>db-data</code>) for persistent DB data.</li>
-      <li>Bind mount (<code>./html:/usr/share/nginx/html</code>) to serve static content.</li>
+      <li><strong><code>volumes</code></strong> :
+        <ul>
+          <li>Named volume (<code>db-data</code>) for persistent DB data.</li>
+          <li>Bind mount (<code>./html:/usr/share/nginx/html</code>) to serve static content.</li>
+        </ul>
+      </li>
       <li><strong><code>build</code></strong> : Allows building a custom image from a Dockerfile.</li>
       <li><strong><code>depends_on</code></strong> : Ensures service startup order (<code>api</code> waits for <code>db</code>).</li>
       <li><strong><code>networks</code></strong> : Defines an isolated virtual network for communication.</li>
@@ -8014,12 +8003,10 @@ docker compose down -v
     <p>For testing docker compose use examples of services in <a href="apps/">apps</a>.</p>
     <h4 id="-docker-swarm"><a class="anchor" aria-hidden="true" tabindex="-1" href="#-docker-swarm"><span class="octicon octicon-link"></span></a>🌐 Docker Swarm</h4>
     <p>
-      <img src="images/swarm-nodes.png" alt="swarm-nodes">
-      <em>Swarm architecture with manager and worker nodes</em>
+      <img src="images/swarm-nodes.png" alt="swarm-nodes"><br><em>Swarm architecture with manager and worker nodes</em>
     </p>
     <p>
-      <img src="images/swarm-services.png" alt="swarm-services">
-      <em>Swarm services with multiple replicas</em>
+      <img src="images/swarm-services.png" alt="swarm-services"><br><em>Swarm services with multiple replicas</em>
     </p>
     <p>Docker Swarm is Docker's native orchestration tool that allows you to manage a cluster of Docker hosts as a single virtual system. It facilitates the deployment, management, and scaling of containerized applications across multiple machines.</p>
     <h5 id="docker-swarm-key-concepts"><a class="anchor" aria-hidden="true" tabindex="-1" href="#docker-swarm-key-concepts"><span class="octicon octicon-link"></span></a>Docker Swarm Key Concepts</h5>
@@ -8194,7 +8181,7 @@ docker compose down -v
         </tr>
         <tr>
           <td align="left"><strong>kube-controller-manager</strong></td>
-          <td align="left">Runs controller processes. Logically, each controller is a separate process, but to reduce complexity, they are all compiled into a single binary and run in a single process.</td>
+          <td align="left"><strong>Control Plane component that runs controller processes.</strong> To reduce complexity, dozens of separate controllers are compiled into this single binary and run within a single process. Each controller continuously monitors the cluster state (via <code>kube-apiserver</code>) and drives it toward the desired state.<br><br><strong>Key embedded controllers include:</strong><br>• <strong>Node Controller:</strong> Manages node health and downtime.<br>• <strong>Deployment &#x26; ReplicaSet Controller:</strong> Maintains the correct number of pod replicas.<br>• <strong>EndpointSlice Controller:</strong> Links Kubernetes Services to Pods.<br>• <strong>Namespace Controller:</strong> Manages lifecycle and cleanup of namespaces.<br>• <strong>ServiceAccount Controller:</strong> Creates default accounts for new namespaces.</td>
         </tr>
         <tr>
           <td align="left"><strong>cloud-controller-manager</strong></td>
