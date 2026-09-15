@@ -119,6 +119,7 @@ Para iniciar o aprendizado, consulte a documentação acima.
 
 - [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
 - [Trabalho VMware](https://blogs.vmware.com/workstation/2024/05/vmware-workstation-pro-now-available-free-for-personal-use.html)
+- []
 - [Utilidade VMWare Vagrante](https://developer.hashicorp.com/vagrant/install/vmware)
 - [Vagrant](https://developer.hashicorp.com/vagrant/install)
 
@@ -3332,7 +3333,7 @@ Para o laboratório LXC, você pode usar este script: [lxc.sh](scripts/container
 | **Compressão**           | ❌                       | ✅                 | ✅                 | ❌                              | ✅ (Ceph) |
 | **Criptografia**         | ❌                       | ✅                 | ❌                 | ✅ (LUKS)    | ✅                           |
 | **Cluster/Remoto**       | ❌                       | ❌                 | ❌                 | ❌                              | ✅                           |
-| **Melhor uso de caso**   | Desenv. | Laboratórios/Prod | Laboratórios/Prod | Laboratórios/Prod              | Clusters, Empresa           |
+| **Melhor uso de caso**   | Desenv. | Laboratórios/Prod | Laboratórios/Prod | Labs/Prod                      | Clusters, Empresa           |
 
 ##### 🔍 **Quick LXD Storage Summary**
 
