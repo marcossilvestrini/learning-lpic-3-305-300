@@ -8,6 +8,7 @@ For starting the learning, see the documentation above.
 
 * [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
 * [VMware Workstation](https://blogs.vmware.com/workstation/2024/05/vmware-workstation-pro-now-available-free-for-personal-use.html)
+* []
 * [Vagrant VMWare Utility](https://developer.hashicorp.com/vagrant/install/vmware)
 * [Vagrant](https://developer.hashicorp.com/vagrant/install)
 
