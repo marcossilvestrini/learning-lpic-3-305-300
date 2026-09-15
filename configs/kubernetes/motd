@@ -10,19 +10,22 @@ Welcome to the Kubernetes learning environment!
 
 This cluster is set up for you to explore and learn. Here are a few tips to get you started:
 
-1.  **Check the cluster status:**
+1. **Start minikube cluster:**
+   `minikube start -p lpic3`
+
+2.  **Check the cluster status:**
     `kubectl cluster-info`
 
-2.  **List the nodes in the cluster:**
+3.  **List the nodes in the cluster:**
     `kubectl get nodes`
 
-3.  **Deploy your first application (e.g., nginx):**
+4.  **Deploy your first application (e.g., nginx):**
     `kubectl create deployment nginx --image=nginx`
 
-4.  **Expose your application:**
+5.  **Expose your application:**
     `kubectl expose deployment nginx --port=80 --type=NodePort`
 
-5.  **Check the status of your application:**
+6.  **Check the status of your application:**
     `kubectl get pods`
     `kubectl get services`
 

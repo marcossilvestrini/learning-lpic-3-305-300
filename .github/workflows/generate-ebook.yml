@@ -1,4 +1,4 @@
-name: Generate Ebook PDF
+name: Generate Ebook Formats
 
 on:
   workflow_dispatch:
@@ -90,10 +90,61 @@ jobs:
           if-no-files-found: error
           retention-days: 30
 
-  publish-ebook:
-    name: Publish ebook to main
-    if: (github.event_name == 'push' && github.ref == 'refs/heads/main') || (github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/main')
+  convert-ebook:
+    name: Convert PDF to EPUB and AZW3
     needs: build-ebook
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download validated PDF
+        uses: actions/download-artifact@v4
+        with:
+          name: learning-lpic-3-305-300-ebook
+
+      - name: Install Calibre
+        run: |
+          sudo apt-get update
+          sudo apt-get install --yes calibre
+
+      - name: Convert PDF to EPUB 3
+        run: |
+          ebook-convert learning-lpic-3-305-300-ebook.pdf learning-lpic-3-305-300.epub \
+            --output-profile tablet \
+            --epub-version 3 \
+            --title "Learning LPIC-3 305-300" \
+            --authors "Marcos Silvestrini" \
+            --language en \
+            --publisher "Marcos Silvestrini"
+
+      - name: Convert PDF to Kindle AZW3
+        run: |
+          ebook-convert learning-lpic-3-305-300-ebook.pdf learning-lpic-3-305-300.azw3 \
+            --output-profile kindle_pw3 \
+            --title "Learning LPIC-3 305-300" \
+            --authors "Marcos Silvestrini" \
+            --language en \
+            --publisher "Marcos Silvestrini"
+
+      - name: Validate digital book files
+        run: |
+          test -s learning-lpic-3-305-300.epub
+          test -s learning-lpic-3-305-300.azw3
+          unzip -t learning-lpic-3-305-300.epub
+          ebook-meta learning-lpic-3-305-300.epub
+
+      - name: Upload digital book artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: learning-lpic-3-305-300-digital-books
+          path: |
+            learning-lpic-3-305-300.epub
+            learning-lpic-3-305-300.azw3
+          if-no-files-found: error
+          retention-days: 30
+
+  publish-ebook:
+    name: Publish ebook formats to main
+    if: (github.event_name == 'push' && github.ref == 'refs/heads/main') || (github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/main')
+    needs: [build-ebook, convert-ebook]
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -107,13 +158,18 @@ jobs:
         with:
           name: learning-lpic-3-305-300-ebook
 
+      - name: Download digital book artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: learning-lpic-3-305-300-digital-books
+
       - name: Commit ebook to main
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           cp learning-lpic-3-305-300-ebook.pdf learning-lpic-3-305-300.pdf
-          git add learning-lpic-3-305-300.pdf
-          git commit -m "docs: publish ebook PDF [skip ci]" || echo "Ebook PDF is unchanged"
+          git add learning-lpic-3-305-300.pdf learning-lpic-3-305-300.epub learning-lpic-3-305-300.azw3
+          git commit -m "docs: publish ebook formats [skip ci]" || echo "Ebook formats are unchanged"
           for attempt in 1 2 3 4 5; do
             git pull --rebase origin main
             if git push origin main; then

@@ -82,7 +82,7 @@ const html = `<!doctype html>
     <h1>${title}</h1>
     <p class="cover-course">${courseName}</p>
     <p class="cover-subtitle">Study guide and practical laboratory reference</p>
-    <p class="cover-meta">${language} edition · ${author} · ${buildDate}</p>
+    <p class="cover-meta">${language} edition</p>
     <p class="cover-watermark">${author} · ${buildDate}</p>
   </section>
   ${toc}

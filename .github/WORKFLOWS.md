@@ -11,15 +11,16 @@ flowchart TD
     A[Push README.md na main]
     A --> B[Translate README]
     A --> C[Generate HTML]
-    A --> D[Generate Ebook PDF]
+    A --> D[Generate Ebook Formats]
     A --> E[Generate GitBook Docs]
 
     C --> F[Commit index.html na main]
     C --> G[Deploy Webpage]
 
     D --> H[Validar PDF]
-    H --> I[Upload artifact]
-    H --> J[Commit PDF na main]
+    H --> I[Converter PDF para EPUB 3 e AZW3]
+    I --> J[Upload artifacts]
+    I --> K[Commit PDF EPUB e AZW3 na main]
 
     E --> K[Commit docs SUMMARY e GitBook na main]
 ```
@@ -58,7 +59,7 @@ Executa quando mudam:
 
 Gera `index.html` usando o conversor de Markdown e publica o arquivo na `main`.
 
-### `Generate Ebook PDF`
+### `Generate Ebook Formats`
 
 Arquivo: `workflows/generate-ebook.yml`
 
@@ -76,9 +77,11 @@ Ordem interna:
 3. Remove elementos exclusivos do GitHub do README.
 4. Gera HTML com capa, sumario e CSS de impressao.
 5. Renderiza o PDF em formato A4.
-6. Valida o arquivo.
-7. Publica um artifact por 30 dias.
-8. Publica `learning-lpic-3-305-300.pdf` na raiz da `main`.
+6. Valida o PDF.
+7. Converte o PDF para EPUB 3 e AZW3 usando Calibre.
+8. Valida os arquivos digitais.
+9. Publica os formatos como artifacts por 30 dias.
+10. Publica PDF, EPUB e AZW3 na raiz da `main`.
 
 O PDF permanente fica disponivel diretamente no repositorio.
 
@@ -138,6 +141,8 @@ Os commits gerados usam `[skip ci]` e nao alteram `README.md`; por isso, nao ini
 | --- | --- |
 | `index.html` | Branch `main` |
 | `learning-lpic-3-305-300.pdf` | Branch `main` |
+| `learning-lpic-3-305-300.epub` | Branch `main`; formato recomendado para Kindle moderno e leitores EPUB |
+| `learning-lpic-3-305-300.azw3` | Branch `main`; formato Kindle para dispositivos compatíveis |
 | Ebook temporario | Artifact do GitHub Actions |
 | `docs/`, `SUMMARY.md`, `.gitbook.yaml` | Branch `main` |
 | Site | GitHub Pages |
