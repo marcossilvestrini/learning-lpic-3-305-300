@@ -94,6 +94,12 @@ jobs:
     needs: build-ebook
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
       - name: Download ebook artifact
         uses: actions/download-artifact@v4
         with:
@@ -103,10 +109,6 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git init
-          git remote add origin "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
-          git fetch origin main
-          git checkout -B main origin/main
           cp learning-lpic-3-305-300-ebook.pdf learning-lpic-3-305-300.pdf
           git add learning-lpic-3-305-300.pdf
           git commit -m "docs: publish ebook PDF [skip ci]" || echo "Ebook PDF is unchanged"

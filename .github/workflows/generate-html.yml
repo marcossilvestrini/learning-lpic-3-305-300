@@ -24,7 +24,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
         with:
-          fetch-depth: 1
+          fetch-depth: 0
 
       - name: Get Repository Name
         id: repo_name
@@ -45,13 +45,12 @@ jobs:
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions@users.noreply.github.com"
           git checkout main
-          git pull --rebase origin main
           git add index.html
           git commit -m "Add generated HTML [skip ci]" || echo "No changes to commit"
           for attempt in 1 2 3 4 5; do
+            git pull --rebase origin main
             if git push origin main; then
               exit 0
             fi
-            git pull --rebase origin main
           done
           exit 1
