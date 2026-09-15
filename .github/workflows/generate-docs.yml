@@ -1,11 +1,19 @@
 name: Generate GitBook Docs
 
+permissions:
+  contents: write
+
 on:  
-  workflow_run:
-    workflows: ["Translate README"]
+  push:
     branches: [main]
-    types:
-      - completed
+    paths:
+      - README.md
+      - scripts/powershell/generate-readmes-gitbook.ps1
+  workflow_dispatch:
+
+concurrency:
+  group: generated-docs-main
+  cancel-in-progress: false
 
 jobs:
   build-docs:
@@ -33,7 +41,12 @@ jobs:
           if (-not [string]::IsNullOrWhiteSpace($changes)) {
             git commit -m "chore(docs): auto-generate GitBook documentation"
             git pull --rebase origin main
-            git push
+            for ($attempt = 1; $attempt -le 5; $attempt++) {
+              git push origin main
+              if ($LASTEXITCODE -eq 0) { exit 0 }
+              git pull --rebase origin main
+            }
+            throw "Unable to push generated documentation after five attempts"
           } else {
             Write-Host "Nenhuma modificação detectada. Nada a commitar."
           }

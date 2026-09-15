@@ -1,18 +1,23 @@
-name: Generate HTML and PDF
+name: Generate HTML
 
 on:
-  workflow_run:
-    workflows: ["Translate README"]
+  push:
     branches: [main]
-    types:
-      - completed
+    paths:
+      - README.md
+      - images/**
+  workflow_dispatch:
 
 permissions:
   contents: write
 
+concurrency:
+  group: generated-html-main
+  cancel-in-progress: false
+
 jobs:
   generate_html_and_pdf:
-    name: Generate HTML and PDF
+    name: Generate HTML
     runs-on: ubuntu-latest
 
     steps:
@@ -34,49 +39,19 @@ jobs:
           github-corners: "https://github.com/marcossilvestrini/${{ steps.repo_name.outputs.name }}"
           favicon: data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌐</text></svg>
 
-      # 2. GERA O PDF DIRETO DO HTML
-      - name: Generate PDF from HTML
-        run: |
-          npm install puppeteer@latest
-          node -e "
-          const puppeteer = require('puppeteer');
-          (async () => {
-            // Inicia o navegador com as travas de segurança do Ubuntu desativadas
-            const browser = await puppeteer.launch({ 
-              args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-dev-shm-usage', '--disable-gpu'] 
-            });
-            const page = await browser.newPage();
-            
-            // 1. ZERA O TIMEOUT DE NAVEGAÇÃO DE VERDADE (Mata o erro de 30000ms na raiz)
-            await page.setDefaultNavigationTimeout(0);
-            
-            // 2. Usa 'load' em vez de 'networkidle0' para ignorar conexões pendentes de badges externos
-            await page.goto('file://' + process.cwd() + '/index.html', { waitUntil: 'load' });
-            
-            // 3. Imprime o PDF mantendo o fundo e as cores do GitHub Markdown
-            await page.pdf({ 
-              path: './${{ steps.repo_name.outputs.name }}.pdf', 
-              format: 'A4', 
-              printBackground: true 
-            });
-            
-            await browser.close();
-          })();
-          "
-
-      # 3. SALVA OS ARQUIVOS NA BRANCH MAIN
-      - name: Commit and push PDF and HTML to docs branch
+      # 2. SALVA SOMENTE O HTML DO SITE NA BRANCH MAIN
+      - name: Commit and push HTML
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions@users.noreply.github.com"
           git checkout main
-          git pull origin main
-          git add index.html "${{ steps.repo_name.outputs.name }}.pdf"
-          git commit -m "Add generated PDF and HTML [skip ci]" || echo "No changes to commit"
-          git push origin main
-
-      - name: Upload artifacts
-        uses: actions/upload-artifact@v4
-        with:
-          name: ${{ steps.repo_name.outputs.name }}
-          path: ./${{ steps.repo_name.outputs.name }}.pdf
+          git pull --rebase origin main
+          git add index.html
+          git commit -m "Add generated HTML [skip ci]" || echo "No changes to commit"
+          for attempt in 1 2 3 4 5; do
+            if git push origin main; then
+              exit 0
+            fi
+            git pull --rebase origin main
+          done
+          exit 1

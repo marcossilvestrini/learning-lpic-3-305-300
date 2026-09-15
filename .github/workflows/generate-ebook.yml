@@ -1,0 +1,121 @@
+name: Generate Ebook PDF
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - README.md
+      - images/**
+      - scripts/node/**
+
+permissions:
+  contents: write
+
+concurrency:
+  group: generated-ebook-main
+  cancel-in-progress: false
+
+jobs:
+  build-ebook:
+    name: Build ebook PDF
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event_name == 'push' && github.ref_name || 'main' }}
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install ebook renderer
+        run: npm install --no-save --no-package-lock markdown-it markdown-it-anchor playwright@1.55.0
+
+      - name: Install Chromium
+        run: npx playwright install --with-deps chromium
+
+      - name: Build ebook HTML
+        env:
+          EBOOK_TITLE: Learning LPIC-3 305-300
+          EBOOK_LANGUAGE: English
+        run: node scripts/node/build-ebook.mjs
+
+      - name: Render PDF
+        run: |
+          node --input-type=module <<'NODE'
+          import fs from 'node:fs/promises';
+          import path from 'node:path';
+          import { fileURLToPath, pathToFileURL } from 'node:url';
+          import { chromium } from 'playwright';
+
+          const root = process.cwd();
+          const htmlPath = path.join(root, 'build', 'ebook', 'ebook.html');
+          const outputPath = path.join(root, 'learning-lpic-3-305-300-ebook.pdf');
+          const browser = await chromium.launch({ headless: true });
+          const page = await browser.newPage({ viewport: { width: 1240, height: 1754 } });
+          await page.goto(pathToFileURL(htmlPath).href, { waitUntil: 'load' });
+          await page.evaluate(() => document.fonts?.ready);
+          await page.pdf({
+            path: outputPath,
+            format: 'A4',
+            printBackground: true,
+            preferCSSPageSize: true,
+            displayHeaderFooter: false,
+            margin: { top: '22mm', right: '18mm', bottom: '20mm', left: '18mm' }
+          });
+          await browser.close();
+          const stats = await fs.stat(outputPath);
+          if (stats.size < 10000) throw new Error('Generated PDF is unexpectedly small');
+          console.log(`Generated ${outputPath} (${stats.size} bytes)`);
+          NODE
+
+      - name: Validate ebook content
+        run: |
+          test -s learning-lpic-3-305-300-ebook.pdf
+          if command -v pdftotext >/dev/null 2>&1; then
+            pdftotext learning-lpic-3-305-300-ebook.pdf ebook.txt
+            ! grep -Eiq 'github-corners|octocat|dark-mode|Generate HTML and PDF' ebook.txt
+          fi
+
+      - name: Upload ebook artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: learning-lpic-3-305-300-ebook
+          path: learning-lpic-3-305-300-ebook.pdf
+          if-no-files-found: error
+          retention-days: 30
+
+  publish-ebook:
+    name: Publish ebook to main
+    if: (github.event_name == 'push' && github.ref == 'refs/heads/main') || (github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/main')
+    needs: build-ebook
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download ebook artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: learning-lpic-3-305-300-ebook
+
+      - name: Commit ebook to main
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git init
+          git remote add origin "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+          git fetch origin main
+          git checkout -B main origin/main
+          cp learning-lpic-3-305-300-ebook.pdf learning-lpic-3-305-300.pdf
+          git add learning-lpic-3-305-300.pdf
+          git commit -m "docs: publish ebook PDF [skip ci]" || echo "Ebook PDF is unchanged"
+          for attempt in 1 2 3 4 5; do
+            git pull --rebase origin main
+            if git push origin main; then
+              exit 0
+            fi
+          done
+          exit 1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

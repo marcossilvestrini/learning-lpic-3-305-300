@@ -6,10 +6,9 @@ on:
   # push:
   #   branches: ["main"]  
   workflow_run:
-    workflows: ["Translate README"]
+    workflows: ["Generate HTML"]
     branches: [main]
-    types:
-      - completed
+    types: [completed]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -29,6 +28,7 @@ concurrency:
 jobs:
   # Build job
   build:
+    if: github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
