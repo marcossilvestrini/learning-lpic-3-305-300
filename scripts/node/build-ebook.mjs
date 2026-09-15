@@ -10,6 +10,8 @@ const outputDir = path.join(projectRoot, 'build', 'ebook');
 const htmlPath = path.join(outputDir, 'ebook.html');
 const cssPath = path.join(projectRoot, 'scripts', 'node', 'ebook.css');
 const title = process.env.EBOOK_TITLE ?? 'Learning LPIC-3 305-300';
+const courseName = process.env.EBOOK_COURSE_NAME ?? 'Virtualization and Containerization';
+const author = process.env.EBOOK_AUTHOR ?? 'Marcos Silvestrini';
 const language = process.env.EBOOK_LANGUAGE ?? 'English';
 const buildDate = process.env.EBOOK_DATE ?? new Date().toISOString().slice(0, 10);
 
@@ -30,6 +32,7 @@ function cleanReadme(markdown) {
   content = content.replace(/^\s*<p align="right">[\s\S]*?<\/p>\s*$/gim, '');
   content = content.replace(/^\s*<a name="[^"]+"><\/a>\s*$/gim, '');
   content = content.replace(/^\s*---\s*$/gm, '');
+  content = content.replace(/^\s*##\s+(?:🗂️\s*)?Summary\s*$/gim, '');
 
   // Keep the course cover in the generated cover page, not as a duplicate inline image.
   content = content.replace(/^\s*!\[LPIC3-305-300\]\([^\n]+\)\s*$/gim, '');
@@ -75,10 +78,12 @@ const html = `<!doctype html>
   <section class="cover">
     <img class="cover-image" src="${coverImage}" alt="LPIC-3 305-300 course cover">
     <div class="cover-rule"></div>
-    <p class="cover-kicker">Linux virtualization and provisioning</p>
+    <p class="cover-kicker">LPIC-3 CERTIFICATION · 305-300</p>
     <h1>${title}</h1>
+    <p class="cover-course">${courseName}</p>
     <p class="cover-subtitle">Study guide and practical laboratory reference</p>
-    <p class="cover-meta">${language} edition | Generated ${buildDate}</p>
+    <p class="cover-meta">${language} edition · ${author} · ${buildDate}</p>
+    <p class="cover-watermark">${author} · ${buildDate}</p>
   </section>
   ${toc}
   <main class="content">${renderedContent}</main>

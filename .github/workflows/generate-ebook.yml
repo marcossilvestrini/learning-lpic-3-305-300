@@ -40,6 +40,8 @@ jobs:
       - name: Build ebook HTML
         env:
           EBOOK_TITLE: Learning LPIC-3 305-300
+          EBOOK_COURSE_NAME: Virtualization and Containerization
+          EBOOK_AUTHOR: Marcos Silvestrini
           EBOOK_LANGUAGE: English
         run: node scripts/node/build-ebook.mjs
 
