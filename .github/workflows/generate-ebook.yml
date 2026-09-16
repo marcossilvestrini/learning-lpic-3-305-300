@@ -43,6 +43,7 @@ jobs:
           EBOOK_COURSE_NAME: Virtualization and Containerization
           EBOOK_AUTHOR: Marcos Silvestrini
           EBOOK_LANGUAGE: English
+          EBOOK_TIMEZONE: America/Sao_Paulo
         run: node scripts/node/build-ebook.mjs
 
       - name: Render PDF
@@ -65,6 +66,8 @@ jobs:
             format: 'A4',
             printBackground: true,
             preferCSSPageSize: true,
+            outline: true,
+            tagged: true,
             displayHeaderFooter: false,
             margin: { top: '22mm', right: '18mm', bottom: '20mm', left: '18mm' }
           });
@@ -110,23 +113,36 @@ jobs:
       - name: Install ebook converters
         run: |
           sudo apt-get update
-          sudo apt-get install --yes calibre pandoc
+          sudo apt-get install --yes calibre pandoc default-jre unzip
+
+      - name: Download EPUBCheck
+        run: |
+          curl --fail --location --silent --show-error \
+            --output epubcheck.zip \
+            https://github.com/w3c/epubcheck/releases/download/v5.1.0/epubcheck-5.1.0.zip
+          unzip -q epubcheck.zip -d epubcheck-dist
 
       - name: Convert semantic HTML to EPUB 3 with Pandoc
         run: |
           pandoc build/ebook/ebook.html \
             --from=html \
             --to=epub3 \
-            --css=scripts/node/ebook.css \
+            --css=scripts/node/ebook-epub.css \
+            --epub-cover-image=images/lpic3-305-300.jpg \
+            --split-level=2 \
             --metadata=title:"Learning LPIC-3 305-300" \
             --metadata=author:"Marcos Silvestrini" \
             --metadata=lang:en \
+            --metadata=description:"Professional study guide for LPIC-3 305-300 virtualization and containerization." \
+            --metadata=identifier:"urn:uuid:5c9f9d8a-8e21-4b62-a9a0-305300000001" \
+            --metadata=publisher:"Marcos Silvestrini" \
             --output=learning-lpic-3-305-300.epub
 
       - name: Convert EPUB 3 to Kindle AZW3
         run: |
           ebook-convert learning-lpic-3-305-300.epub learning-lpic-3-305-300.azw3 \
             --output-profile kindle_pw3 \
+            --cover images/lpic3-305-300.jpg \
             --title "Learning LPIC-3 305-300" \
             --authors "Marcos Silvestrini" \
             --language en \
@@ -137,6 +153,7 @@ jobs:
           test -s learning-lpic-3-305-300.epub
           test -s learning-lpic-3-305-300.azw3
           unzip -t learning-lpic-3-305-300.epub
+          java -jar epubcheck-dist/epubcheck-5.1.0/epubcheck.jar learning-lpic-3-305-300.epub
           ebook-meta learning-lpic-3-305-300.epub
           ebook-meta learning-lpic-3-305-300.azw3
 

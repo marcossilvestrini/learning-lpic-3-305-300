@@ -76,13 +76,14 @@ Ordem interna:
 2. Instala o Chromium.
 3. Remove elementos exclusivos do GitHub do README.
 4. Gera HTML com capa, sumario e CSS de impressao.
-5. Renderiza o PDF em formato A4.
+5. Renderiza o PDF em formato A4 com outline, marcadores de navegacao e estrutura tagged.
 6. Valida o PDF.
 7. Converte o HTML semantico para EPUB 3 usando Pandoc.
-8. Valida os arquivos digitais.
-9. Converte o EPUB validado para AZW3 usando Calibre.
-10. Publica os formatos como artifacts por 30 dias.
-11. Publica PDF, EPUB e AZW3 na raiz da `main`.
+8. Inclui capa formal, metadados, identificador unico e CSS especifico para EPUB.
+9. Divide o EPUB por capitulos e valida sua estrutura com EPUBCheck.
+10. Converte o EPUB validado para AZW3 usando Calibre com perfil Kindle Paperwhite.
+11. Publica os formatos como artifacts por 30 dias.
+12. Publica PDF, EPUB e AZW3 na raiz da `main`.
 
 O PDF permanente fica disponivel diretamente no repositorio.
 
@@ -153,4 +154,4 @@ Os commits gerados usam `[skip ci]` e nao alteram `README.md`; por isso, nao ini
 
 O PDF do ebook nao e gerado a partir do `index.html` nem da pagina visualizada no GitHub. Ele e criado diretamente a partir do `README.md`, usando HTML e CSS proprios. Isso evita badges, menus, cantos do GitHub, widgets e demais elementos da interface do repositorio.
 
-O EPUB nao e convertido diretamente do PDF. Ele usa o HTML semantico gerado para o ebook, com imagens incorporadas, permitindo texto refluivel em Kindle, Kobo, Apple Books e outros leitores. O AZW3 e derivado do EPUB validado.
+O EPUB nao e convertido diretamente do PDF. Ele usa o HTML semantico gerado para o ebook, com imagens incorporadas, permitindo texto refluivel em Kindle, Kobo, Apple Books e outros leitores. O EPUB possui capa, metadados e identificador proprio e e validado com EPUBCheck. O AZW3 e derivado do EPUB validado.

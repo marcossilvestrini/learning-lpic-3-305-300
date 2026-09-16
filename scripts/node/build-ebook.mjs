@@ -13,7 +13,13 @@ const title = process.env.EBOOK_TITLE ?? 'Learning LPIC-3 305-300';
 const courseName = process.env.EBOOK_COURSE_NAME ?? 'Virtualization and Containerization';
 const author = process.env.EBOOK_AUTHOR ?? 'Marcos Silvestrini';
 const language = process.env.EBOOK_LANGUAGE ?? 'English';
-const buildDate = process.env.EBOOK_DATE ?? new Date().toISOString().slice(0, 10);
+const timezone = process.env.EBOOK_TIMEZONE ?? 'America/Sao_Paulo';
+const buildDate = process.env.EBOOK_DATE ?? new Intl.DateTimeFormat('en-CA', {
+  timeZone: timezone,
+  year: 'numeric',
+  month: '2-digit',
+  day: '2-digit'
+}).format(new Date());
 
 async function imageDataUrl(imagePath) {
   const extension = path.extname(imagePath).toLowerCase();
@@ -90,11 +96,11 @@ const html = `<!doctype html>
   <section class="cover">
     <img class="cover-image" src="${coverImage}" alt="LPIC-3 305-300 course cover">
     <div class="cover-rule"></div>
-    <p class="cover-kicker">LPIC-3 CERTIFICATION · 305-300</p>
+    <p class="cover-kicker">LPIC-3 CERTIFICATION | 305-300</p>
     <h1>${title}</h1>
     <p class="cover-course">${courseName}</p>
     <p class="cover-subtitle">Study guide and practical laboratory reference</p>
-    <p class="cover-meta">${language} edition · ${author} · ${buildDate}</p>
+    <p class="cover-meta">${language} edition | ${author} | ${buildDate}</p>
   </section>
   ${toc}
   <main class="content">${renderedContent}</main>
