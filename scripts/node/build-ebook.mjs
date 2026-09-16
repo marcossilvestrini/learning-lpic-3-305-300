@@ -70,11 +70,11 @@ const cleanedMarkdown = cleanReadme(markdown);
 const md = new MarkdownIt({ html: true, breaks: false, linkify: true, typographer: true })
   .use(anchor, { slugify: value => value.trim().toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '') });
 let renderedContent = md.render(cleanedMarkdown);
-const imageReferences = [...renderedContent.matchAll(/src="(?:\.\/)?images\/([^"#?]+)"/gi)];
-for (const [, imagePath] of imageReferences) {
+const imageReferences = [...renderedContent.matchAll(/src="(?:\/|\.\/)?images\/([^"#?]+)"/gi)];
+for (const [sourceAttribute, imagePath] of imageReferences) {
   const sourceImage = path.join(projectRoot, 'images', imagePath);
   const dataUrl = await imageDataUrl(sourceImage);
-  if (dataUrl) renderedContent = renderedContent.replaceAll(`src="images/${imagePath}"`, `src="${dataUrl}"`);
+  if (dataUrl) renderedContent = renderedContent.replaceAll(sourceAttribute, `src="${dataUrl}"`);
 }
 const coverImage = await imageDataUrl(path.join(projectRoot, 'images', 'lpic3-305-300.jpg'));
 const toc = createToc(renderedContent);

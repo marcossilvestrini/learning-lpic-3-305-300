@@ -97,6 +97,11 @@ jobs:
     needs: build-ebook
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout ebook assets
+        uses: actions/checkout@v4
+        with:
+          ref: main
+
       - name: Download validated ebook source
         uses: actions/download-artifact@v4
         with:
