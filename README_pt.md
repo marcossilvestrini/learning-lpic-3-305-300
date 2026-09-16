@@ -6214,4 +6214,3 @@ Link do Projeto: [https://github.com/marcossilvestrini/learning-lpic-3-305-300](
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/marcossilvestrini
 [def]: https://httpd.apache.org/docs/2.4/mod/directives.html
-
