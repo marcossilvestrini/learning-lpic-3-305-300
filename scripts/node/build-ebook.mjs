@@ -1,5 +1,7 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
+import { execFile } from 'node:child_process';
+import { promisify } from 'node:util';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import MarkdownIt from 'markdown-it';
 import anchor from 'markdown-it-anchor';
@@ -20,6 +22,7 @@ const buildDate = process.env.EBOOK_DATE ?? new Intl.DateTimeFormat('en-CA', {
   month: '2-digit',
   day: '2-digit'
 }).format(new Date());
+const execFileAsync = promisify(execFile);
 
 async function imageDataUrl(imagePath) {
   const extension = path.extname(imagePath).toLowerCase();
@@ -68,11 +71,48 @@ function createToc(renderedHtml) {
   return entries.length === 0 ? '' : `<nav class="toc" aria-label="Table of contents"><h1>Contents</h1><ol>${entries.join('')}</ol></nav>`;
 }
 
+async function renderMermaidBlocks(markdown) {
+  const mermaidBlocks = [...markdown.matchAll(/```mermaid\s*\n([\s\S]*?)\n```/gi)];
+  if (mermaidBlocks.length === 0) return markdown;
+
+  const mermaidCommand = process.platform === 'win32'
+    ? path.join(projectRoot, 'node_modules', '.bin', 'mmdc.cmd')
+    : path.join(projectRoot, 'node_modules', '.bin', 'mmdc');
+  const mermaidDir = path.join(outputDir, 'mermaid');
+  await fs.mkdir(mermaidDir, { recursive: true });
+  let renderedMarkdown = markdown;
+
+  for (let index = 0; index < mermaidBlocks.length; index += 1) {
+    const sourcePath = path.join(mermaidDir, `diagram-${index + 1}.mmd`);
+    const outputPath = path.join(mermaidDir, `diagram-${index + 1}.svg`);
+    await fs.writeFile(sourcePath, mermaidBlocks[index][1].trim(), 'utf8');
+    try {
+      await execFileAsync(mermaidCommand, [
+        '-i', sourcePath,
+        '-o', outputPath,
+        '-b', 'transparent',
+        '-t', 'neutral',
+        '--puppeteerConfigFile', path.join(projectRoot, 'scripts', 'node', 'mermaid-puppeteer.cjs')
+      ], {
+        cwd: projectRoot,
+        maxBuffer: 10 * 1024 * 1024,
+        shell: process.platform === 'win32'
+      });
+    } catch (error) {
+      throw new Error(`Mermaid diagram ${index + 1} could not be rendered: ${error.stderr || error.message}`);
+    }
+    const svg = await fs.readFile(outputPath, 'utf8');
+    const replacement = `\n<div class="mermaid-diagram" role="img" aria-label="Mermaid diagram ${index + 1}">${svg}</div>\n`;
+    renderedMarkdown = renderedMarkdown.replace(mermaidBlocks[index][0], replacement);
+  }
+  return renderedMarkdown;
+}
+
 const [markdown, css] = await Promise.all([
   fs.readFile(sourcePath, 'utf8'),
   fs.readFile(cssPath, 'utf8')
 ]);
-const cleanedMarkdown = cleanReadme(markdown);
+const cleanedMarkdown = await renderMermaidBlocks(cleanReadme(markdown));
 const md = new MarkdownIt({ html: true, breaks: false, linkify: true, typographer: true })
   .use(anchor, { slugify: value => value.trim().toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '') });
 let renderedContent = md.render(cleanedMarkdown);

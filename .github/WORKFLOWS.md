@@ -75,15 +75,16 @@ Ordem interna:
 1. Instala Node.js, Markdown-It e Playwright.
 2. Instala o Chromium.
 3. Remove elementos exclusivos do GitHub do README.
-4. Gera HTML com capa, sumario e CSS de impressao.
-5. Renderiza o PDF em formato A4 com outline, marcadores de navegacao e estrutura tagged.
-6. Valida o PDF.
-7. Converte o HTML semantico para EPUB 3 usando Pandoc.
-8. Inclui capa formal, metadados, identificador unico e CSS especifico para EPUB.
-9. Divide o EPUB por capitulos e valida sua estrutura com EPUBCheck.
-10. Converte o EPUB validado para AZW3 usando Calibre com perfil Kindle Paperwhite.
-11. Publica os formatos como artifacts por 30 dias.
-12. Publica PDF, EPUB e AZW3 na raiz da `main`.
+4. Converte blocos Mermaid em diagramas SVG reais.
+5. Gera HTML com capa, sumario e CSS de impressao.
+6. Renderiza o PDF em formato A4 com outline, marcadores de navegacao e estrutura tagged.
+7. Valida o PDF.
+8. Converte o HTML semantico para EPUB 3 usando Pandoc.
+9. Inclui capa formal, metadados, identificador unico e CSS especifico para EPUB.
+10. Divide o EPUB por capitulos e valida sua estrutura com EPUBCheck.
+11. Converte o EPUB validado para AZW3 usando Calibre com perfil Kindle Paperwhite.
+12. Publica os formatos como artifacts por 30 dias.
+13. Publica PDF, EPUB e AZW3 na raiz da `main`.
 
 O PDF permanente fica disponivel diretamente no repositorio.
 

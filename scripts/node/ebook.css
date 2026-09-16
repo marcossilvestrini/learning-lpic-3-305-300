@@ -26,6 +26,18 @@ html { scroll-behavior: auto; }
 body { margin: 0; background: #ffffff; }
 a { color: #075985; text-decoration: none; }
 img { max-width: 100%; height: auto; }
+.mermaid-diagram {
+  display: block;
+  width: 100%;
+  margin: 6mm auto;
+  text-align: center;
+  break-inside: avoid;
+}
+.mermaid-diagram svg {
+  display: inline-block;
+  max-width: 100%;
+  height: auto;
+}
 
 .cover {
   min-height: 245mm;

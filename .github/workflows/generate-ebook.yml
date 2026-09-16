@@ -32,10 +32,13 @@ jobs:
           node-version: 22
 
       - name: Install ebook renderer
-        run: npm install --no-save --no-package-lock markdown-it markdown-it-anchor playwright@1.55.0
+        run: npm install --no-save --no-package-lock markdown-it markdown-it-anchor playwright@1.55.0 @mermaid-js/mermaid-cli@11.12.0
 
       - name: Install Chromium
         run: npx playwright install --with-deps chromium
+
+      - name: Configure Mermaid browser
+        run: echo "PUPPETEER_EXECUTABLE_PATH=$(node -e \"console.log(require('playwright').chromium.executablePath())\")" >> "$GITHUB_ENV"
 
       - name: Build ebook HTML
         env:
