@@ -10,6 +10,7 @@ const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '
 const sourcePath = path.join(projectRoot, process.env.EBOOK_SOURCE ?? 'README.md');
 const outputDir = path.join(projectRoot, 'build', 'ebook');
 const htmlPath = path.join(outputDir, 'ebook.html');
+const epubHtmlPath = path.join(outputDir, 'ebook-epub.html');
 const cssPath = path.join(projectRoot, 'scripts', 'node', 'ebook.css');
 const title = process.env.EBOOK_TITLE ?? 'Learning LPIC-3 305-300';
 const courseName = process.env.EBOOK_COURSE_NAME ?? 'Virtualization and Containerization';
@@ -60,7 +61,9 @@ function cleanReadme(markdown) {
   content = content.replace(/^\s*<a name="[^"]+"><\/a>\s*$/gim, '');
   content = content.replace(/^\s*---\s*$/gm, '');
   content = content.replace(/^\s*##\s+(?:🗂️\s*)?Summary\s*$/gim, '');
-  content = content.replace(/\[([^\]]+)\]\((?:\/|\.\/|\.\.\/)?(?:scripts|vagrant|configs|apps)\/[^)]+\)/gi, '$1');
+  content = content.replace(/\[([^\]]+)\]\((?:\/|\.\/|\.\.\/)?(?:scripts|vagrant|configs|apps)\/[^)]*\)/gi, '$1');
+  content = content.replace(/!\[([^\]]*)\]\((?:\/|\.\/|\.\.\/)?image\/[^)]*\)/gi, '$1');
+  content = content.replace(/\[!?\[[^\]]*\]\(https?:\/\/[^)]+\)\](?:\([^)]*\))?/gi, '');
 
   // Keep the course cover in the generated cover page, not as a duplicate inline image.
   content = content.replace(/^\s*!\[LPIC3-305-300\]\([^\n]+\)\s*$/gim, '');
@@ -182,7 +185,9 @@ const html = `<!doctype html>
   <main class="content">${renderedContent}</main>
 </body>
 </html>`;
+const epubHtml = html.replace(/\s*<section class="cover">[\s\S]*?<\/section>/i, '');
 
 await fs.mkdir(outputDir, { recursive: true });
 await fs.writeFile(htmlPath, html, 'utf8');
+await fs.writeFile(epubHtmlPath, epubHtml, 'utf8');
 console.log(`Generated ${htmlPath}`);

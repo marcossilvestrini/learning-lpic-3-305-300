@@ -97,6 +97,7 @@ jobs:
           path: |
             learning-lpic-3-305-300-ebook.pdf
             build/ebook/ebook.html
+            build/ebook/ebook-epub.html
           if-no-files-found: error
           retention-days: 30
 
@@ -130,7 +131,7 @@ jobs:
       - name: Convert semantic HTML to EPUB 3 with Pandoc
         run: |
           cp images/lpic3-305-300.jpg images/lpic3-305-300.png
-          pandoc build/ebook/ebook.html \
+          pandoc build/ebook/ebook-epub.html \
             --from=html \
             --to=epub3 \
             --css=scripts/node/ebook-epub.css \
@@ -143,6 +144,13 @@ jobs:
             --metadata=identifier:"urn:uuid:5c9f9d8a-8e21-4b62-a9a0-305300000001" \
             --metadata=publisher:"Marcos Silvestrini" \
             --output=learning-lpic-3-305-300.epub
+
+      - name: Sanitize EPUB package
+        run: |
+          python3 scripts/python/sanitize_epub.py \
+            learning-lpic-3-305-300.epub \
+            learning-lpic-3-305-300-sanitized.epub
+          mv learning-lpic-3-305-300-sanitized.epub learning-lpic-3-305-300.epub
 
       - name: Convert EPUB 3 to Kindle AZW3
         run: |
