@@ -291,4 +291,3 @@
 [linkedin-url]: https://linkedin.com/in/marcossilvestrini
 [def]: https://httpd.apache.org/docs/2.4/mod/directives.html
 
-
