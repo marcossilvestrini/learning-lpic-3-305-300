@@ -38,7 +38,9 @@ jobs:
         run: npx playwright install --with-deps chromium
 
       - name: Configure Mermaid browser
-        run: echo "PUPPETEER_EXECUTABLE_PATH=$(node -e \"console.log(require('playwright').chromium.executablePath())\")" >> "$GITHUB_ENV"
+        run: |
+          EXECUTABLE_PATH=$(node -e "console.log(require('playwright').chromium.executablePath())")
+          echo "PUPPETEER_EXECUTABLE_PATH=$EXECUTABLE_PATH" >> "$GITHUB_ENV"
 
       - name: Build ebook HTML
         env:
