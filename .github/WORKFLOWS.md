@@ -78,9 +78,9 @@ Ordem interna:
 4. Gera HTML com capa, sumario e CSS de impressao.
 5. Renderiza o PDF em formato A4.
 6. Valida o PDF.
-7. Converte o HTML semantico para EPUB 3 usando Calibre.
+7. Converte o HTML semantico para EPUB 3 usando Pandoc.
 8. Valida os arquivos digitais.
-9. Converte o EPUB validado para AZW3 para leitores Kindle compativeis.
+9. Converte o EPUB validado para AZW3 usando Calibre.
 10. Publica os formatos como artifacts por 30 dias.
 11. Publica PDF, EPUB e AZW3 na raiz da `main`.
 
