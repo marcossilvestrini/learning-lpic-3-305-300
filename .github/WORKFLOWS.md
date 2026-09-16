@@ -78,10 +78,11 @@ Ordem interna:
 4. Gera HTML com capa, sumario e CSS de impressao.
 5. Renderiza o PDF em formato A4.
 6. Valida o PDF.
-7. Converte o PDF para EPUB 3 e AZW3 usando Calibre.
+7. Converte o HTML semantico para EPUB 3 usando Calibre.
 8. Valida os arquivos digitais.
-9. Publica os formatos como artifacts por 30 dias.
-10. Publica PDF, EPUB e AZW3 na raiz da `main`.
+9. Converte o EPUB validado para AZW3 para leitores Kindle compativeis.
+10. Publica os formatos como artifacts por 30 dias.
+11. Publica PDF, EPUB e AZW3 na raiz da `main`.
 
 O PDF permanente fica disponivel diretamente no repositorio.
 
@@ -148,6 +149,8 @@ Os commits gerados usam `[skip ci]` e nao alteram `README.md`; por isso, nao ini
 | Site | GitHub Pages |
 | Traducao portuguesa | Crowdin e arquivos de traducao |
 
-## Observacao sobre o PDF
+## Observacao sobre o PDF e os formatos digitais
 
 O PDF do ebook nao e gerado a partir do `index.html` nem da pagina visualizada no GitHub. Ele e criado diretamente a partir do `README.md`, usando HTML e CSS proprios. Isso evita badges, menus, cantos do GitHub, widgets e demais elementos da interface do repositorio.
+
+O EPUB nao e convertido diretamente do PDF. Ele usa o HTML semantico gerado para o ebook, com imagens incorporadas, permitindo texto refluivel em Kindle, Kobo, Apple Books e outros leitores. O AZW3 e derivado do EPUB validado.

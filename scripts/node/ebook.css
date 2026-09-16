@@ -64,13 +64,6 @@ img { max-width: 100%; height: auto; }
 }
 .cover-subtitle { margin: 8mm auto 0; color: #52616b; font-size: 14pt; }
 .cover-meta { margin-top: 18mm; color: #68717c; font: 9pt Arial, sans-serif; }
-.cover-watermark {
-  margin: 16mm auto 0;
-  color: #a7b2b5;
-  font: 8pt Arial, sans-serif;
-  letter-spacing: .8px;
-  text-transform: uppercase;
-}
 
 .toc { page-break-after: always; }
 .toc h1 {

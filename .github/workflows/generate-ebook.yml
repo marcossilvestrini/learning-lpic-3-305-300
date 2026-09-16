@@ -85,8 +85,10 @@ jobs:
       - name: Upload ebook artifact
         uses: actions/upload-artifact@v4
         with:
-          name: learning-lpic-3-305-300-ebook
-          path: learning-lpic-3-305-300-ebook.pdf
+          name: learning-lpic-3-305-300-ebook-source
+          path: |
+            learning-lpic-3-305-300-ebook.pdf
+            build/ebook/ebook.html
           if-no-files-found: error
           retention-days: 30
 
@@ -95,19 +97,19 @@ jobs:
     needs: build-ebook
     runs-on: ubuntu-latest
     steps:
-      - name: Download validated PDF
+      - name: Download validated ebook source
         uses: actions/download-artifact@v4
         with:
-          name: learning-lpic-3-305-300-ebook
+          name: learning-lpic-3-305-300-ebook-source
 
       - name: Install Calibre
         run: |
           sudo apt-get update
           sudo apt-get install --yes calibre
 
-      - name: Convert PDF to EPUB 3
+      - name: Convert semantic HTML to EPUB 3
         run: |
-          ebook-convert learning-lpic-3-305-300-ebook.pdf learning-lpic-3-305-300.epub \
+          ebook-convert build/ebook/ebook.html learning-lpic-3-305-300.epub \
             --output-profile tablet \
             --epub-version 3 \
             --title "Learning LPIC-3 305-300" \
@@ -117,7 +119,7 @@ jobs:
 
       - name: Convert PDF to Kindle AZW3
         run: |
-          ebook-convert learning-lpic-3-305-300-ebook.pdf learning-lpic-3-305-300.azw3 \
+          ebook-convert learning-lpic-3-305-300.epub learning-lpic-3-305-300.azw3 \
             --output-profile kindle_pw3 \
             --title "Learning LPIC-3 305-300" \
             --authors "Marcos Silvestrini" \
@@ -130,6 +132,7 @@ jobs:
           test -s learning-lpic-3-305-300.azw3
           unzip -t learning-lpic-3-305-300.epub
           ebook-meta learning-lpic-3-305-300.epub
+          ebook-meta learning-lpic-3-305-300.azw3
 
       - name: Upload digital book artifacts
         uses: actions/upload-artifact@v4
@@ -156,7 +159,7 @@ jobs:
       - name: Download ebook artifact
         uses: actions/download-artifact@v4
         with:
-          name: learning-lpic-3-305-300-ebook
+          name: learning-lpic-3-305-300-ebook-source
 
       - name: Download digital book artifacts
         uses: actions/download-artifact@v4

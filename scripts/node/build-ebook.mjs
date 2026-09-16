@@ -15,6 +15,15 @@ const author = process.env.EBOOK_AUTHOR ?? 'Marcos Silvestrini';
 const language = process.env.EBOOK_LANGUAGE ?? 'English';
 const buildDate = process.env.EBOOK_DATE ?? new Date().toISOString().slice(0, 10);
 
+async function imageDataUrl(imagePath) {
+  const extension = path.extname(imagePath).toLowerCase();
+  const mimeTypes = { '.jpg': 'image/jpeg', '.jpeg': 'image/jpeg', '.png': 'image/png', '.gif': 'image/gif', '.webp': 'image/webp' };
+  const mimeType = mimeTypes[extension];
+  if (!mimeType) return null;
+  const data = await fs.readFile(imagePath);
+  return `data:${mimeType};base64,${data.toString('base64')}`;
+}
+
 function cleanReadme(markdown) {
   let content = markdown.replace(/^\uFEFF/, '').replace(/\r\n?/g, '\n');
 
@@ -61,10 +70,13 @@ const cleanedMarkdown = cleanReadme(markdown);
 const md = new MarkdownIt({ html: true, breaks: false, linkify: true, typographer: true })
   .use(anchor, { slugify: value => value.trim().toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '') });
 let renderedContent = md.render(cleanedMarkdown);
-renderedContent = renderedContent.replace(/src="(?:\.\/)?images\/([^"#?]+)"/gi, (_match, imagePath) => {
-  return `src="${pathToFileURL(path.join(projectRoot, 'images', imagePath)).href}"`;
-});
-const coverImage = pathToFileURL(path.join(projectRoot, 'images', 'lpic3-305-300.jpg')).href;
+const imageReferences = [...renderedContent.matchAll(/src="(?:\.\/)?images\/([^"#?]+)"/gi)];
+for (const [, imagePath] of imageReferences) {
+  const sourceImage = path.join(projectRoot, 'images', imagePath);
+  const dataUrl = await imageDataUrl(sourceImage);
+  if (dataUrl) renderedContent = renderedContent.replaceAll(`src="images/${imagePath}"`, `src="${dataUrl}"`);
+}
+const coverImage = await imageDataUrl(path.join(projectRoot, 'images', 'lpic3-305-300.jpg'));
 const toc = createToc(renderedContent);
 const html = `<!doctype html>
 <html lang="en">
@@ -82,8 +94,7 @@ const html = `<!doctype html>
     <h1>${title}</h1>
     <p class="cover-course">${courseName}</p>
     <p class="cover-subtitle">Study guide and practical laboratory reference</p>
-    <p class="cover-meta">${language} edition</p>
-    <p class="cover-watermark">${author} · ${buildDate}</p>
+    <p class="cover-meta">${language} edition · ${author} · ${buildDate}</p>
   </section>
   ${toc}
   <main class="content">${renderedContent}</main>
