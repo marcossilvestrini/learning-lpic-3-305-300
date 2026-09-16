@@ -79,7 +79,15 @@ async function renderMermaidBlocks(markdown) {
     ? path.join(projectRoot, 'node_modules', '.bin', 'mmdc.cmd')
     : path.join(projectRoot, 'node_modules', '.bin', 'mmdc');
   const mermaidDir = path.join(outputDir, 'mermaid');
+  const puppeteerConfigPath = path.join(mermaidDir, 'puppeteer.json');
+  const puppeteerConfig = {
+    args: ['--no-sandbox', '--disable-setuid-sandbox']
+  };
+  if (process.env.PUPPETEER_EXECUTABLE_PATH) {
+    puppeteerConfig.executablePath = process.env.PUPPETEER_EXECUTABLE_PATH;
+  }
   await fs.mkdir(mermaidDir, { recursive: true });
+  await fs.writeFile(puppeteerConfigPath, JSON.stringify(puppeteerConfig), 'utf8');
   let renderedMarkdown = markdown;
 
   for (let index = 0; index < mermaidBlocks.length; index += 1) {
@@ -92,7 +100,7 @@ async function renderMermaidBlocks(markdown) {
         '-o', outputPath,
         '-b', 'transparent',
         '-t', 'neutral',
-        '--puppeteerConfigFile', path.join(projectRoot, 'scripts', 'node', 'mermaid-puppeteer.cjs')
+        '--puppeteerConfigFile', puppeteerConfigPath
       ], {
         cwd: projectRoot,
         maxBuffer: 10 * 1024 * 1024,
