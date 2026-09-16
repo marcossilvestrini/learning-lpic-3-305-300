@@ -19,8 +19,7 @@ h3 { font-size: 1.15em; }
 a { color: #075985; }
 
 img { max-width: 100%; height: auto; }
-.mermaid-diagram { display: block; margin: 1em auto; text-align: center; page-break-inside: avoid; }
-.mermaid-diagram svg { max-width: 100%; height: auto; }
+.mermaid-diagram { display: block; max-width: 100%; height: auto; margin: 1em auto; page-break-inside: avoid; }
 pre {
   white-space: pre-wrap;
   overflow-wrap: anywhere;

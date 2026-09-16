@@ -32,3 +32,7 @@ After, run vagrant up
 ------------------------------------------------
 Erro plugin vbguest in Vagrant 2.4.3
 https://github.com/hashicorp/vagrant/issues/13404#issuecomment-2490437792
+
+------------------------------------------------
+Erro Vagrant vmware utility installation not able to identify latest version of vmware workstation
+https://github.com/hashicorp/vagrant-vmware-desktop/issues/177

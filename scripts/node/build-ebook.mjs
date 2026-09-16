@@ -27,9 +27,18 @@ const execFileAsync = promisify(execFile);
 async function imageDataUrl(imagePath) {
   const extension = path.extname(imagePath).toLowerCase();
   const mimeTypes = { '.jpg': 'image/jpeg', '.jpeg': 'image/jpeg', '.png': 'image/png', '.gif': 'image/gif', '.webp': 'image/webp' };
-  const mimeType = mimeTypes[extension];
-  if (!mimeType) return null;
   const data = await fs.readFile(imagePath);
+  const signature = data.subarray(0, 12).toString('hex');
+  const mimeType = signature.startsWith('89504e470d0a1a0a')
+    ? 'image/png'
+    : signature.startsWith('ffd8ff')
+      ? 'image/jpeg'
+      : signature.startsWith('47494638')
+        ? 'image/gif'
+        : signature.startsWith('52494646') && data.subarray(8, 12).toString('ascii') === 'WEBP'
+          ? 'image/webp'
+          : mimeTypes[extension];
+  if (!mimeType) return null;
   return `data:${mimeType};base64,${data.toString('base64')}`;
 }
 
@@ -51,6 +60,7 @@ function cleanReadme(markdown) {
   content = content.replace(/^\s*<a name="[^"]+"><\/a>\s*$/gim, '');
   content = content.replace(/^\s*---\s*$/gm, '');
   content = content.replace(/^\s*##\s+(?:🗂️\s*)?Summary\s*$/gim, '');
+  content = content.replace(/\[([^\]]+)\]\((?:\/|\.\/|\.\.\/)?(?:scripts|vagrant|configs|apps)\/[^)]+\)/gi, '$1');
 
   // Keep the course cover in the generated cover page, not as a duplicate inline image.
   content = content.replace(/^\s*!\[LPIC3-305-300\]\([^\n]+\)\s*$/gim, '');
@@ -58,6 +68,15 @@ function cleanReadme(markdown) {
   content = content.replace(/^\s*\[!\[[^\n]+\]\([^\n]+\)\]\([^\n]+\)\s*$/gm, '');
 
   return content.replace(/\n{3,}/g, '\n\n').trim();
+}
+
+function makeHtmlIdsUnique(html) {
+  const seen = new Map();
+  return html.replace(/\sid="([^"]+)"/g, (match, id) => {
+    const count = (seen.get(id) ?? 0) + 1;
+    seen.set(id, count);
+    return count === 1 ? match : ` id="${id}-${count}"`;
+  });
 }
 
 function createToc(renderedHtml) {
@@ -92,7 +111,7 @@ async function renderMermaidBlocks(markdown) {
 
   for (let index = 0; index < mermaidBlocks.length; index += 1) {
     const sourcePath = path.join(mermaidDir, `diagram-${index + 1}.mmd`);
-    const outputPath = path.join(mermaidDir, `diagram-${index + 1}.svg`);
+    const outputPath = path.join(mermaidDir, `diagram-${index + 1}.png`);
     await fs.writeFile(sourcePath, mermaidBlocks[index][1].trim(), 'utf8');
     try {
       await execFileAsync(mermaidCommand, [
@@ -109,8 +128,8 @@ async function renderMermaidBlocks(markdown) {
     } catch (error) {
       throw new Error(`Mermaid diagram ${index + 1} could not be rendered: ${error.stderr || error.message}`);
     }
-    const svg = await fs.readFile(outputPath, 'utf8');
-    const replacement = `\n<div class="mermaid-diagram" role="img" aria-label="Mermaid diagram ${index + 1}">${svg}</div>\n`;
+    const png = await fs.readFile(outputPath);
+    const replacement = `\n<img class="mermaid-diagram" src="data:image/png;base64,${png.toString('base64')}" alt="Mermaid diagram ${index + 1}">\n`;
     renderedMarkdown = renderedMarkdown.replace(mermaidBlocks[index][0], replacement);
   }
   return renderedMarkdown;
@@ -121,8 +140,16 @@ const [markdown, css] = await Promise.all([
   fs.readFile(cssPath, 'utf8')
 ]);
 const cleanedMarkdown = await renderMermaidBlocks(cleanReadme(markdown));
+const headingSlugs = new Map();
 const md = new MarkdownIt({ html: true, breaks: false, linkify: true, typographer: true })
-  .use(anchor, { slugify: value => value.trim().toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '') });
+  .use(anchor, {
+    slugify: value => {
+      const base = value.trim().toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+      const count = (headingSlugs.get(base) ?? 0) + 1;
+      headingSlugs.set(base, count);
+      return count === 1 ? base : `${base}-${count}`;
+    }
+  });
 let renderedContent = md.render(cleanedMarkdown);
 const imageReferences = [...renderedContent.matchAll(/src="(?:\/|\.\/)?images\/([^"#?]+)"/gi)];
 for (const [sourceAttribute, imagePath] of imageReferences) {
@@ -131,6 +158,7 @@ for (const [sourceAttribute, imagePath] of imageReferences) {
   if (dataUrl) renderedContent = renderedContent.replaceAll(sourceAttribute, `src="${dataUrl}"`);
 }
 const coverImage = await imageDataUrl(path.join(projectRoot, 'images', 'lpic3-305-300.jpg'));
+renderedContent = makeHtmlIdsUnique(renderedContent);
 const toc = createToc(renderedContent);
 const html = `<!doctype html>
 <html lang="en">

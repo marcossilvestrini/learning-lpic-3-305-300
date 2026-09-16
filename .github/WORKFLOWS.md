@@ -75,7 +75,7 @@ Ordem interna:
 1. Instala Node.js, Markdown-It e Playwright.
 2. Instala o Chromium.
 3. Remove elementos exclusivos do GitHub do README.
-4. Converte blocos Mermaid em diagramas SVG reais.
+4. Converte blocos Mermaid em imagens PNG reais e portaveis.
 5. Gera HTML com capa, sumario e CSS de impressao.
 6. Renderiza o PDF em formato A4 com outline, marcadores de navegacao e estrutura tagged.
 7. Valida o PDF.
