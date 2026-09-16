@@ -19,7 +19,11 @@ def sanitize_epub(source: Path, destination: Path) -> None:
         if name.lower().endswith(".svgz"):
             invalid_images.add(name)
 
-    content_files = [name for name in entries if name.lower().endswith((".xhtml", ".html"))]
+    content_files = [
+        name for name in entries
+        if name.lower().endswith((".xhtml", ".html"))
+        and not name.lower().endswith("nav.xhtml")
+    ]
     available = set(entries) - invalid_images
     updated = {}
 
@@ -45,7 +49,7 @@ def sanitize_epub(source: Path, destination: Path) -> None:
             target = source.group(1).split("#", 1)[0]
             if target.lower().endswith((".jfif", ".svgz")):
                 alt = re.search(r'alt="([^"]*)"', tag)
-                return f'<p>{alt.group(1) if alt else "[image omitted]"}</p>'
+                return alt.group(1) if alt else "[image omitted]"
             return tag
 
         text = re.sub(r'<(?:img|image)\b[^>]*>', clean_image, text, flags=re.I)
