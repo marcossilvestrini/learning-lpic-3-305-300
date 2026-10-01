@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kubernetes Dataplane Unificado & Animado</title>
+    <style>
+        :root {
+            --bg-color: #111216;
+            --card-bg: #1a1c23;
+            --border-color: #2d3139;
+            --text-color: #e2e8f0;
+            --primary: #38bdf8;
+            --success: #4ade80;
+            --warning: #fbbf24;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1 { color: var(--primary); margin-bottom: 5px; font-size: 24px; }
+        p { margin-top: 0; color: #94a3b8; font-size: 14px; text-align: center; }
+
+        .controls { margin-bottom: 20px; display: flex; gap: 10px; }
+        button {
+            padding: 10px 20px;
+            font-size: 14px;
+            font-weight: 600;
+            background-color: var(--primary);
+            color: #0f172a;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        button:hover { opacity: 0.9; transform: translateY(-1px); }
+
+        .cluster {
+            display: flex;
+            gap: 30px;
+            background: var(--card-bg);
+            padding: 25px;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            position: relative;
+            width: 1050px;
+            box-sizing: border-box;
+        }
+
+        .plane {
+            flex: 1;
+            border: 2px dashed #475569;
+            border-radius: 8px;
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            background: #15171c;
+            position: relative;
+        }
+
+        .plane-title {
+            text-align: center;
+            font-weight: bold;
+            color: #94a3b8;
+            text-transform: uppercase;
+            font-size: 12px;
+            letter-spacing: 0.05em;
+            margin-bottom: 5px;
+        }
+
+        .component {
+            background: #222530;
+            border: 1px solid var(--border-color);
+            padding: 12px;
+            border-radius: 6px;
+            text-align: center;
+            font-weight: 600;
+            font-size: 13px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .nested-box {
+            margin-top: 10px;
+            border: 1px dashed #475569;
+            padding: 8px;
+            border-radius: 4px;
+            background: #1a1c23;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .sub-component {
+            background: #282c37;
+            border: 1px solid #3f4454;
+            padding: 6px;
+            font-size: 11px;
+            border-radius: 4px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .active-comp {
+            background: #0369a1 !important;
+            border-color: var(--primary) !important;
+            box-shadow: 0 0 12px rgba(56, 189, 248, 0.4);
+            color: #fff;
+        }
+
+        .active-success {
+            background: #15803d !important;
+            border-color: var(--success) !important;
+            box-shadow: 0 0 12px rgba(74, 222, 128, 0.4);
+        }
+
+        .status-box {
+            margin-top: 20px;
+            background: #0b0c10;
+            padding: 15px;
+            border-radius: 6px;
+            width: 1050px;
+            box-sizing: border-box;
+            border-left: 4px solid var(--primary);
+            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+            font-size: 14px;
+            line-height: 1.5;
+            min-height: 44px;
+        }
+
+        .packet {
+            width: 10px;
+            height: 10px;
+            background-color: var(--primary);
+            border-radius: 50%;
+            position: absolute;
+            z-index: 100;
+            box-shadow: 0 0 8px var(--primary);
+            display: none;
+            transition: all 1.2s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Kubernetes Unified Dataplane Simulator</h1>
+    <p>Fluxo integrado de baixo nível: Do Control Plane ao Kernel do Linux</p>
+
+    <div class="controls">
+        <button id="start-btn" onclick="runUnifiedFlow()">Iniciar Fluxo de Deployment Completo</button>
+    </div>
+
+    <div class="cluster">
+        <div id="packet" class="packet"></div>
+
+        <!-- CONTROL PLANE -->
+        <div class="plane">
+            <div class="plane-title">Control Plane (Master Node)</div>
+            <div id="api-server" class="component">kube-apiserver</div>
+            <div id="etcd" class="component">etcd (Estado/Mapeamento)</div>
+            <div id="controller" class="component">kube-controller-manager</div>
+            <div id="scheduler" class="component">kube-scheduler</div>
+        </div>
+
+        <!-- WORKER NODE -->
+        <div class="plane">
+            <div class="plane-title">Worker Node (Dataplane)</div>
+            <div id="kubelet" class="component">kubelet</div>
+            
+            <!-- ECOSSISTEMA RUNTIME -->
+            <div id="runtime-box" class="component" style="text-align: left; font-size:12px; color:#94a3b8;">
+                Container Runtime Interface (CRI)
+                <div class="nested-box" style="color:var(--text-color);">
+                    <div id="containerd" class="sub-component">containerd (High-Level)</div>
+                    <div id="shim" class="sub-component">containerd-shim (Process Supervisor)</div>
+                    <div id="runc" class="sub-component">runC (Low-Level OCI Runtime)</div>
+                </div>
+            </div>
+
+            <!-- LINUX OS INTERNALS -->
+            <div id="kernel-box" class="component" style="text-align: left; font-size:12px; color:#94a3b8;">
+                Linux OS (Kernel Layer)
+                <div class="nested-box" style="color:var(--text-color);">
+                    <div id="kernel" class="sub-component">Linux Kernel (Namespaces & Cgroups)</div>
+                    <div id="cni" class="sub-component">CNI Plugin (Network Interface & IP)</div>
+                </div>
+            </div>
+
+            <!-- POD & NETWORKING -->
+            <div id="pod" class="component">Pod (Container Iniciado)</div>
+            <div id="proxy" class="component">kube-proxy (iptables / IPVS Router)</div>
+        </div>
+    </div>
+
+    <div id="status" class="status-box">Clique no botão acima para iniciar a simulação passo a passo...</div>
+
+    <script>
+        const statusBox = document.getElementById('status');
+        const packet = document.getElementById('packet');
+        const startBtn = document.getElementById('start-btn');
+
+        const flowSteps = [
+            { from: 'api-server', to: 'etcd', desc: "1. Usuário executa 'kubectl apply'. O kube-apiserver valida o manifesto e grava as especificações desejadas de forma persistente no etcd.", active: 'api-server' },
+            { from: 'etcd', to: 'controller', desc: "2. O kube-controller-manager detecta a nova especificação, valida o ciclo e cria o objeto ReplicaSet e os registros abstratos do Pod.", active: 'controller' },
+            { from: 'controller', to: 'scheduler', desc: "3. O kube-scheduler intercepta o Pod pendente de alocação, analisa a telemetria dos nós do cluster e escolhe este Worker Node.", active: 'scheduler' },
+            { from: 'scheduler', to: 'kubelet', desc: "4. A decisão é enviada de volta ao api-server, que aciona o componente de borda do Worker Node: o kubelet.", active: 'kubelet' },
+            { from: 'kubelet', to: 'containerd', desc: "5. O kubelet traduz o manifesto do Pod em chamadas gRPC e aciona o containerd através da especificação CRI.", active: 'containerd' },
+            { from: 'containerd', to: 'shim', desc: "6. Para evitar que um crash no runtime derrube a aplicação, o containerd desvincula o processo gerando um intermediário persistente: o containerd-shim.", active: 'shim' },
+            { from: 'shim', to: 'runc', desc: "7. O containerd-shim invoca o utilitário efêmero runC (OCI Runtime de baixo nível) passando o bundle de configurações de execução.", active: 'runc' },
+            { from: 'runc', to: 'kernel', desc: "8. O runC interage diretamente com o Kernel do Linux via chamadas de sistema, criando as barreiras de isolamento usando Namespaces e Cgroups.", active: 'kernel' },
+            { from: 'kernel', to: 'cni', desc: "9. Com o espaço isolado no Kernel, o ecossistema chama o plugin CNI para alocar o par de interfaces veth e associar um IP exclusivo do cluster ao espaço de rede do container.", active: 'cni' },
+            { from: 'cni', to: 'pod', desc: "10. O runC encerra seu papel, e o processo principal da aplicação assume. O Pod agora passa oficialmente para o estado 'Running'!", active: 'pod', success: true },
+            { from: 'pod', to: 'proxy', desc: "11. Finalmente, o kube-proxy atualiza as regras de roteamento (como iptables ou IPVS) locais do host para que qualquer tráfego direcionado ao Service encontre o novo IP do Pod.", active: 'proxy' }
+        ];
+
+        function cleanClasses() {
+            document.querySelectorAll('.component, .sub-component').forEach(el => {
+                el.classList.remove('active-comp', 'active-success');
+            });
+        }
+
+        function movePacket(fromId, toId) {
+            return new Promise((resolve) => {
+                const fromEl = document.getElementById(fromId);
+                const toEl = document.getElementById(toId);
+                const clusterRect = document.querySelector('.cluster').getBoundingClientRect();
+                const fromRect = fromEl.getBoundingClientRect();
+                const toRect = toEl.getBoundingClientRect();
+
+                packet.style.left = `${fromRect.left - clusterRect.left + fromRect.width / 2 - 5}px`;
+                packet.style.top = `${fromRect.top - clusterRect.top + fromRect.height / 2 - 5}px`;
+                packet.style.display = 'block';
+
+                setTimeout(() => {
+                    packet.style.left = `${toRect.left - clusterRect.left + toRect.width / 2 - 5}px`;
+                    packet.style.top = `${toRect.top - clusterRect.top + toRect.height / 2 - 5}px`;
+                }, 50);
+
+                setTimeout(() => {
+                    packet.style.display = 'none';
+                    resolve();
+                }, 1250);
+            });
+        }
+
+        async function runUnifiedFlow() {
+            startBtn.disabled = true;
+            cleanClasses();
+
+            for (const step of flowSteps) {
+                statusBox.innerText = `=> ${step.desc}`;
+                statusBox.style.borderLeftColor = step.success ? 'var(--success)' : 'var(--primary)';
+                await movePacket(step.from, step.to);
+                cleanClasses();
+
+                const targetNode = document.getElementById(step.active);
+                if (targetNode) {
+                    targetNode.classList.add(step.success ? 'active-success' : 'active-comp');
+                }
+
+                await new Promise(resolve => setTimeout(resolve, 2200));
+            }
+
+            statusBox.innerText = "=> [Concluído] Ciclo completo do Dataplane executado. Cluster consistente e rotas ativas!";
+            statusBox.style.borderLeftColor = 'var(--success)';
+            startBtn.disabled = false;
+        }
+    </script>
+</body>
+</html>

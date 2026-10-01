@@ -1,0 +1,36 @@
+{
+  "title": "🖥️ 351.3 QEMU",
+  "subtitle": "Topic 351: Full Virtualization - QEMU & KVM Low-Level Interaction",
+  "planes": [
+    {
+      "id": "userspace-plane",
+      "title": "Userspace (QEMU VMM)",
+      "components": [
+        { "id": "qemu-cli", "label": "qemu-system-x86_64" },
+        { "id": "device-model", "label": "Device Emulation (VirtIO / PCI)" }
+      ]
+    },
+    {
+      "id": "kernel-plane",
+      "title": "Linux Kernel & Hardware Layer",
+      "components": [
+        { 
+          "id": "kvm-module", 
+          "label": "KVM Framework (/dev/kvm)",
+          "nested": [
+            { "id": "vcpu-sched", "label": "vCPU Context Switch & Guest Mode" },
+            { "id": "vt-x", "label": "Hardware Extensions (Intel VT-x / AMD-V)" }
+          ]
+        },
+        { "id": "physical-hw", "label": "Physical Hardware (CPU / RAM / NIC)" }
+      ]
+    }
+  ],
+  "steps": [
+    { "from": "qemu-cli", "to": "device-model", "desc": "1. QEMU inicializa o processo VMM no Userspace e instancia os descritores de dispositivos virtuais.", "active": "device-model" },
+    { "from": "device-model", "to": "kvm-module", "desc": "2. O QEMU interage com o kernel acionando system calls (ioctls) através do device node /dev/kvm.", "active": "kvm-module" },
+    { "from": "kvm-module", "to": "vcpu-sched", "desc": "3. O módulo KVM assume o controle, gerenciando o ciclo de vida da vCPU e alternando o contexto para o modo Guest.", "active": "vcpu-sched" },
+    { "from": "vcpu-sched", "to": "vt-x", "desc": "4. O processador executa instruções nativas diretamente no silício utilizando as extensões de virtualização (Intel VT-x ou AMD-V).", "active": "vt-x" },
+    { "from": "vt-x", "to": "physical-hw", "desc": "5. Operações de CPU e memória concluem com sobrecarga mínima (Near-native speed), e o controle retorna ao QEMU para I/O emulado.", "active": "physical-hw", "success": true }
+  ]
+}
