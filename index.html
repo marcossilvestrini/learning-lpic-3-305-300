@@ -585,6 +585,8 @@ Migration (P2V, V2V)
       The systemd-machined service is dedicated to managing virtual machines and containers within the systemd ecosystem.
       It provides essential functionalities for controlling, monitoring, and maintaining virtual instances, offering robust integration and efficiency within Linux environments.
     </p>
+    <h4 id="dataplane-for-explaining-virtualization-concepts-and-theory"><a class="anchor" aria-hidden="true" tabindex="-1" href="#dataplane-for-explaining-virtualization-concepts-and-theory"><span class="octicon octicon-link"></span></a>Dataplane for explaining Virtualization Concepts and Theory</h4>
+    <p><a href="https://marcossilvestrini.github.io/learning-lpic-3-305-300/dataplanes/topic-351/351.1.html"><img src="https://img.shields.io/badge/%E2%96%B6%EF%B8%8F_View_Dataplane-Live-06b6d4?style=for-the-badge" alt="Play"></a></p>
     <p align="right">(<a href="#topic-351.1">back to sub Topic 351.1</a>)</p>
     <p align="right">(<a href="#topic-351">back to Topic 351</a>)</p>
     <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -800,6 +802,8 @@ ln -s /etc/xen/lpic3-pv-guest /etc/xen/auto/lpic3-pv-guest
     <p>By specifying “vif” directives in the domain configuration files, administrators can define network interfaces, assign IP addresses, set up VLANs, and configure other networking parameters for virtual machines running on Xen hosts. For example: vif = [‘bridge=xenbr0’], in this case, it connects the VM’s network interface to the Xen bridge named “xenbr0”.</p>
     <h4 id="xen-lab"><a class="anchor" aria-hidden="true" tabindex="-1" href="#xen-lab"><span class="octicon octicon-link"></span></a>Xen Lab</h4>
     <p>Use this script for lab provisioning: <a href="scripts/xen/xen.sh">xen.sh</a></p>
+    <h4 id="dataplane-for-explaining-xen"><a class="anchor" aria-hidden="true" tabindex="-1" href="#dataplane-for-explaining-xen"><span class="octicon octicon-link"></span></a>Dataplane for explaining Xen</h4>
+    <p><a href="https://marcossilvestrini.github.io/learning-lpic-3-305-300/dataplanes/topic-351/351.2.html"><img src="https://img.shields.io/badge/%E2%96%B6%EF%B8%8F_View_Dataplane-Live-06b6d4?style=for-the-badge" alt="Play"></a></p>
     <h4 id="-3512-important-commands"><a class="anchor" aria-hidden="true" tabindex="-1" href="#-3512-important-commands"><span class="octicon octicon-link"></span></a>💻 351.2 Important Commands</h4>
     <h5 id="️-xen-create-image"><a class="anchor" aria-hidden="true" tabindex="-1" href="#️-xen-create-image"><span class="octicon octicon-link"></span></a>🏗️ xen-create-image</h5>
     <pre class="language-sh"><code class="language-sh code-highlight"><span class="code-line line-number" line="1"><span class="token comment"># create a pv image</span>
@@ -1236,8 +1240,9 @@ tunctl
       In short: QEMU gives the VM its virtual machine "shape" (devices and runtime),
       while KVM gives the VM fast hardware-assisted execution.
     </p>
+    <h4 id="dataplane-for-explaining-qemu-and-kvm-concepts-and-theory"><a class="anchor" aria-hidden="true" tabindex="-1" href="#dataplane-for-explaining-qemu-and-kvm-concepts-and-theory"><span class="octicon octicon-link"></span></a>Dataplane for explaining QEMU and KVM Concepts and Theory</h4>
+    <p><a href="https://marcossilvestrini.github.io/learning-lpic-3-305-300/dataplanes/topic-351/351.3.html"><img src="https://img.shields.io/badge/%E2%96%B6%EF%B8%8F_View_Dataplane-Live-06b6d4?style=for-the-badge" alt="Play"></a></p>
     <h4 id="️-3513-important-commands"><a class="anchor" aria-hidden="true" tabindex="-1" href="#️-3513-important-commands"><span class="octicon octicon-link"></span></a>🛠️ 351.3 Important Commands</h4>
-    <h5 id="-3513-others-commands"><a class="anchor" aria-hidden="true" tabindex="-1" href="#-3513-others-commands"><span class="octicon octicon-link"></span></a>📝 351.3 Others Commands</h5>
     <h5 id="-check-kvm-module"><a class="anchor" aria-hidden="true" tabindex="-1" href="#-check-kvm-module"><span class="octicon octicon-link"></span></a>🧪 check kvm module</h5>
     <pre class="language-sh"><code class="language-sh code-highlight"><span class="code-line line-number" line="1"><span class="token comment"># check if kvm is enabled</span>
 </span><span class="code-line line-number" line="2"><span class="token function">egrep</span> <span class="token parameter variable">-o</span> <span class="token string">'(vmx|svm)'</span> /proc/cpuinfo
@@ -8439,97 +8444,100 @@ docker compose down -v
 </span><span class="code-line line-number" line="100"><span class="token comment"># ------------- MINIKUBE ------------</span>
 </span><span class="code-line line-number" line="101"><span class="token comment"># start minikube</span>
 </span><span class="code-line line-number" line="102">minikube start
-</span><span class="code-line line-number" line="103">
-</span><span class="code-line line-number" line="104"><span class="token comment"># stop minikube</span>
-</span><span class="code-line line-number" line="105">minikube stop
-</span><span class="code-line line-number" line="106">
-</span><span class="code-line line-number" line="107"><span class="token comment"># delete minikube</span>
-</span><span class="code-line line-number" line="108">minikube delete
-</span><span class="code-line line-number" line="109">
-</span><span class="code-line line-number" line="110"><span class="token comment"># dashboard</span>
-</span><span class="code-line line-number" line="111">minikube dashboard
-</span><span class="code-line line-number" line="112">minikube dashboard <span class="token parameter variable">-p</span> lpic3
-</span><span class="code-line line-number" line="113">
-</span><span class="code-line line-number" line="114">
-</span><span class="code-line line-number" line="115"><span class="token comment">#------------- KUBERNETES COMMANDS ------------</span>
-</span><span class="code-line line-number" line="116"><span class="token comment"># get kubernetes cluster info</span>
-</span><span class="code-line line-number" line="117">kubectl cluster-info
-</span><span class="code-line line-number" line="118">
-</span><span class="code-line line-number" line="119"><span class="token comment"># Management nodes</span>
-</span><span class="code-line line-number" line="120">
-</span><span class="code-line line-number" line="121"><span class="token comment"># get nodes</span>
-</span><span class="code-line line-number" line="122">kubectl get nodes
+</span><span class="code-line line-number" line="103">minikube start <span class="token parameter variable">-p</span> lpic3
+</span><span class="code-line line-number" line="104">
+</span><span class="code-line line-number" line="105"><span class="token comment"># stop minikube</span>
+</span><span class="code-line line-number" line="106">minikube stop
+</span><span class="code-line line-number" line="107">minikube stop <span class="token parameter variable">-p</span> lpic3
+</span><span class="code-line line-number" line="108">
+</span><span class="code-line line-number" line="109"><span class="token comment"># delete minikube</span>
+</span><span class="code-line line-number" line="110">minikube delete
+</span><span class="code-line line-number" line="111">minikube delete <span class="token parameter variable">-p</span> lpic3
+</span><span class="code-line line-number" line="112">
+</span><span class="code-line line-number" line="113"><span class="token comment"># dashboard</span>
+</span><span class="code-line line-number" line="114">minikube dashboard
+</span><span class="code-line line-number" line="115">minikube dashboard <span class="token parameter variable">-p</span> lpic3
+</span><span class="code-line line-number" line="116">
+</span><span class="code-line line-number" line="117">
+</span><span class="code-line line-number" line="118"><span class="token comment">#------------- KUBERNETES COMMANDS ------------</span>
+</span><span class="code-line line-number" line="119"><span class="token comment"># get kubernetes cluster info</span>
+</span><span class="code-line line-number" line="120">kubectl cluster-info
+</span><span class="code-line line-number" line="121">
+</span><span class="code-line line-number" line="122"><span class="token comment"># Management nodes</span>
 </span><span class="code-line line-number" line="123">
-</span><span class="code-line line-number" line="124"><span class="token comment"># Manage pods and deployments</span>
-</span><span class="code-line line-number" line="125">
-</span><span class="code-line line-number" line="126"><span class="token comment"># run a pod</span>
-</span><span class="code-line line-number" line="127">kubectl run nginx-example <span class="token parameter variable">--image</span><span class="token operator">=</span>nginx:latest
+</span><span class="code-line line-number" line="124"><span class="token comment"># get nodes</span>
+</span><span class="code-line line-number" line="125">kubectl get nodes
+</span><span class="code-line line-number" line="126">
+</span><span class="code-line line-number" line="127"><span class="token comment"># Manage pods and deployments</span>
 </span><span class="code-line line-number" line="128">
-</span><span class="code-line line-number" line="129"><span class="token comment"># get pods</span>
-</span><span class="code-line line-number" line="130">kubectl get pods
+</span><span class="code-line line-number" line="129"><span class="token comment"># run a pod</span>
+</span><span class="code-line line-number" line="130">kubectl run nginx-example <span class="token parameter variable">--image</span><span class="token operator">=</span>nginx:latest
 </span><span class="code-line line-number" line="131">
-</span><span class="code-line line-number" line="132"><span class="token comment"># get deployments</span>
-</span><span class="code-line line-number" line="133">kubectl get deployments
+</span><span class="code-line line-number" line="132"><span class="token comment"># get pods</span>
+</span><span class="code-line line-number" line="133">kubectl get pods
 </span><span class="code-line line-number" line="134">
-</span><span class="code-line line-number" line="135"><span class="token comment"># describe a pod</span>
-</span><span class="code-line line-number" line="136">kubectl describe pod <span class="token operator">&#x3C;</span>POD_NAME<span class="token operator">></span>
+</span><span class="code-line line-number" line="135"><span class="token comment"># get deployments</span>
+</span><span class="code-line line-number" line="136">kubectl get deployments
 </span><span class="code-line line-number" line="137">
-</span><span class="code-line line-number" line="138"><span class="token comment"># describe a deployment</span>
-</span><span class="code-line line-number" line="139">kubectl describe deployment <span class="token operator">&#x3C;</span>DEPLOYMENT_NAME<span class="token operator">></span>
+</span><span class="code-line line-number" line="138"><span class="token comment"># describe a pod</span>
+</span><span class="code-line line-number" line="139">kubectl describe pod <span class="token operator">&#x3C;</span>POD_NAME<span class="token operator">></span>
 </span><span class="code-line line-number" line="140">
-</span><span class="code-line line-number" line="141"><span class="token comment"># generate a yaml file for a pod</span>
-</span><span class="code-line line-number" line="142">kubectl run nginx-example-1 <span class="token parameter variable">--image</span><span class="token operator">=</span>nginx:latest  --dry-run<span class="token operator">=</span>client <span class="token parameter variable">-o</span> yaml <span class="token operator">></span> configs/kubernetes/manifests/nginx-pod.yaml
+</span><span class="code-line line-number" line="141"><span class="token comment"># describe a deployment</span>
+</span><span class="code-line line-number" line="142">kubectl describe deployment <span class="token operator">&#x3C;</span>DEPLOYMENT_NAME<span class="token operator">></span>
 </span><span class="code-line line-number" line="143">
-</span><span class="code-line line-number" line="144"><span class="token comment"># generate a yaml file for a deployment</span>
-</span><span class="code-line line-number" line="145">kubectl create deployment nginx-example-2 <span class="token parameter variable">--image</span><span class="token operator">=</span>nginx:latest  --dry-run<span class="token operator">=</span>client <span class="token parameter variable">-o</span> yaml <span class="token operator">></span> configs/kubernetes/manifests/nginx-deployment.yaml
+</span><span class="code-line line-number" line="144"><span class="token comment"># generate a yaml file for a pod</span>
+</span><span class="code-line line-number" line="145">kubectl run nginx-example-1 <span class="token parameter variable">--image</span><span class="token operator">=</span>nginx:latest  --dry-run<span class="token operator">=</span>client <span class="token parameter variable">-o</span> yaml <span class="token operator">></span> configs/kubernetes/manifests/nginx-pod.yaml
 </span><span class="code-line line-number" line="146">
-</span><span class="code-line line-number" line="147"><span class="token comment"># create a resource from a configuration file</span>
-</span><span class="code-line line-number" line="148">kubectl create <span class="token parameter variable">-f</span> nginx-deployment.yaml
+</span><span class="code-line line-number" line="147"><span class="token comment"># generate a yaml file for a deployment</span>
+</span><span class="code-line line-number" line="148">kubectl create deployment nginx-example-2 <span class="token parameter variable">--image</span><span class="token operator">=</span>nginx:latest  --dry-run<span class="token operator">=</span>client <span class="token parameter variable">-o</span> yaml <span class="token operator">></span> configs/kubernetes/manifests/nginx-deployment.yaml
 </span><span class="code-line line-number" line="149">
-</span><span class="code-line line-number" line="150"><span class="token comment"># apply a configuration file</span>
-</span><span class="code-line line-number" line="151">kubectl apply <span class="token parameter variable">-f</span> nginx-deployment.yaml
+</span><span class="code-line line-number" line="150"><span class="token comment"># create a resource from a configuration file</span>
+</span><span class="code-line line-number" line="151">kubectl create <span class="token parameter variable">-f</span> nginx-deployment.yaml
 </span><span class="code-line line-number" line="152">
-</span><span class="code-line line-number" line="153"><span class="token comment"># delete a resource from a configuration file</span>
-</span><span class="code-line line-number" line="154">kubectl delete <span class="token parameter variable">-f</span> nginx-deployment.yaml
+</span><span class="code-line line-number" line="153"><span class="token comment"># apply a configuration file</span>
+</span><span class="code-line line-number" line="154">kubectl apply <span class="token parameter variable">-f</span> nginx-deployment.yaml
 </span><span class="code-line line-number" line="155">
-</span><span class="code-line line-number" line="156"><span class="token comment"># scale a deployment</span>
-</span><span class="code-line line-number" line="157">kubectl scale deployment nginx-example-2 <span class="token parameter variable">--replicas</span><span class="token operator">=</span><span class="token number">5</span>
+</span><span class="code-line line-number" line="156"><span class="token comment"># delete a resource from a configuration file</span>
+</span><span class="code-line line-number" line="157">kubectl delete <span class="token parameter variable">-f</span> nginx-deployment.yaml
 </span><span class="code-line line-number" line="158">
-</span><span class="code-line line-number" line="159"><span class="token comment">#------------- HELM COMMANDS ------------</span>
-</span><span class="code-line line-number" line="160">
-</span><span class="code-line line-number" line="161"><span class="token comment"># list repositories</span>
-</span><span class="code-line line-number" line="162">helm repo list
+</span><span class="code-line line-number" line="159"><span class="token comment"># scale a deployment</span>
+</span><span class="code-line line-number" line="160">kubectl scale deployment nginx-example-2 <span class="token parameter variable">--replicas</span><span class="token operator">=</span><span class="token number">5</span>
+</span><span class="code-line line-number" line="161">
+</span><span class="code-line line-number" line="162"><span class="token comment">#------------- HELM COMMANDS ------------</span>
 </span><span class="code-line line-number" line="163">
-</span><span class="code-line line-number" line="164"><span class="token comment"># add a repository</span>
-</span><span class="code-line line-number" line="165">helm repo <span class="token function">add</span> stable https://charts.helm.sh/stable
+</span><span class="code-line line-number" line="164"><span class="token comment"># list repositories</span>
+</span><span class="code-line line-number" line="165">helm repo list
 </span><span class="code-line line-number" line="166">
-</span><span class="code-line line-number" line="167"><span class="token comment"># update repositories</span>
-</span><span class="code-line line-number" line="168">helm repo update
+</span><span class="code-line line-number" line="167"><span class="token comment"># add a repository</span>
+</span><span class="code-line line-number" line="168">helm repo <span class="token function">add</span> stable https://charts.helm.sh/stable
 </span><span class="code-line line-number" line="169">
-</span><span class="code-line line-number" line="170"><span class="token comment"># delete a repository</span>
-</span><span class="code-line line-number" line="171">helm repo remove stable
+</span><span class="code-line line-number" line="170"><span class="token comment"># update repositories</span>
+</span><span class="code-line line-number" line="171">helm repo update
 </span><span class="code-line line-number" line="172">
-</span><span class="code-line line-number" line="173"><span class="token comment"># search for charts in a repository</span>
-</span><span class="code-line line-number" line="174">helm search repo stable
+</span><span class="code-line line-number" line="173"><span class="token comment"># delete a repository</span>
+</span><span class="code-line line-number" line="174">helm repo remove stable
 </span><span class="code-line line-number" line="175">
-</span><span class="code-line line-number" line="176"><span class="token comment"># install a chart</span>
-</span><span class="code-line line-number" line="177">helm <span class="token function">install</span> my-release stable/mysql
-</span><span class="code-line line-number" line="178">helm <span class="token function">install</span> mysql <span class="token parameter variable">-n</span> mysql  --create-namespace stable/mysql <span class="token parameter variable">--values</span> values.yaml
-</span><span class="code-line line-number" line="179">
-</span><span class="code-line line-number" line="180"><span class="token comment"># upgrade a release</span>
-</span><span class="code-line line-number" line="181">helm upgrade my-release stable/mysql
+</span><span class="code-line line-number" line="176"><span class="token comment"># search for charts in a repository</span>
+</span><span class="code-line line-number" line="177">helm search repo stable
+</span><span class="code-line line-number" line="178">
+</span><span class="code-line line-number" line="179"><span class="token comment"># install a chart</span>
+</span><span class="code-line line-number" line="180">helm <span class="token function">install</span> my-release stable/mysql
+</span><span class="code-line line-number" line="181">helm <span class="token function">install</span> mysql <span class="token parameter variable">-n</span> mysql  --create-namespace stable/mysql <span class="token parameter variable">--values</span> values.yaml
 </span><span class="code-line line-number" line="182">
-</span><span class="code-line line-number" line="183"><span class="token comment"># uninstall a release</span>
-</span><span class="code-line line-number" line="184">helm uninstall my-release
+</span><span class="code-line line-number" line="183"><span class="token comment"># upgrade a release</span>
+</span><span class="code-line line-number" line="184">helm upgrade my-release stable/mysql
 </span><span class="code-line line-number" line="185">
-</span><span class="code-line line-number" line="186"><span class="token comment"># list releases</span>
-</span><span class="code-line line-number" line="187">helm list <span class="token parameter variable">-A</span>
+</span><span class="code-line line-number" line="186"><span class="token comment"># uninstall a release</span>
+</span><span class="code-line line-number" line="187">helm uninstall my-release
 </span><span class="code-line line-number" line="188">
-</span><span class="code-line line-number" line="189"><span class="token comment"># fetch chart</span>
-</span><span class="code-line line-number" line="190">helm fetch stable/mysql
+</span><span class="code-line line-number" line="189"><span class="token comment"># list releases</span>
+</span><span class="code-line line-number" line="190">helm list <span class="token parameter variable">-A</span>
 </span><span class="code-line line-number" line="191">
-</span><span class="code-line line-number" line="192"><span class="token comment"># fetch values of a release</span>
-</span><span class="code-line line-number" line="193">helm get values my-release
+</span><span class="code-line line-number" line="192"><span class="token comment"># fetch chart</span>
+</span><span class="code-line line-number" line="193">helm fetch stable/mysql
+</span><span class="code-line line-number" line="194">
+</span><span class="code-line line-number" line="195"><span class="token comment"># fetch values of a release</span>
+</span><span class="code-line line-number" line="196">helm get values my-release
 </span></code><div onclick="copied(this)" data-code="
 #------------- SWARM MANAGEMENT COMMANDS ------------
 # initialize a new swarm
@@ -8632,12 +8640,15 @@ docker stack rm $(docker stack ls -q)
 # ------------- MINIKUBE ------------
 # start minikube
 minikube start
+minikube start -p lpic3
 
 # stop minikube
 minikube stop
+minikube stop -p lpic3
 
 # delete minikube
 minikube delete
+minikube delete -p lpic3
 
 # dashboard
 minikube dashboard
