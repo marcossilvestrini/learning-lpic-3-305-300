@@ -584,6 +584,11 @@ Despite this drawback, emulation remains valuable for running legacy software, t
  The systemd-machined service is dedicated to managing virtual machines and containers within the systemd ecosystem.
  It provides essential functionalities for controlling, monitoring, and maintaining virtual instances, offering robust integration and efficiency within Linux environments.
 
+#### Dataplane for explaining Virtualization Concepts and Theory
+
+[![Play](https://img.shields.io/badge/▶️_View_Dataplane-Live-06b6d4?style=for-the-badge)](https://marcossilvestrini.github.io/learning-lpic-3-305-300/dataplanes/topic-351/351.1.html)
+
+
 <p align="right">(<a href="#topic-351.1">back to sub Topic 351.1</a>)</p>
 <p align="right">(<a href="#topic-351">back to Topic 351</a>)</p>
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -765,6 +770,10 @@ By specifying “vif” directives in the domain configuration files, administra
 #### Xen Lab
 
 Use this script for lab provisioning: [xen.sh](scripts/xen/xen.sh)
+
+#### Dataplane for explaining Xen 
+
+[![Play](https://img.shields.io/badge/▶️_View_Dataplane-Live-06b6d4?style=for-the-badge)](https://marcossilvestrini.github.io/learning-lpic-3-305-300/dataplanes/topic-351/351.2.html)
 
 #### 💻 351.2 Important Commands
 
@@ -1039,9 +1048,12 @@ Practical result:
 In short: QEMU gives the VM its virtual machine "shape" (devices and runtime),
 while KVM gives the VM fast hardware-assisted execution.
 
-#### 🛠️ 351.3 Important Commands
 
-##### 📝 351.3 Others Commands
+#### Dataplane for explaining QEMU and KVM Concepts and Theory
+
+[![Play](https://img.shields.io/badge/▶️_View_Dataplane-Live-06b6d4?style=for-the-badge)](https://marcossilvestrini.github.io/learning-lpic-3-305-300/dataplanes/topic-351/351.3.html)
+
+#### 🛠️ 351.3 Important Commands
 
 ##### 🧪 check kvm module
 
@@ -5185,12 +5197,15 @@ docker stack rm $(docker stack ls -q)
 # ------------- MINIKUBE ------------
 # start minikube
 minikube start
+minikube start -p lpic3
 
 # stop minikube
 minikube stop
+minikube stop -p lpic3
 
 # delete minikube
 minikube delete
+minikube delete -p lpic3
 
 # dashboard
 minikube dashboard

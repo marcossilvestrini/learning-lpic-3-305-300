@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dataplane 351.2 - Xen Architecture</title>
+    <link rel="stylesheet" href="../core/engine.css">
+</head>
+<body>
+    <h1 id="dataplane-title"></h1>
+    <p id="dataplane-subtitle" class="subtitle"></p>
+    <div class="media-controls">
+        <button id="btn-prev" onclick="engine.prevStep()">⏮️ Anterior</button>
+        <button id="btn-play" onclick="engine.togglePlay()" class="btn-primary">▶️ Reproduzir</button>
+        <button id="btn-next" onclick="engine.nextStep()">⏭️ Próximo</button>
+        <select id="speed-selector" onchange="engine.setSpeed(this.value)">
+            <option value="1500">Normal (1x)</option>
+            <option value="800">Rápido (2x)</option>
+            <option value="3000">Lento (0.5x)</option>
+        </select>
+        <button onclick="engine.reset()">🔄 Resetar</button>
+    </div>
+    <div class="cluster" id="cluster"></div>
+    <div id="status" class="status-box"></div>
+    <script src="../core/engine.js"></script>
+    <script>
+        const engine = new DataplaneEngine('351.2-xen.json');
+        window.addEventListener('DOMContentLoaded', () => engine.init());
+    </script>
+</body>
+</html>

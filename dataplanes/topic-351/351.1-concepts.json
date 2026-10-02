@@ -1,0 +1,37 @@
+{
+  "title": "🖥️ 351.1 Virtualization Concepts",
+  "subtitle": "Fluxo de Execução: Type 1 (Bare-Metal) vs Type 2 (Hosted) Hypervisors",
+  "planes": [
+    {
+      "id": "type2-plane",
+      "title": "Type 2 Hosted (ex: VirtualBox / VMWare Workstation)",
+      "components": [
+        { "id": "t2-guest", "label": "Guest OS Application" },
+        { "id": "t2-hypervisor", "label": "Type 2 Hypervisor" },
+        { "id": "t2-hostos", "label": "Host Operating System" }
+      ]
+    },
+    {
+      "id": "type1-plane",
+      "title": "Type 1 Bare-Metal (ex: Xen / ESXi)",
+      "components": [
+        { "id": "t1-guest", "label": "Guest OS Application" },
+        { "id": "t1-hypervisor", "label": "Type 1 Hypervisor" }
+      ]
+    },
+    {
+      "id": "hw-plane",
+      "title": "Physical Infrastructure",
+      "components": [
+        { "id": "hardware", "label": "Physical Hardware (CPU / RAM / Disk)" }
+      ]
+    }
+  ],
+  "steps": [
+    { "from": "t2-guest", "to": "t2-hypervisor", "desc": "1. [Type 2] Uma aplicação na VM solicita recursos de CPU ou disco. A requisição vai para o Hypervisor Hosted.", "active": "t2-hypervisor" },
+    { "from": "t2-hypervisor", "to": "t2-hostos", "desc": "2. [Type 2] O Hypervisor não tem acesso direto à máquina. Ele repassa a chamada para o Sistema Operacional Host (ex: Windows/Linux).", "active": "t2-hostos" },
+    { "from": "t2-hostos", "to": "hardware", "desc": "3. [Type 2] O Host OS processa a requisição e acessa o hardware. Esse salto extra gera latência (overhead).", "active": "hardware", "success": true },
+    { "from": "t1-guest", "to": "t1-hypervisor", "desc": "4. [Type 1] Na arquitetura Bare-Metal, a VM solicita recursos diretamente ao Hypervisor rodando no nível mais baixo (Ring -1).", "active": "t1-hypervisor" },
+    { "from": "t1-hypervisor", "to": "hardware", "desc": "5. [Type 1] O Hypervisor acessa o hardware diretamente, garantindo alta performance, baixa latência e isolamento robusto para datacenters.", "active": "hardware", "success": true }
+  ]
+}

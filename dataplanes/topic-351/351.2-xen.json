@@ -1,0 +1,35 @@
+{
+  "title": "🐧 351.2 Xen Architecture",
+  "subtitle": "Fluxo de Gerenciamento: XAPI, XenStore, Domain 0 e Domain U",
+  "planes": [
+    {
+      "id": "management-plane",
+      "title": "Domain 0 (Control Domain)",
+      "components": [
+        { "id": "xl-cli", "label": "xl CLI / Admin" },
+        { "id": "xapi", "label": "XAPI (Xen Management API)" },
+        { "id": "xenstore", "label": "XenStore (Key-Value Configs)" }
+      ]
+    },
+    {
+      "id": "hypervisor-plane",
+      "title": "Xen Layer",
+      "components": [
+        { "id": "hypervisor", "label": "Xen Hypervisor" }
+      ]
+    },
+    {
+      "id": "guest-plane",
+      "title": "Domain U (Unprivileged Domains)",
+      "components": [
+        { "id": "domu-kernel", "label": "DomU (Virtual Machine Boot)" }
+      ]
+    }
+  ],
+  "steps": [
+    { "from": "xl-cli", "to": "xapi", "desc": "1. O administrador executa 'xl create' no Dom0. O comando é recebido pela XAPI para orquestrar a nova máquina virtual.", "active": "xapi" },
+    { "from": "xapi", "to": "xenstore", "desc": "2. A XAPI grava as configurações de rede, discos e estado do novo DomU no XenStore (banco de dados chave-valor descentralizado).", "active": "xenstore" },
+    { "from": "xenstore", "to": "hypervisor", "desc": "3. O XenStore notifica o Hypervisor através do sistema de eventos sobre a criação de um novo domínio.", "active": "hypervisor" },
+    { "from": "hypervisor", "to": "domu-kernel", "desc": "4. O Xen Hypervisor aloca a memória física, isola os recursos e instrui a inicialização do kernel do Domain U (DomU).", "active": "domu-kernel", "success": true }
+  ]
+}
