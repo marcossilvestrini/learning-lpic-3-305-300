@@ -3207,12 +3207,15 @@ docker stack rm $(docker stack ls -q)
 # ------------- MINIKUBE ------------
 # start minikube
 minikube start
+minikube start -p lpic3
 
 # stop minikube
 minikube stop
+minikube stop -p lpic3
 
 # delete minikube
 minikube delete
+minikube delete -p lpic3
 
 # dashboard
 minikube dashboard
